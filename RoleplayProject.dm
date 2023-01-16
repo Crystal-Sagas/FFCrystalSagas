@@ -2089,87 +2089,87 @@ proc
 				for(var/obj/perk/p in m.contents)
 					if(choices.Find(p.name))
 						choices-=p.name
-				redostuff
-				var/choice = input(m,"Which ability do you wish? [a]/3") as null|anything in choices
-				if(choices!=null)
-					choices-=choice
-				switch(choice)
-					if("Photosynthetic Wave")
-						var/obj/perk/MonsterAbilities/BLU/PhotosyntheticWave/p1=new
-						m.contents+=p1
-						m.rpp--
-						a++
-						if(a==3)
-							loop=0
-					if("Shrapnel Seed")
-						var/obj/perk/MonsterAbilities/BLU/ShrapnelSeed/p1=new
-						m.contents+=p1
-						m.rpp--
-						a++
-						if(a==3)
-							loop=0
-					if("Geezard Claw")
-						var/obj/perk/MonsterAbilities/BLU/GeezardClaw/p1=new
-						m.contents+=p1
-						m.rpp--
-						a++
-						if(a==3)
-							loop=0
-					if("Goblin Strike")
-						var/obj/perk/MonsterAbilities/BLU/GoblinStrike/p1=new
-						m.contents+=p1
-						m.rpp--
-						a++
-						if(a==3)
-							loop=0
-					if("Poison Powder")
-						var/obj/perk/MonsterAbilities/BLU/PoisonPowder/p1=new
-						m.contents+=p1
-						m.rpp--
-						a++
-						if(a==3)
-							loop=0
-					if("Silver Fang")
-						var/obj/perk/MonsterAbilities/BLU/SilverFang/p1=new
-						m.contents+=p1
-						m.rpp--
-						a++
-						if(a==3)
-							loop=0
-					if("Mu Claw")
-						var/obj/perk/MonsterAbilities/BLU/MuClaw/p1=new
-						m.contents+=p1
-						m.rpp--
-						a++
-						if(a==3)
-							loop=0
-					if("Gelantinous Lake")
-						var/obj/perk/MonsterAbilities/BLU/GelatinousLake/p1=new
-						m.contents+=p1
-						m.rpp--
-						a++
-						if(a==3)
-							loop=0
-					if("Water Gun")
-						var/obj/perk/MonsterAbilities/BLU/WaterGun/p1=new
-						m.contents+=p1
-						m.rpp--
-						a++
-						if(a==3)
-							loop=0
-					if("Mesma Blade")
-						var/obj/perk/MonsterAbilities/BLU/MesmaBlade/p1=new
-						m.contents+=p1
-						m.rpp--
-						a++
-						if(a==3)
-							loop=0
-					if(null)
-						switch(alert("You sure you are finished?",,"Yes","No"))
-							if("Yes")
-								return
-							if("No")
-								goto redostuff
+				redostuff:
+					var/choice = input(m,"Which ability do you wish? [a]/3") as null|anything in choices
+					if(choices!=null)
+						choices-=choice
+					switch(choice)
+						if("Photosynthetic Wave")
+							var/obj/perk/MonsterAbilities/BLU/PhotosyntheticWave/p1=new
+							m.contents+=p1
+							m.rpp--
+							a++
+							if(a==3)
+								loop=0
+						if("Shrapnel Seed")
+							var/obj/perk/MonsterAbilities/BLU/ShrapnelSeed/p1=new
+							m.contents+=p1
+							m.rpp--
+							a++
+							if(a==3)
+								loop=0
+						if("Geezard Claw")
+							var/obj/perk/MonsterAbilities/BLU/GeezardClaw/p1=new
+							m.contents+=p1
+							m.rpp--
+							a++
+							if(a==3)
+								loop=0
+						if("Goblin Strike")
+							var/obj/perk/MonsterAbilities/BLU/GoblinStrike/p1=new
+							m.contents+=p1
+							m.rpp--
+							a++
+							if(a==3)
+								loop=0
+						if("Poison Powder")
+							var/obj/perk/MonsterAbilities/BLU/PoisonPowder/p1=new
+							m.contents+=p1
+							m.rpp--
+							a++
+							if(a==3)
+								loop=0
+						if("Silver Fang")
+							var/obj/perk/MonsterAbilities/BLU/SilverFang/p1=new
+							m.contents+=p1
+							m.rpp--
+							a++
+							if(a==3)
+								loop=0
+						if("Mu Claw")
+							var/obj/perk/MonsterAbilities/BLU/MuClaw/p1=new
+							m.contents+=p1
+							m.rpp--
+							a++
+							if(a==3)
+								loop=0
+						if("Gelantinous Lake")
+							var/obj/perk/MonsterAbilities/BLU/GelatinousLake/p1=new
+							m.contents+=p1
+							m.rpp--
+							a++
+							if(a==3)
+								loop=0
+						if("Water Gun")
+							var/obj/perk/MonsterAbilities/BLU/WaterGun/p1=new
+							m.contents+=p1
+							m.rpp--
+							a++
+							if(a==3)
+								loop=0
+						if("Mesma Blade")
+							var/obj/perk/MonsterAbilities/BLU/MesmaBlade/p1=new
+							m.contents+=p1
+							m.rpp--
+							a++
+							if(a==3)
+								loop=0
+						if(null)
+							switch(alert("You sure you are finished?",,"Yes","No"))
+								if("Yes")
+									return
+								if("No")
+									goto redostuff
 	Subjobint(var/mob/m)
 		var/list/jobs = list("Mystic Knight","Pirate","Gladiator","Astrologian","Scholar","Merchant","Viking","Bard","Dancer","Black Mage","White Mage","Red Mage","Blue Mage","Ranger","Monk","Beast Master","Samurai","Spellblade","Rogue","Paladin","Knight","Dark Knight","Dragoon","Machinist","Summoner","Chemist","Geomancer")
 		if(Oracle.Find(m.key))
