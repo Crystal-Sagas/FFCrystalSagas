@@ -45,11 +45,22 @@ mob
 		Click()
 			Charcreate(usr)
 
-obj
-	perkshopholder
-	techshopholder
-	recipeshopholder
-	stableholder
+/**
+ * global perkshop holder; only one should exist at a time
+ */
+/obj/perkshopholder
+/**
+ * global techshop holder; only one should exist at a time
+ */
+/obj/techshopholder
+/**
+ * global recipeshop holder; only one should exist at a time
+ */
+/obj/recipeshopholder
+/**
+ * global stableshop holder; only one should exist at a time
+ */
+/obj/stableholder
 
 world
 	fps = 40		// 40 frames per second
@@ -92,7 +103,6 @@ world
 		spawn Checkday()
 		for(var/obj/perkshopholder/a in world)
 			a.contents+=perklist
-			..()
 		for(var/obj/recipeshopholder/a in world)
 			a.contents+=recipelist
 		for(var/obj/Stablemaster/a in world)

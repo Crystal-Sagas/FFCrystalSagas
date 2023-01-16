@@ -1,3 +1,5 @@
+environment = "RoleplayProject.dme"
+
 [langserver]
 dreamchecker = true
 

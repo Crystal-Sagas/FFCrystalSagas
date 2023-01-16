@@ -1319,6 +1319,7 @@ obj
 
 
 				proc/FFOff(var/ShutdownType)
+					set background = TRUE
 					for(var/obj/Effects/ForceField/A in world)
 						if(ShutdownType=="Broad")
 							if(A.Password==src.Password)
