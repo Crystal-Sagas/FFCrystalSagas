@@ -1687,7 +1687,7 @@ obj
 				DextriousUse
 					rank="T1"
 					name="Dextrious Use"
-					desc="The dancer moves with such grace that any weapon in their hand is a weapon of finese. A Dancer may add their DEX mod to their PAB as a Global Modifier."
+					desc="The dancer moves with such grace that any weapon in their hand is a weapon of finese. A Dancer may add their DEX mod to their PAB as a Global Modifier. This applies only to weapons that do not scale with the DEX stat."
 				DanceLikeWater
 					rank="T3"
 					name="Dance Like Water"
