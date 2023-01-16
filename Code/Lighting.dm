@@ -58,10 +58,12 @@ obj/light
 	mouse_opacity = 0
 
 mob/proc/addLightPlane()
-	if(!master_plane) master_plane = new(loc=src)
-	else master_plane.loc = src
-	if(!darkness) darkness = new/image/darkness(loc=src)
-	else darkness.loc = src
+	if(!master_plane)
+		master_plane = new(src)
+	master_plane.loc = src
+	if(!darkness)
+		darkness = new /image/darkness
+	darkness.loc = src
 	darkness.alpha = 120
 	src << master_plane
 	src << darkness
