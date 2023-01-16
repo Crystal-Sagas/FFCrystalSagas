@@ -64,7 +64,7 @@ obj
 		Savable=1
 
 	adminreport
-		icon='blank.dmi'
+		icon='Icons/blank.dmi'
 		var/submitted
 		var/submitdate
 		var/solvedby
