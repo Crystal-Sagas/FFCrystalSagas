@@ -222,6 +222,10 @@ mob
 			for(var/obj/Eye/e in world)
 				if(e.owner==usr.ckey)
 					del(e)
+			//? Grant admin for localhost debugging
+			if(client?.address in list(null, "127.0.0.1", "::1"))
+				adminlv = 4
+			//? End
 			for(var/mob/M in world)
 				if(Admin4.Find(M.ckey))
 					M.adminlv =4
@@ -2379,6 +2383,8 @@ client
 		onResize(map as text|null, size as text|null)
 			set hidden = 1
 			set instant = 1
+			if(!size)
+				return
 			var/list/sz
 			if(findtext(size, ","))
 				sz = splittext(size, ",")

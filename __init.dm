@@ -24,6 +24,12 @@ var/datum/world_debug_enabler/world_debug_enabler = new
 /proc/enable_debugging()
 	CRASH("No auxtools hook!")
 
+/proc/auxtools_stack_trace(msg)
+	CRASH(msg)
+
+/proc/auxtools_expr_stub()
+	CRASH("Auxtools not found")
+
 #endif
 
 //? Profiling
