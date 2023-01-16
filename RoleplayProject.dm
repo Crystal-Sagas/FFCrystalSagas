@@ -2084,8 +2084,13 @@ proc
 						m.contents+=i
 			else if(m.wpntypeamount>=3)
 				loop=0
-		alert(m,"Almost done, kupo. There is nothing more I can help you with here, but make sure to spend your starting AP on raising your ability scores, and talk to my friends to learn more about the game. Enjoy, kupo.")
-		m.loc = locate(200, 186, 1)
+		switch(alert(m,"Kupo...there are currently two major hubs in the world. Insomnia and Midgar. Which one do you wish to start in?",,"Insomnia","Midgar"))
+			if("Insomnia")
+				alert(m,"Almost done, kupo. There is nothing more I can help you with here, but make sure to spend your starting AP on raising your ability scores, and talk to my friends to learn more about the game. Enjoy, kupo.")
+				m.loc = locate(200, 186, 1)
+			if("Midgar")
+				alert(m,"Almost done, kupo. There is nothing more I can help you with here, but make sure to spend your starting AP on raising your ability scores, and talk to my friends to learn more about the game. Enjoy, kupo.")
+				m.loc = locate(125, 297, 17)
 	Bluemageint(var/mob/m)
 		alert("As a blue mage you get a choice of up to three blue mages abilities from the start.")
 		var/list/choices=list("Photosynthetic Wave","Seed","Geezard Claw","Goblin Strike","Poison Powder","Silver Fang","Mu Claw","Gelantinous Lake","Water Gun","Mesma Blade")
