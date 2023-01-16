@@ -29,7 +29,6 @@ area
 			a.areain=src.locid
 			Flashplaque(a,src)
 		return 1
-		..()
 	Baron
 		name="Baron"
 		locid="Baron"
