@@ -2,7 +2,7 @@ obj
 	Pilot
 		icon='Factiongiver.png'
 		density=1
-		Savable=1
+		Savable=0
 		Click()
 			var/list/destinations = new
 			for(var/obj/Destinationflag/D in world)
