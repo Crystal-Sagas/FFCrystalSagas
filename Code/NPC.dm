@@ -4162,7 +4162,7 @@ obj
 						var/obj/perk/Abilities/BlackMagic/Flame/Firaja/a=new
 						var/obj/perk/Abilities/BlackMagic/Ice/Blizzaja/b=new
 						var/obj/perk/Abilities/BlackMagic/Lightning/Thundaja/c=new
-						var/obj/perk/Abilities/BlackMagic/Hydro/Waterja/d
+						// var/obj/perk/Abilities/BlackMagic/Hydro/Waterja/d
 						var/obj/perk/Abilities/BlackMagic/Other/Apocalypse/e=new
 						var/obj/item/Weapon/NPCWeapons/Punch/sf=new
 						src.contents+=a
@@ -4212,7 +4212,7 @@ obj
 						var/obj/perk/MonsterAbilities/BLU/MatraMagic/a=new
 						var/obj/perk/Abilities/BlackMagic/Energy/Scathe/b=new
 						var/obj/perk/Abilities/GeneralMagicAbilities/Laserga/c=new
-						var/obj/perk/Abilities/GeneralMagicAbilities/Fleche/d
+						// var/obj/perk/Abilities/GeneralMagicAbilities/Fleche/d
 						var/obj/perk/Abilities/Geomancer/Quake/e=new
 						var/obj/item/Weapon/NPCWeapons/Punch/sf=new
 						src.contents+=a
