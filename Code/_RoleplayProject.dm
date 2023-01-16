@@ -241,7 +241,7 @@ mob
 			if(client?.address in list(null, "127.0.0.1", "::1"))
 				adminlv = 4
 				winset(src,"default.Adminbut","is-visible=true")
-				M.verbs+=typesof(/mob/Admin/verb/)
+				verbs += typesof(/mob/Admin/verb/)
 			//? End
 			for(var/mob/M in world)
 				if(Admin4.Find(M.ckey))
