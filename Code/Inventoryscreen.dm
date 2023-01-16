@@ -99,7 +99,7 @@ obj
 		var/value = 0
 		icon = 'Icons/Gil.png'
 		Click()
-			if(usr.in view(1,src))
+			if(usr in view(1,src))
 				usr.money += value
 				Refreshinventoryscreen(usr)
 				del(src)
