@@ -326,7 +326,7 @@ mob
 mob
 	verb
 		DisableMusic()
-			usr<<sound(null,repeat=0,0,0,0)
+			usr << sound(null, 0, 0, 0, 0)
 	verb
 		ImStuck()
 			usr.x=200

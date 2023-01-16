@@ -1013,7 +1013,7 @@ mob
 					if(!g.minsi==0)
 						g.desc+="Insi.[g.minsi] "
 					if(!g.minv==0)
-						g.desc+="Inv.[g.minv.] "
+						g.desc+="Inv.[g.minv] "
 					if(!g.mmagi==0)
 						g.desc+="Magi.[g.mmagi] "
 					if(!g.mmed==0)
