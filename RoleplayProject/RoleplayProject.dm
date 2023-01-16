@@ -614,6 +614,7 @@ proc
 				m.mmp+=20
 				m.maxcraftingroles+=1
 				m.maxgatheringroles+=1
+				m.maxnodes+=5
 				m.Checkmod(1,m.str,m.addstr,m)
 				m.Checkmod(2,m.dex,m.adddex,m)
 				m.Checkmod(3,m.con,m.addcon,m)
@@ -701,6 +702,7 @@ proc
 				m.contents+=p2
 				m.mp+=50
 				m.mmp+=50
+				m.maxnodes+=5
 			if("Gria")
 				m.race="Gria"
 				var/obj/perk/Raceperks/Gria/Innerstrength/p1=new
@@ -1004,6 +1006,7 @@ proc
 					m.stealthproficient=0
 					m.survivalproficient=0
 					m.thieveryproficient=0
+					m.maxnodes+=10
 				if("Viking")
 					m.job="Viking"
 					var/obj/perk/Jobperks/Viking/Viking/p1=new
@@ -1576,6 +1579,7 @@ proc
 					m.stealthproficient=0
 					m.survivalproficient=0
 					m.thieveryproficient=0
+					m.weapontypes+="Draconic"
 				if("Machinist")
 					m.job="Machinist"
 					var/obj/perk/Jobperks/Machinist/Machinist/p1=new
@@ -1612,6 +1616,8 @@ proc
 					m.stealthproficient=0
 					m.survivalproficient=0
 					m.thieveryproficient=0
+					m.maxnodes+=10
+					m.weapontypes+="Machinist"
 				if("Summoner")
 					m.job="Summoner"
 					var/obj/perk/Jobperks/Summoner/Summoner/p1=new
@@ -1683,6 +1689,8 @@ proc
 					m.stealthproficient=0
 					m.survivalproficient=0
 					m.thieveryproficient=0
+					m.maxnodes+=10
+					m.weapontypes+="Chemist"
 				if("Geomancer")
 					m.job="Geomancer"
 					var/obj/perk/Jobperks/Geomancer/Geomancer/p1=new
@@ -2217,7 +2225,6 @@ proc
 				m.subjob="Merchant"
 				var/obj/perk/Jobperks/Merchant/Merchant/p1=new
 				m.contents+=p1
-				m.money+=6000
 			if("Viking")
 				m.subjob="Viking"
 				var/obj/perk/Jobperks/Viking/Viking/p1=new
@@ -2297,6 +2304,8 @@ proc
 				m.subjob="Dragoon"
 				var/obj/perk/Jobperks/Dragoon/Dragoon/p1=new
 				m.contents+=p1
+				m.weapontypes+="Draconic"
+
 			if("Machinist")
 				m.subjob="Machinist"
 				var/obj/perk/Jobperks/Machinist/Machinist/p1=new
@@ -2315,6 +2324,7 @@ proc
 				m.weapontypes+="Chemist"
 				var/obj/perk/Jobperks/Chemist/Chemist/p1=new
 				m.contents+=p1
+				m.weapontypes+="Chemist"
 			if("Geomancer")
 				m.subjob="Geomancer"
 				var/obj/perk/Jobperks/Geomancer/Geomancer/p1=new
