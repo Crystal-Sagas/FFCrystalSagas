@@ -364,6 +364,7 @@ obj
 									usr<<output("You have mined 1 piece of adamantine","oocout")
 							roll2=rand(1,20)
 							if(roll2<17)
+								usr.minednodes+=1
 								return
 							if(roll2>16&&roll2<20)
 								for(var/obj/item/materials/Ore/Silver/b in usr.contents)
@@ -376,8 +377,8 @@ obj
 							for(var/obj/item/materials/Synthesis/Stone/c in usr.contents)
 								c.amount+=2
 								usr<<output("You also find 2 Stone.")
-							UpdateCraft(usr)
 							usr.minednodes+=1
+							UpdateCraft(usr)
 						else
 							alert("You need to learn how to mine properly first.")
 		Makonode
