@@ -135,29 +135,28 @@ mob
 		SeeWeps()
 			var/row
 			winset(usr,"Crafting.weaponrecipes","cells=0x0")
-			for(var/obj/recipeshopholder/p in world)
-				for(var/obj/recipes/Weapons/o in p.contents)
-					if(usr.smithing>=1)
-						if(o.weapontype=="Longsword" && o.weptier=="Bronze")
-							row++
-							src<<output(o,"weaponrecipes:1,[row]")
-						if(o.weapontype=="Longsword" && o.weptier=="Iron")
-							row++
-							src<<output(o,"weaponrecipes:1,[row]")
-						if(o.weapontype=="Longsword" && o.weptier=="Steel")
-							row++
-							src<<output(o,"weaponrecipes:1,[row]")
-					if(usr.smithing>=2)
-						if(o.weapontype=="Longsword" && o.weptier=="Mythril")
-							row++
-							src<<output(o,"weaponrecipes:1,[row]")
-					if(usr.smithing>=3)
-						if(o.weapontype=="Longsword" && o.weptier=="Adamantine")
-							row++
-							src<<output(o,"weaponrecipes:1,[row]")
-						if(o.weapontype=="Longsword" && o.weptier=="Orichalcum")
-							row++
-							src<<output(o,"weaponrecipes:1,[row]")
+			for(var/obj/recipes/Weapons/o in global.recipe_shop.recipes)
+				if(usr.smithing>=1)
+					if(o.weapontype=="Longsword" && o.weptier=="Bronze")
+						row++
+						src<<output(o,"weaponrecipes:1,[row]")
+					if(o.weapontype=="Longsword" && o.weptier=="Iron")
+						row++
+						src<<output(o,"weaponrecipes:1,[row]")
+					if(o.weapontype=="Longsword" && o.weptier=="Steel")
+						row++
+						src<<output(o,"weaponrecipes:1,[row]")
+				if(usr.smithing>=2)
+					if(o.weapontype=="Longsword" && o.weptier=="Mythril")
+						row++
+						src<<output(o,"weaponrecipes:1,[row]")
+				if(usr.smithing>=3)
+					if(o.weapontype=="Longsword" && o.weptier=="Adamantine")
+						row++
+						src<<output(o,"weaponrecipes:1,[row]")
+					if(o.weapontype=="Longsword" && o.weptier=="Orichalcum")
+						row++
+						src<<output(o,"weaponrecipes:1,[row]")
 			winset(usr,"Crafting.wepcat","text=\"Longsword\"")
 		swapwepcat()
 			var/row
@@ -166,30 +165,29 @@ mob
 			var/list/wepchoices=list("Longsword","Focus Crystal","Scimitar","Shuriken","Throwing Knives","Axe","Hammer","Dagger","Whip","Greatsword","Katana","Spear","Scythe","Bow","Focus Sword","Staff","Tome","Sword Spear","Thief Sword","Bolt Rapier","Whip Blade","Akademia Cards","Blitz Ball","Gunblade","Bowsword","Bagangsaw","Buster Sword","Morphing Blade","Gun Arm","Magitek Pistol","Magitek Rifle")
 			var/chosenwep=input(usr,"What weapon crafting list would you like to access?") as anything in wepchoices
 			swapwep=chosenwep
-			for(var/obj/recipeshopholder/p in world)
-				for(var/obj/recipes/Weapons/o in p.contents)
-					if(usr.smithing>=1)
-						if(o.weapontype=="[chosenwep]" && o.weptier=="Bronze")
-							row++
-							src<<output(o,"weaponrecipes:1,[row]")
-						if(o.weapontype=="[chosenwep]" && o.weptier=="Iron")
-							row++
-							src<<output(o,"weaponrecipes:1,[row]")
-						if(o.weapontype=="[chosenwep]" && o.weptier=="Steel")
-							row++
-							src<<output(o,"weaponrecipes:1,[row]")
-					if(usr.smithing>=2)
-						if(o.weapontype=="[chosenwep]" && o.weptier=="Mythril")
-							row++
-							src<<output(o,"weaponrecipes:1,[row]")
-					if(usr.smithing>=3)
-						if(o.weapontype=="[chosenwep]" && o.weptier=="Adamantine")
-							row++
-							src<<output(o,"weaponrecipes:1,[row]")
-						if(o.weapontype=="[chosenwep]" && o.weptier=="Orichalcum")
-							row++
-							src<<output(o,"weaponrecipes:1,[row]")
-					winset(usr,"Crafting.wepcat","text=\"[swapwep]\"")
+			for(var/obj/recipes/Weapons/o in global.recipe_shop.recipes)
+				if(usr.smithing>=1)
+					if(o.weapontype=="[chosenwep]" && o.weptier=="Bronze")
+						row++
+						src<<output(o,"weaponrecipes:1,[row]")
+					if(o.weapontype=="[chosenwep]" && o.weptier=="Iron")
+						row++
+						src<<output(o,"weaponrecipes:1,[row]")
+					if(o.weapontype=="[chosenwep]" && o.weptier=="Steel")
+						row++
+						src<<output(o,"weaponrecipes:1,[row]")
+				if(usr.smithing>=2)
+					if(o.weapontype=="[chosenwep]" && o.weptier=="Mythril")
+						row++
+						src<<output(o,"weaponrecipes:1,[row]")
+				if(usr.smithing>=3)
+					if(o.weapontype=="[chosenwep]" && o.weptier=="Adamantine")
+						row++
+						src<<output(o,"weaponrecipes:1,[row]")
+					if(o.weapontype=="[chosenwep]" && o.weptier=="Orichalcum")
+						row++
+						src<<output(o,"weaponrecipes:1,[row]")
+				winset(usr,"Crafting.wepcat","text=\"[swapwep]\"")
 
 		swaparmorcat()
 			var/row

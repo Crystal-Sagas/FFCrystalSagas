@@ -162,37 +162,36 @@ mob
 				var/list/CSummons = list()
 				var/list/BSummons = list()
 				var/list/ASummons = list()
-				for(var/obj/npcarchive/a in world)
-					for(var/obj/npc/Summons/CRank/b in a.contents)
-						if(b.summon==1)
-							CSummons+=b
-						if(b.name in usr.contents)
+				for(var/obj/npc/Summons/CRank/b in global.npc_archive.npcs)
+					if(b.summon==1)
+						CSummons+=b
+					if(b.name in usr.contents)
+						CSummons-=b
+					if(b.name=="CRank")
+						CSummons-=b
+					for(var/obj/npc/q in usr.contents)
+						if(b.name==q.name)
 							CSummons-=b
-						if(b.name=="CRank")
-							CSummons-=b
-						for(var/obj/npc/q in usr.contents)
-							if(b.name==q.name)
-								CSummons-=b
-					for(var/obj/npc/Summons/BRank/c in a.contents)
-						if(c.summon==1)
-							BSummons+=c
-						if(c.name in usr.contents)
-							BSummons-=c
-						if(c.name=="BRank")
-							BSummons-=c
-						for(var/obj/npc/q in usr.contents)
-							if(c.name==q.name)
-								CSummons-=c
-					for(var/obj/npc/Summons/ARank/d in a.contents)
-						if(d.summon==1)
-							ASummons+=d
-						if(d.name in usr.contents)
-							ASummons-=d
-						if(d.name=="ARank")
-							ASummons-=d
-						for(var/obj/npc/q in usr.contents)
-							if(d.name==q.name)
-								CSummons-=d
+				for(var/obj/npc/Summons/BRank/c in global.npc_archive.npcs)
+					if(c.summon==1)
+						BSummons+=c
+					if(c.name in usr.contents)
+						BSummons-=c
+					if(c.name=="BRank")
+						BSummons-=c
+					for(var/obj/npc/q in usr.contents)
+						if(c.name==q.name)
+							CSummons-=c
+				for(var/obj/npc/Summons/ARank/d in global.npc_archive.npcs)
+					if(d.summon==1)
+						ASummons+=d
+					if(d.name in usr.contents)
+						ASummons-=d
+					if(d.name=="ARank")
+						ASummons-=d
+					for(var/obj/npc/q in usr.contents)
+						if(d.name==q.name)
+							CSummons-=d
 				for(var/obj/npc/Summons/q in usr.contents)
 					CSummons-=q
 					BSummons-=q
@@ -341,13 +340,12 @@ proc
 			for(var/obj/npc/Summons/b in m.contents)
 				if(b.summon==1 && b.scholarsum==0)
 					del b
-			for(var/obj/npcarchive/npc in world)
-				for(var/obj/npc/Summons/Necromancer/c in npc.contents)
-					if(c.summon==1)
-						var/obj/npc/p = copyatom(c)
-						p.archived=0
-						usr.contents+=p
-				alert(usr,"You have lost access to all normal Summons (except Scholar attunement Summons) ; and gained access to all Necromancer summons.")
+			for(var/obj/npc/Summons/Necromancer/c in global.npc_archive.npcs)
+				if(c.summon==1)
+					var/obj/npc/p = copyatom(c)
+					p.archived=0
+					usr.contents+=p
+			alert(usr,"You have lost access to all normal Summons (except Scholar attunement Summons) ; and gained access to all Necromancer summons.")
 ///crafting specs
 		if(o.name=="Heir of Lucis")
 			m.mhp+=20
@@ -1796,161 +1794,60 @@ obj
 								return
 				else if(src in usr.contents&&src.showee)
 					alert("[src.name]:[src.desc]")
-			for(var/obj/perkshopholder/a in world)
-				if(src in a.contents)
-					if(usr.perkbuying==1)
-						alert(usr,"You are already buying a perk.")
+			//* bandaided
+			if(src in global.perk_shop.perks)
+				if(usr.perkbuying==1)
+					alert(usr,"You are already buying a perk.")
+					usr.perkbuying=0
+					return
+				usr.perkbuying=1
+				if(usr.Checkperk(src,usr))
+					alert(usr,"You already know this perk.")
+					usr.perkbuying=0
+					return
+				if(src.statrequirement==1)
+					var/type = src.stattype
+					if(Checkstats(src,usr,type)==1)
 						usr.perkbuying=0
 						return
-					usr.perkbuying=1
-					if(usr.Checkperk(src,usr))
-						alert(usr,"You already know this perk.")
-						usr.perkbuying=0
-						return
-					if(src.statrequirement==1)
-						var/type = src.stattype
-						if(Checkstats(src,usr,type)==1)
-							usr.perkbuying=0
-							return
-						else
-					if(src.name in usr.nolearn)
-						alert("You cannot learn this perk, as a perk you know is incompatible.")
-						usr.perkbuying=0
-						return
-					switch(alert("[src.desc] (Rank: [src.rank]) (Cost: [src.rpcost])","[src.name]","Learn","Cancel"))
-						if("Learn")
-							if(src.jobneed==usr.subjob)
-								if(src.ability==1)
-									if(src.level<=2 && usr.subjobcap>=2)
-										if(usr.subjobcap==2)
-											if(usr.subcabs==3)
-												alert("You have learned the maximum amount of C Ranks from your subjob!")
-												usr.perkbuying=0
-												return
-										if(src.rank=="B" && usr.subjobcap==2)
-											alert("You are not capable of learning abilities of this level from your Subjob without the Dual Job perk.")
+					else
+				if(src.name in usr.nolearn)
+					alert("You cannot learn this perk, as a perk you know is incompatible.")
+					usr.perkbuying=0
+					return
+				switch(alert("[src.desc] (Rank: [src.rank]) (Cost: [src.rpcost])","[src.name]","Learn","Cancel"))
+					if("Learn")
+						if(src.jobneed==usr.subjob)
+							if(src.ability==1)
+								if(src.level<=2 && usr.subjobcap>=2)
+									if(usr.subjobcap==2)
+										if(usr.subcabs==3)
+											alert("You have learned the maximum amount of C Ranks from your subjob!")
 											usr.perkbuying=0
 											return
-										if(src.rank=="A" && usr.subjobcap==2)
-											alert("You are not capable of learning abilities of this level from your Subjob without the Dual Job perk.")
-											usr.perkbuying=0
-											return
-										if(src.rank=="S" && usr.subjobcap==2)
-											alert("You are not capable of learning abilities of this level from your Subjob without the Dual Job perk.")
-											usr.perkbuying=0
-											return
-										if(src.pre)
-											if(Checkmag(src,usr))
-												alert("You are not capable of learning perks of this type or rank.")
-												usr.perkbuying=0
-												return
-											if(Checkrank(src,usr))
-												alert("You cannot learn abilities of that rank right now.")
-												usr.perkbuying=0
-												return
-											if(usr.Checkpre(src.pre,usr))
-												if(usr.rpp>=src.rpcost)
-													if(src.level==2)
-														usr.subcabs+=1
-													usr.rpp-=src.rpcost
-													var/obj/perk/p = copyatom(src)
-													p.ontree=0
-													usr.contents+=p
-													alert("You have learned [src.name]")
-													Checkspec(src,usr)
-													Rankadjust(src,usr)
-													winset(usr,"PerkWindow.rpp","text=\"[usr.rpp]/[usr.trpp]\"")
-													usr.perkbuying=0
-													return
-												else
-													alert("You don't have enough RPP to learn this.")
-													usr.perkbuying=0
-											else
-												alert("You need [src.pre] in order to learn this.")
-												usr.perkbuying=0
-												return
-										else
-											if(usr.rpp>=src.rpcost)
-												if(Checkmag(src,usr))
-													alert("You are not capable of learning perks of this type or rank.")
-													usr.perkbuying=0
-													return
-												if(Checkrank(src,usr))
-													alert("You cannot learn abilities of that rank right now.")
-													usr.perkbuying=0
-													return
-												if(src.level==2)
-													usr.subcabs+=1
-												usr.rpp-=src.rpcost
-												var/obj/perk/p = copyatom(src)
-												p.ontree=0
-												usr.contents+=p
-												alert("You have learned [src.name]")
-												Checkspec(src,usr)
-												Rankadjust(src,usr)
-												winset(usr,"PerkWindow.rpp","text=\"[usr.rpp]/[usr.trpp]\"")
-												usr.perkbuying=0
-												usr.Save()
-												return
-											else
-												alert("You don't have enough RPP to learn this.")
-												usr.perkbuying=0
-												return
-
-								if(src.ability==0)
-									if(src.rank<="T2" && usr.subjobcap>=2)
-										if(usr.rpp>=src.rpcost)
-											if(src.rank=="T2" && usr.subjobcap<2)
-												alert("You are not capable of learning perks of this level from your Subjob without the Dual Job perk.")
-												usr.perkbuying=0
-												return
-											if(src.rank=="T3" && usr.subjobcap==2)
-												alert("You are not capable of learning perks of this level from your Subjob without the Dual Job perk.")
-												usr.perkbuying=0
-												return
-											if(src.rank=="T4" && usr.subjobcap==2)
-												alert("You are not capable of learning perks of this level from your Subjob without the Dual Job perk.")
-												usr.perkbuying=0
-												return
-											if(src.rank=="T5" && usr.subjobcap==2)
-												alert("You are not capable of learning perks of this level from your Subjob without the Dual Job perk.")
-												usr.perkbuying=0
-												return
-											if(Checkmag(src,usr))
-												alert("You are not capable of learning perks of this type or rank.")
-												usr.perkbuying=0
-												return
-											if(Checkrank(src,usr))
-												alert("You cannot learn abilities of that rank right now.")
-												usr.perkbuying=0
-												return
+									if(src.rank=="B" && usr.subjobcap==2)
+										alert("You are not capable of learning abilities of this level from your Subjob without the Dual Job perk.")
+										usr.perkbuying=0
+										return
+									if(src.rank=="A" && usr.subjobcap==2)
+										alert("You are not capable of learning abilities of this level from your Subjob without the Dual Job perk.")
+										usr.perkbuying=0
+										return
+									if(src.rank=="S" && usr.subjobcap==2)
+										alert("You are not capable of learning abilities of this level from your Subjob without the Dual Job perk.")
+										usr.perkbuying=0
+										return
 									if(src.pre)
+										if(Checkmag(src,usr))
+											alert("You are not capable of learning perks of this type or rank.")
+											usr.perkbuying=0
+											return
+										if(Checkrank(src,usr))
+											alert("You cannot learn abilities of that rank right now.")
+											usr.perkbuying=0
+											return
 										if(usr.Checkpre(src.pre,usr))
 											if(usr.rpp>=src.rpcost)
-												if(src.rank=="T2" && usr.subjobcap<2)
-													alert("You are not capable of learning perks of this level from your Subjob without the Dual Job perk.")
-													usr.perkbuying=0
-													return
-												if(src.rank=="T3" && usr.subjobcap==2)
-													alert("You are not capable of learning perks of this level from your Subjob without the Dual Job perk.")
-													usr.perkbuying=0
-													return
-												if(src.rank=="T4" && usr.subjobcap==2)
-													alert("You are not capable of learning perks of this level from your Subjob without the Dual Job perk.")
-													usr.perkbuying=0
-													return
-												if(src.rank=="T5" && usr.subjobcap==2)
-													alert("You are not capable of learning perks of this level from your Subjob without the Dual Job perk.")
-													usr.perkbuying=0
-													return
-												if(Checkmag(src,usr))
-													alert("You are not capable of learning perks of this type or rank.")
-													usr.perkbuying=0
-													return
-												if(Checkrank(src,usr))
-													alert("You cannot learn abilities of that rank right now.")
-													usr.perkbuying=0
-													return
 												if(src.level==2)
 													usr.subcabs+=1
 												usr.rpp-=src.rpcost
@@ -1971,6 +1868,62 @@ obj
 											usr.perkbuying=0
 											return
 									else
+										if(usr.rpp>=src.rpcost)
+											if(Checkmag(src,usr))
+												alert("You are not capable of learning perks of this type or rank.")
+												usr.perkbuying=0
+												return
+											if(Checkrank(src,usr))
+												alert("You cannot learn abilities of that rank right now.")
+												usr.perkbuying=0
+												return
+											if(src.level==2)
+												usr.subcabs+=1
+											usr.rpp-=src.rpcost
+											var/obj/perk/p = copyatom(src)
+											p.ontree=0
+											usr.contents+=p
+											alert("You have learned [src.name]")
+											Checkspec(src,usr)
+											Rankadjust(src,usr)
+											winset(usr,"PerkWindow.rpp","text=\"[usr.rpp]/[usr.trpp]\"")
+											usr.perkbuying=0
+											usr.Save()
+											return
+										else
+											alert("You don't have enough RPP to learn this.")
+											usr.perkbuying=0
+											return
+
+							if(src.ability==0)
+								if(src.rank<="T2" && usr.subjobcap>=2)
+									if(usr.rpp>=src.rpcost)
+										if(src.rank=="T2" && usr.subjobcap<2)
+											alert("You are not capable of learning perks of this level from your Subjob without the Dual Job perk.")
+											usr.perkbuying=0
+											return
+										if(src.rank=="T3" && usr.subjobcap==2)
+											alert("You are not capable of learning perks of this level from your Subjob without the Dual Job perk.")
+											usr.perkbuying=0
+											return
+										if(src.rank=="T4" && usr.subjobcap==2)
+											alert("You are not capable of learning perks of this level from your Subjob without the Dual Job perk.")
+											usr.perkbuying=0
+											return
+										if(src.rank=="T5" && usr.subjobcap==2)
+											alert("You are not capable of learning perks of this level from your Subjob without the Dual Job perk.")
+											usr.perkbuying=0
+											return
+										if(Checkmag(src,usr))
+											alert("You are not capable of learning perks of this type or rank.")
+											usr.perkbuying=0
+											return
+										if(Checkrank(src,usr))
+											alert("You cannot learn abilities of that rank right now.")
+											usr.perkbuying=0
+											return
+								if(src.pre)
+									if(usr.Checkpre(src.pre,usr))
 										if(usr.rpp>=src.rpcost)
 											if(src.rank=="T2" && usr.subjobcap<2)
 												alert("You are not capable of learning perks of this level from your Subjob without the Dual Job perk.")
@@ -2011,37 +1964,64 @@ obj
 										else
 											alert("You don't have enough RPP to learn this.")
 											usr.perkbuying=0
-											return
-
-							else
-								if(Checkmag(src,usr))
-									alert("You are not capable of learning perks of this type or rank.")
-									usr.perkbuying=0
-									return
-								if(Checkrank(src,usr))
-									alert("You cannot learn abilities of that rank right now.")
-									usr.perkbuying=0
-									return
-								if(src.pre)
-									if(usr.Checkpre(src.pre,usr))
-										if(usr.rpp>=src.rpcost)
-											usr.rpp-=src.rpcost
-											var/obj/perk/p = copyatom(src)
-											p.ontree=0
-											usr.contents+=p
-											alert("You have learned [src.name]")
-											Checkspec(src,usr)
-											Rankadjust(src,usr)
-											winset(usr,"PerkWindow.rpp","text=\"[usr.rpp]/[usr.trpp]\"")
-											usr.perkbuying=0
-										else
-											alert("You don't have enough RPP to learn this.")
-											usr.perkbuying=0
 									else
 										alert("You need [src.pre] in order to learn this.")
 										usr.perkbuying=0
 										return
 								else
+									if(usr.rpp>=src.rpcost)
+										if(src.rank=="T2" && usr.subjobcap<2)
+											alert("You are not capable of learning perks of this level from your Subjob without the Dual Job perk.")
+											usr.perkbuying=0
+											return
+										if(src.rank=="T3" && usr.subjobcap==2)
+											alert("You are not capable of learning perks of this level from your Subjob without the Dual Job perk.")
+											usr.perkbuying=0
+											return
+										if(src.rank=="T4" && usr.subjobcap==2)
+											alert("You are not capable of learning perks of this level from your Subjob without the Dual Job perk.")
+											usr.perkbuying=0
+											return
+										if(src.rank=="T5" && usr.subjobcap==2)
+											alert("You are not capable of learning perks of this level from your Subjob without the Dual Job perk.")
+											usr.perkbuying=0
+											return
+										if(Checkmag(src,usr))
+											alert("You are not capable of learning perks of this type or rank.")
+											usr.perkbuying=0
+											return
+										if(Checkrank(src,usr))
+											alert("You cannot learn abilities of that rank right now.")
+											usr.perkbuying=0
+											return
+										if(src.level==2)
+											usr.subcabs+=1
+										usr.rpp-=src.rpcost
+										var/obj/perk/p = copyatom(src)
+										p.ontree=0
+										usr.contents+=p
+										alert("You have learned [src.name]")
+										Checkspec(src,usr)
+										Rankadjust(src,usr)
+										winset(usr,"PerkWindow.rpp","text=\"[usr.rpp]/[usr.trpp]\"")
+										usr.perkbuying=0
+										return
+									else
+										alert("You don't have enough RPP to learn this.")
+										usr.perkbuying=0
+										return
+
+						else
+							if(Checkmag(src,usr))
+								alert("You are not capable of learning perks of this type or rank.")
+								usr.perkbuying=0
+								return
+							if(Checkrank(src,usr))
+								alert("You cannot learn abilities of that rank right now.")
+								usr.perkbuying=0
+								return
+							if(src.pre)
+								if(usr.Checkpre(src.pre,usr))
 									if(usr.rpp>=src.rpcost)
 										usr.rpp-=src.rpcost
 										var/obj/perk/p = copyatom(src)
@@ -2055,9 +2035,27 @@ obj
 									else
 										alert("You don't have enough RPP to learn this.")
 										usr.perkbuying=0
-						if("Cancel")
-							usr.perkbuying=0
-							return
+								else
+									alert("You need [src.pre] in order to learn this.")
+									usr.perkbuying=0
+									return
+							else
+								if(usr.rpp>=src.rpcost)
+									usr.rpp-=src.rpcost
+									var/obj/perk/p = copyatom(src)
+									p.ontree=0
+									usr.contents+=p
+									alert("You have learned [src.name]")
+									Checkspec(src,usr)
+									Rankadjust(src,usr)
+									winset(usr,"PerkWindow.rpp","text=\"[usr.rpp]/[usr.trpp]\"")
+									usr.perkbuying=0
+								else
+									alert("You don't have enough RPP to learn this.")
+									usr.perkbuying=0
+					if("Cancel")
+						usr.perkbuying=0
+						return
 				players={"<font color=#EC2323>[usr.name] has flashed a card: <a href="byond://?src=\ref[usr]&action=look&value=\ref[src]"><font color=#FFFFFF>[src]</a>!!"}
 				if(src in usr.contents)
 					if(src.ability==1)

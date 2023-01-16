@@ -2628,82 +2628,78 @@ atom
 			var/obj/npc/enemy4
 			var/list/slaylist=new
 			if(starter.rank=="D")
-				for(var/obj/npcarchive/stable in world)
-					for(var/obj/npc/Monsters/DRank/a in stable.contents)
-						if(a.unroot==1)
-							slaylist+=a
-					target1 = pick(slaylist)
-					target2 = pick(slaylist)
-					target3 = pick(slaylist)
-					enemy2 = copyatom(target1)
-					InitializeEnemy(enemy2)
-					enemy2.FATENpc=1
-					enemy3 = copyatom(target2)
-					InitializeEnemy(enemy3)
-					enemy3.FATENpc=1
-					enemy4 = copyatom(target3)
-					InitializeEnemy(enemy4)
-					enemy4.FATENpc=1
-					starter.enemy2=enemy2
-					starter.enemy3=enemy3
-					starter.enemy4=enemy4
+				for(var/obj/npc/Monsters/DRank/a in global.npc_archive.npcs)
+					if(a.unroot==1)
+						slaylist+=a
+				target1 = pick(slaylist)
+				target2 = pick(slaylist)
+				target3 = pick(slaylist)
+				enemy2 = copyatom(target1)
+				InitializeEnemy(enemy2)
+				enemy2.FATENpc=1
+				enemy3 = copyatom(target2)
+				InitializeEnemy(enemy3)
+				enemy3.FATENpc=1
+				enemy4 = copyatom(target3)
+				InitializeEnemy(enemy4)
+				enemy4.FATENpc=1
+				starter.enemy2=enemy2
+				starter.enemy3=enemy3
+				starter.enemy4=enemy4
 			if(starter.rank=="C")
-				for(var/obj/npcarchive/stable in world)
-					for(var/obj/npc/Monsters/CRank/a in stable.contents)
-						if(a.unroot==1)
-							slaylist+=a
-					target1 = pick(slaylist)
-					target2 = pick(slaylist)
-					target3 = pick(slaylist)
-					enemy2 = copyatom(target1)
-					InitializeEnemy(enemy2)
-					enemy2.FATENpc=1
-					enemy3 = copyatom(target2)
-					InitializeEnemy(enemy3)
-					enemy3.FATENpc=1
-					enemy4 = copyatom(target3)
-					InitializeEnemy(enemy4)
-					enemy4.FATENpc=1
-					starter.enemy2=enemy2
-					starter.enemy3=enemy3
-					starter.enemy4=enemy4
+				for(var/obj/npc/Monsters/CRank/a in global.npc_archive.npcs)
+					if(a.unroot==1)
+						slaylist+=a
+				target1 = pick(slaylist)
+				target2 = pick(slaylist)
+				target3 = pick(slaylist)
+				enemy2 = copyatom(target1)
+				InitializeEnemy(enemy2)
+				enemy2.FATENpc=1
+				enemy3 = copyatom(target2)
+				InitializeEnemy(enemy3)
+				enemy3.FATENpc=1
+				enemy4 = copyatom(target3)
+				InitializeEnemy(enemy4)
+				enemy4.FATENpc=1
+				starter.enemy2=enemy2
+				starter.enemy3=enemy3
+				starter.enemy4=enemy4
 			if(starter.rank=="B")
-				for(var/obj/npcarchive/stable in world)
-					for(var/obj/npc/Monsters/BRank/a in stable.contents)
-						if(a.unroot==1)
-							slaylist+=a
-					target1 = pick(slaylist)
-					target2 = pick(slaylist)
-					target3 = pick(slaylist)
-					enemy2 = copyatom(target1)
-					InitializeEnemy(enemy2)
-					enemy2.FATENpc=1
-					enemy3 = copyatom(target2)
-					InitializeEnemy(enemy3)
-					enemy3.FATENpc=1
-					enemy4 = copyatom(target3)
-					InitializeEnemy(enemy4)
-					enemy4.FATENpc=1
-					starter.enemy2=enemy2
-					starter.enemy3=enemy3
-					starter.enemy4=enemy4
+				for(var/obj/npc/Monsters/BRank/a in global.npc_archive.npcs)
+					if(a.unroot==1)
+						slaylist+=a
+				target1 = pick(slaylist)
+				target2 = pick(slaylist)
+				target3 = pick(slaylist)
+				enemy2 = copyatom(target1)
+				InitializeEnemy(enemy2)
+				enemy2.FATENpc=1
+				enemy3 = copyatom(target2)
+				InitializeEnemy(enemy3)
+				enemy3.FATENpc=1
+				enemy4 = copyatom(target3)
+				InitializeEnemy(enemy4)
+				enemy4.FATENpc=1
+				starter.enemy2=enemy2
+				starter.enemy3=enemy3
+				starter.enemy4=enemy4
 			if(starter.rank=="A")
-				for(var/obj/npcarchive/stable in world)
-					for(var/obj/npc/Monsters/ARank/a in stable.contents)
-						if(a.unroot==1)
-							slaylist+=a
-					target1 = pick(slaylist)
-					target2 = pick(slaylist)
-					target3 = pick(slaylist)
-					enemy2 = copyatom(target1)
-					InitializeEnemy(enemy2)
-					enemy2.FATENpc=1
-					enemy3 = copyatom(target2)
-					InitializeEnemy(enemy3)
-					enemy3.FATENpc=1
-					enemy4 = copyatom(target3)
-					InitializeEnemy(enemy4)
-					enemy4.FATENpc=1
-					starter.enemy2=enemy2
-					starter.enemy3=enemy3
-					starter.enemy4=enemy4
+				for(var/obj/npc/Monsters/ARank/a in global.npc_archive.npcs)
+					if(a.unroot==1)
+						slaylist+=a
+				target1 = pick(slaylist)
+				target2 = pick(slaylist)
+				target3 = pick(slaylist)
+				enemy2 = copyatom(target1)
+				InitializeEnemy(enemy2)
+				enemy2.FATENpc=1
+				enemy3 = copyatom(target2)
+				InitializeEnemy(enemy3)
+				enemy3.FATENpc=1
+				enemy4 = copyatom(target3)
+				InitializeEnemy(enemy4)
+				enemy4.FATENpc=1
+				starter.enemy2=enemy2
+				starter.enemy3=enemy3
+				starter.enemy4=enemy4

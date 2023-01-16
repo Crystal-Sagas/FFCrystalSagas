@@ -2526,12 +2526,16 @@ obj
 				result=m.chamod
 			return result
 
+GLOBAL_DAUTM_INIT(npc_archive, /datum/global_npc_archive, new)
+/**
+ * global npc holder
+ */
+/datum/global_npc_archive
+	/// npcs - untyped for now
+	var/list/npcs = list()
+
 obj
 	overimage
-
-	npcarchive
-		icon='Blank.dmi'
-
 
 	npc
 		icon='Icons/Moogle.dmi'
@@ -2663,67 +2667,65 @@ obj
 						if(a.partyID==usr.partyID)
 							questparty=a
 					Startbattle(usr,src,questparty)
-			for(var/obj/Stablemaster/b in world)
-				if(src in b.contents)
-					if(usr.job=="Beast Master" || usr.subjob=="Beast Master")
-						alert(usr,"[src.desc]")
-						var/list/buychoice=list("Yes","No")
-						var/buy=input("Would you like to buy this Monster?") as anything in buychoice
-						switch(buy)
-							if("Yes")
-								if(usr.money>=src.price)
-									var/obj/npc/c = copyatom(src)
-									usr.contents+=c
-									usr.money-=src.price
-									c.owner=usr.key
-									c.archived=0
-								else
-									alert(usr,"You don't have enough money to purchase this Monster!")
-									return
-							if("No")
+			if(src in global.stablemaster_obj.contents)
+				if(usr.job=="Beast Master" || usr.subjob=="Beast Master")
+					alert(usr,"[src.desc]")
+					var/list/buychoice=list("Yes","No")
+					var/buy=input("Would you like to buy this Monster?") as anything in buychoice
+					switch(buy)
+						if("Yes")
+							if(usr.money>=src.price)
+								var/obj/npc/c = copyatom(src)
+								usr.contents+=c
+								usr.money-=src.price
+								c.owner=usr.key
+								c.archived=0
+							else
+								alert(usr,"You don't have enough money to purchase this Monster!")
 								return
-					else
-						alert(usr,"Only a Beastmaster is able to buy Monsters from a Stablemaster.")
-						return
-				else
-					for(var/obj/npcarchive/a in world)
-						if (src in b.contents)
+						if("No")
 							return
-						if(src in a.contents)
-							usr.npcachoice = src
-							winset(usr,"NPCarchive.hp","text=\"[src.mhp]\"")
-							winset(usr,"NPCarchive.mp","text=\"[src.mmp]\"")
-							winset(usr,"NPCarchive.sp","text=\"[src.msp]\"")
-							winset(usr,"NPCarchive.str","text=\"[src.str]\"")
-							winset(usr,"NPCarchive.dex","text=\"[src.dex]\"")
-							winset(usr,"NPCarchive.con","text=\"[src.con]\"")
-							winset(usr,"NPCarchive.int","text=\"[src.int]\"")
-							winset(usr,"NPCarchive.wis","text=\"[src.wis]\"")
-							winset(usr,"NPCarchive.cha","text=\"[src.cha]\"")
-							winset(usr,"NPCarchive.rflx","text=\"[src.rflx]\"")
-							winset(usr,"NPCarchive.fort","text=\"[src.fort]\"")
-							winset(usr,"NPCarchive.will","text=\"[src.will]\"")
-							winset(usr,"NPCarchive.ac","text=\"[src.baseac]\"")
-							winset(usr,"NPCarchive.dr","text=\"[src.dr]\"")
-							winset(usr,"NPCarchive.spd","text=\"[src.speed]\"")
-							winset(usr,"NPCarchive.acro","text=\"[src.acrobatics]\"")
-							winset(usr,"NPCarchive.ath","text=\"[src.athletics]\"")
-							winset(usr,"NPCarchive.arc","text=\"[src.archaeology]\"")
-							winset(usr,"NPCarchive.dec","text=\"[src.deception]\"")
-							winset(usr,"NPCarchive.dungdisplay","text=\"[src.dungeoneering]\"")
-							winset(usr,"NPCarchive.encdisplay","text=\"[src.enchantment]\"")
-							winset(usr,"NPCarchive.ins","text=\"[src.insight]\"")
-							winset(usr,"NPCarchive.inv","text=\"[src.investigation]\"")
-							winset(usr,"NPCarchive.magdisplay","text=\"[src.magic]\"")
-							winset(usr,"NPCarchive.magi","text=\"[src.magitekOperation]\"")
-							winset(usr,"NPCarchive.med","text=\"[src.medicine]\"")
-							winset(usr,"NPCarchive.natdisplay","text=\"[src.naturalist]\"")
-							winset(usr,"NPCarchive.per","text=\"[src.perception]\"")
-							winset(usr,"NPCarchive.persdisplay","text=\"[src.persuasion]\"")
-							winset(usr,"NPCarchive.sth","text=\"[src.stealth]\"")
-							winset(usr,"NPCarchive.sur","text=\"[src.survival]\"")
-							winset(usr,"NPCarchive.thv","text=\"[src.thievery]\"")
-							winset(usr,"NPCarchive.overp","image=[src.icon]")
+				else
+					alert(usr,"Only a Beastmaster is able to buy Monsters from a Stablemaster.")
+					return
+			else
+				if (src in global.stablemaster_obj.contents)
+					return
+				if(src in global.npc_archive.npcs)
+					usr.npcachoice = src
+					winset(usr,"NPCarchive.hp","text=\"[src.mhp]\"")
+					winset(usr,"NPCarchive.mp","text=\"[src.mmp]\"")
+					winset(usr,"NPCarchive.sp","text=\"[src.msp]\"")
+					winset(usr,"NPCarchive.str","text=\"[src.str]\"")
+					winset(usr,"NPCarchive.dex","text=\"[src.dex]\"")
+					winset(usr,"NPCarchive.con","text=\"[src.con]\"")
+					winset(usr,"NPCarchive.int","text=\"[src.int]\"")
+					winset(usr,"NPCarchive.wis","text=\"[src.wis]\"")
+					winset(usr,"NPCarchive.cha","text=\"[src.cha]\"")
+					winset(usr,"NPCarchive.rflx","text=\"[src.rflx]\"")
+					winset(usr,"NPCarchive.fort","text=\"[src.fort]\"")
+					winset(usr,"NPCarchive.will","text=\"[src.will]\"")
+					winset(usr,"NPCarchive.ac","text=\"[src.baseac]\"")
+					winset(usr,"NPCarchive.dr","text=\"[src.dr]\"")
+					winset(usr,"NPCarchive.spd","text=\"[src.speed]\"")
+					winset(usr,"NPCarchive.acro","text=\"[src.acrobatics]\"")
+					winset(usr,"NPCarchive.ath","text=\"[src.athletics]\"")
+					winset(usr,"NPCarchive.arc","text=\"[src.archaeology]\"")
+					winset(usr,"NPCarchive.dec","text=\"[src.deception]\"")
+					winset(usr,"NPCarchive.dungdisplay","text=\"[src.dungeoneering]\"")
+					winset(usr,"NPCarchive.encdisplay","text=\"[src.enchantment]\"")
+					winset(usr,"NPCarchive.ins","text=\"[src.insight]\"")
+					winset(usr,"NPCarchive.inv","text=\"[src.investigation]\"")
+					winset(usr,"NPCarchive.magdisplay","text=\"[src.magic]\"")
+					winset(usr,"NPCarchive.magi","text=\"[src.magitekOperation]\"")
+					winset(usr,"NPCarchive.med","text=\"[src.medicine]\"")
+					winset(usr,"NPCarchive.natdisplay","text=\"[src.naturalist]\"")
+					winset(usr,"NPCarchive.per","text=\"[src.perception]\"")
+					winset(usr,"NPCarchive.persdisplay","text=\"[src.persuasion]\"")
+					winset(usr,"NPCarchive.sth","text=\"[src.stealth]\"")
+					winset(usr,"NPCarchive.sur","text=\"[src.survival]\"")
+					winset(usr,"NPCarchive.thv","text=\"[src.thievery]\"")
+					winset(usr,"NPCarchive.overp","image=[src.icon]")
 		DblClick()
 			if(src in usr.contents)
 				var/list/options = list("Deploy","View Sheet","Change Overpic","Delete")
@@ -2790,8 +2792,7 @@ obj
 						for(var/obj/perk/p in N.contents)
 							var/op = copyatom(p)
 							src.contents+=op
-						for(var/obj/npcarchive/arc in world)
-							arc.contents+=N
+						global.npc_archive.npcs += N
 					if("Delete")
 						switch(alert("Are you sure you want to delete this NPC?","Yes","No"))
 							if("Yes")
