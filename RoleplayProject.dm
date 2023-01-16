@@ -40,7 +40,7 @@ mob
 	dummy5
 		icon='Zantetsuken.dmi'
 	Mog
-		icon='Moogle.dmi'
+		icon='Icons/Moogle.dmi'
 		density=1
 		Click()
 			Charcreate(usr)
@@ -209,7 +209,7 @@ mob
 					return
 			src.loc = locate(219,229,2)
 			src.density=1
-			src.icon = 'Ghostflame.dmi'
+			src.icon = 'Icons/Ghostflame.dmi'
 			src<<sound(null)
 			sleep()
 			src<< 'Audio/Cursor Ready.ogg'
@@ -393,7 +393,7 @@ mob
 		src.client.eye = E
 		src.client.perspective = EYE_PERSPECTIVE
 		src.client.InitView()
-		var/image/I = image('FFTCSlogo2.png',E)
+		var/image/I = image('PNG/FFTCSlogo2.png',E)
 		var/obj/PlayGame/G = new /obj/PlayGame
 		var/obj/Load/L = new /obj/Load
 		I.layer = 99

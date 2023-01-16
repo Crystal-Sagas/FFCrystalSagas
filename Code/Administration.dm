@@ -147,7 +147,7 @@ mob
 				switch(choose)
 					if("Yes")
 						for(var/mob/hearer in view(12,usr))
-							hearer<<sound('Fanfare.wav',channel=1)
+							hearer<<sound('Audio/Fanfare.wav',channel=1)
 							sleep(100)
 							UpdateArea(hearer)
 					if("No")
