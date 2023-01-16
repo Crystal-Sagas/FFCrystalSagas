@@ -2379,7 +2379,13 @@ client
 		onResize(map as text|null, size as text|null)
 			set hidden = 1
 			set instant = 1
-			var/list/sz = splittext(size, ",")
+			var/list/sz
+			if(findtext(size, ","))
+				sz = splittext(size, ",")
+			else if(findtext(size, "x"))
+				sz = splittext(size, "x")
+			else
+				CRASH("unexpected size: [size]")
 			var/map_width = text2num(sz[1])
 			var/map_height = text2num(sz[2])
 			map_zoom = 1
