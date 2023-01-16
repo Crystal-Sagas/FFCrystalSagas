@@ -20,6 +20,7 @@ var/datum/world_debug_enabler/world_debug_enabler = new
 		call(debugger, "auxtools_init")()
 		enable_debugging()
 
+//? DO NOT USE - AUXTOOLS HOOK
 /proc/enable_debugging()
 	CRASH("No auxtools hook!")
 
