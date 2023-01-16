@@ -4,7 +4,7 @@
 ## Enforce text mode and LF line breaks
 *.bat text eol=lf
 *.css text eol=lf
-*.dm text eol=lf
+*.dm text eol=lf whitespace=indent-with-non-tab
 *.dme text eol=lf
 *.dmf text eol=lf
 *.dmm text eol=lf
@@ -34,6 +34,3 @@
 *.jpg binary
 *.png binary
 *.so binary
-
-## Force tab indents on dm files
-*.dm whitespace=indent-with-non-tab
