@@ -2526,7 +2526,7 @@ obj
 				result=m.chamod
 			return result
 
-GLOBAL_DAUTM_INIT(npc_archive, /datum/global_npc_archive, new)
+GLOBAL_DATUM_INIT(npc_archive, /datum/global_npc_archive, new)
 /**
  * global npc holder
  */
