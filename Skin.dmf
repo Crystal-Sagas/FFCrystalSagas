@@ -3389,20 +3389,70 @@ window "EventminPanel"
 		size = 360x448
 		anchor1 = -1,-1
 		anchor2 = -1,-1
+		background-color = none
 		is-visible = false
 		saved-params = "pos;size;is-minimized;is-maximized"
 		statusbar = false
 		can-resize = false
+		outer-size = 376x487
+		inner-size = 360x448
+	elem "label2"
+		type = LABEL
+		pos = 8,16
+		size = 344x424
+		anchor1 = -1,-1
+		anchor2 = -1,-1
+		background-color = none
+		saved-params = ""
+		text = ""
+		image = 'Sheet\\GUI Label.png'
+		image-mode = stretch
 	elem "label164"
 		type = LABEL
 		pos = 8,16
 		size = 344x424
 		anchor1 = -1,-1
 		anchor2 = -1,-1
+		background-color = none
 		saved-params = ""
 		text = ""
 		image = 'Sheet\\GUI Label.png'
 		image-mode = stretch
+	elem "button104"
+		type = BUTTON
+		pos = 16,288
+		size = 64x28
+		anchor1 = -1,-1
+		anchor2 = -1,-1
+		text-color = #ffffff
+		background-color = #000080
+		border = line
+		saved-params = "is-checked"
+		text = "Fanfare"
+		command = "EFanfare"
+	elem "button103"
+		type = BUTTON
+		pos = 16,248
+		size = 96x24
+		anchor1 = -1,-1
+		anchor2 = -1,-1
+		text-color = #ffffff
+		background-color = #000080
+		saved-params = "is-checked"
+		text = "View NPC Archive"
+		command = "EViewArchive"
+	elem "button102"
+		type = BUTTON
+		pos = 16,216
+		size = 72x28
+		anchor1 = -1,-1
+		anchor2 = -1,-1
+		text-color = #ffffff
+		background-color = #000080
+		border = line
+		saved-params = "is-checked"
+		text = "GotoLandmark"
+		command = "EGotoLandmark"
 	elem "button38"
 		type = BUTTON
 		pos = 16,180
