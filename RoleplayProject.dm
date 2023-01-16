@@ -473,12 +473,12 @@ proc
 				Types=new
 		if(Amount % 250 != 0)
 			F["Types"]<<Types
-		hacklol
-		if(fexists("Save/World/File[E++]"))
-			fdel("Save/World/File[E++]")
-			world<<"<small>Server: Objects DEBUG system check: extra objects file deleted!"
-			E++
-			goto hacklol
+		hacklol:
+			if(fexists("Save/World/File[E++]"))
+				fdel("Save/World/File[E++]")
+				world<<"<small>Server: Objects DEBUG system check: extra objects file deleted!"
+				E++
+				goto hacklol
 		world<<output("<small>Server: Objects Saved([Amount]).","icout")
 		world<<output("World has been succesfully saved :)","oocout")
 
@@ -488,16 +488,16 @@ proc
 		world<<output("<small>Server: Loading Items...","icout")
 		var/amount=0
 		var/filenum=0
-		wowza
-		filenum++
-		if(fexists("Save/World/File[filenum]"))
-			var/savefile/F=new("Save/World/File[filenum]")
-			var/list/L=new
-			F["Types"]>>L
-			for(var/obj/A in L)
-				amount+=1
-				A.loc=locate(A.savedx,A.savedy,A.savedz)
-			goto wowza
+		wowza:
+			filenum++
+			if(fexists("Save/World/File[filenum]"))
+				var/savefile/F=new("Save/World/File[filenum]")
+				var/list/L=new
+				F["Types"]>>L
+				for(var/obj/A in L)
+					amount+=1
+					A.loc=locate(A.savedx,A.savedy,A.savedz)
+				goto wowza
 		world<<output("<small>Server: Items Loaded ([amount]).","icout")
 
 	Charcreate(var/mob/m)
