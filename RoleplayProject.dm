@@ -308,7 +308,6 @@ mob
 				if(usr.rankchecked==0)
 					if(usr.rank=="Fledgling")
 						usr.rankchecked=1
-						goto endrankcheck
 					else
 						if(usr.rank=="Rookie")
 							usr.rankchecked=1
