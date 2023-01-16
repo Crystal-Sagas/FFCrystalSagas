@@ -987,123 +987,123 @@ obj
 									alert(usr,"This Faction has already recruited the maximum amount of NPC allies!")
 								else
 									var/list/gruntchoice=list("Blitzer","Knight","Mage","Healer")
-									choicereturn
-									if(a.Nation=="Midgar")
-										gruntchoice+="Shinra Grunt"
-										if(a.Factionlevel>=2)
-											gruntchoice+="Soldier 3rd Class"
-										if(a.Factionlevel>=3)
-											gruntchoice+="Shinra Sweeper"
-									if(a.Nation=="Insomnia")
-										if(a.Factionlevel>=2)
-											gruntchoice+="Somnan Captain"
-										if(a.Factionlevel>=3)
-											gruntchoice+="Somnan Mage"
-									if(a.Nation=="Yevon")
-										gruntchoice+="Yevon Soldier"
-										if(a.Factionlevel>=2)
-											gruntchoice+="Yevon Guardian"
-									if(a.Nation=="Akademia")
-										if(a.Factionlevel>=2)
-											gruntchoice+="Akademian Spy"
-									gruntchoice+="Cancel"
-									var/gruntpick=input(usr,"Which ally would you like to recruit?") as anything in gruntchoice
-									if(gruntpick=="Cancel")
-										return
-									var/list/sure=list("Yes","No","Cancel")
-									var/remaining=a.Maxgrunts-a.Totalgrunts
-									var/confirm=input(usr,"Are you sure you'd like to recruit that ally? Your faction only has [remaining] recruit slots left.") as anything in sure
-									switch(confirm)
-										if("Yes")
-											if(gruntpick=="Blitzer")
-												var/obj/npc/FactionNPCs/Global/Blitzer/b=new
-												usr.contents+=b
-												b.owner=usr.key
-												var/newname=input(usr,"What would you like to name this new ally?") as text
-												b.name=newname
-												b.archived=0
-											if(gruntpick=="Knight")
-												var/obj/npc/FactionNPCs/Global/Knight/b=new
-												usr.contents+=b
-												b.owner=usr.key
-												var/newname=input(usr,"What would you like to name this new ally?") as text
-												b.name=newname
-												b.archived=0
-											if(gruntpick=="Mage")
-												var/obj/npc/FactionNPCs/Global/Mage/b=new
-												usr.contents+=b
-												b.owner=usr.key
-												var/newname=input(usr,"What would you like to name this new ally?") as text
-												b.name=newname
-												b.archived=0
-											if(gruntpick=="Healer")
-												var/obj/npc/FactionNPCs/Global/Healer/b=new
-												usr.contents+=b
-												b.owner=usr.key
-												var/newname=input(usr,"What would you like to name this new ally?") as text
-												b.name=newname
-												b.archived=0
-											if(gruntpick=="Shinra Grunt")
-												var/obj/npc/FactionNPCs/Shinra/ShinraGrunt/b=new
-												usr.contents+=b
-												b.owner=usr.key
-												var/newname=input(usr,"What would you like to name this new ally?") as text
-												b.name=newname
-												b.archived=0
-											if(gruntpick=="Shinra Sweeper")
-												var/obj/npc/FactionNPCs/Shinra/ShinraSweeper/b=new
-												usr.contents+=b
-												b.owner=usr.key
-												var/newname=input(usr,"What would you like to name this new ally?") as text
-												b.name=newname
-												b.archived=0
-											if(gruntpick=="Soldier 3rd Class")
-												var/obj/npc/FactionNPCs/Shinra/SOLDIERthirdclass/b=new
-												usr.contents+=b
-												b.owner=usr.key
-												var/newname=input(usr,"What would you like to name this new ally?") as text
-												b.name=newname
-												b.archived=0
-											if(gruntpick=="Somnan Captain")
-												var/obj/npc/FactionNPCs/Insomnia/SomnanCaptain/b=new
-												usr.contents+=b
-												b.owner=usr.key
-												var/newname=input(usr,"What would you like to name this new ally?") as text
-												b.name=newname
-												b.archived=0
-											if(gruntpick=="Somnan Mage")
-												var/obj/npc/FactionNPCs/Insomnia/SomnanMage/b=new
-												usr.contents+=b
-												b.owner=usr.key
-												var/newname=input(usr,"What would you like to name this new ally?") as text
-												b.name=newname
-												b.archived=0
-											if(gruntpick=="Yevon Soldier")
-												var/obj/npc/FactionNPCs/Yevon/YevonSoldier/b=new
-												usr.contents+=b
-												b.owner=usr.key
-												var/newname=input(usr,"What would you like to name this new ally?") as text
-												b.name=newname
-												b.archived=0
-											if(gruntpick=="Yevon Guardian")
-												var/obj/npc/FactionNPCs/Yevon/YevonGuardian/b=new
-												usr.contents+=b
-												b.owner=usr.key
-												var/newname=input(usr,"What would you like to name this new ally?") as text
-												b.name=newname
-												b.archived=0
-											if(gruntpick=="Akademian Spy")
-												var/obj/npc/FactionNPCs/Akademia/AkademianSpy/b=new
-												usr.contents+=b
-												b.owner=usr.key
-												var/newname=input(usr,"What would you like to name this new ally?") as text
-												b.name=newname
-												b.archived=0
-											a.Totalgrunts+=1
-										if("No")
-											goto choicereturn
-										if("Cancel")
+									choicereturn:
+										if(a.Nation=="Midgar")
+											gruntchoice+="Shinra Grunt"
+											if(a.Factionlevel>=2)
+												gruntchoice+="Soldier 3rd Class"
+											if(a.Factionlevel>=3)
+												gruntchoice+="Shinra Sweeper"
+										if(a.Nation=="Insomnia")
+											if(a.Factionlevel>=2)
+												gruntchoice+="Somnan Captain"
+											if(a.Factionlevel>=3)
+												gruntchoice+="Somnan Mage"
+										if(a.Nation=="Yevon")
+											gruntchoice+="Yevon Soldier"
+											if(a.Factionlevel>=2)
+												gruntchoice+="Yevon Guardian"
+										if(a.Nation=="Akademia")
+											if(a.Factionlevel>=2)
+												gruntchoice+="Akademian Spy"
+										gruntchoice+="Cancel"
+										var/gruntpick=input(usr,"Which ally would you like to recruit?") as anything in gruntchoice
+										if(gruntpick=="Cancel")
 											return
+										var/list/sure=list("Yes","No","Cancel")
+										var/remaining=a.Maxgrunts-a.Totalgrunts
+										var/confirm=input(usr,"Are you sure you'd like to recruit that ally? Your faction only has [remaining] recruit slots left.") as anything in sure
+										switch(confirm)
+											if("Yes")
+												if(gruntpick=="Blitzer")
+													var/obj/npc/FactionNPCs/Global/Blitzer/b=new
+													usr.contents+=b
+													b.owner=usr.key
+													var/newname=input(usr,"What would you like to name this new ally?") as text
+													b.name=newname
+													b.archived=0
+												if(gruntpick=="Knight")
+													var/obj/npc/FactionNPCs/Global/Knight/b=new
+													usr.contents+=b
+													b.owner=usr.key
+													var/newname=input(usr,"What would you like to name this new ally?") as text
+													b.name=newname
+													b.archived=0
+												if(gruntpick=="Mage")
+													var/obj/npc/FactionNPCs/Global/Mage/b=new
+													usr.contents+=b
+													b.owner=usr.key
+													var/newname=input(usr,"What would you like to name this new ally?") as text
+													b.name=newname
+													b.archived=0
+												if(gruntpick=="Healer")
+													var/obj/npc/FactionNPCs/Global/Healer/b=new
+													usr.contents+=b
+													b.owner=usr.key
+													var/newname=input(usr,"What would you like to name this new ally?") as text
+													b.name=newname
+													b.archived=0
+												if(gruntpick=="Shinra Grunt")
+													var/obj/npc/FactionNPCs/Shinra/ShinraGrunt/b=new
+													usr.contents+=b
+													b.owner=usr.key
+													var/newname=input(usr,"What would you like to name this new ally?") as text
+													b.name=newname
+													b.archived=0
+												if(gruntpick=="Shinra Sweeper")
+													var/obj/npc/FactionNPCs/Shinra/ShinraSweeper/b=new
+													usr.contents+=b
+													b.owner=usr.key
+													var/newname=input(usr,"What would you like to name this new ally?") as text
+													b.name=newname
+													b.archived=0
+												if(gruntpick=="Soldier 3rd Class")
+													var/obj/npc/FactionNPCs/Shinra/SOLDIERthirdclass/b=new
+													usr.contents+=b
+													b.owner=usr.key
+													var/newname=input(usr,"What would you like to name this new ally?") as text
+													b.name=newname
+													b.archived=0
+												if(gruntpick=="Somnan Captain")
+													var/obj/npc/FactionNPCs/Insomnia/SomnanCaptain/b=new
+													usr.contents+=b
+													b.owner=usr.key
+													var/newname=input(usr,"What would you like to name this new ally?") as text
+													b.name=newname
+													b.archived=0
+												if(gruntpick=="Somnan Mage")
+													var/obj/npc/FactionNPCs/Insomnia/SomnanMage/b=new
+													usr.contents+=b
+													b.owner=usr.key
+													var/newname=input(usr,"What would you like to name this new ally?") as text
+													b.name=newname
+													b.archived=0
+												if(gruntpick=="Yevon Soldier")
+													var/obj/npc/FactionNPCs/Yevon/YevonSoldier/b=new
+													usr.contents+=b
+													b.owner=usr.key
+													var/newname=input(usr,"What would you like to name this new ally?") as text
+													b.name=newname
+													b.archived=0
+												if(gruntpick=="Yevon Guardian")
+													var/obj/npc/FactionNPCs/Yevon/YevonGuardian/b=new
+													usr.contents+=b
+													b.owner=usr.key
+													var/newname=input(usr,"What would you like to name this new ally?") as text
+													b.name=newname
+													b.archived=0
+												if(gruntpick=="Akademian Spy")
+													var/obj/npc/FactionNPCs/Akademia/AkademianSpy/b=new
+													usr.contents+=b
+													b.owner=usr.key
+													var/newname=input(usr,"What would you like to name this new ally?") as text
+													b.name=newname
+													b.archived=0
+												a.Totalgrunts+=1
+											if("No")
+												goto choicereturn
+											if("Cancel")
+												return
 							else
 								alert(usr,"You cannot recruit for this faction!")
 					if(choice=="No")
