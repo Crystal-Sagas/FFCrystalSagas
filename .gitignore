@@ -1,7 +1,5 @@
-
-RoleplayProject/RoleplayProject.int
-RoleplayProject/RoleplayProject.dmb
-RoleplayProject/RoleplayProject.lk
-RoleplayProject/RoleplayProject.rsc.lk
-*.int
+## BYOND - Ignore compiled files and other files generated during compilation.
 *.dmb
+*.rsc
+*.lk
+*.int
