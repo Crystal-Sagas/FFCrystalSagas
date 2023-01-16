@@ -889,6 +889,7 @@ obj
 				icon='Tech.dmi'
 				icon_state="FFE"
 				Del()
+					disposing = world.time
 					src.FFOff("Specific")
 					..()
 				verb/FFColor()
@@ -1321,6 +1322,8 @@ obj
 				proc/FFOff(var/ShutdownType)
 					set background = TRUE
 					for(var/obj/Effects/ForceField/A in world)
+						if(A.disposing)
+							continue
 						if(ShutdownType=="Broad")
 							if(A.Password==src.Password)
 								del(A)

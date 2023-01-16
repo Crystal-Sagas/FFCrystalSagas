@@ -17,8 +17,8 @@ var
 
 proc
 	Time()
-		set background = TRUE
 		while(TRUE)
+			set background = TRUE
 			if(daytime=="Day")
 				daytime="Night"
 				sd_OutsideLight(4)
@@ -44,9 +44,10 @@ proc
 				Agecheck()
 				world<<output("It is now Year [year]AS","oocout")
 			sleep(432000)
+
 	Checkday()
-		set background = TRUE
 		while(TRUE)
+			set background = TRUE
 			var/currentday
 			var/savedday
 			currentday=time2text(world.realtime,"Day")

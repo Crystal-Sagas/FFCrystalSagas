@@ -116,6 +116,7 @@
 #include "Code\WeaponandArmorDatabase.dm"
 #include "Code\Yearsystem.dm"
 #include "Code\_HELPERS\_core.dm"
+#include "Code\datums\datum.dm"
 #include "Code\DiscordWebHook\DiscordWebhook.dm"
 #include "Code\DiscordWebHook\HttpPost.dm"
 #include "Code\DiscordWebHook\KeyInfo.dm"

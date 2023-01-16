@@ -101,8 +101,11 @@ world
 			Loadbestiary()
 		else
 			Initbestiary()
-		spawn Time()
-		spawn Checkday()
+		// spawn makeshift ticker loops necessary
+		spawn()
+			Time()
+		spawn()
+			Checkday()
 		// init global perk shop
 		global.perk_shop.perks += perklist
 		// init global recipe shop
@@ -136,7 +139,6 @@ world
 			InitializeEnemy(f)
 		for(var/obj/npc/b in global.stable_holder.monsters)
 			b.archived=1
-
 
 area
 	default
@@ -464,7 +466,6 @@ mob
 			usr.Save()
 		del src
 		..()
-
 
 proc
 	Saveworld()
