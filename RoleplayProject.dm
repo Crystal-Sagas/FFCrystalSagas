@@ -948,7 +948,9 @@ proc
 					m.msp+=20
 					m.sp+=20
 					m.whitemagicable=4
-					m.arcanemagicable=4
+					m.arcanemagicable=3
+					m.blackmagicable=2
+					m.greenmagicable=2
 					m.reflexproficient=1
 					m.willproficient=1
 					m.fortitudeproficient=1
