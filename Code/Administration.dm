@@ -1095,12 +1095,12 @@ proc
 				Types=new
 		if(Amount % 250 != 0)
 			F["Types"]<<Types
-		hacklol
-		if(fexists("Save/World/File[E++]"))
-			fdel("Save/World/File[E++]")
-			world<<"<small>Server: Objects DEBUG system check: extra objects file deleted!"
-			E++
-			goto hacklol
+		hacklol:
+			if(fexists("Save/World/File[E++]"))
+				fdel("Save/World/File[E++]")
+				world<<"<small>Server: Objects DEBUG system check: extra objects file deleted!"
+				E++
+				goto hacklol
 		world<<output("<small>Server: Objects Saved([Amount]).","icout")
 
 proc
