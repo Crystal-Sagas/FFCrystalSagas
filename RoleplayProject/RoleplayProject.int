@@ -2,19 +2,19 @@
 /*
 MAP_ZOOM: 0.500
 LAST_COMPILE_TIME: 1673834998
-DIR: Bases\Human Code Icons Icons\Perk PNG Sheet 
 PACKAGE_RSC_NAME: C:\Users\Micle\Desktop\FF Crystal Sagas Source\Damastersauce\RoleplayProject\RoleplayProject_rsc.zip
+DIR: Bases\Human Code Icons Icons\Perk PNG Sheet 
 AUTO_FILE_DIR: ON
 PACKAGE_DMB_INFO: 
 MAP_ICON_TYPE: 0
 PACKAGE_DME_NAME: C:\Users\Micle\Desktop\FF Crystal Sagas Source\Damastersauce\RoleplayProject\RoleplayProject_src.zip
 LAST_COMPILE_VERSION: 514.1585
-PACKAGE_TYPE: 0
 PACKAGE_DME_START: 
+PACKAGE_TYPE: 0
+WINDOW: RoleplayProject.dm;Code\Crafting.dm;Code\Customization.dm
 PACKAGE_DME_INFO: 
-WINDOW: Code\Buildings.dm;Code\Initializeneemy.dm;Code\Items.dm;Code\Shops.dm;Code\WeaponandArmorDatabase.dm;RoleplayProject.dm;Code\Administration.dm;Code\Playershops.dm;Code\PlayerCommands.dm;Skin.dmf;NeoWorldofTerra.dmm
-FILE: Code\Administration.dm
-PACKAGE_DMB_NAME: C:\Users\Micle\Desktop\Merge\RoleplayProject.zip
+FILE: RoleplayProject.dm
 PACKAGE_DME_DEMO: 
+PACKAGE_DMB_NAME: C:\Users\Micle\Desktop\Merge\RoleplayProject.zip
 */
 // END_INTERNALS
