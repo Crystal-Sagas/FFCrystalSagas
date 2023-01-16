@@ -309,45 +309,45 @@ mob
 					if(usr.rank=="Fledgling")
 						usr.rankchecked=1
 						goto endrankcheck
-					if(usr.rank=="Rookie")
+					else
+						if(usr.rank=="Rookie")
+							usr.rankchecked=1
+							usr.mhp+=40
+							usr.hp+=40
+							usr.msp+=40
+							usr.sp+=40
+							usr.mmp+=40
+							usr.mp+=40
+						if(usr.rank=="Adept")
+							usr.mhp+=70
+							usr.hp+=70
+							usr.msp+=70
+							usr.sp+=70
+							usr.mmp+=70
+							usr.mp+=70
+						if(usr.rank=="Veteran")
+							usr.mhp+=100
+							usr.hp+=100
+							usr.msp+=100
+							usr.sp+=100
+							usr.mmp+=100
+							usr.mp+=100
+						if(usr.rank=="Hero")
+							usr.mhp+=135
+							usr.hp+=135
+							usr.msp+=135
+							usr.sp+=135
+							usr.mmp+=135
+							usr.mp+=135
+						if(usr.rank=="Master")
+							usr.mhp+=180
+							usr.hp+=180
+							usr.msp+=180
+							usr.sp+=180
+							usr.mmp+=180
+							usr.mp+=180
 						usr.rankchecked=1
-						usr.mhp+=40
-						usr.hp+=40
-						usr.msp+=40
-						usr.sp+=40
-						usr.mmp+=40
-						usr.mp+=40
-					if(usr.rank=="Adept")
-						usr.mhp+=70
-						usr.hp+=70
-						usr.msp+=70
-						usr.sp+=70
-						usr.mmp+=70
-						usr.mp+=70
-					if(usr.rank=="Veteran")
-						usr.mhp+=100
-						usr.hp+=100
-						usr.msp+=100
-						usr.sp+=100
-						usr.mmp+=100
-						usr.mp+=100
-					if(usr.rank=="Hero")
-						usr.mhp+=135
-						usr.hp+=135
-						usr.msp+=135
-						usr.sp+=135
-						usr.mmp+=135
-						usr.mp+=135
-					if(usr.rank=="Master")
-						usr.mhp+=180
-						usr.hp+=180
-						usr.msp+=180
-						usr.sp+=180
-						usr.mmp+=180
-						usr.mp+=180
-					usr.rankchecked=1
-					alert(usr,"You have been granted your HP, MP, and SP bonus for your current rank.")
-				endrankcheck
+						alert(usr,"You have been granted your HP, MP, and SP bonus for your current rank.")
 				if(usr.patron)
 					if(!usr.firsttimerewards)
 						var/obj/item/Mooglebox/MoogleShopBox/a=new
