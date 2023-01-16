@@ -7,43 +7,10 @@
 
 // BEGIN_FILE_DIR
 #define FILE_DIR .
-#define FILE_DIR "Audio"
-#define FILE_DIR "Audio/Soundeffects"
-#define FILE_DIR "Bases"
-#define FILE_DIR "Bases/Gnath"
-#define FILE_DIR "Bases/Human"
-#define FILE_DIR "Bases/Lalafell"
-#define FILE_DIR "Bases/Moogle"
-#define FILE_DIR "Bases/Namazu"
-#define FILE_DIR "Bases/Robots"
-#define FILE_DIR "Bases/Ronso"
-#define FILE_DIR "Crystal Saga Clothes"
-#define FILE_DIR "Hair"
-#define FILE_DIR "Icons"
-#define FILE_DIR "Icons/Animation"
-#define FILE_DIR "Icons/Animation/Attack"
-#define FILE_DIR "Icons/Animation/Cast"
-#define FILE_DIR "Icons/Crafting"
-#define FILE_DIR "Icons/Items"
-#define FILE_DIR "Icons/Jewelery"
-#define FILE_DIR "Icons/Monsters"
-#define FILE_DIR "Icons/Perk"
-#define FILE_DIR "Icons/Plaques"
-#define FILE_DIR "Icons/Summon"
-#define FILE_DIR "Icons/Summon/Aeons"
-#define FILE_DIR "Icons/Summon/Necromancer"
-#define FILE_DIR "Icons/Summon/Scionglyphs"
-#define FILE_DIR "Map Icons"
-#define FILE_DIR "Map Icons/Buildings"
-#define FILE_DIR "Map Icons/SDV"
-#define FILE_DIR "Map Icons/SDV/Interiors"
-#define FILE_DIR "PNG"
-#define FILE_DIR "PNG/maps"
-#define FILE_DIR "PNG/NPCOvers"
-#define FILE_DIR "Sheet"
 // END_FILE_DIR
 
 // BEGIN_PREFERENCES
+#define DEBUG
 // END_PREFERENCES
 
 // BEGIN_INCLUDE
