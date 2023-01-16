@@ -780,8 +780,6 @@ obj
 						var/gain=input(usr,"How much Gil would you like to spend for Faction health? Current HP: [src.FactionHealth] | Max HP: [src.MaxFactionHealth] | It costs 20 Gil per 1 HP point.") as num
 						if(gain<0)
 							return
-						if(null)
-							return
 						var/restoration=round(gain/20)
 						alert(usr,"You have restored your Faction for [restoration] HP!")
 						src.FactionHealth+=restoration
