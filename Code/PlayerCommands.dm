@@ -54,6 +54,18 @@ mob
 		Compass()
 			winset(usr,"compass","is-visible=true")
 			winset(usr,"compass.comp","text=\"Location: [usr.x], [usr.y], [usr.areain]\"")
+		Races()
+			var/list/racs=new
+			for(var/mob/Q in world)
+				if(Q.client)
+					if(!(racs.Find(Q.race)))
+						racs.Add("[Q.race]")
+						racs["[Q.race]"]=1
+					else
+						racs["[Q.race]"]++
+			if(racs)
+				for(var/x in racs)
+					usr<<output("[x] - [racs[x]]","oocout")
 		Turntracker()
 			if(usr.turntracker==0)
 				usr.turntracker=1
