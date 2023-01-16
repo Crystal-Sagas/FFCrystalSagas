@@ -7,8 +7,12 @@
 			"problemMatcher": [
 				"$dreammaker"
 			],
-			"group": "build",
-			"label": "Build - DM"
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"label": "Build - DM",
+			"dependsOn": "Parse"
 		},
 		{
 			"command": "${command:dreammaker.reparse}",
