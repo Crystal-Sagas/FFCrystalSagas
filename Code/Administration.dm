@@ -534,13 +534,13 @@ mob
 							if(M.client)
 								LMAO.Add(M)
 						LMAO.Add("Cancel")
-						var/Choice=input(src,"Ban who?") in LMAO
+						var/mob/Choice=input(src,"Ban who?") in LMAO
 						if(Choice=="Cancel")
 							return
 						var/Reason=input(src,"Enter a reason to display to the world") as text
-						Bans+=Choice:key
-						Bans+=Choice:client.address
-						Bans+=Choice:client.computer_id
+						Bans+=Choice.key
+						Bans+=Choice.client.address
+						Bans+=Choice.client.computer_id
 						world<<output("[Choice:key] was BANNED for [Reason].","oocout")
 						var/text1 = "[usr.key] banned ([Choice] for [Reason])"
 						Adminlog(text1)
