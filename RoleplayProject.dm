@@ -56,7 +56,7 @@ world
 	icon_size = 32	// 32x32 icon size by default
 
 	view = "35x20"
-//	view=5
+
 world
 	New()
 		..()
