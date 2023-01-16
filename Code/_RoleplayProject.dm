@@ -2204,7 +2204,7 @@ proc
 								if("No")
 									goto redostuff
 	Subjobint(var/mob/m)
-		var/list/jobs = list("Mystic Knight","Pirate","Gladiator","Astrologian","Scholar","Merchant","Viking","Bard","Dancer","Black Mage","White Mage","Red Mage","Blue Mage","Ranger","Monk","Beast Master","Samurai","Spellblade","Rogue","Paladin","Knight","Dark Knight","Dragoon","Machinist","Summoner","Chemist","Geomancer")
+		var/list/jobs = list("Mystic Knight","Pirate","Gladiator","Astrologian","Merchant","Viking","Bard","Dancer","Black Mage","White Mage","Red Mage","Blue Mage","Ranger","Monk","Beast Master","Samurai","Spellblade","Rogue","Paladin","Knight","Dark Knight","Dragoon","Machinist","Summoner","Chemist","Geomancer")
 		if(Oracle.Find(m.key))
 			jobs+="Oracle"
 		if(Timemage.Find(m.key))
