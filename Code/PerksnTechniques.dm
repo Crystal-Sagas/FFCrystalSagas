@@ -754,6 +754,22 @@ proc
 			m.Checkmod(4,m.int,m.addint,m)
 			m.Checkmod(5,m.wis,m.addwis,m)
 			m.Checkmod(6,m.cha,m.addcha,m)
+		if(o.name=="Templar")// These should all give the appropriate magic if they are lower than what these perks say they would give. They may be a proc to simplify these but these will work.
+			if(m.whitemagicable<4)
+				m.whitemagicable=4
+			if(m.greenmagicable<3)
+				m.greenmagicable=3
+		if(o.name=="Support Specialist")
+			if(m.greenmagicable<4)
+				m.greenmagicable=4
+		if(o.name=="Learned Mind")
+			if(m.whitemagicable<4)
+				m.whitemagicable=4
+		if(o.name=="Dark Arts")
+			if(m.blackmagicable<2)
+				m.blackmagicable=2
+			if(m.arcanemagicable<2)
+				m.arcanemagicable=2
 		if(o.name=="Dark Magus")
 			Magicuseincrease(m,2,5)
 		if(o.name=="Counter Meteor")
@@ -1245,11 +1261,21 @@ proc
 			m.sp+=20
 			m.abilitypoints+=2
 			m.nolearn+="Sub Job"
+		if(o.name=="Synchronicity")
+			m.mmp+=30
+			m.mp+=30
+			m.mab+=1
+			m.mdb+=8
 		if(o.name=="L'Cie")
 			m.nolearn+="Sub Job"
 			m.nolearn+="Dual Job"
 		if(o.name=="Sub Job")
-			m.nolearn+="Pure Red Mage"
+			m.nolearn+="Pure Red Mage"// All the Sage-Path Red mage perks should be added as well to be not compatible.
+			m.nolearn+="Synchronicity"
+			m.nolearn+="Red Mage Adept"
+			m.nolearn+="Going it Alone"
+			m.nolearn+="Jack of All Mages"
+			m.nolearn+="Red Empowerment"
 		if(o.name=="Juuinjutsu")
 			m.nolearn+="Senjutsu"
 		if(o.name=="Senjutsu")
