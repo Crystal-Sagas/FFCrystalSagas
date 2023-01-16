@@ -1467,7 +1467,7 @@ obj
 				Scholar
 					name="Scholar"
 					cat="Unique"
-					desc="A Scholar is able to choose a single C/B rank Summon of their choice, and make a contract with it. They gain this Summon at no cost, and it becomes their permanent, personalized Summon. This summon costs 5 MP less to summon than normal, as well. Scholars have access to C Rank White Magic, and C rank Arcane Magic. Scholar can not be combined with Summoner in any way. Scholar is incompatible with the Subjob perk, and cannot be taken as a Subjob. +10 HP, +70 MP, +20 SP. Note: The chosen Eidolon does not have access to its Overdrive ability."
+					desc="A Scholar is able to choose a single C/B rank Summon of their choice, and make a contract with it. They gain this Summon at no cost, and it becomes their permanent, personalized Summon. This summon costs 5 MP less to summon than normal, as well. Scholars have access to B Rank White Magic, and B rank Arcane Magic. Scholar can not be combined with Summoner in any way. Scholar is incompatible with the Subjob perk, and cannot be taken as a Subjob. +10 HP, +70 MP, +20 SP. Note: The chosen Eidolon does not have access to its Overdrive ability."
 				PhysicalEidolonEmpowerment
 					name="Physical Eidolon Empowerment"
 					rank="T2"
@@ -2648,7 +2648,7 @@ obj
 				CounterMeteor
 					rank="T3"
 					name="Counter Meteor"
-					desc="This individual has their magic protecting them at all times. Anytime they take a direct hit from a non magical attack, a single medium sized meteor will be summoned from space to strike at where their opponent was when they made the attack, though this slightly drains their mana pool. This deals 15-20 damage + INT. | Autohit, Ignores Damage Reduction. -5 Mana for every proc."
+					desc="This individual has their magic protecting them at all times. Anytime they take a direct hit from a non magical attack, a single medium sized meteor will be summoned from space to strike at where their opponent was when they made the attack, though this slightly drains their mana pool. This deals 15-20 damage + INT. | Autohit, Ignores Damage Reduction. -5 Mana for every proc. This procs once per round, per creature."
 					CMeteor
 						ability=1
 						name="Counter Comet"
@@ -7257,7 +7257,7 @@ obj
 						range="7 tile range."
 						mcost=20
 						typing="magical"
-						desc="The user calls meteors from the heavens holding them in place with magic over their head before aiming and firing them wherever they choose. Make a number of Meteor attack rolls on any target within range, equal to your INT modifier. Each Meteor attack roll costs 20 MP. (Damage: 2d12+INT Force damage | 7 tile range, Magical attack roll. -20 MP.)"
+						desc="The user calls meteors from the heavens holding them in place with magic over their head before aiming and firing them wherever they choose. Make a number of Meteor attack rolls on any target within range, equal to your INT modifier. Each Meteor attack roll costs 20 MP. (Damage: 2d12+INT Force damage | 7 tile range, Magical attack roll. -20 MP.) This caps at two Meteors per creature, per round."
 				Gravitys
 					icon='Icons/Perk/Gravity.png'
 					Float

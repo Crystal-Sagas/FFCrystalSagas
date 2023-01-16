@@ -76,7 +76,7 @@ atom
 					a.Carrycheck(a)
 					a.Savecheck(a)
 					a.ACcheck(a)
-				a<<output("All Globalmods have been unequipped for FATE battle.","icout")
+				a<<output("All Globalmods have been unequipped for FATE battle and log outs.","icout")
 
 atom
 	proc

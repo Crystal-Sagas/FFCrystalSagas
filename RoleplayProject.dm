@@ -413,6 +413,7 @@ mob
 		if(src.tempeventmin)
 			src.tempeventmin=0
 			src.verbs-=typesof(/mob/eventmin/verb/)
+		Unequipglobalmods(src)
 		for(var/obj/Aoeind/o in world)
 			if(o.owner==src.ckey)
 				del(o)
@@ -946,8 +947,8 @@ proc
 					m.mmp+=70
 					m.msp+=20
 					m.sp+=20
-					m.whitemagicable=3
-					m.arcanemagicable=3
+					m.whitemagicable=4
+					m.arcanemagicable=4
 					m.reflexproficient=1
 					m.willproficient=1
 					m.fortitudeproficient=1
@@ -971,6 +972,7 @@ proc
 					m.stealthproficient=0
 					m.survivalproficient=0
 					m.thieveryproficient=0
+					m.nolearn+="Sub Job"
 					Scholarint()
 				if("Merchant")
 					m.job="Merchant"
