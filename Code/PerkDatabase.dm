@@ -1174,7 +1174,7 @@ obj
 				Pirate
 					name="Pirate"
 					cat="Unique"
-					desc="Pirates are great wariors of the Sea, and are at home when along the tides. When a Pirate is near an active Water AoE tile, or a Water Tile on the map (within 2 tiles) - they gain 5 HP, SP, and MP regeneration per turn. Pirates also gain +2 PAB when wielding either a Scimitar or a Magitek Pistol. Pirates are immune to the 'Wet' and 'Whorl' status effects, and have resistance to Water damage. Mainjob Pirates gain +40 HP, +70 SP, and +70 MP."
+					desc="Pirates are great wariors of the Sea, and are at home when along the tides. When a Pirate is near an active Water AoE tile, or a Water Tile on the map (within 2 tiles) - they gain 5 HP, SP, and MP regeneration per turn. Pirates also gain +1 PAB when wielding either a Scimitar or a Magitek Pistol. Pirates are immune to the 'Wet' and 'Whorl' status effects, and have resistance to Water damage. Mainjob Pirates gain +40 HP, +70 SP, and +70 MP."
 				WaveWalker
 					name="Wave Walker"
 					rank="T1"
@@ -1194,7 +1194,7 @@ obj
 				CalispoBlessing
 					name="Calispo's Blessing"
 					rank="T2"
-					desc="This Pirate is blessed by the sea goddess, Calipso. So long as they are within an active Water AoE, or a water tile, they gain +4 DR."
+					desc="This Pirate is blessed by the sea goddess, Calipso. So long as they are within an active Water AoE, or a water tile, they gain +2 DR."
 				BlessingofPoseidon
 					name="Blessing of Poseidon"
 					rank="T3"
@@ -1202,7 +1202,7 @@ obj
 				SwiftlikeWave
 					name="Swift as a Wave"
 					rank="T3"
-					desc="This Pirate is trained to move with the swiftness of a raging wave. So long as they are within an active Water AoE, or a water tile, they are able to perform an additional standard attack, once per round, as a free action ; at the cost of 15 SP."
+					desc="This Pirate is trained to move with the swiftness of a raging wave. So long as they are within an active Water AoE, or a water tile, they are able to perform an additional standard attack, once per round, as a free action ; at the cost of 15 SP. After using this perk, it goes on cooldown for 1 round."
 			SkyPirate
 				name="Sky Pirate"
 				rank="T3"
@@ -1240,11 +1240,11 @@ obj
 				GladiatorialMight
 					rank="T1"
 					name="Gladiatorial Might"
-					desc="The Gladiator is a master of Melee combat. If a character attacks them with a Melee attack or Weapon Ability, they gain +1 AC, and +1 DR (up to 4 AC, and 4 DR.) which persists for the rest of the battle."
+					desc="The Gladiator is a master of Melee combat. If a character attacks them with a Melee attack or Weapon Ability, they gain +1 AC, and +1 DR (up to 2 AC, and 2 DR.) which persists for the rest of the battle."
 				CombatFocused
 					rank="T1"
 					name="Combat Focused"
-					desc="This Gladiator has become entirely focused on combat, and glory. For every turn that passes in combat, the Gladiator gains +2 PDB (capping at +10.) which persists for the duration of combat."
+					desc="This Gladiator has become entirely focused on combat, and glory. For every turn that passes in combat, the Gladiator gains +1 PDB (capping at +5.) which persists for the duration of combat."
 				Generalist
 					rank="T2"
 					name="Generalist"
@@ -1252,15 +1252,15 @@ obj
 				CombatGenius
 					name="Combat Genius"
 					rank="T2"
-					desc="Whenever this Gladiator utilizies a General Weapon Ability, they may spend Combat Intelligence stacks. For each stack spent, the ability gains +1 to its hit roll, and +5 additional damage (to a maximum of 25)."
+					desc="Whenever this Gladiator utilizies a General Weapon Ability, they may spend Combat Intelligence stacks. For each stack spent, the ability gains +1 to its hit roll (to a maximum of +3), and +5 additional damage (to a maximum of 15)."
 				WeaponMaster
 					rank="T2"
 					name="Weapon Master"
-					desc="Whenever a Gladiator attacks with a Melee attack, they gain +1 Combat Intelligence stack. In addition, for every Combat Intelligence stack a Gladiator has, they gain +1 PAB (up to 4)."
+					desc="Whenever a Gladiator attacks with a Melee attack, they gain +1 Combat Intelligence stack. In addition, for every Combat Intelligence stack a Gladiator has, they gain +1 PAB (up to 2)."
 				CounterAttack
 					rank="T2"
 					name="Counter Attack"
-					desc="Whenever the Gladiator is attacked by a Melee attack, they may spend 20 SP as a reaction, in order to Counter Attack with a Standard Weapon Attack."
+					desc="Whenever the Gladiator is attacked by a Melee attack, they may spend 45 SP as a reaction, in order to Counter Attack with a Standard Weapon Attack."
 				Aggression
 					rank="T2"
 					name="Aggression"
@@ -1268,15 +1268,15 @@ obj
 				Finisher
 					rank="T3"
 					name="Finisher"
-					desc="This Gladiator is capable of utilizing General Weapon Abilities as 'finishers'. Upon doing so, they expend all Combat Intelligence stacks. However, this attack is considered an automatic hit, or in the case of a saving throw, an automatic failure on the defender's part. In addition, it deals 35 additional damage. This requires at least 5 Combat Intelligence Stacks to use. May only be used once per fight."
+					desc="This Gladiator is capable of utilizing General Weapon Abilities as 'finishers'. Upon doing so, they expend all Combat Intelligence stacks. However, this attack is considered an automatic hit, or in the case of a saving throw, an automatic failure on the defender's part. In addition, it deals 25 additional damage. This requires at least 5 Combat Intelligence Stacks to use. May only be used once per fight."
 				Rage
 					rank="T3"
 					name="Rage"
-					desc="This Gladiator is able to convert their stacks to pure fury, entering a Gladiatorial Rage. By consuming 10 Combat Intelligence stacks, they may disable their ability to gain stacks for 3 rounds, but for this duration, they are considered at 0 Combat Intelligence stacks ; their attacks deal 25 additional true damage, and gain +6 PAB. They also gain +5 DR."
+					desc="This Gladiator is able to convert their stacks to pure fury, entering a Gladiatorial Rage. By consuming 10 Combat Intelligence stacks, they may disable their ability to gain stacks for 3 rounds, but for this duration, they are considered at 0 Combat Intelligence stacks ; their attacks deal 15 additional true damage, and gain +2 PAB. They also gain +2 DR."
 				Desperation
 					rank="T3"
 					name="Desperation"
-					desc="If a Gladiator with this feature is reduced to below 50% HP, they gain +3 PAB, +4 DR, +4 AC, and have resistance to Physical, Slashing, Piercing, and Bludgeoning damage until they raise back above 50% HP."
+					desc="If a Gladiator with this feature is reduced to below 50% HP, they gain +1 PAB, +2 DR, +1 AC, and have resistance to Physical, Slashing, Piercing, and Bludgeoning damage until they raise back above 50% HP."
 				FullForce
 					rank="T4"
 					name="Full Force"
@@ -1284,7 +1284,7 @@ obj
 				CoupDeGrace
 					rank="T4"
 					name="Coup De Grace"
-					desc="This Gladiator is an expert at defeating an opponent who is already on their back legs. When this Gladiator attacks a creature who is at 50% or less HP, the attack's to hit roll, or saving throw DC is increased by 5."
+					desc="This Gladiator is an expert at defeating an opponent who is already on their back legs. When this Gladiator attacks a creature who is at 50% or less HP, the attack's to hit roll, or saving throw DC is increased by 2."
 				Gunbreaker
 					icon='Icons/Perk/Gunbreaker.png'
 					cat="Unique"
@@ -1303,7 +1303,7 @@ obj
 				name="Trigger Burst"
 				rank="T2"
 				ajob="Gunbreaker"
-				desc="This Gunbreaker has mastered the art of the Trigger Burst. Whenever utilizing a General Weapon Ability, as a bonus action, they may spend 25 SP in order to release a Trigger Burst, thus allowing them to perform another General Weapon Ability of rank C or lower, at no SP cost."
+				desc="This Gunbreaker has mastered the art of the Trigger Burst. Whenever utilizing a General Weapon Ability, as a bonus action, they may spend 25 SP in order to release a Trigger Burst, thus allowing them to perform another General Weapon Ability of rank C or lower, without paying its SP cost - and dealing 15 additional true damage.."
 			LionHeart
 				icon='Icons/Perk/Gunbreaker.png'
 				name="Lion Heart"
@@ -1376,11 +1376,11 @@ obj
 				BladeDancer
 					name="Blade Dancer"
 					rank="T1"
-					desc="The Mystic Knight is particularly skilled in keeping up the momentum of their weapon for continued strikes. A Mystic Knight may expend a free action at the cost of 15 SP, to make an additional basic attack with their weapon, once per turn. Whenever this free action is used (regardless of hit or miss), the Mystic Knight gains 1 'Kinetic Stack'. After two uses of this feature, it goes on cooldown for 2 rounds."
+					desc="The Mystic Knight is particularly skilled in keeping up the momentum of their weapon for continued strikes. A Mystic Knight may expend a free action at the cost of 15 SP, to make an additional basic attack with their weapon, once per turn. Whenever this free action is used (regardless of hit or miss), the Mystic Knight gains 1 'Kinetic Stack'. After this feature is used, it goes on cooldown for 2 rounds."
 				BladeCasting
 					name="Blade Casting"
 					rank="T1"
-					desc="The Mystic Knight is well versed in the traditional art of Kinetic Casting. With this ability, a Mystic Knight may expend 1 'Kinetic Stack' in order to, upon successfully hitting a target creature - cast a Black or Arcane spell at that target as a bomus action, for half of the spell's initial MP cost+10, unless the new cost would be higher than the old cost."
+					desc="The Mystic Knight is well versed in the traditional art of Kinetic Casting. With this ability, a Mystic Knight may expend 1 'Kinetic Stack' in order to, upon successfully hitting a target creature - cast a Black or Arcane spell at that target as a bomus action, for half of the spell's initial MP cost+10, unless the new cost would be higher than the old cost. This has a 1 round cooldown."
 				LivingBlade
 					name="Living Blade"
 					rank="T2"
@@ -1467,7 +1467,7 @@ obj
 				Scholar
 					name="Scholar"
 					cat="Unique"
-					desc="A Scholar is able to choose a single C/B rank Summon of their choice, and make a contract with it. They gain this Summon at no cost, and it becomes their permanent, personalized Summon. This summon costs 5 MP less to summon than normal, as well. Scholars have access to C Rank White Magic, and C rank Arcane Magic. Scholar can not be combined with Summoner in any way. +10 HP, +70 MP, +20 SP. Note: The chosen Eidolon does not have access to its Overdrive ability."
+					desc="A Scholar is able to choose a single C/B rank Summon of their choice, and make a contract with it. They gain this Summon at no cost, and it becomes their permanent, personalized Summon. This summon costs 5 MP less to summon than normal, as well. Scholars have access to C Rank White Magic, and C rank Arcane Magic. Scholar can not be combined with Summoner in any way. Scholar is incompatible with the Subjob perk, and cannot be taken as a Subjob. +10 HP, +70 MP, +20 SP. Note: The chosen Eidolon does not have access to its Overdrive ability."
 				PhysicalEidolonEmpowerment
 					name="Physical Eidolon Empowerment"
 					rank="T2"
@@ -2157,11 +2157,11 @@ obj
 				Hasso
 					rank="T2"
 					name="Hasso"
-					desc="The samurai has trained in many different duelist styles for katanas. Whenever a Katana, Dagger, Longsword, Greatsword, Buster Sword, Gunblade, or Whipblade is being wielded, this individual can add a bonus 6 to PDB."
+					desc="The samurai has trained in many different duelist styles for katanas. Whenever a Katana, Dagger, Longsword, Greatsword, Buster Sword, Gunblade, or Whipblade is being wielded, this individual can add a bonus 3 to PDB."
 				Katsuryu
 					rank="T3"
 					name="Katsuryu"
-					desc="The Samurai has trained to use their blade in a defensive manner, just as much as an offensive one. While wielding a Katana, this Samurai gains +1 AC, and +5 Damage Reduction. In addition, they may use their Reaction in order to make an attack roll with their weapon, and reduce the damage of a -single- instance of damage rolled towards them on the round it is used. Doing so costs 15 SP."
+					desc="The Samurai has trained to use their blade in a defensive manner, just as much as an offensive one. While wielding a Katana, this Samurai gains +1 AC, and +3 Damage Reduction. In addition, they may use their Reaction in order to make an attack roll with their weapon, and reduce the damage of a -single- instance of damage rolled towards them on the round it is used. This reduction is capped at 40 points before the following modifications: If used against a Melee ability, the reduction is reduced by another 10, if used against a Magic or Ranged ability, it is increased by 10. Doing so costs 25 SP."
 				Zanshin
 					rank="T3"
 					name="Zanshin"
@@ -2203,6 +2203,10 @@ obj
 					rank="T2"
 					name="Permanent Infusion"
 					desc="This user is capable of permanently infusing an object with magical energy. If the Spellblade's weapon is enchanted with an Elemental enchantment, they may passively apply that element's infusion to its attacks at no cost, if they know that infusion."
+				ManaWeapon
+					rank="T2"
+					name="Mana Weapon"
+					desc="This Spellblade is capable of pumping their blade with Mana, in order to redirect it admist movement. Upon doing so, as a free action, they may spend 15 MP in order to proc an additional standard attack, or Weapon Attack (At half cost+10) - if used for an ability, it may only be used for an ability of rank C or lower. Doing so places this perk on 1 turn cooldown."
 				AutoShell
 					rank="T3"
 					name="Auto Shell"
@@ -2218,7 +2222,7 @@ obj
 				ExpertElementalInfusion
 					rank="T4"
 					name="Expert Elemental Infusion"
-					desc="This individual has learned to infuse tier 3 elemental magic. They can gain a further +5 PDB from infusions at the cost of doubling the sustained cost."
+					desc="This individual has learned to infuse tier 3 elemental magic. They can gain a further +5 PDB from infusions at the cost of +5 additional MP drain per turn."
 				AntiMagic
 					rank="T4"
 					name="Anti-Magic"
@@ -2226,7 +2230,7 @@ obj
 				DualInfusion
 					rank="T4"
 					name="Dual Infusion"
-					desc="This individual is capable of using a damage based infusion and a status ailment infusion at the same time."
+					desc="While the Spellblade has two Infusions active at the same time, they gain +5 PAB and MAB, as well as deal +15 additional true damage on hit."
 				TreInfusion
 					rank="T5"
 					name="Tre Infusion"
@@ -2391,7 +2395,7 @@ obj
 				Glide
 					rank="T3"
 					name="Glide"
-					desc="The dragoon is controlled enough to be able to glide through the air at a semi-sustained altitude. They can double-jump whilst gliding to go higher or dip when necessary, as well as divert all of the momentum from their glide into the fall of their jump for massive damage. They have supreme control of the air. A Dragoon with this ability is able to spend 5 SP in order to extend the duration of their Airborne status at the elevation they are currently resting at. When doing so, they may choose to descend up to 1 tile if they so wish. A Dragoon with this ability is able to spend 10 SP in order to perform another standard Jump action whilst still airborne, further increasing their elevation. They may also move cardinally whilst airborne, at half movement."
+					desc="The dragoon is controlled enough to be able to glide through the air at a semi-sustained altitude. They can double-jump whilst gliding to go higher or dip when necessary, as well as divert all of the momentum from their glide into the fall of their jump for massive damage. They have supreme control of the air. A Dragoon with this ability is able to spend 5 SP in order to extend the duration of their Airborne status at the elevation they are currently resting at. When doing so, they may choose to descend up to 1 tile if they so wish. A Dragoon with this ability is able to spend 10 SP in order to perform another standard Jump action whilst still airborne, further increasing their elevation. They may also move cardinally whilst airborne, at half movement. A Dragoon may only be airborne for a maximum of 3 rounds."
 				WyvernTrainer
 					rank="T3"
 					name="Wyvern Trainer"
@@ -5519,11 +5523,11 @@ obj
 				DrainSamba
 					name="Drain Samba"
 					rank="D"
-					desc="When the target of this dance is attacked, the attacker drains 25 HP from the target. Cannot exceed damage done by the ability or attack."
+					desc="When the target of this dance is attacked, the attacker drains 20 HP from the target. Cannot exceed damage done by the ability or attack."
 				AspirSamba
 					name="Aspir Samba"
 					rank="D"
-					desc="When the target of this dance is attacked, the attacker drains 20 MP from the target. Cannot exceed damage done by the ability or attack."
+					desc="When the target of this dance is attacked, the attacker drains 15 MP from the target. Cannot exceed damage done by the ability or attack."
 				SpectralJig
 					name="Spectral Jig"
 					rank="C"
@@ -5531,7 +5535,7 @@ obj
 				CelestialSashay
 					name="Celestial Sashay"
 					rank="C"
-					desc="After activating a dance, as a standard action, the dancer may apply the following additional effect to the chosen dance: This dance releases a pulse of energy that heals all ally creatures within 5 tiles for 10 HP. Costs 20 MP to activate."
+					desc="After activating a dance, as a standard action, the dancer may apply the following additional effect to the chosen dance: This dance releases a pulse of energy that heals all ally creatures within 5 tiles for 8 HP. Costs 20 MP to activate."
 				BallroomBlitz
 					name="Ballroom Blitz"
 					rank="C"
@@ -5907,7 +5911,7 @@ obj
 					atype="weaponsave"
 					basecheck=10
 					range1=2
-					range2=8
+					range2=4
 					costtype="Stamina"
 					mcost=20
 					damsource="str"
@@ -5917,19 +5921,19 @@ obj
 					rank="D"
 					atype="weapon"
 					range1=2
-					range2=16
+					range2=4
 					damsource="str"
 					savetype="Fortitude"
 					mcost=20
 					costtype="Stamina"
-					desc="The Samurai imbues their blade with a shining sheen of ice, resembling a diamond.. They they make an attack roll towards the target, which on hit deals Weapon Damage+2d8+STR Ice damage, and prompts a DC 15 Fortitude saving throw ; inflicting Blind on failure, as the dazzling light blinds them in a flash. (- 20 stamina.)"
+					desc="The Samurai imbues their blade with a shining sheen of ice, resembling a diamond.. They they make an attack roll towards the target, which on hit deals Ice damage, and prompts a DC 15 Fortitude saving throw ; inflicting Blind on failure, as the dazzling light blinds them in a flash. (- 20 stamina.)"
 				TachiKagero
 					name="Tachi Kagero"
 					rank="C"
 					atype="weaponsave"
 					basecheck=10
-					range1=4
-					range2=24
+					range1=2
+					range2=6
 					damsource="str"
 					mcost=30
 					savetype="Fortitude"
@@ -5938,8 +5942,8 @@ obj
 				Higanbana
 					rank="D"
 					atype="weapon"
-					range1=2
-					range2=16
+					range1=1
+					range2=8
 					damsource="str"
 					mcost=25
 					costtype="Stamina"
@@ -5947,18 +5951,18 @@ obj
 				Zeninage
 					name="Zeninage"
 					rank="C"
-					desc="A very arcane, and curious technique passed down by Samurai through the ages. The Samurai pulls a bag of Gil out from their pouch, and slams their free palm onto it, placing a Kanji sealing tag upon it. The tag then ignites, and the bag of Gil bursts into an array of light particles. They then rearrange behind the Samurai in a dazzling display. When the Samurai points forward, the millions of dazzling light particles burst forth to skewer a target. Depending on the Gil spent, the attack deals a flat amount of damage, and has a different DC. On a failure, the target takes full damage and is inflicted with 'Astonished' - a unique status effect which causes them to have disadvantage on all rolls on their turn, unless they spend their movement and bonus actions to slap their face or pinch themselves. 10 Gil: 10 Damage, DC 12. 50 Gil: 20 damage, DC 14. 100 Gil: 30 damage, DC 16. 500 Gil: 60 damage, DC 18. 5.000 Gil: 100 damage, DC: 20. 10,000 Gil: 250 damage, DC 25. "
+					desc="A very arcane, and curious technique passed down by Samurai through the ages. The Samurai pulls a bag of Gil out from their pouch, and slams their free palm onto it, placing a Kanji sealing tag upon it. The tag then ignites, and the bag of Gil bursts into an array of light particles. They then rearrange behind the Samurai in a dazzling display. When the Samurai points forward, the millions of dazzling light particles burst forth to skewer a target. Depending on the Gil spent, the attack deals a flat amount of damage, and has a different DC. On a failure, the target takes full damage and is inflicted with 'Astonished' - a unique status effect which causes them to have disadvantage on all rolls on their turn, unless they spend their movement and bonus actions to slap their face or pinch themselves. 10 Gil: 10 Damage, DC 12. 50 Gil: 20 damage, DC 14. 100 Gil: 30 damage, DC 16. 500 Gil: 20 damage, DC 18. 5.000 Gil: 50 damage, DC: 20. 10,000 Gil: 100 damage, DC 25. "
 				Gyoten
 					name="Gyoten"
 					rank="C"
 					desc="The user of this technique may accelerate their movement rapidly, utilizing the thought of protecting an ally as motivation. Using Gyoten, a Samurai may move up to their base Tile Movement per turn +1 tiles to reach an ally who is taking damage. If they are able to reach the ally, they take the damage in the ally's place. If they pass by Melee range of an enemy creature on the way there, they gain a free Standard attack against that creature. The first time this is used on a round is a free action. Any time after that requires a Reaction.  In the case of Multi-hit attacks, and AoEs, all instances of damage are distributed instead to the Samurai, leaving none for the protected ally. Costs 10 Stamina."
 				Shirahadori
 					rank="C"
-					desc="As a reaction, lash out with your blade in order to stop an incoming Melee attack. Perform a STR versus STR check contest against the attacker. On a failure, the attack is stopped and if the attacker is attacking with a held weapon, the weapon is disarmed, requiring the target to use their bonus action on their next turn to pick it back up. Immediately after the contest, regardless of success or not ; the Samurai may make a Standard weapon attack roll against their target, which deals 10 additional damage on a successful hit. (-25 Stamina.)"
+					desc="As a reaction, lash out with your blade in order to stop an incoming Melee attack. Perform a STR versus STR check contest against the attacker. On a failure, the attack's damage is reduced by 20 and if the attacker is attacking with a held weapon, the weapon is disarmed, requiring the target to use their bonus action on their next turn to pick it back up. Immediately after the contest, regardless of success or not ; the Samurai may make a Standard weapon attack roll against their target, which deals 10 additional damage on a successful hit. (-25 Stamina.)"
 				MirrorofEquity
 					name="Mirror of Equity"
 					rank="B"
-					desc="As a bonus action, the Samurai imbues their blade with strange red energy ; giving the blade a mirror-like sheen. The energy coats the blade, and curls around the Samurai's hand as well. While active, if the target of a Samurai's attack has more current HP than the Samurai's current HP, the attack will heal the Samurai for HP equal to half of the attack's total damage. In addition, this grants the Samurai a bonus of +10 PDB while active. This costs 20 MP to cast, and lasts for 3 rounds."
+					desc="As a bonus action, the Samurai imbues their blade with strange red energy ; giving the blade a mirror-like sheen. The energy coats the blade, and curls around the Samurai's hand as well. While active, if the target of a Samurai's attack has more current HP than the Samurai's current HP, the attack will heal the Samurai for HP equal to half of the attack's total damage. In addition, this grants the Samurai a bonus of +2 PDB while active. This costs 20 MP to cast, and lasts for 3 rounds."
 				GekkoCombo
 					name="Gekko Combo"
 					rank="B"
@@ -5966,8 +5970,8 @@ obj
 					range1=0
 					range2=0
 					damsource="str"
-					addhit=3
-					desc="The Samurai lashes out in a three part combo. Make three separate standard weapon attacks, each with a +3 to hit. If at least one attack hits; the Samurai receives a buff named Fugetsu, which lasts for 3 turns. While Fugetsu is active the Samurai receives +10 to their PDB, and their weapon may optionally deal Wind damage. In addition, their Weapon Attacks inflict the 'Squall' status effect on hit. Costs 50 Stamina."
+					addhit=6
+					desc="The Samurai lashes out in a three part combo. Make three separate standard weapon attacks, each with a +6 to hit. If at least one attack hits; the Samurai receives a buff named Fugetsu, which lasts for 3 turns. While Fugetsu is active the Samurai receives +3 to their PDB, and their weapon may optionally deal Wind damage. In addition, their Weapon Attacks inflict the 'Squall' status effect on hit. Costs 50 Stamina."
 				IaidoStance
 					name="Iaido Stance"
 					rank="A"
@@ -5978,7 +5982,7 @@ obj
 				Tsubamagaeshi
 					rank="A"
 					range1=2
-					range2=20
+					range2=10
 					atype="weaponsave"
 					damsource="str"
 					savetype="Fortitude"
@@ -6066,62 +6070,62 @@ obj
 				FireInfusion
 					name="Fire Infusion"
 					rank="E"
-					desc="This individual can surround their sword with fire. (Gain 5 PDB Adds fire element to all physical attacks. -5 Mana per turn active.)"
+					desc="This individual can surround their sword with fire. (Gain 5 PDB Adds fire element to all physical attacks. -3 Mana per turn active.)"
 				WaterInfusion
 					name="Water Infusion"
 					rank="E"
-					desc="This individual can surround their sword with water. (Gain 5 PDB. Adds water element to all physical attacks. -5 Mana per turn active.)"
+					desc="This individual can surround their sword with water. (Gain 5 PDB. Adds water element to all physical attacks. -3 Mana per turn active.)"
 				LightningInfusion
 					name="Lightning Infusion"
 					rank="E"
-					desc="This individual can surround their sword with sparking electricity. (Gain 5 PDB. Adds thunder element to all physical attacks, -5 Mana per turn active.)"
+					desc="This individual can surround their sword with sparking electricity. (Gain 5 PDB. Adds thunder element to all physical attacks, -3 Mana per turn active.)"
 				IceInfusion
 					name="Ice Infusion"
 					rank="E"
-					desc="This individual can surround their sword with chilling cold, and a sheen of ice. (Gain 5 PDB. Adds Ice element to all physical attacks, -5 Mana per turn active.)"
+					desc="This individual can surround their sword with chilling cold, and a sheen of ice. (Gain 5 PDB. Adds Ice element to all physical attacks, -3 Mana per turn active.)"
 				AeroInfusion
 					name="Aero Infusion"
 					rank="E"
-					desc="This individual can surround their sword with air. (Gain 5 PDB. Adds aero element to all physical attacks -5 Mana per turn active.)"
+					desc="This individual can surround their sword with air. (Gain 5 PDB. Adds aero element to all physical attacks -3 Mana per turn active.)"
 				EarthInfusion
 					name="Earth Infusion"
 					rank="E"
-					desc="This individual can surround their blade with stone. (Gain 5 PDB. Adds Earth element to all physical attacks. -10 Mana per turn active.)"
+					desc="This individual can surround their blade with stone. (Gain 5 PDB. Adds Earth element to all physical attacks. -5 Mana per turn active.)"
 				DrainInfusion
 					name="Drain Infusion"
 					rank="D"
-					desc="This individual can surround their weapon with malicious energy, which allows them to drain the lifeforce of others. (Gain 5 PDB. and Melee attacks heal for half of the total damage dealt. This caps at 15 HP per drain. -10 Mana per turn active.)"
+					desc="This individual can surround their weapon with malicious energy, which allows them to drain the lifeforce of others. (Gain 5 PDB. and Melee attacks heal for half of the total damage dealt. This caps at 40 HP per drain. -5 Mana per turn active.)"
 				OsmoseInfusion
 					name="Osmose Infusion"
 					rank="D"
-					desc="This individual can surround their weapon in a vacuum of Mana with draws energy towards it. (Gain 5 PDB. and Melee attacks restore MP equal to half of the total damage dealt. -10 Mana per turn active.)"
+					desc="This individual can surround their weapon in a vacuum of Mana with draws energy towards it. (Gain 5 PDB. and Melee attacks restore MP equal to half of the total damage dealt. -1 Mana per turn active.)"
 				PoisonInfusion
 					name="Poison Infusion"
 					rank="C"
-					desc="This individual can use their magic to add a magical poison to their weapon. (Upon a successful hit the target will make a Fortitude save of 15, or be inflicted with the 'Poison' status effect. Lasts for 3 turns. -20 mana per turn active.)"
+					desc="This individual can use their magic to add a magical poison to their weapon. (Upon a successful hit the target will make a Fortitude save of 15, or be inflicted with the 'Poison' status effect. Lasts for 3 turns. -2 mana per turn active.)"
 				SilenceInfusion
 					name="Silence Infusion"
 					rank="C"
-					desc="This individual can add the status effect of silence to their weapon. If the weapon so much as cuts the opponent it will give them the status effect. (Upon a successful hit the target will make a Fortitude save of 15, or be inflicted with the 'Silence' status effect. Lasts for 3 turns, -20 mana per turn active.)"
+					desc="This individual can add the status effect of silence to their weapon. If the weapon so much as cuts the opponent it will give them the status effect. (Upon a successful hit the target will make a Fortitude save of 15, or be inflicted with the 'Silence' status effect. Lasts for 3 turns, -5 mana per turn active.)"
 				SleepInfusion
 					name="Sleep Infusion"
 					rank="C"
-					desc="This individual can use their magic to add a sleeping effect to their strikes. Anyone who is hit by the weapon will find themselves becoming fatigued. (Upon a successful hit the target will make a Fortitude save of 15, or be inflicted with the 'Sleep' status effect. Lasts for 3 turns, -20 Mana.)"
+					desc="This individual can use their magic to add a sleeping effect to their strikes. Anyone who is hit by the weapon will find themselves becoming fatigued. (Upon a successful hit the target will make a Fortitude save of 15, or be inflicted with the 'Sleep' status effect. Lasts for 3 turns, -2 Mana.)"
 				BlindInfusion
 					name="Blind Infusion"
 					rank="C"
-					desc="This individual can add the status effect of blind to their weapon. If the weapon so much as cuts the opponent it will give them the status effect. (Upon a successful hit the target will make a Fortitude save of 15, or be inflicted with the 'Blind' status effect. Lasts for 3 turns, -20 mana per turn active.)"
+					desc="This individual can add the status effect of blind to their weapon. If the weapon so much as cuts the opponent it will give them the status effect. (Upon a successful hit the target will make a Fortitude save of 15, or be inflicted with the 'Blind' status effect. Lasts for 3 turns, -4 mana per turn active.)"
 				DispelBlade
 					name="Dispel Blade"
 					rank="B"
-					desc="This individual can add a banishing force to their sword. Every successful attack done while under this infusion removes one positive status effect from the target. (Starting with the newest first.) (-25 mana per turn active.)"
+					desc="This individual can add a banishing force to their sword. Every successful attack done while under this infusion removes one positive status effect from the target. (Starting with the newest first.) (-10 mana per turn active.)"
 				Runic
 					rank="B"
 					desc="The user casts their weapon upwards creating a magical field around them that extends 3 tiles outward in every direction. They cannot move or perform any other action while doing this, but while runic is active all magic that passes through the field is instantly absorbed into the user restoring their MP equal to the cost of the spell."
 				FlareInfusion
 					name="Flare Infusion"
 					rank="B"
-					desc="The user coats their weapon in plasma energy. While active, gain 10 PDB. and weapon attacks ignore up to 10 DR. (-25 mana per turn active.)"
+					desc="The user coats their weapon in plasma energy. While active, gain 15 PDB. and weapon attacks ignore up to 10 DR. (-8 mana per turn active.)"
 				BreakInfusion
 					name="Break Infusion"
 					rank="A"
@@ -6133,7 +6137,7 @@ obj
 				UltimaInfusion
 					name="Ultima Infusion"
 					rank="S"
-					desc="This individual infuses their weapon with ultima magic granting it a brilliant green glow. Each weapon attack while this infusion is active, gain 20 PDB, and Weapon Attacks ignore the effects of shell and reflect. (-40 mana per turn active.)"
+					desc="This individual infuses their weapon with ultima magic granting it a brilliant green glow. Each weapon attack while this infusion is active, gain 20 PDB, and Weapon Attacks ignore the effects of shell and reflect. (-25 mana per turn active.)"
 					cat="Unique"
 
 			Rogue
@@ -6179,6 +6183,7 @@ obj
 
 			MachAbilities
 				icon='Icons/Perk/Machinist.png'
+				jobneed="Machinist"
 				cat="Unique"
 				ability=1
 				costtype=" Stamina"
@@ -6488,7 +6493,7 @@ obj
 					atype="weapon"
 					mcost=10
 					costtype="Stamina"
-					desc="When used, the Dragoon instantly travels to ground elevation from their current elevation. For every tile travelled downward, the attack gains 5 additional damage (capping at 50, at 10 tiles.) Make a standard attack roll with your weapon, and add the additional damage after the fact. This costs 10 Stamina."
+					desc="When used, the Dragoon instantly travels to ground elevation from their current elevation. For every tile travelled downward, the attack gains 5 additional damage (capping at 50, at 10 tiles.) Make a standard attack roll with your weapon, and add the additional damage after the fact. This puts the 'Jump' movement action on cooldown for 1 round after use. This costs 10 Stamina."
 				Gungnir
 					element="Physical"
 					rank="E"
@@ -6527,7 +6532,7 @@ obj
 					mcost=30
 					range1=0
 					range2=0
-					desc="Hyper Jump is a more taxing, but also more powerful version of Jump. When used, the Dragoon travels to ground elevation from their current airborne elevation, and makes a standard weapon attack. If it hits, gains a flat damage bonus equal to 8 per tile travelled. Costs 30 SP"
+					desc="Hyper Jump is a more taxing, but also more powerful version of Jump. When used, the Dragoon travels to ground elevation from their current airborne elevation, and makes a standard weapon attack. If it hits, gains a flat damage bonus equal to 8 per tile travelled. This puts the 'Jump' movement action on cooldown for 1 round after use. Costs 30 SP"
 				SkyGrinder
 					element="Physical"
 					name="Sky Grinder"
@@ -6536,7 +6541,7 @@ obj
 					range2=0
 					range=" Melee"
 					mcost=45
-					desc="The Dragoon transforms the momentum from their mid-air movement into a rotational force, akin to a drill. This attack loses power for the rotational momentum, but gains penetrative force. Upon use, Sky Grinder deals 5 damage per tile travelled, and transfers you to ground elevation immediately. Make a standard weapon attack, and add the additional damage as a flat bonus. If this attack hits, it reduces the target's DR by 10 for 3 rounds. Sky Grinder counts as a 'Jump' attack for abilities that mention them. The Damage Reduction nerf does not stack. Costs 45 stamina."
+					desc="The Dragoon transforms the momentum from their mid-air movement into a rotational force, akin to a drill. This attack loses power for the rotational momentum, but gains penetrative force. Upon use, Sky Grinder deals 5 damage per tile travelled, and transfers you to ground elevation immediately. Make a standard weapon attack, and add the additional damage as a flat bonus. If this attack hits, it reduces the target's DR by 10 for 3 rounds. Sky Grinder counts as a 'Jump' attack for abilities that mention them. The Damage Reduction nerf does not stack. This puts the 'Jump' movement action on cooldown for 1 round after use. Costs 45 stamina."
 				FallingMeteor
 					element="Comet"
 					name="Falling Meteor"
@@ -6547,14 +6552,14 @@ obj
 					savetype="Reflex"
 					basecheck=16
 					mcost=65
-					desc="While moving through the air, the user of this ability carries the momentum of the their fall or glide, to impact the ground and send out a powerful shockwave holding all the momentum of the fall. If using this ability, the user returns to the ground as a full action regardless of their current elevation, generating the shockwave with themselves as the epicenter. This attack affects a 5x5 area around the epicenter of the target tile. Travel to the ground elevation for that tile instantly from your current elevation. It deals 15 damage per tile travelled, flatly ; or half as much on a successful Fortitude saving throw (base check of 14+DEX+Rankbonus). This counts as a Jump ability for abilities that mention them. Costs 65 Stamina."
+					desc="While moving through the air, the user of this ability carries the momentum of the their fall or glide, to impact the ground and send out a powerful shockwave holding all the momentum of the fall. If using this ability, the user returns to the ground as a full action regardless of their current elevation, generating the shockwave with themselves as the epicenter. This attack affects a 5x5 area around the epicenter of the target tile. Travel to the ground elevation for that tile instantly from your current elevation. It deals 15 damage per tile travelled, flatly ; or half as much on a successful Fortitude saving throw (base check of 14+DEX+Rankbonus). This counts as a Jump ability for abilities that mention them. This puts the 'Jump' movement action on cooldown for 1 round after use. Costs 65 Stamina."
 				SkyRave
 					name="Sky Rave"
 					rank="A"
 					critrange=0
 					atype="weapon"
 					damsource="dex"
-					desc="Unleash a torrent of attacks against an airborne enemy. Make three standard weapon attacks against the creature with advantage on each attack roll before sending them downwards a maximum of 5 tiles; forcing them to take the fall damage. If all three attacks hit, make a final attack is an automatic critical hit (Sky Rave attack roll) and the opponent takes double the fall damage upon hitting the ground. This can be used as a reaction to Celestial Shooter for an additional cost of 30 Stamina. (-90 Stamina.)"
+					desc="Unleash a torrent of attacks against an airborne enemy. Make three standard weapon attacks against the creature with advantage on each attack roll before sending them downwards a maximum of 5 tiles; forcing them to take the fall damage. If all three attacks hit, make a final attack is an automatic critical hit (Sky Rave attack roll) and the opponent takes double the fall damage upon hitting the ground. This can be used as a reaction to Celestial Shooter for an additional cost of 30 Stamina. This puts the 'Jump' movement action on cooldown for 1 round after use. (-90 Stamina.)"
 				SkyHigh
 					name="Sky High"
 					rank="S"
