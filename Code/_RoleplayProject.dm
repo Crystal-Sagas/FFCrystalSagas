@@ -424,9 +424,8 @@ mob
 		src<<I
 		animate(I,alpha=255,time=50)
 		animate(I,transform=M ,time=50)
-		spawn(50)
-			src.client.screen+=G
-			src.client.screen+=L
+		src.client.screen+=G
+		src.client.screen+=L
 		..()
 	Logout()
 		if(src.tempeventmin)
@@ -2395,7 +2394,7 @@ client
 		tile_width=32
 		tile_height=32
 		resize_rwlock = FALSE
-
+	#warn THIS IS FUCKED
 	verb
 		onResize(map as text|null, size as text|null)
 			set hidden = 1
@@ -2429,9 +2428,8 @@ client
 			buffer_x = floor((view_width*tile_width - map_width/map_zoom)/2)
 			buffer_y = floor((view_height*tile_height - map_height/map_zoom)/2)
 
-			src.view = "[view_width]x[view_height]"
-
-			if(old != map_zoom)
+			if(old != map_zoom || src.view != "[view_width]x[view_height]")
+				src.view = "[view_width]x[view_height]"
 				winset(src,map,"zoom=[map_zoom];")
 			resize_rwlock = FALSE
 
