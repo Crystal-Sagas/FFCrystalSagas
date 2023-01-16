@@ -10,9 +10,6 @@ obj/NPCshop
 			if(usr.stockcasting==0)
 				alert(usr,"You cannot purchase Stock Crystal!")
 				return
-			else
-				goto continueshop
-		continueshop
 		winset(usr,"Shop","is-visible=true")
 		winset(usr,"Shop.buy","cells=0x0")
 		for(var/obj/item/i in src.contents)
