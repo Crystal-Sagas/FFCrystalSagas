@@ -261,8 +261,6 @@ obj
 					return
 				else
 					usr.Currentbuildings+=1
-					goto continuecraft
-			continuecraft
 			if(darecipe.name=="Airship")
 				for(var/area/AR in view(usr))
 					if(AR.outside==0)
