@@ -108,6 +108,7 @@ mob/verb
 			usr.emoteamount+=charamount
 			Checkreward(usr)
 			usr.overlays-='Rping.dmi'
+			usr.Save()
 	Ooc(t as text)
 		if(!t)
 			return

@@ -232,7 +232,6 @@ mob
 				del(o)
 			for(var/image/i in usr.client.screen)
 				del(i)
-			src.AutoSave()
 			src.rpp=startingrpp
 			src.trpp=startingrpp
 			Checkreward(usr)

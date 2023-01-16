@@ -1864,6 +1864,7 @@ obj
 												Rankadjust(src,usr)
 												winset(usr,"PerkWindow.rpp","text=\"[usr.rpp]/[usr.trpp]\"")
 												usr.perkbuying=0
+												usr.Save()
 												return
 											else
 												alert("You don't have enough RPP to learn this.")

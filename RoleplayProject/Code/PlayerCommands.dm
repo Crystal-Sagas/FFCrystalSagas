@@ -22,6 +22,9 @@ mob
 			for(var/obj/perk/p in perklist)
 				count++
 			world<<output("[count]","output1")
+		SaveSelf()
+			name="Save"
+			usr.Save()
 		Roll()
 			var/num1
 			var/num2
