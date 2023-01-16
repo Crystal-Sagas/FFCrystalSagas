@@ -3775,7 +3775,6 @@ obj/item/verb
 	Enchant()
 		if(usr.job=="Dragoon"||usr.subjob=="Dragoon")
 			if(src.weapontype=="Draconic")
-				goto continueenchant
 			else
 				var/list/choice=list("Yes","No","Cancel")
 				var/choose=input("Would you like to make this weapon Draconic? It will scale to DEX, but only Dragoosn will be able to use it.") as anything in choice
@@ -3788,10 +3787,8 @@ obj/item/verb
 						src.name=newname
 						return
 					if("No")
-						goto continueenchant
 					if("Cancel")
 						return
-		continueenchant
 		if(usr.Checkpre("Enchanter",usr))
 			switch(input("Do you wish to add an elemental effect or status effect?") in list("Elemental","Status","Mythic","Cancel"))
 				if("Elemental")
