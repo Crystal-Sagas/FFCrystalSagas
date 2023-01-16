@@ -48,6 +48,7 @@
 // END_PREFERENCES
 
 // BEGIN_INCLUDE
+#include "__compile_options.dm"
 #include "__init.dm"
 #include "__spaceman_dmm.dm"
 #include "Movement Delay.dm"

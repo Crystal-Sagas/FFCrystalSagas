@@ -857,6 +857,7 @@ obj
 			var/adamantinetier=5
 			var/orichalcumtier=6
 			a.initialized=1
+
 			for(a)
 				if(a.weapontype=="Shuriken")
 					a.equiptype="1h"
