@@ -2359,6 +2359,7 @@ client
 		map_zoom
 		tile_width=32
 		tile_height=32
+
 	verb
 		onResize(map as text|null, size as text|null)
 			set hidden = 1
