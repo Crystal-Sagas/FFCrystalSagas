@@ -59,7 +59,7 @@ obj/light
 
 mob/proc/addLightPlane()
 	if(!master_plane)
-		master_plane = new(src)
+		master_plane = new /image/master_plane
 	master_plane.loc = src
 	if(!darkness)
 		darkness = new /image/darkness
