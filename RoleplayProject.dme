@@ -14,6 +14,8 @@
 // END_PREFERENCES
 
 // BEGIN_INCLUDE
+#include "__init.dm"
+#include "__spaceman_dmm.dm"
 #include "Movement Delay.dm"
 #include "RoleplayProject.dm"
 #include "TechObjects.dm"
