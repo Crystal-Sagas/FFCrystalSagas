@@ -18,9 +18,9 @@ var/datum/world_debug_enabler/world_debug_enabler = new
 	var/debugger = world.GetConfig("env", "AUXTOOLS_DEBUG_DLL")
 	if(debugger)
 		call(debugger, "auxtools_init")()
-		__auxtools_enable_debugging()
+		enable_debugging()
 
-/proc/__auxtools_enable_debugging()
+/proc/enable_debugging()
 	CRASH("No auxtools hook!")
 
 #endif
