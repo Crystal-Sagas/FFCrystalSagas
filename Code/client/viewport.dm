@@ -64,6 +64,7 @@
 	else
 		// user somehow has a perfectly 1:1 ratio screen for the size (??)
 		view = encode_view_size(what_we_want)
+	#warn finish
 	var/limited_by_horizontal = pixel_per_x < pixel_per_y
 	if(!isnull(GLOB.lock_client_view_x) && !isnull(GLOB.lock_client_view_y))
 		view = "[GLOB.lock_client_view_x]x[GLOB.lock_client_view_y]"
