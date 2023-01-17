@@ -728,7 +728,7 @@ proc
 				m.mp+=20
 				m.mmp+=20
 		usr.ChangeBase()
-		var/list/jobs = list("Mystic Knight","Pirate","Gladiator","Astrologian","Scholar","Merchant","Viking","Bard","Dancer","Black Mage","White Mage","Red Mage","Blue Mage","Ranger","Monk","Beast Master","Samurai","Spellblade","Rogue","Paladin","Knight","Dark Knight","Dragoon","Machinist","Summoner","Chemist","Geomancer")
+		var/list/jobs = list("Mystic Knight","Pirate","Gladiator","Astrologian","Scholar","Viking","Bard","Dancer","Black Mage","White Mage","Red Mage","Blue Mage","Ranger","Monk","Beast Master","Samurai","Spellblade","Rogue","Paladin","Knight","Dark Knight","Dragoon","Machinist","Summoner","Chemist","Geomancer")
 		if(Timemage.Find(m.key))
 			jobs+="Time Mage"
 		if(Oracle.Find(m.key))

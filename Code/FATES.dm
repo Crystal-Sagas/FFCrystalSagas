@@ -47,13 +47,13 @@ obj
 				return
 			else
 				usr.usingfate=1
-				for(var/obj/Party/p in world)
+				for(var/obj/Party/p in usr)
 					for(var/mob/checkmem in world)
 						if(p.partyID==checkmem.partyID)
 							if(checkmem.FATEcooldown>=1)
 								alert(usr,"[checkmem.name] is on FATE cooldown, and thus the party cannot accept a FATE!")
 								usr.usingfate=0
-								return
+								break
 					if(p.FATEcooldown==1)
 						alert(usr,"Your party is on FATE cooldown!")
 						usr.usingfate=0
