@@ -855,6 +855,7 @@ obj
 			var/mythriltier=4
 			var/adamantinetier=5
 			var/orichalcumtier=6
+			a.initialized=1
 			if(a.weapontype=="Shuriken")
 				a.equiptype="1h"
 				a.desc="A set of Shuriken. These deal small amounts of damage, but for each attack action made with them, you may use a 'free action' - to spend 20 SP in order to perform an additional attack (up to once per turn). On a critical hit, a Shuriken inflicts Bleed. If a creature is bleeding, all Shuriken attacks gain +5 flat damage."
@@ -1146,4 +1147,3 @@ obj
 					a.adddam=adamantinetier*a.scaling
 				if(a.weptier=="Orichalcum")
 					a.adddam=orichalcumtier*a.scaling
-			a.initialized=1
