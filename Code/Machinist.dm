@@ -514,59 +514,59 @@ obj
 													if("Fire")
 														var/obj/perk/Abilities/BlackMagic/Flame/Firaja/fi=new
 														src.contents+=fi
-														src.wis+=2
-														src.wismod+=1
+														src.wis+=4
+														src.wismod+=2
 														src.cores+=1
-														src.mmp+=80
-														src.mp+=80
+														src.mmp+=250
+														src.mp+=250
 													if("Thunder")
 														var/obj/perk/Abilities/BlackMagic/Lightning/Thundaja/b=new
 														src.contents+=b
-														src.wis+=2
-														src.wismod+=1
+														src.wis+=4
+														src.wismod+=2
 														src.cores+=1
-														src.mmp+=80
-														src.mp+=80
+														src.mmp+=250
+														src.mp+=250
 													if("Water")
 														var/obj/perk/Abilities/BlackMagic/Hydro/Waterja/c=new
 														src.contents+=c
-														src.wis+=2
-														src.wismod+=1
+														src.wis+=4
+														src.wismod+=2
 														src.cores+=1
-														src.mmp+=80
-														src.mp+=80
+														src.mmp+=250
+														src.mp+=250
 													if("Earth")
 														var/obj/perk/Abilities/Geomancer/Earth/Stonaja/d=new
 														src.contents+=d
-														src.wis+=2
-														src.wismod+=1
+														src.wis+=4
+														src.wismod+=2
 														src.cores+=1
-														src.mmp+=80
-														src.mp+=80
+														src.mmp+=250
+														src.mp+=250
 													if("Wind")
 														var/obj/perk/Abilities/WhiteMagic/Wind/Aeroja/e=new
 														src.contents+=e
-														src.wis+=2
-														src.wismod+=1
+														src.wis+=4
+														src.wismod+=2
 														src.cores+=1
-														src.mmp+=80
-														src.mp+=80
+														src.mmp+=250
+														src.mp+=250
 													if("Bio")
 														var/obj/perk/Abilities/ArcaneMagic/Bios/Scourge/f=new
 														src.contents+=f
-														src.wis+=2
-														src.wismod+=1
+														src.wis+=4
+														src.wismod+=2
 														src.cores+=1
-														src.mmp+=80
-														src.mp+=80
+														src.mmp+=250
+														src.mp+=250
 													if("Flare")
 														var/obj/perk/Abilities/BlackMagic/Energy/Flare/g=new
 														src.contents+=g
-														src.wis+=2
-														src.wismod+=1
+														src.wis+=4
+														src.wismod+=2
 														src.cores+=1
-														src.mmp+=80
-														src.mp+=80
+														src.mmp+=250
+														src.mp+=250
 												del upgraderchoice
 									return
 					else
@@ -581,8 +581,8 @@ obj
 					maxmodules=2
 					maxaugment=1
 					name="Striker"
-					mhp=45
-					hp=45
+					mhp=95
+					hp=95
 					mmp=0
 					mp=0
 					sp=0
@@ -612,8 +612,8 @@ obj
 					maxmodules=2
 					maxaugment=1
 					name="Defender"
-					mhp=65
-					hp=65
+					mhp=115
+					hp=115
 					mmp=0
 					mp=0
 					sp=0
@@ -644,8 +644,8 @@ obj
 					maxmodules=2
 					maxaugment=2
 					name="Blitzer"
-					mhp=50
-					hp=50
+					mhp=100
+					hp=100
 					mmp=0
 					mp=0
 					sp=0
@@ -675,8 +675,8 @@ obj
 					maxmodules=2
 					maxaugment=2
 					name="Guardian"
-					mhp=75
-					hp=75
+					mhp=135
+					hp=135
 					mmp=0
 					mp=0
 					sp=0
@@ -706,8 +706,8 @@ obj
 					maxmodules=2
 					maxaugment=2
 					name="MagitekArmor"
-					mhp=85
-					hp=85
+					mhp=215
+					hp=215
 					mmp=0
 					mp=0
 					sp=0
@@ -725,10 +725,10 @@ obj
 					wismod=1
 					cha=10
 					chamod=0
-					mab=2
-					pab=2
-					mdb=8
-					pdb=8
+					mab=11
+					pab=11
+					mdb=25
+					pdb=25
 			T5
 				MagitekMecha
 					icon='Bases/Robots/MagitekMech.dmi'
@@ -738,8 +738,8 @@ obj
 					maxmodules=2
 					maxaugment=1
 					name="Magitek Mecha"
-					mhp=150
-					hp=150
+					mhp=280
+					hp=280
 					mmp=0
 					mp=0
 					sp=0
@@ -757,10 +757,10 @@ obj
 					wismod=1
 					cha=10
 					chamod=0
-					mab=4
-					pab=4
-					mdb=15
-					pdb=15
+					mab=15
+					pab=15
+					mdb=35
+					pdb=35
 
 obj
 	Vehicle
