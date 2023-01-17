@@ -85,23 +85,23 @@ atom
 				user<<output("[user] has attempted to use a Magic ability without any MP, and has wasted a turn!","icout")
 				user.mp=0
 				return
-			var/range1=10
-			var/range2=35
-			var/classbonus=15
+			var/range1=35
+			var/range2=45
+			var/classbonus=25
 			if(spell.level==1)
 				classbonus+=10
 			if(spell.level==2)
 				classbonus+=25
 			if(spell.level==3)
-				classbonus+=35
+				classbonus+=50
 			if(spell.level==4)
-				classbonus+=45
+				classbonus+=70
 			if(spell.level==5)
-				classbonus+=55
+				classbonus+=90
 			if(spell.level==6)
-				classbonus+=85
+				classbonus+=120
 			if(user.job=="White Mage" || user.subjob=="White Mage")
-				classbonus+=20
+				classbonus+=15
 			if(user.job=="Astrologian" || user.subjob=="Astrologian")
 				classbonus+=10
 			if(user.job=="Scholar" || user.subjob=="Scholar")
@@ -512,15 +512,21 @@ atom
 							AddParalyzed(target)
 						if(statuschance>=95)
 							AddStun(target)
-				if(target.hp<=0)
-					Death(target)
-					view(user) << output("[target] has reached 0 HP and is removed from battle!","icout")
-					target.hp=0
-					sleep(4)
+				if(target.retaliate==1)
+					turnattack(target,user)
+					target.retaliate=0
+					if(target.hp<=0)
+						Death(target)
+						view(user) << output("[target] has reached 0 HP and is removed from battle!","icout")
+						target.hp=0
+						sleep(4)
 				ShowHPBar(target)
 			else
 				Evade(target)
 				view(user)<<output("<b>To hit: [aresult] vs <b>[target.ac]</b> | It missed!","icout")
+				if(target.retaliate==1)
+					turnattack(target,user)
+					target.retaliate=0
 			ShowHPBar(target)
 			ShowMPBar(target)
 			ShowSPBar(target)
@@ -632,28 +638,28 @@ atom
 				extraanimation="Flare"
 			if(extraanimation=="Fire")
 				var/obj/perk/Abilities/BlackMagic/Flame/Fire/b=new
-				Playeranimation(user,target,b)
+				Spellbladeanimation(user,target,b)
 			if(extraanimation=="Water")
 				var/obj/perk/Abilities/BlackMagic/Hydro/Water/b=new
-				Playeranimation(user,target,b)
+				Spellbladeanimation(user,target,b)
 			if(extraanimation=="Ice")
 				var/obj/perk/Abilities/BlackMagic/Ice/Blizzard/b=new
-				Playeranimation(user,target,b)
+				Spellbladeanimation(user,target,b)
 			if(extraanimation=="Thunder")
 				var/obj/perk/Abilities/BlackMagic/Lightning/Thunder/b=new
-				Playeranimation(user,target,b)
+				Spellbladeanimation(user,target,b)
 			if(extraanimation=="Dark")
 				var/obj/perk/Abilities/ArcaneMagic/Darkness/Dark/b=new
-				Playeranimation(user,target,b)
+				Spellbladeanimation(user,target,b)
 			if(extraanimation=="Holy")
 				var/obj/perk/Abilities/WhiteMagic/Holy/Dia/b=new
-				Playeranimation(user,target,b)
+				Spellbladeanimation(user,target,b)
 			if(extraanimation=="Wind")
 				var/obj/perk/Abilities/WhiteMagic/Wind/Aero/b=new
-				Playeranimation(user,target,b)
+				Spellbladeanimation(user,target,b)
 			if(extraanimation=="Flare")
 				var/obj/perk/Abilities/BlackMagic/Energy/Flare/b=new
-				Playeranimation(user,target,b)
+				Spellbladeanimation(user,target,b)
 			if(aresult<=0)
 				aresult=0
 			if(dresult<=0)
@@ -773,6 +779,9 @@ atom
 			ShowHPBar(user)
 			ShowMPBar(user)
 			ShowSPBar(user)
+			if(target.retaliate==1)
+				turnattack(target,user)
+				target.retaliate=0
 			if(target.hp<=0)
 				target.overlays=null
 			sleep(4)
@@ -1895,10 +1904,28 @@ atom
 								actions+="Summon"
 							if(battler1.job=="Spellblade" || battler1.subjob=="Spellblade")
 								actions+="Infusion"
+							if(battler1.job=="Mystic Knight" || battler1.subjob=="Mystic Knight")
+								actions+="Blade Cast"
+								actions+="Blade Dance"
+							if(battler1.job=="Dancer" || battler1.subjob=="Dancer")
+								actions+="Dance"
+							if(battler1.job=="Black Mage" || battler1.subjob=="Black Mage")
+								actions+="Twin Cast"
+							if(battler1.job=="Samurai" || battler1.subjob=="Samurai")
+								actions+="Retaliate"
 							var/achoice=input(battler1,"What action would you like to take this turn?") as anything in actions
 							switch(achoice)
+								if("Retaliate")
+									if(battler1.sp<30)
+										usr<<output("<font color=[battler1.textcolor]<b>[battler1] has attempted to use Retaliate, but could not spend 30 SP, and has forfeited their turn!","icout")
+									else
+										var/target=input(battler1,"Which enemy would you like to attack, setting Retaliate up?") as anything in enemylist
+										battler1.turnattack(battler1,target)
+										usr<<output("<font color=[battler1.textcolor]<b>[battler1] has entered a <b>Retaliation</b> stance!","icout")
+										battler1.sp-=30
+										battler1.retaliate=1
 								if("Infusion")
-									var/list/Infusions=list("Fire","Water","Ice","Thunder","Wind","Holy","Dark","Flare")
+									var/list/Infusions=list("Fire","Water","Ice","Thunder","Wind")
 									var/infuchoice=input(battler1,"Which Infusion would you like to apply to your weapon?") as anything in Infusions
 									battler1.infusion=infuchoice
 									usr<<output("<font color=[battler1.textcolor]<b>[battler1] has set their Infusion type to [infuchoice]!","icout")
@@ -2085,8 +2112,27 @@ atom
 								actions+="Summon"
 							if(battler2.job=="Spellblade" || battler2.subjob=="Spellblade")
 								actions+="Infusion"
+							if(battler2.job=="Mystic Knight" || battler2.subjob=="Mystic Knight")
+								actions+="Blade Cast"
+								actions+="Blade Dance"
+							if(battler2.job=="Dancer" || battler2.subjob=="Dancer")
+								actions+="Dance"
+							if(battler2.job=="Black Mage" || battler2.subjob=="Black Mage")
+								actions+="Twin Cast"
+							if(battler2.job=="Samurai" || battler2.subjob=="Samurai")
+								actions+="Retaliate"
+
 							var/achoice=input(battler2,"What action would you like to take this turn?") as anything in actions
 							switch(achoice)
+								if("Retaliate")
+									if(battler2.sp<30)
+										usr<<output("<font color=[battler2.textcolor]<b>[battler2] has attempted to use Retaliate, but could not spend 30 SP, and has forfeited their turn!","icout")
+									else
+										var/target=input(battler2,"Which enemy would you like to attack, setting Retaliate up?") as anything in enemylist
+										battler2.turnattack(battler2,target)
+										usr<<output("<font color=[battler2.textcolor]<b>[battler2] has entered a <b>Retaliation</b> stance!","icout")
+										battler2.sp-=30
+										battler2.retaliate=1
 								if("Infusion")
 									var/list/Infusions=list("Fire","Water","Ice","Thunder","Wind","Holy","Dark","Flare")
 									var/infuchoice=input(battler2,"Which Infusion would you like to apply to your weapon?") as anything in Infusions
@@ -2273,11 +2319,29 @@ atom
 								actions+="Summon"
 							if(battler3.job=="Spellblade" || battler3.subjob=="Spellblade")
 								actions+="Infusion"
+							if(battler3.job=="Mystic Knight" || battler3.subjob=="Mystic Knight")
+								actions+="Blade Cast"
+								actions+="Blade Dance"
+							if(battler3.job=="Dancer" || battler3.subjob=="Dancer")
+								actions+="Dance"
+							if(battler3.job=="Black Mage" || battler3.subjob=="Black Mage")
+								actions+="Twin Cast"
+							if(battler3.job=="Samurai" || battler3.subjob=="Samurai")
+								actions+="Retaliate"
 							Greencheckplayer(battler3)
 							if(battler3.totalstatus>=1)
 								Statusprocparty(battler3)
 							var/achoice=input(battler3,"What action would you like to take this turn?") as anything in actions
 							switch(achoice)
+								if("Retaliate")
+									if(battler3.sp<30)
+										usr<<output("<font color=[battler3.textcolor]<b>[battler3] has attempted to use Retaliate, but could not spend 30 SP, and has forfeited their turn!","icout")
+									else
+										var/target=input(battler3,"Which enemy would you like to attack, setting Retaliate up?") as anything in enemylist
+										battler2.turnattack(battler3,target)
+										usr<<output("<font color=[battler3.textcolor]<b>[battler3] has entered a <b>Retaliation</b> stance!","icout")
+										battler3.sp-=30
+										battler3.retaliate=1
 								if("Infusion")
 									var/list/Infusions=list("Fire","Water","Ice","Thunder","Wind","Holy","Dark","Flare")
 									var/infuchoice=input(battler3,"Which Infusion would you like to apply to your weapon?") as anything in Infusions
@@ -2463,11 +2527,29 @@ atom
 								actions+="Summon"
 							if(battler4.job=="Spellblade" || battler4.subjob=="Spellblade")
 								actions+="Infusion"
+							if(battler4.job=="Mystic Knight" || battler4.subjob=="Mystic Knight")
+								actions+="Blade Cast"
+								actions+="Blade Dance"
+							if(battler4.job=="Dancer" || battler4.subjob=="Dancer")
+								actions+="Dance"
+							if(battler4.job=="Black Mage" || battler4.subjob=="Black Mage")
+								actions+="Twin Cast"
+							if(battler4.job=="Samurai" || battler4.subjob=="Samurai")
+								actions+="Retaliate"
 							Greencheckplayer(battler4)
 							if(battler4.totalstatus>=1)
 								Statusprocparty(battler4)
 							var/achoice=input(battler4,"What action would you like to take this turn?") as anything in actions
 							switch(achoice)
+								if("Retaliate")
+									if(battler4.sp<30)
+										usr<<output("<font color=[battler4.textcolor]<b>[battler4] has attempted to use Retaliate, but could not spend 30 SP, and has forfeited their turn!","icout")
+									else
+										var/target=input(battler4,"Which enemy would you like to attack, setting Retaliate up?") as anything in enemylist
+										battler4.turnattack(battler2,target)
+										usr<<output("<font color=[battler4.textcolor]<b>[battler4] has entered a <b>Retaliation</b> stance!","icout")
+										battler4.sp-=30
+										battler4.retaliate=1
 								if("Infusion")
 									var/list/Infusions=list("Fire","Water","Ice","Thunder","Wind","Holy","Dark","Flare")
 									var/infuchoice=input(battler4,"Which Infusion would you like to apply to your weapon?") as anything in Infusions

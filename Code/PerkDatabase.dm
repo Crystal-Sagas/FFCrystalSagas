@@ -3023,6 +3023,7 @@ obj
 					typing="magical"
 					costtype=" Mana"
 					ptype="spell"
+					element="Holy"
 					DiskofLight
 						name="Disk of Light"
 						rank="C"

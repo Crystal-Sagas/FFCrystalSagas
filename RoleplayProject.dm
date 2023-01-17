@@ -13,6 +13,7 @@ atom
 	var/savedy
 	var/savedz
 	var/waterwalking=0
+	var/retaliate=0
 
 var/maxrovers=40
 var/maxships=30
