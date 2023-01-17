@@ -581,8 +581,8 @@ obj
 					maxmodules=2
 					maxaugment=1
 					name="Striker"
-					mhp=45
-					hp=45
+					mhp=95
+					hp=95
 					mmp=0
 					mp=0
 					sp=0
@@ -612,8 +612,8 @@ obj
 					maxmodules=2
 					maxaugment=1
 					name="Defender"
-					mhp=65
-					hp=65
+					mhp=115
+					hp=115
 					mmp=0
 					mp=0
 					sp=0
@@ -644,8 +644,8 @@ obj
 					maxmodules=2
 					maxaugment=2
 					name="Blitzer"
-					mhp=50
-					hp=50
+					mhp=100
+					hp=100
 					mmp=0
 					mp=0
 					sp=0
@@ -675,8 +675,8 @@ obj
 					maxmodules=2
 					maxaugment=2
 					name="Guardian"
-					mhp=75
-					hp=75
+					mhp=135
+					hp=135
 					mmp=0
 					mp=0
 					sp=0
@@ -706,8 +706,8 @@ obj
 					maxmodules=2
 					maxaugment=2
 					name="MagitekArmor"
-					mhp=85
-					hp=85
+					mhp=215
+					hp=215
 					mmp=0
 					mp=0
 					sp=0
@@ -725,10 +725,10 @@ obj
 					wismod=1
 					cha=10
 					chamod=0
-					mab=2
-					pab=2
-					mdb=8
-					pdb=8
+					mab=11
+					pab=11
+					mdb=25
+					pdb=25
 			T5
 				MagitekMecha
 					icon='Bases/Robots/MagitekMech.dmi'
@@ -738,8 +738,8 @@ obj
 					maxmodules=2
 					maxaugment=1
 					name="Magitek Mecha"
-					mhp=150
-					hp=150
+					mhp=280
+					hp=280
 					mmp=0
 					mp=0
 					sp=0
@@ -757,10 +757,10 @@ obj
 					wismod=1
 					cha=10
 					chamod=0
-					mab=4
-					pab=4
-					mdb=15
-					pdb=15
+					mab=15
+					pab=15
+					mdb=35
+					pdb=35
 
 obj
 	Vehicle
