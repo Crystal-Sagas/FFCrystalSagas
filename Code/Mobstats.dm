@@ -168,11 +168,12 @@ mob/var
 	mdb
 	pab
 	pdb
-	tmp/mabadd=0 // These are SPECIFICALLY for Global Mods
-	tmp/mdbadd=0
-	tmp/pabadd=0
-	tmp/pdbadd=0
-	tmp/speedadd=0
+
+	tmp/mabadd // These are SPECIFICALLY for Global Mods
+	tmp/mdbadd
+	tmp/pabadd
+	tmp/pdbadd
+	tmp/speedadd
 
 
 	subjobcap=0
