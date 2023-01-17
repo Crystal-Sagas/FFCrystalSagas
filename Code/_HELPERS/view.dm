@@ -6,7 +6,10 @@
 		return list(vs, vs)
 	else if(istext(vs))
 		. = splittext(vs, "x")
-		ASSERT(length(.) == 2 && isnum(.[1]) && isnum(.[2]))
+		ASSERT(length(.) == 2)
+		.[1] = text2num(.[1])
+		.[2] = text2num(.[2])
+		ASSERT(isnum(.[1]) && isnum(.[2]))
 	else
 		CRASH("invalid: [vs]")
 

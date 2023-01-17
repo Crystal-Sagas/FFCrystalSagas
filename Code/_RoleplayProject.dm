@@ -179,7 +179,7 @@ obj
 
 	PlayGame
 		icon='Playgame.png'
-		screen_loc = "19,4"
+		screen_loc = "CENTER-5,CENTER"
 		Click()
 			usr.Play()
 		MouseEntered()
@@ -193,7 +193,7 @@ obj
 	Load
 		icon='Loadgame.png'
 		icon_state="load"
-		screen_loc="25,4"
+		screen_loc="CENTER+1,CENTER"
 		Click()
 			if(usr.intitlescreen!=1)
 				return
