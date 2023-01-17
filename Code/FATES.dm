@@ -47,6 +47,9 @@ obj
 				return
 			else
 				usr.usingfate=1
+				if(!locate(/obj/Party,usr.contents))
+					alert(usr,"Only the party leader can generate a FATE.")
+					return
 				for(var/obj/Party/p in usr)
 					for(var/mob/checkmem in world)
 						if(p.partyID==checkmem.partyID)
