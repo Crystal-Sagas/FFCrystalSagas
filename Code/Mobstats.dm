@@ -9,6 +9,7 @@ mob/var
 	buildmode=0
 	perkbuying=0
 	stockcasting=0
+	infusion=""
 
 	list/nolearn = new
 

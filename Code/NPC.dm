@@ -534,6 +534,8 @@ atom
 			var/doresult
 			var/dmod
 			var/dresult
+			var/extraanimation
+			var/infusionpower
 			var/obj/item/Weapon/wepchoice = user.righthand
 			amod=Checkdamtype(wepchoice.damsource,user)
 			if(wepchoice.typing=="magical")
@@ -564,6 +566,94 @@ atom
 					view(user)<<output("[user] is <b>Paralyzed</b> and failed to perform their action this turn!","icout")
 					return
 				else
+			if(user.infusion=="Fire")
+				infusionpower=user.rankbonus+user.wismod+user.chamod+user.intmod+user.mdb+user.pdb
+				dresult+=infusionpower
+				aresult+=user.mab
+				aresult+=user.pab
+				if(target.weakness=="Fire")
+					dresult=round(dresult*1.5)
+				extraanimation="Water"
+			if(user.infusion=="Water")
+				infusionpower=user.rankbonus+user.wismod+user.chamod+user.intmod+user.mdb+user.pdb
+				dresult+=infusionpower
+				aresult+=user.mab
+				aresult+=user.pab
+				if(target.weakness=="Water")
+					dresult=round(dresult*1.5)
+				extraanimation="Water"
+			if(user.infusion=="Ice")
+				infusionpower=user.rankbonus+user.wismod+user.chamod+user.intmod+user.mdb+user.pdb
+				dresult+=infusionpower
+				aresult+=user.mab
+				aresult+=user.pab
+				if(target.weakness=="Ice")
+					dresult=round(dresult*1.5)
+				extraanimation="Ice"
+			if(user.infusion=="Thunder")
+				infusionpower=user.rankbonus+user.wismod+user.chamod+user.intmod+user.mdb+user.pdb
+				dresult+=infusionpower
+				aresult+=user.mab
+				aresult+=user.pab
+				if(target.weakness=="Thunder")
+					dresult=round(dresult*1.5)
+				extraanimation="Thunder"
+			if(user.infusion=="Dark")
+				infusionpower=user.rankbonus+user.wismod+user.chamod+user.intmod+user.mdb+user.pdb
+				dresult+=infusionpower
+				aresult+=user.mab
+				aresult+=user.pab
+				if(target.weakness=="Dark")
+					dresult=round(dresult*1.5)
+				extraanimation="Dark"
+			if(user.infusion=="Holy")
+				infusionpower=user.rankbonus+user.wismod+user.chamod+user.intmod+user.mdb+user.pdb
+				dresult+=infusionpower
+				aresult+=user.mab
+				aresult+=user.pab
+				if(target.weakness=="Holy")
+					dresult=round(dresult*1.5)
+				extraanimation="Holy"
+			if(user.infusion=="Wind")
+				infusionpower=user.rankbonus+user.wismod+user.chamod+user.intmod+user.mdb+user.pdb
+				dresult+=infusionpower
+				aresult+=user.mab
+				aresult+=user.pab
+				if(target.weakness=="Wind")
+					dresult=round(dresult*1.5)
+				extraanimation="Wind"
+			if(user.infusion=="Flare")
+				infusionpower=user.rankbonus+user.wismod+user.chamod+user.intmod+user.mdb+user.pdb
+				dresult+=infusionpower
+				aresult+=user.mab
+				aresult+=user.pab
+				if(target.weakness=="Flare")
+					dresult=round(dresult*1.5)
+				extraanimation="Flare"
+			if(extraanimation=="Fire")
+				var/obj/perk/Abilities/BlackMagic/Flame/Fire/b=new
+				Playeranimation(user,target,b)
+			if(extraanimation=="Water")
+				var/obj/perk/Abilities/BlackMagic/Hydro/Water/b=new
+				Playeranimation(user,target,b)
+			if(extraanimation=="Ice")
+				var/obj/perk/Abilities/BlackMagic/Ice/Blizzard/b=new
+				Playeranimation(user,target,b)
+			if(extraanimation=="Thunder")
+				var/obj/perk/Abilities/BlackMagic/Lightning/Thunder/b=new
+				Playeranimation(user,target,b)
+			if(extraanimation=="Dark")
+				var/obj/perk/Abilities/ArcaneMagic/Darkness/Dark/b=new
+				Playeranimation(user,target,b)
+			if(extraanimation=="Holy")
+				var/obj/perk/Abilities/WhiteMagic/Holy/Dia/b=new
+				Playeranimation(user,target,b)
+			if(extraanimation=="Wind")
+				var/obj/perk/Abilities/WhiteMagic/Wind/Aero/b=new
+				Playeranimation(user,target,b)
+			if(extraanimation=="Flare")
+				var/obj/perk/Abilities/BlackMagic/Energy/Flare/b=new
+				Playeranimation(user,target,b)
 			if(aresult<=0)
 				aresult=0
 			if(dresult<=0)
@@ -1803,8 +1893,15 @@ atom
 								actions+="Revive"
 							if(summon1==1)
 								actions+="Summon"
+							if(battler1.job=="Spellblade" || battler1.subjob=="Spellblade")
+								actions+="Infusion"
 							var/achoice=input(battler1,"What action would you like to take this turn?") as anything in actions
 							switch(achoice)
+								if("Infusion")
+									var/list/Infusions=list("Fire","Water","Ice","Thunder","Wind","Holy","Dark","Flare")
+									var/infuchoice=input(battler1,"Which Infusion would you like to apply to your weapon?") as anything in Infusions
+									battler1.infusion=infuchoice
+									usr<<output("<font color=[battler1.textcolor]<b>[battler1] has set their Infusion type to [infuchoice]!","icout")
 								if("Summon")
 									var/target=input(battler1,"Which enemy would you like to summon a companion to attack?") as anything in enemylist
 									var/summon=input(battler1,"Which companion would you like to call on the power of?") as anything in summonlist1
@@ -1986,8 +2083,15 @@ atom
 								actions+="Revive"
 							if(summon2==1)
 								actions+="Summon"
+							if(battler2.job=="Spellblade" || battler2.subjob=="Spellblade")
+								actions+="Infusion"
 							var/achoice=input(battler2,"What action would you like to take this turn?") as anything in actions
 							switch(achoice)
+								if("Infusion")
+									var/list/Infusions=list("Fire","Water","Ice","Thunder","Wind","Holy","Dark","Flare")
+									var/infuchoice=input(battler2,"Which Infusion would you like to apply to your weapon?") as anything in Infusions
+									battler2.infusion=infuchoice
+									usr<<output("<font color=[battler2.textcolor]<b>[battler2] has set their Infusion type to [infuchoice]!","icout")
 								if("Summon")
 									var/target=input(battler2,"Which enemy would you like to summon a companion to attack?") as anything in enemylist
 									var/summon=input(battler2,"Which companion would you like to call on the power of?") as anything in summonlist2
@@ -2167,11 +2271,18 @@ atom
 								actions+="Revive"
 							if(summon3==1)
 								actions+="Summon"
+							if(battler3.job=="Spellblade" || battler3.subjob=="Spellblade")
+								actions+="Infusion"
 							Greencheckplayer(battler3)
 							if(battler3.totalstatus>=1)
 								Statusprocparty(battler3)
 							var/achoice=input(battler3,"What action would you like to take this turn?") as anything in actions
 							switch(achoice)
+								if("Infusion")
+									var/list/Infusions=list("Fire","Water","Ice","Thunder","Wind","Holy","Dark","Flare")
+									var/infuchoice=input(battler3,"Which Infusion would you like to apply to your weapon?") as anything in Infusions
+									battler3.infusion=infuchoice
+									usr<<output("<font color=[battler3.textcolor]<b>[battler3] has set their Infusion type to [infuchoice]!","icout")
 								if("Summon")
 									var/target=input(battler3,"Which enemy would you like to summon a companion to attack?") as anything in enemylist
 									var/summon=input(battler3,"Which companion would you like to call on the power of?") as anything in summonlist3
@@ -2350,11 +2461,18 @@ atom
 								actions+="Revive"
 							if(summon4==1)
 								actions+="Summon"
+							if(battler4.job=="Spellblade" || battler4.subjob=="Spellblade")
+								actions+="Infusion"
 							Greencheckplayer(battler4)
 							if(battler4.totalstatus>=1)
 								Statusprocparty(battler4)
 							var/achoice=input(battler4,"What action would you like to take this turn?") as anything in actions
 							switch(achoice)
+								if("Infusion")
+									var/list/Infusions=list("Fire","Water","Ice","Thunder","Wind","Holy","Dark","Flare")
+									var/infuchoice=input(battler4,"Which Infusion would you like to apply to your weapon?") as anything in Infusions
+									battler4.infusion=infuchoice
+									usr<<output("<font color=[battler4.textcolor]<b>[battler4] has set their Infusion type to [infuchoice]!","icout")
 								if("Summon")
 									var/target=input(battler4,"Which enemy would you like to summon a companion to attack?") as anything in enemylist
 									var/summon=input(battler4,"Which companion would you like to call on the power of?") as anything in summonlist4
