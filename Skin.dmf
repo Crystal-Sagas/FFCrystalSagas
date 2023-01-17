@@ -9217,18 +9217,19 @@ window "customrolls"
 window "default"
 	elem "default"
 		type = MAIN
-		pos = 0,0
+		pos = 281,0
 		size = 1350x650
 		anchor1 = -1,-1
 		anchor2 = -1,-1
+		background-color = none
 		is-default = true
 		saved-params = "pos;size;is-minimized;is-maximized"
-		on-size = "onResize \"[[id]]\" \"[[size]]\""
 		title = "Crystal Sagas"
 		icon = 'Sheet\\Chocobo.png'
 		macro = "macro"
 		menu = "menu"
-		on-close = "onResize \"[[id]]\" \"[[size]]\""
+		outer-size = 1366x728
+		inner-size = 1350x669
 	elem "label62"
 		type = LABEL
 		pos = -341,630
@@ -9257,6 +9258,7 @@ window "default"
 		size = 365x181
 		anchor1 = 75,73
 		anchor2 = 100,100
+		background-color = none
 		saved-params = ""
 		text = ""
 		image = 'Sheet\\GUI Label.png'
@@ -9687,17 +9689,15 @@ window "default"
 		saved-params = "is-checked"
 		text = "Narrate"
 		command = "Announce"
-	elem "map1"
+	elem "game_map"
 		type = MAP
 		pos = 0,-3
 		size = 1349x440
 		anchor1 = 0,0
 		anchor2 = 100,67
-		saved-params = "zoom;letterbox;zoom-mode"
-		on-size = "onResize \"[[id]\" \"[[size]]\""
+		saved-params = ""
+		on-size = ".on_viewport [[width]] [[height]]"
 		zoom = 0.950000
-		on-show = "onResize \"[[id]]\" \"[[size]]\""
-		on-hide = "onResize \"[[id]]\" \"[[size]]\""
 	elem "button2"
 		type = BUTTON
 		pos = 1073,464

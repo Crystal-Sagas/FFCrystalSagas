@@ -20,7 +20,7 @@
 	PRIVATE_PROC(TRUE)
 	. = FALSE
 	// get vars only; they have to manually refit
-	var/list/got = params2list(winget(src, SKIN_MAP_ID_VIEWPORT, "size"))
+	var/list/got = params2list(winget(src, SKIN_ID_GAME_MAP, "size"))
 	var/list/split = splittext(got["size"], "x")
 	var/got_spx
 	var/got_spy
@@ -34,10 +34,8 @@
 		got_spy = (WORLD_ICON_SIZE * world_view[2])
 	if(got_spx != assumed_viewport_spx || got_spy != assumed_viewport_spy)
 		. = TRUE
-		assumed_viewport_zoom = got_zoom
 		assumed_viewport_spx = got_spx
 		assumed_viewport_spy = got_spy
-		assumed_viewport_box = got_box
 
 /**
  * called to update our viewport zoom as necessary
@@ -46,9 +44,27 @@
  */
 /client/proc/update_viewport()
 	PRIVATE_PROC(TRUE)
-	/// reset view
-	view = world.view
-	///
+	/**
+	 * as per requested, the viewport will zoom to however much it needs to to
+	 * fill empty space
+	 *
+	 * and then expand the user's view as necessary
+	 */
+	// first set their map to not letterbox & stretch to fit because we are not using manual `view` adjustments
+	winset(src, SKIN_ID_GAME_MAP, "letterbox=false;zoom=0")
+	// then compute how much zoom on either side they can handle
+	var/list/what_we_want = decode_view_size(world.view)
+	var/pixel_per_x = assumed_viewport_spx / what_we_want[1]
+	var/pixel_per_y = assumed_viewport_spy / what_we_want[2]
+	if(pixel_per_x > pixel_per_y)
+		// max zoom for horizontal is bigger, so vertical will be cut off without compensating
+
+	else if(pixel_per_x < pixel_per_y)
+		// max zoom for vertical is bigger, so horizontal will be cut off without compensating
+	else
+		// user somehow has a perfectly 1:1 ratio screen for the size (??)
+		view = encode_view_size(what_we_want)
+	var/limited_by_horizontal = pixel_per_x < pixel_per_y
 	if(!isnull(GLOB.lock_client_view_x) && !isnull(GLOB.lock_client_view_y))
 		view = "[GLOB.lock_client_view_x]x[GLOB.lock_client_view_y]"
 		on_refit_viewsize(GLOB.lock_client_view_x, GLOB.lock_client_view_y, no_fit)
@@ -65,10 +81,6 @@
 		view = "[width]x[height]"
 		on_refit_viewsize(width, height, no_fit)
 		return
-	var/stretch_to_fit = assumed_viewport_zoom == 0
-	using_perspective.ensure_view_cached()
-	var/max_width = using_perspective.cached_view_width
-	var/max_height = using_perspective.cached_view_height
 	if(stretch_to_fit)
 		// option 1: they're stretching to fit
 		if(assumed_viewport_box)
@@ -99,6 +111,18 @@
 	on_refit_viewsize(desired_width, desired_height, no_fit)
 
 /**
+ * update viewport respecting locks
+ */
+/client/proc/request_viewport_update(no_fetch = FALSE)
+	if(viewport_rwlock)
+		return
+	viewport_rwlock = TRUE
+	if(!no_fetch)
+		fetch_viewport()
+	update_viewport()
+	viewport_rwlock = FALSE
+
+/**
  * called directly by the skin when resizing
  *
  * @params
@@ -114,7 +138,7 @@
 	assumed_viewport_spx = text2num(w)
 	assumed_viewport_spy = text2num(h)
 	// zoom
-	update_viewport()
+	request_viewport_update(TRUE)
 
 /client/verb/force_onresize_view_update()
 	set name = ".viewport_update"
@@ -124,4 +148,4 @@
 	if(viewport_rwlock)
 		send_chat(usr, SPAN_WARNING("Viewport is rwlocked; try again later."))
 		return
-	request_viewport_update()
+	request_viewport_update(FALSE)
