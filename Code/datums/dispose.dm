@@ -12,4 +12,3 @@
 	D.disposing = world.time
 	D.Destruct()
 	del(D)
-	return

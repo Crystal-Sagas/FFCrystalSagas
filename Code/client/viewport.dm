@@ -58,58 +58,19 @@
 	var/pixel_per_y = assumed_viewport_spy / what_we_want[2]
 	if(pixel_per_x > pixel_per_y)
 		// max zoom for horizontal is bigger, so vertical will be cut off without compensating
-
+		// vertical can stay put
+		// set horizontal
+		what_we_want[1] = assumed_viewport_spx / pixel_per_y
 	else if(pixel_per_x < pixel_per_y)
 		// max zoom for vertical is bigger, so horizontal will be cut off without compensating
+		// horizontal can stay put
+		// set vertical
+		what_we_want[2] = assumed_viewport_spy / pixel_per_x
 	else
 		// user somehow has a perfectly 1:1 ratio screen for the size (??)
-		view = encode_view_size(what_we_want)
-	#warn finish
-	var/limited_by_horizontal = pixel_per_x < pixel_per_y
-	if(!isnull(GLOB.lock_client_view_x) && !isnull(GLOB.lock_client_view_y))
-		view = "[GLOB.lock_client_view_x]x[GLOB.lock_client_view_y]"
-		on_refit_viewsize(GLOB.lock_client_view_x, GLOB.lock_client_view_y, no_fit)
-		return
-	if(using_temporary_viewsize)
-		view = "[temporary_viewsize_width]x[temporary_viewsize_height]"
-		on_refit_viewsize(temporary_viewsize_width, temporary_viewsize_height, no_fit)
-		return
-	var/widescreen = is_widescreen_enabled()
-	if(!widescreen)
-		// if not widescreen, we should just force to 15 x 15 and their augmented view
-		var/width = 15 + (using_perspective.augment_view_width * 2)
-		var/height = 15 + (using_perspective.augment_view_height * 2)
-		view = "[width]x[height]"
-		on_refit_viewsize(width, height, no_fit)
-		return
-	if(stretch_to_fit)
-		// option 1: they're stretching to fit
-		if(assumed_viewport_box)
-			// fit everything
-			view = "[max_width]x[max_height]"
-			on_refit_viewsize(max_width, max_height)
-			return
-		// option 2: they're stretching to fit the longest side
-		else
-			// todo: handle horizontally-wider view sizes
-			// for now we only care about horizontal fit
-			var/stretch_pixel_amount = assumed_viewport_spy / max_height
-			var/available_width = assumed_viewport_spx / stretch_pixel_amount
-			available_width = CEILING(available_width, 1)
-			available_width = clamp(available_width, GLOB.min_client_view_x, max_width)
-			view = "[available_width]x[max_height]"
-			on_refit_viewsize(available_width, max_height, no_fit)
-			return
-	// option 3: scale as necessary
-	var/pixels_per_tile = assumed_viewport_zoom * WORLD_ICON_SIZE
-	var/div_x = assumed_viewport_spx / pixels_per_tile
-	var/div_y = assumed_viewport_spy / pixels_per_tile
-	div_x = CEILING(div_x, 1)
-	div_y = CEILING(div_y, 1)
-	var/desired_width = clamp(div_x, GLOB.min_client_view_x, max_width)
-	var/desired_height = clamp(div_y, GLOB.min_client_view_y, max_height)
-	view = "[desired_width]x[desired_height]"
-	on_refit_viewsize(desired_width, desired_height, no_fit)
+		// do nothing
+	// set user view
+	view = encode_view_size(what_we_want)
 
 /**
  * update viewport respecting locks
