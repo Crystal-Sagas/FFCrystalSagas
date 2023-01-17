@@ -514,59 +514,59 @@ obj
 													if("Fire")
 														var/obj/perk/Abilities/BlackMagic/Flame/Firaja/fi=new
 														src.contents+=fi
-														src.wis+=2
-														src.wismod+=1
+														src.wis+=4
+														src.wismod+=2
 														src.cores+=1
-														src.mmp+=80
-														src.mp+=80
+														src.mmp+=250
+														src.mp+=250
 													if("Thunder")
 														var/obj/perk/Abilities/BlackMagic/Lightning/Thundaja/b=new
 														src.contents+=b
-														src.wis+=2
-														src.wismod+=1
+														src.wis+=4
+														src.wismod+=2
 														src.cores+=1
-														src.mmp+=80
-														src.mp+=80
+														src.mmp+=250
+														src.mp+=250
 													if("Water")
 														var/obj/perk/Abilities/BlackMagic/Hydro/Waterja/c=new
 														src.contents+=c
-														src.wis+=2
-														src.wismod+=1
+														src.wis+=4
+														src.wismod+=2
 														src.cores+=1
-														src.mmp+=80
-														src.mp+=80
+														src.mmp+=250
+														src.mp+=250
 													if("Earth")
 														var/obj/perk/Abilities/Geomancer/Earth/Stonaja/d=new
 														src.contents+=d
-														src.wis+=2
-														src.wismod+=1
+														src.wis+=4
+														src.wismod+=2
 														src.cores+=1
-														src.mmp+=80
-														src.mp+=80
+														src.mmp+=250
+														src.mp+=250
 													if("Wind")
 														var/obj/perk/Abilities/WhiteMagic/Wind/Aeroja/e=new
 														src.contents+=e
-														src.wis+=2
-														src.wismod+=1
+														src.wis+=4
+														src.wismod+=2
 														src.cores+=1
-														src.mmp+=80
-														src.mp+=80
+														src.mmp+=250
+														src.mp+=250
 													if("Bio")
 														var/obj/perk/Abilities/ArcaneMagic/Bios/Scourge/f=new
 														src.contents+=f
-														src.wis+=2
-														src.wismod+=1
+														src.wis+=4
+														src.wismod+=2
 														src.cores+=1
-														src.mmp+=80
-														src.mp+=80
+														src.mmp+=250
+														src.mp+=250
 													if("Flare")
 														var/obj/perk/Abilities/BlackMagic/Energy/Flare/g=new
 														src.contents+=g
-														src.wis+=2
-														src.wismod+=1
+														src.wis+=4
+														src.wismod+=2
 														src.cores+=1
-														src.mmp+=80
-														src.mp+=80
+														src.mmp+=250
+														src.mp+=250
 												del upgraderchoice
 									return
 					else
