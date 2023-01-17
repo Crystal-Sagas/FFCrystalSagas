@@ -1079,9 +1079,9 @@ atom
 						reward2=quest.Reward2
 						reward3=quest.Reward3
 						gilreward=quest.Gilreward
-						fate.icon_state=null
 						fate.occupied=0
 						fate.FATEID=null
+						fate.icon_state="inactive"
 						del quest
 			for(var/mob/m in party.members)
 				sleep(2)
