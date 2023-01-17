@@ -758,6 +758,21 @@ atom
 					dresult=doresult+dmod+skill.adddam+user.mdb+skill.adddam+abilitydamage-target.basedr
 				else
 					dresult=doresult+dmod+skill.adddam+user.pdb+skill.adddam+abilitydamage-target.basedr
+			if(skill.rank=="D")
+				aresult+=4
+				dresult+=10
+			if(skill.rank=="C")
+				aresult+=6
+				dresult+=15
+			if(skill.rank=="B")
+				aresult+=9
+				dresult+=20
+			if(skill.rank=="A")
+				aresult+=12
+				dresult+=30
+			if(skill.rank=="S")
+				aresult+=20
+				dresult+=40
 			Playeranimation(user,target,skill)
 			view(user) << output("<font color=#F8E959><b>[user]</font> has used [skill] to attack [target]!!","icout")
 			var/drainvalue=round(dresult*0.5)
