@@ -27,14 +27,15 @@ atom
 			summonobject.icon=summon.icon
 			var/obj/prop/Target/attack=new
 			var/obj/prop/Cast/Magic/cast=new
-			var/summonbonus=round(summon.mhp*0.3)
-			var/basedamage=rand(30,40)
+			var/summonbonus=round(summon.mhp*0.25)
+			var/basedamage=rand(70,80)
 			var/adddamage=summon.conmod+summon.strmod+summon.wismod+summon.chamod+summon.wismod+summon.intmod+summon.dexmod+summon.pab+summon.mab
 			var/damage=basedamage+summonbonus+adddamage
 			var/element=summon.resistance
 			var/summonpositionx=target.x+3
-			var/summoncost=round(summon.mhp*0.15)
+			var/summoncost=round(summon.mhp*0.5)
 			var/costtype="Mana"
+			var/tohit=range(1,20)+adddamage+user.mab+summon.mab
 			var/statuschance=rand(1,100)
 			if(user.mp<summoncost)
 				view(user)<<output("<b>[user]</b> has tried to Summon <b>[summon]</b> but has failed because they lack the MP, and so must rest!","icout")
@@ -56,7 +57,7 @@ atom
 			if(summon.companiontype=="Robot")
 				summoncost=0
 			if(target.weakness==element)
-				basedamage+=50
+				basedamage=round(basedamage*1.5)
 			view(12,user) << sound('Audio/Soundeffects/Castmagic.wav',channel=3)
 			if(element=="Fire")
 				attack.icon='Icons/Animation/Attack/Fire.dmi'
@@ -212,8 +213,12 @@ atom
 				element="General"
 			del attack
 			del summonobject
-			view(user)<<output("<b><font color=[user.textcolor]>[user]</b> has spent <b>[summoncost] [costtype]</b> to summon forth the power of <font color=[user.textcolor]><b>[summon] ; dealing <font color=#FA6815><b>[damage]</font> <b>[element]</b> damage to <b>[target]</b>!</b>!!</font>","icout")
-			target.hp-=damage
+			if(tohit>=target.baseac)
+				view(user)<<output("<b><font color=[user.textcolor]>[user]</b> has spent <b>[summoncost] [costtype]</b> to summon forth the power of <font color=[user.textcolor]><b>[summon] ; with <b>[tohit] to hit</b> versus <b>[target.baseac] AC</b>, dealing <font color=#FA6815><b>[damage]</font> <b>[element]</b> damage to <b>[target]</b>!</b>!!</font>","icout")
+				target.hp-=damage
+			else
+				view(user)<<output("<b><font color=[user.textcolor]>[user]</b> has spent <b>[summoncost] [costtype]</b> to summon forth the power of <font color=[user.textcolor]><b>[summon] ; but has missed, with a <b>[tohit]</b> to hit, against an AC of <b>[target.baseac]</b>.","icout")
+				target.hp-=0
 			if(element=="Time")
 				if(statuschance>=70)
 					AddStun(target)

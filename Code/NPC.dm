@@ -87,7 +87,7 @@ atom
 				return
 			var/range1=10
 			var/range2=35
-			var/classbonus=0
+			var/classbonus=15
 			if(spell.level==1)
 				classbonus+=10
 			if(spell.level==2)
@@ -101,11 +101,11 @@ atom
 			if(spell.level==6)
 				classbonus+=85
 			if(user.job=="White Mage" || user.subjob=="White Mage")
-				classbonus+=15
+				classbonus+=20
 			if(user.job=="Astrologian" || user.subjob=="Astrologian")
-				classbonus+=15
+				classbonus+=10
 			if(user.job=="Scholar" || user.subjob=="Scholar")
-				classbonus+=15
+				classbonus+=8
 			if(user.role=="Physical Support" || user.role=="Magical Support")
 				classbonus+=15
 			var/heal=rand(range1,range2)
@@ -447,7 +447,7 @@ atom
 					view(user) << output("<font color=[target.textcolor]><b>[target]</font> is a Geomancer, and takes half damage from elemental abilities!","icout")
 					dresult=round(dresult*0.5)
 			if(aresult>=target.ac)
-				view(user) << output("It was a hit!! <b>[user]</b> has dealt <b><font color=#FEA14F>[dresult]</b></font> damage to <b>[target]</b>!!","icout")
+				view(user) << output("<b>To hit: [aresult] vs <b>[target.ac]</b> | It was a hit!! <b>[user]</b> has dealt <b><font color=#FEA14F>[dresult]</b></font> damage to <b>[target]</b>!!","icout")
 				target.hp-=dresult
 				var/drainvalue=round(dresult*0.5)
 				if(skill.element=="Drain")
@@ -520,7 +520,7 @@ atom
 				ShowHPBar(target)
 			else
 				Evade(target)
-				view(user)<<output("It missed!","icout")
+				view(user)<<output("<b>To hit: [aresult] vs <b>[target.ac]</b> | It missed!","icout")
 			ShowHPBar(target)
 			ShowMPBar(target)
 			ShowSPBar(target)
@@ -649,7 +649,7 @@ atom
 						positiveturns3=0
 			view(user) << output("<font color=[user.textcolor]><b>[user]</font> has used <font color=[user.textcolor]><b>[wepchoice]<b></b></font> to attack <b>[target]</b>!!","icout")
 			if(aresult>=target.ac)
-				view(user) << output("It was a hit!! [user] has dealt [dresult] damage to [target]!!","icout")
+				view(user) << output("<b>To hit: [aresult] vs <b>[target.ac]</b> | It was a hit!! [user] has dealt [dresult] damage to [target]!!","icout")
 				target.hp-=dresult
 				if(target.hp<=0)
 					Death(target)
@@ -676,7 +676,7 @@ atom
 						target.overlays=null
 			else
 				Evade(target)
-				view(user)<<output("It missed!","icout")
+				view(user)<<output("<b>To hit: [aresult] vs <b>[target.ac]</b> | It missed!","icout")
 			ShowHPBar(target)
 			ShowMPBar(target)
 			ShowSPBar(target)
@@ -957,7 +957,7 @@ atom
 						positiveturns3=0
 
 			if(aresult>=target.ac)
-				view(user) << output("It was a hit!! [user] has dealt [dresult] damage to [target]!!","icout")
+				view(user) << output("<b>To hit: [aresult] vs <b>[target.ac]</b> | It was a hit!! [user] has dealt [dresult] damage to [target]!!","icout")
 				target.hp-=dresult
 				if(skill.element=="Drain")
 					view(user) <<output("<font color=#F8E959><b>[user]</font> has drained <b>[target]</b>  for <font color=#93F752>[drainvalue] HP!","icout")
@@ -1044,7 +1044,7 @@ atom
 					sleep(4)
 			else
 				Evade(target)
-				view(user)<<output("It missed!","icout")
+				view(user)<<output("<b>To hit: [aresult] vs <b>[target.ac]</b> It missed!","icout")
 			if(skill.costtype=="Stamina")
 				view(user) << output("[user] has drained [skill.mcost] SP!","icout")
 				user.sp-=skill.mcost
