@@ -889,9 +889,8 @@ obj
 				icon='Tech.dmi'
 				icon_state="FFE"
 				Del()
-					disposing = world.time
+					. = ..()
 					src.FFOff("Specific")
-					..()
 				verb/FFColor()
 					set src in oview(1)
 					set name="Field Color"
