@@ -758,78 +758,77 @@ var/weapontype
 obj
 	proc
 		AssignCraftinginfo(var/obj/recipes/a)
-			for(a)
-				if(a.name=="Bronze")
-					a.name="Bronze [a.weapontype]"
-					a.mat1="Bronze"
-					a.weptier="Bronze"
-					a.amount1=12
-				if(a.name=="Iron")
-					a.name="Iron [a.weapontype]"
-					a.mat1="Iron"
-					a.mat2="Bronze"
-					a.weptier="Iron"
-					a.amount1=8
-					a.amount2=12
-				if(a.name=="Steel")
-					a.name="Steel [a.weapontype]"
-					a.mat1="Steel"
-					a.mat2="Bronze"
-					a.mat3="Iron"
-					a.weptier="Steel"
-					a.amount1=8
-					a.amount2=12
-					a.amount3=6
-				if(a.name=="Mythril")
-					a.name="Mythril [a.weapontype]"
-					a.mat1="Mythril"
-					a.mat2="Bronze"
-					a.mat3="Iron"
-					a.mat4="Steel"
-					a.mat5="Esper Soul"
-					a.weptier="Mythril"
-					a.amount1=8
-					a.amount2=10
-					a.amount3=10
-					a.amount4=10
-					a.amount5=1
-				if(a.name=="Adamantine")
-					a.name="Mythic [a.weapontype]"
-					a.mat1="Adamantine"
-					a.mat2="Bronze"
-					a.mat3="Iron"
-					a.mat4="Steel"
-					a.mat5="Mythril"
-					a.mat6="Esper Soul"
-					a.mat7="Gold"
-					a.weptier="Adamantine"
-					a.amount1=8
-					a.amount2=12
-					a.amount3=12
-					a.amount4=12
-					a.amount5=6
-					a.amount6=2
-					a.amount7=10
-				if(a.name=="Orichalcum")
-					a.name="Legendary [a.weapontype]"
-					a.mat1="Orichalcum"
-					a.weptier="Orichalcum"
-					a.mat2="Bronze"
-					a.mat3="Iron"
-					a.mat4="Steel"
-					a.mat5="Mythril"
-					a.mat6="Adamantine"
-					a.mat7="Esper Soul"
-					a.mat8="Platinum"
-					a.amount1=10
-					a.amount1=8
-					a.amount2=20
-					a.amount3=20
-					a.amount4=20
-					a.amount5=8
-					a.amount6=8
-					a.amount7=3
-					a.amount8=5
+			if(a.name=="Bronze")
+				a.name="Bronze [a.weapontype]"
+				a.mat1="Bronze"
+				a.weptier="Bronze"
+				a.amount1=12
+			if(a.name=="Iron")
+				a.name="Iron [a.weapontype]"
+				a.mat1="Iron"
+				a.mat2="Bronze"
+				a.weptier="Iron"
+				a.amount1=8
+				a.amount2=12
+			if(a.name=="Steel")
+				a.name="Steel [a.weapontype]"
+				a.mat1="Steel"
+				a.mat2="Bronze"
+				a.mat3="Iron"
+				a.weptier="Steel"
+				a.amount1=8
+				a.amount2=12
+				a.amount3=6
+			if(a.name=="Mythril")
+				a.name="Mythril [a.weapontype]"
+				a.mat1="Mythril"
+				a.mat2="Bronze"
+				a.mat3="Iron"
+				a.mat4="Steel"
+				a.mat5="Esper Soul"
+				a.weptier="Mythril"
+				a.amount1=8
+				a.amount2=10
+				a.amount3=10
+				a.amount4=10
+				a.amount5=1
+			if(a.name=="Adamantine")
+				a.name="Mythic [a.weapontype]"
+				a.mat1="Adamantine"
+				a.mat2="Bronze"
+				a.mat3="Iron"
+				a.mat4="Steel"
+				a.mat5="Mythril"
+				a.mat6="Esper Soul"
+				a.mat7="Gold"
+				a.weptier="Adamantine"
+				a.amount1=8
+				a.amount2=12
+				a.amount3=12
+				a.amount4=12
+				a.amount5=6
+				a.amount6=2
+				a.amount7=10
+			if(a.name=="Orichalcum")
+				a.name="Legendary [a.weapontype]"
+				a.mat1="Orichalcum"
+				a.weptier="Orichalcum"
+				a.mat2="Bronze"
+				a.mat3="Iron"
+				a.mat4="Steel"
+				a.mat5="Mythril"
+				a.mat6="Adamantine"
+				a.mat7="Esper Soul"
+				a.mat8="Platinum"
+				a.amount1=10
+				a.amount1=8
+				a.amount2=20
+				a.amount3=20
+				a.amount4=20
+				a.amount5=8
+				a.amount6=8
+				a.amount7=3
+				a.amount8=5
 
 obj
 	proc
@@ -856,298 +855,295 @@ obj
 			var/mythriltier=4
 			var/adamantinetier=5
 			var/orichalcumtier=6
-			a.initialized=1
-			for(a)
-				if(a.weapontype=="Shuriken")
-					a.equiptype="1h"
-					a.desc="A set of Shuriken. These deal small amounts of damage, but for each attack action made with them, you may use a 'free action' - to spend 20 SP in order to perform an additional attack (up to once per turn). On a critical hit, a Shuriken inflicts Bleed. If a creature is bleeding, all Shuriken attacks gain +5 flat damage."
-					a.range="6 Tiles"
-					a.addhit=2
-					range1weapon=1
-					range2weapon=0.5
-					a.critrange=19
-					a.damsource="dex"
-				if(a.weapontype=="Throwing Knives")
-					a.equiptype="1h"
-					range1weapon=1
-					range2weapon=0.5
-					a.critrange=18
-					a.addhit=3
-					a.damsource="dex"
-					a.desc="A set of Throwing Knives, which deal piercing damage, have a reduced critical hit rate, +3 latent to hit bonus, and are ranged ;  for each attack action made with them, you may use a 'free action' - to spend 20 SP in order to perform an additional attack (up to once per turn)."
-					a.range="6 Tiles"
-				if(a.weapontype=="Longsword")
-					a.equiptype="1h"
-					a.addhit=1
-					range1weapon=1
-					range2weapon=2
-					a.damsource="str"
-					a.desc="A Longsword, broadly considered the most standard type of weapon. Due to its design, a Longsword wielder can choose when making an attack, to make a 'two handed' attack, if they have nothing in their other hand. Upon doing so, the attack deals 5 additional damage per metal tier. Using the Longsword in this way costs 20 SP."
-				if(a.weapontype=="Hammer")
-					a.equiptype="1h"
-					range1weapon=1
-					range2weapon=2
-					a.addhit=-2
-					a.damsource="str"
-					a.desc="A Hammer, which is not very accurate but does high damage. If a Hammer hits an opponent, the wielder may choose to apply a 2 tile Knockback in a direction of their choosing. If the target hits a wall or surface in doing so, they take 2d10 additional damage."
-				if(a.weapontype=="Axe")
-					a.equiptype="1h"
-					a.critrange=19
-					range1weapon=1
-					range2weapon=2
-					a.damsource="str"
-					a.desc="An Axe, which has a higher chance to critically hit than most other weapons. When an attack is made with an Axe, the wielder may choose to spend 20 SP in order to release a 3 tile line, that deals 10 true damage as an automatic hit to those it crosses, in the direction the attack is being made. This can only be procced once per turn, only on standard attacks, and ignores damage reduction."
-				if(a.weapontype=="Dagger")
-					a.equiptype="1h"
-					a.addhit=1
-					range1weapon=1
-					range2weapon=0.5
-					a.damsource="dex"
-					a.desc="A dagger, which has a knack for critically hitting, and has a latent +1 to hit bonus. On a critical hit, a Dagger ignores ALL damage reduction, and inflicts Weakness, but for 1 turn rather than its standard duration."
-					a.critrange=17
-				if(a.weapontype=="Whip")
-					a.equiptype="1h"
-					range1weapon=1
-					range2weapon=1
-					a.addhit=2
-					range2weapon=2
-					a.damsource="dex"
-					a.desc="A Whip, which is extremely accurate but does little damage. Whips have a latent +2 to hit, and if an opponent's DEX score is lower than the wielder's, Whip attacks gain +3 to hit."
-				if(a.weapontype=="Greatsword")
-					a.equiptype="2h"
-					a.addhit=1
-					range1weapon=1
-					range2weapon=2
-					a.damsource="str"
-					a.desc="A Greatsword, which must be wielded in two hands. While a Greatsword is wielded, the wielder gains +2 STR. In addition, their basic attacks target the center tile, and two tiles beside the tile in front of them."
-				if(a.weapontype=="Katana")
-					a.equiptype="2h"
-					range1weapon=1
-					range2weapon=1
-					a.damsource="str"
-					a.desc="A Katana, which ignores 3 static points of damage reduction, and 2 extra points per Metal Tier (2 at Bronze, 4 at Iron, 6 at Steel, 8 at Mythril, 10 at Adamantine, 12 at Orichalcum.)"
-				if(a.weapontype=="Spear")
-					a.equiptype="2h"
-					range1weapon=1
-					range2weapon=2
-					a.damsource="str"
-					a.desc="A spear, which has a Melee range of 2 tiles. Spears when wielded, allow the user to spend 30 SP on hit, to ignore up to 25 points of damage reduction as a free action, once per round."
-				if(a.weapontype=="Scythe")
-					a.equiptype="2h"
-					range1weapon=1
-					range2weapon=2
-					a.critrange=19
-					a.damsource="dex"
-					a.desc="A Scythe, which is extremely proficient in hacking and cleaving. Scythes inflict Bleed whenever they hit a target. If a target creature is afflicted with Bleed, a Scythe deals 2d8 additional damage on hit, up to once per round."
-				if(a.weapontype=="Bow")
-					a.equiptype="2h"
-					range1weapon=1
-					range2weapon=1
-					a.damsource="dex"
-					a.desc="A bow, which is useful for ranged attacks! Bows deal 5 additional damage per tile travelled (capping at 25), when they hit a target creature."
-				if(a.weapontype=="Focus Sword")
-					a.equiptype="1h"
-					range1weapon=1
-					range2weapon=1
-					a.damsource="dex"
-					a.desc="A Focus Sword, which when equipped allows the usage of a Focus Crystal alongside it. If wielded this way, the Focus Crystal may attack as a bonus action."
-				if(a.weapontype=="Focus Crystal")
-					a.equiptype="1h"
-					range1weapon=1
-					range2weapon=1
-					a.range="5 Tiles"
-					a.damsource="wis"
-					a.desc="A Focus Crystal, which can be wielded in one hand alongside a Focus Sword in order to cast magical blasts as a Bonus action. Deals Force damage. Grants +2 MAB and +5 MDB per metal tier."
-				if(a.weapontype=="Staff")
-					a.equiptype="2h"
-					range1weapon=1
-					range2weapon=2
-					a.range="5 Tiles"
-					a.damsource="wis"
-					a.desc="A Magical staff, which can be used for costless Magical attack rolls, which deal Force damage. A wielder of a Staff can spend 20 MP in order to createa 3x3 Area of Effect around the target of its attack, dealing 15 additional magical Force damage as an automatic hit to any creature in that range, once per turn, as a free action. Grants +2 MAB and +5 MDB per metal tier."
-				if(a.weapontype=="Tome")
-					a.equiptype="1h"
-					range1weapon=1
-					range2weapon=2
-					a.damsource="int"
-					a.range="5 Tiles"
-					a.desc="A Magical tome, which can be used for costless Magical attack rolls, which deal Force damage. The wielder of a Tome is capable of absoring MP equal to the damage its basic attack deals to a target creature, up to three times per turn. Grants +2 MAB and +5 MDB per metal tier."
-				if(a.weapontype=="Sword Spear")
-					a.equiptype="2h"
-					range1weapon=1
-					range2weapon=2
-					a.scaling=2
-					a.damsource="str"
-					a.desc="A sword with a relatively medium sized spear shaft affixed as the handle. It can be used as either a spear or a sword. Both Sword and Spear form require both hands to wield. Scales with Longsword | 2 tile Melee range | +2 extra damage per metal tier. 5 static DR penetration."
-				if(a.weapontype=="Thief Sword")
-					a.equiptype="1h"
-					range1weapon=1
-					range2weapon=1
-					a.damagescales=1
-					a.scaling=2.5
-					a.damsource="dex"
-					a.desc="Two large long-swords with rather long handles which connect at the base of the pommel to create a bo-staff like weapon, effectively allowing for dual wielding or a single long and large area-covering melee weapon. Using the weapon like this does not require dual wielding, and also allows you to perform an additional attack as a bonus action. Combined Form: Standard attacks are made as 3x3 AoEs. Dual Form: Perform an additional attack as a bonus action."
-				if(a.weapontype=="Scimitar")
-					a.equiptype="1h"
-					range1weapon=1
-					range2weapon=2
-					a.damagescales=1
-					a.scaling=2
-					a.damsource="str"
-					a.addhit=4
-					a.desc="A long, curved blade. Scimitars specialize in taking advantage of their unique shape to catch opponents off guard. Scimitar have a latent +4 to hit bonus, and if utilized alongside Sneak Attack, deal 15 unreducable true damage in addition to the attack's damage."
-				if(a.weapontype=="Bolt Rapier")
-					a.equiptype="1h"
-					range1weapon=1
-					range2weapon=2
-					a.damagescales=1
-					a.typing="physical"
-					a.scaling=2
-					a.damsource="dex"
-					a.critrange=19
-					a.desc="Basically a Rapier whose blade functions as a drill with an electrical current. Scales with Longsword, deals Thunder damage, and procs the Wet reaction for its attack rolls when applicable."
-				if(a.weapontype=="Whip Blade")
-					a.equiptype="1h"
-					range1weapon=2
-					range2weapon=0.5
-					a.addhit=0
-					a.damagescales=1
-					a.scaling=1
-					a.damsource="dex"
-					a.desc="A whip with segmented blades on it. The segments of the blade can detach and reattach, and be manipulated magically as separate razor-blades, for ranged attacks."
-					a.range="3 Tile range"
-				if(a.weapontype=="Akademia Cards")
-					a.equiptype="1h"
-					range1weapon=1
-					range2weapon=1
-					a.damsource="cha"
-					a.damagescales=1
-					a.scaling=3
-					a.desc="Very sharp cards which can be thrown as projectiles and summoned back magically. Whenever an Akademia Card attack roll deals damage to a creature, that creature also takes an additional 5 HP, MP, and SP damage. Grants +2 MAB and +5 MDB per metal tier."
-				if(a.weapontype=="Blitz Ball")
-					a.equiptype="2h"
-					range1weapon=2
-					range2weapon=1
-					a.damagescales=1
-					a.scaling=2
-					a.damsource="str"
-					a.desc="A ball that is made super-durable, for the purposes of the game 'Blitz-Ball' - but modified for combat as well. It can have modifications added to it in order for it to be more dangerous, such as razor-blades or other things. When it hits an opponent, it returns to the user automatically. In addition, when using a Blitzball, the wielder may spend 5 MP in order to cause it to bounce off of up to 5 target creatures within 6 tiles of the initial target at a time, applying the same to-hit and damage to them as initially rolled."
-					a.range="6 Tile range"
-				if(a.weapontype=="Gun Blade")
-					a.equiptype="1h"
-					range1weapon=1
-					range2weapon=2
-					a.damsource="str"
-					a.desc="Doesn't shoot bullets. The barrel actually has a propulsion system that the trigger activates, to enhance the velocity and force of a swing if timed correctly. Scales with Longsword, but can spend 5 Mana to gain either +1 to hit, or +15 additional damage for a single strike per turn by pulsing Mana through the barrel."
-				if(a.weapontype=="Bowsword")
-					a.equiptype="2h"
-					range1weapon=2
-					range2weapon=1
-					a.damagescales=1
-					a.scaling=2
-					a.damsource="dex"
-					a.desc="A bow composed of metal, with two blades on either side - and a thin center grip which can notch arrows, along with a metal wire string. It can be used for either Melee Attack Rolls, or Ranged Attack Rolls - and is compatible with both Ranged Abilities and Melee Abilities."
-				if(a.weapontype=="Bagangsaw")
-					a.equiptype="2h"
-					range1weapon=1
-					range2weapon=2
-					a.damagescales=1
-					a.scaling=3
-					a.damsource="str"
-					a.desc="A staff with a rotating saw-blade at the end. Slashing damage. 2 tile Melee range. On hit, the wielder of a Bagangsaw can spend 20 SP to 'jam it' into a target, immediately rooting them in place and causing them to take 30 automatic damage per turn, unless the target breaks free with a STR check on their turn. While a target is Bagangsaw Jammed, the wielder may not use any other attacks or abilities, and must remain stationary."
+			if(a.weapontype=="Shuriken")
+				a.equiptype="1h"
+				a.desc="A set of Shuriken. These deal small amounts of damage, but for each attack action made with them, you may use a 'free action' - to spend 20 SP in order to perform an additional attack (up to once per turn). On a critical hit, a Shuriken inflicts Bleed. If a creature is bleeding, all Shuriken attacks gain +5 flat damage."
+				a.range="6 Tiles"
+				a.addhit=2
+				range1weapon=1
+				range2weapon=0.5
+				a.critrange=19
+				a.damsource="dex"
+			if(a.weapontype=="Throwing Knives")
+				a.equiptype="1h"
+				range1weapon=1
+				range2weapon=0.5
+				a.critrange=18
+				a.addhit=3
+				a.damsource="dex"
+				a.desc="A set of Throwing Knives, which deal piercing damage, have a reduced critical hit rate, +3 latent to hit bonus, and are ranged ;  for each attack action made with them, you may use a 'free action' - to spend 20 SP in order to perform an additional attack (up to once per turn)."
+				a.range="6 Tiles"
+			if(a.weapontype=="Longsword")
+				a.equiptype="1h"
+				a.addhit=1
+				range1weapon=1
+				range2weapon=2
+				a.damsource="str"
+				a.desc="A Longsword, broadly considered the most standard type of weapon. Due to its design, a Longsword wielder can choose when making an attack, to make a 'two handed' attack, if they have nothing in their other hand. Upon doing so, the attack deals 5 additional damage per metal tier. Using the Longsword in this way costs 20 SP."
+			if(a.weapontype=="Hammer")
+				a.equiptype="1h"
+				range1weapon=1
+				range2weapon=2
+				a.addhit=-2
+				a.damsource="str"
+				a.desc="A Hammer, which is not very accurate but does high damage. If a Hammer hits an opponent, the wielder may choose to apply a 2 tile Knockback in a direction of their choosing. If the target hits a wall or surface in doing so, they take 2d10 additional damage."
+			if(a.weapontype=="Axe")
+				a.equiptype="1h"
+				a.critrange=19
+				range1weapon=1
+				range2weapon=2
+				a.damsource="str"
+				a.desc="An Axe, which has a higher chance to critically hit than most other weapons. When an attack is made with an Axe, the wielder may choose to spend 20 SP in order to release a 3 tile line, that deals 10 true damage as an automatic hit to those it crosses, in the direction the attack is being made. This can only be procced once per turn, only on standard attacks, and ignores damage reduction."
+			if(a.weapontype=="Dagger")
+				a.equiptype="1h"
+				a.addhit=1
+				range1weapon=1
+				range2weapon=0.5
+				a.damsource="dex"
+				a.desc="A dagger, which has a knack for critically hitting, and has a latent +1 to hit bonus. On a critical hit, a Dagger ignores ALL damage reduction, and inflicts Weakness, but for 1 turn rather than its standard duration."
+				a.critrange=17
+			if(a.weapontype=="Whip")
+				a.equiptype="1h"
+				range1weapon=1
+				range2weapon=1
+				a.addhit=2
+				range2weapon=2
+				a.damsource="dex"
+				a.desc="A Whip, which is extremely accurate but does little damage. Whips have a latent +2 to hit, and if an opponent's DEX score is lower than the wielder's, Whip attacks gain +3 to hit."
+			if(a.weapontype=="Greatsword")
+				a.equiptype="2h"
+				a.addhit=1
+				range1weapon=1
+				range2weapon=2
+				a.damsource="str"
+				a.desc="A Greatsword, which must be wielded in two hands. While a Greatsword is wielded, the wielder gains +2 STR. In addition, their basic attacks target the center tile, and two tiles beside the tile in front of them."
+			if(a.weapontype=="Katana")
+				a.equiptype="2h"
+				range1weapon=1
+				range2weapon=1
+				a.damsource="str"
+				a.desc="A Katana, which ignores 3 static points of damage reduction, and 2 extra points per Metal Tier (2 at Bronze, 4 at Iron, 6 at Steel, 8 at Mythril, 10 at Adamantine, 12 at Orichalcum.)"
+			if(a.weapontype=="Spear")
+				a.equiptype="2h"
+				range1weapon=1
+				range2weapon=2
+				a.damsource="str"
+				a.desc="A spear, which has a Melee range of 2 tiles. Spears when wielded, allow the user to spend 30 SP on hit, to ignore up to 25 points of damage reduction as a free action, once per round."
+			if(a.weapontype=="Scythe")
+				a.equiptype="2h"
+				range1weapon=1
+				range2weapon=2
+				a.critrange=19
+				a.damsource="dex"
+				a.desc="A Scythe, which is extremely proficient in hacking and cleaving. Scythes inflict Bleed whenever they hit a target. If a target creature is afflicted with Bleed, a Scythe deals 2d8 additional damage on hit, up to once per round."
+			if(a.weapontype=="Bow")
+				a.equiptype="2h"
+				range1weapon=1
+				range2weapon=1
+				a.damsource="dex"
+				a.desc="A bow, which is useful for ranged attacks! Bows deal 5 additional damage per tile travelled (capping at 25), when they hit a target creature."
+			if(a.weapontype=="Focus Sword")
+				a.equiptype="1h"
+				range1weapon=1
+				range2weapon=1
+				a.damsource="dex"
+				a.desc="A Focus Sword, which when equipped allows the usage of a Focus Crystal alongside it. If wielded this way, the Focus Crystal may attack as a bonus action."
+			if(a.weapontype=="Focus Crystal")
+				a.equiptype="1h"
+				range1weapon=1
+				range2weapon=1
+				a.range="5 Tiles"
+				a.damsource="wis"
+				a.desc="A Focus Crystal, which can be wielded in one hand alongside a Focus Sword in order to cast magical blasts as a Bonus action. Deals Force damage. Grants +2 MAB and +5 MDB per metal tier."
+			if(a.weapontype=="Staff")
+				a.equiptype="2h"
+				range1weapon=1
+				range2weapon=2
+				a.range="5 Tiles"
+				a.damsource="wis"
+				a.desc="A Magical staff, which can be used for costless Magical attack rolls, which deal Force damage. A wielder of a Staff can spend 20 MP in order to createa 3x3 Area of Effect around the target of its attack, dealing 15 additional magical Force damage as an automatic hit to any creature in that range, once per turn, as a free action. Grants +2 MAB and +5 MDB per metal tier."
+			if(a.weapontype=="Tome")
+				a.equiptype="1h"
+				range1weapon=1
+				range2weapon=2
+				a.damsource="int"
+				a.range="5 Tiles"
+				a.desc="A Magical tome, which can be used for costless Magical attack rolls, which deal Force damage. The wielder of a Tome is capable of absoring MP equal to the damage its basic attack deals to a target creature, up to three times per turn. Grants +2 MAB and +5 MDB per metal tier."
+			if(a.weapontype=="Sword Spear")
+				a.equiptype="2h"
+				range1weapon=1
+				range2weapon=2
+				a.scaling=2
+				a.damsource="str"
+				a.desc="A sword with a relatively medium sized spear shaft affixed as the handle. It can be used as either a spear or a sword. Both Sword and Spear form require both hands to wield. Scales with Longsword | 2 tile Melee range | +2 extra damage per metal tier. 5 static DR penetration."
+			if(a.weapontype=="Thief Sword")
+				a.equiptype="1h"
+				range1weapon=1
+				range2weapon=1
+				a.damagescales=1
+				a.scaling=2.5
+				a.damsource="dex"
+				a.desc="Two large long-swords with rather long handles which connect at the base of the pommel to create a bo-staff like weapon, effectively allowing for dual wielding or a single long and large area-covering melee weapon. Using the weapon like this does not require dual wielding, and also allows you to perform an additional attack as a bonus action. Combined Form: Standard attacks are made as 3x3 AoEs. Dual Form: Perform an additional attack as a bonus action."
+			if(a.weapontype=="Scimitar")
+				a.equiptype="1h"
+				range1weapon=1
+				range2weapon=2
+				a.damagescales=1
+				a.scaling=2
+				a.damsource="str"
+				a.addhit=4
+				a.desc="A long, curved blade. Scimitars specialize in taking advantage of their unique shape to catch opponents off guard. Scimitar have a latent +4 to hit bonus, and if utilized alongside Sneak Attack, deal 15 unreducable true damage in addition to the attack's damage."
+			if(a.weapontype=="Bolt Rapier")
+				a.equiptype="1h"
+				range1weapon=1
+				range2weapon=2
+				a.damagescales=1
+				a.typing="physical"
+				a.scaling=2
+				a.damsource="dex"
+				a.critrange=19
+				a.desc="Basically a Rapier whose blade functions as a drill with an electrical current. Scales with Longsword, deals Thunder damage, and procs the Wet reaction for its attack rolls when applicable."
+			if(a.weapontype=="Whip Blade")
+				a.equiptype="1h"
+				range1weapon=2
+				range2weapon=0.5
+				a.addhit=0
+				a.damagescales=1
+				a.scaling=1
+				a.damsource="dex"
+				a.desc="A whip with segmented blades on it. The segments of the blade can detach and reattach, and be manipulated magically as separate razor-blades, for ranged attacks."
+				a.range="3 Tile range"
+			if(a.weapontype=="Akademia Cards")
+				a.equiptype="1h"
+				range1weapon=1
+				range2weapon=1
+				a.damsource="cha"
+				a.damagescales=1
+				a.scaling=3
+				a.desc="Very sharp cards which can be thrown as projectiles and summoned back magically. Whenever an Akademia Card attack roll deals damage to a creature, that creature also takes an additional 5 HP, MP, and SP damage. Grants +2 MAB and +5 MDB per metal tier."
+			if(a.weapontype=="Blitz Ball")
+				a.equiptype="2h"
+				range1weapon=2
+				range2weapon=1
+				a.damagescales=1
+				a.scaling=2
+				a.damsource="str"
+				a.desc="A ball that is made super-durable, for the purposes of the game 'Blitz-Ball' - but modified for combat as well. It can have modifications added to it in order for it to be more dangerous, such as razor-blades or other things. When it hits an opponent, it returns to the user automatically. In addition, when using a Blitzball, the wielder may spend 5 MP in order to cause it to bounce off of up to 5 target creatures within 6 tiles of the initial target at a time, applying the same to-hit and damage to them as initially rolled."
+				a.range="6 Tile range"
+			if(a.weapontype=="Gun Blade")
+				a.equiptype="1h"
+				range1weapon=1
+				range2weapon=2
+				a.damsource="str"
+				a.desc="Doesn't shoot bullets. The barrel actually has a propulsion system that the trigger activates, to enhance the velocity and force of a swing if timed correctly. Scales with Longsword, but can spend 5 Mana to gain either +1 to hit, or +15 additional damage for a single strike per turn by pulsing Mana through the barrel."
+			if(a.weapontype=="Bowsword")
+				a.equiptype="2h"
+				range1weapon=2
+				range2weapon=1
+				a.damagescales=1
+				a.scaling=2
+				a.damsource="dex"
+				a.desc="A bow composed of metal, with two blades on either side - and a thin center grip which can notch arrows, along with a metal wire string. It can be used for either Melee Attack Rolls, or Ranged Attack Rolls - and is compatible with both Ranged Abilities and Melee Abilities."
+			if(a.weapontype=="Bagangsaw")
+				a.equiptype="2h"
+				range1weapon=1
+				range2weapon=2
+				a.damagescales=1
+				a.scaling=3
+				a.damsource="str"
+				a.desc="A staff with a rotating saw-blade at the end. Slashing damage. 2 tile Melee range. On hit, the wielder of a Bagangsaw can spend 20 SP to 'jam it' into a target, immediately rooting them in place and causing them to take 30 automatic damage per turn, unless the target breaks free with a STR check on their turn. While a target is Bagangsaw Jammed, the wielder may not use any other attacks or abilities, and must remain stationary."
+			if(a.weapontype=="Buster Sword")
+				a.equiptype="2h"
+				range1weapon=2
+				range2weapon=2
+				a.damagescales=1
+				a.scaling=2
+				a.damsource="str"
+				a.desc="A giant sword with so much length and thickness that every swing is devastating. Takes a very particular type of training as well as 16 strength to wield. +2 AC when wielded."
+			if(a.weapontype=="Morphing Blade")
+				a.equiptype="2h"
+				range1weapon=2
+				range2weapon=2
+				a.damagescales=1
+				a.scaling=2
+				a.damsource="str"
+				a.desc="A Morphing Blade, transfigured into Greatsword mode. Gains +1 to hit. On the turn that a wielder of a Morphing Blade morphs their blade to a different type, the weapon gains +15 additional damage, and +4 to hit. Doing so is a bonus action."
+			if(a.weapontype=="Gun Arm")
+				a.equiptype="1h"
+				range1weapon=1
+				range2weapon=2
+				a.damagescales=1
+				a.scaling=1
+				a.damsource="dex"
+				a.adddam=5
+				a.desc="A semi-automatic gun that is attached in place of your hand -- can be multiple different types of attachments such as rocket fists, hydraulic fists, a drill, grenade launcher, cannon ball launcher, etc. When a Gun Arm deals damage to a target creature, the wielder may spend 20 SP to release up to 4 sets of 10 damage, which are seperately reducable via damage reduction, as a 'barrage'."
+			if(a.weapontype=="Magitek Pistol")
+				range1weapon=1
+				a.equiptype="1h"
+				range2weapon=1
+				a.addhit=1
+				a.scaling=2
+				a.damagescales=1
+				a.damsource="dex"
+				a.desc="A Magitek Pistol, deals Force damage. When a target is dealt damage by a Magitek Pistol, they are inflicted with Burn, Poison, or Wet ; of the user's choice."
+				a.range="6 Tiles"
+			if(a.weapontype=="Magitek Rifle")
+				a.equiptype="2h"
+				range1weapon=1
+				range2weapon=1
+				a.addhit=2
+				a.damagescales=1
+				a.scaling=3
+				a.damsource="dex"
+				a.range="6 Tiles"
+				a.desc="A Magitek Rifle, deals Force damage. 2H. When a target is dealt damage by a Magitek Rifle, they are knocked back 1 tile, and must roll a Fortitude saving throw (DC 10) or be knocked prone."
+			if(a.weptier=="Bronze")
+				range1true=range1bronze*range1weapon
+				range2true=range2bronze*range2weapon
+				a.range1=range1true
+				a.range2=range2true
+			if(a.weptier=="Iron")
+				range1true=range1iron*range1weapon
+				range2true=range2iron*range2weapon
+				a.range1=range1true
+				a.range2=range2true
+			if(a.weptier=="Steel")
+				range1true=range1steel*range1weapon
+				range2true=range2steel*range2weapon
+				a.range1=range1true
+				a.range2=range2true
+			if(a.weptier=="Mythril")
+				range1true=range1mythril*range1weapon
+				range2true=range2mythril*range2weapon
+				a.range1=range1true
+				a.range2=range2true
+			if(a.weptier=="Adamantine")
+				range1true=range1adamantine*range1weapon
+				range2true=range2adamantine*range2weapon
+				a.range1=range1true
+				a.range2=range2true
+			if(a.weptier=="Orichalcum")
+				range1true=range1orichalcum*range1weapon
+				range2true=range2orichalcum*range2weapon
+				a.range1=range1true
+				a.range2=range2true
 				if(a.weapontype=="Buster Sword")
-					a.equiptype="2h"
-					range1weapon=2
-					range2weapon=2
-					a.damagescales=1
-					a.scaling=2
-					a.damsource="str"
-					a.desc="A giant sword with so much length and thickness that every swing is devastating. Takes a very particular type of training as well as 16 strength to wield. +2 AC when wielded."
-				if(a.weapontype=="Morphing Blade")
-					a.equiptype="2h"
-					range1weapon=2
-					range2weapon=2
-					a.damagescales=1
-					a.scaling=2
-					a.damsource="str"
-					a.desc="A Morphing Blade, transfigured into Greatsword mode. Gains +1 to hit. On the turn that a wielder of a Morphing Blade morphs their blade to a different type, the weapon gains +15 additional damage, and +4 to hit. Doing so is a bonus action."
-				if(a.weapontype=="Gun Arm")
-					a.equiptype="1h"
-					range1weapon=1
-					range2weapon=2
-					a.damagescales=1
-					a.scaling=1
-					a.damsource="dex"
-					a.adddam=5
-					a.desc="A semi-automatic gun that is attached in place of your hand -- can be multiple different types of attachments such as rocket fists, hydraulic fists, a drill, grenade launcher, cannon ball launcher, etc. When a Gun Arm deals damage to a target creature, the wielder may spend 20 SP to release up to 4 sets of 10 damage, which are seperately reducable via damage reduction, as a 'barrage'."
-				if(a.weapontype=="Magitek Pistol")
-					range1weapon=1
-					a.equiptype="1h"
-					range2weapon=1
-					a.addhit=1
-					a.scaling=2
-					a.damagescales=1
-					a.damsource="dex"
-					a.desc="A Magitek Pistol, deals Force damage. When a target is dealt damage by a Magitek Pistol, they are inflicted with Burn, Poison, or Wet ; of the user's choice."
-					a.range="6 Tiles"
-				if(a.weapontype=="Magitek Rifle")
-					a.equiptype="2h"
-					range1weapon=1
-					range2weapon=1
-					a.addhit=2
-					a.damagescales=1
-					a.scaling=3
-					a.damsource="dex"
-					a.range="6 Tiles"
-					a.desc="A Magitek Rifle, deals Force damage. 2H. When a target is dealt damage by a Magitek Rifle, they are knocked back 1 tile, and must roll a Fortitude saving throw (DC 10) or be knocked prone."
+					a.range2+=20
+				if(a.weapontype=="Spear")
+					a.range2+=40
+				if(a.weapontype=="Bagangsaw")
+					a.range2+=40
+			if(a.damagescales==1)
 				if(a.weptier=="Bronze")
-					range1true=range1bronze*range1weapon
-					range2true=range2bronze*range2weapon
-					a.range1=range1true
-					a.range2=range2true
+					a.adddam=bronzetier*a.scaling
 				if(a.weptier=="Iron")
-					range1true=range1iron*range1weapon
-					range2true=range2iron*range2weapon
-					a.range1=range1true
-					a.range2=range2true
+					a.adddam=irontier*a.scaling
 				if(a.weptier=="Steel")
-					range1true=range1steel*range1weapon
-					range2true=range2steel*range2weapon
-					a.range1=range1true
-					a.range2=range2true
+					a.adddam=steeltier*a.scaling
 				if(a.weptier=="Mythril")
-					range1true=range1mythril*range1weapon
-					range2true=range2mythril*range2weapon
-					a.range1=range1true
-					a.range2=range2true
+					a.adddam=mythriltier*a.scaling
 				if(a.weptier=="Adamantine")
-					range1true=range1adamantine*range1weapon
-					range2true=range2adamantine*range2weapon
-					a.range1=range1true
-					a.range2=range2true
+					a.adddam=adamantinetier*a.scaling
 				if(a.weptier=="Orichalcum")
-					range1true=range1orichalcum*range1weapon
-					range2true=range2orichalcum*range2weapon
-					a.range1=range1true
-					a.range2=range2true
-					if(a.weapontype=="Buster Sword")
-						a.range2+=20
-					if(a.weapontype=="Spear")
-						a.range2+=40
-					if(a.weapontype=="Bagangsaw")
-						a.range2+=40
-				if(a.damagescales==1)
-					if(a.weptier=="Bronze")
-						a.adddam=bronzetier*a.scaling
-					if(a.weptier=="Iron")
-						a.adddam=irontier*a.scaling
-					if(a.weptier=="Steel")
-						a.adddam=steeltier*a.scaling
-					if(a.weptier=="Mythril")
-						a.adddam=mythriltier*a.scaling
-					if(a.weptier=="Adamantine")
-						a.adddam=adamantinetier*a.scaling
-					if(a.weptier=="Orichalcum")
-						a.adddam=orichalcumtier*a.scaling
-
-
+					a.adddam=orichalcumtier*a.scaling
+			a.initialized=1
