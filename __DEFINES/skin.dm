@@ -7,4 +7,3 @@
 #define MAX_VIEWPORT_WIDTH 45
 /// max view in y (tiles, not radius)
 #define MAX_VIEWPORT_HEIGHT 45
-

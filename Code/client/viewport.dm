@@ -72,6 +72,7 @@
 		// set vertical
 		what_we_want[2] = assumed_viewport_spy / pixel_per_x
 	else
+		pass()
 		// user somehow has a perfectly 1:1 ratio screen for the size (??)
 		// do nothing
 	// clamp
