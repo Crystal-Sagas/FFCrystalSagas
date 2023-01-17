@@ -1072,17 +1072,16 @@ atom
 			view(20,fate) << sound(null,channel=1)
 			view(20,fate) << sound('Fanfare.wav',channel=1)
 			sleep(22)
-			for(fate)
-				for(var/obj/FATEs/quest in world)
-					if("[quest.FATEID]"=="[party.FATEID]")
-						reward1=quest.Reward1
-						reward2=quest.Reward2
-						reward3=quest.Reward3
-						gilreward=quest.Gilreward
-						fate.occupied=0
-						fate.FATEID=null
-						fate.icon_state="inactive"
-						del quest
+			for(var/obj/FATEs/quest in world)
+				if("[quest.FATEID]"=="[party.FATEID]")
+					reward1=quest.Reward1
+					reward2=quest.Reward2
+					reward3=quest.Reward3
+					gilreward=quest.Gilreward
+					del quest
+			fate.occupied=0
+			fate.FATEID=null
+			fate.icon_state="inactive"
 			for(var/mob/m in party.members)
 				sleep(2)
 				m.bposition=null
@@ -1114,13 +1113,12 @@ atom
 		Defeat(var/obj/Party/party,var/obj/FATECrystal/fate)
 			view(20,fate) << sound(null,channel=1)
 			sleep(4)
-			for(fate)
-				for(var/obj/FATEs/quest in world)
-					if(quest.FATEID==fate.FATEID)
-						fate.icon_state=null
-						fate.occupied=0
-						fate.FATEID=null
-						del quest
+			for(var/obj/FATEs/quest in world)
+				if(quest.FATEID==fate.FATEID)
+					del quest
+			fate.occupied=0
+			fate.FATEID=null
+			fate.icon_state=null
 			for(var/obj/prop/a in view(40))
 				del a
 			for(var/mob/m in party.members)
