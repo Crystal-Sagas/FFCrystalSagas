@@ -84,13 +84,17 @@
 #include "Code\Yearsystem.dm"
 #include "Code\_HELPERS\_core.dm"
 #include "Code\_HELPERS\view.dm"
+#include "Code\admin\admin.dm"
 #include "Code\client\chat.dm"
 #include "Code\client\client.dm"
 #include "Code\client\viewport.dm"
+#include "Code\datums\browser.dm"
 #include "Code\datums\datum.dm"
 #include "Code\datums\dispose.dm"
 #include "Code\DiscordWebHook\DiscordWebhook.dm"
 #include "Code\DiscordWebHook\HttpPost.dm"
 #include "Code\DiscordWebHook\KeyInfo.dm"
+#include "Code\world\error.dm"
+#include "Code\world\error_viewer.dm"
 // END_INCLUDE
 
