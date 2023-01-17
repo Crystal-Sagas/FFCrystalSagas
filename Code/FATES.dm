@@ -298,7 +298,7 @@ obj
 		icon='Icons/Artifact.png'
 		Click()
 			for(var/obj/Party/c in world)
-				if(usr.partyID==c.partyID)
+				if("[usr.partyID]"=="[c.partyID]")
 					for(var/obj/FATECrystal/b in world)
 						if(b.FATEID==c.FATEID)
 							view(usr)<<output("You've found the Artifact! Mog will return it to the researchers! (<b>FATE</b> complete!!)","icout")
@@ -318,7 +318,7 @@ obj
 		icon='Icons/Client.png'
 		Click()
 			for(var/obj/Party/c in world)
-				if(usr.partyID==c.partyID)
+				if("[usr.partyID]"=="[c.partyID]")
 					for(var/obj/FATECrystal/b in world)
 						if(b.FATEID==c.FATEID)
 							view(usr)<<output("Client: Thank you for the package, here's your pay. (<b>FATE</b> complete!!)","icout")

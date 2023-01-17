@@ -35,7 +35,8 @@ atom
 			var/summonpositionx=target.x+3
 			var/summoncost=round(summon.mhp*0.5)
 			var/costtype="Mana"
-			var/tohit=range(1,20)+adddamage+user.mab+summon.mab
+			var/power=rand(1,20)
+			var/tohit=power+adddamage+user.mab+summon.mab
 			var/statuschance=rand(1,100)
 			if(user.mp<summoncost)
 				view(user)<<output("<b>[user]</b> has tried to Summon <b>[summon]</b> but has failed because they lack the MP, and so must rest!","icout")
@@ -213,12 +214,12 @@ atom
 				element="General"
 			del attack
 			del summonobject
+			view(user)<<output("To hit: <b><font color=[user.textcolor]>[tohit]</b> versus <b>[target.baseac]</b> AC <b>([target.name])</b>","icout")
 			if(tohit>=target.baseac)
 				view(user)<<output("<b><font color=[user.textcolor]>[user]</b> has spent <b>[summoncost] [costtype]</b> to summon forth the power of <font color=[user.textcolor]><b>[summon] ; with <b>[tohit] to hit</b> versus <b>[target.baseac] AC</b>, dealing <font color=#FA6815><b>[damage]</font> <b>[element]</b> damage to <b>[target]</b>!</b>!!</font>","icout")
 				target.hp-=damage
-			else
+			if(tohit<target.baseac)
 				view(user)<<output("<b><font color=[user.textcolor]>[user]</b> has spent <b>[summoncost] [costtype]</b> to summon forth the power of <font color=[user.textcolor]><b>[summon] ; but has missed, with a <b>[tohit]</b> to hit, against an AC of <b>[target.baseac]</b>.","icout")
-				target.hp-=0
 			if(element=="Time")
 				if(statuschance>=70)
 					AddStun(target)

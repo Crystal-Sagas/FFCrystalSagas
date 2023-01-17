@@ -2190,14 +2190,33 @@ proc
 							if("No")
 								goto redostuff
 	Subjobint(var/mob/m)
-		var/list/jobs = list("Mystic Knight","Pirate","Gladiator","Astrologian","Merchant","Viking","Bard","Dancer","Black Mage","White Mage","Red Mage","Blue Mage","Ranger","Monk","Beast Master","Samurai","Spellblade","Rogue","Paladin","Knight","Dark Knight","Dragoon","Machinist","Summoner","Chemist","Geomancer")
+		var/list/jobs = list("Mystic Knight","Pirate","Gladiator","Astrologian","Viking","Bard","Dancer","Black Mage","White Mage","Red Mage","Blue Mage","Ranger","Monk","Beast Master","Samurai","Spellblade","Rogue","Paladin","Knight","Dark Knight","Dragoon","Machinist","Summoner","Chemist","Geomancer")
 		if(Oracle.Find(m.key))
 			jobs+="Oracle"
 		if(Timemage.Find(m.key))
 			jobs+="Time Mage"
 		jobs-=m.job
-		var/jobchoice = input(m,"What job kupo?") as anything in jobs
 		m.subjobcap=2
+		if(m.job=="Gladiator")
+			jobs-="Mystic Knight"
+			jobs-="Samurai"
+			jobs-="Dark Knight"
+			jobs-="Knight"
+			jobs-="Paladin"
+			jobs-="Viking"
+		if(m.job=="Mystic Knight")
+			jobs-="Gladiator"
+		if(m.job=="Samurai")
+			jobs-="Gladiator"
+		if(m.job=="Dark Knight")
+			jobs-="Gladiator"
+		if(m.job=="Knight")
+			jobs-="Gladiator"
+		if(m.job=="Paladin")
+			jobs-="Gladiator"
+		if(m.job=="Viking")
+			jobs-="Gladiator"
+		var/jobchoice = input(m,"What job kupo?") as anything in jobs
 		switch(jobchoice)
 			if("Pirate")
 				m.subjob="Pirate"
