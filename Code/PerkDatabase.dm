@@ -815,19 +815,19 @@ obj
 										var/materia=input(usr,"Choose a type of Materia to meld. The Materia Melded will be random within that set.") as anything in matchoice
 										switch(materia)
 											if("Green Materia")
-												a.amount-=1
+												a.amount-=5
 												RandomGreenMateria(usr)
 											if("Blue Materia")
-												a.amount-=1
+												a.amount-=5
 												RandomBlueMateria(usr)
 											if("Yellow Materia")
-												a.amount-=1
+												a.amount-=5
 												RandomYellowMateria(usr)
 											if("Purple Materia")
-												a.amount-=1
+												a.amount-=5
 												RandomPurpleMateria(usr)
 											if("Link Materia")
-												a.amount-=1
+												a.amount-=5
 												var/obj/item/Materia/PassiveMateria/c=new
 												usr.contents+=c
 		Gathering
