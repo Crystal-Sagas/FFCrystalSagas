@@ -25,10 +25,15 @@
 	var/got_spx
 	var/got_spy
 	if(length(split) == 2)
-		got_spx = text2num(split[1]) || (WORLD_ICON_SIZE * GLOB.game_view_x)
-		got_spy = text2num(split[2]) || (WORLD_ICON_SIZE * GLOB.game_view_y)
-	else
+		got_spx = text2num(split[1])
+		got_spy = text2num(split[2])
+	if(!isnum(got_spx) || !isnum(got_spy))
 		stack_trace("fetch_viewport failed to get spx/spy")
+		var/list/world_view = decode_view_size(world.view)
+		got_spx = (WORLD_ICON_SIZE * world_view[1])
+		got_spy = (WORLD_ICON_SIZE * world_view[2])
+	else if(got_spx <= 200 || got_spy <= 200)
+		// if it's too small don't bother
 		var/list/world_view = decode_view_size(world.view)
 		got_spx = (WORLD_ICON_SIZE * world_view[1])
 		got_spy = (WORLD_ICON_SIZE * world_view[2])
@@ -69,8 +74,11 @@
 	else
 		// user somehow has a perfectly 1:1 ratio screen for the size (??)
 		// do nothing
+	// clamp
+	what_we_want[1] = min(what_we_want[1], MAX_VIEWPORT_WIDTH)
+	what_we_want[2] = min(what_we_want[2], MAX_VIEWPORT_HEIGHT)
 	// set user view
-	view = encode_view_size(what_we_want)
+	view = encode_view_size(what_we_want[1], what_we_want[2])
 
 /**
  * update viewport respecting locks
@@ -108,6 +116,6 @@
 	set category = "Debug"
 
 	if(viewport_rwlock)
-		send_chat(usr, SPAN_WARNING("Viewport is rwlocked; try again later."))
+		send_chat(usr, "Viewport is rwlocked; try again later.")
 		return
 	request_viewport_update(FALSE)

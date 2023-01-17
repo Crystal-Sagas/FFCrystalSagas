@@ -275,7 +275,6 @@ mob
 		Load()
 			if(fexists("Save/[src.ckey]"))
 				src<<sound(null)
-				usr.client.InitView()
 				sleep()
 				src<< 'Audio/Cursor Ready.ogg'
 				var/savefile/F=new("Save/[src.ckey]")
@@ -413,7 +412,6 @@ mob
 		E.owner = src.ckey
 		src.client.eye = E
 		src.client.perspective = EYE_PERSPECTIVE
-		src.client.InitView()
 		var/image/I = image('PNG/FFTCSlogo2.png',E)
 		var/obj/PlayGame/G = new /obj/PlayGame
 		var/obj/Load/L = new /obj/Load
