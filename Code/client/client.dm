@@ -22,7 +22,7 @@ GLOBAL_LIST_EMPTY(clients)
 	//? Admin
 	// TODO: remove when proper admin system
 	/// for now, hardcode keys with profiler access
-	var/static/list/profiler_access = list(
+	var/static/list/debug_access = list(
 		"neogeo123",
 		"maliciousdelicious",
 		"silicons",
@@ -33,7 +33,7 @@ GLOBAL_LIST_EMPTY(clients)
 
 /client/New()
 	// grant profiler access; world/Reboot is patched to not allow rebooting with app admin
-	if((ckey in profiler_access) || is_localhost())
+	if((ckey in debug_access) || is_localhost())
 		world.SetConfig("APP/admin", ckey, "role=admin")
 	// register global
 	global.client_lookup[ckey] = src
