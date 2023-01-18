@@ -33,29 +33,29 @@ mob
 		if(istype(A,/obj/Special/Teleporter)&&!(istype(A, /obj/Special/SpecialTele)))
 			var/obj/Special/Teleporter/_tp=A
 			if(A.teltype=="mapY")
-				src.loc=locate(_tp.gotoX,src.y,_tp.gotoZ)
+				transit_move(locate(_tp.gotoX,src.y,_tp.gotoZ))
 				return
 			if(A.teltype=="mapX")
-				src.loc=locate(src.x,_tp.gotoY,_tp.gotoZ)
+				transit_move(locate(src.x,_tp.gotoY,_tp.gotoZ))
 				return
 			if(A.teltype=="normal")
-				src.loc=locate(_tp.gotoX,_tp.gotoY,_tp.gotoZ)
+				transit_move(locate(_tp.gotoX,_tp.gotoY,_tp.gotoZ))
 				return
 			if(A.teltype=="area")
-				src.loc=locate(_tp.gotoX,_tp.gotoY,_tp.gotoZ)
+				transit_move(locate(_tp.gotoX,_tp.gotoY,_tp.gotoZ))
 				return
 obj
 	Bump(obj/Special/A, turf/Water/B)
 		if(istype(A,/obj/Special/Teleporter)&&!(istype(A, /obj/Special/SpecialTele)))
 			var/obj/Special/Teleporter/_tp=A
 			if(A.teltype=="mapY")
-				src.loc=locate(_tp.gotoX,src.y,_tp.gotoZ)
+				transit_move(locate(_tp.gotoX,src.y,_tp.gotoZ))
 				return
 			if(A.teltype=="mapX")
-				src.loc=locate(src.x,_tp.gotoY,_tp.gotoZ)
+				transit_move(locate(src.x,_tp.gotoY,_tp.gotoZ))
 				return
 			if(A.teltype=="area")
-				src.loc=locate(_tp.gotoX,_tp.gotoY,_tp.gotoZ)
+				transit_move(locate(_tp.gotoX,_tp.gotoY,_tp.gotoZ))
 				return
 
 obj
