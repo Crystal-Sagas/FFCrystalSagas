@@ -1,9 +1,9 @@
 
 /mob/verb/follow_verb(mob/M as mob in oview(2))
-    set name = "Follow"
-    set desc = "Follow someone"
-    set category = "IC"
-    set src = usr
+	set name = "Follow"
+	set desc = "Follow someone"
+	set category = "IC"
+	set src = usr
 
 	start_following(M)
 

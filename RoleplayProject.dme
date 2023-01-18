@@ -122,6 +122,7 @@
 #include "Code\atoms\atoms_movable.dm"
 #include "Code\client\chat.dm"
 #include "Code\client\client.dm"
+#include "Code\client\movement.dm"
 #include "Code\datums\datum.dm"
 #include "Code\datums\dispose.dm"
 #include "Code\DiscordWebHook\DiscordWebhook.dm"

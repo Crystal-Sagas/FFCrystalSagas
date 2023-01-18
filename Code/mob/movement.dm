@@ -1,6 +1,6 @@
 /mob/Moved(atom/oldloc, dir, forced)
 	. = ..()
-    UpdateArea()
+	UpdateArea()
 	if(verify_pulling(TRUE))
 		move_pulled(oldloc)
 	process_followers()

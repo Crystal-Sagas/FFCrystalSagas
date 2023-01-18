@@ -1,8 +1,8 @@
 /mob/verb/grab_verb()
-    set name = "Grab / Release"
-    set desc = "Grab someone"
-    set category = "IC"
-    set src in oview(1)
+	set name = "Grab / Release"
+	set desc = "Grab someone"
+	set category = "IC"
+	set src in oview(1)
 
 	if(usr.pulling == src)
 		usr.stop_pulling()
