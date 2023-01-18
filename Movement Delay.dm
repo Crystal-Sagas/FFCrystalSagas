@@ -15,11 +15,11 @@ mob/Move()
 			if(grabee==m)
 				m.loc=locate(usr.x,usr.y,usr.z)
 	if(src.battler==1)
-		return
+		return FALSE
 	else
 		if(src.move)
 			src.move=0
-			..()
+			. = ..()
 			sleep(src.delay)
 			src.move=1
 

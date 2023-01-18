@@ -11,6 +11,8 @@
 /atom/movable/Move(NewLoc, Dir, step_x, step_y)
 	var/atom/oldloc = loc
 	. = ..()
+	if(!.)	// movement failed
+		return
 	Moved(oldloc, Dir, FALSE)
 
 /**
