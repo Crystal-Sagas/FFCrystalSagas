@@ -56,7 +56,10 @@
 #include "TechObjects.dm"
 #include "Skin.dmf"
 #include "NeoWorldofTerra.dmm"
+#include "__DEFINES\_bitflags.dm"
 #include "__DEFINES\_core.dm"
+#include "__DEFINES\_lists.dm"
+#include "__DEFINES\movement.dm"
 #include "Code\Administration.dm"
 #include "Code\Area.dm"
 #include "Code\Battleanimations.dm"
@@ -124,8 +127,9 @@
 #include "Code\DiscordWebHook\DiscordWebhook.dm"
 #include "Code\DiscordWebHook\HttpPost.dm"
 #include "Code\DiscordWebHook\KeyInfo.dm"
-#include "Code\mob\grabbing.dm"
+#include "Code\mob\following.dm"
 #include "Code\mob\mob.dm"
 #include "Code\mob\movement.dm"
+#include "Code\mob\pulling.dm"
 // END_INCLUDE
 

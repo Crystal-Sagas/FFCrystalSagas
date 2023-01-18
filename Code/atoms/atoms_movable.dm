@@ -17,7 +17,7 @@
 
 /**
  * Called after a move of *ANY* kind, regular or forced
- * 
+ *
  * @params
  * * oldloc - where we were
  * * dir - direction of movement (forcemoves are NONE in genera)
@@ -28,27 +28,32 @@
 
 /**
  * managed wrapper: forcefully moves us to another place
- * 
+ *
  * allows us to override for behavior, like dropping grabs
  */
 /atom/movable/proc/force_move(atom/newloc)
-	_hard_move(newloc)
+	return _hard_move(newloc)
 
 /**
- * transit forcemove: used if we're transiting maps or otherwise force-moving through some logical 
+ * transit forcemove: used if we're transiting maps or otherwise force-moving through some logical
  *	 transition that requires us to carry stuff through
- * 
+ *
  * @params
  * * newloc - where to move them to
- * * recurse - how many atoms to recurse down for follows/similar
- * * no_follow - disallow follows from recursing through
+ * * recursed - what we already recursed, so probably don't do it again
+ * * recurse_pull - how many levels of pulling to recurse
+ * * recurse_follow - how many levels of followers to recurse
  */
-/atom/movable/proc/transit_move(atom/newloc, recurse = 3, no_follow)
+/atom/movable/proc/transit_move(atom/newloc, list/recursed = list(), recurse_pull = 3, recurse_follow = 1)
+	if(recursed[src])
+		return FALSE
+	recursed[src] = TRUE
 	_hard_move(newloc)
+	return TRUE
 
 /**
  * moves us to a new location, emulating BYOND movement procs as best as possible
- * 
+ *
  * * AREA SUPPORT IS FLAKY AT BEST.      *
  * * AREA CALLS ARE NOT BYOND-COMPLIANT. *
  */
@@ -82,3 +87,4 @@
 		newarea.Entered(src)
 	// finish
 	Moved(oldloc, NONE, TRUE)
+	return TRUE
