@@ -18,8 +18,7 @@ obj
 				alert(usr, "no destination turf found; THIS IS A BUG. Please report this: [place.name]")
 				CRASH("couldn't find dest turf for fast travel")
 				return
-			#warn do we want to transit everything with them?
-			usr.transit_move(dest_turf)
+			usr.force_move(dest_turf)
 			usr.money-=place.travelprice
 			
 	Destinationflag
