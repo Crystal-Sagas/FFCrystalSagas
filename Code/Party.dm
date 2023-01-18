@@ -37,7 +37,7 @@ mob
 						var/pname=input("What would you like to name this party?") as text
 						newparty.name=pname
 						newparty.partyID=pname
-						newparty.leader=usr
+						newparty.leader=usr.name
 						newparty.members+=usr
 						usr.partyID=pname
 						usr.inparty=1

@@ -1915,6 +1915,19 @@ atom
 								actions+="Retaliate"
 							var/achoice=input(battler1,"What action would you like to take this turn?") as anything in actions
 							switch(achoice)
+								if("Twin Cast")
+									var/list/twincast=list()
+									for(var/obj/perk/options in pattacklist1)
+										if(options.typing=="magical")
+											twincast+=options
+									attackchoice=input(battler1,"Which Ability would you like to use this turn?") as anything in twincast
+									var/target=input(battler1,"Which enemy would you like to attack?") as anything in enemylist
+									battler1.TurnAbility(battler1,target,attackchoice)
+									sleep(4)
+									attackchoice=input(battler1,"Which Ability would you like to use this turn?") as anything in twincast
+									var/target2=input(battler1,"Which enemy would you like to attack?") as anything in enemylist
+									battler1.TurnAbility(battler1,target2,attackchoice)
+									sleep(4)
 								if("Retaliate")
 									if(battler1.sp<30)
 										usr<<output("<font color=[battler1.textcolor]<b>[battler1] has attempted to use Retaliate, but could not spend 30 SP, and has forfeited their turn!","icout")
@@ -2124,6 +2137,19 @@ atom
 
 							var/achoice=input(battler2,"What action would you like to take this turn?") as anything in actions
 							switch(achoice)
+								if("Twin Cast")
+									var/list/twincast=list()
+									for(var/obj/perk/options in pattacklist2)
+										if(options.typing=="magical")
+											twincast+=options
+									attackchoice=input(battler2,"Which Ability would you like to use this turn?") as anything in twincast
+									var/target=input(battler2,"Which enemy would you like to attack?") as anything in enemylist
+									battler2.TurnAbility(battler2,target,attackchoice)
+									sleep(4)
+									attackchoice=input(battler2,"Which Ability would you like to use this turn?") as anything in twincast
+									var/target2=input(battler2,"Which enemy would you like to attack?") as anything in enemylist
+									battler2.TurnAbility(battler2,target2,attackchoice)
+									sleep(4)
 								if("Retaliate")
 									if(battler2.sp<30)
 										usr<<output("<font color=[battler2.textcolor]<b>[battler2] has attempted to use Retaliate, but could not spend 30 SP, and has forfeited their turn!","icout")
@@ -2333,6 +2359,19 @@ atom
 								Statusprocparty(battler3)
 							var/achoice=input(battler3,"What action would you like to take this turn?") as anything in actions
 							switch(achoice)
+								if("Twin Cast")
+									var/list/twincast=list()
+									for(var/obj/perk/options in pattacklist3)
+										if(options.typing=="magical")
+											twincast+=options
+									attackchoice=input(battler3,"Which Ability would you like to use this turn?") as anything in twincast
+									var/target=input(battler3,"Which enemy would you like to attack?") as anything in enemylist
+									battler3.TurnAbility(battler3,target,attackchoice)
+									sleep(4)
+									attackchoice=input(battler3,"Which Ability would you like to use this turn?") as anything in twincast
+									var/target2=input(battler3,"Which enemy would you like to attack?") as anything in enemylist
+									battler3.TurnAbility(battler3,target2,attackchoice)
+									sleep(4)
 								if("Retaliate")
 									if(battler3.sp<30)
 										usr<<output("<font color=[battler3.textcolor]<b>[battler3] has attempted to use Retaliate, but could not spend 30 SP, and has forfeited their turn!","icout")
@@ -2541,6 +2580,19 @@ atom
 								Statusprocparty(battler4)
 							var/achoice=input(battler4,"What action would you like to take this turn?") as anything in actions
 							switch(achoice)
+								if("Twin Cast")
+									var/list/twincast=list()
+									for(var/obj/perk/options in pattacklist4)
+										if(options.typing=="magical")
+											twincast+=options
+									attackchoice=input(battler4,"Which Ability would you like to use this turn?") as anything in twincast
+									var/target=input(battler4,"Which enemy would you like to attack?") as anything in enemylist
+									battler4.TurnAbility(battler4,target,attackchoice)
+									sleep(4)
+									attackchoice=input(battler4,"Which Ability would you like to use this turn?") as anything in twincast
+									var/target2=input(battler4,"Which enemy would you like to attack?") as anything in enemylist
+									battler4.TurnAbility(battler4,target2,attackchoice)
+									sleep(4)
 								if("Retaliate")
 									if(battler4.sp<30)
 										usr<<output("<font color=[battler4.textcolor]<b>[battler4] has attempted to use Retaliate, but could not spend 30 SP, and has forfeited their turn!","icout")
