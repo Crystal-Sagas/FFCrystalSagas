@@ -1915,6 +1915,21 @@ atom
 								actions+="Retaliate"
 							var/achoice=input(battler1,"What action would you like to take this turn?") as anything in actions
 							switch(achoice)
+								if("Blade Cast")
+									var/list/twincast=list()
+									for(var/obj/perk/options in pattacklist1)
+										if(options.typing=="magical")
+											twincast+=options
+									var/target=input(battler1,"Which enemy would you like to attack?") as anything in enemylist
+									attackchoice=input(battler1,"Which Ability would you like to use this turn?") as anything in twincast
+									battler1.turnattack(battler1,target)
+									battler1.TurnAbility(battler1,target,attackchoice)
+									sleep(4)
+								if("Blade Dance")
+									var/target=input(battler1,"Which enemy would you like to attack?") as anything in enemylist
+									battler1.turnattack(battler1,target)
+									battler1.turnattack(battler1,target)
+									sleep(4)
 								if("Twin Cast")
 									var/list/twincast=list()
 									for(var/obj/perk/options in pattacklist1)
@@ -2137,6 +2152,10 @@ atom
 
 							var/achoice=input(battler2,"What action would you like to take this turn?") as anything in actions
 							switch(achoice)
+								if("Blade Dance")
+									var/target=input(battler2,"Which enemy would you like to attack?") as anything in enemylist
+									battler2.turnattack(battler2,target)
+									battler2.turnattack(battler2,target)
 								if("Twin Cast")
 									var/list/twincast=list()
 									for(var/obj/perk/options in pattacklist2)
@@ -2359,6 +2378,10 @@ atom
 								Statusprocparty(battler3)
 							var/achoice=input(battler3,"What action would you like to take this turn?") as anything in actions
 							switch(achoice)
+								if("Blade Dance")
+									var/target=input(battler3,"Which enemy would you like to attack?") as anything in enemylist
+									battler3.turnattack(battler3,target)
+									battler3.turnattack(battler3,target)
 								if("Twin Cast")
 									var/list/twincast=list()
 									for(var/obj/perk/options in pattacklist3)
@@ -2580,6 +2603,10 @@ atom
 								Statusprocparty(battler4)
 							var/achoice=input(battler4,"What action would you like to take this turn?") as anything in actions
 							switch(achoice)
+								if("Blade Dance")
+									var/target=input(battler4,"Which enemy would you like to attack?") as anything in enemylist
+									battler4.turnattack(battler4,target)
+									battler4.turnattack(battler4,target)
 								if("Twin Cast")
 									var/list/twincast=list()
 									for(var/obj/perk/options in pattacklist4)
