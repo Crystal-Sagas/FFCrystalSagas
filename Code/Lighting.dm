@@ -47,7 +47,8 @@ image
 		New()
 			..()
 			var/matrix/m = matrix()
-			m.Scale(45,16)
+			// we cannot possibly go higher than this
+			m.Scale(75, 75)
 			transform = m
 
 
@@ -65,8 +66,8 @@ mob/proc/addLightPlane()
 		darkness = new /image/darkness
 	darkness.loc = src
 	darkness.alpha = 120
-	src << master_plane
-	src << darkness
+	client.images += master_plane
+	client.images += darkness
 
 mob/proc/removeLightPlane()
 	client.screen -= master_plane
@@ -85,5 +86,6 @@ mob/proc/setLightOverlay(var/light)
 		if(5) light = 200
 		if(6) light = 225
 		if(7) light = 255
-	if(darkness) animate(darkness,alpha=light,time=15)
+	if(darkness)
+		animate(darkness,alpha=light,time=15)
 

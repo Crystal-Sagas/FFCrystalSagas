@@ -224,6 +224,7 @@ mob
 				if("Yes")
 				if("No")
 					return
+			client.images -= global.lobby_logo
 			src.loc = locate(219,229,2)
 			src.density=1
 			src.icon = 'Icons/Ghostflame.dmi'
@@ -275,6 +276,7 @@ mob
 				var/obj/item/a=copyatom(b)
 				usr.contents+=a
 		Load()
+			client.images -= global.lobby_logo
 			if(fexists("Save/[src.ckey]"))
 				src<<sound(null)
 				sleep()
@@ -399,6 +401,15 @@ mob
 			spawn(6000)
 				AutoSave()
 
+GLOBAL_DATUM_INIT(lobby_logo, /image, __init_lobby_logo())
+/proc/__init_lobby_logo()
+	RETURN_TYPE(/image)
+	var/image/I = image('PNG/FFTCSlogo2.png')
+	I.layer = 99
+	I.alpha = 0
+	I.pixel_x=-115
+	I.pixel_y=70
+
 mob
 	Login()
 		sleep()
@@ -414,14 +425,9 @@ mob
 		E.owner = src.ckey
 		src.client.eye = E
 		src.client.perspective = EYE_PERSPECTIVE
-		var/image/I = image('PNG/FFTCSlogo2.png',E)
 		var/obj/PlayGame/G = new /obj/PlayGame
 		var/obj/Load/L = new /obj/Load
-		I.layer = 99
-		I.alpha = 0
-		I.pixel_x=-115
-		I.pixel_y=70
-		src<<I
+		client.images += global.lobby_logo
 		animate(I,alpha=255,time=50)
 		animate(I,transform=M ,time=50)
 		src.client.screen+=G
