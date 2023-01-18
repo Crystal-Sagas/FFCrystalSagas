@@ -76,7 +76,7 @@ atom
 					a.Carrycheck(a)
 					a.Savecheck(a)
 					a.ACcheck(a)
-				a<<output("All Globalmods have been unequipped for FATE battle.","icout")
+				a<<output("All Globalmods have been unequipped for FATE battle and log outs.","icout")
 
 atom
 	proc
@@ -85,27 +85,27 @@ atom
 				user<<output("[user] has attempted to use a Magic ability without any MP, and has wasted a turn!","icout")
 				user.mp=0
 				return
-			var/range1=10
-			var/range2=35
-			var/classbonus=0
+			var/range1=35
+			var/range2=45
+			var/classbonus=25
 			if(spell.level==1)
 				classbonus+=10
 			if(spell.level==2)
 				classbonus+=25
 			if(spell.level==3)
-				classbonus+=35
+				classbonus+=50
 			if(spell.level==4)
-				classbonus+=45
+				classbonus+=70
 			if(spell.level==5)
-				classbonus+=55
+				classbonus+=90
 			if(spell.level==6)
-				classbonus+=85
+				classbonus+=120
 			if(user.job=="White Mage" || user.subjob=="White Mage")
 				classbonus+=15
 			if(user.job=="Astrologian" || user.subjob=="Astrologian")
-				classbonus+=15
+				classbonus+=10
 			if(user.job=="Scholar" || user.subjob=="Scholar")
-				classbonus+=15
+				classbonus+=8
 			if(user.role=="Physical Support" || user.role=="Magical Support")
 				classbonus+=15
 			var/heal=rand(range1,range2)
@@ -447,7 +447,7 @@ atom
 					view(user) << output("<font color=[target.textcolor]><b>[target]</font> is a Geomancer, and takes half damage from elemental abilities!","icout")
 					dresult=round(dresult*0.5)
 			if(aresult>=target.ac)
-				view(user) << output("It was a hit!! <b>[user]</b> has dealt <b><font color=#FEA14F>[dresult]</b></font> damage to <b>[target]</b>!!","icout")
+				view(user) << output("<b>To hit: [aresult] vs <b>[target.ac]</b> | It was a hit!! <b>[user]</b> has dealt <b><font color=#FEA14F>[dresult]</b></font> damage to <b>[target]</b>!!","icout")
 				target.hp-=dresult
 				var/drainvalue=round(dresult*0.5)
 				if(skill.element=="Drain")
@@ -512,15 +512,21 @@ atom
 							AddParalyzed(target)
 						if(statuschance>=95)
 							AddStun(target)
-				if(target.hp<=0)
-					Death(target)
-					view(user) << output("[target] has reached 0 HP and is removed from battle!","icout")
-					target.hp=0
-					sleep(4)
+				if(target.retaliate==1)
+					turnattack(target,user)
+					target.retaliate=0
+					if(target.hp<=0)
+						Death(target)
+						view(user) << output("[target] has reached 0 HP and is removed from battle!","icout")
+						target.hp=0
+						sleep(4)
 				ShowHPBar(target)
 			else
 				Evade(target)
-				view(user)<<output("It missed!","icout")
+				view(user)<<output("<b>To hit: [aresult] vs <b>[target.ac]</b> | It missed!","icout")
+				if(target.retaliate==1)
+					turnattack(target,user)
+					target.retaliate=0
 			ShowHPBar(target)
 			ShowMPBar(target)
 			ShowSPBar(target)
@@ -534,6 +540,8 @@ atom
 			var/doresult
 			var/dmod
 			var/dresult
+			var/extraanimation
+			var/infusionpower
 			var/obj/item/Weapon/wepchoice = user.righthand
 			amod=Checkdamtype(wepchoice.damsource,user)
 			if(wepchoice.typing=="magical")
@@ -564,6 +572,94 @@ atom
 					view(user)<<output("[user] is <b>Paralyzed</b> and failed to perform their action this turn!","icout")
 					return
 				else
+			if(user.infusion=="Fire")
+				infusionpower=user.rankbonus+user.wismod+user.chamod+user.intmod+user.mdb+user.pdb
+				dresult+=infusionpower
+				aresult+=user.mab
+				aresult+=user.pab
+				if(target.weakness=="Fire")
+					dresult=round(dresult*1.5)
+				extraanimation="Water"
+			if(user.infusion=="Water")
+				infusionpower=user.rankbonus+user.wismod+user.chamod+user.intmod+user.mdb+user.pdb
+				dresult+=infusionpower
+				aresult+=user.mab
+				aresult+=user.pab
+				if(target.weakness=="Water")
+					dresult=round(dresult*1.5)
+				extraanimation="Water"
+			if(user.infusion=="Ice")
+				infusionpower=user.rankbonus+user.wismod+user.chamod+user.intmod+user.mdb+user.pdb
+				dresult+=infusionpower
+				aresult+=user.mab
+				aresult+=user.pab
+				if(target.weakness=="Ice")
+					dresult=round(dresult*1.5)
+				extraanimation="Ice"
+			if(user.infusion=="Thunder")
+				infusionpower=user.rankbonus+user.wismod+user.chamod+user.intmod+user.mdb+user.pdb
+				dresult+=infusionpower
+				aresult+=user.mab
+				aresult+=user.pab
+				if(target.weakness=="Thunder")
+					dresult=round(dresult*1.5)
+				extraanimation="Thunder"
+			if(user.infusion=="Dark")
+				infusionpower=user.rankbonus+user.wismod+user.chamod+user.intmod+user.mdb+user.pdb
+				dresult+=infusionpower
+				aresult+=user.mab
+				aresult+=user.pab
+				if(target.weakness=="Dark")
+					dresult=round(dresult*1.5)
+				extraanimation="Dark"
+			if(user.infusion=="Holy")
+				infusionpower=user.rankbonus+user.wismod+user.chamod+user.intmod+user.mdb+user.pdb
+				dresult+=infusionpower
+				aresult+=user.mab
+				aresult+=user.pab
+				if(target.weakness=="Holy")
+					dresult=round(dresult*1.5)
+				extraanimation="Holy"
+			if(user.infusion=="Wind")
+				infusionpower=user.rankbonus+user.wismod+user.chamod+user.intmod+user.mdb+user.pdb
+				dresult+=infusionpower
+				aresult+=user.mab
+				aresult+=user.pab
+				if(target.weakness=="Wind")
+					dresult=round(dresult*1.5)
+				extraanimation="Wind"
+			if(user.infusion=="Flare")
+				infusionpower=user.rankbonus+user.wismod+user.chamod+user.intmod+user.mdb+user.pdb
+				dresult+=infusionpower
+				aresult+=user.mab
+				aresult+=user.pab
+				if(target.weakness=="Flare")
+					dresult=round(dresult*1.5)
+				extraanimation="Flare"
+			if(extraanimation=="Fire")
+				var/obj/perk/Abilities/BlackMagic/Flame/Fire/b=new
+				Spellbladeanimation(user,target,b)
+			if(extraanimation=="Water")
+				var/obj/perk/Abilities/BlackMagic/Hydro/Water/b=new
+				Spellbladeanimation(user,target,b)
+			if(extraanimation=="Ice")
+				var/obj/perk/Abilities/BlackMagic/Ice/Blizzard/b=new
+				Spellbladeanimation(user,target,b)
+			if(extraanimation=="Thunder")
+				var/obj/perk/Abilities/BlackMagic/Lightning/Thunder/b=new
+				Spellbladeanimation(user,target,b)
+			if(extraanimation=="Dark")
+				var/obj/perk/Abilities/ArcaneMagic/Darkness/Dark/b=new
+				Spellbladeanimation(user,target,b)
+			if(extraanimation=="Holy")
+				var/obj/perk/Abilities/WhiteMagic/Holy/Dia/b=new
+				Spellbladeanimation(user,target,b)
+			if(extraanimation=="Wind")
+				var/obj/perk/Abilities/WhiteMagic/Wind/Aero/b=new
+				Spellbladeanimation(user,target,b)
+			if(extraanimation=="Flare")
+				var/obj/perk/Abilities/BlackMagic/Energy/Flare/b=new
+				Spellbladeanimation(user,target,b)
 			if(aresult<=0)
 				aresult=0
 			if(dresult<=0)
@@ -649,7 +745,7 @@ atom
 						positiveturns3=0
 			view(user) << output("<font color=[user.textcolor]><b>[user]</font> has used <font color=[user.textcolor]><b>[wepchoice]<b></b></font> to attack <b>[target]</b>!!","icout")
 			if(aresult>=target.ac)
-				view(user) << output("It was a hit!! [user] has dealt [dresult] damage to [target]!!","icout")
+				view(user) << output("<b>To hit: [aresult] vs <b>[target.ac]</b> | It was a hit!! [user] has dealt [dresult] damage to [target]!!","icout")
 				target.hp-=dresult
 				if(target.hp<=0)
 					Death(target)
@@ -676,13 +772,16 @@ atom
 						target.overlays=null
 			else
 				Evade(target)
-				view(user)<<output("It missed!","icout")
+				view(user)<<output("<b>To hit: [aresult] vs <b>[target.ac]</b> | It missed!","icout")
 			ShowHPBar(target)
 			ShowMPBar(target)
 			ShowSPBar(target)
 			ShowHPBar(user)
 			ShowMPBar(user)
 			ShowSPBar(user)
+			if(target.retaliate==1)
+				turnattack(target,user)
+				target.retaliate=0
 			if(target.hp<=0)
 				target.overlays=null
 			sleep(4)
@@ -758,6 +857,21 @@ atom
 					dresult=doresult+dmod+skill.adddam+user.mdb+skill.adddam+abilitydamage-target.basedr
 				else
 					dresult=doresult+dmod+skill.adddam+user.pdb+skill.adddam+abilitydamage-target.basedr
+			if(skill.rank=="D")
+				aresult+=4
+				dresult+=10
+			if(skill.rank=="C")
+				aresult+=6
+				dresult+=15
+			if(skill.rank=="B")
+				aresult+=9
+				dresult+=20
+			if(skill.rank=="A")
+				aresult+=12
+				dresult+=30
+			if(skill.rank=="S")
+				aresult+=20
+				dresult+=40
 			Playeranimation(user,target,skill)
 			view(user) << output("<font color=#F8E959><b>[user]</font> has used [skill] to attack [target]!!","icout")
 			var/drainvalue=round(dresult*0.5)
@@ -957,7 +1071,7 @@ atom
 						positiveturns3=0
 
 			if(aresult>=target.ac)
-				view(user) << output("It was a hit!! [user] has dealt [dresult] damage to [target]!!","icout")
+				view(user) << output("<b>To hit: [aresult] vs <b>[target.ac]</b> | It was a hit!! [user] has dealt [dresult] damage to [target]!!","icout")
 				target.hp-=dresult
 				if(skill.element=="Drain")
 					view(user) <<output("<font color=#F8E959><b>[user]</font> has drained <b>[target]</b>  for <font color=#93F752>[drainvalue] HP!","icout")
@@ -1044,7 +1158,7 @@ atom
 					sleep(4)
 			else
 				Evade(target)
-				view(user)<<output("It missed!","icout")
+				view(user)<<output("<b>To hit: [aresult] vs <b>[target.ac]</b> It missed!","icout")
 			if(skill.costtype=="Stamina")
 				view(user) << output("[user] has drained [skill.mcost] SP!","icout")
 				user.sp-=skill.mcost
@@ -1072,17 +1186,16 @@ atom
 			view(20,fate) << sound(null,channel=1)
 			view(20,fate) << sound('Fanfare.wav',channel=1)
 			sleep(22)
-			for(fate)
-				for(var/obj/FATEs/quest in world)
-					if("[quest.FATEID]"=="[party.FATEID]")
-						reward1=quest.Reward1
-						reward2=quest.Reward2
-						reward3=quest.Reward3
-						gilreward=quest.Gilreward
-						fate.icon_state=null
-						fate.occupied=0
-						fate.FATEID=null
-						del quest
+			for(var/obj/FATEs/quest in world)
+				if("[quest.FATEID]"=="[party.FATEID]")
+					reward1=quest.Reward1
+					reward2=quest.Reward2
+					reward3=quest.Reward3
+					gilreward=quest.Gilreward
+					del quest
+			fate.occupied=0
+			fate.FATEID=null
+			fate.icon_state="inactive"
 			for(var/mob/m in party.members)
 				sleep(2)
 				m.bposition=null
@@ -1114,13 +1227,12 @@ atom
 		Defeat(var/obj/Party/party,var/obj/FATECrystal/fate)
 			view(20,fate) << sound(null,channel=1)
 			sleep(4)
-			for(fate)
-				for(var/obj/FATEs/quest in world)
-					if(quest.FATEID==fate.FATEID)
-						fate.icon_state=null
-						fate.occupied=0
-						fate.FATEID=null
-						del quest
+			for(var/obj/FATEs/quest in world)
+				if(quest.FATEID==fate.FATEID)
+					del quest
+			fate.occupied=0
+			fate.FATEID=null
+			fate.icon_state=null
 			for(var/obj/prop/a in view(40))
 				del a
 			for(var/mob/m in party.members)
@@ -1790,8 +1902,33 @@ atom
 								actions+="Revive"
 							if(summon1==1)
 								actions+="Summon"
+							if(battler1.job=="Spellblade" || battler1.subjob=="Spellblade")
+								actions+="Infusion"
+							if(battler1.job=="Mystic Knight" || battler1.subjob=="Mystic Knight")
+								actions+="Blade Cast"
+								actions+="Blade Dance"
+							if(battler1.job=="Dancer" || battler1.subjob=="Dancer")
+								actions+="Dance"
+							if(battler1.job=="Black Mage" || battler1.subjob=="Black Mage")
+								actions+="Twin Cast"
+							if(battler1.job=="Samurai" || battler1.subjob=="Samurai")
+								actions+="Retaliate"
 							var/achoice=input(battler1,"What action would you like to take this turn?") as anything in actions
 							switch(achoice)
+								if("Retaliate")
+									if(battler1.sp<30)
+										usr<<output("<font color=[battler1.textcolor]<b>[battler1] has attempted to use Retaliate, but could not spend 30 SP, and has forfeited their turn!","icout")
+									else
+										var/target=input(battler1,"Which enemy would you like to attack, setting Retaliate up?") as anything in enemylist
+										battler1.turnattack(battler1,target)
+										usr<<output("<font color=[battler1.textcolor]<b>[battler1] has entered a <b>Retaliation</b> stance!","icout")
+										battler1.sp-=30
+										battler1.retaliate=1
+								if("Infusion")
+									var/list/Infusions=list("Fire","Water","Ice","Thunder","Wind")
+									var/infuchoice=input(battler1,"Which Infusion would you like to apply to your weapon?") as anything in Infusions
+									battler1.infusion=infuchoice
+									usr<<output("<font color=[battler1.textcolor]<b>[battler1] has set their Infusion type to [infuchoice]!","icout")
 								if("Summon")
 									var/target=input(battler1,"Which enemy would you like to summon a companion to attack?") as anything in enemylist
 									var/summon=input(battler1,"Which companion would you like to call on the power of?") as anything in summonlist1
@@ -1973,8 +2110,34 @@ atom
 								actions+="Revive"
 							if(summon2==1)
 								actions+="Summon"
+							if(battler2.job=="Spellblade" || battler2.subjob=="Spellblade")
+								actions+="Infusion"
+							if(battler2.job=="Mystic Knight" || battler2.subjob=="Mystic Knight")
+								actions+="Blade Cast"
+								actions+="Blade Dance"
+							if(battler2.job=="Dancer" || battler2.subjob=="Dancer")
+								actions+="Dance"
+							if(battler2.job=="Black Mage" || battler2.subjob=="Black Mage")
+								actions+="Twin Cast"
+							if(battler2.job=="Samurai" || battler2.subjob=="Samurai")
+								actions+="Retaliate"
+
 							var/achoice=input(battler2,"What action would you like to take this turn?") as anything in actions
 							switch(achoice)
+								if("Retaliate")
+									if(battler2.sp<30)
+										usr<<output("<font color=[battler2.textcolor]<b>[battler2] has attempted to use Retaliate, but could not spend 30 SP, and has forfeited their turn!","icout")
+									else
+										var/target=input(battler2,"Which enemy would you like to attack, setting Retaliate up?") as anything in enemylist
+										battler2.turnattack(battler2,target)
+										usr<<output("<font color=[battler2.textcolor]<b>[battler2] has entered a <b>Retaliation</b> stance!","icout")
+										battler2.sp-=30
+										battler2.retaliate=1
+								if("Infusion")
+									var/list/Infusions=list("Fire","Water","Ice","Thunder","Wind","Holy","Dark","Flare")
+									var/infuchoice=input(battler2,"Which Infusion would you like to apply to your weapon?") as anything in Infusions
+									battler2.infusion=infuchoice
+									usr<<output("<font color=[battler2.textcolor]<b>[battler2] has set their Infusion type to [infuchoice]!","icout")
 								if("Summon")
 									var/target=input(battler2,"Which enemy would you like to summon a companion to attack?") as anything in enemylist
 									var/summon=input(battler2,"Which companion would you like to call on the power of?") as anything in summonlist2
@@ -2154,11 +2317,36 @@ atom
 								actions+="Revive"
 							if(summon3==1)
 								actions+="Summon"
+							if(battler3.job=="Spellblade" || battler3.subjob=="Spellblade")
+								actions+="Infusion"
+							if(battler3.job=="Mystic Knight" || battler3.subjob=="Mystic Knight")
+								actions+="Blade Cast"
+								actions+="Blade Dance"
+							if(battler3.job=="Dancer" || battler3.subjob=="Dancer")
+								actions+="Dance"
+							if(battler3.job=="Black Mage" || battler3.subjob=="Black Mage")
+								actions+="Twin Cast"
+							if(battler3.job=="Samurai" || battler3.subjob=="Samurai")
+								actions+="Retaliate"
 							Greencheckplayer(battler3)
 							if(battler3.totalstatus>=1)
 								Statusprocparty(battler3)
 							var/achoice=input(battler3,"What action would you like to take this turn?") as anything in actions
 							switch(achoice)
+								if("Retaliate")
+									if(battler3.sp<30)
+										usr<<output("<font color=[battler3.textcolor]<b>[battler3] has attempted to use Retaliate, but could not spend 30 SP, and has forfeited their turn!","icout")
+									else
+										var/target=input(battler3,"Which enemy would you like to attack, setting Retaliate up?") as anything in enemylist
+										battler2.turnattack(battler3,target)
+										usr<<output("<font color=[battler3.textcolor]<b>[battler3] has entered a <b>Retaliation</b> stance!","icout")
+										battler3.sp-=30
+										battler3.retaliate=1
+								if("Infusion")
+									var/list/Infusions=list("Fire","Water","Ice","Thunder","Wind","Holy","Dark","Flare")
+									var/infuchoice=input(battler3,"Which Infusion would you like to apply to your weapon?") as anything in Infusions
+									battler3.infusion=infuchoice
+									usr<<output("<font color=[battler3.textcolor]<b>[battler3] has set their Infusion type to [infuchoice]!","icout")
 								if("Summon")
 									var/target=input(battler3,"Which enemy would you like to summon a companion to attack?") as anything in enemylist
 									var/summon=input(battler3,"Which companion would you like to call on the power of?") as anything in summonlist3
@@ -2337,11 +2525,36 @@ atom
 								actions+="Revive"
 							if(summon4==1)
 								actions+="Summon"
+							if(battler4.job=="Spellblade" || battler4.subjob=="Spellblade")
+								actions+="Infusion"
+							if(battler4.job=="Mystic Knight" || battler4.subjob=="Mystic Knight")
+								actions+="Blade Cast"
+								actions+="Blade Dance"
+							if(battler4.job=="Dancer" || battler4.subjob=="Dancer")
+								actions+="Dance"
+							if(battler4.job=="Black Mage" || battler4.subjob=="Black Mage")
+								actions+="Twin Cast"
+							if(battler4.job=="Samurai" || battler4.subjob=="Samurai")
+								actions+="Retaliate"
 							Greencheckplayer(battler4)
 							if(battler4.totalstatus>=1)
 								Statusprocparty(battler4)
 							var/achoice=input(battler4,"What action would you like to take this turn?") as anything in actions
 							switch(achoice)
+								if("Retaliate")
+									if(battler4.sp<30)
+										usr<<output("<font color=[battler4.textcolor]<b>[battler4] has attempted to use Retaliate, but could not spend 30 SP, and has forfeited their turn!","icout")
+									else
+										var/target=input(battler4,"Which enemy would you like to attack, setting Retaliate up?") as anything in enemylist
+										battler4.turnattack(battler2,target)
+										usr<<output("<font color=[battler4.textcolor]<b>[battler4] has entered a <b>Retaliation</b> stance!","icout")
+										battler4.sp-=30
+										battler4.retaliate=1
+								if("Infusion")
+									var/list/Infusions=list("Fire","Water","Ice","Thunder","Wind","Holy","Dark","Flare")
+									var/infuchoice=input(battler4,"Which Infusion would you like to apply to your weapon?") as anything in Infusions
+									battler4.infusion=infuchoice
+									usr<<output("<font color=[battler4.textcolor]<b>[battler4] has set their Infusion type to [infuchoice]!","icout")
 								if("Summon")
 									var/target=input(battler4,"Which enemy would you like to summon a companion to attack?") as anything in enemylist
 									var/summon=input(battler4,"Which companion would you like to call on the power of?") as anything in summonlist4
@@ -6016,10 +6229,10 @@ obj
 					resistance="Dark"
 					overimage='PNG/NPCOvers/Goblinover.png'
 					unroot=1
-					mhp=40
-					hp=40
-					mmp=100
-					mp=100
+					mhp=120
+					hp=120
+					mmp=250
+					mp=250
 					sp=30
 					msp=30
 					str=14
@@ -6035,10 +6248,10 @@ obj
 					wismod=1
 					cha=10
 					chamod=0
-					mab=2
-					pab=2
-					mdb=0
-					pdb=0
+					mab=10
+					pab=10
+					mdb=8
+					pdb=8
 					New()
 						var/obj/perk/MonsterAbilities/BLU/GoblinStrike/a=new
 						var/obj/perk/MonsterAbilities/BLU/MagicHammer/b=new
@@ -6060,12 +6273,12 @@ obj
 					resistance="Nature"
 					encountersize=4
 					unroot=1
-					mhp=30
-					hp=30
-					mmp=120
-					mp=120
-					sp=30
-					msp=30
+					mhp=115
+					hp=115
+					mmp=250
+					mp=250
+					sp=70
+					msp=70
 					str=10
 					strmod=0
 					baseac=13
@@ -6079,10 +6292,10 @@ obj
 					wismod=0
 					cha=10
 					chamod=0
-					mab=2
-					pab=1
-					mdb=0
-					pdb=0
+					mab=11
+					pab=11
+					mdb=9
+					pdb=9
 					New()
 						var/obj/perk/MonsterAbilities/BLU/ShrapnelSeed/a=new
 						var/obj/perk/MonsterAbilities/BLU/PhotosyntheticWave/b=new
@@ -6104,12 +6317,12 @@ obj
 					resistance="Drain"
 					encountersize=4
 					unroot=1
-					mhp=30
-					hp=30
-					mmp=120
-					mp=120
-					sp=30
-					msp=30
+					mhp=150
+					hp=150
+					mmp=200
+					mp=200
+					sp=150
+					msp=150
 					str=10
 					strmod=0
 					baseac=13
@@ -6123,10 +6336,10 @@ obj
 					wismod=0
 					cha=10
 					chamod=0
-					mab=2
-					pab=1
-					mdb=0
-					pdb=0
+					mab=8
+					pab=12
+					mdb=10
+					pdb=10
 					New()
 						var/obj/perk/MonsterAbilities/BLU/GeezardClaw/a=new
 						var/obj/item/Weapon/NPCWeapons/Punch/c=new
@@ -6146,12 +6359,12 @@ obj
 					resistance="Fire"
 					encountersize=4
 					unroot=1
-					mhp=30
-					hp=30
-					mmp=120
-					mp=120
-					sp=30
-					msp=30
+					mhp=145
+					hp=145
+					mmp=250
+					mp=250
+					sp=200
+					msp=200
 					str=10
 					strmod=0
 					baseac=13
@@ -6165,10 +6378,10 @@ obj
 					wismod=0
 					cha=10
 					chamod=0
-					mab=2
-					pab=1
-					mdb=0
-					pdb=0
+					mab=9
+					pab=9
+					mdb=11
+					pdb=11
 					New()
 						var/obj/perk/Abilities/WhiteMagic/Wind/Aero/a=new
 						var/obj/perk/MonsterAbilities/BLU/PoisonPowder/b=new
@@ -6182,14 +6395,14 @@ obj
 						src.contents+=mpb
 			CRank
 				encountersize=3
-				mhp=95
-				hp=95
-				mmp=120
-				mp=120
-				sp=120
-				msp=120
-				baseac=17
-				ac=17
+				mhp=215
+				hp=215
+				mmp=300
+				mp=300
+				sp=300
+				msp=300
+				baseac=22
+				ac=22
 				str=16
 				strmod=3
 				dex=14
@@ -6202,10 +6415,10 @@ obj
 				wismod=3
 				cha=16
 				chamod=3
-				mab=7
-				pab=7
-				mdb=5
-				pdb=5
+				mab=12
+				pab=12
+				mdb=15
+				pdb=15
 				rankbonus=3
 				rank="C"
 				name="--C Rank--"
@@ -6374,15 +6587,14 @@ obj
 			BRank
 				rankbonus=4
 				encountersize=4
-				mhp=125
-				hp=125
-				mmp=120
-				mp=120
-				sp=120
-				msp=120
-				baseac=18
-				ac=18
-				ac=18
+				mhp=550
+				hp=550
+				mmp=450
+				mp=450
+				sp=450
+				msp=450
+				baseac=23
+				ac=23
 				str=16
 				strmod=3
 				dex=14
@@ -6395,10 +6607,10 @@ obj
 				wismod=3
 				cha=16
 				chamod=3
-				mab=10
-				pab=10
-				mdb=12
-				pdb=12
+				mab=15
+				pab=15
+				mdb=16
+				pdb=16
 				rank="B"
 				name="--B Rank--"
 				New()
@@ -6638,14 +6850,14 @@ obj
 			ARank
 				encountersize=4
 				rankbonus=5
-				mhp=175
-				hp=175
-				mmp=120
-				mp=120
-				sp=120
-				msp=120
-				baseac=22
-				ac=22
+				mhp=880
+				hp=880
+				mmp=900
+				mp=900
+				sp=900
+				msp=900
+				baseac=26
+				ac=26
 				str=20
 				strmod=5
 				dex=20
@@ -6658,10 +6870,10 @@ obj
 				wismod=5
 				cha=20
 				chamod=5
-				mab=11
-				pab=11
-				mdb=15
-				pdb=15
+				mab=20
+				pab=20
+				mdb=25
+				pdb=25
 				rank="A"
 				name="--A Rank--"
 				New()
@@ -6802,12 +7014,12 @@ obj
 						name="Body of Sin"
 						icon='Icons/Monsters/Sin.png'
 						unroot=1
-						mhp=4500
-						hp=4500
-						mmp=1000
-						mp=1000
-						sp=1000
-						msp=1000
+						mhp=6000
+						hp=6000
+						mmp=5000
+						mp=5000
+						sp=5000
+						msp=5000
 						str=26
 						strmod=9
 						dex=12
@@ -6830,8 +7042,8 @@ obj
 						unroot=1
 						name="Scale of Sin"
 						icon='Icons/Monsters/Sinscale.png'
-						mhp=200
-						hp=200
+						mhp=250
+						hp=250
 						mmp=350
 						mp=350
 						sp=350
@@ -6858,8 +7070,8 @@ obj
 						name="Tentacle of Sin"
 						icon='Icons/Monsters/Sintentacle.png'
 						unroot=1
-						mhp=100
-						hp=100
+						mhp=200
+						hp=200
 						mmp=350
 						mp=350
 						sp=350
@@ -6888,12 +7100,12 @@ obj
 					weakness="Holy"
 					resistance="Dark"
 					unroot=1
-					mhp=600
-					hp=600
-					mmp=450
-					mp=450
-					sp=230
-					msp=230
+					mhp=4000
+					hp=4000
+					mmp=3000
+					mp=3000
+					sp=3000
+					msp=3000
 					str=16
 					strmod=3
 					dex=12
@@ -6907,10 +7119,10 @@ obj
 					cha=20
 					chamod=5
 					baseac=18
-					mab=5
-					pab=6
-					mdb=8
-					pdb=5
+					mab=16
+					pab=16
+					mdb=25
+					pdb=25
 					New()
 						var/obj/perk/Abilities/ArcaneMagic/Drains/Drain/a=new
 						var/obj/perk/Abilities/ArcaneMagic/Osmoses/Osmose/b=new
@@ -6949,12 +7161,12 @@ obj
 					weakness="Holy"
 					resistance="Dark"
 					unroot=1
-					mhp=40
-					hp=40
-					mmp=124
-					mp=124
-					sp=80
-					msp=80
+					mhp=550
+					hp=550
+					mmp=400
+					mp=400
+					sp=400
+					msp=400
 					str=16
 					strmod=3
 					dex=12
@@ -6968,10 +7180,10 @@ obj
 					cha=12
 					chamod=1
 					baseac=13
-					mab=0
-					pab=0
-					mdb=0
-					pdb=0
+					mab=15
+					pab=15
+					mdb=20
+					pdb=20
 					New()
 						var/obj/perk/Boss/Jenova/Gas/jen1=new
 						src.contents+=jen1
@@ -6988,29 +7200,29 @@ obj
 					resistance="Energy"
 					weakness="Nature"
 					unroot=1
-					mhp=900
-					hp=900
-					mmp=400
-					mp=400
-					sp=400
-					msp=400
+					mhp=2000
+					hp=2000
+					mmp=1000
+					mp=1000
+					sp=1000
+					msp=1000
 					str=20
 					strmod=5
-					dex=12
-					dexmod=1
-					con=18
-					conmod=4
-					int=10
-					intmod=0
-					wis=14
-					wismod=2
-					cha=12
-					chamod=1
-					baseac=20
-					mab=8
-					pab=8
-					mdb=15
-					pdb=15
+					dex=20
+					dexmod=5
+					con=20
+					conmod=5
+					int=20
+					intmod=5
+					wis=20
+					wismod=5
+					cha=20
+					chamod=5
+					baseac=24
+					mab=18
+					pab=18
+					mdb=35
+					pdb=35
 					New()
 						var/obj/perk/Abilities/BlackMagic/Energy/Ultima/a=new
 						var/obj/perk/Abilities/WhiteMagic/Healing/Curaga/b=new
@@ -7035,29 +7247,29 @@ obj
 					weakness="Thunder"
 					icon='Icons/Monsters/Haywire.png'
 					unroot=1
-					mhp=850
-					hp=850
-					mmp=400
-					mp=400
-					sp=400
-					msp=400
+					mhp=2000
+					hp=2000
+					mmp=1000
+					mp=1000
+					sp=1000
+					msp=1000
 					str=20
 					strmod=5
-					dex=12
-					dexmod=1
-					con=18
-					conmod=4
-					int=10
-					intmod=0
-					wis=14
-					wismod=2
-					cha=12
-					chamod=1
-					baseac=22
-					mab=12
-					pab=12
-					mdb=15
-					pdb=15
+					dex=20
+					dexmod=5
+					con=20
+					conmod=5
+					int=20
+					intmod=5
+					wis=20
+					wismod=5
+					cha=20
+					chamod=5
+					baseac=24
+					mab=18
+					pab=18
+					mdb=35
+					pdb=35
 					New()
 						var/obj/perk/Abilities/BlackMagic/Energy/Scathe/a=new
 						var/obj/perk/Abilities/BlackMagic/Lightning/Thundaja/b=new
@@ -7082,29 +7294,29 @@ obj
 					weakness="General"
 					icon='Icons/Monsters/Berserkgiant.png'
 					unroot=1
-					mhp=950
-					hp=950
-					mmp=400
-					mp=400
-					sp=400
-					msp=400
+					mhp=2000
+					hp=2000
+					mmp=1000
+					mp=1000
+					sp=1000
+					msp=1000
 					str=20
 					strmod=5
-					dex=12
-					dexmod=1
-					con=18
-					conmod=4
-					int=10
-					intmod=0
-					wis=14
-					wismod=2
-					cha=12
-					chamod=1
-					baseac=22
-					mab=12
-					pab=12
-					mdb=15
-					pdb=15
+					dex=20
+					dexmod=5
+					con=20
+					conmod=5
+					int=20
+					intmod=5
+					wis=20
+					wismod=5
+					cha=20
+					chamod=5
+					baseac=24
+					mab=18
+					pab=18
+					mdb=35
+					pdb=35
 					New()
 						var/obj/perk/Abilities/GeneralWeaponAbilities/Melee/BladeBeam/a=new
 						var/obj/perk/Abilities/BlackMagic/Lightning/Thundaja/b=new
@@ -7129,29 +7341,29 @@ obj
 					weakness="Fire"
 					icon='Icons/Monsters/MalboroKing.png'
 					unroot=1
-					mhp=1000
-					hp=1000
-					mmp=400
-					mp=400
-					sp=400
-					msp=400
+					mhp=2000
+					hp=2000
+					mmp=1000
+					mp=1000
+					sp=1000
+					msp=1000
 					str=20
 					strmod=5
-					dex=12
-					dexmod=1
-					con=18
-					conmod=4
-					int=10
-					intmod=0
-					wis=14
-					wismod=2
-					cha=12
-					chamod=1
-					baseac=22
-					mab=12
-					pab=12
-					mdb=15
-					pdb=15
+					dex=20
+					dexmod=5
+					con=20
+					conmod=5
+					int=20
+					intmod=5
+					wis=20
+					wismod=5
+					cha=20
+					chamod=5
+					baseac=24
+					mab=18
+					pab=18
+					mdb=35
+					pdb=35
 					New()
 						var/obj/perk/MonsterAbilities/BLU/DeathBreath/a=new
 						var/obj/perk/MonsterAbilities/BLU/OilBullet/b=new
@@ -7173,29 +7385,29 @@ obj
 					weakness="Holy"
 					icon='Icons/Monsters/VoidDweller.png'
 					unroot=1
-					mhp=850
-					hp=850
-					mmp=400
-					mp=400
-					sp=400
-					msp=400
+					mhp=2000
+					hp=2000
+					mmp=1000
+					mp=1000
+					sp=1000
+					msp=1000
 					str=20
 					strmod=5
-					dex=12
-					dexmod=1
-					con=18
-					conmod=4
-					int=10
-					intmod=0
-					wis=14
-					wismod=2
-					cha=12
-					chamod=1
-					baseac=22
-					mab=12
-					pab=12
-					mdb=15
-					pdb=15
+					dex=20
+					dexmod=5
+					con=20
+					conmod=5
+					int=20
+					intmod=5
+					wis=20
+					wismod=5
+					cha=20
+					chamod=5
+					baseac=24
+					mab=18
+					pab=18
+					mdb=35
+					pdb=35
 					New()
 						var/obj/perk/Abilities/ArcaneMagic/Darkness/Darkja/a=new
 						var/obj/perk/Abilities/BlackMagic/Energy/Scathe/b=new
@@ -7219,29 +7431,29 @@ obj
 					weakness="Water"
 					icon='Icons/Monsters/Orichalcoise.png'
 					unroot=1
-					mhp=1300
-					hp=1300
-					mmp=400
-					mp=400
-					sp=400
-					msp=400
+					mhp=2000
+					hp=2000
+					mmp=1000
+					mp=1000
+					sp=1000
+					msp=1000
 					str=20
 					strmod=5
-					dex=12
-					dexmod=1
-					con=18
-					conmod=4
-					int=10
-					intmod=0
-					wis=14
-					wismod=2
-					cha=12
-					chamod=1
-					baseac=22
-					mab=7
-					pab=7
-					mdb=7
-					pdb=7
+					dex=20
+					dexmod=5
+					con=20
+					conmod=5
+					int=20
+					intmod=5
+					wis=20
+					wismod=5
+					cha=20
+					chamod=5
+					baseac=24
+					mab=18
+					pab=18
+					mdb=35
+					pdb=35
 					New()
 						var/obj/perk/Abilities/Geomancer/Quake/a=new
 						var/obj/perk/MonsterAbilities/BLU/AdamantDrum/b=new
@@ -7265,29 +7477,29 @@ obj
 					weakness="Holy"
 					icon='Icons/Summon/Necromancer/Lich.png'
 					unroot=1
-					mhp=850
-					hp=850
-					mmp=400
-					mp=400
-					sp=400
-					msp=400
+					mhp=2000
+					hp=2000
+					mmp=1000
+					mp=1000
+					sp=1000
+					msp=1000
 					str=20
 					strmod=5
-					dex=12
-					dexmod=1
-					con=18
-					conmod=4
-					int=10
-					intmod=0
-					wis=14
-					wismod=2
-					cha=12
-					chamod=1
-					baseac=22
-					mab=12
-					pab=12
-					mdb=15
-					pdb=15
+					dex=20
+					dexmod=5
+					con=20
+					conmod=5
+					int=20
+					intmod=5
+					wis=20
+					wismod=5
+					cha=20
+					chamod=5
+					baseac=24
+					mab=18
+					pab=18
+					mdb=35
+					pdb=35
 					New()
 						var/obj/perk/Abilities/ArcaneMagic/Darkness/Darkja/a=new
 						var/obj/perk/Abilities/BlackMagic/Energy/Scathe/b=new
@@ -7311,29 +7523,29 @@ obj
 					weakness="Holy"
 					icon='Icons/Monsters/TonberryKing.png'
 					unroot=1
-					mhp=850
-					hp=850
-					mmp=400
-					mp=400
-					sp=400
-					msp=400
+					mhp=2000
+					hp=2000
+					mmp=1000
+					mp=1000
+					sp=1000
+					msp=1000
 					str=20
 					strmod=5
-					dex=12
-					dexmod=1
-					con=18
-					conmod=4
-					int=10
-					intmod=0
-					wis=14
-					wismod=2
-					cha=12
-					chamod=1
-					baseac=22
-					mab=12
-					pab=12
-					mdb=15
-					pdb=15
+					dex=20
+					dexmod=5
+					con=20
+					conmod=5
+					int=20
+					intmod=5
+					wis=20
+					wismod=5
+					cha=20
+					chamod=5
+					baseac=24
+					mab=18
+					pab=18
+					mdb=35
+					pdb=35
 					New()
 						var/obj/perk/Abilities/ArcaneMagic/Darkness/Darkja/a=new
 						var/obj/perk/Abilities/WhiteMagic/Healing/Curada/b=new

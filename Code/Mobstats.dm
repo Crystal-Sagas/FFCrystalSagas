@@ -9,6 +9,7 @@ mob/var
 	buildmode=0
 	perkbuying=0
 	stockcasting=0
+	infusion=""
 
 	list/nolearn = new
 
@@ -167,6 +168,12 @@ mob/var
 	mdb
 	pab
 	pdb
+	tmp/mabadd=0 // These are SPECIFICALLY for Global Mods
+	tmp/mdbadd=0
+	tmp/pabadd=0
+	tmp/pdbadd=0
+	tmp/speedadd=0
+
 
 	subjobcap=0
 	subtechlearned=0

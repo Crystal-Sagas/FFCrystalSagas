@@ -1,12 +1,12 @@
 /*
 	These are simple defaults for your project.
  */
-
 atom
 	var/savedx
 	var/savedy
 	var/savedz
 	var/waterwalking=0
+	var/retaliate=0
 
 var/maxrovers=40
 var/maxships=30
@@ -63,82 +63,6 @@ GLOBAL_DATUM_INIT(stable_holder, /datum/global_stable_holder, new)
 /datum/global_stable_holder
 	/// holds monster /obj's
 	var/list/monsters = list()
-
-world
-	fps = 40		// 40 frames per second
-	icon_size = 32	// 32x32 icon size by default
-
-	view = "35x20"
-
-world
-	New()
-		..()
-		Addcustoms()
-		Addbuildables()
-		Loadworld()
-		Load_Ban()
-		if(fexists("Materials"))
-			Loadmaterials()
-		else
-			Initcraft()
-		if(fexists("Perks"))
-			LoadPerk()
-		else
-			Initperk()
-		if(fexists("Weapons"))
-			LoadWeps()
-		else
-			Initwep()
-		if(fexists("Recipes"))
-			Loadrecipes()
-		else
-			Initrecipes()
-		if(fexists("Summons"))
-			Loadsummons()
-		else
-			Initsummons()
-		if(fexists("Bestiary"))
-			Loadbestiary()
-		else
-			Initbestiary()
-		// spawn makeshift ticker loops necessary
-		spawn()
-			Time()
-		spawn()
-			Checkday()
-		// init global perk shop
-		global.perk_shop.perks += perklist
-		// init global recipe shop
-		global.recipe_shop.recipes += recipelist
-		// init global stablemaster obj
-		for(var/obj/npc/Monsters/q in bestiary)
-			var/obj/npc/Monsters/newmonster=copyatom(q)
-			global.stablemaster_obj.contents += newmonster
-		for(var/obj/npc/Monsters/f in global.stablemaster_obj.contents)
-			InitializeEnemy(f)
-			f.archived=0
-		// init global npc archive
-		// todo: save/load
-		global.npc_archive.npcs += summonlist
-		for(var/obj/npc/Monsters/q in bestiary)
-			var/obj/npc/Monsters/newmonster = copyatom(q)
-			global.npc_archive.npcs += newmonster
-		for(var/obj/npc/Monsters/f in global.npc_archive.npcs)
-			InitializeEnemy(f)
-		for(var/obj/npc/b in global.npc_archive.npcs)
-			b.archived = 1
-		for(var/obj/npc/Monsters/c in global.npc_archive.npcs)
-			InitializeEnemy(c)
-		for(var/obj/npc/b in global.npc_archive.npcs)
-			b.archived = 1
-		// initialize stable holder
-		for(var/obj/npc/Monsters/q in bestiary)
-			var/obj/npc/Monsters/newmonster = copyatom(q)
-			global.stable_holder.monsters += newmonster
-		for(var/obj/npc/Monsters/f in global.stable_holder.monsters)
-			InitializeEnemy(f)
-		for(var/obj/npc/b in global.stable_holder.monsters)
-			b.archived=1
 
 area
 	default
@@ -440,6 +364,7 @@ mob
 		if(src.tempeventmin)
 			src.tempeventmin=0
 			src.verbs-=typesof(/mob/eventmin/verb/)
+		Unequipglobalmods(src)
 		for(var/obj/Aoeind/o in world)
 			if(o.owner==src.ckey)
 				del(o)
@@ -752,7 +677,7 @@ proc
 				m.mp+=20
 				m.mmp+=20
 		usr.ChangeBase()
-		var/list/jobs = list("Mystic Knight","Pirate","Gladiator","Astrologian","Scholar","Merchant","Viking","Bard","Dancer","Black Mage","White Mage","Red Mage","Blue Mage","Ranger","Monk","Beast Master","Samurai","Spellblade","Rogue","Paladin","Knight","Dark Knight","Dragoon","Machinist","Summoner","Chemist","Geomancer")
+		var/list/jobs = list("Mystic Knight","Pirate","Gladiator","Astrologian","Scholar","Viking","Bard","Dancer","Black Mage","White Mage","Red Mage","Blue Mage","Ranger","Monk","Beast Master","Samurai","Spellblade","Rogue","Paladin","Knight","Dark Knight","Dragoon","Machinist","Summoner","Chemist","Geomancer")
 		if(Timemage.Find(m.key))
 			jobs+="Time Mage"
 		if(Oracle.Find(m.key))
@@ -972,8 +897,10 @@ proc
 					m.mmp+=70
 					m.msp+=20
 					m.sp+=20
-					m.whitemagicable=3
+					m.whitemagicable=4
 					m.arcanemagicable=3
+					m.blackmagicable=2
+					m.greenmagicable=2
 					m.reflexproficient=1
 					m.willproficient=1
 					m.fortitudeproficient=1
@@ -997,6 +924,7 @@ proc
 					m.stealthproficient=0
 					m.survivalproficient=0
 					m.thieveryproficient=0
+					m.nolearn+="Sub Job"
 					Scholarint()
 				if("Merchant")
 					m.job="Merchant"
@@ -2212,14 +2140,33 @@ proc
 								if("No")
 									goto redostuff
 	Subjobint(var/mob/m)
-		var/list/jobs = list("Mystic Knight","Pirate","Gladiator","Astrologian","Merchant","Viking","Bard","Dancer","Black Mage","White Mage","Red Mage","Blue Mage","Ranger","Monk","Beast Master","Samurai","Spellblade","Rogue","Paladin","Knight","Dark Knight","Dragoon","Machinist","Summoner","Chemist","Geomancer")
+		var/list/jobs = list("Mystic Knight","Pirate","Gladiator","Astrologian","Viking","Bard","Dancer","Black Mage","White Mage","Red Mage","Blue Mage","Ranger","Monk","Beast Master","Samurai","Spellblade","Rogue","Paladin","Knight","Dark Knight","Dragoon","Machinist","Summoner","Chemist","Geomancer")
 		if(Oracle.Find(m.key))
 			jobs+="Oracle"
 		if(Timemage.Find(m.key))
 			jobs+="Time Mage"
 		jobs-=m.job
-		var/jobchoice = input(m,"What job kupo?") as anything in jobs
 		m.subjobcap=2
+		if(m.job=="Gladiator")
+			jobs-="Mystic Knight"
+			jobs-="Samurai"
+			jobs-="Dark Knight"
+			jobs-="Knight"
+			jobs-="Paladin"
+			jobs-="Viking"
+		if(m.job=="Mystic Knight")
+			jobs-="Gladiator"
+		if(m.job=="Samurai")
+			jobs-="Gladiator"
+		if(m.job=="Dark Knight")
+			jobs-="Gladiator"
+		if(m.job=="Knight")
+			jobs-="Gladiator"
+		if(m.job=="Paladin")
+			jobs-="Gladiator"
+		if(m.job=="Viking")
+			jobs-="Gladiator"
+		var/jobchoice = input(m,"What job kupo?") as anything in jobs
 		switch(jobchoice)
 			if("Pirate")
 				m.subjob="Pirate"

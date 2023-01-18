@@ -23,7 +23,6 @@ mob
 				count++
 			world<<output("[count]","output1")
 		SaveSelf()
-			name="Save"
 			usr.Save()
 		Roll()
 			var/num1

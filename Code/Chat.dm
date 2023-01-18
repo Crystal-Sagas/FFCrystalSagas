@@ -157,13 +157,44 @@ proc
 		if(m.rppcheckdate!=currenttime)
 			m.rppcheckdate=currenttime
 			m.rppchecks=0
-			if(m.emoteamount>=7500)
+			m.limitbreakused=0
+			/*if(m.emoteamount>=7500)
 				m.emoteamount-=7500
 				m.emoteamount*=0.5
 			else
-				m.emoteamount=0
-			m.limitbreakused=0
-		if(m.trpp<catchuprate)
+				m.emoteamount=0*/
+
+		//Every RPP bracket should total up to 6000 to hit their daily cap.
+		if(m.emoteamount>=6000 && m.rppchecks<1 && m.trpp>=100 && m.rank!="Adept")
+			m.rpp+=1
+			m.trpp+=1
+			m.rppchecks+=1
+			m.emoteamount-=6000
+			m << output("You have reached an RPP milestone for the day. You have gained 1 RPP for a total of [m.rppchecks].","oocout")
+			Updaterank(m)
+		else if(m.emoteamount>=3000 && m.rppchecks<2 && m.trpp<100)
+			m.rpp+=1
+			m.trpp+=1
+			m.rppchecks+=1
+			m.emoteamount-=3000
+			m << output("You have reached an RPP milestone for the day. You have gained 1 RPP for a total of [m.rppchecks].","oocout")
+			Updaterank(m)
+		else if(m.emoteamount>=2000 && m.rppchecks<3 && m.trpp<80)
+			m.rpp+=1
+			m.trpp+=1
+			m.rppchecks+=1
+			m.emoteamount-=2000
+			m << output("You have reached an RPP milestone for the day. You have gained 1 RPP for a total of [m.rppchecks].","oocout")
+			Updaterank(m)
+		else if(m.emoteamount>=1200 && m.rppchecks<5 && m.trpp<catchuprate)
+			m.rpp+=1
+			m.trpp+=1
+			m.rppchecks+=1
+			m.emoteamount-=1200
+			m << output("You have reached an RPP milestone for the day. You have gained 1 RPP for a total of [m.rppchecks].","oocout")
+			Updaterank(m)
+
+		/*if(m.trpp<catchuprate)
 			if(m.emoteamount>=750&&m.rppchecks==0)
 				m.rpp+=1
 				m.trpp+=1
@@ -219,6 +250,7 @@ proc
 				m.rppchecks+=1
 				m << output("You have reached the final milestone for the day. You have gained 1 RPP for a total of 3.","oocout")
 				Updaterank(m)
+				*/
 	Updaterank(var/mob/m)
 		if(m.trpp<80&&m.trpp>=45)
 			if(m.rank=="Rookie")

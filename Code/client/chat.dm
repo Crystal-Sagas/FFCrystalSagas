@@ -2,4 +2,4 @@
 	client?.send_chat(msg)
 
 /client/proc/send_chat(msg)
-	src << msg
+	src << output(msg, "icout")

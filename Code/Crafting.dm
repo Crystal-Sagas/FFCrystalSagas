@@ -3811,7 +3811,7 @@ obj/item/verb
 								if("Intermediate")
 									if(fgem.amount>=8)
 										fgem.amount-=8
-										src.enchantment=" Enchanted(Intermediate) Fire"
+										src.enchantment=" Enchanted(Intermediate) Fire +1 to hit, latently."
 										src.addhit+=1
 										src.enchanted=1
 										view()<<output("[usr.name] enchants their [src.name]","icout")
@@ -3820,7 +3820,7 @@ obj/item/verb
 								if("Expert")
 									if(fgem.amount>=12)
 										fgem.amount-=12
-										src.enchantment=" Enchanted(Expert) Fire"
+										src.enchantment=" Enchanted(Expert) Fire +1 to hit and +3 to damage, latently."
 										src.addhit+=1
 										src.adddam+=3
 										src.enchanted=1
@@ -3845,7 +3845,7 @@ obj/item/verb
 								if("Intermediate")
 									if(igem.amount>=8)
 										igem.amount-=8
-										src.enchantment=" Enchanted(Intermediate) Ice"
+										src.enchantment=" Enchanted(Intermediate) Ice +1 to hit, latently."
 										src.addhit+=1
 										src.enchanted=1
 										view()<<output("[usr.name] enchants their [src.name]","icout")
@@ -3854,7 +3854,7 @@ obj/item/verb
 								if("Expert")
 									if(igem.amount>=12)
 										igem.amount-=12
-										src.enchantment=" Enchanted(Expert) Ice"
+										src.enchantment=" Enchanted(Expert) Ice +1 to hit and +3 to damage, latently."
 										src.addhit+=1
 										src.adddam+=3
 										src.enchanted=1
@@ -3879,7 +3879,7 @@ obj/item/verb
 								if("Intermediate")
 									if(tgem.amount>=8)
 										tgem.amount-=8
-										src.enchantment=" Enchanted(Intermediate) Thunder"
+										src.enchantment=" Enchanted(Intermediate) Thunder +1 to hit, latently."
 										src.addhit+=1
 										src.enchanted=1
 										view()<<output("[usr.name] enchants their [src.name]","icout")
@@ -3888,7 +3888,7 @@ obj/item/verb
 								if("Expert")
 									if(tgem.amount>=12)
 										tgem.amount-=12
-										src.enchantment=" Enchanted(Expert) Thunder"
+										src.enchantment=" Enchanted(Expert) Thunder +1 to hit and +3 to damage, latently."
 										src.addhit+=1
 										src.adddam+=3
 										src.enchanted=1
@@ -3913,7 +3913,7 @@ obj/item/verb
 								if("Intermediate")
 									if(wgem.amount>=8)
 										wgem.amount-=8
-										src.enchantment=" Enchanted(Intermediate) Water"
+										src.enchantment=" Enchanted(Intermediate) Water +1 to hit, latently."
 										src.addhit+=1
 										src.enchanted=1
 										view()<<output("[usr.name] enchants their [src.name]","icout")
@@ -3922,7 +3922,7 @@ obj/item/verb
 								if("Expert")
 									if(wgem.amount>=12)
 										wgem.amount-=12
-										src.enchantment=" Enchanted(Expert) Water"
+										src.enchantment=" Enchanted(Expert) Water +1 to hit and +3, latently."
 										src.addhit+=1
 										src.adddam+=3
 										src.enchanted=1
@@ -3947,7 +3947,7 @@ obj/item/verb
 								if("Intermediate")
 									if(wigem.amount>=8)
 										wigem.amount-=8
-										src.enchantment=" Enchanted(Intermediate) Wind"
+										src.enchantment=" Enchanted(Intermediate) Wind +1 to hit, latently."
 										src.addhit+=1
 										src.enchanted=1
 										view()<<output("[usr.name] enchants their [src.name]","icout")
@@ -3956,7 +3956,7 @@ obj/item/verb
 								if("Expert")
 									if(wigem.amount>=12)
 										wigem.amount-=12
-										src.enchantment=" Enchanted(Expert) Wind"
+										src.enchantment=" Enchanted(Expert) Wind +1 to hit and +3 to damage, latently."
 										src.addhit+=1
 										src.adddam+=3
 										src.enchanted=1
@@ -3981,7 +3981,7 @@ obj/item/verb
 								if("Intermediate")
 									if(egem.amount>=8)
 										egem.amount-=8
-										src.enchantment=" Enchanted(Intermediate) Earth"
+										src.enchantment=" Enchanted(Intermediate) Earth +1 to hit, latently."
 										src.addhit+=1
 										src.enchanted=1
 										view()<<output("[usr.name] enchants their [src.name]","icout")
@@ -3990,7 +3990,7 @@ obj/item/verb
 								if("Expert")
 									if(egem.amount>=12)
 										egem.amount-=12
-										src.enchantment=" Enchanted(Expert) Earth"
+										src.enchantment=" Enchanted(Expert) Earth +1 to hit and +3 to damage, latently."
 										src.addhit+=1
 										src.adddam+=3
 										src.enchanted=1
@@ -4015,7 +4015,7 @@ obj/item/verb
 								if("Intermediate")
 									if(bgem.amount>=8)
 										bgem.amount-=8
-										src.enchantment=" Enchanted(Intermediate) Bio"
+										src.enchantment=" Enchanted(Intermediate) Bio +1 to hit, latently."
 										src.addhit+=1
 										src.enchanted=1
 										view()<<output("[usr.name] enchants their [src.name]","icout")
@@ -4024,7 +4024,7 @@ obj/item/verb
 								if("Expert")
 									if(bgem.amount>=12)
 										bgem.amount-=12
-										src.enchantment=" Enchanted(Expert) Bio"
+										src.enchantment=" Enchanted(Expert) Bio +1 to hit and +3 to damage, latently."
 										src.addhit+=1
 										src.adddam+=3
 										src.enchanted=1
@@ -4049,7 +4049,7 @@ obj/item/verb
 								if("Intermediate")
 									if(hgem.amount>=8)
 										hgem.amount-=8
-										src.enchantment=" Enchanted(Intermediate) Holy"
+										src.enchantment=" Enchanted(Intermediate) Holy +1 to hit, latently."
 										src.addhit+=1
 										src.enchanted=1
 										view()<<output("[usr.name] enchants their [src.name]","icout")
@@ -4058,7 +4058,7 @@ obj/item/verb
 								if("Expert")
 									if(hgem.amount>=12)
 										hgem.amount-=12
-										src.enchantment=" Enchanted(Expert) Holy"
+										src.enchantment=" Enchanted(Expert) Holy +1 to hit and +3 to damage, latently."
 										src.addhit+=1
 										src.adddam+=3
 										src.enchanted=1
@@ -4083,7 +4083,7 @@ obj/item/verb
 								if("Intermediate")
 									if(dgem.amount>=8)
 										dgem.amount-=8
-										src.enchantment=" Enchanted(Intermediate) Dark"
+										src.enchantment=" Enchanted(Intermediate) Dark +1 to hit, latently."
 										src.addhit+=1
 										src.enchanted=1
 										view()<<output("[usr.name] enchants their [src.name]","icout")
@@ -4092,7 +4092,7 @@ obj/item/verb
 								if("Expert")
 									if(dgem.amount>=12)
 										dgem.amount-=12
-										src.enchantment=" Enchanted(Expert) Dark"
+										src.enchantment=" Enchanted(Expert) Dark +1 to hit and +3 to damage, latently."
 										src.addhit+=1
 										src.adddam+=3
 										src.enchanted=1
@@ -4119,9 +4119,9 @@ obj/item/verb
 									src.addhit+=1
 									src.adddam+=1
 									src.enchanted=1
-									src.enchantment=" Enchanted (Poison) | Attacks prompt DC 15 Saving Throw on hit, inflicting Poison on failure."
+									src.enchantment=" Enchanted (Poison) +1 to hit and +1 damage, latently. | Attacks prompt DC 15 Saving Throw on hit, inflicting Poison on failure."
 							else
-								alert(usr,"You need 3 Bio Gems to apply the Poison enchantment.")
+								alert(usr,"You need 4 Bio Gems to apply the Poison enchantment.")
 						if("Blind")
 							var/obj/item/dgem = usr.Determinecraftmat("Dark Gem")
 							if(dgem==null)
@@ -4134,9 +4134,9 @@ obj/item/verb
 									src.addhit+=1
 									src.adddam+=1
 									src.enchanted=1
-									src.enchantment=" Enchanted (Blind) | Attacks prompt DC 15 Saving Throw on hit, inflicting Blind on failure."
+									src.enchantment=" Enchanted (Blind) +1 to hit, latently.| Attacks prompt DC 15 Saving Throw on hit, inflicting Blind on failure."
 							else
-								alert(usr,"You need 3 Dark Gems to apply the Blind enchantment.")
+								alert(usr,"You need 4 Dark Gems to apply the Blind enchantment.")
 						if("Silence")
 							var/obj/item/dgem = usr.Determinecraftmat("White Gem")
 							if(dgem==null)
@@ -4149,9 +4149,9 @@ obj/item/verb
 									src.addhit+=1
 									src.adddam+=1
 									src.enchanted=1
-									src.enchantment=" Enchanted (Silence) | Attacks prompt DC 15 Saving Throw on hit, inflicting Silence on failure."
+									src.enchantment=" Enchanted (Silence) +1 to hit, latently.| Attacks prompt DC 15 Saving Throw on hit, inflicting Silence on failure."
 							else
-								alert(usr,"You need 3 White Gems to apply the Silence enchantment.")
+								alert(usr,"You need 4 White Gems to apply the Silence enchantment.")
 				if("Mythic")
 					if(src.armor==1 || src.jewelery==1)
 						alert(usr,"You can not apply Mythic enchantments to Armor or Accessories.")

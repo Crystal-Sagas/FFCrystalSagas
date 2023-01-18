@@ -3,6 +3,7 @@
 // New source code should be placed in .dm files: choose File/New --> Code File.
 
 // BEGIN_INTERNALS
+#define DEBUG
 // END_INTERNALS
 
 // BEGIN_FILE_DIR
@@ -116,8 +117,10 @@
 #include "Code\Turntracking.dm"
 #include "Code\Vehicles.dm"
 #include "Code\WeaponandArmorDatabase.dm"
+#include "Code\world.dm"
 #include "Code\Yearsystem.dm"
 #include "Code\_HELPERS\_core.dm"
+<<<<<<< HEAD
 #include "Code\_HELPERS\view.dm"
 #include "Code\admin\admin.dm"
 #include "Code\client\chat.dm"
@@ -126,6 +129,10 @@
 #include "Code\datums\browser.dm"
 #include "Code\datums\datum.dm"
 #include "Code\datums\dispose.dm"
+=======
+#include "Code\client\chat.dm"
+#include "Code\client\client.dm"
+>>>>>>> upstream/main
 #include "Code\DiscordWebHook\DiscordWebhook.dm"
 #include "Code\DiscordWebHook\HttpPost.dm"
 #include "Code\DiscordWebHook\KeyInfo.dm"
