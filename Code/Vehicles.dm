@@ -156,7 +156,7 @@ obj/Vehicles/Tech
 						for(var/obj/ShipConsole/S in world)
 							if(S.PodID == src.PodID)
 								src.TheConsole = S
-								usr.transit_move(get_turf(src.TheConsole), follow_cutoff = 0)
+								usr.transit_move(get_turf(src.TheConsole), recurse_follow = 0)
 								return
 							usr << "Error! No ship consoles were found!"
 				else
@@ -281,7 +281,7 @@ obj/Vehicles/Tech
 								usr<<"ID assigned! ID is [i]."
 								break
 					if(src.TheDoor)
-						usr.transit_move(get_turf(src.TheDoor), follow_cutoff = 0)
+						usr.transit_move(get_turf(src.TheDoor), recurse_follow = 0)
 						return
 					else
 						for(var/obj/BalambDoor/S in world)
@@ -413,7 +413,7 @@ obj/ShipConsole
 			set src in oview(5)
 			if(src.ThePod)
 				view(10,usr)<<"[usr] leaves the ship."
-				usr.transit_move(get_turf(ThePod), follow_cutoff = 0)
+				usr.transit_move(get_turf(ThePod), recurse_follow = 0)
 				return
 		//	usr.SendToSpawn() // If the pod has been deleted, sends user to spawn instead of a void.//
 		View()
@@ -471,7 +471,7 @@ obj/RoverConsole
 			set src in oview(5)
 			if(src.ThePod)
 				view(10,usr)<<"[usr] leaves the ship."
-				usr.transit_move(get_turf(ThePod), follow_cutoff = 0)
+				usr.transit_move(get_turf(ThePod), recurse_follow = 0)
 				return
 		//	usr.SendToSpawn() // If the pod has been deleted, sends user to spawn instead of a void.//
 		View()
@@ -540,7 +540,7 @@ obj/AirshipConsole
 			set src in oview(5)
 			if(src.ThePod)
 				view(10,usr)<<"[usr] leaves the ship."
-				usr.transit_move(get_turf(ThePod), follow_cutoff = 0)
+				usr.transit_move(get_turf(ThePod), recurse_follow = 0)
 				return
 		//	usr.SendToSpawn() // If the pod has been deleted, sends user to spawn instead of a void.//
 		View()
@@ -627,7 +627,7 @@ obj/BalambConsole
 			set src in oview(5)
 			if(src.ThePod)
 				view(10,usr)<<"[usr] leaves the ship."
-				usr.transit_move(get_turf(ThePod), follow_cutoff = 0)
+				usr.transit_move(get_turf(ThePod), recurse_follow = 0)
 				return
 		//	usr.SendToSpawn() // If the pod has been deleted, sends user to spawn instead of a void.//
 		View()

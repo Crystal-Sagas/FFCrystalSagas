@@ -1499,7 +1499,7 @@ obj
 						gox=c.x
 						goy=housedoory
 						goz=c.z
-						usr.transit_move(locate(gox, goy, goz), follow_cutoff = 0)
+						usr.transit_move(locate(gox, goy, goz), recurse_follow = 0)
 					for(var/obj/Landclaim/Ownership/Playerownership/d in range(2, c))
 						d.owner=src.owner
 
@@ -1554,6 +1554,6 @@ obj
 						gox=c.x
 						goy=housedoory
 						goz=c.z
-						usr.transit_move(locate(gox, goy, goz), follow_cutoff = 0)
+						usr.transit_move(locate(gox, goy, goz), recurse_follow = 0)
 					for(var/obj/Landclaim/Ownership/Playerownership/d in range(2, c))
 						d.owner=src.owner

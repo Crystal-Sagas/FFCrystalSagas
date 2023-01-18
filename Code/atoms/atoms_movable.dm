@@ -75,7 +75,7 @@
 	loc = newloc
 	// then enter new loc if any
 	if(newloc)
-		var/newarea = get_area(newloc)
+		var/area/newarea = get_area(newloc)
 		// contents
 		for(var/atom/movable/AM as anything in newloc)
 			AM.Crossed(src)

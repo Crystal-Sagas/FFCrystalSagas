@@ -40,7 +40,7 @@
 		M.send_chat("[src] starts following you.")
 		send_chat("You start following [M].")
 	following = M
-	LAZYADD(M.followers, src)
+	LAZYLIST_ADD(M.followers, src)
 	pulledby?.stop_pulling(break_grip = TRUE)
 
 /**
