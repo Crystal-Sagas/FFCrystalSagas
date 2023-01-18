@@ -115,6 +115,7 @@
 #include "Code\world.dm"
 #include "Code\Yearsystem.dm"
 #include "Code\_HELPERS\_core.dm"
+#include "Code\client\chat.dm"
 #include "Code\client\client.dm"
 #include "Code\DiscordWebHook\DiscordWebhook.dm"
 #include "Code\DiscordWebHook\HttpPost.dm"

@@ -79,7 +79,7 @@
 			pass()
 		if(1) // clientside debugging tools or server DD reboot
 			if(usr) // probably a client debug tool reboot if usr is set
-				usr << "Rebooting via debug tooling is not allowed. Use admin tooling reboot instead."
+				usr.send_chat("Rebooting via debug tooling is not allowed. Use admin verb reboot instead.")
 				return
 			// proceed normally otherwise if not
 			pass()
