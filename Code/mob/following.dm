@@ -32,6 +32,8 @@
  * starts following someone
  */
 /mob/proc/start_following(mob/M, silent)
+	if(M == src)
+		return
 	if(following == M)
 		return
 	if(following)

@@ -13,6 +13,8 @@
  * start pulling a mob
  */
 /mob/proc/start_pulling(mob/other, silent)
+	if(other == src)
+		return
 	if(other == pulling)
 		return
 	if(pulling)
