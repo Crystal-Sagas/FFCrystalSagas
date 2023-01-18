@@ -59,25 +59,22 @@
 	winset(src, SKIN_ID_GAME_MAP, "letterbox=false;zoom=0")
 	// then compute how much zoom on either side they can handle
 	var/list/what_we_want = decode_view_size(world.view)
-	var/pixel_per_x = assumed_viewport_spx / what_we_want[1]
-	var/pixel_per_y = assumed_viewport_spy / what_we_want[2]
-	if(pixel_per_x > pixel_per_y)
-		// max zoom for horizontal is bigger, so vertical will be cut off without compensating
-		// vertical can stay put
-		// set horizontal
-		what_we_want[1] = CEILING(assumed_viewport_spx / pixel_per_y, 1)
-	else if(pixel_per_x < pixel_per_y)
-		// max zoom for vertical is bigger, so horizontal will be cut off without compensating
-		// horizontal can stay put
-		// set vertical
-		what_we_want[2] = CEILING(assumed_viewport_spy / pixel_per_x, 1)
+	// get ratio
+	var/aspect_ratio = assumed_viewport_spx / assumed_viewport_spy
+	// calculate
+	var/height_for_full_width = what_we_want[1] / (1 / aspect_ratio)
+	var/width_for_full_height = what_we_want[2] * aspect_ratio
+	// expand to force ratio
+	if(width_for_full_height < what_we_want[1])
+		what_we_want[2] = height_for_full_width
+	else if(height_for_full_width < what_we_want[2])
+		what_we_want[1] = width_for_full_height
 	else
 		pass()
-		// user somehow has a perfectly 1:1 ratio screen for the size (??)
-		// do nothing
+
 	// clamp
-	what_we_want[1] = min(what_we_want[1], MAX_VIEWPORT_WIDTH)
-	what_we_want[2] = min(what_we_want[2], MAX_VIEWPORT_HEIGHT)
+	what_we_want[1] = min(CEILING(what_we_want[1], 1), MAX_VIEWPORT_WIDTH)
+	what_we_want[2] = min(CEILING(what_we_want[2], 1), MAX_VIEWPORT_HEIGHT)
 	// set user view
 	view = encode_view_size(what_we_want[1], what_we_want[2])
 

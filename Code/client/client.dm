@@ -1,3 +1,8 @@
+/// ckey-client association list
+GLOBAL_LIST_EMPTY(client_lookup)
+/// client list
+GLOBAL_LIST_EMPTY(clients)
+
 /client
 	/// statpanel isn't a thing, don't have this on
 	show_verb_panel = FALSE
@@ -15,8 +20,17 @@
 
 /client/New()
 	. = ..()
+	// register global
+	global.client_lookup[ckey] = src
+	global.clients += src
 	// setup viewport
 	async_call(src, /client/proc/init_viewport_blocking)
 	#warn world profile access
 	#warn YO PORBABLY ONLY RUN THE BELOW FOR ADMINS OR CLEAR IT AFTER
 	world.SetConfig("APP/admin", ckey, "role=admin") // then set to role null
+
+/client/Destruct()
+	// unregister global
+	global.client_lookup -= ckey
+	global.clients -= src
+	return ..()
