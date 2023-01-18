@@ -56,7 +56,7 @@
 	 * and then expand the user's view as necessary
 	 */
 	// first set their map to not letterbox & stretch to fit because we are not using manual `view` adjustments
-	winset(src, SKIN_ID_GAME_MAP, "letterbox=false;zoom=0")
+	winset(src, SKIN_ID_GAME_MAP, "letterbox=true;zoom=0")
 	// then compute how much zoom on either side they can handle
 	var/list/what_we_want = decode_view_size(world.view)
 	// get ratio
