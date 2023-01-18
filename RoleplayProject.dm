@@ -2,7 +2,6 @@
 	These are simple defaults for your project.
  */
 
-#define DEBUG
 #define TILE_WIDTH 32
 #define TILE_HEIGHT 32
 #define MAX_VIEW_TILES 1440
