@@ -22,7 +22,7 @@ mob/verb/Grid()
 				for(var/obj/o in t.contents)
 					if(o.owner==usr.key)
 						var/image/r3 = image('Icons/grid.dmi',t,"g",5)
-						usr.cient.images += r3
+						usr.client.images += r3
 					if(o.density==1)
 						var/image/r = image('Icons/grid.dmi',t,"r",6)
 						usr.client.images += r

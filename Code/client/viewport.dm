@@ -62,7 +62,7 @@
 	// get ratio
 	var/aspect_ratio = assumed_viewport_spx / assumed_viewport_spy
 	// calculate
-	var/height_for_full_width = what_we_want[1] / (1 / aspect_ratio)
+	var/height_for_full_width = what_we_want[1] / aspect_ratio
 	var/width_for_full_height = what_we_want[2] * aspect_ratio
 	// expand to force ratio
 	if(width_for_full_height < what_we_want[1])

@@ -66,6 +66,9 @@ mob/proc/addLightPlane()
 		darkness = new /image/darkness
 	darkness.loc = src
 	darkness.alpha = 120
+	var/matrix/M = matrix()
+	M.Scale(75, 75)
+	darkness.transform = M
 	client.images += master_plane
 	client.images += darkness
 
