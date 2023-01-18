@@ -8,7 +8,9 @@
 		"neogeo123",
 		"maliciousdelicious",
 		"silicons",
-
+		"giantrobotsintokyo",
+		"poisoncupcake",
+		"pureflower",
 	)
 
 /client/New()
