@@ -179,12 +179,16 @@ obj
 
 	PlayGame
 		icon='Playgame.png'
-		screen_loc = "CENTER-5,CENTER"
+		screen_loc = "CENTER-7,CENTER-2"
 		Click()
 			usr.Play()
 		MouseEntered()
 			usr<<'Audio/Cursor Move.ogg'
 			var/obj/Cursor/C = new /obj/Cursor
+			C.screen_loc = screen_loc
+			var/matrix/M = matrix()
+			M.Translate(196, 0)
+			C.transform = M
 			spawn()
 			usr.client.screen+=C
 		MouseExited()
@@ -193,25 +197,23 @@ obj
 	Load
 		icon='Loadgame.png'
 		icon_state="load"
-		screen_loc="CENTER+1,CENTER"
+		screen_loc="CENTER+3,CENTER-2"
 		Click()
 			if(usr.intitlescreen!=1)
 				return
 			usr.Load()
 		MouseEntered()
 			usr<<'Audio/Cursor Move.ogg'
-			var/obj/Cursor2/C = new /obj/Cursor2
+			var/obj/Cursor/C = new /obj/Cursor
 			usr.client.screen+=C
+			var/matrix/M = matrix()
+			M.Translate(196, 0)
+			C.transform = M
 		MouseExited()
-			for(var/obj/Cursor2/C in usr.client.screen)
+			for(var/obj/Cursor/C in usr.client.screen)
 				del(C)
 	Cursor
 		icon='Icons/Cursor.dmi'
-		screen_loc="22,5"
-	Cursor2
-		icon='Icons/Cursor.dmi'
-		screen_loc="29,5"
-
 
 mob
 	proc

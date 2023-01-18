@@ -3,7 +3,7 @@
  */
 /proc/decode_view_size(vs)
 	if(isnum(vs))
-		return list(vs, vs)
+		return list(vs * 2 + 1, vs * 2 + 1)
 	else if(istext(vs))
 		. = splittext(vs, "x")
 		ASSERT(length(.) == 2)

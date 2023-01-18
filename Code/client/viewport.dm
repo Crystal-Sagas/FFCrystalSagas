@@ -65,12 +65,12 @@
 		// max zoom for horizontal is bigger, so vertical will be cut off without compensating
 		// vertical can stay put
 		// set horizontal
-		what_we_want[1] = assumed_viewport_spx / pixel_per_y
+		what_we_want[1] = CEILING(assumed_viewport_spx / pixel_per_y, 1)
 	else if(pixel_per_x < pixel_per_y)
 		// max zoom for vertical is bigger, so horizontal will be cut off without compensating
 		// horizontal can stay put
 		// set vertical
-		what_we_want[2] = assumed_viewport_spy / pixel_per_x
+		what_we_want[2] = CEILING(assumed_viewport_spy / pixel_per_x, 1)
 	else
 		pass()
 		// user somehow has a perfectly 1:1 ratio screen for the size (??)
