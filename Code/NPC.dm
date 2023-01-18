@@ -6021,10 +6021,10 @@ obj
 					wismod=2
 					cha=10
 					chamod=0
-					mab=2
-					pab=2
-					mdb=0
-					pdb=0
+					mab=12
+					pab=12
+					mdb=18
+					pdb=18
 					basedr=5
 					New()
 						var/obj/perk/MonsterAbilities/BLU/OilBullet/a=new
@@ -6073,10 +6073,10 @@ obj
 					wismod=5
 					cha=10
 					chamod=0
-					mab=3
-					pab=3
-					mdb=15
-					pdb=10
+					mab=14
+					pab=14
+					mdb=35
+					pdb=35
 					basedr=0
 					New()
 						var/obj/perk/MonsterAbilities/BLU/Vampire/a=new
@@ -6130,10 +6130,10 @@ obj
 					wismod=5
 					cha=18
 					chamod=4
-					mab=1
-					pab=1
-					mdb=10
-					pdb=0
+					mab=9
+					pab=9
+					mdb=18
+					pdb=18
 					basedr=0
 					New()
 						var/obj/perk/MonsterAbilities/BLU/Acid/a=new
