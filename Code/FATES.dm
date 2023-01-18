@@ -47,13 +47,16 @@ obj
 				return
 			else
 				usr.usingfate=1
-				for(var/obj/Party/p in world)
+				if(!locate(/obj/Party,usr.contents))
+					alert(usr,"Only the party leader can generate a FATE.")
+					return
+				for(var/obj/Party/p in usr)
 					for(var/mob/checkmem in world)
 						if(p.partyID==checkmem.partyID)
 							if(checkmem.FATEcooldown>=1)
 								alert(usr,"[checkmem.name] is on FATE cooldown, and thus the party cannot accept a FATE!")
 								usr.usingfate=0
-								return
+								break
 					if(p.FATEcooldown==1)
 						alert(usr,"Your party is on FATE cooldown!")
 						usr.usingfate=0
@@ -298,7 +301,7 @@ obj
 		icon='Icons/Artifact.png'
 		Click()
 			for(var/obj/Party/c in world)
-				if(usr.partyID==c.partyID)
+				if("[usr.partyID]"=="[c.partyID]")
 					for(var/obj/FATECrystal/b in world)
 						if(b.FATEID==c.FATEID)
 							view(usr)<<output("You've found the Artifact! Mog will return it to the researchers! (<b>FATE</b> complete!!)","icout")
@@ -318,7 +321,7 @@ obj
 		icon='Icons/Client.png'
 		Click()
 			for(var/obj/Party/c in world)
-				if(usr.partyID==c.partyID)
+				if("[usr.partyID]"=="[c.partyID]")
 					for(var/obj/FATECrystal/b in world)
 						if(b.FATEID==c.FATEID)
 							view(usr)<<output("Client: Thank you for the package, here's your pay. (<b>FATE</b> complete!!)","icout")

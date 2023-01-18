@@ -45,7 +45,7 @@ mob
 				transit_move(locate(_tp.gotoX,_tp.gotoY,_tp.gotoZ))
 				return
 obj
-	Bump(obj/Special/A, turf/Water/B)
+	Bump(obj/Special/A)
 		if(istype(A,/obj/Special/Teleporter)&&!(istype(A, /obj/Special/SpecialTele)))
 			var/obj/Special/Teleporter/_tp=A
 			if(A.teltype=="mapY")

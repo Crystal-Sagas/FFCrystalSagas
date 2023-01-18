@@ -3,6 +3,7 @@
 // New source code should be placed in .dm files: choose File/New --> Code File.
 
 // BEGIN_INTERNALS
+#define DEBUG
 // END_INTERNALS
 
 // BEGIN_FILE_DIR
@@ -47,6 +48,9 @@
 // END_PREFERENCES
 
 // BEGIN_INCLUDE
+#include "__compile_options.dm"
+#include "__init.dm"
+#include "__spaceman_dmm.dm"
 #include "Movement Delay.dm"
 #include "RoleplayProject.dm"
 #include "TechObjects.dm"
@@ -109,8 +113,12 @@
 #include "Code\Turntracking.dm"
 #include "Code\Vehicles.dm"
 #include "Code\WeaponandArmorDatabase.dm"
+#include "Code\world.dm"
 #include "Code\Yearsystem.dm"
+#include "Code\_HELPERS\_core.dm"
 #include "Code\atoms\atoms_movable.dm"
+#include "Code\client\chat.dm"
+#include "Code\client\client.dm"
 #include "Code\datums\datum.dm"
 #include "Code\datums\dispose.dm"
 #include "Code\DiscordWebHook\DiscordWebhook.dm"

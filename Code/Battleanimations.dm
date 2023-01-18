@@ -27,14 +27,16 @@ atom
 			summonobject.icon=summon.icon
 			var/obj/prop/Target/attack=new
 			var/obj/prop/Cast/Magic/cast=new
-			var/summonbonus=round(summon.mhp*0.3)
-			var/basedamage=rand(30,40)
+			var/summonbonus=round(summon.mhp*0.25)
+			var/basedamage=rand(70,80)
 			var/adddamage=summon.conmod+summon.strmod+summon.wismod+summon.chamod+summon.wismod+summon.intmod+summon.dexmod+summon.pab+summon.mab
 			var/damage=basedamage+summonbonus+adddamage
 			var/element=summon.resistance
 			var/summonpositionx=target.x+3
-			var/summoncost=round(summon.mhp*0.15)
+			var/summoncost=round(summon.mhp*0.5)
 			var/costtype="Mana"
+			var/power=rand(1,20)
+			var/tohit=power+adddamage+user.mab+summon.mab
 			var/statuschance=rand(1,100)
 			if(user.mp<summoncost)
 				view(user)<<output("<b>[user]</b> has tried to Summon <b>[summon]</b> but has failed because they lack the MP, and so must rest!","icout")
@@ -56,7 +58,7 @@ atom
 			if(summon.companiontype=="Robot")
 				summoncost=0
 			if(target.weakness==element)
-				basedamage+=50
+				basedamage=round(basedamage*1.5)
 			view(12,user) << sound('Audio/Soundeffects/Castmagic.wav',channel=3)
 			if(element=="Fire")
 				attack.icon='Icons/Animation/Attack/Fire.dmi'
@@ -212,8 +214,12 @@ atom
 				element="General"
 			del attack
 			del summonobject
-			view(user)<<output("<b><font color=[user.textcolor]>[user]</b> has spent <b>[summoncost] [costtype]</b> to summon forth the power of <font color=[user.textcolor]><b>[summon] ; dealing <font color=#FA6815><b>[damage]</font> <b>[element]</b> damage to <b>[target]</b>!</b>!!</font>","icout")
-			target.hp-=damage
+			view(user)<<output("To hit: <b><font color=[user.textcolor]>[tohit]</b> versus <b>[target.baseac]</b> AC <b>([target.name])</b>","icout")
+			if(tohit>=target.baseac)
+				view(user)<<output("<b><font color=[user.textcolor]>[user]</b> has spent <b>[summoncost] [costtype]</b> to summon forth the power of <font color=[user.textcolor]><b>[summon] ; with <b>[tohit] to hit</b> versus <b>[target.baseac] AC</b>, dealing <font color=#FA6815><b>[damage]</font> <b>[element]</b> damage to <b>[target]</b>!</b>!!</font>","icout")
+				target.hp-=damage
+			if(tohit<target.baseac)
+				view(user)<<output("<b><font color=[user.textcolor]>[user]</b> has spent <b>[summoncost] [costtype]</b> to summon forth the power of <font color=[user.textcolor]><b>[summon] ; but has missed, with a <b>[tohit]</b> to hit, against an AC of <b>[target.baseac]</b>.","icout")
 			if(element=="Time")
 				if(statuschance>=70)
 					AddStun(target)
@@ -1979,6 +1985,275 @@ atom
 			del attack2
 
 
+		Spellbladeanimation(var/mob/user,var/obj/npc/target,var/obj/perk/skill)
+			var/element=skill.element
+			if(element=="Death")
+				var/obj/prop/Target/Dark/attack=new
+				view(12,user) << sound('Audio/Soundeffects/Dark.wav',channel=3)
+				attack.x=target.x
+				attack.y=target.y
+				attack.z=target.z
+				sleep(10)
+				del attack
+			if(element=="Fire")
+				var/obj/prop/Target/Fire/attack=new
+				view(12,user) << sound('Audio/Soundeffects/Fire.wav',channel=3)
+				attack.x=target.x
+				attack.y=target.y
+				attack.z=target.z
+				sleep(10)
+				del attack
+			if(element=="Water")
+				var/obj/prop/Target/Water/attack=new
+				view(12,user) << sound('Audio/Soundeffects/Water.wav',channel=3)
+				attack.x=target.x
+				attack.y=target.y
+				attack.z=target.z
+				sleep(10)
+				del attack
+			if(element=="Thunder")
+				var/obj/prop/Target/Thunder/attack=new
+				view(12,user) << sound('Audio/Soundeffects/Thunder.wav',channel=3)
+				attack.x=target.x
+				attack.y=target.y
+				attack.z=target.z
+				sleep(10)
+				del attack
+			if(element=="Ice")
+				var/obj/prop/Target/Ice/attack=new
+				view(12,user) << sound('Audio/Soundeffects/Ice.wav',channel=3)
+				attack.x=target.x
+				attack.y=target.y
+				attack.z=target.z
+				sleep(10)
+				del attack
+			if(element=="Wind")
+				var/obj/prop/Target/Wind/attack=new
+				view(12,user) << sound('Audio/Soundeffects/Wind.wav',channel=3)
+				attack.x=target.x
+				attack.y=target.y
+				attack.z=target.z
+				sleep(10)
+				del attack
+			if(element=="Earth")
+				var/obj/prop/Target/Earth/attack=new
+				view(12,user) << sound('Audio/Soundeffects/Earth.wav',channel=3)
+				attack.x=target.x
+				attack.y=target.y
+				attack.z=target.z
+				sleep(10)
+				del attack
+			if(element=="General")
+				var/obj/prop/Target/General/attack=new
+				view(12,user) << sound('Audio/Soundeffects/General.wav',channel=3)
+				attack.x=target.x
+				attack.y=target.y
+				attack.z=target.z
+				sleep(10)
+				del attack
+			if(element=="Dark")
+				var/obj/prop/Target/Dark/attack=new
+				view(12,user) << sound('Audio/Soundeffects/Dark.wav',channel=3)
+				attack.x=target.x
+				attack.y=target.y
+				attack.z=target.z
+				sleep(10)
+				del attack
+			if(element=="Holy")
+				var/obj/prop/Target/Holy/attack=new
+				view(12,user) << sound('Audio/Soundeffects/Holy.wav',channel=3)
+				attack.x=target.x
+				attack.y=target.y
+				attack.z=target.z
+				sleep(10)
+				del attack
+			if(element=="Time")
+				var/obj/prop/Target/Time/attack=new
+				view(12,user) << sound('Audio/Soundeffects/Time.wav',channel=3)
+				attack.x=target.x
+				attack.y=target.y
+				attack.z=target.z
+				sleep(10)
+				del attack
+			if(element=="Physical")
+				var/obj/prop/Target/Physical/attack=new
+				view(12,user) << sound('Audio/Soundeffects/Physical.wav',channel=3)
+				attack.x=target.x
+				attack.y=target.y
+				attack.z=target.z
+				sleep(10)
+				del attack
+			if(element=="Heal")
+				var/obj/prop/Target/Heal/attack=new
+				view(12,user) << sound('Audio/Soundeffects/Heal.wav',channel=3)
+				attack.x=target.x
+				attack.y=target.y
+				attack.z=target.z
+				sleep(10)
+				del attack
+			if(element=="Bio")
+				var/obj/prop/Target/Bio/attack=new
+				view(12,user) << sound('Audio/Soundeffects/Bio.wav',channel=3)
+				attack.x=target.x
+				attack.y=target.y
+				attack.z=target.z
+				sleep(12)
+				del attack
+			if(element=="Robot")
+				var/obj/prop/Cast/Magic/cast=new
+				var/obj/prop/Target/Robot/attack=new
+				view(12,user) << sound('Audio/Soundeffects/Castmagic.wav',channel=3)
+				sleep(5)
+				cast.x=user.x
+				cast.y=user.y
+				cast.z=user.z
+				sleep(8)
+				del cast
+				view(12,user) << sound('Audio/Soundeffects/Robot.wav',channel=3)
+				attack.x=target.x
+				attack.y=target.y
+				attack.z=target.z
+				sleep(12)
+				del attack
+			if(element=="Metal")
+				var/obj/prop/Cast/Magic/cast=new
+				var/obj/prop/Target/Metal/attack=new
+				view(12,user) << sound('Audio/Soundeffects/Castmagic.wav',channel=3)
+				sleep(5)
+				cast.x=user.x
+				cast.y=user.y
+				cast.z=user.z
+				sleep(8)
+				del cast
+				view(12,user) << sound('Audio/Soundeffects/Physical.wav',channel=3)
+				attack.x=target.x
+				attack.y=target.y
+				attack.z=target.z
+				sleep(10)
+				del attack
+			if(element=="Laser")
+				var/obj/prop/Cast/Magic/cast=new
+				var/obj/prop/Target/Laser/attack=new
+				view(12,user) << sound('Audio/Soundeffects/Castmagic.wav',channel=3)
+				sleep(5)
+				cast.x=user.x
+				cast.y=user.y
+				cast.z=user.z
+				sleep(8)
+				del cast
+				view(12,user) << sound('Audio/Soundeffects/Laser.wav',channel=3)
+				attack.x=target.x
+				attack.y=target.y
+				attack.z=target.z
+				sleep(12)
+				del attack
+			if(element=="Nature")
+				var/obj/prop/Cast/Magic/cast=new
+				var/obj/prop/Target/Nature/attack=new
+				view(12,user) << sound('Audio/Soundeffects/Castmagic.wav',channel=3)
+				sleep(5)
+				cast.x=user.x
+				cast.y=user.y
+				cast.z=user.z
+				sleep(8)
+				del cast
+				view(12,user) << sound('Audio/Soundeffects/Nature.wav',channel=3)
+				attack.x=target.x
+				attack.y=target.y
+				attack.z=target.z
+				sleep(12)
+				del attack
+			if(element=="Flare")
+				var/obj/prop/Target/Flare/attack=new
+				view(12,user) << sound('Audio/Soundeffects/Flare.wav',channel=3)
+				attack.pixel_x=-64
+				attack.x=target.x
+				attack.y=target.y
+				attack.z=target.z
+				sleep(13)
+				del attack
+			if(element=="Comet")
+				var/obj/prop/Cast/Magic/cast=new
+				var/obj/prop/Target/Comet/attack=new
+				view(12,user) << sound('Audio/Soundeffects/Castmagic.wav',channel=3)
+				sleep(5)
+				cast.x=user.x
+				cast.y=user.y
+				cast.z=user.z
+				sleep(8)
+				del cast
+				view(12,user) << sound('Audio/Soundeffects/Comet.wav',channel=3)
+				attack.x=target.x
+				attack.y=target.y
+				attack.z=target.z
+				sleep(13)
+				del attack
+			if(element=="Ultima")
+				var/obj/prop/Cast/Magic/cast=new
+				var/obj/prop/Target/Ultima/attack=new
+				view(12,user) << sound('Audio/Soundeffects/Castmagic.wav',channel=3)
+				sleep(5)
+				cast.x=user.x
+				cast.y=user.y
+				cast.z=user.z
+				sleep(8)
+				del cast
+				view(12,user) << sound('Audio/Soundeffects/Ultima.wav',channel=3)
+				attack.pixel_x=-64
+				attack.x=target.x
+				attack.y=target.y
+				attack.z=target.z
+				sleep(22)
+				del attack
+			if(element=="Monk")
+				var/obj/prop/Cast/Physical/cast=new
+				var/obj/prop/Target/Monk/attack=new
+				view(12,user) << sound('Audio/Soundeffects/Castmagic.wav',channel=3)
+				sleep(5)
+				cast.x=user.x
+				cast.y=user.y
+				cast.z=user.z
+				sleep(8)
+				del cast
+				view(12,user) << sound('Audio/Soundeffects/Physical.wav',channel=3)
+				attack.x=target.x
+				attack.y=target.y
+				attack.z=target.z
+				sleep(14)
+				del attack
+			if(element=="Drain")
+				var/obj/prop/Cast/Physical/cast=new
+				var/obj/prop/Target/Drain/attack=new
+				view(12,user) << sound('Audio/Soundeffects/Castmagic.wav',channel=3)
+				sleep(5)
+				cast.x=user.x
+				cast.y=user.y
+				cast.z=user.z
+				sleep(8)
+				del cast
+				view(12,user) << sound('Audio/Soundeffects/General.wav',channel=3)
+				attack.x=target.x
+				attack.y=target.y
+				attack.z=target.z
+				sleep(14)
+				del attack
+			if(element=="Osmose")
+				var/obj/prop/Cast/Physical/cast=new
+				var/obj/prop/Target/Osmose/attack=new
+				view(12,user) << sound('Audio/Soundeffects/Castmagic.wav',channel=3)
+				sleep(5)
+				cast.x=user.x
+				cast.y=user.y
+				cast.z=user.z
+				sleep(8)
+				del cast
+				view(12,user) << sound('Audio/Soundeffects/General.wav',channel=3)
+				attack.x=target.x
+				attack.y=target.y
+				attack.z=target.z
+				sleep(14)
+				del attack
+
 		Playeranimation(var/mob/user,var/obj/npc/target,var/obj/perk/skill)
 			var/element=skill.element
 			if(element=="Death")
@@ -2367,7 +2642,6 @@ atom
 				attack.z=target.z
 				sleep(14)
 				del attack
-
 
 
 obj
