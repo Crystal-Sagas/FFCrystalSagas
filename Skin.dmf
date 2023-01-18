@@ -9697,7 +9697,6 @@ window "default"
 		anchor2 = 100,67
 		saved-params = ""
 		on-size = ".on_viewport [[width]] [[height]]"
-		zoom = 0.950000
 	elem "button2"
 		type = BUTTON
 		pos = 1073,464
