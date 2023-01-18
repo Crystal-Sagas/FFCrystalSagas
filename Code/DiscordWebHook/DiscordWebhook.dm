@@ -16,7 +16,7 @@
 
 client
 	// I made key_info literally just to grab your member icon URL from the hub.
-	var key_info/key_info
+	var/key_info/key_info
 
 	New()
 		key_info = new(key)
