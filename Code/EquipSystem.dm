@@ -85,8 +85,8 @@ obj
 											view()<<output("[usr.name] equips [src.name]","icout")
 											src.equipped=1
 											src.suffix = "equipped"
-											//This will make it so armor latently gives it's AC without a global mod.
-											if(src.weapontype=="Medium Armor")
+											//This probably needs to be commented out until Global mods on items is removed.
+											/*if(src.weapontype=="Medium Armor")
 												if(src.weptier=="Bronze")
 													usr.ac+=2
 												else if(src.weptier=="Iron")
@@ -124,7 +124,7 @@ obj
 												else if(src.weptier=="Admantine")
 													usr.ac+=7
 												else if(src.weptier=="Orichalcum")
-													usr.ac+=8
+													usr.ac+=8*/
 											for(var/obj/globalmod/m in src.contents)// This doesn't work. Not on anything in this equip system.
 												Applyglobalmod(usr,src)
 									if("materia")
@@ -186,7 +186,7 @@ obj
 										usr.armor = null
 										view()<<output("[usr.name] unequips [src.name]","output1")
 										view()<<output("[usr.name] unequips [src.name]","icout")
-										if(src.weapontype=="Medium Armor")
+										/*if(src.weapontype=="Medium Armor")
 											if(src.weptier=="Bronze")
 												usr.ac-=2
 											else if(src.weptier=="Iron")
@@ -226,7 +226,7 @@ obj
 											else if(src.weptier=="Orichalcum")
 												usr.ac-=8
 										if(usr.ac<9+usr.rankbonus+usr.dexmod+usr.conmod) //Sanity check. So people can just unequip and re-equip their armor when we update to latently get the AC.
-											usr.ac=9+usr.rankbonus+usr.dexmod+usr.conmod
+											usr.ac=9+usr.rankbonus+usr.dexmod+usr.conmod*/
 										for(var/obj/globalmod/m in src.contents)
 											Removeglobalmod(usr,src)
 									if("materia")
