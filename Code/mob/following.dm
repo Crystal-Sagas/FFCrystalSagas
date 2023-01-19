@@ -29,6 +29,28 @@
 	following = null
 
 /**
+ * makes sure we're not trying to follow someone that is already following us
+ */
+/mob/proc/follow_closure_check(mob/other)
+	if(other in followers)
+		return FALSE
+	for(var/mob/M as anything in followers)
+		if(!M._follow_closure_check(other, src))
+			return FALSE
+	return TRUE
+
+/mob/proc/_follow_closure_check(mob/other, mob/_original)
+	PRIVATE_PROC(TRUE)
+	if(_original == src)
+		CRASH("intercept: self loop in follow_closure_check")
+	if(other in followers)
+		return FALSE
+	for(var/mob/M as anything in followers)
+		if(!M._follow_closure_check(other, src))
+			return FALSE
+	return TRUE
+
+/**
  * starts following someone
  */
 /mob/proc/start_following(mob/M, silent)
@@ -36,8 +58,13 @@
 		return
 	if(following == M)
 		return
+	// stop following first so closure check doesn't false positive
 	if(following)
 		stop_following()
+	if(!follow_closure_check(M))
+		if(!silent)
+			send_chat("You cannot follow someone that's directly or indirectly following you.")
+		return
 	if(!silent)
 		M.send_chat("[src] starts following you.")
 		send_chat("You start following [M].")

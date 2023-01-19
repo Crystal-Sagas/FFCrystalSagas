@@ -17,8 +17,13 @@
 		return
 	if(other == pulling)
 		return
+	// stop pulling first so the pull limit check doesn't stop you from swapping to another person in your chain
 	if(pulling)
 		stop_pulling()
+	if(!pull_conga_check(other))
+		if(!silent)
+			send_chat("You are already pulling the maximum number of pepole you can, or are trying to pull someone who is already in your chain of pulls.")
+		return
 	if(other.pulledby)
 		other.pulledby.stop_pulling()
 	if(!silent)
@@ -27,6 +32,37 @@
 	pulling = other
 	other.pulledby = src
 	other.stop_following()
+
+/**
+ * traverses pull chain and ensures that
+ * 1. the mob that's about to be pulled isn't already in our chain somewhere
+ * 2. there's not too many people being pulled
+ */
+/mob/proc/pull_conga_check(mob/other)
+	var/amt = 1
+	// traverse backwards
+	var/mob/current = pulling
+	while(current)
+		++amt
+		if(amt > PULL_CONGA_LIMIT)
+			return FALSE
+		if(current == src)
+			return FALSE
+		if(current == other)
+			return FALSE
+		current = current.pulling
+	// traverse forwards
+	current = pulledby
+	while(current)
+		++amt
+		if(amt > PULL_CONGA_LIMIT)
+			return FALSE
+		if(current == src)
+			return FALSE
+		if(current == other)
+			return FALSE
+		current = current.pulledby
+	return TRUE
 
 /**
  * stop pulling whoever we're pulling
