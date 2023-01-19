@@ -91,6 +91,9 @@
  * checks that we are 1. pulling and 2. should keep the pull, 3. terminating the pull if not
  */
 /mob/proc/verify_pulling(moving)
+	if(!pulling || !isturf(pulling.loc))
+		stop_pulling(TRUE)
+		return FALSE
 	if(get_dist(src, pulling) > (moving? 2 : 1))
 		stop_pulling()
 		return FALSE

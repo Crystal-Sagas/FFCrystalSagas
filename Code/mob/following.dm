@@ -1,12 +1,11 @@
 
-/mob/verb/follow_verb(mob/M as mob in oview(2))
+/mob/verb/follow_us_verb()
 	set name = "Follow"
 	set desc = "Follow someone"
 	set category = "IC"
-	set src = usr
+	set src in oview(2)
 
-	start_following(M)
-
+	usr.start_following(src)
 
 /**
  * makes all mobs stop following us, and stops following
@@ -77,6 +76,9 @@
  */
 /mob/proc/process_followers()
 	for(var/mob/M as anything in followers)
+		if(!isturf(M.loc))
+			M.stop_following(TRUE)
+			continue
 		if(get_dist(M, src) >= FOLLOW_BREAK_DIST)
 			M.stop_following()
 			continue
