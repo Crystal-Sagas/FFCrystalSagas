@@ -186,10 +186,10 @@ mob
   verb
     list_perks()
       var/page
-      var/players
+	  var/list/generated = list()
 
       for(var/obj/perk/M in world)
-        players += \
+        generated += \
         {"
           <tr>
             <td width="40%"> [M.name] </td>
@@ -208,7 +208,7 @@ mob
         <body>
           <b>Perks found:</b>
           <table width="100%" border="1">
-            [players]
+            [jointext(generated, "")]
           </table>
           <a href="byond://?src=\ref[src]&action=close">\[Close Window\]</a>
         </body>
