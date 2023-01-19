@@ -304,7 +304,7 @@ mob
 				var/mob/G = input("Who would you like to go to?") as null|anything in people
 				if(!G)
 					return 0
-				src.loc = G.loc
+				force_move(get_turf(G))
 				usr << output("<font color=#C0FFC0>You appear before [G]","oocout")
 				G << output("<font color=#FFC0C0>[usr.name] appears before you.","oocout")
 				var/text = "[usr.name] teleported to [G.name]"
@@ -334,7 +334,7 @@ mob
 				var/mob/G = input("Who would you like to recall?","Recall Player") as null|anything in people
 				if(!G)
 					return 0
-				G.loc = src.loc
+				G.force_move(get_turf(src))
 				usr << output("<font color=#C0FFC0>You summon [G]","oocout")
 				G << "<font color=#C0FFC0>[usr.name] has summoned you"
 				var/text = "[usr.name] summoned [G.name]"
@@ -533,7 +533,7 @@ mob
 							if(M.client)
 								LMAO.Add(M)
 						LMAO.Add("Cancel")
-						var/Choice=input(src,"Ban who?") in LMAO
+						var/mob/Choice=input(src,"Ban who?") in LMAO
 						if(Choice=="Cancel")
 							return
 						var/Reason=input(src,"Enter a reason to display to the world") as text
@@ -684,13 +684,13 @@ mob
 						p.atype=input("Choose an attack type. This affects calculation during rolls") as anything in atktype
 						var/list/sourcetypes=list("str","dex","con","int","wis","cha")
 						switch(p.atype)
-							if("standard"||"weapon"||"magical"||"heal")
+							if("standard", "weapon", "magical", "heal")
 								p.range1=input("Choose a starting range for an attack roll") as num
 								p.range2=input("Choose an ending range for an attack roll") as num
 								p.addhit=input("Does this attack add to hitrate?") as num
 								p.adddam=input("Does this attack add to damage?") as num
 								p.damsource=input("What stat is being taken into calc.") as anything in sourcetypes
-							if("save"||"weaponsave")
+							if("save", "weaponsave")
 								p.range1=input("Choose a starting range for an attack roll") as num
 								p.range2=input("Choose an ending range for an attack roll") as num
 								p.addhit=input("Does this attack add to hitrate?") as num

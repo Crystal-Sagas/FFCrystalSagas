@@ -19,9 +19,6 @@ mob/var
 	ghostovers
 	rankchecked=0
 
-	mob/grabee
-	grabbed=0
-	grabbing=0
 	minednodes=0
 	maxnodes=5
 
@@ -58,8 +55,6 @@ mob/var
 
 	rpp = 50
 	trpp = 50
-	mob/follower
-	following=0
 
 	acrobaticsproficient=0
 	athleticsproficient=0
