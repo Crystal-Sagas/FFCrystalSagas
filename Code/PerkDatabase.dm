@@ -3170,7 +3170,7 @@ obj
 					cat="Ninja"
 					rank="T4"
 					name="Huge Reserves"
-					desc="This individual has learned to utilize their Ninpo in order to transform a non Ninja technique into Ninjutsu. If this Ninja knows a General Magic, Black Magic, or Arcane Magic ability - they may spend that technique's cost using Ninpo points instead of its initial cost resource. If they do so, the technique is then considered a 'Ninjutsu' technique and is cast by using Mantra seals instead. It also gains 10 additional damage if it is a damaging technique, and any associated saving throw DCs are increased by 1. This bonus applies per attack roll, for multi-hits."
+					desc="This individual has increased their Ninpo reserves by an additional 150 Ninpo points."
 
 			Gambler
 				cat="Unique"

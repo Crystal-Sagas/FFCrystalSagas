@@ -1915,6 +1915,34 @@ atom
 								actions+="Retaliate"
 							var/achoice=input(battler1,"What action would you like to take this turn?") as anything in actions
 							switch(achoice)
+								if("Blade Cast")
+									var/list/twincast=list()
+									for(var/obj/perk/options in pattacklist1)
+										if(options.typing=="magical")
+											twincast+=options
+									var/target=input(battler1,"Which enemy would you like to attack?") as anything in enemylist
+									attackchoice=input(battler1,"Which Ability would you like to use this turn?") as anything in twincast
+									battler1.turnattack(battler1,target)
+									battler1.TurnAbility(battler1,target,attackchoice)
+									sleep(4)
+								if("Blade Dance")
+									var/target=input(battler1,"Which enemy would you like to attack?") as anything in enemylist
+									battler1.turnattack(battler1,target)
+									battler1.turnattack(battler1,target)
+									sleep(4)
+								if("Twin Cast")
+									var/list/twincast=list()
+									for(var/obj/perk/options in pattacklist1)
+										if(options.typing=="magical")
+											twincast+=options
+									attackchoice=input(battler1,"Which Ability would you like to use this turn?") as anything in twincast
+									var/target=input(battler1,"Which enemy would you like to attack?") as anything in enemylist
+									battler1.TurnAbility(battler1,target,attackchoice)
+									sleep(4)
+									attackchoice=input(battler1,"Which Ability would you like to use this turn?") as anything in twincast
+									var/target2=input(battler1,"Which enemy would you like to attack?") as anything in enemylist
+									battler1.TurnAbility(battler1,target2,attackchoice)
+									sleep(4)
 								if("Retaliate")
 									if(battler1.sp<30)
 										usr<<output("<font color=[battler1.textcolor]<b>[battler1] has attempted to use Retaliate, but could not spend 30 SP, and has forfeited their turn!","icout")
@@ -2124,6 +2152,32 @@ atom
 
 							var/achoice=input(battler2,"What action would you like to take this turn?") as anything in actions
 							switch(achoice)
+								if("Blade Cast")
+									var/list/twincast=list()
+									for(var/obj/perk/options in pattacklist2)
+										if(options.typing=="magical")
+											twincast+=options
+									var/target=input(battler2,"Which enemy would you like to attack?") as anything in enemylist
+									attackchoice=input(battler2,"Which Ability would you like to use this turn?") as anything in twincast
+									battler2.turnattack(battler2,target)
+									battler2.TurnAbility(battler2,target,attackchoice)
+								if("Blade Dance")
+									var/target=input(battler2,"Which enemy would you like to attack?") as anything in enemylist
+									battler2.turnattack(battler2,target)
+									battler2.turnattack(battler2,target)
+								if("Twin Cast")
+									var/list/twincast=list()
+									for(var/obj/perk/options in pattacklist2)
+										if(options.typing=="magical")
+											twincast+=options
+									attackchoice=input(battler2,"Which Ability would you like to use this turn?") as anything in twincast
+									var/target=input(battler2,"Which enemy would you like to attack?") as anything in enemylist
+									battler2.TurnAbility(battler2,target,attackchoice)
+									sleep(4)
+									attackchoice=input(battler2,"Which Ability would you like to use this turn?") as anything in twincast
+									var/target2=input(battler2,"Which enemy would you like to attack?") as anything in enemylist
+									battler2.TurnAbility(battler2,target2,attackchoice)
+									sleep(4)
 								if("Retaliate")
 									if(battler2.sp<30)
 										usr<<output("<font color=[battler2.textcolor]<b>[battler2] has attempted to use Retaliate, but could not spend 30 SP, and has forfeited their turn!","icout")
@@ -2333,6 +2387,32 @@ atom
 								Statusprocparty(battler3)
 							var/achoice=input(battler3,"What action would you like to take this turn?") as anything in actions
 							switch(achoice)
+								if("Blade Cast")
+									var/list/twincast=list()
+									for(var/obj/perk/options in pattacklist3)
+										if(options.typing=="magical")
+											twincast+=options
+									var/target=input(battler3,"Which enemy would you like to attack?") as anything in enemylist
+									attackchoice=input(battler3,"Which Ability would you like to use this turn?") as anything in twincast
+									battler3.turnattack(battler3,target)
+									battler3.TurnAbility(battler3,target,attackchoice)
+								if("Blade Dance")
+									var/target=input(battler3,"Which enemy would you like to attack?") as anything in enemylist
+									battler3.turnattack(battler3,target)
+									battler3.turnattack(battler3,target)
+								if("Twin Cast")
+									var/list/twincast=list()
+									for(var/obj/perk/options in pattacklist3)
+										if(options.typing=="magical")
+											twincast+=options
+									attackchoice=input(battler3,"Which Ability would you like to use this turn?") as anything in twincast
+									var/target=input(battler3,"Which enemy would you like to attack?") as anything in enemylist
+									battler3.TurnAbility(battler3,target,attackchoice)
+									sleep(4)
+									attackchoice=input(battler3,"Which Ability would you like to use this turn?") as anything in twincast
+									var/target2=input(battler3,"Which enemy would you like to attack?") as anything in enemylist
+									battler3.TurnAbility(battler3,target2,attackchoice)
+									sleep(4)
 								if("Retaliate")
 									if(battler3.sp<30)
 										usr<<output("<font color=[battler3.textcolor]<b>[battler3] has attempted to use Retaliate, but could not spend 30 SP, and has forfeited their turn!","icout")
@@ -2541,6 +2621,32 @@ atom
 								Statusprocparty(battler4)
 							var/achoice=input(battler4,"What action would you like to take this turn?") as anything in actions
 							switch(achoice)
+								if("Blade Cast")
+									var/list/twincast=list()
+									for(var/obj/perk/options in pattacklist4)
+										if(options.typing=="magical")
+											twincast+=options
+									var/target=input(battler4,"Which enemy would you like to attack?") as anything in enemylist
+									attackchoice=input(battler4,"Which Ability would you like to use this turn?") as anything in twincast
+									battler4.turnattack(battler4,target)
+									battler4.TurnAbility(battler4,target,attackchoice)
+								if("Blade Dance")
+									var/target=input(battler4,"Which enemy would you like to attack?") as anything in enemylist
+									battler4.turnattack(battler4,target)
+									battler4.turnattack(battler4,target)
+								if("Twin Cast")
+									var/list/twincast=list()
+									for(var/obj/perk/options in pattacklist4)
+										if(options.typing=="magical")
+											twincast+=options
+									attackchoice=input(battler4,"Which Ability would you like to use this turn?") as anything in twincast
+									var/target=input(battler4,"Which enemy would you like to attack?") as anything in enemylist
+									battler4.TurnAbility(battler4,target,attackchoice)
+									sleep(4)
+									attackchoice=input(battler4,"Which Ability would you like to use this turn?") as anything in twincast
+									var/target2=input(battler4,"Which enemy would you like to attack?") as anything in enemylist
+									battler4.TurnAbility(battler4,target2,attackchoice)
+									sleep(4)
 								if("Retaliate")
 									if(battler4.sp<30)
 										usr<<output("<font color=[battler4.textcolor]<b>[battler4] has attempted to use Retaliate, but could not spend 30 SP, and has forfeited their turn!","icout")
@@ -6022,10 +6128,10 @@ obj
 					wismod=2
 					cha=10
 					chamod=0
-					mab=2
-					pab=2
-					mdb=0
-					pdb=0
+					mab=12
+					pab=12
+					mdb=18
+					pdb=18
 					basedr=5
 					New()
 						var/obj/perk/MonsterAbilities/BLU/OilBullet/a=new
@@ -6074,10 +6180,10 @@ obj
 					wismod=5
 					cha=10
 					chamod=0
-					mab=3
-					pab=3
-					mdb=15
-					pdb=10
+					mab=14
+					pab=14
+					mdb=35
+					pdb=35
 					basedr=0
 					New()
 						var/obj/perk/MonsterAbilities/BLU/Vampire/a=new
@@ -6131,10 +6237,10 @@ obj
 					wismod=5
 					cha=18
 					chamod=4
-					mab=1
-					pab=1
-					mdb=10
-					pdb=0
+					mab=9
+					pab=9
+					mdb=18
+					pdb=18
 					basedr=0
 					New()
 						var/obj/perk/MonsterAbilities/BLU/Acid/a=new

@@ -163,6 +163,8 @@ area
 proc
 	Flashplaque(var/mob/m,var/area/a)
 		var/obj/loccard/ncard=copyatom(a.card)
+		if(!ncard)
+			return
 		animate(ncard,alpha=255,time=30)
 		m.client.screen+=ncard
 		sleep(50)

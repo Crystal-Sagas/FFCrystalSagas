@@ -364,7 +364,6 @@ mob
 		if(src.tempeventmin)
 			src.tempeventmin=0
 			src.verbs-=typesof(/mob/eventmin/verb/)
-		Unequipglobalmods(src)
 		for(var/obj/Aoeind/o in world)
 			if(o.owner==src.ckey)
 				del(o)

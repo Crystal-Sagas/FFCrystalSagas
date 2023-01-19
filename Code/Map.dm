@@ -128,6 +128,10 @@ turf
 				icon_state="8"
 			parkingspot4
 				icon_state="9"
+		CrystalCave
+			Crystalfloor
+				icon='Map Icons/Crystalcave.dmi'
+				icon_state="1"
 		Dirt1
 			icon='Map Icons/Dirt1.dmi'
 			Ftile
@@ -1199,6 +1203,39 @@ obj
 			crystalbeambordernorth
 				icon_state="crystalbeambordernorth"
 				layer=5
+		Factory
+			Toolbox
+				density=1
+				icon='Map Icons/Factory.dmi'
+				icon_state="1"
+			Assemblymachine
+				density=1
+				icon='Map Icons/Assembly.dmi'
+				icon_state="1"
+			Tower1
+				density=1
+				icon='Map Icons/Factorytowers.dmi'
+				icon_state="1"
+			Tower2
+				density=1
+				icon='Map Icons/Factorytowers.dmi'
+				icon_state="2"
+			Tower3
+				density=1
+				icon='Map Icons/Factorytowers.dmi'
+				icon_state="3"
+			Tower4
+				density=1
+				icon='Map Icons/Factorytowers.dmi'
+				icon_state="4"
+			Tower5
+				density=1
+				icon='Map Icons/Factorytowers.dmi'
+				icon_state="5"
+			Tower6
+				density=1
+				icon='Map Icons/Factorytowers.dmi'
+				icon_state="6"
 		FenceBrick
 			icon='Map Icons/BrickFence.dmi'
 			density=1

@@ -33,29 +33,29 @@ mob
 		if(istype(A,/obj/Special/Teleporter)&&!(istype(A, /obj/Special/SpecialTele)))
 			var/obj/Special/Teleporter/_tp=A
 			if(A.teltype=="mapY")
-				src.loc=locate(_tp.gotoX,src.y,_tp.gotoZ)
+				transit_move(locate(_tp.gotoX,src.y,_tp.gotoZ))
 				return
 			if(A.teltype=="mapX")
-				src.loc=locate(src.x,_tp.gotoY,_tp.gotoZ)
+				transit_move(locate(src.x,_tp.gotoY,_tp.gotoZ))
 				return
 			if(A.teltype=="normal")
-				src.loc=locate(_tp.gotoX,_tp.gotoY,_tp.gotoZ)
+				transit_move(locate(_tp.gotoX,_tp.gotoY,_tp.gotoZ))
 				return
 			if(A.teltype=="area")
-				src.loc=locate(_tp.gotoX,_tp.gotoY,_tp.gotoZ)
+				transit_move(locate(_tp.gotoX,_tp.gotoY,_tp.gotoZ))
 				return
 obj
 	Bump(obj/Special/A)
 		if(istype(A,/obj/Special/Teleporter)&&!(istype(A, /obj/Special/SpecialTele)))
 			var/obj/Special/Teleporter/_tp=A
 			if(A.teltype=="mapY")
-				src.loc=locate(_tp.gotoX,src.y,_tp.gotoZ)
+				transit_move(locate(_tp.gotoX,src.y,_tp.gotoZ))
 				return
 			if(A.teltype=="mapX")
-				src.loc=locate(src.x,_tp.gotoY,_tp.gotoZ)
+				transit_move(locate(src.x,_tp.gotoY,_tp.gotoZ))
 				return
 			if(A.teltype=="area")
-				src.loc=locate(_tp.gotoX,_tp.gotoY,_tp.gotoZ)
+				transit_move(locate(_tp.gotoX,_tp.gotoY,_tp.gotoZ))
 				return
 
 obj
@@ -156,8 +156,7 @@ obj/Vehicles/Tech
 						for(var/obj/ShipConsole/S in world)
 							if(S.PodID == src.PodID)
 								src.TheConsole = S
-								usr.loc = locate(src.TheConsole.x, src.TheConsole.y-1, src.TheConsole.z)
-								UpdateArea(usr)
+								usr.transit_move(get_turf(src.TheConsole), recurse_follow = 0)
 								return
 							usr << "Error! No ship consoles were found!"
 				else
@@ -221,8 +220,7 @@ obj/Vehicles/Tech
 						for(var/obj/AirshipConsole/S in world)
 							if(S.AirshipID == src.AirshipID)
 								src.TheConsole = S
-								usr.loc = locate(src.TheConsole.x, src.TheConsole.y-1, src.TheConsole.z)
-								UpdateArea(usr)
+								usr.force_move(get_turf(src.TheConsole))
 								return
 							usr << "Error! No ship consoles were found!"
 				else
@@ -283,8 +281,7 @@ obj/Vehicles/Tech
 								usr<<"ID assigned! ID is [i]."
 								break
 					if(src.TheDoor)
-						usr.loc=locate(src.TheDoor.x,src.TheDoor.y-1,src.TheDoor.z)
-						UpdateArea(usr)
+						usr.transit_move(get_turf(src.TheDoor), recurse_follow = 0)
 						return
 					else
 						for(var/obj/BalambDoor/S in world)
@@ -416,8 +413,7 @@ obj/ShipConsole
 			set src in oview(5)
 			if(src.ThePod)
 				view(10,usr)<<"[usr] leaves the ship."
-				usr.loc=ThePod.loc
-				UpdateArea(usr)
+				usr.transit_move(get_turf(ThePod), recurse_follow = 0)
 				return
 		//	usr.SendToSpawn() // If the pod has been deleted, sends user to spawn instead of a void.//
 		View()
@@ -475,8 +471,7 @@ obj/RoverConsole
 			set src in oview(5)
 			if(src.ThePod)
 				view(10,usr)<<"[usr] leaves the ship."
-				usr.loc=ThePod.loc
-				UpdateArea(usr)
+				usr.transit_move(get_turf(ThePod), recurse_follow = 0)
 				return
 		//	usr.SendToSpawn() // If the pod has been deleted, sends user to spawn instead of a void.//
 		View()
@@ -545,8 +540,7 @@ obj/AirshipConsole
 			set src in oview(5)
 			if(src.ThePod)
 				view(10,usr)<<"[usr] leaves the ship."
-				usr.loc=ThePod.loc
-				UpdateArea(usr)
+				usr.transit_move(get_turf(ThePod), recurse_follow = 0)
 				return
 		//	usr.SendToSpawn() // If the pod has been deleted, sends user to spawn instead of a void.//
 		View()
@@ -633,8 +627,7 @@ obj/BalambConsole
 			set src in oview(5)
 			if(src.ThePod)
 				view(10,usr)<<"[usr] leaves the ship."
-				usr.loc=ThePod.loc
-				UpdateArea(usr)
+				usr.transit_move(get_turf(ThePod), recurse_follow = 0)
 				return
 		//	usr.SendToSpawn() // If the pod has been deleted, sends user to spawn instead of a void.//
 		View()

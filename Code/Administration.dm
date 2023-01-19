@@ -108,13 +108,13 @@ mob/proc
 		src.client.perspective = EYE_PERSPECTIVE
 
 proc/copyatom(atom/a)
-    if(!a) return
-    var/atom/b = new a.type
-    b.name = a.name
-    for(var/v in a.vars)
-        if(issaved(a.vars[v]))
-            b.vars[v] = a.vars[v]
-    return b
+	if(!a) return
+	var/atom/b = new a.type
+	b.name = a.name
+	for(var/v in a.vars)
+		if(issaved(a.vars[v]))
+			b.vars[v] = a.vars[v]
+	return b
 
 proc/Log(var/e,var/Info)
 	if(e=="Admin")
@@ -303,7 +303,7 @@ mob
 				var/mob/G = input("Who would you like to go to?") as null|anything in people
 				if(!G)
 					return 0
-				src.loc = G.loc
+				force_move(get_turf(G))
 				usr << output("<font color=#C0FFC0>You appear before [G]","oocout")
 				G << output("<font color=#FFC0C0>[usr.name] appears before you.","oocout")
 				var/text = "[usr.name] teleported to [G.name]"
@@ -333,7 +333,7 @@ mob
 				var/mob/G = input("Who would you like to recall?","Recall Player") as null|anything in people
 				if(!G)
 					return 0
-				G.loc = src.loc
+				G.force_move(get_turf(src))
 				usr << output("<font color=#C0FFC0>You summon [G]","oocout")
 				G << "<font color=#C0FFC0>[usr.name] has summoned you"
 				var/text = "[usr.name] summoned [G.name]"

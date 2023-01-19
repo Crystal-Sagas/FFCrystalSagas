@@ -91,128 +91,128 @@ atom
 					if(bluh=="Text")vars[variable][blah]=input("","",vars[variable][blah])as text
 
 atom
-  Topic(href, list/href_list)
-    ..()
-    var/action = href_list["action"]
-    var/value = href_list["value"]
-    switch(action)
-      if("look")
-        // use locate() to get the reference of the text returned by \ref
-        var/target = locate(value)
-        // if it exists (player hasn't logged out after window refreshed), call the look_at() function
-        if(target) src.look_at(target,src)
-      if("close")
-        // close the window when the player clicks the 'close' button
-        src << browse(null, "window=playerlist")
-  Topic(href, list/href_list)
-    ..()
-    var/action2 = href_list["action2"]
-    var/value2 = href_list["value"]
-    switch(action2)
-      if("lookwep")
-        // use locate() to get the reference of the text returned by \ref
-        var/target2 = locate(value2)
-        // if it exists (player hasn't logged out after window refreshed), call the look_at() function
-        if(target2) src.look_atweapon(target2,src)
-      if("lookchem")
-        var/target2=locate(value2)
+	Topic(href, list/href_list)
+		..()
+		var/action = href_list["action"]
+		var/value = href_list["value"]
+		switch(action)
+			if("look")
+				// use locate() to get the reference of the text returned by \ref
+				var/target = locate(value)
+				// if it exists (player hasn't logged out after window refreshed), call the look_at() function
+				if(target) src.look_at(target,src)
+			if("close")
+				// close the window when the player clicks the 'close' button
+				src << browse(null, "window=playerlist")
+	Topic(href, list/href_list)
+		..()
+		var/action2 = href_list["action2"]
+		var/value2 = href_list["value"]
+		switch(action2)
+			if("lookwep")
+				// use locate() to get the reference of the text returned by \ref
+				var/target2 = locate(value2)
+				// if it exists (player hasn't logged out after window refreshed), call the look_at() function
+				if(target2) src.look_atweapon(target2,src)
+			if("lookchem")
+				var/target2=locate(value2)
 
-        if(target2) src.look_atchemistry(target2,src)
-      if("close")
-        // close the window when the player clicks the 'close' button
-        src << browse(null, "window=playerlist")
-  Topic(href, list/href_list)
-    ..()
-    var/action4 = href_list["action4"]
-    var/value = href_list["value"]
-    switch(action4)
-      if("lookmat")
-        // use locate() to get the reference of the text returned by \ref
-        var/target = locate(value)
-        // if it exists (player hasn't logged out after window refreshed), call the look_at() function
-        if(target) src.look_materia(target,src)
-      if("close")
-        // close the window when the player clicks the 'close' button
-        src << browse(null, "window=playerlist")
+				if(target2) src.look_atchemistry(target2,src)
+			if("close")
+				// close the window when the player clicks the 'close' button
+				src << browse(null, "window=playerlist")
+	Topic(href, list/href_list)
+		..()
+		var/action4 = href_list["action4"]
+		var/value = href_list["value"]
+		switch(action4)
+			if("lookmat")
+				// use locate() to get the reference of the text returned by \ref
+				var/target = locate(value)
+				// if it exists (player hasn't logged out after window refreshed), call the look_at() function
+				if(target) src.look_materia(target,src)
+			if("close")
+				// close the window when the player clicks the 'close' button
+				src << browse(null, "window=playerlist")
 
 
 
 
 mob
-  Topic(href, list/href_list)
-    ..()
-    var/action = href_list["action"]
-    var/value = href_list["value"]
-    switch(action)
-      if("look")
-        // use locate() to get the reference of the text returned by \ref
-        var/target = locate(value)
-        // if it exists (player hasn't logged out after window refreshed), call the look_at() function
-        if(target) src.look_at(target)
-      if("close")
-        // close the window when the player clicks the 'close' button
-        src << browse(null, "window=playerlist")
-      if("blu")
-        var/target=locate(value)
-        if(target) src.Learnblu(target,src)
+	Topic(href, list/href_list)
+		..()
+		var/action = href_list["action"]
+		var/value = href_list["value"]
+		switch(action)
+			if("look")
+				// use locate() to get the reference of the text returned by \ref
+				var/target = locate(value)
+				// if it exists (player hasn't logged out after window refreshed), call the look_at() function
+				if(target) src.look_at(target)
+			if("close")
+				// close the window when the player clicks the 'close' button
+				src << browse(null, "window=playerlist")
+			if("blu")
+				var/target=locate(value)
+				if(target) src.Learnblu(target,src)
 
-  Topic(href, list/href_list)
-    ..()
-    var/action2 = href_list["action2"]
-    var/value2 = href_list["value"]
-    switch(action2)
-      if("lookwep")
-        // use locate() to get the reference of the text returned by \ref
-        var/target2 = locate(value2)
-        // if it exists (player hasn't logged out after window refreshed), call the look_at() function
-        if(target2) src.look_atweapon(target2,src)
-      if("close")
-        // close the window when the player clicks the 'close' button
-        src << browse(null, "window=playerlist")
-  Topic(href, list/href_list)
-    ..()
-    var/action4 = href_list["action4"]
-    var/value = href_list["value"]
-    switch(action4)
-      if("lookmat")
-        // use locate() to get the reference of the text returned by \ref
-        var/target = locate(value)
-        // if it exists (player hasn't logged out after window refreshed), call the look_at() function
-        if(target) src.look_materia(target,src)
-      if("close")
-        // close the window when the player clicks the 'close' button
-        src << browse(null, "window=playerlist")
+	Topic(href, list/href_list)
+		..()
+		var/action2 = href_list["action2"]
+		var/value2 = href_list["value"]
+		switch(action2)
+			if("lookwep")
+				// use locate() to get the reference of the text returned by \ref
+				var/target2 = locate(value2)
+				// if it exists (player hasn't logged out after window refreshed), call the look_at() function
+				if(target2) src.look_atweapon(target2,src)
+			if("close")
+				// close the window when the player clicks the 'close' button
+				src << browse(null, "window=playerlist")
+	Topic(href, list/href_list)
+		..()
+		var/action4 = href_list["action4"]
+		var/value = href_list["value"]
+		switch(action4)
+			if("lookmat")
+				// use locate() to get the reference of the text returned by \ref
+				var/target = locate(value)
+				// if it exists (player hasn't logged out after window refreshed), call the look_at() function
+				if(target) src.look_materia(target,src)
+			if("close")
+				// close the window when the player clicks the 'close' button
+				src << browse(null, "window=playerlist")
 
-  verb
-    list_perks()
-      var/page
-      var/players
+	verb
+		list_perks()
+			var/page
+			var/list/generated = list()
 
-      for(var/obj/perk/M in world)
-        players += \
-        {"
-          <tr>
-            <td width="40%"> [M.name] </td>
-            <td width="60%">
-              <a href="byond://?src=\ref[src]&action=look&value=\ref[M]">
-                Click to view statistics
-              </a>
-            </td>
-          </tr>
-        "}
+			for(var/obj/perk/M in world)
+				generated += \
+				{"
+					<tr>
+						<td width="40%"> [M.name] </td>
+						<td width="60%">
+							<a href="byond://?src=\ref[src]&action=look&value=\ref[M]">
+								Click to view statistics
+							</a>
+						</td>
+					</tr>
+				"}
 
-      page = \
-      {"
-        <html>
-          <head> <title>Perk List</title> </head>
-        <body>
-          <b>Perks found:</b>
-          <table width="100%" border="1">
-            [players]
-          </table>
-          <a href="byond://?src=\ref[src]&action=close">\[Close Window\]</a>
-        </body>
-        </html>
-      "}
+			page = \
+			{"
+				<html>
+					<head> <title>Perk List</title> </head>
+				<body>
+					<b>Perks found:</b>
+					<table width="100%" border="1">
+						[jointext(generated, "")]
+					</table>
+					<a href="byond://?src=\ref[src]&action=close">\[Close Window\]</a>
+				</body>
+				</html>
+			"}
 
-      src << browse(page, "window=playerlist&size=500x300")
+			src << browse(page, "window=playerlist&size=500x300")

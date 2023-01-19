@@ -162,7 +162,7 @@ mob
 			var/row
 			var/swapwep
 			winset(usr,"Crafting.weaponrecipes","cells=0x0")
-			var/list/wepchoices=list("Longsword","Focus Crystal","Scimitar","Shuriken","Throwing Knives","Axe","Hammer","Dagger","Whip","Greatsword","Katana","Spear","Scythe","Bow","Focus Sword","Staff","Tome","Sword Spear","Thief Sword","Bolt Rapier","Whip Blade","Akademia Cards","Blitz Ball","Gunblade","Bowsword","Bagangsaw","Buster Sword","Morphing Blade","Gun Arm","Magitek Pistol","Magitek Rifle")
+			var/list/wepchoices=list("Longsword","Focus Crystal","Scimitar","Shuriken","Throwing Knives","Axe","Hammer","Dagger","Whip","Greatsword","Katana","Spear","Scythe","Bow","Focus Sword","Staff","Tome","Sword Spear","Thief Sword","Bolt Rapier","Whipblade","Akademia Cards","Blitz Ball","Gunblade","Bowsword","Bagangsaw","Buster Sword","Morphing Blade","Gun Arm","Magitek Pistol","Magitek Rifle")
 			var/chosenwep=input(usr,"What weapon crafting list would you like to access?") as anything in wepchoices
 			swapwep=chosenwep
 			for(var/obj/recipes/Weapons/o in global.recipe_shop.recipes)
