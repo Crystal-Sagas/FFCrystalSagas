@@ -1676,8 +1676,6 @@ obj
 												dresult+=usr.pdbadd
 											else
 												dresult+=25
-
-
 									view()<<output("<font size=1><font color=[usr.textcolor]>[usr] <font color=white>is using the <font color=[usr.textcolor]>[src.name]<font color=white> ability!  Saving throw: <font color=#8EF5DE><b>[aresult] [src.savetype]!</b><font color=white>, dealing <b><font color=#FFA852>[dresult] damage</b><font color=white> on a failed save!<br> Cost: <b><font color=#0FBFD7>[src.mcost] [src.costtype]</b>| Tile Range:[src.range]","icout")
 								if(src.atype=="weaponsave")
 									var/obj/item/Weapon/wepchoice = usr.righthand
