@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 /// ckey-client association list
 GLOBAL_LIST_EMPTY(client_lookup)
 /// client list
