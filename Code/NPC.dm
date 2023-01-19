@@ -2152,6 +2152,15 @@ atom
 
 							var/achoice=input(battler2,"What action would you like to take this turn?") as anything in actions
 							switch(achoice)
+								if("Blade Cast")
+									var/list/twincast=list()
+									for(var/obj/perk/options in pattacklist2)
+										if(options.typing=="magical")
+											twincast+=options
+									var/target=input(battler2,"Which enemy would you like to attack?") as anything in enemylist
+									attackchoice=input(battler2,"Which Ability would you like to use this turn?") as anything in twincast
+									battler2.turnattack(battler2,target)
+									battler2.TurnAbility(battler2,target,attackchoice)
 								if("Blade Dance")
 									var/target=input(battler2,"Which enemy would you like to attack?") as anything in enemylist
 									battler2.turnattack(battler2,target)
@@ -2378,6 +2387,15 @@ atom
 								Statusprocparty(battler3)
 							var/achoice=input(battler3,"What action would you like to take this turn?") as anything in actions
 							switch(achoice)
+								if("Blade Cast")
+									var/list/twincast=list()
+									for(var/obj/perk/options in pattacklist3)
+										if(options.typing=="magical")
+											twincast+=options
+									var/target=input(battler3,"Which enemy would you like to attack?") as anything in enemylist
+									attackchoice=input(battler3,"Which Ability would you like to use this turn?") as anything in twincast
+									battler3.turnattack(battler3,target)
+									battler3.TurnAbility(battler3,target,attackchoice)
 								if("Blade Dance")
 									var/target=input(battler3,"Which enemy would you like to attack?") as anything in enemylist
 									battler3.turnattack(battler3,target)
@@ -2603,6 +2621,15 @@ atom
 								Statusprocparty(battler4)
 							var/achoice=input(battler4,"What action would you like to take this turn?") as anything in actions
 							switch(achoice)
+								if("Blade Cast")
+									var/list/twincast=list()
+									for(var/obj/perk/options in pattacklist4)
+										if(options.typing=="magical")
+											twincast+=options
+									var/target=input(battler4,"Which enemy would you like to attack?") as anything in enemylist
+									attackchoice=input(battler4,"Which Ability would you like to use this turn?") as anything in twincast
+									battler4.turnattack(battler4,target)
+									battler4.TurnAbility(battler4,target,attackchoice)
 								if("Blade Dance")
 									var/target=input(battler4,"Which enemy would you like to attack?") as anything in enemylist
 									battler4.turnattack(battler4,target)
