@@ -1613,9 +1613,69 @@ obj
 									if(src.typing=="magical")
 										aresult=src.basecheck+amod+usr.rankbonus+src.addhit+2
 										dresult=abilitydamage+dmod+usr.mdb+src.adddam+10
+										if(usr.mabadd<15)// Global cap for magical attack bonus add is 15.
+											aresult+=usr.mabadd
+										else
+											aresult+=15
+										//magical damage bonuses here.
+										if(usr.role=="Caster Tank"||usr.role=="Physical DPS"||usr.role=="Physical Support") //These roles all cap at 15 MDB Add.
+											if(usr.mdbadd<15)
+												dresult+=usr.mdbadd
+											else
+												dresult+=15
+										else if(usr.role=="Physical Tank")
+											if(usr.mdbadd<10)
+												dresult+=usr.mdbadd
+											else
+												dresult+=10
+										else if(usr.role=="Magical DPS")
+											if(usr.mdbadd<35)
+												dresult+=usr.mdbadd
+											else
+												dresult+=35
+										else if(usr.role=="Magical Support")
+											if(usr.mdbadd<20)
+												dresult+=usr.mdbadd
+											else
+												dresult+=20
+										else if(usr.role=="Generalist")
+											if(usr.mdbadd<25)
+												dresult+=usr.mdbadd
+											else
+												dresult+=25
 									else
 										aresult=src.basecheck+amod+usr.rankbonus+src.addhit
 										dresult=abilitydamage+dmod+usr.pdb+src.adddam
+										if(usr.pabadd<15)// Global cap for physical attack bonus add is 15. If it's under 15, it will make it add the 'pabadd' var that is a tmp/var on mobs. If its 15 or higher, it just adds 15.
+											aresult+=usr.pabadd
+										else
+											aresult+=15
+										//phys damage bonuses here.
+										if(usr.role=="Physical Tank"||usr.role=="Magical DPS"||usr.role=="Magical Support") //These roles all cap at 15 PDB Add.
+											if(usr.pdbadd<15)
+												dresult+=usr.pdbadd
+											else
+												dresult+=15
+										else if(usr.role=="Caster Tank")
+											if(usr.pdbadd<10)
+												dresult+=usr.pdbadd
+											else
+												dresult+=10
+										else if(usr.role=="Physical DPS")
+											if(usr.pdbadd<35)
+												dresult+=usr.pdbadd
+											else
+												dresult+=35
+										else if(usr.role=="Physical Support")
+											if(usr.pdbadd<20)
+												dresult+=usr.pdbadd
+											else
+												dresult+=20
+										else if(usr.role=="Generalist")
+											if(usr.pdbadd<25)
+												dresult+=usr.pdbadd
+											else
+												dresult+=25
 									view()<<output("<font size=1><font color=[usr.textcolor]>[usr] <font color=white>is using the <font color=[usr.textcolor]>[src.name]<font color=white> ability!  Saving throw: <font color=#8EF5DE><b>[aresult] [src.savetype]!</b><font color=white>, dealing <b><font color=#FFA852>[dresult] damage</b><font color=white> on a failed save!<br> Cost: <b><font color=#0FBFD7>[src.mcost] [src.costtype]</b>| Tile Range:[src.range]","icout")
 								if(src.atype=="weaponsave")
 									var/obj/item/Weapon/wepchoice = usr.righthand
