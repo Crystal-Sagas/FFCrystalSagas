@@ -531,14 +531,14 @@ obj
 				usr.baseac += src.mac
 				usr.basedr += src.mdr
 				usr.critmod+=src.mcritmod
-				usr.speedadd+=src.mspd
+				usr.speed+=src.mspd
 				usr.baserflx += src.mrflx
 				usr.basewill += src.mwill
 				usr.basefort += src.mfort
-				usr.pabadd+=src.mpab
-				usr.pdbadd+=src.mpdb
-				usr.mdbadd+=src.mmdb
-				usr.mabadd+=src.mmab
+				usr.pab+=src.mpab
+				usr.pdb+=src.mpdb
+				usr.mdb+=src.mmdb
+				usr.mab+=src.mmab
 				usr.baseacro+=src.macro
 				usr.baseath+=src.mathl
 				usr.basearc+=src.march
@@ -1018,7 +1018,7 @@ mob
 					if(!g.minsi==0)
 						g.desc+="Insi.[g.minsi] "
 					if(!g.minv==0)
-						g.desc+="Inv.[g.minv.] "
+						g.desc+="Inv.[g.minv] "
 					if(!g.mmagi==0)
 						g.desc+="Magi.[g.mmagi] "
 					if(!g.mmed==0)

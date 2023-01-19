@@ -2,7 +2,6 @@
 	These are simple defaults for your project.
  */
 
-#define DEBUG
 #define TILE_WIDTH 32
 #define TILE_HEIGHT 32
 #define MAX_VIEW_TILES 1440
@@ -52,80 +51,6 @@ obj
 	techshopholder
 	recipeshopholder
 	stableholder
-
-world
-	fps = 40		// 40 frames per second
-	icon_size = 32	// 32x32 icon size by default
-
-	view = "35x20"
-//	view=5
-world
-	New()
-		..()
-		Addcustoms()
-		Addbuildables()
-		Loadworld()
-		Load_Ban()
-		if(fexists("Materials"))
-			Loadmaterials()
-		else
-			Initcraft()
-		if(fexists("Perks"))
-			LoadPerk()
-		else
-			Initperk()
-		if(fexists("Weapons"))
-			LoadWeps()
-		else
-			Initwep()
-		if(fexists("Recipes"))
-			Loadrecipes()
-		else
-			Initrecipes()
-		if(fexists("Summons"))
-			Loadsummons()
-		else
-			Initsummons()
-		if(fexists("Bestiary"))
-			Loadbestiary()
-		else
-			Initbestiary()
-		spawn Time()
-		spawn Checkday()
-		for(var/obj/perkshopholder/a in world)
-			a.contents+=perklist
-			..()
-		for(var/obj/recipeshopholder/a in world)
-			a.contents+=recipelist
-		for(var/obj/Stablemaster/a in world)
-			for(var/obj/npc/Monsters/q in bestiary)
-				var/obj/npc/Monsters/newmonster=copyatom(q)
-				a.contents+=newmonster
-			for(var/obj/npc/Monsters/f in a.contents)
-				InitializeEnemy(f)
-				f.archived=0
-		for(var/obj/npcarchive/a in world)
-			a.contents+=summonlist
-			for(var/obj/npc/Monsters/q in bestiary)
-				var/obj/npc/Monsters/newmonster=copyatom(q)
-				a.contents+=newmonster
-			for(var/obj/npc/Monsters/f in a.contents)
-				InitializeEnemy(f)
-			for(var/obj/npc/b in a.contents)
-				b.archived=1
-			for(var/obj/npc/Monsters/c in a.contents)
-				InitializeEnemy(c)
-			for(var/obj/npc/b in a.contents)
-				b.archived=1
-		for(var/obj/stableholder/a in world)
-			for(var/obj/npc/Monsters/q in bestiary)
-				var/obj/npc/Monsters/newmonster=copyatom(q)
-				a.contents+=newmonster
-			for(var/obj/npc/Monsters/f in a.contents)
-				InitializeEnemy(f)
-			for(var/obj/npc/b in a.contents)
-				b.archived=1
-
 
 area
 	default
@@ -414,7 +339,6 @@ mob
 		if(src.tempeventmin)
 			src.tempeventmin=0
 			src.verbs-=typesof(/mob/eventmin/verb/)
-		Unequipglobalmods(src)
 		for(var/obj/Aoeind/o in world)
 			if(o.owner==src.ckey)
 				del(o)

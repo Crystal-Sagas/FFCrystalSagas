@@ -44,9 +44,13 @@
 // END_FILE_DIR
 
 // BEGIN_PREFERENCES
+#define DEBUG
 // END_PREFERENCES
 
 // BEGIN_INCLUDE
+#include "__compile_options.dm"
+#include "__init.dm"
+#include "__spaceman_dmm.dm"
 #include "Movement Delay.dm"
 #include "RoleplayProject.dm"
 #include "TechObjects.dm"
@@ -108,7 +112,11 @@
 #include "Code\Turntracking.dm"
 #include "Code\Vehicles.dm"
 #include "Code\WeaponandArmorDatabase.dm"
+#include "Code\world.dm"
 #include "Code\Yearsystem.dm"
+#include "Code\_HELPERS\_core.dm"
+#include "Code\client\chat.dm"
+#include "Code\client\client.dm"
 #include "Code\DiscordWebHook\DiscordWebhook.dm"
 #include "Code\DiscordWebHook\HttpPost.dm"
 #include "Code\DiscordWebHook\KeyInfo.dm"
