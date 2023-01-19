@@ -1147,8 +1147,3 @@ obj
 					a.adddam=adamantinetier*a.scaling
 				if(a.weptier=="Orichalcum")
 					a.adddam=orichalcumtier*a.scaling
-<<<<<<< HEAD
-
-
-=======
->>>>>>> upstream/main

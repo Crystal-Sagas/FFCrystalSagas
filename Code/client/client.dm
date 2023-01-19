@@ -42,9 +42,6 @@ GLOBAL_LIST_EMPTY(clients)
 	. = ..()
 	// setup viewport
 	async_call(src, /client/proc/init_viewport_blocking)
-	#warn world profile access
-	#warn YO PORBABLY ONLY RUN THE BELOW FOR ADMINS OR CLEAR IT AFTER
-	world.SetConfig("APP/admin", ckey, "role=admin") // then set to role null
 
 /client/Destruct()
 	// unregister global
