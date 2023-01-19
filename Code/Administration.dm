@@ -108,13 +108,13 @@ mob/proc
 		src.client.perspective = EYE_PERSPECTIVE
 
 proc/copyatom(atom/a)
-    if(!a) return
-    var/atom/b = new a.type
-    b.name = a.name
-    for(var/v in a.vars)
-        if(issaved(a.vars[v]))
-            b.vars[v] = a.vars[v]
-    return b
+	if(!a) return
+	var/atom/b = new a.type
+	b.name = a.name
+	for(var/v in a.vars)
+		if(issaved(a.vars[v]))
+			b.vars[v] = a.vars[v]
+	return b
 
 proc/Log(var/e,var/Info)
 	if(e=="Admin")
