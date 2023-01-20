@@ -1176,8 +1176,9 @@ atom
 			var/reward2
 			var/reward3
 			var/gilreward
-			view(20,fate) << sound(null,channel=1)
-			view(20,fate) << sound('Fanfare.wav',channel=1)
+			for(var/mob/M in hearers(20, fate))
+				M << sound(null, channel = 1)
+				M << sound('Audio/Fanfare.wav', channel = 1)
 			sleep(22)
 			for(var/obj/FATEs/quest in world)
 				if("[quest.FATEID]"=="[party.FATEID]")
@@ -1215,7 +1216,6 @@ atom
 					m.FATEcooldown=1
 			party.currentFATE=null
 			party.FATEID=null
-
 
 		Defeat(var/obj/Party/party,var/obj/FATECrystal/fate)
 			view(20,fate) << sound(null,channel=1)
@@ -2098,10 +2098,10 @@ atom
 					sleep(1)
 					if(enemies<=0)
 						enemy.visible_message("All Enemies have been defeated! <b>FATE</b> complete!!", stream = "icout")
+						del enemy2
+						del enemy3
+						del enemy4
 						for(var/obj/Party/c in world)
-							del enemy2
-							del enemy3
-							del enemy4
 							if(battler1.partyID==c.partyID)
 								for(var/obj/FATECrystal/b in world)
 									if("[b.FATEID]"=="[c.FATEID]")
@@ -2331,10 +2331,10 @@ atom
 					sleep(1)
 					if(enemies<=0)
 						enemy.visible_message("All Enemies have been defeated! <b>FATE</b> complete!!", stream = "icout")
+						del enemy2
+						del enemy3
+						del enemy4
 						for(var/obj/Party/c in world)
-							del enemy2
-							del enemy3
-							del enemy4
 							if(battler1.partyID==c.partyID)
 								for(var/obj/FATECrystal/b in world)
 									if(b.FATEID==c.FATEID)
@@ -2565,10 +2565,10 @@ atom
 							sleep(4)
 					if(enemies<=0)
 						enemy.visible_message("All Enemies have been defeated! <b>FATE</b> complete!!", stream = "icout")
+						del enemy2
+						del enemy3
+						del enemy4
 						for(var/obj/Party/c in world)
-							del enemy2
-							del enemy3
-							del enemy4
 							if(battler1.partyID==c.partyID)
 								for(var/obj/FATECrystal/b in world)
 									if("[b.FATEID]"=="[c.FATEID]")
@@ -2800,10 +2800,10 @@ atom
 					sleep(1)
 					if(enemies<=0)
 						enemy.visible_message("All Enemies have been defeated! <b>FATE</b> complete!!", stream = "icout")
+						del enemy2
+						del enemy3
+						del enemy4
 						for(var/obj/Party/c in world)
-							del enemy2
-							del enemy3
-							del enemy4
 							if(battler1.partyID==c.partyID)
 								for(var/obj/FATECrystal/b in world)
 									if("[b.FATEID]"=="[c.FATEID]")
