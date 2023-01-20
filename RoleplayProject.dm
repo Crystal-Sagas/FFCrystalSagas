@@ -150,7 +150,7 @@ mob
 				if(e.owner==usr.ckey)
 					del(e)
 			for(var/mob/M in world)
-				if(Admin4.Find(M.ckey))
+				if(Admin4.Find(M.ckey) || M.client?.is_localhost())
 					M.adminlv =4
 					winset(src,"default.Adminbut","is-visible=true")
 					M.verbs+=typesof(/mob/Admin/verb/)
