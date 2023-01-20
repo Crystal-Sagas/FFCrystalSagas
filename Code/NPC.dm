@@ -1422,14 +1422,14 @@ atom
 						for(var/mob/m in view(starter))
 							if(m.bposition=="battler1")
 								battler1=m
-								battler1 << sound('Battle.wav',1,channel=1)
+								battler1 << sound('battle1.ogg',1,channel=1)
 								m.battler=1
 								battlers+=1
 								battler1state="Alive"
 								partylist-=m
 								battlelist+=battler1
 								battler1<<output("[battler1] has been designated as 'Battler 1'","oocout")
-								Unequipglobalmods(battler1)
+								//Unequipglobalmods(battler1)
 								for(var/obj/perk/a in battler1.contents)
 									if(a.ability==1 && a.heal==0 && a.range1!=null)
 										pattacklist1+=a
@@ -1456,14 +1456,14 @@ atom
 							if(maxbattlers>=2)
 								if(m.bposition=="battler2")
 									battler2=m
-									battler2 << sound('Battle.wav',1,channel=1)
+									battler2 << sound('battle1.ogg',1,channel=1)
 									m.battler=1
 									battlers+=1
 									battler2state="Alive"
 									partylist-=m
 									battlelist+=battler2
 									battler2<<output("[battler2] has been designated as 'Battler 2'","oocout")
-									Unequipglobalmods(battler2)
+									//Unequipglobalmods(battler2)
 									for(var/obj/perk/a in battler2.contents)
 										if(a.ability==1 && a.heal==0 && a.range1!=null)
 											pattacklist2+=a
@@ -1484,14 +1484,14 @@ atom
 							if(maxbattlers>=3)
 								if(m.bposition=="battler3")
 									battler3=m
-									battler3 << sound('Battle.wav',1,channel=1)
+									battler3 << sound('battle1.ogg',1,channel=1)
 									m.battler=1
 									battlers+=1
 									battler3state="Alive"
 									partylist-=m
 									battlelist+=battler3
 									battler3<<output("[battler3] has been designated as 'Battler 3'","oocout")
-									Unequipglobalmods(battler3)
+									//Unequipglobalmods(battler3)
 									for(var/obj/perk/a in battler3.contents)
 										if(a.ability==1 && a.heal==0 && a.range1!=null)
 											pattacklist3+=a
@@ -1512,14 +1512,14 @@ atom
 							if(maxbattlers>=4)
 								if(m.bposition=="battler4")
 									battler4=m
-									battler4 << sound('Battle.wav',1,channel=1)
+									battler4 << sound('battle1.ogg',1,channel=1)
 									m.battler=1
 									battlers+=1
 									battler4state="Alive"
 									partylist-=m
 									battlelist+=battler4
 									battler4<<output("[battler4] has been designated as 'Battler 4'","oocout")
-									Unequipglobalmods(battler4)
+									//Unequipglobalmods(battler4)
 									for(var/obj/perk/a in battler4.contents)
 										if(a.ability==1 && a.heal==0 && a.range1!=null)
 											pattacklist4+=a

@@ -1329,62 +1329,46 @@ obj
 							if(A.FieldPassword==src.FieldPassword)
 								del(A)
 
-obj
-	item
-		verb
-			Drop()
-				set hidden=0
-				var/dropamount=1
-				if(src.craftingmaterialtrue!=1)
-					var/obj/item/N = copyatom(src)
-					usr.contents-=N
-					N.loc=usr.loc
-					usr.carryweight-=src.weight*dropamount
-					if(src.amount<=0)
-						usr.contents-=src
-					view(usr) << output("[usr.name] has dropped [src.name]!","icout")
-					UpdateCraft(usr)
-				if(src.equipped)
-					alert("You currently have this item equipped")
-					return
-				if(src.amount>=0)
-					if(src.amount>1)
-						dropamount = input("How many do you wish to drop?") as num
-						if(dropamount<0)
-							return
-						if(dropamount>src.amount)
-							alert("You don't have that many")
-							return
-					else
-						dropamount=1
-					if(src.craftingmaterialtrue==1)
-						var/obj/item/N = copyatom(src)
-						N.name = src.name
-						N.icon = src.icon
-						N.usetext = src.usetext
-						N.desc = src.desc
-						N.usable = src.usable
-						N.weight=src.weight
-						N.price=src.price
-						src.amount -= dropamount
-						N.amount = dropamount
-						N.loc=usr.loc
-						usr.carryweight-=src.weight*dropamount
-						view(usr) << output("[usr.name] has dropped [N.name]!","icout")
-						UpdateCraft(usr)
-				else
-					if(src.craftingmaterialtrue==1)
-						alert(usr,"You can't drop any if you don't have any!")
-						return
-					else
-						var/obj/item/N = copyatom(src)
-						usr.contents-=N
-						N.loc=usr.loc
-						usr.carryweight-=src.weight*dropamount
-						if(src.amount<=0)
-							usr.contents-=src
-						view(usr) << output("[usr.name] has dropped [src.name]!","icout")
-						UpdateCraft(usr)
-				Refreshinventoryscreen(usr)
-				UpdateCraft(usr)
+/**
+ * Verb to drop something from inventory.
+ */
+/obj/item/verb/Drop()
+	set name = "Drop"
+	set category = "IC"
+	set src in usr
 
+	// cast it away from usr because usr is a sin
+	var/mob/user = usr
+
+	// first check equipped
+	if(equipped)
+		alert(user, "This item is currently equipped.")
+		return
+	// first, check if it's a stack
+	if(!craftingmaterialtrue)
+		// if not, proceed with just dropping
+		force_move(get_turf(user))
+		user.carryweight -= weight
+		user.visible_message("[user] has dropped [src]!", stream = "icout")
+		// just refresh inventory because SURELY THIS ISNT A CRAFTING MATERIAL IF IT ISNT A STACK, RIGHT?
+		Refreshinventoryscreen(user)
+		return
+	// if it is, ask for amount
+	if(amount <= 0)
+		alert(user, "You do not have any to drop.")
+		return
+	var/amt = input(user, "How many of [src] to drop? \[0-[amount]\]", "Amount", 0) as num|null
+	if(isnull(amt) || (amt <= 0) || (amount <= 0))
+		return
+	amt = clamp(amt, 0, amount)
+	// todo: copyatom() is pretty awful and shouldn't be used for stacks if at all possible.
+	// create new & set amount
+	var/obj/item/dropped = copyatom(src, get_turf(user))
+	dropped.amount = amt
+	// subtract amount & weight
+	amount -= amt
+	user.carryweight -= weight * amt
+	// feedback
+	user.visible_message("[user] has dropped [amt] of [src]!", stream ="icout")
+	// just refresh crafting screen because surely this is a crafting material and not a normal item right??
+	UpdateCraft(user)

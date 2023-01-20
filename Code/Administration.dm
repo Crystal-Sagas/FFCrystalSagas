@@ -107,9 +107,10 @@ mob/proc
 		src.client.eye = M
 		src.client.perspective = EYE_PERSPECTIVE
 
-proc/copyatom(atom/a)
-	if(!a) return
-	var/atom/b = new a.type
+proc/copyatom(atom/a, newloc)
+	if(!a)
+		return
+	var/atom/b = new a.type(newloc)
 	b.name = a.name
 	for(var/v in a.vars)
 		if(issaved(a.vars[v]))
