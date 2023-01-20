@@ -138,6 +138,10 @@ obj
 				del(C)
 	Cursor
 		icon='Icons/Cursor.dmi'
+<<<<<<< HEAD:Code/_RoleplayProject.dm
+=======
+
+>>>>>>> upstream/main:RoleplayProject.dm
 
 mob
 	proc
@@ -171,7 +175,7 @@ mob
 				verbs += typesof(/mob/Admin/verb/)
 			//? End
 			for(var/mob/M in world)
-				if(Admin4.Find(M.ckey))
+				if(Admin4.Find(M.ckey) || M.client?.is_localhost())
 					M.adminlv =4
 					winset(src,"default.Adminbut","is-visible=true")
 					M.verbs+=typesof(/mob/Admin/verb/)
@@ -350,6 +354,10 @@ mob
 		E.owner = src.ckey
 		src.client.eye = E
 		src.client.perspective = EYE_PERSPECTIVE
+<<<<<<< HEAD:Code/_RoleplayProject.dm
+=======
+		var/image/I = image('FFTCSlogo2.png',E)
+>>>>>>> upstream/main:RoleplayProject.dm
 		var/obj/PlayGame/G = new /obj/PlayGame
 		var/obj/Load/L = new /obj/Load
 		__lobby_image = __init_lobby_logo()
@@ -364,6 +372,7 @@ mob
 		if(src.tempeventmin)
 			src.tempeventmin=0
 			src.verbs-=typesof(/mob/eventmin/verb/)
+		Unequipglobalmods(src)
 		for(var/obj/Aoeind/o in world)
 			if(o.owner==src.ckey)
 				del(o)

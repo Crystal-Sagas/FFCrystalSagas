@@ -3,9 +3,13 @@ GLOBAL_LIST_EMPTY(client_lookup)
 /// client list
 GLOBAL_LIST_EMPTY(clients)
 
+/**
+ * root definition for client
+ */
 /client
 	/// statpanel isn't a thing, don't have this on
-	show_verb_panel = FALSE
+	//? actually yes it is, admins get a stat panel wtf
+	// show_verb_panel = FALSE
 	/// force client to inherit from /datum
 	parent_type = /datum
 

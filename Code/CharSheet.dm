@@ -487,11 +487,11 @@ mob
 			winset(usr,"Charsheet.rankbonus","text=\"Rank Bonus: [M.rankbonus]\"")
 			winset(usr,"Charsheet.AC","text=\"[M.ac]\"")
 			winset(usr,"Charsheet.DR","text=\"[M.basedr]\"")
-			winset(usr,"Charsheet.SPD","text=\"[M.speed]\"")
-			winset(usr,"Charsheet.pab","text=\"[M.pab]\"")
-			winset(usr,"Charsheet.pdb","text=\"[M.pdb]\"")
-			winset(usr,"Charsheet.mab","text=\"[M.mab]\"")
-			winset(usr,"Charsheet.mdb","text=\"[M.mdb]\"")
+			winset(usr,"Charsheet.SPD","text=\"[M.speed]+[M.speedadd]\"")
+			winset(usr,"Charsheet.pab","text=\"[M.pab]+[M.pabadd]\"")
+			winset(usr,"Charsheet.pdb","text=\"[M.pdb]+[M.pdbadd]\"")
+			winset(usr,"Charsheet.mab","text=\"[M.mab]+[M.mabadd]\"")
+			winset(usr,"Charsheet.mdb","text=\"[M.mdb]+[M.mdbadd]\"")
 			winset(usr,"Charsheet.ap","text=\"[M.abilitypoints]\"")
 			winset(usr,"Charsheet.materiagrid","cells=0x0")
 			for(var/obj/item/Materia/C in usr.contents)
@@ -706,7 +706,7 @@ mob
 			if(usr.intitlescreen)
 				return
 			if(!npcsheet)
-				view() << output("<font size=1><font color=[usr.textcolor]>[usr.name] flashes their Speed showing a base Tile Movement of [usr.speed]</font>","icout")
+				view() << output("<font size=1><font color=[usr.textcolor]>[usr.name] flashes their Speed showing a base Tile Movement of [usr.speed+usr.speedadd]</font>","icout")
 			else
 				var/obj/npc/n = npcsheet
 				view() << output("<font size=1><font color=#ffff99>[n.name] flashes their Speed showing a base Tile Movement of [n.speed]</font>","icout")

@@ -826,11 +826,12 @@ obj
 			Farm=0
 			Defensive=0
 			Reactor=0
+			LastClicker
 		DblClick()
 			if(src.truefaction==usr.faction)
 				if(src.Gatherer==1)
 					if(src.Collectcooldown==1)
-						alert(usr,"This has already been gathered from today!")
+						alert(usr,"This has already been gathered from today by [src.LastClicker]!")
 						return
 					else
 						if(src.Mine==1)
@@ -973,6 +974,7 @@ obj
 								a.amount+=1
 								usr << output("You have gained 1 [a]!","oocout")
 						src.Collectcooldown=1
+						src.LastClicker=usr.name
 				if(src.Defensive==1)
 					view(usr) << output("<b><font color=[usr.textcolor]>[usr.name]</font><b> has flashed a Defensive Structure's effect:</b> [src.desc] | Multiple copies of this structure do not stack effects.","icout")
 				if(src.Recruiter==1)

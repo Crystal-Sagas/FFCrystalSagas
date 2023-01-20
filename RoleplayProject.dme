@@ -60,7 +60,10 @@
 #include "__DEFINES\math.dm"
 #include "__DEFINES\movement.dm"
 #include "__DEFINES\skin.dm"
+<<<<<<< HEAD
 #include "Code\_RoleplayProject.dm"
+=======
+>>>>>>> upstream/main
 #include "Code\Administration.dm"
 #include "Code\Area.dm"
 #include "Code\Battleanimations.dm"
@@ -125,6 +128,7 @@
 #include "Code\_HELPERS\view.dm"
 #include "Code\admin\admin.dm"
 #include "Code\atoms\atoms_movable.dm"
+#include "Code\atoms\chat.dm"
 #include "Code\client\chat.dm"
 #include "Code\client\client.dm"
 #include "Code\client\movement.dm"
