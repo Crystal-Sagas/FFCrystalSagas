@@ -181,7 +181,6 @@ mob
 		Load()
 			if(fexists("Save/[src.ckey]"))
 				src<<sound(null)
-				usr.client.InitView()
 				sleep()
 				src<< 'Audio/Cursor Ready.ogg'
 				var/savefile/F=new("Save/[src.ckey]")
@@ -320,7 +319,6 @@ mob
 		E.owner = src.ckey
 		src.client.eye = E
 		src.client.perspective = EYE_PERSPECTIVE
-		src.client.InitView()
 		var/image/I = image('FFTCSlogo2.png',E)
 		var/obj/PlayGame/G = new /obj/PlayGame
 		var/obj/Load/L = new /obj/Load
@@ -2315,46 +2313,3 @@ proc
 					return
 				else
 					m.arcanemagicable=a
-
-client
-    var
-        view_width
-        view_height
-        buffer_x
-        buffer_y
-        map_zoom
-        tile_width=32
-        tile_height=32
-    verb
-        onResize(map as text|null, size as text|null)
-            set hidden = 1
-            set instant = 1
-            var/list/sz = splittext(size,"x")
-            var/map_width = text2num(sz[1]), map_height = text2num(sz[2])
-            map_zoom = 1
-            view_width = ceil(map_width/TILE_WIDTH)
-            if(!(view_width%2)) ++view_width
-            view_height = ceil(map_height/TILE_HEIGHT)
-            if(!(view_height%2)) ++view_height
-
-            while(view_width*view_height>MAX_VIEW_TILES)
-                view_width = ceil(map_width/TILE_WIDTH/++map_zoom)
-                if(!(view_width%2)) ++view_width
-                view_height = ceil(map_height/TILE_HEIGHT/map_zoom)
-                if(!(view_height%2)) ++view_height
-
-            buffer_x = floor((view_width*tile_width - map_width/map_zoom)/2)
-            buffer_y = floor((view_height*tile_height - map_height/map_zoom)/2)
-
-            src.view = "[view_width]x[view_height]"
-            winset(src,map,"zoom=[map_zoom];")
-
-    New()
-        . = ..()
-        InitView()
-
-    proc
-        InitView()
-            set waitfor = 0
-            var/list/l = params2list(winget(src,":map","id;size;"))
-            onResize(l["id"],l["size"])
