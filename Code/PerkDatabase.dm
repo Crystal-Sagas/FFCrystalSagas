@@ -907,7 +907,7 @@ obj
 			DualWield
 				name="Dual Wield"
 				icon='Icons/Perk/DualWield.png'
-				desc="The individual is ambidextrous, and is able to skillfully fight with a one handed weapon in each hand. Any calculation involving these weapons that results in a .5 is rounded up rather than down or left alone. (Grants you an extra Melee attack or Melee Ability as long as you are wielding two weapons.)"
+				desc="The individual is ambidextrous, and is able to skillfully fight with a one handed weapon in each hand. When wielding the same weapon type in each hand, if using the left hand weapon for an attack, after using the right hand weapon for an attack in the same round ; deal 15 additional true damage on hit. (Grants you an extra Standard attack or Standard Ability as long as you are wielding two weapons.)"
 			HardenedCombatant
 				name="Hardened Combatant"
 				icon='Icons/Perk/HardenedCombatant.png'
