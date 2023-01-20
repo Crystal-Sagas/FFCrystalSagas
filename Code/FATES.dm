@@ -65,14 +65,14 @@ obj
 							alert(usr,"Your party is on FATE cooldown!")
 							usr.usingfate=0
 							return
-						if(p.partyID==usr.partyID)
+						if("[p.partyID]"=="[usr.partyID]")
 							if(p.currentFATE!=null)
 								alert(usr,"Your party is already on a FATE mission!")
 								usr.usingfate=0
 								return
 						else
 							usr.usingfate=0
-						if(p.partyID==usr.partyID)
+						if("[p.partyID]"=="[usr.partyID]")
 							var/list/yesno = list("Yes","No")
 							var/yeschoice=input("Would you like to take a FATE quest for your party?") as anything in yesno
 							switch(yeschoice)
@@ -309,7 +309,7 @@ obj
 			for(var/obj/Party/c in world)
 				if("[usr.partyID]"=="[c.partyID]")
 					for(var/obj/FATECrystal/b in world)
-						if(b.FATEID==c.FATEID)
+						if("[b.FATEID]"=="[c.FATEID]")
 							view(usr)<<output("You've found the Artifact! Mog will return it to the researchers! (<b>FATE</b> complete!!)","icout")
 							Victory(c,b)
 							sleep(4)
@@ -329,7 +329,7 @@ obj
 			for(var/obj/Party/c in world)
 				if("[usr.partyID]"=="[c.partyID]")
 					for(var/obj/FATECrystal/b in world)
-						if(b.FATEID==c.FATEID)
+						if("[b.FATEID]"=="[c.FATEID]")
 							view(usr)<<output("Client: Thank you for the package, here's your pay. (<b>FATE</b> complete!!)","icout")
 							Victory(c,b)
 							sleep(2)
