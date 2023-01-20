@@ -1429,7 +1429,7 @@ atom
 								partylist-=m
 								battlelist+=battler1
 								battler1<<output("[battler1] has been designated as 'Battler 1'","oocout")
-								Unequipglobalmods(battler1)
+								//Unequipglobalmods(battler1)
 								for(var/obj/perk/a in battler1.contents)
 									if(a.ability==1 && a.heal==0 && a.range1!=null)
 										pattacklist1+=a
@@ -1463,7 +1463,7 @@ atom
 									partylist-=m
 									battlelist+=battler2
 									battler2<<output("[battler2] has been designated as 'Battler 2'","oocout")
-									Unequipglobalmods(battler2)
+									//Unequipglobalmods(battler2)
 									for(var/obj/perk/a in battler2.contents)
 										if(a.ability==1 && a.heal==0 && a.range1!=null)
 											pattacklist2+=a
@@ -1491,7 +1491,7 @@ atom
 									partylist-=m
 									battlelist+=battler3
 									battler3<<output("[battler3] has been designated as 'Battler 3'","oocout")
-									Unequipglobalmods(battler3)
+									//Unequipglobalmods(battler3)
 									for(var/obj/perk/a in battler3.contents)
 										if(a.ability==1 && a.heal==0 && a.range1!=null)
 											pattacklist3+=a
@@ -1519,7 +1519,7 @@ atom
 									partylist-=m
 									battlelist+=battler4
 									battler4<<output("[battler4] has been designated as 'Battler 4'","oocout")
-									Unequipglobalmods(battler4)
+									//Unequipglobalmods(battler4)
 									for(var/obj/perk/a in battler4.contents)
 										if(a.ability==1 && a.heal==0 && a.range1!=null)
 											pattacklist4+=a
