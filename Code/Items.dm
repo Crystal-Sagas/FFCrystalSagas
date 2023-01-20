@@ -339,14 +339,72 @@ obj/item
 				amod=Checkdamtype(src.damsource,usr)
 				if(src.typing=="magical")
 					aresult=aoresult+src.addhit+usr.rankbonus+usr.mab+amod
+					if(usr.mabadd<15)// Global cap for magical attack bonus add is 15.
+						aresult+=usr.mabadd
+					else
+						aresult+=15
 				else
 					aresult=aoresult+src.addhit+usr.rankbonus+usr.pab+amod
+					if(usr.pabadd<15)// Global cap for physical attack bonus add is 15.
+						aresult+=usr.pabadd
+					else
+						aresult+=15
 				doresult=rand(src.range1,src.range2)
 				dmod=Checkdamtype(src.damsource,usr)
 				if(src.typing=="magical")
 					dresult=doresult+src.adddam+usr.mdb+dmod
+					if(usr.role=="Caster Tank"||usr.role=="Physical DPS"||usr.role=="Physical Support") //These roles all cap at 15 MDB Add.
+						if(usr.mdbadd<15)
+							dresult+=usr.mdbadd
+						else
+							dresult+=15
+					else if(usr.role=="Physical Tank")
+						if(usr.mdbadd<10)
+							dresult+=usr.mdbadd
+						else
+							dresult+=10
+					else if(usr.role=="Magical DPS")
+						if(usr.mdbadd<35)
+							dresult+=usr.mdbadd
+						else
+							dresult+=35
+					else if(usr.role=="Magical Support")
+						if(usr.mdbadd<20)
+							dresult+=usr.mdbadd
+						else
+							dresult+=20
+					else if(usr.role=="Generalist")
+						if(usr.mdbadd<25)
+							dresult+=usr.mdbadd
+						else
+							dresult+=25
 				else
 					dresult=doresult+src.adddam+usr.pdb+dmod
+					if(usr.role=="Physical Tank"||usr.role=="Magical DPS"||usr.role=="Magical Support") //These roles all cap at 15 PDB Add.
+						if(usr.pdbadd<15)
+							dresult+=usr.pdbadd
+						else
+							dresult+=15
+					else if(usr.role=="Caster Tank")
+						if(usr.pdbadd<10)
+							dresult+=usr.pdbadd
+						else
+							dresult+=10
+					else if(usr.role=="Physical DPS")
+						if(usr.pdbadd<35)
+							dresult+=usr.pdbadd
+						else
+							dresult+=35
+					else if(usr.role=="Physical Support")
+						if(usr.pdbadd<20)
+							dresult+=usr.pdbadd
+						else
+							dresult+=20
+					else if(usr.role=="Generalist")
+						if(usr.pdbadd<25)
+							dresult+=usr.pdbadd
+						else
+							dresult+=25
 				critdam=dresult+doresult
 				if(aoresult>=truecrit)
 					view()<<output("<font size=1><font color=[usr.textcolor]>[usr] <font color=white>rolled a <b><font color=#3CF82C>CRITICAL</b> <font color=white>attack roll, using their <font color=[usr.textcolor]>[src.name]<font color=white>! Result: <font color=#3CF82C><b>[aresult] to hit</b><font color=white>, dealing <b><font color=#FFA852>[critdam] damage</b><font color=white>, as an automatic hit!","icout")
