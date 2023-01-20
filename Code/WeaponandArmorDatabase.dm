@@ -1023,7 +1023,7 @@ obj
 				a.scaling=3
 				a.desc="Very sharp cards which can be thrown as projectiles and summoned back magically. Whenever an Akademia Card attack roll deals damage to a creature, that creature also takes an additional 5 HP, MP, and SP damage. Grants +2 MAB and +5 MDB per metal tier."
 			if(a.weapontype=="Blitz Ball")
-				a.equiptype="2h"
+				a.equiptype="1h"
 				range1weapon=2
 				range2weapon=1
 				a.damagescales=1
