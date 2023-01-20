@@ -138,10 +138,6 @@ obj
 				del(C)
 	Cursor
 		icon='Icons/Cursor.dmi'
-<<<<<<< HEAD:Code/_RoleplayProject.dm
-=======
-
->>>>>>> upstream/main:RoleplayProject.dm
 
 mob
 	proc
