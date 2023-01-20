@@ -1340,17 +1340,17 @@ obj
 					usr.contents-=N
 					N.loc=usr.loc
 					usr.carryweight-=src.weight*dropamount
-					if(src.amount<=0)
+					if(src.amount<=1)// This was set to 0, allowing you to drop items and equipment at a value of 0. This was causing a replication glitch for equipment and materials alike.
 						usr.contents-=src
 					view(usr) << output("[usr.name] has dropped [src.name]!","icout")
 					UpdateCraft(usr)
 				if(src.equipped)
 					alert("You currently have this item equipped")
 					return
-				if(src.amount>=0)
+				if(src.amount>=1)
 					if(src.amount>1)
 						dropamount = input("How many do you wish to drop?") as num
-						if(dropamount<0)
+						if(dropamount<1)
 							return
 						if(dropamount>src.amount)
 							alert("You don't have that many")
@@ -1381,7 +1381,7 @@ obj
 						usr.contents-=N
 						N.loc=usr.loc
 						usr.carryweight-=src.weight*dropamount
-						if(src.amount<=0)
+						if(src.amount<=1)
 							usr.contents-=src
 						view(usr) << output("[usr.name] has dropped [src.name]!","icout")
 						UpdateCraft(usr)
