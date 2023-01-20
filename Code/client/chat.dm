@@ -1,9 +1,9 @@
-/mob/proc/send_chat(msg)
-	client?.send_chat(msg)
+/mob/proc/send_chat(msg, stream)
+	client?.send_chat(msg, stream)
 
-/client/proc/send_chat(msg)
-	src << output(msg, "icout")
+/client/proc/send_chat(msg, stream = "icout")
+	src << output(msg, stream)
 
-/world/proc/send_chat(msg)
+/world/proc/send_chat(msg, stream)
 	for(var/client/C)
-		C.send_chat(msg)
+		C.send_chat(msg, stream)
