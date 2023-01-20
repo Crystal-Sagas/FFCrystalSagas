@@ -132,29 +132,27 @@ obj
 										if("D")
 											newfate.Gilreward=50
 											if(mtype=="Slayer")
-												for(var/obj/stableholder/stable in world)
-													for(var/obj/npc/Monsters/DRank/a in stable.contents)
-														if(a.unroot==1)
-															slaylist+=a
-													target = pick(slaylist)
-													fightmob = copyatom(target)
-													fightmob.FATENpc=1
-													newfate.Reward1=pick(slayerrewardsD)
-													newfate.Reward2=pick(slayerrewardsD)
-													newfate.Reward3=pick(slayerrewardsD)
+												for(var/obj/npc/Monsters/DRank/a in global.stable_holder.monsters)
+													if(a.unroot==1)
+														slaylist+=a
+												target = pick(slaylist)
+												fightmob = copyatom(target)
+												fightmob.FATENpc=1
+												newfate.Reward1=pick(slayerrewardsD)
+												newfate.Reward2=pick(slayerrewardsD)
+												newfate.Reward3=pick(slayerrewardsD)
 										if("C")
 											newfate.Gilreward=100
 											if(mtype=="Slayer")
-												for(var/obj/stableholder/stable in world)
-													for(var/obj/npc/Monsters/CRank/a in stable.contents)
-														if(a.unroot==1)
-															slaylist+=a
-													target = pick(slaylist)
-													fightmob = copyatom(target)
-													fightmob.FATENpc=1
-													newfate.Reward1=pick(slayerrewardsC)
-													newfate.Reward2=pick(slayerrewardsC)
-													newfate.Reward3=pick(slayerrewardsC)
+												for(var/obj/npc/Monsters/CRank/a in global.stable_holder.monsters)
+													if(a.unroot==1)
+														slaylist+=a
+												target = pick(slaylist)
+												fightmob = copyatom(target)
+												fightmob.FATENpc=1
+												newfate.Reward1=pick(slayerrewardsC)
+												newfate.Reward2=pick(slayerrewardsC)
+												newfate.Reward3=pick(slayerrewardsC)
 											if(mtype=="Artifact")
 												var/obj/Artifact/arti=new
 												var/obj/Artifact/fateartifact=copyatom(arti)
@@ -176,17 +174,16 @@ obj
 										if("B")
 											newfate.Gilreward=400
 											if(mtype=="Slayer")
-												for(var/obj/stableholder/stable in world)
-													for(var/obj/npc/Monsters/BRank/a in stable.contents)
-														if(a.unroot==1)
-															slaylist+=a
-													target = pick(slaylist)
-													fightmob = copyatom(target)
-													newfate.Target=target
-													fightmob.FATENpc=1
-													newfate.Reward1=pick(slayerrewardsD)
-													newfate.Reward2=pick(slayerrewardsB)
-													newfate.Reward3=pick(slayerrewardsD)
+												for(var/obj/npc/Monsters/BRank/a in global.stable_holder.monsters)
+													if(a.unroot==1)
+														slaylist+=a
+												target = pick(slaylist)
+												fightmob = copyatom(target)
+												newfate.Target=target
+												fightmob.FATENpc=1
+												newfate.Reward1=pick(slayerrewardsD)
+												newfate.Reward2=pick(slayerrewardsB)
+												newfate.Reward3=pick(slayerrewardsD)
 											if(mtype=="Capture")
 												alert(usr,"There are no A Rank Capture tasks!")
 												return
@@ -199,29 +196,27 @@ obj
 										if("A")
 											newfate.Gilreward=750
 											if(mtype=="Slayer")
-												for(var/obj/stableholder/stable in world)
-													for(var/obj/npc/Monsters/ARank/a in stable.contents)
-														if(a.unroot==1)
-															slaylist+=a
-													target = pick(slaylist)
-													fightmob = copyatom(target)
-													fightmob.FATENpc=1
-													fightmob.archived=0
-													newfate.Reward1=pick(slayerrewardsD)
-													newfate.Reward2=pick(slayerrewardsC)
-													newfate.Reward3=pick(slayerrewardsB)
+												for(var/obj/npc/Monsters/ARank/a in global.stable_holder.monsters)
+													if(a.unroot==1)
+														slaylist+=a
+												target = pick(slaylist)
+												fightmob = copyatom(target)
+												fightmob.FATENpc=1
+												fightmob.archived=0
+												newfate.Reward1=pick(slayerrewardsD)
+												newfate.Reward2=pick(slayerrewardsC)
+												newfate.Reward3=pick(slayerrewardsB)
 											if(mtype=="World Boss")
-												for(var/obj/npcarchive/stable in world)
-													for(var/obj/npc/Monsters/FateBoss/a in stable.contents)
-														if(a.unroot==1)
-															slaylist+=a
-													target = pick(slaylist)
-													fightmob = copyatom(target)
-													fightmob.FATENpc=1
-													fightmob.archived=0
-													newfate.Reward1=pick(slayerrewardsB)
-													newfate.Reward2=pick(slayerrewardsB)
-													newfate.Reward3=pick(slayerrewardsB)
+												for(var/obj/npc/Monsters/FateBoss/a in global.npc_archive.npcs)
+													if(a.unroot==1)
+														slaylist+=a
+												target = pick(slaylist)
+												fightmob = copyatom(target)
+												fightmob.FATENpc=1
+												fightmob.archived=0
+												newfate.Reward1=pick(slayerrewardsB)
+												newfate.Reward2=pick(slayerrewardsB)
+												newfate.Reward3=pick(slayerrewardsB)
 											if(mtype=="Capture")
 												alert(usr,"There are no A Rank Capture tasks!")
 												return
