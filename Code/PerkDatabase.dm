@@ -907,7 +907,7 @@ obj
 			DualWield
 				name="Dual Wield"
 				icon='Icons/Perk/DualWield.png'
-				desc="The individual is ambidextrous, and is able to skillfully fight with a one handed weapon in each hand. Any calculation involving these weapons that results in a .5 is rounded up rather than down or left alone. (Grants you an extra Melee attack or Melee Ability as long as you are wielding two weapons.)"
+				desc="The individual is ambidextrous, and is able to skillfully fight with a one handed weapon in each hand. When wielding the same weapon type in each hand, if using the left hand weapon for an attack, after using the right hand weapon for an attack in the same round ; deal 15 additional true damage on hit. (Grants you an extra Standard attack or Standard Ability as long as you are wielding two weapons.)"
 			HardenedCombatant
 				name="Hardened Combatant"
 				icon='Icons/Perk/HardenedCombatant.png'
@@ -4448,6 +4448,9 @@ obj
 					Freeze
 						level=5
 						pre="Blizzaja"
+						basecheck=15
+						atype="save"
+						savetype="Fortitude"
 						mcost=65
 						desc="The air around the user grows. Extremely cold creatures in the area start to see their breath and see ice particles form all around them covering the ground with a blanket of snow. Affects an 8 tile range around the user. Creatures starting their turn in the area of effect must make a fortitude saving throw or be rendered frozen. When frozen, creatures are unable to move and cannot use bonus actions or reactions. They take 1d12 Ice damage for each turn frozen, and receive critical damage from fire based damage, with the first instance of fire damage they take dethawing them. If the caster of Freeze stops sustaining the Freeze ability, all frozen creatures are dethawed. Passive: This person's Ice Magic may now take on the form of 'Sheer Frost' - allowing them to spend 8 MP in order to prompt a DC 20 Fortitude saving throw on any instance of Ice damage that they cause, inflicting 'Frosbite' on failure. (-65 mana, 10 per turn sustained.)"
 				Flame
