@@ -1198,14 +1198,17 @@ atom
 					if(a.name==reward1)
 						m.send_chat("Gained +1 [reward1]!", stream = "oocout")
 						a.amount+=1
+						break
 				for(var/obj/item/b in m.contents)
 					if(b.name==reward2)
 						m.send_chat("Gained +1 [reward2]!", stream = "oocout")
 						b.amount+=1
+						break
 				for(var/obj/item/c in m.contents)
 					if(c.name==reward3)
 						m.send_chat("Gained +1 [reward3]!", stream = "oocout")
 						c.amount+=1
+						break
 				if(m.hp<=0)
 					m.hp=0
 				m.money+=gilreward
