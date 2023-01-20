@@ -350,10 +350,6 @@ mob
 		E.owner = src.ckey
 		src.client.eye = E
 		src.client.perspective = EYE_PERSPECTIVE
-<<<<<<< HEAD:Code/_RoleplayProject.dm
-=======
-		var/image/I = image('FFTCSlogo2.png',E)
->>>>>>> upstream/main:RoleplayProject.dm
 		var/obj/PlayGame/G = new /obj/PlayGame
 		var/obj/Load/L = new /obj/Load
 		__lobby_image = __init_lobby_logo()
