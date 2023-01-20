@@ -76,13 +76,13 @@ atom
 					a.Carrycheck(a)
 					a.Savecheck(a)
 					a.ACcheck(a)
-				a<<output("All Globalmods have been unequipped for FATE battle and log outs.","icout")
+				a.send_chat("All Globalmods have been unequipped for FATE battle and log outs.", stream = "icout")
 
 atom
 	proc
 		Heal(var/mob/user,var/mob/target,var/obj/perk/spell)
 			if(user.mp<=0)
-				user<<output("[user] has attempted to use a Magic ability without any MP, and has wasted a turn!","icout")
+				user.visible_message("[user] has attempted to use a Magic ability without any MP, and has wasted a turn!", stream = "icout")
 				user.mp=0
 				return
 			var/range1=35
@@ -113,7 +113,7 @@ atom
 			var/healtotal=heal+healbonus+classbonus
 			user.mp-=spell.mcost
 			Healanimation(user,target)
-			user<<output("<font color=[user.textcolor]><b>[user]</b></font> has healed <font color=[target.textcolor]><b>[target]</b></font> for <b><font color=#66F13D>[healtotal]</font></b> HP! | Cost: <b><font color=#8FE6D2>[spell.mcost] [spell.costtype]","icout")
+			user.visible_message("<font color=[user.textcolor]><b>[user]</b></font> has healed <font color=[target.textcolor]><b>[target]</b></font> for <b><font color=#66F13D>[healtotal]</font></b> HP! | Cost: <b><font color=#8FE6D2>[spell.mcost] [spell.costtype]", stream = "icout")
 			target.hp+=healtotal
 			if(target.hp>target.mhp)
 				target.hp=target.mhp
@@ -150,7 +150,7 @@ atom
 			var/healtotal=heal+healbonus+classbonus
 			user.mp-=spell.mcost
 			Healanimation(user,target)
-			user<<output("<font color=[user.textcolor]><b>[user]</b></font> has healed <font color=[target.textcolor]><b>[target]</b></font> for <b><font color=#66F13D>[healtotal]</font></b> HP! | Cost: <b><font color=#8FE6D2>[spell.mcost] [spell.costtype]","icout")
+			user.visible_message("<font color=[user.textcolor]><b>[user]</b></font> has healed <font color=[target.textcolor]><b>[target]</b></font> for <b><font color=#66F13D>[healtotal]</font></b> HP! | Cost: <b><font color=#8FE6D2>[spell.mcost] [spell.costtype]", stream = "icout")
 			target.hp+=healtotal
 			if(target.hp>target.mhp)
 				target.hp=target.mhp
@@ -168,7 +168,6 @@ atom
 atom
 	proc
 		Enemyability(var/obj/npc/user,var/mob/target,var/obj/perk/skill)
-			set waitfor=0
 			var/aoresult=rand(1,20)
 			var/aresult
 			var/amod
@@ -232,31 +231,31 @@ atom
 				else
 					dresult=doresult+dmod+skill.adddam+user.pdb+skill.adddam+abilitydamage-target.basedr
 			Enemyanimation(user,target,skill)
-			view(user) << output("<font color=#F8E959><b>[user]</font> has used [skill] to attack <font color=[target.textcolor]><b>[target]</b>!!","icout")
+			user.visible_message("<font color=#F8E959><b>[user]</font> has used [skill] to attack <font color=[target.textcolor]><b>[target]</b>!!", stream = "icout")
 			if(target.status1=="Squall" || target.status2=="Squall" || target.status3=="Squall")
 				if(skill.element=="Fire")
 					dresult+=20
-					view(user)<<output("The Squall effect grants this Fire attack 20 extra damage!","icout")
+					user.visible_message("The Squall effect grants this Fire attack 20 extra damage!", stream = "icout")
 			if(target.status1=="Wet" || target.status2=="Wet" || target.status3=="Wet")
 				if(skill.element=="Thunder")
 					aresult+=5
 					dresult+=15
-					view(user)<<output("The Wet effect grants this Thunder attack +5 to hit, and 15 extra damage!","icout")
+					user.visible_message("The Wet effect grants this Thunder attack +5 to hit, and 15 extra damage!", stream = "icout")
 			if(user.status1=="Heavy" || user.status2=="Heavy" || user.status3=="Heavy")
 				dresult-=10
 				aresult-=3
-				view(user)<<output("[user] is greatly burdened with how <b>Heavy</b> they are!","icout")
+				user.visible_message("[user] is greatly burdened with how <b>Heavy</b> they are!", stream = "icout")
 			if(user.status1=="Slow" || user.status2=="Slow" || user.status3=="Slow")
 				aresult-=5
 				AddStun(user)
-				view(user)<<output("[user] is afflicted with <b>Slow</b> and must skip their next action!","icout")
+				user.visible_message("[user] is afflicted with <b>Slow</b> and must skip their next action!", stream = "icout")
 			if(user.status1=="Weakness" || user.status2=="Weakness" || user.status3=="Weakness")
 				dresult-=15
-				view(user)<<output("[user]'s attack is greatly undermined with how <b>Weak</b> they're feeling!","icout")
+				user.visible_message("[user]'s attack is greatly undermined with how <b>Weak</b> they're feeling!", stream = "icout")
 			if(user.status1=="Paralyzed" || user.status2=="Paralyzed" || user.status3=="Paralyzed")
 				var/paralyzechance=rand(30,100)
 				if(paralyzechance>=70)
-					view(user)<<output("[user] is <b>Paralyzed</b> and failed to perform their action this turn!","icout")
+					user.visible_message("[user] is <b>Paralyzed</b> and failed to perform their action this turn!", stream = "icout")
 					return
 				else
 			if(aresult<=0)
@@ -269,7 +268,7 @@ atom
 				if(target.positivestatus1=="Protect" || target.positivestatus2=="Protect" || target.positivestatus3=="Protect")
 					dresult=round(dresult*0.5)
 				if(target.positivestatus1=="Pailing" || target.positivestatus2=="Pailing" || target.positivestatus3=="Pailing")
-					view(user)<<output("[target]'s <b>Pailing</b> status effect has prevented an instance of Physical damage, and been consumed!","icout")
+					user.visible_message("[target]'s <b>Pailing</b> status effect has prevented an instance of Physical damage, and been consumed!", stream = "icout")
 					dresult=0
 					if(target.positivestatus1=="Pailing")
 						target.positivestatus1=null
@@ -290,7 +289,7 @@ atom
 				if(target.positivestatus1=="Shell" || target.positivestatus2=="Shell" || target.positivestatus3=="Shell")
 					dresult=round(dresult*0.5)
 				if(target.positivestatus1=="Magic Barrier" || target.positivestatus2=="Magic Barrier" || target.positivestatus3=="Magic Barrier")
-					view(user)<<output("[target]'s <b>Magic Barrier</b> status effect has prevented an instance of Magical damage, and been consumed!","icout")
+					user.visible_message("[target]'s <b>Magic Barrier</b> status effect has prevented an instance of Magical damage, and been consumed!", stream = "icout")
 					dresult=0
 					if(target.positivestatus1=="Magic Barrier")
 						target.positivestatus1=null
@@ -305,7 +304,7 @@ atom
 						dresult=0
 			if(skill.element=="Fire")
 				if(target.positivestatus1=="Barfire" || target.positivestatus2=="Barfire" || target.positivestatus3=="Barfire")
-					view(user)<<output("[target]'s <b>Barfire</b> status effect has prevented an instance of Fire damage, and been consumed!","icout")
+					user.visible_message("[target]'s <b>Barfire</b> status effect has prevented an instance of Fire damage, and been consumed!", stream = "icout")
 					dresult=0
 					if(target.positivestatus1=="Barfire")
 						target.positivestatus1=null
@@ -318,7 +317,7 @@ atom
 						positiveturns3=0
 			if(skill.element=="Water")
 				if(target.positivestatus1=="Barwater" || target.positivestatus2=="Barwater" || target.positivestatus3=="Barwater")
-					view(user)<<output("[target]'s <b>Barwater</b> status effect has prevented an instance of Water damage, and been consumed!","icout")
+					user.visible_message("[target]'s <b>Barwater</b> status effect has prevented an instance of Water damage, and been consumed!", stream = "icout")
 					dresult=0
 					if(target.positivestatus1=="Barwater")
 						target.positivestatus1=null
@@ -331,7 +330,7 @@ atom
 						positiveturns1=0
 			if(skill.element=="Ice")
 				if(target.positivestatus1=="Barblizzard" || target.positivestatus2=="Barblizzard" || target.positivestatus3=="Barblizzard")
-					view(user)<<output("[target]'s <b>Barblizzard</b> status effect has prevented an instance of Ice damage, and been consumed!","icout")
+					user.visible_message("[target]'s <b>Barblizzard</b> status effect has prevented an instance of Ice damage, and been consumed!", stream = "icout")
 					dresult=0
 					if(target.positivestatus1=="Barblizzard")
 						target.positivestatus1=null
@@ -344,7 +343,7 @@ atom
 						positiveturns1=0
 			if(skill.element=="Thunder")
 				if(target.positivestatus1=="Barthunder" || target.positivestatus2=="Barthunder" || target.positivestatus3=="Barthunder")
-					view(user)<<output("[target]'s <b>Barthunder</b> status effect has prevented an instance of Thunder damage, and been consumed!","icout")
+					user.visible_message("[target]'s <b>Barthunder</b> status effect has prevented an instance of Thunder damage, and been consumed!", stream = "icout")
 					dresult=0
 					if(target.positivestatus1=="Barthunder")
 						target.positivestatus1=null
@@ -357,7 +356,7 @@ atom
 						positiveturns1=0
 			if(skill.element=="Earth")
 				if(target.positivestatus1=="Barstone" || target.positivestatus2=="Barstone" || target.positivestatus3=="Barstone")
-					view(user)<<output("[target]'s <b>Barblizzard</b> status effect has prevented an instance of Ice damage, and been consumed!","icout")
+					user.visible_message("[target]'s <b>Barblizzard</b> status effect has prevented an instance of Ice damage, and been consumed!", stream = "icout")
 					dresult=0
 					if(target.positivestatus1=="Barstone")
 						target.positivestatus1=null
@@ -370,7 +369,7 @@ atom
 						positiveturns1=0
 			if(skill.element=="Wind")
 				if(target.positivestatus1=="Barwind" || target.positivestatus2=="Barwind" || target.positivestatus3=="Barwind")
-					view(user)<<output("[target]'s <b>Barblizzard</b> status effect has prevented an instance of Ice damage, and been consumed!","icout")
+					user.visible_message("[target]'s <b>Barblizzard</b> status effect has prevented an instance of Ice damage, and been consumed!", stream = "icout")
 					dresult=0
 					if(target.positivestatus1=="Barwind")
 						target.positivestatus1=null
@@ -385,9 +384,9 @@ atom
 			if(target.positivestatus1=="Bubble" || target.positivestatus2=="Bubble" || target.positivestatus3=="Bubble")
 				var/bubble=round(target.mhp*0.15)
 				if(dresult<bubble)
-					view(user)<<output("<b>[target]'s</b> Bubble status effect has deflected and nullified [dresult] damage!!","icout")
+					user.visible_message("<b>[target]'s</b> Bubble status effect has deflected and nullified [dresult] damage!!", stream = "icout")
 				if(dresult>=bubble)
-					view(user)<<output("<b>[target]'s</b> Bubble has popped, but has absorbed [bubble] damage!!","icout")
+					user.visible_message("<b>[target]'s</b> Bubble has popped, but has absorbed [bubble] damage!!", stream = "icout")
 					dresult-=bubble
 					if(target.positivestatus1=="Bubble")
 						target.positivestatus1=null
@@ -402,14 +401,13 @@ atom
 						dresult=0
 			if(user.positivestatus1=="Haste" || user.positivestatus2=="Haste" || user.positivestatus3=="Haste")
 				aresult+=5
-				sleep(4)
 //stoneskin procs after all other defensive boons do
 			if(target.positivestatus1=="Stoneskin" || target.positivestatus2=="Stoneskin" || target.positivestatus3=="Stoneskin")
 				dresult-=5
 				target.stoneskindam+=dresult
-				view(user)<<output("<b>[target]'s</b> Stoneskin has absorbed 5 damage!!","icout")
+				user.visible_message("<b>[target]'s</b> Stoneskin has absorbed 5 damage!!", stream = "icout")
 				if(target.stoneskindam>=25)
-					view(user)<<output("<b>[target]'s</b> Stoneskin has shattered!!","icout")
+					user.visible_message("<b>[target]'s</b> Stoneskin has shattered!!", stream = "icout")
 					if(target.positivestatus1=="Stoneskin")
 						target.positivestatus1=null
 						positiveturns1=0
@@ -421,42 +419,42 @@ atom
 						positiveturns3=0
 			if(target.job=="Paladin" || target.subjob=="Paladin")
 				if(skill.element=="Holy")
-					view(user) << output("<font color=[target.textcolor]><b>[target]</font> is a Paladin, and takes half damage from Holy abilities!","icout")
+					user.visible_message("<font color=[target.textcolor]><b>[target]</font> is a Paladin, and takes half damage from Holy abilities!", stream = "icout")
 					dresult=round(dresult*0.5)
 			if(target.job=="Dark Knight" || target.subjob=="Dark Knight")
 				if(skill.element=="Dark" || skill.element=="Death" || skill.element=="Drain")
-					view(user) << output("<font color=[target.textcolor]><b>[target]</font> is a Dark Knight, and takes half damage from Dark abilities!","icout")
+					user.visible_message("<font color=[target.textcolor]><b>[target]</font> is a Dark Knight, and takes half damage from Dark abilities!", stream = "icout")
 					dresult=round(dresult*0.5)
 			if(target.job=="Geomancer" || target.subjob=="Geomancer")
 				if(skill.element=="Fire")
-					view(user) << output("<font color=[target.textcolor]><b>[target]</font> is a Geomancer, and takes half damage from elemental abilities!","icout")
+					user.visible_message("<font color=[target.textcolor]><b>[target]</font> is a Geomancer, and takes half damage from elemental abilities!", stream = "icout")
 					dresult=round(dresult*0.5)
 				if(skill.element=="Thunder")
-					view(user) << output("<font color=[target.textcolor]><b>[target]</font> is a Geomancer, and takes half damage from elemental abilities!","icout")
+					user.visible_message("<font color=[target.textcolor]><b>[target]</font> is a Geomancer, and takes half damage from elemental abilities!", stream = "icout")
 					dresult=round(dresult*0.5)
 				if(skill.element=="Water")
-					view(user) << output("<font color=[target.textcolor]><b>[target]</font> is a Geomancer, and takes half damage from elemental abilities!","icout")
+					user.visible_message("<font color=[target.textcolor]><b>[target]</font> is a Geomancer, and takes half damage from elemental abilities!", stream = "icout")
 					dresult=round(dresult*0.5)
 				if(skill.element=="Ice")
-					view(user) << output("<font color=[target.textcolor]><b>[target]</font> is a Geomancer, and takes half damage from elemental abilities!","icout")
+					user.visible_message("<font color=[target.textcolor]><b>[target]</font> is a Geomancer, and takes half damage from elemental abilities!", stream = "icout")
 					dresult=round(dresult*0.5)
 				if(skill.element=="Earth")
-					view(user) << output("<font color=[target.textcolor]><b>[target]</font> is a Geomancer, and takes half damage from elemental abilities!","icout")
+					user.visible_message("<font color=[target.textcolor]><b>[target]</font> is a Geomancer, and takes half damage from elemental abilities!", stream = "icout")
 					dresult=round(dresult*0.5)
 				if(skill.element=="Nature")
-					view(user) << output("<font color=[target.textcolor]><b>[target]</font> is a Geomancer, and takes half damage from elemental abilities!","icout")
+					user.visible_message("<font color=[target.textcolor]><b>[target]</font> is a Geomancer, and takes half damage from elemental abilities!", stream = "icout")
 					dresult=round(dresult*0.5)
 			if(aresult>=target.ac)
-				view(user) << output("<b>To hit: [aresult] vs <b>[target.ac]</b> | It was a hit!! <b>[user]</b> has dealt <b><font color=#FEA14F>[dresult]</b></font> damage to <b>[target]</b>!!","icout")
+				user.visible_message("<b>To hit: [aresult] vs <b>[target.ac]</b> | It was a hit!! <b>[user]</b> has dealt <b><font color=#FEA14F>[dresult]</b></font> damage to <b>[target]</b>!!", stream = "icout")
 				target.hp-=dresult
 				var/drainvalue=round(dresult*0.5)
 				if(skill.element=="Drain")
-					view(user) <<output("<font color=#F8E959><b>[user]</font> has drained <b>[target]</b>  for <font color=#93F752>[drainvalue] HP!","icout")
+					user.visible_message("<font color=#F8E959><b>[user]</font> has drained <b>[target]</b>  for <font color=#93F752>[drainvalue] HP!", stream = "icout")
 					user.hp+=drainvalue
 					if(user.hp>=user.mhp)
 						user.hp=user.mhp
 				if(skill.element=="Osmose")
-					view(user) <<output("<font color=#F8E959><b>[user]</font> has drained <b>[target]</b>  for <font color=#4FC7ED>[drainvalue] MP and SP!","icout")
+					user.visible_message("<font color=#F8E959><b>[user]</font> has drained <b>[target]</b>  for <font color=#4FC7ED>[drainvalue] MP and SP!", stream = "icout")
 					user.mp+=drainvalue
 					user.sp+=drainvalue
 					if(user.mp>=user.mmp)
@@ -517,13 +515,12 @@ atom
 					target.retaliate=0
 					if(target.hp<=0)
 						Death(target)
-						view(user) << output("[target] has reached 0 HP and is removed from battle!","icout")
+						user.visible_message("[target] has reached 0 HP and is removed from battle!", stream = "icout")
 						target.hp=0
-						sleep(4)
 				ShowHPBar(target)
 			else
 				Evade(target)
-				view(user)<<output("<b>To hit: [aresult] vs <b>[target.ac]</b> | It missed!","icout")
+				user.visible_message("<b>To hit: [aresult] vs <b>[target.ac]</b> | It missed!", stream = "icout")
 				if(target.retaliate==1)
 					turnattack(target,user)
 					target.retaliate=0
@@ -533,7 +530,6 @@ atom
 			ShowHPBar(user)
 			ShowMPBar(user)
 			ShowSPBar(user)
-			sleep(4)
 		turnattack(var/mob/user, var/obj/npc/target)
 			var/aresult
 			var/amod
@@ -558,18 +554,18 @@ atom
 			if(user.status1=="Heavy" || user.status2=="Heavy" || user.status3=="Heavy")
 				dresult-=10
 				aresult-=3
-				view(user)<<output("[user] is greatly burdened with how <b>Heavy</b> they are!","icout")
+				user.visible_message("[user] is greatly burdened with how <b>Heavy</b> they are!", stream = "icout")
 			if(user.status1=="Slow" || user.status2=="Slow" || user.status3=="Slow")
 				aresult-=5
 				AddStun(user)
-				view(user)<<output("[user] is afflicted with <b>Slow</b> and must skip their next action!","icout")
+				user.visible_message("[user] is afflicted with <b>Slow</b> and must skip their next action!", stream = "icout")
 			if(user.status1=="Weakness" || user.status2=="Weakness" || user.status3=="Weakness")
 				dresult-=15
-				view(user)<<output("[user]'s attack is greatly undermined with how <b>Weak</b> they're feeling!","icout")
+				user.visible_message("[user]'s attack is greatly undermined with how <b>Weak</b> they're feeling!", stream = "icout")
 			if(user.status1=="Paralyzed" || user.status2=="Paralyzed" || user.status3=="Paralyzed")
 				var/paralyzechance=rand(30,100)
 				if(paralyzechance>=70)
-					view(user)<<output("[user] is <b>Paralyzed</b> and failed to perform their action this turn!","icout")
+					user.visible_message("[user] is <b>Paralyzed</b> and failed to perform their action this turn!", stream = "icout")
 					return
 				else
 			if(user.infusion=="Fire")
@@ -670,7 +666,7 @@ atom
 				if(target.positivestatus1=="Protect" || target.positivestatus2=="Protect" || target.positivestatus3=="Protect")
 					dresult=round(dresult*0.5)
 				if(target.positivestatus1=="Pailing" || target.positivestatus2=="Pailing" || target.positivestatus3=="Pailing")
-					view(user)<<output("[target]'s <b>Pailing</b> status effect has prevented an instance of Physical damage, and been consumed!","icout")
+					user.visible_message("[target]'s <b>Pailing</b> status effect has prevented an instance of Physical damage, and been consumed!", stream = "icout")
 					dresult=0
 					if(target.positivestatus1=="Pailing")
 						target.positivestatus1=null
@@ -691,7 +687,7 @@ atom
 				if(target.positivestatus1=="Shell" || target.positivestatus2=="Shell" || target.positivestatus3=="Shell")
 					dresult=round(dresult*0.5)
 				if(target.positivestatus1=="Magic Barrier" || target.positivestatus2=="Magic Barrier" || target.positivestatus3=="Magic Barrier")
-					view(user)<<output("[target]'s <b>Magic Barrier</b> status effect has prevented an instance of Magical damage, and been consumed!","icout")
+					user.visible_message("[target]'s <b>Magic Barrier</b> status effect has prevented an instance of Magical damage, and been consumed!", stream = "icout")
 					dresult=0
 					if(target.positivestatus1=="Magic Barrier")
 						target.positivestatus1=null
@@ -707,10 +703,10 @@ atom
 			if(target.positivestatus1=="Bubble" || target.positivestatus2=="Bubble" || target.positivestatus3=="Bubble")
 				var/bubble=round(target.mhp*0.15)
 				if(dresult<bubble)
-					view(user)<<output("<b>[target]'s</b> Bubble status effect has deflected and nullified [dresult] damage!!","icout")
+					user.visible_message("<b>[target]'s</b> Bubble status effect has deflected and nullified [dresult] damage!!", stream = "icout")
 					dresult=0
 				if(dresult>=bubble)
-					view(user)<<output("<b>[target]'s</b> Bubble has popped, but has absorbed [bubble] damage!!","icout")
+					user.visible_message("<b>[target]'s</b> Bubble has popped, but has absorbed [bubble] damage!!", stream = "icout")
 					dresult-=bubble
 					if(target.positivestatus1=="Bubble")
 						target.positivestatus1=null
@@ -726,14 +722,13 @@ atom
 			if(user.positivestatus1=="Haste" || user.positivestatus2=="Haste" || user.positivestatus3=="Haste")
 				aresult+=10
 				dresult+=15
-				sleep(4)
 //stoneskin procs after all other defensive boons do
 			if(target.positivestatus1=="Stoneskin" || target.positivestatus2=="Stoneskin" || target.positivestatus3=="Stoneskin")
 				dresult-=5
 				target.stoneskindam+=dresult
-				view(user)<<output("<b>[target]'s</b> Stoneskin has absorbed 5 damage!!","icout")
+				user.visible_message("<b>[target]'s</b> Stoneskin has absorbed 5 damage!!", stream = "icout")
 				if(target.stoneskindam>=25)
-					view(user)<<output("<b>[target]'s</b> Stoneskin has shattered!!","icout")
+					user.visible_message("<b>[target]'s</b> Stoneskin has shattered!!", stream = "icout")
 					if(target.positivestatus1=="Stoneskin")
 						target.positivestatus1=null
 						positiveturns1=0
@@ -743,20 +738,20 @@ atom
 					if(target.positivestatus3=="Stoneskin")
 						target.positivestatus3=null
 						positiveturns3=0
-			view(user) << output("<font color=[user.textcolor]><b>[user]</font> has used <font color=[user.textcolor]><b>[wepchoice]<b></b></font> to attack <b>[target]</b>!!","icout")
+			user.visible_message("<font color=[user.textcolor]><b>[user]</font> has used <font color=[user.textcolor]><b>[wepchoice]<b></b></font> to attack <b>[target]</b>!!", stream = "icout")
 			if(aresult>=target.ac)
-				view(user) << output("<b>To hit: [aresult] vs <b>[target.ac]</b> | It was a hit!! [user] has dealt [dresult] damage to [target]!!","icout")
+				user.visible_message("<b>To hit: [aresult] vs <b>[target.ac]</b> | It was a hit!! [user] has dealt [dresult] damage to [target]!!", stream = "icout")
 				target.hp-=dresult
 				if(target.hp<=0)
 					Death(target)
 					target.icon=null
 					target.overlays=null
-					view(user) << output("[target] has reached 0 HP and is removed from battle!","icout")
+					user.visible_message("[target] has reached 0 HP and is removed from battle!", stream = "icout")
 					target.hp=0
 				if(target.special=="Bomb")
 					var/addlash=round(target.hp * 0.5)
 					var/backlash=dresult+addlash
-					view(user) << output("[target] exploded on contact, dealing [backlash] recoil damage to its attacker!","icout")
+					user.visible_message("[target] exploded on contact, dealing [backlash] recoil damage to its attacker!", stream = "icout")
 					target.hp=0
 					Death(target)
 					target.icon=null
@@ -766,13 +761,12 @@ atom
 					if(user.hp<=0)
 						Death(user)
 						user.hp=0
-					sleep(4)
 					ShowHPBar(user)
 					if(target.hp<=0)
 						target.overlays=null
 			else
 				Evade(target)
-				view(user)<<output("<b>To hit: [aresult] vs <b>[target.ac]</b> | It missed!","icout")
+				user.visible_message("<b>To hit: [aresult] vs <b>[target.ac]</b> | It missed!", stream = "icout")
 			ShowHPBar(target)
 			ShowMPBar(target)
 			ShowSPBar(target)
@@ -784,16 +778,15 @@ atom
 				target.retaliate=0
 			if(target.hp<=0)
 				target.overlays=null
-			sleep(4)
 		TurnAbility(var/mob/user,var/obj/npc/target,var/obj/perk/skill)
 			if(skill.costtype=="Mana")
 				if(user.mp<=0)
-					user<<output("[user] has attempted to use a Magic ability without any MP, and has wasted a turn!","icout")
+					user.visible_message("[user] has attempted to use a Magic ability without any MP, and has wasted a turn!", stream = "icout")
 					user.mp=0
 					return
 			if(skill.costtype=="Stamina")
 				if(user.sp<=0)
-					user<<output("[user] has attempted to use a Physical ability without any SP, and has wasted a turn!","icout")
+					user.visible_message("[user] has attempted to use a Physical ability without any SP, and has wasted a turn!", stream = "icout")
 					user.sp=0
 					return
 			var/aresult
@@ -873,38 +866,38 @@ atom
 				aresult+=20
 				dresult+=40
 			Playeranimation(user,target,skill)
-			view(user) << output("<font color=#F8E959><b>[user]</font> has used [skill] to attack [target]!!","icout")
+			user.visible_message("<font color=#F8E959><b>[user]</font> has used [skill] to attack [target]!!", stream = "icout")
 			var/drainvalue=round(dresult*0.5)
 			if(skill.element==target.weakness)
 				dresult=round(dresult*1.5)
-				view(user)<<output("<b>[target]</b> is weak to <b>[skill.element], and takes 50% more damage!</b>","icout")
+				user.visible_message("<b>[target]</b> is weak to <b>[skill.element], and takes 50% more damage!</b>", stream = "icout")
 			if(skill.element==target.resistance)
 				dresult=round(dresult*0.5)
-				view(user)<<output("<b>[target]</b> is resistant to <b>[skill.element], and takes only half damage!</b>","icout")
+				user.visible_message("<b>[target]</b> is resistant to <b>[skill.element], and takes only half damage!</b>", stream = "icout")
 			if(target.status1=="Squall" || target.status2=="Squall" || target.status3=="Squall")
 				if(skill.element=="Fire")
 					dresult+=20
-					view(user)<<output("The Squall effect grants this Fire attack 20 extra damage!","icout")
+					user.visible_message("The Squall effect grants this Fire attack 20 extra damage!", stream = "icout")
 			if(target.status1=="Wet" || target.status2=="Wet" || target.status3=="Wet")
 				if(skill.element=="Thunder")
 					aresult+=5
 					dresult+=15
-					view(user)<<output("The Wet effect grants this Thunder attack +5 to hit, and 15 extra damage!","icout")
+					user.visible_message("The Wet effect grants this Thunder attack +5 to hit, and 15 extra damage!", stream = "icout")
 			if(user.status1=="Heavy" || user.status2=="Heavy" || user.status3=="Heavy")
 				dresult-=10
 				aresult-=3
-				view(user)<<output("[user] is greatly burdened with how <b>Heavy</b> they are!","icout")
+				user.visible_message("[user] is greatly burdened with how <b>Heavy</b> they are!", stream = "icout")
 			if(user.status1=="Slow" || user.status2=="Slow" || user.status3=="Slow")
 				aresult-=5
 				AddStun(user)
-				view(user)<<output("[user] is afflicted with <b>Slow</b> and must skip their next action!","icout")
+				user.visible_message("[user] is afflicted with <b>Slow</b> and must skip their next action!", stream = "icout")
 			if(user.status1=="Weakness" || user.status2=="Weakness" || user.status3=="Weakness")
 				dresult-=15
-				view(user)<<output("[user]'s attack is greatly undermined with how <b>Weak</b> they're feeling!","icout")
+				user.visible_message("[user]'s attack is greatly undermined with how <b>Weak</b> they're feeling!", stream = "icout")
 			if(user.status1=="Paralyzed" || user.status2=="Paralyzed" || user.status3=="Paralyzed")
 				var/paralyzechance=rand(30,100)
 				if(paralyzechance>=70)
-					view(user)<<output("[user] is <b>Paralyzed</b> and failed to perform their action this turn!","icout")
+					user.visible_message("[user] is <b>Paralyzed</b> and failed to perform their action this turn!", stream = "icout")
 					return
 				else
 			if(aresult<=0)
@@ -917,7 +910,7 @@ atom
 				if(target.positivestatus1=="Protect" || target.positivestatus2=="Protect" || target.positivestatus3=="Protect")
 					dresult-=10
 				if(target.positivestatus1=="Pailing" || target.positivestatus2=="Pailing" || target.positivestatus3=="Pailing")
-					view(user)<<output("[target]'s <b>Pailing</b> status effect has prevented an instance of Physical damage, and been consumed!","icout")
+					user.visible_message("[target]'s <b>Pailing</b> status effect has prevented an instance of Physical damage, and been consumed!", stream = "icout")
 					dresult=0
 					if(target.positivestatus1=="Pailing")
 						target.positivestatus1=null
@@ -938,7 +931,7 @@ atom
 				if(target.positivestatus1=="Shell" || target.positivestatus2=="Shell" || target.positivestatus3=="Shell")
 					dresult-=10
 				if(target.positivestatus1=="Magic Barrier" || target.positivestatus2=="Magic Barrier" || target.positivestatus3=="Magic Barrier")
-					view(user)<<output("[target]'s <b>Magic Barrier</b> status effect has prevented an instance of Magical damage, and been consumed!","icout")
+					user.visible_message("[target]'s <b>Magic Barrier</b> status effect has prevented an instance of Magical damage, and been consumed!", stream = "icout")
 					dresult=0
 					if(target.positivestatus1=="Magic Barrier")
 						target.positivestatus1=null
@@ -953,7 +946,7 @@ atom
 						dresult=0
 			if(skill.element=="Fire")
 				if(target.positivestatus1=="Barfire" || target.positivestatus2=="Barfire" || target.positivestatus3=="Barfire")
-					view(user)<<output("[target]'s <b>Barfire</b> status effect has prevented an instance of Fire damage, and been consumed!","icout")
+					user.visible_message("[target]'s <b>Barfire</b> status effect has prevented an instance of Fire damage, and been consumed!", stream = "icout")
 					dresult=0
 					if(target.positivestatus1=="Barfire")
 						target.positivestatus1=null
@@ -966,7 +959,7 @@ atom
 						positiveturns3=0
 			if(skill.element=="Water")
 				if(target.positivestatus1=="Barwater" || target.positivestatus2=="Barwater" || target.positivestatus3=="Barwater")
-					view(user)<<output("[target]'s <b>Barwater</b> status effect has prevented an instance of Water damage, and been consumed!","icout")
+					user.visible_message("[target]'s <b>Barwater</b> status effect has prevented an instance of Water damage, and been consumed!", stream = "icout")
 					dresult=0
 					if(target.positivestatus1=="Barwater")
 						target.positivestatus1=null
@@ -979,7 +972,7 @@ atom
 						positiveturns1=0
 			if(skill.element=="Ice")
 				if(target.positivestatus1=="Barblizzard" || target.positivestatus2=="Barblizzard" || target.positivestatus3=="Barblizzard")
-					view(user)<<output("[target]'s <b>Barblizzard</b> status effect has prevented an instance of Ice damage, and been consumed!","icout")
+					user.visible_message("[target]'s <b>Barblizzard</b> status effect has prevented an instance of Ice damage, and been consumed!", stream = "icout")
 					dresult=0
 					if(target.positivestatus1=="Barblizzard")
 						target.positivestatus1=null
@@ -992,7 +985,7 @@ atom
 						positiveturns1=0
 			if(skill.element=="Thunder")
 				if(target.positivestatus1=="Barthunder" || target.positivestatus2=="Barthunder" || target.positivestatus3=="Barthunder")
-					view(user)<<output("[target]'s <b>Barthunder</b> status effect has prevented an instance of Thunder damage, and been consumed!","icout")
+					user.visible_message("[target]'s <b>Barthunder</b> status effect has prevented an instance of Thunder damage, and been consumed!", stream = "icout")
 					dresult=0
 					if(target.positivestatus1=="Barthunder")
 						target.positivestatus1=null
@@ -1005,7 +998,7 @@ atom
 						positiveturns1=0
 			if(skill.element=="Earth")
 				if(target.positivestatus1=="Barstone" || target.positivestatus2=="Barstone" || target.positivestatus3=="Barstone")
-					view(user)<<output("[target]'s <b>Barblizzard</b> status effect has prevented an instance of Ice damage, and been consumed!","icout")
+					user.visible_message("[target]'s <b>Barblizzard</b> status effect has prevented an instance of Ice damage, and been consumed!", stream = "icout")
 					dresult=0
 					if(target.positivestatus1=="Barstone")
 						target.positivestatus1=null
@@ -1018,7 +1011,7 @@ atom
 						positiveturns1=0
 			if(skill.element=="Wind")
 				if(target.positivestatus1=="Barwind" || target.positivestatus2=="Barwind" || target.positivestatus3=="Barwind")
-					view(user)<<output("[target]'s <b>Barblizzard</b> status effect has prevented an instance of Ice damage, and been consumed!","icout")
+					user.visible_message("[target]'s <b>Barblizzard</b> status effect has prevented an instance of Ice damage, and been consumed!", stream = "icout")
 					dresult=0
 					if(target.positivestatus1=="Barwind")
 						target.positivestatus1=null
@@ -1033,10 +1026,10 @@ atom
 			if(target.positivestatus1=="Bubble" || target.positivestatus2=="Bubble" || target.positivestatus3=="Bubble")
 				var/bubble=round(target.mhp*0.15)
 				if(dresult<bubble)
-					view(user)<<output("<b>[target]'s</b> Bubble status effect has deflected and nullified [dresult] damage!!","icout")
+					user.visible_message("<b>[target]'s</b> Bubble status effect has deflected and nullified [dresult] damage!!", stream = "icout")
 					dresult=0
 				if(dresult>=bubble)
-					view(user)<<output("<b>[target]'s</b> Bubble has popped, but has absorbed [bubble] damage!!","icout")
+					user.visible_message("<b>[target]'s</b> Bubble has popped, but has absorbed [bubble] damage!!", stream = "icout")
 					dresult-=bubble
 					if(target.positivestatus1=="Bubble")
 						target.positivestatus1=null
@@ -1057,9 +1050,9 @@ atom
 			if(target.positivestatus1=="Stoneskin" || target.positivestatus2=="Stoneskin" || target.positivestatus3=="Stoneskin")
 				dresult-=5
 				target.stoneskindam+=dresult
-				view(user)<<output("<b>[target]'s</b> Stoneskin has absorbed 5 damage!!","icout")
+				user.visible_message("<b>[target]'s</b> Stoneskin has absorbed 5 damage!!", stream = "icout")
 				if(target.stoneskindam>=25)
-					view(user)<<output("<b>[target]'s</b> Stoneskin has shattered!!","icout")
+					user.visible_message("<b>[target]'s</b> Stoneskin has shattered!!", stream = "icout")
 					if(target.positivestatus1=="Stoneskin")
 						target.positivestatus1=null
 						positiveturns1=0
@@ -1071,15 +1064,15 @@ atom
 						positiveturns3=0
 
 			if(aresult>=target.ac)
-				view(user) << output("<b>To hit: [aresult] vs <b>[target.ac]</b> | It was a hit!! [user] has dealt [dresult] damage to [target]!!","icout")
+				user.visible_message("<b>To hit: [aresult] vs <b>[target.ac]</b> | It was a hit!! [user] has dealt [dresult] damage to [target]!!", stream = "icout")
 				target.hp-=dresult
 				if(skill.element=="Drain")
-					view(user) <<output("<font color=#F8E959><b>[user]</font> has drained <b>[target]</b>  for <font color=#93F752>[drainvalue] HP!","icout")
+					user.visible_message("<font color=#F8E959><b>[user]</font> has drained <b>[target]</b>  for <font color=#93F752>[drainvalue] HP!", stream = "icout")
 					user.hp+=drainvalue
 					if(user.hp>=user.mhp)
 						user.hp=user.mhp
 				if(skill.element=="Osmose")
-					view(user) <<output("<font color=#F8E959><b>[user]</font> has drained <b>[target]</b> for <font color=#4FC7ED>[drainvalue] MP and SP!","icout")
+					user.visible_message("<font color=#F8E959><b>[user]</font> has drained <b>[target]</b> for <font color=#4FC7ED>[drainvalue] MP and SP!", stream = "icout")
 					user.mp+=drainvalue
 					user.sp+=drainvalue
 					if(user.mp>=user.mmp)
@@ -1139,12 +1132,12 @@ atom
 					Death(target)
 					target.icon=null
 					target.overlays=null
-					view(user) << output("[target] has reached 0 HP and is removed from battle!","icout")
+					user.visible_message("[target] has reached 0 HP and is removed from battle!", stream = "icout")
 					target.hp=0
 				if(target.special=="Bomb")
 					var/addlash=round(target.hp * 0.5)
 					var/backlash=dresult+addlash
-					view(user) << output("[target] exploded on contact, dealing [backlash] recoil damage to its attacker!","icout")
+					user.visible_message("[target] exploded on contact, dealing [backlash] recoil damage to its attacker!", stream = "icout")
 					target.hp=0
 					Death(target)
 					target.icon=null
@@ -1158,15 +1151,15 @@ atom
 					sleep(4)
 			else
 				Evade(target)
-				view(user)<<output("<b>To hit: [aresult] vs <b>[target.ac]</b> It missed!","icout")
+				user.visible_message("<b>To hit: [aresult] vs <b>[target.ac]</b> It missed!", stream = "icout")
 			if(skill.costtype=="Stamina")
-				view(user) << output("[user] has drained [skill.mcost] SP!","icout")
+				user.visible_message("[user] has drained [skill.mcost] SP!", stream = "icout")
 				user.sp-=skill.mcost
 			if(skill.costtype=="Mana")
-				view(user) << output("[user] has drained [skill.mcost] MP!","icout")
+				user.visible_message("[user] has drained [skill.mcost] MP!", stream = "icout")
 				user.mp-=skill.mcost
 			if(skill.costtype!="Mana"&& skill.costtype!="Stamina")
-				view(user) << output("[user] has drained [skill.mcost] MP!","icout")
+				user.visible_message("[user] has drained [skill.mcost] MP!", stream = "icout")
 				user.mp-=skill.mcost
 			ShowHPBar(target)
 			ShowMPBar(target)
@@ -1183,8 +1176,9 @@ atom
 			var/reward2
 			var/reward3
 			var/gilreward
-			view(20,fate) << sound(null,channel=1)
-			view(20,fate) << sound('Fanfare.wav',channel=1)
+			for(var/mob/M in hearers(20, fate))
+				M << sound(null, channel = 1)
+				M << sound('Audio/Fanfare.wav', channel = 1)
 			sleep(22)
 			for(var/obj/FATEs/quest in world)
 				if("[quest.FATEID]"=="[party.FATEID]")
@@ -1202,20 +1196,23 @@ atom
 				UpdateArea(m)
 				for(var/obj/item/a in m.contents)
 					if(a.name==reward1)
-						m<<output("Gained +1 [reward1]!","oocout")
+						m.send_chat("Gained +1 [reward1]!", stream = "oocout")
 						a.amount+=1
+						break
 				for(var/obj/item/b in m.contents)
 					if(b.name==reward2)
-						m<<output("Gained +1 [reward2]!","oocout")
+						m.send_chat("Gained +1 [reward2]!", stream = "oocout")
 						b.amount+=1
+						break
 				for(var/obj/item/c in m.contents)
 					if(c.name==reward3)
-						m<<output("Gained +1 [reward3]!","oocout")
+						m.send_chat("Gained +1 [reward3]!", stream = "oocout")
 						c.amount+=1
+						break
 				if(m.hp<=0)
 					m.hp=0
 				m.money+=gilreward
-				m<<output("Gained [gilreward] Gil!!","oocout")
+				m.send_chat("Gained [gilreward] Gil!!", stream = "oocout")
 				m.battler=0
 				m.dailyfates+=1
 				if(m.dailyfates>=m.maxfates)
@@ -1223,9 +1220,9 @@ atom
 			party.currentFATE=null
 			party.FATEID=null
 
-
 		Defeat(var/obj/Party/party,var/obj/FATECrystal/fate)
-			view(20,fate) << sound(null,channel=1)
+			for(var/mob/M in hearers(20, fate))
+				M << sound(null,channel=1)
 			sleep(4)
 			for(var/obj/FATEs/quest in world)
 				if(quest.FATEID==fate.FATEID)
@@ -1542,7 +1539,7 @@ atom
 						return
 			while(enemyalive==1)
 				if(battlers<=0)
-					view(enemy)<<output("All Party Members have been defeated! <b>FATE</b> failed!!","icout")
+					enemy.visible_message("All Party Members have been defeated! <b>FATE</b> failed!!", stream = "icout")
 					del enemy2
 					del enemy3
 					del enemy4
@@ -1560,7 +1557,7 @@ atom
 						enemies-=1
 						e1counted=1
 						enemylist-=enemy
-						usr<<output("[enemy] is defeated [enemies]/[maxenemies]","icout")
+						usr.send_chat("[enemy] is defeated [enemies]/[maxenemies]", stream = "icout")
 						sleep(4)
 				if(maxenemies>=2)
 					if(enemy2.hp<=0 && e2counted==0)
@@ -1568,7 +1565,7 @@ atom
 						enemies-=1
 						e2counted=1
 						enemylist-=enemy2
-						usr<<output("[enemy2] is defeated [enemies]/[maxenemies]","icout")
+						usr.send_chat("[enemy2] is defeated [enemies]/[maxenemies]", stream = "icout")
 						sleep(4)
 				if(maxenemies>=3)
 					if(enemy3.hp<=0 && e3counted==0)
@@ -1576,7 +1573,7 @@ atom
 						enemies-=1
 						e3counted=1
 						enemylist-=enemy3
-						usr<<output("[enemy3] is defeated [enemies]/[maxenemies]","icout")
+						usr.send_chat("[enemy3] is defeated [enemies]/[maxenemies]", stream = "icout")
 						sleep(4)
 				if(maxenemies>=4)
 					if(enemy4.hp<=0 && e4counted==0)
@@ -1584,7 +1581,7 @@ atom
 						enemies-=1
 						e4counted=1
 						enemylist-=enemy4
-						usr<<output("[enemy4] is defeated [enemies]/[maxenemies]","icout")
+						usr.send_chat("[enemy4] is defeated [enemies]/[maxenemies]", stream = "icout")
 						sleep(4)
 				if(maxbattlers>=1)
 					if(battler1.hp<=0 && b1counted==0)
@@ -1618,7 +1615,7 @@ atom
 						Greencheckenemy(enemy)
 						Statusprocenemy(enemy)
 						if(enemy.status1=="Stun")
-							view(enemy3)<<output("[enemy] is stunned, and skips a turn!","icout")
+							enemy3.visible_message("[enemy] is stunned, and skips a turn!", stream = "icout")
 							enemy.totalstatus=0
 							enemy.status1=null
 							return
@@ -1664,7 +1661,7 @@ atom
 						b4counted=1
 				sleep(1)
 				if(battlers<=0)
-					view(enemy)<<output("All Party Members have been defeated! <b>FATE</b> failed!!","icout")
+					enemy.visible_message("All Party Members have been defeated! <b>FATE</b> failed!!", stream = "icout")
 					del enemy2
 					del enemy3
 					del enemy4
@@ -1685,7 +1682,7 @@ atom
 						Greencheckenemy(enemy2)
 						Statusprocenemy(enemy2)
 						if(enemy2.status1=="Stun")
-							view(enemy4)<<output("[enemy2] is stunned, and skips a turn!","icout")
+							enemy4.visible_message("[enemy2] is stunned, and skips a turn!", stream = "icout")
 							enemy2.totalstatus=0
 							enemy2.status1=null
 							return
@@ -1731,7 +1728,7 @@ atom
 						b4counted=1
 				sleep(1)
 				if(battlers<=0)
-					view(enemy)<<output("All Party Members have been defeated! <b>FATE</b> failed!!","icout")
+					enemy.visible_message("All Party Members have been defeated! <b>FATE</b> failed!!", stream = "icout")
 					del enemy2
 					del enemy3
 					del enemy4
@@ -1752,7 +1749,7 @@ atom
 						Greencheckenemy(enemy3)
 						Statusprocenemy(enemy3)
 						if(enemy3.status1=="Stun")
-							view(enemy3)<<output("[enemy3] is stunned, and skips a turn!","icout")
+							enemy3.visible_message("[enemy3] is stunned, and skips a turn!", stream = "icout")
 							enemy3.totalstatus=0
 							enemy3.status1=null
 							return
@@ -1800,7 +1797,7 @@ atom
 						b4counted=1
 				sleep(1)
 				if(battlers<=0)
-					view(enemy)<<output("All Party Members have been defeated! <b>FATE</b> failed!!","icout")
+					enemy.visible_message("All Party Members have been defeated! <b>FATE</b> failed!!", stream = "icout")
 					del enemy2
 					del enemy3
 					del enemy4
@@ -1821,7 +1818,7 @@ atom
 						Greencheckenemy(enemy4)
 						Statusprocenemy(enemy4)
 						if(enemy4.status1=="Stun")
-							view(enemy4)<<output("[enemy4] is stunned, and skips a turn!","icout")
+							enemy4.visible_message("[enemy4] is stunned, and skips a turn!", stream = "icout")
 							enemy4.totalstatus=0
 							enemy4.status1=null
 							return
@@ -1867,7 +1864,7 @@ atom
 						b4counted=1
 				sleep(1)
 				if(enemies<=0)
-					view(enemy)<<output("All Enemies have been defeated! <b>FATE</b> complete!!","icout")
+					enemy.visible_message("All Enemies have been defeated! <b>FATE</b> complete!!", stream = "icout")
 					for(var/obj/Party/c in world)
 						del enemy2
 						del enemy3
@@ -1888,11 +1885,11 @@ atom
 							Greencheckplayer(battler1)
 							Statusprocparty(battler1)
 							if(battler1.status1=="Stun")
-								view(battler1)<<output("[battler1] is stunned, and skips a turn!","icout")
+								battler1.visible_message("[battler1] is stunned, and skips a turn!", stream = "icout")
 								battler1.totalstatus=0
 								battler1.status1=null
 								return
-							usr<<output("<font color=[battler1.textcolor]><b>[battler1]'s</font> turn, let's see what they can do!","icout")
+							usr.send_chat("<font color=[battler1.textcolor]><b>[battler1]'s</font> turn, let's see what they can do!", stream = "icout")
 							var/list/actions=list("Attack","Ability","Rest")
 							if(green1==1)
 								actions+="Green Magic"
@@ -1945,18 +1942,18 @@ atom
 									sleep(4)
 								if("Retaliate")
 									if(battler1.sp<30)
-										usr<<output("<font color=[battler1.textcolor]<b>[battler1] has attempted to use Retaliate, but could not spend 30 SP, and has forfeited their turn!","icout")
+										usr.send_chat("<font color=[battler1.textcolor]<b>[battler1] has attempted to use Retaliate, but could not spend 30 SP, and has forfeited their turn!", stream = "icout")
 									else
 										var/target=input(battler1,"Which enemy would you like to attack, setting Retaliate up?") as anything in enemylist
 										battler1.turnattack(battler1,target)
-										usr<<output("<font color=[battler1.textcolor]<b>[battler1] has entered a <b>Retaliation</b> stance!","icout")
+										usr.send_chat("<font color=[battler1.textcolor]<b>[battler1] has entered a <b>Retaliation</b> stance!", stream = "icout")
 										battler1.sp-=30
 										battler1.retaliate=1
 								if("Infusion")
 									var/list/Infusions=list("Fire","Water","Ice","Thunder","Wind")
 									var/infuchoice=input(battler1,"Which Infusion would you like to apply to your weapon?") as anything in Infusions
 									battler1.infusion=infuchoice
-									usr<<output("<font color=[battler1.textcolor]<b>[battler1] has set their Infusion type to [infuchoice]!","icout")
+									usr.send_chat("<font color=[battler1.textcolor]<b>[battler1] has set their Infusion type to [infuchoice]!", stream = "icout")
 								if("Summon")
 									var/target=input(battler1,"Which enemy would you like to summon a companion to attack?") as anything in enemylist
 									var/summon=input(battler1,"Which companion would you like to call on the power of?") as anything in summonlist1
@@ -1980,7 +1977,7 @@ atom
 									var/rest2=conboost+10
 									var/rest1=conboost+5
 									var/restvalue=rand(rest1,rest2)
-									usr<<output("<font color=[battler1.textcolor]><b>[battler1]</font> has decided to rest, and restores [restvalue] HP and MP!!","icout")
+									usr.send_chat("<font color=[battler1.textcolor]><b>[battler1]</font> has decided to rest, and restores [restvalue] HP and MP!!", stream = "icout")
 									battler1.hp+=restvalue
 									battler1.mp+=restvalue
 									if(battler1.hp>battler1.mhp)
@@ -2076,7 +2073,7 @@ atom
 							enemies-=1
 							e1counted=1
 							enemylist-=enemy
-							usr<<output("[enemy] is defeated [enemies]/[maxenemies]","icout")
+							usr.send_chat("[enemy] is defeated [enemies]/[maxenemies]", stream = "icout")
 							sleep(4)
 					if(maxenemies>=2)
 						if(enemy2.hp<=0 && e2counted==0)
@@ -2084,7 +2081,7 @@ atom
 							enemies-=1
 							e2counted=1
 							enemylist-=enemy2
-							usr<<output("[enemy2] is defeated [enemies]/[maxenemies]","icout")
+							usr.send_chat("[enemy2] is defeated [enemies]/[maxenemies]", stream = "icout")
 							sleep(4)
 					if(maxenemies>=3)
 						if(enemy3.hp<=0 && e3counted==0)
@@ -2092,7 +2089,7 @@ atom
 							enemies-=1
 							e3counted=1
 							enemylist-=enemy3
-							usr<<output("[enemy3] is defeated [enemies]/[maxenemies]","icout")
+							usr.send_chat("[enemy3] is defeated [enemies]/[maxenemies]", stream = "icout")
 							sleep(4)
 					if(maxenemies>=4)
 						if(enemy4.hp<=0 && e4counted==0)
@@ -2100,15 +2097,15 @@ atom
 							enemies-=1
 							e4counted=1
 							enemylist-=enemy4
-							usr<<output("[enemy4] is defeated [enemies]/[maxenemies]","icout")
+							usr.send_chat("[enemy4] is defeated [enemies]/[maxenemies]", stream = "icout")
 							sleep(4)
 					sleep(1)
 					if(enemies<=0)
-						view(enemy)<<output("All Enemies have been defeated! <b>FATE</b> complete!!","icout")
+						enemy.visible_message("All Enemies have been defeated! <b>FATE</b> complete!!", stream = "icout")
+						del enemy2
+						del enemy3
+						del enemy4
 						for(var/obj/Party/c in world)
-							del enemy2
-							del enemy3
-							del enemy4
 							if(battler1.partyID==c.partyID)
 								for(var/obj/FATECrystal/b in world)
 									if("[b.FATEID]"=="[c.FATEID]")
@@ -2124,11 +2121,11 @@ atom
 							Greencheckplayer(battler2)
 							Statusprocparty(battler2)
 							if(battler2.status1=="Stun")
-								view(battler2)<<output("[battler2] is stunned, and skips a turn!","icout")
+								battler2.visible_message("[battler2] is stunned, and skips a turn!", stream = "icout")
 								battler2.totalstatus=0
 								battler2.status1=null
 								return
-							usr<<output("<font color=[battler2.textcolor]><b>[battler2]'s</font> turn, let's see what they can do!","icout")
+							usr.send_chat("<font color=[battler2.textcolor]><b>[battler2]'s</font> turn, let's see what they can do!", stream = "icout")
 							var/list/actions=list("Attack","Ability","Rest")
 							if(green2==1)
 								actions+="Green Magic"
@@ -2180,18 +2177,18 @@ atom
 									sleep(4)
 								if("Retaliate")
 									if(battler2.sp<30)
-										usr<<output("<font color=[battler2.textcolor]<b>[battler2] has attempted to use Retaliate, but could not spend 30 SP, and has forfeited their turn!","icout")
+										usr.send_chat("<font color=[battler2.textcolor]<b>[battler2] has attempted to use Retaliate, but could not spend 30 SP, and has forfeited their turn!", stream = "icout")
 									else
 										var/target=input(battler2,"Which enemy would you like to attack, setting Retaliate up?") as anything in enemylist
 										battler2.turnattack(battler2,target)
-										usr<<output("<font color=[battler2.textcolor]<b>[battler2] has entered a <b>Retaliation</b> stance!","icout")
+										usr.send_chat("<font color=[battler2.textcolor]<b>[battler2] has entered a <b>Retaliation</b> stance!", stream = "icout")
 										battler2.sp-=30
 										battler2.retaliate=1
 								if("Infusion")
 									var/list/Infusions=list("Fire","Water","Ice","Thunder","Wind","Holy","Dark","Flare")
 									var/infuchoice=input(battler2,"Which Infusion would you like to apply to your weapon?") as anything in Infusions
 									battler2.infusion=infuchoice
-									usr<<output("<font color=[battler2.textcolor]<b>[battler2] has set their Infusion type to [infuchoice]!","icout")
+									usr.send_chat("<font color=[battler2.textcolor]<b>[battler2] has set their Infusion type to [infuchoice]!", stream = "icout")
 								if("Summon")
 									var/target=input(battler2,"Which enemy would you like to summon a companion to attack?") as anything in enemylist
 									var/summon=input(battler2,"Which companion would you like to call on the power of?") as anything in summonlist2
@@ -2215,7 +2212,7 @@ atom
 									var/rest2=conboost+10
 									var/rest1=conboost+5
 									var/restvalue=rand(rest1,rest2)
-									usr<<output("<font color=[battler2.textcolor]><b>[battler2]</font> has decided to rest, and restores [restvalue] HP and MP!!","icout")
+									usr.send_chat("<font color=[battler2.textcolor]><b>[battler2]</font> has decided to rest, and restores [restvalue] HP and MP!!", stream = "icout")
 									battler2.hp+=restvalue
 									battler2.mp+=restvalue
 									if(battler2.hp>battler2.mhp)
@@ -2309,7 +2306,7 @@ atom
 							enemies-=1
 							e1counted=1
 							enemylist-=enemy
-							usr<<output("[enemy] is defeated [enemies]/[maxenemies]","icout")
+							usr.send_chat("[enemy] is defeated [enemies]/[maxenemies]", stream = "icout")
 							sleep(4)
 					if(maxenemies>=2)
 						if(enemy2.hp<=0 && e2counted==0)
@@ -2317,7 +2314,7 @@ atom
 							enemies-=1
 							e2counted=1
 							enemylist-=enemy2
-							usr<<output("[enemy2] is defeated [enemies]/[maxenemies]","icout")
+							usr.send_chat("[enemy2] is defeated [enemies]/[maxenemies]", stream = "icout")
 							sleep(4)
 					if(maxenemies>=3)
 						if(enemy3.hp<=0 && e3counted==0)
@@ -2325,7 +2322,7 @@ atom
 							enemies-=1
 							e3counted=1
 							enemylist-=enemy3
-							usr<<output("[enemy3] is defeated [enemies]/[maxenemies]","icout")
+							usr.send_chat("[enemy3] is defeated [enemies]/[maxenemies]", stream = "icout")
 							sleep(4)
 					if(maxenemies>=4)
 						if(enemy4.hp<=0 && e4counted==0)
@@ -2333,15 +2330,15 @@ atom
 							enemies-=1
 							e4counted=1
 							enemylist-=enemy4
-							usr<<output("[enemy4] is defeated [enemies]/[maxenemies]","icout")
+							usr.send_chat("[enemy4] is defeated [enemies]/[maxenemies]", stream = "icout")
 							sleep(4)
 					sleep(1)
 					if(enemies<=0)
-						view(enemy)<<output("All Enemies have been defeated! <b>FATE</b> complete!!","icout")
+						enemy.visible_message("All Enemies have been defeated! <b>FATE</b> complete!!", stream = "icout")
+						del enemy2
+						del enemy3
+						del enemy4
 						for(var/obj/Party/c in world)
-							del enemy2
-							del enemy3
-							del enemy4
 							if(battler1.partyID==c.partyID)
 								for(var/obj/FATECrystal/b in world)
 									if(b.FATEID==c.FATEID)
@@ -2357,11 +2354,11 @@ atom
 							Greencheckplayer(battler3)
 							Statusprocparty(battler3)
 							if(battler3.status1=="Stun")
-								view(battler3)<<output("[battler3] is stunned, and skips a turn!","icout")
+								battler3.visible_message("[battler3] is stunned, and skips a turn!", stream = "icout")
 								battler3.totalstatus=0
 								battler3.status1=null
 								return
-							usr<<output("<font color=[battler3.textcolor]><b>[battler3]'s</font> turn, let's see what they can do!","icout")
+							usr.send_chat("<font color=[battler3.textcolor]><b>[battler3]'s</font> turn, let's see what they can do!", stream = "icout")
 							var/list/actions=list("Attack","Ability","Rest")
 							if(green3==1)
 								actions+="Green Magic"
@@ -2415,18 +2412,18 @@ atom
 									sleep(4)
 								if("Retaliate")
 									if(battler3.sp<30)
-										usr<<output("<font color=[battler3.textcolor]<b>[battler3] has attempted to use Retaliate, but could not spend 30 SP, and has forfeited their turn!","icout")
+										usr.send_chat("<font color=[battler3.textcolor]<b>[battler3] has attempted to use Retaliate, but could not spend 30 SP, and has forfeited their turn!", stream = "icout")
 									else
 										var/target=input(battler3,"Which enemy would you like to attack, setting Retaliate up?") as anything in enemylist
 										battler2.turnattack(battler3,target)
-										usr<<output("<font color=[battler3.textcolor]<b>[battler3] has entered a <b>Retaliation</b> stance!","icout")
+										usr.send_chat("<font color=[battler3.textcolor]<b>[battler3] has entered a <b>Retaliation</b> stance!", stream = "icout")
 										battler3.sp-=30
 										battler3.retaliate=1
 								if("Infusion")
 									var/list/Infusions=list("Fire","Water","Ice","Thunder","Wind","Holy","Dark","Flare")
 									var/infuchoice=input(battler3,"Which Infusion would you like to apply to your weapon?") as anything in Infusions
 									battler3.infusion=infuchoice
-									usr<<output("<font color=[battler3.textcolor]<b>[battler3] has set their Infusion type to [infuchoice]!","icout")
+									usr.send_chat("<font color=[battler3.textcolor]<b>[battler3] has set their Infusion type to [infuchoice]!", stream = "icout")
 								if("Summon")
 									var/target=input(battler3,"Which enemy would you like to summon a companion to attack?") as anything in enemylist
 									var/summon=input(battler3,"Which companion would you like to call on the power of?") as anything in summonlist3
@@ -2450,7 +2447,7 @@ atom
 									var/rest2=conboost+10
 									var/rest1=conboost+5
 									var/restvalue=rand(rest1,rest2)
-									usr<<output("<font color=[battler3.textcolor]><b>[battler3]</font> has decided to rest, and restores [restvalue] HP and MP!!","icout")
+									usr.send_chat("<font color=[battler3.textcolor]><b>[battler3]</font> has decided to rest, and restores [restvalue] HP and MP!!", stream = "icout")
 									battler3.hp+=restvalue
 									battler3.mp+=restvalue
 									if(battler3.hp>battler3.mhp)
@@ -2544,7 +2541,7 @@ atom
 							enemies-=1
 							e1counted=1
 							enemylist-=enemy
-							usr<<output("[enemy] is defeated [enemies]/[maxenemies]","icout")
+							usr.send_chat("[enemy] is defeated [enemies]/[maxenemies]", stream = "icout")
 							sleep(4)
 					if(maxenemies>=2)
 						if(enemy2.hp<=0 && e2counted==0)
@@ -2552,7 +2549,7 @@ atom
 							enemies-=1
 							e2counted=1
 							enemylist-=enemy2
-							usr<<output("[enemy2] is defeated [enemies]/[maxenemies]","icout")
+							usr.send_chat("[enemy2] is defeated [enemies]/[maxenemies]", stream = "icout")
 							sleep(4)
 					if(maxenemies>=3)
 						if(enemy3.hp<=0 && e3counted==0)
@@ -2560,7 +2557,7 @@ atom
 							enemies-=1
 							e3counted=1
 							enemylist-=enemy3
-							usr<<output("[enemy3] is defeated [enemies]/[maxenemies]","icout")
+							usr.send_chat("[enemy3] is defeated [enemies]/[maxenemies]", stream = "icout")
 							sleep(4)
 					if(maxenemies>=4)
 						if(enemy4.hp<=0 && e4counted==0)
@@ -2568,14 +2565,14 @@ atom
 							enemies-=1
 							e4counted=1
 							enemylist-=enemy4
-							usr<<output("[enemy4] is defeated [enemies]/[maxenemies]","icout")
+							usr.send_chat("[enemy4] is defeated [enemies]/[maxenemies]", stream = "icout")
 							sleep(4)
 					if(enemies<=0)
-						view(enemy)<<output("All Enemies have been defeated! <b>FATE</b> complete!!","icout")
+						enemy.visible_message("All Enemies have been defeated! <b>FATE</b> complete!!", stream = "icout")
+						del enemy2
+						del enemy3
+						del enemy4
 						for(var/obj/Party/c in world)
-							del enemy2
-							del enemy3
-							del enemy4
 							if(battler1.partyID==c.partyID)
 								for(var/obj/FATECrystal/b in world)
 									if("[b.FATEID]"=="[c.FATEID]")
@@ -2591,11 +2588,11 @@ atom
 							Greencheckplayer(battler4)
 							Statusprocparty(battler4)
 							if(battler4.status1=="Stun")
-								view(battler4)<<output("[battler4] is stunned, and skips a turn!","icout")
+								battler4.visible_message("[battler4] is stunned, and skips a turn!", stream = "icout")
 								battler4.totalstatus=0
 								battler4.status1=null
 								return
-							usr<<output("<font color=[battler4.textcolor]><b>[battler4]'s</font> turn, let's see what they can do!","icout")
+							usr.send_chat("<font color=[battler4.textcolor]><b>[battler4]'s</font> turn, let's see what they can do!", stream = "icout")
 							var/list/actions=list("Attack","Ability","Rest")
 							if(green4==1)
 								actions+="Green Magic"
@@ -2649,18 +2646,18 @@ atom
 									sleep(4)
 								if("Retaliate")
 									if(battler4.sp<30)
-										usr<<output("<font color=[battler4.textcolor]<b>[battler4] has attempted to use Retaliate, but could not spend 30 SP, and has forfeited their turn!","icout")
+										usr.send_chat("<font color=[battler4.textcolor]<b>[battler4] has attempted to use Retaliate, but could not spend 30 SP, and has forfeited their turn!", stream = "icout")
 									else
 										var/target=input(battler4,"Which enemy would you like to attack, setting Retaliate up?") as anything in enemylist
 										battler4.turnattack(battler2,target)
-										usr<<output("<font color=[battler4.textcolor]<b>[battler4] has entered a <b>Retaliation</b> stance!","icout")
+										usr.send_chat("<font color=[battler4.textcolor]<b>[battler4] has entered a <b>Retaliation</b> stance!", stream = "icout")
 										battler4.sp-=30
 										battler4.retaliate=1
 								if("Infusion")
 									var/list/Infusions=list("Fire","Water","Ice","Thunder","Wind","Holy","Dark","Flare")
 									var/infuchoice=input(battler4,"Which Infusion would you like to apply to your weapon?") as anything in Infusions
 									battler4.infusion=infuchoice
-									usr<<output("<font color=[battler4.textcolor]<b>[battler4] has set their Infusion type to [infuchoice]!","icout")
+									usr.send_chat("<font color=[battler4.textcolor]<b>[battler4] has set their Infusion type to [infuchoice]!", stream = "icout")
 								if("Summon")
 									var/target=input(battler4,"Which enemy would you like to summon a companion to attack?") as anything in enemylist
 									var/summon=input(battler4,"Which companion would you like to call on the power of?") as anything in summonlist4
@@ -2684,7 +2681,7 @@ atom
 									var/rest2=conboost+10
 									var/rest1=conboost+5
 									var/restvalue=rand(rest1,rest2)
-									usr<<output("<font color=[battler4.textcolor]><b>[battler4]</font> has decided to rest, and restores [restvalue] HP and MP!!","icout")
+									usr.send_chat("<font color=[battler4.textcolor]><b>[battler4]</font> has decided to rest, and restores [restvalue] HP and MP!!", stream = "icout")
 									battler4.hp+=restvalue
 									battler4.mp+=restvalue
 									if(battler4.hp>battler4.mhp)
@@ -2778,7 +2775,7 @@ atom
 							enemies-=1
 							e1counted=1
 							enemylist-=enemy
-							usr<<output("[enemy] is defeated [enemies]/[maxenemies]","icout")
+							usr.send_chat("[enemy] is defeated [enemies]/[maxenemies]", stream = "icout")
 							sleep(4)
 					if(maxenemies>=2)
 						if(enemy2.hp<=0 && e2counted==0)
@@ -2786,7 +2783,7 @@ atom
 							enemies-=1
 							e2counted=1
 							enemylist-=enemy2
-							usr<<output("[enemy2] is defeated [enemies]/[maxenemies]","icout")
+							usr.send_chat("[enemy2] is defeated [enemies]/[maxenemies]", stream = "icout")
 							sleep(4)
 					if(maxenemies>=3)
 						if(enemy3.hp<=0 && e3counted==0)
@@ -2794,7 +2791,7 @@ atom
 							enemies-=1
 							e3counted=1
 							enemylist-=enemy3
-							usr<<output("[enemy3] is defeated [enemies]/[maxenemies]","icout")
+							usr.send_chat("[enemy3] is defeated [enemies]/[maxenemies]", stream = "icout")
 							sleep(4)
 					if(maxenemies>=4)
 						if(enemy4.hp<=0 && e4counted==0)
@@ -2802,15 +2799,15 @@ atom
 							enemies-=1
 							e4counted=1
 							enemylist-=enemy4
-							usr<<output("[enemy4] is defeated [enemies]/[maxenemies]","icout")
+							usr.send_chat("[enemy4] is defeated [enemies]/[maxenemies]", stream = "icout")
 							sleep(4)
 					sleep(1)
 					if(enemies<=0)
-						view(enemy)<<output("All Enemies have been defeated! <b>FATE</b> complete!!","icout")
+						enemy.visible_message("All Enemies have been defeated! <b>FATE</b> complete!!", stream = "icout")
+						del enemy2
+						del enemy3
+						del enemy4
 						for(var/obj/Party/c in world)
-							del enemy2
-							del enemy3
-							del enemy4
 							if(battler1.partyID==c.partyID)
 								for(var/obj/FATECrystal/b in world)
 									if("[b.FATEID]"=="[c.FATEID]")
@@ -3057,7 +3054,7 @@ obj
 						usr.deploynpc=src
 						usr.building=0
 						usr.aoeclick=0
-						usr<<output("Double click an area to deploy your npc.","oocout")
+						usr.send_chat("Double click an area to deploy your npc.","oocout")
 						RefreshNPC(usr)
 						return
 					if("View Sheet")
@@ -3148,7 +3145,7 @@ obj
 								src.overlays-='Rping.dmi'
 								return
 							else
-								view()<< output("<font color=[src.textcolor]><font size = 0.5>[src.name] [m]","icout")
+								visible_message("<font color=[src.textcolor]><font size = 0.5>[src.name] [m]", stream = "icout")
 								src.overlays-='Rping.dmi'
 			else if(src.inarchive==1)
 				return
@@ -4481,7 +4478,7 @@ obj
 						var/obj/perk/Abilities/BlackMagic/Flame/Firaja/a=new
 						var/obj/perk/Abilities/BlackMagic/Ice/Blizzaja/b=new
 						var/obj/perk/Abilities/BlackMagic/Lightning/Thundaja/c=new
-						var/obj/perk/Abilities/BlackMagic/Hydro/Waterja/d
+						var/obj/perk/Abilities/BlackMagic/Hydro/Waterja/d=new
 						var/obj/perk/Abilities/BlackMagic/Other/Apocalypse/e=new
 						var/obj/item/Weapon/NPCWeapons/Punch/sf=new
 						src.contents+=a
@@ -4531,7 +4528,7 @@ obj
 						var/obj/perk/MonsterAbilities/BLU/MatraMagic/a=new
 						var/obj/perk/Abilities/BlackMagic/Energy/Scathe/b=new
 						var/obj/perk/Abilities/GeneralMagicAbilities/Laserga/c=new
-						var/obj/perk/Abilities/GeneralMagicAbilities/Fleche/d
+						var/obj/perk/Abilities/GeneralMagicAbilities/Fleche/d=new
 						var/obj/perk/Abilities/Geomancer/Quake/e=new
 						var/obj/item/Weapon/NPCWeapons/Punch/sf=new
 						src.contents+=a
@@ -8282,7 +8279,7 @@ mob
 				var/obj/npc/n = copyatom(usr.npcachoice)
 				n.archived=0
 				usr.contents+=n
-				usr<<output("[n.name] has been added to your NPC list.","oocout")
+				usr.send_chat("[n.name] has been added to your NPC list.","oocout")
 				RefreshNPC(usr)
 		Addperknpc()
 			var/obj/npc/n = usr.npcsheet
@@ -8510,10 +8507,10 @@ obj
 							dresult=doresult+dmod+src.adddam+z.pdb
 						critdam=dresult+doresult
 						if(aoresult==20)
-							view()<<output("<font size=1><font color=[usr.textcolor]>[z] <font color=white>rolled a <b><font color=#3CF82C>CRITICAL</b> <font color=white>attack roll, using their <font color=[usr.textcolor]>[src.name]<font color=white>! Result: <font color=#3CF82C><b>[aresult] to hit</b><font color=white>, dealing <b><font color=#FFA852>[critdam] damage</b><font color=white>, as an automatic hit!","icout")
+							usr.visible_message("<font size=1><font color=[usr.textcolor]>[z] <font color=white>rolled a <b><font color=#3CF82C>CRITICAL</b> <font color=white>attack roll, using their <font color=[usr.textcolor]>[src.name]<font color=white>! Result: <font color=#3CF82C><b>[aresult] to hit</b><font color=white>, dealing <b><font color=#FFA852>[critdam] damage</b><font color=white>, as an automatic hit!", stream = "icout")
 						else
-							view()<<output("<font size=1><font color=[usr.textcolor]>[z] <font color=white>rolled an attack roll, using their <font color=[usr.textcolor]>[src.name]<font color=white>!  Result: <font color=#8EF5DE><b>[aresult] to hit</b><font color=white>, dealing <b><font color=#FFA852>[dresult] damage</b><font color=white> if successful!<br>Tile Range:[src.range]","output1")
-							view()<<output("<font size=1><font color=[usr.textcolor]>[z] <font color=white>rolled an attack roll, using their <font color=[usr.textcolor]>[src.name]<font color=white>! Result: <font color=#8EF5DE><b>[aresult] to hit</b><font color=white>, dealing <b><font color=#FFA852>[dresult] damage</b><font color=white> if successful!<br>Tile Range:[src.range]","icout")
+							usr.visible_message("<font size=1><font color=[usr.textcolor]>[z] <font color=white>rolled an attack roll, using their <font color=[usr.textcolor]>[src.name]<font color=white>!  Result: <font color=#8EF5DE><b>[aresult] to hit</b><font color=white>, dealing <b><font color=#FFA852>[dresult] damage</b><font color=white> if successful!<br>Tile Range:[src.range]","output1")
+							usr.visible_message("<font size=1><font color=[usr.textcolor]>[z] <font color=white>rolled an attack roll, using their <font color=[usr.textcolor]>[src.name]<font color=white>! Result: <font color=#8EF5DE><b>[aresult] to hit</b><font color=white>, dealing <b><font color=#FFA852>[dresult] damage</b><font color=white> if successful!<br>Tile Range:[src.range]", stream = "icout")
 
 			Punch
 				desc="A basic punch."

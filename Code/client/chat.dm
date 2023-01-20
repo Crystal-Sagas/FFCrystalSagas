@@ -5,5 +5,5 @@
 	src << output(msg, stream)
 
 /world/proc/send_chat(msg, stream)
-	for(var/client/C)
+	for(var/client/C as anything in global.clients)
 		C.send_chat(msg, stream)
