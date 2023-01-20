@@ -1486,6 +1486,7 @@ atom
 atom
 	proc
 		Healanimation(var/atom/user,var/atom/target)
+			set waitfor = FALSE
 			var/obj/prop/Cast/Heal/cast=new
 			var/obj/prop/Target/Heal/heal=new
 			view(12,user) << sound('Audio/Soundeffects/Castmagic.wav',channel=3)
@@ -1503,6 +1504,7 @@ atom
 			del heal
 
 		Burn(var/atom/target)
+			set waitfor = FALSE
 			var/obj/prop/Target/Fire/attack=new
 			view(12,target) << sound('Audio/Soundeffects/Fire.wav',channel=3)
 			attack.x=target.x
@@ -1511,6 +1513,7 @@ atom
 			sleep(10)
 			del attack
 		Poison(var/atom/target)
+			set waitfor = FALSE
 			var/obj/prop/Target/Bio/attack=new
 			view(12,target) << sound('Audio/Soundeffects/Bio.wav',channel=3)
 			attack.x=target.x
@@ -1519,6 +1522,7 @@ atom
 			sleep(10)
 			del attack
 		Frostbite(var/atom/target)
+			set waitfor = FALSE
 			var/obj/prop/Target/Ice/attack=new
 			view(12,target) << sound('Audio/Soundeffects/Ice.wav',channel=3)
 			attack.x=target.x
@@ -1527,6 +1531,7 @@ atom
 			sleep(10)
 			del attack
 		Bleed(var/atom/target)
+			set waitfor = FALSE
 			var/obj/prop/Target/Dark/attack=new
 			view(12,target) << sound('Audio/Soundeffects/Dark.wav',channel=3)
 			attack.x=target.x
@@ -1536,22 +1541,25 @@ atom
 			del attack
 
 		Death(var/atom/target)
+			set waitfor = FALSE
 			var/obj/prop/Death/death=new
 			view(12,target) << sound('Audio/Soundeffects/Death.wav',channel=3)
 			death.x=target.x
 			death.y=target.y
 			death.z=target.z
-			sleep(12)
-			del death
+			spawn(12)
+				del death
 		GreenMagic(var/atom/target)
+			set waitfor = FALSE
 			var/obj/prop/Target/Heal/heal=new
 			view(12,target) << sound('Audio/Soundeffects/Heal.wav',channel=3)
 			heal.x=target.x
 			heal.y=target.y
 			heal.z=target.z
-			sleep(12)
-			del heal
+			spawn(12)
+				del heal
 		Dispel(var/atom/target)
+			set waitfor = FALSE
 			var/obj/prop/Target/Holy/dispel=new
 			view(12,target) << sound('Audio/Soundeffects/Holy.wav',channel=3)
 			dispel.x=target.x
@@ -1560,6 +1568,7 @@ atom
 			sleep(12)
 			del dispel
 		Evade(var/atom/target)
+			set waitfor = FALSE
 			var/obj/prop/Evade/evade=new
 			view(12,target) << sound('Audio/Soundeffects/Evasion.wav',channel=3)
 			evade.x=target.x
@@ -1569,6 +1578,7 @@ atom
 			del evade
 
 		Enemyanimation(var/obj/npc/user,var/mob/target,var/obj/perk/skill)
+			set waitfor = FALSE
 			var/element=skill.element
 			if(element=="Death")
 				var/obj/prop/Cast/Magic/cast=new
@@ -1958,6 +1968,7 @@ atom
 
 
 		Playerattack(var/mob/user,var/obj/npc/target)
+			set waitfor = FALSE
 			var/obj/prop/Cast/Physical/cast=new
 			var/obj/prop/Target/Physical/attack=new
 			var/obj/prop/Target/Physical/attack2=new
@@ -1986,6 +1997,7 @@ atom
 
 
 		Spellbladeanimation(var/mob/user,var/obj/npc/target,var/obj/perk/skill)
+			set waitfor = FALSE
 			var/element=skill.element
 			if(element=="Death")
 				var/obj/prop/Target/Dark/attack=new
@@ -2255,6 +2267,7 @@ atom
 				del attack
 
 		Playeranimation(var/mob/user,var/obj/npc/target,var/obj/perk/skill)
+			set waitfor = FALSE
 			var/element=skill.element
 			if(element=="Death")
 				var/obj/prop/Cast/Magic/cast=new

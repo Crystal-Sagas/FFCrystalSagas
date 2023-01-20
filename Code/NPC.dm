@@ -168,7 +168,6 @@ atom
 atom
 	proc
 		Enemyability(var/obj/npc/user,var/mob/target,var/obj/perk/skill)
-			set waitfor=0
 			var/aoresult=rand(1,20)
 			var/aresult
 			var/amod
@@ -402,7 +401,6 @@ atom
 						dresult=0
 			if(user.positivestatus1=="Haste" || user.positivestatus2=="Haste" || user.positivestatus3=="Haste")
 				aresult+=5
-				sleep(4)
 //stoneskin procs after all other defensive boons do
 			if(target.positivestatus1=="Stoneskin" || target.positivestatus2=="Stoneskin" || target.positivestatus3=="Stoneskin")
 				dresult-=5
@@ -519,7 +517,6 @@ atom
 						Death(target)
 						user.visible_message("[target] has reached 0 HP and is removed from battle!", stream = "icout")
 						target.hp=0
-						sleep(4)
 				ShowHPBar(target)
 			else
 				Evade(target)
@@ -533,7 +530,6 @@ atom
 			ShowHPBar(user)
 			ShowMPBar(user)
 			ShowSPBar(user)
-			sleep(4)
 		turnattack(var/mob/user, var/obj/npc/target)
 			var/aresult
 			var/amod
@@ -726,7 +722,6 @@ atom
 			if(user.positivestatus1=="Haste" || user.positivestatus2=="Haste" || user.positivestatus3=="Haste")
 				aresult+=10
 				dresult+=15
-				sleep(4)
 //stoneskin procs after all other defensive boons do
 			if(target.positivestatus1=="Stoneskin" || target.positivestatus2=="Stoneskin" || target.positivestatus3=="Stoneskin")
 				dresult-=5
@@ -766,7 +761,6 @@ atom
 					if(user.hp<=0)
 						Death(user)
 						user.hp=0
-					sleep(4)
 					ShowHPBar(user)
 					if(target.hp<=0)
 						target.overlays=null
@@ -784,7 +778,6 @@ atom
 				target.retaliate=0
 			if(target.hp<=0)
 				target.overlays=null
-			sleep(4)
 		TurnAbility(var/mob/user,var/obj/npc/target,var/obj/perk/skill)
 			if(skill.costtype=="Mana")
 				if(user.mp<=0)
