@@ -1196,20 +1196,20 @@ atom
 				UpdateArea(m)
 				for(var/obj/item/a in m.contents)
 					if(a.name==reward1)
-						m<<output("Gained +1 [reward1]!","oocout")
+						m.send_chat("Gained +1 [reward1]!", stream = "oocout")
 						a.amount+=1
 				for(var/obj/item/b in m.contents)
 					if(b.name==reward2)
-						m<<output("Gained +1 [reward2]!","oocout")
+						m.send_chat("Gained +1 [reward2]!", stream = "oocout")
 						b.amount+=1
 				for(var/obj/item/c in m.contents)
 					if(c.name==reward3)
-						m<<output("Gained +1 [reward3]!","oocout")
+						m.send_chat("Gained +1 [reward3]!", stream = "oocout")
 						c.amount+=1
 				if(m.hp<=0)
 					m.hp=0
 				m.money+=gilreward
-				m<<output("Gained [gilreward] Gil!!","oocout")
+				m.send_chat("Gained [gilreward] Gil!!", stream = "oocout")
 				m.battler=0
 				m.dailyfates+=1
 				if(m.dailyfates>=m.maxfates)
@@ -1218,7 +1218,8 @@ atom
 			party.FATEID=null
 
 		Defeat(var/obj/Party/party,var/obj/FATECrystal/fate)
-			view(20,fate) << sound(null,channel=1)
+			for(var/mob/M in hearers(20, fate))
+				M << sound(null,channel=1)
 			sleep(4)
 			for(var/obj/FATEs/quest in world)
 				if(quest.FATEID==fate.FATEID)
