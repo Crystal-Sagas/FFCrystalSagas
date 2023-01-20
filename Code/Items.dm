@@ -1362,9 +1362,13 @@ obj
 		return
 	amt = clamp(amt, 0, amount)
 	// todo: copyatom() is pretty awful and shouldn't be used for stacks if at all possible.
+	// create new & set amount
 	var/obj/item/dropped = copyatom(src, get_turf(user))
 	dropped.amount = amt
+	// subtract amount & weight
+	amount -= amt
 	user.carryweight -= weight * amt
+	// feedback
 	user.visible_message("[user] has dropped [amt] of [src]!", stream ="icout")
 	// just refresh crafting screen because surely this is a crafting material and not a normal item right??
 	UpdateCraft(user)
