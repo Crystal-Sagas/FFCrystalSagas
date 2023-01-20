@@ -1422,7 +1422,7 @@ atom
 						for(var/mob/m in view(starter))
 							if(m.bposition=="battler1")
 								battler1=m
-								battler1 << sound('Battle.wav',1,channel=1)
+								battler1 << sound('battle1.ogg',1,channel=1)
 								m.battler=1
 								battlers+=1
 								battler1state="Alive"
@@ -1456,7 +1456,7 @@ atom
 							if(maxbattlers>=2)
 								if(m.bposition=="battler2")
 									battler2=m
-									battler2 << sound('Battle.wav',1,channel=1)
+									battler2 << sound('battle1.ogg',1,channel=1)
 									m.battler=1
 									battlers+=1
 									battler2state="Alive"
@@ -1484,7 +1484,7 @@ atom
 							if(maxbattlers>=3)
 								if(m.bposition=="battler3")
 									battler3=m
-									battler3 << sound('Battle.wav',1,channel=1)
+									battler3 << sound('battle1.ogg',1,channel=1)
 									m.battler=1
 									battlers+=1
 									battler3state="Alive"
@@ -1512,7 +1512,7 @@ atom
 							if(maxbattlers>=4)
 								if(m.bposition=="battler4")
 									battler4=m
-									battler4 << sound('Battle.wav',1,channel=1)
+									battler4 << sound('battle1.ogg',1,channel=1)
 									m.battler=1
 									battlers+=1
 									battler4state="Alive"
