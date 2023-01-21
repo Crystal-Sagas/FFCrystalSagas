@@ -60,7 +60,7 @@ GLOBAL_DATUM_INIT(runtime_viewer, /datum/runtime_viewer, new)
 				index = text2num(index)
 			show_to(usr, global.runtime_data[id], index)
 			return TRUE
-		if(main)
+		if("main")
 			show_to(usr)
 			return TRUE
 
