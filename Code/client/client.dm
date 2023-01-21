@@ -91,7 +91,7 @@ GLOBAL_LIST_EMPTY(clients)
 	asset_sending = TRUE
 	while(LAZYLIST_LENGTH(assets_queued))
 		var/datum/asset/A = assets_queued[1]
-		A.load_to_client(src)
+		A.transmit(src)
 		++.
 		sleep(1)
 	asset_sending = FALSE

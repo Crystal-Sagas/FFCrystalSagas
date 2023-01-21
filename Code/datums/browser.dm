@@ -26,7 +26,9 @@
 	if(!isnull(height))
 		src.height = height
 
-/datum/browser/proc/render(mob/user, content)
+/datum/browser/proc/open(mob/user, content)
+	if(istype(user, /client))
+		user = user:mob
 	if(!window_id)
 		CRASH("no window id")
 	user << browse("[header()][body(content)][footer()]",
@@ -40,8 +42,9 @@
 
 /datum/browser/proc/header()
 	var/list/additional = list(
-		"<title>[title]</title>"
+		"<title>[title]</title>",
 	)
+	// todo: stylesheets
 	return \
 	{"
 	<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
