@@ -1,11 +1,14 @@
 
 /mob/verb/follow_us_verb()
-	set name = "Follow"
+	set name = "Follow / Unfollow"
 	set desc = "Follow someone"
 	set category = "IC"
 	set src in oview(2)
 
-	usr.start_following(src)
+	if(usr.following == src)
+		usr.stop_following(src)
+	else
+		usr.start_following(src)
 
 /**
  * makes all mobs stop following us, and stops following
