@@ -49,21 +49,8 @@ proc
 		currentday=time2text(world.realtime,"Day")
 		if(currentday!=savedday)
 			savedday=currentday
-			for(var/obj/node/Minenode/n in world)
-				n.used=0
-				n.icon_state="Ore"
-			for(var/obj/node/Herbnode/n2 in world)
-				n2.used=0
-				n2.icon_state="Herb"
-			for(var/obj/node/Hunternode/n3 in world)
-				n3.used=0
-				n3.icon_state="trap"
-			for(var/obj/node/Makonode/n4 in world)
-				n4.used=0
-				n4.icon_state="activemako"
-			for(var/obj/node/Dirtnode/n5 in world)
-				n5.used=0
-				n5.icon_state="dirtpile"
+			for(var/obj/node/N in global.resource_nodes)
+				N.refresh()
 			for(var/mob/a in world)
 				a.stockdrawn=0
 				a.Lifestreamraincooldown=0
