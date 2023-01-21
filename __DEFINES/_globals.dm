@@ -20,3 +20,20 @@
 #define GLOBAL_LIST_INIT(__vname, __val) var/global/list/##__vname = ##__val
 /// defines & inits list global without overwriting
 #define GLOBAL_LIST_INIT_INPLACE(__vname, __val) var/global/list/##__vname = __global_init_##__vname(); /proc/__global_init_##__vname() { return (global.##__vname) || (##__val) }
+
+/**
+ * various more functional global list defines
+ */
+
+/// shoves something into list on new, and out on dispose  - *not* Del()
+/// *Warning*: Beware of global init order. If another global inits before this, you'll have issues.
+#define GLOBAL_LIST_BOILERPLATE(Name, Path)   \
+var/global/list##Path/##Name = list();        \
+##Path/New() {                                \
+	. = ..();                                 \
+	global.##Name += src;                     \
+};                                            \
+##Path/Destruct() {                           \
+	global.##Name -= src;                     \
+	return ..();                              \
+};
