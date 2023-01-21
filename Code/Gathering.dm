@@ -248,7 +248,7 @@ GLOBAL_LIST_BOILERPLATE(resource_nodes, /obj/node)
 	var/cooldown = FALSE
 
 /obj/node/update_icon()
-	icon_state = used? icon_state_full : icon_state_empty
+	icon_state = used? icon_state_empty : icon_state_full
 
 /**
  * called to check if someone can harvest.

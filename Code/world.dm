@@ -36,7 +36,7 @@
 	else
 		Initbestiary()
 	spawn Time()
-	spawn Checkday()
+	spawn DayLooper()
 	for(var/obj/perkshopholder/a in world)
 		a.contents+=perklist
 	for(var/obj/recipeshopholder/a in world)
