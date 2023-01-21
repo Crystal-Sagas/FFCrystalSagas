@@ -1,9 +1,22 @@
 /**
  * singleton soon-to-be-tickable system datums
+ *
+ * init:
+ * - Construct() is called before Load()
+ *
+ * shutdown:
+ * - Save() is called before Shutdown()
+ *
+ * restore:
+ * - Restore() is called without Load()
+ *
+ * This may take getting used to.
  */
 /datum/system
 	/// name
 	var/name = "System"
+	/// save id - DO NOT CHANGE THIS
+	var/save_id
 	// todo: init order
 	// todo: ticking
 	// todo: inits
@@ -29,7 +42,7 @@
 /**
  * saves data; ONLY called during shutdown.
  *
- * @return list() of data.
+ * @return list() of data on success. null on failure.
  */
 /datum/system/proc/Save()
 	return list()
@@ -42,3 +55,19 @@
  */
 /datum/system/proc/Load(list/data)
 	return TRUE
+
+/**
+ * shuts down
+ *
+ * @return TRUE / FALSE on success / failure.
+ */
+/datum/system/proc/Shutdown()
+	return TRUE
+
+/**
+ * get savefile path
+ */
+/datum/system/proc/savefile_path()
+	if(!save_id)
+		return null
+	return "[world.data_directory()]world/systems/[save_id].sav"
