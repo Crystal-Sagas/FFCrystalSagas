@@ -81,7 +81,6 @@ GLOBAL_LIST_INIT_INPLACE(runtime_skipping, global.runtime_skipping || list())
 
 /datum/error_data/proc/log_exception(exception/E)
 	var/list/info = list()
-	var/usr_info = FALSE
 	if(istype(usr))
 		var/location
 		var/turf/T

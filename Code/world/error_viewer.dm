@@ -1,5 +1,14 @@
 GLOBAL_DATUM_INIT(runtime_viewer, /datum/runtime_viewer, new)
 
+/client/verb/view_runtimes()
+	set name = "View Runtimes"
+	set category = "Debug"
+
+	if(!global.is_dev(src))
+		send_chat("Only admins and developers can view errors.")
+		return
+	global.runtime_viewer.show_to(src)
+
 /datum/runtime_viewer
 	/// browser
 	var/datum/browser/browser
@@ -32,6 +41,8 @@ GLOBAL_DATUM_INIT(runtime_viewer, /datum/runtime_viewer, new)
 	. = ..()
 	if(.)
 		return
+	if(!allowed(usr))
+		return
 	var/action = href_list["act"]
 	switch(action)
 		if("view")
@@ -47,5 +58,7 @@ GLOBAL_DATUM_INIT(runtime_viewer, /datum/runtime_viewer, new)
 			return TRUE
 
 /datum/runtime_viewer/proc/allowed(mob/user)
+	if(!user)
+		return FALSE
 	var/client/C = istype(user, /client)? user : user.client
 	return is_admin(C) || is_dev(user)
