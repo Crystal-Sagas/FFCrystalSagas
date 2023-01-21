@@ -10,7 +10,7 @@
 /proc/dice_roll(dice = 1, sides = 6)
 	// todo: actual distribution PDF for efficiency at extreme nmbers
 	// for now, enjoy a clamp
-	dice = clamp(dice, 1, 100)
+	ASSERT((dice >= 1) && (dice <= 100))
 	. = 0
 	for(var/i in 1 to dice)
 		. += rand(1, sides)
