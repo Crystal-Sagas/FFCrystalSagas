@@ -155,5 +155,7 @@
 #include "Code\races\render.dm"
 #include "Code\systems\_system.dm"
 #include "Code\systems\_ticker.dm"
+#include "Code\world\error.dm"
+#include "Code\world\error_viewer.dm"
 // END_INCLUDE
 
