@@ -32,13 +32,13 @@ GLOBAL_DATUM_INIT(runtime_viewer, /datum/runtime_viewer, new)
 			assembled += " <a href='?src=[ref(src)];act=view;id=[specific.identifier];index=[index+1]'>&gt;</a>"
 		assembled += "</span><br>"
 		var/instance = specific.instances[index]
-		assembled += "<h3>Runtime in [specific.file] [specific.line]: [specific.name]</h3><br>"
+		assembled += "<h3>Runtime error in [specific.file] line [specific.line]: [specific.name]</h3>"
 		assembled += "<div class='section'>[instance]</div>"
 	else
 		assembled += "[global.runtime_count] runtimes, [global.runtime_skipped] skipped.<br>"
 		for(var/id in global.runtime_data)
 			var/datum/error_data/runtime = global.runtime_data[id]
-			assembled += "<a href='?src=[ref(src)];act=view;id=[runtime.identifier];index=1'>[runtime.file] [runtime.line]: [runtime.name]</a><br>"
+			assembled += "<a href='?src=[ref(src)];act=view;id=[runtime.identifier];index=1'>Runtime error in [runtime.file] line [runtime.line]: [runtime.name]</a><br>"
 	browser.open(user, jointext(assembled, ""))
 
 /datum/runtime_viewer/Topic(href, href_list)

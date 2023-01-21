@@ -113,8 +113,8 @@ GLOBAL_LIST_INIT_INPLACE(runtime_skipping, global.runtime_skipping || list())
 			location = "turf: [usr.x], [usr.y], [usr.z], loc: [usr.loc] ([ref(usr.loc)] - [usr.loc.type])"
 		info += "usr: [usr] / [usr.ckey] ([ref(usr)] - [usr.type]) ([location])"
 	var/built = jointext(info, "\n")
-	log_error("Runtime error in [file] [line]: [name]\n" + built)
-	instances += html_encode(replacetext_char(built, "\n", "<br>"))
+	log_error("Runtime error in [file] line [line]: [name]\n" + built)
+	instances += replacetext_char(html_encode(built), "\n", "<br>")
 
 /datum/error_data/proc/dump_skip()
 	var/amt = skipped - last_skipped
