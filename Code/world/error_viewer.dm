@@ -14,7 +14,7 @@ GLOBAL_DATUM_INIT(runtime_viewer, /datum/runtime_viewer, new)
 	var/datum/browser/browser
 
 /datum/runtime_viewer/New()
-	browser = new("runtime_viewer", "Runtime Viewer", 800, 500)
+	browser = new("runtime_viewer", "Runtime Viewer", 600, 400)
 
 /datum/runtime_viewer/proc/show_to(mob/user, datum/error_data/specific, index = 1)
 	var/list/assembled = list()
@@ -22,7 +22,7 @@ GLOBAL_DATUM_INIT(runtime_viewer, /datum/runtime_viewer, new)
 		assembled += "<a href='?src=[ref(src)];act=main'>Runtimes</a>"
 		var/len = length(specific.instances)
 		index = clamp(index, 1, len)
-		assembled += "<span style='text-align: right'>"
+		assembled += "<span style='float: right'>"
 		if(index > 1)
 			assembled += " <a href='?src=[ref(src)];act=view;id=[specific.identifier];index=1'>&lt;&lt;</a>"
 			assembled += " <a href='?src=[ref(src)];act=view;id=[specific.identifier];index=[index-1]'>&lt;</a>"
@@ -59,6 +59,9 @@ GLOBAL_DATUM_INIT(runtime_viewer, /datum/runtime_viewer, new)
 			else if(index)
 				index = text2num(index)
 			show_to(usr, global.runtime_data[id], index)
+			return TRUE
+		if(main)
+			show_to(usr)
 			return TRUE
 
 /datum/runtime_viewer/proc/allowed(mob/user)
