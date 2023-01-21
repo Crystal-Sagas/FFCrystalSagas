@@ -41,7 +41,10 @@ GLOBAL_LIST_INIT_INPLACE(runtime_skipping, global.runtime_skipping || list())
 	if(skipping)
 		global.runtime_skipped = global.runtime_skipped + 1
 
-	var/datum/error_data/entry = global.runtime_data[identifier] || (global.runtime_data[identifier] = new /datum/error_data(identifier, E.name, E.file, E.line))
+	var/datum/error_data/entry = global.runtime_data[identifier]
+	if(!entry)
+		global.runtime_data[identifier] = new /datum/error_data(identifier, E.name, E.file, E.line)
+		entry = global.runtime_data[identifier]
 
 	if(entry.tracked >= RUNTIME_MAX_TRACKING)
 		return	// don't bother, too many, we'll run out of memory.
