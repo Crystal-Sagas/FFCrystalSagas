@@ -435,6 +435,7 @@ GLOBAL_LIST_BOILERPLATE(resource_nodes, /obj/node)
 	density = TRUE
 
 /obj/node/Makonode/Click()
+	var/mob/user = usr
 	if(!(usr in view(1,src)))
 		return
 	if(!can_harvest(user, FALSE))
@@ -467,6 +468,7 @@ GLOBAL_LIST_BOILERPLATE(resource_nodes, /obj/node)
 	icon_state_full = "Herb"
 
 /obj/node/Herbnode/Click()
+	var/mob/user = usr
 	if(!(usr in view(1,src)))
 		return
 	if(!can_harvest(user, FALSE))
@@ -648,6 +650,7 @@ GLOBAL_LIST_BOILERPLATE(resource_nodes, /obj/node)
 	density = TRUE
 
 /obj/node/Hunternode/Click()
+	var/mob/user = usr
 	if(!(usr in view(1, src)))
 		return
 	if(!can_harvest(user, FALSE))
@@ -804,6 +807,7 @@ GLOBAL_LIST_BOILERPLATE(resource_nodes, /obj/node)
 	density = TRUE
 
 /obj/node/Dirtnode/Click()
+	var/mob/user = usr
 	if(!(usr in view(1, src)))
 		return
 	if(!can_harvest(user, FALSE))
