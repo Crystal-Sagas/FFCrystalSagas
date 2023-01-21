@@ -13,6 +13,14 @@ GLOBAL_LIST_EMPTY(clients)
 	/// force client to inherit from /datum
 	parent_type = /datum
 
+	//? Assets
+	/// assets loaded - datums
+	var/list/datum/asset/assets_loaded
+	/// assets awaiting send
+	var/list/datum/asset/assets_queued
+	/// currently sending assets
+	var/asset_sending = FALSE
+
 	//? Viewport
 	/// what we *think* their current viewport size is in pixels
 	var/assumed_viewport_spx
@@ -57,3 +65,33 @@ GLOBAL_LIST_EMPTY(clients)
  */
 /client/proc/is_localhost()
 	return address in list(null, "127.0.0.1", "::1")
+
+/**
+ * loads asset; blocks until done.
+ *
+ * @return TRUE / FALSE on success / failure
+ */
+/client/proc/load_asset(datum/asset/A)
+	if(LAZYLIST_ACCESS(assets_loaded, A))
+		return TRUE
+	LAZYLIST_DISTINCTADD(assets_queued, A)
+	async_call(src, /client/proc/transmit_assets)
+	BLOCK_ON(LAZYLIST_ACCESS(assets_loaded, A))
+	return TRUE
+
+/**
+ * transmit assets
+ *
+ * @return number loaded
+ */
+/client/proc/transmit_assets()
+	. = 0
+	if(asset_sending)
+		return
+	asset_sending = TRUE
+	while(LAZYLIST_LENGTH(assets_queued))
+		var/datum/asset/A = assets_queued[1]
+		A.load_to_client(src)
+		++.
+		sleep(1)
+	asset_sending = FALSE

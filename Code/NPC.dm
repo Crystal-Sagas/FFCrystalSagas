@@ -4485,7 +4485,7 @@ obj
 						src.contents+=a
 						src.contents+=b
 						src.contents+=c
-						// src.contents+=d
+						src.contents+=d
 						src.contents+=e
 						src.contents+=sf
 						src.eweapon=sf
@@ -4535,7 +4535,7 @@ obj
 						src.contents+=a
 						src.contents+=b
 						src.contents+=c
-						// src.contents+=d
+						src.contents+=d
 						src.contents+=e
 						src.contents+=sf
 						src.eweapon=sf
