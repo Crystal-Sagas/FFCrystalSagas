@@ -26,9 +26,9 @@ GLOBAL_DATUM_INIT(runtime_viewer, /datum/runtime_viewer, new)
 		assembled += "[global.runtime_count] runtimes, [global.runtime_skipped] skipped.<br>"
 		for(var/datum/error_data/runtime in global.runtime_data)
 			assembled += "<a href='?src=[ref(src)];act=view;id=[runtime.identifier];index=1'>[runtime.file] [runtime.line]: [runtime.name]</a><br>"
-	browser.render(user, jointext(assembled, ""))
+	browser.open(user, jointext(assembled, ""))
 
-/datum/runtime_view/Topic(href, href_list)
+/datum/runtime_viewer/Topic(href, href_list)
 	. = ..()
 	if(.)
 		return
@@ -48,4 +48,4 @@ GLOBAL_DATUM_INIT(runtime_viewer, /datum/runtime_viewer, new)
 
 /datum/runtime_viewer/proc/allowed(mob/user)
 	var/client/C = istype(user, /client)? user : user.client
-	return is_admin(C) || is_debugger(user)
+	return is_admin(C) || is_dev(user)

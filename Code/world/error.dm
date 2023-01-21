@@ -1,7 +1,7 @@
-GLOBAL_VAR_INIT(runtime_count, global.runtime_count || 0)
-GLOBAL_VAR_INIT(runtime_skipped, global.runtime_skipped || 0)
-GLOBAL_LIST_INIT(runtime_data, global.runtime_data || list())
-GLOBAL_LIST_INIT(runtime_skipping, global.runtime_skipping || list())
+GLOBAL_VAR_INIT_INPLACE(runtime_count, global.runtime_count || 0)
+GLOBAL_VAR_INIT_INPLACE(runtime_skipped, global.runtime_skipped || 0)
+GLOBAL_LIST_INIT_INPLACE(runtime_data, global.runtime_data || list())
+GLOBAL_LIST_INIT_INPLACE(runtime_skipping, global.runtime_skipping || list())
 
 #define RUNTIME_SKIP_TIME (5 MINUTES)
 #define RUNTIME_SKIP_THRESHOLD 15
@@ -53,7 +53,7 @@ GLOBAL_LIST_INIT(runtime_skipping, global.runtime_skipping || list())
 		++entry.skipped
 	else
 		++entry.tracked
-		entry.log(E)
+		entry.log_exception(E)
 
 /datum/error_data
 	/// unique id generated from name and file
@@ -79,7 +79,7 @@ GLOBAL_LIST_INIT(runtime_skipping, global.runtime_skipping || list())
 	src.line = line
 	src.name = name
 
-/datum/error_data/proc/log(exception/E)
+/datum/error_data/proc/log_exception(exception/E)
 	var/list/info = list()
 	var/usr_info = FALSE
 	if(istype(usr))
