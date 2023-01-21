@@ -60,6 +60,7 @@
 #include "__DEFINES\_core.dm"
 #include "__DEFINES\_globals.dm"
 #include "__DEFINES\_lists.dm"
+#include "__DEFINES\_systems.dm"
 #include "__DEFINES\math.dm"
 #include "__DEFINES\movement.dm"
 #include "__DEFINES\skin.dm"
@@ -144,6 +145,8 @@
 #include "Code\mob\pulling.dm"
 #include "Code\perks\render.dm"
 #include "Code\races\render.dm"
-#include "Code\systems\system.dm"
+#include "Code\systems\_system.dm"
+#include "Code\systems\_ticker.dm"
+#include "Code\systems\calender.dm"
 // END_INCLUDE
 
