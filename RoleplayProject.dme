@@ -128,6 +128,7 @@
 #include "Code\_HELPERS\logging.dm"
 #include "Code\_HELPERS\types.dm"
 #include "Code\_HELPERS\view.dm"
+#include "Code\_HELPERS\math\probability.dm"
 #include "Code\atoms\atoms.dm"
 #include "Code\atoms\atoms_movable.dm"
 #include "Code\atoms\chat.dm"
