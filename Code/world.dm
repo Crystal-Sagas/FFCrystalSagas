@@ -91,4 +91,12 @@
 		if(3) // SIGUSR1
 			// proceed normally
 			pass()
+	// shutdown ticker
+	ticker?.Shutdown()
 	..()
+
+/**
+ * data directory
+ */
+/world/proc/data_directory()
+	return "data"
