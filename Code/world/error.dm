@@ -91,7 +91,6 @@ GLOBAL_LIST_INIT_INPLACE(runtime_skipping, global.runtime_skipping || list())
 		else if((T = get_turf(usr)))
 			location = "turf: [usr.x], [usr.y], [usr.z], loc: [usr.loc] ([ref(usr.loc)] - [usr.loc.type])"
 		info += "[usr] / [usr.ckey] ([ref(usr)] - [usr.type]) ([location])"
-		usr_info = TRUE
 	var/list/builtin = splittext(E.desc, "\n")
 	for(var/line in builtin)
 		// skip inbuilt data, we just care about trace and some other stuff
