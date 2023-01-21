@@ -748,6 +748,16 @@ mob
 					new n(locate(usr.x,usr.y,usr.z))
 					var/text = "[usr.key] created a [n]"
 					Adminlog(text)
+			Createobj()
+				if(adminlv<2)
+					return
+				var/n =input("What do you want to make?","Create obj") in typesof(/obj) + list("Cancel")
+				if(n=="Cancel")
+					return
+				else
+					new n(locate(usr.x,usr.y,usr.z))
+					var/text = "[usr.key] created a [n]"
+					Adminlog(text)
 			Createvehicle()
 				var/n =input("What do you want to make?","Create obj") in typesof(/obj/Vehicles/Tech/Travel) + list("Cancel")
 				if(n=="Cancel")

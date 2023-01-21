@@ -110,8 +110,11 @@ window "AdminPanel"
 		size = 734x562
 		anchor1 = -1,-1
 		anchor2 = -1,-1
+		background-color = none
 		is-visible = false
 		saved-params = "pos;size;is-minimized;is-maximized"
+		outer-size = 750x620
+		inner-size = 734x581
 	elem "label28"
 		type = LABEL
 		pos = 168,48
@@ -129,6 +132,7 @@ window "AdminPanel"
 		size = 68x28
 		anchor1 = -1,-1
 		anchor2 = -1,-1
+		background-color = none
 		saved-params = "is-checked"
 		text = "Delete User Buildings"
 		command = "Deletebuildings"
@@ -149,15 +153,27 @@ window "AdminPanel"
 		size = 64x28
 		anchor1 = -1,-1
 		anchor2 = -1,-1
+		background-color = none
 		saved-params = "is-checked"
 		text = "Fanfare"
 		command = "Fanfare"
+	elem "button100"
+		type = BUTTON
+		pos = 312,88
+		size = 60x20
+		anchor1 = -1,-1
+		anchor2 = -1,-1
+		background-color = none
+		saved-params = "is-checked"
+		text = "Create Obj"
+		command = "Createobj"
 	elem "button99"
 		type = BUTTON
 		pos = 12,260
 		size = 60x20
 		anchor1 = -1,-1
 		anchor2 = -1,-1
+		background-color = none
 		saved-params = "is-checked"
 		text = "Goto Landmark"
 		command = "GotoLandmark"
@@ -167,6 +183,7 @@ window "AdminPanel"
 		size = 64x20
 		anchor1 = -1,-1
 		anchor2 = -1,-1
+		background-color = none
 		saved-params = "is-checked"
 		text = "Create Fast Travel"
 		command = "CreateFastTravel"
@@ -189,6 +206,7 @@ window "AdminPanel"
 		size = 60x20
 		anchor1 = -1,-1
 		anchor2 = -1,-1
+		background-color = none
 		saved-params = "is-checked"
 		text = "Add Unique"
 		command = "AddUnique"
@@ -199,6 +217,7 @@ window "AdminPanel"
 		anchor1 = -1,-1
 		anchor2 = -1,-1
 		saved-params = ""
+		tab-background-color = none
 	elem "label30"
 		type = LABEL
 		pos = 584,48
@@ -227,6 +246,7 @@ window "AdminPanel"
 		size = 60x20
 		anchor1 = -1,-1
 		anchor2 = -1,-1
+		background-color = none
 		saved-params = "is-checked"
 		text = "NaughtyWords"
 		command = "Naughtyfilter"
@@ -236,6 +256,7 @@ window "AdminPanel"
 		size = 60x20
 		anchor1 = -1,-1
 		anchor2 = -1,-1
+		background-color = none
 		saved-params = "is-checked"
 		text = "Delete"
 		command = "Delete"
@@ -245,6 +266,7 @@ window "AdminPanel"
 		size = 60x20
 		anchor1 = -1,-1
 		anchor2 = -1,-1
+		background-color = none
 		saved-params = "is-checked"
 		text = "Timeskip"
 		command = "Timeskip"
@@ -254,6 +276,7 @@ window "AdminPanel"
 		size = 60x20
 		anchor1 = -1,-1
 		anchor2 = -1,-1
+		background-color = none
 		saved-params = "is-checked"
 		text = "Edit"
 		command = "Edit"
@@ -263,6 +286,7 @@ window "AdminPanel"
 		size = 60x20
 		anchor1 = -1,-1
 		anchor2 = -1,-1
+		background-color = none
 		saved-params = "is-checked"
 		text = "StartingRPP"
 		command = "SetStartingRPP"
@@ -272,6 +296,7 @@ window "AdminPanel"
 		size = 60x20
 		anchor1 = -1,-1
 		anchor2 = -1,-1
+		background-color = none
 		saved-params = "is-checked"
 		text = "Ban"
 		command = "Ban"
@@ -281,6 +306,7 @@ window "AdminPanel"
 		size = 60x20
 		anchor1 = -1,-1
 		anchor2 = -1,-1
+		background-color = none
 		saved-params = "is-checked"
 		text = "Create Custom Item"
 		command = "Createcustomitem"
@@ -290,6 +316,7 @@ window "AdminPanel"
 		size = 60x20
 		anchor1 = -1,-1
 		anchor2 = -1,-1
+		background-color = none
 		saved-params = "is-checked"
 		text = "Give Perk"
 		command = "GivePerk"
@@ -299,6 +326,7 @@ window "AdminPanel"
 		size = 60x20
 		anchor1 = -1,-1
 		anchor2 = -1,-1
+		background-color = none
 		saved-params = "is-checked"
 		text = "Save World"
 		command = "ManualSave"
@@ -308,6 +336,7 @@ window "AdminPanel"
 		size = 60x20
 		anchor1 = -1,-1
 		anchor2 = -1,-1
+		background-color = none
 		saved-params = "is-checked"
 		text = "Ghostmode"
 		command = "Ghostmode"
@@ -317,6 +346,7 @@ window "AdminPanel"
 		size = 60x20
 		anchor1 = -1,-1
 		anchor2 = -1,-1
+		background-color = none
 		saved-params = "is-checked"
 		text = "Boot"
 		command = "Boot"
@@ -326,6 +356,7 @@ window "AdminPanel"
 		size = 60x20
 		anchor1 = -1,-1
 		anchor2 = -1,-1
+		background-color = none
 		saved-params = "is-checked"
 		text = "Create Item"
 		command = "Createitem"
@@ -335,6 +366,7 @@ window "AdminPanel"
 		size = 64x28
 		anchor1 = -1,-1
 		anchor2 = -1,-1
+		background-color = none
 		saved-params = "is-checked"
 		text = "Make Eventmin"
 		command = "MakeEventmin"
@@ -344,6 +376,7 @@ window "AdminPanel"
 		size = 60x20
 		anchor1 = -1,-1
 		anchor2 = -1,-1
+		background-color = none
 		saved-params = "is-checked"
 		text = "Report Panel"
 		command = "ViewReportWindow"
@@ -353,6 +386,7 @@ window "AdminPanel"
 		size = 60x20
 		anchor1 = -1,-1
 		anchor2 = -1,-1
+		background-color = none
 		saved-params = "is-checked"
 		text = "AoE Cleanup"
 		command = "CleanupAoE"
@@ -362,6 +396,7 @@ window "AdminPanel"
 		size = 60x20
 		anchor1 = -1,-1
 		anchor2 = -1,-1
+		background-color = none
 		saved-params = "is-checked"
 		text = "Reward"
 		command = "Reward"
@@ -371,6 +406,7 @@ window "AdminPanel"
 		size = 60x20
 		anchor1 = -1,-1
 		anchor2 = -1,-1
+		background-color = none
 		saved-params = "is-checked"
 		text = "Manage Admins"
 		command = "ManageAdmins"
@@ -380,6 +416,7 @@ window "AdminPanel"
 		size = 60x20
 		anchor1 = -1,-1
 		anchor2 = -1,-1
+		background-color = none
 		saved-params = "is-checked"
 		text = "Mute"
 		command = "Mute"
@@ -389,6 +426,7 @@ window "AdminPanel"
 		size = 60x20
 		anchor1 = -1,-1
 		anchor2 = -1,-1
+		background-color = none
 		saved-params = "is-checked"
 		text = "XYZ Teleport"
 		command = "XYZTeleport"
@@ -398,6 +436,7 @@ window "AdminPanel"
 		size = 60x20
 		anchor1 = -1,-1
 		anchor2 = -1,-1
+		background-color = none
 		saved-params = "is-checked"
 		text = "Teleport"
 		command = "Teleport"
@@ -407,6 +446,7 @@ window "AdminPanel"
 		size = 60x20
 		anchor1 = -1,-1
 		anchor2 = -1,-1
+		background-color = none
 		saved-params = "is-checked"
 		text = "Observe"
 		command = "Observe"
@@ -416,6 +456,7 @@ window "AdminPanel"
 		size = 60x20
 		anchor1 = -1,-1
 		anchor2 = -1,-1
+		background-color = none
 		saved-params = "is-checked"
 		text = "Summon"
 		command = "Summon"
@@ -462,6 +503,7 @@ window "AdminPanel"
 		size = 60x20
 		anchor1 = -1,-1
 		anchor2 = -1,-1
+		background-color = none
 		saved-params = ""
 		text = "Lv1 Admin "
 	elem "label34"
@@ -470,6 +512,7 @@ window "AdminPanel"
 		size = 60x20
 		anchor1 = -1,-1
 		anchor2 = -1,-1
+		background-color = none
 		saved-params = ""
 		text = "Lv4 Admin"
 	elem "label33"
@@ -478,6 +521,7 @@ window "AdminPanel"
 		size = 60x20
 		anchor1 = -1,-1
 		anchor2 = -1,-1
+		background-color = none
 		saved-params = ""
 		text = "Lv3 Admin"
 	elem "label32"
@@ -486,6 +530,7 @@ window "AdminPanel"
 		size = 60x20
 		anchor1 = -1,-1
 		anchor2 = -1,-1
+		background-color = none
 		saved-params = ""
 		text = "Lv2 Admin "
 
@@ -496,16 +541,20 @@ window "Adminreports"
 		size = 358x356
 		anchor1 = -1,-1
 		anchor2 = -1,-1
+		background-color = none
 		is-visible = false
 		saved-params = "pos;size;is-minimized;is-maximized"
 		statusbar = false
 		can-resize = false
+		outer-size = 374x395
+		inner-size = 358x356
 	elem "label43"
 		type = LABEL
 		pos = 0,0
 		size = 358x352
 		anchor1 = -1,-1
 		anchor2 = -1,-1
+		background-color = none
 		saved-params = ""
 		text = ""
 		image-mode = stretch
@@ -9266,15 +9315,12 @@ window "default"
 		size = 1350x650
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		is-default = true
 		saved-params = "pos;size;is-minimized;is-maximized"
 		title = "Crystal Sagas"
 		icon = 'Sheet\\Chocobo.png'
 		macro = "macro"
 		menu = "menu"
-		outer-size = 1366x728
-		inner-size = 1350x669
 	elem "label62"
 		type = LABEL
 		pos = -341,630
@@ -9303,7 +9349,6 @@ window "default"
 		size = 365x181
 		anchor1 = 75,73
 		anchor2 = 100,100
-		background-color = none
 		saved-params = ""
 		text = ""
 		image = 'Sheet\\GUI Label.png'
