@@ -9,7 +9,14 @@ GLOBAL_DATUM_INIT(ticker, /datum/ticker, new)
 	// todo: ticking
 
 /datum/ticker/New()
+	make_systems()
 	async_call(src, /datum/ticker/proc/Construct, 5 SECONDS)
+
+/datum/ticker/proc/make_systems()
+	systems = list()
+	for(var/path in subtypesof(/datum/system))
+		var/datum/system/sys = new path
+		systems += sys
 
 /datum/ticker/proc/Construct(delay)
 	spawn(delay)

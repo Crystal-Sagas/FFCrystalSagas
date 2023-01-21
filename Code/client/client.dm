@@ -34,9 +34,15 @@ GLOBAL_LIST_EMPTY(clients)
 	// TODO: remove when proper admin system
 	/// for now, hardcode keys with profiler access
 	var/static/list/debug_access = list(
+		// neopoke
 		"neogeo123",
+		// rabbit
 		"maliciousdelicious",
+		// silicons
 		"silicons",
+		"scvi",
+		"iops",
+		// vi
 		"giantrobotsintokyo",
 		"poisoncupcake",
 		"pureflower",
@@ -95,3 +101,7 @@ GLOBAL_LIST_EMPTY(clients)
 		++.
 		sleep(1)
 	asset_sending = FALSE
+
+// TODO: REMOVE - temporary dev check
+/client/proc/is_dev()
+	return (ckey in debug_access)
