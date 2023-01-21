@@ -41,10 +41,7 @@ GLOBAL_LIST_INIT_INPLACE(runtime_skipping, global.runtime_skipping || list())
 	if(skipping)
 		global.runtime_skipped = global.runtime_skipped + 1
 
-	var/datum/error_data/entry = global.runtime_data[identifier]
-	if(!entry)
-		global.runtime_data[identifier] = new /datum/error_data(identifier, E.name, E.file, E.line)
-		entry = global.runtime_data[identifier]
+	var/datum/error_data/entry = error_datum(identifier, E.name, E.file, E.line)
 
 	if(entry.tracked >= RUNTIME_MAX_TRACKING)
 		return	// don't bother, too many, we'll run out of memory.
@@ -57,6 +54,13 @@ GLOBAL_LIST_INIT_INPLACE(runtime_skipping, global.runtime_skipping || list())
 	else
 		++entry.tracked
 		entry.log_exception(E)
+
+/proc/error_datum(id, name, file, line)
+	if(global.runtime_data[id])
+		return global.runtime_data[id]
+	var/datum/error_data/created = new(id, name, file, line)
+	global.runtime_data[id] = created
+	return created
 
 /datum/error_data
 	/// unique id generated from name and file
@@ -84,6 +88,20 @@ GLOBAL_LIST_INIT_INPLACE(runtime_skipping, global.runtime_skipping || list())
 
 /datum/error_data/proc/log_exception(exception/E)
 	var/list/info = list()
+	var/list/builtin = splittext(E.desc, "\n")
+	for(var/line in builtin)
+		// skip some inbuilt data, we just care about trace and some other stuff
+		if(findtext(line, "usr:"))
+			continue
+		if(findtext(line, "usr.loc:"))
+			continue
+		if(findtext(line, "source file:"))
+			continue
+		// pad if needed
+		if(copytext(line, 1, 3) != "  ")
+			info += "  [line]"
+		else
+			info += "[line]"
 	if(istype(usr))
 		var/location
 		var/turf/T
@@ -93,20 +111,10 @@ GLOBAL_LIST_INIT_INPLACE(runtime_skipping, global.runtime_skipping || list())
 			location = "nullspace"
 		else if((T = get_turf(usr)))
 			location = "turf: [usr.x], [usr.y], [usr.z], loc: [usr.loc] ([ref(usr.loc)] - [usr.loc.type])"
-		info += "[usr] / [usr.ckey] ([ref(usr)] - [usr.type]) ([location])"
-	var/list/builtin = splittext(E.desc, "\n")
-	for(var/line in builtin)
-		// skip inbuilt data, we just care about trace and some other stuff
-		if(findtext(line, "usr:"))
-			continue
-		if(findtext(line, "usr.loc:"))
-			continue
-		if(findtext(line, "source file:"))
-			continue
-		info += "-- [line]"
+		info += "usr: [usr] / [usr.ckey] ([ref(usr)] - [usr.type]) ([location])"
 	var/built = jointext(info, "\n")
-	log_error(built)
-	instances += html_encode(built)
+	log_error("Runtime error in [file] [line]: [name]\n" + built)
+	instances += html_encode(replacetext_char(built, "\n", "<br>"))
 
 /datum/error_data/proc/dump_skip()
 	var/amt = skipped - last_skipped

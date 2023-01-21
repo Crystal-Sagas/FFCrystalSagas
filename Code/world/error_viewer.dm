@@ -22,6 +22,7 @@ GLOBAL_DATUM_INIT(runtime_viewer, /datum/runtime_viewer, new)
 		assembled += "<a href='?src=[ref(src)];act=main'>Runtimes</a>"
 		var/len = length(specific.instances)
 		index = clamp(index, 1, len)
+		assembled += "<span style='text-align: right'>"
 		if(index > 1)
 			assembled += " <a href='?src=[ref(src)];act=view;id=[specific.identifier];index=1'>&lt;&lt;</a>"
 			assembled += " <a href='?src=[ref(src)];act=view;id=[specific.identifier];index=[index-1]'>&lt;</a>"
@@ -29,11 +30,14 @@ GLOBAL_DATUM_INIT(runtime_viewer, /datum/runtime_viewer, new)
 		if(index < len)
 			assembled += " <a href='?src=[ref(src)];act=view;id=[specific.identifier];index=[length(specific.instances)]'>&gt;&gt;</a>"
 			assembled += " <a href='?src=[ref(src)];act=view;id=[specific.identifier];index=[index+1]'>&gt;</a>"
+		assembled += "</span><br>"
 		var/instance = specific.instances[index]
+		assembled += "<h3>Runtime in [specific.file] [specific.line]: [specific.name]</h3><br>"
 		assembled += "<div class='section'>[instance]</div>"
 	else
 		assembled += "[global.runtime_count] runtimes, [global.runtime_skipped] skipped.<br>"
-		for(var/datum/error_data/runtime in global.runtime_data)
+		for(var/id in global.runtime_data)
+			var/datum/error_data/runtime = global.runtime_data[id]
 			assembled += "<a href='?src=[ref(src)];act=view;id=[runtime.identifier];index=1'>[runtime.file] [runtime.line]: [runtime.name]</a><br>"
 	browser.open(user, jointext(assembled, ""))
 
