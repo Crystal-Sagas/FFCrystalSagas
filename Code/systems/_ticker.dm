@@ -26,8 +26,8 @@ GLOBAL_DATUM_INIT(ticker, /datum/ticker, new)
 		var/sys_start = TIMEOFDAY
 		sys.Construct()
 		init_log("[sys.type] startup in [round((TIMEOFDAY - sys_start) * 0.1, 0.1)] seconds.", TRUE)
-	load_systems(silent)
 	init_log("Systems startup completed in [round((TIMEOFDAY - start) * 0.1, 0.1)] seconds.", !silent)
+	load_systems(silent)
 
 /datum/ticker/proc/shutdown_systems(silent)
 	// todo: sort order

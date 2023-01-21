@@ -40,7 +40,10 @@
 	return TRUE
 
 /**
- * saves data; ONLY called during shutdown.
+ * saves data; called during:
+ * * world/Reboot()
+ *
+ * todo: call this every x minutes?
  *
  * @return list() of data on success. null on failure.
  */
