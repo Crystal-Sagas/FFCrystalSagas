@@ -328,8 +328,7 @@ GLOBAL_LIST_BOILERPLATE(resource_nodes, /obj/node)
 						roll+=10
 					if(roll<=39)
 						if(usr.Checkpre("Expert Miner",usr))
-							src.used=1
-							src.icon_state = "Emptyore"
+							use()
 							usr<<output("You have expertly mined 2 pieces of bronze","oocout")
 							for(var/obj/item/materials/Ore/Bronze/b in usr.contents)
 								b.amount+=2
@@ -337,60 +336,51 @@ GLOBAL_LIST_BOILERPLATE(resource_nodes, /obj/node)
 						else
 							for(var/obj/item/materials/Ore/Bronze/b in usr.contents)
 								b.amount+=1
-							src.used=1
-							src.icon_state = "Emptyore"
+							use()
 							usr<<output("You have mined 1 piece of bronze","oocout")
 					if(roll<=69&&roll>39)
 						if(usr.Checkpre("Expert Miner",usr))
-							src.used=1
-							src.icon_state = "Emptyore"
+							use()
 							usr<<output("You have expertly mined 2 pieces of iron","oocout")
 							for(var/obj/item/materials/Ore/Iron/b in usr.contents)
 								b.amount+=2
 						else
 							for(var/obj/item/materials/Ore/Iron/b in usr.contents)
 								b.amount+=2
-							src.used=1
-							src.icon_state = "Emptyore"
+							use()
 							usr<<output("You have mined 1 piece of iron","oocout")
 					if(roll<=89&&roll>=70)
 						if(usr.Checkpre("Expert Miner",usr))
-							src.used=1
-							src.icon_state = "Emptyore"
+							use()
 							usr<<output("You have expertly mined 2 pieces of steel","oocout")
 							for(var/obj/item/materials/Ore/Steel/b in usr.contents)
 								b.amount+=2
 						else
 							for(var/obj/item/materials/Ore/Steel/b in usr.contents)
 								b.amount+=2
-							src.used=1
-							src.icon_state = "Emptyore"
+							use()
 							usr<<output("You have mined 1 piece of steel","oocout")
 					if(roll<=99&&roll>=90)
 						if(usr.Checkpre("Expert Miner",usr))
-							src.used=1
-							src.icon_state = "Emptyore"
+							use()
 							usr<<output("You have expertly mined 2 pieces of mythril","oocout")
 							for(var/obj/item/materials/Ore/Mythril/b in usr.contents)
 								b.amount+=2
 						else
 							for(var/obj/item/materials/Ore/Mythril/b in usr.contents)
 								b.amount+=2
-							src.used=1
-							src.icon_state = "Emptyore"
+							use()
 							usr<<output("You have mined 1 piece of mythril","oocout")
 					if(roll>=100)
 						if(usr.Checkpre("Expert Miner",usr))
-							src.used=1
-							src.icon_state = "Emptyore"
+							use()
 							usr<<output("You have expertly mined 2 pieces of adamantine","oocout")
 							for(var/obj/item/materials/Ore/Adamantine/b in usr.contents)
 								b.amount+=2
 						else
 							for(var/obj/item/materials/Ore/Adamantine/b in usr.contents)
 								b.amount+=2
-							src.used=1
-							src.icon_state = "Emptyore"
+							use()
 							usr<<output("You have mined 1 piece of adamantine","oocout")
 					roll2=rand(1,20)
 					if(roll2<17)
@@ -430,8 +420,7 @@ GLOBAL_LIST_BOILERPLATE(resource_nodes, /obj/node)
 			if(usr in view(1,src))
 				if(usr.Checkpre("Materia Melder",usr))
 					if(usr.Checkpre("Expert Miner",usr))
-						src.used=1
-						src.icon_state = "inactivemako"
+						use()
 						usr<<output("You have gathered 2 Raw Mako from the Lifestream.","oocout")
 						for(var/obj/item/materials/Synthesis/RawMako/b in usr.contents)
 							b.amount+=2
@@ -439,8 +428,7 @@ GLOBAL_LIST_BOILERPLATE(resource_nodes, /obj/node)
 					else
 						for(var/obj/item/materials/Synthesis/RawMako/b in usr.contents)
 							b.amount+=1
-						src.used=1
-						src.icon_state = "inactivemako"
+						use()
 						usr<<output("You have gathered 1 Raw Mako from the Lifestream.","oocout")
 					for(var/obj/item/materials/Synthesis/Stone/c in usr.contents)
 						c.amount+=2
@@ -474,184 +462,156 @@ GLOBAL_LIST_BOILERPLATE(resource_nodes, /obj/node)
 						if(usr.Checkpre("Expert Gatherer",usr))
 							for(var/obj/item/materials/Herbs/GysahlGreens/b in usr.contents)
 								b.amount+=2
-							src.used=1
-							src.icon_state = "Sprout"
+							use()
 							usr<<output("You have expertly picked 2 bunches of Gysahl Greens","oocout")
 						else
 							for(var/obj/item/materials/Herbs/GysahlGreens/b in usr.contents)
 								b.amount+=1
-							src.used=1
-							src.icon_state = "Sprout"
+							use()
 							usr<<output("You have picked 1 bunch of Gysahl Greens","oocout")
 					if(roll>20&&roll<29)
 						if(usr.Checkpre("Expert Gatherer",usr))
 							for(var/obj/item/materials/Herbs/SharugGreens/b in usr.contents)
 								b.amount+=2
-							src.used=1
-							src.icon_state = "Sprout"
+							use()
 							usr<<output("You have expertly picked 2 bunches of Sharug Greens","oocout")
 						else
 							for(var/obj/item/materials/Herbs/SharugGreens/b in usr.contents)
 								b.amount+=1
-							src.used=1
-							src.icon_state = "Sprout"
+							use()
 							usr<<output("You have picked 1 bunch of Sharug Greens","oocout")
 					if(roll>28&&roll<36)
 						if(usr.Checkpre("Expert Gatherer",usr))
 							for(var/obj/item/materials/Herbs/AzouphGreens/b in usr.contents)
 								b.amount+=2
-							src.used=1
-							src.icon_state = "Sprout"
+							use()
 							usr<<output("You have expertly picked 2 bunches of Azouph Greens","oocout")
 							usr<<output("You have expertly picked 2 bunches of Azouph Greens","alert")
 						else
 							for(var/obj/item/materials/Herbs/AzouphGreens/b in usr.contents)
 								b.amount+=1
-							src.used=1
-							src.icon_state = "Sprout"
+							use()
 							usr<<output("You have picked 1 bunch of Azouph Greens","oocout")
 					if(roll>35&&roll<41)
 						if(usr.Checkpre("Expert Gatherer",usr))
 							for(var/obj/item/materials/Herbs/SandorianCarrots/b in usr.contents)
 								b.amount+=2
-							src.used=1
-							src.icon_state = "Sprout"
+							use()
 							usr<<output("You have expertly picked 2 bunches of San d'Orian Carrots","oocout")
 						else
 							for(var/obj/item/materials/Herbs/SandorianCarrots/b in usr.contents)
 								b.amount+=1
-							src.used=1
-							src.icon_state = "Sprout"
+							use()
 							usr<<output("You have picked 1 bunch of San d'Orian Carrots","oocout")
 					if(roll>40&&roll<49)
 						if(usr.Checkpre("Expert Gatherer",usr))
 							for(var/obj/item/materials/Herbs/VompCarrots/b in usr.contents)
 								b.amount+=2
-							src.used=1
-							src.icon_state = "Sprout"
+							use()
 							usr<<output("You have expertly picked 2 bunches of Vomp Carrots","oocout")
 						else
 							for(var/obj/item/materials/Herbs/VompCarrots/b in usr.contents)
 								b.amount+=2
-							src.used=1
-							src.icon_state = "Sprout"
+							use()
 							usr<<output("You have picked 1 bunch of Vomp Carrots","oocout")
 					if(roll>48&&roll<56)
 						if(usr.Checkpre("Expert Gatherer",usr))
 							for(var/obj/item/materials/Herbs/ZeghamCarrots/b in usr.contents)
 								b.amount+=2
-							src.used=1
-							src.icon_state = "Sprout"
+							use()
 							usr<<output("You have expertly picked 2 bunches of Zegham Carrots","oocout")
 						else
 							for(var/obj/item/materials/Herbs/ZeghamCarrots/b in usr.contents)
 								b.amount+=1
-							src.used=1
-							src.icon_state = "Sprout"
+							use()
 							usr<<output("You have picked 1 bunch of Zegham Carrots","oocout")
 					if(roll>55&&roll<61)
 						if(usr.Checkpre("Expert Gatherer",usr))
 							for(var/obj/item/materials/Herbs/GausebitGrass/b in usr.contents)
 								b.amount+=2
-							src.used=1
-							src.icon_state = "Sprout"
+							use()
 							usr<<output("You have expertly picked 2 bunches of Gausebit Grass","oocout")
 						else
 							for(var/obj/item/materials/Herbs/GausebitGrass/b in usr.contents)
 								b.amount+=1
-							src.used=1
-							src.icon_state = "Sprout"
+							use()
 							usr<<output("You have picked 1 bunch of Gausebit Grass","oocout")
 					if(roll>60&&roll<69)
 						if(usr.Checkpre("Expert Gatherer",usr))
 							for(var/obj/item/materials/Herbs/GaridavWildgrass/b in usr.contents)
 								b.amount+=2
-							src.used=1
-							src.icon_state = "Sprout"
+							use()
 							usr<<output("You have expertly picked 2 bunches of Garidav Wildgrass","oocout")
 						else
 							for(var/obj/item/materials/Herbs/GaridavWildgrass/b in usr.contents)
 								b.amount+=1
-							src.used=1
-							src.icon_state = "Sprout"
+							use()
 							usr<<output("You have picked 1 bunch of Garidav Wildgrass","oocout")
 					if(roll>61&&roll<71)
 						if(usr.Checkpre("Expert Gatherer",usr))
 							for(var/obj/item/materials/Herbs/TopkekkoWildgrass/b in usr.contents)
 								b.amount+=2
-							src.used=1
-							src.icon_state = "Sprout"
+							use()
 							usr<<output("You have expertly picked 2 bunches of Tokopekko Wildgrass","oocout")
 						else
 							for(var/obj/item/materials/Herbs/TopkekkoWildgrass/b in usr.contents)
 								b.amount+=1
-							src.used=1
-							src.icon_state = "Sprout"
+							use()
 							usr<<output("You have picked 1 bunch of Tokopekko Wildgrass","oocout")
 					if(roll>70&&roll<76)
 						if(usr.Checkpre("Expert Gatherer",usr))
 							for(var/obj/item/materials/Synthesis/AetherPowder/b in usr.contents)
 								b.amount+=2
-							src.used=1
-							src.icon_state = "Sprout"
+							use()
 							usr<<output("You have expertly picked 2 pinches of Aether Powder","oocout")
 						else
 							for(var/obj/item/materials/Synthesis/AetherPowder/b in usr.contents)
 								b.amount+=1
-							src.used=1
-							src.icon_state = "Sprout"
+							use()
 							usr<<output("You have picked 1 pinch of Aether Powder","oocout")
 					if(roll>75&&roll<81)
 						if(usr.Checkpre("Expert Gatherer",usr))
 							for(var/obj/item/materials/Synthesis/GigantoadSlime/b in usr.contents)
 								b.amount+=2
-							src.used=1
-							src.icon_state = "Sprout"
+							use()
 							usr<<output("You have expertly picked 2 jars of Gigantoad Slime...somehow","oocout")
 						else
 							for(var/obj/item/materials/Synthesis/GigantoadSlime/b in usr.contents)
 								b.amount+=1
-							src.used=1
-							src.icon_state = "Sprout"
+							use()
 							usr<<output("You have picked 1 jar of Gigantoad Slime...somehow","oocout")
 					if(roll>80&&roll<86)
 						if(usr.Checkpre("Expert Gatherer",usr))
 							for(var/obj/item/materials/Synthesis/PixieSand/b in usr.contents)
 								b.amount+=2
-							src.used=1
-							src.icon_state = "Sprout"
+							use()
 							usr<<output("You have expertly picked 2 pinches of Pixie Sand","oocout")
 						else
 							for(var/obj/item/materials/Synthesis/PixieSand/b in usr.contents)
 								b.amount+=1
-							src.used=1
-							src.icon_state = "Sprout"
+							use()
 							usr<<output("You have picked 1 pinch of Pixie Sand","oocout")
 					if(roll>85&&roll<96)
 						if(usr.Checkpre("Expert Gatherer",usr))
 							for(var/obj/item/materials/Synthesis/CoeurlWhisker/b in usr.contents)
 								b.amount+=2
-							src.used=1
-							src.icon_state = "Sprout"
+							use()
 							usr<<output("You have expertly picked 2 Coeurl Whiskers","oocout")
 						else
 							for(var/obj/item/materials/Synthesis/CoeurlWhisker/b in usr.contents)
 								b.amount+=1
-							src.used=1
-							src.icon_state = "Sprout"
+							use()
 							usr<<output("You have picked 1 Coeurl Whisker","oocout")
 					if(roll>96)
 						if(usr.Checkpre("Expert Gatherer",usr))
 							for(var/obj/item/materials/Synthesis/EtherPowder/b in usr.contents)
 								b.amount+=2
-							src.used=1
-							src.icon_state = "Sprout"
+							use()
 							usr<<output("You have expertly picked 2 pinches of Ether Powder","oocout")
 						else
 							for(var/obj/item/materials/Synthesis/EtherPowder/b in usr.contents)
 								b.amount+=2
-							src.used=1
-							src.icon_state = "Sprout"
+							use()
 							usr<<output("You have picked 1 pinch of Ether Powder","oocout")
 					for(var/obj/item/materials/Synthesis/Wood/c in usr.contents)
 						c.amount+=2
@@ -686,150 +646,130 @@ GLOBAL_LIST_BOILERPLATE(resource_nodes, /obj/node)
 						if(usr.Checkpre("Expert Hunter",usr))
 							for(var/obj/item/materials/Synthesis/Leather/b in usr.contents)
 								b.amount+=6
-							src.used=1
-							src.icon_state = "opentrap"
+							use()
 							usr<<output("You find a deer in your trap, and get manage to expertly skin 6 pieces of leather.","oocout")
 							usr<<output("You find a deer in your trap, and get manage to expertly skin 6 pieces of leather.","alert")
 						else
 							for(var/obj/item/materials/Synthesis/Leather/b in usr.contents)
 								b.amount+=3
-							src.used=1
-							src.icon_state = "opentrap"
+							use()
 							usr<<output("You find a deer in your trap, and get manage to skin 3 pieces of leather.","oocout")
 							usr<<output("You find a deer in your trap, and get manage to skin 3 pieces of leather.","alert")
 					if(roll>10&&roll<21)
 						if(usr.Checkpre("Expert Hunter",usr))
 							for(var/obj/item/materials/Synthesis/Leather/b in usr.contents)
 								b.amount+=10
-							src.used=1
-							src.icon_state = "opentrap"
+							use()
 							usr<<output("You find a garula in your trap, and get manage to expertly skin 10 pieces of leather.","oocout")
 							usr<<output("You find a garula in your trap, and get manage to expertly skin 10 pieces of leather.","alert")
 						else
 							for(var/obj/item/materials/Synthesis/Leather/b in usr.contents)
 								b.amount+=5
-							src.used=1
-							src.icon_state = "opentrap"
+							use()
 							usr<<output("You find a garula in your trap, and get manage to skin 5 pieces of leather.","oocout")
 							usr<<output("You find a garula in your trap, and get manage to skin 5 pieces of leather.","alert")
 					if(roll>20&&roll<31)
 						if(usr.Checkpre("Expert Hunter",usr))
 							for(var/obj/item/materials/Synthesis/Wool/b in usr.contents)
 								b.amount+=6
-							src.used=1
-							src.icon_state = "opentrap"
+							use()
 							usr<<output("You find a sheep in your trap, and get manage to expertly shave 6 pieces of wool.","oocout")
 							usr<<output("You find a sheep in your trap, and get manage to expertly shave 6 pieces of wool.","alert")
 						else
 							for(var/obj/item/materials/Synthesis/Wool/b in usr.contents)
 								b.amount+=3
-							src.used=1
-							src.icon_state = "opentrap"
+							use()
 							usr<<output("You find a sheep in your trap, and get manage to expertly shave 3 pieces of wool.","oocout")
 							usr<<output("You find a sheep in your trap, and get manage to expertly shave 3 pieces of wool.","alert")
 					if(roll>30&&roll<41)
 						if(usr.Checkpre("Expert Hunter",usr))
 							for(var/obj/item/materials/Synthesis/Wool/b in usr.contents)
 								b.amount+=10
-							src.used=1
-							src.icon_state = "opentrap"
+							use()
 							usr<<output("You find a large sheep in your trap, and get manage to expertly shave 10 pieces of wool.","oocout")
 							usr<<output("You find a large sheep in your trap, and get manage to expertly shave 10 pieces of wool.","alert")
 						else
 							for(var/obj/item/materials/Synthesis/Wool/b in usr.contents)
 								b.amount+=5
-							src.used=1
-							src.icon_state = "opentrap"
+							use()
 							usr<<output("You find a large sheep in your trap, and get manage to shave 5 pieces of wool.","oocout")
 							usr<<output("You find a large sheep in your trap, and get manage to shave 5 pieces of wool.","alert")
 					if(roll>40&&roll<51)
 						if(usr.Checkpre("Expert Hunter",usr))
 							for(var/obj/item/materials/Synthesis/FlyingEyesEye/b in usr.contents)
 								b.amount+=2
-							src.used=1
-							src.icon_state = "opentrap"
+							use()
 							usr<<output("You find an ahriman in your trap, and get manage to expertly tear two eyes from it.","oocout")
 							usr<<output("You find an ahriman in your trap, and get manage to expertly tear two eyes from it.","alert")
 					else
 						for(var/obj/item/materials/Synthesis/FlyingEyesEye/b in usr.contents)
 							b.amount+=1
-							src.used=1
-							src.icon_state = "opentrap"
+							use()
 							usr<<output("You find a ahriman in your trap, and get manage to tear out its eye.","oocout")
 							usr<<output("You find a ahriman in your trap, and get manage to tear out its eye.","alert")
 					if(roll>50&&roll<61)
 						if(usr.Checkpre("Expert Hunter",usr))
 							for(var/obj/item/materials/Synthesis/FlyingEyesWing/b in usr.contents)
 								b.amount+=2
-							src.used=1
-							src.icon_state = "opentrap"
+							use()
 							usr<<output("You find an ahriman in your trap, and get manage to expertly tear two wings from it.","oocout")
 							usr<<output("You find an ahriman in your trap, and get manage to expertly tear two wings from it.","alert")
 						else
 							for(var/obj/item/materials/Synthesis/FlyingEyesWing/b in usr.contents)
 								b.amount+=2
-							src.used=1
-							src.icon_state = "opentrap"
+							use()
 							usr<<output("You find a ahriman in your trap, and get manage to tear out a wing.","oocout")
 							usr<<output("You find a ahriman in your trap, and get manage to tear out a wing.","alert")
 					if(roll>60&&roll<71)
 						if(usr.Checkpre("Expert Hunter",usr))
 							for(var/obj/item/materials/Synthesis/ZuuFeather/b in usr.contents)
 								b.amount+=2
-							src.used=1
-							src.icon_state = "opentrap"
+							use()
 							usr<<output("You find a zuu in your trap, and get manage to expertly harvest two feathers from it.","oocout")
 							usr<<output("You find a zuu in your trap, and get manage to expertly harvest two feathers from it.","alert")
 						else
 							for(var/obj/item/materials/Synthesis/ZuuFeather/b in usr.contents)
 								b.amount+=2
-							src.used=1
-							src.icon_state = "opentrap"
+							use()
 							usr<<output("You find a zuu in your trap, and get manage to harvest a feather.","oocout")
 							usr<<output("You find a zuu in your trap, and get manage to harvest a feather.","alert")
 					if(roll>70&&roll<81)
 						if(usr.Checkpre("Expert Hunter",usr))
 							for(var/obj/item/materials/Synthesis/Leather/b in usr.contents)
 								b.amount+=12
-							src.used=1
-							src.icon_state = "opentrap"
+							use()
 							usr<<output("You find a behemoth in your trap, and get manage to expertly skin 12 pieces of leather.","oocout")
 							usr<<output("You find a behemoth in your trap, and get manage to expertly skin 12 pieces of leather.","alert")
 						else
 							for(var/obj/item/materials/Synthesis/Leather/b in usr.contents)
 								b.amount+=6
-							src.used=1
-							src.icon_state = "opentrap"
+							use()
 							usr<<output("You find a behemoth in your trap, and get manage to skin 6 pieces of leather.","oocout")
 							usr<<output("You find a behemoth in your trap, and get manage to skin 6 pieces of leather.","alert")
 					if(roll>80&&roll<91)
 						if(usr.Checkpre("Expert Hunter",usr))
 							for(var/obj/item/materials/Synthesis/Wool/b in usr.contents)
 								b.amount+=12
-							src.used=1
-							src.icon_state = "opentrap"
+							use()
 							usr<<output("You find a mutant sheep in your trap, and get manage to expertly shave 12 pieces of wool.","oocout")
 							usr<<output("You find a mutant sheep in your trap, and get manage to expertly shave 12 pieces of wool.","alert")
 						else
 							for(var/obj/item/materials/Synthesis/Wool/b in usr.contents)
 								b.amount+=6
-							src.used=1
-							src.icon_state = "opentrap"
+							use()
 							usr<<output("You find a mutant sheep in your trap, and get manage to shave 6 pieces of wool.","oocout")
 							usr<<output("You find a mutant sheep in your trap, and get manage to shave 6 pieces of wool.","alert")
 					if(roll>90)
 						if(usr.Checkpre("Expert Hunter",usr))
 							for(var/obj/item/materials/Synthesis/Leather/b in usr.contents)
 								b.amount+=30
-							src.used=1
-							src.icon_state = "opentrap"
+							use()
 							usr<<output("You find a shoat in your trap, and get manage to expertly skin 30 pieces of leather.","oocout")
 							usr<<output("You find a shoat in your trap, and get manage to expertly skin 30 pieces of leather.","alert")
 						else
 							for(var/obj/item/materials/Synthesis/Leather/b in usr.contents)
 								b.amount+=30
-							src.used=1
-							src.icon_state = "opentrap"
+							use()
 							usr<<output("You find a shoat in your trap, and get manage to skin 15 pieces of leather.","oocout")
 							usr<<output("You find a shoat in your trap, and get manage to skin 15 pieces of leather.","alert")
 					for(var/obj/item/materials/Synthesis/Wood/c in usr.contents)
@@ -873,179 +813,155 @@ GLOBAL_LIST_BOILERPLATE(resource_nodes, /obj/node)
 						if(usr.Checkpre("Expert Sifter",usr))
 							for(var/obj/item/materials/Synthesis/FireGem/b in usr.contents)
 								b.amount+=2
-							src.used=1
-							src.icon_state = "remains"
+							use()
 							usr<<output("You expertly find two fire gems.","oocout")
 							usr<<output("You expertly find two fire gems.","alert")
 						else
 							for(var/obj/item/materials/Synthesis/FireGem/b in usr.contents)
 								b.amount+=1
-							src.used=1
-							src.icon_state = "remains"
+							use()
 							usr<<output("You expertly find a fire gem.","oocout")
 							usr<<output("You expertly find a fire gem.","alert")
 					if(roll==2)
 						if(usr.Checkpre("Expert Sifter",usr))
 							for(var/obj/item/materials/Synthesis/IceGem/b in usr.contents)
 								b.amount+=2
-							src.used=1
-							src.icon_state = "remains"
+							use()
 							usr<<output("You expertly find two ice gems.","oocout")
 							usr<<output("You expertly find two ice gems.","alert")
 						else
 							for(var/obj/item/materials/Synthesis/IceGem/b in usr.contents)
 								b.amount+=1
-							src.used=1
-							src.icon_state = "remains"
+							use()
 							usr<<output("You expertly find a ice gem.","oocout")
 							usr<<output("You expertly find a ice gem.","alert")
 					if(roll==3)
 						if(usr.Checkpre("Expert Sifter",usr))
 							for(var/obj/item/materials/Synthesis/WaterGem/b in usr.contents)
 								b.amount+=2
-							src.used=1
-							src.icon_state = "remains"
+							use()
 							usr<<output("You expertly find two water gems.","oocout")
 							usr<<output("You expertly find two water gems.","alert")
 						else
 							for(var/obj/item/materials/Synthesis/WaterGem/b in usr.contents)
 								b.amount+=1
-							src.used=1
-							src.icon_state = "remains"
+							use()
 							usr<<output("You expertly find a water gem.","oocout")
 							usr<<output("You expertly find a water gem.","alert")
 					if(roll==4)
 						if(usr.Checkpre("Expert Sifter",usr))
 							for(var/obj/item/materials/Synthesis/BioGem/b in usr.contents)
 								b.amount+=2
-							src.used=1
-							src.icon_state = "remains"
+							use()
 							usr<<output("You expertly find two bio gems.","oocout")
 							usr<<output("You expertly find two bio gems.","alert")
 						else
 							for(var/obj/item/materials/Synthesis/BioGem/b in usr.contents)
 								b.amount+=1
-							src.used=1
-							src.icon_state = "remains"
+							use()
 							usr<<output("You expertly find a bio gem.","oocout")
 							usr<<output("You expertly find a bio gem.","alert")
 					if(roll==5)
 						if(usr.Checkpre("Expert Sifter",usr))
 							for(var/obj/item/materials/Synthesis/WindGem/b in usr.contents)
 								b.amount+=2
-							src.used=1
-							src.icon_state = "remains"
+							use()
 							usr<<output("You expertly find two wind gems.","oocout")
 							usr<<output("You expertly find two wind gems.","alert")
 						else
 							for(var/obj/item/materials/Synthesis/WindGem/b in usr.contents)
 								b.amount+=1
-							src.used=1
-							src.icon_state = "remains"
+							use()
 							usr<<output("You expertly find a wind gem.","oocout")
 							usr<<output("You expertly find a wind gem.","alert")
 					if(roll==6)
 						if(usr.Checkpre("Expert Sifter",usr))
 							for(var/obj/item/materials/Synthesis/HolyGem/b in usr.contents)
 								b.amount+=2
-							src.used=1
-							src.icon_state = "remains"
+							use()
 							usr<<output("You expertly find two holy gems.","oocout")
 							usr<<output("You expertly find two holy gems.","alert")
 						else
 							for(var/obj/item/materials/Synthesis/HolyGem/b in usr.contents)
 								b.amount+=1
-							src.used=1
-							src.icon_state = "remains"
+							use()
 							usr<<output("You expertly find a holy gem.","oocout")
 							usr<<output("You expertly find a holy gem.","alert")
 					if(roll==7)
 						if(usr.Checkpre("Expert Sifter",usr))
 							for(var/obj/item/materials/Synthesis/DarkGem/b in usr.contents)
 								b.amount+=2
-							src.used=1
-							src.icon_state = "remains"
+							use()
 							usr<<output("You expertly find two dark gems.","oocout")
 							usr<<output("You expertly find two dark gems.","alert")
 						else
 							for(var/obj/item/materials/Synthesis/DarkGem/b in usr.contents)
 								b.amount+=1
-							src.used=1
-							src.icon_state = "remains"
+							use()
 							usr<<output("You expertly find a dark gem.","oocout")
 							usr<<output("You expertly find a dark gem.","alert")
 					if(roll==8)
 						if(usr.Checkpre("Expert Sifter",usr))
 							for(var/obj/item/materials/Synthesis/BlackGem/b in usr.contents)
 								b.amount+=2
-							src.used=1
-							src.icon_state = "remains"
+							use()
 							usr<<output("You expertly find two black gems.","oocout")
 							usr<<output("You expertly find two black gems.","alert")
 						else
 							for(var/obj/item/materials/Synthesis/BlackGem/b in usr.contents)
 								b.amount+=1
-							src.used=1
-							src.icon_state = "remains"
+							use()
 							usr<<output("You expertly find a black gem.","oocout")
 							usr<<output("You expertly find a black gem.","alert")
 					if(roll==9)
 						if(usr.Checkpre("Expert Sifter",usr))
 							for(var/obj/item/materials/Synthesis/WhiteGem/b in usr.contents)
 								b.amount+=2
-							src.used=1
-							src.icon_state = "remains"
+							use()
 							usr<<output("You expertly find two white gems.","oocout")
 							usr<<output("You expertly find two white gems.","alert")
 						else
 							for(var/obj/item/materials/Synthesis/WhiteGem/b in usr.contents)
 								b.amount+=1
-							src.used=1
-							src.icon_state = "remains"
+							use()
 							usr<<output("You expertly find a white gem.","oocout")
 							usr<<output("You expertly find a white gem.","alert")
 					if(roll==10)
 						if(usr.Checkpre("Expert Sifter",usr))
 							for(var/obj/item/materials/Synthesis/ThunderGem/b in usr.contents)
 								b.amount+=2
-							src.used=1
-							src.icon_state = "remains"
+							use()
 							usr<<output("You expertly find two thunder gems.","oocout")
 							usr<<output("You expertly find two thunder gems.","alert")
 						else
 							for(var/obj/item/materials/Synthesis/ThunderGem/b in usr.contents)
 								b.amount+=1
-							src.used=1
-							src.icon_state = "remains"
+							use()
 							usr<<output("You expertly find a thunder gem.","oocout")
 							usr<<output("You expertly find a thunder gem.","alert")
 					if(roll==11)
 						if(usr.Checkpre("Expert Sifter",usr))
 							for(var/obj/item/materials/Synthesis/EarthGem/b in usr.contents)
 								b.amount+=2
-							src.used=1
-							src.icon_state = "remains"
+							use()
 							usr<<output("You expertly find two Earth gems..","oocout")
 							usr<<output("You expertly find two Earth gems.","alert")
 						else
 							for(var/obj/item/materials/Synthesis/EarthGem/b in usr.contents)
 								b.amount+=1
-							src.used=1
-							src.icon_state = "remains"
+							use()
 							usr<<output("You expertly find an Earth gem.","oocout")
 					if(roll>11)
 						if(usr.Checkpre("Expert Sifter",usr))
 							for(var/obj/item/materials/Synthesis/Diamond/b in usr.contents)
 								b.amount+=2
-							src.used=1
-							src.icon_state = "remains"
+							use()
 							usr<<output("You expertly find two diamonds.","oocout")
 							usr<<output("You expertly find two diamonds.","alert")
 						else
 							for(var/obj/item/materials/Synthesis/Diamond/b in usr.contents)
 								b.amount+=1
-							src.used=1
-							src.icon_state = "remains"
+							use()
 							usr<<output("You find a diamond.","oocout")
 							usr<<output("You find a diamond.","alert")
 					for(var/obj/item/materials/Synthesis/Stone/c in usr.contents)
