@@ -126,6 +126,7 @@
 #include "Code\Yearsystem.dm"
 #include "Code\_HELPERS\_core.dm"
 #include "Code\_HELPERS\logging.dm"
+#include "Code\_HELPERS\time.dm"
 #include "Code\_HELPERS\types.dm"
 #include "Code\_HELPERS\view.dm"
 #include "Code\_HELPERS\math\probability.dm"
