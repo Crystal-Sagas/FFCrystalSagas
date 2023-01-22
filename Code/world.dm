@@ -37,38 +37,39 @@
 		Initbestiary()
 	spawn Time()
 	spawn DayLooper()
-	for(var/obj/perkshopholder/a in world)
-		a.contents+=perklist
-	for(var/obj/recipeshopholder/a in world)
-		a.contents+=recipelist
-	for(var/obj/Stablemaster/a in world)
-		for(var/obj/npc/Monsters/q in bestiary)
-			var/obj/npc/Monsters/newmonster=copyatom(q)
-			a.contents+=newmonster
-		for(var/obj/npc/Monsters/f in a.contents)
-			InitializeEnemy(f)
-			f.archived=0
-	for(var/obj/npcarchive/a in world)
-		a.contents+=summonlist
-		for(var/obj/npc/Monsters/q in bestiary)
-			var/obj/npc/Monsters/newmonster=copyatom(q)
-			a.contents+=newmonster
-		for(var/obj/npc/Monsters/f in a.contents)
-			InitializeEnemy(f)
-		for(var/obj/npc/b in a.contents)
-			b.archived=1
-		for(var/obj/npc/Monsters/c in a.contents)
-			InitializeEnemy(c)
-		for(var/obj/npc/b in a.contents)
-			b.archived=1
-	for(var/obj/stableholder/a in world)
-		for(var/obj/npc/Monsters/q in bestiary)
-			var/obj/npc/Monsters/newmonster=copyatom(q)
-			a.contents+=newmonster
-		for(var/obj/npc/Monsters/f in a.contents)
-			InitializeEnemy(f)
-		for(var/obj/npc/b in a.contents)
-			b.archived=1
+	// init global perk shop
+	global.perk_shop.perks += perklist
+	// init global recipe shop
+	global.recipe_shop.recipes += recipelist
+	// init global stablemaster obj
+	for(var/obj/npc/Monsters/q in bestiary)
+		var/obj/npc/Monsters/newmonster=copyatom(q)
+		global.stablemaster_obj.contents += newmonster
+	for(var/obj/npc/Monsters/f in global.stablemaster_obj.contents)
+		InitializeEnemy(f)
+		f.archived=0
+	// init global npc archive
+	// todo: save/load
+	global.npc_archive.npcs += summonlist
+	for(var/obj/npc/Monsters/q in bestiary)
+		var/obj/npc/Monsters/newmonster = copyatom(q)
+		global.npc_archive.npcs += newmonster
+	for(var/obj/npc/Monsters/f in global.npc_archive.npcs)
+		InitializeEnemy(f)
+	for(var/obj/npc/b in global.npc_archive.npcs)
+		b.archived = 1
+	for(var/obj/npc/Monsters/c in global.npc_archive.npcs)
+		InitializeEnemy(c)
+	for(var/obj/npc/b in global.npc_archive.npcs)
+		b.archived = 1
+	// initialize stable holder
+	for(var/obj/npc/Monsters/q in bestiary)
+		var/obj/npc/Monsters/newmonster = copyatom(q)
+		global.stable_holder.monsters += newmonster
+	for(var/obj/npc/Monsters/f in global.stable_holder.monsters)
+		InitializeEnemy(f)
+	for(var/obj/npc/b in global.stable_holder.monsters)
+		b.archived=1
 
 /world/Reboot(reason)
 	// AS PER BYOND REFSPEC

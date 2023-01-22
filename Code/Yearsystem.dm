@@ -17,7 +17,8 @@ var
 
 proc
 	Time()
-		while(1)
+		while(TRUE)
+			set background = TRUE
 			if(daytime=="Day")
 				daytime="Night"
 				sd_OutsideLight(4)

@@ -96,14 +96,9 @@ mob
 				usr.setcus=null
 				usr<<output("You are no longer placing indicators.","oocout")
 		Reacting()
-			var/list/rlist=list("Yes","No")
-			var/choice=input(usr,"Would you like to indicate a Reaction?") as anything in rlist
-			switch(choice)
-				if("Yes")
-					goto contin
-				if("No")
-					return
-			contin
+			var/choice = alert(usr, "Would you like to indicate a reaction?", "Reaction!", "Yes", "No")
+			if(choice == "No")
+				return
 			var/obj/Reaction/r = new /obj/Reaction
 			r.loc=locate(usr.x,usr.y,usr.z)
 			view()<<output("[usr.name] is preparing a reaction!","icout")

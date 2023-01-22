@@ -306,11 +306,9 @@ obj/item
 		verb
 			Flash()
 				if(src.equiptype=="accessory")
-					goto accskip
-				if(src.equipped!=1)
+				else if(src.equipped!=1)
 					alert(usr,"You cannot flash a piece of equipment that isn't equipped!")
 					return
-				accskip
 				players ={"<font color=#EC2323>[usr.name] has flashed a piece of equipment: <a href="byond://?src=\ref[usr]&action2=lookwep&value=\ref[src]"><font color=#FFFFFF>[src]</a>!!"}
 				if(src in usr.contents)
 					switch(alert("[src.desc] (Rank:[src.rank])","[src.name]","Reveal","Cancel"))
@@ -949,8 +947,8 @@ obj
 				icon='Tech.dmi'
 				icon_state="FFE"
 				Del()
+					. = ..()
 					src.FFOff("Specific")
-					..()
 				verb/FFColor()
 					set src in oview(1)
 					set name="Field Color"
@@ -1379,7 +1377,10 @@ obj
 
 
 				proc/FFOff(var/ShutdownType)
+					set background = TRUE
 					for(var/obj/Effects/ForceField/A in world)
+						if(A.disposing)
+							continue
 						if(ShutdownType=="Broad")
 							if(A.Password==src.Password)
 								del(A)

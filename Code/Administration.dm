@@ -63,7 +63,7 @@ obj
 		Savable=1
 
 	adminreport
-		icon='blank.dmi'
+		icon='Icons/blank.dmi'
 		var/submitted
 		var/submitdate
 		var/solvedby
@@ -147,7 +147,7 @@ mob
 				switch(choose)
 					if("Yes")
 						for(var/mob/hearer in view(12,usr))
-							hearer<<sound('Fanfare.wav',channel=1)
+							hearer<<sound('Audio/Fanfare.wav',channel=1)
 							sleep(100)
 							UpdateArea(hearer)
 					if("No")
@@ -170,10 +170,9 @@ mob
 				var/row
 				winset(usr,"NPCarchive","is-visible=true")
 				winset(usr,"NPCarchive.anpc","cells=0x0")
-				for(var/obj/npcarchive/ar in world)
-					for(var/obj/npc/o in ar.contents)
-						row++
-						src<<output(o,"anpc:1,[row]")
+				for(var/obj/npc/o in global.npc_archive.npcs)
+					row++
+					src<<output(o,"anpc:1,[row]")
 			CreateFastTravel()
 				if(adminlv>1)
 					return
@@ -538,9 +537,9 @@ mob
 						if(Choice=="Cancel")
 							return
 						var/Reason=input(src,"Enter a reason to display to the world") as text
-						Bans+=Choice:key
-						Bans+=Choice:client.address
-						Bans+=Choice:client.computer_id
+						Bans+=Choice.key
+						Bans+=Choice.client.address
+						Bans+=Choice.client.computer_id
 						world<<output("[Choice:key] was BANNED for [Reason].","oocout")
 						var/text1 = "[usr.key] banned ([Choice] for [Reason])"
 						Adminlog(text1)
@@ -1105,12 +1104,12 @@ proc
 				Types=new
 		if(Amount % 250 != 0)
 			F["Types"]<<Types
-		hacklol
-		if(fexists("Save/World/File[E++]"))
-			fdel("Save/World/File[E++]")
-			world<<"<small>Server: Objects DEBUG system check: extra objects file deleted!"
-			E++
-			goto hacklol
+		hacklol:
+			if(fexists("Save/World/File[E++]"))
+				fdel("Save/World/File[E++]")
+				world<<"<small>Server: Objects DEBUG system check: extra objects file deleted!"
+				E++
+				goto hacklol
 		world<<output("<small>Server: Objects Saved([Amount]).","icout")
 
 proc
@@ -1118,14 +1117,14 @@ proc
 		world<<output("<small>Server: Loading Items...","icout")
 		var/amount=0
 		var/filenum=0
-		wowza
-		filenum++
-		if(fexists("Save/World/File[filenum]"))
-			var/savefile/F=new("Save/World/File[filenum]")
-			var/list/L=new
-			F["Types"]>>L
-			for(var/obj/A in L)
-				amount+=1
-				A.loc=locate(A.savedx,A.savedy,A.savedz)
-			goto wowza
+		wowza:
+			filenum++
+			if(fexists("Save/World/File[filenum]"))
+				var/savefile/F=new("Save/World/File[filenum]")
+				var/list/L=new
+				F["Types"]>>L
+				for(var/obj/A in L)
+					amount+=1
+					A.loc=locate(A.savedx,A.savedy,A.savedz)
+				goto wowza
 		world<<output("<small>Server: Items Loaded ([amount]).","icout")

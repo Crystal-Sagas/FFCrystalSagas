@@ -1,7 +1,11 @@
+GLOBAL_DATUM(stablemaster_obj, /obj/Stablemaster)
+
 obj
 	Stablemaster
 		density=1
 		icon='Icons/Stablemaster.png'
+		New()
+			global.stablemaster_obj = src
 		Click()
 			winset(usr,"stablemaster","is-visible=true")
 			winset(usr,"stablemaster.beast","cells=0x0")

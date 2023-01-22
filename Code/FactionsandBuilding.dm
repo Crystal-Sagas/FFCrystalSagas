@@ -1488,20 +1488,20 @@ obj
 						src.houseid=i
 						usr<<output("ID assigned! ID is [i].","icout")
 						break
-			nopass
-			if(src.houseid>=1)
-				var/gox
-				var/goy
-				var/goz
-				for(var/obj/Housedoor/c in world)
-					if(c.houseid==src.houseid)
-						var/housedoory=c.y+1
-						gox=c.x
-						goy=housedoory
-						goz=c.z
-						usr.transit_move(locate(gox, goy, goz), recurse_follow = 0)
-					for(var/obj/Landclaim/Ownership/Playerownership/d in range(2, c))
-						d.owner=src.owner
+			nopass:
+				if(src.houseid>=1)
+					var/gox
+					var/goy
+					var/goz
+					for(var/obj/Housedoor/c in world)
+						if(c.houseid==src.houseid)
+							var/housedoory=c.y+1
+							gox=c.x
+							goy=housedoory
+							goz=c.z
+							usr.transit_move(locate(gox, goy, goz), recurse_follow = 0)
+						for(var/obj/Landclaim/Ownership/Playerownership/d in range(2, c))
+							d.owner=src.owner
 
 	Fortress
 		var
@@ -1543,17 +1543,17 @@ obj
 						src.fortressid=i
 						usr<<output("ID assigned! ID is [i].","icout")
 						break
-			nopass
-			if(src.fortressid>=1)
-				var/gox
-				var/goy
-				var/goz
-				for(var/obj/Fortressdoor/c in world)
-					if(c.fortressid==src.fortressid)
-						var/housedoory=c.y+1
-						gox=c.x
-						goy=housedoory
-						goz=c.z
-						usr.transit_move(locate(gox, goy, goz), recurse_follow = 0)
-					for(var/obj/Landclaim/Ownership/Playerownership/d in range(2, c))
-						d.owner=src.owner
+			nopass:
+				if(src.fortressid>=1)
+					var/gox
+					var/goy
+					var/goz
+					for(var/obj/Fortressdoor/c in world)
+						if(c.fortressid==src.fortressid)
+							var/housedoory=c.y+1
+							gox=c.x
+							goy=housedoory
+							goz=c.z
+							usr.transit_move(locate(gox, goy, goz), recurse_follow = 0)
+						for(var/obj/Landclaim/Ownership/Playerownership/d in range(2, c))
+							d.owner=src.owner

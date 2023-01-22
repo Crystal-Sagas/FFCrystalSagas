@@ -1,64 +1,64 @@
 macro "macro"
-	elem 
+	elem
 		name = "Center+REP"
 		command = ".center"
-	elem 
+	elem
 		name = "Northeast+REP"
 		command = ".northeast"
-	elem 
+	elem
 		name = "Southeast+REP"
 		command = ".southeast"
-	elem 
+	elem
 		name = "Southwest+REP"
 		command = ".southwest"
-	elem 
+	elem
 		name = "Northwest+REP"
 		command = ".northwest"
-	elem 
+	elem
 		name = "SHIFT+West"
 		command = "turnleft"
-	elem 
+	elem
 		name = "West+REP"
 		command = ".west"
-	elem 
+	elem
 		name = "SHIFT+North"
 		command = "turnup"
-	elem 
+	elem
 		name = "North+REP"
 		command = ".north"
-	elem 
+	elem
 		name = "SHIFT+East"
 		command = "turnright"
-	elem 
+	elem
 		name = "East+REP"
 		command = ".east"
-	elem 
+	elem
 		name = "SHIFT+South"
 		command = "turndown"
-	elem 
+	elem
 		name = "South+REP"
 		command = ".south"
-	elem 
+	elem
 		name = "C+UP"
 		command = "Charsheet"
-	elem 
+	elem
 		name = "G"
-	elem 
+	elem
 		name = "I+UP"
 		command = "InventoryScreen"
-	elem 
+	elem
 		name = "R+UP"
 		command = "Reacting"
-	elem 
+	elem
 		name = "X"
 
 
 menu "menu"
-	elem 
+	elem
 		name = "&File"
 		command = ""
 		saved-params = "is-checked"
-	elem 
+	elem
 		name = "&Quit"
 		command = ".quit"
 		category = "&File"
@@ -67,36 +67,36 @@ menu "menu"
 		name = "Options"
 		command = ""
 		saved-params = "is-checked"
-	elem 
+	elem
 		name = "Admin Help"
 		command = "Adminhelp"
 		category = "Options"
 		saved-params = "is-checked"
-	elem 
+	elem
 		name = "NPC"
 		command = "Opennpc"
 		category = "Options"
 		saved-params = "is-checked"
-	elem 
+	elem
 		name = "RPFlag"
 		command = "SetRPFlag"
 		category = "Options"
 		saved-params = "is-checked"
-	elem 
+	elem
 		name = "Save"
 		command = "SaveSelf"
 		category = "Options"
 		saved-params = "is-checked"
-	elem 
+	elem
 		name = "Information"
 		command = ""
 		saved-params = "is-checked"
-	elem 
+	elem
 		name = "Who"
 		command = "Who"
 		category = "Information"
 		saved-params = "is-checked"
-	elem 
+	elem
 		name = "Races"
 		command = "Races"
 		category = "Information"
@@ -9785,9 +9785,9 @@ window "default"
 		size = 1349x440
 		anchor1 = 0,0
 		anchor2 = 100,67
-		saved-params = "zoom;letterbox;zoom-mode"
+		saved-params = ""
 		on-size = ".on_viewport [[width]] [[height]]"
-		zoom = 0.950000
+		saved-params = "zoom-mode"
 	elem "button2"
 		type = BUTTON
 		pos = 1073,464
