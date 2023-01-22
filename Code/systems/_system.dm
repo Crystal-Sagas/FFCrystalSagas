@@ -28,6 +28,8 @@
 /**
  * build from scratch
  *
+ * called before Load()
+ *
  * @return TRUE / FALSE for success / failure
  */
 /datum/system/proc/Construct()
@@ -45,6 +47,8 @@
  * saves data; called during:
  * * world/Reboot()
  *
+ * called before Shutdown()
+ *
  * todo: call this every x minutes?
  *
  * @return list() of data on success. null on failure.
@@ -55,6 +59,8 @@
 /**
  * loads data; ONLY called during init.
  * List is NULL if not found.
+ *
+ * called after Construct()
  *
  * @return TRUE / FALSE on success / failure.
  */
@@ -71,6 +77,8 @@
 
 /**
  * shuts down
+ *
+ * called after Save()
  *
  * @return TRUE / FALSE on success / failure.
  */

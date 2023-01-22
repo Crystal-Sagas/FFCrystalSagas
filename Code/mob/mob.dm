@@ -2,6 +2,11 @@
  * root mob var definitions
  */
 /mob
+	//? Intrinsics
+	use_tag = TRUE
+	/// next mob id
+	var/static/mob_id_next = 0
+
 	//? Movement
 	/// Who we are following
 	var/tmp/mob/pulledby
@@ -16,6 +21,11 @@
 	/// status effects - serialized via new serialization system, so /tmp
 	/// list is list(id_or_typepath = instance datum.)
 	var/tmp/list/status_instances
+
+/mob/New(loc)
+	. = ..()
+	// generate tag
+	tag = "[++mob_id_next]"
 
 /mob/Destruct()
 	terminate_pulls()

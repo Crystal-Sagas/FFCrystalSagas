@@ -6,7 +6,8 @@
  *
  * global hardcoded effects are singletons but admins/people with permissions can add more.
  */
-/datum/status_effect
+/datum/prototype/status_effect
+	namespace = PROTOTYPE_NAMESPACE_STATUS_EFFECT
 	/// name
 	var/name
 	/// description - what the user sees
@@ -15,23 +16,20 @@
 /**
  * THESE are the ones you should be using for custom rp effects.
  */
-/datum/status_effect/custom
-	/// id - must be unique
-	var/id
+/datum/prototype/status_effect/custom
+	serializable = TRUE
 
-/datum/status_effect/custom/serialize()
+/datum/prototype/status_effect/custom/serialize()
 	. = ..()
 	.[VARNAME(src, name)] = name
 	.[VARNAME(src, desc)] = desc
-	.[VARNAME(src, id)] = id
 
-/datum/status_effect/custom/deserialize(list/data)
+/datum/prototype/status_effect/custom/deserialize(list/data)
 	. = ..()
 	name = data[VARNAME(src, name)]
 	desc = data[VARNAME(src, desc)]
-	id = data[VARNAME(src, id)]
 
-/datum/status_effect/custom/validate_serializable()
+/datum/prototype/status_effect/custom/validate_serializable()
 	return ..() && length(id) && istext(id)
 
 /**
@@ -71,7 +69,7 @@
  * * duration - the new duration the person now has
  * * old_duration - the previous duration, if any; this does not have to be lower necessarily.
  */
-/datum/status_effect/proc/mechanical_apply(mob/victim, silent, duration, old_duration)
+/datum/prototype/status_effect/proc/mechanical_apply(mob/victim, silent, duration, old_duration)
 	return
 
 /**
@@ -82,7 +80,7 @@
  * * silent - don't make a message
  * * old_duration - the previous duration.
  */
-/datum/status_effect/proc/mechanical_remove(mob/victim, silent, old_duration)
+/datum/prototype/status_effect/proc/mechanical_remove(mob/victim, silent, old_duration)
 	return
 
 /**
@@ -94,7 +92,7 @@
  * * duration - duration left
  * * battle - mechanical battle
  */
-/datum/status_effect/proc/mechanical_tick(mob/victim, silent, duration, datum/battle/mechanical/battle)
+/datum/prototype/status_effect/proc/mechanical_tick(mob/victim, silent, duration, datum/battle/mechanical/battle)
 	return
 
 //? mob procs
@@ -103,19 +101,19 @@
  * apply a status effect
  * will refresh duration if already applied
  */
-/mob/proc/apply_status_effect(datum/status_effect/id_typepath_instance, silent, duration, mechaical)
+/mob/proc/apply_status_effect(datum/prototype/status_effect/id_typepath_instance, silent, duration, mechaical)
 	#warn impl
 
 /**
  * remove a status effect
  */
-/mob/proc/remove_status_effect(datum/status_effect/id_typepath_instance, silent)
+/mob/proc/remove_status_effect(datum/prototype/status_effect/id_typepath_instance, silent)
 	#warn impl
 
 /**
  * check for a status effect, returning null for none and number for turns left if existing
  */
-/mob/proc/has_status_effect(datum/status_effect/id_typepath_instance)
+/mob/proc/has_status_effect(datum/prototype/status_effect/id_typepath_instance)
 	#warn impl
 
 /**

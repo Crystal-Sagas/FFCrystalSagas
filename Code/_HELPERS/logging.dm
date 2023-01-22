@@ -9,3 +9,16 @@
  */
 /proc/log_error(msg)
 	world.log << "\[[timestamp()]\] [msg]"
+
+/// key-message list of warnings
+GLOBAL_LIST_EMPTY(logged_warnings)
+
+/**
+ * warn once and never again
+ */
+/proc/logged_warning(message, key)
+	ASSERT(message && key)
+	if(global.logged_warnings[key])
+		return
+	// todo: message admins
+	world.log << "keyed-warning: [key] -> [message]"

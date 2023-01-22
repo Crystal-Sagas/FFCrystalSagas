@@ -16,14 +16,16 @@
 	var/disposing = null
 	/// implements the serialization system?
 	var/serializable = FALSE
+	/// use tags instead of refs?
+	var/use_tag = FALSE
+	/// weak reference
+	var/datum/weakref/weakref
 
 /**
  * orders ourselves to clean up anything needed.
  */
 /datum/proc/Destruct()
-	return
-
-#warn tags
+	tag = null
 
 /**
  * datum del hook to ensure deletion logic runs
