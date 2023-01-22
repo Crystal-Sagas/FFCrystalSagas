@@ -158,6 +158,22 @@ mob
 							usr.icon='Bases/Human/Base Male Dark.dmi'
 						if("Male Pale")
 							usr.icon='Bases/Human/Base Male Pale.dmi'
+				if("Elezen")
+					var/list/bases=list("Female Light","Female Dark","Female Pale","Male Light","Male Dark","Male Pale")
+					var/skinchoice=input(usr,"Which base would you like to use?") as anything in bases
+					switch(skinchoice)
+						if("Female Light")
+							usr.icon='Bases/Human/Base Female.dmi'
+						if("Female Dark")
+							usr.icon='Bases/Human/Base Female Dark.dmi'
+						if("Female Pale")
+							usr.icon='Bases/Human/Base Female Pale.dmi'
+						if("Male Light")
+							usr.icon='Bases/Human/Base Male.dmi'
+						if("Male Dark")
+							usr.icon='Bases/Human/Base Male Dark.dmi'
+						if("Male Pale")
+							usr.icon='Bases/Human/Base Male Pale.dmi'
 				if("Cetra")
 					var/list/bases=list("Female Light","Female Dark","Female Pale","Male Light","Male Dark","Male Pale")
 					var/skinchoice=input(usr,"Which base would you like to use?") as anything in bases

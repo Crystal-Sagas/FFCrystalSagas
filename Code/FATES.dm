@@ -60,7 +60,7 @@ obj
 								if(checkmem.FATEcooldown>=1)
 									alert(usr,"[checkmem.name] is on FATE cooldown, and thus the party cannot accept a FATE!")
 									usr.usingfate=0
-									break
+									return
 						if(p.FATEcooldown==1)
 							alert(usr,"Your party is on FATE cooldown!")
 							usr.usingfate=0

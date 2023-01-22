@@ -455,7 +455,7 @@ proc
 		if(m.created)
 			return
 		m.created=1
-		var/list/races = list("Human","Guado","Ronso","Namazu","Gnath","Miqo'te","Moogle","Viera","Lalafell","Roegadyn","Au Ra","Gria")
+		var/list/races = list("Human","Guado","Ronso","Namazu","Gnath","Miqo'te","Moogle","Viera","Elezen","Lalafell","Roegadyn","Au Ra","Gria")
 		if(Cyborg.Find(m.key))
 			races+="Cyborg"
 		if(Albhed.Find(m.key))
@@ -587,6 +587,21 @@ proc
 				m.contents+=p2
 				m.contents+=p3
 				m.wis+=2
+				m.Checkmod(1,m.str,m.addstr,m)
+				m.Checkmod(2,m.dex,m.adddex,m)
+				m.Checkmod(3,m.con,m.addcon,m)
+				m.Checkmod(4,m.int,m.addint,m)
+				m.Checkmod(5,m.wis,m.addwis,m)
+				m.Checkmod(6,m.cha,m.addcha,m)
+			if("Elezen")
+				m.race="Elezen"
+				var/obj/perk/Raceperks/Elezen/ElezenPhysiology/p1=new
+				var/obj/perk/Raceperks/Elezen/LifestreamsGift/p2=new
+				var/obj/perk/Crafting/MateriaMelder/p3=new
+				m.contents+=p1
+				m.contents+=p2
+				m.contents+=p3
+				m.dex+=2
 				m.Checkmod(1,m.str,m.addstr,m)
 				m.Checkmod(2,m.dex,m.adddex,m)
 				m.Checkmod(3,m.con,m.addcon,m)
