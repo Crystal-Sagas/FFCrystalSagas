@@ -17,6 +17,8 @@
 	var/name = "System"
 	/// save id - DO NOT CHANGE THIS
 	var/save_id
+	/// savefile version - TICK UP BY 1 DURING UPDATES.
+	var/save_version = 1
 	// todo: init order
 	// todo: ticking
 	// todo: inits
@@ -58,6 +60,14 @@
  */
 /datum/system/proc/Load(list/data)
 	return TRUE
+
+/**
+ * migrates data if version is lower than self
+ *
+ * this is a data *transformer*, modify the data *IN PLACE*.
+ */
+/datum/system/proc/Migrate(list/blackboard, from_version)
+	return
 
 /**
  * shuts down
