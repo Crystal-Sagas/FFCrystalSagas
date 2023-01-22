@@ -50,9 +50,9 @@ obj
 				for(var/obj/Partyholder/pholder in world)
 					for(var/obj/Party/part in pholder.contents)
 						if("[part.leader]"!="[usr.name]")
-							alert(usr,"Only the party leader can generate a FATE.")
+							alert(usr,"Only the party leader can generate a FATE.")//This message currently always appears even if you are the party leader, for some reason. Until that is fixed we should keep the break line.
 							usr.usingfate=0
-							break
+							break //Replace this with 'return' instead of 'break' once this doesn't always get called.
 				for(var/obj/Party/p in world)
 					if("[p.leader]"=="[usr.name]")
 						for(var/mob/checkmem in world)
@@ -279,6 +279,7 @@ obj
 										client.x=clientx
 										client.y=fatelocation.y
 										client.z=fatelocation.z
+										client.FATEID=newfate.FATEID
 									if(newfate.FATEtype=="Artifact")
 										var/randx=rand(-15, 15)
 										var/randy=rand(-15, 15)
@@ -287,6 +288,7 @@ obj
 										artifact.x=artifactx
 										artifact.y=artifacty
 										artifact.z=fatelocation.z
+										artifact.FATEID=newfate.FATEID
 									usr.usingfate=0
 								if("No")
 									usr.usingfate=0
@@ -300,19 +302,24 @@ obj
 			FATEID
 			party1=0
 		icon='Icons/Artifact.png'
-		Click()
-			for(var/obj/Party/c in world)
-				if("[usr.partyID]"=="[c.partyID]")
+		Click()// I'll break down why this is broke. IDK how to fix it yet tho. But I'm wrinkling my brain over it. ---Vi
+			for(var/obj/Party/c in world) //This calls all party objects... IN THE WORLD.
+				if("[usr.partyID]"=="[c.partyID]")//If it encounters a Party object, is will search this object for it's ID.
 					for(var/obj/FATECrystal/b in world)
 						if("[b.FATEID]"=="[c.FATEID]")
 							view(usr)<<output("You've found the Artifact! Mog will return it to the researchers! (<b>FATE</b> complete!!)","icout")
 							Victory(c,b)
 							sleep(4)
 							del src
-				else
-					alert(usr,"This is not your FATE to acquire!")
-					return
+							return
+				//else
+				//	alert(usr,"This is not your FATE to acquire!")
+				//	return
 
+				//the 'return' line being commented out is necessary for the game to cycle through all parties in world to find a matching party otherwise...
+				//If it encounters a party that isn't the ID of the usr's party before encounteirng the user's party, it will fail.
+				//We may need to rework the party system entirely to fix these. Make it easier for the game to narrow down which party's it searches. perhaps put the obj in the player? But that's dangerous.
+				//IDK if this will cause Runtime ERRORS but we need to fix the Party style and Fate system overall. This entire DM prob needs recoded from the ground up. For now.. this works.
 obj
 	Client
 		var
@@ -330,9 +337,10 @@ obj
 							sleep(2)
 							sleep(4)
 							del src
-				else
-					alert(usr,"This is not your FATE to deliver!")
-					return
+							return
+				//else
+				//	alert(usr,"This is not your FATE to deliver!")
+				//	return
 
 obj
 	FATECrystal
