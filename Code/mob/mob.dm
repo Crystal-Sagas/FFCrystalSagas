@@ -25,6 +25,7 @@
 /mob/New(loc)
 	. = ..()
 	// generate tag
+	#warn THIS IS NOT GOING TO CUT IT AS TAG IS SAVED.
 	tag = "[++mob_id_next]"
 
 /mob/Destruct()
