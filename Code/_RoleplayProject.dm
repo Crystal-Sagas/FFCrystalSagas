@@ -164,12 +164,6 @@ mob
 			for(var/obj/Eye/e in world)
 				if(e.owner==usr.ckey)
 					del(e)
-			//? Grant admin for localhost debugging
-			if(client?.address in list(null, "127.0.0.1", "::1"))
-				adminlv = 4
-				winset(src,"default.Adminbut","is-visible=true")
-				verbs += typesof(/mob/Admin/verb/)
-			//? End
 			for(var/mob/M in world)
 				if(Admin4.Find(M.ckey) || M.client?.is_localhost())
 					M.adminlv =4
