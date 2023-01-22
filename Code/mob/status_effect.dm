@@ -129,5 +129,5 @@
  * * mechanical_tick - is this a mechanical battle tick? if so, MUST have battle instance
  * * battle - battle instance, if relevant, whether or not mechanical (optional)
  */
-/mob/proc/rp_tick_status_effects(amount = 1, mechanical_tick, datum/battle/battle)
+/mob/proc/tick_status_effects(amount = 1, mechanical_tick, datum/battle/battle)
 	#warn impl
