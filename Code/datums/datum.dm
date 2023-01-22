@@ -23,6 +23,8 @@
 /datum/proc/Destruct()
 	return
 
+#warn tags
+
 /**
  * datum del hook to ensure deletion logic runs
  */

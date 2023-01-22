@@ -140,6 +140,7 @@
 #include "Code\client\movement.dm"
 #include "Code\client\viewport.dm"
 #include "Code\datums\asset.dm"
+#include "Code\datums\battle.dm"
 #include "Code\datums\browser.dm"
 #include "Code\datums\datum.dm"
 #include "Code\datums\dispose.dm"
