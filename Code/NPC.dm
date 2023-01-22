@@ -7777,7 +7777,7 @@ proc
 		o.conmod = round((o.con + o.addcon) / 2) - 5
 		o.intmod = round((o.int + o.addint) / 2) - 5
 		o.wismod = round((o.wis + o.addwis) / 2) - 5
-		o.chamod = round((o.cha + o.addch) / 2) - 5
+		o.chamod = round((o.cha + o.addcha) / 2) - 5
 
 	NSkillcheck(var/obj/npc/m)
 		m.acrobatics=m.baseacro+m.dexmod

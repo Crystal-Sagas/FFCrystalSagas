@@ -268,7 +268,7 @@
 		enemy.contents+=weapon
 		enemy.eweapon=weapon
 		enemy.contents+=b
-	if(enemy.name=="Grangalan")
+	if(enemy.name=="Grangalon")
 		var/obj/perk/MonsterAbilities/BLU/SilverWheel/b=new
 		var/obj/perk/Abilities/ArcaneMagic/Darkness/Dark/c=new
 		var/obj/perk/ElementalPerks/Dark/element=new
