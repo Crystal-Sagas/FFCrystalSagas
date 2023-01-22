@@ -164,11 +164,10 @@ mob
 			for(var/obj/Eye/e in world)
 				if(e.owner==usr.ckey)
 					del(e)
-			for(var/mob/M in world)
-				if(Admin4.Find(M.ckey) || M.client?.is_localhost())
-					M.adminlv =4
-					winset(src,"default.Adminbut","is-visible=true")
-					M.verbs+=typesof(/mob/Admin/verb/)
+			if(Admin4.Find(ckey) || client.is_localhost())
+				adminlv = 4
+				winset(src, "default.Adminbut", "is-visible=true")
+				verbs += typesof(/mob/Admin/verb/)
 			for(var/obj/o in usr.client.screen)
 				del(o)
 			for(var/image/i in usr.client.screen)
