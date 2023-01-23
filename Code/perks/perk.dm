@@ -30,7 +30,7 @@
  * performs raw attack roll, ignoring damage type / buffs / weapon / etc
  */
 /obj/perk/proc/raw_attack_damage_roll()
-	ASSERT(valid_attack_damage_roll())
+	ASSERT(valid_raw_attack_damage_roll())
 	if(attack_roll_damage_dice)
 		return dice_roll(attack_roll_dice_count, attack_roll_dice_sides)
 	if(!isnull(attack_roll_damage_exact))
