@@ -231,7 +231,7 @@ obj
 									p.currentFATE=newfate
 									usr.usingfate=0
 									var/list/Location=new
-									for(var/obj/FATECrystal/a in world)
+									for(var/obj/FATECrystal/a in global.fate_crystals)
 										if(newfate.FATEtype=="Capture" && a.occupied==1)
 											Location+=a
 										else
@@ -305,7 +305,7 @@ obj
 		Click()// I'll break down why this is broke. IDK how to fix it yet tho. But I'm wrinkling my brain over it. ---Vi
 			for(var/obj/Party/c in world) //This calls all party objects... IN THE WORLD.
 				if("[usr.partyID]"=="[c.partyID]")//If it encounters a Party object, is will search this object for it's ID.
-					for(var/obj/FATECrystal/b in world)
+					for(var/obj/FATECrystal/b in global.fate_crystals)
 						if("[b.FATEID]"=="[c.FATEID]")
 							view(usr)<<output("You've found the Artifact! Mog will return it to the researchers! (<b>FATE</b> complete!!)","icout")
 							Victory(c,b)
@@ -330,7 +330,7 @@ obj
 		Click()
 			for(var/obj/Party/c in world)
 				if("[usr.partyID]"=="[c.partyID]")
-					for(var/obj/FATECrystal/b in world)
+					for(var/obj/FATECrystal/b in global.fate_crystals)
 						if("[b.FATEID]"=="[c.FATEID]")
 							view(usr)<<output("Client: Thank you for the package, here's your pay. (<b>FATE</b> complete!!)","icout")
 							Victory(c,b)
@@ -342,16 +342,3 @@ obj
 				//	alert(usr,"This is not your FATE to deliver!")
 				//	return
 
-obj
-	FATECrystal
-		var
-			locationarea
-			FATEID
-			party1=0
-			party2=0
-			occupied=0
-		name="FATE Crystal"
-		icon='Icons/Fatecrystal.dmi'
-		density=1
-		layer=2
-		pixel_x=-10

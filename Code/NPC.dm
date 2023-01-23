@@ -1553,7 +1553,7 @@ atom
 					del enemy4
 					for(var/obj/Party/a in world)
 						if(starter.partyID==a.partyID)
-							for(var/obj/FATECrystal/b in world)
+							for(var/obj/FATECrystal/b in global.fate_crystals)
 								if("[b.FATEID]"=="[a.FATEID]")
 									Defeat(a,b)
 									enemyalive=0
@@ -1675,7 +1675,7 @@ atom
 					del enemy4
 					for(var/obj/Party/a in world)
 						if(starter.partyID==a.partyID)
-							for(var/obj/FATECrystal/b in world)
+							for(var/obj/FATECrystal/b in global.fate_crystals)
 								if("[b.FATEID]"=="[a.FATEID]")
 									Defeat(a,b)
 									enemyalive=0
@@ -1742,7 +1742,7 @@ atom
 					del enemy4
 					for(var/obj/Party/a in world)
 						if(starter.partyID==a.partyID)
-							for(var/obj/FATECrystal/b in world)
+							for(var/obj/FATECrystal/b in global.fate_crystals)
 								if("[b.FATEID]"=="[a.FATEID]")
 									Defeat(a,b)
 									sleep(4)
@@ -1811,7 +1811,7 @@ atom
 					del enemy4
 					for(var/obj/Party/a in world)
 						if(starter.partyID==a.partyID)
-							for(var/obj/FATECrystal/b in world)
+							for(var/obj/FATECrystal/b in global.fate_crystals)
 								if("[b.FATEID]"=="[a.FATEID]")
 									Defeat(a,b)
 									enemyalive=0
@@ -1878,7 +1878,7 @@ atom
 						del enemy3
 						del enemy4
 						if(battler1.partyID==c.partyID)
-							for(var/obj/FATECrystal/b in world)
+							for(var/obj/FATECrystal/b in global.fate_crystals)
 								if("[b.FATEID]"=="[c.FATEID]")
 									Victory(c,b)
 									enemyalive=0
@@ -2115,7 +2115,7 @@ atom
 						del enemy4
 						for(var/obj/Party/c in world)
 							if(battler1.partyID==c.partyID)
-								for(var/obj/FATECrystal/b in world)
+								for(var/obj/FATECrystal/b in global.fate_crystals)
 									if("[b.FATEID]"=="[c.FATEID]")
 										Victory(c,b)
 										enemyalive=0
@@ -2348,7 +2348,7 @@ atom
 						del enemy4
 						for(var/obj/Party/c in world)
 							if(battler1.partyID==c.partyID)
-								for(var/obj/FATECrystal/b in world)
+								for(var/obj/FATECrystal/b in global.fate_crystals)
 									if(b.FATEID==c.FATEID)
 										Victory(c,b)
 										enemyalive=0
@@ -2582,7 +2582,7 @@ atom
 						del enemy4
 						for(var/obj/Party/c in world)
 							if(battler1.partyID==c.partyID)
-								for(var/obj/FATECrystal/b in world)
+								for(var/obj/FATECrystal/b in global.fate_crystals)
 									if("[b.FATEID]"=="[c.FATEID]")
 										Victory(c,b)
 										enemyalive=0
@@ -2817,7 +2817,7 @@ atom
 						del enemy4
 						for(var/obj/Party/c in world)
 							if(battler1.partyID==c.partyID)
-								for(var/obj/FATECrystal/b in world)
+								for(var/obj/FATECrystal/b in global.fate_crystals)
 									if("[b.FATEID]"=="[c.FATEID]")
 										Victory(c,b)
 										enemyalive=0
