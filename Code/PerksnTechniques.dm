@@ -1557,8 +1557,6 @@ obj
 		var/range2
 		var/adddam
 		var/addhit
-		var/altrange1
-		var/altrange2
 		var/damsource
 		var/technique
 		var/mcost

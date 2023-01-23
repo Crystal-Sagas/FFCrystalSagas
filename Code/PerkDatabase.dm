@@ -1,3 +1,5 @@
+// todo: /datum/prototype/perk
+
 obj
 	perk
 		var/element="Physical"
