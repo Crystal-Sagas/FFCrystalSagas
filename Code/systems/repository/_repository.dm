@@ -96,7 +96,7 @@
  */
 /datum/system/repository/proc/generate()
 	for(var/datum/prototype/path as anything in typesof(expected_typepath))
-		if(is_abstract(path))
+		if(is_abstract(path) || !initial(path.auto_init))
 			continue
 		path = new path
 		if(isnull(path.id))

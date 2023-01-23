@@ -14,6 +14,8 @@
 	var/id
 	/// custom - should we save this?
 	var/saved = FALSE
+	/// automatically generated?
+	var/auto_init = TRUE
 
 /datum/prototype/validate_serializable()
 	return ..() && length(id)

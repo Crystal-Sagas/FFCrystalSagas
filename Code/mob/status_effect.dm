@@ -29,9 +29,11 @@
 
 /**
  * THESE are the ones you should be using for custom rp effects.
+ * you don't *need* to use these but these, by default, will save.
  */
 /datum/prototype/status_effect/custom
 	saved = TRUE
+	auto_init = FALSE
 
 /**
  * an instance of a status effect
