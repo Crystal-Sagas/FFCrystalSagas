@@ -27,19 +27,19 @@
 	var/list/loading = data["prototypes"]
 	var/index = 0
 	var/count = 0
-	for(var/list/data as anything in loading)
+	for(var/list/instance_data as anything in loading)
 		++index
-		if(!islist(data))
-			system_log("load: invalid data at idx [index] '[json_encode(data)]'")
+		if(!islist(instance_data))
+			system_log("load: invalid data at idx [index] '[json_encode(instance_data)]'")
 			. = FALSE
 			continue
-		var/load_type = text2path(data["__type__"])
+		var/load_type = text2path(instance_data["__type__"])
 		if(!ispath(load_type, expected_typepath))
-			system_log("load: invalid type at idx [index] '[json_encode(data)]")
+			system_log("load: invalid type at idx [index] '[json_encode(instance_data)]")
 			. = FALSE
 			continue
 		var/datum/prototype/loaded = new load_type
-		loaded.deserialize(data)
+		loaded.deserialize(instance_data)
 		if(lookup[loaded.id])
 			system_log("load: collision on id [loaded.id] with existing; discarding.")
 			dispose(loaded)
