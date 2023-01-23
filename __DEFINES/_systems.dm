@@ -1,9 +1,9 @@
 /// system def
 #define GLOBAL_SYSTEM_SINGLETON(_SYS, _GVAR)    \
-var/global/datum/system/##_SYS/##_GVAR;         \
+var/global/datum/system/##_SYS/##_GVAR = -1;    \
 /datum/system/##_SYS/New() {                    \
-	if(istype(global.##_GVAR)) {                \
-		Restore();                              \
+	if(global.##_GVAR != -1) {                  \
+		Restore(global.##_GVAR);                \
 	};                                          \
 	global.##_GVAR = src;                       \
 }                                               \
@@ -11,10 +11,10 @@ var/global/datum/system/##_SYS/##_GVAR;         \
 
 /// repository system def
 #define GLOBAL_REPOSITORY_SINGLETON(_SYS, _GVAR)        \
-var/global/datum/system/repository/##_SYS/##_GVAR;      \
+var/global/datum/system/repository/##_SYS/##_GVAR = -1; \
 /datum/system/repository/##_SYS/New() {                 \
-	if(istype(global.##_GVAR)) {                        \
-		Restore();                                      \
+	if(global.##_GVAR != -1) {                          \
+		Restore(global.##_GVAR);                        \
 	};                                                  \
 	global.##_GVAR = src;                               \
 }                                                       \

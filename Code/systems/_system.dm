@@ -38,9 +38,12 @@
 /**
  * restore if we're recovering after a system needs to be rebuilt.
  *
+ * @params
+ * * overwriting - what was in the global variable before us
+ *
  * @return TRUE / FALSE for success / failure
  */
-/datum/system/proc/Restore()
+/datum/system/proc/Restore(datum/system/overwriting)
 	return TRUE
 
 /**
@@ -92,3 +95,9 @@
 	if(!save_id)
 		return null
 	return "[world.data_directory()]world/systems/[save_id].sav"
+
+/**
+ * log
+ */
+/datum/system/proc/system_log(msg)
+	log_system("[name]: [msg]")

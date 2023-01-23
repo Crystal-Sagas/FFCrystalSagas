@@ -13,24 +13,24 @@
 	/// description - what the user sees
 	var/desc
 
-/**
- * THESE are the ones you should be using for custom rp effects.
- */
-/datum/prototype/status_effect/custom
-	serializable = TRUE
-
-/datum/prototype/status_effect/custom/serialize()
+/datum/prototype/status_effect/serialize()
 	. = ..()
 	.[VARNAME(src, name)] = name
 	.[VARNAME(src, desc)] = desc
 
-/datum/prototype/status_effect/custom/deserialize(list/data)
+/datum/prototype/status_effect/deserialize(list/data)
 	. = ..()
 	name = data[VARNAME(src, name)]
 	desc = data[VARNAME(src, desc)]
 
-/datum/prototype/status_effect/custom/validate_serializable()
+/datum/prototype/status_effect/validate_serializable()
 	return ..() && length(id) && istext(id)
+
+/**
+ * THESE are the ones you should be using for custom rp effects.
+ */
+/datum/prototype/status_effect/custom
+	saved = TRUE
 
 /**
  * an instance of a status effect
