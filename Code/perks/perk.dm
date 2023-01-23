@@ -15,6 +15,8 @@
 	/// sides of dice to roll for dice roll damage calculations
 	var/attack_roll_dice_sides
 
+//? Attack Rolls
+
 /**
  * we have a valid standard attack or healing roll
  */
@@ -46,6 +48,8 @@
 		return attack_roll_damage_exact
 	return rand(attack_roll_damage_lower, attack_roll_damage_upper)
 
+//? Rendering
+
 /**
  * renders perk description in one line, useful for alert()
  */
@@ -58,3 +62,10 @@
 // todo: describe_html()
 // todo: describe_data() for ui render
 
+//? Mechanical Battles
+
+/**
+ * full attack action in a mechanical battle, like a FATE
+ */
+/obj/perk/proc/mechanical_attack(datum/battle/mechanical/battle, mob/attacker, mob/target)
+	// todo: impl

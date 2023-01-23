@@ -1,3 +1,4 @@
 //? namespaces - DO NOT TOUCH THESE WITHOUT REASON
 
 #define PROTOTYPE_NAMESPACE_STATUS_EFFECT "status_effect"
+#define PROTOTYPE_NAMESPACE_LOOT_TABLE "loot_table"
