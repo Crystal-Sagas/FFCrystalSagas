@@ -6,6 +6,8 @@
 	use_tag = TRUE
 	/// next mob id
 	var/static/mob_id_next = 0
+	/// realtime used as a mutator for GUID-like behavior amongst mobs
+	var/static/mob_guid_mutator = "[world.realtime]"
 
 	//? Movement
 	/// Who we are following
@@ -20,18 +22,24 @@
 	//? Combat
 	/// status effects - serialized via new serialization system, so /tmp
 	/// list is list(id_or_typepath = instance datum.)
+	//  todo: impl
 	var/tmp/list/status_instances
+	/// active battle - serialized via new serialization system, so /tmp
+	//  todo: impl
+	var/tmp/datum/battle/active_battle
 
 /mob/New(loc)
-	. = ..()
 	// generate tag
-	#warn THIS IS NOT GOING TO CUT IT AS TAG IS SAVED.
-	tag = "[++mob_id_next]"
+	generate_tag()
+	return ..()
 
 /mob/Destruct()
 	terminate_pulls()
 	terminate_follows()
 	return ..()
+
+/mob/generate_tag()
+	tag = "mob_[mob_guid_mutator]_[++mob_id_next]"
 
 //? serialization
 
@@ -43,5 +51,3 @@
 
 /mob/validate_serializable()
 	return ..()
-
-#warn tags

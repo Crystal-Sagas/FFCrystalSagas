@@ -36,51 +36,68 @@
  * an instance of a status effect
  */
 /datum/status_instance
-	/// identifier - typepath or id
+	/// identifier - id
 	var/id
-	/// is custom? if not id is a typepath
-	var/custom
 	/// turns left
 	var/turns_left
-	/// was given by mechanical combat?
-	var/mechanical
 
 /datum/status_instance/serialize()
 	return ..() + list(
 		VARNAME(src, id) = id,
-		VARNAME(src, custom) = custom,
 		VARNAME(src, turns_left) = turns_left,
-		VARNAME(src, mechanical) = mechanical,
 	)
 
 /datum/status_instance/deserialize(list/data)
 	. = ..()
 	id = data[VARNAME(src, id)]
-	custom = data[VARNAME(src, custom)]
 	turns_left = data[VARNAME(src, turns_left)]
-	mechanical = data[VARNAME(src, mechanical)]
 
 /**
- * called when applied in a mechanical battle
+ * called on apply, regardless of if it's just refreshing or not; this happens even if we don't actually increase the duration
+ *
+ * @params
+ * * victim - person applied to
+ * * silent - don't make a message
+ * * duration - the new duration the person now has.
+ * * old_duration - the previous duration, if any; this does not have to be lower necessarily.
+ */
+/datum/prototype/status_effect/proc/apply(mob/victim, silent, duration, old_duration)
+	return
+
+/**
+ * called when applied in a mechanical battle, regardless of if it's just refreshing or not; this happens even if we don't actually increase the duration
  *
  * @params
  * * victim - person applied to
  * * silent - don't make a message
  * * duration - the new duration the person now has
  * * old_duration - the previous duration, if any; this does not have to be lower necessarily.
+ * * battle - mechanical battle instance
  */
-/datum/prototype/status_effect/proc/mechanical_apply(mob/victim, silent, duration, old_duration)
+/datum/prototype/status_effect/proc/mechanical_apply(mob/victim, silent, duration, old_duration, datum/battle/mechanical/battle)
+	return
+
+/**
+ * called on remove
+ *
+ * @params
+ * * victim - person removing from
+ * * silent - don't make a message
+ * * old_duration - the previous duration.
+ */
+/datum/prototype/status_effect/proc/remove(mob/victim, silent, old_duration)
 	return
 
 /**
  * called when removing in a mechanical battle
  *
  * @params
- * * victim - person applied to
+ * * victim - person removing from
  * * silent - don't make a message
  * * old_duration - the previous duration.
+ * * battle - mechanical battle instance
  */
-/datum/prototype/status_effect/proc/mechanical_remove(mob/victim, silent, old_duration)
+/datum/prototype/status_effect/proc/mechanical_remove(mob/victim, silent, old_duration, datum/battle/mechanical/battle)
 	return
 
 /**
@@ -89,7 +106,7 @@
  * @params
  * * victim - person with us
  * * silent - don't make messages (if applicable)
- * * duration - duration left
+ * * duration - duration left before tick
  * * battle - mechanical battle
  */
 /datum/prototype/status_effect/proc/mechanical_tick(mob/victim, silent, duration, datum/battle/mechanical/battle)
@@ -100,27 +117,58 @@
 /**
  * apply a status effect
  * will refresh duration if already applied
+ *
+ * @params
+ * * id_typepath_instance - of the status effect
+ * * silent - suppress messages if possible
+ * * duration - new duration
+ * * overwrite - shorten duration if duration is longer; without this, it only extends.
  */
-/mob/proc/apply_status_effect(datum/prototype/status_effect/id_typepath_instance, silent, duration, mechaical)
-	#warn impl
+/mob/proc/apply_status_effect(datum/prototype/status_effect/id_typepath_instance, silent, duration, overwrite)
+	var/datum/prototype/status_effect/effect = status_effect_repository.fetch(id_typepath_instance)
+	var/datum/status_instance/instance = status_instances?[effect.id]
+	var/old_duration
+	if(instance)
+		old_duration = instance.turns_left
+		instance.turns_left = overwrite? duration : max(instance.turns_left, duration)
+	else
+		instance = new
+		instance.turns_left = duration
+		instance.id = effect.id
+		LAZYLIST_SET(status_instances, effect.id, instance)
+	effect.apply(src, silent, duration, old_duration)
+	if(istype(active_battle, /datum/battle/mechanical))
+		effect.mechanical_apply(src, silent, duration, old_duration, active_battle)
+	return TRUE
 
 /**
  * remove a status effect
  */
 /mob/proc/remove_status_effect(datum/prototype/status_effect/id_typepath_instance, silent)
-	#warn impl
+	var/datum/prototype/status_effect/effect = status_effect_repository.fetch(id_typepath_instance)
+	var/datum/status_instance/instance = status_instances?[effect.id]
+	if(!instance)
+		return FALSE
+	if(istype(active_battle, /datum/battle/mechanical))
+		effect.mechanical_remove(src, silent, instance.turns_left, active_battle)
+	effect.remove(src, silent, instance.turns_left)
+	status_instances -= effect.id
+	return TRUE
 
 /**
  * check for a status effect, returning null for none and number for turns left if existing
  */
 /mob/proc/has_status_effect(datum/prototype/status_effect/id_typepath_instance)
-	#warn impl
+	var/datum/prototype/status_effect/effect = status_effect_repository.fetch(id_typepath_instance)
+	var/datum/status_instance/instance = status_instances?[effect.id]
+	return instance?.turns_left
 
 /**
  * purge status effects
  */
-/mob/proc/purge_status_effects(mechaincal_only, silent)
-	#warn impl
+/mob/proc/purge_status_effects(silent)
+	for(var/id in status_instances)
+		remove_status_effect(id, silent)
 
 /**
  * tick down status effects
@@ -132,4 +180,12 @@
  * * battle - battle instance, if relevant, whether or not mechanical (optional)
  */
 /mob/proc/tick_status_effects(amount = 1, silent, mechanical_tick, datum/battle/battle)
-	#warn impl
+	ASSERT(!mechanical_tick || istype(battle))
+	for(var/id in status_instances)
+		var/datum/prototype/status_effect/effect = status_effect_repository.fetch(id)
+		var/datum/status_instance/instance = status_instances[id]
+		if(mechanical_tick)
+			effect.mechanical_tick(src, silent, instance.turns_left, battle)
+		instance.turns_left--
+		if(instance.turns_left <= 0)
+			remove_status_effect(id, silent)

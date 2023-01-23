@@ -1,7 +1,7 @@
 /**
  * calender system for tracking days/years
  */
-GLOBAL_SYSTEM_SINGLETON(calender)
+GLOBAL_SYSTEM_SINGLETON(calender, calender_system)
 	name = "Calender"
 
 /datum/system/calender/Construct()
