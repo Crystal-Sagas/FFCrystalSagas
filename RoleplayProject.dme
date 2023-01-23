@@ -136,6 +136,7 @@
 #include "Code\atoms\atoms.dm"
 #include "Code\atoms\atoms_movable.dm"
 #include "Code\atoms\chat.dm"
+#include "Code\atoms\statclick.dm"
 #include "Code\classes\render.dm"
 #include "Code\client\chat.dm"
 #include "Code\client\client.dm"

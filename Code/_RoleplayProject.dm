@@ -368,14 +368,6 @@ mob
 		for(var/obj/status/SPBar/a in usr.contents)
 			usr.overlays-=a
 		src.usingfate=0
-		for(var/obj/Party/a in world)
-			if(a.partyID==usr.partyID)
-				a.members-=usr
-				a.totalmembers-=1
-				usr.partyID=null
-				usr.inparty=0
-				if(a.totalmembers==0)
-					del a
 		usr.bposition=null
 		usr.battler=0
 		usr.turntracker=0

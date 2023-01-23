@@ -4,6 +4,10 @@
  * does not currently support logged out players
  */
 /datum/party
+	/// party name
+	var/name
+	/// party description
+	var/desc
 	/// party id - only unique to the current server reboot - this is a *STRING*.
 	var/party_id
 	/// party id next
@@ -14,6 +18,8 @@
 	var/tmp/mob/leader
 	/// active fate
 	var/datum/instanced_fate/active_fate
+	/// our statclick object
+	var/atom/movable/statclick/party_object
 
 	#warn impl
 
@@ -23,6 +29,7 @@
 		id_warned = TRUE
 		stack_trace("mob id next has hit integer precision; prepare for horrifying things to happen.")
 	party_id = "[++party_id_next]"
+	party_object = new(src, name = "Party", icon = 'Icons/Items/Linkshell.png')
 
 /**
  * get party size
@@ -48,24 +55,43 @@
 /datum/party/proc/is_leader(mob/person)
 	return person == leader
 
+/**
+ * get the first mob with a fate cooldown, or null
+ */
+/datum/party/proc/first_member_with_fate_cooldown()
+	for(var/mob/member as anything in members)
+		if(member.FATEcooldown)
+			return member
 
+/**
+ * returns TRUE / FALSE for if we have an active FATE
+ */
+/datum/party/proc/has_active_fate()
+	return !!active_fate
 
-obj
-	Party
-		totalmembers=0
-		icon='Icons/Items/Linkshell.png'
-		DblClick()
-			var/list/choices=list("Description")
-			if(usr==src.leader)
-				choices+="Change Leader"
-			var/choice=input("What would you like to do?") as anything in choices
-			switch(choice)
-				if("Description")
-					alert(usr,"[src.desc]")
-				if("Change Leader")
-					var/lchoice=input("Who would you like to give leadership?") as anything in src.members
-					src.leader=lchoice
+/**
+ * get active FATE instance datum
+ */
+/datum/party/proc/get_active_fate()
+	return active_fate
 
+/datum/party/proc/set_name(name)
+	src.name = name
+	party_object.update_name(name)
+
+/datum/party/statdblclick_relayed(mob/user, action, list/params, atom/movable/statclick/statclick)
+	var/list/choices=list("Description")
+	if(user==src.leader)
+		choices+="Change Leader"
+	var/choice=input("What would you like to do?") as null|anything in choices
+	switch(choice)
+		if("Description")
+			alert(user,"[src.desc]")
+		if("Change Leader")
+			var/lchoice=input("Who would you like to give leadership?") as null|anything in src.members
+			if(!lchoice)
+				return
+			src.leader=lchoice
 
 mob
 	verb
@@ -199,3 +225,4 @@ atom
 						q.suffix="Coordinates: [q.CoordX],[q.CoordY],[q.CoordZ]"
 						winset(usr, "party.fate", "current-cell=2,[row3]")
 						usr << output(q.suffix,"party.fate")
+

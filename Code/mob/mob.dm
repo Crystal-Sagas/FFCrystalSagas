@@ -72,3 +72,9 @@
 /mob/proc/leave_party(force)
 
 #warn impl
+
+/mob/proc/has_party()
+	return !!active_party
+
+/mob/proc/is_party_leader()
+	return active_party?.is_leader(src)
