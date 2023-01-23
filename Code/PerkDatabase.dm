@@ -3534,8 +3534,9 @@ obj
 						name="God Among Men"
 						mcost=50
 						basecheck=10
-						range1=2
-						range2=24
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 2
+						attack_roll_dice_sides = 12
 						adddam=0
 						addhit=3
 						range=" 3 tile cone in front of user."
@@ -3685,8 +3686,9 @@ obj
 						name="Full Charge"
 						mcost=75
 						basecheck=10
-						range1=3
-						range2=36
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 3
+						attack_roll_dice_sides = 12
 						adddam=0
 						addhit=0
 						range="Melee"
@@ -3702,8 +3704,8 @@ obj
 						name="Octaslash"
 						mcost=120
 						basecheck=10
-						range1=0
-						range2=0
+						attack_roll_damage_dice = FALSE
+						attack_roll_damage_exact = 0
 						adddam=10
 						addhit=0
 						range="Melee"
@@ -5361,8 +5363,9 @@ obj
 					icon='Icons/Perk/Death.png'
 					Corpse
 						level=4
-						range1=4
-						range2=32
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 4
+						attack_roll_dice_sides = 8
 						range=" 5x5 AoE within 8 tiles."
 						atype="save"
 						savetype="Reflex"
@@ -5424,8 +5427,9 @@ obj
 					desc="The Knight is trained to use his adrenaline to its fullest potential in order to last longer on the battlefield. Through Mana infusion and mixing of Adrenaline, the Knight becomes more durable. +5 damage reduction for 4 turns. This is slightly draining initially but does not drain over time. (Cannot exceed 30 total Damage reduction.) (-20 Stamina.) "
 				Holmgang
 					rank="C"
-					range1=1
-					range2=12
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 1
+					attack_roll_dice_sides = 12
 					range=" 7x7 AoE centered around user."
 					mcost=15
 					atype="save"
@@ -5437,8 +5441,9 @@ obj
 					desc="The Knight focuses on a single target. They then hold their weapon in a backwards grip, and kick off towards them by augmenting their legs with a burst of energy. This allows them to approach a target at an additional 2 tiles of extra movement, and perform a basic Melee Attack on them if they are able to reach them. If this Melee attack hits, the target is forced into the effects of 'Honorable Duel' - but the effect only drains 2 Stamina per turn active rather than 5, if activated this way (starting on the turn after this is procced). (-10 Stamina.)"
 				Overpower
 					rank="C"
-					range1=2
-					range2=16
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 8
 					range=" 3 tile wide cone."
 					mcost=15
 					atype="standard"
@@ -5626,8 +5631,9 @@ obj
 					element="Thunder"
 					name="Eclipse Blade"
 					rank="S"
-					range1=3
-					range2=36
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 3
+					attack_roll_dice_sides = 12
 					range=" 3 tile wide, 8 tile line."
 					mcost=120
 					desc="The penultimate Sword Saint ability. It acts as a Melee weapon attack, which is imbued with immense karmic power. The blade is extended in a massive stream of karmic mana. The range is increased due to the massive size of the blade. When a target is struck by this blade, they are inflicted with Burn, Poison, and Bleed. (Damage: Weapon Damage + 3d12, -120 Stamina.)"
@@ -5661,8 +5667,8 @@ obj
 					name="Mighty Strike"
 					rank="C"
 					addhit=2
-					range1=0
-					range2=0
+					attack_roll_damage_dice = FALSE
+					attack_roll_damage_exact = 0
 					atype="weapon"
 					addhit=2
 					mcost=30
@@ -5883,8 +5889,9 @@ obj
 					mcost=25
 					costtype="Mana"
 					atype="weapon"
-					range1=2
-					range2=20
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 10
 					damsource="wis"
 					desc="This Red Mage has learned to mix their bladesmanship expertly with their Magic. By coating the blade with both Aetherial and Lifestream energies, they channel both Black and White magic, and strike at a target. This generates 1 Black Magic stack, and 1 White Magic stack when used. (Damage: Weapon Damage + 2d10+WIS Force damage | Melee Weapon attack, -25 Mana.)"
 				ManaWall
@@ -5931,8 +5938,8 @@ obj
 				Aim
 					rank="D"
 					atype="weapon"
-					range1=0
-					range2=0
+					attack_roll_damage_dice = FALSE
+					attack_roll_damage_exact = 0
 					range=" Weapon range."
 					addhit=3
 					mcost=10
@@ -5941,8 +5948,9 @@ obj
 					name="Nefarious Wound"
 					rank="D"
 					atype="weapon"
-					range1=2
-					range2=12
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 6
 					range=" Weapon range."
 					addhit=1
 					mcost=20
@@ -5951,16 +5959,17 @@ obj
 					name="Foot Shot"
 					rank="C"
 					atype="weapon"
-					range1=0
-					range2=0
+					attack_roll_damage_dice = FALSE
+					attack_roll_damage_exact = 0
 					range=" Weapon range."
 					mcost=20
 					desc="The ranger takes aim at the targets foot. They then fire an arrow that pins the poor target to the ground. This deals zero damage. (Ranged Attack Roll, On a successful hit applies Slow. -20 Stamina.)"
 				ArrowRain
 					name="Arrow Rain"
 					rank="C"
-					range1=5
-					range2=30
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 5
+					attack_roll_dice_sides = 6
 					atype="weaponsave"
 					range=" 3x3 AoE within weapon's range."
 					mcost=30
@@ -5969,8 +5978,9 @@ obj
 					desc="The user puts several arrows into their bow, and pointing it upwards is able to fire them in the air where they arc, and then come down showering the target with arrows. (Damage: 5d6+DEX piercing damage | Reflex Save, can be used within the rangers bow range, hits in a 3x3 AoE, - 30 Stamina.)"
 				Barrage
 					rank="B"
-					range1=7
-					range2=42
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 7
+					attack_roll_dice_sides = 6
 					range=" 5 tile wide projectile, weapon's range."
 					atype="weaponsave"
 					savetype="Reflex"
@@ -5980,8 +5990,9 @@ obj
 				UltimaArrow
 					name="Ultima Arrow"
 					rank="A"
-					range1=7
-					range2=70
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 7
+					attack_roll_dice_sides = 10
 					atype="weaponsave"
 					savetype="Reflex"
 					basecheck=18
@@ -5991,8 +6002,9 @@ obj
 				HeartPierce
 					name="Heart Pierce"
 					rank="S"
-					range1=8
-					range2=80
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 8
+					attack_roll_dice_sides = 10
 					addhit=5
 					mcost=100
 					atype="weapon"
@@ -6011,8 +6023,9 @@ obj
 					element="Laser"
 					name="Chi Blast"
 					rank="E"
-					range1=1
-					range2=6
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 1
+					attack_roll_dice_sides = 6
 					damsource="wis"
 					range=" 6 tiles."
 					mcost=10
@@ -6293,8 +6306,8 @@ obj
 					name="Gekko Combo"
 					rank="B"
 					atype="weapon"
-					range1=0
-					range2=0
+					attack_roll_damage_dice = FALSE
+					attack_roll_damage_exact = 0
 					damsource="str"
 					addhit=6
 					desc="The Samurai lashes out in a three part combo. Make three separate standard weapon attacks, each with a +6 to hit. If at least one attack hits; the Samurai receives a buff named Fugetsu, which lasts for 3 turns. While Fugetsu is active the Samurai receives +3 to their PDB, and their weapon may optionally deal Wind damage. In addition, their Weapon Attacks inflict the 'Squall' status effect on hit. Costs 50 Stamina."
@@ -6334,8 +6347,9 @@ obj
 						mcost=2
 						costtype="Ken"
 						atype="weapon"
-						range1=2
-						range2=12
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 2
+						attack_roll_dice_sides = 6
 						damsource="str"
 						desc="As a reaction, strike at an enemy with a powerful overhead swing by exploiting a gap in the enemy's defenses. Make a weapon attack roll ; dealing weapon damage+2d6+STR damage on a successful hit, ignoring DR, and smashing the target into the ground. If the attack hits, they must perform a DC:15 Fortitude saving throw, or be afflicted with 'Stun'."
 					Tiger
@@ -6344,8 +6358,9 @@ obj
 						costtype="Ken"
 						range=" Melee"
 						damsource="str"
-						range1=4
-						range2=32
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 4
+						attack_roll_dice_sides = 8
 						savetype="Fortitude"
 						basecheck=12
 						mcost=4
@@ -6355,8 +6370,9 @@ obj
 						costtype="Ken"
 						range=" 5x5 AoE"
 						atype="weapon"
-						range1=3
-						range2=30
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 3
+						attack_roll_dice_sides = 10
 						damsource="str"
 						mcost=5
 						desc="The Samurai makes a series of quick slashes barely seen by the naked eye. This attack targets all enemy creatures in a 5x5 AoE  around the Samurai. Make a single weapon attack that applies against all targets. The attack deals Weapon Damage+3d10+STR damage on hit. Costs 5 Ken."
@@ -6364,8 +6380,9 @@ obj
 						rank="B"
 						atype="weapon"
 						damsource="str"
-						range1=2
-						range2=40
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 2
+						attack_roll_dice_sides = 20
 						mcost=6
 						costtype="Ken"
 						range=" 3 tile wide, 6 tile line."
@@ -6373,8 +6390,8 @@ obj
 					Eclipse
 						rank="A"
 						mcost=8
-						range1=0
-						range2=0
+						attack_roll_damage_dice = FALSE
+						attack_roll_damage_exact = 0
 						adddam=6
 						atype="weapon"
 						range=" Melee"
@@ -6383,8 +6400,8 @@ obj
 						rank="S"
 						atype="weapon"
 						adddam=50
-						range1=0
-						range2=0
+						attack_roll_damage_dice = FALSE
+						attack_roll_damage_exact = 0
 						mcost=8
 						desc="The Samurai forms a powerful stance, pouring everything they have into a single attack. They strike at an enemy, cutting deep and flooding them with glowing red energy as they bury their blade. This technique floods the target with potent energy, rupturing from the inside out through the cut. After this attack, they are heavily wounded, making combat harder after the strike - and inflicting them with the 'Weakness', 'Bleed' and 'Slow' status effects ; and disabling the target's ability to use Reaction actions for 2 rounds. In addition to these effects, if they are hit - they must make a Fortitude saving throw (DC 15 + STR + Rankbonus) - or be afflicted with 'Doom' in addition to the prior listed effects. (Damage: Weapon damage + 50 | Melee attack.  -8 Ken.)"
 
@@ -6536,8 +6553,9 @@ obj
 					name="Overload"
 					rank="C"
 					desc="The Machinist overloads their current weapon, and then attacks a target creature. This attack deals 2d10+20 additional damage, and ignores damage reduction. After utilizing this ability, that weapon malfunctions and cannot be used for 5 rounds. Costs 50 SP."
-					range1=2
-					range2=20
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 10
 					mcost=50
 					atype="weapon"
 					damsource="int"
@@ -6551,8 +6569,9 @@ obj
 					element="Metal"
 					name="Missile Barrage"
 					rank="B"
-					range1=40
-					range2=50
+					attack_roll_damage_dice = FALSE
+					attack_roll_damage_lower = 40
+					attack_roll_damage_upper = 50
 					basecheck=14
 					mcost=60
 					range=" 8 tile range, 3x3 AoE."
@@ -6564,8 +6583,8 @@ obj
 					element="Fire"
 					name="Self Destruct"
 					rank="B"
-					range1=150
-					range2=150
+					attack_roll_damage_dice = FALSE
+					attack_roll_damage_exact = 150
 					atype="save"
 					typing="physical"
 					range=" 3x3 AoE centered on Robot."
@@ -6575,8 +6594,9 @@ obj
 					element="Laser"
 					name="Oribtal Laser"
 					rank="A"
-					range1=40
-					range2=50
+					attack_roll_damage_dice = FALSE
+					attack_roll_damage_lower = 40
+					attack_roll_damage_upper = 50
 					basecheck=15
 					mcost=50
 					range= " 3x3 AoE, sustainable, can move up to 5 tiles."
@@ -6617,8 +6637,8 @@ obj
 					desc="The user emits a holy light from their body which inflicts the blind status on anyone within their direct vicinity (Prompts a fortitude saving throw, which if failed afflicts blind to everyone in a 2 tile radius targeting the user, -15 Mana)"
 					basecheck=12
 					atype="save"
-					range1=0
-					range2=0
+					attack_roll_damage_dice = FALSE
+					attack_roll_damage_exact = 0
 					costtype="Mana"
 					damsource="cha"
 					mcost=15

@@ -53,3 +53,8 @@
 	return desc
 
 // todo: auto damage render, more describe()'s
+
+// todo: describe_markdown()
+// todo: describe_html()
+// todo: describe_data() for ui render
+
