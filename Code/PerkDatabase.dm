@@ -929,6 +929,12 @@ obj
 					desc="The Holy Light of the Aether has given the user a direct link to the mana of the universe, making them a conduit of mana just like the crystals each nation harbors. They are infused with great power and can call upon a golden, glowing aura of power. | +2 to hit, +3 AC, and +20 flat damage to all damage calculations."
 					mcost="10 per turn"
 					costtype="Mana"
+			Harbinger_of_Chaos
+				name="Harbinger of Chaos"
+				rank="T4"
+				cat="Unique"
+				icon='Icons/Perk/EmbodimentofSin.png'
+				desc="The user has awakened the true power of chaos inside them. At any time they are able to access this form, but can only control it if they possess the protomateria. The user becomes a demonic creature sprouting a pair of wings capable of agile flight. They also gain access to the death penalty. A massive gun that fires a powerful beam of Mana, and increases its power the more souls it absorbs. { Ex. Vincent }. This grants +50 HP, +30 MP, and +30 SP, as well as +2 to all Ability Scores. Allows the creation and application for 'Chaos Forms'."
 			Lucisheir
 				KingofLucis
 					icon='Icons/Perk/Heiroflucis.png'

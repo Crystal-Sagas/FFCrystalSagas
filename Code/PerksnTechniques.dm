@@ -245,6 +245,19 @@ mob
 
 proc
 	Checkspec(var/obj/o,var/mob/m)
+		if(o.name=="Harbinger of Chaos")
+			m.mhp+=50
+			m.hp+=50
+			m.msp+=30
+			m.sp+=30
+			m.mmp+=30
+			m.mp+=30
+			m.str+=2
+			m.dex+=2
+			m.wis+=2
+			m.con+=2
+			m.int+=2
+			m.cha+=2
 		if(o.name=="Moogle Merchant")
 			var/obj/item/Mooglebox/MoogleShopBox/a=new
 			var/obj/item/Mooglebox/MoogleGathererBox/b=new
