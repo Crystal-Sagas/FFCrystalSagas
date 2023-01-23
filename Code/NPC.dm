@@ -1436,13 +1436,13 @@ atom
 								battler1<<output("[battler1] has been designated as 'Battler 1'","oocout")
 								//Unequipglobalmods(battler1)
 								for(var/obj/perk/a in battler1.contents)
-									if(a.ability==1 && a.heal==0 && a.range1!=null)
+									if(a.ability==1 && a.heal==0 && a.valid_standard_attack())
 										pattacklist1+=a
 									if(a.heal==1)
 										heallist1+=a
 										healer1=1
 								for(var/obj/perk/a in battler1.contents)
-									if(a.ability==1 && a.heal==0 && a.range1!=null)
+									if(a.ability==1 && a.heal==0 && a.valid_standard_attack())
 										pattacklist1+=a
 									if(a.heal==1)
 										heallist1+=a
@@ -1470,7 +1470,7 @@ atom
 									battler2<<output("[battler2] has been designated as 'Battler 2'","oocout")
 									//Unequipglobalmods(battler2)
 									for(var/obj/perk/a in battler2.contents)
-										if(a.ability==1 && a.heal==0 && a.range1!=null)
+										if(a.ability==1 && a.heal==0 && a.valid_standard_attack())
 											pattacklist2+=a
 										if(a.heal==1)
 											heallist2+=a
@@ -1498,7 +1498,7 @@ atom
 									battler3<<output("[battler3] has been designated as 'Battler 3'","oocout")
 									//Unequipglobalmods(battler3)
 									for(var/obj/perk/a in battler3.contents)
-										if(a.ability==1 && a.heal==0 && a.range1!=null)
+										if(a.ability==1 && a.heal==0 && a.valid_standard_attack())
 											pattacklist3+=a
 										if(a.heal==1)
 											heallist3+=a
@@ -1526,7 +1526,7 @@ atom
 									battler4<<output("[battler4] has been designated as 'Battler 4'","oocout")
 									//Unequipglobalmods(battler4)
 									for(var/obj/perk/a in battler4.contents)
-										if(a.ability==1 && a.heal==0 && a.range1!=null)
+										if(a.ability==1 && a.heal==0 && a.valid_standard_attack())
 											pattacklist4+=a
 										if(a.heal==1)
 											heallist4+=a
@@ -8163,8 +8163,9 @@ obj
 				technique=1
 				level=2
 				mcost=5
-				range1=2
-				range2=12
+				attack_roll_damage_dice = TRUE
+				attack_roll_dice_count = 2
+				attack_roll_damage_upper = 6
 				adddam=0
 				addhit=0
 				basecheck=10

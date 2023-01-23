@@ -15,6 +15,15 @@
 	/// sides of dice to roll for dice roll damage calculations
 	var/attack_roll_dice_sides
 
+/**
+ * we have a valid standard attack or healing roll
+ */
+/obj/perk/proc/valid_standard_attack()
+	return !!valid_raw_attack_damage_roll()
+
+/**
+ * we have a valid raw attack damage or healing roll
+ */
 /obj/perk/proc/valid_raw_attack_damage_roll()
 	if(attack_roll_damage_dice)
 		return !isnull(attack_roll_dice_count) && !isnull(attack_roll_dice_sides)

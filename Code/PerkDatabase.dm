@@ -3445,8 +3445,9 @@ obj
 						rank="B"
 						name="Assault Trigger"
 						mcost=45
-						range1=5
-						range2=10
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 5
+						attack_roll_dice_sides = 2
 						atype="weapon"
 						range="Melee"
 						costtype="Stamina"
@@ -3456,8 +3457,9 @@ obj
 						name="Fated Circle"
 						mcost=40
 						basecheck=10
-						range1=2
-						range2=12
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 2
+						attack_roll_dice_sides = 6
 						adddam=0
 						addhit=0
 						range=" 3x3 AoE around user."
@@ -3472,13 +3474,14 @@ obj
 						rank="B"
 						name="Crushing Blow"
 						mcost=50
-						range1=5
-						range2=60
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 5
+						attack_roll_dice_sides = 12
 						adddam=5
 						addhit=5
 						atype="weapon"
 						range=" 5 tiles."
-						desc="The user of this technique infuses their feet with magic, and launches 3 tiles into the air. They gain the effects of Airborne, without the effects of Knock-up. They then swing their weapon to the side, releasing a disk of light that deals Holy damage, and inflicts 'Heavy' on hit. Costs 50 Stamina."
+						desc="The user of this technique infuses their feet with magic, and launches 3 tiles into the air. They gain the effects of Airborne, without the effects of Knock-up. They then swing their weapon to the side, releasing a disk of light that deals Holy damage, and inflicts 'Heavy' on hit. Attack: Weapon Damage + 5d12. Costs 50 Stamina."
 					RoundEdge
 						rank="B"
 						name="Round Edge"
@@ -3497,8 +3500,9 @@ obj
 						name="Blade Beam"
 						mcost=40
 						basecheck=13
-						range1=2
-						range2=24
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 2
+						attack_roll_dice_sides = 12
 						adddam=10
 						addhit=0
 						range=" 6 tile line, 3 tile cone at the end of line."
@@ -3543,8 +3547,9 @@ obj
 					BlastingZone
 						rank="A"
 						name="Blasting Zone"
-						range1=60
-						range2=110
+						attack_roll_damage_dice = FALSE
+						attack_roll_damage_lower = 60
+						attack_roll_damage_upper = 110
 						basecheck=14
 						adddam=5
 						range="  3 tile wide, 5 tile line."
@@ -3601,8 +3606,9 @@ obj
 						name="Finishing Touch"
 						mcost=55
 						basecheck=10
-						range1=2
-						range2=40
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 2
+						attack_roll_dice_sides = 20
 						adddam=10
 						addhit=3
 						range="3 tile wide, Melee"
@@ -3622,8 +3628,9 @@ obj
 						name="Red Card"
 						mcost=60
 						basecheck=10
-						range1=2
-						range2=20
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 1
+						attack_roll_dice_sides = 20
 						adddam=0
 						addhit=3
 						range="Melee"
@@ -3886,8 +3893,9 @@ obj
 					name="Land Mine"
 					mcost=6
 					basecheck=8
-					range1=2
-					range2=40
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_damage_upper = 20
 					adddam=0
 					addhit=0
 					range=" 3 tile range, placeable anywhere a creature is not already positioned."
@@ -3906,8 +3914,9 @@ obj
 					name="Burst"
 					mcost=8
 					basecheck=10
-					range1=2
-					range2=8
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_damage_upper = 4
 					adddam=0
 					addhit=0
 					range=" 3 tile range, placeable anywhere a creature is not already positioned."
@@ -4361,8 +4370,9 @@ obj
 					addhit=4
 					adddam=5
 					mcost=55
-					range1=3
-					range2=12
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 3
+					attack_roll_dice_sides = 12
 					desc="Conjure a whole storm of red streams that can travel to several targets or be split apart to target multiple targets. The streams will try to surround the target making a circle before unleashing their stored Mana into a powerful beam roasting whatever is trapped inside. (Damage: 3d12+INT+5 | 3 Ranged Attack Rolls (1d20+INT+4), - 55 Mana)"
 				Combustga
 					level=5
@@ -4371,8 +4381,9 @@ obj
 					atype="save"
 					range=" 6 tile."
 					basecheck=15
-					range1=10
-					range2=120
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 10
+					attack_roll_dice_sides = 12
 					adddam=5
 					mcost=80
 					desc="The caster stands still and focuses for two turns, drawing on the Mana inside of a target individual and grabbing hold of it. They then clench their hands down, causing the mana to combust inside of the foe and dealing damage in a guaranteed hit. (Prompts a Fortitude saving (15+INT+Rankbonus) throw after charging is completed, dealing 10d12+INT+5 damage on a failed save, or half as much on a success. | 2 turn charge time -80 Mana.)"
@@ -4383,8 +4394,9 @@ obj
 					cat="Unique"
 					atype="standard"
 					range=" 2 tile cross AoE within 7 yiles of user."
-					range1=7
-					range2=84
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 7
+					attack_roll_dice_sides = 12
 					adddam=5
 					addhit=4
 					mcost=50
@@ -4393,8 +4405,9 @@ obj
 					level=5
 					rank="A"
 					cat="Unique"
-					range1=3
-					range2=36
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 3
+					attack_roll_dice_sides = 12
 					adddam=5
 					addhit=4
 					atype="standard"
@@ -4408,8 +4421,9 @@ obj
 					mcost=60
 					atype="save"
 					basecheck=15
-					range1=7
-					range2=84
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 7
+					attack_roll_dice_sides = 12
 					adddam=4
 					range=" 7x7 AoE within 6 tiles of caster."
 					desc="The user creates a ball of super heated magic casting it into the air where it grows into a massive inferno sitting above the heads of everyone in the battlefield. The inferno is then cast downward scorching the very earth as it collides into setting everything ablaze. (Prompts a Reflex saving throw(15+INT+Rankbonus), dealing 7d12+INT+4 Fire damage on a failure, or half as much on a successful save. Affects a 7x7 AoE, - 60 Mana.)"
@@ -4423,10 +4437,8 @@ obj
 					atype="save"
 					savetype="Fortitude"
 					desc="The user standing still, and with complete concentration begins to channel, and pray to death. Over the course of three turns they pray, but when finished death deals a blow to the victim reducing them to a near death state. The victim has to be within the vision of the caster. (Prompts a Fortitude saving throw(16+INT+Rankbonus), which reduces target to 40 HP if failed, after 3 channeling turns. Does not lower beyond 40 HP. -160 Mana.)"
-					range1=0
-					range2=0
-
-
+					attack_roll_damage_dice = FALSE
+					attack_roll_damage_exact = 0
 
 			BlackMagic
 				magicneed="Black Magic"
@@ -4787,8 +4799,9 @@ obj
 						pre="Regen"
 						greenmagic=1
 						statuseffect="Regen"
-						range1=2
-						range2=20
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 2
+						attack_roll_damage_upper = 10
 						multi=1
 						desc="The user casts a sphere of magic that expands into a glittering dome upon reaching its target. Asylum covers a 3x3 area. Any friendly creature inside the asylum while it is active heals for 2d10 HP at the beginning of each turn. Any time a friendly creature is healed by a healing spell aside from Asylum, while inside the asylum they gain a bonus of +10 to the healing effect. Only 1 asylum can be activated by a user at a time. Asylums by different casters cannot overlap. Lasts for 4 turns. (-50 mana.)"
 					Sacrifice
@@ -4826,7 +4839,6 @@ obj
 						attack_roll_damage_dice = TRUE
 						attack_roll_dice_count = 2
 						attack_roll_dice_sides = 12
-						range2=24
 						range=" 6 tile range."
 						addhit=1
 						desc="The user casts forth a condensed ball of air that impacts a target before becoming a swirling vortex. As a reaction, this spell can be used to buffet fall damage - reducing it by 20 points. Out of Battle Effects: The user is capable of controlling wind to a small degree. They can cause air to vacate a 10ft area. They can also reduce the effects of fall damage by a degree of 20ft. They can cause the wind to make basic sounds that can be heard from 15ft away. (Damage: 2d12+CHA wind damage | 6 tile range, +1 to hit, Magic attack roll, 2 tile knockback. -20 Mana.)"
@@ -5315,23 +5327,26 @@ obj
 						desc="The user casts forward a bolt of magick aimed at a targets throat. Upon contact the bolt will pass through the target locking their ability to speak. Target must make a fortitude saving throw or suffer silence. 6 tile range. (Fortitude saving throw (DC 10+WIS+Rank bonus), inflicts Silence on failure. -15 mana.)"
 					Sleep
 						level=1
-						range1=1
-						range2=8
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 1
+						attack_roll_damage_upper = 8
 						range=" 6 tile range."
 						mcost=15
 						desc="The caster creates a dark cloud. Upon contact the cloud lulls the target to sleep. (Damage: 1d8+WIS force | 6 Tile range, Magical attack roll, inflicts Sleep on hit. -15 mana.)"
 					Sleepga
 						level=3
 						pre="Sleep"
-						range1=3
-						range2=30
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 3
+						attack_roll_damage_upper = 10
 						range=" 5x5 AoE within 10 tiles."
 						mcost=60
 						desc="The user starts to exhale a strange white powder forming it into a ring of clouds around them. Once the cloud is built to a large size the user throws their arms out at the clouds disperse outward spreading among the area. If the cloud is breathed in it will make the afflicted drowsy, and an excessive amount will put them to sleep entirely. (Damage: 3d10+WIS Force | 5x5 AoE within 10 tiles, Magical attack roll. Inflicts Sleep on hit. - 60 Mana.)"
 					Hold
 						level=2
-						range1=2
-						range2=8
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 2
+						attack_roll_damage_upper = 4
 						range=" 5 tile range."
 						savetype="Reflex"
 						atype="save"
@@ -8085,8 +8100,9 @@ obj
 				Blaster
 					element="Laser"
 					rank="A"
-					range1=10
-					range2=100
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 10
+					attack_roll_damage_upper = 10
 					damsource="cha"
 					range=" 7 tile line."
 					mcost=100
@@ -8099,23 +8115,25 @@ obj
 					name="Claw Strike"
 					rank="A"
 					damsource="dex"
-					range1=9
-					range2=108
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 9
+					attack_roll_damage_upper = 12
 					range=" Melee"
 					mcost=100
 					desc="The creature rushes forward, and magical claws emanate from its body to skewer an opponent at close range. (Damage: 9d12+DEX Dark damage | Melee attack roll, inflicts 'Bleed' on hit. - 100 Mana.) (BLU)"
 				BadBreath
 					element="All"
-					range1=55
-					range2=55
+					attack_roll_damage_dice = FALSE
+					attack_roll_damage_exact = 55
 					name="Bad Breath"
 					rank="A"
 					desc="The creature releases a wave of putrid breath that inflicts Posion, Silence, Paralyze, Stun, and Slow to those who fail its saving throw. Prompts a Fortitude saving throw, DC 20. Stun lasts 1 turn, all other status effects last for their standard duration. (5 tile cone, -100 Mana.) (BLU)"
 				Drain
 					element="Dark"
 					rank="A"
-					range1=9
-					range2=108
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 9
+					attack_roll_damage_upper = 12
 					damsource="cha"
 					range=" 8 tile range."
 					mcost=110
@@ -8124,8 +8142,9 @@ obj
 					element="Flare"
 					name="Crystal Lance"
 					rank="A"
-					range1=10
-					range2=100
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 10
+					attack_roll_damage_upper = 10
 					damsource="str"
 					range=" 3 tile range, Melee"
 					mcost=100
@@ -8140,8 +8159,9 @@ obj
 				AdamantDrum
 					element="General"
 					name="Adamant Drum"
-					range1=12
-					range2=144
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 12
+					attack_roll_damage_upper = 12
 					rank="S"
 					range=" 14x14 AoE"
 					atype="save"
@@ -8154,8 +8174,9 @@ obj
 					element="Wind"
 					name="Mystic Wing"
 					rank="S"
-					range1=11
-					range2=132
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 11
+					attack_roll_damage_upper = 12
 					damsource="dex"
 					range=" +3 tile movement, Melee."
 					addhit=5
@@ -8164,8 +8185,9 @@ obj
 				Gaze
 					element="Laser"
 					rank="S"
-					range1=11
-					range2=132
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 11
+					attack_roll_damage_upper = 12
 					damsource="wis"
 					range=" 6 tile line."
 					mcost=130
@@ -8176,8 +8198,9 @@ obj
 					name="Mind Blast"
 					blu=0
 					rank="B"
-					range1=5
-					range2=30
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 7
+					attack_roll_damage_upper = 10
 					range=" 5x5 AoE around user."
 					atype="save"
 					savetype="Will"
@@ -8189,8 +8212,9 @@ obj
 					element="Thunder"
 					name="Mind Blast"
 					rank="S"
-					range1=12
-					range2=120
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 12
+					attack_roll_damage_upper = 10
 					range=" 9x9 AoE around user."
 					atype="save"
 					savetype="Will"
@@ -8202,8 +8226,9 @@ obj
 					element="Fire"
 					name="Great Flamethrower"
 					rank="S"
-					range1=9
-					range2=108
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 9
+					attack_roll_damage_upper = 12
 					range=" 5 tile wide, 8 tile line."
 					mcost=120
 					damsource="wis"
@@ -8212,16 +8237,18 @@ obj
 					element="Dark"
 					name="Shadow Flare"
 					rank="S"
-					range1=12
-					range2=144
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 12
+					attack_roll_damage_upper = 12
 					damsource="cha"
 					mcost=150
 					desc="The creature focuses on a target, outstretching their hand towards them. After casting the spell several shimmering orbs of darkness appear around the target quickly honing in on them and converging into a dense mass of energy trapping the target, and tearing at their body from the inside. (Damage: 12d12+CHA Dark damage | Magical attack roll, inflicts 'Burn', 'Weak', and 'Slow' on hit. -150 Mana.) (BLU)"
 				Beta
 					element="Fire"
 					rank="S"
-					range1=12
-					range2=144
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 12
+					attack_roll_damage_upper = 12
 					damsource="int"
 					range=" 5 tile wide, 8 tile line."
 					mcost=140
