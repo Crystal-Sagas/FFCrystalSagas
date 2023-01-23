@@ -28,3 +28,12 @@
 	if(target)
 		return call(target, procpath)(arglist(args.Copy(3)))
 	return call(procpath)(arglist(args.Copy(3)))
+
+/**
+ * gets a ref or tag based on if the thing wants to use its tag
+ */
+/proc/ref_tag(datum/D)
+	if(D.use_tag)
+		ASSERT(D.tag)
+		return D.tag
+	return ref(D)

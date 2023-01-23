@@ -21,7 +21,7 @@ GLOBAL_LIST_INIT_INPLACE(runtime_skipping, global.runtime_skipping || list())
 		world.log << "!! STACK OVERFLOW !!\n[E.name]\n[E.desc]"
 		return
 
-	var/identifier = "[E.file]|[E.line]"
+	var/identifier = "[E.file]|[E.line]|[E.name]"
 	var/skipping = FALSE
 	var/dump_skip = FALSE
 

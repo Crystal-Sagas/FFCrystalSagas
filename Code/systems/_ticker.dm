@@ -15,6 +15,8 @@ GLOBAL_DATUM_INIT(ticker, /datum/ticker, new)
 /datum/ticker/proc/make_systems()
 	systems = list()
 	for(var/path in subtypesof(/datum/system))
+		if(is_abstract(path))
+			continue
 		var/datum/system/sys = new path
 		systems += sys
 
@@ -83,7 +85,11 @@ GLOBAL_DATUM_INIT(ticker, /datum/ticker, new)
 		CRASH("failed to open savefile")
 	S.cd = "/"
 	var/list/data
+	var/version
+	S["version"] >> version
 	S["data"] >> data
+	if(version < sys.save_version)
+		sys.Migrate(data, version)
 	if(!sys.Load(data))
 		. = FALSE
 		CRASH("failed to load system")
@@ -99,8 +105,10 @@ GLOBAL_DATUM_INIT(ticker, /datum/ticker, new)
 		CRASH("failed to open savefile")
 	S.cd = "/"
 	var/list/data = sys.Save()
+	var/version = sys.save_version
 	if(!data)
 		. = FALSE
 		CRASH("failed to save system")
 	S["data"] << data
+	S["version"] << version
 	return TRUE

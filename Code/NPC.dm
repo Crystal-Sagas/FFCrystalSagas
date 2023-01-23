@@ -1,3 +1,7 @@
+/**
+ * hosts FATE logic, aka the mechanical combat system
+ */
+
 obj
 	battlestorage
 		var/battler1=null
