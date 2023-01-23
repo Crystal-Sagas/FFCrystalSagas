@@ -57,7 +57,7 @@
 /**
  * raise signal
  *
- * signal handlers will be called with (raising, ...) where raising is just us
+ * signal handlers will be called with (raising, ...) where raising is just us, and ... are additional args provided for the signal.
  */
 /datum/proc/raise_signal(sigtype, ...)
 	var/list/datums = signals_lookup?[sigtype]

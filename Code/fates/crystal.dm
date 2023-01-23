@@ -20,5 +20,3 @@ obj
 		density=1
 		layer=2
 		pixel_x=-10
-
-
