@@ -3,3 +3,4 @@
 	namespace = PROTOTYPE_NAMESPACE_LOOT_TABLE
 
 #warn impl
+

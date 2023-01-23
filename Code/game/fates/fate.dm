@@ -12,6 +12,14 @@
 	/// enemies
 	var/list/obj/npc/enemies
 
+	//? rewards
+	/// gil reward amount
+	var/gil_reward = 0
+	/// crafting item rewards by typepath
+	var/list/crafting_rewards
+	/// items
+	var/list/obj/item/item_rewards
+
 
 /**
  * battle loop
@@ -27,3 +35,10 @@
 /datum/instanced_fate/proc/enemies_dead()
 
 /datum/instanced_fate/proc/fighters_dead()
+
+
+#warn impl all
+
+/datum/instanced_fate/proc/reward_player(mob/player)
+
+
