@@ -20,7 +20,7 @@ obj/NPCshop
 		icon_state="Ramen"
 		name="Stock Crystal Shop"
 		stockgiver=1
-		New()
+
 		New()
 ///Stock 1
 			var/obj/item/stock/Stockgem/Firegem/s1=new

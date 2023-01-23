@@ -7,3 +7,4 @@
 #define LAZYLIST_SET(L, K, V) if(!L) { L = list(); }; L[K] = V;
 #define LAZYLIST_FIND(L, E) L?.Find(E)
 #define LAZYLIST_DISTINCTADD(L, E) if(!L) { L = list(); }; L |= E;
+#define LAZYLIST_ACCESS(L, K) L?[K]

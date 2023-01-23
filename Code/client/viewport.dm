@@ -21,8 +21,6 @@
 	. = FALSE
 	// get vars only; they have to manually refit
 	var/got = winget(src, SKIN_ID_GAME_MAP, "size")
-	if(!got)
-		return
 	var/list/split = splittext(got, "x")
 	var/got_spx
 	var/got_spy

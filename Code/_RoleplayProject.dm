@@ -1,12 +1,6 @@
 /*
 	These are simple defaults for your project.
  */
-
-#define TILE_WIDTH 32
-#define TILE_HEIGHT 32
-#define MAX_VIEW_TILES 1440
-#define floor(x) round(x)
-#define ceil(x) (-round(-(x)))
 atom
 	var/savedx
 	var/savedy
@@ -41,16 +35,34 @@ mob
 	dummy5
 		icon='Zantetsuken.dmi'
 	Mog
-		icon='Moogle.dmi'
+		icon='Icons/Moogle.dmi'
 		density=1
 		Click()
 			Charcreate(usr)
 
-obj
-	perkshopholder
-	techshopholder
-	recipeshopholder
-	stableholder
+GLOBAL_DATUM_INIT(perk_shop, /datum/global_perk_shop, new)
+/**
+ * global perk holder datum
+ */
+/datum/global_perk_shop
+	/// holds perk /obj's
+	var/list/perks = list()
+
+GLOBAL_DATUM_INIT(recipe_shop, /datum/global_recipe_shop, new)
+/**
+ * global recipe holder datum
+ */
+/datum/global_recipe_shop
+	/// holds recipe /obj's
+	var/list/recipes = list()
+
+GLOBAL_DATUM_INIT(stable_holder, /datum/global_stable_holder, new)
+/**
+ * global stable holder datum
+ */
+/datum/global_stable_holder
+	/// holds monster /obj's
+	var/list/monsters = list()
 
 area
 	default
@@ -127,7 +139,6 @@ obj
 	Cursor
 		icon='Icons/Cursor.dmi'
 
-
 mob
 	proc
 		Play()
@@ -137,9 +148,10 @@ mob
 				if("Yes")
 				if("No")
 					return
+			client.images -= __lobby_image
 			src.loc = locate(219,229,2)
 			src.density=1
-			src.icon = 'Ghostflame.dmi'
+			src.icon = 'Icons/Ghostflame.dmi'
 			src<<sound(null)
 			sleep()
 			src<< 'Audio/Cursor Ready.ogg'
@@ -152,11 +164,10 @@ mob
 			for(var/obj/Eye/e in world)
 				if(e.owner==usr.ckey)
 					del(e)
-			for(var/mob/M in world)
-				if(Admin4.Find(M.ckey) || M.client?.is_localhost())
-					M.adminlv =4
-					winset(src,"default.Adminbut","is-visible=true")
-					M.verbs+=typesof(/mob/Admin/verb/)
+			if(Admin4.Find(ckey) || client.is_localhost())
+				adminlv = 4
+				winset(src, "default.Adminbut", "is-visible=true")
+				verbs += typesof(/mob/Admin/verb/)
 			for(var/obj/o in usr.client.screen)
 				del(o)
 			for(var/image/i in usr.client.screen)
@@ -182,6 +193,7 @@ mob
 				var/obj/item/a=copyatom(b)
 				usr.contents+=a
 		Load()
+			client.images -= __lobby_image
 			if(fexists("Save/[src.ckey]"))
 				src<<sound(null)
 				sleep()
@@ -236,46 +248,45 @@ mob
 				if(usr.rankchecked==0)
 					if(usr.rank=="Fledgling")
 						usr.rankchecked=1
-						goto endrankcheck
-					if(usr.rank=="Rookie")
+					else
+						if(usr.rank=="Rookie")
+							usr.rankchecked=1
+							usr.mhp+=40
+							usr.hp+=40
+							usr.msp+=40
+							usr.sp+=40
+							usr.mmp+=40
+							usr.mp+=40
+						if(usr.rank=="Adept")
+							usr.mhp+=70
+							usr.hp+=70
+							usr.msp+=70
+							usr.sp+=70
+							usr.mmp+=70
+							usr.mp+=70
+						if(usr.rank=="Veteran")
+							usr.mhp+=100
+							usr.hp+=100
+							usr.msp+=100
+							usr.sp+=100
+							usr.mmp+=100
+							usr.mp+=100
+						if(usr.rank=="Hero")
+							usr.mhp+=135
+							usr.hp+=135
+							usr.msp+=135
+							usr.sp+=135
+							usr.mmp+=135
+							usr.mp+=135
+						if(usr.rank=="Master")
+							usr.mhp+=180
+							usr.hp+=180
+							usr.msp+=180
+							usr.sp+=180
+							usr.mmp+=180
+							usr.mp+=180
 						usr.rankchecked=1
-						usr.mhp+=40
-						usr.hp+=40
-						usr.msp+=40
-						usr.sp+=40
-						usr.mmp+=40
-						usr.mp+=40
-					if(usr.rank=="Adept")
-						usr.mhp+=70
-						usr.hp+=70
-						usr.msp+=70
-						usr.sp+=70
-						usr.mmp+=70
-						usr.mp+=70
-					if(usr.rank=="Veteran")
-						usr.mhp+=100
-						usr.hp+=100
-						usr.msp+=100
-						usr.sp+=100
-						usr.mmp+=100
-						usr.mp+=100
-					if(usr.rank=="Hero")
-						usr.mhp+=135
-						usr.hp+=135
-						usr.msp+=135
-						usr.sp+=135
-						usr.mmp+=135
-						usr.mp+=135
-					if(usr.rank=="Master")
-						usr.mhp+=180
-						usr.hp+=180
-						usr.msp+=180
-						usr.sp+=180
-						usr.mmp+=180
-						usr.mp+=180
-					usr.rankchecked=1
-					alert(usr,"You have been granted your HP, MP, and SP bonus for your current rank.")
-				endrankcheck
+						alert(usr,"You have been granted your HP, MP, and SP bonus for your current rank.")
 				if(usr.patron)
 					if(!usr.firsttimerewards)
 						var/obj/item/Mooglebox/MoogleShopBox/a=new
@@ -307,6 +318,16 @@ mob
 			spawn(6000)
 				AutoSave()
 
+// todo: refactor
+/mob/var/tmp/image/__lobby_image
+/proc/__init_lobby_logo()
+	RETURN_TYPE(/image)
+	var/image/I = image('PNG/FFTCSlogo2.png')
+	I.layer = 99
+	I.pixel_x=-115
+	I.pixel_y=70
+	return I
+
 mob
 	Login()
 		sleep()
@@ -322,19 +343,15 @@ mob
 		E.owner = src.ckey
 		src.client.eye = E
 		src.client.perspective = EYE_PERSPECTIVE
-		var/image/I = image('FFTCSlogo2.png',E)
 		var/obj/PlayGame/G = new /obj/PlayGame
 		var/obj/Load/L = new /obj/Load
-		I.layer = 99
-		I.alpha = 0
-		I.pixel_x=-115
-		I.pixel_y=70
-		src<<I
-		animate(I,alpha=255,time=50)
-		animate(I,transform=M ,time=50)
-		spawn(50)
-			src.client.screen+=G
-			src.client.screen+=L
+		__lobby_image = __init_lobby_logo()
+		__lobby_image.alpha = 0
+		client.images += __lobby_image
+		animate(__lobby_image,alpha=255,time=50)
+		animate(__lobby_image,transform=M ,time=50)
+		src.client.screen+=G
+		src.client.screen+=L
 		..()
 	Logout()
 		if(src.tempeventmin)
@@ -378,7 +395,6 @@ mob
 		del src
 		..()
 
-
 proc
 	Saveworld()
 		Save_Ban()
@@ -401,12 +417,12 @@ proc
 				Types=new
 		if(Amount % 250 != 0)
 			F["Types"]<<Types
-		hacklol
-		if(fexists("Save/World/File[E++]"))
-			fdel("Save/World/File[E++]")
-			world<<"<small>Server: Objects DEBUG system check: extra objects file deleted!"
-			E++
-			goto hacklol
+		hacklol:
+			if(fexists("Save/World/File[E++]"))
+				fdel("Save/World/File[E++]")
+				world<<"<small>Server: Objects DEBUG system check: extra objects file deleted!"
+				E++
+				goto hacklol
 		world<<output("<small>Server: Objects Saved([Amount]).","icout")
 		world<<output("World has been succesfully saved :)","oocout")
 
@@ -416,23 +432,23 @@ proc
 		world<<output("<small>Server: Loading Items...","icout")
 		var/amount=0
 		var/filenum=0
-		wowza
-		filenum++
-		if(fexists("Save/World/File[filenum]"))
-			var/savefile/F=new("Save/World/File[filenum]")
-			var/list/L=new
-			F["Types"]>>L
-			for(var/obj/A in L)
-				amount+=1
-				A.loc=locate(A.savedx,A.savedy,A.savedz)
-			goto wowza
+		wowza:
+			filenum++
+			if(fexists("Save/World/File[filenum]"))
+				var/savefile/F=new("Save/World/File[filenum]")
+				var/list/L=new
+				F["Types"]>>L
+				for(var/obj/A in L)
+					amount+=1
+					A.loc=locate(A.savedx,A.savedy,A.savedz)
+				goto wowza
 		world<<output("<small>Server: Items Loaded ([amount]).","icout")
 
 	Charcreate(var/mob/m)
 		if(m.created)
 			return
 		m.created=1
-		var/list/races = list("Human","Guado","Ronso","Namazu","Gnath","Miqo'te","Moogle","Viera","Lalafell","Roegadyn","Au Ra","Gria")
+		var/list/races = list("Human","Guado","Ronso","Namazu","Gnath","Miqo'te","Moogle","Viera","Elezen","Lalafell","Roegadyn","Au Ra","Gria")
 		if(Cyborg.Find(m.key))
 			races+="Cyborg"
 		if(Albhed.Find(m.key))
@@ -564,6 +580,21 @@ proc
 				m.contents+=p2
 				m.contents+=p3
 				m.wis+=2
+				m.Checkmod(1,m.str,m.addstr,m)
+				m.Checkmod(2,m.dex,m.adddex,m)
+				m.Checkmod(3,m.con,m.addcon,m)
+				m.Checkmod(4,m.int,m.addint,m)
+				m.Checkmod(5,m.wis,m.addwis,m)
+				m.Checkmod(6,m.cha,m.addcha,m)
+			if("Elezen")
+				m.race="Elezen"
+				var/obj/perk/Raceperks/Elezen/ElezenPhysiology/p1=new
+				var/obj/perk/Raceperks/Elezen/LifestreamsGift/p2=new
+				var/obj/perk/Crafting/MateriaMelder/p3=new
+				m.contents+=p1
+				m.contents+=p2
+				m.contents+=p3
+				m.dex+=2
 				m.Checkmod(1,m.str,m.addstr,m)
 				m.Checkmod(2,m.dex,m.adddex,m)
 				m.Checkmod(3,m.con,m.addcon,m)
@@ -2035,87 +2066,87 @@ proc
 				for(var/obj/perk/p in m.contents)
 					if(choices.Find(p.name))
 						choices-=p.name
-				redostuff
-				var/choice = input(m,"Which ability do you wish? [a]/3") as null|anything in choices
-				if(choices!=null)
-					choices-=choice
-				switch(choice)
-					if("Photosynthetic Wave")
-						var/obj/perk/MonsterAbilities/BLU/PhotosyntheticWave/p1=new
-						m.contents+=p1
-						m.rpp--
-						a++
-						if(a==3)
-							loop=0
-					if("Shrapnel Seed")
-						var/obj/perk/MonsterAbilities/BLU/ShrapnelSeed/p1=new
-						m.contents+=p1
-						m.rpp--
-						a++
-						if(a==3)
-							loop=0
-					if("Geezard Claw")
-						var/obj/perk/MonsterAbilities/BLU/GeezardClaw/p1=new
-						m.contents+=p1
-						m.rpp--
-						a++
-						if(a==3)
-							loop=0
-					if("Goblin Strike")
-						var/obj/perk/MonsterAbilities/BLU/GoblinStrike/p1=new
-						m.contents+=p1
-						m.rpp--
-						a++
-						if(a==3)
-							loop=0
-					if("Poison Powder")
-						var/obj/perk/MonsterAbilities/BLU/PoisonPowder/p1=new
-						m.contents+=p1
-						m.rpp--
-						a++
-						if(a==3)
-							loop=0
-					if("Silver Fang")
-						var/obj/perk/MonsterAbilities/BLU/SilverFang/p1=new
-						m.contents+=p1
-						m.rpp--
-						a++
-						if(a==3)
-							loop=0
-					if("Mu Claw")
-						var/obj/perk/MonsterAbilities/BLU/MuClaw/p1=new
-						m.contents+=p1
-						m.rpp--
-						a++
-						if(a==3)
-							loop=0
-					if("Gelantinous Lake")
-						var/obj/perk/MonsterAbilities/BLU/GelatinousLake/p1=new
-						m.contents+=p1
-						m.rpp--
-						a++
-						if(a==3)
-							loop=0
-					if("Water Gun")
-						var/obj/perk/MonsterAbilities/BLU/WaterGun/p1=new
-						m.contents+=p1
-						m.rpp--
-						a++
-						if(a==3)
-							loop=0
-					if("Mesma Blade")
-						var/obj/perk/MonsterAbilities/BLU/MesmaBlade/p1=new
-						m.contents+=p1
-						m.rpp--
-						a++
-						if(a==3)
-							loop=0
-					if(null)
-						switch(alert("You sure you are finished?",,"Yes","No"))
-							if("Yes")
-								return
-							if("No")
-								goto redostuff
+				redostuff:
+					var/choice = input(m,"Which ability do you wish? [a]/3") as null|anything in choices
+					if(choices!=null)
+						choices-=choice
+					switch(choice)
+						if("Photosynthetic Wave")
+							var/obj/perk/MonsterAbilities/BLU/PhotosyntheticWave/p1=new
+							m.contents+=p1
+							m.rpp--
+							a++
+							if(a==3)
+								loop=0
+						if("Shrapnel Seed")
+							var/obj/perk/MonsterAbilities/BLU/ShrapnelSeed/p1=new
+							m.contents+=p1
+							m.rpp--
+							a++
+							if(a==3)
+								loop=0
+						if("Geezard Claw")
+							var/obj/perk/MonsterAbilities/BLU/GeezardClaw/p1=new
+							m.contents+=p1
+							m.rpp--
+							a++
+							if(a==3)
+								loop=0
+						if("Goblin Strike")
+							var/obj/perk/MonsterAbilities/BLU/GoblinStrike/p1=new
+							m.contents+=p1
+							m.rpp--
+							a++
+							if(a==3)
+								loop=0
+						if("Poison Powder")
+							var/obj/perk/MonsterAbilities/BLU/PoisonPowder/p1=new
+							m.contents+=p1
+							m.rpp--
+							a++
+							if(a==3)
+								loop=0
+						if("Silver Fang")
+							var/obj/perk/MonsterAbilities/BLU/SilverFang/p1=new
+							m.contents+=p1
+							m.rpp--
+							a++
+							if(a==3)
+								loop=0
+						if("Mu Claw")
+							var/obj/perk/MonsterAbilities/BLU/MuClaw/p1=new
+							m.contents+=p1
+							m.rpp--
+							a++
+							if(a==3)
+								loop=0
+						if("Gelantinous Lake")
+							var/obj/perk/MonsterAbilities/BLU/GelatinousLake/p1=new
+							m.contents+=p1
+							m.rpp--
+							a++
+							if(a==3)
+								loop=0
+						if("Water Gun")
+							var/obj/perk/MonsterAbilities/BLU/WaterGun/p1=new
+							m.contents+=p1
+							m.rpp--
+							a++
+							if(a==3)
+								loop=0
+						if("Mesma Blade")
+							var/obj/perk/MonsterAbilities/BLU/MesmaBlade/p1=new
+							m.contents+=p1
+							m.rpp--
+							a++
+							if(a==3)
+								loop=0
+						if(null)
+							switch(alert("You sure you are finished?",,"Yes","No"))
+								if("Yes")
+									return
+								if("No")
+									goto redostuff
 	Subjobint(var/mob/m)
 		var/list/jobs = list("Mystic Knight","Pirate","Gladiator","Astrologian","Viking","Bard","Dancer","Black Mage","White Mage","Red Mage","Blue Mage","Ranger","Monk","Beast Master","Samurai","Spellblade","Rogue","Paladin","Knight","Dark Knight","Dragoon","Machinist","Summoner","Chemist","Geomancer")
 		if(Oracle.Find(m.key))

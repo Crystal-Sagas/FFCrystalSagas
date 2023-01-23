@@ -196,10 +196,9 @@ mob
 				var/row
 				winset(usr,"NPCarchive","is-visible=true")
 				winset(usr,"NPCarchive.anpc","cells=0x0")
-				for(var/obj/npcarchive/ar in world)
-					for(var/obj/npc/o in ar.contents)
-						row++
-						src<<output(o,"anpc:1,[row]")
+				for(var/obj/npc/o in global.npc_archive.npcs)
+					row++
+					src<<output(o,"anpc:1,[row]")
 
 			EGotoLandmark()
 				var/list/loclist1=list("Town","Region","Dungeon")

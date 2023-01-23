@@ -41,14 +41,18 @@ atom
 					a.baseac -= gm.mac
 					a.basedr -= gm.mdr
 					a.critmod-=gm.mcritmod
-					a.speed-=gm.mspd
+					a.speedadd-=gm.mspd
 					a.baserflx -= gm.mrflx
 					a.basewill -= gm.mwill
 					a.basefort -= gm.mfort
-					a.pab-=gm.mpab
-					a.pdb-=gm.mpdb
-					a.mdb-=gm.mmdb
-					a.mab-=gm.mmab
+					//a.pab-=gm.mpab
+					//a.pdb-=gm.mpdb
+					//a.mdb-=gm.mmdb
+					//a.mab-=gm.mmab
+					a.pabadd-=gm.mpab
+					a.pdbadd-=gm.mpdb
+					a.mdbadd-=gm.mmdb
+					a.mabadd-=gm.mmab
 					a.baseacro-=gm.macro
 					a.baseath-=gm.mathl
 					a.basearc-=gm.march
@@ -2842,12 +2846,16 @@ obj
 				result=m.chamod
 			return result
 
+GLOBAL_DATUM_INIT(npc_archive, /datum/global_npc_archive, new)
+/**
+ * global npc holder
+ */
+/datum/global_npc_archive
+	/// npcs - untyped for now
+	var/list/npcs = list()
+
 obj
 	overimage
-
-	npcarchive
-		icon='Blank.dmi'
-
 
 	npc
 		icon='Icons/Moogle.dmi'
@@ -2979,67 +2987,65 @@ obj
 						if(a.partyID==usr.partyID)
 							questparty=a
 					Startbattle(usr,src,questparty)
-			for(var/obj/Stablemaster/b in world)
-				if(src in b.contents)
-					if(usr.job=="Beast Master" || usr.subjob=="Beast Master")
-						alert(usr,"[src.desc]")
-						var/list/buychoice=list("Yes","No")
-						var/buy=input("Would you like to buy this Monster?") as anything in buychoice
-						switch(buy)
-							if("Yes")
-								if(usr.money>=src.price)
-									var/obj/npc/c = copyatom(src)
-									usr.contents+=c
-									usr.money-=src.price
-									c.owner=usr.key
-									c.archived=0
-								else
-									alert(usr,"You don't have enough money to purchase this Monster!")
-									return
-							if("No")
+			if(src in global.stablemaster_obj.contents)
+				if(usr.job=="Beast Master" || usr.subjob=="Beast Master")
+					alert(usr,"[src.desc]")
+					var/list/buychoice=list("Yes","No")
+					var/buy=input("Would you like to buy this Monster?") as anything in buychoice
+					switch(buy)
+						if("Yes")
+							if(usr.money>=src.price)
+								var/obj/npc/c = copyatom(src)
+								usr.contents+=c
+								usr.money-=src.price
+								c.owner=usr.key
+								c.archived=0
+							else
+								alert(usr,"You don't have enough money to purchase this Monster!")
 								return
-					else
-						alert(usr,"Only a Beastmaster is able to buy Monsters from a Stablemaster.")
-						return
-				else
-					for(var/obj/npcarchive/a in world)
-						if (src in b.contents)
+						if("No")
 							return
-						if(src in a.contents)
-							usr.npcachoice = src
-							winset(usr,"NPCarchive.hp","text=\"[src.mhp]\"")
-							winset(usr,"NPCarchive.mp","text=\"[src.mmp]\"")
-							winset(usr,"NPCarchive.sp","text=\"[src.msp]\"")
-							winset(usr,"NPCarchive.str","text=\"[src.str]\"")
-							winset(usr,"NPCarchive.dex","text=\"[src.dex]\"")
-							winset(usr,"NPCarchive.con","text=\"[src.con]\"")
-							winset(usr,"NPCarchive.int","text=\"[src.int]\"")
-							winset(usr,"NPCarchive.wis","text=\"[src.wis]\"")
-							winset(usr,"NPCarchive.cha","text=\"[src.cha]\"")
-							winset(usr,"NPCarchive.rflx","text=\"[src.rflx]\"")
-							winset(usr,"NPCarchive.fort","text=\"[src.fort]\"")
-							winset(usr,"NPCarchive.will","text=\"[src.will]\"")
-							winset(usr,"NPCarchive.ac","text=\"[src.baseac]\"")
-							winset(usr,"NPCarchive.dr","text=\"[src.dr]\"")
-							winset(usr,"NPCarchive.spd","text=\"[src.speed]\"")
-							winset(usr,"NPCarchive.acro","text=\"[src.acrobatics]\"")
-							winset(usr,"NPCarchive.ath","text=\"[src.athletics]\"")
-							winset(usr,"NPCarchive.arc","text=\"[src.archaeology]\"")
-							winset(usr,"NPCarchive.dec","text=\"[src.deception]\"")
-							winset(usr,"NPCarchive.dungdisplay","text=\"[src.dungeoneering]\"")
-							winset(usr,"NPCarchive.encdisplay","text=\"[src.enchantment]\"")
-							winset(usr,"NPCarchive.ins","text=\"[src.insight]\"")
-							winset(usr,"NPCarchive.inv","text=\"[src.investigation]\"")
-							winset(usr,"NPCarchive.magdisplay","text=\"[src.magic]\"")
-							winset(usr,"NPCarchive.magi","text=\"[src.magitekOperation]\"")
-							winset(usr,"NPCarchive.med","text=\"[src.medicine]\"")
-							winset(usr,"NPCarchive.natdisplay","text=\"[src.naturalist]\"")
-							winset(usr,"NPCarchive.per","text=\"[src.perception]\"")
-							winset(usr,"NPCarchive.persdisplay","text=\"[src.persuasion]\"")
-							winset(usr,"NPCarchive.sth","text=\"[src.stealth]\"")
-							winset(usr,"NPCarchive.sur","text=\"[src.survival]\"")
-							winset(usr,"NPCarchive.thv","text=\"[src.thievery]\"")
-							winset(usr,"NPCarchive.overp","image=[src.icon]")
+				else
+					alert(usr,"Only a Beastmaster is able to buy Monsters from a Stablemaster.")
+					return
+			else
+				if (src in global.stablemaster_obj.contents)
+					return
+				if(src in global.npc_archive.npcs)
+					usr.npcachoice = src
+					winset(usr,"NPCarchive.hp","text=\"[src.mhp]\"")
+					winset(usr,"NPCarchive.mp","text=\"[src.mmp]\"")
+					winset(usr,"NPCarchive.sp","text=\"[src.msp]\"")
+					winset(usr,"NPCarchive.str","text=\"[src.str]\"")
+					winset(usr,"NPCarchive.dex","text=\"[src.dex]\"")
+					winset(usr,"NPCarchive.con","text=\"[src.con]\"")
+					winset(usr,"NPCarchive.int","text=\"[src.int]\"")
+					winset(usr,"NPCarchive.wis","text=\"[src.wis]\"")
+					winset(usr,"NPCarchive.cha","text=\"[src.cha]\"")
+					winset(usr,"NPCarchive.rflx","text=\"[src.rflx]\"")
+					winset(usr,"NPCarchive.fort","text=\"[src.fort]\"")
+					winset(usr,"NPCarchive.will","text=\"[src.will]\"")
+					winset(usr,"NPCarchive.ac","text=\"[src.baseac]\"")
+					winset(usr,"NPCarchive.dr","text=\"[src.dr]\"")
+					winset(usr,"NPCarchive.spd","text=\"[src.speed]\"")
+					winset(usr,"NPCarchive.acro","text=\"[src.acrobatics]\"")
+					winset(usr,"NPCarchive.ath","text=\"[src.athletics]\"")
+					winset(usr,"NPCarchive.arc","text=\"[src.archaeology]\"")
+					winset(usr,"NPCarchive.dec","text=\"[src.deception]\"")
+					winset(usr,"NPCarchive.dungdisplay","text=\"[src.dungeoneering]\"")
+					winset(usr,"NPCarchive.encdisplay","text=\"[src.enchantment]\"")
+					winset(usr,"NPCarchive.ins","text=\"[src.insight]\"")
+					winset(usr,"NPCarchive.inv","text=\"[src.investigation]\"")
+					winset(usr,"NPCarchive.magdisplay","text=\"[src.magic]\"")
+					winset(usr,"NPCarchive.magi","text=\"[src.magitekOperation]\"")
+					winset(usr,"NPCarchive.med","text=\"[src.medicine]\"")
+					winset(usr,"NPCarchive.natdisplay","text=\"[src.naturalist]\"")
+					winset(usr,"NPCarchive.per","text=\"[src.perception]\"")
+					winset(usr,"NPCarchive.persdisplay","text=\"[src.persuasion]\"")
+					winset(usr,"NPCarchive.sth","text=\"[src.stealth]\"")
+					winset(usr,"NPCarchive.sur","text=\"[src.survival]\"")
+					winset(usr,"NPCarchive.thv","text=\"[src.thievery]\"")
+					winset(usr,"NPCarchive.overp","image=[src.icon]")
 		DblClick()
 			if(src in usr.contents)
 				var/list/options = list("Deploy","View Sheet","Change Overpic","Delete")
@@ -3106,8 +3112,7 @@ obj
 						for(var/obj/perk/p in N.contents)
 							var/op = copyatom(p)
 							src.contents+=op
-						for(var/obj/npcarchive/arc in world)
-							arc.contents+=N
+						global.npc_archive.npcs += N
 					if("Delete")
 						switch(alert("Are you sure you want to delete this NPC?","Yes","No"))
 							if("Yes")
@@ -7767,330 +7772,13 @@ proc
 				m << output(n,"npcview:1,[row]")
 
 	Ncheckmod(var/obj/npc/o)
-		var/result1 = o.str+o.addstr
-		switch(result1)
-			if(0)
-				o.strmod=-5
-			if(2)
-				o.strmod=-4
-			if(4)
-				o.strmod=-3
-			if(6)
-				o.strmod=-2
-			if(8)
-				o.strmod=-1
-			if(10)
-				o.strmod=0
-			if(11)
-				o.strmod=0
-			if(12)
-				o.strmod=1
-			if(13)
-				o.strmod=1
-			if(14)
-				o.strmod=2
-			if(15)
-				o.strmod=2
-			if(16)
-				o.strmod=3
-			if(17)
-				o.strmod=3
-			if(18)
-				o.strmod=4
-			if(19)
-				o.strmod=4
-			if(20)
-				o.strmod=5
-			if(22)
-				o.strmod=6
-			if(24)
-				o.strmod=7
-			if(26)
-				o.strmod=8
-			if(28)
-				o.strmod=9
-			if(30)
-				o.strmod=10
-			if(32)
-				o.strmod=11
-			if(34)
-				o.strmod=12
-			if(36)
-				o.strmod=13
-			if(38)
-				o.strmod=14
-			if(40)
-				o.strmod=15
-		var/result2 = o.dex+o.adddex
-		switch(result2)
-			if(0)
-				o.dexmod=-5
-			if(2)
-				o.dexmod=-4
-			if(4)
-				o.dexmod=-3
-			if(6)
-				o.dexmod=-2
-			if(8)
-				o.dexmod=-1
-			if(10)
-				o.dexmod=0
-			if(11)
-				o.dexmod=0
-			if(12)
-				o.dexmod=1
-			if(13)
-				o.dexmod=1
-			if(14)
-				o.dexmod=2
-			if(15)
-				o.dexmod=2
-			if(16)
-				o.dexmod=3
-			if(17)
-				o.dexmod=3
-			if(18)
-				o.dexmod=4
-			if(19)
-				o.dexmod=4
-			if(20)
-				o.dexmod=5
-			if(22)
-				o.dexmod=6
-			if(24)
-				o.dexmod=7
-			if(26)
-				o.dexmod=8
-			if(28)
-				o.dexmod=9
-			if(30)
-				o.dexmod=10
-			if(32)
-				o.dexmod=11
-			if(34)
-				o.dexmod=12
-			if(36)
-				o.dexmod=13
-			if(38)
-				o.dexmod=14
-			if(40)
-				o.dexmod=15
-		var/result3 = o.con+o.addcon
-		switch(result3)
-			if(0)
-				o.conmod=-5
-			if(2)
-				o.conmod=-4
-			if(4)
-				o.conmod=-3
-			if(6)
-				o.conmod=-2
-			if(8)
-				o.conmod=-1
-			if(10)
-				o.conmod=0
-			if(11)
-				o.conmod=0
-			if(12)
-				o.conmod=1
-			if(13)
-				o.conmod=1
-			if(14)
-				o.conmod=2
-			if(15)
-				o.conmod=2
-			if(16)
-				o.conmod=3
-			if(17)
-				o.conmod=3
-			if(18)
-				o.conmod=4
-			if(19)
-				o.conmod=4
-			if(20)
-				o.conmod=5
-			if(22)
-				o.conmod=6
-			if(24)
-				o.conmod=7
-			if(26)
-				o.conmod=8
-			if(28)
-				o.conmod=9
-			if(30)
-				o.conmod=10
-			if(32)
-				o.conmod=11
-			if(34)
-				o.conmod=12
-			if(36)
-				o.conmod=13
-			if(38)
-				o.conmod=14
-			if(40)
-				o.conmod=15
-		var/result4 = o.int+o.addint
-		switch(result4)
-			if(0)
-				o.intmod=-5
-			if(2)
-				o.intmod=-4
-			if(4)
-				o.intmod=-3
-			if(6)
-				o.intmod=-2
-			if(8)
-				o.intmod=-1
-			if(10)
-				o.intmod=0
-			if(11)
-				o.intmod=0
-			if(12)
-				o.intmod=1
-			if(13)
-				o.intmod=1
-			if(14)
-				o.intmod=2
-			if(15)
-				o.intmod=2
-			if(16)
-				o.intmod=3
-			if(17)
-				o.intmod=3
-			if(18)
-				o.intmod=4
-			if(19)
-				o.intmod=4
-			if(20)
-				o.intmod=5
-			if(22)
-				o.intmod=6
-			if(24)
-				o.intmod=7
-			if(26)
-				o.intmod=8
-			if(28)
-				o.intmod=9
-			if(30)
-				o.intmod=10
-			if(32)
-				o.intmod=11
-			if(34)
-				o.intmod=12
-			if(36)
-				o.intmod=13
-			if(38)
-				o.intmod=14
-			if(40)
-				o.intmod=15
-		var/result5 = o.wis+o.addwis
-		switch(result5)
-			if(0)
-				o.wismod=-5
-			if(2)
-				o.wismod=-4
-			if(4)
-				o.wismod=-3
-			if(6)
-				o.wismod=-2
-			if(8)
-				o.wismod=-1
-			if(10)
-				o.wismod=0
-			if(11)
-				o.wismod=0
-			if(12)
-				o.wismod=1
-			if(13)
-				o.wismod=1
-			if(14)
-				o.wismod=2
-			if(15)
-				o.wismod=2
-			if(16)
-				o.wismod=3
-			if(17)
-				o.wismod=3
-			if(18)
-				o.wismod=4
-			if(19)
-				o.wismod=4
-			if(20)
-				o.wismod=5
-			if(22)
-				o.wismod=6
-			if(24)
-				o.wismod=7
-			if(26)
-				o.wismod=8
-			if(28)
-				o.wismod=9
-			if(30)
-				o.wismod=10
-			if(32)
-				o.wismod=11
-			if(34)
-				o.wismod=12
-			if(36)
-				o.wismod=13
-			if(38)
-				o.wismod=14
-			if(40)
-				o.wismod=15
-		var/result6 = o.cha+o.addcha
-		switch(result6)
-			if(0)
-				o.chamod=-5
-			if(2)
-				o.chamod=-4
-			if(4)
-				o.chamod=-3
-			if(6)
-				o.chamod=-2
-			if(8)
-				o.chamod=-1
-			if(10)
-				o.chamod=0
-			if(11)
-				o.chamod=0
-			if(12)
-				o.chamod=1
-			if(13)
-				o.chamod=1
-			if(14)
-				o.chamod=2
-			if(15)
-				o.chamod=2
-			if(16)
-				o.chamod=3
-			if(17)
-				o.chamod=3
-			if(18)
-				o.chamod=4
-			if(19)
-				o.chamod=4
-			if(20)
-				o.chamod=5
-			if(22)
-				o.chamod=6
-			if(24)
-				o.chamod=7
-			if(26)
-				o.chamod=8
-			if(28)
-				o.chamod=9
-			if(30)
-				o.chamod=10
-			if(32)
-				o.chamod=11
-			if(34)
-				o.chamod=12
-			if(36)
-				o.chamod=13
-			if(38)
-				o.chamod=14
-			if(40)
-				o.chamod=15
+		o.strmod = round((o.str + o.addstr) / 2) - 5
+		o.dexmod = round((o.dex + o.adddex) / 2) - 5
+		o.conmod = round((o.con + o.addcon) / 2) - 5
+		o.intmod = round((o.int + o.addint) / 2) - 5
+		o.wismod = round((o.wis + o.addwis) / 2) - 5
+		o.chamod = round((o.cha + o.addcha) / 2) - 5
+
 	NSkillcheck(var/obj/npc/m)
 		m.acrobatics=m.baseacro+m.dexmod
 		m.athletics=m.baseath+m.strmod

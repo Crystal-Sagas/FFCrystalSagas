@@ -162,37 +162,36 @@ mob
 				var/list/CSummons = list()
 				var/list/BSummons = list()
 				var/list/ASummons = list()
-				for(var/obj/npcarchive/a in world)
-					for(var/obj/npc/Summons/CRank/b in a.contents)
-						if(b.summon==1)
-							CSummons+=b
-						if(b.name in usr.contents)
+				for(var/obj/npc/Summons/CRank/b in global.npc_archive.npcs)
+					if(b.summon==1)
+						CSummons+=b
+					if(b.name in usr.contents)
+						CSummons-=b
+					if(b.name=="CRank")
+						CSummons-=b
+					for(var/obj/npc/q in usr.contents)
+						if(b.name==q.name)
 							CSummons-=b
-						if(b.name=="CRank")
-							CSummons-=b
-						for(var/obj/npc/q in usr.contents)
-							if(b.name==q.name)
-								CSummons-=b
-					for(var/obj/npc/Summons/BRank/c in a.contents)
-						if(c.summon==1)
-							BSummons+=c
-						if(c.name in usr.contents)
-							BSummons-=c
-						if(c.name=="BRank")
-							BSummons-=c
-						for(var/obj/npc/q in usr.contents)
-							if(c.name==q.name)
-								CSummons-=c
-					for(var/obj/npc/Summons/ARank/d in a.contents)
-						if(d.summon==1)
-							ASummons+=d
-						if(d.name in usr.contents)
-							ASummons-=d
-						if(d.name=="ARank")
-							ASummons-=d
-						for(var/obj/npc/q in usr.contents)
-							if(d.name==q.name)
-								CSummons-=d
+				for(var/obj/npc/Summons/BRank/c in global.npc_archive.npcs)
+					if(c.summon==1)
+						BSummons+=c
+					if(c.name in usr.contents)
+						BSummons-=c
+					if(c.name=="BRank")
+						BSummons-=c
+					for(var/obj/npc/q in usr.contents)
+						if(c.name==q.name)
+							CSummons-=c
+				for(var/obj/npc/Summons/ARank/d in global.npc_archive.npcs)
+					if(d.summon==1)
+						ASummons+=d
+					if(d.name in usr.contents)
+						ASummons-=d
+					if(d.name=="ARank")
+						ASummons-=d
+					for(var/obj/npc/q in usr.contents)
+						if(d.name==q.name)
+							CSummons-=d
 				for(var/obj/npc/Summons/q in usr.contents)
 					CSummons-=q
 					BSummons-=q
@@ -341,13 +340,12 @@ proc
 			for(var/obj/npc/Summons/b in m.contents)
 				if(b.summon==1 && b.scholarsum==0)
 					del b
-			for(var/obj/npcarchive/npc in world)
-				for(var/obj/npc/Summons/Necromancer/c in npc.contents)
-					if(c.summon==1)
-						var/obj/npc/p = copyatom(c)
-						p.archived=0
-						usr.contents+=p
-				alert(usr,"You have lost access to all normal Summons (except Scholar attunement Summons) ; and gained access to all Necromancer summons.")
+			for(var/obj/npc/Summons/Necromancer/c in global.npc_archive.npcs)
+				if(c.summon==1)
+					var/obj/npc/p = copyatom(c)
+					p.archived=0
+					usr.contents+=p
+			alert(usr,"You have lost access to all normal Summons (except Scholar attunement Summons) ; and gained access to all Necromancer summons.")
 ///crafting specs
 		if(o.name=="Heir of Lucis")
 			m.mhp+=20
@@ -1613,11 +1611,6 @@ obj
 									if(src.typing=="magical")
 										aresult=src.basecheck+amod+usr.rankbonus+src.addhit+2
 										dresult=abilitydamage+dmod+usr.mdb+src.adddam+10
-										if(usr.mabadd<15)// Global cap for magical attack bonus add is 15.
-											aresult+=usr.mabadd
-										else
-											aresult+=15
-										//magical damage bonuses here.
 										if(usr.role=="Caster Tank"||usr.role=="Physical DPS"||usr.role=="Physical Support") //These roles all cap at 15 MDB Add.
 											if(usr.mdbadd<15)
 												dresult+=usr.mdbadd
@@ -1646,10 +1639,6 @@ obj
 									else
 										aresult=src.basecheck+amod+usr.rankbonus+src.addhit
 										dresult=abilitydamage+dmod+usr.pdb+src.adddam
-										if(usr.pabadd<15)// Global cap for physical attack bonus add is 15. If it's under 15, it will make it add the 'pabadd' var that is a tmp/var on mobs. If its 15 or higher, it just adds 15.
-											aresult+=usr.pabadd
-										else
-											aresult+=15
 										//phys damage bonuses here.
 										if(usr.role=="Physical Tank"||usr.role=="Magical DPS"||usr.role=="Magical Support") //These roles all cap at 15 PDB Add.
 											if(usr.pdbadd<15)
@@ -1690,8 +1679,58 @@ obj
 									abilitydamage=rand(src.range1,src.range2)
 									if(src.typing=="magical")
 										dresult=doresult+dmod+wepchoice.adddam+usr.mdb+src.adddam+abilitydamage
+										if(usr.role=="Caster Tank"||usr.role=="Physical DPS"||usr.role=="Physical Support") //These roles all cap at 15 MDB Add.
+											if(usr.mdbadd<15)
+												dresult+=usr.mdbadd
+											else
+												dresult+=15
+										else if(usr.role=="Physical Tank")
+											if(usr.mdbadd<10)
+												dresult+=usr.mdbadd
+											else
+												dresult+=10
+										else if(usr.role=="Magical DPS")
+											if(usr.mdbadd<35)
+												dresult+=usr.mdbadd
+											else
+												dresult+=35
+										else if(usr.role=="Magical Support")
+											if(usr.mdbadd<20)
+												dresult+=usr.mdbadd
+											else
+												dresult+=20
+										else if(usr.role=="Generalist")
+											if(usr.mdbadd<25)
+												dresult+=usr.mdbadd
+											else
+												dresult+=25
 									else
 										dresult=doresult+dmod+wepchoice.adddam+usr.pdb+src.adddam+abilitydamage
+										if(usr.role=="Physical Tank"||usr.role=="Magical DPS"||usr.role=="Magical Support") //These roles all cap at 15 PDB Add.
+											if(usr.pdbadd<15)
+												dresult+=usr.pdbadd
+											else
+												dresult+=15
+										else if(usr.role=="Caster Tank")
+											if(usr.pdbadd<10)
+												dresult+=usr.pdbadd
+											else
+												dresult+=10
+										else if(usr.role=="Physical DPS")
+											if(usr.pdbadd<35)
+												dresult+=usr.pdbadd
+											else
+												dresult+=35
+										else if(usr.role=="Physical Support")
+											if(usr.pdbadd<20)
+												dresult+=usr.pdbadd
+											else
+												dresult+=20
+										else if(usr.role=="Generalist")
+											if(usr.pdbadd<25)
+												dresult+=usr.pdbadd
+											else
+												dresult+=25
 									view()<<output("<font size=1><font color=[usr.textcolor]>[usr] <font color=white>is using the <font color=[usr.textcolor]>[src.name]<font color=white> ability with their [wepchoice.name]!  Saving throw: <font color=#8EF5DE><b>[aresult] [src.savetype]!</b><font color=white>, dealing <b><font color=#FFA852>[dresult] damage</b><font color=white> on a failed save!<br> Cost: <b><font color=#0FBFD7>[src.mcost] [src.costtype]</b> | Tile Range:[src.range]","icout")
 								if(src.atype=="weapon")
 									alert(usr,"This ability will use the weapon equipped to your right hand.")
@@ -1703,15 +1742,74 @@ obj
 										amod=Checkdamtype(wepchoice.damsource,usr)
 										if(src.typing=="magical")
 											aresult=aoresult+wepchoice.addhit+amod+usr.rankbonus+usr.mab+src.addhit
+											if(usr.mabadd<15)// Global cap for magical attack bonus add is 15.
+												aresult+=usr.mabadd
+											else
+												aresult+=15
 										else
 											aresult=aoresult+wepchoice.addhit+amod+usr.rankbonus+usr.pab+src.addhit
+											if(usr.pabadd<15)// Global cap for physical attack bonus add is 15.
+												aresult+=usr.pabadd
+											else
+												aresult+=15
 										doresult=rand(wepchoice.range1,wepchoice.range2)
 										dmod=Checkdamtype(wepchoice.damsource,usr)
 										abilitydamage=rand(src.range1,src.range2)
 										if(src.typing=="magical")
 											dresult=doresult+dmod+wepchoice.adddam+usr.mdb+src.adddam+abilitydamage
+											if(usr.role=="Caster Tank"||usr.role=="Physical DPS"||usr.role=="Physical Support") //These roles all cap at 15 MDB Add.
+												if(usr.mdbadd<15)
+													dresult+=usr.mdbadd
+												else
+													dresult+=15
+											else if(usr.role=="Physical Tank")
+												if(usr.mdbadd<10)
+													dresult+=usr.mdbadd
+												else
+													dresult+=10
+											else if(usr.role=="Magical DPS")
+												if(usr.mdbadd<35)
+													dresult+=usr.mdbadd
+												else
+													dresult+=35
+											else if(usr.role=="Magical Support")
+												if(usr.mdbadd<20)
+													dresult+=usr.mdbadd
+												else
+													dresult+=20
+											else if(usr.role=="Generalist")
+												if(usr.mdbadd<25)
+													dresult+=usr.mdbadd
+												else
+													dresult+=25
 										else
 											dresult=doresult+dmod+wepchoice.adddam+usr.pdb+src.adddam+abilitydamage
+											if(usr.role=="Physical Tank"||usr.role=="Magical DPS"||usr.role=="Magical Support") //These roles all cap at 15 PDB Add.
+												if(usr.pdbadd<15)
+													dresult+=usr.pdbadd
+												else
+													dresult+=15
+											else if(usr.role=="Caster Tank")
+												if(usr.pdbadd<10)
+													dresult+=usr.pdbadd
+												else
+													dresult+=10
+											else if(usr.role=="Physical DPS")
+												if(usr.pdbadd<35)
+													dresult+=usr.pdbadd
+												else
+													dresult+=35
+											else if(usr.role=="Physical Support")
+												if(usr.pdbadd<20)
+													dresult+=usr.pdbadd
+												else
+													dresult+=20
+											else if(usr.role=="Generalist")
+												if(usr.pdbadd<25)
+													dresult+=usr.pdbadd
+												else
+													dresult+=25
+
 										critdam=dresult+doresult
 										var/truecrit=wepchoice.critrange-usr.critmod
 										if(aoresult>=truecrit)
@@ -1723,14 +1821,72 @@ obj
 									amod=Checkdamtype(src.damsource,usr)
 									if(src.typing=="magical")
 										aresult=aoresult+src.addhit+amod+usr.rankbonus+usr.mab+2
+										if(usr.mabadd<15)// Global cap for mage attack bonus add is 15.
+											aresult+=usr.mabadd
+										else
+											aresult+=15
 									else
 										aresult=aoresult+src.addhit+amod+usr.rankbonus+usr.pab
+										if(usr.pabadd<15)// Global cap for physical attack bonus add is 15.
+											aresult+=usr.pabadd
+										else
+											aresult+=15
 									doresult=rand(src.range1,src.range2)
 									dmod=Checkdamtype(src.damsource,usr)
 									if(src.typing=="magical")
 										dresult=doresult+dmod+src.adddam+usr.mdb+10
+										if(usr.role=="Caster Tank"||usr.role=="Physical DPS"||usr.role=="Physical Support") //These roles all cap at 15 MDB Add.
+											if(usr.mdbadd<15)
+												dresult+=usr.mdbadd
+											else
+												dresult+=15
+										else if(usr.role=="Physical Tank")
+											if(usr.mdbadd<10)
+												dresult+=usr.mdbadd
+											else
+												dresult+=10
+										else if(usr.role=="Magical DPS")
+											if(usr.mdbadd<35)
+												dresult+=usr.mdbadd
+											else
+												dresult+=35
+										else if(usr.role=="Magical Support")
+											if(usr.mdbadd<20)
+												dresult+=usr.mdbadd
+											else
+												dresult+=20
+										else if(usr.role=="Generalist")
+											if(usr.mdbadd<25)
+												dresult+=usr.mdbadd
+											else
+												dresult+=25
 									else
 										dresult=doresult+dmod+src.adddam+usr.pdb
+										if(usr.role=="Physical Tank"||usr.role=="Magical DPS"||usr.role=="Magical Support") //These roles all cap at 15 PDB Add.
+											if(usr.pdbadd<15)
+												dresult+=usr.pdbadd
+											else
+												dresult+=15
+										else if(usr.role=="Caster Tank")
+											if(usr.pdbadd<10)
+												dresult+=usr.pdbadd
+											else
+												dresult+=10
+										else if(usr.role=="Physical DPS")
+											if(usr.pdbadd<35)
+												dresult+=usr.pdbadd
+											else
+												dresult+=35
+										else if(usr.role=="Physical Support")
+											if(usr.pdbadd<20)
+												dresult+=usr.pdbadd
+											else
+												dresult+=20
+										else if(usr.role=="Generalist")
+											if(usr.pdbadd<25)
+												dresult+=usr.pdbadd
+											else
+												dresult+=25
 									critdam=dresult+doresult
 									var/truecrit=src.critrange-usr.critmod
 									if(aoresult>=truecrit)
@@ -1856,161 +2012,60 @@ obj
 								return
 				else if(src in usr.contents&&src.showee)
 					alert("[src.name]:[src.desc]")
-			for(var/obj/perkshopholder/a in world)
-				if(src in a.contents)
-					if(usr.perkbuying==1)
-						alert(usr,"You are already buying a perk.")
+			//* bandaided
+			if(src in global.perk_shop.perks)
+				if(usr.perkbuying==1)
+					alert(usr,"You are already buying a perk.")
+					usr.perkbuying=0
+					return
+				usr.perkbuying=1
+				if(usr.Checkperk(src,usr))
+					alert(usr,"You already know this perk.")
+					usr.perkbuying=0
+					return
+				if(src.statrequirement==1)
+					var/type = src.stattype
+					if(Checkstats(src,usr,type)==1)
 						usr.perkbuying=0
 						return
-					usr.perkbuying=1
-					if(usr.Checkperk(src,usr))
-						alert(usr,"You already know this perk.")
-						usr.perkbuying=0
-						return
-					if(src.statrequirement==1)
-						var/type = src.stattype
-						if(Checkstats(src,usr,type)==1)
-							usr.perkbuying=0
-							return
-						else
-					if(src.name in usr.nolearn)
-						alert("You cannot learn this perk, as a perk you know is incompatible.")
-						usr.perkbuying=0
-						return
-					switch(alert("[src.desc] (Rank: [src.rank]) (Cost: [src.rpcost])","[src.name]","Learn","Cancel"))
-						if("Learn")
-							if(src.jobneed==usr.subjob)
-								if(src.ability==1)
-									if(src.level<=2 && usr.subjobcap>=2)
-										if(usr.subjobcap==2)
-											if(usr.subcabs==3)
-												alert("You have learned the maximum amount of C Ranks from your subjob!")
-												usr.perkbuying=0
-												return
-										if(src.rank=="B" && usr.subjobcap==2)
-											alert("You are not capable of learning abilities of this level from your Subjob without the Dual Job perk.")
+					else
+				if(src.name in usr.nolearn)
+					alert("You cannot learn this perk, as a perk you know is incompatible.")
+					usr.perkbuying=0
+					return
+				switch(alert("[src.desc] (Rank: [src.rank]) (Cost: [src.rpcost])","[src.name]","Learn","Cancel"))
+					if("Learn")
+						if(src.jobneed==usr.subjob)
+							if(src.ability==1)
+								if(src.level<=2 && usr.subjobcap>=2)
+									if(usr.subjobcap==2)
+										if(usr.subcabs==3)
+											alert("You have learned the maximum amount of C Ranks from your subjob!")
 											usr.perkbuying=0
 											return
-										if(src.rank=="A" && usr.subjobcap==2)
-											alert("You are not capable of learning abilities of this level from your Subjob without the Dual Job perk.")
-											usr.perkbuying=0
-											return
-										if(src.rank=="S" && usr.subjobcap==2)
-											alert("You are not capable of learning abilities of this level from your Subjob without the Dual Job perk.")
-											usr.perkbuying=0
-											return
-										if(src.pre)
-											if(Checkmag(src,usr))
-												alert("You are not capable of learning perks of this type or rank.")
-												usr.perkbuying=0
-												return
-											if(Checkrank(src,usr))
-												alert("You cannot learn abilities of that rank right now.")
-												usr.perkbuying=0
-												return
-											if(usr.Checkpre(src.pre,usr))
-												if(usr.rpp>=src.rpcost)
-													if(src.level==2)
-														usr.subcabs+=1
-													usr.rpp-=src.rpcost
-													var/obj/perk/p = copyatom(src)
-													p.ontree=0
-													usr.contents+=p
-													alert("You have learned [src.name]")
-													Checkspec(src,usr)
-													Rankadjust(src,usr)
-													winset(usr,"PerkWindow.rpp","text=\"[usr.rpp]/[usr.trpp]\"")
-													usr.perkbuying=0
-													return
-												else
-													alert("You don't have enough RPP to learn this.")
-													usr.perkbuying=0
-											else
-												alert("You need [src.pre] in order to learn this.")
-												usr.perkbuying=0
-												return
-										else
-											if(usr.rpp>=src.rpcost)
-												if(Checkmag(src,usr))
-													alert("You are not capable of learning perks of this type or rank.")
-													usr.perkbuying=0
-													return
-												if(Checkrank(src,usr))
-													alert("You cannot learn abilities of that rank right now.")
-													usr.perkbuying=0
-													return
-												if(src.level==2)
-													usr.subcabs+=1
-												usr.rpp-=src.rpcost
-												var/obj/perk/p = copyatom(src)
-												p.ontree=0
-												usr.contents+=p
-												alert("You have learned [src.name]")
-												Checkspec(src,usr)
-												Rankadjust(src,usr)
-												winset(usr,"PerkWindow.rpp","text=\"[usr.rpp]/[usr.trpp]\"")
-												usr.perkbuying=0
-												usr.Save()
-												return
-											else
-												alert("You don't have enough RPP to learn this.")
-												usr.perkbuying=0
-												return
-
-								if(src.ability==0)
-									if(src.rank<="T2" && usr.subjobcap>=2)
-										if(usr.rpp>=src.rpcost)
-											if(src.rank=="T2" && usr.subjobcap<2)
-												alert("You are not capable of learning perks of this level from your Subjob without the Dual Job perk.")
-												usr.perkbuying=0
-												return
-											if(src.rank=="T3" && usr.subjobcap==2)
-												alert("You are not capable of learning perks of this level from your Subjob without the Dual Job perk.")
-												usr.perkbuying=0
-												return
-											if(src.rank=="T4" && usr.subjobcap==2)
-												alert("You are not capable of learning perks of this level from your Subjob without the Dual Job perk.")
-												usr.perkbuying=0
-												return
-											if(src.rank=="T5" && usr.subjobcap==2)
-												alert("You are not capable of learning perks of this level from your Subjob without the Dual Job perk.")
-												usr.perkbuying=0
-												return
-											if(Checkmag(src,usr))
-												alert("You are not capable of learning perks of this type or rank.")
-												usr.perkbuying=0
-												return
-											if(Checkrank(src,usr))
-												alert("You cannot learn abilities of that rank right now.")
-												usr.perkbuying=0
-												return
+									if(src.rank=="B" && usr.subjobcap==2)
+										alert("You are not capable of learning abilities of this level from your Subjob without the Dual Job perk.")
+										usr.perkbuying=0
+										return
+									if(src.rank=="A" && usr.subjobcap==2)
+										alert("You are not capable of learning abilities of this level from your Subjob without the Dual Job perk.")
+										usr.perkbuying=0
+										return
+									if(src.rank=="S" && usr.subjobcap==2)
+										alert("You are not capable of learning abilities of this level from your Subjob without the Dual Job perk.")
+										usr.perkbuying=0
+										return
 									if(src.pre)
+										if(Checkmag(src,usr))
+											alert("You are not capable of learning perks of this type or rank.")
+											usr.perkbuying=0
+											return
+										if(Checkrank(src,usr))
+											alert("You cannot learn abilities of that rank right now.")
+											usr.perkbuying=0
+											return
 										if(usr.Checkpre(src.pre,usr))
 											if(usr.rpp>=src.rpcost)
-												if(src.rank=="T2" && usr.subjobcap<2)
-													alert("You are not capable of learning perks of this level from your Subjob without the Dual Job perk.")
-													usr.perkbuying=0
-													return
-												if(src.rank=="T3" && usr.subjobcap==2)
-													alert("You are not capable of learning perks of this level from your Subjob without the Dual Job perk.")
-													usr.perkbuying=0
-													return
-												if(src.rank=="T4" && usr.subjobcap==2)
-													alert("You are not capable of learning perks of this level from your Subjob without the Dual Job perk.")
-													usr.perkbuying=0
-													return
-												if(src.rank=="T5" && usr.subjobcap==2)
-													alert("You are not capable of learning perks of this level from your Subjob without the Dual Job perk.")
-													usr.perkbuying=0
-													return
-												if(Checkmag(src,usr))
-													alert("You are not capable of learning perks of this type or rank.")
-													usr.perkbuying=0
-													return
-												if(Checkrank(src,usr))
-													alert("You cannot learn abilities of that rank right now.")
-													usr.perkbuying=0
-													return
 												if(src.level==2)
 													usr.subcabs+=1
 												usr.rpp-=src.rpcost
@@ -2031,6 +2086,62 @@ obj
 											usr.perkbuying=0
 											return
 									else
+										if(usr.rpp>=src.rpcost)
+											if(Checkmag(src,usr))
+												alert("You are not capable of learning perks of this type or rank.")
+												usr.perkbuying=0
+												return
+											if(Checkrank(src,usr))
+												alert("You cannot learn abilities of that rank right now.")
+												usr.perkbuying=0
+												return
+											if(src.level==2)
+												usr.subcabs+=1
+											usr.rpp-=src.rpcost
+											var/obj/perk/p = copyatom(src)
+											p.ontree=0
+											usr.contents+=p
+											alert("You have learned [src.name]")
+											Checkspec(src,usr)
+											Rankadjust(src,usr)
+											winset(usr,"PerkWindow.rpp","text=\"[usr.rpp]/[usr.trpp]\"")
+											usr.perkbuying=0
+											usr.Save()
+											return
+										else
+											alert("You don't have enough RPP to learn this.")
+											usr.perkbuying=0
+											return
+
+							if(src.ability==0)
+								if(src.rank<="T2" && usr.subjobcap>=2)
+									if(usr.rpp>=src.rpcost)
+										if(src.rank=="T2" && usr.subjobcap<2)
+											alert("You are not capable of learning perks of this level from your Subjob without the Dual Job perk.")
+											usr.perkbuying=0
+											return
+										if(src.rank=="T3" && usr.subjobcap==2)
+											alert("You are not capable of learning perks of this level from your Subjob without the Dual Job perk.")
+											usr.perkbuying=0
+											return
+										if(src.rank=="T4" && usr.subjobcap==2)
+											alert("You are not capable of learning perks of this level from your Subjob without the Dual Job perk.")
+											usr.perkbuying=0
+											return
+										if(src.rank=="T5" && usr.subjobcap==2)
+											alert("You are not capable of learning perks of this level from your Subjob without the Dual Job perk.")
+											usr.perkbuying=0
+											return
+										if(Checkmag(src,usr))
+											alert("You are not capable of learning perks of this type or rank.")
+											usr.perkbuying=0
+											return
+										if(Checkrank(src,usr))
+											alert("You cannot learn abilities of that rank right now.")
+											usr.perkbuying=0
+											return
+								if(src.pre)
+									if(usr.Checkpre(src.pre,usr))
 										if(usr.rpp>=src.rpcost)
 											if(src.rank=="T2" && usr.subjobcap<2)
 												alert("You are not capable of learning perks of this level from your Subjob without the Dual Job perk.")
@@ -2071,37 +2182,64 @@ obj
 										else
 											alert("You don't have enough RPP to learn this.")
 											usr.perkbuying=0
-											return
-
-							else
-								if(Checkmag(src,usr))
-									alert("You are not capable of learning perks of this type or rank.")
-									usr.perkbuying=0
-									return
-								if(Checkrank(src,usr))
-									alert("You cannot learn abilities of that rank right now.")
-									usr.perkbuying=0
-									return
-								if(src.pre)
-									if(usr.Checkpre(src.pre,usr))
-										if(usr.rpp>=src.rpcost)
-											usr.rpp-=src.rpcost
-											var/obj/perk/p = copyatom(src)
-											p.ontree=0
-											usr.contents+=p
-											alert("You have learned [src.name]")
-											Checkspec(src,usr)
-											Rankadjust(src,usr)
-											winset(usr,"PerkWindow.rpp","text=\"[usr.rpp]/[usr.trpp]\"")
-											usr.perkbuying=0
-										else
-											alert("You don't have enough RPP to learn this.")
-											usr.perkbuying=0
 									else
 										alert("You need [src.pre] in order to learn this.")
 										usr.perkbuying=0
 										return
 								else
+									if(usr.rpp>=src.rpcost)
+										if(src.rank=="T2" && usr.subjobcap<2)
+											alert("You are not capable of learning perks of this level from your Subjob without the Dual Job perk.")
+											usr.perkbuying=0
+											return
+										if(src.rank=="T3" && usr.subjobcap==2)
+											alert("You are not capable of learning perks of this level from your Subjob without the Dual Job perk.")
+											usr.perkbuying=0
+											return
+										if(src.rank=="T4" && usr.subjobcap==2)
+											alert("You are not capable of learning perks of this level from your Subjob without the Dual Job perk.")
+											usr.perkbuying=0
+											return
+										if(src.rank=="T5" && usr.subjobcap==2)
+											alert("You are not capable of learning perks of this level from your Subjob without the Dual Job perk.")
+											usr.perkbuying=0
+											return
+										if(Checkmag(src,usr))
+											alert("You are not capable of learning perks of this type or rank.")
+											usr.perkbuying=0
+											return
+										if(Checkrank(src,usr))
+											alert("You cannot learn abilities of that rank right now.")
+											usr.perkbuying=0
+											return
+										if(src.level==2)
+											usr.subcabs+=1
+										usr.rpp-=src.rpcost
+										var/obj/perk/p = copyatom(src)
+										p.ontree=0
+										usr.contents+=p
+										alert("You have learned [src.name]")
+										Checkspec(src,usr)
+										Rankadjust(src,usr)
+										winset(usr,"PerkWindow.rpp","text=\"[usr.rpp]/[usr.trpp]\"")
+										usr.perkbuying=0
+										return
+									else
+										alert("You don't have enough RPP to learn this.")
+										usr.perkbuying=0
+										return
+
+						else
+							if(Checkmag(src,usr))
+								alert("You are not capable of learning perks of this type or rank.")
+								usr.perkbuying=0
+								return
+							if(Checkrank(src,usr))
+								alert("You cannot learn abilities of that rank right now.")
+								usr.perkbuying=0
+								return
+							if(src.pre)
+								if(usr.Checkpre(src.pre,usr))
 									if(usr.rpp>=src.rpcost)
 										usr.rpp-=src.rpcost
 										var/obj/perk/p = copyatom(src)
@@ -2115,9 +2253,27 @@ obj
 									else
 										alert("You don't have enough RPP to learn this.")
 										usr.perkbuying=0
-						if("Cancel")
-							usr.perkbuying=0
-							return
+								else
+									alert("You need [src.pre] in order to learn this.")
+									usr.perkbuying=0
+									return
+							else
+								if(usr.rpp>=src.rpcost)
+									usr.rpp-=src.rpcost
+									var/obj/perk/p = copyatom(src)
+									p.ontree=0
+									usr.contents+=p
+									alert("You have learned [src.name]")
+									Checkspec(src,usr)
+									Rankadjust(src,usr)
+									winset(usr,"PerkWindow.rpp","text=\"[usr.rpp]/[usr.trpp]\"")
+									usr.perkbuying=0
+								else
+									alert("You don't have enough RPP to learn this.")
+									usr.perkbuying=0
+					if("Cancel")
+						usr.perkbuying=0
+						return
 				players={"<font color=#EC2323>[usr.name] has flashed a card: <a href="byond://?src=\ref[usr]&action=look&value=\ref[src]"><font color=#FFFFFF>[src]</a>!!"}
 				if(src in usr.contents)
 					if(src.ability==1)
@@ -2140,7 +2296,7 @@ obj
 									doresult=rand(src.range1,src.range2)
 									dresult=doresult+curadabonus+healbonus
 									view()<<output("<font size=1><font color=[usr.textcolor]>[usr] <font color=white>is using the <font color=[usr.textcolor]>[src.name]<font color=white> ability! They have healed a target for <font color=#A8F596><b>[dresult]</b></font> HP!","icout")
-								if(src.atype=="save")
+								if(src.atype=="save")// Please kill me I gotta put all the mabadd stuff and shit starting here. ---Vi
 									doresult=rand(src.range1,src.range2)
 									amod=Checkdamtype(src.damsource,usr)
 									dmod=Checkdamtype(src.damsource,usr)
@@ -2148,9 +2304,59 @@ obj
 									if(src.typing=="magical")
 										aresult=src.basecheck+amod+usr.rankbonus+src.addhit+2
 										dresult=abilitydamage+dmod+usr.mdb+src.adddam+10
+										if(usr.role=="Caster Tank"||usr.role=="Physical DPS"||usr.role=="Physical Support") //These roles all cap at 15 MDB Add.
+											if(usr.mdbadd<15)
+												dresult+=usr.mdbadd
+											else
+												dresult+=15
+										else if(usr.role=="Physical Tank")
+											if(usr.mdbadd<10)
+												dresult+=usr.mdbadd
+											else
+												dresult+=10
+										else if(usr.role=="Magical DPS")
+											if(usr.mdbadd<35)
+												dresult+=usr.mdbadd
+											else
+												dresult+=35
+										else if(usr.role=="Magical Support")
+											if(usr.mdbadd<20)
+												dresult+=usr.mdbadd
+											else
+												dresult+=20
+										else if(usr.role=="Generalist")
+											if(usr.mdbadd<25)
+												dresult+=usr.mdbadd
+											else
+												dresult+=25
 									else
 										aresult=src.basecheck+amod+usr.rankbonus+src.addhit
 										dresult=abilitydamage+dmod+usr.pdb+src.adddam
+										if(usr.role=="Physical Tank"||usr.role=="Magical DPS"||usr.role=="Magical Support") //These roles all cap at 15 PDB Add.
+											if(usr.pdbadd<15)
+												dresult+=usr.pdbadd
+											else
+												dresult+=15
+										else if(usr.role=="Caster Tank")
+											if(usr.pdbadd<10)
+												dresult+=usr.pdbadd
+											else
+												dresult+=10
+										else if(usr.role=="Physical DPS")
+											if(usr.pdbadd<35)
+												dresult+=usr.pdbadd
+											else
+												dresult+=35
+										else if(usr.role=="Physical Support")
+											if(usr.pdbadd<20)
+												dresult+=usr.pdbadd
+											else
+												dresult+=20
+										else if(usr.role=="Generalist")
+											if(usr.pdbadd<25)
+												dresult+=usr.pdbadd
+											else
+												dresult+=25
 									view()<<output("<font size=1><font color=[usr.textcolor]>[usr] <font color=white>is using the <font color=[usr.textcolor]>[src.name]<font color=white> ability!  Saving throw: <font color=#8EF5DE><b>[aresult] [src.savetype]!</b><font color=white>, dealing <b><font color=#FFA852>[dresult] damage</b><font color=white> on a failed save!<br> Cost: <b><font color=#0FBFD7>[src.mcost] [src.costtype]</b> | Tile Range:[src.range]","icout")
 								if(src.atype=="weaponsave")
 									var/obj/item/Weapon/wepchoice = usr.righthand
@@ -2165,8 +2371,58 @@ obj
 									abilitydamage=rand(src.range1,src.range2)
 									if(src.typing=="magical")
 										dresult=doresult+dmod+wepchoice.adddam+usr.mdb+src.adddam+abilitydamage
+										if(usr.role=="Caster Tank"||usr.role=="Physical DPS"||usr.role=="Physical Support") //These roles all cap at 15 MDB Add.
+											if(usr.mdbadd<15)
+												dresult+=usr.mdbadd
+											else
+												dresult+=15
+										else if(usr.role=="Physical Tank")
+											if(usr.mdbadd<10)
+												dresult+=usr.mdbadd
+											else
+												dresult+=10
+										else if(usr.role=="Magical DPS")
+											if(usr.mdbadd<35)
+												dresult+=usr.mdbadd
+											else
+												dresult+=35
+										else if(usr.role=="Magical Support")
+											if(usr.mdbadd<20)
+												dresult+=usr.mdbadd
+											else
+												dresult+=20
+										else if(usr.role=="Generalist")
+											if(usr.mdbadd<25)
+												dresult+=usr.mdbadd
+											else
+												dresult+=25
 									else
 										dresult=doresult+dmod+wepchoice.adddam+usr.pdb+src.adddam+abilitydamage
+										if(usr.role=="Physical Tank"||usr.role=="Magical DPS"||usr.role=="Magical Support") //These roles all cap at 15 PDB Add.
+											if(usr.pdbadd<15)
+												dresult+=usr.pdbadd
+											else
+												dresult+=15
+										else if(usr.role=="Caster Tank")
+											if(usr.pdbadd<10)
+												dresult+=usr.pdbadd
+											else
+												dresult+=10
+										else if(usr.role=="Physical DPS")
+											if(usr.pdbadd<35)
+												dresult+=usr.pdbadd
+											else
+												dresult+=35
+										else if(usr.role=="Physical Support")
+											if(usr.pdbadd<20)
+												dresult+=usr.pdbadd
+											else
+												dresult+=20
+										else if(usr.role=="Generalist")
+											if(usr.pdbadd<25)
+												dresult+=usr.pdbadd
+											else
+												dresult+=25
 									view()<<output("<font size=1><font color=[usr.textcolor]>[usr] <font color=white>is using the <font color=[usr.textcolor]>[src.name]<font color=white> ability with their [wepchoice.name]!  Saving throw: <font color=#8EF5DE><b>[aresult] [src.savetype]!</b><font color=white>, dealing <b><font color=#FFA852>[dresult] damage</b><font color=white> on a failed save!<br> Cost: <b><font color=#0FBFD7>[src.mcost] [src.costtype]</b> | Tile Range:[src.range]","icout")
 								if(src.atype=="weapon")
 									alert(usr,"This ability will use the weapon equipped to your right hand.")
@@ -2178,15 +2434,73 @@ obj
 										amod=Checkdamtype(wepchoice.damsource,usr)
 										if(src.typing=="magical")
 											aresult=aoresult+wepchoice.addhit+amod+usr.rankbonus+usr.mab+src.addhit
+											if(usr.mabadd<15)// Global cap for magical attack bonus add is 15.
+												aresult+=usr.mabadd
+											else
+												aresult+=15
 										else
 											aresult=aoresult+wepchoice.addhit+amod+usr.rankbonus+usr.pab+src.addhit
+											if(usr.pabadd<15)// Global cap for phys attack bonus add is 15.
+												aresult+=usr.pabadd
+											else
+												aresult+=15
 										doresult=rand(wepchoice.range1,wepchoice.range2)
 										dmod=Checkdamtype(wepchoice.damsource,usr)
 										abilitydamage=rand(src.range1,src.range2)
 										if(src.typing=="magical")
 											dresult=doresult+dmod+wepchoice.adddam+usr.mdb+src.adddam+abilitydamage
+											if(usr.role=="Caster Tank"||usr.role=="Physical DPS"||usr.role=="Physical Support") //These roles all cap at 15 MDB Add.
+												if(usr.mdbadd<15)
+													dresult+=usr.mdbadd
+												else
+													dresult+=15
+											else if(usr.role=="Physical Tank")
+												if(usr.mdbadd<10)
+													dresult+=usr.mdbadd
+												else
+													dresult+=10
+											else if(usr.role=="Magical DPS")
+												if(usr.mdbadd<35)
+													dresult+=usr.mdbadd
+												else
+													dresult+=35
+											else if(usr.role=="Magical Support")
+												if(usr.mdbadd<20)
+													dresult+=usr.mdbadd
+												else
+													dresult+=20
+											else if(usr.role=="Generalist")
+												if(usr.mdbadd<25)
+													dresult+=usr.mdbadd
+												else
+													dresult+=25
 										else
 											dresult=doresult+dmod+wepchoice.adddam+usr.pdb+src.adddam+abilitydamage
+											if(usr.role=="Physical Tank"||usr.role=="Magical DPS"||usr.role=="Magical Support") //These roles all cap at 15 PDB Add.
+												if(usr.pdbadd<15)
+													dresult+=usr.pdbadd
+												else
+													dresult+=15
+											else if(usr.role=="Caster Tank")
+												if(usr.pdbadd<10)
+													dresult+=usr.pdbadd
+												else
+													dresult+=10
+											else if(usr.role=="Physical DPS")
+												if(usr.pdbadd<35)
+													dresult+=usr.pdbadd
+												else
+													dresult+=35
+											else if(usr.role=="Physical Support")
+												if(usr.pdbadd<20)
+													dresult+=usr.pdbadd
+												else
+													dresult+=20
+											else if(usr.role=="Generalist")
+												if(usr.pdbadd<25)
+													dresult+=usr.pdbadd
+												else
+													dresult+=25
 										critdam=dresult+doresult
 										var/truecrit=wepchoice.critrange-usr.critmod
 										if(aoresult>=truecrit)
@@ -2198,14 +2512,72 @@ obj
 									amod=Checkdamtype(src.damsource,usr)
 									if(src.typing=="magical")
 										aresult=aoresult+src.addhit+amod+usr.rankbonus+usr.mab+2
+										if(usr.mabadd<15)// Global cap for magical attack bonus add is 15.
+											aresult+=usr.mabadd
+										else
+											aresult+=15
 									else
 										aresult=aoresult+src.addhit+amod+usr.rankbonus+usr.pab
+										if(usr.pabadd<15)// Global cap for phys attack bonus add is 15.
+											aresult+=usr.pabadd
+										else
+											aresult+=15
 									doresult=rand(src.range1,src.range2)
 									dmod=Checkdamtype(src.damsource,usr)
 									if(src.typing=="magical")
 										dresult=doresult+dmod+src.adddam+usr.mdb+10
+										if(usr.role=="Caster Tank"||usr.role=="Physical DPS"||usr.role=="Physical Support") //These roles all cap at 15 MDB Add.
+											if(usr.mdbadd<15)
+												dresult+=usr.mdbadd
+											else
+												dresult+=15
+										else if(usr.role=="Physical Tank")
+											if(usr.mdbadd<10)
+												dresult+=usr.mdbadd
+											else
+												dresult+=10
+										else if(usr.role=="Magical DPS")
+											if(usr.mdbadd<35)
+												dresult+=usr.mdbadd
+											else
+												dresult+=35
+										else if(usr.role=="Magical Support")
+											if(usr.mdbadd<20)
+												dresult+=usr.mdbadd
+											else
+												dresult+=20
+										else if(usr.role=="Generalist")
+											if(usr.mdbadd<25)
+												dresult+=usr.mdbadd
+											else
+												dresult+=25
 									else
 										dresult=doresult+dmod+src.adddam+usr.pdb
+										if(usr.role=="Physical Tank"||usr.role=="Magical DPS"||usr.role=="Magical Support") //These roles all cap at 15 PDB Add.
+											if(usr.pdbadd<15)
+												dresult+=usr.pdbadd
+											else
+												dresult+=15
+										else if(usr.role=="Caster Tank")
+											if(usr.pdbadd<10)
+												dresult+=usr.pdbadd
+											else
+												dresult+=10
+										else if(usr.role=="Physical DPS")
+											if(usr.pdbadd<35)
+												dresult+=usr.pdbadd
+											else
+												dresult+=35
+										else if(usr.role=="Physical Support")
+											if(usr.pdbadd<20)
+												dresult+=usr.pdbadd
+											else
+												dresult+=20
+										else if(usr.role=="Generalist")
+											if(usr.pdbadd<25)
+												dresult+=usr.pdbadd
+											else
+												dresult+=25
 									critdam=dresult+doresult
 									var/truecrit=src.critrange-usr.critmod
 									if(aoresult>=truecrit)

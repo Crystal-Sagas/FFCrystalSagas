@@ -1157,6 +1157,14 @@ obj
 				Roegadynstrength
 					name="Roegadyn Strength"
 					desc="This person can lift, push, pull, etc with incredible strength and efficiency. This does not translate to combat strength, however they can use this to their advantage in combat to move debris or obstacles on the field. Roegadyn gain a +2 to their Strength score."
+			Elezen
+				icon='Icons/Perk/Elezen.png'
+				ElezenPhysiology
+					name="Elezen Physiology"
+					desc="The Elezen's characteristically tall, slim physiques and elongated limbs are part of a successful adaptation to the land's various environments. It is said that their highly sensitive ears can discern the squeak of a field mouse at a distance of up to several malms. Elezen gain +2 to DEX and advantage on any rolls that effect or are affected by their hearing."
+				LifestreamsGift
+					name="Lifestream's Gift"
+					desc="Elezen have a latent connection to the life-stream. This grants them innate understanding of to safely manipulate Mako and allows all Elezen to have Materia Melder latently. This connection to the life-stream also enhanced all healing abilities and spells used by the Elezen to heal by an additional +5 HP, gifting additional vigor to those they heal."
 			AuRa
 				icon='Icons/Perk/Au Ra.png'
 				CranialProjections
