@@ -1544,10 +1544,10 @@ mob
 			players={"<font color=#EC2323>[m.name] has flashed an ability as their limitbreak!: <a href="byond://?src=\ref[m]&action=look&value=\ref[a]"><font color=#FFFFFF>[a]</a>!!"}
 			view() << output("[players]","icout")
 			if(a.atype=="save")
-				doresult=rand(a.range1,a.range2)
+				doresult=a.raw_attack_damage_roll()
 				amod=Checkdamtype(a.damsource,m)
 				dmod=Checkdamtype(a.damsource,m)
-				abilitydamage=rand(a.range1,a.range2)
+				abilitydamage=a.raw_attack_damage_roll()
 				if(a.typing=="magical")
 					aresult=a.basecheck+amod+m.rankbonus+a.addhit+4
 					dresult=(abilitydamage+dmod+m.mdb+a.adddam)*2
@@ -1565,7 +1565,7 @@ mob
 					aresult=a.basecheck+amod+m.rankbonus+a.addhit+4
 				doresult=rand(wepchoice.range1,wepchoice.range2)
 				dmod=Checkdamtype(a.damsource,m)
-				abilitydamage=rand(a.range1,a.range2)
+				abilitydamage=a.raw_attack_damage_roll()
 				if(a.typing=="magical")
 					dresult=(doresult+dmod+wepchoice.adddam+m.mdb+a.adddam+abilitydamage)*2
 				else
@@ -1585,7 +1585,7 @@ mob
 						aresult=aoresult+wepchoice.addhit+amod+m.rankbonus+m.pab+a.addhit+3
 					doresult=rand(wepchoice.range1,wepchoice.range2)
 					dmod=Checkdamtype(a.damsource,m)
-					abilitydamage=rand(a.range1,a.range2)
+					abilitydamage=a.raw_attack_damage_roll()
 					if(a.typing=="magical")
 						dresult=(doresult+dmod+wepchoice.adddam+m.mdb+a.adddam+abilitydamage)*2
 					else
@@ -1602,7 +1602,7 @@ mob
 					aresult=aoresult+a.addhit+amod+m.rankbonus+m.mab+3
 				else
 					aresult=aoresult+a.addhit+amod+m.rankbonus+m.pab+3
-				doresult=rand(a.range1,a.range2)
+				doresult=a.raw_attack_damage_roll()
 				dmod=Checkdamtype(a.damsource,m)
 				if(a.typing=="magical")
 					dresult=(doresult+dmod+a.adddam+m.mdb)*2
