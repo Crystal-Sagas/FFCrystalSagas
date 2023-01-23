@@ -14,12 +14,18 @@
 	 * * nonnegative number - world.time of deletion
 	 */
 	var/disposing = null
+	/// implements the serialization system?
+	var/serializable = FALSE
+	/// use tags instead of refs?
+	var/use_tag = FALSE
+	/// weak reference
+	var/datum/weakref/weakref
 
 /**
  * orders ourselves to clean up anything needed.
  */
 /datum/proc/Destruct()
-	return
+	tag = null
 
 /**
  * datum del hook to ensure deletion logic runs
@@ -29,3 +35,25 @@
 	if(disposing == null)
 		Destruct()
 	return ..()
+
+/**
+ * datum save hook to serialize
+ */
+/datum/Write(savefile/F)
+	. = ..()
+	if(serializable)
+		if(!validate_serializable())
+			F["__data__"] << serialize()
+		else
+			stack_trace("attempted to Write but validate_serializable() failed on [type]")
+
+/**
+ * datum load hook to deserialize
+ */
+/datum/Read(savefile/F)
+	. = ..()
+	if(serializable)
+		var/list/data
+		F["__data__"] >> data
+		if(data)
+			deserialize(data)

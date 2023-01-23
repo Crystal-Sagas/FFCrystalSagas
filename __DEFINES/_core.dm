@@ -11,3 +11,6 @@
 
 /// block proc until
 #define BLOCK_ON(_cond) while(!_cond) {sleep(1); };
+
+/// name of var but compiler checked
+#define VARNAME(D, VAR) (#VAR || initial(D.VAR))
