@@ -2107,7 +2107,7 @@ obj
 				FlurryofBlows
 					name="Flurry of Blows"
 					rank="T3"
-					desc="This Monk has mastered the ability to blend movements into movements. As a result, whenever using a Monk ability or using a Monk standard attack, they may - as a free action once per round, spend 20 SP in order to perform an additional Standard attack."
+					desc="This Monk has mastered the ability to blend movements into movements. As a result, whenever using a Monk ability or using a Monk standard attack, they may - as a free action once per round, spend 20 SP in order to perform an additional Standard attack. Cannot be used on the same turn as Dragon Dash, or Combo."
 				Chi
 					rank="T3"
 					name="Chi"
@@ -5879,7 +5879,7 @@ obj
 				Combo
 					name="Combo"
 					rank="C"
-					desc="The Monk may utilize this ability as a Bonus Action in order to spend 20 SP. They may then use another Monk ability that is C Rank or lower, still paying its normal cost."
+					desc="The Monk may utilize this ability as a Bonus Action in order to spend 20 SP. They may then use another Monk ability that is C Rank or lower, still paying its normal cost. Cannot be used on the same turn as Flurry of Blows, or Dragon Dash."
 				ChakraGlide
 					name="Chakra Glide"
 					rank="C"
@@ -5890,7 +5890,7 @@ obj
 				DragonDash
 					name="Dragon Dash"
 					rank="B"
-					desc="The Monk may use this ability in order to burst across the battle-field, coating their body in Chi energy. They may travel up to 8 tiles to a single target of their choice, and upon reaching the target, they may perform 2 Standard attacks. These attacks ignore Damage Reduction, and count as Force damage, due to Chi infused fists. Costs 50 MP."
+					desc="The Monk may use this ability in order to burst across the battle-field, coating their body in Chi energy. They may travel up to 8 tiles to a single target of their choice, and upon reaching the target, they may perform 2 Standard attacks. These attacks ignore Damage Reduction, and count as Force damage, due to Chi infused fists. Costs 50 MP. Cannot be used on the same turn as Flurry of Blows or Combo."
 					mcost=50
 					costtype=" MP"
 				IronBody

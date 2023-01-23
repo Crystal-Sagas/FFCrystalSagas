@@ -2162,8 +2162,19 @@ proc
 			jobs-="Knight"
 			jobs-="Paladin"
 			jobs-="Viking"
+			jobs-="Monk"
+		if(m.job=="Monk")
+			jobs-="Mystic Knight"
+			jobs-="Spellblade"
+			jobs-="Red Mage"
+			jobs-="Gladiator"
+		if(m.job=="Red Mage")
+			jobs-="Monk"
+		if(m.job=="Spellblade")
+			jobs-="Monk"
 		if(m.job=="Mystic Knight")
 			jobs-="Gladiator"
+			jobs-="Monk"
 		if(m.job=="Samurai")
 			jobs-="Gladiator"
 		if(m.job=="Dark Knight")
