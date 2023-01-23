@@ -3,9 +3,3 @@
  */
 /proc/is_abstract(datum/D)
 	return ispath(D)? (initial(D.abstract_type) == D) : (D.abstract_type == D.type)
-
-/**
- * are we abstract?
- */
-/datum/proc/is_abstract()
-	return abstract_type == type
