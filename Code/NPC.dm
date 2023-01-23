@@ -190,9 +190,9 @@ atom
 					aresult=aoresult+skill.addhit+amod+user.rankbonus+user.mab
 				else
 					aresult=aoresult+skill.addhit+amod+user.rankbonus+user.pab
-				doresult=rand(skill.range1,skill.range2)
+				doresult=skill.raw_attack_damage_roll()
 				dmod=Checkdamtype(skill.damsource,user)
-				abilitydamage=rand(skill.range1,skill.range2)
+				abilitydamage=skill.raw_attack_damage_roll()
 				if(skill.typing=="magical")
 					dresult=doresult+dmod+skill.adddam+user.mdb+skill.adddam+abilitydamage-target.basedr
 				else
@@ -206,7 +206,7 @@ atom
 					aresult=aoresult+skill.addhit+amod+user.rankbonus+user.pab
 				doresult=rand(wepchoice.range1,wepchoice.range2)
 				dmod=Checkdamtype(skill.damsource,user)
-				abilitydamage=rand(skill.range1,skill.range2)
+				abilitydamage=skill.raw_attack_damage_roll()
 				if(skill.typing=="magical")
 					dresult=doresult+dmod+wepchoice.adddam+user.mdb+skill.adddam+abilitydamage-target.basedr
 				else
@@ -220,7 +220,7 @@ atom
 					aresult=skill.basecheck+amod+user.rankbonus+skill.addhit
 				doresult=rand(wepchoice.range1,wepchoice.range2)
 				dmod=Checkdamtype(skill.damsource,user)
-				abilitydamage=rand(skill.range1,skill.range2)
+				abilitydamage=skill.raw_attack_damage_roll()
 				if(skill.typing=="magical")
 					dresult=doresult+dmod+wepchoice.adddam+user.mdb+skill.adddam+abilitydamage-target.basedr
 				else
@@ -231,9 +231,9 @@ atom
 					aresult=skill.basecheck+amod+user.rankbonus+skill.addhit
 				else
 					aresult=skill.basecheck+amod+user.rankbonus+skill.addhit
-				doresult=rand(skill.range1,skill.range2)
+				doresult=skill.raw_attack_damage_roll()
 				dmod=Checkdamtype(skill.damsource,user)
-				abilitydamage=rand(skill.range1,skill.range2)
+				abilitydamage=skill.raw_attack_damage_roll()
 				if(skill.typing=="magical")
 					dresult=doresult+dmod+skill.adddam+user.mdb+skill.adddam+abilitydamage-target.basedr
 				else
@@ -810,9 +810,9 @@ atom
 					aresult=rand(1,20)+skill.addhit+amod+user.rankbonus+user.mab
 				else
 					aresult=rand(1,20)+skill.addhit+amod+user.rankbonus+user.pab
-				doresult=rand(skill.range1,skill.range2)
+				doresult=skill.raw_attack_damage_roll()
 				dmod=Checkdamtype(skill.damsource,user)
-				abilitydamage=rand(skill.range1,skill.range2)
+				abilitydamage=skill.raw_attack_damage_roll()
 				if(skill.typing=="magical")
 					dresult=doresult+dmod+skill.adddam+user.mdb+skill.adddam+abilitydamage-target.basedr
 				else
@@ -826,7 +826,7 @@ atom
 					aresult=rand(1,20)+skill.addhit+amod+user.rankbonus+user.pab
 				doresult=rand(wepchoice.range1,wepchoice.range2)
 				dmod=Checkdamtype(skill.damsource,user)
-				abilitydamage=rand(skill.range1,skill.range2)
+				abilitydamage=skill.raw_attack_damage_roll()
 				if(skill.typing=="magical")
 					dresult=doresult+dmod+wepchoice.adddam+user.mdb+skill.adddam+abilitydamage-target.basedr
 				else
@@ -840,7 +840,7 @@ atom
 					aresult=skill.basecheck+amod+user.rankbonus+skill.addhit
 				doresult=rand(wepchoice.range1,wepchoice.range2)
 				dmod=Checkdamtype(skill.damsource,user)
-				abilitydamage=rand(skill.range1,skill.range2)
+				abilitydamage=skill.raw_attack_damage_roll()
 				if(skill.typing=="magical")
 					dresult=doresult+dmod+wepchoice.adddam+user.mdb+skill.adddam+abilitydamage-target.basedr
 				else
@@ -851,9 +851,9 @@ atom
 					aresult=skill.basecheck+amod+user.rankbonus+skill.addhit
 				else
 					aresult=skill.basecheck+amod+user.rankbonus+skill.addhit
-				doresult=rand(skill.range1,skill.range2)
+				doresult=skill.raw_attack_damage_roll()
 				dmod=Checkdamtype(skill.damsource,user)
-				abilitydamage=rand(skill.range1,skill.range2)
+				abilitydamage=skill.raw_attack_damage_roll()
 				if(skill.typing=="magical")
 					dresult=doresult+dmod+skill.adddam+user.mdb+skill.adddam+abilitydamage-target.basedr
 				else
@@ -1436,13 +1436,13 @@ atom
 								battler1<<output("[battler1] has been designated as 'Battler 1'","oocout")
 								//Unequipglobalmods(battler1)
 								for(var/obj/perk/a in battler1.contents)
-									if(a.ability==1 && a.heal==0 && a.range1!=null)
+									if(a.ability==1 && a.heal==0 && a.valid_standard_attack())
 										pattacklist1+=a
 									if(a.heal==1)
 										heallist1+=a
 										healer1=1
 								for(var/obj/perk/a in battler1.contents)
-									if(a.ability==1 && a.heal==0 && a.range1!=null)
+									if(a.ability==1 && a.heal==0 && a.valid_standard_attack())
 										pattacklist1+=a
 									if(a.heal==1)
 										heallist1+=a
@@ -1470,7 +1470,7 @@ atom
 									battler2<<output("[battler2] has been designated as 'Battler 2'","oocout")
 									//Unequipglobalmods(battler2)
 									for(var/obj/perk/a in battler2.contents)
-										if(a.ability==1 && a.heal==0 && a.range1!=null)
+										if(a.ability==1 && a.heal==0 && a.valid_standard_attack())
 											pattacklist2+=a
 										if(a.heal==1)
 											heallist2+=a
@@ -1498,7 +1498,7 @@ atom
 									battler3<<output("[battler3] has been designated as 'Battler 3'","oocout")
 									//Unequipglobalmods(battler3)
 									for(var/obj/perk/a in battler3.contents)
-										if(a.ability==1 && a.heal==0 && a.range1!=null)
+										if(a.ability==1 && a.heal==0 && a.valid_standard_attack())
 											pattacklist3+=a
 										if(a.heal==1)
 											heallist3+=a
@@ -1526,7 +1526,7 @@ atom
 									battler4<<output("[battler4] has been designated as 'Battler 4'","oocout")
 									//Unequipglobalmods(battler4)
 									for(var/obj/perk/a in battler4.contents)
-										if(a.ability==1 && a.heal==0 && a.range1!=null)
+										if(a.ability==1 && a.heal==0 && a.valid_standard_attack())
 											pattacklist4+=a
 										if(a.heal==1)
 											heallist4+=a
@@ -8163,8 +8163,9 @@ obj
 				technique=1
 				level=2
 				mcost=5
-				range1=2
-				range2=12
+				attack_roll_damage_dice = TRUE
+				attack_roll_dice_count = 2
+				attack_roll_damage_upper = 6
 				adddam=0
 				addhit=0
 				basecheck=10
@@ -8193,7 +8194,7 @@ obj
 							aresult=aoresult+src.addhit+amod+usr.rankbonus+z.mab
 						else
 							aresult=aoresult+src.addhit+amod+usr.rankbonus+z.pab
-						doresult=rand(src.range1,src.range2)
+						doresult=raw_attack_damage_roll()
 						dmod=Checkdamtype(src.damsource,usr)
 						if(src.typing=="magical")
 							dresult=doresult+dmod+src.adddam+z.mdb
@@ -8213,8 +8214,9 @@ obj
 				technique=1
 				level=2
 				mcost=0
-				range1=1
-				range2=8
+				attack_roll_damage_dice = TRUE
+				attack_roll_dice_count = 1
+				attack_roll_damage_upper = 8
 				adddam=0
 				addhit=0
 				basecheck=10
@@ -8230,8 +8232,9 @@ obj
 				technique=1
 				level=2
 				mcost=0
-				range1=15
-				range2=30
+				attack_roll_damage_dice = TRUE
+				attack_roll_dice_count = 2
+				attack_roll_damage_upper = 15
 				adddam=0
 				addhit=2
 				damsource="Str"

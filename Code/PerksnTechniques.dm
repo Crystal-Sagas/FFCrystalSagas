@@ -1553,12 +1553,8 @@ obj
 	var/typing
 	perk
 		var/ajob
-		var/range1
-		var/range2
 		var/adddam
 		var/addhit
-		var/altrange1
-		var/altrange2
 		var/damsource
 		var/technique
 		var/mcost
@@ -1608,20 +1604,20 @@ obj
 						if("Attack")
 							if(src.atype=="heal")
 								var/healbonus=usr.chamod*2
-								doresult=rand(src.range1,src.range2)
+								doresult=raw_attack_damage_roll()
 								dresult=doresult+src.addhit+healbonus
 								view()<<output("<font size=1><font color=[usr.textcolor]>[usr] <font color=white>is using the <font color=[usr.textcolor]>[src.name]<font color=white> ability! They have healed a target for <font color=#A8F596><b>[dresult]</b></font> HP!","icout")
 							if(src.atype=="curada")
 								var/curadabonus=usr.mhp*0.5
 								var/healbonus=usr.chamod*2
-								doresult=rand(src.range1,src.range2)
+								doresult=raw_attack_damage_roll()
 								dresult=doresult+curadabonus+healbonus
 								view()<<output("<font size=1><font color=[usr.textcolor]>[usr] <font color=white>is using the <font color=[usr.textcolor]>[src.name]<font color=white> ability! They have healed a target for <font color=#A8F596><b>[dresult]</b></font> HP!","icout")
 							if(src.atype=="save")
-								doresult=rand(src.range1,src.range2)
+								doresult=raw_attack_damage_roll()
 								amod=Checkdamtype(src.damsource,usr)
 								dmod=Checkdamtype(src.damsource,usr)
-								abilitydamage=rand(src.range1,src.range2)
+								abilitydamage=raw_attack_damage_roll()
 								if(src.typing=="magical")
 									aresult=src.basecheck+amod+usr.rankbonus+src.addhit+2
 									dresult=abilitydamage+dmod+usr.mdb+src.adddam+10
@@ -1690,7 +1686,7 @@ obj
 									aresult=src.basecheck+amod+usr.rankbonus+src.addhit
 								doresult=rand(wepchoice.range1,wepchoice.range2)
 								dmod=Checkdamtype(wepchoice.damsource,usr)
-								abilitydamage=rand(src.range1,src.range2)
+								abilitydamage=raw_attack_damage_roll()
 								if(src.typing=="magical")
 									dresult=doresult+dmod+wepchoice.adddam+usr.mdb+src.adddam+abilitydamage
 									if(usr.role=="Caster Tank"||usr.role=="Physical DPS"||usr.role=="Physical Support") //These roles all cap at 15 MDB Add.
@@ -1768,7 +1764,7 @@ obj
 											aresult+=15
 									doresult=rand(wepchoice.range1,wepchoice.range2)
 									dmod=Checkdamtype(wepchoice.damsource,usr)
-									abilitydamage=rand(src.range1,src.range2)
+									abilitydamage=raw_attack_damage_roll()
 									if(src.typing=="magical")
 										dresult=doresult+dmod+wepchoice.adddam+usr.mdb+src.adddam+abilitydamage
 										if(usr.role=="Caster Tank"||usr.role=="Physical DPS"||usr.role=="Physical Support") //These roles all cap at 15 MDB Add.
@@ -1823,7 +1819,6 @@ obj
 												dresult+=usr.pdbadd
 											else
 												dresult+=25
-
 									critdam=dresult+doresult
 									var/truecrit=wepchoice.critrange-usr.critmod
 									if(aoresult>=truecrit)
@@ -1845,7 +1840,7 @@ obj
 										aresult+=usr.pabadd
 									else
 										aresult+=15
-								doresult=rand(src.range1,src.range2)
+								doresult=raw_attack_damage_roll()
 								dmod=Checkdamtype(src.damsource,usr)
 								if(src.typing=="magical")
 									dresult=doresult+dmod+src.adddam+usr.mdb+10
@@ -1932,20 +1927,20 @@ obj
 							if("Attack")
 								if(src.atype=="heal")
 									var/healbonus=z.chamod*2
-									doresult=rand(src.range1,src.range2)
+									doresult=raw_attack_damage_roll()
 									dresult=doresult+src.addhit+healbonus
 									view()<<output("<font size=1><font color=[usr.textcolor]>[z] <font color=white>is using the <font color=[z.textcolor]>[src.name]<font color=white> ability! They have healed a target for <font color=#A8F596><b>[dresult]</b></font> HP!","icout")
 								if(src.atype=="curada")
 									var/curadabonus=z.mhp*0.5
 									var/healbonus=z.chamod*2
-									doresult=rand(src.range1,src.range2)
+									doresult=raw_attack_damage_roll()
 									dresult=doresult+curadabonus+healbonus
 									view()<<output("<font size=1><font color=[usr.textcolor]>[z] <font color=white>is using the <font color=[z.textcolor]>[src.name]<font color=white> ability! They have healed a target for <font color=#A8F596><b>[dresult]</b></font> HP!","icout")
 								if(src.atype=="save")
-									doresult=rand(src.range1,src.range2)
+									doresult=raw_attack_damage_roll()
 									amod=Checkdamtype(src.damsource,z)
 									dmod=Checkdamtype(src.damsource,z)
-									abilitydamage=rand(src.range1,src.range2)
+									abilitydamage=raw_attack_damage_roll()
 									if(src.typing=="magical")
 										aresult=src.basecheck+amod+z.rankbonus+src.addhit+2
 										dresult=abilitydamage+dmod+z.mdb+src.adddam+10
@@ -1963,7 +1958,7 @@ obj
 										aresult=src.basecheck+amod+usr.rankbonus+src.addhit
 									doresult=rand(wepchoice.range1,wepchoice.range2)
 									dmod=Checkdamtype(wepchoice.damsource,z)
-									abilitydamage=rand(src.range1,src.range2)
+									abilitydamage=raw_attack_damage_roll()
 									if(src.typing=="magical")
 										dresult=doresult+dmod+wepchoice.adddam+z.mdb+src.adddam+abilitydamage
 									else
@@ -1983,7 +1978,7 @@ obj
 											aresult=aoresult+wepchoice.addhit+amod+z.rankbonus+z.pab+src.addhit
 										doresult=rand(wepchoice.range1,wepchoice.range2)
 										dmod=Checkdamtype(wepchoice.damsource,z)
-										abilitydamage=rand(src.range1,src.range2)
+										abilitydamage=raw_attack_damage_roll()
 										if(src.typing=="magical")
 											dresult=doresult+dmod+wepchoice.adddam+z.mdb+src.adddam+abilitydamage
 										else
@@ -2001,7 +1996,7 @@ obj
 										aresult=aoresult+src.addhit+amod+z.rankbonus+z.mab+2
 									else
 										aresult=aoresult+src.addhit+amod+z.rankbonus+z.pab
-									doresult=rand(src.range1,src.range2)
+									doresult=raw_attack_damage_roll()
 									dmod=Checkdamtype(src.damsource,z)
 									if(src.typing=="magical")
 										dresult=doresult+dmod+src.adddam+z.mdb+10
@@ -2301,20 +2296,20 @@ obj
 								src.adddam=usr.monkbonus
 							if(src.atype=="heal")
 								var/healbonus=usr.chamod*2
-								doresult=rand(src.range1,src.range2)
+								doresult=raw_attack_damage_roll()
 								dresult=doresult+src.addhit+healbonus
 								view()<<output("<font size=1><font color=[usr.textcolor]>[usr] <font color=white>is using the <font color=[usr.textcolor]>[src.name]<font color=white> ability! They have healed a target for <font color=#A8F596><b>[dresult]</b></font> HP!","icout")
 							if(src.atype=="curada")
 								var/healbonus=usr.chamod*2
 								var/curadabonus=usr.mhp*0.5
-								doresult=rand(src.range1,src.range2)
+								doresult=raw_attack_damage_roll()
 								dresult=doresult+curadabonus+healbonus
 								view()<<output("<font size=1><font color=[usr.textcolor]>[usr] <font color=white>is using the <font color=[usr.textcolor]>[src.name]<font color=white> ability! They have healed a target for <font color=#A8F596><b>[dresult]</b></font> HP!","icout")
 							if(src.atype=="save")// Please kill me I gotta put all the mabadd stuff and shit starting here. ---Vi
-								doresult=rand(src.range1,src.range2)
+								doresult=raw_attack_damage_roll()
 								amod=Checkdamtype(src.damsource,usr)
 								dmod=Checkdamtype(src.damsource,usr)
-								abilitydamage=rand(src.range1,src.range2)
+								abilitydamage=raw_attack_damage_roll()
 								if(src.typing=="magical")
 									aresult=src.basecheck+amod+usr.rankbonus+src.addhit+2
 									dresult=abilitydamage+dmod+usr.mdb+src.adddam+10
@@ -2382,7 +2377,7 @@ obj
 									aresult=src.basecheck+amod+usr.rankbonus+src.addhit
 								doresult=rand(wepchoice.range1,wepchoice.range2)
 								dmod=Checkdamtype(wepchoice.damsource,usr)
-								abilitydamage=rand(src.range1,src.range2)
+								abilitydamage=raw_attack_damage_roll()
 								if(src.typing=="magical")
 									dresult=doresult+dmod+wepchoice.adddam+usr.mdb+src.adddam+abilitydamage
 									if(usr.role=="Caster Tank"||usr.role=="Physical DPS"||usr.role=="Physical Support") //These roles all cap at 15 MDB Add.
@@ -2460,7 +2455,7 @@ obj
 											aresult+=15
 									doresult=rand(wepchoice.range1,wepchoice.range2)
 									dmod=Checkdamtype(wepchoice.damsource,usr)
-									abilitydamage=rand(src.range1,src.range2)
+									abilitydamage=raw_attack_damage_roll()
 									if(src.typing=="magical")
 										dresult=doresult+dmod+wepchoice.adddam+usr.mdb+src.adddam+abilitydamage
 										if(usr.role=="Caster Tank"||usr.role=="Physical DPS"||usr.role=="Physical Support") //These roles all cap at 15 MDB Add.
@@ -2536,7 +2531,7 @@ obj
 										aresult+=usr.pabadd
 									else
 										aresult+=15
-								doresult=rand(src.range1,src.range2)
+								doresult=raw_attack_damage_roll()
 								dmod=Checkdamtype(src.damsource,usr)
 								if(src.typing=="magical")
 									dresult=doresult+dmod+src.adddam+usr.mdb+10

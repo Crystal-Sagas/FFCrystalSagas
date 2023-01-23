@@ -162,6 +162,7 @@
 #include "Code\mob\pulling.dm"
 #include "Code\mob\stats.dm"
 #include "Code\mob\status_effect.dm"
+#include "Code\perks\perk.dm"
 #include "Code\perks\render.dm"
 #include "Code\players\action_feedback.dm"
 #include "Code\races\render.dm"

@@ -10,8 +10,9 @@ obj
 				technique=1
 				mcost=20
 				cat="specialab"
-				range1=1
-				range2=12
+				attack_roll_damage_dice = TRUE
+				attack_roll_dice_count = 1
+				attack_roll_damage_upper = 12
 				adddam=10
 				addhit=1
 				damsource="str"
@@ -46,8 +47,9 @@ obj
 				technique=1
 				mcost=30
 				cat="specialab"
-				range1=2
-				range2=40
+				attack_roll_damage_dice = TRUE
+				attack_roll_dice_count = 2
+				attack_roll_damage_upper = 20
 				adddam=5
 				addhit=0
 				damsource="INT"
@@ -59,14 +61,15 @@ obj
 				costtype="Mana"
 			PhoenixBlaze
 				name="Phoenix's Blaze"
-				desc="The user of this technique harnesses their inner leader, and then releases it in a blazing burst of phoenix flames. This targets a 7x7 AoE around the user. All allies in this AoE including the caster are healed for 40 HP. All enemies are aggressed against with an attack roll, dealing fire damage, and inflicting 'burn' on a hit."
+				desc="The user of this technique harnesses their inner leader, and then releases it in a blazing burst of phoenix flames. This targets a 7x7 AoE around the user. All allies in this AoE including the caster are healed for 40 HP. All enemies are aggressed against with an attack roll of 2d12, dealing fire damage, and inflicting 'burn' on a hit."
 				ability=0
 				rank="C"
 				technique=1
 				mcost=40
 				cat="specialab"
-				range1=2
-				range2=24
+				attack_roll_damage_dice = TRUE
+				attack_roll_dice_count = 2
+				attack_roll_damage_upper = 12
 				adddam=5
 				addhit=0
 				damsource="CHA"

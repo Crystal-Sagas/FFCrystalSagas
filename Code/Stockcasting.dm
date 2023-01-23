@@ -31,19 +31,19 @@ obj
 			var/flash={"<font color=#EC2323>[z.name] has casted a spell using STOCK!: <a href="byond://?src=\ref[z]&action=stock&value=\ref[b]"><font color=#FFFFFF>[b]</a>!!"}
 			view() << output("[flash]","icout")
 			if(b.atype=="heal")
-				doresult=rand(b.range1,b.range2)
+				doresult=b.raw_attack_damage_roll()
 				dresult=doresult+b.addhit
 				view()<<output("<font size=1><font color=[usr.textcolor]>[z] <font color=white>is using the <font color=[z.textcolor]>[b.name]<font color=white> ability! They have healed a target for <font color=#A8F596><b>[dresult]</b></font> HP!","icout")
 			if(b.atype=="curada")
 				var/curadabonus=z.mhp*0.5
-				doresult=rand(b.range1,b.range2)
+				doresult=b.raw_attack_damage_roll()
 				dresult=doresult+curadabonus
 				view()<<output("<font size=1><font color=[usr.textcolor]>[z] <font color=white>is using the <font color=[z.textcolor]>[b.name]<font color=white> ability! They have healed a target for <font color=#A8F596><b>[dresult]</b></font> HP!","icout")
 			if(b.atype=="save")
-				doresult=rand(b.range1,b.range2)
+				doresult=b.raw_attack_damage_roll()
 				amod=Checkdamtype(b.damsource,z)
 				dmod=Checkdamtype(b.damsource,z)
-				abilitydamage=rand(b.range1,b.range2)
+				abilitydamage=b.raw_attack_damage_roll()
 				if(b.typing=="magical")
 					aresult=b.basecheck+amod+z.rankbonus+b.addhit+3
 					dresult=abilitydamage+dmod+z.mdb+b.adddam+5
@@ -58,7 +58,7 @@ obj
 					aresult=aoresult+b.addhit+amod+z.rankbonus+z.mab+3
 				else
 					aresult=aoresult+b.addhit+amod+z.rankbonus+z.pab+3
-				doresult=rand(b.range1,b.range2)
+				doresult=b.raw_attack_damage_roll()
 				dmod=Checkdamtype(b.damsource,z)
 				if(b.typing=="magical")
 					dresult=doresult+dmod+b.adddam+z.mdb+5
