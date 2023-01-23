@@ -7965,6 +7965,8 @@ mob
 				return
 			else
 				var/obj/npc/n = copyatom(usr.npcachoice)
+				if(n.companiontype=="Monsters")
+					InitializeEnemy(n)
 				n.archived=0
 				usr.contents+=n
 				usr.send_chat("[n.name] has been added to your NPC list.","oocout")

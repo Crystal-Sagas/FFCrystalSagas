@@ -62,7 +62,7 @@ obj
 				desc="This creature is attuned to the element of Ice. It is immune to the 'Frostbite' status effect, and takes half damage from ice, water, and earth, but 2x damage from fire."
 			Earth
 				icon='Icons/Perk/Stone.png'
-				name="Ice Attuned"
+				name="Earth Attuned"
 				desc="This creature is attuned to the element of Earth. It is immune to the 'Heavy', 'Bleed', and 'Weakness' status effects, and takes half damage from earth, thunder and fire, but 2x damage from ice and bio."
 			Thunder
 				icon='Icons/Perk/Thunder.png'
