@@ -2,6 +2,7 @@
  * singleton storage system
  */
 /datum/system/repository
+	abstract_type = /datum/system/repository
 	/// expected namespace
 	var/expected_namespace
 	/// expected typepath

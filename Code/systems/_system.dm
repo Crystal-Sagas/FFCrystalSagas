@@ -13,6 +13,7 @@
  * This may take getting used to.
  */
 /datum/system
+	abstract_type = /datum/system
 	/// name
 	var/name = "System"
 	/// save id - DO NOT CHANGE THIS
