@@ -5,18 +5,29 @@ GLOBAL_LIST_BOILERPLATE(fate_crystals, /obj/FATECrystal)
  * todo: repath to /obj/fate_crystal
  */
 /obj/FATECrystal
+	name="FATE Crystal"
+	icon='Icons/Fatecrystal.dmi'
+	density = TRUE
+	layer = 2
+	pixel_x = -10
+	/// fate instance datum - not saved
+	var/datum/instanced_fate/active_instance
+	/// inactive icon state
+	var/icon_state_inactive = "inactive"
+	/// active icon state
+	var/icon_state_active = "active"
+	/// battle icon state
+	var/icon_state_battle = "active"
 
+/**
+ * obtain an exclusive lock for a given FATE
+ */
+/obj/FATECrystal/proc/lock(datum/instanced_fate/mission)
 
-obj
-	FATECrystal
-		var
-			locationarea
-			FATEID
-			party1=0
-			party2=0
-			occupied=0
-		name="FATE Crystal"
-		icon='Icons/Fatecrystal.dmi'
-		density=1
-		layer=2
-		pixel_x=-10
+/**
+ * unlock and unreference the mission
+ *
+ * this should only be called by the mission itself!!
+ */
+/obj/FATECrystal/proc/unlock()
+

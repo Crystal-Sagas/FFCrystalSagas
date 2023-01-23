@@ -249,7 +249,6 @@ obj
 											usr.usingfate=0
 											del newfate
 											return
-									fatelocation.party1=p
 									newfate.FATEID=newfate.name
 									fatelocation.occupied=1
 									fightmob.FATEID=newfate.name
