@@ -186,9 +186,9 @@ atom
 					aresult=aoresult+skill.addhit+amod+user.rankbonus+user.mab
 				else
 					aresult=aoresult+skill.addhit+amod+user.rankbonus+user.pab
-				doresult=rand(skill.range1,skill.range2)
+				doresult=skill.raw_attack_damage_roll()
 				dmod=Checkdamtype(skill.damsource,user)
-				abilitydamage=rand(skill.range1,skill.range2)
+				abilitydamage=skill.raw_attack_damage_roll()
 				if(skill.typing=="magical")
 					dresult=doresult+dmod+skill.adddam+user.mdb+skill.adddam+abilitydamage-target.basedr
 				else
@@ -202,7 +202,7 @@ atom
 					aresult=aoresult+skill.addhit+amod+user.rankbonus+user.pab
 				doresult=rand(wepchoice.range1,wepchoice.range2)
 				dmod=Checkdamtype(skill.damsource,user)
-				abilitydamage=rand(skill.range1,skill.range2)
+				abilitydamage=skill.raw_attack_damage_roll()
 				if(skill.typing=="magical")
 					dresult=doresult+dmod+wepchoice.adddam+user.mdb+skill.adddam+abilitydamage-target.basedr
 				else
@@ -216,7 +216,7 @@ atom
 					aresult=skill.basecheck+amod+user.rankbonus+skill.addhit
 				doresult=rand(wepchoice.range1,wepchoice.range2)
 				dmod=Checkdamtype(skill.damsource,user)
-				abilitydamage=rand(skill.range1,skill.range2)
+				abilitydamage=skill.raw_attack_damage_roll()
 				if(skill.typing=="magical")
 					dresult=doresult+dmod+wepchoice.adddam+user.mdb+skill.adddam+abilitydamage-target.basedr
 				else
@@ -227,9 +227,9 @@ atom
 					aresult=skill.basecheck+amod+user.rankbonus+skill.addhit
 				else
 					aresult=skill.basecheck+amod+user.rankbonus+skill.addhit
-				doresult=rand(skill.range1,skill.range2)
+				doresult=skill.raw_attack_damage_roll()
 				dmod=Checkdamtype(skill.damsource,user)
-				abilitydamage=rand(skill.range1,skill.range2)
+				abilitydamage=skill.raw_attack_damage_roll()
 				if(skill.typing=="magical")
 					dresult=doresult+dmod+skill.adddam+user.mdb+skill.adddam+abilitydamage-target.basedr
 				else
@@ -806,9 +806,9 @@ atom
 					aresult=rand(1,20)+skill.addhit+amod+user.rankbonus+user.mab
 				else
 					aresult=rand(1,20)+skill.addhit+amod+user.rankbonus+user.pab
-				doresult=rand(skill.range1,skill.range2)
+				doresult=skill.raw_attack_damage_roll()
 				dmod=Checkdamtype(skill.damsource,user)
-				abilitydamage=rand(skill.range1,skill.range2)
+				abilitydamage=skill.raw_attack_damage_roll()
 				if(skill.typing=="magical")
 					dresult=doresult+dmod+skill.adddam+user.mdb+skill.adddam+abilitydamage-target.basedr
 				else
@@ -822,7 +822,7 @@ atom
 					aresult=rand(1,20)+skill.addhit+amod+user.rankbonus+user.pab
 				doresult=rand(wepchoice.range1,wepchoice.range2)
 				dmod=Checkdamtype(skill.damsource,user)
-				abilitydamage=rand(skill.range1,skill.range2)
+				abilitydamage=skill.raw_attack_damage_roll()
 				if(skill.typing=="magical")
 					dresult=doresult+dmod+wepchoice.adddam+user.mdb+skill.adddam+abilitydamage-target.basedr
 				else
@@ -836,7 +836,7 @@ atom
 					aresult=skill.basecheck+amod+user.rankbonus+skill.addhit
 				doresult=rand(wepchoice.range1,wepchoice.range2)
 				dmod=Checkdamtype(skill.damsource,user)
-				abilitydamage=rand(skill.range1,skill.range2)
+				abilitydamage=skill.raw_attack_damage_roll()
 				if(skill.typing=="magical")
 					dresult=doresult+dmod+wepchoice.adddam+user.mdb+skill.adddam+abilitydamage-target.basedr
 				else
@@ -847,9 +847,9 @@ atom
 					aresult=skill.basecheck+amod+user.rankbonus+skill.addhit
 				else
 					aresult=skill.basecheck+amod+user.rankbonus+skill.addhit
-				doresult=rand(skill.range1,skill.range2)
+				doresult=skill.raw_attack_damage_roll()
 				dmod=Checkdamtype(skill.damsource,user)
-				abilitydamage=rand(skill.range1,skill.range2)
+				abilitydamage=skill.raw_attack_damage_roll()
 				if(skill.typing=="magical")
 					dresult=doresult+dmod+skill.adddam+user.mdb+skill.adddam+abilitydamage-target.basedr
 				else
