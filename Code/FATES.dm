@@ -47,12 +47,11 @@ obj
 				return
 			else
 				usr.usingfate=1
-				for(var/obj/Partyholder/pholder in world)
-					for(var/obj/Party/part in pholder.contents)
-						if("[part.leader]"!="[usr.name]")
-							alert(usr,"Only the party leader can generate a FATE.")//This message currently always appears even if you are the party leader, for some reason. Until that is fixed we should keep the break line.
-							usr.usingfate=0
-							break //Replace this with 'return' instead of 'break' once this doesn't always get called.
+				for(var/obj/Party/part in pholder.contents)
+					if("[part.leader]"!="[usr.name]")
+						alert(usr,"Only the party leader can generate a FATE.")//This message currently always appears even if you are the party leader, for some reason. Until that is fixed we should keep the break line.
+						usr.usingfate=0
+						break //Replace this with 'return' instead of 'break' once this doesn't always get called.
 				for(var/obj/Party/p in world)
 					if("[p.leader]"=="[usr.name]")
 						for(var/mob/checkmem in world)

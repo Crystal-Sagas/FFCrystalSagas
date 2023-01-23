@@ -1,15 +1,57 @@
-obj
-	Partyholder
+/**
+ * parties
+ *
+ * does not currently support logged out players
+ */
+/datum/party
+	/// party id - only unique to the current server reboot - this is a *STRING*.
+	var/party_id
+	/// party id next
+	var/static/party_id_next = 0
+	/// members - marked tmp just in case as it's a reference list
+	var/tmp/list/mob/members = list()
+	/// leader - marked tmp just in case as it's a hard reference
+	var/tmp/mob/leader
+	/// active fate
+	var/datum/instanced_fate/active_fate
+
+	#warn impl
+
+/datum/party/New()
+	var/static/id_warned = FALSE
+	if((party_id_next >= INTEGER_PRECISION) && !id_warned)
+		id_warned = TRUE
+		stack_trace("mob id next has hit integer precision; prepare for horrifying things to happen.")
+	party_id = "[++party_id_next]"
+
+/**
+ * get party size
+ */
+/datum/party/proc/size()
+	return length(members)
+
+/**
+ * on member join
+ */
+/datum/party/proc/joined(mob/member)
+
+/**
+ * on member leave
+ */
+/datum/party/proc/left(mob/member)
+
+#warn impl
+
+/**
+ * is a person the leader?
+ */
+/datum/party/proc/is_leader(mob/person)
+	return person == leader
+
+
 
 obj
 	Party
-		var/list/members=list()
-		var/obj/FATEs/currentFATE=null
-		var/leader
-		var/totalmembers
-		var/partyID
-		var/FATEID
-		var/FATEcooldown=0
 		totalmembers=0
 		icon='Icons/Items/Linkshell.png'
 		DblClick()
@@ -44,8 +86,6 @@ mob
 						newparty.totalmembers=1
 						var/pdesc=input("What is the description of this party?") as message
 						newparty.desc=pdesc
-						for(var/obj/Partyholder/a in world)
-							a.contents+=newparty
 						RefreshParty(usr)
 					if("No")
 						return
