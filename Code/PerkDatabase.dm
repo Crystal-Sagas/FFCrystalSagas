@@ -6729,8 +6729,9 @@ obj
 				DarkCannon
 					name="Dark Cannon"
 					rank="D"
-					range1=1
-					range2=6
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 1
+					attack_roll_dice_sides = 6
 					damsource="str"
 					atype="save"
 					savetype="Fortitude"
@@ -6754,8 +6755,9 @@ obj
 				DarkFlame
 					name="Dark Flame"
 					rank="C"
-					range1=4
-					range2=16
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 4
+					attack_roll_dice_sides = 4
 					atype="weapon"
 					range=" 6 tiles."
 					mcost=30
@@ -6784,8 +6786,9 @@ obj
 				DarkNebula
 					name="Dark Nebula"
 					rank="B"
-					range1=5
-					range2=50
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 5
+					attack_roll_dice_sides = 10
 					damsource="wis"
 					savetype="Fortitude"
 					atype="save"
@@ -6799,8 +6802,9 @@ obj
 					costtype="Mana"
 					mcost=60
 					atype="weapon"
-					range1=4
-					range2=40
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 4
+					attack_roll_dice_sides = 10
 					damsource="str"
 					range=" 3 tiles"
 					desc="As a Standard action the dark knight uses their built up negative Mana to surround their weapon in a dark Mana that extends along the weapon into a long blade. The blade of Mana can be swiped at an enemy with the ability to transfer some of the targets life force into the user although being costly to sustain. Make a Weapon Attack with a range of 3 tiles at a single target, dealing Weapon Damage+4d10+STR damage on a successful hit, and restoring half of the damage dealt (max of 50). This effect stacks with Life Eater, and is considered a Lifesteal proc. (-60 MP.)"
@@ -6812,8 +6816,9 @@ obj
 					element="Dark"
 					name="Sanguine Cross"
 					rank="A"
-					range1=3
-					range2=36
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 3
+					attack_roll_dice_sides = 12
 					damsource="str"
 					range=" 5 tile cross centered on user."
 					atype="weaponsave"
@@ -6849,8 +6854,9 @@ obj
 				Gungnir
 					element="Physical"
 					rank="E"
-					range1=1
-					range2=8
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 1
+					attack_roll_dice_sides = 8
 					mcost=5
 					range=" 6 tile range."
 					desc="The user is able to throw their weapon, and have it teleport back to them from wherever position it was due to mana infusion. The Mana infused in the weapon is attuned to the user, and can be magnetized to a target the weapon hits, creating a temporary connection between them. If this attack hits, it deals normal weapon damage, and causes the next attack from the Dragoon that hits the marked target to take 1d10 additional damage, and be inflicted with 'Weakness'. If the creature is healed before this occurs, this effect is dissipated. Esuna and other cleansing abilities will also cleanse this effect. 6 Tile range."
@@ -6865,8 +6871,9 @@ obj
 					element="Physical"
 					name="Vorpal Thrust"
 					rank="C"
-					range1=1
-					range2=12
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 1
+					attack_roll_dice_sides = 12
 					range=" 3 tile line."
 					mcost=20
 					desc="The user dashes forward, weapon pointed dashing through everything in front of them. This can be utilized either on the ground, or in mid-air. (Damage: Weapon Damage + 1d12+DEX | 3 Tile line, which user moves along. Melee attack roll. -20 Stamina.)"
@@ -6882,15 +6889,15 @@ obj
 					name="Hyper Jump"
 					rank="B"
 					mcost=30
-					range1=0
-					range2=0
+					attack_roll_damage_dice = FALSE
+					attack_roll_damage_exact = 0
 					desc="Hyper Jump is a more taxing, but also more powerful version of Jump. When used, the Dragoon travels to ground elevation from their current airborne elevation, and makes a standard weapon attack. If it hits, gains a flat damage bonus equal to 8 per tile travelled. This puts the 'Jump' movement action on cooldown for 1 round after use. Costs 30 SP"
 				SkyGrinder
 					element="Physical"
 					name="Sky Grinder"
 					rank="B"
-					range1=0
-					range2=0
+					attack_roll_damage_dice = FALSE
+					attack_roll_damage_exact = 0
 					range=" Melee"
 					mcost=45
 					desc="The Dragoon transforms the momentum from their mid-air movement into a rotational force, akin to a drill. This attack loses power for the rotational momentum, but gains penetrative force. Upon use, Sky Grinder deals 5 damage per tile travelled, and transfers you to ground elevation immediately. Make a standard weapon attack, and add the additional damage as a flat bonus. If this attack hits, it reduces the target's DR by 10 for 3 rounds. Sky Grinder counts as a 'Jump' attack for abilities that mention them. The Damage Reduction nerf does not stack. This puts the 'Jump' movement action on cooldown for 1 round after use. Costs 45 stamina."
@@ -6898,8 +6905,9 @@ obj
 					element="Comet"
 					name="Falling Meteor"
 					rank="A"
-					range1=3
-					range2=30
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 3
+					attack_roll_dice_sides = 10
 					atype="weaponsave"
 					savetype="Reflex"
 					basecheck=16
@@ -6924,8 +6932,9 @@ obj
 				atype="save"
 				savetype="Fortitude"
 				basecheck=17
-				range1=4
-				range2=48
+				attack_roll_damage_dice = TRUE
+				attack_roll_dice_count = 4
+				attack_roll_dice_sides = 12
 				mcost=50
 				range=" 5 tile cone."
 				costtype="Mana"
@@ -6991,8 +7000,8 @@ obj
 					damsource="dex"
 					savetype="Reflex"
 					range="8 tile range."
-					range1=0
-					range2=0
+					attack_roll_damage_dice = FALSE
+					attack_roll_damage_exact = 0
 					mcost=60
 					costtype=" Stamina or Ninpo."
 					desc="The user of this technique performs a Mudra that summons forth a set of adamantine chains to bind the target, and sap them of their energy to immobilize them. This prompts a Reflex saving throw, which if failed constricts the user, immobilizing them until they break out. In addition, they are drained of 30 Stamina and Mana per turn that they are bound in this way - which is then restored to the Ninja. After being bound, a Strength check with a DC equal to the Reflex save's DC must be made in order to break out, using a standard action to do so. The Ninja must use their Standard action each turn to sustain this effect. Out of battle effect: The Ninja may now seal objects and weapons into scrolls. An object sealed into a scroll this way becomes immune to any 'Steal' effects."
@@ -7003,8 +7012,9 @@ obj
 					element="Physical"
 					name="Shuriken Storm"
 					rank="B"
-					range1=2
-					range2=24
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 12
 					range=" 10 tile range."
 					addhit=2
 					damsource="dex"
@@ -7012,8 +7022,9 @@ obj
 				Dokumoya
 					element="Bio"
 					rank="B"
-					range1=5
-					range2=50
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 5
+					attack_roll_dice_sides = 10
 					damsource="dex"
 					range=" 7x7 AoE in a 10 tile range."
 					mcost=60
@@ -7044,8 +7055,9 @@ obj
 					element="Holy"
 					atype="standard"
 					rank="A"
-					range1=9
-					range2=108
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 9
+					attack_roll_dice_sides = 12
 					range=" 10 tile line."
 					addhit=2
 					mcost=100
@@ -7074,8 +7086,9 @@ obj
 					name="Kogeki Shinryaku"
 					rank="A"
 					cat="Unique"
-					range1=1
-					range2=10
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 1
+					attack_roll_dice_sides = 10
 					damsource="dex"
 					range=" 10 tile range."
 					addhit=1
@@ -7382,8 +7395,9 @@ obj
 				Splash
 					rank="D"
 					name="Splash"
-					range1=10
-					range2=15
+					attack_roll_damage_dice = FALSE
+					attack_roll_damage_lower = 10
+					attack_roll_damage_upper = 15
 					range=" 8 tile range."
 					atype="standard"
 					mcost=10
@@ -7391,8 +7405,9 @@ obj
 				BubbleBlade
 					rank="D"
 					name="Bubble Blade"
-					range1=12
-					range2=18
+					attack_roll_damage_dice = FALSE
+					attack_roll_damage_lower = 12
+					attack_roll_damage_upper = 18
 					mcost=15
 					atype="weapon"
 					range=" Melee."
@@ -7400,8 +7415,9 @@ obj
 				BubbleBeam
 					rank="C"
 					name="Bubble Beam"
-					range1=20
-					range2=35
+					attack_roll_damage_dice = FALSE
+					attack_roll_damage_lower = 20
+					attack_roll_damage_upper = 35
 					mcost=30
 					range=" 7 tile line."
 					savetype="Fortitude"
@@ -7411,8 +7427,9 @@ obj
 				TyphoonCutter
 					rank="C"
 					name="Typhoon Cutter"
-					range1=25
-					range2=38
+					attack_roll_damage_dice = FALSE
+					attack_roll_damage_lower = 25
+					attack_roll_damage_upper = 38
 					mcost=35
 					atype="weapon"
 					range=" 7 tiles, 3 tile wide. Generates 5x5 persisting AoE."
@@ -7420,8 +7437,9 @@ obj
 				LakeBlade
 					rank="C"
 					name="Lake Blade"
-					range1=30
-					range2=40
+					attack_roll_damage_dice = FALSE
+					attack_roll_damage_lower = 30
+					attack_roll_damage_upper = 40
 					mcost=45
 					atype="weapon"
 					range=" Melee"
@@ -7429,8 +7447,9 @@ obj
 				NautilusAnchor
 					rank="C"
 					name="Nautilus Anchor"
-					range1=25
-					range2=30
+					attack_roll_damage_dice = FALSE
+					attack_roll_damage_lower = 25
+					attack_roll_damage_upper = 30
 					atype="standard"
 					range=" 8 tiles"
 					mcost=40
@@ -7438,8 +7457,9 @@ obj
 				WildWave
 					rank="C"
 					name="Wild Wave"
-					range1=35
-					range2=45
+					attack_roll_damage_dice = FALSE
+					attack_roll_damage_lower = 35
+					attack_roll_damage_upper = 45
 					mcost=50
 					savetype="Reflex"
 					atype="save"
@@ -7453,8 +7473,9 @@ obj
 				WaterfallCrash
 					rank="B"
 					name="Waterfall Crash"
-					range1=50
-					range2=60
+					attack_roll_damage_dice = FALSE
+					attack_roll_damage_lower = 50
+					attack_roll_damage_upper = 60
 					mcost=55
 					basecheck=14
 					savetype="Fortitude"
@@ -7464,8 +7485,9 @@ obj
 				TyphoonVortex
 					rank="B"
 					name="Typhoon Vortex"
-					range1=55
-					range2=65
+					attack_roll_damage_dice = FALSE
+					attack_roll_damage_lower = 55
+					attack_roll_damage_upper = 65
 					range=" 3 tile wide, 7 tile line."
 					savetype="Fortitude"
 					atype="save"
@@ -7474,8 +7496,8 @@ obj
 				WaterWhip
 					rank="B"
 					name="Water Whip"
-					range1=70
-					range2=70
+					attack_roll_damage_dice = FALSE
+					attack_roll_damage_exact = 70
 					mcost=70
 					atype="standard"
 					desc="The Pirate creates a whip of water in their hand, and then swings it forth to smack into a target. On hit, this sends the target creature flying in a direction of their choosing, 5 tiles. If they impact a surface or another creature, both targets take 30 true damage. Costs 70 SP."
@@ -7492,8 +7514,9 @@ obj
 				CaptainCutlass
 					rank="A"
 					name="Captain's Cutlass"
-					range1=80
-					range2=85
+					attack_roll_damage_dice = FALSE
+					attack_roll_damage_lower = 80
+					attack_roll_damage_upper = 85
 					atype="standard"
 					mcost=70
 					addhit=5
@@ -7515,8 +7538,9 @@ obj
 						rank="E"
 						atype="save"
 						savetype="Reflex"
-						range1=8
-						range2=12
+						attack_roll_damage_dice = FALSE
+						attack_roll_damage_lower = 8
+						attack_roll_damage_upper = 12
 						basecheck=10
 						mcost=10
 						range="6 tile range."
@@ -7559,8 +7583,8 @@ obj
 						atype="save"
 						savetype="Fortitude"
 						basecheck=13
-						range1=0
-						range2=0
+						attack_roll_damage_dice = FALSE
+						attack_roll_damage_exact = 0
 						mcost=65
 						desc="The user creates a giant clock made of magic on the ground around them. The clock hands slow until they stop causing time to stop in the entire area except for the user and their allies. Targets in the AoE (5x5) must make a fortitude saving throw or be afflicted with stop for 4 turns. (DC 13+INT+Rank bonus.) (- 65 mana.)"
 					Old
@@ -7598,8 +7622,9 @@ obj
 					icon='Icons/Perk/Comet.png'
 					Comet
 						rank="C"
-						range1=6
-						range2=36
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 6
+						attack_roll_dice_sides = 6
 						range=" 3x3 AoE within 10 tiles."
 						atype="save"
 						savetype="Reflex"
@@ -7609,8 +7634,9 @@ obj
 					Meteor
 						rank="A"
 						pre="Comet"
-						range1=2
-						range2=24
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 2
+						attack_roll_dice_sides = 12
 						range="7 tile range."
 						mcost=20
 						typing="magical"
@@ -7654,8 +7680,9 @@ obj
 				Acid
 					element="Dark"
 					rank="D"
-					range1=2
-					range2=16
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 8
 					damsource="wis"
 					mcost=10
 					range=" 7 tile range."
@@ -7664,8 +7691,9 @@ obj
 					rank="D"
 					name="Magic Hammer"
 					damsource="str"
-					range1=2
-					range2=20
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 10
 					range="Melee"
 					mcost="Variable"
 					desc="The creature creates a huge hammer made of Magic, which when slamming into a target, drains them of their MP. This Hammer has a variable Mana cost (maximum of 100) - and on hit, depletes the target creature of Mana equal to the Mana spent to cast this spell. (Damage: 2d10+STR Force damage | Melee attack roll, Mana cost variable.) (BLU)"
@@ -7673,8 +7701,9 @@ obj
 					element="Nature"
 					rank="D"
 					name="Shrapnel Seed"
-					range1=2
-					range2=16
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 8
 					damsource="wis"
 					range=" 7 tile range."
 					mcost=10
@@ -7683,8 +7712,9 @@ obj
 					element="Physical"
 					rank="D"
 					name="Geezard Claw"
-					range1=2
-					range2=8
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 4
 					atype="weapon"
 					mcost=10
 					range=" Melee"
@@ -7694,15 +7724,17 @@ obj
 					element="Dark"
 					rank="D"
 					name="Poison Powder"
-					range1=2
-					range2=4
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 2
 					desc="The creature collects a magical powder on its wings. When enough powder has been collected it flaps its wing spreading the powder throughout the area. Even the smallest breath can inflict poison. Prompts a flat Fortitude saving throw (DC 15), inflicting poison on failure. (10 tile range, 3x3 AoE, - 10 Mana.) (BLU)"
 				MonsterFlame
 					element="Fire"
 					rank="D"
 					name="Monster Flame"
-					range1=2
-					range2=16
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 8
 					damsource="wis"
 					range=" 7 tile range."
 					mcost=10
@@ -7765,8 +7797,8 @@ obj
 					name="Gleatinous Lake"
 					rank="C"
 					element="Bio"
-					range1=10
-					range2=18
+					attack_roll_damage_dice = FALSE
+					attack_roll_damage_exact = 0
 					desc="The creature creates an area of goop-like substance, slowing anything within it that isn’t a Flan. While in the substance, creatures and players’ tile movement is reduced by two tiers. This ‘lake’ has a duration of five turns. (-20 Mana. 5x5 AoE.) (BLU)"
 				WaterGun
 					element="Water"
@@ -7940,8 +7972,9 @@ obj
 				Plainscracker
 					element="Earth"
 					rank="B"
-					range1=6
-					range2=72
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 6
+					attack_roll_dice_sides = 12
 					range=" 7x7 AoE within view."
 					atype="save"
 					savetype="Fortitude"
@@ -7953,8 +7986,9 @@ obj
 					element="Fire"
 					name="Grenado Fire"
 					rank="B"
-					range1=7
-					range2=70
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 7
+					attack_roll_dice_sides = 10
 					range=" 7 tile range."
 					damsource="wis"
 					range=" 3x3 sized projectile, 8 tile range."
@@ -7970,8 +8004,9 @@ obj
 				Night
 					element="Dark"
 					rank="B"
-					range1=2
-					range2=20
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 10
 					damsource="int"
 					range=" 7x7 AoE"
 					mcost=70
