@@ -3487,8 +3487,9 @@ obj
 						rank="B"
 						name="Round Edge"
 						mcost=50
-						range1=4
-						range2=55
+						attack_roll_damage_dice = FALSE
+						attack_roll_damage_lower = 4
+						attack_roll_damage_upper = 55
 						adddam=3
 						addhit=4
 						atype="weapon"
@@ -6690,8 +6691,8 @@ obj
 					name="Minus Strike"
 					rank="A"
 					atype="weapon"
-					range1=0
-					range2=0
+					attack_roll_damage_dice = FALSE
+					attack_roll_damage_exact = 0
 					range=" Melee"
 					mcost=70
 					costtype="Stamina"
@@ -7217,16 +7218,18 @@ obj
 					icon='Icons/Perk/Stone.png'
 					Stone
 						rank="E"
-						range1=1
-						range2=12
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 1
+						attack_roll_dice_sides = 12
 						mcost=10
 						range=" 6 tile range."
 						desc="The user calls to the ground, causing it to spit sharp rocks towards a target. Out of Battle Effects: This individual is capable of controlling earth. They can move and shape a 5ft block of earth. They are capable of making one 5ft area of earth into non difficult terrain. (Damage: 1d12+WIS earth| 6 tile range, magic attack roll, -10 Mana.)"
 					Stonra
 						rank="D"
 						pre="Stone"
-						range1=2
-						range2=24
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 2
+						attack_roll_dice_sides = 12
 						range=" 6 tile range."
 						mcost=15
 						desc="The user calls to the earth causing it to erupt spikes that aim to impale a target. Out of Battle Effects: This individual is capable of controlling earth. They can move and shape a 10ft block of earth. They are capable of making one 10ft area of earth into non difficult terrain. (Damage: 2d12+WIS earth | 6 tile range, magic attack roll, -15 Mana.)"
@@ -7237,15 +7240,17 @@ obj
 						savetype="Reflex"
 						basecheck=12
 						mcost=30
-						range1=4
-						range2=40
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 4
+						attack_roll_dice_sides = 10
 						range=" 3x3 AoE within a 10 tile range."
 						desc="The user calls to the earth, causing pillars of rock to erupt from the ground and crush everything beneath it. Out of Battle Effects: This individual is capable of controlling earth. They can move and shape a 15ft block of earth. They are capable of making one 15ft area of earth into non difficult terrain. (Damage: 4d10+WIS | 10 tile range, 3x3 AoE. Prompts a Reflex saving throw (DC 12+WIS+Rankbonus), inflicting full damage and knocking prone on a failure, or half as much on a success. -30 Mana.)"
 					Stonaja
 						rank="B"
 						pre="Stoneaga"
-						range1=5
-						range2=60
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 5
+						attack_roll_dice_sides = 12
 						basecheck=15
 						range=" 5x5 AoE within a 10 tile range."
 						mcost=40
@@ -7261,8 +7266,9 @@ obj
 						name="Branch Arrow"
 						rank="D"
 						pre="Spirited Tree"
-						range1=2
-						range2=24
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 2
+						attack_roll_dice_sides = 12
 						range=" 8 tile range."
 						mcost=10
 						desc="The tree releases an enchanted arrow, forged of its own branches from its structure - at a single target. (Damage: 2d12+WIS piercing | 8 tile range, Ranged attack roll, -10 Mana.)"
@@ -7270,8 +7276,9 @@ obj
 						name="Branch Spear"
 						rank="C"
 						pre="Branch Arrow"
-						range1=3
-						range2=36
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 3
+						attack_roll_dice_sides = 12
 						range=" 8 tile range."
 						mcost=25
 						desc="The tree fires off an enchanted spear, forged of its own branches - at a single target. (Damage: 3d12+WIS piercing | 8 tile range, ranged attack roll - inflicts bleed on successful hit. -25 Mana.)"
@@ -7292,8 +7299,9 @@ obj
 					heal=1
 					name="Lifestream Rain"
 					damsource="wis"
-					range1=3
-					range2=60
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 3
+					attack_roll_dice_sides = 20
 					rank="C"
 					desc="The user calls out to the Lifestream, and draws it out in a font overhead. This Lifestream energy then rains down upon the area, healing all designated creatures within the radius for 3d20+WIS HP. In addition, this Lifestream energy has a reinvigorating power. Once per 24 hours, a Geomancer who knows this spell can use the 'Node Refresh' verb in order to reinvigorate any Gathering nodes within a 12 tile radius of their current position, out of combat. (-40 Mana)."
 					verb
@@ -7336,8 +7344,9 @@ obj
 					element="Laser"
 					name="Shining Flare"
 					rank="B"
-					range1=5
-					range2=50
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 5
+					attack_roll_dice_sides = 10
 					range=" 1 tile within 8 tiles of the caster, beam can move in a 5 tile line."
 					atype="save"
 					savetype="Reflex"
@@ -7347,8 +7356,9 @@ obj
 				Quake
 					element="Earth"
 					rank="A"
-					range1=7
-					range2=70
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 7
+					attack_roll_dice_sides = 10
 					basecheck=12
 					range=" 6x6 AoE within 20 tiles of the caster."
 					savetype="Fortitude"
@@ -7358,8 +7368,9 @@ obj
 				Whirlpool
 					element="Water"
 					rank="A"
-					range1=4
-					range2=40
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 4
+					attack_roll_dice_sides = 10
 					range=" 5x5 AoE on any water in view."
 					savetype="Athletics Check"
 					mcost=65
@@ -7375,8 +7386,9 @@ obj
 					element="Dark"
 					name="Black Hole"
 					rank="S"
-					range1=6
-					range2=72
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 6
+					attack_roll_dice_sides = 12
 					range=" 3x3 AoE at a tile in view."
 					mcost=100
 					atype="save"
@@ -7961,8 +7973,6 @@ obj
 					name="100 Needles"
 					attack_roll_damage_dice = FALSE
 					attack_roll_damage_exact = 75
-					range1=75
-					range2=75
 					desc="The creature releases a large and powerful spread of exactly 100 needles made of Mana from its body. (10x10 AoE, exactly 75 true damage, ignoring reductions. Auto-hit. -100 Mana.) (BLU)"
 				WhiteWind
 					heal=1
