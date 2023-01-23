@@ -7,6 +7,7 @@
  * global hardcoded effects are singletons but admins/people with permissions can add more.
  */
 /datum/prototype/status_effect
+	abstract_type = /datum/prototype/status_effect
 	namespace = PROTOTYPE_NAMESPACE_STATUS_EFFECT
 	/// name
 	var/name

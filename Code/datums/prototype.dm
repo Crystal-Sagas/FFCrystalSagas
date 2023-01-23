@@ -6,6 +6,7 @@
  * set saved to TRUE for custom ones you want to save.
  */
 /datum/prototype
+	abstract_type = /datum/prototype
 	serializable = TRUE
 	/// namespace
 	var/namespace

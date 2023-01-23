@@ -54,6 +54,8 @@
 	.["prototypes"] = saving
 	for(var/id in lookup)
 		var/datum/prototype/instance = lookup[id]
+		if(!instance.saved)
+			continue
 		if(!istype(instance, expected_typepath) || (instance.namespace != expected_namespace))
 			system_log("save: [id] was the wrong typepath or namespace.")
 			. = FALSE
@@ -97,6 +99,9 @@
 		if(is_abstract(path))
 			continue
 		path = new path
+		if(isnull(path.id))
+			system_log("null id on [path.type].")
+			stack_trace("null id on [path.type].")
 		if(lookup[path.id])
 			system_log("collision on [path.id] between [path.type] and [lookup[path.id]:type].")
 			stack_trace("collision on [path.id] between [path.type] and [lookup[path.id]:type].")
