@@ -8194,7 +8194,7 @@ obj
 							aresult=aoresult+src.addhit+amod+usr.rankbonus+z.mab
 						else
 							aresult=aoresult+src.addhit+amod+usr.rankbonus+z.pab
-						doresult=rand(src.range1,src.range2)
+						doresult=raw_attack_damage_roll()
 						dmod=Checkdamtype(src.damsource,usr)
 						if(src.typing=="magical")
 							dresult=doresult+dmod+src.adddam+z.mdb
@@ -8214,8 +8214,9 @@ obj
 				technique=1
 				level=2
 				mcost=0
-				range1=1
-				range2=8
+				attack_roll_damage_dice = TRUE
+				attack_roll_dice_count = 1
+				attack_roll_damage_upper = 8
 				adddam=0
 				addhit=0
 				basecheck=10
@@ -8231,8 +8232,9 @@ obj
 				technique=1
 				level=2
 				mcost=0
-				range1=15
-				range2=30
+				attack_roll_damage_dice = TRUE
+				attack_roll_dice_count = 2
+				attack_roll_damage_upper = 15
 				adddam=0
 				addhit=2
 				damsource="Str"
