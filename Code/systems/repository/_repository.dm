@@ -12,6 +12,7 @@
 
 /datum/system/repository/Construct()
 	. = ..()
+	lookup = list()
 	generate()
 
 /datum/system/repository/Restore(datum/system/overwriting)
