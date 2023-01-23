@@ -9,6 +9,7 @@
 		return
 	if(D.disposing)
 		CRASH("[D] ([ref(D)]) was already disposing")
+	D.signal(DSIG_DISPOSING)
 	D.disposing = world.time
 	D.Destruct()
 	del(D)
