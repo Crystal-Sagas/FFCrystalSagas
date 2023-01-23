@@ -214,7 +214,7 @@
 		enemy.eweapon=weapon
 		enemy.contents+=b
 		enemy.contents+=c
-	if(enemy.name=="Stingray")
+	if(enemy.name=="Sting Ray")
 		var/obj/perk/Abilities/BlackMagic/Hydro/Watera/b=new
 		var/obj/perk/Abilities/Geomancer/Earth/Stone/c=new
 		var/obj/perk/ElementalPerks/Earth/element=new
