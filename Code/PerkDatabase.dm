@@ -62,7 +62,7 @@ obj
 				desc="This creature is attuned to the element of Ice. It is immune to the 'Frostbite' status effect, and takes half damage from ice, water, and earth, but 2x damage from fire."
 			Earth
 				icon='Icons/Perk/Stone.png'
-				name="Ice Attuned"
+				name="Earth Attuned"
 				desc="This creature is attuned to the element of Earth. It is immune to the 'Heavy', 'Bleed', and 'Weakness' status effects, and takes half damage from earth, thunder and fire, but 2x damage from ice and bio."
 			Thunder
 				icon='Icons/Perk/Thunder.png'
@@ -929,6 +929,12 @@ obj
 					desc="The Holy Light of the Aether has given the user a direct link to the mana of the universe, making them a conduit of mana just like the crystals each nation harbors. They are infused with great power and can call upon a golden, glowing aura of power. | +2 to hit, +3 AC, and +20 flat damage to all damage calculations."
 					mcost="10 per turn"
 					costtype="Mana"
+			Harbinger_of_Chaos
+				name="Harbinger of Chaos"
+				rank="T4"
+				cat="Unique"
+				icon='Icons/Perk/EmbodimentofSin.png'
+				desc="The user has awakened the true power of chaos inside them. At any time they are able to access this form, but can only control it if they possess the protomateria. The user becomes a demonic creature sprouting a pair of wings capable of agile flight. They also gain access to the death penalty. A massive gun that fires a powerful beam of Mana, and increases its power the more souls it absorbs. { Ex. Vincent }. This grants +50 HP, +30 MP, and +30 SP, as well as +2 to all Ability Scores. Allows the creation and application for 'Chaos Forms'."
 			Lucisheir
 				KingofLucis
 					icon='Icons/Perk/Heiroflucis.png'
@@ -2101,7 +2107,7 @@ obj
 				FlurryofBlows
 					name="Flurry of Blows"
 					rank="T3"
-					desc="This Monk has mastered the ability to blend movements into movements. As a result, whenever using a Monk ability or using a Monk standard attack, they may - as a free action once per round, spend 20 SP in order to perform an additional Standard attack."
+					desc="This Monk has mastered the ability to blend movements into movements. As a result, whenever using a Monk ability or using a Monk standard attack, they may - as a free action once per round, spend 20 SP in order to perform an additional Standard attack. Cannot be used on the same turn as Dragon Dash, or Combo."
 				Chi
 					rank="T3"
 					name="Chi"
@@ -5873,7 +5879,7 @@ obj
 				Combo
 					name="Combo"
 					rank="C"
-					desc="The Monk may utilize this ability as a Bonus Action in order to spend 20 SP. They may then use another Monk ability that is C Rank or lower, still paying its normal cost."
+					desc="The Monk may utilize this ability as a Bonus Action in order to spend 20 SP. They may then use another Monk ability that is C Rank or lower, still paying its normal cost. Cannot be used on the same turn as Flurry of Blows, or Dragon Dash."
 				ChakraGlide
 					name="Chakra Glide"
 					rank="C"
@@ -5884,7 +5890,7 @@ obj
 				DragonDash
 					name="Dragon Dash"
 					rank="B"
-					desc="The Monk may use this ability in order to burst across the battle-field, coating their body in Chi energy. They may travel up to 8 tiles to a single target of their choice, and upon reaching the target, they may perform 2 Standard attacks. These attacks ignore Damage Reduction, and count as Force damage, due to Chi infused fists. Costs 50 MP."
+					desc="The Monk may use this ability in order to burst across the battle-field, coating their body in Chi energy. They may travel up to 8 tiles to a single target of their choice, and upon reaching the target, they may perform 2 Standard attacks. These attacks ignore Damage Reduction, and count as Force damage, due to Chi infused fists. Costs 50 MP. Cannot be used on the same turn as Flurry of Blows or Combo."
 					mcost=50
 					costtype=" MP"
 				IronBody
@@ -6816,10 +6822,10 @@ obj
 					desc="The user opens a scroll containing a powerful water spell. A wave of water bursts out from the scroll sweeping away a 5x5 area infront of the user. Targets in the AoE must make a DC: 22 fortitude saving throw or suffer 7d10 water damage and be inflicted with wet. 3/day"
 				Doton
 					rank="B"
-					desc="The user opens a scroll throwing it onto the ground where the magic stored is released creating a patch of cursed earth 7x7 tiles in size. Targets starting their turn in the affected area suffer 4d10 earth damage. 60ft range. This cursed earth remains for 4 rounds. 3/day"
+					desc="The user opens a scroll throwing it onto the ground where the magic stored is released creating a patch of cursed earth 7x7 tiles in size. Targets starting their turn in the affected area suffer 4d10 earth damage. 12 tile range. This cursed earth remains for 4 rounds. 3/day"
 				Fuuton
 					rank="B"
-					desc="The user opens a scroll summoning a cutting whirlwind that travels to an area before releasing a torrent of cutting wind. Targets a 3x3 area. Targets in the AoE must make a fortitude saving throw DC: 22 or suffer 8d12 wind damage, and be inflicted with 'Bleed' until healed. 60ft range. 3/day."
+					desc="The user opens a scroll summoning a cutting whirlwind that travels to an area before releasing a torrent of cutting wind. Targets a 3x3 area. Targets in the AoE must make a fortitude saving throw DC: 22 or suffer 8d12 wind damage, and be inflicted with 'Bleed' until healed. 12 tile range. 3/day."
 				Hyoton
 					rank="B"
 					desc="The user opens a scroll releasing a frozen wind on a 5x5 tile area in front of them. The wind freezes all sources of water. Targets in the AoE must make a DC: 22 fortitude save or take 7d10 ice damage, and be afflicted with 'Slow' and 'Frostbite'. 3/day."
