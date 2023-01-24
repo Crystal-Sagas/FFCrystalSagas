@@ -1444,7 +1444,7 @@ obj
 				name="Gunplay"
 				ajob="Gunbreaker"
 				rank="T2"
-				desc="This Gunbreaker has trained in the art of Gunplay. So long as they are wielding a Gunblade, they gain the maximum bonus from the Combat Intelligence perk, passively."
+				desc="This Gunbreaker has trained in the art of Gunplay. So long as they are wielding a Gunblade, they gain the maximum bonuses from all T1, and T2 Gladiator passives, passively and regardless of stacks."
 			Triggerburst
 				icon='Icons/Perk/Gunbreaker.png'
 				name="Trigger Burst"
