@@ -682,17 +682,18 @@ mob
 						p.costtype=input("Mana or Stamina drain?") as anything in rescost
 						var/list/atktype=list("standard","magical","save","weapon","weaponsave","heal")
 						p.atype=input("Choose an attack type. This affects calculation during rolls") as anything in atktype
+						p.attack_roll_damage_dice = FALSE
 						var/list/sourcetypes=list("str","dex","con","int","wis","cha")
 						switch(p.atype)
 							if("standard", "weapon", "magical", "heal")
-								p.range1=input("Choose a starting range for an attack roll") as num
-								p.range2=input("Choose an ending range for an attack roll") as num
+								p.attack_roll_damage_lower = input("Choose a starting range for an attack roll") as num
+								p.attack_roll_damage_upper = input("Choose an ending range for an attack roll") as num
 								p.addhit=input("Does this attack add to hitrate?") as num
 								p.adddam=input("Does this attack add to damage?") as num
 								p.damsource=input("What stat is being taken into calc.") as anything in sourcetypes
 							if("save", "weaponsave")
-								p.range1=input("Choose a starting range for an attack roll") as num
-								p.range2=input("Choose an ending range for an attack roll") as num
+								p.attack_roll_damage_lower = input("Choose a starting range for an attack roll") as num
+								p.attack_roll_damage_upper = input("Choose an ending range for an attack roll") as num
 								p.addhit=input("Does this attack add to hitrate?") as num
 								p.adddam=input("Does this attack add to damage?") as num
 								p.damsource=input("What stat is being taken into calc.") as anything in sourcetypes
@@ -728,7 +729,7 @@ mob
 			GiveProficiency(var/mob/m)
 				if(adminlv<1)
 					return
-				var/list/equip=list("Light Armor","Medium Armor","Heavy Armor","Shield","Tower Shield","Shuriken","Throwing Knives","Longsword","Scimitar","Hammer","Axe","Dagger","Whip","Greatsword","Katana","Spear","Scythe","Bow","Focus Sword","Staff","Tome","Sword Spear","Thief Sword","Bolt Rapier","Whipblade","Akademia Card","Buster Sword","Blitzball","Gun Blade","Ba'gangsaw","Morphing Blade","Gun Arm","Royal","Draconic","Chemist","Bowsword","Machinist","Magitek Pistol","Magitek Rifle","accessory")
+				var/list/equip=list("Light Armor","Medium Armor","Heavy Armor","Shield","Tower Shield","Shuriken","Throwing Knives","Longsword","Scimitar","Hammer","Axe","Dagger","Whip","Greatsword","Katana","Spear","Scythe","Bow","Focus Sword","Focus Crystal","Staff","Tome","Sword Spear","Thief Sword","Bolt Rapier","Whipblade","Akademia Card","Buster Sword","Blitzball","Gun Blade","Ba'gangsaw","Morphing Blade","Gun Arm","Royal","Draconic","Chemist","Bowsword","Machinist","Magitek Pistol","Magitek Rifle","accessory")
 				var/choice=input("Choose a proficiency to grant.") as null|anything in equip
 				if(choice==null)
 					return

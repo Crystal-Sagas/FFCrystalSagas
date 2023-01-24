@@ -2,8 +2,18 @@
  * supertype of almost all object types.
  */
 /datum
+	/// use tags instead of refs?
+	var/use_tag = FALSE
+
+	//? abstract.dm
 	/// abstract type - certain datums have a "root" that shouldn't be instantiated.
 	var/abstract_type = /datum
+
+	//? weakref.dm
+	/// weak reference
+	var/datum/weakref/weakref
+
+	//? dispose.dm
 	/**
 	 * are we mid delete?
 	 *
@@ -14,17 +24,26 @@
 	 * * nonnegative number - world.time of deletion
 	 */
 	var/disposing = null
+
+	//? serialize.dm
 	/// implements the serialization system?
 	var/serializable = FALSE
-	/// use tags instead of refs?
-	var/use_tag = FALSE
-	/// weak reference
-	var/datum/weakref/weakref
+
+	//? signals.dm
+	/**
+	 * signals - list(signal = list(datum = procpath))
+	 */
+	var/list/signals_lookup
+	/**
+	 * signals we registered on others - list(other = list(signals))
+	 */
+	var/list/signals_hooked
 
 /**
  * orders ourselves to clean up anything needed.
  */
 /datum/proc/Destruct()
+	cleanup_signals()
 	tag = null
 
 /**

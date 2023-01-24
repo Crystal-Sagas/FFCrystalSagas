@@ -327,17 +327,18 @@ mob
 						p.costtype=input("Mana or Stamina drain?") as anything in rescost
 						var/list/atktype=list("standard","magical","save","weapon","weaponsave","heal")
 						p.atype=input("Choose an attack type. This affects calculation during rolls") as anything in atktype
+						p.attack_roll_damage_dice = FALSE
 						var/list/sourcetypes=list("str","dex","con","int","wis","cha")
 						switch(p.atype)
 							if("standard", "weapon", "magical", "heal")
-								p.range1=input("Choose a starting range for an attack roll") as num
-								p.range2=input("Choose an ending range for an attack roll") as num
+								p.attack_roll_damage_lower=input("Choose a starting range for an attack roll") as num
+								p.attack_roll_damage_upper=input("Choose an ending range for an attack roll") as num
 								p.addhit=input("Does this attack add to hitrate?") as num
 								p.adddam=input("Does this attack add to damage?") as num
 								p.damsource=input("What stat is being taken into calc.") as anything in sourcetypes
 							if("save", "weaponsave")
-								p.range1=input("Choose a starting range for an attack roll") as num
-								p.range2=input("Choose an ending range for an attack roll") as num
+								p.attack_roll_damage_lower=input("Choose a starting range for an attack roll") as num
+								p.attack_roll_damage_upper=input("Choose an ending range for an attack roll") as num
 								p.addhit=input("Does this attack add to hitrate?") as num
 								p.adddam=input("Does this attack add to damage?") as num
 								p.damsource=input("What stat is being taken into calc.") as anything in sourcetypes

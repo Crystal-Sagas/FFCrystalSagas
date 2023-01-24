@@ -1,52 +1,58 @@
+// todo: /datum/prototype/perk
+
+/obj/perk
+	var/element="Physical"
+	var/heal=0
+	var/cleanse=0
+	var/monkability=0
+	var/incompatible=null
+	var/statuseffect
+	var/infusiontype
+	var/dispel=0
+	var/revive=0
+	var/greenmagic=0
+	var/multi=0
+	var/regen=0
+	var/refresh=0
+
+/obj/perk/New(loc)
+	. = ..()
+	if(src.rank=="T1")
+		src.rpcost=1
+	if(src.rank=="T2")
+		src.rpcost=2
+	if(src.rank=="T3")
+		src.rpcost=3
+	if(src.rank=="T4")
+		src.rpcost=4
+	if(src.rank=="T5")
+		src.rpcost=5
+	if(src.rank=="T6")
+		src.rpcost=6
+	if(src.rank=="E")
+		src.rpcost=1
+	if(src.rank=="D")
+		src.rpcost=2
+	if(src.rank=="C")
+		src.rpcost=3
+	if(src.rank=="B")
+		src.addhit+=2
+		src.basecheck+=1
+		src.adddam+=15
+		src.rpcost=4
+	if(src.rank=="A")
+		src.addhit+=3
+		src.basecheck+=2
+		src.adddam+=25
+		src.rpcost=8
+	if(src.rank=="S")
+		src.addhit+=4
+		src.basecheck+=3
+		src.adddam+=40
+		src.rpcost=16
+
 obj
 	perk
-		var/element="Physical"
-		var/heal=0
-		var/cleanse=0
-		var/monkability=0
-		var/incompatible=null
-		var/statuseffect
-		var/infusiontype
-		var/dispel=0
-		var/revive=0
-		var/greenmagic=0
-		var/multi=0
-		var/regen=0
-		var/refresh=0
-		New()
-			if(src.rank=="T1")
-				src.rpcost=1
-			if(src.rank=="T2")
-				src.rpcost=2
-			if(src.rank=="T3")
-				src.rpcost=3
-			if(src.rank=="T4")
-				src.rpcost=4
-			if(src.rank=="T5")
-				src.rpcost=5
-			if(src.rank=="T6")
-				src.rpcost=6
-			if(src.rank=="E")
-				src.rpcost=1
-			if(src.rank=="D")
-				src.rpcost=2
-			if(src.rank=="C")
-				src.rpcost=3
-			if(src.rank=="B")
-				src.addhit+=2
-				src.basecheck+=1
-				src.adddam+=15
-				src.rpcost=4
-			if(src.rank=="A")
-				src.addhit+=3
-				src.basecheck+=2
-				src.adddam+=25
-				src.rpcost=8
-			if(src.rank=="S")
-				src.addhit+=4
-				src.basecheck+=3
-				src.adddam+=40
-				src.rpcost=16
 		ElementalPerks
 			Fire
 				icon='Icons/Perk/Fire.png'
@@ -1085,8 +1091,9 @@ obj
 					ability=1
 					mcost=5
 					basecheck=10
-					range1=1
-					range2=8
+					attack_roll_damage_dice = FALSE
+					attack_roll_damage_lower = 1
+					attack_roll_damage_upper = 8
 					adddam=2
 					addhit=1
 					range="Melee"
@@ -2126,9 +2133,10 @@ obj
 						ability=1
 						mcost=0
 						basecheck=10
-						range1=2
-						range2=12
-						adddam=5
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 2
+						attack_roll_dice_sides = 6
+						adddam=2
 						addhit=1
 						range="Melee"
 						costtype="Stamina"
@@ -2146,9 +2154,10 @@ obj
 						ability=1
 						mcost=0
 						basecheck=10
-						range1=2
-						range2=16
-						adddam=8
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 2
+						attack_roll_dice_sides = 8
+						adddam=3
 						addhit=2
 						range="Melee"
 						costtype="Stamina"
@@ -2166,9 +2175,10 @@ obj
 						ability=1
 						mcost=0
 						basecheck=10
-						range1=2
-						range2=20
-						adddam=10
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 2
+						attack_roll_dice_sides = 10
+						adddam=4
 						addhit=3
 						range="Melee"
 						costtype="Stamina"
@@ -2186,9 +2196,10 @@ obj
 						ability=1
 						mcost=0
 						basecheck=10
-						range1=2
-						range2=24
-						adddam=15
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 4
+						attack_roll_dice_sides = 12
+						adddam=5
 						addhit=4
 						range="Melee"
 						costtype="Stamina"
@@ -2206,9 +2217,10 @@ obj
 						ability=1
 						mcost=0
 						basecheck=10
-						range1=2
-						range2=20
-						adddam=20
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 2
+						attack_roll_dice_sides = 20
+						adddam=10
 						addhit=5
 						range="Melee"
 						costtype="Stamina"
@@ -2794,8 +2806,9 @@ obj
 						name="Counter Comet"
 						mcost=5
 						basecheck=10
-						range1=15
-						range2=20
+						attack_roll_damage_dice = FALSE
+						attack_roll_damage_lower = 15
+						attack_roll_damage_upper = 20
 						adddam=0
 						addhit=100
 						range="Autohit"
@@ -2896,16 +2909,18 @@ obj
 						atype="standard"
 						typing="magical"
 						range=" 3 tiles."
-						range1=10
-						range2=16
+						attack_roll_damage_dice = FALSE
+						attack_roll_damage_lower=10
+						attack_roll_damage_upper=16
 						desc="The user of this technique swings their blade, and releases a crescent shaped burst of magic, for which to slash at their target. This deals 10 to 16+WIS Force damage on a successful hit, and travels as a 3 tile wide projectile. Magical. Costs 10 Mana."
 					AeroBlade
 						name="Aero Blade"
 						rank="D"
 						atype="standard"
 						typing="magical"
-						range1=8
-						range2=12
+						attack_roll_damage_dice = FALSE
+						attack_roll_damage_lower=8
+						attack_roll_damage_upper=12
 						desc="The user of this technique manifests a sword-shape construct of wind from the tip of their blade, which seperates and moves to independantly slash at the target, dealing 8 to 12+WIS Wind damage and inflicting 'Squall' on a successful hit. Magical. Costs 10 Mana."
 						mcost=10
 					AquaBlade
@@ -2914,8 +2929,9 @@ obj
 						rank="D"
 						atype="standard"
 						typing="magical"
-						range1=8
-						range2=12
+						attack_roll_damage_dice = FALSE
+						attack_roll_damage_lower=8
+						attack_roll_damage_upper=12
 						desc="The user of this technique manifests a sword-shaped construct of water from the tip of their blade, which seperates and moves to independantly slash at the target, dealing 8 to 12+WIS Water damage and inflicting 'Whorl' on a successful hit. Magical. Costs 10 Mana."
 						mcost=10
 					BrightBlade
@@ -2924,8 +2940,9 @@ obj
 						rank="C"
 						atype="standard"
 						typing="magical"
-						range1=8
-						range2=12
+						attack_roll_damage_dice = FALSE
+						attack_roll_damage_lower=8
+						attack_roll_damage_upper=12
 						desc="The user of this technique manifests a sword-shape construct of light from the tip of their blade, which seperates and moves to independantly slash at the target, dealing 8 to 12+WIS Holy damage, and inflicting 'Silence' on a successful hit. Magical. Costs 25 Mana."
 						mcost=25
 					SpiritBlade
@@ -2934,8 +2951,9 @@ obj
 						atype="standard"
 						typing="magical"
 						range=" 5 tiles."
-						range1=20
-						range2=35
+						attack_roll_damage_dice = FALSE
+						attack_roll_damage_lower=20
+						attack_roll_damage_upper=35
 						desc="The user of this technique manifests a sword-shaped construct of pure magical energy from the tip of their blade, which seperates and moves to independantly stab the target, dealing 20 to 35+WIS Force damage, and inflicting 'Weakness' on a successful hit. Magical. Costs 30 Mana."
 						mcost=30
 					Zanbatou
@@ -2944,8 +2962,9 @@ obj
 						atype="standard"
 						typing="magical"
 						range=" 5 tiles."
-						range1=40
-						range2=55
+						attack_roll_damage_dice = FALSE
+						attack_roll_damage_lower=40
+						attack_roll_damage_upper=55
 						mcost=50
 						desc="The user of this technique swings their blade, and from it - another blade, in the shape of a greatsword or a buster sword forms, made entirely of magical energy. It flings forward, spinning like a Shuriken to cut its target down. This deals 40 to 55+WIS Force damage on a successful hit. Magical. Costs 50 Mana."
 					IfritFalchion
@@ -2954,8 +2973,9 @@ obj
 						atype="standard"
 						typing="magical"
 						range=" 9 tiles."
-						range1=55
-						range2=70
+						attack_roll_damage_dice = FALSE
+						attack_roll_damage_lower=55
+						attack_roll_damage_upper=70
 						mcost=70
 						desc="The user of this technique holds their blade above their head, and begins to gather magical energy approximately 20 feet above them. This energy forms into a sword made of Fire, and then slashes down at a target in range, dealing 55 to 70+WIS Fire damage, and inflicting 'Burn' on a successful hit. Magical. Costs 70 Mana."
 					ShivaSaber
@@ -2964,8 +2984,9 @@ obj
 						atype="standard"
 						typing="magical"
 						range=" 9 tiles."
-						range1=55
-						range2=70
+						attack_roll_damage_dice = FALSE
+						attack_roll_damage_lower=55
+						attack_roll_damage_upper=70
 						mcost=70
 						desc="The user of this technique holds their blade above their head, and begins to gather magical energy approximately 20 feet above them. This energy forms into a sword made of Fire, and then slashes down at a target in range, dealing 55 to 70+WIS Ice damage, and inflicting 'Frostbite' on a successful hit. Magical. Costs 70 Mana."
 					RamuhRapier
@@ -2974,8 +2995,9 @@ obj
 						desc="The user of this technique holds their blade above their head, and begins to gather magical energy approximately 20 feet above them. This energy forms into a sword made of Fire, and then slashes down at a target in range, dealing 55 to 70+WIS Thunder damage, and inflicting 'Paralyze' on a successful hit. Magical. Costs 70 Mana."
 						rank="A"
 						atype="standard"
-						range1=55
-						range2=70
+						attack_roll_damage_dice = FALSE
+						attack_roll_damage_lower=55
+						attack_roll_damage_upper=70
 						mcost=70
 						typing="magical"
 					BahamutBlade
@@ -2984,8 +3006,9 @@ obj
 						desc="The user of this technique holds their blade above their head, and begins to gather magical energy approximately 20 feet above them. This energy forms into a sword made of Fire, and then slashes down at a target in range, dealing 70 to 85+WIS Force damage, and inflicting 'Slow', and 'Heavy' on a successful hit. Magical. Costs 100 Mana."
 						rank="S"
 						atype="standard"
-						range1=70
-						range2=85
+						attack_roll_damage_dice = FALSE
+						attack_roll_damage_lower = 70
+						attack_roll_damage_upper = 85
 						mcost=100
 						typing="magical"
 			Oracle
@@ -3041,8 +3064,9 @@ obj
 					DiskofLight
 						name="Disk of Light"
 						rank="C"
-						range1=2
-						range2=16
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 2
+						attack_roll_dice_sides = 8
 						addhit=8
 						mcost=20
 						range=" 5 tiles."
@@ -3051,8 +3075,9 @@ obj
 					DivineStorm
 						name="Divine Storm"
 						rank="C"
-						range1=3
-						range2=30
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 3
+						attack_roll_dice_sides = 10
 						mcost=30
 						basecheck=12
 						atype="save"
@@ -3065,8 +3090,9 @@ obj
 						basecheck=13
 						atype="save"
 						range=" 8 tiles."
-						range1=3
-						range2=36
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 3
+						attack_roll_dice_sides = 12
 						savetype="Reflex"
 						desc="The user of this ability opens a crackling portal over the head of a target within 8 tiles. From it, a massive blade made of divine energy launches forth like a meteor, to carve them up - before exploding. This prompts a Reflex saving throw, dealing 3d12+CHA Holy damage and inflicting 'Stun' on a failure, or half as much and no 'Stun' on a success. Costs 40 Mana."
 					CircleofSealing
@@ -3074,8 +3100,9 @@ obj
 						rank="B"
 						mcost=50
 						range=" 3x3 AoE within 8 tiles."
-						range1=4
-						range2=40
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 4
+						attack_roll_dice_sides = 10
 						basecheck=13
 						atype="save"
 						savetype="Fortitude"
@@ -3085,8 +3112,9 @@ obj
 						rank="B"
 						mcost=45
 						range=" 5 tiles."
-						range1=2
-						range2=12
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 2
+						attack_roll_dice_sides = 6
 						atype="weapon"
 						typing="magical"
 						desc="The user of this ability points their blade at a designated target within 5 tiles of their own location. They then teleport instantly to that location in a flash of light, releasing a spark from their weapon as they swing it towards the target, dealing Weapon Damage+2d6+CHA additional damage on the attack, on a successful hit. This counts as a Spell, despite being a Weapon attack, and uses Magic bonuses as opposed to Physical. Costs 45 Mana."
@@ -3105,8 +3133,9 @@ obj
 						name="Banishing Orb"
 						rank="A"
 						mcost=70
-						range1=7
-						range2=84
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 7
+						attack_roll_dice_sides = 12
 						mcost=80
 						range=" 8 tiles."
 						addhit=5
@@ -3119,8 +3148,9 @@ obj
 						atype="save"
 						savetype="Will"
 						basecheck=16
-						range1=80
-						range2=90
+						attack_roll_damage_dice = FALSE
+						attack_roll_damage_lower = 80
+						attack_roll_damage_upper = 90
 						desc="The caster of this ability throws either arm to the side, and flattens their palms. Divine light begins to seep out in strands, moving to whirl around a target in a calm 'whirlwind' of light. It then bursts into millions of sparkling light particles, which begin to individually fire forth, directly attacking the target's soul. This attack deals 80 to 90+CHA Holy damage on a failed save, or half as much on a success. Costs 90 Mana."
 					LakshmiDance
 						name="Lakshmi's Dance"
@@ -3128,15 +3158,17 @@ obj
 						mcost=80
 						atype="weapon"
 						range=" 3x3 AoE centered around user."
-						range1=4
-						range2=40
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 4
+						attack_roll_dice_sides = 10
 						desc="The user of this ability brandishes their weapon in a white, divine mist. They then spin a full 360 degrees in place, releasing the mist as a sharp blade towards all creatures in range. On a successful hit, a target takes Weapon Damage+4d10+CHA damage, and is inflicted with 'Sleep'. Costs 80 Mana."
 					OdinGallop
 						name="Odin's Gallop"
 						rank="A"
 						mcost=70
-						range1=40
-						range2=60
+						attack_roll_damage_dice = FALSE
+						attack_roll_damage_lower = 40
+						attack_roll_damage_upper = 60
 						atype="standard"
 						range=" 3 tile wide, 5 tile line."
 						desc="The user of this ability launches off of the ground from their current position. They summon two curved, ornate silver and gold blades used by Odin himself, into each hand. As the user travels 5 tiles forward, all creatures within 3 tiles that they pass are prompted with an attack roll, taking 40-60+CHA Holy damage on hit. This does not use the caster's movement action, and is a Standard action."
@@ -3148,8 +3180,9 @@ obj
 						range=" 8 tiles."
 						atype="save"
 						basecheck=15
-						range1=60
-						range2=70
+						attack_roll_damage_dice = FALSE
+						attack_roll_damage_lower = 60
+						attack_roll_damage_upper = 70
 						desc="The user of this ability raises their hands to the sky, and releases a pillar of light from the heavens upon a target within 8 tiles, targeting their soul. It is blasted with Holy Light, prompting a Will saving throw - and takes 60 to 70+CHA damage, and is then teleported to a tile of the caster's choice in view on a failed save, or takes half damage and is not teleported on a success."
 					LifeConnect
 						name="Life Connect"
@@ -3267,8 +3300,9 @@ obj
 						desc="The user leaps in a particular direction, gathering momentum in their weapon before striking at a target. Can move an extra 1 tile of movement towards a target of this technique while performing the attack.  (Damage: Weapon damage + 1d10 | Melee attack roll, +3 to hit. -10 stamina.)"
 						mcost=10
 						basecheck=10
-						range1=1
-						range2=10
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 1
+						attack_roll_dice_sides = 10
 						adddam=0
 						addhit=3
 						range="Melee"
@@ -3286,8 +3320,9 @@ obj
 						name="Riposte"
 						mcost=10
 						basecheck=10
-						range1=0
-						range2=0
+						attack_roll_damage_dice = FALSE
+						attack_roll_damage_lower = 0
+						attack_roll_damage_upper = 0
 						adddam=10
 						addhit=0
 						range="Melee"
@@ -3302,8 +3337,9 @@ obj
 						name="Renzokuken"
 						mcost=45
 						basecheck=10
-						range1=2
-						range2=4
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 2
+						attack_roll_dice_sides = 2
 						range="Melee"
 						costtype="Stamina"
 						atype="weapon"
@@ -3316,8 +3352,9 @@ obj
 						name="Jecht Combination"
 						mcost=45
 						basecheck=10
-						range1=1
-						range2=2
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 1
+						attack_roll_dice_sides = 2
 						costtype="Stamina"
 						atype="weapon"
 						damsource="str"
@@ -3329,8 +3366,8 @@ obj
 						name="Halone"
 						mcost=30
 						basecheck=10
-						range1=0
-						range2=0
+						attack_roll_damage_dice = FALSE
+						attack_roll_damage_exact = 0
 						adddam=5
 						addhit=0
 						range="Melee"
@@ -3346,8 +3383,9 @@ obj
 						name="Stellar Circle"
 						mcost=30
 						basecheck=10
-						range1=1
-						range2=12
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 1
+						attack_roll_dice_sides = 12
 						adddam=0
 						addhit=0
 						range=" 5x5 AoE around user."
@@ -3363,8 +3401,8 @@ obj
 						name="Launch"
 						mcost=30
 						basecheck=10
-						range1=0
-						range2=0
+						attack_roll_damage_dice = FALSE
+						attack_roll_damage_exact = 0
 						adddam=4
 						addhit=0
 						range="Melee"
@@ -3379,8 +3417,8 @@ obj
 						name="Cross Slash"
 						mcost=30
 						basecheck=10
-						range1=0
-						range2=0
+						attack_roll_damage_dice = FALSE
+						attack_roll_damage_exact = 0
 						adddam=0
 						addhit=0
 						range="Melee"
@@ -3395,8 +3433,9 @@ obj
 						name="Rough Divide"
 						mcost=50
 						basecheck=13
-						range1=30
-						range2=70
+						attack_roll_damage_dice = FALSE
+						attack_roll_damage_lower = 30
+						attack_roll_damage_upper = 70
 						atype="weaponsave"
 						range=" 3 tile line."
 						savetype="Reflex"
@@ -3407,8 +3446,9 @@ obj
 						rank="B"
 						name="Assault Trigger"
 						mcost=45
-						range1=5
-						range2=10
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 5
+						attack_roll_dice_sides = 2
 						atype="weapon"
 						range="Melee"
 						costtype="Stamina"
@@ -3418,8 +3458,9 @@ obj
 						name="Fated Circle"
 						mcost=40
 						basecheck=10
-						range1=2
-						range2=12
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 2
+						attack_roll_dice_sides = 6
 						adddam=0
 						addhit=0
 						range=" 3x3 AoE around user."
@@ -3434,19 +3475,21 @@ obj
 						rank="B"
 						name="Crushing Blow"
 						mcost=50
-						range1=5
-						range2=60
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 5
+						attack_roll_dice_sides = 12
 						adddam=5
 						addhit=5
 						atype="weapon"
 						range=" 5 tiles."
-						desc="The user of this technique infuses their feet with magic, and launches 3 tiles into the air. They gain the effects of Airborne, without the effects of Knock-up. They then swing their weapon to the side, releasing a disk of light that deals Holy damage, and inflicts 'Heavy' on hit. Costs 50 Stamina."
+						desc="The user of this technique infuses their feet with magic, and launches 3 tiles into the air. They gain the effects of Airborne, without the effects of Knock-up. They then swing their weapon to the side, releasing a disk of light that deals Holy damage, and inflicts 'Heavy' on hit. Attack: Weapon Damage + 5d12. Costs 50 Stamina."
 					RoundEdge
 						rank="B"
 						name="Round Edge"
 						mcost=50
-						range1=4
-						range2=55
+						attack_roll_damage_dice = FALSE
+						attack_roll_damage_lower = 4
+						attack_roll_damage_upper = 55
 						adddam=3
 						addhit=4
 						atype="weapon"
@@ -3459,8 +3502,9 @@ obj
 						name="Blade Beam"
 						mcost=40
 						basecheck=13
-						range1=2
-						range2=24
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 2
+						attack_roll_dice_sides = 12
 						adddam=10
 						addhit=0
 						range=" 6 tile line, 3 tile cone at the end of line."
@@ -3491,8 +3535,9 @@ obj
 						name="God Among Men"
 						mcost=50
 						basecheck=10
-						range1=2
-						range2=24
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 2
+						attack_roll_dice_sides = 12
 						adddam=0
 						addhit=3
 						range=" 3 tile cone in front of user."
@@ -3505,8 +3550,9 @@ obj
 					BlastingZone
 						rank="A"
 						name="Blasting Zone"
-						range1=60
-						range2=110
+						attack_roll_damage_dice = FALSE
+						attack_roll_damage_lower = 60
+						attack_roll_damage_upper = 110
 						basecheck=14
 						adddam=5
 						range="  3 tile wide, 5 tile line."
@@ -3523,8 +3569,9 @@ obj
 						name="Triumphant Grasp"
 						mcost=90
 						basecheck=15
-						range1=8
-						range2=80
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 8
+						attack_roll_dice_sides = 10
 						adddam=0
 						addhit=0
 						range="Melee"
@@ -3539,8 +3586,9 @@ obj
 						name="Chaotic Disaster"
 						rank="A"
 						mcost=75
-						range1=10
-						range2=70
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 7
+						attack_roll_dice_sides = 10
 						adddam=5
 						addhit=3
 						range=" 5 tile line."
@@ -3563,8 +3611,9 @@ obj
 						name="Finishing Touch"
 						mcost=55
 						basecheck=10
-						range1=2
-						range2=40
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 2
+						attack_roll_dice_sides = 20
 						adddam=10
 						addhit=3
 						range="3 tile wide, Melee"
@@ -3584,8 +3633,9 @@ obj
 						name="Red Card"
 						mcost=60
 						basecheck=10
-						range1=2
-						range2=20
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 1
+						attack_roll_dice_sides = 20
 						adddam=0
 						addhit=3
 						range="Melee"
@@ -3601,8 +3651,9 @@ obj
 						name="Thunder God"
 						mcost=60
 						basecheck=10
-						range1=3
-						range2=36
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 3
+						attack_roll_dice_sides = 12
 						adddam=0
 						addhit=0
 						range="3 tile cone in front of user."
@@ -3619,8 +3670,9 @@ obj
 						name="Innocence"
 						mcost=70
 						basecheck=10
-						range1=3
-						range2=60
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 3
+						attack_roll_dice_sides = 20
 						adddam=0
 						addhit=4
 						range=" 3 tile wide, 6 tile range."
@@ -3635,8 +3687,9 @@ obj
 						name="Full Charge"
 						mcost=75
 						basecheck=10
-						range1=3
-						range2=36
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 3
+						attack_roll_dice_sides = 12
 						adddam=0
 						addhit=0
 						range="Melee"
@@ -3652,8 +3705,8 @@ obj
 						name="Octaslash"
 						mcost=120
 						basecheck=10
-						range1=0
-						range2=0
+						attack_roll_damage_dice = FALSE
+						attack_roll_damage_exact = 0
 						adddam=10
 						addhit=0
 						range="Melee"
@@ -3669,8 +3722,9 @@ obj
 						name="Omega Drive"
 						mcost=120
 						basecheck=18
-						range1=2
-						range2=24
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 2
+						attack_roll_dice_sides = 12
 						adddam=10
 						addhit=0
 						range="7x7 AoE"
@@ -3686,8 +3740,9 @@ obj
 						name="Ultimate Illusion"
 						mcost=120
 						basecheck=18
-						range1=4
-						range2=80
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 4
+						attack_roll_dice_sides = 20
 						adddam=0
 						addhit=0
 						range="5 tile cone, up to 4 targets."
@@ -3705,8 +3760,9 @@ obj
 						name="Stone Toss"
 						mcost=5
 						basecheck=10
-						range1=1
-						range2=12
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 1
+						attack_roll_dice_sides = 12
 						adddam=0
 						addhit=0
 						range=" 1 tile per STR mod."
@@ -3721,8 +3777,9 @@ obj
 						rank="D"
 						mcost=10
 						basecheck=10
-						range1=1
-						range2=20
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 1
+						attack_roll_dice_sides = 20
 						adddam=0
 						addhit=2
 						range="Melee"
@@ -3754,8 +3811,9 @@ obj
 						name="Bloody Shot"
 						mcost=45
 						basecheck=10
-						range1=2
-						range2=24
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 2
+						attack_roll_dice_sides = 12
 						adddam=0
 						addhit=0
 						range=" 8 tile range."
@@ -3773,8 +3831,9 @@ obj
 						name="Jecht Beam"
 						mcost=90
 						basecheck=18
-						range1=5
-						range2=60
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 5
+						attack_roll_dice_sides = 12
 						adddam=0
 						addhit=0
 						range=" 6 tile wide, 6 tile range."
@@ -3792,8 +3851,9 @@ obj
 						name="Ultimate Jecht Shot"
 						mcost=90
 						basecheck=10
-						range1=5
-						range2=60
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 5
+						attack_roll_dice_sides = 12
 						adddam=10
 						addhit=6
 						range=" 6 tile range, 3x3 projectile."
@@ -3810,8 +3870,9 @@ obj
 						name="Stardust Shot"
 						mcost=120
 						basecheck=15
-						range1=10
-						range2=120
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 10
+						attack_roll_dice_sides = 12
 						adddam=0
 						addhit=0
 						range=" 7x7 AoE within 10 tiles of user."
@@ -3838,8 +3899,9 @@ obj
 					name="Land Mine"
 					mcost=6
 					basecheck=8
-					range1=2
-					range2=40
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_damage_upper = 20
 					adddam=0
 					addhit=0
 					range=" 3 tile range, placeable anywhere a creature is not already positioned."
@@ -3858,8 +3920,9 @@ obj
 					name="Burst"
 					mcost=8
 					basecheck=10
-					range1=2
-					range2=8
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_damage_upper = 4
 					adddam=0
 					addhit=0
 					range=" 3 tile range, placeable anywhere a creature is not already positioned."
@@ -3877,8 +3940,9 @@ obj
 					name="Ruin"
 					mcost=4
 					basecheck=10
-					range1=2
-					range2=4
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 2
 					adddam=0
 					addhit=0
 					range="6 tile range."
@@ -3895,8 +3959,9 @@ obj
 					name="Tendril"
 					mcost=12
 					basecheck=10
-					range1=2
-					range2=24
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 12
 					adddam=0
 					addhit=0
 					range="2 Tile"
@@ -3914,8 +3979,9 @@ obj
 					name="Fog"
 					mcost=12
 					basecheck=12
-					range1=3
-					range2=18
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 3
+					attack_roll_dice_sides = 6
 					adddam=0
 					addhit=0
 					range=" 3 tile cone."
@@ -3933,8 +3999,9 @@ obj
 					name="Fogga"
 					mcost=30
 					basecheck=14
-					range1=3
-					range2=30
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 3
+					attack_roll_dice_sides = 10
 					adddam=0
 					addhit=0
 					range=" 5x5 AoE, 5 tile casting radius.."
@@ -3952,8 +4019,8 @@ obj
 					name="Pyramid"
 					mcost=10
 					basecheck=13
-					range1=0
-					range2=0
+					attack_roll_damage_dice = FALSE
+					attack_roll_damage_exact = 0
 					adddam=0
 					addhit=0
 					range=" Single Tile barrier.."
@@ -3972,8 +4039,9 @@ obj
 					name="Trine"
 					mcost=20
 					basecheck=14
-					range1=2
-					range2=40
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 20
 					adddam=0
 					addhit=0
 					range=" 3x3 AoE. Can be Cast within Pyramid Spell. Destroys Pyramid."
@@ -3997,8 +4065,9 @@ obj
 					ptype="spell"
 					costtype="Mana"
 					mcost=18
-					range1=2
-					range2=20
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 10
 					range="3 tile cone"
 					desc="The user expels several blue bubbles through their mouth. The bubbles will float airborne, and if touched by something they will explode dealing damage to whatever made contact with them. (Damage: 2d10+INT |  ranged attack roll, 3 tile cone, inflicts Wet on hit, (1d20+INT to hit), Water Element, - 18 Mana)"
 				Jolt
@@ -4010,8 +4079,9 @@ obj
 					costtype="Mana"
 					range="6 tiles."
 					mcost=20
-					range1=2
-					range2=16
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 8
 					addhit=2
 					ptype="spell"
 					desc="The user releases a jolt of magical energy at an opponent, which inflicts Paralyze onto the opponent if it does over 20 damage to the target. (Damage: 2d8+INT | ranged attack roll (1d20+INT+2 to hit) vs. Armor, -20 Mana.)"
@@ -4024,8 +4094,9 @@ obj
 					costtype="Mana"
 					range="6 tiles."
 					mcost=25
-					range1=3
-					range2=6
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 3
+					attack_roll_dice_sides = 2
 					ptype="spell"
 					desc="The user releases a burst of arcane projectiles. Four in total are created, aimed at targets in whatever order the user wishes. Each bolt does individual damage. (Damage: 3d2+INT | Four ranged attack rolls (1d20+INT to hit) vs. Armor, -25 Mana.)"
 
@@ -4050,8 +4121,9 @@ obj
 					ptype="spell"
 					costtype="Mana"
 					range="Melee"
-					range1=2
-					range2=12
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 6
 					mcost=30
 					desc="The user coats their fist or weapon in a compact and dense construct of arcane energy. They then release a melee attack which combines magical and physical damage, also knocking an opponent back as it explodes. (Make a Melee attack roll, dealing an additional 2d6+INT magical damage, and applying a 6 tile knockback on hit. -30 Mana.)"
 				Laser
@@ -4065,8 +4137,9 @@ obj
 					range="5 tile line."
 					mcost=15
 					addhit=3
-					range1=2
-					range2=8
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 4
 					desc="Mana is concentrated at the tip of a finger, and channeled to become extremely thin. It's then released in the form of a miniscule laser directed at vital points, meant to penetrate defenses. (Damage: 2d4+INT | +3 to hit, 15 Damage Reduction piercing.  5 tile line.-15 Mana.)"
 				Laserga
 					element="Laser"
@@ -4080,8 +4153,9 @@ obj
 					range="7 tile line."
 					mcost=35
 					addhit=4
-					range1=2
-					range2=20
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 10
 					desc="Mana is concentrated at the tip of a finger, and channeled into a thin but very condensed mass. It's then released in the form of a sizable laser directed at vital points, meant to penetrate defenses. (Damage: 2d10+INT | +4 to hit, 20 Damage Reduction piercing. 7 tile line. -35 Mana.)"
 				Pierce
 					element="Laser"
@@ -4094,8 +4168,9 @@ obj
 					range="6 tile range."
 					mcost=30
 					addhit=2
-					range1=2
-					range2=12
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 6
 					desc="The user coats their projectile in a screeching shroud of magical energy, which causes it to drill and burrow into a target at high speeds after being launched from their weapon. (Make a Ranged weapon attack roll, dealing an additional 2d6+INT magical damage, with +2 to hit and ignoring 5 physical damage reduction. -30 Mana.)"
 				Fleche
 					element="Laser"
@@ -4107,8 +4182,9 @@ obj
 					costtype="Mana"
 					range="6 tile range."
 					mcost=35
-					range1=4
-					range2=8
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 4
+					attack_roll_dice_sides = 2
 					desc="The caster creates a mass of five spears made of magical energy. They then release these spears at chosen targets in any order all in one burst. (Damage: 4d2+INT | Five ranged attack rolls (1d20+INT), -35 Mana.) (Deals a maximum of 120 damage.)"
 				Addle
 					element="Thunder"
@@ -4122,8 +4198,9 @@ obj
 					savetype="Fortitude"
 					mcost=35
 					basecheck=13
-					range1=2
-					range2=16
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 8
 					desc="The caster creates a storm-cloud of arcane energy above a target. It then releases gravity waves upon them, crushing and slowing them if the waves hit. Fortitude saving throw (13+INT+Rankbonus), on a failed save the target takes 2d8+INT damage - and their magic attacks deal 2 less damage for 3 rounds. Takes half damage on a successful save. , -35 Mana.)"
 				Combust
 					element="Fire"
@@ -4137,8 +4214,9 @@ obj
 					savetype="Fortitude"
 					mcost=40
 					basecheck=13
-					range1=5
-					range2=50
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 5
+					attack_roll_dice_sides = 10
 					desc="The caster stands still and focuses for two turns, drawing on the Mana inside of a target individual and grabbing hold of it. They then clench their hands down, causing the mana to combust inside of the foe and dealing damage in a guaranteed hit. (Prompts a Fortitude saving throw (13+INT+Rankbonus), on a failed save the target takes 5d10+INT fire damage, or half as much on a successful save. -40 Mana.)"
 				Impactga
 					element="Physical"
@@ -4149,8 +4227,9 @@ obj
 					atype="weapon"
 					costtype="Mana"
 					mcost=55
-					range1=2
-					range2=12
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 12
 					range="Melee"
 					desc="The user coats their fist or weapon in a compact and dense construct of arcane energy, crackling with energy. They then release a melee attack which combines maigcal and physical damage, also knocking an opponent back as it explodes. (Make a Melee attack roll, dealing an additional 2d12+INT magical damage, and applying 12 tile knockback on hit. -55 Mana.)"
 				Piercega
@@ -4163,8 +4242,9 @@ obj
 					costtype="Mana"
 					mcost=55
 					addhit=3
-					range1=2
-					range2=24
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 12
 					desc="The user coats their projectile in a silent, but ominous shroud of magical energy, which causes it to drill and burrow into a target at high speeds after being launched from their weapon. (Make a Ranged weapon attack roll, dealing an additional 2d12+INT magical damage, with +3 to hit and ignoring 8 physical damage reduction. -55 Mana.)"
 				Joltga
 					level=4
@@ -4175,8 +4255,9 @@ obj
 					costtype="Mana"
 					mcost=35
 					addhit=2
-					range1=3
-					range2=36
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 3
+					attack_roll_dice_sides = 12
 					desc="The user releases a burst of magical energy upon an opponent, which inflicts Paralyze onto the opponent if it does over 20 damage to the target. Damage: 3d12+INT | Ranged attack roll (1d20+int+2) -35 Mana.)"
 				JudgementGrimoire
 					element="Holy"
@@ -4191,8 +4272,9 @@ obj
 					costtype="Mana"
 					mcost=50
 					basecheck=13
-					range1=6
-					range2=72
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 6
+					attack_roll_dice_sides = 12
 					desc="The user leaps into the air, and calls forth a giant sword from a portal in the sky, to strike the ground. (Prompts a Reflex saving throw to all targets in range (13+INT+Rankbonus) - targets take 6d12+INT slashing damage, or half as much on a successful save. Sword is 5 tiles wide in each direction, - 50 Mana)"
 				StormLanceGrimoire
 					element="Thunder"
@@ -4204,8 +4286,9 @@ obj
 					atype="save"
 					savetype="Reflex"
 					mcost=45
-					range1=2
-					range2=32
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 16
 					basecheck=13
 					desc="After casting, a glyph is created under the user. Four lances of lightning rise from the cardinal directions, and can be thrown able to be aimed and moved through the air by the users will. (Four separate lances, each prompting a Reflex saving throw (14+INT+Rankbonus) - targets take 2d16+WIS damage on a failed save, and are paralyzed, Thunder Element, -45 Mana)"
 				SentinelsGrimoire
@@ -4226,8 +4309,9 @@ obj
 					mcost=45
 					costtype="Mana"
 					basecheck=16
-					range1=3
-					range2=36
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 3
+					attack_roll_dice_sides = 12
 					desc="Magical Mana is sent into the ground beneath the user causing parts of the earth to split away carrying them upwards on a large rock while several other large boulders spin around them. Four projectiles are then fired off at any target within 7 tiles of the point of origin. (Prompts a Reflex saving throw, dealing 3d12+INT piercing damage on a failed save, or half as much on a success - then fires off 4 magical ranged attack rolls, utilizing tome, staff, or focus in your inventory for their accuracy and damage - dealing earth damage on hit. - 45 Mana)"
 				AntiAirParticleBeam
 					element="Laser"
@@ -4236,8 +4320,9 @@ obj
 					rank="B"
 					atype="standard"
 					range=" 3x3 AoE around user, 8 tiles upward."
-					range1=4
-					range2=48
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 4
+					attack_roll_dice_sides = 12
 					adddam=5
 					addhit=2
 					mcost=30
@@ -4248,8 +4333,9 @@ obj
 					rank="B"
 					atype="standard"
 					range="5 Tile range."
-					range1=2
-					range2=24
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 12
 					mcost=35
 					desc="Strike at the ground sending a surge of mana into the ground turning it in a powerful wave that is sent forward. The wave travels for a short distance picking up speed. After it has traveled for four tiles it quickly changes become more volatile, and picking up speed. Five tile maximum range. Deals 5 additional damage per tile travelled. (Damage: 2d12+INT | Ranged attack roll (1d20+INT+1), 5 Tile range. - 35 Mana)"
 				RedSpiral
@@ -4259,8 +4345,9 @@ obj
 					cat="Unique"
 					atype="standard"
 					range="2 tile radius from user."
-					range1=3
-					range2=60
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 3
+					attack_roll_dice_sides = 20
 					adddam=5
 					addhit=2
 					mcost=40
@@ -4289,8 +4376,9 @@ obj
 					addhit=4
 					adddam=5
 					mcost=55
-					range1=3
-					range2=12
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 3
+					attack_roll_dice_sides = 12
 					desc="Conjure a whole storm of red streams that can travel to several targets or be split apart to target multiple targets. The streams will try to surround the target making a circle before unleashing their stored Mana into a powerful beam roasting whatever is trapped inside. (Damage: 3d12+INT+5 | 3 Ranged Attack Rolls (1d20+INT+4), - 55 Mana)"
 				Combustga
 					level=5
@@ -4299,8 +4387,9 @@ obj
 					atype="save"
 					range=" 6 tile."
 					basecheck=15
-					range1=10
-					range2=120
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 10
+					attack_roll_dice_sides = 12
 					adddam=5
 					mcost=80
 					desc="The caster stands still and focuses for two turns, drawing on the Mana inside of a target individual and grabbing hold of it. They then clench their hands down, causing the mana to combust inside of the foe and dealing damage in a guaranteed hit. (Prompts a Fortitude saving (15+INT+Rankbonus) throw after charging is completed, dealing 10d12+INT+5 damage on a failed save, or half as much on a success. | 2 turn charge time -80 Mana.)"
@@ -4311,8 +4400,9 @@ obj
 					cat="Unique"
 					atype="standard"
 					range=" 2 tile cross AoE within 7 yiles of user."
-					range1=7
-					range2=84
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 7
+					attack_roll_dice_sides = 12
 					adddam=5
 					addhit=4
 					mcost=50
@@ -4321,8 +4411,9 @@ obj
 					level=5
 					rank="A"
 					cat="Unique"
-					range1=3
-					range2=36
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 3
+					attack_roll_dice_sides = 12
 					adddam=5
 					addhit=4
 					atype="standard"
@@ -4336,8 +4427,9 @@ obj
 					mcost=60
 					atype="save"
 					basecheck=15
-					range1=7
-					range2=84
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 7
+					attack_roll_dice_sides = 12
 					adddam=4
 					range=" 7x7 AoE within 6 tiles of caster."
 					desc="The user creates a ball of super heated magic casting it into the air where it grows into a massive inferno sitting above the heads of everyone in the battlefield. The inferno is then cast downward scorching the very earth as it collides into setting everything ablaze. (Prompts a Reflex saving throw(15+INT+Rankbonus), dealing 7d12+INT+4 Fire damage on a failure, or half as much on a successful save. Affects a 7x7 AoE, - 60 Mana.)"
@@ -4351,10 +4443,8 @@ obj
 					atype="save"
 					savetype="Fortitude"
 					desc="The user standing still, and with complete concentration begins to channel, and pray to death. Over the course of three turns they pray, but when finished death deals a blow to the victim reducing them to a near death state. The victim has to be within the vision of the caster. (Prompts a Fortitude saving throw(16+INT+Rankbonus), which reduces target to 40 HP if failed, after 3 channeling turns. Does not lower beyond 40 HP. -160 Mana.)"
-					range1=0
-					range2=0
-
-
+					attack_roll_damage_dice = FALSE
+					attack_roll_damage_exact = 0
 
 			BlackMagic
 				magicneed="Black Magic"
@@ -4368,8 +4458,9 @@ obj
 					icon='Icons/Perk/Water.png'
 					Water
 						level=1
-						range1=1
-						range2=12
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 1
+						attack_roll_dice_sides = 12
 						atype="standard"
 						range="10 tile range."
 						mcost=5
@@ -4377,16 +4468,18 @@ obj
 					Watera
 						level=2
 						pre="Water"
-						range1=2
-						range2=24
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 2
+						attack_roll_dice_sides = 12
 						range="8 tile range."
 						mcost=15
 						desc="A medium sized, tightly packed ball of water is launched towards the target. Applies wet on hit. Out of Battle Effects: This individual is capable of controlling water. They can move up to a 10x10ft block of water from one location to another within view. They are capable of creating a 10ft puddle from water in the air. (Damage: 2d12+WIS water damage | 8 tile range, Magical attack roll. -15 Mana.)"
 					Waterga
 						level=3
 						pre="Watera"
-						range1=3
-						range2=36
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 3
+						attack_roll_dice_sides = 12
 						range="3x3 Projectile, 10 tile range."
 						atype="save"
 						savetype="Reflex"
@@ -4396,8 +4489,9 @@ obj
 					Waterja
 						level=4
 						pre="Waterga"
-						range1=5
-						range2=60
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 5
+						attack_roll_dice_sides = 12
 						range="5x5 AoE at a point in view."
 						atype="save"
 						savetype="Reflex"
@@ -4407,16 +4501,18 @@ obj
 					Flood
 						level=4
 						pre="Waterja"
-						range1=3
-						range2=36
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 3
+						attack_roll_dice_sides = 12
 						range="Single target, within view."
 						mcost=40
 						desc="Magic is used to form a puddle under a target. More and more water is created before it erupts upwards in a powerful column that sends the target up into the air.  (Damage: 3d12+WIS water damage | Single target within view, Magical attack roll, on hit launches target 6 tiles into the air. -40 mana.)"
 					Tsunami
 						level=5
 						pre="Waterja"
-						range1=6
-						range2=72
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 6
+						attack_roll_dice_sides = 12
 						atype="save"
 						savetype="Fortitude"
 						range=" 7 tile long, 5 tile wide zone."
@@ -4428,16 +4524,18 @@ obj
 					element="Ice"
 					Blizzard
 						level=1
-						range1=1
-						range2=24
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 1
+						attack_roll_dice_sides = 12
 						range="10 tile range."
 						mcost=5
 						desc="Creates a shard of ice that is launched towards the target and shatters on impact. If an enemy has the 'Wet' status effect, applies 'Slow' on hit. Out of Battle Effects: This individual is capable of freezing or thawing a source of water they can touch up to 5ft in size. (Damage: 1d12+WIS ice damage | 10 tile range, Magical attack roll. -5 Mana.)"
 					Blizzara
 						level=2
 						pre="Blizzard"
-						range1=2
-						range2=24
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 2
+						attack_roll_dice_sides = 12
 						range="3x3 AoE at a point within 10 tiles."
 						atype="save"
 						savetype="Reflex"
@@ -4446,16 +4544,18 @@ obj
 					Blizzaga
 						level=3
 						pre="Blizzara"
-						range1=3
-						range2=36
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 3
+						attack_roll_dice_sides = 12
 						mcost=30
 						range="5x5 AoE at an epicenter within 10 tiles."
 						desc="A large crystal of ice is formed above a medium sized area. It then crashes down to explode, sending freezing chunks of ice at any creature within its range. Creatures who are hit, and have the 'wet' status effect have 'Slow' applied to them. Out of Battle Effects: This individual is capable of freezing or thawing a source of water within a 80ft range and up to 15ft in size. They are capable of creating most shapes out of ice. (Damage: 3d12+WIS ice damage | 5x5 AoE at an epicenter within 10 tiles, Magical attack roll. -30 Mana.)"
 					Blizzaja
 						level=4
 						pre="Blizzaga"
-						range1=5
-						range2=62
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 5
+						attack_roll_dice_sides = 12
 						mcost=45
 						range="5x5 AoE at a point in view."
 						desc="An ancient runic circle forms under the target, upon activation it pelts the area with hundreds of sharp snowflakes, and a truly chilling breeze. Creatures with the 'Wet' status effect who fail the saving throw are also afflicted with 'Slow'. Out of Battle Effects: This individual is capable of freezing or thawing a source of water within a 100ft range and up to 25ft in size. They are capable of creating intricate shapes out of ice. (Damage: 5d12+WIS ice damage | 5x5 AoE at a point in view, prompts a Fortitude saving throw ; dealing full damage, and inflicting 'Frostbite' on a failure, or half damage on a success. -45 Mana.)"
@@ -4472,32 +4572,36 @@ obj
 					icon='Icons/Perk/Fire.png'
 					Fire
 						level=1
-						range1=1
-						range2=12
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 1
+						attack_roll_dice_sides = 12
 						range="10 tile range."
 						mcost=5
 						desc="A small and simple ball of fire that is launched towards the target. On hit, prompts a DC 12 Fortitude saving throw, applying 'Burn' on failure. Out of Battle Effects: This individual is capable of ignite an object within 5ft of themselves. They can spread a fire within view 5ft in any direction. (Damage: 1d12+WIS fire damage | 10 tile range, Magical attack roll. -5 Mana.)"
 					Fira
 						level=2
 						pre="Fire"
-						range1=2
-						range2=24
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 2
+						attack_roll_dice_sides = 12
 						mcost=15
 						range=" 10 tile range, 3x3 sized projectile."
 						desc="A medium sized ball of fire that when launched explodes on impact. On hit, prompts a Fortitude saving throw. On a failure, creatures take an additional 1d10 fire damage, and are afflicted with 'Burn'. Out of Battle Effects: This individual is capable of igniting or extinguishing an object within 30ft of themselves. They can spread a fire within view 5ft in any direction. (Damage: 2d12+WIS fire damage | 10 tile range, 3x3 sized projectile. Magical attack roll. -15 Mana.)"
 					Firaga
 						level=3
 						pre="Fira"
-						range1=3
-						range2=36
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 3
+						attack_roll_dice_sides = 12
 						range=" 10 tile range, 3x3 sized projectile."
 						mcost=30
 						desc="A large fireball is launched towards the target, with hissing flames. It explodes on contact with its target location. Creatures who are hit by the fire-ball must make a Fortitude saving throw (DC 18) or take an additional 3d12 fire damage, and be afflicted with 'Burn'. Out of Battle Effects: This individual is capable of igniting or extinguishing an object within 50ft of themselves. They can spread a fire within view 10ft in any direction. (Damage: 3d12+WIS fire damage | 10 tile range, 3x3 sized projectile. Magical attack roll. -30 Mana.)"
 					Firaja
 						level=4
 						pre="Firaga"
-						range1=6
-						range2=72
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 6
+						attack_roll_dice_sides = 12
 						mcost=45
 						atype="save"
 						savetype="Reflex"
@@ -4506,8 +4610,9 @@ obj
 					Ardor
 						level=5
 						pre="Firaja"
-						range1=7
-						range2=84
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 7
+						attack_roll_dice_sides = 12
 						mcost=70
 						range=" 5x5 AoE in view."
 						desc="A sphere of flame is created growing larger and larger until it reaches its apex size. The sphere is superheated, burning so hot it turns blue in color before erupting into a cyclone of searing heat. Out of battle effects: The user is capable of superheating any source of fire, doubling the damage caused by environmental fire damage, and turning the fire blue. Passive: This person's Fire Magic may now take on the form of 'Blue Fire' - allowing them to spend 8 MP to add 2d12 fire damage to any instance of Fire damage that they deal, as an incidental action. (Damage: 7d12+WIS fire damage | Targets a 5x5 AoE in view, Magical attack roll. Inflicts 'Burn' on hit. -70 Mana.)"
@@ -4516,32 +4621,36 @@ obj
 					icon='Icons/Perk/Thunder.png'
 					Thunder
 						level=1
-						range1=1
-						range2=12
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 1
+						attack_roll_dice_sides = 12
 						mcost=5
 						range=" 10 tile range"
 						desc="Above the target, the aether becomes volatile before a bolt of lightning forms and arcs down towards the target. Creatures affected with 'Wet' prompt this attack roll to gain +3 to hit. Out of Battle Effects: This individual is capable of generating or taking an electrical charge from an object they touch. They can sense whether an object has an electrical charge or not. (Damage: 1d12+WIS thunder damage | 10 tile range, Magical attack roll. -5 Mana.)"
 					Thundara
 						level=2
 						pre="Thunder"
-						range1=2
-						range2=12
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 2
+						attack_roll_dice_sides = 6
 						range=" 10 tile range, 2 attack rolls."
 						mcost=15
 						desc="The aether above the target becomes volatile before two bolts of electricity arc down towards the target. These attack rolls gain +3 to hit against creatures who have the 'wet' status effect applied to them. Out of Battle Effects: This individual is capable of generating or taking an electrical charge from an object within 30ft. They can sense whether an object has an electrical charge or not. (Damage: 2d6+WIS thunder damage | 10 tile range, 2 seperate magical attack rolls. -15 Mana.)"
 					Thundaga
 						level=3
 						pre="Thundara"
-						range1=4
-						range2=40
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 4
+						attack_roll_dice_sides = 10
 						range=" 10 tile range."
 						mcost=30
 						desc="The aether above the target becomes volatile before a massive, spear-like bolt of lightning strikes down upon a target. On hit, a creature must succeed a DC 15 Fortitude saving throw, or suffer from the 'Paralyze' status effect. This attack has a +3 to hit against creatures with 'Wet' applied to them. (Damage: 4d10+WIS thunder damage | 10 tile range, Magical attack roll. -30 Mana.)"
 					Thundaja
 						level=4
 						pre="Thundaga"
-						range1=5
-						range2=60
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 5
+						attack_roll_dice_sides = 12
 						range=" 5x5 AoE at a point in view."
 						atype="save"
 						savetype="Reflex"
@@ -4551,16 +4660,18 @@ obj
 					icon='Icons/Perk/Flare.png'
 					Flare
 						level=4
-						range1=6
-						range2=60
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 6
+						attack_roll_dice_sides = 10
 						mcost=45
 						range=" 3 tile wide, 6 tile long line."
 						desc="Magic is concentrated into dense glowing spheres around a target. The spheres of raw Mana bulge and spark before exploding outward into a small nova. (Damage: 6d10+WIS force damage | Magical attack roll, ignores up to 10 magical DR. -45 Mana.)"
 					Scathe
 						level=5
 						pre="Flare"
-						range1=9
-						range2=90
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 9
+						attack_roll_dice_sides = 10
 						range=" 5 tile wide, 10 tile long wave."
 						atype="save"
 						savetype="Fortitude"
@@ -4572,8 +4683,9 @@ obj
 						level=5
 						pre="Scathe"
 						cat="Unique"
-						range1=10
-						range2=80
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 10
+						attack_roll_dice_sides = 8
 						mcost=90
 						range=" 10 tile range."
 						desc="The user creates 5 spheres of searing energy around a target in range. The spheres ascend upwards combining into a single projectile that flies downwards and impacts against the target creating a powerful explosion. (Damage: 10d8+WIS force damage | Single target, Magical attack roll. Ignores all damage reduction. -90 mana.)"
@@ -4581,8 +4693,9 @@ obj
 						icon='Icons/Perk/Megaflare.png'
 						level=6
 						pre="Scathe"
-						range1=10
-						range2=120
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 10
+						attack_roll_dice_sides = 12
 						range=" 5 tile wide, 15 tile long wave."
 						atype="save"
 						savetype="Reflex"
@@ -4592,16 +4705,18 @@ obj
 						element="Ultima"
 						icon='Icons/Perk/Ultima.png'
 						level=6
-						range1=100
-						range2=200
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 40
+						attack_roll_dice_sides = 10
 						desc="The ultimate magic ability. The user unleashes everything they have in a powerful magical explosion. The spell uses up all the users mana dealing 1d10 force damage, and growing in range by 1 tile for every 10 mana consumed to cast the spell (max of 40d10 at 400 Mana spent). Targets caught in the effect must succeed a Reflex saving throw (DC 26) or take the full damage ; taking only half on a successful save. (Drain: 100% of current Mana. Adds 3 stacks of exhaustion to caster.)"
 				Other
 					Meltdown
 						element="Fire"
 						icon='Icons/Perk/Meltdown.png'
 						level=5
-						range1=3
-						range2=24
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 3
+						attack_roll_dice_sides = 8
 						range=" 5x5 AoE in view. 3 Saves."
 						atype="save"
 						savetype="Reflex"
@@ -4610,8 +4725,9 @@ obj
 						element="Dark"
 						icon='Icons/Perk/Apocalypse.png'
 						level=6
-						range1=4
-						range2=40
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 4
+						attack_roll_dice_sides = 10
 						range=" 5x5 AoE within 8 tiles."
 						desc="The user casts a glyph onto the ground. The glyph is a dark purple color with a sinister energy. Targets in the AoE feel an unsettling energy.  Targets in the AoE have 20 mana siphoned from them to form a ball of energy in the sky that explodes, raining down bursts of energy onto the targeted area. The attack makes an attack roll in the area for each individual who had Mana sapped. (Damage: 4d10+WIS force damage | 5x5 AoE, magical attack roll. -120 mana.)"
 
@@ -4630,39 +4746,43 @@ obj
 					icon='Icons/Perk/Cure.png'
 					Cure
 						level=1
-						addhit=10
+						adddam = 10
 						mcost=10
-						range1=1
-						range2=8
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 1
+						attack_roll_dice_sides = 8
 						desc="The user has learned to treat simple wounds through magic. They can cure 10 + 1d8 HP. Out of Battle Effects: This user can cure cuts, scrapes, bruises, and burns. They can use magic to restore vitality in small plants such as flowers and 5ft patches of foliage. (-10 mana.)"
 					Cura
 						regen=1
 						level=2
-						addhit=15
+						adddam = 15
 						pre="Cure"
 						mcost=15
-						range1=2
-						range2=24
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 2
+						attack_roll_dice_sides = 12
 						desc="The user has learned how to use magic to cure moderate wounds. They can cure 15 + 2d12 HP. Out of Battle Effects: The user is capable of healing open wounds, set broken bones, and even cure up to third degree burns instantly. They can rejuvenate medium sized plants such as bushes or ferns, or a 10ft patch of grass. (-15 Mana.)"
 					Curaga
 						regen=1
 						level=3
 						revive=1
-						addhit=20
+						adddam=20
 						pre="Cura"
 						mcost=30
-						range1=3
-						range2=36
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 3
+						attack_roll_dice_sides = 12
 						desc="The user has learned how to heal major wounds through the use of magic. Heals 20+ 3d12 HP. 6 tile range. Out of Battle Effects: The user is able to reattach limbs that have been severed, cure major wounds that even stitches wouldn’t fix, heals all types of burns. They can also rejuvenate large plants including young trees, and patches of foliage up to 20ft. (-30 Mana.)"
 					Curaja
 						regen=1
 						level=4
 						revive=1
-						addhit=30
+						adddam=30
 						pre="Curaga"
 						mcost=40
-						range1=4
-						range2=48
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 4
+						attack_roll_dice_sides = 12
 						desc="The user has learned how to heal even the most dire wounds. They heal 30 + 4d12 HP. 6 tile range. Out of Battle Effects: The user is capable of restoring limbs as long as the wound has not healed over. They can set and instantly heal broken bones, and can cure even the deepest burns. They can rejuvenate mature trees and patches of foliage up to 30 ft. (-40 Mana.)"
 					Curada
 						regen=1
@@ -4685,8 +4805,9 @@ obj
 						pre="Regen"
 						greenmagic=1
 						statuseffect="Regen"
-						range1=2
-						range2=20
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 2
+						attack_roll_damage_upper = 10
 						multi=1
 						desc="The user casts a sphere of magic that expands into a glittering dome upon reaching its target. Asylum covers a 3x3 area. Any friendly creature inside the asylum while it is active heals for 2d10 HP at the beginning of each turn. Any time a friendly creature is healed by a healing spell aside from Asylum, while inside the asylum they gain a bonus of +10 to the healing effect. Only 1 asylum can be activated by a user at a time. Asylums by different casters cannot overlap. Lasts for 4 turns. (-50 mana.)"
 					Sacrifice
@@ -4710,8 +4831,9 @@ obj
 					element="Wind"
 					Aero
 						level=1
-						range1=1
-						range2=12
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 1
+						attack_roll_dice_sides = 12
 						range=" 6 tile range."
 						addhit=1
 						mcost=10
@@ -4720,8 +4842,9 @@ obj
 						level=2
 						pre="Aero"
 						mcost=20
-						range1=2
-						range2=24
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 2
+						attack_roll_dice_sides = 12
 						range=" 6 tile range."
 						addhit=1
 						desc="The user casts forth a condensed ball of air that impacts a target before becoming a swirling vortex. As a reaction, this spell can be used to buffet fall damage - reducing it by 20 points. Out of Battle Effects: The user is capable of controlling wind to a small degree. They can cause air to vacate a 10ft area. They can also reduce the effects of fall damage by a degree of 20ft. They can cause the wind to make basic sounds that can be heard from 15ft away. (Damage: 2d12+CHA wind damage | 6 tile range, +1 to hit, Magic attack roll, 2 tile knockback. -20 Mana.)"
@@ -4729,16 +4852,18 @@ obj
 					Aeroga
 						level=3
 						pre="Aerora"
-						range1=3
-						range2=30
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 3
+						attack_roll_dice_sides = 10
 						range="6 tile line, 3 tiles wide."
 						mcost=35
 						desc="The user summons a whirlwind to travel forward sweeping away everything in it’s path until it makes contact with it’s target, sweeping them in a torrent of wind. This attack takes up a large area, with a straight line - threatening to indiscriminately rip and tear at anyone caught within its line of movement. As a reaction, this spell can be used to send the caster safely to the ground after being knocked into the air, reducing any fall damage from that elevation by 50 points. Out of Battle Effects: The user is capable of controlling wind to a small degree. They can cause air to vacate a 15ft area. They can also reduce the effects of fall damage by a degree of 40ft. They can cause the wind to make sounds that can be heard by individuals or cast a booming sound that can be heard 30ft away (Damage: 3d10+CHA wind damage | 6 tile line, 3 tile wide. Magic attack roll. Inflicts 'Bleed' on hit. -35 Mana.)."
 					Aeroja
 						level=4
 						pre="Aeroga"
-						range1=4
-						range2=48
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 4
+						attack_roll_dice_sides = 12
 						range=" 8 tile range, 3 tiles wide."
 						atype="save"
 						savetype="Reflex"
@@ -4748,8 +4873,9 @@ obj
 					Tornado
 						level=5
 						pre="Aeroja"
-						range1=6
-						range2=72
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 6
+						attack_roll_dice_sides = 12
 						atype="save"
 						savetype="Reflex"
 						range=" 5x5 AoE in view."
@@ -4760,24 +4886,27 @@ obj
 					icon='Icons/Perk/Dia.png'
 					Dia
 						level=2
-						range1=2
-						range2=20
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 2
+						attack_roll_dice_sides = 10
 						range=" 6 tile range."
 						mcost=15
 						desc="The user creates a ball of holy light thats cast forth as a projectile burning away any darkness in it’s path. The ball illuminates everything in it’s path up to 2 tiles away, and leaves a 1 tile area of light for 3 turns upon striking. Out of Battle Effects: The user is capable of creating lights through magic. They can cast light from themselves up to 10ft around them. Alternatively they can cast these lights up to 30ft sustaining up to 2 at a time. (Damage: 2d10+CHA holy damage | 6 tile range, -15 Mana.)"
 					Diara
 						level=3
 						pre="Dia"
-						range1=3
-						range2=36
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 3
+						attack_roll_dice_sides = 12
 						range=" 6 tile range."
 						mcost=30
 						desc="The user casts forward a bright ball of light. The ball lights up everything in it’s path revealing objects in the darkness up to 2 tiles around everywhere it travels, and leaves a 3x3 area of light for 3 turns upon striking. Out of Battle Effects: The user is capable of creating lights through magic. They can cast light from themselves up to 20ft around them. Alternatively they can cast these lights up to 30ft sustaining up to 3 at a time. (Damage: 3d12+CHA holy damage | 6 tile range, Magic attack roll. -30 Mana.)"
 					Diaga
 						level=4
 						pre="Diara"
-						range1=4
-						range2=40
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 4
+						attack_roll_dice_sides = 10
 						range=" 6 tile range."
 						mcost=45
 						desc="The user casts forward a bright ball of light. The ball lights up everything in it’s path revealing objects in the darkness up to 3 tiles from its center everywhere it travels, and leaves a 3x3 area of light for 3 turns upon striking. Out of Battle Effects: The user is capable of creating lights through magic. They can cast light from themselves up to 30ft around them. Alternatively they can cast these lights up to 30ft sustaining up to 4 at a time. (Damage: 4d10+CHA holy damage | 6 tile range, Magical attack roll, -45 Mana.)"
@@ -4788,8 +4917,9 @@ obj
 					Holy
 						level=5
 						pre="Diara"
-						range1=8
-						range2=80
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 8
+						attack_roll_dice_sides = 10
 						range=" 8 tile range."
 						atype="save"
 						savetype="Fortitude"
@@ -4797,13 +4927,15 @@ obj
 						mcost=65
 						desc="The user calls to the gods above asking for their divine light and assistance. Light bathes their immediate area, and is released in the form of eight holy orbs that are flung towards a singular target in range, and aim to converge upon them. (Damage: 8d10+CHA holy damage |8 tile range, prompts a Fortitude saving throw (DC 14+CHA+Rank bonus), inflicting full damage and 1 stack of exhaustion on a failure, or half as much damage on a success. -65 mana.)"
 				Dispel
+					attack_roll_damage_dice = FALSE
+					attack_roll_damage_lower = 0
+					attack_roll_damage_upper = 0
+
 					icon='Icons/Perk/Dispel.png'
 					Dispel
 						greenmagic=1
 						dispel=1
 						level=3
-						range1=0
-						range2=0
 						range=" 6 tile range."
 						mcost=30
 						desc="The user casts forth a ball of cleansing light upon contact cleanses a target of any beneficial status effects, to even out the playing field.  Minor Dispel: Dispels one status effect (starting with the most recently attained effect.) (Magical attack roll, inflicts 'Minor Dispel' effect on hit. 0 Damage. -30 mana)"
@@ -4812,8 +4944,6 @@ obj
 						dispel=2
 						level=4
 						pre="Dispel"
-						range1=0
-						range2=0
 						range=" 6 tile range."
 						mcost=40
 						desc="The user casts forth a bright cleansing light. Make a magical attack roll. On a successful attack roll, the target loses all beneficial status effects. (6 Tile range, magical attack roll, 0 damage. -40 Mana.)"
@@ -4824,8 +4954,6 @@ obj
 						level=5
 						pre="Dispelara"
 						mcost=65
-						range1=0
-						range2=0
 						atype="save"
 						savetype="Fortitude"
 						basecheck=14
@@ -5042,29 +5170,33 @@ obj
 						atype="standard"
 						level=1
 						range="6 tiles."
-						range1=2
-						range2=24
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 2
+						attack_roll_dice_sides = 12
 						mcost=15
 						desc="A small laser-like projectile, made of darkness. On hit, inflicts 'Weakness'. Costs 15 MP. 2d12+WIS damage."
 					Darkra
 						level=2
 						range="6 tiles."
-						range1=3
-						range2=30
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 3
+						attack_roll_dice_sides = 10
 						mcost=25
 						desc="A sphere of darkness, fired from the palm of the hand. On hit, inflicts 'Weakness'. Costs 25 MP. 3d10+WIS damage."
 					Darkaga
 						level=3
-						range1=5
 						range="8 tiles."
-						range2=60
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 5
+						attack_roll_dice_sides = 12
 						mcost=40
 						desc="A large sphere of darkness, fired from the palm at a target. On hit, this inflicts 'Weakness'. Costs 40 MP. 5d12+WIS damage."
 					Darkja
 						level=4
 						range="3x3 AoE at a point in view."
-						range1=8
-						range2=80
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 8
+						attack_roll_dice_sides = 10
 						mcost=60
 						desc="A massive ball of darkness, which manifests as a sphere at a point in view. On hit, this spell inflicts 'Weakness' and 'Slow'. Costs 60 MP. 8d10+WIS damage."
 				Bios
@@ -5072,24 +5204,27 @@ obj
 					icon='Icons/Perk/Bio.png'
 					Bio
 						level=1
-						range1=2
-						range2=24
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 2
+						attack_roll_dice_sides = 12
 						range=" 6 tile range."
 						mcost=15
 						desc="The caster creates a corrosive bubble Upon contact with the target the bubble pops coating its target with poison. On a successful hit, the target must also make a Fortitude saving throw (DC 15) or be inflicted with 'Poison'. (Damage: 2d12+WIS Bio damage | 6 tile range, Magical attack roll. -15 mana)"
 					Bioara
 						level=2
 						pre="Bio"
-						range1=3
-						range2=30
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 3
+						attack_roll_dice_sides = 10
 						range=" 6 tile range."
 						mcost=30
 						desc="The caster creates a corrosive bubble Upon contact with the target the bubble pops coating its target with poison. On a successful hit, the target must also make a Fortitude saving throw (DC 18) or be inflicted with 'Poison'. (Damage: 3d10+WIS Bio | 6 Tile range, Magical attack roll. -30 mana.)"
 					Bioaga
 						level=3
 						pre="Bioara"
-						range1=5
-						range2=60
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 5
+						attack_roll_dice_sides = 12
 						range=" 10 tile range, 5x5 projectile."
 						mcost=70
 						desc="The caster creates a huge bubble of corrosive poison liquid. The bubble travels until it reaches its target, popping and raining hell upon the area below. On a successful hit, a creature must make a Fortitude saving throw (DC 19) ; being inflicted with 'Poison' on a failure. (Damage: 5d12+WIS Bio damage | 10 tile range, 5x5 size projectile, Magical attack roll. -70 Mana.)"
@@ -5097,8 +5232,9 @@ obj
 						level=4
 						pre="Bioaga"
 						desc="The caster injects a section of land with poisonous scourge. Everything in the land dries up and dies, smelling of rot. The poison initially covers a 3x3 AoE, spreading an additional 1 in every direction at the end of the users turn (capping at 10x10). Targets who begin their turn while in the rot take 3d10 Bio damage. (-65 initial mana to cast, -10 to sustain.)"
-						range1=3
-						range2=30
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 3
+						attack_roll_dice_sides = 10
 						range="3x3 AoE, spreading 1 tile in each direction each turn."
 						mcost=65
 				Drains
@@ -5106,16 +5242,18 @@ obj
 					icon='Icons/Perk/Drain.png'
 					Drain
 						level=1
-						range1=2
-						range2=24
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 2
+						attack_roll_dice_sides = 12
 						range=" 6 tile range."
 						mcost=15
 						desc="The caster creates a red tendril of magic that latches onto a target siphoning life force into the user. (Damage: 2d12 to HP | 6 Tile range, Magical attack roll, heals the caster for HP equal to damage dealt.. -15 mana.)"
 					Drainga
 						level=3
 						pre="Drain"
-						range1=3
-						range2=36
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 3
+						attack_roll_dice_sides = 12
 						range=" 6 tile cone."
 						basecheck=14
 						atype="save"
@@ -5127,8 +5265,9 @@ obj
 					icon='Icons/Perk/Osmose.png'
 					Osmose
 						level=1
-						range1=2
-						range2=24
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 2
+						attack_roll_dice_sides = 12
 						range=" 6 tile range."
 						mcost=1
 						desc="The caster creates a blue orb of magic from their hand. The orb is able to sprout a tendril that can travel to a medium range or a bit longer depending on how much mana the user wishes to put into the spell. (Damage: 2d12 to MP | 6 Tile range, Magical attack roll, drains damage to MP dealt. -1 Mana.) Out of Battle Effects: The user is capable of draining magic placed in an object."
@@ -5138,8 +5277,9 @@ obj
 						atype="save"
 						savetype="Reflex"
 						range=" 5 tile cone."
-						range1=3
-						range2=36
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 3
+						attack_roll_dice_sides = 12
 						basecheck=14
 						mcost=5
 						desc="Acts the same as the syphon spell, but the user is able to split the end of the tendril into several smaller parts allowing them to attach to multiple targets at once. There is no limit to the amount of tendrils created, but the more that are made the weaker, and smaller they will become. (Damage: 3d12 to MP | 5 tile cone, prompts a Reflex saving throw (DC 14+WIS+Rank bonus), dealing full damage and draining on a failure, or dealing half damage to MP on a success. -5 Mana.)"
@@ -5148,15 +5288,17 @@ obj
 					icon='Icons/Perk/Toad.png'
 					Toad
 						level=1
-						range1=1
-						range2=12
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 1
+						attack_roll_dice_sides = 12
 						range=" 5 tile range."
 						desc="The user creates an orb of magic in their palm. They then shape the orb into the form of a frog. The spell is nearly indistinguishable from a normal frog. The spell can move on its own - leaping, and traveling like a real frog. On a successful hit, a creature is prompted with a Fortitude saving throw (DC 15), being inflicted with the 'Toad' status effect on a failure. Out of Battle Effects: This user is capable of communicating with toads. They have a fairly detailed knowledge on them and gain advantage on any naturalist checks regarding frogs or toads. (Damage: 1d12+WIS force | 5 tile range, Magical attack roll. -30 Mana.)"
 					Toadga
 						level=3
 						pre="Toad"
-						range1=5
-						range2=60
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 5
+						attack_roll_dice_sides = 12
 						range=" 10 tile range, 3x3 sized projectile."
 						mcost=80
 						desc="The user forms an orb of magic above their head. The orb shifts and changes shape until it bursts spewing magical toads in every direction. On a successful hit, prompts a Fortitude saving throw (DC 18) ; inflicting 'Toad' on a failure. (Damage: 5d12+WIS Force damage | 10 tile range, 3x3 sized projectile. Magical attack roll. - 80 mana.)"
@@ -5168,22 +5310,23 @@ obj
 						range=" 6 tiles."
 						atype="save"
 						savetype="Fortitude"
-						range1=0
-						range2=0
+						attack_roll_damage_dice = FALSE
+						attack_roll_damage_exact = 0
 						mcost=15
 						desc="The user has learned how to inflict the blind status effect. Target must make a fortitude save or suffer blind for four turns. 6 tile range. Out of Battle Effects: The user is capable of tricking a target's sight. They can temporarily cause their sight to become blurry or cause irritation in their eyes. The effect is subtle and targets are mostly unable to determine magical tampering. (Fortitude saving throw (DC 10+WIS+Rank bonus), inflicts Blind on failure. -15 Mana)"
 					Blindga
 						level=3
 						pre="Blind"
-						range1=2
-						range2=12
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 2
+						attack_roll_dice_sides = 6
 						range=" 6 tile range."
 						mcost=30
 						desc="The user spews a cloud of magical black ash that blinds everything it comes in contact with. (Damage: 2d6+WIS force | 6 tile range, Magical attack roll, inflicts Blind on hit. - 30 mana)"
 					Silence
 						level=1
-						range1=0
-						range2=0
+						attack_roll_damage_dice = FALSE
+						attack_roll_damage_exact = 0
 						atype="save"
 						range=" 6 tile range."
 						mcost=15
@@ -5191,23 +5334,26 @@ obj
 						desc="The user casts forward a bolt of magick aimed at a targets throat. Upon contact the bolt will pass through the target locking their ability to speak. Target must make a fortitude saving throw or suffer silence. 6 tile range. (Fortitude saving throw (DC 10+WIS+Rank bonus), inflicts Silence on failure. -15 mana.)"
 					Sleep
 						level=1
-						range1=1
-						range2=8
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 1
+						attack_roll_damage_upper = 8
 						range=" 6 tile range."
 						mcost=15
 						desc="The caster creates a dark cloud. Upon contact the cloud lulls the target to sleep. (Damage: 1d8+WIS force | 6 Tile range, Magical attack roll, inflicts Sleep on hit. -15 mana.)"
 					Sleepga
 						level=3
 						pre="Sleep"
-						range1=3
-						range2=30
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 3
+						attack_roll_damage_upper = 10
 						range=" 5x5 AoE within 10 tiles."
 						mcost=60
 						desc="The user starts to exhale a strange white powder forming it into a ring of clouds around them. Once the cloud is built to a large size the user throws their arms out at the clouds disperse outward spreading among the area. If the cloud is breathed in it will make the afflicted drowsy, and an excessive amount will put them to sleep entirely. (Damage: 3d10+WIS Force | 5x5 AoE within 10 tiles, Magical attack roll. Inflicts Sleep on hit. - 60 Mana.)"
 					Hold
 						level=2
-						range1=2
-						range2=8
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 2
+						attack_roll_damage_upper = 4
 						range=" 5 tile range."
 						savetype="Reflex"
 						atype="save"
@@ -5218,8 +5364,9 @@ obj
 					icon='Icons/Perk/Death.png'
 					Corpse
 						level=4
-						range1=4
-						range2=32
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 4
+						attack_roll_dice_sides = 8
 						range=" 5x5 AoE within 8 tiles."
 						atype="save"
 						savetype="Reflex"
@@ -5228,16 +5375,18 @@ obj
 						desc="The caster reaches out to all freshly fallen corpses in view. Using the negative energy created from their death they cause the corpses to explode in a nova of dark energy. Each corpse explodes into a 5x5 AoE, and prompts a 'Corpse' saving throw attack to any creature within its radius. This can be used on willing 'Zombie' and 'Skeleton' creatures, as a medium as opposed to a corpse so long as those creatures are the caster's allies. View range. (Damage: 4d8+WIS dark | 5x5 AoE, prompts a Reflex saving throw (DC 14+WIS+Rank bonus), dealing full damage on a failure, or half on a success. - 60 mana)"
 					Break
 						level=4
-						range1=1
-						range2=10
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 1
+						attack_roll_dice_sides = 10
 						range=" 10 tile range."
 						mcost=80
 						desc="The user casts several stones that fly towards an enemy. The stones seep an eerie mist, and seem to be pale in color. The stones are a trick as if they hit something they do very little damage at all, but if it comes into contact with a living thing it will turn the area it hit into stone. (Damage: 1d10+WIS force | 10 Tile range, Magical attack roll. Inflicts Break on hit. -80 Mana.)"
 					Breakga
 						level=5
 						pre="Break"
-						range1=2
-						range2=20
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 2
+						attack_roll_dice_sides = 10
 						range=" 5 tile cone."
 						mcost=100
 						desc="The user holds their hand in front of them. What appears to be a stone forms by magic in their hand. The stone forms into hundreds of splinters firing out and peppering the area in front of the user, damaging and inflicting 'Break' onto anything it hits. (Damage: 2d10+WIS force | 5 tile cone, Magical attack roll, inflicts Break on hit. -100 Mana.)"
@@ -5245,8 +5394,9 @@ obj
 						element="Dark"
 						name="Breakart Pentagram"
 						level=5
-						range1=10
-						range2=80
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 10
+						attack_roll_dice_sides = 8
 						range=" 10 tile range, 5x5 AoE."
 						mcost=65
 						desc="The user forms a pentagram of magic. The magic is imbued with energy of the abyss and is capable of interfering with the bond that keeps espers on this plane. It is particularly effective against Summon / Eidolon type creatures, as it removes their very lifeforce from this plane, bit by bit. (Damage: 10d8+WIS force damage | 10 tile range, 5x5 AoE. Only damages summons / half espers. Magical attack roll. -65 mana.)"
@@ -5254,8 +5404,8 @@ obj
 						element="Dark"
 						level=6
 						pre="Corpse"
-						range1=4
-						range2=4
+						attack_roll_damage_dice = FALSE
+						attack_roll_damage_exact = 4
 						range=" 8 tile range."
 						mcost=150
 						desc="The user forms a skull entity made of magic. The skull travels as a projectile before colliding with its target unleashing its dark energy directly into the heart of the target. On a successful hit, if the target has less than 100 HP after damage calculation, they die instantly. Otherwise it does nothing. -100 mana. Can only be cast once per day. (Damage: 4 Force damage | Magical attack roll. -150 Mana.)"
@@ -5278,8 +5428,9 @@ obj
 					desc="The Knight is trained to use his adrenaline to its fullest potential in order to last longer on the battlefield. Through Mana infusion and mixing of Adrenaline, the Knight becomes more durable. +5 damage reduction for 4 turns. This is slightly draining initially but does not drain over time. (Cannot exceed 30 total Damage reduction.) (-20 Stamina.) "
 				Holmgang
 					rank="C"
-					range1=1
-					range2=12
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 1
+					attack_roll_dice_sides = 12
 					range=" 7x7 AoE centered around user."
 					mcost=15
 					atype="save"
@@ -5291,8 +5442,9 @@ obj
 					desc="The Knight focuses on a single target. They then hold their weapon in a backwards grip, and kick off towards them by augmenting their legs with a burst of energy. This allows them to approach a target at an additional 2 tiles of extra movement, and perform a basic Melee Attack on them if they are able to reach them. If this Melee attack hits, the target is forced into the effects of 'Honorable Duel' - but the effect only drains 2 Stamina per turn active rather than 5, if activated this way (starting on the turn after this is procced). (-10 Stamina.)"
 				Overpower
 					rank="C"
-					range1=2
-					range2=16
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 8
 					range=" 3 tile wide cone."
 					mcost=15
 					atype="standard"
@@ -5307,8 +5459,9 @@ obj
 				StormsPath
 					name="Storm's Path"
 					rank="B"
-					range1=2
-					range2=24
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 12
 					atype="standard"
 					range=" 3 tile wide projectile, 6 tile range."
 					basecheck=14
@@ -5320,8 +5473,9 @@ obj
 				SteelCyclone
 					name="Steel Cyclone"
 					rank="B"
-					range1=2
-					range2=24
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 12
 					atype="weaponsave"
 					savetype="Reflex"
 					basecheck=14
@@ -5345,8 +5499,9 @@ obj
 					name="Aegis Strike"
 					rank="S"
 					atype="weapon"
-					range1=5
-					range2=50
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 5
+					attack_roll_dice_sides = 10
 					range=" Melee."
 					mcost=45
 					desc=" The user holds their shield or weapon forward grounding their feet as they shift all their energy into their shield or weapon. They then dash forward shield or weapon raised brimming with energy. They then crash their shield into the target, thus hitting them with a solid wall that sends shockwaves throughout their body.  (Damage: 5d10 + Current Damage Reduction | Attack Roll (1d20+STR+4), - 45 Mana.) "
@@ -5358,8 +5513,9 @@ obj
 				atype="weapon"
 				range="Melee"
 				costtype="Stamina"
-				range1=0
-				range2=0
+				attack_roll_damage_dice = FALSE
+				attack_roll_damage_lower = 0
+				attack_roll_damage_upper = 0
 				typing="physical"
 				CrushArmor
 					name="Crush Armor"
@@ -5374,23 +5530,26 @@ obj
 				Duskblade
 					element="Dark"
 					rank="B"
-					range1=1
-					range2=12
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 1
+					attack_roll_dice_sides = 12
 					mcost=30
 					desc="A Melee weapon attack, which is imbued with dark magic. It's capable of drawing the magical energy out of a target, restoring MP equal to half of the damage dealt. This also changes the damage from physical to Dark. (Damage: Weapon Damage + 1d12, -30 Stamina.)"
 				Shadowblade
 					element="Dark"
 					rank="B"
-					range1=1
-					range2=12
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 1
+					attack_roll_dice_sides = 12
 					mcost=30
 					desc="A Melee weapon attack, which is imbued with dark magic. It's capable of drawing the magical energy out of a target, restoring HP equal to half of the damage dealt. This also changes the damage from physical to Dark. (Damage: Weapon Damage + 1d12, -30 Stamina.)"
 				JudgementBlade
 					element="Holy"
 					name="Judgement Blade"
 					rank="B"
-					range1=2
-					range2=24
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 12
 					mcost=30
 					range=" 2 Tile line."
 					desc="A Melee weapon attack, which is imbued with holy magic. It's capable of dealing tremendous holy damage. Changes the weapon's base damage to holy. The blade is extended by a holy beam of light, granting 2 extra tiles of range. (Damage: Weapon Damage + 2d12, -30 Stamina.)"
@@ -5398,16 +5557,18 @@ obj
 					element="Holy"
 					name="Cleansing Strike"
 					rank="B"
-					range1=1
-					range2=10
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 1
+					attack_roll_dice_sides = 10
 					mcost=30
 					desc="A Melee weapon attack, which is imbued with cleansing holy magic. It's capable of dispelling positive status effects, applying 'Dispel' on hit. Changes damage to holy damage. (Damage: Weapon Damage + 1d10, -30 Stamina.)"
 				NorthwainStrike
 					element="Holy"
 					name="Northwain Strike"
 					rank="B"
-					range1=1
-					range2=10
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 1
+					attack_roll_dice_sides = 10
 					mcost=30
 					range=" 3 tile line."
 					desc="A Melee weapon attack, which is imbued with penetrative holy magic. This extends a holy blade in the shape of the wielded weapon, to stab a target creature, ignoring defenses and gaining extra range. Changes damage to holy damage. (Damage: Weapon Damage + 1d10 | Ignores 20 damage reduction. 3 tile range, -30 Stamina.)"
@@ -5415,16 +5576,18 @@ obj
 					element="Thunder"
 					name="Hallowed Bolt"
 					rank="B"
-					range1=1
-					range2=10
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 1
+					attack_roll_dice_sides = 10
 					mcost=50
 					desc="A Melee weapon attack, which is imbued with holy thunder. Make a normal weapon attack roll, then a Hallowed Bolt roll immediately after. Hallowed Bolt's damage is lightning damage - the initial weapon attack roll's damage is holy damage. If the Hallowed Bolt roll hits the target, it inflicts 'Paralyze'. (Damage: Weapon Damage + 1d10, -50 Stamina.)"
 				ShadowflameBlade
 					element="Fire"
 					name="Shadowflame Blade"
 					rank="B"
-					range1=1
-					range2=10
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 1
+					attack_roll_dice_sides = 10
 					mcost=50
 					desc="A Melee weapon attack, which is imbued with cursed flames. Make a normal weapon attack roll, then a Shadowflame Blade roll immediately after. Shadowflame Blade's damage is fire damage - the initial weapon attack roll's damage is dark damage. If the Shadowflame Blade roll hits the target, it inflicts 'Burn'. (Damage: Weapon Damage + 1d10, -50 Stamina.)"
 				TwilightBlade
@@ -5432,8 +5595,9 @@ obj
 					name="Twilight Blade"
 					rank="B"
 					costtype="Mana"
-					range1=1
-					range2=20
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 1
+					attack_roll_dice_sides = 20
 					mcost=50
 					desc="A Melee weapon attack, which is imbued with karmic power - attacking the very soul. A target hit by this attack has their essence sapped, restoring SP equal to half the damage dealt to the user. The attack's damage is Psychic damage. (Damage: Weapon Damage + 1d20, -50 Mana.)"
 				SunsetSeverance
@@ -5441,32 +5605,36 @@ obj
 					name="Sunset Severance"
 					rank="B"
 					costtype="Mana"
-					range1=1
-					range2=10
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 1
+					attack_roll_dice_sides = 10
 					mcost=50
 					desc="A Melee weapon attack, which is imbued with a karmic chill. Make a normal weapon attack roll, then a Sunset Severance roll immediately after. Sunset Severance's damage is ice damage - the initial weapon attack roll's damage is Psychic damage. If the Sunset Severance roll hits the target, they are inflicted with 'Heavy'. (Damage: Weapon Damage + 1d10, -50 Mana.)"
 				DivineRuination
 					element="Holy"
 					name="Divine Ruination"
 					rank="A"
-					range1=2
-					range2=40
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 20
 					mcost=80
 					desc="A Melee weapon attack, which is imbued with immense holy power. Upon striking the target with Divine Ruination, the target is inflicted with 'Silence' and 'Slow'. (Damage : Weapon Damage + 2d20, -80 Stamina.)"
 				ApocalypseStrike
 					element="Dark"
 					name="Apocalypse Strike"
 					rank="A"
-					range1=2
-					range2=40
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 20
 					mcost=80
 					desc="A Melee weapon attack, which is imbued with immense corruptive power. Upon striking a target with Apocalypse Strike, the target is inflicted with 'Blind' and 'Weakness'. (Damage: Weapon Damage + 2d20, -80 Stamina.)"
 				EclipseBlade
 					element="Thunder"
 					name="Eclipse Blade"
 					rank="S"
-					range1=3
-					range2=36
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 3
+					attack_roll_dice_sides = 12
 					range=" 3 tile wide, 8 tile line."
 					mcost=120
 					desc="The penultimate Sword Saint ability. It acts as a Melee weapon attack, which is imbued with immense karmic power. The blade is extended in a massive stream of karmic mana. The range is increased due to the massive size of the blade. When a target is struck by this blade, they are inflicted with Burn, Poison, and Bleed. (Damage: Weapon Damage + 3d12, -120 Stamina.)"
@@ -5500,8 +5668,8 @@ obj
 					name="Mighty Strike"
 					rank="C"
 					addhit=2
-					range1=0
-					range2=0
+					attack_roll_damage_dice = FALSE
+					attack_roll_damage_exact = 0
 					atype="weapon"
 					addhit=2
 					mcost=30
@@ -5519,8 +5687,9 @@ obj
 					name="Shatter Strike"
 					rank="C"
 					atype="weaponsave"
-					range1=2
-					range2=16
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 8
 					range=" 5x5 AoE, centered around user."
 					savetype="Strength"
 					basecheck=12
@@ -5532,8 +5701,9 @@ obj
 					desc="Shout at your opponents with magically imbued vigor. This decreases their AC by 2 for five turns if their CON score is lower than yours. (-20 Stamina.)"
 				MightyCyclone
 					name="Mighty Cyclone"
-					range1=2
-					range2=16
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 8
 					rank="C"
 					addhit=2
 					atype="weapon"
@@ -5561,8 +5731,9 @@ obj
 					name="Jotun Strike"
 					rank="B"
 					atype="weapon"
-					range1=2
-					range2=16
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 8
 					addhit=3
 					mcost=20
 					costtype="Mana, Stamina."
@@ -5570,8 +5741,9 @@ obj
 				Fenrir
 					element="Dark"
 					rank="A"
-					range1=3
-					range2=24
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 3
+					attack_roll_dice_sides = 8
 					addhit=4
 					mcost=60
 					costtype="Mana."
@@ -5583,8 +5755,9 @@ obj
 					rank="S"
 					mcost=90
 					costtype="Mana"
-					range1=5
-					range2=60
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 5
+					attack_roll_dice_sides = 12
 					range="Melee"
 					addhit=5
 					atype="weapon"
@@ -5717,8 +5890,9 @@ obj
 					mcost=25
 					costtype="Mana"
 					atype="weapon"
-					range1=2
-					range2=20
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 10
 					damsource="wis"
 					desc="This Red Mage has learned to mix their bladesmanship expertly with their Magic. By coating the blade with both Aetherial and Lifestream energies, they channel both Black and White magic, and strike at a target. This generates 1 Black Magic stack, and 1 White Magic stack when used. (Damage: Weapon Damage + 2d10+WIS Force damage | Melee Weapon attack, -25 Mana.)"
 				ManaWall
@@ -5765,8 +5939,8 @@ obj
 				Aim
 					rank="D"
 					atype="weapon"
-					range1=0
-					range2=0
+					attack_roll_damage_dice = FALSE
+					attack_roll_damage_exact = 0
 					range=" Weapon range."
 					addhit=3
 					mcost=10
@@ -5775,8 +5949,9 @@ obj
 					name="Nefarious Wound"
 					rank="D"
 					atype="weapon"
-					range1=2
-					range2=12
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 6
 					range=" Weapon range."
 					addhit=1
 					mcost=20
@@ -5785,16 +5960,17 @@ obj
 					name="Foot Shot"
 					rank="C"
 					atype="weapon"
-					range1=0
-					range2=0
+					attack_roll_damage_dice = FALSE
+					attack_roll_damage_exact = 0
 					range=" Weapon range."
 					mcost=20
 					desc="The ranger takes aim at the targets foot. They then fire an arrow that pins the poor target to the ground. This deals zero damage. (Ranged Attack Roll, On a successful hit applies Slow. -20 Stamina.)"
 				ArrowRain
 					name="Arrow Rain"
 					rank="C"
-					range1=5
-					range2=30
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 5
+					attack_roll_dice_sides = 6
 					atype="weaponsave"
 					range=" 3x3 AoE within weapon's range."
 					mcost=30
@@ -5803,8 +5979,9 @@ obj
 					desc="The user puts several arrows into their bow, and pointing it upwards is able to fire them in the air where they arc, and then come down showering the target with arrows. (Damage: 5d6+DEX piercing damage | Reflex Save, can be used within the rangers bow range, hits in a 3x3 AoE, - 30 Stamina.)"
 				Barrage
 					rank="B"
-					range1=7
-					range2=42
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 7
+					attack_roll_dice_sides = 6
 					range=" 5 tile wide projectile, weapon's range."
 					atype="weaponsave"
 					savetype="Reflex"
@@ -5814,8 +5991,9 @@ obj
 				UltimaArrow
 					name="Ultima Arrow"
 					rank="A"
-					range1=7
-					range2=70
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 7
+					attack_roll_dice_sides = 10
 					atype="weaponsave"
 					savetype="Reflex"
 					basecheck=18
@@ -5825,8 +6003,9 @@ obj
 				HeartPierce
 					name="Heart Pierce"
 					rank="S"
-					range1=8
-					range2=80
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 8
+					attack_roll_dice_sides = 10
 					addhit=5
 					mcost=100
 					atype="weapon"
@@ -5845,8 +6024,9 @@ obj
 					element="Laser"
 					name="Chi Blast"
 					rank="E"
-					range1=1
-					range2=6
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 1
+					attack_roll_dice_sides = 6
 					damsource="wis"
 					range=" 6 tiles."
 					mcost=10
@@ -5861,16 +6041,18 @@ obj
 					element="Fire"
 					name="Burning Arrow"
 					rank="D"
-					range1=2
-					range2=24
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 12
 					range="Melee"
 					mcost=15
 					desc="The user ignites their leg, and enters into a flying spear-kick towards a target creature. When this attack makes contact with a target it sets forth a small fiery explosion. (Damage: 2d12+STR fire damage. | Melee attack roll. Inflicts burn on hit. -15 Stamina.)"
 				Penance
 					element="General"
 					rank="C"
-					range1=3
-					range2=12
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 3
+					attack_roll_dice_sides = 12
 					range=" Melee."
 					mcost=30
 					costtype="Mana"
@@ -5902,8 +6084,9 @@ obj
 					name="Gale Kick"
 					rank="B"
 					range=" 7 tile."
-					range1=40
-					range2=55
+					attack_roll_damage_dice = FALSE
+					attack_roll_damage_lower = 40
+					attack_roll_damage_upper = 55
 					atype="standard"
 					mcost=40
 					addhit=3
@@ -5917,15 +6100,17 @@ obj
 					rank="C"
 					atype="heal"
 					damsource="wis"
-					range1=2
-					range2=20
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 20
 					desc="The user floods parts of their body with Chi healing it and purging it of poisons. They heal for 2d20 HP and cure themselves of poison, blind, and silence. (- 30 mana.)"
 				DolphinBlow
 					element="Water"
 					name="Dolphin Blow"
 					rank="C"
-					range1=3
-					range2=30
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 3
+					attack_roll_dice_sides = 10
 					range=" Melee."
 					mcost=30
 					costtype="Mana"
@@ -5934,8 +6119,9 @@ obj
 					element="Wind"
 					name="Tornado Kick"
 					rank="C"
-					range1=3
-					range2=30
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 3
+					attack_roll_dice_sides = 10
 					range=" 3x3 AoE centered around user."
 					atype="save"
 					basecheck=12
@@ -5947,8 +6133,9 @@ obj
 					element="Comet"
 					name="Meteor Dive"
 					rank="B"
-					range1=5
-					range2=50
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 5
+					attack_roll_dice_sides = 10
 					mcost=40
 					damsource="str"
 					atype="save"
@@ -5960,8 +6147,9 @@ obj
 					name="Chi Wave"
 					rank="B"
 					basecheck=15
-					range1=40
-					range2=60
+					attack_roll_damage_dice = FALSE
+					attack_roll_damage_lower = 40
+					attack_roll_damage_upper = 60
 					damsource="wis"
 					atype="save"
 					savetype="Fortitude"
@@ -5973,8 +6161,9 @@ obj
 					element="Fire"
 					name="Burning Rave"
 					rank="B"
-					range1=5
-					range2=50
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 5
+					attack_roll_dice_sides = 10
 					range=" 5x5 AoE centered around user."
 					atype="save"
 					savetype="Fortitude"
@@ -5987,8 +6176,9 @@ obj
 					rank="A"
 					mcost=65
 					costtype="Mana"
-					range1=7
-					range2=70
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 7
+					attack_roll_dice_sides = 10
 					range=" Melee"
 					desc="The user has learned how to get around even magical defenses with their martial prowess. They channel their power into a single finger that punches through any armor or magical barrier, and dealing heavy damage to the target. (Damage: 7d10+STR force | Melee attack roll. Ignores the effects of protect, shell, reflect, and stoneskin. Dispels these status effects on hit. If no barrier type effect is active, inflicts -2 to damage reduction for 3 turns. -65 Mana.)"
 				PhantomRush
@@ -5998,8 +6188,9 @@ obj
 				FinalHeaven
 					name="Final Heaven"
 					rank="S"
-					range1=9
-					range2=108
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 9
+					attack_roll_dice_sides = 12
 					range=" 7x7 AoE"
 					savetype="Reflex"
 					atype="save"
@@ -6015,8 +6206,9 @@ obj
 					name="Lucky Combo"
 					rank="S"
 					cat="Unique"
-					range1=50
-					range2=60
+					attack_roll_damage_dice = FALSE
+					attack_roll_damage_lower = 50
+					attack_roll_damage_upper = 60
 					damsource="str"
 					atype="standard"
 					critrange=10
@@ -6054,8 +6246,9 @@ obj
 					rank="D"
 					atype="weaponsave"
 					basecheck=10
-					range1=2
-					range2=4
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 4
 					costtype="Stamina"
 					mcost=20
 					damsource="str"
@@ -6064,8 +6257,9 @@ obj
 				Yukikaze
 					rank="D"
 					atype="weapon"
-					range1=2
-					range2=4
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 2
 					damsource="str"
 					savetype="Fortitude"
 					mcost=20
@@ -6076,8 +6270,9 @@ obj
 					rank="C"
 					atype="weaponsave"
 					basecheck=10
-					range1=2
-					range2=6
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 4
+					attack_roll_dice_sides = 7
 					damsource="str"
 					mcost=30
 					savetype="Fortitude"
@@ -6086,8 +6281,9 @@ obj
 				Higanbana
 					rank="D"
 					atype="weapon"
-					range1=1
-					range2=8
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 8
 					damsource="str"
 					mcost=25
 					costtype="Stamina"
@@ -6111,8 +6307,8 @@ obj
 					name="Gekko Combo"
 					rank="B"
 					atype="weapon"
-					range1=0
-					range2=0
+					attack_roll_damage_dice = FALSE
+					attack_roll_damage_exact = 0
 					damsource="str"
 					addhit=6
 					desc="The Samurai lashes out in a three part combo. Make three separate standard weapon attacks, each with a +6 to hit. If at least one attack hits; the Samurai receives a buff named Fugetsu, which lasts for 3 turns. While Fugetsu is active the Samurai receives +3 to their PDB, and their weapon may optionally deal Wind damage. In addition, their Weapon Attacks inflict the 'Squall' status effect on hit. Costs 50 Stamina."
@@ -6125,8 +6321,9 @@ obj
 					desc="The Samurai enters a defensive stance, which is meant to ramp into an offensive manuever. They sheathe their blade, and stand their ground. This bars them from taking a regular Movement action on the turn it is used, but applies 'Retaliate' on use, and grants +5 Damage Reduction until the start of their next turn. On the turn after using Iaido Stance, the Samurai may choose to spend 50 SP in order to travel a 7 Tile line, and perform a Standard attack roll to all creatures in the line, with 30 additional damage applied."
 				Tsubamagaeshi
 					rank="A"
-					range1=2
-					range2=10
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 10
 					atype="weaponsave"
 					damsource="str"
 					savetype="Fortitude"
@@ -6151,8 +6348,9 @@ obj
 						mcost=2
 						costtype="Ken"
 						atype="weapon"
-						range1=2
-						range2=12
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 2
+						attack_roll_dice_sides = 6
 						damsource="str"
 						desc="As a reaction, strike at an enemy with a powerful overhead swing by exploiting a gap in the enemy's defenses. Make a weapon attack roll ; dealing weapon damage+2d6+STR damage on a successful hit, ignoring DR, and smashing the target into the ground. If the attack hits, they must perform a DC:15 Fortitude saving throw, or be afflicted with 'Stun'."
 					Tiger
@@ -6161,8 +6359,9 @@ obj
 						costtype="Ken"
 						range=" Melee"
 						damsource="str"
-						range1=4
-						range2=32
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 4
+						attack_roll_dice_sides = 8
 						savetype="Fortitude"
 						basecheck=12
 						mcost=4
@@ -6172,8 +6371,9 @@ obj
 						costtype="Ken"
 						range=" 5x5 AoE"
 						atype="weapon"
-						range1=3
-						range2=30
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 3
+						attack_roll_dice_sides = 10
 						damsource="str"
 						mcost=5
 						desc="The Samurai makes a series of quick slashes barely seen by the naked eye. This attack targets all enemy creatures in a 5x5 AoE  around the Samurai. Make a single weapon attack that applies against all targets. The attack deals Weapon Damage+3d10+STR damage on hit. Costs 5 Ken."
@@ -6181,8 +6381,9 @@ obj
 						rank="B"
 						atype="weapon"
 						damsource="str"
-						range1=2
-						range2=40
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 2
+						attack_roll_dice_sides = 20
 						mcost=6
 						costtype="Ken"
 						range=" 3 tile wide, 6 tile line."
@@ -6190,8 +6391,8 @@ obj
 					Eclipse
 						rank="A"
 						mcost=8
-						range1=0
-						range2=0
+						attack_roll_damage_dice = FALSE
+						attack_roll_damage_exact = 0
 						adddam=6
 						atype="weapon"
 						range=" Melee"
@@ -6200,8 +6401,8 @@ obj
 						rank="S"
 						atype="weapon"
 						adddam=50
-						range1=0
-						range2=0
+						attack_roll_damage_dice = FALSE
+						attack_roll_damage_exact = 0
 						mcost=8
 						desc="The Samurai forms a powerful stance, pouring everything they have into a single attack. They strike at an enemy, cutting deep and flooding them with glowing red energy as they bury their blade. This technique floods the target with potent energy, rupturing from the inside out through the cut. After this attack, they are heavily wounded, making combat harder after the strike - and inflicting them with the 'Weakness', 'Bleed' and 'Slow' status effects ; and disabling the target's ability to use Reaction actions for 2 rounds. In addition to these effects, if they are hit - they must make a Fortitude saving throw (DC 15 + STR + Rankbonus) - or be afflicted with 'Doom' in addition to the prior listed effects. (Damage: Weapon damage + 50 | Melee attack.  -8 Ken.)"
 
@@ -6353,8 +6554,9 @@ obj
 					name="Overload"
 					rank="C"
 					desc="The Machinist overloads their current weapon, and then attacks a target creature. This attack deals 2d10+20 additional damage, and ignores damage reduction. After utilizing this ability, that weapon malfunctions and cannot be used for 5 rounds. Costs 50 SP."
-					range1=2
-					range2=20
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 10
 					mcost=50
 					atype="weapon"
 					damsource="int"
@@ -6368,8 +6570,9 @@ obj
 					element="Metal"
 					name="Missile Barrage"
 					rank="B"
-					range1=40
-					range2=50
+					attack_roll_damage_dice = FALSE
+					attack_roll_damage_lower = 40
+					attack_roll_damage_upper = 50
 					basecheck=14
 					mcost=60
 					range=" 8 tile range, 3x3 AoE."
@@ -6381,8 +6584,8 @@ obj
 					element="Fire"
 					name="Self Destruct"
 					rank="B"
-					range1=150
-					range2=150
+					attack_roll_damage_dice = FALSE
+					attack_roll_damage_exact = 150
 					atype="save"
 					typing="physical"
 					range=" 3x3 AoE centered on Robot."
@@ -6392,8 +6595,9 @@ obj
 					element="Laser"
 					name="Oribtal Laser"
 					rank="A"
-					range1=40
-					range2=50
+					attack_roll_damage_dice = FALSE
+					attack_roll_damage_lower = 40
+					attack_roll_damage_upper = 50
 					basecheck=15
 					mcost=50
 					range= " 3x3 AoE, sustainable, can move up to 5 tiles."
@@ -6421,8 +6625,9 @@ obj
 					name="Bracing Bash"
 					rank="D"
 					atype="weapon"
-					range1=1
-					range2=8
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 1
+					attack_roll_dice_sides = 8
 					damsource="con"
 					range=" Melee"
 					mcost=15
@@ -6433,8 +6638,8 @@ obj
 					desc="The user emits a holy light from their body which inflicts the blind status on anyone within their direct vicinity (Prompts a fortitude saving throw, which if failed afflicts blind to everyone in a 2 tile radius targeting the user, -15 Mana)"
 					basecheck=12
 					atype="save"
-					range1=0
-					range2=0
+					attack_roll_damage_dice = FALSE
+					attack_roll_damage_exact = 0
 					costtype="Mana"
 					damsource="cha"
 					mcost=15
@@ -6442,8 +6647,9 @@ obj
 					name="Shield of Light"
 					rank="C"
 					atype="standard"
-					range1=1
-					range2=12
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 1
+					attack_roll_dice_sides = 12
 					damsource="cha"
 					range=" 6 tile line."
 					mcost=20
@@ -6460,8 +6666,9 @@ obj
 				Supercharge
 					rank="B"
 					atype="weapon"
-					range1=2
-					range2=24
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 12
 					damsource="con"
 					mcost=40
 					costtype="Stamina"
@@ -6473,8 +6680,9 @@ obj
 				Crossover
 					rank="A"
 					atype="weapon"
-					range1=1
-					range2=8
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 1
+					attack_roll_dice_sides = 8
 					damsource="cha"
 					mcost=65
 					costtype=" Melee"
@@ -6483,16 +6691,17 @@ obj
 					name="Minus Strike"
 					rank="A"
 					atype="weapon"
-					range1=0
-					range2=0
+					attack_roll_damage_dice = FALSE
+					attack_roll_damage_exact = 0
 					range=" Melee"
 					mcost=70
 					costtype="Stamina"
 					desc="Deals a blow that causes more damage the more injured the user is, by summoning a massive blade of holy light. This attack also deals damage equal to the difference in the user's maximum and current HP, halved. (Damage: Weapon Damage | Weapon Attack Roll, - 70 Stamina | +2 Cooldown)"
 				Oversoul
 					rank="S"
-					range1=2
-					range2=40
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 20
 					damsource="cha"
 					atype="weapon"
 					desc="The user imbues their weapon with holy light before charging at a single enemy. They make a single well focused blow striking at the very soul of the enemy with their light clad sword leaving the energy imbued within the target. If the attack is successful then from within the enemy several beams of light will pierce from their core as their soul starts to leave their body, concluding in a powerful blast of light. (Damage: Weapon Damage+2d20+CHA Holy damage | Melee attack roll, also removes 30% of target's CURRENT HP on hit. Can be used once a day. )"
@@ -6521,8 +6730,9 @@ obj
 				DarkCannon
 					name="Dark Cannon"
 					rank="D"
-					range1=1
-					range2=6
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 1
+					attack_roll_dice_sides = 6
 					damsource="str"
 					atype="save"
 					savetype="Fortitude"
@@ -6546,8 +6756,9 @@ obj
 				DarkFlame
 					name="Dark Flame"
 					rank="C"
-					range1=4
-					range2=16
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 4
+					attack_roll_dice_sides = 4
 					atype="weapon"
 					range=" 6 tiles."
 					mcost=30
@@ -6576,8 +6787,9 @@ obj
 				DarkNebula
 					name="Dark Nebula"
 					rank="B"
-					range1=5
-					range2=50
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 5
+					attack_roll_dice_sides = 10
 					damsource="wis"
 					savetype="Fortitude"
 					atype="save"
@@ -6591,8 +6803,9 @@ obj
 					costtype="Mana"
 					mcost=60
 					atype="weapon"
-					range1=4
-					range2=40
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 4
+					attack_roll_dice_sides = 10
 					damsource="str"
 					range=" 3 tiles"
 					desc="As a Standard action the dark knight uses their built up negative Mana to surround their weapon in a dark Mana that extends along the weapon into a long blade. The blade of Mana can be swiped at an enemy with the ability to transfer some of the targets life force into the user although being costly to sustain. Make a Weapon Attack with a range of 3 tiles at a single target, dealing Weapon Damage+4d10+STR damage on a successful hit, and restoring half of the damage dealt (max of 50). This effect stacks with Life Eater, and is considered a Lifesteal proc. (-60 MP.)"
@@ -6604,8 +6817,9 @@ obj
 					element="Dark"
 					name="Sanguine Cross"
 					rank="A"
-					range1=3
-					range2=36
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 3
+					attack_roll_dice_sides = 12
 					damsource="str"
 					range=" 5 tile cross centered on user."
 					atype="weaponsave"
@@ -6641,8 +6855,9 @@ obj
 				Gungnir
 					element="Physical"
 					rank="E"
-					range1=1
-					range2=8
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 1
+					attack_roll_dice_sides = 8
 					mcost=5
 					range=" 6 tile range."
 					desc="The user is able to throw their weapon, and have it teleport back to them from wherever position it was due to mana infusion. The Mana infused in the weapon is attuned to the user, and can be magnetized to a target the weapon hits, creating a temporary connection between them. If this attack hits, it deals normal weapon damage, and causes the next attack from the Dragoon that hits the marked target to take 1d10 additional damage, and be inflicted with 'Weakness'. If the creature is healed before this occurs, this effect is dissipated. Esuna and other cleansing abilities will also cleanse this effect. 6 Tile range."
@@ -6657,8 +6872,9 @@ obj
 					element="Physical"
 					name="Vorpal Thrust"
 					rank="C"
-					range1=1
-					range2=12
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 1
+					attack_roll_dice_sides = 12
 					range=" 3 tile line."
 					mcost=20
 					desc="The user dashes forward, weapon pointed dashing through everything in front of them. This can be utilized either on the ground, or in mid-air. (Damage: Weapon Damage + 1d12+DEX | 3 Tile line, which user moves along. Melee attack roll. -20 Stamina.)"
@@ -6674,15 +6890,15 @@ obj
 					name="Hyper Jump"
 					rank="B"
 					mcost=30
-					range1=0
-					range2=0
+					attack_roll_damage_dice = FALSE
+					attack_roll_damage_exact = 0
 					desc="Hyper Jump is a more taxing, but also more powerful version of Jump. When used, the Dragoon travels to ground elevation from their current airborne elevation, and makes a standard weapon attack. If it hits, gains a flat damage bonus equal to 8 per tile travelled. This puts the 'Jump' movement action on cooldown for 1 round after use. Costs 30 SP"
 				SkyGrinder
 					element="Physical"
 					name="Sky Grinder"
 					rank="B"
-					range1=0
-					range2=0
+					attack_roll_damage_dice = FALSE
+					attack_roll_damage_exact = 0
 					range=" Melee"
 					mcost=45
 					desc="The Dragoon transforms the momentum from their mid-air movement into a rotational force, akin to a drill. This attack loses power for the rotational momentum, but gains penetrative force. Upon use, Sky Grinder deals 5 damage per tile travelled, and transfers you to ground elevation immediately. Make a standard weapon attack, and add the additional damage as a flat bonus. If this attack hits, it reduces the target's DR by 10 for 3 rounds. Sky Grinder counts as a 'Jump' attack for abilities that mention them. The Damage Reduction nerf does not stack. This puts the 'Jump' movement action on cooldown for 1 round after use. Costs 45 stamina."
@@ -6690,8 +6906,9 @@ obj
 					element="Comet"
 					name="Falling Meteor"
 					rank="A"
-					range1=3
-					range2=30
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 3
+					attack_roll_dice_sides = 10
 					atype="weaponsave"
 					savetype="Reflex"
 					basecheck=16
@@ -6716,8 +6933,9 @@ obj
 				atype="save"
 				savetype="Fortitude"
 				basecheck=17
-				range1=4
-				range2=48
+				attack_roll_damage_dice = TRUE
+				attack_roll_dice_count = 4
+				attack_roll_dice_sides = 12
 				mcost=50
 				range=" 5 tile cone."
 				costtype="Mana"
@@ -6783,8 +7001,8 @@ obj
 					damsource="dex"
 					savetype="Reflex"
 					range="8 tile range."
-					range1=0
-					range2=0
+					attack_roll_damage_dice = FALSE
+					attack_roll_damage_exact = 0
 					mcost=60
 					costtype=" Stamina or Ninpo."
 					desc="The user of this technique performs a Mudra that summons forth a set of adamantine chains to bind the target, and sap them of their energy to immobilize them. This prompts a Reflex saving throw, which if failed constricts the user, immobilizing them until they break out. In addition, they are drained of 30 Stamina and Mana per turn that they are bound in this way - which is then restored to the Ninja. After being bound, a Strength check with a DC equal to the Reflex save's DC must be made in order to break out, using a standard action to do so. The Ninja must use their Standard action each turn to sustain this effect. Out of battle effect: The Ninja may now seal objects and weapons into scrolls. An object sealed into a scroll this way becomes immune to any 'Steal' effects."
@@ -6795,8 +7013,9 @@ obj
 					element="Physical"
 					name="Shuriken Storm"
 					rank="B"
-					range1=2
-					range2=24
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 12
 					range=" 10 tile range."
 					addhit=2
 					damsource="dex"
@@ -6804,8 +7023,9 @@ obj
 				Dokumoya
 					element="Bio"
 					rank="B"
-					range1=5
-					range2=50
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 5
+					attack_roll_dice_sides = 10
 					damsource="dex"
 					range=" 7x7 AoE in a 10 tile range."
 					mcost=60
@@ -6836,8 +7056,9 @@ obj
 					element="Holy"
 					atype="standard"
 					rank="A"
-					range1=9
-					range2=108
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 9
+					attack_roll_dice_sides = 12
 					range=" 10 tile line."
 					addhit=2
 					mcost=100
@@ -6866,8 +7087,9 @@ obj
 					name="Kogeki Shinryaku"
 					rank="A"
 					cat="Unique"
-					range1=1
-					range2=10
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 1
+					attack_roll_dice_sides = 10
 					damsource="dex"
 					range=" 10 tile range."
 					addhit=1
@@ -6913,8 +7135,9 @@ obj
 					element="Physical"
 					name="Rending Slice"
 					rank="C"
-					range1=1
-					range2=12
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 1
+					attack_roll_dice_sides = 12
 					mcost=30
 					costtype="Mana"
 					atype="weapon"
@@ -6925,8 +7148,9 @@ obj
 					element="Fire"
 					name="Infernal Slice"
 					rank="C"
-					range1=1
-					range2=8
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 1
+					attack_roll_dice_sides = 8
 					mcost=30
 					costtype="Mana"
 					desc="The user imbues their weapon with a sinister aura, making an overhead swing bringing their weapon down onto an opponent slicing them across their body. (Deals weapon damage + 1d8 dark damage, and generates 10 bonus soul on hit. -30 mana.)"
@@ -6939,8 +7163,9 @@ obj
 					element="Physical"
 					name="Nightmare Slice"
 					rank="B"
-					range1=1
-					range2=12
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 1
+					attack_roll_dice_sides = 12
 					damsource="wis"
 					mcost=40
 					atype="weaponsave"
@@ -6952,8 +7177,9 @@ obj
 					element="Physical"
 					name="Grim Swath"
 					rank="B"
-					range1=4
-					range2=32
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 4
+					attack_roll_dice_sides = 8
 					damsource="wis"
 					range=" 3 tile cone."
 					mcost=50
@@ -6965,8 +7191,9 @@ obj
 					element="Dark"
 					rank="B"
 					mcost=80
-					range1=5
-					range2=60
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 5
+					attack_roll_dice_sides = 12
 					damsource="wis"
 					range=" 3x3 AoE within a 6 tile range."
 					basecheck=14
@@ -6991,16 +7218,18 @@ obj
 					icon='Icons/Perk/Stone.png'
 					Stone
 						rank="E"
-						range1=1
-						range2=12
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 1
+						attack_roll_dice_sides = 12
 						mcost=10
 						range=" 6 tile range."
 						desc="The user calls to the ground, causing it to spit sharp rocks towards a target. Out of Battle Effects: This individual is capable of controlling earth. They can move and shape a 5ft block of earth. They are capable of making one 5ft area of earth into non difficult terrain. (Damage: 1d12+WIS earth| 6 tile range, magic attack roll, -10 Mana.)"
 					Stonra
 						rank="D"
 						pre="Stone"
-						range1=2
-						range2=24
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 2
+						attack_roll_dice_sides = 12
 						range=" 6 tile range."
 						mcost=15
 						desc="The user calls to the earth causing it to erupt spikes that aim to impale a target. Out of Battle Effects: This individual is capable of controlling earth. They can move and shape a 10ft block of earth. They are capable of making one 10ft area of earth into non difficult terrain. (Damage: 2d12+WIS earth | 6 tile range, magic attack roll, -15 Mana.)"
@@ -7011,15 +7240,17 @@ obj
 						savetype="Reflex"
 						basecheck=12
 						mcost=30
-						range1=4
-						range2=40
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 4
+						attack_roll_dice_sides = 10
 						range=" 3x3 AoE within a 10 tile range."
 						desc="The user calls to the earth, causing pillars of rock to erupt from the ground and crush everything beneath it. Out of Battle Effects: This individual is capable of controlling earth. They can move and shape a 15ft block of earth. They are capable of making one 15ft area of earth into non difficult terrain. (Damage: 4d10+WIS | 10 tile range, 3x3 AoE. Prompts a Reflex saving throw (DC 12+WIS+Rankbonus), inflicting full damage and knocking prone on a failure, or half as much on a success. -30 Mana.)"
 					Stonaja
 						rank="B"
 						pre="Stoneaga"
-						range1=5
-						range2=60
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 5
+						attack_roll_dice_sides = 12
 						basecheck=15
 						range=" 5x5 AoE within a 10 tile range."
 						mcost=40
@@ -7035,8 +7266,9 @@ obj
 						name="Branch Arrow"
 						rank="D"
 						pre="Spirited Tree"
-						range1=2
-						range2=24
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 2
+						attack_roll_dice_sides = 12
 						range=" 8 tile range."
 						mcost=10
 						desc="The tree releases an enchanted arrow, forged of its own branches from its structure - at a single target. (Damage: 2d12+WIS piercing | 8 tile range, Ranged attack roll, -10 Mana.)"
@@ -7044,8 +7276,9 @@ obj
 						name="Branch Spear"
 						rank="C"
 						pre="Branch Arrow"
-						range1=3
-						range2=36
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 3
+						attack_roll_dice_sides = 12
 						range=" 8 tile range."
 						mcost=25
 						desc="The tree fires off an enchanted spear, forged of its own branches - at a single target. (Damage: 3d12+WIS piercing | 8 tile range, ranged attack roll - inflicts bleed on successful hit. -25 Mana.)"
@@ -7066,8 +7299,9 @@ obj
 					heal=1
 					name="Lifestream Rain"
 					damsource="wis"
-					range1=3
-					range2=60
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 3
+					attack_roll_dice_sides = 20
 					rank="C"
 					desc="The user calls out to the Lifestream, and draws it out in a font overhead. This Lifestream energy then rains down upon the area, healing all designated creatures within the radius for 3d20+WIS HP. In addition, this Lifestream energy has a reinvigorating power. Once per 24 hours, a Geomancer who knows this spell can use the 'Node Refresh' verb in order to reinvigorate any Gathering nodes within a 12 tile radius of their current position, out of combat. (-40 Mana)."
 					verb
@@ -7110,8 +7344,9 @@ obj
 					element="Laser"
 					name="Shining Flare"
 					rank="B"
-					range1=5
-					range2=50
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 5
+					attack_roll_dice_sides = 10
 					range=" 1 tile within 8 tiles of the caster, beam can move in a 5 tile line."
 					atype="save"
 					savetype="Reflex"
@@ -7121,8 +7356,9 @@ obj
 				Quake
 					element="Earth"
 					rank="A"
-					range1=7
-					range2=70
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 7
+					attack_roll_dice_sides = 10
 					basecheck=12
 					range=" 6x6 AoE within 20 tiles of the caster."
 					savetype="Fortitude"
@@ -7132,8 +7368,9 @@ obj
 				Whirlpool
 					element="Water"
 					rank="A"
-					range1=4
-					range2=40
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 4
+					attack_roll_dice_sides = 10
 					range=" 5x5 AoE on any water in view."
 					savetype="Athletics Check"
 					mcost=65
@@ -7149,8 +7386,9 @@ obj
 					element="Dark"
 					name="Black Hole"
 					rank="S"
-					range1=6
-					range2=72
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 6
+					attack_roll_dice_sides = 12
 					range=" 3x3 AoE at a tile in view."
 					mcost=100
 					atype="save"
@@ -7169,8 +7407,9 @@ obj
 				Splash
 					rank="D"
 					name="Splash"
-					range1=10
-					range2=15
+					attack_roll_damage_dice = FALSE
+					attack_roll_damage_lower = 10
+					attack_roll_damage_upper = 15
 					range=" 8 tile range."
 					atype="standard"
 					mcost=10
@@ -7178,8 +7417,9 @@ obj
 				BubbleBlade
 					rank="D"
 					name="Bubble Blade"
-					range1=12
-					range2=18
+					attack_roll_damage_dice = FALSE
+					attack_roll_damage_lower = 12
+					attack_roll_damage_upper = 18
 					mcost=15
 					atype="weapon"
 					range=" Melee."
@@ -7187,8 +7427,9 @@ obj
 				BubbleBeam
 					rank="C"
 					name="Bubble Beam"
-					range1=20
-					range2=35
+					attack_roll_damage_dice = FALSE
+					attack_roll_damage_lower = 20
+					attack_roll_damage_upper = 35
 					mcost=30
 					range=" 7 tile line."
 					savetype="Fortitude"
@@ -7198,8 +7439,9 @@ obj
 				TyphoonCutter
 					rank="C"
 					name="Typhoon Cutter"
-					range1=25
-					range2=38
+					attack_roll_damage_dice = FALSE
+					attack_roll_damage_lower = 25
+					attack_roll_damage_upper = 38
 					mcost=35
 					atype="weapon"
 					range=" 7 tiles, 3 tile wide. Generates 5x5 persisting AoE."
@@ -7207,8 +7449,9 @@ obj
 				LakeBlade
 					rank="C"
 					name="Lake Blade"
-					range1=30
-					range2=40
+					attack_roll_damage_dice = FALSE
+					attack_roll_damage_lower = 30
+					attack_roll_damage_upper = 40
 					mcost=45
 					atype="weapon"
 					range=" Melee"
@@ -7216,8 +7459,9 @@ obj
 				NautilusAnchor
 					rank="C"
 					name="Nautilus Anchor"
-					range1=25
-					range2=30
+					attack_roll_damage_dice = FALSE
+					attack_roll_damage_lower = 25
+					attack_roll_damage_upper = 30
 					atype="standard"
 					range=" 8 tiles"
 					mcost=40
@@ -7225,8 +7469,9 @@ obj
 				WildWave
 					rank="C"
 					name="Wild Wave"
-					range1=35
-					range2=45
+					attack_roll_damage_dice = FALSE
+					attack_roll_damage_lower = 35
+					attack_roll_damage_upper = 45
 					mcost=50
 					savetype="Reflex"
 					atype="save"
@@ -7240,8 +7485,9 @@ obj
 				WaterfallCrash
 					rank="B"
 					name="Waterfall Crash"
-					range1=50
-					range2=60
+					attack_roll_damage_dice = FALSE
+					attack_roll_damage_lower = 50
+					attack_roll_damage_upper = 60
 					mcost=55
 					basecheck=14
 					savetype="Fortitude"
@@ -7251,8 +7497,9 @@ obj
 				TyphoonVortex
 					rank="B"
 					name="Typhoon Vortex"
-					range1=55
-					range2=65
+					attack_roll_damage_dice = FALSE
+					attack_roll_damage_lower = 55
+					attack_roll_damage_upper = 65
 					range=" 3 tile wide, 7 tile line."
 					savetype="Fortitude"
 					atype="save"
@@ -7261,8 +7508,8 @@ obj
 				WaterWhip
 					rank="B"
 					name="Water Whip"
-					range1=70
-					range2=70
+					attack_roll_damage_dice = FALSE
+					attack_roll_damage_exact = 70
 					mcost=70
 					atype="standard"
 					desc="The Pirate creates a whip of water in their hand, and then swings it forth to smack into a target. On hit, this sends the target creature flying in a direction of their choosing, 5 tiles. If they impact a surface or another creature, both targets take 30 true damage. Costs 70 SP."
@@ -7279,8 +7526,9 @@ obj
 				CaptainCutlass
 					rank="A"
 					name="Captain's Cutlass"
-					range1=80
-					range2=85
+					attack_roll_damage_dice = FALSE
+					attack_roll_damage_lower = 80
+					attack_roll_damage_upper = 85
 					atype="standard"
 					mcost=70
 					addhit=5
@@ -7302,8 +7550,9 @@ obj
 						rank="E"
 						atype="save"
 						savetype="Reflex"
-						range1=8
-						range2=12
+						attack_roll_damage_dice = FALSE
+						attack_roll_damage_lower = 8
+						attack_roll_damage_upper = 12
 						basecheck=10
 						mcost=10
 						range="6 tile range."
@@ -7346,8 +7595,8 @@ obj
 						atype="save"
 						savetype="Fortitude"
 						basecheck=13
-						range1=0
-						range2=0
+						attack_roll_damage_dice = FALSE
+						attack_roll_damage_exact = 0
 						mcost=65
 						desc="The user creates a giant clock made of magic on the ground around them. The clock hands slow until they stop causing time to stop in the entire area except for the user and their allies. Targets in the AoE (5x5) must make a fortitude saving throw or be afflicted with stop for 4 turns. (DC 13+INT+Rank bonus.) (- 65 mana.)"
 					Old
@@ -7385,8 +7634,9 @@ obj
 					icon='Icons/Perk/Comet.png'
 					Comet
 						rank="C"
-						range1=6
-						range2=36
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 6
+						attack_roll_dice_sides = 6
 						range=" 3x3 AoE within 10 tiles."
 						atype="save"
 						savetype="Reflex"
@@ -7396,8 +7646,9 @@ obj
 					Meteor
 						rank="A"
 						pre="Comet"
-						range1=2
-						range2=24
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 2
+						attack_roll_dice_sides = 12
 						range="7 tile range."
 						mcost=20
 						typing="magical"
@@ -7441,8 +7692,9 @@ obj
 				Acid
 					element="Dark"
 					rank="D"
-					range1=2
-					range2=16
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 8
 					damsource="wis"
 					mcost=10
 					range=" 7 tile range."
@@ -7451,8 +7703,9 @@ obj
 					rank="D"
 					name="Magic Hammer"
 					damsource="str"
-					range1=2
-					range2=20
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 10
 					range="Melee"
 					mcost="Variable"
 					desc="The creature creates a huge hammer made of Magic, which when slamming into a target, drains them of their MP. This Hammer has a variable Mana cost (maximum of 100) - and on hit, depletes the target creature of Mana equal to the Mana spent to cast this spell. (Damage: 2d10+STR Force damage | Melee attack roll, Mana cost variable.) (BLU)"
@@ -7460,8 +7713,9 @@ obj
 					element="Nature"
 					rank="D"
 					name="Shrapnel Seed"
-					range1=2
-					range2=16
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 8
 					damsource="wis"
 					range=" 7 tile range."
 					mcost=10
@@ -7470,8 +7724,9 @@ obj
 					element="Physical"
 					rank="D"
 					name="Geezard Claw"
-					range1=2
-					range2=8
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 4
 					atype="weapon"
 					mcost=10
 					range=" Melee"
@@ -7481,15 +7736,17 @@ obj
 					element="Dark"
 					rank="D"
 					name="Poison Powder"
-					range1=2
-					range2=4
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 2
 					desc="The creature collects a magical powder on its wings. When enough powder has been collected it flaps its wing spreading the powder throughout the area. Even the smallest breath can inflict poison. Prompts a flat Fortitude saving throw (DC 15), inflicting poison on failure. (10 tile range, 3x3 AoE, - 10 Mana.) (BLU)"
 				MonsterFlame
 					element="Fire"
 					rank="D"
 					name="Monster Flame"
-					range1=2
-					range2=16
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 8
 					damsource="wis"
 					range=" 7 tile range."
 					mcost=10
@@ -7498,8 +7755,9 @@ obj
 					element="Monk"
 					rank="C"
 					name="Goblin Strike"
-					range1=2
-					range2=8
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 4
 					damsource="wis"
 					range=" Melee"
 					addhit=1
@@ -7509,8 +7767,9 @@ obj
 					rank="C"
 					name="Silver Fang"
 					damsource="wis"
-					range1=2
-					range2=24
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 12
 					range=" Melee"
 					mcost=15
 					desc="The creature creates a flaring aura of energy around the front of its body and charges forward at an opponent. If the Loboscreature hits its mark, the target is knocked back by a blast of energy. (Damage: 2d12+WIS Force | Melee Attack Roll, 3 Tile Knockback on hit. -15 Mana.) (BLU)"
@@ -7518,8 +7777,9 @@ obj
 					element="Physical"
 					rank="C"
 					name="Mu Claw"
-					range1=2
-					range2=24
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 12
 					range=" Melee"
 					damsource="wis"
 					mcost=15
@@ -7527,8 +7787,9 @@ obj
 				Stinger
 					element="Nature"
 					rank="C"
-					range1=2
-					range2=20
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 10
 					damsource="dex"
 					range=" 8 tile range."
 					mcost=15
@@ -7537,8 +7798,9 @@ obj
 					element="Fire"
 					rank="C"
 					name="Bombos Fire"
-					range1=2
-					range2=24
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 12
 					damsource="wis"
 					range=" 6 tiles."
 					mcost=15
@@ -7547,15 +7809,16 @@ obj
 					name="Gleatinous Lake"
 					rank="C"
 					element="Bio"
-					range1=10
-					range2=18
+					attack_roll_damage_dice = FALSE
+					attack_roll_damage_exact = 0
 					desc="The creature creates an area of goop-like substance, slowing anything within it that isn’t a Flan. While in the substance, creatures and players’ tile movement is reduced by two tiers. This ‘lake’ has a duration of five turns. (-20 Mana. 5x5 AoE.) (BLU)"
 				WaterGun
 					element="Water"
 					name="Water Gun"
 					rank="C"
-					range1=2
-					range2=24
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 12
 					range=" 6 tiles."
 					damsource="wis"
 					mcost=15
@@ -7564,8 +7827,9 @@ obj
 					element="General"
 					name="Mesma Blade"
 					rank="C"
-					range1=2
-					range2=40
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 20
 					addhit=2
 					range=" 8 tile."
 					damsource="wis"
@@ -7587,8 +7851,9 @@ obj
 					element="Physical"
 					name="Magic Tongue"
 					rank="C"
-					range1=3
-					range2=36
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 3
+					attack_roll_dice_sides = 12
 					range=" 8 tile range."
 					damsource="str"
 					mcost=20
@@ -7600,8 +7865,9 @@ obj
 				Ram
 					element="Physical"
 					rank="C"
-					range1=3
-					range2=18
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 3
+					attack_roll_dice_sides = 18
 					range=" Melee"
 					mcost=20
 					damsource="str"
@@ -7613,8 +7879,9 @@ obj
 				MatraMagic
 					element="Robot"
 					name="Matra Magic"
-					range1=2
-					range2=24
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 12
 					range=" 7 tile range."
 					mcost=60
 					damsource="wis"
@@ -7624,8 +7891,9 @@ obj
 					element="Dark"
 					name="Gargoyle Breath"
 					rank="B"
-					range1=4
-					range2=40
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 4
+					attack_roll_dice_sides = 10
 					damsource="wis"
 					range=" 5 tile cone."
 					mcost=50
@@ -7633,8 +7901,9 @@ obj
 				ToadKata
 					element="Monk"
 					rank="B"
-					range1=3
-					range2=30
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 3
+					attack_roll_dice_sides = 10
 					monkability=1
 					name="Toad Kata"
 					damsource="str"
@@ -7645,8 +7914,9 @@ obj
 					element="Water"
 					name="Hydro Cannon"
 					rank="B"
-					range1=5
-					range2=60
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 5
+					attack_roll_dice_sides = 12
 					damsource="con"
 					range=" 3x3 sized projectile, 7 tile range."
 					mcost=50
@@ -7654,8 +7924,9 @@ obj
 				Flamethrower
 					element="Fire"
 					rank="B"
-					range1=6
-					range2=72
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 6
+					attack_roll_dice_sides = 12
 					damsource="cha"
 					mcost=55
 					desc="The creature emits a stream of flames from its mouth that singes a target, and any targets in a straight line in front of it. (Damage: 6d12+CHA Fire damage | 8 tile line, Magical attack roll, -55 Mana.) (BLU)"
@@ -7666,8 +7937,9 @@ obj
 				Vampire
 					element="Drain"
 					rank="B"
-					range1=2
-					range2=40
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 20
 					range=" 10 tile range."
 					mcost=50
 					damsource="wis"
@@ -7675,8 +7947,9 @@ obj
 				Tusk
 					element="Physical"
 					rank="B"
-					range1=4
-					range2=40
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 4
+					attack_roll_dice_sides = 10
 					atype="weapon"
 					range=" Melee"
 					damsource="wis"
@@ -7686,8 +7959,9 @@ obj
 					element="Metal"
 					name="Silver Wheel"
 					rank="B"
-					range1=6
-					range2=72
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 6
+					attack_roll_dice_sides = 12
 					damsource="wis"
 					addhit=2
 					range=" 10 tile range."
@@ -7697,8 +7971,8 @@ obj
 					rank="B"
 					element="General"
 					name="100 Needles"
-					range1=40
-					range2=40
+					attack_roll_damage_dice = FALSE
+					attack_roll_damage_exact = 75
 					desc="The creature releases a large and powerful spread of exactly 100 needles made of Mana from its body. (10x10 AoE, exactly 75 true damage, ignoring reductions. Auto-hit. -100 Mana.) (BLU)"
 				WhiteWind
 					heal=1
@@ -7708,8 +7982,9 @@ obj
 				Plainscracker
 					element="Earth"
 					rank="B"
-					range1=6
-					range2=72
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 6
+					attack_roll_dice_sides = 12
 					range=" 7x7 AoE within view."
 					atype="save"
 					savetype="Fortitude"
@@ -7721,8 +7996,9 @@ obj
 					element="Fire"
 					name="Grenado Fire"
 					rank="B"
-					range1=7
-					range2=70
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 7
+					attack_roll_dice_sides = 10
 					range=" 7 tile range."
 					damsource="wis"
 					range=" 3x3 sized projectile, 8 tile range."
@@ -7738,8 +8014,9 @@ obj
 				Night
 					element="Dark"
 					rank="B"
-					range1=2
-					range2=20
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 10
 					damsource="int"
 					range=" 7x7 AoE"
 					mcost=70
@@ -7748,8 +8025,9 @@ obj
 					element="Holy"
 					name="Dispel Foe"
 					rank="B"
-					range1=5
-					range2=60
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 5
+					attack_roll_dice_sides = 12
 					damsource="cha"
 					range=" 8 tile range."
 					mcost=60
@@ -7757,8 +8035,9 @@ obj
 				Gust
 					element="Wind"
 					rank="B"
-					range1=7
-					range2=70
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 7
+					attack_roll_dice_sides = 10
 					damsource="wis"
 					range=" 3x3 sized projectile, 10 tile range."
 					mcost=70
@@ -7767,8 +8046,9 @@ obj
 					element="Dark"
 					rank="B"
 					name="Serpent Breath"
-					range1=5
-					range2=50
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 5
+					attack_roll_dice_sides = 10
 					damsource="int"
 					range=" 5 tile cone."
 					atype="save"
@@ -7779,8 +8059,9 @@ obj
 					element="Holy"
 					rank="B"
 					name="Photon Ray"
-					range1=2
-					range2=20
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 10
 					damsource="wis"
 					range=" 8 tile range."
 					mcost=100
@@ -7789,8 +8070,9 @@ obj
 					element="Flare"
 					rank="B"
 					name="Drago Flare"
-					range1=6
-					range2=72
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 6
+					attack_roll_dice_sides = 12
 					damsource="wis"
 					range="3 tiles wide, 7 tile piercing line."
 					mcost=60
@@ -7799,8 +8081,9 @@ obj
 					element="Monk"
 					rank="B"
 					name="Limit Glove"
-					range1=6
-					range2=72
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 6
+					attack_roll_dice_sides = 12
 					mcost=60
 					range="Melee"
 					damsource="str"
@@ -7813,16 +8096,18 @@ obj
 					element="Laser"
 					name="Homing Laser"
 					rank="B"
-					range1=4
-					range2=40
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 4
+					attack_roll_dice_sides = 10
 					damsource="int"
 					range="All hostile creatures in view."
 					mcost=80
 					desc="The creature generates orbs of magical energy around their form, charging it intensively - before then releasing it in spurts of laser blasts. This spell targets all creatures on the opposing party, making two separate attack rolls, with each of the two applying to all creatures. (Damage: 4d10+INT Force damage | Targets all enemy creatures in view, Magical attack roll, -80 Mana.) (BLU)"
 				Hastebreak
 					rank="B"
-					range1=5
-					range2=60
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 5
+					attack_roll_dice_sides = 12
 					damsource="wis"
 					mcost=65
 					range=" Melee"
@@ -7835,8 +8120,9 @@ obj
 					element="General"
 					name="Varuna Arrow"
 					rank="A"
-					range1=9
-					range2=108
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 9
+					attack_roll_dice_sides = 12
 					damsource="str"
 					range=" 8 tile range."
 					mcost=100
@@ -7845,8 +8131,9 @@ obj
 					element="Flare"
 					name="Great Cleave"
 					rank="A"
-					range1=6
-					range2=60
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 6
+					attack_roll_dice_sides = 10
 					damsource="str"
 					range=" 7 tile range."
 					mcost=100
@@ -7855,8 +8142,9 @@ obj
 					element="Water"
 					name="Shoopuff Cannon"
 					rank="A"
-					range1=9
-					range2=108
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 9
+					attack_roll_dice_sides = 12
 					damsource="con"
 					range=" 8 tile line."
 					mcost=100
@@ -7865,8 +8153,9 @@ obj
 					element="Bio"
 					name="Oil Bullet"
 					rank="A"
-					range1=7
-					range2=70
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 7
+					attack_roll_dice_sides = 10
 					damsource="str"
 					range=" 3x3 sized projectile, 8 tile range."
 					mcost=80
@@ -7876,31 +8165,34 @@ obj
 					name="Bio Sphere"
 					rank="A"
 					damsource="dex"
-					range1=8
-					range2=96
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 8
+					attack_roll_dice_sides = 12
 					range=" 8 tile range."
 					desc="The creature charges a sphere of Bio Energy between its tendrils, and fires it forward. Those hit by it are afflicted with the Poison and Paralyze status effects. (Damage: 8d12+DEX Bio damage | 8 tile range, Magical attack roll, -90 Mana.) (BLU)"
 				Heave
 					element="Physical"
 					rank="A"
 					damsource="str"
-					range1=8
-					range2=80
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 8
+					attack_roll_dice_sides = 10
 					range=" Melee"
 					mcost=95
 					desc="The creature rushes forward and slams its horns into an opponent, forcefully launching them into the air. (Damage: 8d10+STR Force damage | Melee attack roll, on hit knocks creature 6 tiles into the air. -95 Mana.) (BLU)"
 				IceSpikes
 					name="Ice Spikes"
 					rank="A"
-					range1=20
-					range2=20
+					attack_roll_damage_dice = FALSE
+					attack_roll_damage_exact = 20
 					desc="The creature surrounds itself with magical ice-spikes, that immediately counter-attack opponents for exact damage when it is attacked with Melee. This lasts for three turns. (20 exact damage Ice counter-attack, ignoring reductions and hitting automatically. -40 Mana.) (BLU)"
 				DeathBreath
 					element="Dark"
 					name="Death Breath"
 					rank="A"
-					range1=5
-					range2=60
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 5
+					attack_roll_dice_sides = 12
 					damsource="wis"
 					range=" 5 tile cone."
 					atype="save"
@@ -7916,8 +8208,9 @@ obj
 				Blaster
 					element="Laser"
 					rank="A"
-					range1=10
-					range2=100
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 10
+					attack_roll_damage_upper = 10
 					damsource="cha"
 					range=" 7 tile line."
 					mcost=100
@@ -7930,23 +8223,25 @@ obj
 					name="Claw Strike"
 					rank="A"
 					damsource="dex"
-					range1=9
-					range2=108
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 9
+					attack_roll_damage_upper = 12
 					range=" Melee"
 					mcost=100
 					desc="The creature rushes forward, and magical claws emanate from its body to skewer an opponent at close range. (Damage: 9d12+DEX Dark damage | Melee attack roll, inflicts 'Bleed' on hit. - 100 Mana.) (BLU)"
 				BadBreath
 					element="All"
-					range1=55
-					range2=55
+					attack_roll_damage_dice = FALSE
+					attack_roll_damage_exact = 55
 					name="Bad Breath"
 					rank="A"
 					desc="The creature releases a wave of putrid breath that inflicts Posion, Silence, Paralyze, Stun, and Slow to those who fail its saving throw. Prompts a Fortitude saving throw, DC 20. Stun lasts 1 turn, all other status effects last for their standard duration. (5 tile cone, -100 Mana.) (BLU)"
 				Drain
 					element="Dark"
 					rank="A"
-					range1=9
-					range2=108
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 9
+					attack_roll_damage_upper = 12
 					damsource="cha"
 					range=" 8 tile range."
 					mcost=110
@@ -7955,8 +8250,9 @@ obj
 					element="Flare"
 					name="Crystal Lance"
 					rank="A"
-					range1=10
-					range2=100
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 10
+					attack_roll_damage_upper = 10
 					damsource="str"
 					range=" 3 tile range, Melee"
 					mcost=100
@@ -7971,8 +8267,9 @@ obj
 				AdamantDrum
 					element="General"
 					name="Adamant Drum"
-					range1=12
-					range2=144
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 12
+					attack_roll_damage_upper = 12
 					rank="S"
 					range=" 14x14 AoE"
 					atype="save"
@@ -7985,8 +8282,9 @@ obj
 					element="Wind"
 					name="Mystic Wing"
 					rank="S"
-					range1=11
-					range2=132
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 11
+					attack_roll_damage_upper = 12
 					damsource="dex"
 					range=" +3 tile movement, Melee."
 					addhit=5
@@ -7995,8 +8293,9 @@ obj
 				Gaze
 					element="Laser"
 					rank="S"
-					range1=11
-					range2=132
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 11
+					attack_roll_damage_upper = 12
 					damsource="wis"
 					range=" 6 tile line."
 					mcost=130
@@ -8007,8 +8306,9 @@ obj
 					name="Mind Blast"
 					blu=0
 					rank="B"
-					range1=5
-					range2=30
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 7
+					attack_roll_damage_upper = 10
 					range=" 5x5 AoE around user."
 					atype="save"
 					savetype="Will"
@@ -8020,8 +8320,9 @@ obj
 					element="Thunder"
 					name="Mind Blast"
 					rank="S"
-					range1=12
-					range2=120
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 12
+					attack_roll_damage_upper = 10
 					range=" 9x9 AoE around user."
 					atype="save"
 					savetype="Will"
@@ -8033,8 +8334,9 @@ obj
 					element="Fire"
 					name="Great Flamethrower"
 					rank="S"
-					range1=9
-					range2=108
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 9
+					attack_roll_damage_upper = 12
 					range=" 5 tile wide, 8 tile line."
 					mcost=120
 					damsource="wis"
@@ -8043,16 +8345,18 @@ obj
 					element="Dark"
 					name="Shadow Flare"
 					rank="S"
-					range1=12
-					range2=144
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 12
+					attack_roll_damage_upper = 12
 					damsource="cha"
 					mcost=150
 					desc="The creature focuses on a target, outstretching their hand towards them. After casting the spell several shimmering orbs of darkness appear around the target quickly honing in on them and converging into a dense mass of energy trapping the target, and tearing at their body from the inside. (Damage: 12d12+CHA Dark damage | Magical attack roll, inflicts 'Burn', 'Weak', and 'Slow' on hit. -150 Mana.) (BLU)"
 				Beta
 					element="Fire"
 					rank="S"
-					range1=12
-					range2=144
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 12
+					attack_roll_damage_upper = 12
 					damsource="int"
 					range=" 5 tile wide, 8 tile line."
 					mcost=140
@@ -8068,8 +8372,9 @@ obj
 				Tentacle
 					name="Tentacle"
 					desc="A basic, tentacle based attack."
-					range1=1
-					range2=10
+					attack_roll_damage_dice = FALSE
+					attack_roll_damage_lower=1
+					attack_roll_damage_upper=10
 					addhit=4
 					adddam=5
 					range="2 tile range."
@@ -8083,57 +8388,66 @@ obj
 					element="Water"
 					typing="magical"
 					damsource="wis"
-					range1=10
-					range2=25
+					attack_roll_damage_dice = FALSE
+					attack_roll_damage_lower=10
+					attack_roll_damage_upper=25
 				Scissors
 					name="Scissors"
 					element="Drain"
 					typing="physical"
 					damsource="str"
-					range1=20
-					range2=30
+					attack_roll_damage_dice = FALSE
+					attack_roll_damage_lower=20
+					attack_roll_damage_upper=30
 				SahauginTrident
 					name="Sahaugin Trident"
 					element="Physical"
 					typing="physical"
 					damsource="str"
-					range1=14
-					range2=28
+					attack_roll_damage_dice = FALSE
+					attack_roll_damage_lower=14
+					attack_roll_damage_upper=28
 				WormQuake
 					name="Sahaugin Trident"
 					element="Earth"
 					typing="magical"
 					damsource="wis"
-					range1=14
-					range2=30
+					attack_roll_damage_dice = FALSE
+					attack_roll_damage_lower=14
+					attack_roll_damage_upper=30
 				Howl
 				ChocoKick
 					name="Choco Kick"
 					desc="A simple Chocobo kick."
 					damsource="str"
-					range1=10
-					range2=25
+					attack_roll_damage_dice = FALSE
+					attack_roll_damage_lower=10
+					attack_roll_damage_upper=25
 				DoublePeck
 					name="Double Peck"
 					desc="The Chocobo pecks twice, at the cost of 20 SP."
 					damsource="str"
-					range1=8
-					range2=16
+					attack_roll_damage_dice = FALSE
+					attack_roll_damage_lower=8
+					attack_roll_damage_upper=16
 				StickyWeb
 					name="Sticky Web"
 					element="Bio"
-					range1=8
-					range2=14
+					attack_roll_damage_dice = FALSE
+					attack_roll_damage_lower=8
+					attack_roll_damage_upper=14
 				CursedClaws
 					name="Cursed Claws"
 					element="Physical"
-					range1=25
-					range2=35
+					attack_roll_damage_dice = FALSE
+					attack_roll_damage_lower=25
+					attack_roll_damage_upper=35
 				DragonClaws
 					name="Dragon Claws"
 					element="Physical"
-					range1=25
-					range2=35
+					attack_roll_damage_dice = FALSE
+					attack_roll_damage_lower=25
+					attack_roll_damage_upper=35
 					atype="standard"
 					addhit=3
 					adddam=5
@@ -8163,8 +8477,9 @@ obj
 				ThousandNeedles
 					name="1,000 Needles"
 					element="Nature"
-					range1=150
-					range2=150
+					attack_roll_damage_dice = FALSE
+					attack_roll_damage_lower=150
+					attack_roll_damage_upper=150
 
 			Summon
 				ability=1
