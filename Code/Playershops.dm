@@ -181,12 +181,9 @@ obj/playershops
 							usr << output(A.suffix,"playershop.item")
 					if("Purchase")
 						for(var/obj/item/o in src.contents)
-							itemlist+=o
-						itemlist+="Cancel"
-						var/obj/item/choice=input("What're you buying?") as anything in itemlist
-						if(choice==null)
-							return
-						if(choice=="Cancel")
+							itemlist += o
+						var/obj/item/choice = input("What're you buying?") as null|anything in itemlist
+						if(!choice)
 							return
 						var/list/confirmation=list("Yes","No")
 						var/choices2=input(usr,"[choice.name] costs [choice.cusprice]/unit, purchase?") as anything in confirmation
@@ -196,9 +193,9 @@ obj/playershops
 									if(usr.money<choice.cusprice)
 										alert(usr,"You don't even have enough to afford a single unit!")
 										return
-									var/numba=input("How many do you wish to purchase?") as num
-									if(numba==0)
-										numba=1
+									var/numba = input("How many do you wish to purchase?") as num|null
+									if(numba <= 0)
+										return
 									var/adjprice = choice.cusprice*numba
 									if(numba>choice.amount)
 										alert("There isn't that much for sale")
