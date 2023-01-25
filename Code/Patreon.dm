@@ -26,11 +26,14 @@ obj/item
 					var/rando
 					var/rando2
 					for(var/obj/item/materials/m in usr.contents)
-						rando=rand(1,4)
-						if(rando==1)
-							rando2=rand(1,3)
-							m.amount+=rando2
-							usr<<output("You gain [rando2] [m.name]/s","oocout")
+						if(istype(m,/obj/item/materials/Ore/Platinum)||istype(m,/obj/item/materials/Ore/Orichalcum))
+
+						else
+							rando=rand(1,4)
+							if(rando==1)
+								rando2=rand(1,3)
+								m.amount+=rando2
+								usr<<output("You gain [rando2] [m.name]/s","oocout")
 					del(src)
 
 
