@@ -63,6 +63,7 @@ proc
 		a.totalpasses+=1
 		a.FATEcooldown=0
 		a.minednodes=0
+		a.Save()
 	for(var/obj/cooldownchecker/a in world)
 		a.totalpasses+=1
 	for(var/obj/Faction/a in world)
@@ -74,6 +75,9 @@ proc
 	for(var/obj/item/Mooglebox/a in world)
 		a.cooldown=0
 	world.send_chat("It's a new day! All 24 hour cooldowns have been reset.", stream = "icout")
+	Saveworld()
+	sleep(150)
+	world.Reboot() //This will make the game auto-reboot
 
 proc
 	Monthname(n as num)
