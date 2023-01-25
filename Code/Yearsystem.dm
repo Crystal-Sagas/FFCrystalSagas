@@ -76,8 +76,8 @@ proc
 		a.cooldown=0
 	world.send_chat("It's a new day! All 24 hour cooldowns have been reset.", stream = "icout")
 	Saveworld()
-	sleep(150)
-	world.Reboot() //This will make the game auto-reboot
+	//sleep(150)
+	//world.Reboot() //This will make the game auto-reboot
 
 proc
 	Monthname(n as num)
