@@ -28,15 +28,14 @@
 			winset(usr, "storegrid", "current-cell=2,[row]")
 			usr << output(A.suffix,"storegrid")
 
-/obj/Chest
+/obj/storage/Chest
 	icon='Map Icons/Outdoordec.dmi'
 	icon_state="36"
 
-/obj/Chest/New()
+/obj/storage/Chest/New()
 	locked=1
 	keyid="key1"
 	password=""
-
 
 /mob/verb/Lock()
 	set hidden=1

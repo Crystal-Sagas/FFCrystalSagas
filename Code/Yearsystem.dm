@@ -1,7 +1,6 @@
 /obj/cooldownchecker
+	Savable=1
 	var/totalpasses=0
-	var/Savable=1
-
 
 var/year = 1466
 var/yearcount

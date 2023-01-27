@@ -18,12 +18,12 @@
 	var/sety
 
 /obj/Aoeind/Click()
-		if(usr.aoeclick)
-			if(src.owner==usr.key)
-				usr.aoetiles--
-				del(src)
-		else
-			alert(usr,"[desc]")
+	if(usr.aoeclick)
+		if(src.owner==usr.key)
+			usr.aoetiles--
+			del(src)
+	else
+		alert(usr,"[desc]")
 
 /obj/Reaction
 	icon='Icons/Reacting.dmi'
