@@ -1,49 +1,45 @@
-obj
-	cooldownchecker
-		var
-			totalpasses=0
-		Savable=1
+/obj/cooldownchecker
+	var/totalpasses=0
+	var/Savable=1
 
 
-var
-	year = 1466
-	yearcount
-	yearspeed
-	month = 1
-	monthname
-	monthcount
-	daytime = "Night"
+var/year = 1466
+var/yearcount
+var/yearspeed
+var/month = 1
+var/monthname
+var/monthcount
+var/daytime = "Night"
 
 
-proc
-	Time()
-		while(TRUE)
-			set background = TRUE
-			if(daytime=="Day")
-				daytime="Night"
-				sd_OutsideLight(4)
-				world<<output("It is now night time.","oocout")
-			else
-				daytime="Day"
-				world<<output("It is now day time.","oocout")
-				sd_OutsideLight(6)
-			monthcount++
-			if(monthcount==28)
-				month++
-				monthcount=0
-				Monthname(month)
-				yearcount++
-				for(var/mob/m in world)
-					m.teachslot = 0
-				world<<output("It is Month [monthname] of Year [year]AS","oocout")
-			if(yearcount==10)
-				year++
-				yearcount=0
-				month = 1
-				Monthname(month)
-				Agecheck()
-				world<<output("It is now Year [year]AS","oocout")
-			sleep(432000)
+/proc/Time()
+	while(TRUE)
+		set background = TRUE
+		if(daytime=="Day")
+			daytime="Night"
+			sd_OutsideLight(4)
+			world<<output("It is now night time.","oocout")
+		else
+			daytime="Day"
+			world<<output("It is now day time.","oocout")
+			sd_OutsideLight(6)
+		monthcount++
+		if(monthcount==28)
+			month++
+			monthcount=0
+			Monthname(month)
+			yearcount++
+			for(var/mob/m in world)
+				m.teachslot = 0
+			world<<output("It is Month [monthname] of Year [year]AS","oocout")
+		if(yearcount==10)
+			year++
+			yearcount=0
+			month = 1
+			Monthname(month)
+			Agecheck()
+			world<<output("It is now Year [year]AS","oocout")
+		sleep(432000)
 
 /proc/DayLooper()
 	while(TRUE)
@@ -79,11 +75,11 @@ proc
 	//sleep(150)
 	//world.Reboot() //This will make the game auto-reboot
 
-proc
-	Monthname(n as num)
-		if(n==1)
-			monthname = "Dawnmonth"
-	Agecheck()
-		for(var/mob/m in world)
-			if(m.client)
-				m.age++
+/proc/Monthname(n as num)
+	if(n==1)
+		monthname = "Dawnmonth"
+
+/proc/Agecheck()
+	for(var/mob/m in world)
+		if(m.client)
+			m.age++
