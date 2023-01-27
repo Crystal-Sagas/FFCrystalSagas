@@ -1605,7 +1605,7 @@ obj
 							if(src.atype=="heal")
 								var/healbonus=usr.chamod*2
 								doresult=raw_attack_damage_roll()
-								dresult=doresult+src.addhit+healbonus
+								dresult=doresult+src.adddam+healbonus
 								view()<<output("<font size=1><font color=[usr.textcolor]>[usr] <font color=white>is using the <font color=[usr.textcolor]>[src.name]<font color=white> ability! They have healed a target for <font color=#A8F596><b>[dresult]</b></font> HP!","icout")
 							if(src.atype=="curada")
 								var/curadabonus=usr.mhp*0.5
@@ -1928,7 +1928,7 @@ obj
 								if(src.atype=="heal")
 									var/healbonus=z.chamod*2
 									doresult=raw_attack_damage_roll()
-									dresult=doresult+src.addhit+healbonus
+									dresult=doresult+src.adddam+healbonus
 									view()<<output("<font size=1><font color=[usr.textcolor]>[z] <font color=white>is using the <font color=[z.textcolor]>[src.name]<font color=white> ability! They have healed a target for <font color=#A8F596><b>[dresult]</b></font> HP!","icout")
 								if(src.atype=="curada")
 									var/curadabonus=z.mhp*0.5
@@ -2297,7 +2297,7 @@ obj
 							if(src.atype=="heal")
 								var/healbonus=usr.chamod*2
 								doresult=raw_attack_damage_roll()
-								dresult=doresult+src.addhit+healbonus
+								dresult=doresult+src.adddam+healbonus
 								view()<<output("<font size=1><font color=[usr.textcolor]>[usr] <font color=white>is using the <font color=[usr.textcolor]>[src.name]<font color=white> ability! They have healed a target for <font color=#A8F596><b>[dresult]</b></font> HP!","icout")
 							if(src.atype=="curada")
 								var/healbonus=usr.chamod*2
