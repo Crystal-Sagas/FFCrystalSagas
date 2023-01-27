@@ -1225,6 +1225,18 @@ atom
 				m.dailyfates+=1
 				if(m.dailyfates>=m.maxfates)
 					m.FATEcooldown=1
+				m.statusturns=0 //The following lines of code turn off all status effects.
+				m.status2turns=0
+				m.status3turns=0
+				m.positiveturns1=0
+				m.positiveturns2=0
+				m.positiveturns3=0
+				m.status1=null
+				m.status2=null
+				m.status3=null
+				m.positivestatus1=null
+				m.positivestatus2=null
+				m.positivestatus3=null
 			party.currentFATE=null
 			party.FATEID=null
 
@@ -1246,6 +1258,18 @@ atom
 				m<<sound(null)
 				m.FATEcooldown=1
 				m.battler=0
+				m.statusturns=0 //The following lines of code turn off all status effects.
+				m.status2turns=0
+				m.status3turns=0
+				m.positiveturns1=0
+				m.positiveturns2=0
+				m.positiveturns3=0
+				m.status1=null
+				m.status2=null
+				m.status3=null
+				m.positivestatus1=null
+				m.positivestatus2=null
+				m.positivestatus3=null
 				if(m.hp<=0)
 					m.hp=0
 				ShowHPBar(m)
