@@ -9,6 +9,7 @@ obj
 			Reward1
 			Reward2
 			Reward3
+			tmp/bossfate //This determines whether or not the Fate is a World Boss or not, to give World Boss fate rewards.
 			Gilreward
 			Target
 			CoordX
@@ -103,11 +104,12 @@ obj
 									var/mtype
 									var/typeage
 									var/list/slaylist=new
-									var/list/slayerrewardsD=list("Wool","Leather","Wood","Bronze","Iron","Gysahl Greens","Garidav Wildgrass")
-									var/list/slayerrewardsC=list("Wool","Leather","Holy Gem","Dark Gem","Steel","Iron")
-									var/list/slayerrewardsB=list("Thunder Gem","Earth Gem","Wind Gem","Gysahl Greens","Steel","Mythril","Wool","Wood","Stone","Leather")
-									var/list/artifactrewards=list("Bomb Core","Black Gem","Leather","Aether Powder","Ether Powder","Esper Soul","Thunder Gem","Earth Gem","Wind Gem","Holy Gem","Dark Gem","Aether Powder")
-									var/list/deliveryrewards=list("Bomb Core","Black Gem","Leather","Aether Powder","Ether Powder","Esper Soul","Thunder Gem","Earth Gem","Wind Gem","Holy Gem","Dark Gem","Aether Powder")
+									var/list/slayerrewardsD=list("Wool","Leather","Wood","Bronze","Iron","Flying Eye's Wing","Flying Eye's Eye")
+									var/list/slayerrewardsC=list("Wool","Leather","Wood","Bronze","Iron","Steel","Flying Eye's Wing","Flying Eye's Eye","Bomb Core","Sahaugin Scale")
+									var/list/slayerrewardsB=list("Mythril","Silver","Esper Soul","Gigantoad Slime","Tonberry Knife","Coeurl Whisker")
+									var/list/artifactrewards=list("Aether Powder","Ether Powder","White Gem","Black Gem","Thunder Gem","Fire Gem","Water Gem","Earth Gem","Bio Gem","Ice Gem","Wind Gem","Holy Gem","Dark Gem")
+									var/list/deliveryrewards=list("Wool","Leather","Wood","Bronze","Iron","Raw Mako","Silver")
+									var/list/bossrewards=list("Mythril","Adamantine","Raw Mako","Esper Soul","Silver","Gold")
 									switch(tchoice)
 										if("Slayer")
 											mtype="Slayer"
@@ -217,6 +219,7 @@ obj
 												newfate.Reward1=pick(slayerrewardsB)
 												newfate.Reward2=pick(slayerrewardsB)
 												newfate.Reward3=pick(slayerrewardsB)
+												newfate.bossfate=pick(bossrewards)
 											if(mtype=="Capture")
 												alert(usr,"There are no A Rank Capture tasks!")
 												return

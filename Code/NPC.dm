@@ -1184,6 +1184,7 @@ atom
 			var/reward2
 			var/reward3
 			var/gilreward
+			var/bossreward
 			for(var/mob/M in hearers(20, fate))
 				M << sound(null, channel = 1)
 				M << sound('Audio/Fanfare.wav', channel = 1)
@@ -1194,6 +1195,8 @@ atom
 					reward2=quest.Reward2
 					reward3=quest.Reward3
 					gilreward=quest.Gilreward
+					if(quest.bossfate)
+						bossreward=quest.bossfate
 					del quest
 			fate.occupied=0
 			fate.FATEID=null
@@ -1216,6 +1219,11 @@ atom
 					if(c.name==reward3)
 						m.send_chat("Gained +1 [reward3]!", stream = "oocout")
 						c.amount+=1
+						break
+				for(var/obj/item/d in m.contents)
+					if(d.name==bossreward)
+						m.send_chat("You beat a World Boss! Gained +1 [bossreward]!", stream = "oocout")
+						d.amount+=1
 						break
 				if(m.hp<=0)
 					m.hp=0
