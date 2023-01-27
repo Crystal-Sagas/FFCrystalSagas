@@ -1,3 +1,5 @@
+#warn make sure to test save/load for the obj/npc conversion...
+
 /**
  * hosts FATE logic, aka the mechanical combat system
  */
@@ -2882,17 +2884,16 @@ obj
 	overimage
 
 	npc
+		parent_type = /mob
 		icon='Icons/Moogle.dmi'
 		layer=3
 		waterwalking=1
 		vehicletype="player"
 		var
 			initialized=0
-			critmod=0
 			aggro=0
 			agtarget=null
 			overimage
-			textcolor
 			eweapon=0
 			npcweapon = 0
 			summon=0
@@ -2902,102 +2903,17 @@ obj
 			FATEID=null
 			weakness
 			resistance
-			rank
 			obj/npc/enemy2
 			obj/npc/enemy3
 			obj/npc/enemy4
 			companiontype=null
 
-			reflexproficient=1
-			willproficient=1
-			fortitudeproficient=1
-			reflexexpert=0
-			willexpert=0
-			fortitudeexpert=0
-
-
-			baseac=10
-			ac=0
-			acmod=0
-			basedr
-			dr=0
-			speed=3
 			special
 
-			str = 10
-			strcap=20
-			addstr=0
-			strmod=0
-			dex = 10
-			dexcap=20
-			dexmod=0
-			adddex=0
-			con = 10
-			concap=20
-			conmod=0
-			addcon=0
-			int = 10
-			intcap=20
-			intmod=0
-			addint=0
-			wis = 10
-			wiscap=20
-			wismod=0
-			addwis=0
-			cha = 10
-			chacap=20
-			chamod=0
-			addcha=0
-			rankbonus=1
 			encountersize=1
 
-			pab=0
-			pdb=0
-			mab=0
-			mdb=0
-
-			acrobatics=0
-			baseacro=0
-			athletics=0
-			baseath=0
-			archaeology=0
-			basearc=0
-			deception=0
-			basedec=0
-			dungeoneering=0
-			basedung=0
-			enchantment=0
-			baseenchant=0
-			insight=0
-			basein=0
-			investigation=0
-			baseinv=0
-			magic=0
-			basemagic=0
-			magitekOperation=0
-			basemagio=0
-			medicine=0
-			basemed=0
-			naturalist=0
-			basenat=0
-			perception=0
-			baseper=0
-			persuasion=0
-			basepers=0
-			stealth=0
-			basestl=0
-			thievery=0
-			basethv=0
-			survival=0
-			basesurv=0
 			battling=0
 
-			baserflx=0
-			rflx
-			basewill=0
-			will
-			basefort=0
-			fort
 			inarchive
 			archived=0
 		Click()
@@ -5403,7 +5319,7 @@ obj
 				Quetzalli
 					name="Quetzalli"
 					icon='Icons/Summon/Aeons/Quetzalli.png'
-					var/monkbonus=5
+					monkbonus=5
 					summon=1
 					mhp=185
 					hp=185

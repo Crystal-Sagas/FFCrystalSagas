@@ -30,11 +30,17 @@
 
 // todo: all of these should be on /datum/battle
 
+#warn AAAAAAAA
 
 /datum/instanced_fate/proc/enemies_dead()
+	for(var/mob/M as anything in enemies)
+		#warn impl
+	return TRUE
 
 /datum/instanced_fate/proc/fighters_dead()
-
+	for(var/mob/M as anything in fighters)
+		#warn impl
+	return TRUE
 
 #warn impl all
 
