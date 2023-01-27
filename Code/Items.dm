@@ -356,7 +356,7 @@ obj/item
 							dresult+=usr.mdbadd
 						else
 							dresult+=15
-					else if(usr.role=="Physical Tank")
+					else if(usr.role=="Melee Tank")
 						if(usr.mdbadd<10)
 							dresult+=usr.mdbadd
 						else
@@ -378,7 +378,7 @@ obj/item
 							dresult+=25
 				else
 					dresult=doresult+src.adddam+usr.pdb+dmod
-					if(usr.role=="Physical Tank"||usr.role=="Magical DPS"||usr.role=="Magical Support") //These roles all cap at 15 PDB Add.
+					if(usr.role=="Melee Tank"||usr.role=="Magical DPS"||usr.role=="Magical Support") //These roles all cap at 15 PDB Add.
 						if(usr.pdbadd<15)
 							dresult+=usr.pdbadd
 						else

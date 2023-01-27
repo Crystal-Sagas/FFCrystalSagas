@@ -850,7 +850,7 @@ obj
 								for(var/obj/item/materials/Ore/Iron/a in usr.contents)
 									a.amount+=1
 									usr << output("You have gained 1 [a]!","oocout")
-							if(random1>=6 && random1<7)
+							if(random1>=6 && random1<8)
 								for(var/obj/item/materials/Ore/Steel/a in usr.contents)
 									a.amount+=1
 									usr << output("You have gained 1 [a]!","oocout")
@@ -866,7 +866,7 @@ obj
 								for(var/obj/item/materials/Ore/Iron/a in usr.contents)
 									a.amount+=1
 									usr << output("You have gained 1 [a]!","oocout")
-							if(random2>=6 && random2<7)
+							if(random2>=6 && random2<8)
 								for(var/obj/item/materials/Ore/Steel/a in usr.contents)
 									a.amount+=1
 									usr << output("You have gained 1 [a]!","oocout")
@@ -882,7 +882,7 @@ obj
 								for(var/obj/item/materials/Ore/Iron/a in usr.contents)
 									a.amount+=1
 									usr << output("You have gained 1 [a]!","oocout")
-							if(random3>=6 && random3<7)
+							if(random3>=6 && random3<8)
 								for(var/obj/item/materials/Ore/Steel/a in usr.contents)
 									a.amount+=1
 									usr << output("You have gained 1 [a]!","oocout")
@@ -898,19 +898,19 @@ obj
 								for(var/obj/item/materials/Synthesis/FireGem/a in usr.contents)
 									a.amount+=1
 									usr << output("You have gained 1 [a]!","oocout")
-							if(gem1>=6 && gem1<7)
+							if(gem1>=6 && gem1<6)
 								for(var/obj/item/materials/Synthesis/WaterGem/a in usr.contents)
 									a.amount+=1
 									usr << output("You have gained 1 [a]!","oocout")
-							if(gem1>=8 && gem1<11)
+							if(gem1>=8 && gem1<12)
 								for(var/obj/item/materials/Synthesis/EarthGem/a in usr.contents)
 									a.amount+=1
 									usr << output("You have gained 1 [a]!","oocout")
-							if(gem1>=12 && gem1<14)
+							if(gem1>=12 && gem1<15)
 								for(var/obj/item/materials/Synthesis/IceGem/a in usr.contents)
 									a.amount+=1
 									usr << output("You have gained 1 [a]!","oocout")
-							if(gem1>=15 && gem1<17)
+							if(gem1>=15 && gem1<18)
 								for(var/obj/item/materials/Synthesis/WindGem/a in usr.contents)
 									a.amount+=1
 									usr << output("You have gained 1 [a]!","oocout")
