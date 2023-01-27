@@ -325,6 +325,13 @@ GLOBAL_LIST_BOILERPLATE(resource_nodes, /obj/node)
 	view() << output("[usr.name] has gathered 1 of each Ore type from their Gathering Moogle!","icout")
 	for(var/obj/item/materials/Synthesis/c in usr.contents)
 		c.amount+=1
+	for(var/obj/item/materials/Ore/Platinum/d in usr.contents)//These are to prevent people from getting these higher tier, rare items from gathering moogles. Prob can be coded better but this is functional at least.
+		d.amount-=1
+	for(var/obj/item/materials/Ore/Orichalcum/e in usr.contents)
+		e.amount-=1
+	for(var/obj/item/materials/Synthesis/EsperSoul/f in usr.contents)
+		f.amount-=1
+
 	view() << output("[usr.name] has gathered 1 of each Synthesis Material type from their Gathering Moogle!","icout")
 	usr.money+=200
 	view() << output("[usr.name] has gathered 200 Gil from their Gathering Moogle!","icout")

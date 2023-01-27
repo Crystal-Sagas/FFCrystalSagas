@@ -1184,6 +1184,7 @@ atom
 			var/reward2
 			var/reward3
 			var/gilreward
+			var/bossreward
 			for(var/mob/M in hearers(20, fate))
 				M << sound(null, channel = 1)
 				M << sound('Audio/Fanfare.wav', channel = 1)
@@ -1194,6 +1195,8 @@ atom
 					reward2=quest.Reward2
 					reward3=quest.Reward3
 					gilreward=quest.Gilreward
+					if(quest.bossfate)
+						bossreward=quest.bossfate
 					del quest
 			fate.occupied=0
 			fate.FATEID=null
@@ -1217,6 +1220,11 @@ atom
 						m.send_chat("Gained +1 [reward3]!", stream = "oocout")
 						c.amount+=1
 						break
+				for(var/obj/item/d in m.contents)
+					if(d.name==bossreward)
+						m.send_chat("You beat a World Boss! Gained +1 [bossreward]!", stream = "oocout")
+						d.amount+=1
+						break
 				if(m.hp<=0)
 					m.hp=0
 				m.money+=gilreward
@@ -1225,6 +1233,18 @@ atom
 				m.dailyfates+=1
 				if(m.dailyfates>=m.maxfates)
 					m.FATEcooldown=1
+				m.statusturns=0 //The following lines of code turn off all status effects.
+				m.status2turns=0
+				m.status3turns=0
+				m.positiveturns1=0
+				m.positiveturns2=0
+				m.positiveturns3=0
+				m.status1=null
+				m.status2=null
+				m.status3=null
+				m.positivestatus1=null
+				m.positivestatus2=null
+				m.positivestatus3=null
 			party.currentFATE=null
 			party.FATEID=null
 
@@ -1246,6 +1266,18 @@ atom
 				m<<sound(null)
 				m.FATEcooldown=1
 				m.battler=0
+				m.statusturns=0 //The following lines of code turn off all status effects.
+				m.status2turns=0
+				m.status3turns=0
+				m.positiveturns1=0
+				m.positiveturns2=0
+				m.positiveturns3=0
+				m.status1=null
+				m.status2=null
+				m.status3=null
+				m.positivestatus1=null
+				m.positivestatus2=null
+				m.positivestatus3=null
 				if(m.hp<=0)
 					m.hp=0
 				ShowHPBar(m)
