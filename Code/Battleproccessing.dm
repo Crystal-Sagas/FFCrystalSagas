@@ -1,36 +1,38 @@
-mob/var/inbattle=0
-mob/var/maxbattlers
-mob/var/aoesetx
-mob/var/aoesety
-mob/var/aoesetmode
-mob/var/aoenote
-mob/var/list/cusaoe=new
-mob/var/obj/Aoeind/setcus
+/mob
+	var/inbattle=0
+	var/maxbattlers
+	var/aoesetx
+	var/aoesety
+	var/aoesetmode
+	var/aoenote
+	var/list/cusaoe=new
+	var/obj/Aoeind/setcus
 
-atom
-	var
-		buildable=0
+/atom
+	var/buildable = FALSE
 
-obj
-	Aoeind
-		icon='AOEind.dmi'
-		layer = 2
-		var/setx
-		var/sety
-		Click()
-			if(usr.aoeclick)
-				if(src.owner==usr.key)
-					usr.aoetiles--
-					del(src)
-			else
-				alert(usr,"[desc]")
-	Reaction
-		icon='Icons/Reacting.dmi'
-		layer=10
-		pixel_x=-15
-	copyimg1
-		var/batorder
-		layer=2
+/obj/Aoeind
+	icon='AOEind.dmi'
+	layer = 2
+	var/setx
+	var/sety
+
+/obj/Aoeind/Click()
+		if(usr.aoeclick)
+			if(src.owner==usr.key)
+				usr.aoetiles--
+				del(src)
+		else
+			alert(usr,"[desc]")
+
+/obj/Reaction
+	icon='Icons/Reacting.dmi'
+	layer=10
+	pixel_x=-15
+
+/obj/copyimg1
+	var/batorder
+	layer=2
 
 mob
 	verb
