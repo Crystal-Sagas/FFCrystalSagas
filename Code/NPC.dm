@@ -1,2886 +1,2874 @@
 /**
  * hosts FATE logic, aka the mechanical combat system
  */
+/obj/battlestorage
+	var/battler1=null
+	var/battler2=null
+	var/battler3=null
+	var/battler4=null
 
-obj
-	battlestorage
-		var/battler1=null
-		var/battler2=null
-		var/battler3=null
-		var/battler4=null
+/atom/proc/DesignateSpots(var/mob/m,var/pcount,var/obj/Party/fighters,var/obj/battlestorage/battle)
+	if(m.bposition==null)
+		if(battle.battler1==null)
+			m.bposition="battler1"
+			battle.battler1=m
+	if(m.bposition==null)
+		if(battle.battler2==null)
+			m.bposition="battler2"
+			battle.battler2=m
+	if(m.bposition==null)
+		if(battle.battler3==null)
+			m.bposition="battler3"
+			battle.battler3=m
+	if(m.bposition==null)
+		if(battle.battler4==null)
+			m.bposition="battler4"
+			battle.battler4=m
+	sleep(2)
 
-atom
-	proc
-		DesignateSpots(var/mob/m,var/pcount,var/obj/Party/fighters,var/obj/battlestorage/battle)
-			if(m.bposition==null)
-				if(battle.battler1==null)
-					m.bposition="battler1"
-					battle.battler1=m
-			if(m.bposition==null)
-				if(battle.battler2==null)
-					m.bposition="battler2"
-					battle.battler2=m
-			if(m.bposition==null)
-				if(battle.battler3==null)
-					m.bposition="battler3"
-					battle.battler3=m
-			if(m.bposition==null)
-				if(battle.battler4==null)
-					m.bposition="battler4"
-					battle.battler4=m
-			sleep(2)
+/atom/proc/Unequipglobalmods(var/mob/a)
+	for(var/obj/globalmod/gm in a.contents)
+		if(gm.applied==1)
+			gm.applied=0
+			a.addstr -= gm.mstr
+			a.adddex -= gm.mdex
+			a.addcon -= gm.mcon
+			a.addint -= gm.mint
+			a.addwis -= gm.mwis
+			a.addcha -= gm.mcha
+			a.baseac -= gm.mac
+			a.basedr -= gm.mdr
+			a.critmod-=gm.mcritmod
+			a.speedadd-=gm.mspd
+			a.baserflx -= gm.mrflx
+			a.basewill -= gm.mwill
+			a.basefort -= gm.mfort
+			//a.pab-=gm.mpab
+			//a.pdb-=gm.mpdb
+			//a.mdb-=gm.mmdb
+			//a.mab-=gm.mmab
+			a.pabadd-=gm.mpab
+			a.pdbadd-=gm.mpdb
+			a.mdbadd-=gm.mmdb
+			a.mabadd-=gm.mmab
+			a.baseacro-=gm.macro
+			a.baseath-=gm.mathl
+			a.basearc-=gm.march
+			a.basedec-=gm.mdec
+			a.basedung-=gm.mdung
+			a.baseenchant-=gm.menc
+			a.basein-=gm.minsi
+			a.baseinv-=gm.minv
+			a.basemagic-=gm.mmag
+			a.basemagio-=gm.mmagi
+			a.basemed-=gm.mmed
+			a.basenat-=gm.mnat
+			a.baseper-=gm.mperc
+			a.basepers-=gm.mpers
+			a.basestl-=gm.msth
+			a.basethv-=gm.mthv
+			a.basesurv-=gm.msurv
+			a.Checkmod(1,a.str,a.addstr,a)
+			a.Checkmod(2,a.dex,a.adddex,a)
+			a.Checkmod(3,a.con,a.addcon,a)
+			a.Checkmod(4,a.int,a.addint,a)
+			a.Checkmod(5,a.wis,a.addwis,a)
+			a.Checkmod(6,a.cha,a.addcha,a)
+			a.Skillcheck(a)
+			a.Carrycheck(a)
+			a.Savecheck(a)
+			a.ACcheck(a)
+		a.send_chat("All Globalmods have been unequipped for FATE battle and log outs.", stream = "icout")
 
-atom
-	proc
-		Unequipglobalmods(var/mob/a)
-			for(var/obj/globalmod/gm in a.contents)
-				if(gm.applied==1)
-					gm.applied=0
-					a.addstr -= gm.mstr
-					a.adddex -= gm.mdex
-					a.addcon -= gm.mcon
-					a.addint -= gm.mint
-					a.addwis -= gm.mwis
-					a.addcha -= gm.mcha
-					a.baseac -= gm.mac
-					a.basedr -= gm.mdr
-					a.critmod-=gm.mcritmod
-					a.speedadd-=gm.mspd
-					a.baserflx -= gm.mrflx
-					a.basewill -= gm.mwill
-					a.basefort -= gm.mfort
-					//a.pab-=gm.mpab
-					//a.pdb-=gm.mpdb
-					//a.mdb-=gm.mmdb
-					//a.mab-=gm.mmab
-					a.pabadd-=gm.mpab
-					a.pdbadd-=gm.mpdb
-					a.mdbadd-=gm.mmdb
-					a.mabadd-=gm.mmab
-					a.baseacro-=gm.macro
-					a.baseath-=gm.mathl
-					a.basearc-=gm.march
-					a.basedec-=gm.mdec
-					a.basedung-=gm.mdung
-					a.baseenchant-=gm.menc
-					a.basein-=gm.minsi
-					a.baseinv-=gm.minv
-					a.basemagic-=gm.mmag
-					a.basemagio-=gm.mmagi
-					a.basemed-=gm.mmed
-					a.basenat-=gm.mnat
-					a.baseper-=gm.mperc
-					a.basepers-=gm.mpers
-					a.basestl-=gm.msth
-					a.basethv-=gm.mthv
-					a.basesurv-=gm.msurv
-					a.Checkmod(1,a.str,a.addstr,a)
-					a.Checkmod(2,a.dex,a.adddex,a)
-					a.Checkmod(3,a.con,a.addcon,a)
-					a.Checkmod(4,a.int,a.addint,a)
-					a.Checkmod(5,a.wis,a.addwis,a)
-					a.Checkmod(6,a.cha,a.addcha,a)
-					a.Skillcheck(a)
-					a.Carrycheck(a)
-					a.Savecheck(a)
-					a.ACcheck(a)
-				a.send_chat("All Globalmods have been unequipped for FATE battle and log outs.", stream = "icout")
+/atom/proc/Heal(var/mob/user,var/mob/target,var/obj/perk/spell)
+	if(user.mp<=0)
+		user.visible_message("[user] has attempted to use a Magic ability without any MP, and has wasted a turn!", stream = "icout")
+		user.mp=0
+		return
+	var/range1=35
+	var/range2=45
+	var/classbonus=25
+	if(spell.level==1)
+		classbonus+=10
+	if(spell.level==2)
+		classbonus+=25
+	if(spell.level==3)
+		classbonus+=50
+	if(spell.level==4)
+		classbonus+=70
+	if(spell.level==5)
+		classbonus+=90
+	if(spell.level==6)
+		classbonus+=120
+	if(user.job=="White Mage" || user.subjob=="White Mage")
+		classbonus+=15
+	if(user.job=="Astrologian" || user.subjob=="Astrologian")
+		classbonus+=10
+	if(user.job=="Scholar" || user.subjob=="Scholar")
+		classbonus+=8
+	if(user.role=="Physical Support" || user.role=="Magical Support")
+		classbonus+=15
+	var/heal=rand(range1,range2)
+	var/healbonus=(user.chamod*2)
+	var/healtotal=heal+healbonus+classbonus
+	user.mp-=spell.mcost
+	Healanimation(user,target)
+	user.visible_message("<font color=[user.textcolor]><b>[user]</b></font> has healed <font color=[target.textcolor]><b>[target]</b></font> for <b><font color=#66F13D>[healtotal]</font></b> HP! | Cost: <b><font color=#8FE6D2>[spell.mcost] [spell.costtype]", stream = "icout")
+	target.hp+=healtotal
+	if(target.hp>target.mhp)
+		target.hp=target.mhp
+	if(spell.cleanse==1)
+		target.status1=null
+		target.totalstatus=0
+		target.statusturns=0
+	ShowHPBar(target)
+	ShowMPBar(target)
+	ShowSPBar(target)
+	ShowHPBar(user)
+	ShowMPBar(user)
+	ShowSPBar(user)
+	sleep(1)
 
-atom
-	proc
-		Heal(var/mob/user,var/mob/target,var/obj/perk/spell)
-			if(user.mp<=0)
-				user.visible_message("[user] has attempted to use a Magic ability without any MP, and has wasted a turn!", stream = "icout")
-				user.mp=0
-				return
-			var/range1=35
-			var/range2=45
-			var/classbonus=25
-			if(spell.level==1)
-				classbonus+=10
-			if(spell.level==2)
-				classbonus+=25
-			if(spell.level==3)
-				classbonus+=50
-			if(spell.level==4)
-				classbonus+=70
-			if(spell.level==5)
-				classbonus+=90
-			if(spell.level==6)
-				classbonus+=120
-			if(user.job=="White Mage" || user.subjob=="White Mage")
-				classbonus+=15
-			if(user.job=="Astrologian" || user.subjob=="Astrologian")
-				classbonus+=10
-			if(user.job=="Scholar" || user.subjob=="Scholar")
-				classbonus+=8
-			if(user.role=="Physical Support" || user.role=="Magical Support")
-				classbonus+=15
-			var/heal=rand(range1,range2)
-			var/healbonus=(user.chamod*2)
-			var/healtotal=heal+healbonus+classbonus
-			user.mp-=spell.mcost
-			Healanimation(user,target)
-			user.visible_message("<font color=[user.textcolor]><b>[user]</b></font> has healed <font color=[target.textcolor]><b>[target]</b></font> for <b><font color=#66F13D>[healtotal]</font></b> HP! | Cost: <b><font color=#8FE6D2>[spell.mcost] [spell.costtype]", stream = "icout")
-			target.hp+=healtotal
-			if(target.hp>target.mhp)
-				target.hp=target.mhp
-			if(spell.cleanse==1)
-				target.status1=null
-				target.totalstatus=0
-				target.statusturns=0
-			ShowHPBar(target)
-			ShowMPBar(target)
-			ShowSPBar(target)
+/atom/proc/Enemyheal(var/obj/npc/user,var/obj/npc/target,var/obj/perk/spell)
+	var/range1=10
+	var/range2=35
+	var/classbonus=0
+	if(spell.level==1)
+		classbonus+=10
+	if(spell.level==2)
+		classbonus+=25
+	if(spell.level==3)
+		classbonus+=35
+	if(spell.level==4)
+		classbonus+=45
+	if(spell.level==5)
+		classbonus+=55
+	if(spell.level==6)
+		classbonus+=85
+	var/heal=rand(range1,range2)
+	var/healbonus=(user.chamod*2)
+	var/healtotal=heal+healbonus+classbonus
+	user.mp-=spell.mcost
+	Healanimation(user,target)
+	user.visible_message("<font color=[user.textcolor]><b>[user]</b></font> has healed <font color=[target.textcolor]><b>[target]</b></font> for <b><font color=#66F13D>[healtotal]</font></b> HP! | Cost: <b><font color=#8FE6D2>[spell.mcost] [spell.costtype]", stream = "icout")
+	target.hp+=healtotal
+	if(target.hp>target.mhp)
+		target.hp=target.mhp
+	if(spell.cleanse==1)
+		target.status1=null
+		target.totalstatus=0
+		target.statusturns=0
+	ShowHPBar(target)
+	ShowMPBar(target)
+	ShowSPBar(target)
+	ShowHPBar(user)
+	ShowMPBar(user)
+	ShowSPBar(user)
+	sleep(12)
+
+/atom/proc/Enemyability(var/obj/npc/user,var/mob/target,var/obj/perk/skill)
+	var/aoresult=rand(1,20)
+	var/aresult
+	var/amod
+	var/doresult
+	var/dmod
+	var/dresult
+	var/abilitydamage
+	var/statuschance=rand(1,100)
+	if(skill.atype=="standard")
+		amod=Checkdamtype(skill.damsource,user)
+		if(skill.typing=="magical")
+			aresult=aoresult+skill.addhit+amod+user.rankbonus+user.mab
+		else
+			aresult=aoresult+skill.addhit+amod+user.rankbonus+user.pab
+		doresult=skill.raw_attack_damage_roll()
+		dmod=Checkdamtype(skill.damsource,user)
+		abilitydamage=skill.raw_attack_damage_roll()
+		if(skill.typing=="magical")
+			dresult=doresult+dmod+skill.adddam+user.mdb+skill.adddam+abilitydamage-target.basedr
+		else
+			dresult=doresult+dmod+skill.adddam+user.pdb+skill.adddam+abilitydamage-target.basedr
+	if(skill.atype=="weapon")
+		var/obj/item/Weapon/wepchoice = user.eweapon
+		amod=Checkdamtype(wepchoice.damsource,user)
+		if(skill.typing=="magical")
+			aresult=aoresult+skill.addhit+amod+user.rankbonus+user.mab
+		else
+			aresult=aoresult+skill.addhit+amod+user.rankbonus+user.pab
+		doresult=rand(wepchoice.range1,wepchoice.range2)
+		dmod=Checkdamtype(skill.damsource,user)
+		abilitydamage=skill.raw_attack_damage_roll()
+		if(skill.typing=="magical")
+			dresult=doresult+dmod+wepchoice.adddam+user.mdb+skill.adddam+abilitydamage-target.basedr
+		else
+			dresult=doresult+dmod+wepchoice.adddam+user.pdb+skill.adddam+abilitydamage-target.basedr
+	if(skill.atype=="weaponsave")
+		var/obj/item/Weapon/wepchoice = user.eweapon
+		amod=Checkdamtype(wepchoice.damsource,user)
+		if(skill.typing=="magical")
+			aresult=skill.basecheck+amod+user.rankbonus+skill.addhit
+		else
+			aresult=skill.basecheck+amod+user.rankbonus+skill.addhit
+		doresult=rand(wepchoice.range1,wepchoice.range2)
+		dmod=Checkdamtype(skill.damsource,user)
+		abilitydamage=skill.raw_attack_damage_roll()
+		if(skill.typing=="magical")
+			dresult=doresult+dmod+wepchoice.adddam+user.mdb+skill.adddam+abilitydamage-target.basedr
+		else
+			dresult=doresult+dmod+wepchoice.adddam+user.pdb+skill.adddam+abilitydamage-target.basedr
+	if(skill.atype=="save")
+		amod=Checkdamtype(skill.damsource,user)
+		if(skill.typing=="magical")
+			aresult=skill.basecheck+amod+user.rankbonus+skill.addhit
+		else
+			aresult=skill.basecheck+amod+user.rankbonus+skill.addhit
+		doresult=skill.raw_attack_damage_roll()
+		dmod=Checkdamtype(skill.damsource,user)
+		abilitydamage=skill.raw_attack_damage_roll()
+		if(skill.typing=="magical")
+			dresult=doresult+dmod+skill.adddam+user.mdb+skill.adddam+abilitydamage-target.basedr
+		else
+			dresult=doresult+dmod+skill.adddam+user.pdb+skill.adddam+abilitydamage-target.basedr
+	Enemyanimation(user,target,skill)
+	user.visible_message("<font color=#F8E959><b>[user]</font> has used [skill] to attack <font color=[target.textcolor]><b>[target]</b>!!", stream = "icout")
+	if(target.status1=="Squall" || target.status2=="Squall" || target.status3=="Squall")
+		if(skill.element=="Fire")
+			dresult+=20
+			user.visible_message("The Squall effect grants this Fire attack 20 extra damage!", stream = "icout")
+	if(target.status1=="Wet" || target.status2=="Wet" || target.status3=="Wet")
+		if(skill.element=="Thunder")
+			aresult+=5
+			dresult+=15
+			user.visible_message("The Wet effect grants this Thunder attack +5 to hit, and 15 extra damage!", stream = "icout")
+	if(user.status1=="Heavy" || user.status2=="Heavy" || user.status3=="Heavy")
+		dresult-=10
+		aresult-=3
+		user.visible_message("[user] is greatly burdened with how <b>Heavy</b> they are!", stream = "icout")
+	if(user.status1=="Slow" || user.status2=="Slow" || user.status3=="Slow")
+		aresult-=5
+		AddStun(user)
+		user.visible_message("[user] is afflicted with <b>Slow</b> and must skip their next action!", stream = "icout")
+	if(user.status1=="Weakness" || user.status2=="Weakness" || user.status3=="Weakness")
+		dresult-=15
+		user.visible_message("[user]'s attack is greatly undermined with how <b>Weak</b> they're feeling!", stream = "icout")
+	if(user.status1=="Paralyzed" || user.status2=="Paralyzed" || user.status3=="Paralyzed")
+		var/paralyzechance=rand(30,100)
+		if(paralyzechance>=70)
+			user.visible_message("[user] is <b>Paralyzed</b> and failed to perform their action this turn!", stream = "icout")
+			return
+		else
+	if(aresult<=0)
+		aresult=0
+	if(dresult<=0)
+		dresult=0
+	if(skill.typing=="physical")
+		if(user.positivestatus1=="Bravery" || user.positivestatus2=="Bravery" || user.positivestatus3=="Bravery")
+			dresult+=10
+		if(target.positivestatus1=="Protect" || target.positivestatus2=="Protect" || target.positivestatus3=="Protect")
+			dresult=round(dresult*0.5)
+		if(target.positivestatus1=="Pailing" || target.positivestatus2=="Pailing" || target.positivestatus3=="Pailing")
+			user.visible_message("[target]'s <b>Pailing</b> status effect has prevented an instance of Physical damage, and been consumed!", stream = "icout")
+			dresult=0
+			if(target.positivestatus1=="Pailing")
+				target.positivestatus1=null
+				positiveturns1=0
+			if(target.positivestatus2=="Pailing")
+				target.positivestatus2=null
+				positiveturns2=0
+			if(target.positivestatus3=="Pailing")
+				target.positivestatus3=null
+				positiveturns3=0
+			if(dresult<=0)
+				dresult=0
+			if(dresult<=0)
+				dresult=0
+	if(skill.typing=="magical")
+		if(user.positivestatus1=="Faith" || user.positivestatus2=="Faith" || user.positivestatus3=="Faith")
+			dresult+=10
+		if(target.positivestatus1=="Shell" || target.positivestatus2=="Shell" || target.positivestatus3=="Shell")
+			dresult=round(dresult*0.5)
+		if(target.positivestatus1=="Magic Barrier" || target.positivestatus2=="Magic Barrier" || target.positivestatus3=="Magic Barrier")
+			user.visible_message("[target]'s <b>Magic Barrier</b> status effect has prevented an instance of Magical damage, and been consumed!", stream = "icout")
+			dresult=0
+			if(target.positivestatus1=="Magic Barrier")
+				target.positivestatus1=null
+				positiveturns1=0
+			if(target.positivestatus2=="Magic Barrier")
+				target.positivestatus2=null
+				positiveturns2=0
+			if(target.positivestatus3=="Magic Barrier")
+				target.positivestatus3=null
+				positiveturns3=0
+			if(dresult<=0)
+				dresult=0
+	if(skill.element=="Fire")
+		if(target.positivestatus1=="Barfire" || target.positivestatus2=="Barfire" || target.positivestatus3=="Barfire")
+			user.visible_message("[target]'s <b>Barfire</b> status effect has prevented an instance of Fire damage, and been consumed!", stream = "icout")
+			dresult=0
+			if(target.positivestatus1=="Barfire")
+				target.positivestatus1=null
+				positiveturns1=0
+			if(target.positivestatus2=="Barfire")
+				target.positivestatus2=null
+				positiveturns2=0
+			if(target.positivestatus3=="Barfire")
+				target.positivestatus3=null
+				positiveturns3=0
+	if(skill.element=="Water")
+		if(target.positivestatus1=="Barwater" || target.positivestatus2=="Barwater" || target.positivestatus3=="Barwater")
+			user.visible_message("[target]'s <b>Barwater</b> status effect has prevented an instance of Water damage, and been consumed!", stream = "icout")
+			dresult=0
+			if(target.positivestatus1=="Barwater")
+				target.positivestatus1=null
+				positiveturns1=0
+			if(target.positivestatus2=="Barwater")
+				target.positivestatus2=null
+				positiveturns1=0
+			if(target.positivestatus3=="Barwater")
+				target.positivestatus3=null
+				positiveturns1=0
+	if(skill.element=="Ice")
+		if(target.positivestatus1=="Barblizzard" || target.positivestatus2=="Barblizzard" || target.positivestatus3=="Barblizzard")
+			user.visible_message("[target]'s <b>Barblizzard</b> status effect has prevented an instance of Ice damage, and been consumed!", stream = "icout")
+			dresult=0
+			if(target.positivestatus1=="Barblizzard")
+				target.positivestatus1=null
+				positiveturns1=0
+			if(target.positivestatus2=="Barblizzard")
+				target.positivestatus2=null
+				positiveturns1=0
+			if(target.positivestatus3=="Barblizzard")
+				target.positivestatus3=null
+				positiveturns1=0
+	if(skill.element=="Thunder")
+		if(target.positivestatus1=="Barthunder" || target.positivestatus2=="Barthunder" || target.positivestatus3=="Barthunder")
+			user.visible_message("[target]'s <b>Barthunder</b> status effect has prevented an instance of Thunder damage, and been consumed!", stream = "icout")
+			dresult=0
+			if(target.positivestatus1=="Barthunder")
+				target.positivestatus1=null
+				positiveturns1=0
+			if(target.positivestatus2=="Barthunder")
+				target.positivestatus2=null
+				positiveturns1=0
+			if(target.positivestatus3=="Barthunder")
+				target.positivestatus3=null
+				positiveturns1=0
+	if(skill.element=="Earth")
+		if(target.positivestatus1=="Barstone" || target.positivestatus2=="Barstone" || target.positivestatus3=="Barstone")
+			user.visible_message("[target]'s <b>Barblizzard</b> status effect has prevented an instance of Ice damage, and been consumed!", stream = "icout")
+			dresult=0
+			if(target.positivestatus1=="Barstone")
+				target.positivestatus1=null
+				positiveturns1=0
+			if(target.positivestatus2=="Barstone")
+				target.positivestatus2=null
+				positiveturns1=0
+			if(target.positivestatus3=="Barstone")
+				target.positivestatus3=null
+				positiveturns1=0
+	if(skill.element=="Wind")
+		if(target.positivestatus1=="Barwind" || target.positivestatus2=="Barwind" || target.positivestatus3=="Barwind")
+			user.visible_message("[target]'s <b>Barblizzard</b> status effect has prevented an instance of Ice damage, and been consumed!", stream = "icout")
+			dresult=0
+			if(target.positivestatus1=="Barwind")
+				target.positivestatus1=null
+				positiveturns1=0
+			if(target.positivestatus2=="Barwind")
+				target.positivestatus2=null
+				positiveturns1=0
+			if(target.positivestatus3=="Barwind")
+				target.positivestatus3=null
+				positiveturns1=0
+	//bubble procs after Protect, Shell, and Bar spells.
+	if(target.positivestatus1=="Bubble" || target.positivestatus2=="Bubble" || target.positivestatus3=="Bubble")
+		var/bubble=round(target.mhp*0.15)
+		if(dresult<bubble)
+			user.visible_message("<b>[target]'s</b> Bubble status effect has deflected and nullified [dresult] damage!!", stream = "icout")
+		if(dresult>=bubble)
+			user.visible_message("<b>[target]'s</b> Bubble has popped, but has absorbed [bubble] damage!!", stream = "icout")
+			dresult-=bubble
+			if(target.positivestatus1=="Bubble")
+				target.positivestatus1=null
+				positiveturns1=0
+			if(target.positivestatus2=="Bubble")
+				target.positivestatus2=null
+				positiveturns2=0
+			if(target.positivestatus3=="Bubble")
+				target.positivestatus3=null
+				positiveturns3=0
+			if(dresult>=0)
+				dresult=0
+	if(user.positivestatus1=="Haste" || user.positivestatus2=="Haste" || user.positivestatus3=="Haste")
+		aresult+=5
+	//stoneskin procs after all other defensive boons do
+	if(target.positivestatus1=="Stoneskin" || target.positivestatus2=="Stoneskin" || target.positivestatus3=="Stoneskin")
+		dresult-=5
+		target.stoneskindam+=dresult
+		user.visible_message("<b>[target]'s</b> Stoneskin has absorbed 5 damage!!", stream = "icout")
+		if(target.stoneskindam>=25)
+			user.visible_message("<b>[target]'s</b> Stoneskin has shattered!!", stream = "icout")
+			if(target.positivestatus1=="Stoneskin")
+				target.positivestatus1=null
+				positiveturns1=0
+			if(target.positivestatus2=="Stoneskin")
+				target.positivestatus2=null
+				positiveturns2=0
+			if(target.positivestatus3=="Stoneskin")
+				target.positivestatus3=null
+				positiveturns3=0
+	if(target.job=="Paladin" || target.subjob=="Paladin")
+		if(skill.element=="Holy")
+			user.visible_message("<font color=[target.textcolor]><b>[target]</font> is a Paladin, and takes half damage from Holy abilities!", stream = "icout")
+			dresult=round(dresult*0.5)
+	if(target.job=="Dark Knight" || target.subjob=="Dark Knight")
+		if(skill.element=="Dark" || skill.element=="Death" || skill.element=="Drain")
+			user.visible_message("<font color=[target.textcolor]><b>[target]</font> is a Dark Knight, and takes half damage from Dark abilities!", stream = "icout")
+			dresult=round(dresult*0.5)
+	if(target.job=="Geomancer" || target.subjob=="Geomancer")
+		if(skill.element=="Fire")
+			user.visible_message("<font color=[target.textcolor]><b>[target]</font> is a Geomancer, and takes half damage from elemental abilities!", stream = "icout")
+			dresult=round(dresult*0.5)
+		if(skill.element=="Thunder")
+			user.visible_message("<font color=[target.textcolor]><b>[target]</font> is a Geomancer, and takes half damage from elemental abilities!", stream = "icout")
+			dresult=round(dresult*0.5)
+		if(skill.element=="Water")
+			user.visible_message("<font color=[target.textcolor]><b>[target]</font> is a Geomancer, and takes half damage from elemental abilities!", stream = "icout")
+			dresult=round(dresult*0.5)
+		if(skill.element=="Ice")
+			user.visible_message("<font color=[target.textcolor]><b>[target]</font> is a Geomancer, and takes half damage from elemental abilities!", stream = "icout")
+			dresult=round(dresult*0.5)
+		if(skill.element=="Earth")
+			user.visible_message("<font color=[target.textcolor]><b>[target]</font> is a Geomancer, and takes half damage from elemental abilities!", stream = "icout")
+			dresult=round(dresult*0.5)
+		if(skill.element=="Nature")
+			user.visible_message("<font color=[target.textcolor]><b>[target]</font> is a Geomancer, and takes half damage from elemental abilities!", stream = "icout")
+			dresult=round(dresult*0.5)
+	if(aresult>=target.ac)
+		user.visible_message("<b>To hit: [aresult] vs <b>[target.ac]</b> | It was a hit!! <b>[user]</b> has dealt <b><font color=#FEA14F>[dresult]</b></font> damage to <b>[target]</b>!!", stream = "icout")
+		target.hp-=dresult
+		var/drainvalue=round(dresult*0.5)
+		if(skill.element=="Drain")
+			user.visible_message("<font color=#F8E959><b>[user]</font> has drained <b>[target]</b>  for <font color=#93F752>[drainvalue] HP!", stream = "icout")
+			user.hp+=drainvalue
+			if(user.hp>=user.mhp)
+				user.hp=user.mhp
+		if(skill.element=="Osmose")
+			user.visible_message("<font color=#F8E959><b>[user]</font> has drained <b>[target]</b>  for <font color=#4FC7ED>[drainvalue] MP and SP!", stream = "icout")
+			user.mp+=drainvalue
+			user.sp+=drainvalue
+			if(user.mp>=user.mmp)
+				user.mp=user.msp
+			if(user.sp>=user.msp)
+				user.sp=user.msp
+		if(target.status1==null || target.status2==null || target.status3==null)
+			if(skill.element=="Death")
+				if(statuschance>=50)
+					AddDoom(target)
+			if(skill.element=="Time")
+				if(statuschance>=70)
+					AddStun(target)
+				if(statuschance>=10)
+					AddSlow(target)
+			if(skill.element=="Earth")
+				if(statuschance>=90)
+					AddStun(target)
+				if(statuschance>=50)
+					AddHeavy(target)
+			if(skill.element=="Metal")
+				if(statuschance>=40)
+					AddBleed(target)
+			if(skill.element=="Fire")
+				if(statuschance>=70)
+					AddBurn(target)
+			if(skill.element=="Nature")
+				if(statuschance>=50)
+					AddWeakness(target)
+				if(statuschance>=80)
+					AddPoison(target)
+			if(skill.element=="Bio")
+				if(statuschance>=60)
+					AddPoison(target)
+			if(skill.element=="Dark")
+				if(statuschance>=70)
+					AddBleed(target)
+				if(statuschance>=20)
+					AddWeakness(target)
+			if(skill.element=="Water")
+				if(statuschance>=20)
+					AddWet(target)
+			if(skill.element=="Wind")
+				if(statuschance>=50)
+					AddSquall(target)
+			if(skill.element=="Ice")
+				if(statuschance>=50)
+					AddFrostbite(target)
+			if(skill.element=="Thunder")
+				if(statuschance>=50)
+					AddWeakness(target)
+				if(statuschance>=65)
+					AddParalyzed(target)
+				if(statuschance>=95)
+					AddStun(target)
+		if(target.retaliate==1)
+			turnattack(target,user)
+			target.retaliate=0
+			if(target.hp<=0)
+				Death(target)
+				user.visible_message("[target] has reached 0 HP and is removed from battle!", stream = "icout")
+				target.hp=0
+		ShowHPBar(target)
+	else
+		Evade(target)
+		user.visible_message("<b>To hit: [aresult] vs <b>[target.ac]</b> | It missed!", stream = "icout")
+		if(target.retaliate==1)
+			turnattack(target,user)
+			target.retaliate=0
+	ShowHPBar(target)
+	ShowMPBar(target)
+	ShowSPBar(target)
+	ShowHPBar(user)
+	ShowMPBar(user)
+	ShowSPBar(user)
+
+/atom/proc/turnattack(var/mob/user, var/obj/npc/target)
+	var/aresult
+	var/amod
+	var/doresult
+	var/dmod
+	var/dresult
+	var/extraanimation
+	var/infusionpower
+	var/obj/item/Weapon/wepchoice = user.righthand
+	amod=Checkdamtype(wepchoice.damsource,user)
+	if(wepchoice.typing=="magical")
+		aresult=rand(1,20)+wepchoice.addhit+amod+user.rankbonus+user.mab
+	else
+		aresult=rand(1,20)+wepchoice.addhit+amod+user.rankbonus+user.pab
+	doresult=rand(wepchoice.range1,wepchoice.range2)
+	dmod=Checkdamtype(wepchoice.damsource,user)
+	if(wepchoice.typing=="magical")
+		dresult=doresult+dmod+wepchoice.adddam+user.mdb-target.basedr
+	else
+		dresult=doresult+dmod+wepchoice.adddam+user.pdb-target.basedr
+	Playerattack(user,target)
+	if(user.status1=="Heavy" || user.status2=="Heavy" || user.status3=="Heavy")
+		dresult-=10
+		aresult-=3
+		user.visible_message("[user] is greatly burdened with how <b>Heavy</b> they are!", stream = "icout")
+	if(user.status1=="Slow" || user.status2=="Slow" || user.status3=="Slow")
+		aresult-=5
+		AddStun(user)
+		user.visible_message("[user] is afflicted with <b>Slow</b> and must skip their next action!", stream = "icout")
+	if(user.status1=="Weakness" || user.status2=="Weakness" || user.status3=="Weakness")
+		dresult-=15
+		user.visible_message("[user]'s attack is greatly undermined with how <b>Weak</b> they're feeling!", stream = "icout")
+	if(user.status1=="Paralyzed" || user.status2=="Paralyzed" || user.status3=="Paralyzed")
+		var/paralyzechance=rand(30,100)
+		if(paralyzechance>=70)
+			user.visible_message("[user] is <b>Paralyzed</b> and failed to perform their action this turn!", stream = "icout")
+			return
+		else
+	if(user.infusion=="Fire")
+		infusionpower=user.rankbonus+user.wismod+user.chamod+user.intmod+user.mdb+user.pdb
+		dresult+=infusionpower
+		aresult+=user.mab
+		aresult+=user.pab
+		if(target.weakness=="Fire")
+			dresult=round(dresult*1.5)
+		extraanimation="Water"
+	if(user.infusion=="Water")
+		infusionpower=user.rankbonus+user.wismod+user.chamod+user.intmod+user.mdb+user.pdb
+		dresult+=infusionpower
+		aresult+=user.mab
+		aresult+=user.pab
+		if(target.weakness=="Water")
+			dresult=round(dresult*1.5)
+		extraanimation="Water"
+	if(user.infusion=="Ice")
+		infusionpower=user.rankbonus+user.wismod+user.chamod+user.intmod+user.mdb+user.pdb
+		dresult+=infusionpower
+		aresult+=user.mab
+		aresult+=user.pab
+		if(target.weakness=="Ice")
+			dresult=round(dresult*1.5)
+		extraanimation="Ice"
+	if(user.infusion=="Thunder")
+		infusionpower=user.rankbonus+user.wismod+user.chamod+user.intmod+user.mdb+user.pdb
+		dresult+=infusionpower
+		aresult+=user.mab
+		aresult+=user.pab
+		if(target.weakness=="Thunder")
+			dresult=round(dresult*1.5)
+		extraanimation="Thunder"
+	if(user.infusion=="Dark")
+		infusionpower=user.rankbonus+user.wismod+user.chamod+user.intmod+user.mdb+user.pdb
+		dresult+=infusionpower
+		aresult+=user.mab
+		aresult+=user.pab
+		if(target.weakness=="Dark")
+			dresult=round(dresult*1.5)
+		extraanimation="Dark"
+	if(user.infusion=="Holy")
+		infusionpower=user.rankbonus+user.wismod+user.chamod+user.intmod+user.mdb+user.pdb
+		dresult+=infusionpower
+		aresult+=user.mab
+		aresult+=user.pab
+		if(target.weakness=="Holy")
+			dresult=round(dresult*1.5)
+		extraanimation="Holy"
+	if(user.infusion=="Wind")
+		infusionpower=user.rankbonus+user.wismod+user.chamod+user.intmod+user.mdb+user.pdb
+		dresult+=infusionpower
+		aresult+=user.mab
+		aresult+=user.pab
+		if(target.weakness=="Wind")
+			dresult=round(dresult*1.5)
+		extraanimation="Wind"
+	if(user.infusion=="Flare")
+		infusionpower=user.rankbonus+user.wismod+user.chamod+user.intmod+user.mdb+user.pdb
+		dresult+=infusionpower
+		aresult+=user.mab
+		aresult+=user.pab
+		if(target.weakness=="Flare")
+			dresult=round(dresult*1.5)
+		extraanimation="Flare"
+	if(extraanimation=="Fire")
+		var/obj/perk/Abilities/BlackMagic/Flame/Fire/b=new
+		Spellbladeanimation(user,target,b)
+	if(extraanimation=="Water")
+		var/obj/perk/Abilities/BlackMagic/Hydro/Water/b=new
+		Spellbladeanimation(user,target,b)
+	if(extraanimation=="Ice")
+		var/obj/perk/Abilities/BlackMagic/Ice/Blizzard/b=new
+		Spellbladeanimation(user,target,b)
+	if(extraanimation=="Thunder")
+		var/obj/perk/Abilities/BlackMagic/Lightning/Thunder/b=new
+		Spellbladeanimation(user,target,b)
+	if(extraanimation=="Dark")
+		var/obj/perk/Abilities/ArcaneMagic/Darkness/Dark/b=new
+		Spellbladeanimation(user,target,b)
+	if(extraanimation=="Holy")
+		var/obj/perk/Abilities/WhiteMagic/Holy/Dia/b=new
+		Spellbladeanimation(user,target,b)
+	if(extraanimation=="Wind")
+		var/obj/perk/Abilities/WhiteMagic/Wind/Aero/b=new
+		Spellbladeanimation(user,target,b)
+	if(extraanimation=="Flare")
+		var/obj/perk/Abilities/BlackMagic/Energy/Flare/b=new
+		Spellbladeanimation(user,target,b)
+	if(aresult<=0)
+		aresult=0
+	if(dresult<=0)
+		dresult=0
+	if(wepchoice.typing=="physical")
+		if(user.positivestatus1=="Bravery" || user.positivestatus2=="Bravery" || user.positivestatus3=="Bravery")
+			dresult+=10
+		if(target.positivestatus1=="Protect" || target.positivestatus2=="Protect" || target.positivestatus3=="Protect")
+			dresult=round(dresult*0.5)
+		if(target.positivestatus1=="Pailing" || target.positivestatus2=="Pailing" || target.positivestatus3=="Pailing")
+			user.visible_message("[target]'s <b>Pailing</b> status effect has prevented an instance of Physical damage, and been consumed!", stream = "icout")
+			dresult=0
+			if(target.positivestatus1=="Pailing")
+				target.positivestatus1=null
+				positiveturns1=0
+			if(target.positivestatus2=="Pailing")
+				target.positivestatus2=null
+				positiveturns2=0
+			if(target.positivestatus3=="Pailing")
+				target.positivestatus3=null
+				positiveturns3=0
+			if(dresult<=0)
+				dresult=0
+			if(dresult<=0)
+				dresult=0
+	if(wepchoice.typing=="magical")
+		if(user.positivestatus1=="Faith" || user.positivestatus2=="Faith" || user.positivestatus3=="Faith")
+			dresult+=10
+		if(target.positivestatus1=="Shell" || target.positivestatus2=="Shell" || target.positivestatus3=="Shell")
+			dresult=round(dresult*0.5)
+		if(target.positivestatus1=="Magic Barrier" || target.positivestatus2=="Magic Barrier" || target.positivestatus3=="Magic Barrier")
+			user.visible_message("[target]'s <b>Magic Barrier</b> status effect has prevented an instance of Magical damage, and been consumed!", stream = "icout")
+			dresult=0
+			if(target.positivestatus1=="Magic Barrier")
+				target.positivestatus1=null
+				positiveturns1=0
+			if(target.positivestatus2=="Magic Barrier")
+				target.positivestatus2=null
+				positiveturns2=0
+			if(target.positivestatus3=="Magic Barrier")
+				target.positivestatus3=null
+				positiveturns3=0
+			if(dresult<=0)
+				dresult=0
+	if(target.positivestatus1=="Bubble" || target.positivestatus2=="Bubble" || target.positivestatus3=="Bubble")
+		var/bubble=round(target.mhp*0.15)
+		if(dresult<bubble)
+			user.visible_message("<b>[target]'s</b> Bubble status effect has deflected and nullified [dresult] damage!!", stream = "icout")
+			dresult=0
+		if(dresult>=bubble)
+			user.visible_message("<b>[target]'s</b> Bubble has popped, but has absorbed [bubble] damage!!", stream = "icout")
+			dresult-=bubble
+			if(target.positivestatus1=="Bubble")
+				target.positivestatus1=null
+				positiveturns1=0
+			if(target.positivestatus2=="Bubble")
+				target.positivestatus2=null
+				positiveturns2=0
+			if(target.positivestatus3=="Bubble")
+				target.positivestatus3=null
+				positiveturns3=0
+			if(dresult>=0)
+				dresult=0
+	if(user.positivestatus1=="Haste" || user.positivestatus2=="Haste" || user.positivestatus3=="Haste")
+		aresult+=10
+		dresult+=15
+	//stoneskin procs after all other defensive boons do
+	if(target.positivestatus1=="Stoneskin" || target.positivestatus2=="Stoneskin" || target.positivestatus3=="Stoneskin")
+		dresult-=5
+		target.stoneskindam+=dresult
+		user.visible_message("<b>[target]'s</b> Stoneskin has absorbed 5 damage!!", stream = "icout")
+		if(target.stoneskindam>=25)
+			user.visible_message("<b>[target]'s</b> Stoneskin has shattered!!", stream = "icout")
+			if(target.positivestatus1=="Stoneskin")
+				target.positivestatus1=null
+				positiveturns1=0
+			if(target.positivestatus2=="Stoneskin")
+				target.positivestatus2=null
+				positiveturns2=0
+			if(target.positivestatus3=="Stoneskin")
+				target.positivestatus3=null
+				positiveturns3=0
+	user.visible_message("<font color=[user.textcolor]><b>[user]</font> has used <font color=[user.textcolor]><b>[wepchoice]<b></b></font> to attack <b>[target]</b>!!", stream = "icout")
+	if(aresult>=target.ac)
+		user.visible_message("<b>To hit: [aresult] vs <b>[target.ac]</b> | It was a hit!! [user] has dealt [dresult] damage to [target]!!", stream = "icout")
+		target.hp-=dresult
+		if(target.hp<=0)
+			Death(target)
+			target.icon=null
+			target.overlays=null
+			user.visible_message("[target] has reached 0 HP and is removed from battle!", stream = "icout")
+			target.hp=0
+		if(target.special=="Bomb")
+			var/addlash=round(target.hp * 0.5)
+			var/backlash=dresult+addlash
+			user.visible_message("[target] exploded on contact, dealing [backlash] recoil damage to its attacker!", stream = "icout")
+			target.hp=0
+			Death(target)
+			target.icon=null
+			target.overlays=null
+			Burn(user)
+			user.hp-=backlash
+			if(user.hp<=0)
+				Death(user)
+				user.hp=0
 			ShowHPBar(user)
-			ShowMPBar(user)
-			ShowSPBar(user)
+			if(target.hp<=0)
+				target.overlays=null
+	else
+		Evade(target)
+		user.visible_message("<b>To hit: [aresult] vs <b>[target.ac]</b> | It missed!", stream = "icout")
+	ShowHPBar(target)
+	ShowMPBar(target)
+	ShowSPBar(target)
+	ShowHPBar(user)
+	ShowMPBar(user)
+	ShowSPBar(user)
+	if(target.retaliate==1)
+		turnattack(target,user)
+		target.retaliate=0
+	if(target.hp<=0)
+		target.overlays=null
+
+/atom/proc/TurnAbility(var/mob/user,var/obj/npc/target,var/obj/perk/skill)
+	if(skill.costtype=="Mana")
+		if(user.mp<=0)
+			user.visible_message("[user] has attempted to use a Magic ability without any MP, and has wasted a turn!", stream = "icout")
+			user.mp=0
+			return
+	if(skill.costtype=="Stamina")
+		if(user.sp<=0)
+			user.visible_message("[user] has attempted to use a Physical ability without any SP, and has wasted a turn!", stream = "icout")
+			user.sp=0
+			return
+	var/aresult
+	var/amod
+	var/doresult
+	var/dmod
+	var/dresult
+	var/abilitydamage
+	var/statuschance=rand(1,100)
+	if(skill.atype=="standard")
+		amod=Checkdamtype(skill.damsource,user)
+		if(skill.typing=="magical")
+			aresult=rand(1,20)+skill.addhit+amod+user.rankbonus+user.mab
+		else
+			aresult=rand(1,20)+skill.addhit+amod+user.rankbonus+user.pab
+		doresult=skill.raw_attack_damage_roll()
+		dmod=Checkdamtype(skill.damsource,user)
+		abilitydamage=skill.raw_attack_damage_roll()
+		if(skill.typing=="magical")
+			dresult=doresult+dmod+skill.adddam+user.mdb+skill.adddam+abilitydamage-target.basedr
+		else
+			dresult=doresult+dmod+skill.adddam+user.pdb+skill.adddam+abilitydamage-target.basedr
+	if(skill.atype=="weapon")
+		var/obj/item/Weapon/wepchoice = user.righthand
+		amod=Checkdamtype(wepchoice.damsource,user)
+		if(skill.typing=="magical")
+			aresult=rand(1,20)+skill.addhit+amod+user.rankbonus+user.mab
+		else
+			aresult=rand(1,20)+skill.addhit+amod+user.rankbonus+user.pab
+		doresult=rand(wepchoice.range1,wepchoice.range2)
+		dmod=Checkdamtype(skill.damsource,user)
+		abilitydamage=skill.raw_attack_damage_roll()
+		if(skill.typing=="magical")
+			dresult=doresult+dmod+wepchoice.adddam+user.mdb+skill.adddam+abilitydamage-target.basedr
+		else
+			dresult=doresult+dmod+wepchoice.adddam+user.pdb+skill.adddam+abilitydamage-target.basedr
+	if(skill.atype=="weaponsave")
+		var/obj/item/Weapon/wepchoice = user.righthand
+		amod=Checkdamtype(wepchoice.damsource,user)
+		if(skill.typing=="magical")
+			aresult=skill.basecheck+amod+user.rankbonus+skill.addhit
+		else
+			aresult=skill.basecheck+amod+user.rankbonus+skill.addhit
+		doresult=rand(wepchoice.range1,wepchoice.range2)
+		dmod=Checkdamtype(skill.damsource,user)
+		abilitydamage=skill.raw_attack_damage_roll()
+		if(skill.typing=="magical")
+			dresult=doresult+dmod+wepchoice.adddam+user.mdb+skill.adddam+abilitydamage-target.basedr
+		else
+			dresult=doresult+dmod+wepchoice.adddam+user.pdb+skill.adddam+abilitydamage-target.basedr
+	if(skill.atype=="save")
+		amod=Checkdamtype(skill.damsource,user)
+		if(skill.typing=="magical")
+			aresult=skill.basecheck+amod+user.rankbonus+skill.addhit
+		else
+			aresult=skill.basecheck+amod+user.rankbonus+skill.addhit
+		doresult=skill.raw_attack_damage_roll()
+		dmod=Checkdamtype(skill.damsource,user)
+		abilitydamage=skill.raw_attack_damage_roll()
+		if(skill.typing=="magical")
+			dresult=doresult+dmod+skill.adddam+user.mdb+skill.adddam+abilitydamage-target.basedr
+		else
+			dresult=doresult+dmod+skill.adddam+user.pdb+skill.adddam+abilitydamage-target.basedr
+	if(skill.rank=="D")
+		aresult+=4
+		dresult+=10
+	if(skill.rank=="C")
+		aresult+=6
+		dresult+=15
+	if(skill.rank=="B")
+		aresult+=9
+		dresult+=20
+	if(skill.rank=="A")
+		aresult+=12
+		dresult+=30
+	if(skill.rank=="S")
+		aresult+=20
+		dresult+=40
+	Playeranimation(user,target,skill)
+	user.visible_message("<font color=#F8E959><b>[user]</font> has used [skill] to attack [target]!!", stream = "icout")
+	var/drainvalue=round(dresult*0.5)
+	if(skill.element==target.weakness)
+		dresult=round(dresult*1.5)
+		user.visible_message("<b>[target]</b> is weak to <b>[skill.element], and takes 50% more damage!</b>", stream = "icout")
+	if(skill.element==target.resistance)
+		dresult=round(dresult*0.5)
+		user.visible_message("<b>[target]</b> is resistant to <b>[skill.element], and takes only half damage!</b>", stream = "icout")
+	if(target.status1=="Squall" || target.status2=="Squall" || target.status3=="Squall")
+		if(skill.element=="Fire")
+			dresult+=20
+			user.visible_message("The Squall effect grants this Fire attack 20 extra damage!", stream = "icout")
+	if(target.status1=="Wet" || target.status2=="Wet" || target.status3=="Wet")
+		if(skill.element=="Thunder")
+			aresult+=5
+			dresult+=15
+			user.visible_message("The Wet effect grants this Thunder attack +5 to hit, and 15 extra damage!", stream = "icout")
+	if(user.status1=="Heavy" || user.status2=="Heavy" || user.status3=="Heavy")
+		dresult-=10
+		aresult-=3
+		user.visible_message("[user] is greatly burdened with how <b>Heavy</b> they are!", stream = "icout")
+	if(user.status1=="Slow" || user.status2=="Slow" || user.status3=="Slow")
+		aresult-=5
+		AddStun(user)
+		user.visible_message("[user] is afflicted with <b>Slow</b> and must skip their next action!", stream = "icout")
+	if(user.status1=="Weakness" || user.status2=="Weakness" || user.status3=="Weakness")
+		dresult-=15
+		user.visible_message("[user]'s attack is greatly undermined with how <b>Weak</b> they're feeling!", stream = "icout")
+	if(user.status1=="Paralyzed" || user.status2=="Paralyzed" || user.status3=="Paralyzed")
+		var/paralyzechance=rand(30,100)
+		if(paralyzechance>=70)
+			user.visible_message("[user] is <b>Paralyzed</b> and failed to perform their action this turn!", stream = "icout")
+			return
+		else
+	if(aresult<=0)
+		aresult=0
+	if(dresult<=0)
+		dresult=0
+	if(skill.typing=="physical")
+		if(user.positivestatus1=="Bravery" || user.positivestatus2=="Bravery" || user.positivestatus3=="Bravery")
+			dresult+=10
+		if(target.positivestatus1=="Protect" || target.positivestatus2=="Protect" || target.positivestatus3=="Protect")
+			dresult-=10
+		if(target.positivestatus1=="Pailing" || target.positivestatus2=="Pailing" || target.positivestatus3=="Pailing")
+			user.visible_message("[target]'s <b>Pailing</b> status effect has prevented an instance of Physical damage, and been consumed!", stream = "icout")
+			dresult=0
+			if(target.positivestatus1=="Pailing")
+				target.positivestatus1=null
+				positiveturns1=0
+			if(target.positivestatus2=="Pailing")
+				target.positivestatus2=null
+				positiveturns2=0
+			if(target.positivestatus3=="Pailing")
+				target.positivestatus3=null
+				positiveturns3=0
+			if(dresult<=0)
+				dresult=0
+			if(dresult<=0)
+				dresult=0
+	if(skill.typing=="magical")
+		if(user.positivestatus1=="Faith" || user.positivestatus2=="Faith" || user.positivestatus3=="Faith")
+			dresult+=10
+		if(target.positivestatus1=="Shell" || target.positivestatus2=="Shell" || target.positivestatus3=="Shell")
+			dresult-=10
+		if(target.positivestatus1=="Magic Barrier" || target.positivestatus2=="Magic Barrier" || target.positivestatus3=="Magic Barrier")
+			user.visible_message("[target]'s <b>Magic Barrier</b> status effect has prevented an instance of Magical damage, and been consumed!", stream = "icout")
+			dresult=0
+			if(target.positivestatus1=="Magic Barrier")
+				target.positivestatus1=null
+				positiveturns1=0
+			if(target.positivestatus2=="Magic Barrier")
+				target.positivestatus2=null
+				positiveturns2=0
+			if(target.positivestatus3=="Magic Barrier")
+				target.positivestatus3=null
+				positiveturns3=0
+			if(dresult<=0)
+				dresult=0
+	if(skill.element=="Fire")
+		if(target.positivestatus1=="Barfire" || target.positivestatus2=="Barfire" || target.positivestatus3=="Barfire")
+			user.visible_message("[target]'s <b>Barfire</b> status effect has prevented an instance of Fire damage, and been consumed!", stream = "icout")
+			dresult=0
+			if(target.positivestatus1=="Barfire")
+				target.positivestatus1=null
+				positiveturns1=0
+			if(target.positivestatus2=="Barfire")
+				target.positivestatus2=null
+				positiveturns2=0
+			if(target.positivestatus3=="Barfire")
+				target.positivestatus3=null
+				positiveturns3=0
+	if(skill.element=="Water")
+		if(target.positivestatus1=="Barwater" || target.positivestatus2=="Barwater" || target.positivestatus3=="Barwater")
+			user.visible_message("[target]'s <b>Barwater</b> status effect has prevented an instance of Water damage, and been consumed!", stream = "icout")
+			dresult=0
+			if(target.positivestatus1=="Barwater")
+				target.positivestatus1=null
+				positiveturns1=0
+			if(target.positivestatus2=="Barwater")
+				target.positivestatus2=null
+				positiveturns1=0
+			if(target.positivestatus3=="Barwater")
+				target.positivestatus3=null
+				positiveturns1=0
+	if(skill.element=="Ice")
+		if(target.positivestatus1=="Barblizzard" || target.positivestatus2=="Barblizzard" || target.positivestatus3=="Barblizzard")
+			user.visible_message("[target]'s <b>Barblizzard</b> status effect has prevented an instance of Ice damage, and been consumed!", stream = "icout")
+			dresult=0
+			if(target.positivestatus1=="Barblizzard")
+				target.positivestatus1=null
+				positiveturns1=0
+			if(target.positivestatus2=="Barblizzard")
+				target.positivestatus2=null
+				positiveturns1=0
+			if(target.positivestatus3=="Barblizzard")
+				target.positivestatus3=null
+				positiveturns1=0
+	if(skill.element=="Thunder")
+		if(target.positivestatus1=="Barthunder" || target.positivestatus2=="Barthunder" || target.positivestatus3=="Barthunder")
+			user.visible_message("[target]'s <b>Barthunder</b> status effect has prevented an instance of Thunder damage, and been consumed!", stream = "icout")
+			dresult=0
+			if(target.positivestatus1=="Barthunder")
+				target.positivestatus1=null
+				positiveturns1=0
+			if(target.positivestatus2=="Barthunder")
+				target.positivestatus2=null
+				positiveturns1=0
+			if(target.positivestatus3=="Barthunder")
+				target.positivestatus3=null
+				positiveturns1=0
+	if(skill.element=="Earth")
+		if(target.positivestatus1=="Barstone" || target.positivestatus2=="Barstone" || target.positivestatus3=="Barstone")
+			user.visible_message("[target]'s <b>Barblizzard</b> status effect has prevented an instance of Ice damage, and been consumed!", stream = "icout")
+			dresult=0
+			if(target.positivestatus1=="Barstone")
+				target.positivestatus1=null
+				positiveturns1=0
+			if(target.positivestatus2=="Barstone")
+				target.positivestatus2=null
+				positiveturns1=0
+			if(target.positivestatus3=="Barstone")
+				target.positivestatus3=null
+				positiveturns1=0
+	if(skill.element=="Wind")
+		if(target.positivestatus1=="Barwind" || target.positivestatus2=="Barwind" || target.positivestatus3=="Barwind")
+			user.visible_message("[target]'s <b>Barblizzard</b> status effect has prevented an instance of Ice damage, and been consumed!", stream = "icout")
+			dresult=0
+			if(target.positivestatus1=="Barwind")
+				target.positivestatus1=null
+				positiveturns1=0
+			if(target.positivestatus2=="Barwind")
+				target.positivestatus2=null
+				positiveturns1=0
+			if(target.positivestatus3=="Barwind")
+				target.positivestatus3=null
+				positiveturns1=0
+	//bubble procs after Protect, Shell, and Bar spells.
+	if(target.positivestatus1=="Bubble" || target.positivestatus2=="Bubble" || target.positivestatus3=="Bubble")
+		var/bubble=round(target.mhp*0.15)
+		if(dresult<bubble)
+			user.visible_message("<b>[target]'s</b> Bubble status effect has deflected and nullified [dresult] damage!!", stream = "icout")
+			dresult=0
+		if(dresult>=bubble)
+			user.visible_message("<b>[target]'s</b> Bubble has popped, but has absorbed [bubble] damage!!", stream = "icout")
+			dresult-=bubble
+			if(target.positivestatus1=="Bubble")
+				target.positivestatus1=null
+				positiveturns1=0
+			if(target.positivestatus2=="Bubble")
+				target.positivestatus2=null
+				positiveturns2=0
+			if(target.positivestatus3=="Bubble")
+				target.positivestatus3=null
+				positiveturns3=0
+			if(dresult>=0)
+				dresult=0
+	if(user.positivestatus1=="Haste" || user.positivestatus2=="Haste" || user.positivestatus3=="Haste")
+		aresult+=5
+		turnattack(user,target)
+		sleep(4)
+	//stoneskin procs after all other defensive boons do
+	if(target.positivestatus1=="Stoneskin" || target.positivestatus2=="Stoneskin" || target.positivestatus3=="Stoneskin")
+		dresult-=5
+		target.stoneskindam+=dresult
+		user.visible_message("<b>[target]'s</b> Stoneskin has absorbed 5 damage!!", stream = "icout")
+		if(target.stoneskindam>=25)
+			user.visible_message("<b>[target]'s</b> Stoneskin has shattered!!", stream = "icout")
+			if(target.positivestatus1=="Stoneskin")
+				target.positivestatus1=null
+				positiveturns1=0
+			if(target.positivestatus2=="Stoneskin")
+				target.positivestatus2=null
+				positiveturns2=0
+			if(target.positivestatus3=="Stoneskin")
+				target.positivestatus3=null
+				positiveturns3=0
+
+	if(aresult>=target.ac)
+		user.visible_message("<b>To hit: [aresult] vs <b>[target.ac]</b> | It was a hit!! [user] has dealt [dresult] damage to [target]!!", stream = "icout")
+		target.hp-=dresult
+		if(skill.element=="Drain")
+			user.visible_message("<font color=#F8E959><b>[user]</font> has drained <b>[target]</b>  for <font color=#93F752>[drainvalue] HP!", stream = "icout")
+			user.hp+=drainvalue
+			if(user.hp>=user.mhp)
+				user.hp=user.mhp
+		if(skill.element=="Osmose")
+			user.visible_message("<font color=#F8E959><b>[user]</font> has drained <b>[target]</b> for <font color=#4FC7ED>[drainvalue] MP and SP!", stream = "icout")
+			user.mp+=drainvalue
+			user.sp+=drainvalue
+			if(user.mp>=user.mmp)
+				user.mp=user.mmp
+			if(user.sp>=user.msp)
+				user.sp=user.sp
+		if(target.status1==null || target.status2==null || target.status3==null)
+			if(skill.element=="Death")
+				if(statuschance>=50)
+					AddDoom(target)
+			if(skill.element=="Time")
+				if(statuschance>=70)
+					AddStun(target)
+				if(statuschance>=10)
+					AddSlow(target)
+			if(skill.element=="Earth")
+				if(statuschance>=90)
+					AddStun(target)
+				if(statuschance>=50)
+					AddHeavy(target)
+			if(skill.element=="Metal")
+				if(statuschance>=40)
+					AddBleed(target)
+			if(skill.element=="Fire")
+				if(statuschance>=70)
+					AddBurn(target)
+			if(skill.element=="Nature")
+				if(statuschance>=50)
+					AddWeakness(target)
+				if(statuschance>=80)
+					AddPoison(target)
+			if(skill.element=="Bio")
+				if(statuschance>=60)
+					AddPoison(target)
+			if(skill.element=="Dark")
+				if(statuschance>=70)
+					AddBleed(target)
+				if(statuschance>=20)
+					AddWeakness(target)
+			if(skill.element=="Water")
+				if(statuschance>=20)
+					AddWet(target)
+			if(skill.element=="Wind")
+				if(statuschance>=50)
+					AddSquall(target)
+			if(skill.element=="Ice")
+				if(statuschance>=50)
+					AddFrostbite(target)
+			if(skill.element=="Thunder")
+				if(statuschance>=50)
+					AddWeakness(target)
+				if(statuschance>=65)
+					AddParalyzed(target)
+				if(statuschance>=95)
+					AddStun(target)
+		if(target.hp<=0)
+			Death(target)
+			target.icon=null
+			target.overlays=null
+			user.visible_message("[target] has reached 0 HP and is removed from battle!", stream = "icout")
+			target.hp=0
+		if(target.special=="Bomb")
+			var/addlash=round(target.hp * 0.5)
+			var/backlash=dresult+addlash
+			user.visible_message("[target] exploded on contact, dealing [backlash] recoil damage to its attacker!", stream = "icout")
+			target.hp=0
+			Death(target)
+			target.icon=null
+			target.overlays=null
+			Burn(user)
+			user.hp-=backlash
+			if(user.hp<=0)
+				Death(user)
+				user.hp=0
+				user.overlays=null
+			sleep(4)
+	else
+		Evade(target)
+		user.visible_message("<b>To hit: [aresult] vs <b>[target.ac]</b> It missed!", stream = "icout")
+	if(skill.costtype=="Stamina")
+		user.visible_message("[user] has drained [skill.mcost] SP!", stream = "icout")
+		user.sp-=skill.mcost
+	if(skill.costtype=="Mana")
+		user.visible_message("[user] has drained [skill.mcost] MP!", stream = "icout")
+		user.mp-=skill.mcost
+	if(skill.costtype!="Mana"&& skill.costtype!="Stamina")
+		user.visible_message("[user] has drained [skill.mcost] MP!", stream = "icout")
+		user.mp-=skill.mcost
+	ShowHPBar(target)
+	ShowMPBar(target)
+	ShowSPBar(target)
+	ShowHPBar(user)
+	ShowMPBar(user)
+	ShowSPBar(user)
+	if(target.hp<=0)
+		target.overlays=null
+	sleep(4)
+
+/atom/proc/Victory(var/obj/Party/party,var/obj/FATECrystal/fate)
+	var/reward1
+	var/reward2
+	var/reward3
+	var/gilreward
+	var/bossreward
+	for(var/mob/M in hearers(20, fate))
+		M << sound(null, channel = 1)
+		M << sound('Audio/Fanfare.wav', channel = 1)
+	sleep(22)
+	for(var/obj/FATEs/quest in world)
+		if("[quest.FATEID]"=="[party.FATEID]")
+			reward1=quest.Reward1
+			reward2=quest.Reward2
+			reward3=quest.Reward3
+			gilreward=quest.Gilreward
+			if(quest.bossfate)
+				bossreward=quest.bossfate
+			del quest
+	fate.occupied=0
+	fate.FATEID=null
+	fate.icon_state="inactive"
+	for(var/mob/m in party.members)
+		sleep(2)
+		m.bposition=null
+		UpdateArea(m)
+		for(var/obj/item/a in m.contents)
+			if(a.name==reward1)
+				m.send_chat("Gained +1 [reward1]!", stream = "oocout")
+				a.amount+=1
+				break
+		for(var/obj/item/b in m.contents)
+			if(b.name==reward2)
+				m.send_chat("Gained +1 [reward2]!", stream = "oocout")
+				b.amount+=1
+				break
+		for(var/obj/item/c in m.contents)
+			if(c.name==reward3)
+				m.send_chat("Gained +1 [reward3]!", stream = "oocout")
+				c.amount+=1
+				break
+		for(var/obj/item/d in m.contents)
+			if(d.name==bossreward)
+				m.send_chat("You beat a World Boss! Gained +1 [bossreward]!", stream = "oocout")
+				d.amount+=1
+				break
+		if(m.hp<=0)
+			m.hp=0
+		m.money+=gilreward
+		m.send_chat("Gained [gilreward] Gil!!", stream = "oocout")
+		m.battler=0
+		m.dailyfates+=1
+		if(m.dailyfates>=m.maxfates)
+			m.FATEcooldown=1
+		m.statusturns=0 //The following lines of code turn off all status effects.
+		m.status2turns=0
+		m.status3turns=0
+		m.positiveturns1=0
+		m.positiveturns2=0
+		m.positiveturns3=0
+		m.status1=null
+		m.status2=null
+		m.status3=null
+		m.positivestatus1=null
+		m.positivestatus2=null
+		m.positivestatus3=null
+	party.currentFATE=null
+	party.FATEID=null
+
+/atom/proc/Defeat(var/obj/Party/party,var/obj/FATECrystal/fate)
+	for(var/mob/M in hearers(20, fate))
+		M << sound(null,channel=1)
+	sleep(4)
+	for(var/obj/FATEs/quest in world)
+		if(quest.FATEID==fate.FATEID)
+			del quest
+	fate.occupied=0
+	fate.FATEID=null
+	fate.icon_state=null
+	for(var/obj/prop/a in view(40))
+		del a
+	for(var/mob/m in party.members)
+		UpdateArea(m)
+		m.bposition=null
+		m<<sound(null)
+		m.FATEcooldown=1
+		m.battler=0
+		m.statusturns=0 //The following lines of code turn off all status effects.
+		m.status2turns=0
+		m.status3turns=0
+		m.positiveturns1=0
+		m.positiveturns2=0
+		m.positiveturns3=0
+		m.status1=null
+		m.status2=null
+		m.status3=null
+		m.positivestatus1=null
+		m.positivestatus2=null
+		m.positivestatus3=null
+		if(m.hp<=0)
+			m.hp=0
+		ShowHPBar(m)
+	party.currentFATE=null
+	party.FATEID=null
+
+/atom/proc/Startbattle(var/mob/starter,var/obj/npc/enemy,var/obj/Party/fightparty)
+	set waitfor=0
+	var/obj/battlestorage/batstorage=new
+	var/list/battlelist=new
+	var/list/enemylist=new
+	var/mob/battler1=null
+	var/mob/battler2=null
+	var/mob/battler3=null
+	var/mob/battler4=null
+	var/obj/perk/MonsterAbilities/Monster/PhysicalAttack/gs=new
+	var/battler1state
+	var/battler2state
+	var/battler3state
+	var/battler4state
+	var/enemystate=0
+	var/enemy2state=0
+	var/enemy3state=0
+	var/enemy4state=0
+	var/b1counted=0
+	var/b2counted=0
+	var/b3counted=0
+	var/b4counted=0
+	var/e1counted=0
+	var/e2counted=0
+	var/e3counted=0
+	var/e4counted=0
+	var/battlers
+	var/enemies
+	var/enemyalive
+	var/list/attacklist1=list()
+	var/list/attacklist2=list()
+	var/list/attacklist3=list()
+	var/list/attacklist4=list()
+	var/list/pattacklist1=list()
+	var/list/pattacklist2=list()
+	var/list/pattacklist3=list()
+	var/list/pattacklist4=list()
+	var/list/heallist1=list()
+	var/list/heallist2=list()
+	var/list/heallist3=list()
+	var/list/heallist4=list()
+	var/list/greenlist1=list()
+	var/list/greenlist2=list()
+	var/list/greenlist3=list()
+	var/list/greenlist4=list()
+	var/list/revivelist1=list()
+	var/list/revivelist2=list()
+	var/list/revivelist3=list()
+	var/list/revivelist4=list()
+	var/list/summonlist1=list()
+	var/list/summonlist2=list()
+	var/list/summonlist3=list()
+	var/list/summonlist4=list()
+	var/list/partylist=new
+	var/obj/perk/attackchoice
+	var/obj/perk/healchoice
+	var/maxbattlers=0
+	var/healer1=0
+	var/healer2=0
+	var/healer3=0
+	var/healer4=0
+	var/green1=0
+	var/green2=0
+	var/green3=0
+	var/green4=0
+	var/revive1=0
+	var/revive2=0
+	var/revive3=0
+	var/revive4=0
+	var/summon1=0
+	var/summon2=0
+	var/summon3=0
+	var/summon4=0
+	var/maxenemies=0
+	var/pcount=0
+	var/obj/npc/enemy2
+	var/obj/npc/enemy3
+	var/obj/npc/enemy4
+	InitializeEnemy(enemy)
+	Spawnextras(enemy)
+	enemy2=enemy.enemy2
+	enemy3=enemy.enemy3
+	enemy4=enemy.enemy4
+	enemylist+=enemy
+	enemystate=1
+	enemies=1
+	enemyalive=1
+	enemy.battling=1
+	enemy2.battling=1
+	enemy3.battling=1
+	enemy4.battling=1
+	enemy2.FATENpc=1
+	enemy3.FATENpc=1
+	enemy4.FATENpc=1
+	maxenemies=1
+	pcount=0
+	if(enemy.encountersize>=2)
+		enemy2.x=enemy.x+3
+		enemy2.y=enemy.y
+		enemy2.z=enemy.z
+		enemy2.name="[enemy2.name] 2"
+		enemy2state=1
+		enemylist+=enemy2
+		enemy2.contents+=gs
+		enemies+=1
+		maxenemies=2
+	if(enemy.encountersize>=3)
+		enemy3.x=enemy.x
+		enemy3.y=enemy.y-3
+		enemy3.z=enemy.z
+		enemy3.name="[enemy3.name] 3"
+		enemy3state=1
+		enemylist+=enemy3
+		enemy3.contents+=gs
+		enemies+=1
+		maxenemies=3
+	if(enemy.encountersize>=4)
+		enemy4.x=enemy.x-2
+		enemy4.y=enemy.y+2
+		enemy4.z=enemy.z
+		enemy4.name="[enemy4.name] 4"
+		enemy4state=1
+		enemylist+=enemy4
+		enemies+=1
+		enemy4.contents+=gs
+		maxenemies=4
+	enemy.name="[enemy.name] 1"
+	enemy.contents+=gs
+	maxbattlers=1
+	pcount=1
+	DesignateSpots(starter, pcount, fightparty, batstorage)
+	sleep(2)
+	for(var/mob/viewster in view(12,starter))
+		if(viewster.partyID==fightparty.partyID && viewster != starter && pcount<=4)
+			maxbattlers+=1
+			pcount+=1
+			alert(starter,"Maxbattlers: [maxbattlers] | Pcount: [pcount]")
+			if(maxbattlers>=2)
+				DesignateSpots(viewster, pcount,fightparty,batstorage)
+				sleep(1)
+			if(maxbattlers>=3)
+				DesignateSpots(viewster, pcount,fightparty,batstorage)
+				sleep(1)
+			if(maxbattlers>=4)
+				DesignateSpots(viewster, pcount,fightparty,batstorage)
+				sleep(1)
+	sleep(2)
+	for(var/obj/perk/a in enemy.contents)
+		if(a in attacklist1)
+			return
+		if(a.ability==1)
+			attacklist1+=a
+	for(var/obj/perk/b in enemy2.contents)
+		if(b in attacklist2)
+			return
+		if(b.ability==1)
+			attacklist2+=b
+	for(var/obj/perk/c in enemy3.contents)
+		if(c in attacklist3)
+			return
+		if(c.ability==1)
+			attacklist3+=c
+	for(var/obj/perk/d in enemy4.contents)
+		if(d in attacklist4)
+			return
+		if(d.ability==1)
+			attacklist4+=d
+	for(var/obj/Party/party in world)
+		if(party.partyID==starter.partyID)
+			if(party.FATEID==enemy.FATEID)
+				for(var/mob/m in view(starter))
+					if(m.bposition=="battler1")
+						battler1=m
+						battler1 << sound('battle1.ogg',1,channel=1)
+						m.battler=1
+						battlers+=1
+						battler1state="Alive"
+						partylist-=m
+						battlelist+=battler1
+						battler1<<output("[battler1] has been designated as 'Battler 1'","oocout")
+						//Unequipglobalmods(battler1)
+						for(var/obj/perk/a in battler1.contents)
+							if(a.ability==1 && a.heal==0 && a.valid_standard_attack())
+								pattacklist1+=a
+							if(a.heal==1)
+								heallist1+=a
+								healer1=1
+						for(var/obj/perk/a in battler1.contents)
+							if(a.ability==1 && a.heal==0 && a.valid_standard_attack())
+								pattacklist1+=a
+							if(a.heal==1)
+								heallist1+=a
+								healer1=1
+							if(a.greenmagic==1)
+								green1=1
+								greenlist1+=a
+							if(a.revive==1)
+								revive1=1
+								revivelist1+=a
+						for(var/obj/npc/a in battler1.contents)
+							var/obj/npc/b = copyatom(a)
+							summonlist1+=b
+							summon1=1
+						sleep(1)
+					if(maxbattlers>=2)
+						if(m.bposition=="battler2")
+							battler2=m
+							battler2 << sound('battle1.ogg',1,channel=1)
+							m.battler=1
+							battlers+=1
+							battler2state="Alive"
+							partylist-=m
+							battlelist+=battler2
+							battler2<<output("[battler2] has been designated as 'Battler 2'","oocout")
+							//Unequipglobalmods(battler2)
+							for(var/obj/perk/a in battler2.contents)
+								if(a.ability==1 && a.heal==0 && a.valid_standard_attack())
+									pattacklist2+=a
+								if(a.heal==1)
+									heallist2+=a
+									healer2=1
+								if(a.greenmagic==1)
+									green2=1
+									greenlist2+=a
+								if(a.revive==1)
+									revive2=1
+									revivelist2+=a
+							for(var/obj/npc/a in battler2.contents)
+								var/obj/npc/b = copyatom(a)
+								summonlist2+=b
+								summon2=1
+								sleep(1)
+					if(maxbattlers>=3)
+						if(m.bposition=="battler3")
+							battler3=m
+							battler3 << sound('battle1.ogg',1,channel=1)
+							m.battler=1
+							battlers+=1
+							battler3state="Alive"
+							partylist-=m
+							battlelist+=battler3
+							battler3<<output("[battler3] has been designated as 'Battler 3'","oocout")
+							//Unequipglobalmods(battler3)
+							for(var/obj/perk/a in battler3.contents)
+								if(a.ability==1 && a.heal==0 && a.valid_standard_attack())
+									pattacklist3+=a
+								if(a.heal==1)
+									heallist3+=a
+									healer3=1
+								if(a.greenmagic==1)
+									green3=1
+									greenlist3+=a
+								if(a.revive==1)
+									revive3=1
+									revivelist3+=a
+							for(var/obj/npc/a in battler3.contents)
+								var/obj/npc/b = copyatom(a)
+								summonlist3+=b
+								summon3=1
+								sleep(1)
+					if(maxbattlers>=4)
+						if(m.bposition=="battler4")
+							battler4=m
+							battler4 << sound('battle1.ogg',1,channel=1)
+							m.battler=1
+							battlers+=1
+							battler4state="Alive"
+							partylist-=m
+							battlelist+=battler4
+							battler4<<output("[battler4] has been designated as 'Battler 4'","oocout")
+							//Unequipglobalmods(battler4)
+							for(var/obj/perk/a in battler4.contents)
+								if(a.ability==1 && a.heal==0 && a.valid_standard_attack())
+									pattacklist4+=a
+								if(a.heal==1)
+									heallist4+=a
+									healer4=1
+								if(a.greenmagic==1)
+									green4=1
+									greenlist4+=a
+								if(a.revive==1)
+									revive4=1
+									revivelist4+=a
+							for(var/obj/npc/a in battler4.contents)
+								var/obj/npc/b = copyatom(a)
+								summonlist4+=b
+								summon4=1
+								sleep(1)
+			else
+				alert(starter,"This is not your FATE to fight.")
+				return
+	while(enemyalive==1)
+		if(battlers<=0)
+			enemy.visible_message("All Party Members have been defeated! <b>FATE</b> failed!!", stream = "icout")
+			del enemy2
+			del enemy3
+			del enemy4
+			for(var/obj/Party/a in world)
+				if(starter.partyID==a.partyID)
+					for(var/obj/FATECrystal/b in global.fate_crystals)
+						if("[b.FATEID]"=="[a.FATEID]")
+							Defeat(a,b)
+							enemyalive=0
+							sleep(4)
+							del enemy
+		if(maxenemies>=1)
+			if(enemy.hp<=0 && e1counted==0)
+				enemystate=0
+				enemies-=1
+				e1counted=1
+				enemylist-=enemy
+				usr.send_chat("[enemy] is defeated [enemies]/[maxenemies]", stream = "icout")
+				sleep(4)
+		if(maxenemies>=2)
+			if(enemy2.hp<=0 && e2counted==0)
+				enemy2state=0
+				enemies-=1
+				e2counted=1
+				enemylist-=enemy2
+				usr.send_chat("[enemy2] is defeated [enemies]/[maxenemies]", stream = "icout")
+				sleep(4)
+		if(maxenemies>=3)
+			if(enemy3.hp<=0 && e3counted==0)
+				enemy3state=0
+				enemies-=1
+				e3counted=1
+				enemylist-=enemy3
+				usr.send_chat("[enemy3] is defeated [enemies]/[maxenemies]", stream = "icout")
+				sleep(4)
+		if(maxenemies>=4)
+			if(enemy4.hp<=0 && e4counted==0)
+				enemy4state=0
+				enemies-=1
+				e4counted=1
+				enemylist-=enemy4
+				usr.send_chat("[enemy4] is defeated [enemies]/[maxenemies]", stream = "icout")
+				sleep(4)
+		if(maxbattlers>=1)
+			if(battler1.hp<=0 && b1counted==0)
+				battler1state=null
+				battlers-=1
+				battlelist-=battler1
+				b1counted=1
+		if(maxbattlers>=2)
+			if(battler2.hp<=0 && b2counted==0)
+				battler2state=null
+				battlers-=1
+				battlelist-=battler2
+				b2counted=1
+		if(maxbattlers>=3)
+			if(battler3.hp<=0 && b3counted==0)
+				battler3state=null
+				battlers-=1
+				battlelist-=battler3
+				b3counted=1
+		if(maxbattlers>=4)
+			if(battler4.hp<=0 && b4counted==0)
+				battler4state=null
+				battlers-=1
+				battlelist-=battler4
+				b4counted=1
+		if(maxenemies>=1 && battlers>=1)
+			if(enemystate==1)
+				var/mob/target=pick(battlelist)
+				var/obj/ally=pick(enemylist)
+				attackchoice=pick(attacklist1)
+				Greencheckenemy(enemy)
+				Statusprocenemy(enemy)
+				if(enemy.status1=="Stun")
+					enemy3.visible_message("[enemy] is stunned, and skips a turn!", stream = "icout")
+					enemy.totalstatus=0
+					enemy.status1=null
+					return
+				if(attackchoice.greenmagic==1)
+					if(attackchoice.multi==1)
+						for(var/obj/npc/a in enemylist)
+							enemy.EnemyGreen(enemy,a, attackchoice)
+					if(attackchoice.multi==0)
+						enemy.EnemyGreen(enemy,ally, attackchoice)
+				if(attackchoice.dispel>=1)
+					if(attackchoice.multi==1)
+						for(var/mob/partymembers in battlelist)
+							enemy.DispelEnemy(enemy, partymembers, attackchoice)
+				if(attackchoice.heal==1)
+					enemy.Enemyheal(enemy,ally,attackchoice)
+				if(attackchoice.dispel==0 && attackchoice.greenmagic==0  && attackchoice.heal==0)
+					enemy.Enemyability(enemy,target,attackchoice)
+					sleep(30)
+		sleep(1)
+		if(maxbattlers>=1)
+			if(battler1.hp<=0 && b1counted==0)
+				battler1state=null
+				battlers-=1
+				battlelist-=battler1
+				b1counted=1
+		if(maxbattlers>=2)
+			if(battler2.hp<=0 && b2counted==0)
+				battler2state=null
+				battlers-=1
+				battlelist-=battler2
+				b2counted=1
+		if(maxbattlers>=3)
+			if(battler3.hp<=0 && b3counted==0)
+				battler3state=null
+				battlers-=1
+				battlelist-=battler3
+				b3counted=1
+		if(maxbattlers>=4)
+			if(battler4.hp<=0 && b4counted==0)
+				battler4state=null
+				battlers-=1
+				battlelist-=battler4
+				b4counted=1
+		sleep(1)
+		if(battlers<=0)
+			enemy.visible_message("All Party Members have been defeated! <b>FATE</b> failed!!", stream = "icout")
+			del enemy2
+			del enemy3
+			del enemy4
+			for(var/obj/Party/a in world)
+				if(starter.partyID==a.partyID)
+					for(var/obj/FATECrystal/b in global.fate_crystals)
+						if("[b.FATEID]"=="[a.FATEID]")
+							Defeat(a,b)
+							enemyalive=0
+							sleep(4)
+							del enemy
+		sleep(1)
+		if(maxenemies>=2 && battlers>=1)
+			if(enemy2state==1)
+				var/mob/target=pick(battlelist)
+				var/obj/ally=pick(enemylist)
+				attackchoice=pick(attacklist2)
+				Greencheckenemy(enemy2)
+				Statusprocenemy(enemy2)
+				if(enemy2.status1=="Stun")
+					enemy4.visible_message("[enemy2] is stunned, and skips a turn!", stream = "icout")
+					enemy2.totalstatus=0
+					enemy2.status1=null
+					return
+				if(attackchoice.greenmagic==1)
+					if(attackchoice.multi==1)
+						for(var/obj/npc/a in enemylist)
+							enemy2.EnemyGreen(enemy2,a, attackchoice)
+					if(attackchoice.multi==0)
+						enemy2.EnemyGreen(enemy2,ally, attackchoice)
+				if(attackchoice.dispel>=1)
+					if(attackchoice.multi==1)
+						for(var/mob/partymembers in battlelist)
+							enemy2.DispelEnemy(enemy2, partymembers, attackchoice)
+				if(attackchoice.heal==1)
+					enemy2.Enemyheal(enemy2,ally,attackchoice)
+				if(attackchoice.dispel==0 && attackchoice.greenmagic==0 && attackchoice.heal==0)
+					enemy4.Enemyability(enemy2,target,attackchoice)
+					sleep(30)
+		sleep(1)
+		if(maxbattlers>=1)
+			if(battler1.hp<=0 && b1counted==0)
+				battler1state=null
+				battlers-=1
+				battlelist-=battler1
+				b1counted=1
+		if(maxbattlers>=2)
+			if(battler2.hp<=0 && b2counted==0)
+				battler2state=null
+				battlers-=1
+				battlelist-=battler2
+				b2counted=1
+		if(maxbattlers>=3)
+			if(battler3.hp<=0 && b3counted==0)
+				battler3state=null
+				battlers-=1
+				battlelist-=battler3
+				b3counted=1
+		if(maxbattlers>=4)
+			if(battler4.hp<=0 && b4counted==0)
+				battler4state=null
+				battlers-=1
+				battlelist-=battler4
+				b4counted=1
+		sleep(1)
+		if(battlers<=0)
+			enemy.visible_message("All Party Members have been defeated! <b>FATE</b> failed!!", stream = "icout")
+			del enemy2
+			del enemy3
+			del enemy4
+			for(var/obj/Party/a in world)
+				if(starter.partyID==a.partyID)
+					for(var/obj/FATECrystal/b in global.fate_crystals)
+						if("[b.FATEID]"=="[a.FATEID]")
+							Defeat(a,b)
+							sleep(4)
+							enemyalive=0
+							del enemy
+		sleep(1)
+		if(maxenemies>=3 && battlers>=1)
+			if(enemy3state==1)
+				var/mob/target=pick(battlelist)
+				var/obj/ally=pick(enemylist)
+				attackchoice=pick(attacklist3)
+				Greencheckenemy(enemy3)
+				Statusprocenemy(enemy3)
+				if(enemy3.status1=="Stun")
+					enemy3.visible_message("[enemy3] is stunned, and skips a turn!", stream = "icout")
+					enemy3.totalstatus=0
+					enemy3.status1=null
+					return
+				if(attackchoice.greenmagic==1)
+					if(attackchoice.multi==1)
+						for(var/obj/npc/a in enemylist)
+							enemy3.EnemyGreen(enemy3,a, attackchoice)
+					if(attackchoice.multi==0)
+						enemy3.EnemyGreen(enemy3,ally, attackchoice)
+				if(attackchoice.dispel>=1)
+					if(attackchoice.multi==1)
+						for(var/mob/partymembers in battlelist)
+							enemy3.DispelEnemy(enemy3, partymembers, attackchoice)
+					if(attackchoice.multi==0)
+						enemy3.DispelEnemy(enemy3, target, attackchoice)
+				if(attackchoice.heal==1)
+					enemy3.Enemyheal(enemy3,ally,attackchoice)
+				if(attackchoice.dispel==0 && attackchoice.greenmagic==0 && attackchoice.heal==0)
+					enemy3.Enemyability(enemy3,target,attackchoice)
+					sleep(30)
+		sleep(1)
+		if(maxbattlers>=1)
+			if(battler1.hp<=0 && b1counted==0)
+				battler1state=null
+				battlers-=1
+				battlelist-=battler1
+				b1counted=1
+		if(maxbattlers>=2)
+			if(battler2.hp<=0 && b2counted==0)
+				battler2state=null
+				battlers-=1
+				battlelist-=battler2
+				b2counted=1
+		if(maxbattlers>=3)
+			if(battler3.hp<=0 && b3counted==0)
+				battler3state=null
+				battlers-=1
+				battlelist-=battler3
+				b3counted=1
+		if(maxbattlers>=4)
+			if(battler4.hp<=0 && b4counted==0)
+				battler4state=null
+				battlers-=1
+				battlelist-=battler4
+				b4counted=1
+		sleep(1)
+		if(battlers<=0)
+			enemy.visible_message("All Party Members have been defeated! <b>FATE</b> failed!!", stream = "icout")
+			del enemy2
+			del enemy3
+			del enemy4
+			for(var/obj/Party/a in world)
+				if(starter.partyID==a.partyID)
+					for(var/obj/FATECrystal/b in global.fate_crystals)
+						if("[b.FATEID]"=="[a.FATEID]")
+							Defeat(a,b)
+							enemyalive=0
+							sleep(4)
+							del enemy
+		sleep(1)
+		if(maxenemies>=4 && battlers>=1)
+			if(enemy4state==1)
+				var/mob/target=pick(battlelist)
+				var/obj/ally=pick(enemylist)
+				attackchoice=pick(attacklist4)
+				Greencheckenemy(enemy4)
+				Statusprocenemy(enemy4)
+				if(enemy4.status1=="Stun")
+					enemy4.visible_message("[enemy4] is stunned, and skips a turn!", stream = "icout")
+					enemy4.totalstatus=0
+					enemy4.status1=null
+					return
+				if(attackchoice.greenmagic==1)
+					if(attackchoice.multi==1)
+						for(var/obj/npc/a in enemylist)
+							enemy4.EnemyGreen(enemy4,a, attackchoice)
+					if(attackchoice.multi==0)
+						enemy4.EnemyGreen(enemy4,ally, attackchoice)
+				if(attackchoice.dispel>=1)
+					if(attackchoice.multi==1)
+						for(var/mob/partymembers in battlelist)
+							enemy4.DispelEnemy(enemy4, partymembers, attackchoice  && attackchoice.heal==0)
+				if(attackchoice.heal==1)
+					enemy4.Enemyheal(enemy4,ally,attackchoice)
+				if(attackchoice.dispel==0 && attackchoice.greenmagic==0 && attackchoice.heal==0)
+					enemy4.Enemyability(enemy4,target,attackchoice)
+					sleep(30)
+		sleep(1)
+		if(maxbattlers>=1)
+			if(battler1.hp<=0 && b1counted==0)
+				battler1state=null
+				battlers-=1
+				battlelist-=battler1
+				b1counted=1
+		if(maxbattlers>=2)
+			if(battler2.hp<=0 && b2counted==0)
+				battler2state=null
+				battlers-=1
+				battlelist-=battler2
+				b2counted=1
+		if(maxbattlers>=3)
+			if(battler3.hp<=0 && b3counted==0)
+				battler3state=null
+				battlers-=1
+				battlelist-=battler3
+				b3counted=1
+		if(maxbattlers>=4)
+			if(battler4.hp<=0 && b4counted==0)
+				battler4state=null
+				battlers-=1
+				battlelist-=battler4
+				b4counted=1
+		sleep(1)
+		if(enemies<=0)
+			enemy.visible_message("All Enemies have been defeated! <b>FATE</b> complete!!", stream = "icout")
+			for(var/obj/Party/c in world)
+				del enemy2
+				del enemy3
+				del enemy4
+				if(battler1.partyID==c.partyID)
+					for(var/obj/FATECrystal/b in global.fate_crystals)
+						if("[b.FATEID]"=="[c.FATEID]")
+							Victory(c,b)
+							enemyalive=0
+							maxbattlers=0
+							enemies=0
+							sleep(4)
+							del enemy
+		sleep(1)
+		if(enemies>=1)
+			if(maxbattlers>=1)
+				if(battler1state=="Alive")
+					Greencheckplayer(battler1)
+					Statusprocparty(battler1)
+					if(battler1.status1=="Stun")
+						battler1.visible_message("[battler1] is stunned, and skips a turn!", stream = "icout")
+						battler1.totalstatus=0
+						battler1.status1=null
+						return
+					usr.send_chat("<font color=[battler1.textcolor]><b>[battler1]'s</font> turn, let's see what they can do!", stream = "icout")
+					var/list/actions=list("Attack","Ability","Rest")
+					if(green1==1)
+						actions+="Green Magic"
+					if(healer1==1)
+						actions+="Heal"
+					if(revive1==1)
+						actions+="Revive"
+					if(summon1==1)
+						actions+="Summon"
+					if(battler1.job=="Spellblade" || battler1.subjob=="Spellblade")
+						actions+="Infusion"
+					if(battler1.job=="Mystic Knight" || battler1.subjob=="Mystic Knight")
+						actions+="Blade Cast"
+						actions+="Blade Dance"
+					if(battler1.job=="Dancer" || battler1.subjob=="Dancer")
+						actions+="Dance"
+					if(battler1.job=="Black Mage" || battler1.subjob=="Black Mage")
+						actions+="Twin Cast"
+					if(battler1.job=="Samurai" || battler1.subjob=="Samurai")
+						actions+="Retaliate"
+					var/achoice=input(battler1,"What action would you like to take this turn?") as anything in actions
+					switch(achoice)
+						if("Blade Cast")
+							var/list/twincast=list()
+							for(var/obj/perk/options in pattacklist1)
+								if(options.typing=="magical")
+									twincast+=options
+							var/target=input(battler1,"Which enemy would you like to attack?") as anything in enemylist
+							attackchoice=input(battler1,"Which Ability would you like to use this turn?") as anything in twincast
+							battler1.turnattack(battler1,target)
+							battler1.TurnAbility(battler1,target,attackchoice)
+							sleep(4)
+						if("Blade Dance")
+							var/target=input(battler1,"Which enemy would you like to attack?") as anything in enemylist
+							battler1.turnattack(battler1,target)
+							battler1.turnattack(battler1,target)
+							sleep(4)
+						if("Twin Cast")
+							var/list/twincast=list()
+							for(var/obj/perk/options in pattacklist1)
+								if(options.typing=="magical")
+									twincast+=options
+							attackchoice=input(battler1,"Which Ability would you like to use this turn?") as anything in twincast
+							var/target=input(battler1,"Which enemy would you like to attack?") as anything in enemylist
+							battler1.TurnAbility(battler1,target,attackchoice)
+							sleep(4)
+							attackchoice=input(battler1,"Which Ability would you like to use this turn?") as anything in twincast
+							var/target2=input(battler1,"Which enemy would you like to attack?") as anything in enemylist
+							battler1.TurnAbility(battler1,target2,attackchoice)
+							sleep(4)
+						if("Retaliate")
+							if(battler1.sp<30)
+								usr.send_chat("<font color=[battler1.textcolor]<b>[battler1] has attempted to use Retaliate, but could not spend 30 SP, and has forfeited their turn!", stream = "icout")
+							else
+								var/target=input(battler1,"Which enemy would you like to attack, setting Retaliate up?") as anything in enemylist
+								battler1.turnattack(battler1,target)
+								usr.send_chat("<font color=[battler1.textcolor]<b>[battler1] has entered a <b>Retaliation</b> stance!", stream = "icout")
+								battler1.sp-=30
+								battler1.retaliate=1
+						if("Infusion")
+							var/list/Infusions=list("Fire","Water","Ice","Thunder","Wind")
+							var/infuchoice=input(battler1,"Which Infusion would you like to apply to your weapon?") as anything in Infusions
+							battler1.infusion=infuchoice
+							usr.send_chat("<font color=[battler1.textcolor]<b>[battler1] has set their Infusion type to [infuchoice]!", stream = "icout")
+						if("Summon")
+							var/target=input(battler1,"Which enemy would you like to summon a companion to attack?") as anything in enemylist
+							var/summon=input(battler1,"Which companion would you like to call on the power of?") as anything in summonlist1
+							Summonattack(battler1, target, summon)
+						if("Attack")
+							var/target=input(battler1,"Which enemy would you like to attack?") as anything in enemylist
+							battler1.turnattack(battler1,target)
+							sleep(4)
+						if("Ability")
+							attackchoice=input(battler1,"Which Ability would you like to use this turn?") as anything in pattacklist1
+							var/target=input(battler1,"Which enemy would you like to attack?") as anything in enemylist
+							battler1.TurnAbility(battler1,target,attackchoice)
+							sleep(4)
+						if("Heal")
+							var/target=input(battler1,"Which ally would you like to heal?") as anything in battlelist
+							healchoice=input(battler1,"Which Healing ability would you like to use this turn?") as anything in heallist1
+							battler1.Heal(battler1,target,healchoice)
+							sleep(4)
+						if("Rest")
+							var/conboost=(6*battler1.conmod)
+							var/rest2=conboost+10
+							var/rest1=conboost+5
+							var/restvalue=rand(rest1,rest2)
+							usr.send_chat("<font color=[battler1.textcolor]><b>[battler1]</font> has decided to rest, and restores [restvalue] HP and MP!!", stream = "icout")
+							battler1.hp+=restvalue
+							battler1.mp+=restvalue
+							if(battler1.hp>battler1.mhp)
+								battler1.hp=battler1.mhp
+							if(battler1.mp>battler1.mmp)
+								battler1.mp=battler1.mmp
+						if("Green Magic")
+							var/obj/perk/spell=input(battler1,"Which Green Magic ability would you like to use?") as anything in greenlist1
+							if(spell.dispel>=1)
+								if(spell.multi==1)
+									for(var/obj/npc/a in enemylist)
+										DispelPlayer(battler1, a, spell)
+								if(spell.multi==0)
+									var/dispelchoice=input(battler1,"Which enemy would you like to dispel an effect from?") as anything in enemylist
+									DispelPlayer(battler1, dispelchoice, spell)
+							if(spell.multi==0)
+								var/targetchoice=input(battler1,"Who would you like to use it on?") as anything in battlelist
+								GreenMagicOne(battler1, targetchoice, spell)
+							if(spell.multi==1)
+								if(battler1state=="Alive")
+									GreenMagicOne(battler1, battler1, spell)
+								if(battler2state=="Alive")
+									GreenMagicOne(battler1, battler2, spell)
+								if(battler3state=="Alive")
+									GreenMagicOne(battler1,battler3, spell)
+								if(battler4state=="Alive")
+									GreenMagicOne(battler1,battler4, spell)
+						if("Revive")
+							var/list/revivechoice=list()
+							if(battler1state!="Alive")
+								revivechoice+=battler1
+							if(battler2state!="Alive")
+								revivechoice+=battler2
+							if(battler3state!="Alive")
+								revivechoice+=battler3
+							if(battler4state!="Alive")
+								revivechoice+=battler4
+							var/obj/perk/spell=input(battler1,"Which revive Spell would you like to use?") as anything in revivelist1
+							if(spell.multi==0)
+								var/mob/choice=input(battler1,"Who would you like to revive with this Spell?") as anything in revivechoice
+								Revive(battler1, choice, spell)
+								if(choice.bposition=="battler1")
+									battler1state="Alive"
+									battlelist+=choice
+									battlers+=1
+									b1counted=0
+								if(choice.bposition=="battler2")
+									battler2state="Alive"
+									battlelist+=choice
+									battlers+=1
+									b2counted=0
+								if(choice.bposition=="battler3")
+									battler3state="Alive"
+									battlelist+=choice
+									battlers+=1
+									b3counted=0
+								if(choice.bposition=="battler4")
+									battler4state="Alive"
+									battlelist+=choice
+									battlers+=1
+									b4counted=0
+							if(spell.multi==1)
+								if(battler1state!="Alive")
+									battler1state="Alive"
+									battlelist+=battler1
+									Revive(battler1, battler1, spell)
+									battlers+=1
+									b1counted=0
+								if(battler2state!="Alive")
+									battler2state="Alive"
+									battlelist+=battler2
+									Revive(battler1, battler2, spell)
+									battlers+=1
+									b2counted=0
+								if(battler3state!="Alive")
+									battler3state="Alive"
+									battlelist+=battler3
+									Revive(battler1, battler3, spell)
+									battlers+=1
+									b3counted=0
+								if(battler4state!="Alive")
+									battler4state="Alive"
+									battlelist+=battler4
+									Revive(battler1, battler4, spell)
+									battlers+=1
+									b4counted=0
+						if("Summon")
+							return
+			sleep(1)
+			if(maxenemies>=1)
+				if(enemy.hp<=0 && e1counted==0)
+					enemystate=0
+					enemies-=1
+					e1counted=1
+					enemylist-=enemy
+					usr.send_chat("[enemy] is defeated [enemies]/[maxenemies]", stream = "icout")
+					sleep(4)
+			if(maxenemies>=2)
+				if(enemy2.hp<=0 && e2counted==0)
+					enemy2state=0
+					enemies-=1
+					e2counted=1
+					enemylist-=enemy2
+					usr.send_chat("[enemy2] is defeated [enemies]/[maxenemies]", stream = "icout")
+					sleep(4)
+			if(maxenemies>=3)
+				if(enemy3.hp<=0 && e3counted==0)
+					enemy3state=0
+					enemies-=1
+					e3counted=1
+					enemylist-=enemy3
+					usr.send_chat("[enemy3] is defeated [enemies]/[maxenemies]", stream = "icout")
+					sleep(4)
+			if(maxenemies>=4)
+				if(enemy4.hp<=0 && e4counted==0)
+					enemy4state=0
+					enemies-=1
+					e4counted=1
+					enemylist-=enemy4
+					usr.send_chat("[enemy4] is defeated [enemies]/[maxenemies]", stream = "icout")
+					sleep(4)
+			sleep(1)
+			if(enemies<=0)
+				enemy.visible_message("All Enemies have been defeated! <b>FATE</b> complete!!", stream = "icout")
+				del enemy2
+				del enemy3
+				del enemy4
+				for(var/obj/Party/c in world)
+					if(battler1.partyID==c.partyID)
+						for(var/obj/FATECrystal/b in global.fate_crystals)
+							if("[b.FATEID]"=="[c.FATEID]")
+								Victory(c,b)
+								enemyalive=0
+								maxbattlers=0
+								enemies=0
+								sleep(4)
+								del enemy
+			sleep(1)
+			if(maxbattlers>=2)
+				if(battler2state=="Alive")
+					Greencheckplayer(battler2)
+					Statusprocparty(battler2)
+					if(battler2.status1=="Stun")
+						battler2.visible_message("[battler2] is stunned, and skips a turn!", stream = "icout")
+						battler2.totalstatus=0
+						battler2.status1=null
+						return
+					usr.send_chat("<font color=[battler2.textcolor]><b>[battler2]'s</font> turn, let's see what they can do!", stream = "icout")
+					var/list/actions=list("Attack","Ability","Rest")
+					if(green2==1)
+						actions+="Green Magic"
+					if(healer2==1)
+						actions+="Heal"
+					if(revive2==1)
+						actions+="Revive"
+					if(summon2==1)
+						actions+="Summon"
+					if(battler2.job=="Spellblade" || battler2.subjob=="Spellblade")
+						actions+="Infusion"
+					if(battler2.job=="Mystic Knight" || battler2.subjob=="Mystic Knight")
+						actions+="Blade Cast"
+						actions+="Blade Dance"
+					if(battler2.job=="Dancer" || battler2.subjob=="Dancer")
+						actions+="Dance"
+					if(battler2.job=="Black Mage" || battler2.subjob=="Black Mage")
+						actions+="Twin Cast"
+					if(battler2.job=="Samurai" || battler2.subjob=="Samurai")
+						actions+="Retaliate"
+
+					var/achoice=input(battler2,"What action would you like to take this turn?") as anything in actions
+					switch(achoice)
+						if("Blade Cast")
+							var/list/twincast=list()
+							for(var/obj/perk/options in pattacklist2)
+								if(options.typing=="magical")
+									twincast+=options
+							var/target=input(battler2,"Which enemy would you like to attack?") as anything in enemylist
+							attackchoice=input(battler2,"Which Ability would you like to use this turn?") as anything in twincast
+							battler2.turnattack(battler2,target)
+							battler2.TurnAbility(battler2,target,attackchoice)
+						if("Blade Dance")
+							var/target=input(battler2,"Which enemy would you like to attack?") as anything in enemylist
+							battler2.turnattack(battler2,target)
+							battler2.turnattack(battler2,target)
+						if("Twin Cast")
+							var/list/twincast=list()
+							for(var/obj/perk/options in pattacklist2)
+								if(options.typing=="magical")
+									twincast+=options
+							attackchoice=input(battler2,"Which Ability would you like to use this turn?") as anything in twincast
+							var/target=input(battler2,"Which enemy would you like to attack?") as anything in enemylist
+							battler2.TurnAbility(battler2,target,attackchoice)
+							sleep(4)
+							attackchoice=input(battler2,"Which Ability would you like to use this turn?") as anything in twincast
+							var/target2=input(battler2,"Which enemy would you like to attack?") as anything in enemylist
+							battler2.TurnAbility(battler2,target2,attackchoice)
+							sleep(4)
+						if("Retaliate")
+							if(battler2.sp<30)
+								usr.send_chat("<font color=[battler2.textcolor]<b>[battler2] has attempted to use Retaliate, but could not spend 30 SP, and has forfeited their turn!", stream = "icout")
+							else
+								var/target=input(battler2,"Which enemy would you like to attack, setting Retaliate up?") as anything in enemylist
+								battler2.turnattack(battler2,target)
+								usr.send_chat("<font color=[battler2.textcolor]<b>[battler2] has entered a <b>Retaliation</b> stance!", stream = "icout")
+								battler2.sp-=30
+								battler2.retaliate=1
+						if("Infusion")
+							var/list/Infusions=list("Fire","Water","Ice","Thunder","Wind","Holy","Dark","Flare")
+							var/infuchoice=input(battler2,"Which Infusion would you like to apply to your weapon?") as anything in Infusions
+							battler2.infusion=infuchoice
+							usr.send_chat("<font color=[battler2.textcolor]<b>[battler2] has set their Infusion type to [infuchoice]!", stream = "icout")
+						if("Summon")
+							var/target=input(battler2,"Which enemy would you like to summon a companion to attack?") as anything in enemylist
+							var/summon=input(battler2,"Which companion would you like to call on the power of?") as anything in summonlist2
+							Summonattack(battler2, target, summon)
+						if("Attack")
+							var/target=input(battler2,"Which enemy would you like to attack?") as anything in enemylist
+							battler2.turnattack(battler2,target)
+							sleep(4)
+						if("Ability")
+							attackchoice=input(battler2,"Which Ability would you like to use this turn?") as anything in pattacklist2
+							var/target=input(battler2,"Which enemy would you like to attack?") as anything in enemylist
+							battler2.TurnAbility(battler2,target,attackchoice)
+							sleep(4)
+						if("Heal")
+							var/target=input(battler2,"Which ally would you like to heal?") as anything in battlelist
+							healchoice=input(battler2,"Which Healing ability would you like to use this turn?") as anything in heallist2
+							battler2.Heal(battler2,target,healchoice)
+							sleep(4)
+						if("Rest")
+							var/conboost=(6*battler2.conmod)
+							var/rest2=conboost+10
+							var/rest1=conboost+5
+							var/restvalue=rand(rest1,rest2)
+							usr.send_chat("<font color=[battler2.textcolor]><b>[battler2]</font> has decided to rest, and restores [restvalue] HP and MP!!", stream = "icout")
+							battler2.hp+=restvalue
+							battler2.mp+=restvalue
+							if(battler2.hp>battler2.mhp)
+								battler2.hp=battler2.mhp
+							if(battler2.mp>battler2.mmp)
+								battler2.mp=battler2.mmp
+						if("Green Magic")
+							var/obj/perk/spell=input(battler2,"Which Green Magic ability would you like to use?") as anything in greenlist2
+							if(spell.dispel>=1)
+								if(spell.multi==1)
+									for(var/obj/npc/a in enemylist)
+										DispelPlayer(battler2, a, spell)
+								if(spell.multi==0)
+									var/dispelchoice=input(battler2,"Which enemy would you like to dispel an effect from?") as anything in enemylist
+									DispelPlayer(battler2, dispelchoice, spell)
+							if(spell.multi==0)
+								var/targetchoice=input(battler2,"Who would you like to use it on?") as anything in battlelist
+								GreenMagicOne(battler2, targetchoice, spell)
+							if(spell.multi==1)
+								if(battler1state=="Alive")
+									GreenMagicOne(battler2, battler1, spell)
+								if(battler2state=="Alive")
+									GreenMagicOne(battler2, battler2, spell)
+								if(battler3state=="Alive")
+									GreenMagicOne(battler2,battler3, spell)
+								if(battler4state=="Alive")
+									GreenMagicOne(battler2,battler4, spell)
+						if("Revive")
+							var/list/revivechoice=list()
+							if(battler1state!="Alive")
+								revivechoice+=battler1
+							if(battler2state!="Alive")
+								revivechoice+=battler2
+							if(battler3state!="Alive")
+								revivechoice+=battler3
+							if(battler4state!="Alive")
+								revivechoice+=battler4
+							var/obj/perk/spell=input(battler2,"Which revive Spell would you like to use?") as anything in revivelist2
+							if(spell.multi==0)
+								var/mob/choice=input(battler2,"Who would you like to revive with this Spell?") as anything in revivechoice
+								Revive(battler2, choice, spell)
+								if(choice.bposition=="battler1")
+									battler1state="Alive"
+									battlelist+=choice
+									battlers+=1
+									b1counted=0
+								if(choice.bposition=="battler2")
+									battler2state="Alive"
+									battlelist+=choice
+									battlers+=1
+									b2counted=0
+								if(choice.bposition=="battler3")
+									battler3state="Alive"
+									battlelist+=choice
+									battlers+=1
+									b3counted=0
+								if(choice.bposition=="battler4")
+									battler4state="Alive"
+									battlelist+=choice
+									battlers+=1
+									b4counted=0
+							if(spell.multi==1)
+								if(battler1state!="Alive")
+									battler1state="Alive"
+									battlelist+=battler1
+									Revive(battler2, battler1, spell)
+									battlers+=1
+									b1counted=0
+								if(battler2state!="Alive")
+									battler2state="Alive"
+									battlelist+=battler2
+									Revive(battler2, battler2, spell)
+									battlers+=1
+									b2counted=0
+								if(battler3state!="Alive")
+									battler3state="Alive"
+									battlelist+=battler3
+									Revive(battler2, battler3, spell)
+									battlers+=1
+									b3counted=0
+								if(battler4state!="Alive")
+									battler4state="Alive"
+									battlelist+=battler4
+									Revive(battler2, battler4, spell)
+									battlers+=1
+									b4counted=0
+			sleep(1)
+			if(maxenemies>=1)
+				if(enemy.hp<=0 && e1counted==0)
+					enemystate=0
+					enemies-=1
+					e1counted=1
+					enemylist-=enemy
+					usr.send_chat("[enemy] is defeated [enemies]/[maxenemies]", stream = "icout")
+					sleep(4)
+			if(maxenemies>=2)
+				if(enemy2.hp<=0 && e2counted==0)
+					enemy2state=0
+					enemies-=1
+					e2counted=1
+					enemylist-=enemy2
+					usr.send_chat("[enemy2] is defeated [enemies]/[maxenemies]", stream = "icout")
+					sleep(4)
+			if(maxenemies>=3)
+				if(enemy3.hp<=0 && e3counted==0)
+					enemy3state=0
+					enemies-=1
+					e3counted=1
+					enemylist-=enemy3
+					usr.send_chat("[enemy3] is defeated [enemies]/[maxenemies]", stream = "icout")
+					sleep(4)
+			if(maxenemies>=4)
+				if(enemy4.hp<=0 && e4counted==0)
+					enemy4state=0
+					enemies-=1
+					e4counted=1
+					enemylist-=enemy4
+					usr.send_chat("[enemy4] is defeated [enemies]/[maxenemies]", stream = "icout")
+					sleep(4)
+			sleep(1)
+			if(enemies<=0)
+				enemy.visible_message("All Enemies have been defeated! <b>FATE</b> complete!!", stream = "icout")
+				del enemy2
+				del enemy3
+				del enemy4
+				for(var/obj/Party/c in world)
+					if(battler1.partyID==c.partyID)
+						for(var/obj/FATECrystal/b in global.fate_crystals)
+							if(b.FATEID==c.FATEID)
+								Victory(c,b)
+								enemyalive=0
+								maxbattlers=0
+								enemies=0
+								sleep(4)
+								del enemy
+			sleep(1)
+			if(maxbattlers>=3)
+				if(battler3state=="Alive")
+					Greencheckplayer(battler3)
+					Statusprocparty(battler3)
+					if(battler3.status1=="Stun")
+						battler3.visible_message("[battler3] is stunned, and skips a turn!", stream = "icout")
+						battler3.totalstatus=0
+						battler3.status1=null
+						return
+					usr.send_chat("<font color=[battler3.textcolor]><b>[battler3]'s</font> turn, let's see what they can do!", stream = "icout")
+					var/list/actions=list("Attack","Ability","Rest")
+					if(green3==1)
+						actions+="Green Magic"
+					if(healer3==1)
+						actions+="Heal"
+					if(revive3==1)
+						actions+="Revive"
+					if(summon3==1)
+						actions+="Summon"
+					if(battler3.job=="Spellblade" || battler3.subjob=="Spellblade")
+						actions+="Infusion"
+					if(battler3.job=="Mystic Knight" || battler3.subjob=="Mystic Knight")
+						actions+="Blade Cast"
+						actions+="Blade Dance"
+					if(battler3.job=="Dancer" || battler3.subjob=="Dancer")
+						actions+="Dance"
+					if(battler3.job=="Black Mage" || battler3.subjob=="Black Mage")
+						actions+="Twin Cast"
+					if(battler3.job=="Samurai" || battler3.subjob=="Samurai")
+						actions+="Retaliate"
+					Greencheckplayer(battler3)
+					if(battler3.totalstatus>=1)
+						Statusprocparty(battler3)
+					var/achoice=input(battler3,"What action would you like to take this turn?") as anything in actions
+					switch(achoice)
+						if("Blade Cast")
+							var/list/twincast=list()
+							for(var/obj/perk/options in pattacklist3)
+								if(options.typing=="magical")
+									twincast+=options
+							var/target=input(battler3,"Which enemy would you like to attack?") as anything in enemylist
+							attackchoice=input(battler3,"Which Ability would you like to use this turn?") as anything in twincast
+							battler3.turnattack(battler3,target)
+							battler3.TurnAbility(battler3,target,attackchoice)
+						if("Blade Dance")
+							var/target=input(battler3,"Which enemy would you like to attack?") as anything in enemylist
+							battler3.turnattack(battler3,target)
+							battler3.turnattack(battler3,target)
+						if("Twin Cast")
+							var/list/twincast=list()
+							for(var/obj/perk/options in pattacklist3)
+								if(options.typing=="magical")
+									twincast+=options
+							attackchoice=input(battler3,"Which Ability would you like to use this turn?") as anything in twincast
+							var/target=input(battler3,"Which enemy would you like to attack?") as anything in enemylist
+							battler3.TurnAbility(battler3,target,attackchoice)
+							sleep(4)
+							attackchoice=input(battler3,"Which Ability would you like to use this turn?") as anything in twincast
+							var/target2=input(battler3,"Which enemy would you like to attack?") as anything in enemylist
+							battler3.TurnAbility(battler3,target2,attackchoice)
+							sleep(4)
+						if("Retaliate")
+							if(battler3.sp<30)
+								usr.send_chat("<font color=[battler3.textcolor]<b>[battler3] has attempted to use Retaliate, but could not spend 30 SP, and has forfeited their turn!", stream = "icout")
+							else
+								var/target=input(battler3,"Which enemy would you like to attack, setting Retaliate up?") as anything in enemylist
+								battler2.turnattack(battler3,target)
+								usr.send_chat("<font color=[battler3.textcolor]<b>[battler3] has entered a <b>Retaliation</b> stance!", stream = "icout")
+								battler3.sp-=30
+								battler3.retaliate=1
+						if("Infusion")
+							var/list/Infusions=list("Fire","Water","Ice","Thunder","Wind","Holy","Dark","Flare")
+							var/infuchoice=input(battler3,"Which Infusion would you like to apply to your weapon?") as anything in Infusions
+							battler3.infusion=infuchoice
+							usr.send_chat("<font color=[battler3.textcolor]<b>[battler3] has set their Infusion type to [infuchoice]!", stream = "icout")
+						if("Summon")
+							var/target=input(battler3,"Which enemy would you like to summon a companion to attack?") as anything in enemylist
+							var/summon=input(battler3,"Which companion would you like to call on the power of?") as anything in summonlist3
+							Summonattack(battler3, target, summon)
+						if("Attack")
+							var/target=input(battler3,"Which enemy would you like to attack?") as anything in enemylist
+							battler3.turnattack(battler3,target)
+							sleep(4)
+						if("Ability")
+							attackchoice=input(battler3,"Which Ability would you like to use this turn?") as anything in pattacklist3
+							var/target=input(battler3,"Which enemy would you like to attack?") as anything in enemylist
+							battler3.TurnAbility(battler3,target,attackchoice)
+							sleep(4)
+						if("Heal")
+							var/target=input(battler3,"Which ally would you like to heal?") as anything in battlelist
+							healchoice=input(battler3,"Which Healing ability would you like to use this turn?") as anything in heallist3
+							battler3.Heal(battler3,target,healchoice)
+							sleep(4)
+						if("Rest")
+							var/conboost=(6*battler3.conmod)
+							var/rest2=conboost+10
+							var/rest1=conboost+5
+							var/restvalue=rand(rest1,rest2)
+							usr.send_chat("<font color=[battler3.textcolor]><b>[battler3]</font> has decided to rest, and restores [restvalue] HP and MP!!", stream = "icout")
+							battler3.hp+=restvalue
+							battler3.mp+=restvalue
+							if(battler3.hp>battler3.mhp)
+								battler3.hp=battler3.mhp
+							if(battler3.mp>battler3.mmp)
+								battler3.mp=battler3.mmp
+						if("Green Magic")
+							var/obj/perk/spell=input(battler3,"Which Green Magic ability would you like to use?") as anything in greenlist3
+							if(spell.dispel>=1)
+								if(spell.multi==1)
+									for(var/obj/npc/a in enemylist)
+										DispelPlayer(battler3, a, spell)
+								if(spell.multi==0)
+									var/dispelchoice=input(battler3,"Which enemy would you like to dispel an effect from?") as anything in enemylist
+									DispelPlayer(battler3, dispelchoice, spell)
+							if(spell.multi==0)
+								var/targetchoice=input(battler3,"Who would you like to use it on?") as anything in battlelist
+								GreenMagicOne(battler3, targetchoice, spell)
+							if(spell.multi==1)
+								if(battler1state=="Alive")
+									GreenMagicOne(battler3, battler1, spell)
+								if(battler2state=="Alive")
+									GreenMagicOne(battler3, battler2, spell)
+								if(battler3state=="Alive")
+									GreenMagicOne(battler3,battler3, spell)
+								if(battler4state=="Alive")
+									GreenMagicOne(battler3,battler4, spell)
+						if("Revive")
+							var/list/revivechoice=list()
+							if(battler1state!="Alive")
+								revivechoice+=battler1
+							if(battler2state!="Alive")
+								revivechoice+=battler2
+							if(battler3state!="Alive")
+								revivechoice+=battler3
+							if(battler4state!="Alive")
+								revivechoice+=battler4
+							var/obj/perk/spell=input(battler3,"Which revive Spell would you like to use?") as anything in revivelist3
+							if(spell.multi==0)
+								var/mob/choice=input(battler3,"Who would you like to revive with this Spell?") as anything in revivechoice
+								Revive(battler3, choice, spell)
+								if(choice.bposition=="battler1")
+									battler1state="Alive"
+									battlelist+=choice
+									battlers+=1
+									b1counted=0
+								if(choice.bposition=="battler2")
+									battler2state="Alive"
+									battlelist+=choice
+									battlers+=1
+									b2counted=0
+								if(choice.bposition=="battler3")
+									battler3state="Alive"
+									battlelist+=choice
+									battlers+=1
+									b3counted=0
+								if(choice.bposition=="battler4")
+									battler4state="Alive"
+									battlelist+=choice
+									battlers+=1
+									b4counted=0
+							if(spell.multi==1)
+								if(battler1state!="Alive")
+									battler1state="Alive"
+									battlelist+=battler1
+									Revive(battler3, battler1, spell)
+									battlers+=1
+									b1counted=0
+								if(battler2state!="Alive")
+									battler2state="Alive"
+									battlelist+=battler2
+									Revive(battler3, battler2, spell)
+									battlers+=1
+									b2counted=0
+								if(battler3state!="Alive")
+									battler3state="Alive"
+									battlelist+=battler3
+									Revive(battler3, battler3, spell)
+									battlers+=1
+									b3counted=0
+								if(battler4state!="Alive")
+									battler4state="Alive"
+									battlelist+=battler4
+									Revive(battler3, battler4, spell)
+									battlers+=1
+									b4counted=0
+			sleep(1)
+			if(maxenemies>=1)
+				if(enemy.hp<=0 && e1counted==0)
+					enemystate=0
+					enemies-=1
+					e1counted=1
+					enemylist-=enemy
+					usr.send_chat("[enemy] is defeated [enemies]/[maxenemies]", stream = "icout")
+					sleep(4)
+			if(maxenemies>=2)
+				if(enemy2.hp<=0 && e2counted==0)
+					enemy2state=0
+					enemies-=1
+					e2counted=1
+					enemylist-=enemy2
+					usr.send_chat("[enemy2] is defeated [enemies]/[maxenemies]", stream = "icout")
+					sleep(4)
+			if(maxenemies>=3)
+				if(enemy3.hp<=0 && e3counted==0)
+					enemy3state=0
+					enemies-=1
+					e3counted=1
+					enemylist-=enemy3
+					usr.send_chat("[enemy3] is defeated [enemies]/[maxenemies]", stream = "icout")
+					sleep(4)
+			if(maxenemies>=4)
+				if(enemy4.hp<=0 && e4counted==0)
+					enemy4state=0
+					enemies-=1
+					e4counted=1
+					enemylist-=enemy4
+					usr.send_chat("[enemy4] is defeated [enemies]/[maxenemies]", stream = "icout")
+					sleep(4)
+			if(enemies<=0)
+				enemy.visible_message("All Enemies have been defeated! <b>FATE</b> complete!!", stream = "icout")
+				del enemy2
+				del enemy3
+				del enemy4
+				for(var/obj/Party/c in world)
+					if(battler1.partyID==c.partyID)
+						for(var/obj/FATECrystal/b in global.fate_crystals)
+							if("[b.FATEID]"=="[c.FATEID]")
+								Victory(c,b)
+								enemyalive=0
+								maxbattlers=0
+								enemies=0
+								sleep(4)
+								del enemy
+			sleep(1)
+			if(maxbattlers>=4)
+				if(battler4state=="Alive")
+					Greencheckplayer(battler4)
+					Statusprocparty(battler4)
+					if(battler4.status1=="Stun")
+						battler4.visible_message("[battler4] is stunned, and skips a turn!", stream = "icout")
+						battler4.totalstatus=0
+						battler4.status1=null
+						return
+					usr.send_chat("<font color=[battler4.textcolor]><b>[battler4]'s</font> turn, let's see what they can do!", stream = "icout")
+					var/list/actions=list("Attack","Ability","Rest")
+					if(green4==1)
+						actions+="Green Magic"
+					if(healer4==1)
+						actions+="Heal"
+					if(revive4==1)
+						actions+="Revive"
+					if(summon4==1)
+						actions+="Summon"
+					if(battler4.job=="Spellblade" || battler4.subjob=="Spellblade")
+						actions+="Infusion"
+					if(battler4.job=="Mystic Knight" || battler4.subjob=="Mystic Knight")
+						actions+="Blade Cast"
+						actions+="Blade Dance"
+					if(battler4.job=="Dancer" || battler4.subjob=="Dancer")
+						actions+="Dance"
+					if(battler4.job=="Black Mage" || battler4.subjob=="Black Mage")
+						actions+="Twin Cast"
+					if(battler4.job=="Samurai" || battler4.subjob=="Samurai")
+						actions+="Retaliate"
+					Greencheckplayer(battler4)
+					if(battler4.totalstatus>=1)
+						Statusprocparty(battler4)
+					var/achoice=input(battler4,"What action would you like to take this turn?") as anything in actions
+					switch(achoice)
+						if("Blade Cast")
+							var/list/twincast=list()
+							for(var/obj/perk/options in pattacklist4)
+								if(options.typing=="magical")
+									twincast+=options
+							var/target=input(battler4,"Which enemy would you like to attack?") as anything in enemylist
+							attackchoice=input(battler4,"Which Ability would you like to use this turn?") as anything in twincast
+							battler4.turnattack(battler4,target)
+							battler4.TurnAbility(battler4,target,attackchoice)
+						if("Blade Dance")
+							var/target=input(battler4,"Which enemy would you like to attack?") as anything in enemylist
+							battler4.turnattack(battler4,target)
+							battler4.turnattack(battler4,target)
+						if("Twin Cast")
+							var/list/twincast=list()
+							for(var/obj/perk/options in pattacklist4)
+								if(options.typing=="magical")
+									twincast+=options
+							attackchoice=input(battler4,"Which Ability would you like to use this turn?") as anything in twincast
+							var/target=input(battler4,"Which enemy would you like to attack?") as anything in enemylist
+							battler4.TurnAbility(battler4,target,attackchoice)
+							sleep(4)
+							attackchoice=input(battler4,"Which Ability would you like to use this turn?") as anything in twincast
+							var/target2=input(battler4,"Which enemy would you like to attack?") as anything in enemylist
+							battler4.TurnAbility(battler4,target2,attackchoice)
+							sleep(4)
+						if("Retaliate")
+							if(battler4.sp<30)
+								usr.send_chat("<font color=[battler4.textcolor]<b>[battler4] has attempted to use Retaliate, but could not spend 30 SP, and has forfeited their turn!", stream = "icout")
+							else
+								var/target=input(battler4,"Which enemy would you like to attack, setting Retaliate up?") as anything in enemylist
+								battler4.turnattack(battler2,target)
+								usr.send_chat("<font color=[battler4.textcolor]<b>[battler4] has entered a <b>Retaliation</b> stance!", stream = "icout")
+								battler4.sp-=30
+								battler4.retaliate=1
+						if("Infusion")
+							var/list/Infusions=list("Fire","Water","Ice","Thunder","Wind","Holy","Dark","Flare")
+							var/infuchoice=input(battler4,"Which Infusion would you like to apply to your weapon?") as anything in Infusions
+							battler4.infusion=infuchoice
+							usr.send_chat("<font color=[battler4.textcolor]<b>[battler4] has set their Infusion type to [infuchoice]!", stream = "icout")
+						if("Summon")
+							var/target=input(battler4,"Which enemy would you like to summon a companion to attack?") as anything in enemylist
+							var/summon=input(battler4,"Which companion would you like to call on the power of?") as anything in summonlist4
+							Summonattack(battler4, target, summon)
+						if("Attack")
+							var/target=input(battler4,"Which enemy would you like to attack?") as anything in enemylist
+							battler4.turnattack(battler4,target)
+							sleep(4)
+						if("Ability")
+							attackchoice=input(battler4,"Which Ability would you like to use this turn?") as anything in pattacklist4
+							var/target=input(battler4,"Which enemy would you like to attack?") as anything in enemylist
+							battler4.TurnAbility(battler4,target,attackchoice)
+							sleep(4)
+						if("Heal")
+							var/target=input(battler4,"Which ally would you like to heal?") as anything in battlelist
+							healchoice=input(battler4,"Which Healing ability would you like to use this turn?") as anything in heallist4
+							battler4.Heal(battler4,target,healchoice)
+							sleep(4)
+						if("Rest")
+							var/conboost=(6*battler4.conmod)
+							var/rest2=conboost+10
+							var/rest1=conboost+5
+							var/restvalue=rand(rest1,rest2)
+							usr.send_chat("<font color=[battler4.textcolor]><b>[battler4]</font> has decided to rest, and restores [restvalue] HP and MP!!", stream = "icout")
+							battler4.hp+=restvalue
+							battler4.mp+=restvalue
+							if(battler4.hp>battler4.mhp)
+								battler4.hp=battler4.mhp
+							if(battler4.mp>battler4.mmp)
+								battler4.mp=battler4.mmp
+						if("Green Magic")
+							var/obj/perk/spell=input(battler4,"Which Green Magic ability would you like to use?") as anything in greenlist4
+							if(spell.dispel>=1)
+								if(spell.multi==1)
+									for(var/obj/npc/a in enemylist)
+										DispelPlayer(battler4, a, spell)
+								if(spell.multi==0)
+									var/dispelchoice=input(battler4,"Which enemy would you like to dispel an effect from?") as anything in enemylist
+									DispelPlayer(battler4, dispelchoice, spell)
+							if(spell.multi==0)
+								var/targetchoice=input(battler4,"Who would you like to use it on?") as anything in battlelist
+								GreenMagicOne(battler4, targetchoice, spell)
+							if(spell.multi==1)
+								if(battler1state=="Alive")
+									GreenMagicOne(battler4, battler1, spell)
+								if(battler2state=="Alive")
+									GreenMagicOne(battler4, battler2, spell)
+								if(battler3state=="Alive")
+									GreenMagicOne(battler4,battler3, spell)
+								if(battler4state=="Alive")
+									GreenMagicOne(battler4,battler4, spell)
+						if("Revive")
+							var/list/revivechoice=list()
+							if(battler1state!="Alive")
+								revivechoice+=battler1
+							if(battler2state!="Alive")
+								revivechoice+=battler2
+							if(battler3state!="Alive")
+								revivechoice+=battler3
+							if(battler4state!="Alive")
+								revivechoice+=battler4
+							var/obj/perk/spell=input(battler4,"Which revive Spell would you like to use?") as anything in revivelist4
+							if(spell.multi==0)
+								var/mob/choice=input(battler4,"Who would you like to revive with this Spell?") as anything in revivechoice
+								Revive(battler4, choice, spell)
+								if(choice.bposition=="battler1")
+									battler1state="Alive"
+									battlelist+=choice
+									battlers+=1
+									b1counted=0
+								if(choice.bposition=="battler2")
+									battler2state="Alive"
+									battlelist+=choice
+									battlers+=1
+									b2counted=0
+								if(choice.bposition=="battler3")
+									battler3state="Alive"
+									battlelist+=choice
+									battlers+=1
+									b3counted=0
+								if(choice.bposition=="battler4")
+									battler4state="Alive"
+									battlelist+=choice
+									battlers+=1
+									b4counted=0
+							if(spell.multi==1)
+								if(battler1state!="Alive")
+									battler1state="Alive"
+									battlelist+=battler1
+									Revive(battler4, battler1, spell)
+									battlers+=1
+									b1counted=0
+								if(battler2state!="Alive")
+									battler2state="Alive"
+									battlelist+=battler2
+									Revive(battler4, battler2, spell)
+									battlers+=1
+									b2counted=0
+								if(battler3state!="Alive")
+									battler3state="Alive"
+									battlelist+=battler3
+									Revive(battler4, battler3, spell)
+									battlers+=1
+									b3counted=0
+								if(battler4state!="Alive")
+									battler4state="Alive"
+									battlelist+=battler4
+									Revive(battler4, battler4, spell)
+									battlers+=1
+									b4counted=0
+			sleep(1)
+			if(maxenemies>=1)
+				if(enemy.hp<=0 && e1counted==0)
+					enemystate=0
+					enemies-=1
+					e1counted=1
+					enemylist-=enemy
+					usr.send_chat("[enemy] is defeated [enemies]/[maxenemies]", stream = "icout")
+					sleep(4)
+			if(maxenemies>=2)
+				if(enemy2.hp<=0 && e2counted==0)
+					enemy2state=0
+					enemies-=1
+					e2counted=1
+					enemylist-=enemy2
+					usr.send_chat("[enemy2] is defeated [enemies]/[maxenemies]", stream = "icout")
+					sleep(4)
+			if(maxenemies>=3)
+				if(enemy3.hp<=0 && e3counted==0)
+					enemy3state=0
+					enemies-=1
+					e3counted=1
+					enemylist-=enemy3
+					usr.send_chat("[enemy3] is defeated [enemies]/[maxenemies]", stream = "icout")
+					sleep(4)
+			if(maxenemies>=4)
+				if(enemy4.hp<=0 && e4counted==0)
+					enemy4state=0
+					enemies-=1
+					e4counted=1
+					enemylist-=enemy4
+					usr.send_chat("[enemy4] is defeated [enemies]/[maxenemies]", stream = "icout")
+					sleep(4)
+			sleep(1)
+			if(enemies<=0)
+				enemy.visible_message("All Enemies have been defeated! <b>FATE</b> complete!!", stream = "icout")
+				del enemy2
+				del enemy3
+				del enemy4
+				for(var/obj/Party/c in world)
+					if(battler1.partyID==c.partyID)
+						for(var/obj/FATECrystal/b in global.fate_crystals)
+							if("[b.FATEID]"=="[c.FATEID]")
+								Victory(c,b)
+								enemyalive=0
+								maxbattlers=0
+								enemies=0
+								sleep(4)
+								del enemy
 			sleep(1)
 
-		Enemyheal(var/obj/npc/user,var/obj/npc/target,var/obj/perk/spell)
-			var/range1=10
-			var/range2=35
-			var/classbonus=0
-			if(spell.level==1)
-				classbonus+=10
-			if(spell.level==2)
-				classbonus+=25
-			if(spell.level==3)
-				classbonus+=35
-			if(spell.level==4)
-				classbonus+=45
-			if(spell.level==5)
-				classbonus+=55
-			if(spell.level==6)
-				classbonus+=85
-			var/heal=rand(range1,range2)
-			var/healbonus=(user.chamod*2)
-			var/healtotal=heal+healbonus+classbonus
-			user.mp-=spell.mcost
-			Healanimation(user,target)
-			user.visible_message("<font color=[user.textcolor]><b>[user]</b></font> has healed <font color=[target.textcolor]><b>[target]</b></font> for <b><font color=#66F13D>[healtotal]</font></b> HP! | Cost: <b><font color=#8FE6D2>[spell.mcost] [spell.costtype]", stream = "icout")
-			target.hp+=healtotal
-			if(target.hp>target.mhp)
-				target.hp=target.mhp
-			if(spell.cleanse==1)
-				target.status1=null
-				target.totalstatus=0
-				target.statusturns=0
-			ShowHPBar(target)
-			ShowMPBar(target)
-			ShowSPBar(target)
-			ShowHPBar(user)
-			ShowMPBar(user)
-			ShowSPBar(user)
-			sleep(12)
-atom
-	proc
-		Enemyability(var/obj/npc/user,var/mob/target,var/obj/perk/skill)
-			var/aoresult=rand(1,20)
-			var/aresult
-			var/amod
-			var/doresult
-			var/dmod
-			var/dresult
-			var/abilitydamage
-			var/statuschance=rand(1,100)
-			if(skill.atype=="standard")
-				amod=Checkdamtype(skill.damsource,user)
-				if(skill.typing=="magical")
-					aresult=aoresult+skill.addhit+amod+user.rankbonus+user.mab
-				else
-					aresult=aoresult+skill.addhit+amod+user.rankbonus+user.pab
-				doresult=skill.raw_attack_damage_roll()
-				dmod=Checkdamtype(skill.damsource,user)
-				abilitydamage=skill.raw_attack_damage_roll()
-				if(skill.typing=="magical")
-					dresult=doresult+dmod+skill.adddam+user.mdb+skill.adddam+abilitydamage-target.basedr
-				else
-					dresult=doresult+dmod+skill.adddam+user.pdb+skill.adddam+abilitydamage-target.basedr
-			if(skill.atype=="weapon")
-				var/obj/item/Weapon/wepchoice = user.eweapon
-				amod=Checkdamtype(wepchoice.damsource,user)
-				if(skill.typing=="magical")
-					aresult=aoresult+skill.addhit+amod+user.rankbonus+user.mab
-				else
-					aresult=aoresult+skill.addhit+amod+user.rankbonus+user.pab
-				doresult=rand(wepchoice.range1,wepchoice.range2)
-				dmod=Checkdamtype(skill.damsource,user)
-				abilitydamage=skill.raw_attack_damage_roll()
-				if(skill.typing=="magical")
-					dresult=doresult+dmod+wepchoice.adddam+user.mdb+skill.adddam+abilitydamage-target.basedr
-				else
-					dresult=doresult+dmod+wepchoice.adddam+user.pdb+skill.adddam+abilitydamage-target.basedr
-			if(skill.atype=="weaponsave")
-				var/obj/item/Weapon/wepchoice = user.eweapon
-				amod=Checkdamtype(wepchoice.damsource,user)
-				if(skill.typing=="magical")
-					aresult=skill.basecheck+amod+user.rankbonus+skill.addhit
-				else
-					aresult=skill.basecheck+amod+user.rankbonus+skill.addhit
-				doresult=rand(wepchoice.range1,wepchoice.range2)
-				dmod=Checkdamtype(skill.damsource,user)
-				abilitydamage=skill.raw_attack_damage_roll()
-				if(skill.typing=="magical")
-					dresult=doresult+dmod+wepchoice.adddam+user.mdb+skill.adddam+abilitydamage-target.basedr
-				else
-					dresult=doresult+dmod+wepchoice.adddam+user.pdb+skill.adddam+abilitydamage-target.basedr
-			if(skill.atype=="save")
-				amod=Checkdamtype(skill.damsource,user)
-				if(skill.typing=="magical")
-					aresult=skill.basecheck+amod+user.rankbonus+skill.addhit
-				else
-					aresult=skill.basecheck+amod+user.rankbonus+skill.addhit
-				doresult=skill.raw_attack_damage_roll()
-				dmod=Checkdamtype(skill.damsource,user)
-				abilitydamage=skill.raw_attack_damage_roll()
-				if(skill.typing=="magical")
-					dresult=doresult+dmod+skill.adddam+user.mdb+skill.adddam+abilitydamage-target.basedr
-				else
-					dresult=doresult+dmod+skill.adddam+user.pdb+skill.adddam+abilitydamage-target.basedr
-			Enemyanimation(user,target,skill)
-			user.visible_message("<font color=#F8E959><b>[user]</font> has used [skill] to attack <font color=[target.textcolor]><b>[target]</b>!!", stream = "icout")
-			if(target.status1=="Squall" || target.status2=="Squall" || target.status3=="Squall")
-				if(skill.element=="Fire")
-					dresult+=20
-					user.visible_message("The Squall effect grants this Fire attack 20 extra damage!", stream = "icout")
-			if(target.status1=="Wet" || target.status2=="Wet" || target.status3=="Wet")
-				if(skill.element=="Thunder")
-					aresult+=5
-					dresult+=15
-					user.visible_message("The Wet effect grants this Thunder attack +5 to hit, and 15 extra damage!", stream = "icout")
-			if(user.status1=="Heavy" || user.status2=="Heavy" || user.status3=="Heavy")
-				dresult-=10
-				aresult-=3
-				user.visible_message("[user] is greatly burdened with how <b>Heavy</b> they are!", stream = "icout")
-			if(user.status1=="Slow" || user.status2=="Slow" || user.status3=="Slow")
-				aresult-=5
-				AddStun(user)
-				user.visible_message("[user] is afflicted with <b>Slow</b> and must skip their next action!", stream = "icout")
-			if(user.status1=="Weakness" || user.status2=="Weakness" || user.status3=="Weakness")
-				dresult-=15
-				user.visible_message("[user]'s attack is greatly undermined with how <b>Weak</b> they're feeling!", stream = "icout")
-			if(user.status1=="Paralyzed" || user.status2=="Paralyzed" || user.status3=="Paralyzed")
-				var/paralyzechance=rand(30,100)
-				if(paralyzechance>=70)
-					user.visible_message("[user] is <b>Paralyzed</b> and failed to perform their action this turn!", stream = "icout")
-					return
-				else
-			if(aresult<=0)
-				aresult=0
-			if(dresult<=0)
-				dresult=0
-			if(skill.typing=="physical")
-				if(user.positivestatus1=="Bravery" || user.positivestatus2=="Bravery" || user.positivestatus3=="Bravery")
-					dresult+=10
-				if(target.positivestatus1=="Protect" || target.positivestatus2=="Protect" || target.positivestatus3=="Protect")
-					dresult=round(dresult*0.5)
-				if(target.positivestatus1=="Pailing" || target.positivestatus2=="Pailing" || target.positivestatus3=="Pailing")
-					user.visible_message("[target]'s <b>Pailing</b> status effect has prevented an instance of Physical damage, and been consumed!", stream = "icout")
-					dresult=0
-					if(target.positivestatus1=="Pailing")
-						target.positivestatus1=null
-						positiveturns1=0
-					if(target.positivestatus2=="Pailing")
-						target.positivestatus2=null
-						positiveturns2=0
-					if(target.positivestatus3=="Pailing")
-						target.positivestatus3=null
-						positiveturns3=0
-					if(dresult<=0)
-						dresult=0
-					if(dresult<=0)
-						dresult=0
-			if(skill.typing=="magical")
-				if(user.positivestatus1=="Faith" || user.positivestatus2=="Faith" || user.positivestatus3=="Faith")
-					dresult+=10
-				if(target.positivestatus1=="Shell" || target.positivestatus2=="Shell" || target.positivestatus3=="Shell")
-					dresult=round(dresult*0.5)
-				if(target.positivestatus1=="Magic Barrier" || target.positivestatus2=="Magic Barrier" || target.positivestatus3=="Magic Barrier")
-					user.visible_message("[target]'s <b>Magic Barrier</b> status effect has prevented an instance of Magical damage, and been consumed!", stream = "icout")
-					dresult=0
-					if(target.positivestatus1=="Magic Barrier")
-						target.positivestatus1=null
-						positiveturns1=0
-					if(target.positivestatus2=="Magic Barrier")
-						target.positivestatus2=null
-						positiveturns2=0
-					if(target.positivestatus3=="Magic Barrier")
-						target.positivestatus3=null
-						positiveturns3=0
-					if(dresult<=0)
-						dresult=0
-			if(skill.element=="Fire")
-				if(target.positivestatus1=="Barfire" || target.positivestatus2=="Barfire" || target.positivestatus3=="Barfire")
-					user.visible_message("[target]'s <b>Barfire</b> status effect has prevented an instance of Fire damage, and been consumed!", stream = "icout")
-					dresult=0
-					if(target.positivestatus1=="Barfire")
-						target.positivestatus1=null
-						positiveturns1=0
-					if(target.positivestatus2=="Barfire")
-						target.positivestatus2=null
-						positiveturns2=0
-					if(target.positivestatus3=="Barfire")
-						target.positivestatus3=null
-						positiveturns3=0
-			if(skill.element=="Water")
-				if(target.positivestatus1=="Barwater" || target.positivestatus2=="Barwater" || target.positivestatus3=="Barwater")
-					user.visible_message("[target]'s <b>Barwater</b> status effect has prevented an instance of Water damage, and been consumed!", stream = "icout")
-					dresult=0
-					if(target.positivestatus1=="Barwater")
-						target.positivestatus1=null
-						positiveturns1=0
-					if(target.positivestatus2=="Barwater")
-						target.positivestatus2=null
-						positiveturns1=0
-					if(target.positivestatus3=="Barwater")
-						target.positivestatus3=null
-						positiveturns1=0
-			if(skill.element=="Ice")
-				if(target.positivestatus1=="Barblizzard" || target.positivestatus2=="Barblizzard" || target.positivestatus3=="Barblizzard")
-					user.visible_message("[target]'s <b>Barblizzard</b> status effect has prevented an instance of Ice damage, and been consumed!", stream = "icout")
-					dresult=0
-					if(target.positivestatus1=="Barblizzard")
-						target.positivestatus1=null
-						positiveturns1=0
-					if(target.positivestatus2=="Barblizzard")
-						target.positivestatus2=null
-						positiveturns1=0
-					if(target.positivestatus3=="Barblizzard")
-						target.positivestatus3=null
-						positiveturns1=0
-			if(skill.element=="Thunder")
-				if(target.positivestatus1=="Barthunder" || target.positivestatus2=="Barthunder" || target.positivestatus3=="Barthunder")
-					user.visible_message("[target]'s <b>Barthunder</b> status effect has prevented an instance of Thunder damage, and been consumed!", stream = "icout")
-					dresult=0
-					if(target.positivestatus1=="Barthunder")
-						target.positivestatus1=null
-						positiveturns1=0
-					if(target.positivestatus2=="Barthunder")
-						target.positivestatus2=null
-						positiveturns1=0
-					if(target.positivestatus3=="Barthunder")
-						target.positivestatus3=null
-						positiveturns1=0
-			if(skill.element=="Earth")
-				if(target.positivestatus1=="Barstone" || target.positivestatus2=="Barstone" || target.positivestatus3=="Barstone")
-					user.visible_message("[target]'s <b>Barblizzard</b> status effect has prevented an instance of Ice damage, and been consumed!", stream = "icout")
-					dresult=0
-					if(target.positivestatus1=="Barstone")
-						target.positivestatus1=null
-						positiveturns1=0
-					if(target.positivestatus2=="Barstone")
-						target.positivestatus2=null
-						positiveturns1=0
-					if(target.positivestatus3=="Barstone")
-						target.positivestatus3=null
-						positiveturns1=0
-			if(skill.element=="Wind")
-				if(target.positivestatus1=="Barwind" || target.positivestatus2=="Barwind" || target.positivestatus3=="Barwind")
-					user.visible_message("[target]'s <b>Barblizzard</b> status effect has prevented an instance of Ice damage, and been consumed!", stream = "icout")
-					dresult=0
-					if(target.positivestatus1=="Barwind")
-						target.positivestatus1=null
-						positiveturns1=0
-					if(target.positivestatus2=="Barwind")
-						target.positivestatus2=null
-						positiveturns1=0
-					if(target.positivestatus3=="Barwind")
-						target.positivestatus3=null
-						positiveturns1=0
-//bubble procs after Protect, Shell, and Bar spells.
-			if(target.positivestatus1=="Bubble" || target.positivestatus2=="Bubble" || target.positivestatus3=="Bubble")
-				var/bubble=round(target.mhp*0.15)
-				if(dresult<bubble)
-					user.visible_message("<b>[target]'s</b> Bubble status effect has deflected and nullified [dresult] damage!!", stream = "icout")
-				if(dresult>=bubble)
-					user.visible_message("<b>[target]'s</b> Bubble has popped, but has absorbed [bubble] damage!!", stream = "icout")
-					dresult-=bubble
-					if(target.positivestatus1=="Bubble")
-						target.positivestatus1=null
-						positiveturns1=0
-					if(target.positivestatus2=="Bubble")
-						target.positivestatus2=null
-						positiveturns2=0
-					if(target.positivestatus3=="Bubble")
-						target.positivestatus3=null
-						positiveturns3=0
-					if(dresult>=0)
-						dresult=0
-			if(user.positivestatus1=="Haste" || user.positivestatus2=="Haste" || user.positivestatus3=="Haste")
-				aresult+=5
-//stoneskin procs after all other defensive boons do
-			if(target.positivestatus1=="Stoneskin" || target.positivestatus2=="Stoneskin" || target.positivestatus3=="Stoneskin")
-				dresult-=5
-				target.stoneskindam+=dresult
-				user.visible_message("<b>[target]'s</b> Stoneskin has absorbed 5 damage!!", stream = "icout")
-				if(target.stoneskindam>=25)
-					user.visible_message("<b>[target]'s</b> Stoneskin has shattered!!", stream = "icout")
-					if(target.positivestatus1=="Stoneskin")
-						target.positivestatus1=null
-						positiveturns1=0
-					if(target.positivestatus2=="Stoneskin")
-						target.positivestatus2=null
-						positiveturns2=0
-					if(target.positivestatus3=="Stoneskin")
-						target.positivestatus3=null
-						positiveturns3=0
-			if(target.job=="Paladin" || target.subjob=="Paladin")
-				if(skill.element=="Holy")
-					user.visible_message("<font color=[target.textcolor]><b>[target]</font> is a Paladin, and takes half damage from Holy abilities!", stream = "icout")
-					dresult=round(dresult*0.5)
-			if(target.job=="Dark Knight" || target.subjob=="Dark Knight")
-				if(skill.element=="Dark" || skill.element=="Death" || skill.element=="Drain")
-					user.visible_message("<font color=[target.textcolor]><b>[target]</font> is a Dark Knight, and takes half damage from Dark abilities!", stream = "icout")
-					dresult=round(dresult*0.5)
-			if(target.job=="Geomancer" || target.subjob=="Geomancer")
-				if(skill.element=="Fire")
-					user.visible_message("<font color=[target.textcolor]><b>[target]</font> is a Geomancer, and takes half damage from elemental abilities!", stream = "icout")
-					dresult=round(dresult*0.5)
-				if(skill.element=="Thunder")
-					user.visible_message("<font color=[target.textcolor]><b>[target]</font> is a Geomancer, and takes half damage from elemental abilities!", stream = "icout")
-					dresult=round(dresult*0.5)
-				if(skill.element=="Water")
-					user.visible_message("<font color=[target.textcolor]><b>[target]</font> is a Geomancer, and takes half damage from elemental abilities!", stream = "icout")
-					dresult=round(dresult*0.5)
-				if(skill.element=="Ice")
-					user.visible_message("<font color=[target.textcolor]><b>[target]</font> is a Geomancer, and takes half damage from elemental abilities!", stream = "icout")
-					dresult=round(dresult*0.5)
-				if(skill.element=="Earth")
-					user.visible_message("<font color=[target.textcolor]><b>[target]</font> is a Geomancer, and takes half damage from elemental abilities!", stream = "icout")
-					dresult=round(dresult*0.5)
-				if(skill.element=="Nature")
-					user.visible_message("<font color=[target.textcolor]><b>[target]</font> is a Geomancer, and takes half damage from elemental abilities!", stream = "icout")
-					dresult=round(dresult*0.5)
-			if(aresult>=target.ac)
-				user.visible_message("<b>To hit: [aresult] vs <b>[target.ac]</b> | It was a hit!! <b>[user]</b> has dealt <b><font color=#FEA14F>[dresult]</b></font> damage to <b>[target]</b>!!", stream = "icout")
-				target.hp-=dresult
-				var/drainvalue=round(dresult*0.5)
-				if(skill.element=="Drain")
-					user.visible_message("<font color=#F8E959><b>[user]</font> has drained <b>[target]</b>  for <font color=#93F752>[drainvalue] HP!", stream = "icout")
-					user.hp+=drainvalue
-					if(user.hp>=user.mhp)
-						user.hp=user.mhp
-				if(skill.element=="Osmose")
-					user.visible_message("<font color=#F8E959><b>[user]</font> has drained <b>[target]</b>  for <font color=#4FC7ED>[drainvalue] MP and SP!", stream = "icout")
-					user.mp+=drainvalue
-					user.sp+=drainvalue
-					if(user.mp>=user.mmp)
-						user.mp=user.msp
-					if(user.sp>=user.msp)
-						user.sp=user.msp
-				if(target.status1==null || target.status2==null || target.status3==null)
-					if(skill.element=="Death")
-						if(statuschance>=50)
-							AddDoom(target)
-					if(skill.element=="Time")
-						if(statuschance>=70)
-							AddStun(target)
-						if(statuschance>=10)
-							AddSlow(target)
-					if(skill.element=="Earth")
-						if(statuschance>=90)
-							AddStun(target)
-						if(statuschance>=50)
-							AddHeavy(target)
-					if(skill.element=="Metal")
-						if(statuschance>=40)
-							AddBleed(target)
-					if(skill.element=="Fire")
-						if(statuschance>=70)
-							AddBurn(target)
-					if(skill.element=="Nature")
-						if(statuschance>=50)
-							AddWeakness(target)
-						if(statuschance>=80)
-							AddPoison(target)
-					if(skill.element=="Bio")
-						if(statuschance>=60)
-							AddPoison(target)
-					if(skill.element=="Dark")
-						if(statuschance>=70)
-							AddBleed(target)
-						if(statuschance>=20)
-							AddWeakness(target)
-					if(skill.element=="Water")
-						if(statuschance>=20)
-							AddWet(target)
-					if(skill.element=="Wind")
-						if(statuschance>=50)
-							AddSquall(target)
-					if(skill.element=="Ice")
-						if(statuschance>=50)
-							AddFrostbite(target)
-					if(skill.element=="Thunder")
-						if(statuschance>=50)
-							AddWeakness(target)
-						if(statuschance>=65)
-							AddParalyzed(target)
-						if(statuschance>=95)
-							AddStun(target)
-				if(target.retaliate==1)
-					turnattack(target,user)
-					target.retaliate=0
-					if(target.hp<=0)
-						Death(target)
-						user.visible_message("[target] has reached 0 HP and is removed from battle!", stream = "icout")
-						target.hp=0
-				ShowHPBar(target)
-			else
-				Evade(target)
-				user.visible_message("<b>To hit: [aresult] vs <b>[target.ac]</b> | It missed!", stream = "icout")
-				if(target.retaliate==1)
-					turnattack(target,user)
-					target.retaliate=0
-			ShowHPBar(target)
-			ShowMPBar(target)
-			ShowSPBar(target)
-			ShowHPBar(user)
-			ShowMPBar(user)
-			ShowSPBar(user)
-		turnattack(var/mob/user, var/obj/npc/target)
-			var/aresult
-			var/amod
-			var/doresult
-			var/dmod
-			var/dresult
-			var/extraanimation
-			var/infusionpower
-			var/obj/item/Weapon/wepchoice = user.righthand
-			amod=Checkdamtype(wepchoice.damsource,user)
-			if(wepchoice.typing=="magical")
-				aresult=rand(1,20)+wepchoice.addhit+amod+user.rankbonus+user.mab
-			else
-				aresult=rand(1,20)+wepchoice.addhit+amod+user.rankbonus+user.pab
-			doresult=rand(wepchoice.range1,wepchoice.range2)
-			dmod=Checkdamtype(wepchoice.damsource,user)
-			if(wepchoice.typing=="magical")
-				dresult=doresult+dmod+wepchoice.adddam+user.mdb-target.basedr
-			else
-				dresult=doresult+dmod+wepchoice.adddam+user.pdb-target.basedr
-			Playerattack(user,target)
-			if(user.status1=="Heavy" || user.status2=="Heavy" || user.status3=="Heavy")
-				dresult-=10
-				aresult-=3
-				user.visible_message("[user] is greatly burdened with how <b>Heavy</b> they are!", stream = "icout")
-			if(user.status1=="Slow" || user.status2=="Slow" || user.status3=="Slow")
-				aresult-=5
-				AddStun(user)
-				user.visible_message("[user] is afflicted with <b>Slow</b> and must skip their next action!", stream = "icout")
-			if(user.status1=="Weakness" || user.status2=="Weakness" || user.status3=="Weakness")
-				dresult-=15
-				user.visible_message("[user]'s attack is greatly undermined with how <b>Weak</b> they're feeling!", stream = "icout")
-			if(user.status1=="Paralyzed" || user.status2=="Paralyzed" || user.status3=="Paralyzed")
-				var/paralyzechance=rand(30,100)
-				if(paralyzechance>=70)
-					user.visible_message("[user] is <b>Paralyzed</b> and failed to perform their action this turn!", stream = "icout")
-					return
-				else
-			if(user.infusion=="Fire")
-				infusionpower=user.rankbonus+user.wismod+user.chamod+user.intmod+user.mdb+user.pdb
-				dresult+=infusionpower
-				aresult+=user.mab
-				aresult+=user.pab
-				if(target.weakness=="Fire")
-					dresult=round(dresult*1.5)
-				extraanimation="Water"
-			if(user.infusion=="Water")
-				infusionpower=user.rankbonus+user.wismod+user.chamod+user.intmod+user.mdb+user.pdb
-				dresult+=infusionpower
-				aresult+=user.mab
-				aresult+=user.pab
-				if(target.weakness=="Water")
-					dresult=round(dresult*1.5)
-				extraanimation="Water"
-			if(user.infusion=="Ice")
-				infusionpower=user.rankbonus+user.wismod+user.chamod+user.intmod+user.mdb+user.pdb
-				dresult+=infusionpower
-				aresult+=user.mab
-				aresult+=user.pab
-				if(target.weakness=="Ice")
-					dresult=round(dresult*1.5)
-				extraanimation="Ice"
-			if(user.infusion=="Thunder")
-				infusionpower=user.rankbonus+user.wismod+user.chamod+user.intmod+user.mdb+user.pdb
-				dresult+=infusionpower
-				aresult+=user.mab
-				aresult+=user.pab
-				if(target.weakness=="Thunder")
-					dresult=round(dresult*1.5)
-				extraanimation="Thunder"
-			if(user.infusion=="Dark")
-				infusionpower=user.rankbonus+user.wismod+user.chamod+user.intmod+user.mdb+user.pdb
-				dresult+=infusionpower
-				aresult+=user.mab
-				aresult+=user.pab
-				if(target.weakness=="Dark")
-					dresult=round(dresult*1.5)
-				extraanimation="Dark"
-			if(user.infusion=="Holy")
-				infusionpower=user.rankbonus+user.wismod+user.chamod+user.intmod+user.mdb+user.pdb
-				dresult+=infusionpower
-				aresult+=user.mab
-				aresult+=user.pab
-				if(target.weakness=="Holy")
-					dresult=round(dresult*1.5)
-				extraanimation="Holy"
-			if(user.infusion=="Wind")
-				infusionpower=user.rankbonus+user.wismod+user.chamod+user.intmod+user.mdb+user.pdb
-				dresult+=infusionpower
-				aresult+=user.mab
-				aresult+=user.pab
-				if(target.weakness=="Wind")
-					dresult=round(dresult*1.5)
-				extraanimation="Wind"
-			if(user.infusion=="Flare")
-				infusionpower=user.rankbonus+user.wismod+user.chamod+user.intmod+user.mdb+user.pdb
-				dresult+=infusionpower
-				aresult+=user.mab
-				aresult+=user.pab
-				if(target.weakness=="Flare")
-					dresult=round(dresult*1.5)
-				extraanimation="Flare"
-			if(extraanimation=="Fire")
-				var/obj/perk/Abilities/BlackMagic/Flame/Fire/b=new
-				Spellbladeanimation(user,target,b)
-			if(extraanimation=="Water")
-				var/obj/perk/Abilities/BlackMagic/Hydro/Water/b=new
-				Spellbladeanimation(user,target,b)
-			if(extraanimation=="Ice")
-				var/obj/perk/Abilities/BlackMagic/Ice/Blizzard/b=new
-				Spellbladeanimation(user,target,b)
-			if(extraanimation=="Thunder")
-				var/obj/perk/Abilities/BlackMagic/Lightning/Thunder/b=new
-				Spellbladeanimation(user,target,b)
-			if(extraanimation=="Dark")
-				var/obj/perk/Abilities/ArcaneMagic/Darkness/Dark/b=new
-				Spellbladeanimation(user,target,b)
-			if(extraanimation=="Holy")
-				var/obj/perk/Abilities/WhiteMagic/Holy/Dia/b=new
-				Spellbladeanimation(user,target,b)
-			if(extraanimation=="Wind")
-				var/obj/perk/Abilities/WhiteMagic/Wind/Aero/b=new
-				Spellbladeanimation(user,target,b)
-			if(extraanimation=="Flare")
-				var/obj/perk/Abilities/BlackMagic/Energy/Flare/b=new
-				Spellbladeanimation(user,target,b)
-			if(aresult<=0)
-				aresult=0
-			if(dresult<=0)
-				dresult=0
-			if(wepchoice.typing=="physical")
-				if(user.positivestatus1=="Bravery" || user.positivestatus2=="Bravery" || user.positivestatus3=="Bravery")
-					dresult+=10
-				if(target.positivestatus1=="Protect" || target.positivestatus2=="Protect" || target.positivestatus3=="Protect")
-					dresult=round(dresult*0.5)
-				if(target.positivestatus1=="Pailing" || target.positivestatus2=="Pailing" || target.positivestatus3=="Pailing")
-					user.visible_message("[target]'s <b>Pailing</b> status effect has prevented an instance of Physical damage, and been consumed!", stream = "icout")
-					dresult=0
-					if(target.positivestatus1=="Pailing")
-						target.positivestatus1=null
-						positiveturns1=0
-					if(target.positivestatus2=="Pailing")
-						target.positivestatus2=null
-						positiveturns2=0
-					if(target.positivestatus3=="Pailing")
-						target.positivestatus3=null
-						positiveturns3=0
-					if(dresult<=0)
-						dresult=0
-					if(dresult<=0)
-						dresult=0
-			if(wepchoice.typing=="magical")
-				if(user.positivestatus1=="Faith" || user.positivestatus2=="Faith" || user.positivestatus3=="Faith")
-					dresult+=10
-				if(target.positivestatus1=="Shell" || target.positivestatus2=="Shell" || target.positivestatus3=="Shell")
-					dresult=round(dresult*0.5)
-				if(target.positivestatus1=="Magic Barrier" || target.positivestatus2=="Magic Barrier" || target.positivestatus3=="Magic Barrier")
-					user.visible_message("[target]'s <b>Magic Barrier</b> status effect has prevented an instance of Magical damage, and been consumed!", stream = "icout")
-					dresult=0
-					if(target.positivestatus1=="Magic Barrier")
-						target.positivestatus1=null
-						positiveturns1=0
-					if(target.positivestatus2=="Magic Barrier")
-						target.positivestatus2=null
-						positiveturns2=0
-					if(target.positivestatus3=="Magic Barrier")
-						target.positivestatus3=null
-						positiveturns3=0
-					if(dresult<=0)
-						dresult=0
-			if(target.positivestatus1=="Bubble" || target.positivestatus2=="Bubble" || target.positivestatus3=="Bubble")
-				var/bubble=round(target.mhp*0.15)
-				if(dresult<bubble)
-					user.visible_message("<b>[target]'s</b> Bubble status effect has deflected and nullified [dresult] damage!!", stream = "icout")
-					dresult=0
-				if(dresult>=bubble)
-					user.visible_message("<b>[target]'s</b> Bubble has popped, but has absorbed [bubble] damage!!", stream = "icout")
-					dresult-=bubble
-					if(target.positivestatus1=="Bubble")
-						target.positivestatus1=null
-						positiveturns1=0
-					if(target.positivestatus2=="Bubble")
-						target.positivestatus2=null
-						positiveturns2=0
-					if(target.positivestatus3=="Bubble")
-						target.positivestatus3=null
-						positiveturns3=0
-					if(dresult>=0)
-						dresult=0
-			if(user.positivestatus1=="Haste" || user.positivestatus2=="Haste" || user.positivestatus3=="Haste")
-				aresult+=10
-				dresult+=15
-//stoneskin procs after all other defensive boons do
-			if(target.positivestatus1=="Stoneskin" || target.positivestatus2=="Stoneskin" || target.positivestatus3=="Stoneskin")
-				dresult-=5
-				target.stoneskindam+=dresult
-				user.visible_message("<b>[target]'s</b> Stoneskin has absorbed 5 damage!!", stream = "icout")
-				if(target.stoneskindam>=25)
-					user.visible_message("<b>[target]'s</b> Stoneskin has shattered!!", stream = "icout")
-					if(target.positivestatus1=="Stoneskin")
-						target.positivestatus1=null
-						positiveturns1=0
-					if(target.positivestatus2=="Stoneskin")
-						target.positivestatus2=null
-						positiveturns2=0
-					if(target.positivestatus3=="Stoneskin")
-						target.positivestatus3=null
-						positiveturns3=0
-			user.visible_message("<font color=[user.textcolor]><b>[user]</font> has used <font color=[user.textcolor]><b>[wepchoice]<b></b></font> to attack <b>[target]</b>!!", stream = "icout")
-			if(aresult>=target.ac)
-				user.visible_message("<b>To hit: [aresult] vs <b>[target.ac]</b> | It was a hit!! [user] has dealt [dresult] damage to [target]!!", stream = "icout")
-				target.hp-=dresult
-				if(target.hp<=0)
-					Death(target)
-					target.icon=null
-					target.overlays=null
-					user.visible_message("[target] has reached 0 HP and is removed from battle!", stream = "icout")
-					target.hp=0
-				if(target.special=="Bomb")
-					var/addlash=round(target.hp * 0.5)
-					var/backlash=dresult+addlash
-					user.visible_message("[target] exploded on contact, dealing [backlash] recoil damage to its attacker!", stream = "icout")
-					target.hp=0
-					Death(target)
-					target.icon=null
-					target.overlays=null
-					Burn(user)
-					user.hp-=backlash
-					if(user.hp<=0)
-						Death(user)
-						user.hp=0
-					ShowHPBar(user)
-					if(target.hp<=0)
-						target.overlays=null
-			else
-				Evade(target)
-				user.visible_message("<b>To hit: [aresult] vs <b>[target.ac]</b> | It missed!", stream = "icout")
-			ShowHPBar(target)
-			ShowMPBar(target)
-			ShowSPBar(target)
-			ShowHPBar(user)
-			ShowMPBar(user)
-			ShowSPBar(user)
-			if(target.retaliate==1)
-				turnattack(target,user)
-				target.retaliate=0
-			if(target.hp<=0)
-				target.overlays=null
-		TurnAbility(var/mob/user,var/obj/npc/target,var/obj/perk/skill)
-			if(skill.costtype=="Mana")
-				if(user.mp<=0)
-					user.visible_message("[user] has attempted to use a Magic ability without any MP, and has wasted a turn!", stream = "icout")
-					user.mp=0
-					return
-			if(skill.costtype=="Stamina")
-				if(user.sp<=0)
-					user.visible_message("[user] has attempted to use a Physical ability without any SP, and has wasted a turn!", stream = "icout")
-					user.sp=0
-					return
-			var/aresult
-			var/amod
-			var/doresult
-			var/dmod
-			var/dresult
-			var/abilitydamage
-			var/statuschance=rand(1,100)
-			if(skill.atype=="standard")
-				amod=Checkdamtype(skill.damsource,user)
-				if(skill.typing=="magical")
-					aresult=rand(1,20)+skill.addhit+amod+user.rankbonus+user.mab
-				else
-					aresult=rand(1,20)+skill.addhit+amod+user.rankbonus+user.pab
-				doresult=skill.raw_attack_damage_roll()
-				dmod=Checkdamtype(skill.damsource,user)
-				abilitydamage=skill.raw_attack_damage_roll()
-				if(skill.typing=="magical")
-					dresult=doresult+dmod+skill.adddam+user.mdb+skill.adddam+abilitydamage-target.basedr
-				else
-					dresult=doresult+dmod+skill.adddam+user.pdb+skill.adddam+abilitydamage-target.basedr
-			if(skill.atype=="weapon")
-				var/obj/item/Weapon/wepchoice = user.righthand
-				amod=Checkdamtype(wepchoice.damsource,user)
-				if(skill.typing=="magical")
-					aresult=rand(1,20)+skill.addhit+amod+user.rankbonus+user.mab
-				else
-					aresult=rand(1,20)+skill.addhit+amod+user.rankbonus+user.pab
-				doresult=rand(wepchoice.range1,wepchoice.range2)
-				dmod=Checkdamtype(skill.damsource,user)
-				abilitydamage=skill.raw_attack_damage_roll()
-				if(skill.typing=="magical")
-					dresult=doresult+dmod+wepchoice.adddam+user.mdb+skill.adddam+abilitydamage-target.basedr
-				else
-					dresult=doresult+dmod+wepchoice.adddam+user.pdb+skill.adddam+abilitydamage-target.basedr
-			if(skill.atype=="weaponsave")
-				var/obj/item/Weapon/wepchoice = user.righthand
-				amod=Checkdamtype(wepchoice.damsource,user)
-				if(skill.typing=="magical")
-					aresult=skill.basecheck+amod+user.rankbonus+skill.addhit
-				else
-					aresult=skill.basecheck+amod+user.rankbonus+skill.addhit
-				doresult=rand(wepchoice.range1,wepchoice.range2)
-				dmod=Checkdamtype(skill.damsource,user)
-				abilitydamage=skill.raw_attack_damage_roll()
-				if(skill.typing=="magical")
-					dresult=doresult+dmod+wepchoice.adddam+user.mdb+skill.adddam+abilitydamage-target.basedr
-				else
-					dresult=doresult+dmod+wepchoice.adddam+user.pdb+skill.adddam+abilitydamage-target.basedr
-			if(skill.atype=="save")
-				amod=Checkdamtype(skill.damsource,user)
-				if(skill.typing=="magical")
-					aresult=skill.basecheck+amod+user.rankbonus+skill.addhit
-				else
-					aresult=skill.basecheck+amod+user.rankbonus+skill.addhit
-				doresult=skill.raw_attack_damage_roll()
-				dmod=Checkdamtype(skill.damsource,user)
-				abilitydamage=skill.raw_attack_damage_roll()
-				if(skill.typing=="magical")
-					dresult=doresult+dmod+skill.adddam+user.mdb+skill.adddam+abilitydamage-target.basedr
-				else
-					dresult=doresult+dmod+skill.adddam+user.pdb+skill.adddam+abilitydamage-target.basedr
-			if(skill.rank=="D")
-				aresult+=4
-				dresult+=10
-			if(skill.rank=="C")
-				aresult+=6
-				dresult+=15
-			if(skill.rank=="B")
-				aresult+=9
-				dresult+=20
-			if(skill.rank=="A")
-				aresult+=12
-				dresult+=30
-			if(skill.rank=="S")
-				aresult+=20
-				dresult+=40
-			Playeranimation(user,target,skill)
-			user.visible_message("<font color=#F8E959><b>[user]</font> has used [skill] to attack [target]!!", stream = "icout")
-			var/drainvalue=round(dresult*0.5)
-			if(skill.element==target.weakness)
-				dresult=round(dresult*1.5)
-				user.visible_message("<b>[target]</b> is weak to <b>[skill.element], and takes 50% more damage!</b>", stream = "icout")
-			if(skill.element==target.resistance)
-				dresult=round(dresult*0.5)
-				user.visible_message("<b>[target]</b> is resistant to <b>[skill.element], and takes only half damage!</b>", stream = "icout")
-			if(target.status1=="Squall" || target.status2=="Squall" || target.status3=="Squall")
-				if(skill.element=="Fire")
-					dresult+=20
-					user.visible_message("The Squall effect grants this Fire attack 20 extra damage!", stream = "icout")
-			if(target.status1=="Wet" || target.status2=="Wet" || target.status3=="Wet")
-				if(skill.element=="Thunder")
-					aresult+=5
-					dresult+=15
-					user.visible_message("The Wet effect grants this Thunder attack +5 to hit, and 15 extra damage!", stream = "icout")
-			if(user.status1=="Heavy" || user.status2=="Heavy" || user.status3=="Heavy")
-				dresult-=10
-				aresult-=3
-				user.visible_message("[user] is greatly burdened with how <b>Heavy</b> they are!", stream = "icout")
-			if(user.status1=="Slow" || user.status2=="Slow" || user.status3=="Slow")
-				aresult-=5
-				AddStun(user)
-				user.visible_message("[user] is afflicted with <b>Slow</b> and must skip their next action!", stream = "icout")
-			if(user.status1=="Weakness" || user.status2=="Weakness" || user.status3=="Weakness")
-				dresult-=15
-				user.visible_message("[user]'s attack is greatly undermined with how <b>Weak</b> they're feeling!", stream = "icout")
-			if(user.status1=="Paralyzed" || user.status2=="Paralyzed" || user.status3=="Paralyzed")
-				var/paralyzechance=rand(30,100)
-				if(paralyzechance>=70)
-					user.visible_message("[user] is <b>Paralyzed</b> and failed to perform their action this turn!", stream = "icout")
-					return
-				else
-			if(aresult<=0)
-				aresult=0
-			if(dresult<=0)
-				dresult=0
-			if(skill.typing=="physical")
-				if(user.positivestatus1=="Bravery" || user.positivestatus2=="Bravery" || user.positivestatus3=="Bravery")
-					dresult+=10
-				if(target.positivestatus1=="Protect" || target.positivestatus2=="Protect" || target.positivestatus3=="Protect")
-					dresult-=10
-				if(target.positivestatus1=="Pailing" || target.positivestatus2=="Pailing" || target.positivestatus3=="Pailing")
-					user.visible_message("[target]'s <b>Pailing</b> status effect has prevented an instance of Physical damage, and been consumed!", stream = "icout")
-					dresult=0
-					if(target.positivestatus1=="Pailing")
-						target.positivestatus1=null
-						positiveturns1=0
-					if(target.positivestatus2=="Pailing")
-						target.positivestatus2=null
-						positiveturns2=0
-					if(target.positivestatus3=="Pailing")
-						target.positivestatus3=null
-						positiveturns3=0
-					if(dresult<=0)
-						dresult=0
-					if(dresult<=0)
-						dresult=0
-			if(skill.typing=="magical")
-				if(user.positivestatus1=="Faith" || user.positivestatus2=="Faith" || user.positivestatus3=="Faith")
-					dresult+=10
-				if(target.positivestatus1=="Shell" || target.positivestatus2=="Shell" || target.positivestatus3=="Shell")
-					dresult-=10
-				if(target.positivestatus1=="Magic Barrier" || target.positivestatus2=="Magic Barrier" || target.positivestatus3=="Magic Barrier")
-					user.visible_message("[target]'s <b>Magic Barrier</b> status effect has prevented an instance of Magical damage, and been consumed!", stream = "icout")
-					dresult=0
-					if(target.positivestatus1=="Magic Barrier")
-						target.positivestatus1=null
-						positiveturns1=0
-					if(target.positivestatus2=="Magic Barrier")
-						target.positivestatus2=null
-						positiveturns2=0
-					if(target.positivestatus3=="Magic Barrier")
-						target.positivestatus3=null
-						positiveturns3=0
-					if(dresult<=0)
-						dresult=0
-			if(skill.element=="Fire")
-				if(target.positivestatus1=="Barfire" || target.positivestatus2=="Barfire" || target.positivestatus3=="Barfire")
-					user.visible_message("[target]'s <b>Barfire</b> status effect has prevented an instance of Fire damage, and been consumed!", stream = "icout")
-					dresult=0
-					if(target.positivestatus1=="Barfire")
-						target.positivestatus1=null
-						positiveturns1=0
-					if(target.positivestatus2=="Barfire")
-						target.positivestatus2=null
-						positiveturns2=0
-					if(target.positivestatus3=="Barfire")
-						target.positivestatus3=null
-						positiveturns3=0
-			if(skill.element=="Water")
-				if(target.positivestatus1=="Barwater" || target.positivestatus2=="Barwater" || target.positivestatus3=="Barwater")
-					user.visible_message("[target]'s <b>Barwater</b> status effect has prevented an instance of Water damage, and been consumed!", stream = "icout")
-					dresult=0
-					if(target.positivestatus1=="Barwater")
-						target.positivestatus1=null
-						positiveturns1=0
-					if(target.positivestatus2=="Barwater")
-						target.positivestatus2=null
-						positiveturns1=0
-					if(target.positivestatus3=="Barwater")
-						target.positivestatus3=null
-						positiveturns1=0
-			if(skill.element=="Ice")
-				if(target.positivestatus1=="Barblizzard" || target.positivestatus2=="Barblizzard" || target.positivestatus3=="Barblizzard")
-					user.visible_message("[target]'s <b>Barblizzard</b> status effect has prevented an instance of Ice damage, and been consumed!", stream = "icout")
-					dresult=0
-					if(target.positivestatus1=="Barblizzard")
-						target.positivestatus1=null
-						positiveturns1=0
-					if(target.positivestatus2=="Barblizzard")
-						target.positivestatus2=null
-						positiveturns1=0
-					if(target.positivestatus3=="Barblizzard")
-						target.positivestatus3=null
-						positiveturns1=0
-			if(skill.element=="Thunder")
-				if(target.positivestatus1=="Barthunder" || target.positivestatus2=="Barthunder" || target.positivestatus3=="Barthunder")
-					user.visible_message("[target]'s <b>Barthunder</b> status effect has prevented an instance of Thunder damage, and been consumed!", stream = "icout")
-					dresult=0
-					if(target.positivestatus1=="Barthunder")
-						target.positivestatus1=null
-						positiveturns1=0
-					if(target.positivestatus2=="Barthunder")
-						target.positivestatus2=null
-						positiveturns1=0
-					if(target.positivestatus3=="Barthunder")
-						target.positivestatus3=null
-						positiveturns1=0
-			if(skill.element=="Earth")
-				if(target.positivestatus1=="Barstone" || target.positivestatus2=="Barstone" || target.positivestatus3=="Barstone")
-					user.visible_message("[target]'s <b>Barblizzard</b> status effect has prevented an instance of Ice damage, and been consumed!", stream = "icout")
-					dresult=0
-					if(target.positivestatus1=="Barstone")
-						target.positivestatus1=null
-						positiveturns1=0
-					if(target.positivestatus2=="Barstone")
-						target.positivestatus2=null
-						positiveturns1=0
-					if(target.positivestatus3=="Barstone")
-						target.positivestatus3=null
-						positiveturns1=0
-			if(skill.element=="Wind")
-				if(target.positivestatus1=="Barwind" || target.positivestatus2=="Barwind" || target.positivestatus3=="Barwind")
-					user.visible_message("[target]'s <b>Barblizzard</b> status effect has prevented an instance of Ice damage, and been consumed!", stream = "icout")
-					dresult=0
-					if(target.positivestatus1=="Barwind")
-						target.positivestatus1=null
-						positiveturns1=0
-					if(target.positivestatus2=="Barwind")
-						target.positivestatus2=null
-						positiveturns1=0
-					if(target.positivestatus3=="Barwind")
-						target.positivestatus3=null
-						positiveturns1=0
-//bubble procs after Protect, Shell, and Bar spells.
-			if(target.positivestatus1=="Bubble" || target.positivestatus2=="Bubble" || target.positivestatus3=="Bubble")
-				var/bubble=round(target.mhp*0.15)
-				if(dresult<bubble)
-					user.visible_message("<b>[target]'s</b> Bubble status effect has deflected and nullified [dresult] damage!!", stream = "icout")
-					dresult=0
-				if(dresult>=bubble)
-					user.visible_message("<b>[target]'s</b> Bubble has popped, but has absorbed [bubble] damage!!", stream = "icout")
-					dresult-=bubble
-					if(target.positivestatus1=="Bubble")
-						target.positivestatus1=null
-						positiveturns1=0
-					if(target.positivestatus2=="Bubble")
-						target.positivestatus2=null
-						positiveturns2=0
-					if(target.positivestatus3=="Bubble")
-						target.positivestatus3=null
-						positiveturns3=0
-					if(dresult>=0)
-						dresult=0
-			if(user.positivestatus1=="Haste" || user.positivestatus2=="Haste" || user.positivestatus3=="Haste")
-				aresult+=5
-				turnattack(user,target)
-				sleep(4)
-//stoneskin procs after all other defensive boons do
-			if(target.positivestatus1=="Stoneskin" || target.positivestatus2=="Stoneskin" || target.positivestatus3=="Stoneskin")
-				dresult-=5
-				target.stoneskindam+=dresult
-				user.visible_message("<b>[target]'s</b> Stoneskin has absorbed 5 damage!!", stream = "icout")
-				if(target.stoneskindam>=25)
-					user.visible_message("<b>[target]'s</b> Stoneskin has shattered!!", stream = "icout")
-					if(target.positivestatus1=="Stoneskin")
-						target.positivestatus1=null
-						positiveturns1=0
-					if(target.positivestatus2=="Stoneskin")
-						target.positivestatus2=null
-						positiveturns2=0
-					if(target.positivestatus3=="Stoneskin")
-						target.positivestatus3=null
-						positiveturns3=0
-
-			if(aresult>=target.ac)
-				user.visible_message("<b>To hit: [aresult] vs <b>[target.ac]</b> | It was a hit!! [user] has dealt [dresult] damage to [target]!!", stream = "icout")
-				target.hp-=dresult
-				if(skill.element=="Drain")
-					user.visible_message("<font color=#F8E959><b>[user]</font> has drained <b>[target]</b>  for <font color=#93F752>[drainvalue] HP!", stream = "icout")
-					user.hp+=drainvalue
-					if(user.hp>=user.mhp)
-						user.hp=user.mhp
-				if(skill.element=="Osmose")
-					user.visible_message("<font color=#F8E959><b>[user]</font> has drained <b>[target]</b> for <font color=#4FC7ED>[drainvalue] MP and SP!", stream = "icout")
-					user.mp+=drainvalue
-					user.sp+=drainvalue
-					if(user.mp>=user.mmp)
-						user.mp=user.mmp
-					if(user.sp>=user.msp)
-						user.sp=user.sp
-				if(target.status1==null || target.status2==null || target.status3==null)
-					if(skill.element=="Death")
-						if(statuschance>=50)
-							AddDoom(target)
-					if(skill.element=="Time")
-						if(statuschance>=70)
-							AddStun(target)
-						if(statuschance>=10)
-							AddSlow(target)
-					if(skill.element=="Earth")
-						if(statuschance>=90)
-							AddStun(target)
-						if(statuschance>=50)
-							AddHeavy(target)
-					if(skill.element=="Metal")
-						if(statuschance>=40)
-							AddBleed(target)
-					if(skill.element=="Fire")
-						if(statuschance>=70)
-							AddBurn(target)
-					if(skill.element=="Nature")
-						if(statuschance>=50)
-							AddWeakness(target)
-						if(statuschance>=80)
-							AddPoison(target)
-					if(skill.element=="Bio")
-						if(statuschance>=60)
-							AddPoison(target)
-					if(skill.element=="Dark")
-						if(statuschance>=70)
-							AddBleed(target)
-						if(statuschance>=20)
-							AddWeakness(target)
-					if(skill.element=="Water")
-						if(statuschance>=20)
-							AddWet(target)
-					if(skill.element=="Wind")
-						if(statuschance>=50)
-							AddSquall(target)
-					if(skill.element=="Ice")
-						if(statuschance>=50)
-							AddFrostbite(target)
-					if(skill.element=="Thunder")
-						if(statuschance>=50)
-							AddWeakness(target)
-						if(statuschance>=65)
-							AddParalyzed(target)
-						if(statuschance>=95)
-							AddStun(target)
-				if(target.hp<=0)
-					Death(target)
-					target.icon=null
-					target.overlays=null
-					user.visible_message("[target] has reached 0 HP and is removed from battle!", stream = "icout")
-					target.hp=0
-				if(target.special=="Bomb")
-					var/addlash=round(target.hp * 0.5)
-					var/backlash=dresult+addlash
-					user.visible_message("[target] exploded on contact, dealing [backlash] recoil damage to its attacker!", stream = "icout")
-					target.hp=0
-					Death(target)
-					target.icon=null
-					target.overlays=null
-					Burn(user)
-					user.hp-=backlash
-					if(user.hp<=0)
-						Death(user)
-						user.hp=0
-						user.overlays=null
-					sleep(4)
-			else
-				Evade(target)
-				user.visible_message("<b>To hit: [aresult] vs <b>[target.ac]</b> It missed!", stream = "icout")
-			if(skill.costtype=="Stamina")
-				user.visible_message("[user] has drained [skill.mcost] SP!", stream = "icout")
-				user.sp-=skill.mcost
-			if(skill.costtype=="Mana")
-				user.visible_message("[user] has drained [skill.mcost] MP!", stream = "icout")
-				user.mp-=skill.mcost
-			if(skill.costtype!="Mana"&& skill.costtype!="Stamina")
-				user.visible_message("[user] has drained [skill.mcost] MP!", stream = "icout")
-				user.mp-=skill.mcost
-			ShowHPBar(target)
-			ShowMPBar(target)
-			ShowSPBar(target)
-			ShowHPBar(user)
-			ShowMPBar(user)
-			ShowSPBar(user)
-			if(target.hp<=0)
-				target.overlays=null
-			sleep(4)
-
-		Victory(var/obj/Party/party,var/obj/FATECrystal/fate)
-			var/reward1
-			var/reward2
-			var/reward3
-			var/gilreward
-			var/bossreward
-			for(var/mob/M in hearers(20, fate))
-				M << sound(null, channel = 1)
-				M << sound('Audio/Fanfare.wav', channel = 1)
-			sleep(22)
-			for(var/obj/FATEs/quest in world)
-				if("[quest.FATEID]"=="[party.FATEID]")
-					reward1=quest.Reward1
-					reward2=quest.Reward2
-					reward3=quest.Reward3
-					gilreward=quest.Gilreward
-					if(quest.bossfate)
-						bossreward=quest.bossfate
-					del quest
-			fate.occupied=0
-			fate.FATEID=null
-			fate.icon_state="inactive"
-			for(var/mob/m in party.members)
-				sleep(2)
-				m.bposition=null
-				UpdateArea(m)
-				for(var/obj/item/a in m.contents)
-					if(a.name==reward1)
-						m.send_chat("Gained +1 [reward1]!", stream = "oocout")
-						a.amount+=1
-						break
-				for(var/obj/item/b in m.contents)
-					if(b.name==reward2)
-						m.send_chat("Gained +1 [reward2]!", stream = "oocout")
-						b.amount+=1
-						break
-				for(var/obj/item/c in m.contents)
-					if(c.name==reward3)
-						m.send_chat("Gained +1 [reward3]!", stream = "oocout")
-						c.amount+=1
-						break
-				for(var/obj/item/d in m.contents)
-					if(d.name==bossreward)
-						m.send_chat("You beat a World Boss! Gained +1 [bossreward]!", stream = "oocout")
-						d.amount+=1
-						break
-				if(m.hp<=0)
-					m.hp=0
-				m.money+=gilreward
-				m.send_chat("Gained [gilreward] Gil!!", stream = "oocout")
-				m.battler=0
-				m.dailyfates+=1
-				if(m.dailyfates>=m.maxfates)
-					m.FATEcooldown=1
-				m.statusturns=0 //The following lines of code turn off all status effects.
-				m.status2turns=0
-				m.status3turns=0
-				m.positiveturns1=0
-				m.positiveturns2=0
-				m.positiveturns3=0
-				m.status1=null
-				m.status2=null
-				m.status3=null
-				m.positivestatus1=null
-				m.positivestatus2=null
-				m.positivestatus3=null
-			party.currentFATE=null
-			party.FATEID=null
-
-		Defeat(var/obj/Party/party,var/obj/FATECrystal/fate)
-			for(var/mob/M in hearers(20, fate))
-				M << sound(null,channel=1)
-			sleep(4)
-			for(var/obj/FATEs/quest in world)
-				if(quest.FATEID==fate.FATEID)
-					del quest
-			fate.occupied=0
-			fate.FATEID=null
-			fate.icon_state=null
-			for(var/obj/prop/a in view(40))
-				del a
-			for(var/mob/m in party.members)
-				UpdateArea(m)
-				m.bposition=null
-				m<<sound(null)
-				m.FATEcooldown=1
-				m.battler=0
-				m.statusturns=0 //The following lines of code turn off all status effects.
-				m.status2turns=0
-				m.status3turns=0
-				m.positiveturns1=0
-				m.positiveturns2=0
-				m.positiveturns3=0
-				m.status1=null
-				m.status2=null
-				m.status3=null
-				m.positivestatus1=null
-				m.positivestatus2=null
-				m.positivestatus3=null
-				if(m.hp<=0)
-					m.hp=0
-				ShowHPBar(m)
-			party.currentFATE=null
-			party.FATEID=null
-
-atom
-	proc
-		Startbattle(var/mob/starter,var/obj/npc/enemy,var/obj/Party/fightparty)
-			set waitfor=0
-			var/obj/battlestorage/batstorage=new
-			var/list/battlelist=new
-			var/list/enemylist=new
-			var/mob/battler1=null
-			var/mob/battler2=null
-			var/mob/battler3=null
-			var/mob/battler4=null
-			var/obj/perk/MonsterAbilities/Monster/PhysicalAttack/gs=new
-			var/battler1state
-			var/battler2state
-			var/battler3state
-			var/battler4state
-			var/enemystate=0
-			var/enemy2state=0
-			var/enemy3state=0
-			var/enemy4state=0
-			var/b1counted=0
-			var/b2counted=0
-			var/b3counted=0
-			var/b4counted=0
-			var/e1counted=0
-			var/e2counted=0
-			var/e3counted=0
-			var/e4counted=0
-			var/battlers
-			var/enemies
-			var/enemyalive
-			var/list/attacklist1=list()
-			var/list/attacklist2=list()
-			var/list/attacklist3=list()
-			var/list/attacklist4=list()
-			var/list/pattacklist1=list()
-			var/list/pattacklist2=list()
-			var/list/pattacklist3=list()
-			var/list/pattacklist4=list()
-			var/list/heallist1=list()
-			var/list/heallist2=list()
-			var/list/heallist3=list()
-			var/list/heallist4=list()
-			var/list/greenlist1=list()
-			var/list/greenlist2=list()
-			var/list/greenlist3=list()
-			var/list/greenlist4=list()
-			var/list/revivelist1=list()
-			var/list/revivelist2=list()
-			var/list/revivelist3=list()
-			var/list/revivelist4=list()
-			var/list/summonlist1=list()
-			var/list/summonlist2=list()
-			var/list/summonlist3=list()
-			var/list/summonlist4=list()
-			var/list/partylist=new
-			var/obj/perk/attackchoice
-			var/obj/perk/healchoice
-			var/maxbattlers=0
-			var/healer1=0
-			var/healer2=0
-			var/healer3=0
-			var/healer4=0
-			var/green1=0
-			var/green2=0
-			var/green3=0
-			var/green4=0
-			var/revive1=0
-			var/revive2=0
-			var/revive3=0
-			var/revive4=0
-			var/summon1=0
-			var/summon2=0
-			var/summon3=0
-			var/summon4=0
-			var/maxenemies=0
-			var/pcount=0
-			var/obj/npc/enemy2
-			var/obj/npc/enemy3
-			var/obj/npc/enemy4
-			InitializeEnemy(enemy)
-			Spawnextras(enemy)
-			enemy2=enemy.enemy2
-			enemy3=enemy.enemy3
-			enemy4=enemy.enemy4
-			enemylist+=enemy
-			enemystate=1
-			enemies=1
-			enemyalive=1
-			enemy.battling=1
-			enemy2.battling=1
-			enemy3.battling=1
-			enemy4.battling=1
-			enemy2.FATENpc=1
-			enemy3.FATENpc=1
-			enemy4.FATENpc=1
-			maxenemies=1
-			pcount=0
-			if(enemy.encountersize>=2)
-				enemy2.x=enemy.x+3
-				enemy2.y=enemy.y
-				enemy2.z=enemy.z
-				enemy2.name="[enemy2.name] 2"
-				enemy2state=1
-				enemylist+=enemy2
-				enemy2.contents+=gs
-				enemies+=1
-				maxenemies=2
-			if(enemy.encountersize>=3)
-				enemy3.x=enemy.x
-				enemy3.y=enemy.y-3
-				enemy3.z=enemy.z
-				enemy3.name="[enemy3.name] 3"
-				enemy3state=1
-				enemylist+=enemy3
-				enemy3.contents+=gs
-				enemies+=1
-				maxenemies=3
-			if(enemy.encountersize>=4)
-				enemy4.x=enemy.x-2
-				enemy4.y=enemy.y+2
-				enemy4.z=enemy.z
-				enemy4.name="[enemy4.name] 4"
-				enemy4state=1
-				enemylist+=enemy4
-				enemies+=1
-				enemy4.contents+=gs
-				maxenemies=4
-			enemy.name="[enemy.name] 1"
-			enemy.contents+=gs
-			maxbattlers=1
-			pcount=1
-			DesignateSpots(starter, pcount, fightparty, batstorage)
-			sleep(2)
-			for(var/mob/viewster in view(12,starter))
-				if(viewster.partyID==fightparty.partyID && viewster != starter && pcount<=4)
-					maxbattlers+=1
-					pcount+=1
-					alert(starter,"Maxbattlers: [maxbattlers] | Pcount: [pcount]")
-					if(maxbattlers>=2)
-						DesignateSpots(viewster, pcount,fightparty,batstorage)
-						sleep(1)
-					if(maxbattlers>=3)
-						DesignateSpots(viewster, pcount,fightparty,batstorage)
-						sleep(1)
-					if(maxbattlers>=4)
-						DesignateSpots(viewster, pcount,fightparty,batstorage)
-						sleep(1)
-			sleep(2)
-			for(var/obj/perk/a in enemy.contents)
-				if(a in attacklist1)
-					return
-				if(a.ability==1)
-					attacklist1+=a
-			for(var/obj/perk/b in enemy2.contents)
-				if(b in attacklist2)
-					return
-				if(b.ability==1)
-					attacklist2+=b
-			for(var/obj/perk/c in enemy3.contents)
-				if(c in attacklist3)
-					return
-				if(c.ability==1)
-					attacklist3+=c
-			for(var/obj/perk/d in enemy4.contents)
-				if(d in attacklist4)
-					return
-				if(d.ability==1)
-					attacklist4+=d
-			for(var/obj/Party/party in world)
-				if(party.partyID==starter.partyID)
-					if(party.FATEID==enemy.FATEID)
-						for(var/mob/m in view(starter))
-							if(m.bposition=="battler1")
-								battler1=m
-								battler1 << sound('battle1.ogg',1,channel=1)
-								m.battler=1
-								battlers+=1
-								battler1state="Alive"
-								partylist-=m
-								battlelist+=battler1
-								battler1<<output("[battler1] has been designated as 'Battler 1'","oocout")
-								//Unequipglobalmods(battler1)
-								for(var/obj/perk/a in battler1.contents)
-									if(a.ability==1 && a.heal==0 && a.valid_standard_attack())
-										pattacklist1+=a
-									if(a.heal==1)
-										heallist1+=a
-										healer1=1
-								for(var/obj/perk/a in battler1.contents)
-									if(a.ability==1 && a.heal==0 && a.valid_standard_attack())
-										pattacklist1+=a
-									if(a.heal==1)
-										heallist1+=a
-										healer1=1
-									if(a.greenmagic==1)
-										green1=1
-										greenlist1+=a
-									if(a.revive==1)
-										revive1=1
-										revivelist1+=a
-								for(var/obj/npc/a in battler1.contents)
-									var/obj/npc/b = copyatom(a)
-									summonlist1+=b
-									summon1=1
-								sleep(1)
-							if(maxbattlers>=2)
-								if(m.bposition=="battler2")
-									battler2=m
-									battler2 << sound('battle1.ogg',1,channel=1)
-									m.battler=1
-									battlers+=1
-									battler2state="Alive"
-									partylist-=m
-									battlelist+=battler2
-									battler2<<output("[battler2] has been designated as 'Battler 2'","oocout")
-									//Unequipglobalmods(battler2)
-									for(var/obj/perk/a in battler2.contents)
-										if(a.ability==1 && a.heal==0 && a.valid_standard_attack())
-											pattacklist2+=a
-										if(a.heal==1)
-											heallist2+=a
-											healer2=1
-										if(a.greenmagic==1)
-											green2=1
-											greenlist2+=a
-										if(a.revive==1)
-											revive2=1
-											revivelist2+=a
-									for(var/obj/npc/a in battler2.contents)
-										var/obj/npc/b = copyatom(a)
-										summonlist2+=b
-										summon2=1
-										sleep(1)
-							if(maxbattlers>=3)
-								if(m.bposition=="battler3")
-									battler3=m
-									battler3 << sound('battle1.ogg',1,channel=1)
-									m.battler=1
-									battlers+=1
-									battler3state="Alive"
-									partylist-=m
-									battlelist+=battler3
-									battler3<<output("[battler3] has been designated as 'Battler 3'","oocout")
-									//Unequipglobalmods(battler3)
-									for(var/obj/perk/a in battler3.contents)
-										if(a.ability==1 && a.heal==0 && a.valid_standard_attack())
-											pattacklist3+=a
-										if(a.heal==1)
-											heallist3+=a
-											healer3=1
-										if(a.greenmagic==1)
-											green3=1
-											greenlist3+=a
-										if(a.revive==1)
-											revive3=1
-											revivelist3+=a
-									for(var/obj/npc/a in battler3.contents)
-										var/obj/npc/b = copyatom(a)
-										summonlist3+=b
-										summon3=1
-										sleep(1)
-							if(maxbattlers>=4)
-								if(m.bposition=="battler4")
-									battler4=m
-									battler4 << sound('battle1.ogg',1,channel=1)
-									m.battler=1
-									battlers+=1
-									battler4state="Alive"
-									partylist-=m
-									battlelist+=battler4
-									battler4<<output("[battler4] has been designated as 'Battler 4'","oocout")
-									//Unequipglobalmods(battler4)
-									for(var/obj/perk/a in battler4.contents)
-										if(a.ability==1 && a.heal==0 && a.valid_standard_attack())
-											pattacklist4+=a
-										if(a.heal==1)
-											heallist4+=a
-											healer4=1
-										if(a.greenmagic==1)
-											green4=1
-											greenlist4+=a
-										if(a.revive==1)
-											revive4=1
-											revivelist4+=a
-									for(var/obj/npc/a in battler4.contents)
-										var/obj/npc/b = copyatom(a)
-										summonlist4+=b
-										summon4=1
-										sleep(1)
-					else
-						alert(starter,"This is not your FATE to fight.")
-						return
-			while(enemyalive==1)
-				if(battlers<=0)
-					enemy.visible_message("All Party Members have been defeated! <b>FATE</b> failed!!", stream = "icout")
-					del enemy2
-					del enemy3
-					del enemy4
-					for(var/obj/Party/a in world)
-						if(starter.partyID==a.partyID)
-							for(var/obj/FATECrystal/b in global.fate_crystals)
-								if("[b.FATEID]"=="[a.FATEID]")
-									Defeat(a,b)
-									enemyalive=0
-									sleep(4)
-									del enemy
-				if(maxenemies>=1)
-					if(enemy.hp<=0 && e1counted==0)
-						enemystate=0
-						enemies-=1
-						e1counted=1
-						enemylist-=enemy
-						usr.send_chat("[enemy] is defeated [enemies]/[maxenemies]", stream = "icout")
-						sleep(4)
-				if(maxenemies>=2)
-					if(enemy2.hp<=0 && e2counted==0)
-						enemy2state=0
-						enemies-=1
-						e2counted=1
-						enemylist-=enemy2
-						usr.send_chat("[enemy2] is defeated [enemies]/[maxenemies]", stream = "icout")
-						sleep(4)
-				if(maxenemies>=3)
-					if(enemy3.hp<=0 && e3counted==0)
-						enemy3state=0
-						enemies-=1
-						e3counted=1
-						enemylist-=enemy3
-						usr.send_chat("[enemy3] is defeated [enemies]/[maxenemies]", stream = "icout")
-						sleep(4)
-				if(maxenemies>=4)
-					if(enemy4.hp<=0 && e4counted==0)
-						enemy4state=0
-						enemies-=1
-						e4counted=1
-						enemylist-=enemy4
-						usr.send_chat("[enemy4] is defeated [enemies]/[maxenemies]", stream = "icout")
-						sleep(4)
-				if(maxbattlers>=1)
-					if(battler1.hp<=0 && b1counted==0)
-						battler1state=null
-						battlers-=1
-						battlelist-=battler1
-						b1counted=1
-				if(maxbattlers>=2)
-					if(battler2.hp<=0 && b2counted==0)
-						battler2state=null
-						battlers-=1
-						battlelist-=battler2
-						b2counted=1
-				if(maxbattlers>=3)
-					if(battler3.hp<=0 && b3counted==0)
-						battler3state=null
-						battlers-=1
-						battlelist-=battler3
-						b3counted=1
-				if(maxbattlers>=4)
-					if(battler4.hp<=0 && b4counted==0)
-						battler4state=null
-						battlers-=1
-						battlelist-=battler4
-						b4counted=1
-				if(maxenemies>=1 && battlers>=1)
-					if(enemystate==1)
-						var/mob/target=pick(battlelist)
-						var/obj/ally=pick(enemylist)
-						attackchoice=pick(attacklist1)
-						Greencheckenemy(enemy)
-						Statusprocenemy(enemy)
-						if(enemy.status1=="Stun")
-							enemy3.visible_message("[enemy] is stunned, and skips a turn!", stream = "icout")
-							enemy.totalstatus=0
-							enemy.status1=null
-							return
-						if(attackchoice.greenmagic==1)
-							if(attackchoice.multi==1)
-								for(var/obj/npc/a in enemylist)
-									enemy.EnemyGreen(enemy,a, attackchoice)
-							if(attackchoice.multi==0)
-								enemy.EnemyGreen(enemy,ally, attackchoice)
-						if(attackchoice.dispel>=1)
-							if(attackchoice.multi==1)
-								for(var/mob/partymembers in battlelist)
-									enemy.DispelEnemy(enemy, partymembers, attackchoice)
-						if(attackchoice.heal==1)
-							enemy.Enemyheal(enemy,ally,attackchoice)
-						if(attackchoice.dispel==0 && attackchoice.greenmagic==0  && attackchoice.heal==0)
-							enemy.Enemyability(enemy,target,attackchoice)
-							sleep(30)
-				sleep(1)
-				if(maxbattlers>=1)
-					if(battler1.hp<=0 && b1counted==0)
-						battler1state=null
-						battlers-=1
-						battlelist-=battler1
-						b1counted=1
-				if(maxbattlers>=2)
-					if(battler2.hp<=0 && b2counted==0)
-						battler2state=null
-						battlers-=1
-						battlelist-=battler2
-						b2counted=1
-				if(maxbattlers>=3)
-					if(battler3.hp<=0 && b3counted==0)
-						battler3state=null
-						battlers-=1
-						battlelist-=battler3
-						b3counted=1
-				if(maxbattlers>=4)
-					if(battler4.hp<=0 && b4counted==0)
-						battler4state=null
-						battlers-=1
-						battlelist-=battler4
-						b4counted=1
-				sleep(1)
-				if(battlers<=0)
-					enemy.visible_message("All Party Members have been defeated! <b>FATE</b> failed!!", stream = "icout")
-					del enemy2
-					del enemy3
-					del enemy4
-					for(var/obj/Party/a in world)
-						if(starter.partyID==a.partyID)
-							for(var/obj/FATECrystal/b in global.fate_crystals)
-								if("[b.FATEID]"=="[a.FATEID]")
-									Defeat(a,b)
-									enemyalive=0
-									sleep(4)
-									del enemy
-				sleep(1)
-				if(maxenemies>=2 && battlers>=1)
-					if(enemy2state==1)
-						var/mob/target=pick(battlelist)
-						var/obj/ally=pick(enemylist)
-						attackchoice=pick(attacklist2)
-						Greencheckenemy(enemy2)
-						Statusprocenemy(enemy2)
-						if(enemy2.status1=="Stun")
-							enemy4.visible_message("[enemy2] is stunned, and skips a turn!", stream = "icout")
-							enemy2.totalstatus=0
-							enemy2.status1=null
-							return
-						if(attackchoice.greenmagic==1)
-							if(attackchoice.multi==1)
-								for(var/obj/npc/a in enemylist)
-									enemy2.EnemyGreen(enemy2,a, attackchoice)
-							if(attackchoice.multi==0)
-								enemy2.EnemyGreen(enemy2,ally, attackchoice)
-						if(attackchoice.dispel>=1)
-							if(attackchoice.multi==1)
-								for(var/mob/partymembers in battlelist)
-									enemy2.DispelEnemy(enemy2, partymembers, attackchoice)
-						if(attackchoice.heal==1)
-							enemy2.Enemyheal(enemy2,ally,attackchoice)
-						if(attackchoice.dispel==0 && attackchoice.greenmagic==0 && attackchoice.heal==0)
-							enemy4.Enemyability(enemy2,target,attackchoice)
-							sleep(30)
-				sleep(1)
-				if(maxbattlers>=1)
-					if(battler1.hp<=0 && b1counted==0)
-						battler1state=null
-						battlers-=1
-						battlelist-=battler1
-						b1counted=1
-				if(maxbattlers>=2)
-					if(battler2.hp<=0 && b2counted==0)
-						battler2state=null
-						battlers-=1
-						battlelist-=battler2
-						b2counted=1
-				if(maxbattlers>=3)
-					if(battler3.hp<=0 && b3counted==0)
-						battler3state=null
-						battlers-=1
-						battlelist-=battler3
-						b3counted=1
-				if(maxbattlers>=4)
-					if(battler4.hp<=0 && b4counted==0)
-						battler4state=null
-						battlers-=1
-						battlelist-=battler4
-						b4counted=1
-				sleep(1)
-				if(battlers<=0)
-					enemy.visible_message("All Party Members have been defeated! <b>FATE</b> failed!!", stream = "icout")
-					del enemy2
-					del enemy3
-					del enemy4
-					for(var/obj/Party/a in world)
-						if(starter.partyID==a.partyID)
-							for(var/obj/FATECrystal/b in global.fate_crystals)
-								if("[b.FATEID]"=="[a.FATEID]")
-									Defeat(a,b)
-									sleep(4)
-									enemyalive=0
-									del enemy
-				sleep(1)
-				if(maxenemies>=3 && battlers>=1)
-					if(enemy3state==1)
-						var/mob/target=pick(battlelist)
-						var/obj/ally=pick(enemylist)
-						attackchoice=pick(attacklist3)
-						Greencheckenemy(enemy3)
-						Statusprocenemy(enemy3)
-						if(enemy3.status1=="Stun")
-							enemy3.visible_message("[enemy3] is stunned, and skips a turn!", stream = "icout")
-							enemy3.totalstatus=0
-							enemy3.status1=null
-							return
-						if(attackchoice.greenmagic==1)
-							if(attackchoice.multi==1)
-								for(var/obj/npc/a in enemylist)
-									enemy3.EnemyGreen(enemy3,a, attackchoice)
-							if(attackchoice.multi==0)
-								enemy3.EnemyGreen(enemy3,ally, attackchoice)
-						if(attackchoice.dispel>=1)
-							if(attackchoice.multi==1)
-								for(var/mob/partymembers in battlelist)
-									enemy3.DispelEnemy(enemy3, partymembers, attackchoice)
-							if(attackchoice.multi==0)
-								enemy3.DispelEnemy(enemy3, target, attackchoice)
-						if(attackchoice.heal==1)
-							enemy3.Enemyheal(enemy3,ally,attackchoice)
-						if(attackchoice.dispel==0 && attackchoice.greenmagic==0 && attackchoice.heal==0)
-							enemy3.Enemyability(enemy3,target,attackchoice)
-							sleep(30)
-				sleep(1)
-				if(maxbattlers>=1)
-					if(battler1.hp<=0 && b1counted==0)
-						battler1state=null
-						battlers-=1
-						battlelist-=battler1
-						b1counted=1
-				if(maxbattlers>=2)
-					if(battler2.hp<=0 && b2counted==0)
-						battler2state=null
-						battlers-=1
-						battlelist-=battler2
-						b2counted=1
-				if(maxbattlers>=3)
-					if(battler3.hp<=0 && b3counted==0)
-						battler3state=null
-						battlers-=1
-						battlelist-=battler3
-						b3counted=1
-				if(maxbattlers>=4)
-					if(battler4.hp<=0 && b4counted==0)
-						battler4state=null
-						battlers-=1
-						battlelist-=battler4
-						b4counted=1
-				sleep(1)
-				if(battlers<=0)
-					enemy.visible_message("All Party Members have been defeated! <b>FATE</b> failed!!", stream = "icout")
-					del enemy2
-					del enemy3
-					del enemy4
-					for(var/obj/Party/a in world)
-						if(starter.partyID==a.partyID)
-							for(var/obj/FATECrystal/b in global.fate_crystals)
-								if("[b.FATEID]"=="[a.FATEID]")
-									Defeat(a,b)
-									enemyalive=0
-									sleep(4)
-									del enemy
-				sleep(1)
-				if(maxenemies>=4 && battlers>=1)
-					if(enemy4state==1)
-						var/mob/target=pick(battlelist)
-						var/obj/ally=pick(enemylist)
-						attackchoice=pick(attacklist4)
-						Greencheckenemy(enemy4)
-						Statusprocenemy(enemy4)
-						if(enemy4.status1=="Stun")
-							enemy4.visible_message("[enemy4] is stunned, and skips a turn!", stream = "icout")
-							enemy4.totalstatus=0
-							enemy4.status1=null
-							return
-						if(attackchoice.greenmagic==1)
-							if(attackchoice.multi==1)
-								for(var/obj/npc/a in enemylist)
-									enemy4.EnemyGreen(enemy4,a, attackchoice)
-							if(attackchoice.multi==0)
-								enemy4.EnemyGreen(enemy4,ally, attackchoice)
-						if(attackchoice.dispel>=1)
-							if(attackchoice.multi==1)
-								for(var/mob/partymembers in battlelist)
-									enemy4.DispelEnemy(enemy4, partymembers, attackchoice  && attackchoice.heal==0)
-						if(attackchoice.heal==1)
-							enemy4.Enemyheal(enemy4,ally,attackchoice)
-						if(attackchoice.dispel==0 && attackchoice.greenmagic==0 && attackchoice.heal==0)
-							enemy4.Enemyability(enemy4,target,attackchoice)
-							sleep(30)
-				sleep(1)
-				if(maxbattlers>=1)
-					if(battler1.hp<=0 && b1counted==0)
-						battler1state=null
-						battlers-=1
-						battlelist-=battler1
-						b1counted=1
-				if(maxbattlers>=2)
-					if(battler2.hp<=0 && b2counted==0)
-						battler2state=null
-						battlers-=1
-						battlelist-=battler2
-						b2counted=1
-				if(maxbattlers>=3)
-					if(battler3.hp<=0 && b3counted==0)
-						battler3state=null
-						battlers-=1
-						battlelist-=battler3
-						b3counted=1
-				if(maxbattlers>=4)
-					if(battler4.hp<=0 && b4counted==0)
-						battler4state=null
-						battlers-=1
-						battlelist-=battler4
-						b4counted=1
-				sleep(1)
-				if(enemies<=0)
-					enemy.visible_message("All Enemies have been defeated! <b>FATE</b> complete!!", stream = "icout")
-					for(var/obj/Party/c in world)
-						del enemy2
-						del enemy3
-						del enemy4
-						if(battler1.partyID==c.partyID)
-							for(var/obj/FATECrystal/b in global.fate_crystals)
-								if("[b.FATEID]"=="[c.FATEID]")
-									Victory(c,b)
-									enemyalive=0
-									maxbattlers=0
-									enemies=0
-									sleep(4)
-									del enemy
-				sleep(1)
-				if(enemies>=1)
-					if(maxbattlers>=1)
-						if(battler1state=="Alive")
-							Greencheckplayer(battler1)
-							Statusprocparty(battler1)
-							if(battler1.status1=="Stun")
-								battler1.visible_message("[battler1] is stunned, and skips a turn!", stream = "icout")
-								battler1.totalstatus=0
-								battler1.status1=null
-								return
-							usr.send_chat("<font color=[battler1.textcolor]><b>[battler1]'s</font> turn, let's see what they can do!", stream = "icout")
-							var/list/actions=list("Attack","Ability","Rest")
-							if(green1==1)
-								actions+="Green Magic"
-							if(healer1==1)
-								actions+="Heal"
-							if(revive1==1)
-								actions+="Revive"
-							if(summon1==1)
-								actions+="Summon"
-							if(battler1.job=="Spellblade" || battler1.subjob=="Spellblade")
-								actions+="Infusion"
-							if(battler1.job=="Mystic Knight" || battler1.subjob=="Mystic Knight")
-								actions+="Blade Cast"
-								actions+="Blade Dance"
-							if(battler1.job=="Dancer" || battler1.subjob=="Dancer")
-								actions+="Dance"
-							if(battler1.job=="Black Mage" || battler1.subjob=="Black Mage")
-								actions+="Twin Cast"
-							if(battler1.job=="Samurai" || battler1.subjob=="Samurai")
-								actions+="Retaliate"
-							var/achoice=input(battler1,"What action would you like to take this turn?") as anything in actions
-							switch(achoice)
-								if("Blade Cast")
-									var/list/twincast=list()
-									for(var/obj/perk/options in pattacklist1)
-										if(options.typing=="magical")
-											twincast+=options
-									var/target=input(battler1,"Which enemy would you like to attack?") as anything in enemylist
-									attackchoice=input(battler1,"Which Ability would you like to use this turn?") as anything in twincast
-									battler1.turnattack(battler1,target)
-									battler1.TurnAbility(battler1,target,attackchoice)
-									sleep(4)
-								if("Blade Dance")
-									var/target=input(battler1,"Which enemy would you like to attack?") as anything in enemylist
-									battler1.turnattack(battler1,target)
-									battler1.turnattack(battler1,target)
-									sleep(4)
-								if("Twin Cast")
-									var/list/twincast=list()
-									for(var/obj/perk/options in pattacklist1)
-										if(options.typing=="magical")
-											twincast+=options
-									attackchoice=input(battler1,"Which Ability would you like to use this turn?") as anything in twincast
-									var/target=input(battler1,"Which enemy would you like to attack?") as anything in enemylist
-									battler1.TurnAbility(battler1,target,attackchoice)
-									sleep(4)
-									attackchoice=input(battler1,"Which Ability would you like to use this turn?") as anything in twincast
-									var/target2=input(battler1,"Which enemy would you like to attack?") as anything in enemylist
-									battler1.TurnAbility(battler1,target2,attackchoice)
-									sleep(4)
-								if("Retaliate")
-									if(battler1.sp<30)
-										usr.send_chat("<font color=[battler1.textcolor]<b>[battler1] has attempted to use Retaliate, but could not spend 30 SP, and has forfeited their turn!", stream = "icout")
-									else
-										var/target=input(battler1,"Which enemy would you like to attack, setting Retaliate up?") as anything in enemylist
-										battler1.turnattack(battler1,target)
-										usr.send_chat("<font color=[battler1.textcolor]<b>[battler1] has entered a <b>Retaliation</b> stance!", stream = "icout")
-										battler1.sp-=30
-										battler1.retaliate=1
-								if("Infusion")
-									var/list/Infusions=list("Fire","Water","Ice","Thunder","Wind")
-									var/infuchoice=input(battler1,"Which Infusion would you like to apply to your weapon?") as anything in Infusions
-									battler1.infusion=infuchoice
-									usr.send_chat("<font color=[battler1.textcolor]<b>[battler1] has set their Infusion type to [infuchoice]!", stream = "icout")
-								if("Summon")
-									var/target=input(battler1,"Which enemy would you like to summon a companion to attack?") as anything in enemylist
-									var/summon=input(battler1,"Which companion would you like to call on the power of?") as anything in summonlist1
-									Summonattack(battler1, target, summon)
-								if("Attack")
-									var/target=input(battler1,"Which enemy would you like to attack?") as anything in enemylist
-									battler1.turnattack(battler1,target)
-									sleep(4)
-								if("Ability")
-									attackchoice=input(battler1,"Which Ability would you like to use this turn?") as anything in pattacklist1
-									var/target=input(battler1,"Which enemy would you like to attack?") as anything in enemylist
-									battler1.TurnAbility(battler1,target,attackchoice)
-									sleep(4)
-								if("Heal")
-									var/target=input(battler1,"Which ally would you like to heal?") as anything in battlelist
-									healchoice=input(battler1,"Which Healing ability would you like to use this turn?") as anything in heallist1
-									battler1.Heal(battler1,target,healchoice)
-									sleep(4)
-								if("Rest")
-									var/conboost=(6*battler1.conmod)
-									var/rest2=conboost+10
-									var/rest1=conboost+5
-									var/restvalue=rand(rest1,rest2)
-									usr.send_chat("<font color=[battler1.textcolor]><b>[battler1]</font> has decided to rest, and restores [restvalue] HP and MP!!", stream = "icout")
-									battler1.hp+=restvalue
-									battler1.mp+=restvalue
-									if(battler1.hp>battler1.mhp)
-										battler1.hp=battler1.mhp
-									if(battler1.mp>battler1.mmp)
-										battler1.mp=battler1.mmp
-								if("Green Magic")
-									var/obj/perk/spell=input(battler1,"Which Green Magic ability would you like to use?") as anything in greenlist1
-									if(spell.dispel>=1)
-										if(spell.multi==1)
-											for(var/obj/npc/a in enemylist)
-												DispelPlayer(battler1, a, spell)
-										if(spell.multi==0)
-											var/dispelchoice=input(battler1,"Which enemy would you like to dispel an effect from?") as anything in enemylist
-											DispelPlayer(battler1, dispelchoice, spell)
-									if(spell.multi==0)
-										var/targetchoice=input(battler1,"Who would you like to use it on?") as anything in battlelist
-										GreenMagicOne(battler1, targetchoice, spell)
-									if(spell.multi==1)
-										if(battler1state=="Alive")
-											GreenMagicOne(battler1, battler1, spell)
-										if(battler2state=="Alive")
-											GreenMagicOne(battler1, battler2, spell)
-										if(battler3state=="Alive")
-											GreenMagicOne(battler1,battler3, spell)
-										if(battler4state=="Alive")
-											GreenMagicOne(battler1,battler4, spell)
-								if("Revive")
-									var/list/revivechoice=list()
-									if(battler1state!="Alive")
-										revivechoice+=battler1
-									if(battler2state!="Alive")
-										revivechoice+=battler2
-									if(battler3state!="Alive")
-										revivechoice+=battler3
-									if(battler4state!="Alive")
-										revivechoice+=battler4
-									var/obj/perk/spell=input(battler1,"Which revive Spell would you like to use?") as anything in revivelist1
-									if(spell.multi==0)
-										var/mob/choice=input(battler1,"Who would you like to revive with this Spell?") as anything in revivechoice
-										Revive(battler1, choice, spell)
-										if(choice.bposition=="battler1")
-											battler1state="Alive"
-											battlelist+=choice
-											battlers+=1
-											b1counted=0
-										if(choice.bposition=="battler2")
-											battler2state="Alive"
-											battlelist+=choice
-											battlers+=1
-											b2counted=0
-										if(choice.bposition=="battler3")
-											battler3state="Alive"
-											battlelist+=choice
-											battlers+=1
-											b3counted=0
-										if(choice.bposition=="battler4")
-											battler4state="Alive"
-											battlelist+=choice
-											battlers+=1
-											b4counted=0
-									if(spell.multi==1)
-										if(battler1state!="Alive")
-											battler1state="Alive"
-											battlelist+=battler1
-											Revive(battler1, battler1, spell)
-											battlers+=1
-											b1counted=0
-										if(battler2state!="Alive")
-											battler2state="Alive"
-											battlelist+=battler2
-											Revive(battler1, battler2, spell)
-											battlers+=1
-											b2counted=0
-										if(battler3state!="Alive")
-											battler3state="Alive"
-											battlelist+=battler3
-											Revive(battler1, battler3, spell)
-											battlers+=1
-											b3counted=0
-										if(battler4state!="Alive")
-											battler4state="Alive"
-											battlelist+=battler4
-											Revive(battler1, battler4, spell)
-											battlers+=1
-											b4counted=0
-								if("Summon")
-									return
-					sleep(1)
-					if(maxenemies>=1)
-						if(enemy.hp<=0 && e1counted==0)
-							enemystate=0
-							enemies-=1
-							e1counted=1
-							enemylist-=enemy
-							usr.send_chat("[enemy] is defeated [enemies]/[maxenemies]", stream = "icout")
-							sleep(4)
-					if(maxenemies>=2)
-						if(enemy2.hp<=0 && e2counted==0)
-							enemy2state=0
-							enemies-=1
-							e2counted=1
-							enemylist-=enemy2
-							usr.send_chat("[enemy2] is defeated [enemies]/[maxenemies]", stream = "icout")
-							sleep(4)
-					if(maxenemies>=3)
-						if(enemy3.hp<=0 && e3counted==0)
-							enemy3state=0
-							enemies-=1
-							e3counted=1
-							enemylist-=enemy3
-							usr.send_chat("[enemy3] is defeated [enemies]/[maxenemies]", stream = "icout")
-							sleep(4)
-					if(maxenemies>=4)
-						if(enemy4.hp<=0 && e4counted==0)
-							enemy4state=0
-							enemies-=1
-							e4counted=1
-							enemylist-=enemy4
-							usr.send_chat("[enemy4] is defeated [enemies]/[maxenemies]", stream = "icout")
-							sleep(4)
-					sleep(1)
-					if(enemies<=0)
-						enemy.visible_message("All Enemies have been defeated! <b>FATE</b> complete!!", stream = "icout")
-						del enemy2
-						del enemy3
-						del enemy4
-						for(var/obj/Party/c in world)
-							if(battler1.partyID==c.partyID)
-								for(var/obj/FATECrystal/b in global.fate_crystals)
-									if("[b.FATEID]"=="[c.FATEID]")
-										Victory(c,b)
-										enemyalive=0
-										maxbattlers=0
-										enemies=0
-										sleep(4)
-										del enemy
-					sleep(1)
-					if(maxbattlers>=2)
-						if(battler2state=="Alive")
-							Greencheckplayer(battler2)
-							Statusprocparty(battler2)
-							if(battler2.status1=="Stun")
-								battler2.visible_message("[battler2] is stunned, and skips a turn!", stream = "icout")
-								battler2.totalstatus=0
-								battler2.status1=null
-								return
-							usr.send_chat("<font color=[battler2.textcolor]><b>[battler2]'s</font> turn, let's see what they can do!", stream = "icout")
-							var/list/actions=list("Attack","Ability","Rest")
-							if(green2==1)
-								actions+="Green Magic"
-							if(healer2==1)
-								actions+="Heal"
-							if(revive2==1)
-								actions+="Revive"
-							if(summon2==1)
-								actions+="Summon"
-							if(battler2.job=="Spellblade" || battler2.subjob=="Spellblade")
-								actions+="Infusion"
-							if(battler2.job=="Mystic Knight" || battler2.subjob=="Mystic Knight")
-								actions+="Blade Cast"
-								actions+="Blade Dance"
-							if(battler2.job=="Dancer" || battler2.subjob=="Dancer")
-								actions+="Dance"
-							if(battler2.job=="Black Mage" || battler2.subjob=="Black Mage")
-								actions+="Twin Cast"
-							if(battler2.job=="Samurai" || battler2.subjob=="Samurai")
-								actions+="Retaliate"
-
-							var/achoice=input(battler2,"What action would you like to take this turn?") as anything in actions
-							switch(achoice)
-								if("Blade Cast")
-									var/list/twincast=list()
-									for(var/obj/perk/options in pattacklist2)
-										if(options.typing=="magical")
-											twincast+=options
-									var/target=input(battler2,"Which enemy would you like to attack?") as anything in enemylist
-									attackchoice=input(battler2,"Which Ability would you like to use this turn?") as anything in twincast
-									battler2.turnattack(battler2,target)
-									battler2.TurnAbility(battler2,target,attackchoice)
-								if("Blade Dance")
-									var/target=input(battler2,"Which enemy would you like to attack?") as anything in enemylist
-									battler2.turnattack(battler2,target)
-									battler2.turnattack(battler2,target)
-								if("Twin Cast")
-									var/list/twincast=list()
-									for(var/obj/perk/options in pattacklist2)
-										if(options.typing=="magical")
-											twincast+=options
-									attackchoice=input(battler2,"Which Ability would you like to use this turn?") as anything in twincast
-									var/target=input(battler2,"Which enemy would you like to attack?") as anything in enemylist
-									battler2.TurnAbility(battler2,target,attackchoice)
-									sleep(4)
-									attackchoice=input(battler2,"Which Ability would you like to use this turn?") as anything in twincast
-									var/target2=input(battler2,"Which enemy would you like to attack?") as anything in enemylist
-									battler2.TurnAbility(battler2,target2,attackchoice)
-									sleep(4)
-								if("Retaliate")
-									if(battler2.sp<30)
-										usr.send_chat("<font color=[battler2.textcolor]<b>[battler2] has attempted to use Retaliate, but could not spend 30 SP, and has forfeited their turn!", stream = "icout")
-									else
-										var/target=input(battler2,"Which enemy would you like to attack, setting Retaliate up?") as anything in enemylist
-										battler2.turnattack(battler2,target)
-										usr.send_chat("<font color=[battler2.textcolor]<b>[battler2] has entered a <b>Retaliation</b> stance!", stream = "icout")
-										battler2.sp-=30
-										battler2.retaliate=1
-								if("Infusion")
-									var/list/Infusions=list("Fire","Water","Ice","Thunder","Wind","Holy","Dark","Flare")
-									var/infuchoice=input(battler2,"Which Infusion would you like to apply to your weapon?") as anything in Infusions
-									battler2.infusion=infuchoice
-									usr.send_chat("<font color=[battler2.textcolor]<b>[battler2] has set their Infusion type to [infuchoice]!", stream = "icout")
-								if("Summon")
-									var/target=input(battler2,"Which enemy would you like to summon a companion to attack?") as anything in enemylist
-									var/summon=input(battler2,"Which companion would you like to call on the power of?") as anything in summonlist2
-									Summonattack(battler2, target, summon)
-								if("Attack")
-									var/target=input(battler2,"Which enemy would you like to attack?") as anything in enemylist
-									battler2.turnattack(battler2,target)
-									sleep(4)
-								if("Ability")
-									attackchoice=input(battler2,"Which Ability would you like to use this turn?") as anything in pattacklist2
-									var/target=input(battler2,"Which enemy would you like to attack?") as anything in enemylist
-									battler2.TurnAbility(battler2,target,attackchoice)
-									sleep(4)
-								if("Heal")
-									var/target=input(battler2,"Which ally would you like to heal?") as anything in battlelist
-									healchoice=input(battler2,"Which Healing ability would you like to use this turn?") as anything in heallist2
-									battler2.Heal(battler2,target,healchoice)
-									sleep(4)
-								if("Rest")
-									var/conboost=(6*battler2.conmod)
-									var/rest2=conboost+10
-									var/rest1=conboost+5
-									var/restvalue=rand(rest1,rest2)
-									usr.send_chat("<font color=[battler2.textcolor]><b>[battler2]</font> has decided to rest, and restores [restvalue] HP and MP!!", stream = "icout")
-									battler2.hp+=restvalue
-									battler2.mp+=restvalue
-									if(battler2.hp>battler2.mhp)
-										battler2.hp=battler2.mhp
-									if(battler2.mp>battler2.mmp)
-										battler2.mp=battler2.mmp
-								if("Green Magic")
-									var/obj/perk/spell=input(battler2,"Which Green Magic ability would you like to use?") as anything in greenlist2
-									if(spell.dispel>=1)
-										if(spell.multi==1)
-											for(var/obj/npc/a in enemylist)
-												DispelPlayer(battler2, a, spell)
-										if(spell.multi==0)
-											var/dispelchoice=input(battler2,"Which enemy would you like to dispel an effect from?") as anything in enemylist
-											DispelPlayer(battler2, dispelchoice, spell)
-									if(spell.multi==0)
-										var/targetchoice=input(battler2,"Who would you like to use it on?") as anything in battlelist
-										GreenMagicOne(battler2, targetchoice, spell)
-									if(spell.multi==1)
-										if(battler1state=="Alive")
-											GreenMagicOne(battler2, battler1, spell)
-										if(battler2state=="Alive")
-											GreenMagicOne(battler2, battler2, spell)
-										if(battler3state=="Alive")
-											GreenMagicOne(battler2,battler3, spell)
-										if(battler4state=="Alive")
-											GreenMagicOne(battler2,battler4, spell)
-								if("Revive")
-									var/list/revivechoice=list()
-									if(battler1state!="Alive")
-										revivechoice+=battler1
-									if(battler2state!="Alive")
-										revivechoice+=battler2
-									if(battler3state!="Alive")
-										revivechoice+=battler3
-									if(battler4state!="Alive")
-										revivechoice+=battler4
-									var/obj/perk/spell=input(battler2,"Which revive Spell would you like to use?") as anything in revivelist2
-									if(spell.multi==0)
-										var/mob/choice=input(battler2,"Who would you like to revive with this Spell?") as anything in revivechoice
-										Revive(battler2, choice, spell)
-										if(choice.bposition=="battler1")
-											battler1state="Alive"
-											battlelist+=choice
-											battlers+=1
-											b1counted=0
-										if(choice.bposition=="battler2")
-											battler2state="Alive"
-											battlelist+=choice
-											battlers+=1
-											b2counted=0
-										if(choice.bposition=="battler3")
-											battler3state="Alive"
-											battlelist+=choice
-											battlers+=1
-											b3counted=0
-										if(choice.bposition=="battler4")
-											battler4state="Alive"
-											battlelist+=choice
-											battlers+=1
-											b4counted=0
-									if(spell.multi==1)
-										if(battler1state!="Alive")
-											battler1state="Alive"
-											battlelist+=battler1
-											Revive(battler2, battler1, spell)
-											battlers+=1
-											b1counted=0
-										if(battler2state!="Alive")
-											battler2state="Alive"
-											battlelist+=battler2
-											Revive(battler2, battler2, spell)
-											battlers+=1
-											b2counted=0
-										if(battler3state!="Alive")
-											battler3state="Alive"
-											battlelist+=battler3
-											Revive(battler2, battler3, spell)
-											battlers+=1
-											b3counted=0
-										if(battler4state!="Alive")
-											battler4state="Alive"
-											battlelist+=battler4
-											Revive(battler2, battler4, spell)
-											battlers+=1
-											b4counted=0
-					sleep(1)
-					if(maxenemies>=1)
-						if(enemy.hp<=0 && e1counted==0)
-							enemystate=0
-							enemies-=1
-							e1counted=1
-							enemylist-=enemy
-							usr.send_chat("[enemy] is defeated [enemies]/[maxenemies]", stream = "icout")
-							sleep(4)
-					if(maxenemies>=2)
-						if(enemy2.hp<=0 && e2counted==0)
-							enemy2state=0
-							enemies-=1
-							e2counted=1
-							enemylist-=enemy2
-							usr.send_chat("[enemy2] is defeated [enemies]/[maxenemies]", stream = "icout")
-							sleep(4)
-					if(maxenemies>=3)
-						if(enemy3.hp<=0 && e3counted==0)
-							enemy3state=0
-							enemies-=1
-							e3counted=1
-							enemylist-=enemy3
-							usr.send_chat("[enemy3] is defeated [enemies]/[maxenemies]", stream = "icout")
-							sleep(4)
-					if(maxenemies>=4)
-						if(enemy4.hp<=0 && e4counted==0)
-							enemy4state=0
-							enemies-=1
-							e4counted=1
-							enemylist-=enemy4
-							usr.send_chat("[enemy4] is defeated [enemies]/[maxenemies]", stream = "icout")
-							sleep(4)
-					sleep(1)
-					if(enemies<=0)
-						enemy.visible_message("All Enemies have been defeated! <b>FATE</b> complete!!", stream = "icout")
-						del enemy2
-						del enemy3
-						del enemy4
-						for(var/obj/Party/c in world)
-							if(battler1.partyID==c.partyID)
-								for(var/obj/FATECrystal/b in global.fate_crystals)
-									if(b.FATEID==c.FATEID)
-										Victory(c,b)
-										enemyalive=0
-										maxbattlers=0
-										enemies=0
-										sleep(4)
-										del enemy
-					sleep(1)
-					if(maxbattlers>=3)
-						if(battler3state=="Alive")
-							Greencheckplayer(battler3)
-							Statusprocparty(battler3)
-							if(battler3.status1=="Stun")
-								battler3.visible_message("[battler3] is stunned, and skips a turn!", stream = "icout")
-								battler3.totalstatus=0
-								battler3.status1=null
-								return
-							usr.send_chat("<font color=[battler3.textcolor]><b>[battler3]'s</font> turn, let's see what they can do!", stream = "icout")
-							var/list/actions=list("Attack","Ability","Rest")
-							if(green3==1)
-								actions+="Green Magic"
-							if(healer3==1)
-								actions+="Heal"
-							if(revive3==1)
-								actions+="Revive"
-							if(summon3==1)
-								actions+="Summon"
-							if(battler3.job=="Spellblade" || battler3.subjob=="Spellblade")
-								actions+="Infusion"
-							if(battler3.job=="Mystic Knight" || battler3.subjob=="Mystic Knight")
-								actions+="Blade Cast"
-								actions+="Blade Dance"
-							if(battler3.job=="Dancer" || battler3.subjob=="Dancer")
-								actions+="Dance"
-							if(battler3.job=="Black Mage" || battler3.subjob=="Black Mage")
-								actions+="Twin Cast"
-							if(battler3.job=="Samurai" || battler3.subjob=="Samurai")
-								actions+="Retaliate"
-							Greencheckplayer(battler3)
-							if(battler3.totalstatus>=1)
-								Statusprocparty(battler3)
-							var/achoice=input(battler3,"What action would you like to take this turn?") as anything in actions
-							switch(achoice)
-								if("Blade Cast")
-									var/list/twincast=list()
-									for(var/obj/perk/options in pattacklist3)
-										if(options.typing=="magical")
-											twincast+=options
-									var/target=input(battler3,"Which enemy would you like to attack?") as anything in enemylist
-									attackchoice=input(battler3,"Which Ability would you like to use this turn?") as anything in twincast
-									battler3.turnattack(battler3,target)
-									battler3.TurnAbility(battler3,target,attackchoice)
-								if("Blade Dance")
-									var/target=input(battler3,"Which enemy would you like to attack?") as anything in enemylist
-									battler3.turnattack(battler3,target)
-									battler3.turnattack(battler3,target)
-								if("Twin Cast")
-									var/list/twincast=list()
-									for(var/obj/perk/options in pattacklist3)
-										if(options.typing=="magical")
-											twincast+=options
-									attackchoice=input(battler3,"Which Ability would you like to use this turn?") as anything in twincast
-									var/target=input(battler3,"Which enemy would you like to attack?") as anything in enemylist
-									battler3.TurnAbility(battler3,target,attackchoice)
-									sleep(4)
-									attackchoice=input(battler3,"Which Ability would you like to use this turn?") as anything in twincast
-									var/target2=input(battler3,"Which enemy would you like to attack?") as anything in enemylist
-									battler3.TurnAbility(battler3,target2,attackchoice)
-									sleep(4)
-								if("Retaliate")
-									if(battler3.sp<30)
-										usr.send_chat("<font color=[battler3.textcolor]<b>[battler3] has attempted to use Retaliate, but could not spend 30 SP, and has forfeited their turn!", stream = "icout")
-									else
-										var/target=input(battler3,"Which enemy would you like to attack, setting Retaliate up?") as anything in enemylist
-										battler2.turnattack(battler3,target)
-										usr.send_chat("<font color=[battler3.textcolor]<b>[battler3] has entered a <b>Retaliation</b> stance!", stream = "icout")
-										battler3.sp-=30
-										battler3.retaliate=1
-								if("Infusion")
-									var/list/Infusions=list("Fire","Water","Ice","Thunder","Wind","Holy","Dark","Flare")
-									var/infuchoice=input(battler3,"Which Infusion would you like to apply to your weapon?") as anything in Infusions
-									battler3.infusion=infuchoice
-									usr.send_chat("<font color=[battler3.textcolor]<b>[battler3] has set their Infusion type to [infuchoice]!", stream = "icout")
-								if("Summon")
-									var/target=input(battler3,"Which enemy would you like to summon a companion to attack?") as anything in enemylist
-									var/summon=input(battler3,"Which companion would you like to call on the power of?") as anything in summonlist3
-									Summonattack(battler3, target, summon)
-								if("Attack")
-									var/target=input(battler3,"Which enemy would you like to attack?") as anything in enemylist
-									battler3.turnattack(battler3,target)
-									sleep(4)
-								if("Ability")
-									attackchoice=input(battler3,"Which Ability would you like to use this turn?") as anything in pattacklist3
-									var/target=input(battler3,"Which enemy would you like to attack?") as anything in enemylist
-									battler3.TurnAbility(battler3,target,attackchoice)
-									sleep(4)
-								if("Heal")
-									var/target=input(battler3,"Which ally would you like to heal?") as anything in battlelist
-									healchoice=input(battler3,"Which Healing ability would you like to use this turn?") as anything in heallist3
-									battler3.Heal(battler3,target,healchoice)
-									sleep(4)
-								if("Rest")
-									var/conboost=(6*battler3.conmod)
-									var/rest2=conboost+10
-									var/rest1=conboost+5
-									var/restvalue=rand(rest1,rest2)
-									usr.send_chat("<font color=[battler3.textcolor]><b>[battler3]</font> has decided to rest, and restores [restvalue] HP and MP!!", stream = "icout")
-									battler3.hp+=restvalue
-									battler3.mp+=restvalue
-									if(battler3.hp>battler3.mhp)
-										battler3.hp=battler3.mhp
-									if(battler3.mp>battler3.mmp)
-										battler3.mp=battler3.mmp
-								if("Green Magic")
-									var/obj/perk/spell=input(battler3,"Which Green Magic ability would you like to use?") as anything in greenlist3
-									if(spell.dispel>=1)
-										if(spell.multi==1)
-											for(var/obj/npc/a in enemylist)
-												DispelPlayer(battler3, a, spell)
-										if(spell.multi==0)
-											var/dispelchoice=input(battler3,"Which enemy would you like to dispel an effect from?") as anything in enemylist
-											DispelPlayer(battler3, dispelchoice, spell)
-									if(spell.multi==0)
-										var/targetchoice=input(battler3,"Who would you like to use it on?") as anything in battlelist
-										GreenMagicOne(battler3, targetchoice, spell)
-									if(spell.multi==1)
-										if(battler1state=="Alive")
-											GreenMagicOne(battler3, battler1, spell)
-										if(battler2state=="Alive")
-											GreenMagicOne(battler3, battler2, spell)
-										if(battler3state=="Alive")
-											GreenMagicOne(battler3,battler3, spell)
-										if(battler4state=="Alive")
-											GreenMagicOne(battler3,battler4, spell)
-								if("Revive")
-									var/list/revivechoice=list()
-									if(battler1state!="Alive")
-										revivechoice+=battler1
-									if(battler2state!="Alive")
-										revivechoice+=battler2
-									if(battler3state!="Alive")
-										revivechoice+=battler3
-									if(battler4state!="Alive")
-										revivechoice+=battler4
-									var/obj/perk/spell=input(battler3,"Which revive Spell would you like to use?") as anything in revivelist3
-									if(spell.multi==0)
-										var/mob/choice=input(battler3,"Who would you like to revive with this Spell?") as anything in revivechoice
-										Revive(battler3, choice, spell)
-										if(choice.bposition=="battler1")
-											battler1state="Alive"
-											battlelist+=choice
-											battlers+=1
-											b1counted=0
-										if(choice.bposition=="battler2")
-											battler2state="Alive"
-											battlelist+=choice
-											battlers+=1
-											b2counted=0
-										if(choice.bposition=="battler3")
-											battler3state="Alive"
-											battlelist+=choice
-											battlers+=1
-											b3counted=0
-										if(choice.bposition=="battler4")
-											battler4state="Alive"
-											battlelist+=choice
-											battlers+=1
-											b4counted=0
-									if(spell.multi==1)
-										if(battler1state!="Alive")
-											battler1state="Alive"
-											battlelist+=battler1
-											Revive(battler3, battler1, spell)
-											battlers+=1
-											b1counted=0
-										if(battler2state!="Alive")
-											battler2state="Alive"
-											battlelist+=battler2
-											Revive(battler3, battler2, spell)
-											battlers+=1
-											b2counted=0
-										if(battler3state!="Alive")
-											battler3state="Alive"
-											battlelist+=battler3
-											Revive(battler3, battler3, spell)
-											battlers+=1
-											b3counted=0
-										if(battler4state!="Alive")
-											battler4state="Alive"
-											battlelist+=battler4
-											Revive(battler3, battler4, spell)
-											battlers+=1
-											b4counted=0
-					sleep(1)
-					if(maxenemies>=1)
-						if(enemy.hp<=0 && e1counted==0)
-							enemystate=0
-							enemies-=1
-							e1counted=1
-							enemylist-=enemy
-							usr.send_chat("[enemy] is defeated [enemies]/[maxenemies]", stream = "icout")
-							sleep(4)
-					if(maxenemies>=2)
-						if(enemy2.hp<=0 && e2counted==0)
-							enemy2state=0
-							enemies-=1
-							e2counted=1
-							enemylist-=enemy2
-							usr.send_chat("[enemy2] is defeated [enemies]/[maxenemies]", stream = "icout")
-							sleep(4)
-					if(maxenemies>=3)
-						if(enemy3.hp<=0 && e3counted==0)
-							enemy3state=0
-							enemies-=1
-							e3counted=1
-							enemylist-=enemy3
-							usr.send_chat("[enemy3] is defeated [enemies]/[maxenemies]", stream = "icout")
-							sleep(4)
-					if(maxenemies>=4)
-						if(enemy4.hp<=0 && e4counted==0)
-							enemy4state=0
-							enemies-=1
-							e4counted=1
-							enemylist-=enemy4
-							usr.send_chat("[enemy4] is defeated [enemies]/[maxenemies]", stream = "icout")
-							sleep(4)
-					if(enemies<=0)
-						enemy.visible_message("All Enemies have been defeated! <b>FATE</b> complete!!", stream = "icout")
-						del enemy2
-						del enemy3
-						del enemy4
-						for(var/obj/Party/c in world)
-							if(battler1.partyID==c.partyID)
-								for(var/obj/FATECrystal/b in global.fate_crystals)
-									if("[b.FATEID]"=="[c.FATEID]")
-										Victory(c,b)
-										enemyalive=0
-										maxbattlers=0
-										enemies=0
-										sleep(4)
-										del enemy
-					sleep(1)
-					if(maxbattlers>=4)
-						if(battler4state=="Alive")
-							Greencheckplayer(battler4)
-							Statusprocparty(battler4)
-							if(battler4.status1=="Stun")
-								battler4.visible_message("[battler4] is stunned, and skips a turn!", stream = "icout")
-								battler4.totalstatus=0
-								battler4.status1=null
-								return
-							usr.send_chat("<font color=[battler4.textcolor]><b>[battler4]'s</font> turn, let's see what they can do!", stream = "icout")
-							var/list/actions=list("Attack","Ability","Rest")
-							if(green4==1)
-								actions+="Green Magic"
-							if(healer4==1)
-								actions+="Heal"
-							if(revive4==1)
-								actions+="Revive"
-							if(summon4==1)
-								actions+="Summon"
-							if(battler4.job=="Spellblade" || battler4.subjob=="Spellblade")
-								actions+="Infusion"
-							if(battler4.job=="Mystic Knight" || battler4.subjob=="Mystic Knight")
-								actions+="Blade Cast"
-								actions+="Blade Dance"
-							if(battler4.job=="Dancer" || battler4.subjob=="Dancer")
-								actions+="Dance"
-							if(battler4.job=="Black Mage" || battler4.subjob=="Black Mage")
-								actions+="Twin Cast"
-							if(battler4.job=="Samurai" || battler4.subjob=="Samurai")
-								actions+="Retaliate"
-							Greencheckplayer(battler4)
-							if(battler4.totalstatus>=1)
-								Statusprocparty(battler4)
-							var/achoice=input(battler4,"What action would you like to take this turn?") as anything in actions
-							switch(achoice)
-								if("Blade Cast")
-									var/list/twincast=list()
-									for(var/obj/perk/options in pattacklist4)
-										if(options.typing=="magical")
-											twincast+=options
-									var/target=input(battler4,"Which enemy would you like to attack?") as anything in enemylist
-									attackchoice=input(battler4,"Which Ability would you like to use this turn?") as anything in twincast
-									battler4.turnattack(battler4,target)
-									battler4.TurnAbility(battler4,target,attackchoice)
-								if("Blade Dance")
-									var/target=input(battler4,"Which enemy would you like to attack?") as anything in enemylist
-									battler4.turnattack(battler4,target)
-									battler4.turnattack(battler4,target)
-								if("Twin Cast")
-									var/list/twincast=list()
-									for(var/obj/perk/options in pattacklist4)
-										if(options.typing=="magical")
-											twincast+=options
-									attackchoice=input(battler4,"Which Ability would you like to use this turn?") as anything in twincast
-									var/target=input(battler4,"Which enemy would you like to attack?") as anything in enemylist
-									battler4.TurnAbility(battler4,target,attackchoice)
-									sleep(4)
-									attackchoice=input(battler4,"Which Ability would you like to use this turn?") as anything in twincast
-									var/target2=input(battler4,"Which enemy would you like to attack?") as anything in enemylist
-									battler4.TurnAbility(battler4,target2,attackchoice)
-									sleep(4)
-								if("Retaliate")
-									if(battler4.sp<30)
-										usr.send_chat("<font color=[battler4.textcolor]<b>[battler4] has attempted to use Retaliate, but could not spend 30 SP, and has forfeited their turn!", stream = "icout")
-									else
-										var/target=input(battler4,"Which enemy would you like to attack, setting Retaliate up?") as anything in enemylist
-										battler4.turnattack(battler2,target)
-										usr.send_chat("<font color=[battler4.textcolor]<b>[battler4] has entered a <b>Retaliation</b> stance!", stream = "icout")
-										battler4.sp-=30
-										battler4.retaliate=1
-								if("Infusion")
-									var/list/Infusions=list("Fire","Water","Ice","Thunder","Wind","Holy","Dark","Flare")
-									var/infuchoice=input(battler4,"Which Infusion would you like to apply to your weapon?") as anything in Infusions
-									battler4.infusion=infuchoice
-									usr.send_chat("<font color=[battler4.textcolor]<b>[battler4] has set their Infusion type to [infuchoice]!", stream = "icout")
-								if("Summon")
-									var/target=input(battler4,"Which enemy would you like to summon a companion to attack?") as anything in enemylist
-									var/summon=input(battler4,"Which companion would you like to call on the power of?") as anything in summonlist4
-									Summonattack(battler4, target, summon)
-								if("Attack")
-									var/target=input(battler4,"Which enemy would you like to attack?") as anything in enemylist
-									battler4.turnattack(battler4,target)
-									sleep(4)
-								if("Ability")
-									attackchoice=input(battler4,"Which Ability would you like to use this turn?") as anything in pattacklist4
-									var/target=input(battler4,"Which enemy would you like to attack?") as anything in enemylist
-									battler4.TurnAbility(battler4,target,attackchoice)
-									sleep(4)
-								if("Heal")
-									var/target=input(battler4,"Which ally would you like to heal?") as anything in battlelist
-									healchoice=input(battler4,"Which Healing ability would you like to use this turn?") as anything in heallist4
-									battler4.Heal(battler4,target,healchoice)
-									sleep(4)
-								if("Rest")
-									var/conboost=(6*battler4.conmod)
-									var/rest2=conboost+10
-									var/rest1=conboost+5
-									var/restvalue=rand(rest1,rest2)
-									usr.send_chat("<font color=[battler4.textcolor]><b>[battler4]</font> has decided to rest, and restores [restvalue] HP and MP!!", stream = "icout")
-									battler4.hp+=restvalue
-									battler4.mp+=restvalue
-									if(battler4.hp>battler4.mhp)
-										battler4.hp=battler4.mhp
-									if(battler4.mp>battler4.mmp)
-										battler4.mp=battler4.mmp
-								if("Green Magic")
-									var/obj/perk/spell=input(battler4,"Which Green Magic ability would you like to use?") as anything in greenlist4
-									if(spell.dispel>=1)
-										if(spell.multi==1)
-											for(var/obj/npc/a in enemylist)
-												DispelPlayer(battler4, a, spell)
-										if(spell.multi==0)
-											var/dispelchoice=input(battler4,"Which enemy would you like to dispel an effect from?") as anything in enemylist
-											DispelPlayer(battler4, dispelchoice, spell)
-									if(spell.multi==0)
-										var/targetchoice=input(battler4,"Who would you like to use it on?") as anything in battlelist
-										GreenMagicOne(battler4, targetchoice, spell)
-									if(spell.multi==1)
-										if(battler1state=="Alive")
-											GreenMagicOne(battler4, battler1, spell)
-										if(battler2state=="Alive")
-											GreenMagicOne(battler4, battler2, spell)
-										if(battler3state=="Alive")
-											GreenMagicOne(battler4,battler3, spell)
-										if(battler4state=="Alive")
-											GreenMagicOne(battler4,battler4, spell)
-								if("Revive")
-									var/list/revivechoice=list()
-									if(battler1state!="Alive")
-										revivechoice+=battler1
-									if(battler2state!="Alive")
-										revivechoice+=battler2
-									if(battler3state!="Alive")
-										revivechoice+=battler3
-									if(battler4state!="Alive")
-										revivechoice+=battler4
-									var/obj/perk/spell=input(battler4,"Which revive Spell would you like to use?") as anything in revivelist4
-									if(spell.multi==0)
-										var/mob/choice=input(battler4,"Who would you like to revive with this Spell?") as anything in revivechoice
-										Revive(battler4, choice, spell)
-										if(choice.bposition=="battler1")
-											battler1state="Alive"
-											battlelist+=choice
-											battlers+=1
-											b1counted=0
-										if(choice.bposition=="battler2")
-											battler2state="Alive"
-											battlelist+=choice
-											battlers+=1
-											b2counted=0
-										if(choice.bposition=="battler3")
-											battler3state="Alive"
-											battlelist+=choice
-											battlers+=1
-											b3counted=0
-										if(choice.bposition=="battler4")
-											battler4state="Alive"
-											battlelist+=choice
-											battlers+=1
-											b4counted=0
-									if(spell.multi==1)
-										if(battler1state!="Alive")
-											battler1state="Alive"
-											battlelist+=battler1
-											Revive(battler4, battler1, spell)
-											battlers+=1
-											b1counted=0
-										if(battler2state!="Alive")
-											battler2state="Alive"
-											battlelist+=battler2
-											Revive(battler4, battler2, spell)
-											battlers+=1
-											b2counted=0
-										if(battler3state!="Alive")
-											battler3state="Alive"
-											battlelist+=battler3
-											Revive(battler4, battler3, spell)
-											battlers+=1
-											b3counted=0
-										if(battler4state!="Alive")
-											battler4state="Alive"
-											battlelist+=battler4
-											Revive(battler4, battler4, spell)
-											battlers+=1
-											b4counted=0
-					sleep(1)
-					if(maxenemies>=1)
-						if(enemy.hp<=0 && e1counted==0)
-							enemystate=0
-							enemies-=1
-							e1counted=1
-							enemylist-=enemy
-							usr.send_chat("[enemy] is defeated [enemies]/[maxenemies]", stream = "icout")
-							sleep(4)
-					if(maxenemies>=2)
-						if(enemy2.hp<=0 && e2counted==0)
-							enemy2state=0
-							enemies-=1
-							e2counted=1
-							enemylist-=enemy2
-							usr.send_chat("[enemy2] is defeated [enemies]/[maxenemies]", stream = "icout")
-							sleep(4)
-					if(maxenemies>=3)
-						if(enemy3.hp<=0 && e3counted==0)
-							enemy3state=0
-							enemies-=1
-							e3counted=1
-							enemylist-=enemy3
-							usr.send_chat("[enemy3] is defeated [enemies]/[maxenemies]", stream = "icout")
-							sleep(4)
-					if(maxenemies>=4)
-						if(enemy4.hp<=0 && e4counted==0)
-							enemy4state=0
-							enemies-=1
-							e4counted=1
-							enemylist-=enemy4
-							usr.send_chat("[enemy4] is defeated [enemies]/[maxenemies]", stream = "icout")
-							sleep(4)
-					sleep(1)
-					if(enemies<=0)
-						enemy.visible_message("All Enemies have been defeated! <b>FATE</b> complete!!", stream = "icout")
-						del enemy2
-						del enemy3
-						del enemy4
-						for(var/obj/Party/c in world)
-							if(battler1.partyID==c.partyID)
-								for(var/obj/FATECrystal/b in global.fate_crystals)
-									if("[b.FATEID]"=="[c.FATEID]")
-										Victory(c,b)
-										enemyalive=0
-										maxbattlers=0
-										enemies=0
-										sleep(4)
-										del enemy
-					sleep(1)
 
 
 
-obj
-	var/list/weplist=new
 
-obj
-	proc
-		Checkdamtype(t as text,var/obj/npc/m)
-			var/result=0
-			if(t=="str")
-				result=m.strmod
-			else if(t=="dex")
-				result=m.dexmod
-			else if(t=="con")
-				result=m.conmod
-			else if(t=="int")
-				result=m.intmod
-			else if(t=="wis")
-				result=m.wismod
-			else if(t=="cha")
-				result=m.chamod
-			return result
+/obj/proc/Checkdamtype(t as text,var/obj/npc/m)
+	var/result=0
+	if(t=="str")
+		result=m.strmod
+	else if(t=="dex")
+		result=m.dexmod
+	else if(t=="con")
+		result=m.conmod
+	else if(t=="int")
+		result=m.intmod
+	else if(t=="wis")
+		result=m.wismod
+	else if(t=="cha")
+		result=m.chamod
+	return result
 
 GLOBAL_DATUM_INIT(npc_archive, /datum/global_npc_archive, new)
 /**

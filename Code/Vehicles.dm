@@ -1,62 +1,60 @@
-atom
-	var
-		vehicletype
+/atom
+	var/vehicletype
 
-obj
-	var
-		vehicle=0
+/obj
+	var/vehicle = FALSE
 
-mob
-	var
-		currentship
-obj
-	VehicleInterior
-		Shipoutside
-			layer=2
-			icon='Icons/Ship.png'
-		Airshipoutside
-			layer=2
-			icon='Icons/Airship.png'
-obj
-	map
-		Roverwindow
-			icon='Roverwindow.dmi'
-			WindowL
-				icon_state="Left"
-			WindowR
-				icon_state="Right"
-			WindowM
-				icon_state="Middle"
+/mob
+	var/currentship
 
-mob
-	Bump(obj/Special/A)
-		if(istype(A,/obj/Special/Teleporter)&&!(istype(A, /obj/Special/SpecialTele)))
-			var/obj/Special/Teleporter/_tp=A
-			if(A.teltype=="mapY")
-				transit_move(locate(_tp.gotoX,src.y,_tp.gotoZ))
-				return
-			if(A.teltype=="mapX")
-				transit_move(locate(src.x,_tp.gotoY,_tp.gotoZ))
-				return
-			if(A.teltype=="normal")
-				transit_move(locate(_tp.gotoX,_tp.gotoY,_tp.gotoZ))
-				return
-			if(A.teltype=="area")
-				transit_move(locate(_tp.gotoX,_tp.gotoY,_tp.gotoZ))
-				return
-obj
-	Bump(obj/Special/A)
-		if(istype(A,/obj/Special/Teleporter)&&!(istype(A, /obj/Special/SpecialTele)))
-			var/obj/Special/Teleporter/_tp=A
-			if(A.teltype=="mapY")
-				transit_move(locate(_tp.gotoX,src.y,_tp.gotoZ))
-				return
-			if(A.teltype=="mapX")
-				transit_move(locate(src.x,_tp.gotoY,_tp.gotoZ))
-				return
-			if(A.teltype=="area")
-				transit_move(locate(_tp.gotoX,_tp.gotoY,_tp.gotoZ))
-				return
+/obj/VehicleInterior/Shipoutside
+	layer=2
+	icon='Icons/Ship.png'
+
+/obj/VehicleInterior/Airshipoutside
+	layer=2
+	icon='Icons/Airship.png'
+
+/obj/map/Roverwindow
+	icon='Roverwindow.dmi'
+
+/obj/map/Roverwindow/WindowL
+	icon_state="Left"
+
+/obj/map/Roverwindow/WindowR
+	icon_state="Right"
+
+/obj/map/Roverwindow/WindowM
+	icon_state="Middle"
+
+/mob/Bump(obj/Special/A)
+	if(istype(A,/obj/Special/Teleporter)&&!(istype(A, /obj/Special/SpecialTele)))
+		var/obj/Special/Teleporter/_tp=A
+		if(A.teltype=="mapY")
+			transit_move(locate(_tp.gotoX,src.y,_tp.gotoZ))
+			return
+		if(A.teltype=="mapX")
+			transit_move(locate(src.x,_tp.gotoY,_tp.gotoZ))
+			return
+		if(A.teltype=="normal")
+			transit_move(locate(_tp.gotoX,_tp.gotoY,_tp.gotoZ))
+			return
+		if(A.teltype=="area")
+			transit_move(locate(_tp.gotoX,_tp.gotoY,_tp.gotoZ))
+			return
+
+/obj/Bump(obj/Special/A)
+	if(istype(A,/obj/Special/Teleporter)&&!(istype(A, /obj/Special/SpecialTele)))
+		var/obj/Special/Teleporter/_tp=A
+		if(A.teltype=="mapY")
+			transit_move(locate(_tp.gotoX,src.y,_tp.gotoZ))
+			return
+		if(A.teltype=="mapX")
+			transit_move(locate(src.x,_tp.gotoY,_tp.gotoZ))
+			return
+		if(A.teltype=="area")
+			transit_move(locate(_tp.gotoX,_tp.gotoY,_tp.gotoZ))
+			return
 
 obj
 	Special
