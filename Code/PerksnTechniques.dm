@@ -1626,7 +1626,7 @@ obj
 											dresult+=usr.mdbadd
 										else
 											dresult+=15
-									else if(usr.role=="Physical Tank")
+									else if(usr.role=="Melee Tank")
 										if(usr.mdbadd<10)
 											dresult+=usr.mdbadd
 										else
@@ -1650,7 +1650,7 @@ obj
 									aresult=src.basecheck+amod+usr.rankbonus+src.addhit
 									dresult=abilitydamage+dmod+usr.pdb+src.adddam
 									//phys damage bonuses here.
-									if(usr.role=="Physical Tank"||usr.role=="Magical DPS"||usr.role=="Magical Support") //These roles all cap at 15 PDB Add.
+									if(usr.role=="Melee Tank"||usr.role=="Magical DPS"||usr.role=="Magical Support") //These roles all cap at 15 PDB Add.
 										if(usr.pdbadd<15)
 											dresult+=usr.pdbadd
 										else
@@ -1694,7 +1694,7 @@ obj
 											dresult+=usr.mdbadd
 										else
 											dresult+=15
-									else if(usr.role=="Physical Tank")
+									else if(usr.role=="Melee Tank")
 										if(usr.mdbadd<10)
 											dresult+=usr.mdbadd
 										else
@@ -1716,7 +1716,7 @@ obj
 											dresult+=25
 								else
 									dresult=doresult+dmod+wepchoice.adddam+usr.pdb+src.adddam+abilitydamage
-									if(usr.role=="Physical Tank"||usr.role=="Magical DPS"||usr.role=="Magical Support") //These roles all cap at 15 PDB Add.
+									if(usr.role=="Melee Tank"||usr.role=="Magical DPS"||usr.role=="Magical Support") //These roles all cap at 15 PDB Add.
 										if(usr.pdbadd<15)
 											dresult+=usr.pdbadd
 										else
@@ -1772,7 +1772,7 @@ obj
 												dresult+=usr.mdbadd
 											else
 												dresult+=15
-										else if(usr.role=="Physical Tank")
+										else if(usr.role=="Melee Tank")
 											if(usr.mdbadd<10)
 												dresult+=usr.mdbadd
 											else
@@ -1794,7 +1794,7 @@ obj
 												dresult+=25
 									else
 										dresult=doresult+dmod+wepchoice.adddam+usr.pdb+src.adddam+abilitydamage
-										if(usr.role=="Physical Tank"||usr.role=="Magical DPS"||usr.role=="Magical Support") //These roles all cap at 15 PDB Add.
+										if(usr.role=="Melee Tank"||usr.role=="Magical DPS"||usr.role=="Magical Support") //These roles all cap at 15 PDB Add.
 											if(usr.pdbadd<15)
 												dresult+=usr.pdbadd
 											else
@@ -1849,7 +1849,7 @@ obj
 											dresult+=usr.mdbadd
 										else
 											dresult+=15
-									else if(usr.role=="Physical Tank")
+									else if(usr.role=="Melee Tank")
 										if(usr.mdbadd<10)
 											dresult+=usr.mdbadd
 										else
@@ -1871,7 +1871,7 @@ obj
 											dresult+=25
 								else
 									dresult=doresult+dmod+src.adddam+usr.pdb
-									if(usr.role=="Physical Tank"||usr.role=="Magical DPS"||usr.role=="Magical Support") //These roles all cap at 15 PDB Add.
+									if(usr.role=="Melee Tank"||usr.role=="Magical DPS"||usr.role=="Magical Support") //These roles all cap at 15 PDB Add.
 										if(usr.pdbadd<15)
 											dresult+=usr.pdbadd
 										else
@@ -2318,7 +2318,7 @@ obj
 											dresult+=usr.mdbadd
 										else
 											dresult+=15
-									else if(usr.role=="Physical Tank")
+									else if(usr.role=="Melee Tank")
 										if(usr.mdbadd<10)
 											dresult+=usr.mdbadd
 										else
@@ -2341,7 +2341,7 @@ obj
 								else
 									aresult=src.basecheck+amod+usr.rankbonus+src.addhit
 									dresult=abilitydamage+dmod+usr.pdb+src.adddam
-									if(usr.role=="Physical Tank"||usr.role=="Magical DPS"||usr.role=="Magical Support") //These roles all cap at 15 PDB Add.
+									if(usr.role=="Melee Tank"||usr.role=="Magical DPS"||usr.role=="Magical Support") //These roles all cap at 15 PDB Add.
 										if(usr.pdbadd<15)
 											dresult+=usr.pdbadd
 										else
@@ -2385,7 +2385,7 @@ obj
 											dresult+=usr.mdbadd
 										else
 											dresult+=15
-									else if(usr.role=="Physical Tank")
+									else if(usr.role=="Melee Tank")
 										if(usr.mdbadd<10)
 											dresult+=usr.mdbadd
 										else
@@ -2407,7 +2407,7 @@ obj
 											dresult+=25
 								else
 									dresult=doresult+dmod+wepchoice.adddam+usr.pdb+src.adddam+abilitydamage
-									if(usr.role=="Physical Tank"||usr.role=="Magical DPS"||usr.role=="Magical Support") //These roles all cap at 15 PDB Add.
+									if(usr.role=="Melee Tank"||usr.role=="Magical DPS"||usr.role=="Magical Support") //These roles all cap at 15 PDB Add.
 										if(usr.pdbadd<15)
 											dresult+=usr.pdbadd
 										else
@@ -2463,7 +2463,7 @@ obj
 												dresult+=usr.mdbadd
 											else
 												dresult+=15
-										else if(usr.role=="Physical Tank")
+										else if(usr.role=="Melee Tank")
 											if(usr.mdbadd<10)
 												dresult+=usr.mdbadd
 											else
@@ -2485,7 +2485,7 @@ obj
 												dresult+=25
 									else
 										dresult=doresult+dmod+wepchoice.adddam+usr.pdb+src.adddam+abilitydamage
-										if(usr.role=="Physical Tank"||usr.role=="Magical DPS"||usr.role=="Magical Support") //These roles all cap at 15 PDB Add.
+										if(usr.role=="Melee Tank"||usr.role=="Magical DPS"||usr.role=="Magical Support") //These roles all cap at 15 PDB Add.
 											if(usr.pdbadd<15)
 												dresult+=usr.pdbadd
 											else
@@ -2540,7 +2540,7 @@ obj
 											dresult+=usr.mdbadd
 										else
 											dresult+=15
-									else if(usr.role=="Physical Tank")
+									else if(usr.role=="Melee Tank")
 										if(usr.mdbadd<10)
 											dresult+=usr.mdbadd
 										else
@@ -2562,7 +2562,7 @@ obj
 											dresult+=25
 								else
 									dresult=doresult+dmod+src.adddam+usr.pdb
-									if(usr.role=="Physical Tank"||usr.role=="Magical DPS"||usr.role=="Magical Support") //These roles all cap at 15 PDB Add.
+									if(usr.role=="Melee Tank"||usr.role=="Magical DPS"||usr.role=="Magical Support") //These roles all cap at 15 PDB Add.
 										if(usr.pdbadd<15)
 											dresult+=usr.pdbadd
 										else

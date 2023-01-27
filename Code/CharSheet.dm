@@ -1556,7 +1556,7 @@ mob
 							dresult+=usr.mdbadd
 						else
 							dresult+=15
-					else if(usr.role=="Physical Tank")
+					else if(usr.role=="Melee Tank")
 						if(usr.mdbadd<10)
 							dresult+=usr.mdbadd
 						else
@@ -1579,7 +1579,7 @@ mob
 				else
 					aresult=a.basecheck+amod+m.rankbonus+a.addhit+4
 					dresult=(abilitydamage+dmod+m.pdb+a.adddam)
-					if(usr.role=="Physical Tank"||usr.role=="Magical DPS"||usr.role=="Magical Support") //These roles all cap at 15 PDB Add.
+					if(usr.role=="Melee Tank"||usr.role=="Magical DPS"||usr.role=="Magical Support") //These roles all cap at 15 PDB Add.
 						if(usr.pdbadd<15)
 							dresult+=usr.pdbadd
 						else
@@ -1624,7 +1624,7 @@ mob
 							dresult+=usr.mdbadd
 						else
 							dresult+=15
-					else if(usr.role=="Physical Tank")
+					else if(usr.role=="Melee Tank")
 						if(usr.mdbadd<10)
 							dresult+=usr.mdbadd
 						else
@@ -1646,7 +1646,7 @@ mob
 							dresult+=25
 				else
 					dresult=(doresult+dmod+wepchoice.adddam+m.pdb+a.adddam+abilitydamage)
-					if(usr.role=="Physical Tank"||usr.role=="Magical DPS"||usr.role=="Magical Support") //These roles all cap at 15 PDB Add.
+					if(usr.role=="Melee Tank"||usr.role=="Magical DPS"||usr.role=="Magical Support") //These roles all cap at 15 PDB Add.
 						if(usr.pdbadd<15)
 							dresult+=usr.pdbadd
 						else
@@ -1703,7 +1703,7 @@ mob
 								dresult+=usr.mdbadd
 							else
 								dresult+=15
-						else if(usr.role=="Physical Tank")
+						else if(usr.role=="Melee Tank")
 							if(usr.mdbadd<10)
 								dresult+=usr.mdbadd
 							else
@@ -1725,7 +1725,7 @@ mob
 								dresult+=25
 					else
 						dresult=(doresult+dmod+wepchoice.adddam+m.pdb+a.adddam+abilitydamage)
-						if(usr.role=="Physical Tank"||usr.role=="Magical DPS"||usr.role=="Magical Support") //These roles all cap at 15 PDB Add.
+						if(usr.role=="Melee Tank"||usr.role=="Magical DPS"||usr.role=="Magical Support") //These roles all cap at 15 PDB Add.
 							if(usr.pdbadd<15)
 								dresult+=usr.pdbadd
 							else
@@ -1780,7 +1780,7 @@ mob
 							dresult+=usr.mdbadd
 						else
 							dresult+=15
-					else if(usr.role=="Physical Tank")
+					else if(usr.role=="Melee Tank")
 						if(usr.mdbadd<10)
 							dresult+=usr.mdbadd
 						else
@@ -1802,7 +1802,7 @@ mob
 							dresult+=25
 				else
 					dresult=(doresult+dmod+a.adddam+m.pdb)
-					if(usr.role=="Physical Tank"||usr.role=="Magical DPS"||usr.role=="Magical Support") //These roles all cap at 15 PDB Add.
+					if(usr.role=="Melee Tank"||usr.role=="Magical DPS"||usr.role=="Magical Support") //These roles all cap at 15 PDB Add.
 						if(usr.pdbadd<15)
 							dresult+=usr.pdbadd
 						else
