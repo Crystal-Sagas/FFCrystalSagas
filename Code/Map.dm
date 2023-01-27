@@ -2401,6 +2401,8 @@ obj
 				icon_state="4"
 			Cross3
 				icon_state="5"
+		PhoenixStatue
+			icon='Map Icons/PhoenixStatue.dmi'
 		Piano
 			icon='Map Icons/Piano.dmi'
 			density=1
