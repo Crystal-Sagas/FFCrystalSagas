@@ -10,7 +10,7 @@
 	/// fighters
 	var/list/mob/fighters
 	/// enemies
-	var/list/obj/npc/enemies
+	var/list/mob/enemies
 
 	//? rewards
 	/// gil reward amount
@@ -19,7 +19,6 @@
 	var/list/crafting_rewards
 	/// items
 	var/list/obj/item/item_rewards
-
 
 /**
  * battle loop

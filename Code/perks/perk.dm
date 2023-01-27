@@ -66,6 +66,13 @@
 
 /**
  * full attack action in a mechanical battle, like a FATE
+ *
+ * *WARNING*: As of right now, attacker can be an /obj/npc too. Pending refactor.
+ *
+ * @params
+ * * battle - battle instance
+ * * target - target mob
+ * * attacker - attacker mob
  */
-/obj/perk/proc/mechanical_attack(datum/battle/mechanical/battle, mob/attacker, mob/target)
+/obj/perk/proc/mechanical_attack(datum/battle/mechanical/battle, mob/target, mob/attacker)
 	// todo: impl
