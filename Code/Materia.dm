@@ -497,7 +497,7 @@ obj
 				var/obj/item/Materia/StatMateria/IntelligenceMateria/c=new
 				b.contents+=c
 				view() << output("<font color=[usr.textcolor]><b>[usr.name]</font> has molded Raw Mako into a <b>[c]</b>","icout")
-			if(randomizemat>=16 && randomizemat < 18)
+			if(randomizemat>=16 && randomizemat < 19)
 				var/obj/item/Materia/StatMateria/CharismaMateria/c=new
 				b.contents+=c
 				view() << output("<font color=[usr.textcolor]><b>[usr.name]</font> has molded Raw Mako into a <b>[c]</b>","icout")
