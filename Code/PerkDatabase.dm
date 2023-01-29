@@ -2529,25 +2529,25 @@ obj
 				jobneed="Dragoon"
 				icon='Icons/Perk/Dragoon.png'
 				Dragoon
-					name="Dragoon"
+					name="Dragoon (Job)"
 					cat="Unique"
-					desc="Dragoons gain +1 to hit with Spears, and may apply the 'Draconic' enchantment to weapons, which changes their weapon type to 'Dragoon' for the sake of equipment (barring non Dragoons from using it) and also changes its active scaling stat to Dexterity. They gain an additional +3 to hit with any weapon while air-borne. Dragoons have a base tile jump height of 2, and are immune to fall damage entirely. "
+					desc="Dragoons gain +1 to PAB, MAB and +2 PDB as a Global Modifier per Metal Tier of their equipped Spear, and may apply the 'Draconic' enchantment to weapons, which changes their weapon type to 'Dragoon' for the sake of equipment (barring non Dragoons from using it) and also changes its active scaling stat to Dexterity. They gain an additional +3 to hit with any weapon while air-borne, this buff lasts for 1 round after landing. Dragoons have a base tile jump height of half their movement speed, and are immune to fall damage entirely. +40 HP, +30 MP, +70 SP."
 				EnhancedJump
 					rank="T1"
 					name="Enhanced Jump"
-					desc="This individual has spent a long time perfecting their jump and strengthening their legs. When they jump, their speed is nigh unmatched.. Gain +1 to your base Jump tiles."
+					desc="This individual has spent a long time perfecting their jump and strengthening their legs. When they jump, their speed is nigh unmatched. Gain +1 to your base Jump tiles."
 				DragonSight
 					rank="T2"
 					name="Dragon Sight"
-					desc="This individual has eyes enhanced by dragon blood. They can see twice as far and gain dark vision for 12 Tiles. A Dragoon with this ability may pump Mana into their eyes to increase perceptual prowess, granting a 3 round bonus to PAB, MAB, and AC equal to 1, which lasts 3 rounds. Doing so is a bonus action."
+					desc="Upon pouncing a target with a Jump ability, the Dragoon's infused dragon blood forces their predator's instincts to activate. Their eyes become slit like a dragon on the hunt for it's next meal. For 3 rounds after using any 'Jump' ability, the user gains +1 PAB, MAB and AC. This does not stack with itself but can have it's duration refreshed."
 				BloodoftheWyvern
 					rank="T2"
 					name="Blood of the Wyvern"
-					desc="A dragoon's dragon blood enhanced body grants them supernatural aerodynamics. They can cut through the air like an arrow. They can spend 10 SP or MP when jumping (as an incidental action) in order to increase the height by 2 tiles. When a Dragoon is airborne, they may spend 5 SP or MP to immediately reach ground elevation."
+					desc="A dragon's dragon blood enchaned body grants them supernatural aerodynamics. They can cut through the air like an arrow. By calling on their dragon blood on take off, the Dragoon is able to greatly enhance their height. The Dragoon can double their base Jump Height whenever they leave the ground. This has a 3 round cooldown, starting when the Dragoon next lands. They may also immediately land on the ground."
 				Glide
 					rank="T3"
 					name="Glide"
-					desc="The dragoon is controlled enough to be able to glide through the air at a semi-sustained altitude. They can double-jump whilst gliding to go higher or dip when necessary, as well as divert all of the momentum from their glide into the fall of their jump for massive damage. They have supreme control of the air. A Dragoon with this ability is able to spend 5 SP in order to extend the duration of their Airborne status at the elevation they are currently resting at. When doing so, they may choose to descend up to 1 tile if they so wish. A Dragoon with this ability is able to spend 10 SP in order to perform another standard Jump action whilst still airborne, further increasing their elevation. They may also move cardinally whilst airborne, at half movement. A Dragoon may only be airborne for a maximum of 3 rounds."
+					desc="The Dragoon is controlled enough to be able to glide through the air at a semi-sustained Altitude. They can double-jump whilst gliding to go higher up, or dip when necessary. They have supreme control of the air. A Dragoon falls 1 tile per turn, and may freely move at half their movement speed through the air in any direction besides upward. They my double-jump once per instance in which they are already airborne. Double-jumping counts as a movement action, but can be done at an angle."
 				WyvernTrainer
 					rank="T3"
 					name="Wyvern Trainer"
@@ -2566,7 +2566,7 @@ obj
 				NidhoggsFury
 					rank="T4"
 					name="Nidhogg's Fury"
-					desc="This individual is able to merge mid-air momentum with magical power, and augment it. Whenever they use a Jump ability, they may expend 15 SP or MP in order to (as an incidental action) expel a 5x5 tile burst of energy, which deals damage equal to half of the fall damage the Dragoon would have taken from the fall were they not a dragoon as an automatic hit, and prompt a Fortitude saving throw (DC 18) which if failed, inflicts Stun."
+					desc="This individual is able to merge mid-air momentum with magical power, and augment it. Whenever they use a Jump ability gtom 5 tiles airborne or higher, they may expel a 5x5 tile burst of energy as a Free Action, which deals damage equal to half of the fall damage the Dragoon would have taken from the fall were they not a dragoon as an automatic hit, and prompt a Fortitude saving throw (DC 18) which if failed, inflicts Heavy."
 
 
 			Machinist
@@ -6860,14 +6860,22 @@ obj
 					attack_roll_dice_sides = 8
 					mcost=5
 					range=" 6 tile range."
-					desc="The user is able to throw their weapon, and have it teleport back to them from wherever position it was due to mana infusion. The Mana infused in the weapon is attuned to the user, and can be magnetized to a target the weapon hits, creating a temporary connection between them. If this attack hits, it deals normal weapon damage, and causes the next attack from the Dragoon that hits the marked target to take 1d10 additional damage, and be inflicted with 'Weakness'. If the creature is healed before this occurs, this effect is dissipated. Esuna and other cleansing abilities will also cleanse this effect. 6 Tile range."
+					desc="The user is able to throw their weapon, and have it teleport back to them from wherever position it was due to mana infusion. The Mana infused in the weapon is attuned to the user, and can be magnetized to a target the weapon hits, creating a temporary connection between them. If this attack hits, it deals normal weapon damage, and causes the next attack from the Dragoon that hits the marked target to take 1d10 additional damage, and be inflicted with 'Weakness'. If the creature is healed before this occurs, this effect is dissipated. Esuna and other cleansing abilities will also cleanse this effect. Bonus Action. 6 Tile range."
 				Lancet
 					rank="D"
-					desc="As a bonus action after performing any 'Jump' attack and successfully dealing damage, drain 4 HP and MP from target per tile travelled with the Jump attack. This is an automatic hit, but requires the initial Jump to have hit its target. (-10 SP.)"
+					desc="The Dragoon's Bloodlust is displayed in how deep their spear sinks into their target. Invigorating their draconic bloodlust on a successful 'Jump' attack and successfully dealing damage, the user my use an Free action to drain their Target of 4 SP and 4 MP per tile traveled using their ‘Jump’ attack. This is an automatic hit, but requires the initial Jump to have hit it's target. (-10 SP)"
 				BarrelRoll
 					name="Barrel Roll"
 					rank="C"
-					desc="As a reaction while already in the air, halve the damage of a single attack. This can instead be used as a Bonus Action to grant +1 tile of elevation, OR to move north, east, or west 1 additional tile while airborne, in addition to your base movement ; whilst sustaining your elevation for that turn. This costs 15 SP for either utilizaiton. "
+					desc="The Dragoon's aerodynamic body allows them to spin and flip their body gracefully through the air, adjusting their momentum to minimize damage and can be used both in the air and on the ground as a Reaction to an incoming attack. While Airborne, the user is able to move in any direction -but up- up to half their total Speed, rounded down. If used on the ground, the user is able to leap toward their attacker and position themselves 2 tiles directly above their attacker, this can only be used this way, if the attacker is within the user's base 'Jump' movement action range. For every tile moved, reduce damage by 10. Costs 15 SP for either utilization."
+				DrakeHop
+					element="Physical"
+					name="Drake Hop"
+					rank="C"
+					atype="weapon"
+					mcost=15
+					costtype="Stamina"
+					desc="A lesser version of the Dragoon’s signature Jump ability. They are able to quickly flip directly above their target and swing their weapon, or use this swing when coming downward to strike their target. The swinging action transfers the kinetic energy that would otherwise deal serious damage to their target back at them, sending them upward. Inflict half the damage onto the target and sends the user into the air at half their base ‘Jump’ movement action height. If used while already Airborne, deals half of a standard Jump’s bonus damage, before knocking the dragoon back up at half the height they descended from. Counts as a Movement Action, Action of Opportunity cannot be activated against it. (-15 SP)"
 				VorpalThrust
 					element="Physical"
 					name="Vorpal Thrust"
@@ -6877,7 +6885,7 @@ obj
 					attack_roll_dice_sides = 12
 					range=" 3 tile line."
 					mcost=20
-					desc="The user dashes forward, weapon pointed dashing through everything in front of them. This can be utilized either on the ground, or in mid-air. (Damage: Weapon Damage + 1d12+DEX | 3 Tile line, which user moves along. Melee attack roll. -20 Stamina.)"
+					desc="The user dashes forward, weapon pointed dashing through everything in front of them. This can be utilized either on the ground, or in mid-air. (Damage: Weapon Damage + 1d12+DEX | 3 Tile line, which user moves along. Melee attack roll. -20 Stamina.) This counts as a Movement aAction. Action of Opportunity cannot be activated against it."
 				CelestialShooter
 					element="Physical"
 					name="Celestial Shooter"

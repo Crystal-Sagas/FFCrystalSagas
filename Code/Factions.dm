@@ -125,6 +125,7 @@ obj
 							usr.contents+=fys
 							faction.Nation="Yevon"
 						usr.money-=5000
+						return //this should stop the game from cosntantly prompting someone from a faction name. may require break instead. IDK why it loops. So weird.
 					if("No")
 						return
 		MidgarFactionFounder

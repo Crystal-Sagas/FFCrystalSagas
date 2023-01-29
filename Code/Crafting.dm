@@ -4162,6 +4162,7 @@ obj/item/verb
 					if(src.enchanted != 1)
 						alert(usr,"You must apply a basic elemental or status enchantment before applying a Mythic enchantment.")
 						return
+
 					else
 						switch(input("Which Mythic enchantment do you wish to apply?") in list("Drain","Osmose","Angelic","Arcane","Destruction","Crippling","Corrosion","Mighty","Keen","Swift","Homing","Force Field","Mana Rod","Strong","Agile","Sturdy","Wise","Clever","Beautiful","Ogre","Clairvoyance","Teleporter","Esper Bane","Delver","Tamer","Sagely","Divine","Supersonic","Vengeful","Brutish"))
 							if("Drain")
