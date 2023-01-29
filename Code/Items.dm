@@ -838,6 +838,10 @@ obj
 							purchamount=input("How many would you like to buy?") as num
 							if(purchamount>itemon.amount)
 								alert("There are not that many items for sale.")
+								return
+							else if(purchamount<=0)
+								alert("You cannot buy zero or negative items!")
+								return
 							else
 								tprice=itemon.price*purchamount
 								if(usr.money<tprice)

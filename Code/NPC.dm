@@ -7454,10 +7454,12 @@ obj
 						var/obj/perk/MonsterAbilities/BLU/Heave/c=new
 						var/obj/perk/Abilities/GreenMagic/Refresh/d=new
 						var/obj/item/Weapon/Special/BusterSword/Orichalcum/wep=new
+						var/obj/perk/Abilities/WhiteMagic/Healing/Regen/e=new
 						src.contents+=a
 						src.contents+=b
 						src.contents+=c
 						src.contents+=d
+						src.contents+=e
 						src.contents+=wep
 						src.eweapon=wep
 						var/obj/status/HPBar/hpb = new
@@ -7590,7 +7592,7 @@ obj
 						var/obj/perk/MonsterAbilities/BLU/AdamantDrum/b=new
 						var/obj/perk/Abilities/GreenMagic/Protects/Protect/c=new
 						var/obj/perk/Abilities/GreenMagic/Shells/Shell/d=new
-						var/obj/perk/Abilities/GreenMagic/Bubble/e=new
+						var/obj/perk/Abilities/WhiteMagic/Healing/Regen/e=new
 						src.contents+=a
 						src.contents+=b
 						src.contents+=c
@@ -7637,11 +7639,15 @@ obj
 						var/obj/perk/Abilities/GreenMagic/Protects/Protect/c=new
 						var/obj/perk/Abilities/GreenMagic/Shells/Shell/d=new
 						var/obj/perk/Abilities/BlackMagic/Flame/Firaja/e=new
+						var/obj/perk/Abilities/ArcaneMagic/Drains/Drainga/f=new
+						var/obj/perk/Abilities/ArcaneMagic/Osmoses/Osmosega/g=new
 						src.contents+=a
 						src.contents+=b
 						src.contents+=c
 						src.contents+=d
 						src.contents+=e
+						src.contents+=f
+						src.contents+=g
 						var/obj/status/HPBar/hpb = new
 						src.contents+=hpb
 						var/obj/status/SPBar/spb = new
