@@ -476,28 +476,28 @@ obj
 obj
 	proc
 		RandomYellowMateria(var/mob/b)
-			var/randomizemat=rand(1,20)
-			if(randomizemat>=1 && randomizemat < 6)
+			var/randomizemat=rand(1,18)
+			if(randomizemat>=1 && randomizemat < 4)
 				var/obj/item/Materia/StatMateria/StrengthMateria/c=new
 				b.contents+=c
 				view() << output("<font color=[usr.textcolor]><b>[usr.name]</font> has molded Raw Mako into a <b>[c]</b>","icout")
-			if(randomizemat>=6 && randomizemat < 11)
+			if(randomizemat>=4 && randomizemat < 7)
 				var/obj/item/Materia/StatMateria/DexterityMateria/c=new
 				b.contents+=c
 				view() << output("<font color=[usr.textcolor]><b>[usr.name]</font> has molded Raw Mako into a <b>[c]</b>","icout")
-			if(randomizemat>=11 && randomizemat < 15)
+			if(randomizemat>=7 && randomizemat < 10)
 				var/obj/item/Materia/StatMateria/ConstitutionMateria/c=new
 				b.contents+=c
 				view() << output("<font color=[usr.textcolor]><b>[usr.name]</font> has molded Raw Mako into a <b>[c]</b>","icout")
-			if(randomizemat>=15 && randomizemat < 17)
+			if(randomizemat>=10 && randomizemat < 13)
 				var/obj/item/Materia/StatMateria/WisdomMateria/c=new
 				b.contents+=c
 				view() << output("<font color=[usr.textcolor]><b>[usr.name]</font> has molded Raw Mako into a <b>[c]</b>","icout")
-			if(randomizemat>=17 && randomizemat < 19)
+			if(randomizemat>=13 && randomizemat < 16)
 				var/obj/item/Materia/StatMateria/IntelligenceMateria/c=new
 				b.contents+=c
 				view() << output("<font color=[usr.textcolor]><b>[usr.name]</font> has molded Raw Mako into a <b>[c]</b>","icout")
-			if(randomizemat>=19 && randomizemat < 21)
+			if(randomizemat>=16 && randomizemat < 18)
 				var/obj/item/Materia/StatMateria/CharismaMateria/c=new
 				b.contents+=c
 				view() << output("<font color=[usr.textcolor]><b>[usr.name]</font> has molded Raw Mako into a <b>[c]</b>","icout")
