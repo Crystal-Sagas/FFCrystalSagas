@@ -1998,7 +1998,7 @@ obj
 					name="Sage"
 					rank="T5"
 					cat="Unique"
-					desc="This individual is a true magical prodigy. They are capable of learning up to S rank white, black, green, arcane magic, and summons."
+					desc="This individual is a true magical master. They are capable of learning up to S rank white, black, green, arcane magic, and summons. +4 INT, +4 CHA, +4 WIS, +100 HP, +100 MP"
 
 			BlueMage
 				jobneed="Blue Mage"
@@ -2830,7 +2830,8 @@ obj
 			SwordSaint
 				name="Sword Saint"
 				cat="Unique"
-				desc="A Sword Saint is a Paladin or Dark Knight who has fully embraced the duality of light and darkness - good, and evil. They live between these principles, and adhere to the blade - and the raw principle of justice above all else. A Sword Saint is able to mix Holy and Dark magic, and infuse their weapon with this combined and potent energy source, granting them access to Sword Saint perks and abilities. Note: This changes your primary job to 'Sword Saint'. Grants +10 HP, +10 MP, +10 SP, and +2 WIS, CHA, and STR. Requires Paladin or Dark Knight as main job, and Paladin or Dark Knight as sub job in combination."
+				rank="T5"
+				desc="A Sword Saint is a Paladin or Dark Knight who has fully embraced the duality of light and darkness - good, and evil. They live between these principles, and adhere to the blade - and the raw principle of justice above all else. A Sword Saint is able to mix Holy and Dark magic, and infuse their weapon with this combined and potent energy source, granting them access to Sword Saint perks and abilities. Note: This changes your primary job to 'Sword Saint'. Grants +65 HP, +65 MP, +65 SP, and +2 WIS, CHA, and STR. Requires Paladin or Dark Knight as main job, and Paladin or Dark Knight as sub job in combination."
 				icon='Icons/Perk/Sword Saint.png'
 				ajob="Sword Saint"
 				DuskKnight
@@ -2851,9 +2852,10 @@ obj
 
 			Reaper
 				cat="Unique"
+				rank="T4"
 				icon='Icons/Perk/Reaper.png'
 				ajob="Reaper"
-				desc="A Reaper is a Dark Knight who has given in entirely to the darkness, and has become a servant of death. This changes the character's primary job to 'Reaper' - and grants access to unique Reaper perks and abilities. The Reaper has mastered the art of death. They can wield the power of darkness reaped from their slain foes in order to deal devastating blows and manifest beings of pure death. Every individual instance of Melee or Magical damage they inflict on a creature gets transferred into them as 'Soul' as 5 Soul stacks per."
+				desc="A Reaper is a Dark Knight who has given in entirely to the darkness, and has become a servant of death. This changes the character's primary job to 'Reaper' - and grants access to unique Reaper perks and abilities. The Reaper has mastered the art of death. They can wield the power of darkness reaped from their slain foes in order to deal devastating blows and manifest beings of pure death. Every individual instance of Melee or Magical damage they inflict on a creature gets transferred into them as 'Soul' as 5 Soul stacks per. +80 MP, +80 HP."
 
 
 			Necromancer
@@ -2865,19 +2867,21 @@ obj
 			HolyDragoon
 				name="Holy Dragoon"
 				cat="Unique"
+				rank="T4"
 				icon='Icons/Perk/HolyDragoon.png'
 				ajob="Holy Dragoon"
-				desc="This Dragoon has ascended beyond the level of a normal Dragoon. Their synergy with Dragons has gained them favor and recognition from the father of Dragons, the sacred Midgardsormr. Resultantly, they gain access to the power of the Midgardsormr's holy light, as well as ancient dragon magicks. A Holy Dragoon gains access to C Rank White magic, as well as Dragon Abilities. A Holy Dragoon who has a Wyvern companion also grants their Holy power to that Wyvern. It gains a Dragon Breath Ability of the Dragoon's choice upon attaining this perk, or upon a Wyvern being attained if the Dragoon attains Holy Dragoon first."
+				desc="This Dragoon has ascended beyond the level of a normal Dragoon. Their synergy with Dragons has gained them favor and recognition from the father of Dragons, the sacred Midgardsormr. Resultantly, they gain access to the power of the Midgardsormr's holy light, as well as ancient dragon magicks. A Holy Dragoon gains access to C Rank White magic, as well as Dragon Abilities. A Holy Dragoon who has a Wyvern companion also grants their Holy power to that Wyvern. It gains a Dragon Breath Ability of the Dragoon's choice upon attaining this perk, or upon a Wyvern being attained if the Dragoon attains Holy Dragoon first.+80 SP, +80 MP."
 			OnionKnight
 				name="--Onion Knight Directory--"
 				icon='Icons/Perk/OnionKnight.png'
 				ajob="Onion Knight"
+				rank="T3"
 				ptype="job"
 				OnionKnight
 					name="Onion Knight"
 					cat="Unique"
 					ajob="Onion Knight"
-					desc="This individual has learned to be a more particularly 'Martial' Red Mage. As a result, they have learned to learn 'Red Bladespells' - which allow them to manifest blade-like constructs, cast from their weapon. Bladespells are unique in that they do not use dice, but flat and more consistent damage ranges for their damage. Bladespells count as spells, and use MDB/MAB rather than PDB/PAB. Onion Knight is incompatible with 'Pure Red Mage' ."
+					desc="This individual has learned to be a more particularly 'Martial' Red Mage. As a result, they have learned to learn 'Red Bladespells' - which allow them to manifest blade-like constructs, cast from their weapon. Bladespells are unique in that they do not use dice, but flat and more consistent damage ranges for their damage. Bladespells count as spells, and use MDB/MAB rather than PDB/PAB. Onion Knight is incompatible with 'Pure Red Mage' +60 HP, +60 MP."
 				Enhancer
 					name="Enhancer"
 					rank="T2"
@@ -6947,38 +6951,38 @@ obj
 				mcost=50
 				range=" 5 tile cone."
 				costtype="Mana"
-				damsource="cha"
+				damsource="wis"
 				typing="magical"
 				HolyBreath
 					element="Holy"
 					name="Holy Breath"
 					rank="B"
-					desc="The Dragoon releases a powerful breath, as if a dragon themselves. This breath is imbued with the power of Holy, and prompts a saving throw against targets in its radius. (Damage: 4d12+CHA holy | Prompts a Fortitude saving throw, dealing full damage and inflicting Silence on failure ; and half on success. 5 tile cone. -50 Mana.)"
+					desc="The Dragoon releases a powerful breath, as if a dragon themselves. This breath is imbued with the power of Holy, and prompts a saving throw against targets in its radius. (Damage: 4d12+WIS holy | Prompts a Fortitude saving throw, dealing full damage and inflicting Silence on failure ; and half on success. 5 tile cone. -50 Mana.)"
 				FireBreath
 					element="Fire"
 					name="Fire Breath"
 					rank="B"
-					desc="The Dragoon releases a powerful breath, as if a dragon themselves. This breath is imbued with the power of Flame and prompts a saving throw against targets in its radius. (Damage: 4d12+CHA fire | Prompts a Fortitude saving throw, dealing full damage and inflicting Burn on failure ; and half on success. 5 tile cone. -50 Mana.)"
+					desc="The Dragoon releases a powerful breath, as if a dragon themselves. This breath is imbued with the power of Flame and prompts a saving throw against targets in its radius. (Damage: 4d12+WIS fire | Prompts a Fortitude saving throw, dealing full damage and inflicting Burn on failure ; and half on success. 5 tile cone. -50 Mana.)"
 				FrostBreath
 					element="Ice"
 					name="Frost Breath"
 					rank="B"
-					desc="The Dragoon releases a powerful breath, as if a dragon themselves. This breath is imbued with the power of Ice and prompts a saving throw against targets in its radius. (Damage: 4d12+CHA ice | Prompts a Fortitude saving throw, dealing full damage and inflicting Slow on failure ; and half on success. 5 tile cone. -50 Mana.)"
+					desc="The Dragoon releases a powerful breath, as if a dragon themselves. This breath is imbued with the power of Ice and prompts a saving throw against targets in its radius. (Damage: 4d12+WIS ice | Prompts a Fortitude saving throw, dealing full damage and inflicting Slow on failure ; and half on success. 5 tile cone. -50 Mana.)"
 				LightningBreath
 					element="Thunder"
 					name="Lightning Breath"
 					rank="B"
-					desc="The Dragoon releases a powerful breath, as if a dragon themselves. This breath is imbued with the power of Thunder and prompts a saving throw against targets in its radius. (Damage: 4d12+CHA lightning | Prompts a Fortitude saving throw, dealing full damage and inflicting Paralyze on failure ; and half on success. 5 tile cone. -50 Mana.)"
+					desc="The Dragoon releases a powerful breath, as if a dragon themselves. This breath is imbued with the power of Thunder and prompts a saving throw against targets in its radius. (Damage: 4d12+WIS lightning | Prompts a Fortitude saving throw, dealing full damage and inflicting Paralyze on failure ; and half on success. 5 tile cone. -50 Mana.)"
 				WindBreath
 					element="Wind"
 					name="Wind Breath"
 					rank="B"
-					desc="The Dragoon releases a powerful breath, as if a dragon themselves. This breath is imbued with the power of Wind and prompts a saving throw against targets in its radius. (Damage: 4d12+CHA wind | Prompts a Fortitude saving throw, dealing full damage and inflicting a 5 tile knockback and Bleed on failure ; and half on success. 5 tile cone. -50 Mana.)"
+					desc="The Dragoon releases a powerful breath, as if a dragon themselves. This breath is imbued with the power of Wind and prompts a saving throw against targets in its radius. (Damage: 4d12+WIS wind | Prompts a Fortitude saving throw, dealing full damage and inflicting a 5 tile knockback and Bleed on failure ; and half on success. 5 tile cone. -50 Mana.)"
 				OceanBreath
 					element="Water"
 					name="Ocean Breath"
 					rank="B"
-					desc="The Dragoon releases a powerful breath, as if a dragon themselves. This breath is imbued with the power of Water and prompts a saving throw against targets in its radius. (Damage: 4d12+CHA water | Prompts a Fortitude saving throw, dealing full damage and Wet on failure ; and half on success. 5 tile cone. -50 Mana.)"
+					desc="The Dragoon releases a powerful breath, as if a dragon themselves. This breath is imbued with the power of Water and prompts a saving throw against targets in its radius. (Damage: 4d12+WIS water | Prompts a Fortitude saving throw, dealing full damage and Wet on failure ; and half on success. 5 tile cone. -50 Mana.)"
 				PoisonBreath
 					element="Bio"
 					name="Poison Breath"

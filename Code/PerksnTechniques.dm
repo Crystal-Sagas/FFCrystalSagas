@@ -268,6 +268,10 @@ proc
 		if(o.name=="Onion Knight")
 			m.ajob="Onion Knight"
 			m.nolearn+="Pure Red Mage"
+			m.mmp+=60
+			m.mp+=60
+			m.mhp+=60
+			m.hp+=60
 //scholar boosts
 		if(o.name=="Physical Eidolon Empowerment")
 			for(var/obj/npc/Summons/a in m.contents)
@@ -786,6 +790,7 @@ proc
 		if(o.name=="Counter Meteor")
 			var/obj/perk/Jobperks/TimeMage/CounterMeteor/CMeteor/a = new /obj/perk/Jobperks/TimeMage/CounterMeteor/CMeteor
 			m.contents+=a
+		//Advanced Jobs
 		if(o.name=="Ninja Arts")
 			m.ajob="Ninja"
 			m.mhp+=20
@@ -797,12 +802,12 @@ proc
 			m.pab+=1
 		if(o.name=="Sword Saint")
 			m.ajob="Sword Saint"
-			m.mhp+=10
-			m.hp+=10
-			m.mmp+=10
-			m.mp+=10
-			m.msp+=10
-			m.sp+=10
+			m.mhp+=65
+			m.hp+=65
+			m.mmp+=65
+			m.mp+=65
+			m.msp+=65
+			m.sp+=65
 			m.str+=2
 			m.wis+=2
 			m.cha+=2
@@ -814,13 +819,25 @@ proc
 			m.Checkmod(6,m.cha,m.addcha,m)
 		if(o.name=="Reaper")
 			m.ajob="Reaper"
+			m.mmp+=80
+			m.mp+=80
+			m.mhp+=80
+			m.hp+=80
 		if(o.name=="Gambler")
 			m.ajob="Gambler"
 		if(o.name=="Holy Dragoon")
 			m.ajob="Holy Dragoon"
+			m.mmp+=80
+			m.mp+=80
+			m.msp+=80
+			m.sp+=80
 			Magicuseincrease(m,1,3)
 		if(o.name=="Necromancer")
 			m.ajob="Necromancer"
+			m.msp+=80
+			m.sp+=80
+			m.mmp+=80
+			m.mp+=80
 		if(o.name=="Defying Fate")
 			m.ajob="Hope"
 			m.nolearn+="Fear of Failure"
@@ -886,10 +903,23 @@ proc
 			m.ajob="Berserker"
 		if(o.name=="Sage")
 			m.ajob="Sage"
+			m.mmp+=100
+			m.mp+=100
+			m.hp+=100
+			m.mhp+=100
 			Magicuseincrease(m,1,6)
 			Magicuseincrease(m,2,6)
 			Magicuseincrease(m,3,6)
 			Magicuseincrease(m,4,6)
+			m.int+=4
+			m.wis+=4
+			m.cha+=4
+			m.Checkmod(1,m.str,m.addstr,m)
+			m.Checkmod(2,m.dex,m.adddex,m)
+			m.Checkmod(3,m.con,m.addcon,m)
+			m.Checkmod(4,m.int,m.addint,m)
+			m.Checkmod(5,m.wis,m.addwis,m)
+			m.Checkmod(6,m.cha,m.addcha,m)
 		if(o.name=="Bushido")
 			m.ajob="Bushido"
 		if(o.name=="Bastion of Magic")
