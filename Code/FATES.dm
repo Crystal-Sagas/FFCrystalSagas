@@ -304,6 +304,7 @@ obj
 		var
 			FATEID
 			party1=0
+			layer=999
 		icon='Icons/Artifact.png'
 		Click()// I'll break down why this is broke. IDK how to fix it yet tho. But I'm wrinkling my brain over it. ---Vi
 			for(var/obj/Party/c in world) //This calls all party objects... IN THE WORLD.
@@ -329,6 +330,7 @@ obj
 			FATEID
 			party1=0
 			party2=0
+			layer=999
 		icon='Icons/Client.png'
 		Click()
 			for(var/obj/Party/c in world)
