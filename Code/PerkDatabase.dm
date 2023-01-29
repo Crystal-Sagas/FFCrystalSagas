@@ -1531,7 +1531,7 @@ obj
 				LivingBlade
 					name="Living Blade"
 					rank="T2"
-					desc="The Mystic Knight is able to toss their weapon toward incoming attacks directed at either themselves or allies, allowing them to partially deflect a portion of the damage sent toward the party, able to redirect the pathing of the weapon using their Kinetic Stacks. As a Bonus Action or Reaction; the Mystic Knight does a basic attack roll. This attack roll reduces the damage of an incoming attack. If the incoming attack is magical, it is reduced by the full amount to a cap of 40; if it is physical, it is reduced by half the amount, up to a cap of 20. This can be done to up to 5 instances of incoming damage, expending 10 MP and 1 Kinetic stack per instance. This perk then goes on Cooldown with a length in turns equal to the amount of Kinetic Stacks expended."
+					desc="The Mystic Knight is able to toss their weapon toward incoming attacks directed at either themselves or allies, allowing them to partially deflect a portion of the damage sent toward the party, able to redirect the pathing of the weapon using their Kinetic Stacks. As a Bonus Action or Reaction; the Mystic Knight does a basic attack roll. This attack roll reduces the damage of an incoming attack. If the incoming attack is magical, it is reduced by the full amount to a cap of 40; if it is physical, it is reduced by half the amount, up to a cap of 20. This can be done to up to 5 instances of incoming damage, expending 10 MP and 1 Kinetic stack per instance. This perk then goes on a 1 round Cooldown."
 				DefensiveBuildup
 					name="Defensive Buildup"
 					rank="T2"
