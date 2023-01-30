@@ -1145,7 +1145,7 @@ obj
 					desc="Namazu are gifted with great inner wisdom, and emotional clarity. As a result, Namazu gain +2 WIS, +20 MP, and +1 to all Magical Attack Rolls."
 				Craftergatherer
 					name="Crafter Gatherer"
-					desc="The Namazu are most well known for their roles as crafters, and gatherers. A Namazu gains an extra Crafting slot. In addition, weapons and armor crafted by Namazu gain +1 quality compared to their original amount. Meaning that a Silver gilded weapon would be +2, and a Platinum gilded weapon would be +4, for example."
+					desc="The Namazu are most well known for their roles as crafters, and gatherers. Namazu get a latent +5 Gathering nodes, daily. They can also naturally Mastercraft weapons made by themselves and others, enhancing their Power and Hit by + if done."
 			Viera
 				icon='Icons/Perk/Viera.png'
 				Bunnyears

@@ -2,6 +2,7 @@ obj
 	var/robot=0
 	var/entype
 	var/mythic=0
+	var/mastercraft=0 //This will be for the Namazu rework and an eventual semi-unique that crafters who get t4 armor+weapon smithing can app for.
 atom
 	var/owner=0
 atom
@@ -385,11 +386,11 @@ obj
 						a10.amount=0
 				var/obj/o = copyatom(darecipe.creates)
 				m.contents+=o
-				for(var/obj/item/Weapon/w in m.contents)
+				/*for(var/obj/item/Weapon/w in m.contents)
 					if(o==w)
 						if(m.race=="Namazu")
 							w.addhit+=1
-							w.adddam+=1
+							w.adddam+=1*/
 				if(o.vehicle==1)
 					o.owner=m.key
 					m.contents-=o
@@ -3787,6 +3788,115 @@ obj/item/verb
 					if("No")
 					if("Cancel")
 						return
+		if(usr.race=="Namazu")
+			if(src.mastercraft>0)
+				alert(usr,"This item is already Master Crafted.")
+			else
+				var/list/choice=list("Yes","No","Cancel")
+				var/choose=input("Would you like to Mastercraft this? Weapons get Power and Damage increased by 1 at the cost of 10 ores of it's Metal Tier.") as anything in choice
+				switch(choose)
+					if("Yes")
+						var/newname="Masterwork [src.name]"
+						if(src.weptier=="Bronze")
+							var/obj/item/mtier = usr.Determinecraftmat("Bronze")
+							if(mtier==null)
+								alert(usr,"You don't seem to have any Bronze.")
+								return
+							else if(mtier.amount>=10)
+								mtier.amount-=10
+								src.addhit+=1
+								src.adddam+=1
+								src.mastercraft=1
+								alert(usr,"You have made this weapon a Masterpiece!")
+								src.name=newname
+								return
+							else
+								alert(usr,"You don't have enough of the metal to Mastercraft!")
+								return
+						if(src.weptier=="Iron")
+							var/obj/item/mtier = usr.Determinecraftmat("Iron")
+							if(mtier==null)
+								alert(usr,"You don't seem to have any Iron.")
+								return
+							else if(mtier.amount>=10)
+								mtier.amount-=10
+								src.addhit+=1
+								src.adddam+=1
+								src.mastercraft=1
+								alert(usr,"You have made this weapon a Masterpiece!")
+								src.name=newname
+								return
+							else
+								alert(usr,"You don't have enough of the metal to Mastercraft!")
+								return
+						if(src.weptier=="Steel")
+							var/obj/item/mtier = usr.Determinecraftmat("Steel")
+							if(mtier==null)
+								alert(usr,"You don't seem to have any Steel.")
+								return
+							else if(mtier.amount>=10)
+								mtier.amount-=10
+								src.addhit+=1
+								src.adddam+=1
+								src.mastercraft=1
+								alert(usr,"You have made this weapon a Masterpiece!")
+								src.name=newname
+								return
+							else
+								alert(usr,"You don't have enough of the metal to Mastercraft!")
+								return
+						if(src.weptier=="Mythril")
+							var/obj/item/mtier = usr.Determinecraftmat("Mythril")
+							if(mtier==null)
+								alert(usr,"You don't seem to have any Mythril.")
+								return
+							else if(mtier.amount>=10)
+								mtier.amount-=10
+								src.addhit+=1
+								src.adddam+=1
+								src.mastercraft=1
+								alert(usr,"You have made this weapon a Masterpiece!")
+								src.name=newname
+								return
+							else
+								alert(usr,"You don't have enough of the metal to Mastercraft!")
+								return
+						if(src.weptier=="Adamantine")
+							var/obj/item/mtier = usr.Determinecraftmat("Adamantine")
+							if(mtier==null)
+								alert(usr,"You don't seem to have any Adamantine.")
+								return
+							else if(mtier.amount>=10)
+								mtier.amount-=10
+								src.addhit+=1
+								src.adddam+=1
+								src.mastercraft=1
+								alert(usr,"You have made this weapon a Masterpiece!")
+								src.name=newname
+								return
+							else
+								alert(usr,"You don't have enough of the metal to Mastercraft!")
+								return
+						if(src.weptier=="Orichalcum")
+							var/obj/item/mtier = usr.Determinecraftmat("Orichalcum")
+							if(mtier==null)
+								alert(usr,"You don't seem to have any Orichalcum.")
+								return
+							else if(mtier.amount>=10)
+								mtier.amount-=10
+								src.addhit+=1
+								src.adddam+=1
+								src.mastercraft=1
+								alert(usr,"You have made this weapon a Masterpiece!")
+								src.name=newname
+								return
+							else
+								alert(usr,"You don't have enough of the metal to Mastercraft!")
+								return
+					if("No")
+					if("Cancel")
+						return
+
 		if(usr.Checkpre("Enchanter",usr))
 			switch(input("Do you wish to add an elemental effect or status effect?") in list("Elemental","Status","Mythic","Cancel"))
 				if("Elemental")
