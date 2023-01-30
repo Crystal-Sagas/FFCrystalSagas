@@ -1866,7 +1866,7 @@ obj
 				Twincast
 					rank="T2"
 					name="Twincast"
-					desc="Masters of black magic, they are capable of casting the same spell in immediate succession of the first though with the draw back of a heavier cost. (Able to cast the same black magic spell twice for one action for 2x the original cost.)"
+					desc="Masters of black magic, they are capable of casting the same spell in immediate succession of the first though with the draw back of a heavier cost. (Able to cast the same black magic spell as a bonus action for 2x the spell's base cost. This cost cannot be reduced in any way and supercedes any reduction to costs.)"
 				ArcanistAdaption
 					rank="T2"
 					name="Arcanist Adaption"
@@ -1878,7 +1878,7 @@ obj
 				BlackResonance
 					rank="T3"
 					name="Black Resonance"
-					desc="This perk causes the magic of the black mage to grow more powerful the longer they are uninterrupted and consistently casting spells. (Causes spells to gain a +1 to hit and to damage for each one cast while not moving and casting a spell each round. This has a cap of +15.)"
+					desc="This perk causes the magic of the black mage to grow more powerful the longer they are uninterrupted and consistently casting spells. (Causes spells to gain a +3 to hit and to damage for each one cast while not moving and casting a spell each round. This has a cap of +15. Loses a stack on movement.)"
 				ArcaneWarlock
 					rank="T3"
 					name="Arcane Warlock"
