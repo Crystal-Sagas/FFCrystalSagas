@@ -225,6 +225,28 @@ obj
 					Mythril
 					Adamantine
 					Orichalcum
+				Gauntlet
+					weight=2
+					weapontype="Gauntlet"
+					icon='Icons/Items/Gauntlet.png'
+					equiptype="2h"
+					Bronze
+					Iron
+					Steel
+					Mythril
+					Adamantine
+					Orichalcum
+				Claw
+					weight=2
+					weapontype="Claw"
+					icon='Icons/Items/Gauntlet.png'
+					equiptype="2h"
+					Bronze
+					Iron
+					Steel
+					Mythril
+					Adamantine
+					Orichalcum
 				Whip
 					weight=1
 					weapontype="Whip"
@@ -903,6 +925,22 @@ obj
 				a.damsource="dex"
 				a.desc="A dagger, which has a knack for critically hitting, and has a latent +1 to hit bonus. On a critical hit, a Dagger ignores ALL damage reduction, and inflicts Weakness, but for 1 turn rather than its standard duration."
 				a.critrange=17
+			if(a.weapontype=="Gauntlet")
+				a.equiptype="2h"
+				a.addhit=1
+				range1weapon=1
+				range2weapon=0.5
+				a.damsource="str"
+				a.desc="A Gauntlet may attack twice per Standard action (once per round). If at least two attacks made with a Gauntlet hit in the same round, the Gauntlet deals 5 additional true damage per metal tier to the target, and knocks the target back 2 tiles per metal tier (if the user wishes for Knockback.)."
+				a.critrange=20
+			if(a.weapontype=="Claw")
+				a.equiptype="2h"
+				a.addhit=1
+				range1weapon=1
+				range2weapon=0.5
+				a.damsource="dex"
+				a.desc="Claws may attack twice per Standard action (once per round). If at least two attacks made with a Claw hit in the same round, the Claw inflicts Bleed. Claws have a critical hit range of 19-20."
+				a.critrange=19
 			if(a.weapontype=="Whip")
 				a.equiptype="1h"
 				range1weapon=1

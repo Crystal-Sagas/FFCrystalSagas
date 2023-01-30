@@ -163,7 +163,7 @@ mob
 			var/row
 			var/swapwep
 			winset(usr,"Crafting.weaponrecipes","cells=0x0")
-			var/list/wepchoices=list("Longsword","Focus Crystal","Scimitar","Shuriken","Throwing Knives","Axe","Hammer","Dagger","Whip","Greatsword","Katana","Spear","Scythe","Bow","Focus Sword","Staff","Tome","Sword Spear","Thief Sword","Bolt Rapier","Whipblade","Akademia Cards","Blitz Ball","Gunblade","Bowsword","Bagangsaw","Buster Sword","Morphing Blade","Gun Arm","Magitek Pistol","Magitek Rifle")
+			var/list/wepchoices=list("Longsword","Focus Crystal","Scimitar","Shuriken","Throwing Knives","Axe","Hammer","Dagger","Claw","Gauntlet","Whip","Greatsword","Katana","Spear","Scythe","Bow","Focus Sword","Staff","Tome","Sword Spear","Thief Sword","Bolt Rapier","Whipblade","Akademia Cards","Blitz Ball","Gunblade","Bowsword","Bagangsaw","Buster Sword","Morphing Blade","Gun Arm","Magitek Pistol","Magitek Rifle")
 			var/chosenwep=input(usr,"What weapon crafting list would you like to access?") as anything in wepchoices
 			swapwep=chosenwep
 			for(var/obj/recipes/Weapons/o in global.recipe_shop.recipes)
@@ -1040,6 +1040,70 @@ obj
 					New()
 						AssignCraftinginfo(src)
 						var/obj/item/Weapon/Melee/Dagger/Orichalcum/a=new
+						src.creates=a
+			Claw
+				weapontype="Claw"
+				Bronze
+					New()
+						AssignCraftinginfo(src)
+						var/obj/item/Weapon/Melee/Claw/Bronze/a=new
+						src.creates=a
+				Iron
+					New()
+						AssignCraftinginfo(src)
+						var/obj/item/Weapon/Melee/Claw/Iron/a=new
+						src.creates=a
+				Steel
+					New()
+						AssignCraftinginfo(src)
+						var/obj/item/Weapon/Melee/Claw/Steel/a=new
+						src.creates=a
+				Mythril
+					New()
+						AssignCraftinginfo(src)
+						var/obj/item/Weapon/Melee/Claw/Mythril/a=new
+						src.creates=a
+				Adamantine
+					New()
+						AssignCraftinginfo(src)
+						var/obj/item/Weapon/Melee/Claw/Adamantine/a=new
+						src.creates=a
+				Orichalcum
+					New()
+						AssignCraftinginfo(src)
+						var/obj/item/Weapon/Melee/Claw/Orichalcum/a=new
+						src.creates=a
+			Gauntlet
+				weapontype="Gauntlet"
+				Bronze
+					New()
+						AssignCraftinginfo(src)
+						var/obj/item/Weapon/Melee/Gauntlet/Bronze/a=new
+						src.creates=a
+				Iron
+					New()
+						AssignCraftinginfo(src)
+						var/obj/item/Weapon/Melee/Gauntlet/Iron/a=new
+						src.creates=a
+				Steel
+					New()
+						AssignCraftinginfo(src)
+						var/obj/item/Weapon/Melee/Gauntlet/Steel/a=new
+						src.creates=a
+				Mythril
+					New()
+						AssignCraftinginfo(src)
+						var/obj/item/Weapon/Melee/Gauntlet/Mythril/a=new
+						src.creates=a
+				Adamantine
+					New()
+						AssignCraftinginfo(src)
+						var/obj/item/Weapon/Melee/Gauntlet/Adamantine/a=new
+						src.creates=a
+				Orichalcum
+					New()
+						AssignCraftinginfo(src)
+						var/obj/item/Weapon/Melee/Gauntlet/Orichalcum/a=new
 						src.creates=a
 			Whip
 				weapontype="Whip"

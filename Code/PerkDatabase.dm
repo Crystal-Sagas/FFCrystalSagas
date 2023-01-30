@@ -2094,7 +2094,7 @@ obj
 				Monk
 					name="Monk"
 					cat="Unique"
-					desc="Monks hone their body before all else. They are warriors of body, spirit, and mind. As long as the Monk is wearing no armor, they gain +2 passive damage to their unarmed attacks, as well as +2 AC, and 2 damage reduction. Monks can not wear armor. +60 HP, +50 Mana, +50 SP."
+					desc="Monks hone their body before all else. They are warriors of body, spirit, and mind. As long as the Monk is wearing no armor, they gain +2 passive damage to their unarmed attacks, as well as +2 AC, and 2 damage reduction. Monks can not wear armor. Monk abilities and perks cannot be used with any weapons besides Monk Weapons.(Bare-Handed, Staff, Gauntlet, Claw) +60 HP, +50 Mana, +50 SP."
 				MasterofMobility
 					name="Master of Mobility"
 					rank="T2"

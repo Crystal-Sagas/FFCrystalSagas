@@ -729,7 +729,7 @@ mob
 			GiveProficiency(var/mob/m)
 				if(adminlv<1)
 					return
-				var/list/equip=list("Light Armor","Medium Armor","Heavy Armor","Shield","Tower Shield","Shuriken","Throwing Knives","Longsword","Scimitar","Hammer","Axe","Dagger","Whip","Greatsword","Katana","Spear","Scythe","Bow","Focus Sword","Focus Crystal","Staff","Tome","Sword Spear","Thief Sword","Bolt Rapier","Whipblade","Akademia Card","Buster Sword","Blitzball","Gun Blade","Ba'gangsaw","Morphing Blade","Gun Arm","Royal","Draconic","Chemist","Bowsword","Machinist","Magitek Pistol","Magitek Rifle","accessory")
+				var/list/equip=list("Light Armor","Medium Armor","Heavy Armor","Shield","Tower Shield","Shuriken","Throwing Knives","Longsword","Scimitar","Hammer","Axe","Dagger","Gauntlet","Claw","Whip","Greatsword","Katana","Spear","Scythe","Bow","Focus Sword","Focus Crystal","Staff","Tome","Sword Spear","Thief Sword","Bolt Rapier","Whipblade","Akademia Card","Buster Sword","Blitzball","Gun Blade","Ba'gangsaw","Morphing Blade","Gun Arm","Royal","Draconic","Chemist","Bowsword","Machinist","Magitek Pistol","Magitek Rifle","accessory")
 				var/choice=input("Choose a proficiency to grant.") as null|anything in equip
 				if(choice==null)
 					return
