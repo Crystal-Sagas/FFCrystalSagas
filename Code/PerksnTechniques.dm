@@ -1499,7 +1499,7 @@ proc
 			if(p.rank=="S"|p.rank=="T5"|p.rank=="T6")
 				return 1
 			if(p.rank=="T4")
-				if(m.t4s>=1)
+				if(m.t4s>=2)
 					return 1
 				else
 					return 0
@@ -1512,7 +1512,7 @@ proc
 			if(p.rank=="T6")
 				return 1
 			if(p.rank=="T4")
-				if(m.t4s>=2)
+				if(m.t4s>=4)
 					return 1
 				else
 					return 0
@@ -1528,7 +1528,7 @@ proc
 					return 0
 		if(m.rank=="Master")
 			if(p.rank=="T4")
-				if(m.t4s>=3)
+				if(m.t4s>=6)
 					return 1
 				else
 					return 0
