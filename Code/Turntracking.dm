@@ -119,12 +119,12 @@ obj
 							src.round++
 						var/atom/movable/f
 						var/atom/a2
-						while(f==null)
+						while(!f && length(organizedbattler))
 							for(var/atom/a in src.organizedbattler)
 								if(a.turnid==turn)
 									f=ObjtoFighter(a)
 									a2=a
-							if(f==null)
+							if(!f)
 								turn++
 						src.currentbat=a2
 						var/obj/trackerind/t=new
