@@ -3445,7 +3445,7 @@ obj
 						savetype="Reflex"
 						ptype="spell"
 						desc="Coating one's weapon in energy, they then dash forward and swing it upward, to blast a target away. This attacks a 3 tile line in front of the caster, and deals full damage on a failed save ; or half on a successful save."
-						mcost="Stamina"
+						costtype="Stamina"
 					AssaultTrigger
 						rank="B"
 						name="Assault Trigger"
