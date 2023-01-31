@@ -108,7 +108,7 @@ obj
 									var/list/slayerrewardsC=list("Wool","Leather","Wood","Bronze","Iron","Steel","Flying Eye's Wing","Flying Eye's Eye","Bomb Core","Sahaugin Scale")
 									var/list/slayerrewardsB=list("Mythril","Silver","Esper Soul","Gigantoad Slime","Tonberry Knife","Coeurl Whisker")
 									var/list/artifactrewards=list("Aether Powder","Ether Powder","White Gem","Black Gem","Thunder Gem","Fire Gem","Water Gem","Earth Gem","Bio Gem","Ice Gem","Wind Gem","Holy Gem","Dark Gem")
-									var/list/deliveryrewards=list("Wool","Leather","Wood","Bronze","Iron","Raw Mako","Silver")
+									var/list/deliveryrewards=list("Wool","Leather","Wood","Bronze","Iron","Steel","Raw Mako","Silver")
 									var/list/bossrewards=list("Mythril","Adamantine","Raw Mako","Esper Soul","Silver","Gold")
 									switch(tchoice)
 										if("Slayer")
@@ -152,7 +152,7 @@ obj
 												target = pick(slaylist)
 												fightmob = copyatom(target)
 												fightmob.FATENpc=1
-												newfate.Reward1=pick(slayerrewardsC)
+												newfate.Reward1=pick(slayerrewardsD)
 												newfate.Reward2=pick(slayerrewardsC)
 												newfate.Reward3=pick(slayerrewardsC)
 											if(mtype=="Artifact")
@@ -183,9 +183,9 @@ obj
 												fightmob = copyatom(target)
 												newfate.Target=target
 												fightmob.FATENpc=1
-												newfate.Reward1=pick(slayerrewardsD)
+												newfate.Reward1=pick(slayerrewardsC)
 												newfate.Reward2=pick(slayerrewardsB)
-												newfate.Reward3=pick(slayerrewardsD)
+												newfate.Reward3=pick(slayerrewardsC)
 											if(mtype=="Capture")
 												alert(usr,"There are no A Rank Capture tasks!")
 												return
@@ -205,7 +205,7 @@ obj
 												fightmob = copyatom(target)
 												fightmob.FATENpc=1
 												fightmob.archived=0
-												newfate.Reward1=pick(slayerrewardsD)
+												newfate.Reward1=pick(slayerrewardsB)
 												newfate.Reward2=pick(slayerrewardsC)
 												newfate.Reward3=pick(slayerrewardsB)
 											if(mtype=="World Boss")
