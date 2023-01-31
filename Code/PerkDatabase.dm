@@ -991,7 +991,11 @@ obj
 				MakoAffected
 					icon='Icons/Perk/MakoAffected.png'
 					name="Mako Affected"
-					desc="This individual either through the SOLDIER Second Class + program or some other means has been soaked in Mako (Lifestream) Mana just under the point of Mako poisoning, granting them a permanent boost in power, however not allowing the same growth or versatility as Jenova genes. This gives them noticeable light green eyes. Boost: +30 Permanent HP, +30 Permanent MP, +30 SP. +2 Strength, +2 CON, +2 DEX."
+					desc="This individual either through the SOLDIER Second Class + program or some other means has been soaked in Mako (Lifestream) Mana just under the point of Mako poisoning, granting them a permanent boost in power, however not allowing the same growth or versatility as Jenova genes. This gives them noticeable light green eyes. Boost: +30 Permanent HP, +30 Permanent MP, +30 SP. +2 Strength, +2 CON, +2 DEX. A character who has this perk also has the 'Lifestream Overdrive' ability."
+				LifestreamOverdrive
+					icon='Icons/Perk/MakoAffected.png'
+					name="Lifestream Overdrive"
+					desc="This individual is able to summon forth the power of the Lifestream, at the sake of their body. By spending 50 HP, and 20 SP and MP; they are able to generate a state of being wherein they gain +4 STR, DEX, and CON ; and may apply 15 additional true damage to a single attack, once per round. While this is active, the character is permanently afflicted with 'Poison'. This can be deactivated as a bonus action."
 			Jenova
 				Imperfectjenovacells
 					icon='Icons/Perk/ImperfectJenovaCells.png'
@@ -1005,6 +1009,10 @@ obj
 					icon='Icons/Perk/PerfectJenovaCells.png'
 					name="Perfect Jenova Cells"
 					desc="This individual has received a much more perfected version of Jenova cells removing the degrading aspect from them. They are also able to incubate their cells inside of a host taking them over, and turning into a perfect copy. This essentially allows this individual to return to life after death. (Ex. Sephiroth) | Boost: +100 Permanent HP, +50 Permanent MP, +50 SP. +4 STR, +4 CON, +4 DEX."
+				OneWingedAngel
+					icon='Icons/Perk/PerfectJenovaCells.png'
+					name="One Winged Angel"
+					desc="This individual's Jenova cells, either Perfect or Imperfect - have awakened. They may enter a state wherein they gain a maximum flight elevation of 5 tiles, 50 temporary HP, +4 STR, DEX, CON, and WIS, an additional +1 tile movement per turn, and deal 20 additional true damage on one attack per round. This may be deactivated as a bonus action. This drains 20 MP and SP per turn active, and ends if either of these drains cannot be sustained."
 			Lcie
 				icon='Icons/Perk/Lcie.png'
 				name="L'Cie"
@@ -1013,10 +1021,22 @@ obj
 				icon='Icons/Perk/Occurian.png'
 				name="Occurian Attendant"
 				desc="This individual has a guardian spirit in the form of an Occurian. The occuria is an aetherial being, and will only be visible to those it chooses. At times this individual may seem to be talking to the air, but in fact they are conversing with a higher being. The attendant cannot fight for the master, but can be used once per two turns to materialize in a physical form blocking attacks with its near impenetrable body. The Occuria can also send out a shock-wave, keeping foes away from its master. As a reaction to an attack, you may summon your Occurian Attendant to take the damage instead. Occurian Attendants have 80 HP, and regain their HP at the end of a long rest. Occuria shockwave is cast as the spell 'Impact' using a basic 1d4 unarmed strike, with a 1d20+WIS attack roll."
+			AttendantManifest
+				icon='Icons/Perk/Occurian.png'
+				name="Attendant Manifest"
+				desc="This individual has formed a deep bond with their Attendant. They may now manifest it as a Summon, as a Standard action, at the cost of 80 MP ; and it has its own character sheet, and stats."
+			OccurianEmpowerment
+				icon='Icons/Perk/occurian.png'
+				name="Occurian Empowerment"
+				desc="This individual gains empwoerment from its Occurian Attendant, gaining a permanent +2 to all ability scores, +40 HP, +40 SP, and +40 MP."
 			AetherAffected
 				icon='Icons/Perk/Aetheraffected.png'
 				name="Aether Affected"
-				desc="This individual has been directly affected by the Aether, the opposition to the life-stream. They are imbued with a direct link to the source that the crystals draw their power from, although menial in comparison. This grants them a few unique abilities, and increases the potency of their magic - as well as gives them a light blue aetherial aura whenever casting magic. Boost: +30 Permanent HP, +30 Permanent MP, +30 SP. +2 WIS, +2 INT, +2 CHA."
+				desc="This individual has been directly affected by the Aether, the opposition to the life-stream. They are imbued with a direct link to the source that the crystals draw their power from, although menial in comparison. This grants them a few unique abilities, and increases the potency of their magic - as well as gives them a light blue aetherial aura whenever casting magic. Boost: +30 Permanent HP, +30 Permanent MP, +30 SP. +2 WIS, +2 INT, +2 CHA. A character with this perk also gains the Aether Merge ability."
+			AetherMerge
+				icon='Icons/Perk/Aetheraffected.png'
+				name="Aether Merge"
+				desc="This individual is able to merge with the Aether. In doing so, their MP is immediately reduced to zero. However, they 40 flat points of reduction versus magical damage, +4 WIS, +4 CHA, and +4 INT. In addition, they may cast Black, and Arcane magic spells for 0 MP. Activating this ability afflicts the user with 'Doom' - but it can be dispelled by dispellation effects. When Doom ends, this effect also ends."
 			Unsent
 				icon='Icons/Perk/Unsent.png'
 				desc="This individual is an Unsent. They seem to have died at one point, but their soul did not cross into the life-stream correctly. They appear to all others simply as a normal version of themselves, however they do not age. The Life-stream has given them a task that when they fulfill, they will be put back into the life-stream. Boost: +20 HP, +20 MP, +20 SP."
@@ -1028,7 +1048,7 @@ obj
 				SummonerofYevon
 					icon='Icons/Perk/SummonerofYevon.png'
 					name="Summoner of Yevon"
-					desc="This individual is a Summoner of Yevon. They are a devout of the religion of Yevon, and have the unique ability to travel to shrines of Yevon and obtain free Aeon summons by overcoming the trials within said shrines. When completing a shrine's trial, this summoner is granted the shrine's Aeon without any point cost."
+					desc="This individual is a Summoner of Yevon. They are a devout of the religion of Yevon, and have the unique ability to travel to shrines of Yevon and obtain free Aeon summons by overcoming the trials within said shrines. When completing a shrine's trial, this summoner is granted the shrine's Aeon without any point cost. Aeons cost 50 MP to summon, regardless of which it is. In addition, up to two Aeons may be summoned at a time, and can be summoned to the field together."
 				AppointedGuardian
 					icon='Icons/Perk/AppointedGuardian.png'
 					name="Appointed Guardian"
