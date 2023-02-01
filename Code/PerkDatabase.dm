@@ -7543,7 +7543,7 @@ obj
 						atype="save"
 						savetype="Fortitude"
 						basecheck=14
-						desc="By transmuting one's life essence into the Earth, they manipulate the metallic alloys in the ground to create skewering steel beams; dealing damage, and inflicting a 10 tile Knockback in a direction of the caster's choice on a failed save, or half damage and no knockback on a success. This ability does not target allies."
+						desc="By transmuting one's life essence into the Earth, they manipulate the metallic alloys in the ground to create skewering steel beams; dealing physical damage, and inflicting a 10 tile Knockback in a direction of the caster's choice on a failed save, or half damage and no knockback on a success. This ability does not target allies."
 					TransmuteEnergy
 						name="Transmute Energy"
 						desc="By transmuting one's life essence into a creature's soul, reinvigorating them - and granting them 50 MP and SP in exchange for 50 SP from the caster."
