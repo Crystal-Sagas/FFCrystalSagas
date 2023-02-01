@@ -1551,7 +1551,7 @@ obj
 				LivingBlade
 					name="Living Blade"
 					rank="T2"
-					desc="The Mystic Knight is able to toss their weapon toward incoming attacks directed at either themselves or allies, allowing them to partially deflect a portion of the damage sent toward the party, able to redirect the pathing of the weapon using their Kinetic Stacks. As a Bonus Action or Reaction; the Mystic Knight does a basic attack roll. This attack roll reduces the damage of an incoming attack. If the incoming attack is magical, it is reduced by the full amount to a cap of 40; if it is physical, it is reduced by half the amount, up to a cap of 20. This can be done to up to 5 instances of incoming damage, expending 10 MP and 1 Kinetic stack per instance. This perk then goes on a 1 round Cooldown."
+					desc="The Mystic Knight is able to toss their weapon toward incoming attacks directed at either themselves or allies, allowing them to partially deflect a portion of the damage sent toward the party, able to redirect the pathing of the weapon using their Kinetic Stacks. As a Bonus Action or Reaction; the Mystic Knight does a basic attack roll. This attack roll reduces the damage of an incoming attack. If the incoming attack is magical, it is reduced by the full amount to a cap of 40 - and the Mystic Knight gains effective resistance against the attack; if it is physical, it is reduced by half the amount, up to a cap of 20. This can be done to up to 5 instances of incoming damage, expending 10 MP and 1 Kinetic stack per instance. This perk then goes on a 1 round Cooldown."
 				DefensiveBuildup
 					name="Defensive Buildup"
 					rank="T2"
@@ -2333,7 +2333,7 @@ obj
 				Katsuryu
 					rank="T3"
 					name="Katsuryu"
-					desc="The Samurai has trained to use their blade in a defensive manner, just as much as an offensive one. While wielding a Katana, this Samurai gains +1 AC, and +3 Damage Reduction. In addition, they may use their Reaction in order to make an attack roll with their weapon, and reduce the damage of a -single- instance of damage rolled towards them on the round it is used. This reduction is capped at 40 points before the following modifications: If used against a Melee ability, the reduction is reduced by another 10, if used against a Magic or Ranged ability, it is increased by 10. Doing so costs 25 SP."
+					desc="The Samurai has trained to use their blade in a defensive manner, just as much as an offensive one. While wielding a Katana, this Samurai gains +1 AC, and +3 Damage Reduction. In addition, they may use their Reaction in order to make an attack roll with their weapon, and reduce the damage of a -single- instance of damage rolled towards them on the round it is used. This reduction is capped at 40 points before the following modifications: If used against a Melee ability, the reduction is increased by another 10 ; and the Samurai has effective resistance against the attack, if used against a Magic or Ranged ability, it is decreased by 10. Doing so costs 25 SP."
 				Zanshin
 					rank="T3"
 					name="Zanshin"
