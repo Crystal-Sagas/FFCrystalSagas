@@ -9,6 +9,7 @@ obj
 				addhit=1
 				adddam=5
 				damsource="dex"
+				typing="physical"
 				range="6 Tiles, explodes into a 3x3 AoE."
 				icon='Icons/Items/Bomb.png'
 				FireBomb
