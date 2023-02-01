@@ -7456,6 +7456,7 @@ obj
 				typing="physical"
 				costtype="Stamina"
 				basecheck=10
+				damsource="con"
 				MutliChemical
 					rank="C"
 					name="Multi Chemical"
@@ -7467,6 +7468,7 @@ obj
 				Transmutation
 					pre="Alchemist"
 					rank="B"
+					adddam=15
 					TransmuteSoil
 						name="Transmute Soil"
 						attack_roll_damage_dice = TRUE
