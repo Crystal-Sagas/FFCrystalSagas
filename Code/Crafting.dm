@@ -4383,10 +4383,10 @@ obj/item/verb
 										return
 							if("Angelic")
 								var/list/yesno = list("Yes","No")
-								var/yesnochoice = input("Angelic Effect: This weapon restores 10 HP to its wielder and allies within 5 tiles on a succesful hit. Deals 2x damage to Undead. The healing pulse only procs once per round.") as anything in yesno
+								var/yesnochoice = input("Angelic Effect: This weapon restores 20 HP to its wielder and allies within 5 tiles on a succesful hit. Deals 2x damage to Undead. The healing pulse only procs once per round.") as anything in yesno
 								switch(yesnochoice)
 									if("Yes")
-										var/addenchant=" This weapon restores 10 HP to its wielder and allies within 5 tiles on a succesful hit. Deals 2x damage to Undead. The healing pulse only procs once per round."
+										var/addenchant=" This weapon restores 20 HP to its wielder and allies within 5 tiles on a succesful hit. Deals 2x damage to Undead. The healing pulse only procs once per round."
 										var/obj/item/dgem = usr.Determinecraftmat("White Gem")
 										if(dgem==null)
 											alert(usr,"You don't seem to have any White Gems (15 needed).")

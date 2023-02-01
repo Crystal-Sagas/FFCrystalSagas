@@ -2473,15 +2473,23 @@ obj
 				BathedinLight
 					rank="T1"
 					name="Bathed in Light"
-					desc="This individual is blessed by a holy light. They gain more health than others when being healed by any source, gaining an extra +10 HP from any incoming healing spell."
+					desc="This individual is blessed by a holy light. They gain more health than others when being healed by any source, gaining an extra +25 HP from any incoming healing spell."
 				HolyMight
 					rank="T2"
 					name="Holy Might"
-					desc="This user has embodied the power of light, and is able to transfer that light into their weapons, adding a holy element to an attack for no cost. In addition, they may call on the light for guidance at the cost of 5 MP to add +2 to a hit roll after it has already been rolled, once per round."
+					desc="This user has embodied the power of light, and is able to transfer that light into their weapons, adding a holy element to an attack for no cost. In addition, they may call on the light for guidance at the cost of 10 MP to add +2 to a hit roll after it has already been rolled, once per round."
+				DivineRetribution
+					rank="T2"
+					name="Divine Retribution"
+					desc="The Paladin is able to apply Divine Judgement to those who attempt to hurt their allies. When using the Cover ability, the Paladin may spend 15 MP as a free action in order to summon a blade of light from the sky above the attacking creature ; prompting a DC 17 Fortitude saving throw. This blade deals 12d6 Holy damage on a failed save, or half as much on a success. This has a 2 round cooldown."
 				IndomitableSpirit
 					rank="T3"
 					name="Indomitable Spirit"
-					desc="This individual has been gifted by the light. When they are in a weakened state they will be gifted the status 'Protect' status automatically. (Auto-protect at < 30% health)"
+					desc="This individual has been gifted by the light. When they are in a weakened state they will be gifted the status 'Protect' status automatically - and gain resistance to physical damage, dark damage, and force damage. (Auto-protect at < 50% health)"
+				BlessingofAltruism
+					rank="T3"
+					name="Blessing of Altruism"
+					desc="The Paladin is blessed by the Lifestream when they protect others. Upon using the Cover ability, the Paladin is able to spend 10 MP in order to immediately heal themselves for 50 HP, and apply the 'Regenerate' status effect to themselves. This can only be used once per 3 rounds."
 				Templar
 					rank="T3"
 					name="Templar"
@@ -2489,11 +2497,11 @@ obj
 				EngulfedinLight
 					rank="T3"
 					name="Engulfed in Light"
-					desc="This individual is blessed by a holy light. They gain more health than others when being healed by any source, gaining an extra +20 HP from any incoming healing spell, and are granted a 5 HP temporary shield whenever they are healed. (Overwrites Bathed in Light.) (Requires Bathed in Light.)"
+					desc="This individual is blessed by a holy light. They gain more health than others when being healed by any source, gaining an extra +20 HP from any incoming healing spell (stacking with Bathed in Light), and are granted a 10 HP temporary shield whenever they are healed. (Overwrites Bathed in Light.) (Requires Bathed in Light.)"
 				Altruism
 					rank="T4"
 					name="Altruism"
-					desc="When in a highly injured state the paladin musters what strength they have left to defend those around them granting +10 damage reduction when under 30% HP. (Cannot exceed 20 damage reduction.)"
+					desc="When in a highly injured state the paladin musters what strength they have left to defend those around them granting +10 damage reduction when under 30% HP."
 				SecondChance
 					rank="T5"
 					name="Second Chance"
@@ -2731,6 +2739,10 @@ obj
 					rank="T2"
 					name="Stone Lore"
 					desc=" The individual has studied the effects of the status effect break, and has learned to make an item to fix it. A golden needle must prick someone who is suffering the effects of break, however if the person has already died from the status effect nothing can be done."
+				Demolitionist
+					rank="T2"
+					name="Demolitionist"
+					desc=" This Chemist is a master of explosions and chaos. When a Chemist uses a Bomb attack, they may perform an additional Bomb attack, utilize a Chemist consumable, or utilize a Chemist ability at the cost of 15 additional SP, once per round."
 				FrogLore
 					rank="T2"
 					name="Frog Lore"
@@ -2746,7 +2758,15 @@ obj
 				RemedyLore
 					rank="T3"
 					name="Remedy Lore"
-					desc="The individual has a deep understanding of status ailments, and through rigorous study has learned of an panacea that can counter every status ailment."
+					desc="The individual has a deep understanding of status ailments, and through rigorous study has learned of a panacea that can counter every status ailment."
+				Alchemist
+					rank="T3"
+					name="Alchemist"
+					desc="This Chemist has learned the art of Alchemy. They now have access to Alchemy Chemist abilities, which can be utilized at the cost of SP ; by transmuting one's physical lifeforce into the environment, to induce chemical reactions for various effects."
+				CurativeExpert
+					rank="T3"
+					name="Curative Expert"
+					desc="This Chemist is a master of enzymes, regenerative process, and antibodies. They have immunity to any status effect they have Lore for. In addition, they restore an additional +40 points for any resource one of their Chemist items restores, either to themselves or allies. With Remedy Lore, the Chemist has immunity to all status effects."
 				EtherLore2
 					rank="T3"
 					name="Ether Lore II"
@@ -2763,7 +2783,7 @@ obj
 					rank="T5"
 					name="Fountain of Youth"
 					cat="Unique"
-					desc="his individual has learned how to create the Elixir of Youth, which when consumed - makes one unable to physically age beyond the point they have reached, effectively making one immortal outside of mortal afflictions. (Elixir of Youth grants immunity to Poison for anyone who drinks it. Costs 50,000 Gil to craft.)"
+					desc="his individual has learned how to create the Elixir of Youth, which when consumed - makes one unable to physically age beyond the point they have reached, effectively making one immortal outside of mortal afflictions. Elixir of Youth grants +80 HP, +80 MP, +80 SP, and +2 to all Ability Scores to a creature who drinks it, also placing their body into the prime of its youth ; and halting aging. . Costs 50,000 Gil to craft.)"
 
 			Geomancer
 				jobneed="Geomancer"
@@ -6642,8 +6662,8 @@ obj
 					desc="As a bonus action, this individual creates an aura that reflects and mitigates 1d12 damage back to the creature that's hitting them as holy damage. This only applies to Melee attacks - and lasts 3 rounds. (- 10 mana.)"
 				HolyEnchant
 					name="Holy Enchant"
-					rank="E"
-					desc="The Paladin is able to imbue their own weapon or an ally's weapon with a holy light, granting it a holy augmentation. This grants +1 to hit, and +5 PDB to the weapon's wielder, also changing its element to Holy. This lasts for 3 rounds. Costs 10 Mana."
+					rank="D"
+					desc="The Paladin is able to imbue their own weapon or an ally's weapon with a holy light, granting it a holy augmentation. This grants +2 to hit  also changing its element to Holy and allowing attacks made with the weapon to deal an additional 10 true damage on hit. This lasts for 3 rounds. Costs 10 Mana."
 				BracingBash
 					element="Physical"
 					name="Bracing Bash"
@@ -6679,7 +6699,7 @@ obj
 					mcost=20
 					addhit=2
 					costtype="Mana"
-					desc="As a reaction, the user holds their weapon out in front of them then begins spinning it, and using their holy mana to form a magical disk around the shield that has the circumference of the weapon’s spin. The Mana in the center disk can be shot forward usually used as a counter attack that is half the size of the shield of light. This shield is nigh impenetrable by most forces. (Damage: 1d12+CHA | As a reaction, creates a 30 HP Shield that if it survives, makes a ranged attack roll with +2 to hit at the attacker and dissipates. -20 Mana)"
+					desc="As a reaction, the user holds their weapon out in front of them then begins spinning it, and using their holy mana to form a magical disk around the shield that has the circumference of the weapon’s spin. The Mana in the center disk can be shot forward usually used as a counter attack that is half the size of the shield of light. This shield is nigh impenetrable by most forces. (Damage: 1d12+CHA | As a reaction, creates a 50 HP Shield to soak an attack that if it survives, makes a ranged attack roll with +2 to hit at the attacker and dissipates. -20 Mana)"
 				Cover
 					rank="C"
 					desc="The user can establish a link with their comrades in battle. In the heat of battle, as a reaction the paladin can teleport in front of a friendly target in view taking a single target attack that was meant for them. The paladin takes the damage instead - and when doing so, the damage is reduced by 15 points (to a minimum of 1). Can be used once per round for free, needing a reaction for any uses afterwards (free use refreshes upon the start of the Paladin's turn) Cover is exempt from Cooldowns. After the attack is taken, the Paladin instantly returns to their previous position. In the case of Multi-hit attacks, and AoEs, all instances of damage are distributed instead to the Paladin, leaving none for the protected ally.  (-10 Mana.)"
@@ -7427,6 +7447,110 @@ obj
 					savetype="Fortitude"
 					basecheck=15
 					desc="Can only be performed in a cave with no source of light for 60ft. The individual calls to the natural darkness of the area around them - then, they converge it into a single point creating a swirling vortex of energy that draws in everything around it, with crushing gravitational force. (Damage: 6d12+WIS dark damage. | Black hole takes up a 3x3 AoE, and prompts hostile creatures within 6 tiles of it to make a Fortitude saving throw (DC 15+WIS+Rankbonus) ; on a failure, the target is drawn 3 tiles towards the epicenter, and take Black Hole damage. If a target fails the saving throw in the epicenter of the Black Hole, they are inflicted with the 'Doom' status effect. Black Hole lasts for 5 turns. -100 mana.)"
+
+
+			ChemistAbilities
+				jobneed="Chemist"
+				icon='Icons/Perk/Chemist.png'
+				ability=1
+				typing="physical"
+				costtype="Stamina"
+				basecheck=10
+				MutliChemical
+					rank="C"
+					name="Multi Chemical"
+					desc="As a free action, after utilizing a Chemist item, the Chemist may then utilize a secondary Chemist item, at the cost of 20 SP."
+				ElementalReagent
+					rank="C"
+					name="Elemental Reagent"
+					desc="As a reaction to an elemental ability being cast, the Chemist may toss a Potion, or Potion variant into the Elemental attack. The Potion is infused into it, and the damage of the Elemental attack is reduced by the amount the Potion would heal. This costs 20 SP."
+				Transmutation
+					pre="Alchemist"
+					rank="B"
+					TransmuteSoil
+						name="Transmute Soil"
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 4
+						attack_roll_dice_sides = 12
+						range=" 5x5 AoE at a tile in view."
+						mcost=50
+						atype="save"
+						savetype="Fortitude"
+						basecheck=14
+						desc="By transmuting one's life essence into the ground, they manipulate the various chemical compounds in the Earth, and shift the molecular composition into that of spikes ; dealing earth damage, and inflicting bleed on a failed save, or half damage and no bleed on a success. This ability does not target allies."
+					TransmuteAir
+						name="Transmute Air"
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 4
+						attack_roll_dice_sides = 12
+						range=" 5x5 AoE at a tile in view."
+						mcost=50
+						atype="save"
+						savetype="Fortitude"
+						basecheck=14
+						desc="By transmuting one's life essence into the air, they manipulate the Oxygen in the air to create a tornado at a target location;  wind dealing damage, and inflicting Squall on a failed save, or half damage and no Squall on a success. This ability does not target allies."
+					TransmuteFlames
+						name="Transmute Flames"
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 4
+						attack_roll_dice_sides = 12
+						range=" 5x5 AoE at a tile in view."
+						mcost=50
+						atype="save"
+						savetype="Fortitude"
+						basecheck=14
+						desc="By transmuting one's life essence into the air, they manipulate the gaseous compounds in the air, and ignite it into a roaring fireball; dealing  fire damage, and inflicting Burn on a failed save, or half damage and no Burn on a success. This ability does not target allies."
+					TransmuteWater
+						name="Transmute Water"
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 4
+						attack_roll_dice_sides = 12
+						range=" 5x5 AoE at a tile in view."
+						mcost=50
+						atype="save"
+						savetype="Fortitude"
+						basecheck=14
+						desc="By transmuting one's life essence into the air, they manipulate the H20 in the air to create a water whorl at a target location; dealing damage, and inflicting Whorl on a failed save, or half damage and no Whorl on a success. This ability does not target allies."
+					TransmuteIce
+						name="Transmute Ice"
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 4
+						attack_roll_dice_sides = 12
+						range=" 5x5 AoE at a tile in view."
+						mcost=50
+						atype="save"
+						savetype="Fortitude"
+						basecheck=14
+						desc="By transmuting one's life essence into the air, they manipulate the H20 in the air to create transform the moisture into orbs of Ice; dealing damage, and inflicting Frostbite on a failed save, or half damage and no Frostbite on a success. This ability does not target allies."
+					TransmuteFlesh
+						name="Transmute Flesh"
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 50
+						attack_roll_dice_sides = 1
+						range=" 5x5 AoE at a tile in view."
+						mcost=50
+						atype="heal"
+						savetype="Fortitude"
+						basecheck=14
+						desc="By transmuting one's life essence into a target's flesh, they may manipulate their bio-mass in order to restore 50+CHA HP, and apply the Regenerate status effect to any creature within range."
+					TransmuteSteel
+						name="Transmute Steel"
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 4
+						attack_roll_dice_sides = 12
+						range=" 5x5 AoE at a tile in view."
+						mcost=50
+						atype="save"
+						savetype="Fortitude"
+						basecheck=14
+						desc="By transmuting one's life essence into the Earth, they manipulate the metallic alloys in the ground to create skewering steel beams; dealing damage, and inflicting a 10 tile Knockback in a direction of the caster's choice on a failed save, or half damage and no knockback on a success. This ability does not target allies."
+					TransmuteEnergy
+						name="Transmute Energy"
+						desc="By transmuting one's life essence into a creature's soul, reinvigorating them - and granting them 50 MP and SP in exchange for 50 SP from the caster."
+					TransmuteSoul
+						name="Transmute Soul"
+						desc="By transmuting one's life essence into a downed creautre, they are able to bring them back from being unconscious, at 50% HP. The Chemist is reduced to 10 HP upon doing so, as they sacrifice an immense amount of their own vitality to do so."
+
 
 			PirateAbilities
 				jobneed="Pirate"
