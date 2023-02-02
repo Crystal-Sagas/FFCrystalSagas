@@ -160,8 +160,8 @@ obj
 					range="Melee"
 					name="Energy Sword"
 					desc="A metal hilt, which has been fitted with a Mana crystal. When activated, a blade of pure energy is created. This weapon can deal either Force or Slashing damage, and can count as a Longsword, OR a Katana, for bonuses."
-					range1=35
-					range2=50
+					range1=30
+					range2=40
 					addhit=2
 					adddam=5
 					damsource="str"

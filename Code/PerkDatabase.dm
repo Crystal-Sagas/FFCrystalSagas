@@ -2160,7 +2160,7 @@ obj
 						addhit=1
 						range="Melee"
 						costtype="Stamina"
-						atype="standard"
+						atype="weapon"
 						damsource="str"
 						typing="physical"
 						ptype="spell"
@@ -2181,7 +2181,7 @@ obj
 						addhit=2
 						range="Melee"
 						costtype="Stamina"
-						atype="standard"
+						atype="weapon"
 						damsource="str"
 						typing="physical"
 						ptype="spell"
@@ -2202,7 +2202,7 @@ obj
 						addhit=3
 						range="Melee"
 						costtype="Stamina"
-						atype="standard"
+						atype="weapon"
 						damsource="str"
 						typing="physical"
 						ptype="spell"
@@ -2223,7 +2223,7 @@ obj
 						addhit=4
 						range="Melee"
 						costtype="Stamina"
-						atype="standard"
+						atype="weapon"
 						damsource="str"
 						typing="physical"
 						ptype="spell"
@@ -2244,7 +2244,7 @@ obj
 						addhit=5
 						range="Melee"
 						costtype="Stamina"
-						atype="standard"
+						atype="weapon"
 						damsource="str"
 						typing="physical"
 						ptype="spell"
@@ -6061,7 +6061,7 @@ obj
 				icon='Icons/Perk/Monk.png'
 				damsource="str"
 				costtype="Stamina."
-				atype="standard"
+				atype="weapon"
 				typing="physical"
 				element="Monk"
 				ChiBlast
@@ -6131,7 +6131,7 @@ obj
 					attack_roll_damage_dice = FALSE
 					attack_roll_damage_lower = 40
 					attack_roll_damage_upper = 55
-					atype="standard"
+					atype="weapon"
 					mcost=40
 					addhit=3
 					costtype= "Mana"
@@ -6167,7 +6167,7 @@ obj
 					attack_roll_dice_count = 3
 					attack_roll_dice_sides = 10
 					range=" 3x3 AoE centered around user."
-					atype="save"
+					atype="weaponsave"
 					basecheck=12
 					savetype="Fortitude"
 					mcost=30
@@ -6182,7 +6182,7 @@ obj
 					attack_roll_dice_sides = 10
 					mcost=40
 					damsource="str"
-					atype="save"
+					atype="weaponsave"
 					savetype="Strength"
 					basecheck=14
 					desc="The user grapples the opponent holding them in their arms as they kick off the ground, and soar upwards before crashing down, and slamming the opponent into the ground. Note: Can even be used on trains. Make a strength roll against the target. If the target fails the roll they are grappled and launched with the user towards a location within 6 tiles. (Damage: 5d10+WIS | STR saving throw (DC  14+STR+Rank bonus), dealing full damage on a failure, or none on a success. - 40 stamina.)"
@@ -6195,7 +6195,7 @@ obj
 					attack_roll_damage_lower = 40
 					attack_roll_damage_upper = 60
 					damsource="wis"
-					atype="save"
+					atype="weaponsave"
 					savetype="Fortitude"
 					mcost=60
 					costtype=" MP"
@@ -6209,7 +6209,7 @@ obj
 					attack_roll_dice_count = 5
 					attack_roll_dice_sides = 10
 					range=" 5x5 AoE centered around user."
-					atype="save"
+					atype="weaponsave"
 					savetype="Fortitude"
 					basecheck=14
 					mcost=50
@@ -6237,7 +6237,7 @@ obj
 					attack_roll_dice_sides = 12
 					range=" 7x7 AoE"
 					savetype="Reflex"
-					atype="save"
+					atype="weaponsave"
 					basecheck=15
 					mcost=120
 					costtype="Mana"
@@ -6254,7 +6254,7 @@ obj
 					attack_roll_damage_lower = 50
 					attack_roll_damage_upper = 60
 					damsource="str"
-					atype="standard"
+					atype="weapon"
 					critrange=10
 					range=" Melee"
 					mcost=120
