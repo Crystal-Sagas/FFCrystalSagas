@@ -1216,6 +1216,7 @@
 		for(var/obj/item/d in m.contents)
 			if(d.name==bossreward)
 				m.send_chat("You beat a World Boss! Gained +1 [bossreward]!", stream = "oocout")
+				m.dailyfates+=2
 				d.amount+=1
 				break
 		if(m.hp<=0)
@@ -1257,7 +1258,7 @@
 		UpdateArea(m)
 		m.bposition=null
 		m<<sound(null)
-		m.FATEcooldown=1
+		//m.FATEcooldown=1
 		m.battler=0
 		m.statusturns=0 //The following lines of code turn off all status effects.
 		m.status2turns=0
