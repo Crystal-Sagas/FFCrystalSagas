@@ -579,7 +579,7 @@ obj
 				usr.Savecheck(usr)
 				usr.ACcheck(usr)
 				RefreshGPM(usr)
-				view()<<output("<b><font color=[usr.textcolor]>[usr.name]</font> has applied a <b>globalmod</b>:<font color=yellow><b>[src.name]</b>","icout")
+				view()<<output("<b><font color=[usr.textcolor]>[usr.name]</font> has applied a <b>globalmod</b>:<font color=yellow><b>[src.name]</b>","oocout")
 			else
 				if(!fromequip)
 					src.applied=0
@@ -633,7 +633,7 @@ obj
 					usr.Savecheck(usr)
 					usr.ACcheck(usr)
 					RefreshGPM(usr)
-					view()<<output("<b><font color=[usr.textcolor]>[usr.name]</font> has removed a <b>globalmod</b>:<font color=yellow><b>[src.name]</b>","icout")
+					view()<<output("<b><font color=[usr.textcolor]>[usr.name]</font> has removed a <b>globalmod</b>:<font color=yellow><b>[src.name]</b>","oocout")
 			usr.ACcheck(usr)
 		BronzeLightArmor
 			mac=1

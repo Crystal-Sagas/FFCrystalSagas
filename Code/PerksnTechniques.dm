@@ -1636,13 +1636,13 @@ obj
 								var/healbonus=usr.chamod*2
 								doresult=raw_attack_damage_roll()
 								dresult=doresult+src.adddam+healbonus
-								view()<<output("<font size=1><font color=[usr.textcolor]>[usr] <font color=white>is using the <font color=[usr.textcolor]>[src.name]<font color=white> ability! They have healed a target for <font color=#A8F596><b>[dresult]</b></font> HP!","icout")
+								view()<<output("<font size=1><font color=[usr.textcolor]>[usr] <font color=white>is using the <font color=[usr.textcolor]>[src.name]<font color=white> ability! They have healed a target for <font color=#A8F596><b>[dresult]</b></font> HP!","oocout")
 							if(src.atype=="curada")
 								var/curadabonus=usr.mhp*0.5
 								var/healbonus=usr.chamod*2
 								doresult=raw_attack_damage_roll()
 								dresult=doresult+curadabonus+healbonus
-								view()<<output("<font size=1><font color=[usr.textcolor]>[usr] <font color=white>is using the <font color=[usr.textcolor]>[src.name]<font color=white> ability! They have healed a target for <font color=#A8F596><b>[dresult]</b></font> HP!","icout")
+								view()<<output("<font size=1><font color=[usr.textcolor]>[usr] <font color=white>is using the <font color=[usr.textcolor]>[src.name]<font color=white> ability! They have healed a target for <font color=#A8F596><b>[dresult]</b></font> HP!","oocout")
 							if(src.atype=="save")
 								doresult=raw_attack_damage_roll()
 								amod=Checkdamtype(src.damsource,usr)
@@ -1705,7 +1705,7 @@ obj
 											dresult+=usr.pdbadd
 										else
 											dresult+=25
-								view()<<output("<font size=1><font color=[usr.textcolor]>[usr] <font color=white>is using the <font color=[usr.textcolor]>[src.name]<font color=white> ability!  Saving throw: <font color=#8EF5DE><b>[aresult] [src.savetype]!</b><font color=white>, dealing <b><font color=#FFA852>[dresult] damage</b><font color=white> on a failed save!<br> Cost: <b><font color=#0FBFD7>[src.mcost] [src.costtype]</b>| Tile Range:[src.range]","icout")
+								view()<<output("<font size=1><font color=[usr.textcolor]>[usr] <font color=white>is using the <font color=[usr.textcolor]>[src.name]<font color=white> ability!  Saving throw: <font color=#8EF5DE><b>[aresult] [src.savetype]!</b><font color=white>, dealing <b><font color=#FFA852>[dresult] damage</b><font color=white> on a failed save!<br> Cost: <b><font color=#0FBFD7>[src.mcost] [src.costtype]</b>| Tile Range:[src.range]","oocout")
 							if(src.atype=="weaponsave")
 								var/obj/item/Weapon/wepchoice = usr.righthand
 								alert(usr,"This ability will use the weapon equipped to your right hand.")
@@ -1771,7 +1771,7 @@ obj
 											dresult+=usr.pdbadd
 										else
 											dresult+=25
-								view()<<output("<font size=1><font color=[usr.textcolor]>[usr] <font color=white>is using the <font color=[usr.textcolor]>[src.name]<font color=white> ability with their [wepchoice.name]!  Saving throw: <font color=#8EF5DE><b>[aresult] [src.savetype]!</b><font color=white>, dealing <b><font color=#FFA852>[dresult] damage</b><font color=white> on a failed save!<br> Cost: <b><font color=#0FBFD7>[src.mcost] [src.costtype]</b> | Tile Range:[src.range]","icout")
+								view()<<output("<font size=1><font color=[usr.textcolor]>[usr] <font color=white>is using the <font color=[usr.textcolor]>[src.name]<font color=white> ability with their [wepchoice.name]!  Saving throw: <font color=#8EF5DE><b>[aresult] [src.savetype]!</b><font color=white>, dealing <b><font color=#FFA852>[dresult] damage</b><font color=white> on a failed save!<br> Cost: <b><font color=#0FBFD7>[src.mcost] [src.costtype]</b> | Tile Range:[src.range]","oocout")
 							if(src.atype=="weapon")
 								alert(usr,"This ability will use the weapon equipped to your right hand.")
 								if(usr.righthand==0)
@@ -1852,9 +1852,9 @@ obj
 									critdam=dresult+doresult
 									var/truecrit=wepchoice.critrange-usr.critmod
 									if(aoresult>=truecrit)
-										view()<<output("<font size=1><font color=[usr.textcolor]>[usr] <font color=white>rolled a <b><font color=#3CF82C>CRITICAL</b> <font color=white>attack roll, using the <font color=[usr.textcolor]>[src.name]<font color=white> ability with their [wepchoice.name]! Result: <font color=#3CF82C><b>[aresult] to hit</b><font color=white>, dealing <b><font color=#FFA852>[critdam] damage</b><font color=white>, as an automatic hit! Cost: <b><font color=#0FBFD7>[src.mcost] [src.costtype]</b>","icout")
+										view()<<output("<font size=1><font color=[usr.textcolor]>[usr] <font color=white>rolled a <b><font color=#3CF82C>CRITICAL</b> <font color=white>attack roll, using the <font color=[usr.textcolor]>[src.name]<font color=white> ability with their [wepchoice.name]! Result: <font color=#3CF82C><b>[aresult] to hit</b><font color=white>, dealing <b><font color=#FFA852>[critdam] damage</b><font color=white>, as an automatic hit! Cost: <b><font color=#0FBFD7>[src.mcost] [src.costtype]</b>","oocout")
 									else
-										view()<<output("<font size=1><font color=[usr.textcolor]>[usr] <font color=white>rolled an attack roll, using the <font color=[usr.textcolor]>[src.name]<font color=white> ability with their [wepchoice.name]!  Result: <font color=#8EF5DE><b>[aresult] to hit</b><font color=white>, dealing <b><font color=#FFA852>[dresult] damage</b><font color=white> if successful!<br> Cost: <b><font color=#0FBFD7>[src.mcost] [src.costtype]</b> | Tile Range:[src.range]","icout")
+										view()<<output("<font size=1><font color=[usr.textcolor]>[usr] <font color=white>rolled an attack roll, using the <font color=[usr.textcolor]>[src.name]<font color=white> ability with their [wepchoice.name]!  Result: <font color=#8EF5DE><b>[aresult] to hit</b><font color=white>, dealing <b><font color=#FFA852>[dresult] damage</b><font color=white> if successful!<br> Cost: <b><font color=#0FBFD7>[src.mcost] [src.costtype]</b> | Tile Range:[src.range]","oocout")
 							if(src.atype=="standard")
 								aoresult=rand(1,20)
 								amod=Checkdamtype(src.damsource,usr)
@@ -1929,10 +1929,10 @@ obj
 								critdam=dresult+doresult
 								var/truecrit=src.critrange-usr.critmod
 								if(aoresult>=truecrit)
-									view()<<output("<font size=1><font color=[usr.textcolor]>[usr] <font color=white>rolled a <b><font color=#3CF82C>CRITICAL</b> <font color=white>attack roll, using the <font color=[usr.textcolor]>[src.name]<font color=white> ability! Result: <font color=#3CF82C><b>[aresult] to hit</b><font color=white>, dealing <b><font color=#FFA852>[critdam] damage</b><font color=white>, as an automatic hit! Cost: <b><font color=#0FBFD7>[src.mcost] [src.costtype]</b>","icout")
+									view()<<output("<font size=1><font color=[usr.textcolor]>[usr] <font color=white>rolled a <b><font color=#3CF82C>CRITICAL</b> <font color=white>attack roll, using the <font color=[usr.textcolor]>[src.name]<font color=white> ability! Result: <font color=#3CF82C><b>[aresult] to hit</b><font color=white>, dealing <b><font color=#FFA852>[critdam] damage</b><font color=white>, as an automatic hit! Cost: <b><font color=#0FBFD7>[src.mcost] [src.costtype]</b>","oocout")
 								else
 									view()<<output("<font size=1><font color=[usr.textcolor]>[usr] <font color=white>rolled an attack roll, using the <font color=[usr.textcolor]>[src.name]<font color=white> ability!  Result: <font color=#8EF5DE><b>[aresult] to hit</b><font color=white>, dealing <b><font color=#FFA852>[dresult] damage</b><font color=white> if successful!<br> Cost: <b><font color=#0FBFD7>[src.mcost] [src.costtype]</b> | Tile Range:[src.range]","output1")
-									view()<<output("<font size=1><font color=[usr.textcolor]>[usr] <font color=white>rolled an attack roll, using the <font color=[usr.textcolor]>[src.name]<font color=white> ability! Result: <font color=#8EF5DE><b>[aresult] to hit</b><font color=white>, dealing <b><font color=#FFA852>[dresult] damage</b><font color=white> if successful!<br> Cost: <b><font color=#0FBFD7>[src.mcost] [src.costtype]</b> | Tile Range:[src.range]","icout")
+									view()<<output("<font size=1><font color=[usr.textcolor]>[usr] <font color=white>rolled an attack roll, using the <font color=[usr.textcolor]>[src.name]<font color=white> ability! Result: <font color=#8EF5DE><b>[aresult] to hit</b><font color=white>, dealing <b><font color=#FFA852>[dresult] damage</b><font color=white> if successful!<br> Cost: <b><font color=#0FBFD7>[src.mcost] [src.costtype]</b> | Tile Range:[src.range]","oocout")
 						if("Cancel")
 							return
 				else
@@ -1959,13 +1959,13 @@ obj
 									var/healbonus=z.chamod*2
 									doresult=raw_attack_damage_roll()
 									dresult=doresult+src.adddam+healbonus
-									view()<<output("<font size=1><font color=[usr.textcolor]>[z] <font color=white>is using the <font color=[z.textcolor]>[src.name]<font color=white> ability! They have healed a target for <font color=#A8F596><b>[dresult]</b></font> HP!","icout")
+									view()<<output("<font size=1><font color=[usr.textcolor]>[z] <font color=white>is using the <font color=[z.textcolor]>[src.name]<font color=white> ability! They have healed a target for <font color=#A8F596><b>[dresult]</b></font> HP!","oocout")
 								if(src.atype=="curada")
 									var/curadabonus=z.mhp*0.5
 									var/healbonus=z.chamod*2
 									doresult=raw_attack_damage_roll()
 									dresult=doresult+curadabonus+healbonus
-									view()<<output("<font size=1><font color=[usr.textcolor]>[z] <font color=white>is using the <font color=[z.textcolor]>[src.name]<font color=white> ability! They have healed a target for <font color=#A8F596><b>[dresult]</b></font> HP!","icout")
+									view()<<output("<font size=1><font color=[usr.textcolor]>[z] <font color=white>is using the <font color=[z.textcolor]>[src.name]<font color=white> ability! They have healed a target for <font color=#A8F596><b>[dresult]</b></font> HP!","oocout")
 								if(src.atype=="save")
 									doresult=raw_attack_damage_roll()
 									amod=Checkdamtype(src.damsource,z)
@@ -1977,7 +1977,7 @@ obj
 									else
 										aresult=src.basecheck+amod+z.rankbonus+src.addhit
 										dresult=abilitydamage+dmod+z.pdb+src.adddam
-									view()<<output("<font size=1><font color=[usr.textcolor]>[z] <font color=white>is using the <font color=[usr.textcolor]>[src.name]<font color=white> ability!  Saving throw: <font color=#8EF5DE><b>[aresult] [src.savetype]!</b><font color=white>, dealing <b><font color=#FFA852>[dresult] damage</b><font color=white> on a failed save!<br> Cost: <b><font color=#0FBFD7>[src.mcost] [src.costtype]</b> | Tile Range:[src.range]","icout")
+									view()<<output("<font size=1><font color=[usr.textcolor]>[z] <font color=white>is using the <font color=[usr.textcolor]>[src.name]<font color=white> ability!  Saving throw: <font color=#8EF5DE><b>[aresult] [src.savetype]!</b><font color=white>, dealing <b><font color=#FFA852>[dresult] damage</b><font color=white> on a failed save!<br> Cost: <b><font color=#0FBFD7>[src.mcost] [src.costtype]</b> | Tile Range:[src.range]","oocout")
 								if(src.atype=="weaponsave")
 									var/obj/item/Weapon/wepchoice = z.eweapon
 									alert(usr,"This ability will use the weapon equipped to your right hand.")
@@ -1993,7 +1993,7 @@ obj
 										dresult=doresult+dmod+wepchoice.adddam+z.mdb+src.adddam+abilitydamage
 									else
 										dresult=doresult+dmod+wepchoice.adddam+z.pdb+src.adddam+abilitydamage
-									view()<<output("<font size=1><font color=[usr.textcolor]>[z] <font color=white>is using the <font color=[usr.textcolor]>[src.name]<font color=white> ability with their [wepchoice.name]!  Saving throw: <font color=#8EF5DE><b>[aresult] [src.savetype]!</b><font color=white>, dealing <b><font color=#FFA852>[dresult] damage</b><font color=white> on a failed save!<br> Cost: <b><font color=#0FBFD7>[src.mcost] [src.costtype]</b> | Tile Range:[src.range]","icout")
+									view()<<output("<font size=1><font color=[usr.textcolor]>[z] <font color=white>is using the <font color=[usr.textcolor]>[src.name]<font color=white> ability with their [wepchoice.name]!  Saving throw: <font color=#8EF5DE><b>[aresult] [src.savetype]!</b><font color=white>, dealing <b><font color=#FFA852>[dresult] damage</b><font color=white> on a failed save!<br> Cost: <b><font color=#0FBFD7>[src.mcost] [src.costtype]</b> | Tile Range:[src.range]","oocout")
 								if(src.atype=="weapon")
 									alert(usr,"This ability will use the weapon equipped to your right hand.")
 									if(z.eweapon==0)
@@ -2016,9 +2016,9 @@ obj
 										critdam=dresult+doresult
 										var/truecrit=wepchoice.critrange-z.critmod
 										if(aoresult>=truecrit)
-											view()<<output("<font size=1><font color=[usr.textcolor]>[z] <font color=white>rolled a <b><font color=#3CF82C>CRITICAL</b> <font color=white>attack roll, using the <font color=[usr.textcolor]>[src.name]<font color=white> ability with their [wepchoice.name]! Result: <font color=#3CF82C><b>[aresult] to hit</b><font color=white>, dealing <b><font color=#FFA852>[critdam] damage</b><font color=white>, as an automatic hit! Cost: <b><font color=#0FBFD7>[src.mcost] [src.costtype]</b>","icout")
+											view()<<output("<font size=1><font color=[usr.textcolor]>[z] <font color=white>rolled a <b><font color=#3CF82C>CRITICAL</b> <font color=white>attack roll, using the <font color=[usr.textcolor]>[src.name]<font color=white> ability with their [wepchoice.name]! Result: <font color=#3CF82C><b>[aresult] to hit</b><font color=white>, dealing <b><font color=#FFA852>[critdam] damage</b><font color=white>, as an automatic hit! Cost: <b><font color=#0FBFD7>[src.mcost] [src.costtype]</b>","oocout")
 										else
-											view()<<output("<font size=1><font color=[usr.textcolor]>[z] <font color=white>rolled an attack roll, using the <font color=[usr.textcolor]>[src.name]<font color=white> ability with their [wepchoice.name]!  Result: <font color=#8EF5DE><b>[aresult] to hit</b><font color=white>, dealing <b><font color=#FFA852>[dresult] damage</b><font color=white> if successful!<br> Cost: <b><font color=#0FBFD7>[src.mcost] [src.costtype]</b> | Tile Range:[src.range]","icout")
+											view()<<output("<font size=1><font color=[usr.textcolor]>[z] <font color=white>rolled an attack roll, using the <font color=[usr.textcolor]>[src.name]<font color=white> ability with their [wepchoice.name]!  Result: <font color=#8EF5DE><b>[aresult] to hit</b><font color=white>, dealing <b><font color=#FFA852>[dresult] damage</b><font color=white> if successful!<br> Cost: <b><font color=#0FBFD7>[src.mcost] [src.costtype]</b> | Tile Range:[src.range]","oocout")
 								if(src.atype=="standard")
 									aoresult=rand(1,20)
 									amod=Checkdamtype(src.damsource,z)
@@ -2035,10 +2035,10 @@ obj
 									critdam=dresult+doresult
 									var/truecrit=src.critrange-z.critmod
 									if(aoresult>=truecrit)
-										view()<<output("<font size=1><font color=[usr.textcolor]>[z] <font color=white>rolled a <b><font color=#3CF82C>CRITICAL</b> <font color=white>attack roll, using the <font color=[usr.textcolor]>[src.name]<font color=white> ability! Result: <font color=#3CF82C><b>[aresult] to hit</b><font color=white>, dealing <b><font color=#FFA852>[critdam] damage</b><font color=white>, as an automatic hit! Cost: <b><font color=#0FBFD7>[src.mcost] [src.costtype]</b>","icout")
+										view()<<output("<font size=1><font color=[usr.textcolor]>[z] <font color=white>rolled a <b><font color=#3CF82C>CRITICAL</b> <font color=white>attack roll, using the <font color=[usr.textcolor]>[src.name]<font color=white> ability! Result: <font color=#3CF82C><b>[aresult] to hit</b><font color=white>, dealing <b><font color=#FFA852>[critdam] damage</b><font color=white>, as an automatic hit! Cost: <b><font color=#0FBFD7>[src.mcost] [src.costtype]</b>","oocout")
 									else
 										view()<<output("<font size=1><font color=[usr.textcolor]>[z] <font color=white>rolled an attack roll, using the <font color=[usr.textcolor]>[src.name]<font color=white> ability!  Result: <font color=#8EF5DE><b>[aresult] to hit</b><font color=white>, dealing <b><font color=#FFA852>[dresult] damage</b><font color=white> if successful!<br> Cost: <b><font color=#0FBFD7>[src.mcost] [src.costtype]</b> | Tile Range:[src.range]","output1")
-										view()<<output("<font size=1><font color=[usr.textcolor]>[z] <font color=white>rolled an attack roll, using the <font color=[usr.textcolor]>[src.name]<font color=white> ability! Result: <font color=#8EF5DE><b>[aresult] to hit</b><font color=white>, dealing <b><font color=#FFA852>[dresult] damage</b><font color=white> if successful!<br> Cost: <b><font color=#0FBFD7>[src.mcost] [src.costtype]</b> | Tile Range:[src.range]","icout")
+										view()<<output("<font size=1><font color=[usr.textcolor]>[z] <font color=white>rolled an attack roll, using the <font color=[usr.textcolor]>[src.name]<font color=white> ability! Result: <font color=#8EF5DE><b>[aresult] to hit</b><font color=white>, dealing <b><font color=#FFA852>[dresult] damage</b><font color=white> if successful!<br> Cost: <b><font color=#0FBFD7>[src.mcost] [src.costtype]</b> | Tile Range:[src.range]","oocout")
 							if("Cancel")
 								return
 					else
@@ -2328,13 +2328,13 @@ obj
 								var/healbonus=usr.chamod*2
 								doresult=raw_attack_damage_roll()
 								dresult=doresult+src.adddam+healbonus
-								view()<<output("<font size=1><font color=[usr.textcolor]>[usr] <font color=white>is using the <font color=[usr.textcolor]>[src.name]<font color=white> ability! They have healed a target for <font color=#A8F596><b>[dresult]</b></font> HP!","icout")
+								view()<<output("<font size=1><font color=[usr.textcolor]>[usr] <font color=white>is using the <font color=[usr.textcolor]>[src.name]<font color=white> ability! They have healed a target for <font color=#A8F596><b>[dresult]</b></font> HP!","oocout")
 							if(src.atype=="curada")
 								var/healbonus=usr.chamod*2
 								var/curadabonus=usr.mhp*0.5
 								doresult=raw_attack_damage_roll()
 								dresult=doresult+curadabonus+healbonus
-								view()<<output("<font size=1><font color=[usr.textcolor]>[usr] <font color=white>is using the <font color=[usr.textcolor]>[src.name]<font color=white> ability! They have healed a target for <font color=#A8F596><b>[dresult]</b></font> HP!","icout")
+								view()<<output("<font size=1><font color=[usr.textcolor]>[usr] <font color=white>is using the <font color=[usr.textcolor]>[src.name]<font color=white> ability! They have healed a target for <font color=#A8F596><b>[dresult]</b></font> HP!","oocout")
 							if(src.atype=="save")// Please kill me I gotta put all the mabadd stuff and shit starting here. ---Vi
 								doresult=raw_attack_damage_roll()
 								amod=Checkdamtype(src.damsource,usr)
@@ -2396,7 +2396,7 @@ obj
 											dresult+=usr.pdbadd
 										else
 											dresult+=25
-								view()<<output("<font size=1><font color=[usr.textcolor]>[usr] <font color=white>is using the <font color=[usr.textcolor]>[src.name]<font color=white> ability!  Saving throw: <font color=#8EF5DE><b>[aresult] [src.savetype]!</b><font color=white>, dealing <b><font color=#FFA852>[dresult] damage</b><font color=white> on a failed save!<br> Cost: <b><font color=#0FBFD7>[src.mcost] [src.costtype]</b> | Tile Range:[src.range]","icout")
+								view()<<output("<font size=1><font color=[usr.textcolor]>[usr] <font color=white>is using the <font color=[usr.textcolor]>[src.name]<font color=white> ability!  Saving throw: <font color=#8EF5DE><b>[aresult] [src.savetype]!</b><font color=white>, dealing <b><font color=#FFA852>[dresult] damage</b><font color=white> on a failed save!<br> Cost: <b><font color=#0FBFD7>[src.mcost] [src.costtype]</b> | Tile Range:[src.range]","oocout")
 							if(src.atype=="weaponsave")
 								var/obj/item/Weapon/wepchoice = usr.righthand
 								alert(usr,"This ability will use the weapon equipped to your right hand.")
@@ -2462,7 +2462,7 @@ obj
 											dresult+=usr.pdbadd
 										else
 											dresult+=25
-								view()<<output("<font size=1><font color=[usr.textcolor]>[usr] <font color=white>is using the <font color=[usr.textcolor]>[src.name]<font color=white> ability with their [wepchoice.name]!  Saving throw: <font color=#8EF5DE><b>[aresult] [src.savetype]!</b><font color=white>, dealing <b><font color=#FFA852>[dresult] damage</b><font color=white> on a failed save!<br> Cost: <b><font color=#0FBFD7>[src.mcost] [src.costtype]</b> | Tile Range:[src.range]","icout")
+								view()<<output("<font size=1><font color=[usr.textcolor]>[usr] <font color=white>is using the <font color=[usr.textcolor]>[src.name]<font color=white> ability with their [wepchoice.name]!  Saving throw: <font color=#8EF5DE><b>[aresult] [src.savetype]!</b><font color=white>, dealing <b><font color=#FFA852>[dresult] damage</b><font color=white> on a failed save!<br> Cost: <b><font color=#0FBFD7>[src.mcost] [src.costtype]</b> | Tile Range:[src.range]","oocout")
 							if(src.atype=="weapon")
 								alert(usr,"This ability will use the weapon equipped to your right hand.")
 								if(usr.righthand==0)
@@ -2543,9 +2543,9 @@ obj
 									critdam=dresult+doresult
 									var/truecrit=wepchoice.critrange-usr.critmod
 									if(aoresult>=truecrit)
-										view()<<output("<font size=1><font color=[usr.textcolor]>[usr] <font color=white>rolled a <b><font color=#3CF82C>CRITICAL</b> <font color=white>attack roll, using the <font color=[usr.textcolor]>[src.name]<font color=white> ability with their [wepchoice.name]! Result: <font color=#3CF82C><b>[aresult] to hit</b><font color=white>, dealing <b><font color=#FFA852>[critdam] damage</b><font color=white>, as an automatic hit! Cost: <b><font color=#0FBFD7>[src.mcost] [src.costtype]</b>","icout")
+										view()<<output("<font size=1><font color=[usr.textcolor]>[usr] <font color=white>rolled a <b><font color=#3CF82C>CRITICAL</b> <font color=white>attack roll, using the <font color=[usr.textcolor]>[src.name]<font color=white> ability with their [wepchoice.name]! Result: <font color=#3CF82C><b>[aresult] to hit</b><font color=white>, dealing <b><font color=#FFA852>[critdam] damage</b><font color=white>, as an automatic hit! Cost: <b><font color=#0FBFD7>[src.mcost] [src.costtype]</b>","oocout")
 									else
-										view()<<output("<font size=1><font color=[usr.textcolor]>[usr] <font color=white>rolled an attack roll, using the <font color=[usr.textcolor]>[src.name]<font color=white> ability with their [wepchoice.name]!  Result: <font color=#8EF5DE><b>[aresult] to hit</b><font color=white>, dealing <b><font color=#FFA852>[dresult] damage</b><font color=white> if successful!<br> Cost: <b><font color=#0FBFD7>[src.mcost] [src.costtype]</b> | Tile Range:[src.range]","icout")
+										view()<<output("<font size=1><font color=[usr.textcolor]>[usr] <font color=white>rolled an attack roll, using the <font color=[usr.textcolor]>[src.name]<font color=white> ability with their [wepchoice.name]!  Result: <font color=#8EF5DE><b>[aresult] to hit</b><font color=white>, dealing <b><font color=#FFA852>[dresult] damage</b><font color=white> if successful!<br> Cost: <b><font color=#0FBFD7>[src.mcost] [src.costtype]</b> | Tile Range:[src.range]","oocout")
 							if(src.atype=="standard")
 								aoresult=rand(1,20)
 								amod=Checkdamtype(src.damsource,usr)
@@ -2620,10 +2620,10 @@ obj
 								critdam=dresult+doresult
 								var/truecrit=src.critrange-usr.critmod
 								if(aoresult>=truecrit)
-									view()<<output("<font size=1><font color=[usr.textcolor]>[usr] <font color=white>rolled a <b><font color=#3CF82C>CRITICAL</b> <font color=white>attack roll, using the <font color=[usr.textcolor]>[src.name]<font color=white> ability! Result: <font color=#3CF82C><b>[aresult] to hit</b><font color=white>, dealing <b><font color=#FFA852>[critdam] damage</b><font color=white>, as an automatic hit! Cost: <b><font color=#0FBFD7>[src.mcost] [src.costtype]</b>","icout")
+									view()<<output("<font size=1><font color=[usr.textcolor]>[usr] <font color=white>rolled a <b><font color=#3CF82C>CRITICAL</b> <font color=white>attack roll, using the <font color=[usr.textcolor]>[src.name]<font color=white> ability! Result: <font color=#3CF82C><b>[aresult] to hit</b><font color=white>, dealing <b><font color=#FFA852>[critdam] damage</b><font color=white>, as an automatic hit! Cost: <b><font color=#0FBFD7>[src.mcost] [src.costtype]</b>","oocout")
 								else
 									view()<<output("<font size=1><font color=[usr.textcolor]>[usr] <font color=white>rolled an attack roll, using the <font color=[usr.textcolor]>[src.name]<font color=white> ability!  Result: <font color=#8EF5DE><b>[aresult] to hit</b><font color=white>, dealing <b><font color=#FFA852>[dresult] damage</b><font color=white> if successful!<br> Cost: <b><font color=#0FBFD7>[src.mcost] [src.costtype]</b> | Tile Range:[src.range]","output1")
-									view()<<output("<font size=1><font color=[usr.textcolor]>[usr] <font color=white>rolled an attack roll, using the <font color=[usr.textcolor]>[src.name]<font color=white> ability! Result: <font color=#8EF5DE><b>[aresult] to hit</b><font color=white>, dealing <b><font color=#FFA852>[dresult] damage</b><font color=white> if successful!<br> Cost: <b><font color=#0FBFD7>[src.mcost] [src.costtype]</b> | Tile Range:[src.range]","icout")
+									view()<<output("<font size=1><font color=[usr.textcolor]>[usr] <font color=white>rolled an attack roll, using the <font color=[usr.textcolor]>[src.name]<font color=white> ability! Result: <font color=#8EF5DE><b>[aresult] to hit</b><font color=white>, dealing <b><font color=#FFA852>[dresult] damage</b><font color=white> if successful!<br> Cost: <b><font color=#0FBFD7>[src.mcost] [src.costtype]</b> | Tile Range:[src.range]","oocout")
 						if("Cancel")
 							return
 				else
