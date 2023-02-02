@@ -774,10 +774,12 @@ obj
 					desc="This individual is capable of smithing Armor up to Steel tier given they have enough ore to do so, as well as have the tools and time."
 				Armor3
 					rank="T3"
+					pre="Armorsmith II"
 					name="Armorsmith III"
 					desc="This individual is capable of smithing Armor up to Mithril tier given they have enough ore to do so, as well as have the tools and time."
 				Armor4
 					rank="T4"
+					pre="Armorsmith III"
 					name="Armorsmith IV"
 					desc="This individual is a master smith. They're able to craft armor of up to Adamantine tier given they have enough ore to do so, as well as have the tools and time."
 			Weapons
@@ -788,10 +790,13 @@ obj
 					desc="This individual is capable of smithing Weapons up to Steel tier, assuming they have the materials to do so."
 				Weapons3
 					rank="T3"
+					pre="Weaponsmith II"
 					name="Weaponsmith III"
 					desc="This individual is capable of smithing Weapons up to Mithril tier, assuming they have the materials to do so."
 				Weapons4
 					rank="T4"
+
+					pre="Weaponsmith III"
 					name="Weaponsmith IV"
 					desc="This individual is  a master smith, and are capable of smithing Weapons up to Adamantine tier, assuming they have the materials to do so."
 			Enchanter
@@ -1965,14 +1970,15 @@ obj
 					name="Composure"
 					rank="T2"
 					desc="This individual can cast a magic ability as a full action in order to receive advantage on a magical attack roll."
-				TipTheScales
-					name="Tip the Scales"
-					rank="T2"
-					desc="A Red Mage is able to recycle magical energy better than any other profession. As a result, they may spend their standard action in order to reduce all White and Black stacks to 0 (requires at least 4 stacks each) - in order to apply the 'Refresh' status effect to themselves."
 				ScalesofRed
 					name="Scales of Red"
 					rank="T2"
 					desc="When the user casts a Black or White magic spell, they gain stacks of that respective color, depending on spell rank. D Ranks = 2, C Ranks = 3, B Ranks = 4, A Ranks = 5, S Ranks = 6. You may spend these stacks in order to increase the healing of a white mage spell, or the damage of a black mage spell by 1 per stack - using the respective color. When both Black and White stacks are equal to each-other, you gain 10 PDB and MDB. For the damage bonus to take effect, you must have at least 1 active Black or White magic stack. Both White Magic and Black Magic stacks cap at 20."
+				TipTheScales
+					name="Tip the Scales"
+					pre="Scales of Red"
+					rank="T2"
+					desc="A Red Mage is able to recycle magical energy better than any other profession. As a result, they may spend their standard action in order to reduce all White and Black stacks to 0 (requires at least 4 stacks each) - in order to apply the 'Refresh' status effect to themselves."
 				InaPinch
 					name="In a Pinch"
 					rank="T2"
@@ -1980,6 +1986,7 @@ obj
 				Synchronicity
 					name="Synchronicity"
 					rank="T2"
+					pre="Pure Red Mage"
 					desc="This Red Mage has focused purely on the art of Red Magic ; combining all forms of Magic as deftly as possible, for true synergy - they live in yin and yang, energetically. As a result, their raw mana is much more potent. They gain +30 MP to their mana pool permanently, and in addition - their General Magic Abilities gain +1 to hit, and deal 8 additional damage on hit."
 				Attunement
 					name="Attunement"
@@ -1993,6 +2000,7 @@ obj
 				RedMageAdept
 					name="Red Mage Adept"
 					rank="T3"
+					pre="Synchronicity"
 					pre="Pure Red Mage"
 					desc="This individual has strenuously studied the magical arts and as such is able to learn up to B rank Black, and White magic abilities."
 				GoingitAlone
@@ -2007,12 +2015,14 @@ obj
 					desc="This individual has truly pushed their magical mastery to the utmost limit. They have pushed beyond traditional magic, and with their pure Red arts - have tapped into the Aether, now able to form a connection with a singular Eidolon, proving that they truly can use all forms of magic. (Requires pure Red Mage, incompatible with Subjob. Grants 1 C or B rank Summon.)"
 				DoubleCast
 					name="Double Cast"
+					pre="Chainspell"
 					rank="T4"
 					desc="Allows the user to cast an extra spell as a bonus action. (Does not count for general magic abilities or general weapon abilities. Only white, black, green, or arcane magic.)"
 				RedEmpowerment
 					pre="Pure Red Mage"
 					name="Red Empowerment"
 					rank="T4"
+					pre="Red Mage Adept"
 					desc="The essence of Red Magic is 'energy' - this takes many forms. Vitality, physical energy, spiritual energy, magical energy. A Red Mage who has learned the Red Empowerment Ability has opened themselves up to the world around them, allowing more natural energy to flow freely throughout their bodies than normal. They gain a permanent +20 HP, +20 MP, and +20 SP - as well as +2 points to distribute to their ability scores."
 				Sage
 					name="Sage"
@@ -3334,8 +3344,10 @@ obj
 			GeneralWeaponAbilities
 				cat="Genability"
 				icon='Icons/Perk/GeneralWeapon.png'
+				costtype="Stamina"
+				atype="weapon"
+				range=" Melee"
 				typing="physical"
-				atype="standard"
 				element="Physical"
 				Melee
 					Braver
@@ -3358,6 +3370,7 @@ obj
 					QuickHit
 						rank="D"
 						name="Quick Hit"
+						mcost=10
 						desc="As a bonus action make a quick weapon attack dealing half the damage of a normal attack. (- 10 stamina.)"
 					Riposte
 						rank="C"
@@ -3422,7 +3435,7 @@ obj
 						ptype="spell"
 						desc="The user of this ability swings their weapon after imbuing it with a burst of Mana. The first strike carries through, and if the target dodges, a second strike made of mana and in the shape of the weapon with the same speed follows after (Damage: Weapon Damage + 5 | Bonus action after a standard attack misses. -30 Stamina)"
 					StellarCircle
-						element="Flare"
+						element="Force"
 						rank="C"
 						name="Stellar Circle"
 						mcost=30
@@ -3498,6 +3511,7 @@ obj
 						costtype="Stamina"
 						desc="Dash forward, coating one's weapon in volatile magical energy. With each swing, this energy explodes - sending the weapon forward with increase momentum. Each attack deals 5d2 additional damage. In addition, with each attack that misses - grant successive attacks +2 to hit. Make 4 attack rolls. (Capts at 120 cumulative damage.) Costs 45 Stamina."
 					FatedCircle
+						element="Fire"
 						rank="B"
 						name="Fated Circle"
 						mcost=40
@@ -3516,6 +3530,7 @@ obj
 						savetype="Reflex"
 						desc="The user makes a sweeping attack with their weapon around them. Explosive energy stored up in the weapon then radiates outward in a sharp, blade-like full circle. The edge of the circle then explodes in a fiery burst, threatening to burn anyone caught in its radius. (Damage: Weapon damage + 2d6+STR fire damage | 3x3 AoE, prompts a relex saving throw (DC 10+STR+Rank bonus), dealing full damage and inflicting burn on a failure, or half damage on a success. -40 stamina.)"
 					CrushingBlow
+						element="Holy"
 						rank="B"
 						name="Crushing Blow"
 						mcost=50
@@ -3528,6 +3543,7 @@ obj
 						range=" 5 tiles."
 						desc="The user of this technique infuses their feet with magic, and launches 3 tiles into the air. They gain the effects of Airborne, without the effects of Knock-up. They then swing their weapon to the side, releasing a disk of light that deals Holy damage, and inflicts 'Heavy' on hit. Attack: Weapon Damage + 5d12. Costs 50 Stamina."
 					RoundEdge
+						element="Dark"
 						rank="B"
 						name="Round Edge"
 						mcost=50
@@ -3537,11 +3553,11 @@ obj
 						adddam=3
 						addhit=4
 						atype="weapon"
-						range=" 3x3 AoE"
+						range=" 5x5 AoE"
 						costtype="Stamina"
-						desc="A massive AoE attack, made by swinging one's weapon in a circular motion, releasing flames of dark energy.. This attack deals Dark damage on hit, and is a 5x5 AoE centered around the user. Costs 50 Stamina."
+						desc="A massive AoE attack, made by swinging one's weapon in a circular motion, releasing flames of dark energy.. The user makes a melee attack at +4 to hit, hitting all targets around  them in a  5x5 centered on the user. On hit they deal Weapon Damage + 4-55 + 3 Dark Damage. Costs 50 Stamina."
 					BladeBeam
-						element="Flare"
+						element="Force"
 						rank="B"
 						name="Blade Beam"
 						mcost=40
@@ -3562,19 +3578,22 @@ obj
 					Shout
 						name="Shout"
 						rank="B"
+						mcost=40
 						desc="The user turns to their comrades projecting their voice in a powerful boom that instills encouragement in them. Targets all friendly creatures in a 6 tile cone in front of the user. Targets gain haste and a +2 bonus to strength that lasts until the haste effect wears off. Can only be used once per encounter. (-40 Stamina.)"
 					BanishingBlade
 						name="Banishing Blade"
 						rank="B"
-						atype="standard"
+						atype="weapon"
+						mcost=40
 						desc="Runes solidify around the user of this ability's weapon, granting it potent sealing power. They then swing the weapon as a standard attack. On hit, the target is inflicted with Silence. Costs 40 Stamina."
 					SlicenDice
 						name="Slice n Dice"
 						rank="B"
-						atype="standard"
+						mcost=60
+						atype="weapon"
 						desc="A ferocious, and powerful combination attack. This ability allows you to perform 5 Standard attacks, however - only ONE of these five attacks may hit, and deal damage. If any of the five attack rolls would hit, the attack hits - and the user of this ability may choose the highest damage number rolled of the five, to apply.. Costs 60 Stamina."
 					GodAmongMen
-						element="Laser"
+						element="Force"
 						rank="B"
 						name="God Among Men"
 						mcost=50
@@ -3599,16 +3618,23 @@ obj
 						attack_roll_damage_upper = 110
 						basecheck=14
 						adddam=5
-						range="  3 tile wide, 5 tile line."
+						mcost=60
+						atype="weaponsave"
+						savetype="reflex"
+						range="3 tile wide, 5 tile line."
 						typing="physical"
 						damsource="str"
-						desc="The user infuses their weapon with obscene amounts of energy, and raises it into the sky. They then swing down, bringing the energy down as a blade, and prompting a saving throw. On a failure, targets take full damage ; on a success, they take half."
+						desc="The user infuses their weapon with obscene amounts of energy, and raises it into the sky. They then swing down, bringing the energy down as a blade, and prompting a reflexing saving throw DC 14 + STR + Rank Bonus. On Failure the take takes 60-110 +5 Physical damage; on success, they take half. Cost -60 Stamina."
 					GestaltDrive
 						rank="A"
 						name="Gestalt Drive"
-						atype="standard"
+						atype="weapon"
+						mcost=15
+						attack_roll_dice_count = 1
+						attack_roll_dice_sides = 10
 						desc="Calling upon the name of the Valkyries, the user of this ability infuses their weapon with magic that transforms it into a pair of linked together duplicates. They then seperate the blades. This weapon takes the place of their own, and uses its attributes but gains 1d10 additional damage on hit. In addition, while this state is active - you may make an extra attack as a bonus action. Cannot be used with Thief Swords. Costs 15 SP per turn to sustain."
 					TriumphantGrasp
+						element="Fire"
 						rank="A"
 						name="Triumphant Grasp"
 						mcost=90
@@ -3628,6 +3654,7 @@ obj
 						desc="The user reaches out with a free hand grasping at their opponent. Upon grabbing the target, they drag the target across the ground - and then clench their fist. An explosion erupts from their grasp, and the target is then sent flying at high speeds in a direction of the user's choice. (Damage: 8d10+STR fire damage | STR saving throw (DC 15+STR+Rankbonus) - on a failure, creature is thrown 6 tiles in any direction. Upon hitting a wall, target takes 5d10 additional damage. On a success, attack is negated. -90 Stamina.)"
 					ChaosDisaster
 						name="Chaotic Disaster"
+						element="Dark"
 						rank="A"
 						mcost=75
 						attack_roll_damage_dice = TRUE
@@ -3639,7 +3666,7 @@ obj
 						typing="physical"
 						ptype="spell"
 						costtype="Stamina"
-						desc="The user of this attack swings their weapon in an arc, releasing a beam of energy as a 'Chaotic Disaster' attack roll, which travels in a 5 tile line, dealing Darkness damage. They then shift to the end of the line, and may make 1 Standard attack roll immediately after. Costs 75 Stamina."
+						desc="The user of this attack swings their weapon in an arc, releasing a beam of energy as a 'Chaotic Disaster' attack roll with +3 to hit, which travels in a 5 tile line, dealing 10d7 + 5 Darkness damage on hit. They then shift to the end of the line, and may make 1 Standard attack roll immediately after.  Costs 75 Stamina."
 					LordofArms
 						name="Lord of Arms"
 						rank="A"
@@ -3666,7 +3693,7 @@ obj
 						damsource="str"
 						typing="physical"
 						ptype="spell"
-						desc="The user makes a horizontal slice with their weapon causing the air in front of the user to become disturbed before kicking up a powerful gale that pulls anything caught in it high into the air. Anything that is kicked upwards will most likely take heavy damage from the fall. (Damage: Weapon Damage + 2d20+STR | Melee Weapon Attack (+3 to hit) | 3 tile wide attack, launches target 2 tiles per STR Modifier point. - 55 Stamina)"
+						desc="The user makes a horizontal slice with their weapon causing the air in front of the user to become disturbed before kicking up a powerful gale that pulls anything caught in it high into the air. Anything that is kicked upwards will most likely take heavy damage from the fall. (Damage: Weapon Damage + 2d20+STR+10 | Melee Weapon Attack (+3 to hit) | 3 tile wide attack, launches target 2 tiles per STR Modifier point. - 55 Stamina)"
 					BladeHoning
 						rank="A"
 						name="Blade Honing"
@@ -3738,7 +3765,7 @@ obj
 						addhit=0
 						range="Melee"
 						costtype="Stamina, per 4 attack rolls."
-						atype="standard"
+						atype="weapon"
 						damsource="str"
 						typing="physical"
 						ptype="spell"
@@ -3935,7 +3962,7 @@ obj
 				icon='Icons/Perk/GeneralMagic.png'
 				typing="magical"
 				atype="standard"
-				element="General"
+				element="Force"
 				Landmine
 					element="Fire"
 					level=2
@@ -3950,7 +3977,7 @@ obj
 					addhit=0
 					range=" 3 tile range, placeable anywhere a creature is not already positioned."
 					costtype="Mana"
-					atype="weaponsave"
+					atype="save"
 					damsource="int"
 					typing="magical"
 					ptype="spell"
@@ -3958,7 +3985,6 @@ obj
 					desc="The user scatters landmines that float in the air, and explode on contact or when a creature passes through the same tile with their movement. (Creates a landmine on a single tile within three tiles from the user, landmines prompt a Reflex saving throw (10+INT+Rank bonus). On a failed save, creatures take 2d20+INT damage, or half as much on a successful save. Landmine can not be created on the same tile that a creature is already occupying.  -6 Mana)"
 
 				Burst
-					element="Flare"
 					level=2
 					rank="D"
 					name="Burst"
@@ -4038,7 +4064,7 @@ obj
 					desc="A low level, but essential magical technique for those studying the raw magic arts. The user draws from their reserves, and releases their Magic in a 'mist' like stream, which burns away at whatever it touches. (Damage: 3d6+INT | Prompts a Fortitude saving throw (12+INT+Rank Bonus) dealing full damage on a failure, or half as much on a success. 3 tile cone. -12 Mana.)"
 				Fogga
 					element="Bio"
-					level=2
+					level=4
 					rank="B"
 					name="Fogga"
 					mcost=30
@@ -4130,7 +4156,6 @@ obj
 					ptype="spell"
 					desc="The user releases a jolt of magical energy at an opponent, which inflicts Paralyze onto the opponent if it does over 20 damage to the target. (Damage: 2d8+INT | ranged attack roll (1d20+INT+2 to hit) vs. Armor, -20 Mana.)"
 				Scatter
-					element="Laser"
 					level=3
 					rank="C"
 					damsource="int"
@@ -4171,7 +4196,6 @@ obj
 					mcost=30
 					desc="The user coats their fist or weapon in a compact and dense construct of arcane energy. They then release a melee attack which combines magical and physical damage, also knocking an opponent back as it explodes. (Make a Melee attack roll, dealing an additional 2d6+INT magical damage, and applying a 6 tile knockback on hit. -30 Mana.)"
 				Laser
-					element="Laser"
 					level=3
 					rank="C"
 					damsource="int"
@@ -4186,7 +4210,6 @@ obj
 					attack_roll_dice_sides = 4
 					desc="Mana is concentrated at the tip of a finger, and channeled to become extremely thin. It's then released in the form of a miniscule laser directed at vital points, meant to penetrate defenses. (Damage: 2d4+INT | +3 to hit, 15 Damage Reduction piercing.  5 tile line.-15 Mana.)"
 				Laserga
-					element="Laser"
 					level=4
 					rank="B"
 					pre="Laser"
@@ -4202,7 +4225,6 @@ obj
 					attack_roll_dice_sides = 10
 					desc="Mana is concentrated at the tip of a finger, and channeled into a thin but very condensed mass. It's then released in the form of a sizable laser directed at vital points, meant to penetrate defenses. (Damage: 2d10+INT | +4 to hit, 20 Damage Reduction piercing. 7 tile line. -35 Mana.)"
 				Pierce
-					element="Laser"
 					level=3
 					rank="C"
 					damsource="int"
@@ -4217,7 +4239,6 @@ obj
 					attack_roll_dice_sides = 6
 					desc="The user coats their projectile in a screeching shroud of magical energy, which causes it to drill and burrow into a target at high speeds after being launched from their weapon. (Make a Ranged weapon attack roll, dealing an additional 2d6+INT magical damage, with +2 to hit and ignoring 5 physical damage reduction. -30 Mana.)"
 				Fleche
-					element="Laser"
 					level=4
 					rank="B"
 					damsource="int"
@@ -4277,7 +4298,6 @@ obj
 					range="Melee"
 					desc="The user coats their fist or weapon in a compact and dense construct of arcane energy, crackling with energy. They then release a melee attack which combines maigcal and physical damage, also knocking an opponent back as it explodes. (Make a Melee attack roll, dealing an additional 2d12+INT magical damage, and applying 12 tile knockback on hit. -55 Mana.)"
 				Piercega
-					element="Laser"
 					level=4
 					rank="B"
 					pre="Pierce"
@@ -4358,7 +4378,6 @@ obj
 					attack_roll_dice_sides = 12
 					desc="Magical Mana is sent into the ground beneath the user causing parts of the earth to split away carrying them upwards on a large rock while several other large boulders spin around them. Four projectiles are then fired off at any target within 7 tiles of the point of origin. (Prompts a Reflex saving throw, dealing 3d12+INT piercing damage on a failed save, or half as much on a success - then fires off 4 magical ranged attack rolls, utilizing tome, staff, or focus in your inventory for their accuracy and damage - dealing earth damage on hit. - 45 Mana)"
 				AntiAirParticleBeam
-					element="Laser"
 					name="Anti Air Particle Beam"
 					level=4
 					rank="B"
