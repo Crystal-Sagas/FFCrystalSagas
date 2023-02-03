@@ -94,7 +94,7 @@ obj
 			icon='Icons/Perk/MonsterAbility.png'
 			Mecha
 				name="Mecha"
-				desc="This construct is a mecha. Its Melee abilities have an additional tile range of 2, regardless of their base Melee range - this also applies to General Weapon Abilities which extend projectiles."
+				desc="This construct is a mecha. Its Melee abilities have an additional tile range of 2, regardless of their base Melee range - this also applies to General Weapon Abilities which extend projectiles. Magitek Mecha are also capable of using their Laser Defense Orb as a reaction to being attack, and when doing so - may fire it twice."
 			Pilotable
 				name="Pilotable"
 				desc="This creature or construct is pilotable. Its owner is capable of piloting it. In doing so, they enter its body or chassis, and the player character is stored inside, taking no damage from attacks while inside unless it is destroyed. This creature or construct uses the pilot's action economy, rather than having its own."

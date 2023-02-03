@@ -374,6 +374,7 @@ obj
 				var/obj/item/Weapon/Machinist/EnergySword/esword=new
 				var/obj/item/Weapon/Machinist/BioBlaster/biob=new
 				var/obj/item/Weapon/Machinist/Flamethrower/flamer=new
+				var/obj/item/Weapon/Machinist/LaserDefenseOrb/lorb=new
 				var/obj/perk/Abilities/Paladin/Cover/tank=new
 				var/obj/perk/Abilities/GeneralWeaponAbilities/Melee/Launch/striker=new
 				var/obj/perk/Abilities/GeneralWeaponAbilities/Melee/StellarCircle/stellar=new
@@ -443,7 +444,7 @@ obj
 					src.contents+=pierce2
 					src.eweapon=biob
 				if(src.name=="Magitek Mecha")
-					src.contents+=biob
+					src.contents+=lorb
 					src.contents+=esword
 					src.contents+=metallic
 					src.contents+=antigrav
@@ -455,8 +456,6 @@ obj
 					src.contents+=laser3
 					src.contents+=laser4
 					src.contents+=laser5
-					src.contents+=pierce1
-					src.contents+=pierce2
 					src.contents+=stellar
 					src.contents+=braver
 					src.contents+=rough
@@ -840,8 +839,6 @@ obj
 					pab=23
 					mdb=45
 					pdb=45
-					New()
-
 
 obj
 	Vehicle
