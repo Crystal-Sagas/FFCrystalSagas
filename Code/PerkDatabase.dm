@@ -92,6 +92,12 @@ obj
 				desc="This creature is attuned to the element of Holy. It is immune to the 'Weakness', 'Doom', 'Break', 'Heavy', 'Blind', and 'Silence' status effects, and takes half damage from dark damage, but 2x from holy damage."
 		MonsterPassives
 			icon='Icons/Perk/MonsterAbility.png'
+			Mecha
+				name="Mecha"
+				desc="This construct is a mecha. Its Melee abilities have an additional tile range of 2, regardless of their base Melee range - this also applies to General Weapon Abilities which extend projectiles."
+			Pilotable
+				name="Pilotable"
+				desc="This creature or construct is pilotable. Its owner is capable of piloting it. In doing so, they enter its body or chassis, and the player character is stored inside, taking no damage from attacks while inside unless it is destroyed. This creature or construct uses the pilot's action economy, rather than having its own."
 			Rideable
 				name="Rideable"
 				desc="This creature is rideable. It may be mounted by an ally, and in doing so, this creature takes half of the damage that creature would take when it is targeted, until this creature is KOed, the riding creature only taking half as well."
