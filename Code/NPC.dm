@@ -1225,7 +1225,7 @@
 		for(var/obj/item/d in m.contents)
 			if(d.name==bossreward)
 				m.send_chat("You beat a World Boss! Gained +1 [bossreward]!", stream = "oocout")
-				m.dailyfates+=2
+				m.dailyfates+=1
 				d.amount+=1
 				break
 		if(m.hp<=0)
