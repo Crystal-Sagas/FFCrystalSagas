@@ -61,7 +61,7 @@
 /datum/Write(savefile/F)
 	. = ..()
 	if(serializable)
-		if(!validate_serializable())
+		if(validate_serializable())
 			F["__data__"] << serialize()
 		else
 			stack_trace("attempted to Write but validate_serializable() failed on [type]")

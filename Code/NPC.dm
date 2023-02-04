@@ -541,15 +541,15 @@
 	var/obj/item/Weapon/wepchoice = user.righthand
 	amod=Checkdamtype(wepchoice.damsource,user)
 	if(wepchoice.typing=="magical")
-		aresult=rand(1,20)+wepchoice.addhit+amod+user.rankbonus+user.mab
+		aresult=rand(1,20)+wepchoice.addhit+amod+user.rankbonus+user.mab+user.mabadd
 	else
-		aresult=rand(1,20)+wepchoice.addhit+amod+user.rankbonus+user.pab
+		aresult=rand(1,20)+wepchoice.addhit+amod+user.rankbonus+user.pab+user.pabadd
 	doresult=rand(wepchoice.range1,wepchoice.range2)
 	dmod=Checkdamtype(wepchoice.damsource,user)
 	if(wepchoice.typing=="magical")
-		dresult=doresult+dmod+wepchoice.adddam+user.mdb-target.basedr
+		dresult=doresult+dmod+wepchoice.adddam+user.mdb-target.basedr+user.mdbadd
 	else
-		dresult=doresult+dmod+wepchoice.adddam+user.pdb-target.basedr
+		dresult=doresult+dmod+wepchoice.adddam+user.pdb-target.basedr+user.pdbadd
 	Playerattack(user,target)
 	if(user.status1=="Heavy" || user.status2=="Heavy" || user.status3=="Heavy")
 		dresult-=10
@@ -800,57 +800,57 @@
 	if(skill.atype=="standard")
 		amod=Checkdamtype(skill.damsource,user)
 		if(skill.typing=="magical")
-			aresult=rand(1,20)+skill.addhit+amod+user.rankbonus+user.mab
+			aresult=rand(1,20)+skill.addhit+amod+user.rankbonus+user.mab+user.mabadd
 		else
-			aresult=rand(1,20)+skill.addhit+amod+user.rankbonus+user.pab
+			aresult=rand(1,20)+skill.addhit+amod+user.rankbonus+user.pab+user.pabadd
 		doresult=skill.raw_attack_damage_roll()
 		dmod=Checkdamtype(skill.damsource,user)
 		abilitydamage=skill.raw_attack_damage_roll()
 		if(skill.typing=="magical")
-			dresult=doresult+dmod+skill.adddam+user.mdb+skill.adddam+abilitydamage-target.basedr
+			dresult=doresult+dmod+skill.adddam+user.mdb+skill.adddam+abilitydamage-target.basedr+user.mdbadd
 		else
-			dresult=doresult+dmod+skill.adddam+user.pdb+skill.adddam+abilitydamage-target.basedr
+			dresult=doresult+dmod+skill.adddam+user.pdb+skill.adddam+abilitydamage-target.basedr+user.pdbadd
 	if(skill.atype=="weapon")
 		var/obj/item/Weapon/wepchoice = user.righthand
 		amod=Checkdamtype(wepchoice.damsource,user)
 		if(skill.typing=="magical")
-			aresult=rand(1,20)+skill.addhit+amod+user.rankbonus+user.mab
+			aresult=rand(1,20)+skill.addhit+amod+user.rankbonus+user.mab+usr.mabadd
 		else
-			aresult=rand(1,20)+skill.addhit+amod+user.rankbonus+user.pab
+			aresult=rand(1,20)+skill.addhit+amod+user.rankbonus+user.pab+user.pabadd
 		doresult=rand(wepchoice.range1,wepchoice.range2)
 		dmod=Checkdamtype(skill.damsource,user)
 		abilitydamage=skill.raw_attack_damage_roll()
 		if(skill.typing=="magical")
-			dresult=doresult+dmod+wepchoice.adddam+user.mdb+skill.adddam+abilitydamage-target.basedr
+			dresult=doresult+dmod+wepchoice.adddam+user.mdb+skill.adddam+abilitydamage-target.basedr+user.mdbadd
 		else
-			dresult=doresult+dmod+wepchoice.adddam+user.pdb+skill.adddam+abilitydamage-target.basedr
+			dresult=doresult+dmod+wepchoice.adddam+user.pdb+skill.adddam+abilitydamage-target.basedr+user.pdbadd
 	if(skill.atype=="weaponsave")
 		var/obj/item/Weapon/wepchoice = user.righthand
 		amod=Checkdamtype(wepchoice.damsource,user)
 		if(skill.typing=="magical")
-			aresult=skill.basecheck+amod+user.rankbonus+skill.addhit
+			aresult=skill.basecheck+amod+user.rankbonus+skill.addhit+user.mabadd
 		else
-			aresult=skill.basecheck+amod+user.rankbonus+skill.addhit
+			aresult=skill.basecheck+amod+user.rankbonus+skill.addhit+user.pabadd
 		doresult=rand(wepchoice.range1,wepchoice.range2)
 		dmod=Checkdamtype(skill.damsource,user)
 		abilitydamage=skill.raw_attack_damage_roll()
 		if(skill.typing=="magical")
-			dresult=doresult+dmod+wepchoice.adddam+user.mdb+skill.adddam+abilitydamage-target.basedr
+			dresult=doresult+dmod+wepchoice.adddam+user.mdb+skill.adddam+abilitydamage-target.basedr+user.mdbadd
 		else
-			dresult=doresult+dmod+wepchoice.adddam+user.pdb+skill.adddam+abilitydamage-target.basedr
+			dresult=doresult+dmod+wepchoice.adddam+user.pdb+skill.adddam+abilitydamage-target.basedr+user.pdbadd
 	if(skill.atype=="save")
 		amod=Checkdamtype(skill.damsource,user)
 		if(skill.typing=="magical")
-			aresult=skill.basecheck+amod+user.rankbonus+skill.addhit
+			aresult=skill.basecheck+amod+user.rankbonus+skill.addhit+user.mabadd
 		else
-			aresult=skill.basecheck+amod+user.rankbonus+skill.addhit
+			aresult=skill.basecheck+amod+user.rankbonus+skill.addhit+user.pabadd
 		doresult=skill.raw_attack_damage_roll()
 		dmod=Checkdamtype(skill.damsource,user)
 		abilitydamage=skill.raw_attack_damage_roll()
 		if(skill.typing=="magical")
-			dresult=doresult+dmod+skill.adddam+user.mdb+skill.adddam+abilitydamage-target.basedr
+			dresult=doresult+dmod+skill.adddam+user.mdb+skill.adddam+abilitydamage-target.basedr+user.mdbadd
 		else
-			dresult=doresult+dmod+skill.adddam+user.pdb+skill.adddam+abilitydamage-target.basedr
+			dresult=doresult+dmod+skill.adddam+user.pdb+skill.adddam+abilitydamage-target.basedr+user.pdbadd
 	if(skill.rank=="D")
 		aresult+=4
 		dresult+=10
@@ -866,6 +866,8 @@
 	if(skill.rank=="S")
 		aresult+=20
 		dresult+=40
+	if(skill.name=="Jump"||skill.name=="Drake Hop"||skill.name=="Hyper Jump"||skill.name=="Sky Grinder"||skill.name=="Falling Meteor")// This is aprt of the Dragoon Rework. Dragoon skills max jump height scales on Speed. So this is to emulate that damage increase in fates.
+		dresult+=(user.speed+user.speedadd)*4
 	Playeranimation(user,target,skill)
 	user.visible_message("<font color=#F8E959><b>[user]</font> has used [skill] to attack [target]!!", stream = "icout")
 	var/drainvalue=round(dresult*0.5)
@@ -1202,21 +1204,30 @@
 			if(a.name==reward1)
 				m.send_chat("Gained +1 [reward1]!", stream = "oocout")
 				a.amount+=1
+				if(reward1=="Wood"||reward1=="Stone")
+					a.amount+=4
+					m.send_chat("Gained +4 [reward1]!", stream = "oocout")
 				break
 		for(var/obj/item/b in m.contents)
 			if(b.name==reward2)
 				m.send_chat("Gained +1 [reward2]!", stream = "oocout")
 				b.amount+=1
+				if(reward2=="Wood"||reward2=="Stone")
+					b.amount+=4
+					m.send_chat("Gained +4 [reward2]!", stream = "oocout")
 				break
 		for(var/obj/item/c in m.contents)
 			if(c.name==reward3)
 				m.send_chat("Gained +1 [reward3]!", stream = "oocout")
 				c.amount+=1
+				if(reward3=="Wood"||reward3=="Stone")
+					c.amount+=4
+					m.send_chat("Gained +4 [reward3]!", stream = "oocout")
 				break
 		for(var/obj/item/d in m.contents)
 			if(d.name==bossreward)
 				m.send_chat("You beat a World Boss! Gained +1 [bossreward]!", stream = "oocout")
-				m.dailyfates+=2
+				m.dailyfates+=1
 				d.amount+=1
 				break
 		if(m.hp<=0)

@@ -104,11 +104,11 @@ obj
 									var/mtype
 									var/typeage
 									var/list/slaylist=new
-									var/list/slayerrewardsD=list("Wool","Leather","Wood","Bronze","Iron","Flying Eye's Wing","Flying Eye's Eye")
-									var/list/slayerrewardsC=list("Wool","Leather","Wood","Bronze","Iron","Steel","Flying Eye's Wing","Flying Eye's Eye","Bomb Core","Sahaugin Scale")
+									var/list/slayerrewardsD=list("Wool","Leather","Bronze","Iron","Flying Eye's Wing","Flying Eye's Eye")
+									var/list/slayerrewardsC=list("Wool","Leather","Bronze","Iron","Steel","Flying Eye's Wing","Flying Eye's Eye","Bomb Core","Sahaugin Scale")
 									var/list/slayerrewardsB=list("Mythril","Silver","Esper Soul","Gigantoad Slime","Tonberry Knife","Coeurl Whisker")
 									var/list/artifactrewards=list("Aether Powder","Ether Powder","White Gem","Black Gem","Thunder Gem","Fire Gem","Water Gem","Earth Gem","Bio Gem","Ice Gem","Wind Gem","Holy Gem","Dark Gem")
-									var/list/deliveryrewards=list("Wool","Leather","Wood","Bronze","Iron","Steel","Raw Mako","Silver")
+									var/list/deliveryrewards=list("Stone","Wood","Bronze","Iron","Raw Mako","Wool","Leather")
 									var/list/bossrewards=list("Mythril","Adamantine","Raw Mako","Esper Soul","Silver","Gold")
 									switch(tchoice)
 										if("Slayer")
@@ -152,7 +152,7 @@ obj
 												target = pick(slaylist)
 												fightmob = copyatom(target)
 												fightmob.FATENpc=1
-												newfate.Reward1=pick(slayerrewardsD)
+												newfate.Reward1=pick(slayerrewardsC)
 												newfate.Reward2=pick(slayerrewardsC)
 												newfate.Reward3=pick(slayerrewardsC)
 											if(mtype=="Artifact")
