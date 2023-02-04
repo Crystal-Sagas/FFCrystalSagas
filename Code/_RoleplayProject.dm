@@ -303,6 +303,15 @@ mob
 				alert("You do not have a save file.")
 				return
 		Save()
+			//? DO NOT REMOVE THIS CHECK UNDER ANY CIRCUMSTANCES.
+			//  Explanation:
+			//  If someone's in lobby and this triggers, due to the horrific
+			//  lack of abstraction between player mobs and new players and
+			//  the saving system, it will overwrite their save with their
+			//  uninitialized mob.
+			if(intitlescreen)
+				return
+			//? END
 			if(key)
 				if(!src.loc)
 					return
