@@ -2017,6 +2017,11 @@ obj
 					name="Secret of the Lily"
 					cat="Unique"
 					desc="This individual has learned an ancient art of healing. They have learned to harness the ambient magic formed from a battle into crystalline lilies that can be spent on healing magic to aid their side. For every 3 rounds of combat a lily is grown on the user. A maximum of 3 lilies can be held at a time. A lily can be expended as a free action once per turn, to cast a C Rank or lower White magic spell at half cost."
+				WhiteLight
+					rank="T3"
+					pre="Lasting Support"
+					name="White Light"
+					desc="A White Mage of this individual's level is able to unleash the true power of White Magic. While sacrificing the MP reduction of Lasting Support, the user can cast any healing or status cleansing White Magic as an AoE to effect multiple firendly creatures, increasing the radius by +1 per CHA mod. Per every tile extended past the spells base radius, increase MP cost by 10. Requires Lasting Support."
 				SupportSpecialist
 					name="Support Specialist"
 					rank="T3"
