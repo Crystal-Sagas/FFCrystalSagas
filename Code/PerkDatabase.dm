@@ -4893,7 +4893,7 @@ obj
 						attack_roll_damage_dice = TRUE
 						attack_roll_dice_count = 1
 						attack_roll_dice_sides = 8
-						desc="The user has learned to treat simple wounds through magic. They can cure 10 + 1d8 HP. Out of Battle Effects: This user can cure cuts, scrapes, bruises, and burns. They can use magic to restore vitality in small plants such as flowers and 5ft patches of foliage. (-10 mana.)"
+						desc="The user has learned to treat simple wounds through magic. They can cure 10 + 1d8 + CHA Mod x 2 HP. Out of Battle Effects: This user can cure cuts, scrapes, bruises, and burns. They can use magic to restore vitality in small plants such as flowers and 5ft patches of foliage. (-10 mana.)"
 					Cura
 						regen=1
 						level=2
@@ -4903,7 +4903,7 @@ obj
 						attack_roll_damage_dice = TRUE
 						attack_roll_dice_count = 2
 						attack_roll_dice_sides = 12
-						desc="The user has learned how to use magic to cure moderate wounds. They can cure 15 + 2d12 HP. Out of Battle Effects: The user is capable of healing open wounds, set broken bones, and even cure up to third degree burns instantly. They can rejuvenate medium sized plants such as bushes or ferns, or a 10ft patch of grass. (-15 Mana.)"
+						desc="The user has learned how to use magic to cure moderate wounds. They can cure 15 + 2d12 + CHA Mod x 2 HP. Out of Battle Effects: The user is capable of healing open wounds, set broken bones, and even cure up to third degree burns instantly. They can rejuvenate medium sized plants such as bushes or ferns, or a 10ft patch of grass. (-15 Mana.)"
 					Curaga
 						regen=1
 						level=3
@@ -4914,7 +4914,7 @@ obj
 						attack_roll_damage_dice = TRUE
 						attack_roll_dice_count = 3
 						attack_roll_dice_sides = 12
-						desc="The user has learned how to heal major wounds through the use of magic. Heals 20+ 3d12 HP. 6 tile range. Out of Battle Effects: The user is able to reattach limbs that have been severed, cure major wounds that even stitches wouldn’t fix, heals all types of burns. They can also rejuvenate large plants including young trees, and patches of foliage up to 20ft. (-30 Mana.)"
+						desc="The user has learned how to heal major wounds through the use of magic. Heals  20 + 3d12 + CHA Mod x 2 HP. 6 tile range. Out of Battle Effects: The user is able to reattach limbs that have been severed, cure major wounds that even stitches wouldn’t fix, heals all types of burns. They can also rejuvenate large plants including young trees, and patches of foliage up to 20ft. (-30 Mana.)"
 					Curaja
 						regen=1
 						level=4
@@ -4925,7 +4925,7 @@ obj
 						attack_roll_damage_dice = TRUE
 						attack_roll_dice_count = 4
 						attack_roll_dice_sides = 12
-						desc="The user has learned how to heal even the most dire wounds. They heal 30 + 4d12 HP. 6 tile range. Out of Battle Effects: The user is capable of restoring limbs as long as the wound has not healed over. They can set and instantly heal broken bones, and can cure even the deepest burns. They can rejuvenate mature trees and patches of foliage up to 30 ft. (-40 Mana.)"
+						desc="The user has learned how to heal even the most dire wounds. They heal 30 + 4d12 HP + CHA Mod x 2. 6 tile range. Out of Battle Effects: The user is capable of restoring limbs as long as the wound has not healed over. They can set and instantly heal broken bones, and can cure even the deepest burns. They can rejuvenate mature trees and patches of foliage up to 30 ft. (-40 Mana.)"
 					Curada
 						regen=1
 						revive=1
@@ -4933,7 +4933,7 @@ obj
 						atype="curada"
 						pre="Curaja"
 						mcost=65
-						desc="The user has learned to pour everything they have to heal others. They can perform miracles with their healing and upon touching a target can restore nearly all their wounds, curing them of up to half their Max HP + 2d10. This leaves the white mage exhausted, giving them 1 stacks of exhaustion per usage. Melee range. (-65 mana.)"
+						desc="The user has learned to pour everything they have to heal others. They can perform miracles with their healing and upon touching a target can restore nearly all their wounds, curing them of up to half their Max HP + 2d10 + CHA Mod x 2. This leaves the white mage exhausted, giving them 1 stacks of exhaustion per usage. Melee range. (-65 mana.)"
 					Regen
 						heal=0
 						greenmagic=1
@@ -7359,7 +7359,7 @@ obj
 				typing="magical"
 				jobneed="Geomancer"
 				icon='Icons/Perk/Geospells.png'
-				damsource="wis"
+				damsource="cha"
 				costtype="Mana"
 				atype="standard"
 				Earth
@@ -7373,7 +7373,7 @@ obj
 						attack_roll_dice_sides = 12
 						mcost=10
 						range=" 6 tile range."
-						desc="The user calls to the ground, causing it to spit sharp rocks towards a target. Out of Battle Effects: This individual is capable of controlling earth. They can move and shape a 5ft block of earth. They are capable of making one 5ft area of earth into non difficult terrain. (Damage: 1d12+WIS earth| 6 tile range, magic attack roll, -10 Mana.)"
+						desc="The user calls to the ground, causing it to spit sharp rocks towards a target. Out of Battle Effects: This individual is capable of controlling earth. They can move and shape a 5ft block of earth. They are capable of making one 5ft area of earth into non difficult terrain. (Damage: 1d12+CHA earth| 6 tile range, magic attack roll, -10 Mana.)"
 					Stonra
 						rank="D"
 						pre="Stone"
@@ -7382,7 +7382,7 @@ obj
 						attack_roll_dice_sides = 12
 						range=" 6 tile range."
 						mcost=15
-						desc="The user calls to the earth causing it to erupt spikes that aim to impale a target. Out of Battle Effects: This individual is capable of controlling earth. They can move and shape a 10ft block of earth. They are capable of making one 10ft area of earth into non difficult terrain. (Damage: 2d12+WIS earth | 6 tile range, magic attack roll, -15 Mana.)"
+						desc="The user calls to the earth causing it to erupt spikes that aim to impale a target. Out of Battle Effects: This individual is capable of controlling earth. They can move and shape a 10ft block of earth. They are capable of making one 10ft area of earth into non difficult terrain. (Damage: 2d12+CHA earth | 6 tile range, magic attack roll, -15 Mana.)"
 					Stoneaga
 						rank="C"
 						pre="Stonra"
@@ -7394,7 +7394,7 @@ obj
 						attack_roll_dice_count = 4
 						attack_roll_dice_sides = 10
 						range=" 3x3 AoE within a 10 tile range."
-						desc="The user calls to the earth, causing pillars of rock to erupt from the ground and crush everything beneath it. Out of Battle Effects: This individual is capable of controlling earth. They can move and shape a 15ft block of earth. They are capable of making one 15ft area of earth into non difficult terrain. (Damage: 4d10+WIS | 10 tile range, 3x3 AoE. Prompts a Reflex saving throw (DC 12+WIS+Rankbonus), inflicting full damage and knocking prone on a failure, or half as much on a success. -30 Mana.)"
+						desc="The user calls to the earth, causing pillars of rock to erupt from the ground and crush everything beneath it. Out of Battle Effects: This individual is capable of controlling earth. They can move and shape a 15ft block of earth. They are capable of making one 15ft area of earth into non difficult terrain. (Damage: 4d10+CHA | 10 tile range, 3x3 AoE. Prompts a Reflex saving throw (DC 12+WIS+Rankbonus), inflicting full damage and knocking prone on a failure, or half as much on a success. -30 Mana.)"
 					Stonaja
 						rank="B"
 						pre="Stoneaga"
@@ -7406,7 +7406,7 @@ obj
 						mcost=40
 						atype="save"
 						savetype="Reflex"
-						desc="The user calls to the earth. They cause boulders to rise in the air before then releasing their hold, allowing them to drop down and cause mayhem upon a selected area of effect. Out of Battle Effects: This individual is capable of controlling earth. They can move and shape a 20ft block of earth. They are capable of making one 20ft area of earth into non difficult terrain. (Damage: 5d12+WIS earth | 10 tile range, 5x5 AoE. Prompts a Reflex saving throw, dealing full damage and inflicting prone on a failure, or half as much on a success. -40 Mana.)"
+						desc="The user calls to the earth. They cause boulders to rise in the air before then releasing their hold, allowing them to drop down and cause mayhem upon a selected area of effect. Out of Battle Effects: This individual is capable of controlling earth. They can move and shape a 20ft block of earth. They are capable of making one 20ft area of earth into non difficult terrain. (Damage: 5d12+CHA earth | 10 tile range, 5x5 AoE. Prompts a Reflex saving throw, dealing full damage and inflicting prone on a failure, or half as much on a success. -40 Mana.)"
 				SpiritedTree
 					element="Nature"
 					name="Spirited Tree"
@@ -7421,7 +7421,7 @@ obj
 						attack_roll_dice_sides = 12
 						range=" 8 tile range."
 						mcost=10
-						desc="The tree releases an enchanted arrow, forged of its own branches from its structure - at a single target. (Damage: 2d12+WIS piercing | 8 tile range, Ranged attack roll, -10 Mana.)"
+						desc="The tree releases an enchanted arrow, forged of its own branches from its structure - at a single target. (Damage: 2d12+CHA piercing | 8 tile range, Ranged attack roll, -10 Mana.)"
 					BranchSpear
 						name="Branch Spear"
 						rank="C"
@@ -7431,7 +7431,7 @@ obj
 						attack_roll_dice_sides = 12
 						range=" 8 tile range."
 						mcost=25
-						desc="The tree fires off an enchanted spear, forged of its own branches - at a single target. (Damage: 3d12+WIS piercing | 8 tile range, ranged attack roll - inflicts bleed on successful hit. -25 Mana.)"
+						desc="The tree fires off an enchanted spear, forged of its own branches - at a single target. (Damage: 3d12+CHA piercing | 8 tile range, ranged attack roll - inflicts bleed on successful hit. -25 Mana.)"
 				InfuseElemental
 					name="Infuse Elemental"
 					rank="C"
@@ -7448,12 +7448,12 @@ obj
 					atype="heal"
 					heal=1
 					name="Lifestream Rain"
-					damsource="wis"
+					damsource="cha"
 					attack_roll_damage_dice = TRUE
 					attack_roll_dice_count = 3
 					attack_roll_dice_sides = 20
 					rank="C"
-					desc="The user calls out to the Lifestream, and draws it out in a font overhead. This Lifestream energy then rains down upon the area, healing all designated creatures within the radius for 3d20+WIS HP. In addition, this Lifestream energy has a reinvigorating power. Once per 24 hours, a Geomancer who knows this spell can use the 'Node Refresh' verb in order to reinvigorate any Gathering nodes within a 12 tile radius of their current position, out of combat. (-40 Mana)."
+					desc="The user calls out to the Lifestream, and draws it out in a font overhead. This Lifestream energy then rains down upon the area, healing all designated creatures within the radius for 3d20+CHA HP. In addition, this Lifestream energy has a reinvigorating power. Once per 24 hours, a Geomancer who knows this spell can use the 'Node Refresh' verb in order to reinvigorate any Gathering nodes within a 12 tile radius of their current position, out of combat. (-40 Mana)."
 					verb
 						Refresh()
 							alert(usr,"Are you sure you wish to use Lifestream Refresh? This can only be done once per 24 hour period.")
@@ -7502,7 +7502,7 @@ obj
 					savetype="Reflex"
 					basecheck=16
 					mcost=40
-					desc="The user harnesses the power of a sunny day to smite their foes. The user calls out to the power of the sun, concentrating its power into a beam of energy. Can only be used outside when the sun is shining. (Damage: 5d10+WIS fire | Generates a beam at a chosen tile within 8 tiles of the caster, the beam then moves in a 5 tile line from that tile. Prompts a Reflex saving throw from any creature it passes, dealing full damage and inflicting 'Burn' and 'Weakness' on a failure, or half as much on a success. -40 mana.)"
+					desc="The user harnesses the power of a sunny day to smite their foes. The user calls out to the power of the sun, concentrating its power into a beam of energy. Can only be used outside when the sun is shining. (Damage: 5d10+CHA fire | Generates a beam at a chosen tile within 8 tiles of the caster, the beam then moves in a 5 tile line from that tile. Prompts a Reflex saving throw from any creature it passes, dealing full damage and inflicting 'Burn' and 'Weakness' on a failure, or half as much on a success. -40 mana.)"
 				Quake
 					element="Earth"
 					rank="A"
@@ -7514,19 +7514,19 @@ obj
 					savetype="Fortitude"
 					atype="save"
 					mcost=65
-					desc="The user causes the earth to quake violently, anything in the area is throw around at the whims of the earth beneath them. This is considered the 'ultimate' Earth spell. (Damage: 7d10+WIS earth | 6x6 AoE within 20 tiles of the caster, prompts a fortitude saving throw - dealing full damage and inflicting prone on a failure, or half as much on a success. -65 mana.)"
+					desc="The user causes the earth to quake violently, anything in the area is throw around at the whims of the earth beneath them. This is considered the 'ultimate' Earth spell. (Damage: 7d10+CHA earth | 6x6 AoE within 20 tiles of the caster, prompts a fortitude saving throw - dealing full damage and inflicting prone on a failure, or half as much on a success. -65 mana.)"
 				Whirlpool
 					element="Water"
 					rank="A"
 					attack_roll_damage_dice = TRUE
 					attack_roll_dice_count = 4
 					attack_roll_dice_sides = 10
-					range=" 5x5 AoE on any water in view."
+					range="5x5 AoE on any water in view."
 					savetype="Athletics Check"
 					mcost=65
 					basecheck=14
 					atype="save"
-					desc="The user reaches out to an area of water stirring it into a powerful whirlpool. Those caught within the radius of the Whirlpool must prove their physical abilities, or be sucked to the watery depths and crushed under the raging tide. (Damage: 4d10+WIS water | 5x5 AoE on any water in view, prompts a DC (base 14) athletics check, disabling movement for 1 turn on a failure. Damage is always taken when starting one's turn within the whirlpool. -65 mana. -15 mana per turn to sustain.)"
+					desc="The user reaches out to an area of water stirring it into a powerful whirlpool. Those caught within the radius of the Whirlpool must prove their physical abilities, or be sucked to the watery depths and crushed under the raging tide. (Damage: 4d10+CHA water | 5x5 AoE on any water in view, prompts a DC (base 14) athletics check, disabling movement for 1 turn on a failure. Damage is always taken when starting one's turn within the whirlpool. -65 mana. -15 mana per turn to sustain.)"
 				MagmaSpout
 					element="Fire"
 					name="Magma Spout"
@@ -7544,7 +7544,7 @@ obj
 					atype="save"
 					savetype="Fortitude"
 					basecheck=15
-					desc="Can only be performed in a cave with no source of light for 60ft. The individual calls to the natural darkness of the area around them - then, they converge it into a single point creating a swirling vortex of energy that draws in everything around it, with crushing gravitational force. (Damage: 6d12+WIS dark damage. | Black hole takes up a 3x3 AoE, and prompts hostile creatures within 6 tiles of it to make a Fortitude saving throw (DC 15+WIS+Rankbonus) ; on a failure, the target is drawn 3 tiles towards the epicenter, and take Black Hole damage. If a target fails the saving throw in the epicenter of the Black Hole, they are inflicted with the 'Doom' status effect. Black Hole lasts for 5 turns. -100 mana.)"
+					desc="Can only be performed in a cave with no source of light for 60ft. The individual calls to the natural darkness of the area around them - then, they converge it into a single point creating a swirling vortex of energy that draws in everything around it, with crushing gravitational force. (Damage: 6d12+CHA dark damage. | Black hole takes up a 3x3 AoE, and prompts hostile creatures within 6 tiles of it to make a Fortitude saving throw (DC 15+WIS+Rankbonus) ; on a failure, the target is drawn 3 tiles towards the epicenter, and take Black Hole damage. If a target fails the saving throw in the epicenter of the Black Hole, they are inflicted with the 'Doom' status effect. Black Hole lasts for 5 turns. -100 mana.)"
 
 
 			ChemistAbilities
