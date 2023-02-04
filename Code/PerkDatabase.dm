@@ -2021,7 +2021,7 @@ obj
 					rank="T3"
 					pre="Lasting Support"
 					name="White Light"
-					desc="A White Mage of this individual's level is able to unleash the true power of White Magic. While sacrificing the MP reduction of Lasting Support, the user can cast any healing or status cleansing White Magic as an AoE to effect multiple firendly creatures, increasing the radius by +1 per CHA mod. Per every tile extended past the spells base radius, increase MP cost by 10. Requires Lasting Support."
+					desc="A White Mage of this individual's level is able to unleash the true power of White Magic. While sacrificing the MP reduction of Lasting Support, the user can cast any healing or status cleansing White Magic as an AoE to effect multiple friendly creatures, increasing the radius by +1 per CHA mod. Per every tile extended past the spells base radius, increase MP cost by 10. Requires Lasting Support."
 				SupportSpecialist
 					name="Support Specialist"
 					rank="T3"
