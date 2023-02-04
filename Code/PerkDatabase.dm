@@ -1401,6 +1401,79 @@ obj
 				icon='Icons/Perk/SkyPirate.png'
 
 
+			ChocoboKnight
+				jobneed="Chocobo Knight"
+				icon='Icons/Perk/Chocobo Knight.png'
+				ChocoboKnight
+					name="Chocobo Knight"
+					cat="Unique"
+					desc="Chocobo Knights are masters of riding, and fighting alongside mounted companions. A Chocobo Knight starts with a Chocobo Steed upon learning the job. They gain a bonus of +2 to AC and +8 DR while they are mounted on any creature, as a primary benefit. Chocobo Knights may have 1 Companion/Familiar summoned at a time. +80 HP, +70 SP, +40 MP."
+				GearShift
+					name="Gear Shift"
+					rank="T1"
+					desc="This Chocobo Knight is capable of sharing their vitality with their steed. In doing so, they increase the steed's mobility by a massive degree. By spending 5 HP, their mount may move an additional 3 tiles as part of their movement."
+				MountMaster
+					name="Mount Master"
+					rank="T1"
+					desc="This Chocobo Knight is capable of riding even their allies' companions. With consent of another character, they may mount a party member's comapnion if it has the 'Rideable' feature, and apply up to T2 Chocobo Knight benefits to that creature as if it were their own."
+				RideRescue
+					name="Rider's Rescue"
+					rank="T1"
+					desc="This Chocobo Knight is capable of spending 20 SP from either their own SP pool, or that of their mount, as a free action (up to twice per round) - upon doing so, they may move their Mount's maximum movement towards an ally who is being attacked. If they can reach them, they may take the attack for them instead, but applying 15 points of reduction towards the attack in doing so."
+				RookieRider
+					name="Rookie Rider"
+					rank="T2"
+					desc="This Chocobo Knight has elevated to the rank of a Rookie Rider. They may choose a new mount, from the following list: Adult Drake, Mesmerize, Blaze Beetle, and Ankheg."
+				RidingSynergy
+					name="Riding Synergy"
+					rank="T2"
+					desc="This Chocobo Knight has immense synergy with their mount. While mounted, both the Chocobo Knight's mount, and the Chocobo Knight themselves gain +5 True damage to all attacks they deal."
+				SharedEssence
+					name="Shared Essence"
+					rank="T2"
+					desc="This Chocobo Knight is able to link their vitality with any creature they have mounted. Whenever either the Knight or the Mount takes any form of damage, either creature may choose to take the full damage of an attack to bypass the effects of Rideable, at their discretion. In addition, for the sake of AoE attacks - the Chocobo Knight and their Mount count as a single entity for targetting, and only take a single instance of AoE damage between the two of them."
+				CavalrySoul
+					name="Cavalry Soul"
+					rank="T2"
+					desc="This Chocobo Knight has the soul of a cavalier. They inspire their mount, and their mount inspires them. When either the Chocobo Knight or the Mount takes damage, and the other creature takes no damage in the same turn, the creature who did not take damage heals for 25 HP, and gains 20 SP and MP."
+				TacticalCavalier
+					name="Tactical Cavalier"
+					desc="This Chocobo Knight understands, values, and enacts the virtue of Strategy in combat. When their Mount moves out of Melee range of another creature, they do not provoke attacks of opportunity."
+				TendMount
+					name="Tend Mount"
+					rank="T2"
+					desc="This Chocobo Knight has the ability to convert their vital essence to that of their mount. As a bonus action, the Chocobo Knight is capable of spending up to 60 HP in order to restore HP to their mount, equal to the amount spent."
+				TheTwoSpeed
+					name="The Two Speed"
+					rank="T2"
+					desc="This Chocobo Knight has attained the blessing of the 'Two Speed' - granting whatever mount they are riding an additional +1 Tile Movement per turn, passively."
+				AdeptRider
+					name="Adept Rider"
+					pre="Rookie Rider"
+					rank="T3"
+					desc="This Chocobo Knight has reached the rank of an Adept Rider. They may now choose their final mountable companion, from the following list: Alpha Drake, Gigantoad, Woolly Croc, Shoopuff, Black Chocobo, Red Chocobo, Fat Chocobo."
+				MonsterSoul
+					name="Monster Soul"
+					rank="T3"
+					desc="This Chocobo Knight has a soul that is attuned to that of monsters and creatures of all types. As a result, they may, when mounting a party member's companion with their consent, apply bonuses from Chocobo Knight features up to T4 as if the creature were their own."
+				GreatCharge
+					name="Great Charge"
+					rank="T3"
+					desc="This Chocobo Knight has learned empower their Mount's momentum with magical energies. By spending 45 MP, if their Mount has moved on this turn, and their Mount is making an attack ; the Chocobo Knight may add True Damage equal to 5 points per tile moved (up to 25) to that Mount's singular attack roll."
+				FlowingLifeforce
+					name="Flowing Lifeforce"
+					rank="T3"
+					desc="This Chocobo Knight has learned to empower their Mount's vitality by converting the energy of momentum as their mount moves, into restorative power. By spending 80 MP, the Chocobo Knight may restore their Mount for 10 HP per tile the Mount has moved on this turn, as a free action ; once per round (Capping at 100.)"
+				TheFourSpeed
+					name="The Four Speed"
+					rank="T4"
+					desc="This Chocobo Knight has attained the blessing of the 'Four Speed' - granting whatever mount they are riding an additional +2 Tile Movement (stacking with The Two Speed) per turn, passively."
+				SonicBubble
+					name="Sonic Bubble"
+					rank="T4"
+					desc="This Chocobo Knight is capable of gathering the air around their mount's body, as a 'Sonic Bubble' - which protects both the Chocobo Knight and their Mount based on how much they have moved on their turn. For every tile they have moved, they gain 5 unreducable Damage Reduction (capping at 30.) ; lasting until the start of their next turn."
+
+
 
 
 
@@ -8603,6 +8676,8 @@ obj
 					name="Choco Kick"
 					desc="A simple Chocobo kick."
 					damsource="str"
+					atype="standard"
+					typing="physical"
 					attack_roll_damage_dice = FALSE
 					attack_roll_damage_lower=10
 					attack_roll_damage_upper=25
@@ -8632,6 +8707,7 @@ obj
 					attack_roll_damage_lower=25
 					attack_roll_damage_upper=35
 					atype="standard"
+					typing="physical"
 					addhit=3
 					adddam=5
 					desc="A Wyvern's basic attack action."
