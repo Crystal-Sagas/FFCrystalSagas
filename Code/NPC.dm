@@ -866,6 +866,8 @@
 	if(skill.rank=="S")
 		aresult+=20
 		dresult+=40
+	if(skill.name=="Jump"||skill.name=="Drake Hop"||skill.name=="Hyper Jump"||skill.name=="Sky Grinder"||skill.name=="Falling Meteor")// This is aprt of the Dragoon Rework. Dragoon skills max jump height scales on Speed. So this is to emulate that damage increase in fates.
+		dresult+=(user.speed+user.speedadd)*4
 	Playeranimation(user,target,skill)
 	user.visible_message("<font color=#F8E959><b>[user]</font> has used [skill] to attack [target]!!", stream = "icout")
 	var/drainvalue=round(dresult*0.5)
