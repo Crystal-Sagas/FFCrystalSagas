@@ -4276,6 +4276,7 @@ obj/item/verb
 				if("Status")
 					if(src.enchanted==1)
 						alert(usr,"This item already has a basic Enhantment applied.")
+						return
 					if(src.armor==1 || src.jewelery==1)
 						src.entype="armor"
 					else
