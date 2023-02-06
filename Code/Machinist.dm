@@ -160,8 +160,8 @@ obj
 					range="Melee"
 					name="Energy Sword"
 					desc="A metal hilt, which has been fitted with a Mana crystal. When activated, a blade of pure energy is created. This weapon can deal either Force or Slashing damage, and can count as a Longsword, OR a Katana, for bonuses."
-					range1=35
-					range2=50
+					range1=30
+					range2=40
 					addhit=2
 					adddam=5
 					damsource="str"
@@ -371,18 +371,96 @@ obj
 			New()
 				var/obj/item/Weapon/Special/MagitekRifle/Steel/a=new
 				var/obj/item/Weapon/Melee/Longsword/Steel/b=new
+				var/obj/item/Weapon/Machinist/EnergySword/esword=new
+				var/obj/item/Weapon/Machinist/BioBlaster/biob=new
+				var/obj/item/Weapon/Machinist/Flamethrower/flamer=new
+				var/obj/item/Weapon/Machinist/LaserDefenseOrb/lorb=new
 				var/obj/perk/Abilities/Paladin/Cover/tank=new
 				var/obj/perk/Abilities/GeneralWeaponAbilities/Melee/Launch/striker=new
-				src.contents+=a
-				src.contents+=b
+				var/obj/perk/Abilities/GeneralWeaponAbilities/Melee/StellarCircle/stellar=new
+				var/obj/perk/Abilities/GeneralWeaponAbilities/Melee/Braver/braver=new
+				var/obj/perk/Abilities/GeneralWeaponAbilities/Melee/RoughDivide/rough=new
+				var/obj/perk/Abilities/GeneralWeaponAbilities/Melee/BlastingZone/blast=new
+				var/obj/perk/MonsterPassives/Pilotable/pilot=new
+				var/obj/perk/MonsterPassives/Metallic/metallic=new
+				var/obj/perk/MonsterPassives/Mecha/mech=new
+				var/obj/perk/MonsterPassives/AntiGravity/antigrav=new
+				var/obj/perk/MonsterPassives/Dense/dense=new
+				var/obj/perk/MonsterPassives/Destructive/destructive=new
+				var/obj/perk/Abilities/GeneralMagicAbilities/Laser/laser1=new
+				var/obj/perk/Abilities/GeneralMagicAbilities/Laserga/laser2=new
+				var/obj/perk/Abilities/BlackMagic/Energy/Flare/laser3=new
+				var/obj/perk/Abilities/BlackMagic/Energy/Scathe/laser4=new
+				var/obj/perk/Abilities/BlackMagic/Energy/Megaflare/laser5=new
+				var/obj/perk/Abilities/GeneralMagicAbilities/Pierce/pierce1=new
+				var/obj/perk/Abilities/GeneralMagicAbilities/Piercega/pierce2=new
 				if(src.name=="Defender")
+					src.contents+=b
+					src.contents+=metallic
+					src.contents+=dense
 					src.contents+=tank
+					src.contents+=laser1
+					src.contents+=laser2
+					src.eweapon=b
 				if(src.name=="Striker")
+					src.contents+=b
+					src.contents+=metallic
 					src.contents+=striker
+					src.contents+=destructive
+					src.contents+=laser1
+					src.contents+=laser2
+					src.eweapon=b
 				if(src.name=="Blitzer")
+					src.contents+=b
+					src.contents+=metallic
+					src.contents+=destructive
+					src.contents+=laser1
+					src.contents+=laser2
+					src.contents+=laser3
 					src.contents+=striker
+					src.contents+=pierce1
+					src.eweapon=b
 				if(src.name=="Guardian")
+					src.contents+=b
+					src.contents+=metallic
+					src.contents+=dense
 					src.contents+=tank
+					src.contents+=laser1
+					src.contents+=laser2
+					src.contents+=laser3
+					src.contents+=braver
+					src.eweapon=a
+				if(src.name=="Magitek Armor")
+					src.contents+=biob
+					src.contents+=flamer
+					src.contents+=metallic
+					src.contents+=pilot
+					src.contents+=dense
+					src.contents+=laser1
+					src.contents+=laser2
+					src.contents+=laser3
+					src.contents+=laser4
+					src.contents+=pierce1
+					src.contents+=pierce2
+					src.eweapon=biob
+				if(src.name=="Magitek Mecha")
+					src.contents+=lorb
+					src.contents+=esword
+					src.contents+=metallic
+					src.contents+=antigrav
+					src.contents+=dense
+					src.contents+=pilot
+					src.contents+=mech
+					src.contents+=laser1
+					src.contents+=laser2
+					src.contents+=laser3
+					src.contents+=laser4
+					src.contents+=laser5
+					src.contents+=stellar
+					src.contents+=braver
+					src.contents+=rough
+					src.contents+=blast
+					src.eweapon=esword
 			verb
 				Destroy()
 					if(usr != src.owner)
@@ -581,12 +659,12 @@ obj
 					maxmodules=2
 					maxaugment=1
 					name="Striker"
-					mhp=95
-					hp=95
-					mmp=0
-					mp=0
-					sp=0
-					msp=0
+					mhp=115
+					hp=115
+					mmp=200
+					mp=200
+					sp=200
+					msp=200
 					str=14
 					strmod=2
 					baseac=13
@@ -600,10 +678,10 @@ obj
 					wismod=1
 					cha=10
 					chamod=0
-					mab=1
-					pab=1
-					mdb=5
-					pdb=5
+					mab=9
+					pab=9
+					mdb=18
+					pdb=18
 				Defender
 					icon='Bases/Robots/Defender.dmi'
 					icon_state="defender"
@@ -612,12 +690,12 @@ obj
 					maxmodules=2
 					maxaugment=1
 					name="Defender"
-					mhp=115
-					hp=115
-					mmp=0
-					mp=0
-					sp=0
-					msp=0
+					mhp=170
+					hp=170
+					mmp=200
+					mp=200
+					sp=200
+					msp=200
 					str=18
 					strmod=4
 					baseac=18
@@ -631,10 +709,10 @@ obj
 					wismod=1
 					cha=10
 					chamod=0
-					mab=0
-					pab=0
-					mdb=0
-					pdb=0
+					mab=9
+					pab=9
+					mdb=12
+					pdb=12
 			T3
 				Blitzer
 					icon='Bases/Robots/Striker.dmi'
@@ -644,12 +722,12 @@ obj
 					maxmodules=2
 					maxaugment=2
 					name="Blitzer"
-					mhp=100
-					hp=100
-					mmp=0
-					mp=0
-					sp=0
-					msp=0
+					mhp=125
+					hp=125
+					mmp=200
+					mp=200
+					sp=200
+					msp=200
 					str=22
 					strmod=6
 					baseac=18
@@ -663,10 +741,10 @@ obj
 					wismod=1
 					cha=10
 					chamod=0
-					mab=2
-					pab=2
-					mdb=10
-					pdb=10
+					mab=12
+					pab=12
+					mdb=25
+					pdb=25
 				Guardian
 					icon='Bases/Robots/Defender.dmi'
 					icon_state="guardian"
@@ -675,15 +753,15 @@ obj
 					maxmodules=2
 					maxaugment=2
 					name="Guardian"
-					mhp=135
-					hp=135
+					mhp=280
+					hp=280
 					mmp=0
 					mp=0
 					sp=0
 					msp=0
-					str=14
-					strmod=2
-					baseac=22
+					str=18
+					strmod=4
+					baseac=25
 					dex=10
 					dexmod=0
 					con=10
@@ -694,10 +772,10 @@ obj
 					wismod=1
 					cha=10
 					chamod=0
-					mab=1
-					pab=1
-					mdb=2
-					pdb=2
+					mab=10
+					pab=10
+					mdb=8
+					pdb=8
 			T4
 				MagitekArmor
 					icon='Bases/Robots/MagitekArmor.dmi'
@@ -705,16 +783,16 @@ obj
 					maxweapons
 					maxmodules=2
 					maxaugment=2
-					name="MagitekArmor"
-					mhp=215
-					hp=215
-					mmp=0
-					mp=0
-					sp=0
-					msp=0
+					name="Magitek Armor"
+					mhp=450
+					hp=450
+					mmp=200
+					mp=200
+					sp=200
+					msp=200
 					str=18
 					strmod=4
-					baseac=18
+					baseac=29
 					dex=10
 					dexmod=0
 					con=10
@@ -725,10 +803,10 @@ obj
 					wismod=1
 					cha=10
 					chamod=0
-					mab=11
-					pab=11
-					mdb=25
-					pdb=25
+					mab=19
+					pab=19
+					mdb=35
+					pdb=35
 			T5
 				MagitekMecha
 					icon='Bases/Robots/MagitekMech.dmi'
@@ -738,29 +816,29 @@ obj
 					maxmodules=2
 					maxaugment=1
 					name="Magitek Mecha"
-					mhp=280
-					hp=280
-					mmp=0
-					mp=0
-					sp=0
-					msp=0
-					str=20
-					strmod=5
-					baseac=18
-					dex=10
-					dexmod=0
-					con=10
-					conmod=0
+					mhp=675
+					hp=675
+					mmp=320
+					mp=320
+					sp=320
+					msp=320
+					str=22
+					strmod=6
+					baseac=35
+					dex=20
+					dexmod=5
+					con=20
+					conmod=5
 					int=20
 					intmod=5
-					wis=12
-					wismod=1
+					wis=20
+					wismod=5
 					cha=10
 					chamod=0
-					mab=15
-					pab=15
-					mdb=35
-					pdb=35
+					mab=23
+					pab=23
+					mdb=45
+					pdb=45
 
 obj
 	Vehicle

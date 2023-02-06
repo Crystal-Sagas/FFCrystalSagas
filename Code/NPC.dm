@@ -541,15 +541,15 @@
 	var/obj/item/Weapon/wepchoice = user.righthand
 	amod=Checkdamtype(wepchoice.damsource,user)
 	if(wepchoice.typing=="magical")
-		aresult=rand(1,20)+wepchoice.addhit+amod+user.rankbonus+user.mab
+		aresult=rand(1,20)+wepchoice.addhit+amod+user.rankbonus+user.mab+user.mabadd
 	else
-		aresult=rand(1,20)+wepchoice.addhit+amod+user.rankbonus+user.pab
+		aresult=rand(1,20)+wepchoice.addhit+amod+user.rankbonus+user.pab+user.pabadd
 	doresult=rand(wepchoice.range1,wepchoice.range2)
 	dmod=Checkdamtype(wepchoice.damsource,user)
 	if(wepchoice.typing=="magical")
-		dresult=doresult+dmod+wepchoice.adddam+user.mdb-target.basedr
+		dresult=doresult+dmod+wepchoice.adddam+user.mdb-target.basedr+user.mdbadd
 	else
-		dresult=doresult+dmod+wepchoice.adddam+user.pdb-target.basedr
+		dresult=doresult+dmod+wepchoice.adddam+user.pdb-target.basedr+user.pdbadd
 	Playerattack(user,target)
 	if(user.status1=="Heavy" || user.status2=="Heavy" || user.status3=="Heavy")
 		dresult-=10
@@ -800,57 +800,57 @@
 	if(skill.atype=="standard")
 		amod=Checkdamtype(skill.damsource,user)
 		if(skill.typing=="magical")
-			aresult=rand(1,20)+skill.addhit+amod+user.rankbonus+user.mab
+			aresult=rand(1,20)+skill.addhit+amod+user.rankbonus+user.mab+user.mabadd
 		else
-			aresult=rand(1,20)+skill.addhit+amod+user.rankbonus+user.pab
+			aresult=rand(1,20)+skill.addhit+amod+user.rankbonus+user.pab+user.pabadd
 		doresult=skill.raw_attack_damage_roll()
 		dmod=Checkdamtype(skill.damsource,user)
 		abilitydamage=skill.raw_attack_damage_roll()
 		if(skill.typing=="magical")
-			dresult=doresult+dmod+skill.adddam+user.mdb+skill.adddam+abilitydamage-target.basedr
+			dresult=doresult+dmod+skill.adddam+user.mdb+skill.adddam+abilitydamage-target.basedr+user.mdbadd
 		else
-			dresult=doresult+dmod+skill.adddam+user.pdb+skill.adddam+abilitydamage-target.basedr
+			dresult=doresult+dmod+skill.adddam+user.pdb+skill.adddam+abilitydamage-target.basedr+user.pdbadd
 	if(skill.atype=="weapon")
 		var/obj/item/Weapon/wepchoice = user.righthand
 		amod=Checkdamtype(wepchoice.damsource,user)
 		if(skill.typing=="magical")
-			aresult=rand(1,20)+skill.addhit+amod+user.rankbonus+user.mab
+			aresult=rand(1,20)+skill.addhit+amod+user.rankbonus+user.mab+usr.mabadd
 		else
-			aresult=rand(1,20)+skill.addhit+amod+user.rankbonus+user.pab
+			aresult=rand(1,20)+skill.addhit+amod+user.rankbonus+user.pab+user.pabadd
 		doresult=rand(wepchoice.range1,wepchoice.range2)
 		dmod=Checkdamtype(skill.damsource,user)
 		abilitydamage=skill.raw_attack_damage_roll()
 		if(skill.typing=="magical")
-			dresult=doresult+dmod+wepchoice.adddam+user.mdb+skill.adddam+abilitydamage-target.basedr
+			dresult=doresult+dmod+wepchoice.adddam+user.mdb+skill.adddam+abilitydamage-target.basedr+user.mdbadd
 		else
-			dresult=doresult+dmod+wepchoice.adddam+user.pdb+skill.adddam+abilitydamage-target.basedr
+			dresult=doresult+dmod+wepchoice.adddam+user.pdb+skill.adddam+abilitydamage-target.basedr+user.pdbadd
 	if(skill.atype=="weaponsave")
 		var/obj/item/Weapon/wepchoice = user.righthand
 		amod=Checkdamtype(wepchoice.damsource,user)
 		if(skill.typing=="magical")
-			aresult=skill.basecheck+amod+user.rankbonus+skill.addhit
+			aresult=skill.basecheck+amod+user.rankbonus+skill.addhit+user.mabadd
 		else
-			aresult=skill.basecheck+amod+user.rankbonus+skill.addhit
+			aresult=skill.basecheck+amod+user.rankbonus+skill.addhit+user.pabadd
 		doresult=rand(wepchoice.range1,wepchoice.range2)
 		dmod=Checkdamtype(skill.damsource,user)
 		abilitydamage=skill.raw_attack_damage_roll()
 		if(skill.typing=="magical")
-			dresult=doresult+dmod+wepchoice.adddam+user.mdb+skill.adddam+abilitydamage-target.basedr
+			dresult=doresult+dmod+wepchoice.adddam+user.mdb+skill.adddam+abilitydamage-target.basedr+user.mdbadd
 		else
-			dresult=doresult+dmod+wepchoice.adddam+user.pdb+skill.adddam+abilitydamage-target.basedr
+			dresult=doresult+dmod+wepchoice.adddam+user.pdb+skill.adddam+abilitydamage-target.basedr+user.pdbadd
 	if(skill.atype=="save")
 		amod=Checkdamtype(skill.damsource,user)
 		if(skill.typing=="magical")
-			aresult=skill.basecheck+amod+user.rankbonus+skill.addhit
+			aresult=skill.basecheck+amod+user.rankbonus+skill.addhit+user.mabadd
 		else
-			aresult=skill.basecheck+amod+user.rankbonus+skill.addhit
+			aresult=skill.basecheck+amod+user.rankbonus+skill.addhit+user.pabadd
 		doresult=skill.raw_attack_damage_roll()
 		dmod=Checkdamtype(skill.damsource,user)
 		abilitydamage=skill.raw_attack_damage_roll()
 		if(skill.typing=="magical")
-			dresult=doresult+dmod+skill.adddam+user.mdb+skill.adddam+abilitydamage-target.basedr
+			dresult=doresult+dmod+skill.adddam+user.mdb+skill.adddam+abilitydamage-target.basedr+user.mdbadd
 		else
-			dresult=doresult+dmod+skill.adddam+user.pdb+skill.adddam+abilitydamage-target.basedr
+			dresult=doresult+dmod+skill.adddam+user.pdb+skill.adddam+abilitydamage-target.basedr+user.pdbadd
 	if(skill.rank=="D")
 		aresult+=4
 		dresult+=10
@@ -866,6 +866,8 @@
 	if(skill.rank=="S")
 		aresult+=20
 		dresult+=40
+	if(skill.name=="Jump"||skill.name=="Drake Hop"||skill.name=="Hyper Jump"||skill.name=="Sky Grinder"||skill.name=="Falling Meteor")// This is aprt of the Dragoon Rework. Dragoon skills max jump height scales on Speed. So this is to emulate that damage increase in fates.
+		dresult+=(user.speed+user.speedadd)*4
 	Playeranimation(user,target,skill)
 	user.visible_message("<font color=#F8E959><b>[user]</font> has used [skill] to attack [target]!!", stream = "icout")
 	var/drainvalue=round(dresult*0.5)
@@ -1202,20 +1204,30 @@
 			if(a.name==reward1)
 				m.send_chat("Gained +1 [reward1]!", stream = "oocout")
 				a.amount+=1
+				if(reward1=="Wood"||reward1=="Stone")
+					a.amount+=4
+					m.send_chat("Gained +4 [reward1]!", stream = "oocout")
 				break
 		for(var/obj/item/b in m.contents)
 			if(b.name==reward2)
 				m.send_chat("Gained +1 [reward2]!", stream = "oocout")
 				b.amount+=1
+				if(reward2=="Wood"||reward2=="Stone")
+					b.amount+=4
+					m.send_chat("Gained +4 [reward2]!", stream = "oocout")
 				break
 		for(var/obj/item/c in m.contents)
 			if(c.name==reward3)
 				m.send_chat("Gained +1 [reward3]!", stream = "oocout")
 				c.amount+=1
+				if(reward3=="Wood"||reward3=="Stone")
+					c.amount+=4
+					m.send_chat("Gained +4 [reward3]!", stream = "oocout")
 				break
 		for(var/obj/item/d in m.contents)
 			if(d.name==bossreward)
 				m.send_chat("You beat a World Boss! Gained +1 [bossreward]!", stream = "oocout")
+				m.dailyfates+=1
 				d.amount+=1
 				break
 		if(m.hp<=0)
@@ -1257,7 +1269,7 @@
 		UpdateArea(m)
 		m.bposition=null
 		m<<sound(null)
-		m.FATEcooldown=1
+		//m.FATEcooldown=1
 		m.battler=0
 		m.statusturns=0 //The following lines of code turn off all status effects.
 		m.status2turns=0
@@ -3262,10 +3274,10 @@ obj
 					conmod=0
 					int=10
 					intmod=0
-					wis=12
-					wismod=1
-					cha=12
-					chamod=1
+					wis=10
+					wismod=0
+					cha=14
+					chamod=2
 					mab=2
 					pab=2
 					mdb=0
@@ -3302,19 +3314,19 @@ obj
 					mp=200
 					sp=200
 					msp=200
-					baseac=10
-					str=10
-					strmod=0
+					baseac=12
+					str=12
+					strmod=1
 					dex=14
 					dexmod=2
-					con=8
-					conmod=-1
+					con=10
+					conmod=0
 					int=8
 					intmod=-1
 					wis=10
 					wismod=0
-					cha=14
-					chamod=2
+					cha=10
+					chamod=0
 					mab=0
 					pab=8
 					mdb=0
@@ -3348,9 +3360,9 @@ obj
 					dex=14
 					dexmod=2
 					con=10
-					conmod=-0
+					conmod=0
 					int=10
-					intmod=-0
+					intmod=0
 					wis=10
 					wismod=0
 					cha=10
@@ -3419,6 +3431,76 @@ obj
 			CRank
 				rank="C"
 				rankbonus=2
+				AdultDrake
+					name="Adult Drake"
+					icon='Icons/Monsters/Dragonblue.png'
+					summon=1
+					mhp=255
+					hp=255
+					mmp=200
+					mp=200
+					msp=200
+					sp=200
+					baseac=22
+					str=20
+					strmod=5
+					dex=18
+					dexmod=4
+					con=18
+					conmod=4
+					int=12
+					intmod=1
+					wis=12
+					wismod=1
+					cha=12
+					chamod=1
+					mab=11
+					pab=11
+					pdb=22
+					mdb=18
+					speed=4
+					New()
+						var/obj/perk/MonsterAbilities/Monster/DragonClaws/a=new
+						var/obj/perk/MonsterAbilities/BLU/MonsterFlame/flame=new
+						var/obj/perk/MonsterPassives/Rideable/b=new
+						var/obj/perk/MonsterPassives/Flight/c=new
+						src.contents+=a
+						src.contents+=b
+						src.contents+=c
+						src.contents+=flame
+				ChocoSteed
+					name="Chocobo Steed"
+					icon='Icons/Summon/Boko.png'
+					summon=1
+					mhp=200
+					hp=200
+					mmp=200
+					mp=200
+					msp=200
+					sp=200
+					baseac=22
+					str=20
+					strmod=5
+					dex=18
+					dexmod=4
+					con=18
+					conmod=4
+					int=12
+					intmod=1
+					wis=12
+					wismod=1
+					cha=12
+					chamod=1
+					mab=8
+					pab=8
+					pdb=18
+					mdb=18
+					speed=4
+					New()
+						var/obj/perk/MonsterAbilities/Monster/ChocoKick/a=new
+						var/obj/perk/MonsterPassives/Rideable/b=new
+						src.contents+=a
+						src.contents+=b
 				Ifrit
 					resistance="Fire"
 					icon='Icons/Summon/Ifrit.png'
@@ -3430,10 +3512,10 @@ obj
 					sp=200
 					msp=200
 					baseac=17
-					str=14
-					strmod=2
-					dex=12
-					dexmod=1
+					str=20
+					strmod=5
+					dex=10
+					dexmod=0
 					con=10
 					conmod=0
 					int=12
@@ -3521,14 +3603,14 @@ obj
 					strmod=0
 					dex=10
 					dexmod=0
-					con=10
-					conmod=0
+					con=12
+					conmod=1
 					int=14
 					intmod=2
 					wis=18
 					wismod=4
-					cha=12
-					chamod=1
+					cha=10
+					chamod=0
 					mab=10
 					pab=0
 					mdb=9
@@ -3699,6 +3781,165 @@ obj
 			BRank
 				rank="B"
 				rankbonus=3
+				AlphaDrake
+					name="Alpha Drake"
+					icon='Icons/Monsters/Dragonblue.png'
+					summon=1
+					mhp=300
+					hp=300
+					mmp=250
+					mp=250
+					msp=250
+					sp=250
+					baseac=28
+					str=20
+					strmod=5
+					dex=18
+					dexmod=4
+					con=18
+					conmod=4
+					int=12
+					intmod=1
+					wis=12
+					wismod=1
+					cha=12
+					chamod=1
+					mab=13
+					pab=13
+					pdb=25
+					mdb=25
+					speed=5
+					basedr=8
+					New()
+						var/obj/perk/MonsterAbilities/Monster/DragonClaws/a=new
+						var/obj/perk/MonsterAbilities/BLU/MonsterFlame/flame=new
+						var/obj/perk/MonsterAbilities/BLU/Flamethrower/flame2=new
+						var/obj/perk/MonsterPassives/Rideable/b=new
+						var/obj/perk/MonsterPassives/Flight/c=new
+						src.contents+=a
+						src.contents+=b
+						src.contents+=c
+						src.contents+=flame
+						src.contents+=flame2
+				FatChocobo
+					name="Fat Chocobo"
+					icon='Icons/Summon/FatBoko.png'
+					summon=1
+					mhp=450
+					hp=450
+					mmp=300
+					mp=300
+					msp=300
+					sp=300
+					baseac=30
+					str=24
+					strmod=7
+					dex=14
+					dexmod=2
+					con=26
+					conmod=8
+					int=12
+					intmod=1
+					wis=12
+					wismod=1
+					cha=12
+					chamod=1
+					mab=10
+					pab=10
+					pdb=15
+					mdb=15
+					speed=2
+					New()
+						var/obj/perk/MonsterAbilities/Monster/ChocoKick/a=new
+						var/obj/perk/MonsterPassives/Rideable/b=new
+						var/obj/perk/Jobperks/Paladin/BathedinLight/bathed=new
+						var/obj/perk/Jobperks/Paladin/DivineRetribution/thorns=new
+						src.contents+=a
+						src.contents+=b
+						src.contents+=bathed
+						src.contents+=thorns
+				RedChocobo
+					name="Red Chocobo"
+					icon='Icons/Summon/RedBoko.png'
+					summon=1
+					mhp=290
+					hp=290
+					mmp=300
+					mp=300
+					msp=300
+					sp=300
+					baseac=24
+					str=24
+					strmod=7
+					dex=22
+					dexmod=6
+					con=18
+					conmod=4
+					int=12
+					intmod=1
+					wis=12
+					wismod=1
+					cha=12
+					chamod=1
+					mab=15
+					pab=19
+					pdb=30
+					mdb=8
+					speed=5
+					New()
+						var/obj/perk/MonsterAbilities/Monster/ChocoKick/a=new
+						var/obj/perk/MonsterPassives/Rideable/b=new
+						var/obj/perk/Abilities/Monk/DragonDash/ddash=new
+						var/obj/perk/Abilities/Monk/Combo/combo=new
+						var/obj/perk/Abilities/Monk/BurningArrow/barrow=new
+						var/obj/perk/Abilities/Monk/TornadoKick/tkick=new
+						src.contents+=a
+						src.contents+=b
+						src.contents+=ddash
+						src.contents+=combo
+						src.contents+=barrow
+						src.contents+=tkick
+				BlackChocobo
+					name="Black Chocobo"
+					icon='Icons/Summon/BlackBoko.png'
+					summon=1
+					mhp=310
+					hp=310
+					mmp=300
+					mp=300
+					msp=300
+					sp=300
+					baseac=24
+					str=20
+					strmod=5
+					dex=18
+					dexmod=4
+					con=18
+					conmod=4
+					int=12
+					intmod=1
+					wis=12
+					wismod=1
+					cha=12
+					chamod=1
+					mab=15
+					pab=8
+					pdb=18
+					mdb=25
+					speed=5
+					New()
+						var/obj/perk/MonsterAbilities/Monster/ChocoKick/a=new
+						var/obj/perk/Abilities/ArcaneMagic/Darkness/Dark/dark1=new
+						var/obj/perk/Abilities/ArcaneMagic/Darkness/Darkja/dark2=new
+						var/obj/perk/Abilities/WhiteMagic/Wind/Aeroja/aero=new
+						var/obj/perk/MonsterPassives/Rideable/b=new
+						var/obj/perk/MonsterPassives/Flight/c=new
+						src.contents+=a
+						src.contents+=b
+						src.contents+=c
+						src.contents+=dark1
+						src.contents+=dark2
+						src.contents+=aero
 				Titan
 					resistance="Earth"
 					icon='Icons/Summon/Titan.png'
@@ -3716,10 +3957,10 @@ obj
 					dexmod=0
 					con=18
 					conmod=4
-					int=12
-					intmod=1
-					wis=14
-					wismod=2
+					int=10
+					intmod=0
+					wis=16
+					wismod=3
 					cha=10
 					chamod=0
 					mab=7
@@ -3765,10 +4006,10 @@ obj
 					conmod=0
 					int=12
 					intmod=1
-					wis=16
-					wismod=3
-					cha=14
-					chamod=2
+					wis=10
+					wismod=0
+					cha=20
+					chamod=5
 					mab=8
 					pab=8
 					mdb=12
@@ -3851,16 +4092,16 @@ obj
 					sp=120
 					msp=120
 					baseac=19
-					str=16
-					strmod=3
+					str=18
+					strmod=4
 					dex=10
 					dexmod=0
 					con=18
 					conmod=4
-					int=12
-					intmod=1
-					wis=14
-					wismod=2
+					int=14
+					intmod=2
+					wis=10
+					wismod=0
 					cha=0
 					chamod=0
 					mab=2
@@ -3899,18 +4140,18 @@ obj
 					sp=90
 					msp=90
 					baseac=17
-					str=14
+					str=16
 					strmod=2
-					dex=12
+					dex=10
 					dexmod=1
-					con=10
-					conmod=0
+					con=14
+					conmod=2
 					int=10
 					intmod=0
 					wis=18
 					wismod=4
-					cha=14
-					chamod=2
+					cha=10
+					chamod=0
 					mab=12
 					pab=7
 					mdb=14
@@ -3953,16 +4194,16 @@ obj
 					baseac=18
 					str=10
 					strmod=0
-					dex=14
-					dexmod=2
-					con=10
-					conmod=0
-					int=18
-					intmod=4
-					wis=16
-					wismod=3
-					cha=12
-					chamod=1
+					dex=16
+					dexmod=3
+					con=114
+					conmod=2
+					int=10
+					intmod=0
+					wis=20
+					wismod=5
+					cha=10
+					chamod=0
 					mab=9
 					pab=9
 					mdb=9
@@ -4004,12 +4245,12 @@ obj
 					dexmod=3
 					con=10
 					conmod=0
-					int=12
-					intmod=1
+					int=14
+					intmod=2
 					wis=18
 					wismod=4
-					cha=12
-					chamod=1
+					cha=10
+					chamod=0
 					mab=10
 					pab=10
 					mdb=8
@@ -4056,14 +4297,14 @@ obj
 					strmod=4
 					dex=18
 					dexmod=4
-					con=14
-					conmod=2
+					con=16
+					conmod=4
 					int=10
 					intmod=0
 					wis=18
 					wismod=4
-					cha=12
-					chamod=1
+					cha=10
+					chamod=0
 					mab=5
 					pab=12
 					mdb=12
@@ -4110,16 +4351,16 @@ obj
 					baseac=19
 					str=18
 					strmod=4
-					dex=18
-					dexmod=4
-					con=14
-					conmod=2
+					dex=10
+					dexmod=0
+					con=16
+					conmod=3
 					int=10
 					intmod=0
 					wis=10
 					wismod=0
-					cha=12
-					chamod=1
+					cha=18
+					chamod=4
 					mab=7
 					pab=7
 					mdb=7
@@ -4172,16 +4413,16 @@ obj
 					baseac=21
 					str=18
 					strmod=4
-					dex=18
-					dexmod=4
-					con=14
-					conmod=2
+					dex=16
+					dexmod=3
+					con=18
+					conmod=4
 					int=10
 					intmod=0
 					wis=10
 					wismod=0
-					cha=12
-					chamod=1
+					cha=10
+					chamod=0
 					mab=12
 					pab=12
 					mdb=12
@@ -4228,9 +4469,9 @@ obj
 					conmod=2
 					int=12
 					intmod=1
-					wis=20
-					wismod=5
-					cha=12
+					wis=22
+					wismod=6
+					cha=10
 					chamod=2
 					mab=12
 					pab=6
@@ -4279,12 +4520,12 @@ obj
 					dexmod=1
 					con=18
 					conmod=4
-					int=14
-					intmod=2
+					int=16
+					intmod=3
 					wis=22
 					wismod=6
-					cha=12
-					chamod=2
+					cha=10
+					chamod=0
 					mab=12
 					pab=9
 					mdb=20
@@ -4324,14 +4565,14 @@ obj
 					baseac=20
 					str=22
 					strmod=6
-					dex=12
-					dexmod=1
+					dex=14
+					dexmod=2
 					con=24
 					conmod=7
-					int=14
-					intmod=2
-					wis=18
-					wismod=4
+					int=18
+					intmod=4
+					wis=10
+					wismod=0
 					cha=22
 					chamod=6
 					mab=14
@@ -4386,16 +4627,16 @@ obj
 					baseac=20
 					str=14
 					strmod=2
-					dex=12
-					dexmod=1
+					dex=20
+					dexmod=5
 					con=20
 					conmod=5
 					int=22
 					intmod=6
 					wis=22
 					wismod=6
-					cha=18
-					chamod=4
+					cha=10
+					chamod=0
 					mab=11
 					pab=0
 					mdb=25
@@ -4438,16 +4679,16 @@ obj
 					baseac=20
 					str=22
 					strmod=6
-					dex=12
-					dexmod=1
+					dex=16
+					dexmod=3
 					con=20
 					conmod=5
 					int=22
 					intmod=6
 					wis=22
 					wismod=6
-					cha=14
-					chamod=2
+					cha=10
+					chamod=0
 					mab=12
 					pab=12
 					mdb=20
@@ -4488,16 +4729,16 @@ obj
 					baseac=20
 					str=22
 					strmod=6
-					dex=12
-					dexmod=1
+					dex=16
+					dexmod=3
 					con=20
 					conmod=5
 					int=22
 					intmod=6
 					wis=22
 					wismod=6
-					cha=14
-					chamod=2
+					cha=10
+					chamod=0
 					mab=11
 					pab=10
 					mdb=20
@@ -4538,16 +4779,16 @@ obj
 					baseac=20
 					str=22
 					strmod=6
-					dex=12
-					dexmod=1
+					dex=16
+					dexmod=3
 					con=20
 					conmod=5
 					int=22
 					intmod=6
 					wis=22
 					wismod=6
-					cha=14
-					chamod=2
+					cha=10
+					chamod=0
 					mab=11
 					pab=12
 					mdb=20
@@ -4588,14 +4829,14 @@ obj
 					baseac=20
 					str=10
 					strmod=0
-					dex=18
-					dexmod=4
+					dex=22
+					dexmod=6
 					con=12
 					conmod=1
 					int=14
 					intmod=2
-					wis=22
-					wismod=6
+					wis=18
+					wismod=4
 					cha=22
 					chamod=6
 					mab=12
@@ -4748,10 +4989,10 @@ obj
 					dexmod=1
 					con=18
 					conmod=4
-					int=14
-					intmod=2
-					wis=24
-					wismod=7
+					int=24
+					intmod=7
+					wis=14
+					wismod=2
 					cha=12
 					chamod=2
 					mab=12
@@ -4892,7 +5133,7 @@ obj
 					sp=300
 					msp=300
 					baseac=23
-					str=20
+					str=12
 					strmod=5
 					dex=12
 					dexmod=1
@@ -4902,8 +5143,8 @@ obj
 					intmod=2
 					wis=24
 					wismod=7
-					cha=12
-					chamod=2
+					cha=20
+					chamod=5
 					mab=12
 					pab=10
 					mdb=35
@@ -6311,15 +6552,15 @@ obj
 					name="Wyvern"
 					icon='Icons/Monsters/Wyvern.png'
 					rankbonus=5
-					mhp=150
-					hp=150
+					mhp=300
+					hp=300
 					mmp=300
 					mp=300
 					sp=200
 					msp=200
 					str=18
 					strmod=4
-					baseac=18
+					baseac=30
 					dex=16
 					dexmod=3
 					con=18
@@ -6330,22 +6571,25 @@ obj
 					wismod=3
 					cha=14
 					chamod=2
-					mab=7
-					pab=7
-					mdb=18
-					pdb=20
+					mab=12
+					pab=12
+					mdb=25
+					pdb=25
 					basedr=5
+					speed=5
 					New()
 						var/obj/perk/MonsterAbilities/BLU/DragoFlare/df=new
 						var/obj/perk/Abilities/BlackMagic/Flame/Firaga/f=new
 						var/obj/perk/Abilities/GeneralWeaponAbilities/Melee/Shout/sh=new
 						var/obj/perk/MonsterAbilities/Monster/DragonClaws/dc=new
 						var/obj/perk/Jobperks/Dragoon/Wyvern/wyv=new
+						var/obj/perk/MonsterPassives/Rideable/ride=new
 						src.contents+=df
 						src.contents+=f
 						src.contents+=sh
 						src.contents+=dc
 						src.contents+=wyv
+						src.contents+=ride
 			DRank
 				name="---D Rank--"
 				price=500

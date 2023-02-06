@@ -520,6 +520,60 @@ proc
 		//Weaponsmith
 		if(o.name=="Weaponsmith II")
 			m.smithing=1
+//Chocobo Knight
+		if(o.name=="Rookie Rider")
+			var/list/choices=list("Adult Drake","Mesmerize","Blaze Beetle","Ankheg")
+			var/chosen=input(m,"Which companion would you like to bond with?") as anything in choices
+			switch(chosen)
+				if("Adult Drake")
+					var/obj/npc/Summons/CRank/AdultDrake/a=new
+					m.contents+=a
+				if("Mesmerize")
+					var/obj/npc/Monsters/CRank/Mesmerize/a=new
+					var/obj/perk/MonsterPassives/Rideable/b=new
+					m.contents+=a
+					a.contents+=b
+				if("Blaze Beetle")
+					var/obj/npc/Monsters/CRank/BlazeBeetle/a=new
+					var/obj/perk/MonsterPassives/Rideable/b=new
+					m.contents+=a
+					a.contents+=b
+				if("Ankheg")
+					var/obj/npc/Monsters/CRank/Ankheg/a=new
+					var/obj/perk/MonsterPassives/Rideable/b=new
+					m.contents+=a
+					a.contents+=b
+		if(o.name=="Adept Rider")
+			var/list/choices=list("Alpha Drake","Gigantoad","Woolly Croc","Shoopuff","Black Chocobo","Red Chocobo","Fat Chocobo")
+			var/chosen=input(m,"Which companion would you like to bond with?") as anything in choices
+			switch(chosen)
+				if("Alpha Drake")
+					var/obj/npc/Summons/BRank/AlphaDrake/a=new
+					m.contents+=a
+				if("Gigantoad")
+					var/obj/npc/Monsters/BRank/Gigantoad/a=new
+					var/obj/perk/MonsterPassives/Rideable/b=new
+					m.contents+=a
+					a.contents+=b
+				if("Woolly Croc")
+					var/obj/npc/Monsters/BRank/WoollyCroc/a=new
+					var/obj/perk/MonsterPassives/Rideable/b=new
+					m.contents+=a
+					a.contents+=b
+				if("Shoopuff")
+					var/obj/npc/Monsters/BRank/Shoopuff/a=new
+					var/obj/perk/MonsterPassives/Rideable/b=new
+					m.contents+=a
+					a.contents+=b
+				if("Black Chocobo")
+					var/obj/npc/Summons/BRank/BlackChocobo/a=new
+					m.contents+=a
+				if("Red Chocobo")
+					var/obj/npc/Summons/BRank/RedChocobo/a=new
+					m.contents+=a
+				if("Fat Chocobo")
+					var/obj/npc/Summons/BRank/FatChocobo/a=new
+					m.contents+=a
 //Dragoon
 		if(o.name=="Wyvern Trainer")
 			var/obj/npc/Monsters/Dragoon/Wyvern/wyv=new

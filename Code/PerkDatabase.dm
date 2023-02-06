@@ -92,6 +92,12 @@ obj
 				desc="This creature is attuned to the element of Holy. It is immune to the 'Weakness', 'Doom', 'Break', 'Heavy', 'Blind', and 'Silence' status effects, and takes half damage from dark damage, but 2x from holy damage."
 		MonsterPassives
 			icon='Icons/Perk/MonsterAbility.png'
+			Mecha
+				name="Mecha"
+				desc="This construct is a mecha. Its Melee abilities have an additional tile range of 2, regardless of their base Melee range - this also applies to General Weapon Abilities which extend projectiles. Magitek Mecha are also capable of using their Laser Defense Orb as a reaction to being attack, and when doing so - may fire it twice."
+			Pilotable
+				name="Pilotable"
+				desc="This creature or construct is pilotable. Its owner is capable of piloting it. In doing so, they enter its body or chassis, and the player character is stored inside, taking no damage from attacks while inside unless it is destroyed. This creature or construct uses the pilot's action economy, rather than having its own."
 			Rideable
 				name="Rideable"
 				desc="This creature is rideable. It may be mounted by an ally, and in doing so, this creature takes half of the damage that creature would take when it is targeted, until this creature is KOed, the riding creature only taking half as well."
@@ -774,10 +780,12 @@ obj
 					desc="This individual is capable of smithing Armor up to Steel tier given they have enough ore to do so, as well as have the tools and time."
 				Armor3
 					rank="T3"
+					pre="Armorsmith II"
 					name="Armorsmith III"
 					desc="This individual is capable of smithing Armor up to Mithril tier given they have enough ore to do so, as well as have the tools and time."
 				Armor4
 					rank="T4"
+					pre="Armorsmith III"
 					name="Armorsmith IV"
 					desc="This individual is a master smith. They're able to craft armor of up to Adamantine tier given they have enough ore to do so, as well as have the tools and time."
 			Weapons
@@ -788,10 +796,13 @@ obj
 					desc="This individual is capable of smithing Weapons up to Steel tier, assuming they have the materials to do so."
 				Weapons3
 					rank="T3"
+					pre="Weaponsmith II"
 					name="Weaponsmith III"
 					desc="This individual is capable of smithing Weapons up to Mithril tier, assuming they have the materials to do so."
 				Weapons4
 					rank="T4"
+
+					pre="Weaponsmith III"
 					name="Weaponsmith IV"
 					desc="This individual is  a master smith, and are capable of smithing Weapons up to Adamantine tier, assuming they have the materials to do so."
 			Enchanter
@@ -913,7 +924,7 @@ obj
 			DualWield
 				name="Dual Wield"
 				icon='Icons/Perk/DualWield.png'
-				desc="The individual is ambidextrous, and is able to skillfully fight with a one handed weapon in each hand. When wielding the same weapon type in each hand, if using the left hand weapon for an attack, after using the right hand weapon for an attack in the same round ; deal 15 additional true damage on hit. (Grants you an extra Standard attack or Standard Ability as long as you are wielding two weapons.)"
+				desc="The individual is ambidextrous, and is able to skillfully fight with a one handed weapon in each hand. When wielding the same weapon type in each hand, if using the left hand weapon for an attack, after using the right hand weapon for an attack in the same round ; deal 15 additional true damage on hit. (Grants you an extra Standard attack or Standard Ability as long as you are wielding two weapons. Does not stack with Gestalt Drive)"
 			HardenedCombatant
 				name="Hardened Combatant"
 				icon='Icons/Perk/HardenedCombatant.png'
@@ -991,7 +1002,11 @@ obj
 				MakoAffected
 					icon='Icons/Perk/MakoAffected.png'
 					name="Mako Affected"
-					desc="This individual either through the SOLDIER Second Class + program or some other means has been soaked in Mako (Lifestream) Mana just under the point of Mako poisoning, granting them a permanent boost in power, however not allowing the same growth or versatility as Jenova genes. This gives them noticeable light green eyes. Boost: +30 Permanent HP, +30 Permanent MP, +30 SP. +2 Strength, +2 CON, +2 DEX."
+					desc="This individual either through the SOLDIER Second Class + program or some other means has been soaked in Mako (Lifestream) Mana just under the point of Mako poisoning, granting them a permanent boost in power, however not allowing the same growth or versatility as Jenova genes. This gives them noticeable light green eyes. Boost: +30 Permanent HP, +30 Permanent MP, +30 SP. +2 Strength, +2 CON, +2 DEX. A character who has this perk also has the 'Lifestream Overdrive' ability."
+				LifestreamOverdrive
+					icon='Icons/Perk/MakoAffected.png'
+					name="Lifestream Overdrive"
+					desc="This individual is able to summon forth the power of the Lifestream, at the sake of their body. By spending 50 HP, and 20 SP and MP; they are able to generate a state of being wherein they gain +4 STR, DEX, and CON ; and may apply 15 additional true damage to a single attack, once per round. While this is active, the character is permanently afflicted with 'Poison'. This can be deactivated as a bonus action."
 			Jenova
 				Imperfectjenovacells
 					icon='Icons/Perk/ImperfectJenovaCells.png'
@@ -1005,6 +1020,10 @@ obj
 					icon='Icons/Perk/PerfectJenovaCells.png'
 					name="Perfect Jenova Cells"
 					desc="This individual has received a much more perfected version of Jenova cells removing the degrading aspect from them. They are also able to incubate their cells inside of a host taking them over, and turning into a perfect copy. This essentially allows this individual to return to life after death. (Ex. Sephiroth) | Boost: +100 Permanent HP, +50 Permanent MP, +50 SP. +4 STR, +4 CON, +4 DEX."
+				OneWingedAngel
+					icon='Icons/Perk/PerfectJenovaCells.png'
+					name="One Winged Angel"
+					desc="This individual's Jenova cells, either Perfect or Imperfect - have awakened. They may enter a state wherein they gain a maximum flight elevation of 5 tiles, 50 temporary HP, +4 STR, DEX, CON, and WIS, an additional +1 tile movement per turn, and deal 20 additional true damage on one attack per round. This may be deactivated as a bonus action. This drains 20 MP and SP per turn active, and ends if either of these drains cannot be sustained."
 			Lcie
 				icon='Icons/Perk/Lcie.png'
 				name="L'Cie"
@@ -1013,10 +1032,22 @@ obj
 				icon='Icons/Perk/Occurian.png'
 				name="Occurian Attendant"
 				desc="This individual has a guardian spirit in the form of an Occurian. The occuria is an aetherial being, and will only be visible to those it chooses. At times this individual may seem to be talking to the air, but in fact they are conversing with a higher being. The attendant cannot fight for the master, but can be used once per two turns to materialize in a physical form blocking attacks with its near impenetrable body. The Occuria can also send out a shock-wave, keeping foes away from its master. As a reaction to an attack, you may summon your Occurian Attendant to take the damage instead. Occurian Attendants have 80 HP, and regain their HP at the end of a long rest. Occuria shockwave is cast as the spell 'Impact' using a basic 1d4 unarmed strike, with a 1d20+WIS attack roll."
+			AttendantManifest
+				icon='Icons/Perk/Occurian.png'
+				name="Attendant Manifest"
+				desc="This individual has formed a deep bond with their Attendant. They may now manifest it as a Summon, as a Standard action, at the cost of 80 MP ; and it has its own character sheet, and stats."
+			OccurianEmpowerment
+				icon='Icons/Perk/occurian.png'
+				name="Occurian Empowerment"
+				desc="This individual gains empwoerment from its Occurian Attendant, gaining a permanent +2 to all ability scores, +40 HP, +40 SP, and +40 MP."
 			AetherAffected
 				icon='Icons/Perk/Aetheraffected.png'
 				name="Aether Affected"
-				desc="This individual has been directly affected by the Aether, the opposition to the life-stream. They are imbued with a direct link to the source that the crystals draw their power from, although menial in comparison. This grants them a few unique abilities, and increases the potency of their magic - as well as gives them a light blue aetherial aura whenever casting magic. Boost: +30 Permanent HP, +30 Permanent MP, +30 SP. +2 WIS, +2 INT, +2 CHA."
+				desc="This individual has been directly affected by the Aether, the opposition to the life-stream. They are imbued with a direct link to the source that the crystals draw their power from, although menial in comparison. This grants them a few unique abilities, and increases the potency of their magic - as well as gives them a light blue aetherial aura whenever casting magic. Boost: +30 Permanent HP, +30 Permanent MP, +30 SP. +2 WIS, +2 INT, +2 CHA. A character with this perk also gains the Aether Merge ability."
+			AetherMerge
+				icon='Icons/Perk/Aetheraffected.png'
+				name="Aether Merge"
+				desc="This individual is able to merge with the Aether. In doing so, their MP is immediately reduced to zero. However, they 40 flat points of reduction versus magical damage, +4 WIS, +4 CHA, and +4 INT. In addition, they may cast Black, and Arcane magic spells for 0 MP. Activating this ability afflicts the user with 'Doom' - but it can be dispelled by dispellation effects. When Doom ends, this effect also ends."
 			Unsent
 				icon='Icons/Perk/Unsent.png'
 				desc="This individual is an Unsent. They seem to have died at one point, but their soul did not cross into the life-stream correctly. They appear to all others simply as a normal version of themselves, however they do not age. The Life-stream has given them a task that when they fulfill, they will be put back into the life-stream. Boost: +20 HP, +20 MP, +20 SP."
@@ -1028,7 +1059,7 @@ obj
 				SummonerofYevon
 					icon='Icons/Perk/SummonerofYevon.png'
 					name="Summoner of Yevon"
-					desc="This individual is a Summoner of Yevon. They are a devout of the religion of Yevon, and have the unique ability to travel to shrines of Yevon and obtain free Aeon summons by overcoming the trials within said shrines. When completing a shrine's trial, this summoner is granted the shrine's Aeon without any point cost."
+					desc="This individual is a Summoner of Yevon. They are a devout of the religion of Yevon, and have the unique ability to travel to shrines of Yevon and obtain free Aeon summons by overcoming the trials within said shrines. When completing a shrine's trial, this summoner is granted the shrine's Aeon without any point cost. Aeons cost 50 MP to summon, regardless of which it is. In addition, up to two Aeons may be summoned at a time, and can be summoned to the field together."
 				AppointedGuardian
 					icon='Icons/Perk/AppointedGuardian.png'
 					name="Appointed Guardian"
@@ -1049,7 +1080,7 @@ obj
 			HalfEsper
 				icon='Icons/Perk/HalfEsper.png'
 				name="Half Esper"
-				desc="This is a race of human-esc people, they can pass almost completely as human, aside from the birthmark on their back depicting them as a Half-Esper, this can be easily covered up though. At some point in history, the blood of a All-powerful Esper was mixed into mortal human blood, creating the first dozen of this kind. Half-Esper have a body that has aetherial magic tied into their very genetics. Half-Esper also have incredible longevity compared to most. They can live as little as three millennia, to five or six. They are a very rare race to find, and are well known for their ability to activate their latent Esper Bloodline, transforming, this allowing them access to a new font of power. Half Esper can be of any race, and gain the following perks to replace their racials."
+				desc="This is a race of human-esc people, they can pass almost completely as human, aside from the birthmark on their back depicting them as a Half-Esper, this can be easily covered up though. At some point in history, the blood of a All-powerful Esper was mixed into mortal human blood, creating the first dozen of this kind. Half-Esper have a body that has aetherial magic tied into their very genetics. Half-Esper also have incredible longevity compared to most. They can live as little as three millennia, to five or six. They are a very rare race to find, and are well known for their ability to activate their latent Esper Bloodline, transforming, this allowing them access to a new font of power. Half Esper can be of any race, and gain the following perks to replace their racials. They may buy any spells and abilities of their Esper bloodline as well as those spells' and abilities pre-requirements, regardless of Job limitations, so long as they do not bypass Rank limitations. (Example, no buying A ranks before Veteran.) They still must pay the RPP price for these abilities."
 				AetherialBody
 					name="Aetherial Body"
 					rank="D"
@@ -1370,6 +1401,79 @@ obj
 				icon='Icons/Perk/SkyPirate.png'
 
 
+			ChocoboKnight
+				jobneed="Chocobo Knight"
+				icon='Icons/Perk/Chocobo Knight.png'
+				ChocoboKnight
+					name="Chocobo Knight"
+					cat="Unique"
+					desc="Chocobo Knights are masters of riding, and fighting alongside mounted companions. A Chocobo Knight starts with a Chocobo Steed upon learning the job. They gain a bonus of +2 to AC and +8 DR while they are mounted on any creature, as a primary benefit. Chocobo Knights may have 1 Companion/Familiar summoned at a time. +80 HP, +70 SP, +40 MP."
+				GearShift
+					name="Gear Shift"
+					rank="T1"
+					desc="This Chocobo Knight is capable of sharing their vitality with their steed. In doing so, they increase the steed's mobility by a massive degree. By spending 5 HP, their mount may move an additional 3 tiles as part of their movement."
+				MountMaster
+					name="Mount Master"
+					rank="T1"
+					desc="This Chocobo Knight is capable of riding even their allies' companions. With consent of another character, they may mount a party member's comapnion if it has the 'Rideable' feature, and apply up to T2 Chocobo Knight benefits to that creature as if it were their own."
+				RideRescue
+					name="Rider's Rescue"
+					rank="T1"
+					desc="This Chocobo Knight is capable of spending 20 SP from either their own SP pool, or that of their mount, as a free action (up to twice per round) - upon doing so, they may move their Mount's maximum movement towards an ally who is being attacked. If they can reach them, they may take the attack for them instead, but applying 15 points of reduction towards the attack in doing so."
+				RookieRider
+					name="Rookie Rider"
+					rank="T2"
+					desc="This Chocobo Knight has elevated to the rank of a Rookie Rider. They may choose a new mount, from the following list: Adult Drake, Mesmerize, Blaze Beetle, and Ankheg."
+				RidingSynergy
+					name="Riding Synergy"
+					rank="T2"
+					desc="This Chocobo Knight has immense synergy with their mount. While mounted, both the Chocobo Knight's mount, and the Chocobo Knight themselves gain +5 True damage to all attacks they deal."
+				SharedEssence
+					name="Shared Essence"
+					rank="T2"
+					desc="This Chocobo Knight is able to link their vitality with any creature they have mounted. Whenever either the Knight or the Mount takes any form of damage, either creature may choose to take the full damage of an attack to bypass the effects of Rideable, at their discretion. In addition, for the sake of AoE attacks - the Chocobo Knight and their Mount count as a single entity for targetting, and only take a single instance of AoE damage between the two of them."
+				CavalrySoul
+					name="Cavalry Soul"
+					rank="T2"
+					desc="This Chocobo Knight has the soul of a cavalier. They inspire their mount, and their mount inspires them. When either the Chocobo Knight or the Mount takes damage, and the other creature takes no damage in the same turn, the creature who did not take damage heals for 25 HP, and gains 20 SP and MP."
+				TacticalCavalier
+					name="Tactical Cavalier"
+					desc="This Chocobo Knight understands, values, and enacts the virtue of Strategy in combat. When their Mount moves out of Melee range of another creature, they do not provoke attacks of opportunity."
+				TendMount
+					name="Tend Mount"
+					rank="T2"
+					desc="This Chocobo Knight has the ability to convert their vital essence to that of their mount. As a bonus action, the Chocobo Knight is capable of spending up to 60 HP in order to restore HP to their mount, equal to the amount spent."
+				TheTwoSpeed
+					name="The Two Speed"
+					rank="T2"
+					desc="This Chocobo Knight has attained the blessing of the 'Two Speed' - granting whatever mount they are riding an additional +1 Tile Movement per turn, passively."
+				AdeptRider
+					name="Adept Rider"
+					pre="Rookie Rider"
+					rank="T3"
+					desc="This Chocobo Knight has reached the rank of an Adept Rider. They may now choose their final mountable companion, from the following list: Alpha Drake, Gigantoad, Woolly Croc, Shoopuff, Black Chocobo, Red Chocobo, Fat Chocobo."
+				MonsterSoul
+					name="Monster Soul"
+					rank="T3"
+					desc="This Chocobo Knight has a soul that is attuned to that of monsters and creatures of all types. As a result, they may, when mounting a party member's companion with their consent, apply bonuses from Chocobo Knight features up to T4 as if the creature were their own."
+				GreatCharge
+					name="Great Charge"
+					rank="T3"
+					desc="This Chocobo Knight has learned empower their Mount's momentum with magical energies. By spending 45 MP, if their Mount has moved on this turn, and their Mount is making an attack ; the Chocobo Knight may add True Damage equal to 5 points per tile moved (up to 25) to that Mount's singular attack roll."
+				FlowingLifeforce
+					name="Flowing Lifeforce"
+					rank="T3"
+					desc="This Chocobo Knight has learned to empower their Mount's vitality by converting the energy of momentum as their mount moves, into restorative power. By spending 80 MP, the Chocobo Knight may restore their Mount for 10 HP per tile the Mount has moved on this turn, as a free action ; once per round (Capping at 100.)"
+				TheFourSpeed
+					name="The Four Speed"
+					rank="T4"
+					desc="This Chocobo Knight has attained the blessing of the 'Four Speed' - granting whatever mount they are riding an additional +2 Tile Movement (stacking with The Two Speed) per turn, passively."
+				SonicBubble
+					name="Sonic Bubble"
+					rank="T4"
+					desc="This Chocobo Knight is capable of gathering the air around their mount's body, as a 'Sonic Bubble' - which protects both the Chocobo Knight and their Mount based on how much they have moved on their turn. For every tile they have moved, they gain 5 unreducable Damage Reduction (capping at 30.) ; lasting until the start of their next turn."
+
+
 
 
 
@@ -1531,7 +1635,7 @@ obj
 				LivingBlade
 					name="Living Blade"
 					rank="T2"
-					desc="The Mystic Knight is able to toss their weapon toward incoming attacks directed at either themselves or allies, allowing them to partially deflect a portion of the damage sent toward the party, able to redirect the pathing of the weapon using their Kinetic Stacks. As a Bonus Action or Reaction; the Mystic Knight does a basic attack roll. This attack roll reduces the damage of an incoming attack. If the incoming attack is magical, it is reduced by the full amount to a cap of 40; if it is physical, it is reduced by half the amount, up to a cap of 20. This can be done to up to 5 instances of incoming damage, expending 10 MP and 1 Kinetic stack per instance. This perk then goes on a 1 round Cooldown."
+					desc="The Mystic Knight is able to toss their weapon toward incoming attacks directed at either themselves or allies, allowing them to partially deflect a portion of the damage sent toward the party, able to redirect the pathing of the weapon using their Kinetic Stacks. As a Bonus Action or Reaction; the Mystic Knight does a basic attack roll. This attack roll reduces the damage of an incoming attack. If the incoming attack is magical, it is reduced by the full amount to a cap of 40 - and the Mystic Knight gains effective resistance against the attack; if it is physical, it is reduced by half the amount, up to a cap of 20. This can be done to up to 5 instances of incoming damage, expending 10 MP and 1 Kinetic stack per instance. This perk then goes on a 1 round Cooldown."
 				DefensiveBuildup
 					name="Defensive Buildup"
 					rank="T2"
@@ -1913,6 +2017,11 @@ obj
 					name="Secret of the Lily"
 					cat="Unique"
 					desc="This individual has learned an ancient art of healing. They have learned to harness the ambient magic formed from a battle into crystalline lilies that can be spent on healing magic to aid their side. For every 3 rounds of combat a lily is grown on the user. A maximum of 3 lilies can be held at a time. A lily can be expended as a free action once per turn, to cast a C Rank or lower White magic spell at half cost."
+				WhiteLight
+					rank="T3"
+					pre="Lasting Support"
+					name="White Light"
+					desc="A White Mage of this individual's level is able to unleash the true power of White Magic. While sacrificing the MP reduction of Lasting Support, the user can cast any healing or status cleansing White Magic as an AoE to effect multiple friendly creatures, increasing the radius by +1 per CHA mod. Per every tile extended past the spells base radius, increase MP cost by 10. Requires Lasting Support."
 				SupportSpecialist
 					name="Support Specialist"
 					rank="T3"
@@ -1945,14 +2054,15 @@ obj
 					name="Composure"
 					rank="T2"
 					desc="This individual can cast a magic ability as a full action in order to receive advantage on a magical attack roll."
-				TipTheScales
-					name="Tip the Scales"
-					rank="T2"
-					desc="A Red Mage is able to recycle magical energy better than any other profession. As a result, they may spend their standard action in order to reduce all White and Black stacks to 0 (requires at least 4 stacks each) - in order to apply the 'Refresh' status effect to themselves."
 				ScalesofRed
 					name="Scales of Red"
 					rank="T2"
 					desc="When the user casts a Black or White magic spell, they gain stacks of that respective color, depending on spell rank. D Ranks = 2, C Ranks = 3, B Ranks = 4, A Ranks = 5, S Ranks = 6. You may spend these stacks in order to increase the healing of a white mage spell, or the damage of a black mage spell by 1 per stack - using the respective color. When both Black and White stacks are equal to each-other, you gain 10 PDB and MDB. For the damage bonus to take effect, you must have at least 1 active Black or White magic stack. Both White Magic and Black Magic stacks cap at 20."
+				TipTheScales
+					name="Tip the Scales"
+					pre="Scales of Red"
+					rank="T2"
+					desc="A Red Mage is able to recycle magical energy better than any other profession. As a result, they may spend their standard action in order to reduce all White and Black stacks to 0 (requires at least 4 stacks each) - in order to apply the 'Refresh' status effect to themselves."
 				InaPinch
 					name="In a Pinch"
 					rank="T2"
@@ -1960,6 +2070,7 @@ obj
 				Synchronicity
 					name="Synchronicity"
 					rank="T2"
+					pre="Pure Red Mage"
 					desc="This Red Mage has focused purely on the art of Red Magic ; combining all forms of Magic as deftly as possible, for true synergy - they live in yin and yang, energetically. As a result, their raw mana is much more potent. They gain +30 MP to their mana pool permanently, and in addition - their General Magic Abilities gain +1 to hit, and deal 8 additional damage on hit."
 				Attunement
 					name="Attunement"
@@ -1973,6 +2084,7 @@ obj
 				RedMageAdept
 					name="Red Mage Adept"
 					rank="T3"
+					pre="Synchronicity"
 					pre="Pure Red Mage"
 					desc="This individual has strenuously studied the magical arts and as such is able to learn up to B rank Black, and White magic abilities."
 				GoingitAlone
@@ -1987,12 +2099,14 @@ obj
 					desc="This individual has truly pushed their magical mastery to the utmost limit. They have pushed beyond traditional magic, and with their pure Red arts - have tapped into the Aether, now able to form a connection with a singular Eidolon, proving that they truly can use all forms of magic. (Requires pure Red Mage, incompatible with Subjob. Grants 1 C or B rank Summon.)"
 				DoubleCast
 					name="Double Cast"
+					pre="Chainspell"
 					rank="T4"
 					desc="Allows the user to cast an extra spell as a bonus action. (Does not count for general magic abilities or general weapon abilities. Only white, black, green, or arcane magic.)"
 				RedEmpowerment
 					pre="Pure Red Mage"
 					name="Red Empowerment"
 					rank="T4"
+					pre="Red Mage Adept"
 					desc="The essence of Red Magic is 'energy' - this takes many forms. Vitality, physical energy, spiritual energy, magical energy. A Red Mage who has learned the Red Empowerment Ability has opened themselves up to the world around them, allowing more natural energy to flow freely throughout their bodies than normal. They gain a permanent +20 HP, +20 MP, and +20 SP - as well as +2 points to distribute to their ability scores."
 				Sage
 					name="Sage"
@@ -2140,7 +2254,7 @@ obj
 						addhit=1
 						range="Melee"
 						costtype="Stamina"
-						atype="standard"
+						atype="weapon"
 						damsource="str"
 						typing="physical"
 						ptype="spell"
@@ -2161,7 +2275,7 @@ obj
 						addhit=2
 						range="Melee"
 						costtype="Stamina"
-						atype="standard"
+						atype="weapon"
 						damsource="str"
 						typing="physical"
 						ptype="spell"
@@ -2182,7 +2296,7 @@ obj
 						addhit=3
 						range="Melee"
 						costtype="Stamina"
-						atype="standard"
+						atype="weapon"
 						damsource="str"
 						typing="physical"
 						ptype="spell"
@@ -2203,7 +2317,7 @@ obj
 						addhit=4
 						range="Melee"
 						costtype="Stamina"
-						atype="standard"
+						atype="weapon"
 						damsource="str"
 						typing="physical"
 						ptype="spell"
@@ -2224,7 +2338,7 @@ obj
 						addhit=5
 						range="Melee"
 						costtype="Stamina"
-						atype="standard"
+						atype="weapon"
 						damsource="str"
 						typing="physical"
 						ptype="spell"
@@ -2313,7 +2427,7 @@ obj
 				Katsuryu
 					rank="T3"
 					name="Katsuryu"
-					desc="The Samurai has trained to use their blade in a defensive manner, just as much as an offensive one. While wielding a Katana, this Samurai gains +1 AC, and +3 Damage Reduction. In addition, they may use their Reaction in order to make an attack roll with their weapon, and reduce the damage of a -single- instance of damage rolled towards them on the round it is used. This reduction is capped at 40 points before the following modifications: If used against a Melee ability, the reduction is reduced by another 10, if used against a Magic or Ranged ability, it is increased by 10. Doing so costs 25 SP."
+					desc="The Samurai has trained to use their blade in a defensive manner, just as much as an offensive one. While wielding a Katana, this Samurai gains +1 AC, and +3 Damage Reduction. In addition, they may use their Reaction in order to make an attack roll with their weapon, and reduce the damage of a -single- instance of damage rolled towards them on the round it is used. This reduction is capped at 40 points before the following modifications: If used against a Melee ability, the reduction is increased by another 10 ; and the Samurai has effective resistance against the attack, if used against a Magic or Ranged ability, it is decreased by 10. Doing so costs 25 SP."
 				Zanshin
 					rank="T3"
 					name="Zanshin"
@@ -2453,15 +2567,23 @@ obj
 				BathedinLight
 					rank="T1"
 					name="Bathed in Light"
-					desc="This individual is blessed by a holy light. They gain more health than others when being healed by any source, gaining an extra +10 HP from any incoming healing spell."
+					desc="This individual is blessed by a holy light. They gain more health than others when being healed by any source, gaining an extra +25 HP from any incoming healing spell."
 				HolyMight
 					rank="T2"
 					name="Holy Might"
-					desc="This user has embodied the power of light, and is able to transfer that light into their weapons, adding a holy element to an attack for no cost. In addition, they may call on the light for guidance at the cost of 5 MP to add +2 to a hit roll after it has already been rolled, once per round."
+					desc="This user has embodied the power of light, and is able to transfer that light into their weapons, adding a holy element to an attack for no cost. In addition, they may call on the light for guidance at the cost of 10 MP to add +2 to a hit roll after it has already been rolled, once per round."
+				DivineRetribution
+					rank="T2"
+					name="Divine Retribution"
+					desc="The Paladin is able to apply Divine Judgement to those who attempt to hurt their allies. When using the Cover ability, the Paladin may spend 15 MP as a free action in order to summon a blade of light from the sky above the attacking creature ; prompting a DC 17 Fortitude saving throw. This blade deals 12d6 Holy damage on a failed save, or half as much on a success. This has a 2 round cooldown."
 				IndomitableSpirit
 					rank="T3"
 					name="Indomitable Spirit"
-					desc="This individual has been gifted by the light. When they are in a weakened state they will be gifted the status 'Protect' status automatically. (Auto-protect at < 30% health)"
+					desc="This individual has been gifted by the light. When they are in a weakened state they will be gifted the status 'Protect' status automatically - and gain resistance to physical damage, dark damage, and force damage. (Auto-protect at < 50% health)"
+				BlessingofAltruism
+					rank="T3"
+					name="Blessing of Altruism"
+					desc="The Paladin is blessed by the Lifestream when they protect others. Upon using the Cover ability, the Paladin is able to spend 10 MP in order to immediately heal themselves for 50 HP, and apply the 'Regenerate' status effect to themselves. This can only be used once per 3 rounds."
 				Templar
 					rank="T3"
 					name="Templar"
@@ -2469,11 +2591,11 @@ obj
 				EngulfedinLight
 					rank="T3"
 					name="Engulfed in Light"
-					desc="This individual is blessed by a holy light. They gain more health than others when being healed by any source, gaining an extra +20 HP from any incoming healing spell, and are granted a 5 HP temporary shield whenever they are healed. (Overwrites Bathed in Light.) (Requires Bathed in Light.)"
+					desc="This individual is blessed by a holy light. They gain more health than others when being healed by any source, gaining an extra +20 HP from any incoming healing spell (stacking with Bathed in Light), and are granted a 10 HP temporary shield whenever they are healed. (Overwrites Bathed in Light.) (Requires Bathed in Light.)"
 				Altruism
 					rank="T4"
 					name="Altruism"
-					desc="When in a highly injured state the paladin musters what strength they have left to defend those around them granting +10 damage reduction when under 30% HP. (Cannot exceed 20 damage reduction.)"
+					desc="When in a highly injured state the paladin musters what strength they have left to defend those around them granting +10 damage reduction when under 30% HP."
 				SecondChance
 					rank="T5"
 					name="Second Chance"
@@ -2539,11 +2661,11 @@ obj
 				DragonSight
 					rank="T2"
 					name="Dragon Sight"
-					desc="Upon pouncing a target with a Jump ability, the Dragoon's infused dragon blood forces their predator's instincts to activate. Their eyes become slit like a dragon on the hunt for it's next meal. For 3 rounds after using any 'Jump' ability, the user gains +1 PAB, MAB and AC. This does not stack with itself but can have it's duration refreshed."
+					desc="Upon pouncing a target with a Jump ability, the Dragoon's infused dragon blood forces their predator's instincts to activate. Their eyes become slit like a dragon on the hunt for it's next meal. For 3 rounds after using any 'Jump' ability, the user gains +1 PAB, MAB and AC. They also gain dark-vision and a max sight range of 15 tiles. This does not stack with itself but can have it's duration refreshed."
 				BloodoftheWyvern
 					rank="T2"
 					name="Blood of the Wyvern"
-					desc="A dragon's dragon blood enchaned body grants them supernatural aerodynamics. They can cut through the air like an arrow. By calling on their dragon blood on take off, the Dragoon is able to greatly enhance their height. The Dragoon can double their base Jump Height whenever they leave the ground. This has a 3 round cooldown, starting when the Dragoon next lands. They may also immediately land on the ground."
+					desc="A dragon's dragon blood enchaned body grants them supernatural aerodynamics. They can cut through the air like an arrow. By calling on their dragon blood on take off, the Dragoon is able to greatly enhance their maximum jump height. The Dragoon can double their base Jump Height whenever they leave the ground. This has a 3 round cooldown, starting when the Dragoon next lands. With this perk, the dragon may choose to freely and immediately land on the ground."
 				Glide
 					rank="T3"
 					name="Glide"
@@ -2711,6 +2833,10 @@ obj
 					rank="T2"
 					name="Stone Lore"
 					desc=" The individual has studied the effects of the status effect break, and has learned to make an item to fix it. A golden needle must prick someone who is suffering the effects of break, however if the person has already died from the status effect nothing can be done."
+				Demolitionist
+					rank="T2"
+					name="Demolitionist"
+					desc=" This Chemist is a master of explosions and chaos. When a Chemist uses a Bomb attack, they may perform an additional Bomb attack, utilize a Chemist consumable, or utilize a Chemist ability at the cost of 15 additional SP, once per round."
 				FrogLore
 					rank="T2"
 					name="Frog Lore"
@@ -2726,7 +2852,15 @@ obj
 				RemedyLore
 					rank="T3"
 					name="Remedy Lore"
-					desc="The individual has a deep understanding of status ailments, and through rigorous study has learned of an panacea that can counter every status ailment."
+					desc="The individual has a deep understanding of status ailments, and through rigorous study has learned of a panacea that can counter every status ailment."
+				Alchemist
+					rank="T3"
+					name="Alchemist"
+					desc="This Chemist has learned the art of Alchemy. They now have access to Alchemy Chemist abilities, which can be utilized at the cost of SP ; by transmuting one's physical lifeforce into the environment, to induce chemical reactions for various effects."
+				CurativeExpert
+					rank="T3"
+					name="Curative Expert"
+					desc="This Chemist is a master of enzymes, regenerative process, and antibodies. They have immunity to any status effect they have Lore for. In addition, they restore an additional +40 points for any resource one of their Chemist items restores, either to themselves or allies. With Remedy Lore, the Chemist has immunity to all status effects."
 				EtherLore2
 					rank="T3"
 					name="Ether Lore II"
@@ -2743,7 +2877,7 @@ obj
 					rank="T5"
 					name="Fountain of Youth"
 					cat="Unique"
-					desc="his individual has learned how to create the Elixir of Youth, which when consumed - makes one unable to physically age beyond the point they have reached, effectively making one immortal outside of mortal afflictions. (Elixir of Youth grants immunity to Poison for anyone who drinks it. Costs 50,000 Gil to craft.)"
+					desc="his individual has learned how to create the Elixir of Youth, which when consumed - makes one unable to physically age beyond the point they have reached, effectively making one immortal outside of mortal afflictions. Elixir of Youth grants +80 HP, +80 MP, +80 SP, and +2 to all Ability Scores to a creature who drinks it, also placing their body into the prime of its youth ; and halting aging. . Costs 50,000 Gil to craft.)"
 
 			Geomancer
 				jobneed="Geomancer"
@@ -3294,8 +3428,10 @@ obj
 			GeneralWeaponAbilities
 				cat="Genability"
 				icon='Icons/Perk/GeneralWeapon.png'
+				costtype="Stamina"
+				atype="weapon"
+				range=" Melee"
 				typing="physical"
-				atype="standard"
 				element="Physical"
 				Melee
 					Braver
@@ -3318,6 +3454,7 @@ obj
 					QuickHit
 						rank="D"
 						name="Quick Hit"
+						mcost=10
 						desc="As a bonus action make a quick weapon attack dealing half the damage of a normal attack. (- 10 stamina.)"
 					Riposte
 						rank="C"
@@ -3382,7 +3519,7 @@ obj
 						ptype="spell"
 						desc="The user of this ability swings their weapon after imbuing it with a burst of Mana. The first strike carries through, and if the target dodges, a second strike made of mana and in the shape of the weapon with the same speed follows after (Damage: Weapon Damage + 5 | Bonus action after a standard attack misses. -30 Stamina)"
 					StellarCircle
-						element="Flare"
+						element="Force"
 						rank="C"
 						name="Stellar Circle"
 						mcost=30
@@ -3445,7 +3582,7 @@ obj
 						savetype="Reflex"
 						ptype="spell"
 						desc="Coating one's weapon in energy, they then dash forward and swing it upward, to blast a target away. This attacks a 3 tile line in front of the caster, and deals full damage on a failed save ; or half on a successful save."
-						mcost="Stamina"
+						costtype="Stamina"
 					AssaultTrigger
 						rank="B"
 						name="Assault Trigger"
@@ -3458,6 +3595,7 @@ obj
 						costtype="Stamina"
 						desc="Dash forward, coating one's weapon in volatile magical energy. With each swing, this energy explodes - sending the weapon forward with increase momentum. Each attack deals 5d2 additional damage. In addition, with each attack that misses - grant successive attacks +2 to hit. Make 4 attack rolls. (Capts at 120 cumulative damage.) Costs 45 Stamina."
 					FatedCircle
+						element="Fire"
 						rank="B"
 						name="Fated Circle"
 						mcost=40
@@ -3476,6 +3614,7 @@ obj
 						savetype="Reflex"
 						desc="The user makes a sweeping attack with their weapon around them. Explosive energy stored up in the weapon then radiates outward in a sharp, blade-like full circle. The edge of the circle then explodes in a fiery burst, threatening to burn anyone caught in its radius. (Damage: Weapon damage + 2d6+STR fire damage | 3x3 AoE, prompts a relex saving throw (DC 10+STR+Rank bonus), dealing full damage and inflicting burn on a failure, or half damage on a success. -40 stamina.)"
 					CrushingBlow
+						element="Holy"
 						rank="B"
 						name="Crushing Blow"
 						mcost=50
@@ -3488,6 +3627,7 @@ obj
 						range=" 5 tiles."
 						desc="The user of this technique infuses their feet with magic, and launches 3 tiles into the air. They gain the effects of Airborne, without the effects of Knock-up. They then swing their weapon to the side, releasing a disk of light that deals Holy damage, and inflicts 'Heavy' on hit. Attack: Weapon Damage + 5d12. Costs 50 Stamina."
 					RoundEdge
+						element="Dark"
 						rank="B"
 						name="Round Edge"
 						mcost=50
@@ -3497,11 +3637,11 @@ obj
 						adddam=3
 						addhit=4
 						atype="weapon"
-						range=" 3x3 AoE"
+						range=" 5x5 AoE"
 						costtype="Stamina"
-						desc="A massive AoE attack, made by swinging one's weapon in a circular motion, releasing flames of dark energy.. This attack deals Dark damage on hit, and is a 5x5 AoE centered around the user. Costs 50 Stamina."
+						desc="A massive AoE attack, made by swinging one's weapon in a circular motion, releasing flames of dark energy.. The user makes a melee attack at +4 to hit, hitting all targets around  them in a  5x5 centered on the user. On hit they deal Weapon Damage + 4-55 + 3 Dark Damage. Costs 50 Stamina."
 					BladeBeam
-						element="Flare"
+						element="Force"
 						rank="B"
 						name="Blade Beam"
 						mcost=40
@@ -3522,19 +3662,22 @@ obj
 					Shout
 						name="Shout"
 						rank="B"
+						mcost=40
 						desc="The user turns to their comrades projecting their voice in a powerful boom that instills encouragement in them. Targets all friendly creatures in a 6 tile cone in front of the user. Targets gain haste and a +2 bonus to strength that lasts until the haste effect wears off. Can only be used once per encounter. (-40 Stamina.)"
 					BanishingBlade
 						name="Banishing Blade"
 						rank="B"
-						atype="standard"
+						atype="weapon"
+						mcost=40
 						desc="Runes solidify around the user of this ability's weapon, granting it potent sealing power. They then swing the weapon as a standard attack. On hit, the target is inflicted with Silence. Costs 40 Stamina."
 					SlicenDice
 						name="Slice n Dice"
 						rank="B"
-						atype="standard"
+						mcost=60
+						atype="weapon"
 						desc="A ferocious, and powerful combination attack. This ability allows you to perform 5 Standard attacks, however - only ONE of these five attacks may hit, and deal damage. If any of the five attack rolls would hit, the attack hits - and the user of this ability may choose the highest damage number rolled of the five, to apply.. Costs 60 Stamina."
 					GodAmongMen
-						element="Laser"
+						element="Force"
 						rank="B"
 						name="God Among Men"
 						mcost=50
@@ -3559,16 +3702,23 @@ obj
 						attack_roll_damage_upper = 110
 						basecheck=14
 						adddam=5
-						range="  3 tile wide, 5 tile line."
+						mcost=60
+						atype="weaponsave"
+						savetype="reflex"
+						range="3 tile wide, 5 tile line."
 						typing="physical"
 						damsource="str"
-						desc="The user infuses their weapon with obscene amounts of energy, and raises it into the sky. They then swing down, bringing the energy down as a blade, and prompting a saving throw. On a failure, targets take full damage ; on a success, they take half."
+						desc="The user infuses their weapon with obscene amounts of energy, and raises it into the sky. They then swing down, bringing the energy down as a blade, and prompting a reflexing saving throw DC 14 + STR + Rank Bonus. On Failure the take takes 60-110 +5 Physical damage; on success, they take half. Cost -60 Stamina."
 					GestaltDrive
 						rank="A"
 						name="Gestalt Drive"
-						atype="standard"
+						atype="weapon"
+						mcost=15
+						attack_roll_dice_count = 1
+						attack_roll_dice_sides = 10
 						desc="Calling upon the name of the Valkyries, the user of this ability infuses their weapon with magic that transforms it into a pair of linked together duplicates. They then seperate the blades. This weapon takes the place of their own, and uses its attributes but gains 1d10 additional damage on hit. In addition, while this state is active - you may make an extra attack as a bonus action. Cannot be used with Thief Swords. Costs 15 SP per turn to sustain."
 					TriumphantGrasp
+						element="Fire"
 						rank="A"
 						name="Triumphant Grasp"
 						mcost=90
@@ -3588,6 +3738,7 @@ obj
 						desc="The user reaches out with a free hand grasping at their opponent. Upon grabbing the target, they drag the target across the ground - and then clench their fist. An explosion erupts from their grasp, and the target is then sent flying at high speeds in a direction of the user's choice. (Damage: 8d10+STR fire damage | STR saving throw (DC 15+STR+Rankbonus) - on a failure, creature is thrown 6 tiles in any direction. Upon hitting a wall, target takes 5d10 additional damage. On a success, attack is negated. -90 Stamina.)"
 					ChaosDisaster
 						name="Chaotic Disaster"
+						element="Dark"
 						rank="A"
 						mcost=75
 						attack_roll_damage_dice = TRUE
@@ -3599,7 +3750,7 @@ obj
 						typing="physical"
 						ptype="spell"
 						costtype="Stamina"
-						desc="The user of this attack swings their weapon in an arc, releasing a beam of energy as a 'Chaotic Disaster' attack roll, which travels in a 5 tile line, dealing Darkness damage. They then shift to the end of the line, and may make 1 Standard attack roll immediately after. Costs 75 Stamina."
+						desc="The user of this attack swings their weapon in an arc, releasing a beam of energy as a 'Chaotic Disaster' attack roll with +3 to hit, which travels in a 5 tile line, dealing 10d7 + 5 Darkness damage on hit. They then shift to the end of the line, and may make 1 Standard attack roll immediately after.  Costs 75 Stamina."
 					LordofArms
 						name="Lord of Arms"
 						rank="A"
@@ -3626,7 +3777,7 @@ obj
 						damsource="str"
 						typing="physical"
 						ptype="spell"
-						desc="The user makes a horizontal slice with their weapon causing the air in front of the user to become disturbed before kicking up a powerful gale that pulls anything caught in it high into the air. Anything that is kicked upwards will most likely take heavy damage from the fall. (Damage: Weapon Damage + 2d20+STR | Melee Weapon Attack (+3 to hit) | 3 tile wide attack, launches target 2 tiles per STR Modifier point. - 55 Stamina)"
+						desc="The user makes a horizontal slice with their weapon causing the air in front of the user to become disturbed before kicking up a powerful gale that pulls anything caught in it high into the air. Anything that is kicked upwards will most likely take heavy damage from the fall. (Damage: Weapon Damage + 2d20+STR+10 | Melee Weapon Attack (+3 to hit) | 3 tile wide attack, launches target 2 tiles per STR Modifier point. - 55 Stamina)"
 					BladeHoning
 						rank="A"
 						name="Blade Honing"
@@ -3698,7 +3849,7 @@ obj
 						addhit=0
 						range="Melee"
 						costtype="Stamina, per 4 attack rolls."
-						atype="standard"
+						atype="weapon"
 						damsource="str"
 						typing="physical"
 						ptype="spell"
@@ -3895,7 +4046,7 @@ obj
 				icon='Icons/Perk/GeneralMagic.png'
 				typing="magical"
 				atype="standard"
-				element="General"
+				element="Force"
 				Landmine
 					element="Fire"
 					level=2
@@ -3910,7 +4061,7 @@ obj
 					addhit=0
 					range=" 3 tile range, placeable anywhere a creature is not already positioned."
 					costtype="Mana"
-					atype="weaponsave"
+					atype="save"
 					damsource="int"
 					typing="magical"
 					ptype="spell"
@@ -3918,7 +4069,6 @@ obj
 					desc="The user scatters landmines that float in the air, and explode on contact or when a creature passes through the same tile with their movement. (Creates a landmine on a single tile within three tiles from the user, landmines prompt a Reflex saving throw (10+INT+Rank bonus). On a failed save, creatures take 2d20+INT damage, or half as much on a successful save. Landmine can not be created on the same tile that a creature is already occupying.  -6 Mana)"
 
 				Burst
-					element="Flare"
 					level=2
 					rank="D"
 					name="Burst"
@@ -3998,7 +4148,7 @@ obj
 					desc="A low level, but essential magical technique for those studying the raw magic arts. The user draws from their reserves, and releases their Magic in a 'mist' like stream, which burns away at whatever it touches. (Damage: 3d6+INT | Prompts a Fortitude saving throw (12+INT+Rank Bonus) dealing full damage on a failure, or half as much on a success. 3 tile cone. -12 Mana.)"
 				Fogga
 					element="Bio"
-					level=2
+					level=4
 					rank="B"
 					name="Fogga"
 					mcost=30
@@ -4090,7 +4240,6 @@ obj
 					ptype="spell"
 					desc="The user releases a jolt of magical energy at an opponent, which inflicts Paralyze onto the opponent if it does over 20 damage to the target. (Damage: 2d8+INT | ranged attack roll (1d20+INT+2 to hit) vs. Armor, -20 Mana.)"
 				Scatter
-					element="Laser"
 					level=3
 					rank="C"
 					damsource="int"
@@ -4131,7 +4280,6 @@ obj
 					mcost=30
 					desc="The user coats their fist or weapon in a compact and dense construct of arcane energy. They then release a melee attack which combines magical and physical damage, also knocking an opponent back as it explodes. (Make a Melee attack roll, dealing an additional 2d6+INT magical damage, and applying a 6 tile knockback on hit. -30 Mana.)"
 				Laser
-					element="Laser"
 					level=3
 					rank="C"
 					damsource="int"
@@ -4146,7 +4294,6 @@ obj
 					attack_roll_dice_sides = 4
 					desc="Mana is concentrated at the tip of a finger, and channeled to become extremely thin. It's then released in the form of a miniscule laser directed at vital points, meant to penetrate defenses. (Damage: 2d4+INT | +3 to hit, 15 Damage Reduction piercing.  5 tile line.-15 Mana.)"
 				Laserga
-					element="Laser"
 					level=4
 					rank="B"
 					pre="Laser"
@@ -4162,7 +4309,6 @@ obj
 					attack_roll_dice_sides = 10
 					desc="Mana is concentrated at the tip of a finger, and channeled into a thin but very condensed mass. It's then released in the form of a sizable laser directed at vital points, meant to penetrate defenses. (Damage: 2d10+INT | +4 to hit, 20 Damage Reduction piercing. 7 tile line. -35 Mana.)"
 				Pierce
-					element="Laser"
 					level=3
 					rank="C"
 					damsource="int"
@@ -4177,7 +4323,6 @@ obj
 					attack_roll_dice_sides = 6
 					desc="The user coats their projectile in a screeching shroud of magical energy, which causes it to drill and burrow into a target at high speeds after being launched from their weapon. (Make a Ranged weapon attack roll, dealing an additional 2d6+INT magical damage, with +2 to hit and ignoring 5 physical damage reduction. -30 Mana.)"
 				Fleche
-					element="Laser"
 					level=4
 					rank="B"
 					damsource="int"
@@ -4237,7 +4382,6 @@ obj
 					range="Melee"
 					desc="The user coats their fist or weapon in a compact and dense construct of arcane energy, crackling with energy. They then release a melee attack which combines maigcal and physical damage, also knocking an opponent back as it explodes. (Make a Melee attack roll, dealing an additional 2d12+INT magical damage, and applying 12 tile knockback on hit. -55 Mana.)"
 				Piercega
-					element="Laser"
 					level=4
 					rank="B"
 					pre="Pierce"
@@ -4318,7 +4462,6 @@ obj
 					attack_roll_dice_sides = 12
 					desc="Magical Mana is sent into the ground beneath the user causing parts of the earth to split away carrying them upwards on a large rock while several other large boulders spin around them. Four projectiles are then fired off at any target within 7 tiles of the point of origin. (Prompts a Reflex saving throw, dealing 3d12+INT piercing damage on a failed save, or half as much on a success - then fires off 4 magical ranged attack rolls, utilizing tome, staff, or focus in your inventory for their accuracy and damage - dealing earth damage on hit. - 45 Mana)"
 				AntiAirParticleBeam
-					element="Laser"
 					name="Anti Air Particle Beam"
 					level=4
 					rank="B"
@@ -4755,7 +4898,7 @@ obj
 						attack_roll_damage_dice = TRUE
 						attack_roll_dice_count = 1
 						attack_roll_dice_sides = 8
-						desc="The user has learned to treat simple wounds through magic. They can cure 10 + 1d8 HP. Out of Battle Effects: This user can cure cuts, scrapes, bruises, and burns. They can use magic to restore vitality in small plants such as flowers and 5ft patches of foliage. (-10 mana.)"
+						desc="The user has learned to treat simple wounds through magic. They can cure 10 + 1d8 + CHA Mod x 2 HP. Out of Battle Effects: This user can cure cuts, scrapes, bruises, and burns. They can use magic to restore vitality in small plants such as flowers and 5ft patches of foliage. (-10 mana.)"
 					Cura
 						regen=1
 						level=2
@@ -4765,7 +4908,7 @@ obj
 						attack_roll_damage_dice = TRUE
 						attack_roll_dice_count = 2
 						attack_roll_dice_sides = 12
-						desc="The user has learned how to use magic to cure moderate wounds. They can cure 15 + 2d12 HP. Out of Battle Effects: The user is capable of healing open wounds, set broken bones, and even cure up to third degree burns instantly. They can rejuvenate medium sized plants such as bushes or ferns, or a 10ft patch of grass. (-15 Mana.)"
+						desc="The user has learned how to use magic to cure moderate wounds. They can cure 15 + 2d12 + CHA Mod x 2 HP. Out of Battle Effects: The user is capable of healing open wounds, set broken bones, and even cure up to third degree burns instantly. They can rejuvenate medium sized plants such as bushes or ferns, or a 10ft patch of grass. (-15 Mana.)"
 					Curaga
 						regen=1
 						level=3
@@ -4776,7 +4919,7 @@ obj
 						attack_roll_damage_dice = TRUE
 						attack_roll_dice_count = 3
 						attack_roll_dice_sides = 12
-						desc="The user has learned how to heal major wounds through the use of magic. Heals 20+ 3d12 HP. 6 tile range. Out of Battle Effects: The user is able to reattach limbs that have been severed, cure major wounds that even stitches wouldn’t fix, heals all types of burns. They can also rejuvenate large plants including young trees, and patches of foliage up to 20ft. (-30 Mana.)"
+						desc="The user has learned how to heal major wounds through the use of magic. Heals  20 + 3d12 + CHA Mod x 2 HP. 6 tile range. Out of Battle Effects: The user is able to reattach limbs that have been severed, cure major wounds that even stitches wouldn’t fix, heals all types of burns. They can also rejuvenate large plants including young trees, and patches of foliage up to 20ft. (-30 Mana.)"
 					Curaja
 						regen=1
 						level=4
@@ -4787,7 +4930,7 @@ obj
 						attack_roll_damage_dice = TRUE
 						attack_roll_dice_count = 4
 						attack_roll_dice_sides = 12
-						desc="The user has learned how to heal even the most dire wounds. They heal 30 + 4d12 HP. 6 tile range. Out of Battle Effects: The user is capable of restoring limbs as long as the wound has not healed over. They can set and instantly heal broken bones, and can cure even the deepest burns. They can rejuvenate mature trees and patches of foliage up to 30 ft. (-40 Mana.)"
+						desc="The user has learned how to heal even the most dire wounds. They heal 30 + 4d12 HP + CHA Mod x 2. 6 tile range. Out of Battle Effects: The user is capable of restoring limbs as long as the wound has not healed over. They can set and instantly heal broken bones, and can cure even the deepest burns. They can rejuvenate mature trees and patches of foliage up to 30 ft. (-40 Mana.)"
 					Curada
 						regen=1
 						revive=1
@@ -4795,7 +4938,7 @@ obj
 						atype="curada"
 						pre="Curaja"
 						mcost=65
-						desc="The user has learned to pour everything they have to heal others. They can perform miracles with their healing and upon touching a target can restore nearly all their wounds, curing them of up to half their Max HP + 2d10. This leaves the white mage exhausted, giving them 1 stacks of exhaustion per usage. Melee range. (-65 mana.)"
+						desc="The user has learned to pour everything they have to heal others. They can perform miracles with their healing and upon touching a target can restore nearly all their wounds, curing them of up to half their Max HP + 2d10 + CHA Mod x 2. This leaves the white mage exhausted, giving them 1 stacks of exhaustion per usage. Melee range. (-65 mana.)"
 					Regen
 						heal=0
 						greenmagic=1
@@ -6021,7 +6164,7 @@ obj
 				icon='Icons/Perk/Monk.png'
 				damsource="str"
 				costtype="Stamina."
-				atype="standard"
+				atype="weapon"
 				typing="physical"
 				element="Monk"
 				ChiBlast
@@ -6091,7 +6234,7 @@ obj
 					attack_roll_damage_dice = FALSE
 					attack_roll_damage_lower = 40
 					attack_roll_damage_upper = 55
-					atype="standard"
+					atype="weapon"
 					mcost=40
 					addhit=3
 					costtype= "Mana"
@@ -6127,7 +6270,7 @@ obj
 					attack_roll_dice_count = 3
 					attack_roll_dice_sides = 10
 					range=" 3x3 AoE centered around user."
-					atype="save"
+					atype="weaponsave"
 					basecheck=12
 					savetype="Fortitude"
 					mcost=30
@@ -6142,7 +6285,7 @@ obj
 					attack_roll_dice_sides = 10
 					mcost=40
 					damsource="str"
-					atype="save"
+					atype="weaponsave"
 					savetype="Strength"
 					basecheck=14
 					desc="The user grapples the opponent holding them in their arms as they kick off the ground, and soar upwards before crashing down, and slamming the opponent into the ground. Note: Can even be used on trains. Make a strength roll against the target. If the target fails the roll they are grappled and launched with the user towards a location within 6 tiles. (Damage: 5d10+WIS | STR saving throw (DC  14+STR+Rank bonus), dealing full damage on a failure, or none on a success. - 40 stamina.)"
@@ -6155,7 +6298,7 @@ obj
 					attack_roll_damage_lower = 40
 					attack_roll_damage_upper = 60
 					damsource="wis"
-					atype="save"
+					atype="weaponsave"
 					savetype="Fortitude"
 					mcost=60
 					costtype=" MP"
@@ -6169,7 +6312,7 @@ obj
 					attack_roll_dice_count = 5
 					attack_roll_dice_sides = 10
 					range=" 5x5 AoE centered around user."
-					atype="save"
+					atype="weaponsave"
 					savetype="Fortitude"
 					basecheck=14
 					mcost=50
@@ -6197,7 +6340,7 @@ obj
 					attack_roll_dice_sides = 12
 					range=" 7x7 AoE"
 					savetype="Reflex"
-					atype="save"
+					atype="weaponsave"
 					basecheck=15
 					mcost=120
 					costtype="Mana"
@@ -6214,7 +6357,7 @@ obj
 					attack_roll_damage_lower = 50
 					attack_roll_damage_upper = 60
 					damsource="str"
-					atype="standard"
+					atype="weapon"
 					critrange=10
 					range=" Melee"
 					mcost=120
@@ -6622,8 +6765,8 @@ obj
 					desc="As a bonus action, this individual creates an aura that reflects and mitigates 1d12 damage back to the creature that's hitting them as holy damage. This only applies to Melee attacks - and lasts 3 rounds. (- 10 mana.)"
 				HolyEnchant
 					name="Holy Enchant"
-					rank="E"
-					desc="The Paladin is able to imbue their own weapon or an ally's weapon with a holy light, granting it a holy augmentation. This grants +1 to hit, and +5 PDB to the weapon's wielder, also changing its element to Holy. This lasts for 3 rounds. Costs 10 Mana."
+					rank="D"
+					desc="The Paladin is able to imbue their own weapon or an ally's weapon with a holy light, granting it a holy augmentation. This grants +2 to hit  also changing its element to Holy and allowing attacks made with the weapon to deal an additional 10 true damage on hit. This lasts for 3 rounds. Costs 10 Mana."
 				BracingBash
 					element="Physical"
 					name="Bracing Bash"
@@ -6659,7 +6802,7 @@ obj
 					mcost=20
 					addhit=2
 					costtype="Mana"
-					desc="As a reaction, the user holds their weapon out in front of them then begins spinning it, and using their holy mana to form a magical disk around the shield that has the circumference of the weapon’s spin. The Mana in the center disk can be shot forward usually used as a counter attack that is half the size of the shield of light. This shield is nigh impenetrable by most forces. (Damage: 1d12+CHA | As a reaction, creates a 30 HP Shield that if it survives, makes a ranged attack roll with +2 to hit at the attacker and dissipates. -20 Mana)"
+					desc="As a reaction, the user holds their weapon out in front of them then begins spinning it, and using their holy mana to form a magical disk around the shield that has the circumference of the weapon’s spin. The Mana in the center disk can be shot forward usually used as a counter attack that is half the size of the shield of light. This shield is nigh impenetrable by most forces. (Damage: 1d12+CHA | As a reaction, creates a 50 HP Shield to soak an attack that if it survives, makes a ranged attack roll with +2 to hit at the attacker and dissipates. -20 Mana)"
 				Cover
 					rank="C"
 					desc="The user can establish a link with their comrades in battle. In the heat of battle, as a reaction the paladin can teleport in front of a friendly target in view taking a single target attack that was meant for them. The paladin takes the damage instead - and when doing so, the damage is reduced by 15 points (to a minimum of 1). Can be used once per round for free, needing a reaction for any uses afterwards (free use refreshes upon the start of the Paladin's turn) Cover is exempt from Cooldowns. After the attack is taken, the Paladin instantly returns to their previous position. In the case of Multi-hit attacks, and AoEs, all instances of damage are distributed instead to the Paladin, leaving none for the protected ally.  (-10 Mana.)"
@@ -6864,7 +7007,7 @@ obj
 					attack_roll_dice_sides = 8
 					mcost=5
 					range=" 6 tile range."
-					desc="The user is able to throw their weapon, and have it teleport back to them from wherever position it was due to mana infusion. The Mana infused in the weapon is attuned to the user, and can be magnetized to a target the weapon hits, creating a temporary connection between them. If this attack hits, it deals normal weapon damage, and causes the next attack from the Dragoon that hits the marked target to take 1d10 additional damage, and be inflicted with 'Weakness'. If the creature is healed before this occurs, this effect is dissipated. Esuna and other cleansing abilities will also cleanse this effect. Bonus Action. 6 Tile range."
+					desc="The user is able to throw their weapon, and have it teleport back to them from wherever position it was due to mana infusion. The Mana infused in the weapon is attuned to the user, and can be magnetized to a target the weapon hits, creating a temporary connection between them. If this attack hits, it deals half normal weapon damage, and causes the next attack from the Dragoon that hits the marked target to take 1d10 additional damage, and be inflicted with 'Weakness'. If the creature is healed before this occurs, this effect is dissipated. Esuna and other cleansing abilities will also cleanse this effect. Bonus Action. 6 Tile range."
 				Lancet
 					rank="D"
 					desc="The Dragoon's Bloodlust is displayed in how deep their spear sinks into their target. Invigorating their draconic bloodlust on a successful 'Jump' attack and successfully dealing damage, the user my use an Free action to drain their Target of 4 SP and 4 MP per tile traveled using their ‘Jump’ attack. This is an automatic hit, but requires the initial Jump to have hit it's target. (-10 SP)"
@@ -6889,7 +7032,7 @@ obj
 					attack_roll_dice_sides = 12
 					range=" 3 tile line."
 					mcost=20
-					desc="The user dashes forward, weapon pointed dashing through everything in front of them. This can be utilized either on the ground, or in mid-air. (Damage: Weapon Damage + 1d12+DEX | 3 Tile line, which user moves along. Melee attack roll. -20 Stamina.) This counts as a Movement aAction. Action of Opportunity cannot be activated against it."
+					desc="The user dashes forward, weapon pointed dashing through everything in front of them. This can be utilized either on the ground, or in mid-air. (Damage: Weapon Damage + 1d12+DEX | 3 Tile line, which user moves along. Melee attack roll. -20 Stamina.) This counts as a Movement Action. Action of Opportunity cannot be activated against it."
 				CelestialShooter
 					element="Physical"
 					name="Celestial Shooter"
@@ -7221,7 +7364,7 @@ obj
 				typing="magical"
 				jobneed="Geomancer"
 				icon='Icons/Perk/Geospells.png'
-				damsource="wis"
+				damsource="cha"
 				costtype="Mana"
 				atype="standard"
 				Earth
@@ -7235,7 +7378,7 @@ obj
 						attack_roll_dice_sides = 12
 						mcost=10
 						range=" 6 tile range."
-						desc="The user calls to the ground, causing it to spit sharp rocks towards a target. Out of Battle Effects: This individual is capable of controlling earth. They can move and shape a 5ft block of earth. They are capable of making one 5ft area of earth into non difficult terrain. (Damage: 1d12+WIS earth| 6 tile range, magic attack roll, -10 Mana.)"
+						desc="The user calls to the ground, causing it to spit sharp rocks towards a target. Out of Battle Effects: This individual is capable of controlling earth. They can move and shape a 5ft block of earth. They are capable of making one 5ft area of earth into non difficult terrain. (Damage: 1d12+CHA earth| 6 tile range, magic attack roll, -10 Mana.)"
 					Stonra
 						rank="D"
 						pre="Stone"
@@ -7244,7 +7387,7 @@ obj
 						attack_roll_dice_sides = 12
 						range=" 6 tile range."
 						mcost=15
-						desc="The user calls to the earth causing it to erupt spikes that aim to impale a target. Out of Battle Effects: This individual is capable of controlling earth. They can move and shape a 10ft block of earth. They are capable of making one 10ft area of earth into non difficult terrain. (Damage: 2d12+WIS earth | 6 tile range, magic attack roll, -15 Mana.)"
+						desc="The user calls to the earth causing it to erupt spikes that aim to impale a target. Out of Battle Effects: This individual is capable of controlling earth. They can move and shape a 10ft block of earth. They are capable of making one 10ft area of earth into non difficult terrain. (Damage: 2d12+CHA earth | 6 tile range, magic attack roll, -15 Mana.)"
 					Stoneaga
 						rank="C"
 						pre="Stonra"
@@ -7256,7 +7399,7 @@ obj
 						attack_roll_dice_count = 4
 						attack_roll_dice_sides = 10
 						range=" 3x3 AoE within a 10 tile range."
-						desc="The user calls to the earth, causing pillars of rock to erupt from the ground and crush everything beneath it. Out of Battle Effects: This individual is capable of controlling earth. They can move and shape a 15ft block of earth. They are capable of making one 15ft area of earth into non difficult terrain. (Damage: 4d10+WIS | 10 tile range, 3x3 AoE. Prompts a Reflex saving throw (DC 12+WIS+Rankbonus), inflicting full damage and knocking prone on a failure, or half as much on a success. -30 Mana.)"
+						desc="The user calls to the earth, causing pillars of rock to erupt from the ground and crush everything beneath it. Out of Battle Effects: This individual is capable of controlling earth. They can move and shape a 15ft block of earth. They are capable of making one 15ft area of earth into non difficult terrain. (Damage: 4d10+CHA | 10 tile range, 3x3 AoE. Prompts a Reflex saving throw (DC 12+WIS+Rankbonus), inflicting full damage and knocking prone on a failure, or half as much on a success. -30 Mana.)"
 					Stonaja
 						rank="B"
 						pre="Stoneaga"
@@ -7268,7 +7411,7 @@ obj
 						mcost=40
 						atype="save"
 						savetype="Reflex"
-						desc="The user calls to the earth. They cause boulders to rise in the air before then releasing their hold, allowing them to drop down and cause mayhem upon a selected area of effect. Out of Battle Effects: This individual is capable of controlling earth. They can move and shape a 20ft block of earth. They are capable of making one 20ft area of earth into non difficult terrain. (Damage: 5d12+WIS earth | 10 tile range, 5x5 AoE. Prompts a Reflex saving throw, dealing full damage and inflicting prone on a failure, or half as much on a success. -40 Mana.)"
+						desc="The user calls to the earth. They cause boulders to rise in the air before then releasing their hold, allowing them to drop down and cause mayhem upon a selected area of effect. Out of Battle Effects: This individual is capable of controlling earth. They can move and shape a 20ft block of earth. They are capable of making one 20ft area of earth into non difficult terrain. (Damage: 5d12+CHA earth | 10 tile range, 5x5 AoE. Prompts a Reflex saving throw, dealing full damage and inflicting prone on a failure, or half as much on a success. -40 Mana.)"
 				SpiritedTree
 					element="Nature"
 					name="Spirited Tree"
@@ -7283,7 +7426,7 @@ obj
 						attack_roll_dice_sides = 12
 						range=" 8 tile range."
 						mcost=10
-						desc="The tree releases an enchanted arrow, forged of its own branches from its structure - at a single target. (Damage: 2d12+WIS piercing | 8 tile range, Ranged attack roll, -10 Mana.)"
+						desc="The tree releases an enchanted arrow, forged of its own branches from its structure - at a single target. (Damage: 2d12+CHA piercing | 8 tile range, Ranged attack roll, -10 Mana.)"
 					BranchSpear
 						name="Branch Spear"
 						rank="C"
@@ -7293,7 +7436,7 @@ obj
 						attack_roll_dice_sides = 12
 						range=" 8 tile range."
 						mcost=25
-						desc="The tree fires off an enchanted spear, forged of its own branches - at a single target. (Damage: 3d12+WIS piercing | 8 tile range, ranged attack roll - inflicts bleed on successful hit. -25 Mana.)"
+						desc="The tree fires off an enchanted spear, forged of its own branches - at a single target. (Damage: 3d12+CHA piercing | 8 tile range, ranged attack roll - inflicts bleed on successful hit. -25 Mana.)"
 				InfuseElemental
 					name="Infuse Elemental"
 					rank="C"
@@ -7310,12 +7453,12 @@ obj
 					atype="heal"
 					heal=1
 					name="Lifestream Rain"
-					damsource="wis"
+					damsource="cha"
 					attack_roll_damage_dice = TRUE
 					attack_roll_dice_count = 3
 					attack_roll_dice_sides = 20
 					rank="C"
-					desc="The user calls out to the Lifestream, and draws it out in a font overhead. This Lifestream energy then rains down upon the area, healing all designated creatures within the radius for 3d20+WIS HP. In addition, this Lifestream energy has a reinvigorating power. Once per 24 hours, a Geomancer who knows this spell can use the 'Node Refresh' verb in order to reinvigorate any Gathering nodes within a 12 tile radius of their current position, out of combat. (-40 Mana)."
+					desc="The user calls out to the Lifestream, and draws it out in a font overhead. This Lifestream energy then rains down upon the area, healing all designated creatures within the radius for 3d20+CHA HP. In addition, this Lifestream energy has a reinvigorating power. Once per 24 hours, a Geomancer who knows this spell can use the 'Node Refresh' verb in order to reinvigorate any Gathering nodes within a 12 tile radius of their current position, out of combat. (-40 Mana)."
 					verb
 						Refresh()
 							alert(usr,"Are you sure you wish to use Lifestream Refresh? This can only be done once per 24 hour period.")
@@ -7364,7 +7507,7 @@ obj
 					savetype="Reflex"
 					basecheck=16
 					mcost=40
-					desc="The user harnesses the power of a sunny day to smite their foes. The user calls out to the power of the sun, concentrating its power into a beam of energy. Can only be used outside when the sun is shining. (Damage: 5d10+WIS fire | Generates a beam at a chosen tile within 8 tiles of the caster, the beam then moves in a 5 tile line from that tile. Prompts a Reflex saving throw from any creature it passes, dealing full damage and inflicting 'Burn' and 'Weakness' on a failure, or half as much on a success. -40 mana.)"
+					desc="The user harnesses the power of a sunny day to smite their foes. The user calls out to the power of the sun, concentrating its power into a beam of energy. Can only be used outside when the sun is shining. (Damage: 5d10+CHA fire | Generates a beam at a chosen tile within 8 tiles of the caster, the beam then moves in a 5 tile line from that tile. Prompts a Reflex saving throw from any creature it passes, dealing full damage and inflicting 'Burn' and 'Weakness' on a failure, or half as much on a success. -40 mana.)"
 				Quake
 					element="Earth"
 					rank="A"
@@ -7376,19 +7519,19 @@ obj
 					savetype="Fortitude"
 					atype="save"
 					mcost=65
-					desc="The user causes the earth to quake violently, anything in the area is throw around at the whims of the earth beneath them. This is considered the 'ultimate' Earth spell. (Damage: 7d10+WIS earth | 6x6 AoE within 20 tiles of the caster, prompts a fortitude saving throw - dealing full damage and inflicting prone on a failure, or half as much on a success. -65 mana.)"
+					desc="The user causes the earth to quake violently, anything in the area is throw around at the whims of the earth beneath them. This is considered the 'ultimate' Earth spell. (Damage: 7d10+CHA earth | 6x6 AoE within 20 tiles of the caster, prompts a fortitude saving throw - dealing full damage and inflicting prone on a failure, or half as much on a success. -65 mana.)"
 				Whirlpool
 					element="Water"
 					rank="A"
 					attack_roll_damage_dice = TRUE
 					attack_roll_dice_count = 4
 					attack_roll_dice_sides = 10
-					range=" 5x5 AoE on any water in view."
+					range="5x5 AoE on any water in view."
 					savetype="Athletics Check"
 					mcost=65
 					basecheck=14
 					atype="save"
-					desc="The user reaches out to an area of water stirring it into a powerful whirlpool. Those caught within the radius of the Whirlpool must prove their physical abilities, or be sucked to the watery depths and crushed under the raging tide. (Damage: 4d10+WIS water | 5x5 AoE on any water in view, prompts a DC (base 14) athletics check, disabling movement for 1 turn on a failure. Damage is always taken when starting one's turn within the whirlpool. -65 mana. -15 mana per turn to sustain.)"
+					desc="The user reaches out to an area of water stirring it into a powerful whirlpool. Those caught within the radius of the Whirlpool must prove their physical abilities, or be sucked to the watery depths and crushed under the raging tide. (Damage: 4d10+CHA water | 5x5 AoE on any water in view, prompts a DC (base 14) athletics check, disabling movement for 1 turn on a failure. Damage is always taken when starting one's turn within the whirlpool. -65 mana. -15 mana per turn to sustain.)"
 				MagmaSpout
 					element="Fire"
 					name="Magma Spout"
@@ -7406,7 +7549,113 @@ obj
 					atype="save"
 					savetype="Fortitude"
 					basecheck=15
-					desc="Can only be performed in a cave with no source of light for 60ft. The individual calls to the natural darkness of the area around them - then, they converge it into a single point creating a swirling vortex of energy that draws in everything around it, with crushing gravitational force. (Damage: 6d12+WIS dark damage. | Black hole takes up a 3x3 AoE, and prompts hostile creatures within 6 tiles of it to make a Fortitude saving throw (DC 15+WIS+Rankbonus) ; on a failure, the target is drawn 3 tiles towards the epicenter, and take Black Hole damage. If a target fails the saving throw in the epicenter of the Black Hole, they are inflicted with the 'Doom' status effect. Black Hole lasts for 5 turns. -100 mana.)"
+					desc="Can only be performed in a cave with no source of light for 60ft. The individual calls to the natural darkness of the area around them - then, they converge it into a single point creating a swirling vortex of energy that draws in everything around it, with crushing gravitational force. (Damage: 6d12+CHA dark damage. | Black hole takes up a 3x3 AoE, and prompts hostile creatures within 6 tiles of it to make a Fortitude saving throw (DC 15+WIS+Rankbonus) ; on a failure, the target is drawn 3 tiles towards the epicenter, and take Black Hole damage. If a target fails the saving throw in the epicenter of the Black Hole, they are inflicted with the 'Doom' status effect. Black Hole lasts for 5 turns. -100 mana.)"
+
+
+			ChemistAbilities
+				jobneed="Chemist"
+				icon='Icons/Perk/Chemist.png'
+				ability=1
+				typing="physical"
+				costtype="Stamina"
+				basecheck=10
+				damsource="con"
+				MutliChemical
+					rank="C"
+					name="Multi Chemical"
+					desc="As a free action, after utilizing a Chemist item, the Chemist may then utilize a secondary Chemist item, at the cost of 20 SP."
+				ElementalReagent
+					rank="C"
+					name="Elemental Reagent"
+					desc="As a reaction to an elemental ability being cast, the Chemist may toss a Potion, or Potion variant into the Elemental attack. The Potion is infused into it, and the damage of the Elemental attack is reduced by the amount the Potion would heal. This costs 20 SP."
+				Transmutation
+					pre="Alchemist"
+					rank="B"
+					adddam=15
+					TransmuteSoil
+						name="Transmute Soil"
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 4
+						attack_roll_dice_sides = 12
+						range=" 5x5 AoE at a tile in view."
+						mcost=50
+						atype="save"
+						savetype="Fortitude"
+						basecheck=14
+						desc="By transmuting one's life essence into the ground, they manipulate the various chemical compounds in the Earth, and shift the molecular composition into that of spikes ; dealing earth damage, and inflicting bleed on a failed save, or half damage and no bleed on a success. This ability does not target allies."
+					TransmuteAir
+						name="Transmute Air"
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 4
+						attack_roll_dice_sides = 12
+						range=" 5x5 AoE at a tile in view."
+						mcost=50
+						atype="save"
+						savetype="Fortitude"
+						basecheck=14
+						desc="By transmuting one's life essence into the air, they manipulate the Oxygen in the air to create a tornado at a target location;  wind dealing damage, and inflicting Squall on a failed save, or half damage and no Squall on a success. This ability does not target allies."
+					TransmuteFlames
+						name="Transmute Flames"
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 4
+						attack_roll_dice_sides = 12
+						range=" 5x5 AoE at a tile in view."
+						mcost=50
+						atype="save"
+						savetype="Fortitude"
+						basecheck=14
+						desc="By transmuting one's life essence into the air, they manipulate the gaseous compounds in the air, and ignite it into a roaring fireball; dealing  fire damage, and inflicting Burn on a failed save, or half damage and no Burn on a success. This ability does not target allies."
+					TransmuteWater
+						name="Transmute Water"
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 4
+						attack_roll_dice_sides = 12
+						range=" 5x5 AoE at a tile in view."
+						mcost=50
+						atype="save"
+						savetype="Fortitude"
+						basecheck=14
+						desc="By transmuting one's life essence into the air, they manipulate the H20 in the air to create a water whorl at a target location; dealing damage, and inflicting Whorl on a failed save, or half damage and no Whorl on a success. This ability does not target allies."
+					TransmuteIce
+						name="Transmute Ice"
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 4
+						attack_roll_dice_sides = 12
+						range=" 5x5 AoE at a tile in view."
+						mcost=50
+						atype="save"
+						savetype="Fortitude"
+						basecheck=14
+						desc="By transmuting one's life essence into the air, they manipulate the H20 in the air to create transform the moisture into orbs of Ice; dealing damage, and inflicting Frostbite on a failed save, or half damage and no Frostbite on a success. This ability does not target allies."
+					TransmuteFlesh
+						name="Transmute Flesh"
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 50
+						attack_roll_dice_sides = 1
+						range=" 5x5 AoE at a tile in view."
+						mcost=50
+						atype="heal"
+						savetype="Fortitude"
+						basecheck=14
+						desc="By transmuting one's life essence into a target's flesh, they may manipulate their bio-mass in order to restore 50+CHA HP, and apply the Regenerate status effect to any creature within range."
+					TransmuteSteel
+						name="Transmute Steel"
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 4
+						attack_roll_dice_sides = 12
+						range=" 5x5 AoE at a tile in view."
+						mcost=50
+						atype="save"
+						savetype="Fortitude"
+						basecheck=14
+						desc="By transmuting one's life essence into the Earth, they manipulate the metallic alloys in the ground to create skewering steel beams; dealing physical damage, and inflicting a 10 tile Knockback in a direction of the caster's choice on a failed save, or half damage and no knockback on a success. This ability does not target allies."
+					TransmuteEnergy
+						name="Transmute Energy"
+						desc="By transmuting one's life essence into a creature's soul, reinvigorating them - and granting them 50 MP and SP in exchange for 50 SP from the caster."
+					TransmuteSoul
+						name="Transmute Soul"
+						desc="By transmuting one's life essence into a downed creautre, they are able to bring them back from being unconscious, at 50% HP. The Chemist is reduced to 10 HP upon doing so, as they sacrifice an immense amount of their own vitality to do so."
+
 
 			PirateAbilities
 				jobneed="Pirate"
@@ -8432,6 +8681,8 @@ obj
 					name="Choco Kick"
 					desc="A simple Chocobo kick."
 					damsource="str"
+					atype="standard"
+					typing="physical"
 					attack_roll_damage_dice = FALSE
 					attack_roll_damage_lower=10
 					attack_roll_damage_upper=25
@@ -8461,6 +8712,7 @@ obj
 					attack_roll_damage_lower=25
 					attack_roll_damage_upper=35
 					atype="standard"
+					typing="physical"
 					addhit=3
 					adddam=5
 					desc="A Wyvern's basic attack action."

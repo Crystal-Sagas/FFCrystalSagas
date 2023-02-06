@@ -902,7 +902,16 @@ obj
 				range1weapon=1
 				range2weapon=2
 				a.damsource="str"
-				a.desc="A Longsword, broadly considered the most standard type of weapon. Due to its design, a Longsword wielder can choose when making an attack, to make a 'two handed' attack, if they have nothing in their other hand. Upon doing so, the attack deals 5 additional damage per metal tier. Using the Longsword in this way costs 20 SP."
+				a.desc="Longswords are considered a rather versatile weapon due to it's balanced design. And can be used Offensively or Defensively.  A longsword user is capable of switching between offensive, defensive or neutral modes. In Offensive, they sacrifice AC for PAB and MAB, in Defensive they sacrifice PAB and MAB for AC.  Neutral cancels out either mode. Offense and Defense mode trades are capped at Metal Tier."
+			if(a.weapontype=="Scimitar")
+				a.equiptype="1h"
+				range1weapon=1
+				range2weapon=2
+				a.damagescales=0
+				a.scaling=0
+				a.damsource="str"
+				a.addhit=4
+				a.desc="A long, curved blade. Scimitars specialize in taking advantage of their unique shape to catch opponents off guard. Scimitar have a latent +4 to hit bonus, and if utilized alongside Sneak Attack, deal 15 unreducable true damage in addition to the attack's damage."
 			if(a.weapontype=="Hammer")
 				a.equiptype="1h"
 				range1weapon=1
@@ -921,9 +930,9 @@ obj
 				a.equiptype="1h"
 				a.addhit=1
 				range1weapon=1
-				range2weapon=0.5
+				range2weapon=1
 				a.damsource="dex"
-				a.desc="A dagger, which has a knack for critically hitting, and has a latent +1 to hit bonus. On a critical hit, a Dagger ignores ALL damage reduction, and inflicts Weakness, but for 1 turn rather than its standard duration."
+				a.desc="A dagger, which has a knack for critically hitting; rolling crits at 17 or higher, and has a latent +1 to hit bonus. On a critical hit, a Dagger ignores ALL damage reduction, and inflicts Weakness, but for 1 turn rather than its standard duration."
 				a.critrange=17
 			if(a.weapontype=="Gauntlet")
 				a.equiptype="2h"
@@ -944,9 +953,8 @@ obj
 			if(a.weapontype=="Whip")
 				a.equiptype="1h"
 				range1weapon=1
-				range2weapon=1
-				a.addhit=2
 				range2weapon=2
+				a.addhit=2
 				a.damsource="dex"
 				a.desc="A Whip, which is extremely accurate but does little damage. Whips have a latent +2 to hit, and if an opponent's DEX score is lower than the wielder's, Whip attacks gain +3 to hit."
 			if(a.weapontype=="Greatsword")
@@ -1023,15 +1031,6 @@ obj
 				a.scaling=2.5
 				a.damsource="dex"
 				a.desc="Two large long-swords with rather long handles which connect at the base of the pommel to create a bo-staff like weapon, effectively allowing for dual wielding or a single long and large area-covering melee weapon. Using the weapon like this does not require dual wielding, and also allows you to perform an additional attack as a bonus action. Combined Form: Standard attacks are made as 3x3 AoEs. Dual Form: Perform an additional attack as a bonus action."
-			if(a.weapontype=="Scimitar")
-				a.equiptype="1h"
-				range1weapon=1
-				range2weapon=2
-				a.damagescales=1
-				a.scaling=2
-				a.damsource="str"
-				a.addhit=4
-				a.desc="A long, curved blade. Scimitars specialize in taking advantage of their unique shape to catch opponents off guard. Scimitar have a latent +4 to hit bonus, and if utilized alongside Sneak Attack, deal 15 unreducable true damage in addition to the attack's damage."
 			if(a.weapontype=="Bolt Rapier")
 				a.equiptype="1h"
 				range1weapon=1
@@ -1044,8 +1043,8 @@ obj
 				a.desc="Basically a Rapier whose blade functions as a drill with an electrical current. Scales with Longsword, deals Thunder damage, and procs the Wet reaction for its attack rolls when applicable."
 			if(a.weapontype=="Whip Blade")
 				a.equiptype="1h"
-				range1weapon=2
-				range2weapon=0.5
+				range1weapon=1
+				range2weapon=1
 				a.addhit=0
 				a.damagescales=1
 				a.scaling=1

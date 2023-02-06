@@ -1596,6 +1596,8 @@
 		var/obj/perk/Abilities/GreenMagic/Protects/Protect/c=new
 		var/obj/perk/Abilities/GreenMagic/Shells/Shell/d=new
 		var/obj/perk/Abilities/BlackMagic/Flame/Firaja/e=new
+		var/obj/perk/Abilities/ArcaneMagic/Drains/Drainga/f=new
+		var/obj/perk/Abilities/ArcaneMagic/Osmoses/Osmosega/g=new
 		var/obj/perk/ElementalPerks/Earth/element=new
 		var/obj/perk/MonsterPassives/Ascended/trait=new
 		var/obj/perk/MonsterPassives/Horror/trait2=new
@@ -1612,6 +1614,8 @@
 		enemy.contents+=c
 		enemy.contents+=d
 		enemy.contents+=e
+		enemy.contents+=f
+		enemy.contents+=g
 	if(enemy.name=="Tonberry King")
 		var/obj/perk/Abilities/ArcaneMagic/Darkness/Darkja/a=new
 		var/obj/perk/Abilities/WhiteMagic/Healing/Curada/b=new

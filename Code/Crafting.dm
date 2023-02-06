@@ -1930,9 +1930,9 @@ obj
 					mat1="Dark Gem"
 					mat2="San d'Orian Carrots"
 					mat3="Gigantoad Slime"
-					amount1=5
+					amount1=2
 					amount2=3
-					amount3=2
+					amount3=5
 					New()
 						var/obj/item/Chemist/FrogPoison/a=new
 						src.creates=a
@@ -1940,8 +1940,8 @@ obj
 				BerserkPoison
 					mat1="Fire Gem"
 					mat2="Vomp Carrots"
-					amount1=5
-					amount2=2
+					amount1=2
+					amount2=5
 					New()
 						var/obj/item/Chemist/BerserkPoison/a=new
 						src.creates=a
@@ -1971,10 +1971,10 @@ obj
 					mat2="Vomp Carrots"
 					mat3="Aether Powder"
 					mat4="Flying Eye's Eye"
-					amount1=5
+					amount1=1
 					amount2=3
 					amount3=2
-					amount4=1
+					amount4=5
 					New()
 						var/obj/item/Chemist/Eyedrops/a=new
 						src.creates=a
@@ -1983,9 +1983,9 @@ obj
 					mat1="White Gem"
 					mat2="Vomp Carrots"
 					mat3="Ether Powder"
-					amount1=5
+					amount1=2
 					amount2=3
-					amount3=2
+					amount3=5
 					New()
 						var/obj/item/Chemist/HiPotion/a=new
 						src.creates=a
@@ -4276,6 +4276,7 @@ obj/item/verb
 				if("Status")
 					if(src.enchanted==1)
 						alert(usr,"This item already has a basic Enhantment applied.")
+						return
 					if(src.armor==1 || src.jewelery==1)
 						src.entype="armor"
 					else
@@ -4383,10 +4384,10 @@ obj/item/verb
 										return
 							if("Angelic")
 								var/list/yesno = list("Yes","No")
-								var/yesnochoice = input("Angelic Effect: This weapon restores 10 HP to its wielder and allies within 5 tiles on a succesful hit. Deals 2x damage to Undead. The healing pulse only procs once per round.") as anything in yesno
+								var/yesnochoice = input("Angelic Effect: This weapon restores 20 HP to its wielder and allies within 5 tiles on a succesful hit. Deals 2x damage to Undead. The healing pulse only procs once per round.") as anything in yesno
 								switch(yesnochoice)
 									if("Yes")
-										var/addenchant=" This weapon restores 10 HP to its wielder and allies within 5 tiles on a succesful hit. Deals 2x damage to Undead. The healing pulse only procs once per round."
+										var/addenchant=" This weapon restores 20 HP to its wielder and allies within 5 tiles on a succesful hit. Deals 2x damage to Undead. The healing pulse only procs once per round."
 										var/obj/item/dgem = usr.Determinecraftmat("White Gem")
 										if(dgem==null)
 											alert(usr,"You don't seem to have any White Gems (15 needed).")

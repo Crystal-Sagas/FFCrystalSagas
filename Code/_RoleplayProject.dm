@@ -303,6 +303,15 @@ mob
 				alert("You do not have a save file.")
 				return
 		Save()
+			//? DO NOT REMOVE THIS CHECK UNDER ANY CIRCUMSTANCES.
+			//  Explanation:
+			//  If someone's in lobby and this triggers, due to the horrific
+			//  lack of abstraction between player mobs and new players and
+			//  the saving system, it will overwrite their save with their
+			//  uninitialized mob.
+			if(intitlescreen)
+				return
+			//? END
 			if(key)
 				if(!src.loc)
 					return
@@ -685,7 +694,7 @@ proc
 				m.mp+=20
 				m.mmp+=20
 		usr.ChangeBase()
-		var/list/jobs = list("Mystic Knight","Pirate","Gladiator","Astrologian","Scholar","Viking","Bard","Dancer","Black Mage","White Mage","Red Mage","Blue Mage","Ranger","Monk","Beast Master","Samurai","Spellblade","Rogue","Paladin","Knight","Dark Knight","Dragoon","Machinist","Summoner","Chemist","Geomancer")
+		var/list/jobs = list("Mystic Knight","Chocobo Knight","Pirate","Gladiator","Astrologian","Scholar","Viking","Bard","Dancer","Black Mage","White Mage","Red Mage","Blue Mage","Ranger","Monk","Beast Master","Samurai","Spellblade","Rogue","Paladin","Knight","Dark Knight","Dragoon","Machinist","Summoner","Chemist","Geomancer")
 		if(Timemage.Find(m.key))
 			jobs+="Time Mage"
 		if(Oracle.Find(m.key))
@@ -698,6 +707,40 @@ proc
 		else
 			var/jobchoice = input(m,"What job kupo?") as anything in jobs
 			switch(jobchoice)
+				if("Chocobo Knight")
+					m.job="Chocobo Knight"
+					var/obj/perk/Jobperks/ChocoboKnight/ChocoboKnight/p1=new
+					var/obj/npc/Summons/CRank/ChocoSteed/p2=new
+					m.contents+=p1
+					m.contents+=p2
+					m.mhp+=80
+					m.msp+=70
+					m.mmp+=40
+					m.hp+=80
+					m.sp+=70
+					m.mp+=40
+					m.reflexproficient=1
+					m.fortitudeproficient=1
+					m.reflexexpert=0
+					m.willexpert=0
+					m.fortitudeexpert=0
+					m.acrobaticsproficient=1
+					m.athleticsproficient=1
+					m.archaeologyproficient=0
+					m.deceptionproficient=1
+					m.dungeoneeringproficient=1
+					m.enchantmentproficient=0
+					m.insightproficient=0
+					m.investigationproficient=0
+					m.magitekoperationproficient=0
+					m.medicineproficient=0
+					m.magicproficient=1
+					m.naturalistproficient=0
+					m.perceptionproficient=0
+					m.persuasionproficient=1
+					m.stealthproficient=1
+					m.survivalproficient=1
+					m.thieveryproficient=1
 				if("Pirate")
 					m.job="Pirate"
 					var/obj/perk/Jobperks/Pirate/Pirate/p1=new
@@ -2056,13 +2099,21 @@ proc
 						m.contents+=i
 			else if(m.wpntypeamount>=3)
 				loop=0
-		switch(alert(m,"Kupo...there are currently two major hubs in the world. Insomnia and Midgar. Which one do you wish to start in?",,"Insomnia","Midgar"))
+		var/list/startingtown=list("Insomnia","Midgar","Tycoon","Garden")
+		var/chosen=input(m,"Where would you like to originate from?") as anything in startingtown
+		switch(chosen)
 			if("Insomnia")
 				alert(m,"Almost done, kupo. There is nothing more I can help you with here, but make sure to spend your starting AP on raising your ability scores, and talk to my friends to learn more about the game. Enjoy, kupo.")
 				m.loc = locate(200, 186, 1)
 			if("Midgar")
 				alert(m,"Almost done, kupo. There is nothing more I can help you with here, but make sure to spend your starting AP on raising your ability scores, and talk to my friends to learn more about the game. Enjoy, kupo.")
 				m.loc = locate(125, 297, 17)
+			if("Tycoon")
+				alert(m,"Almost done, kupo. There is nothing more I can help you with here, but make sure to spend your starting AP on raising your ability scores, and talk to my friends to learn more about the game. Enjoy, kupo.")
+				m.loc = locate(97, 238, 10)
+			if("Garden")
+				alert(m,"Almost done, kupo. There is nothing more I can help you with here, but make sure to spend your starting AP on raising your ability scores, and talk to my friends to learn more about the game. Enjoy, kupo.")
+				m.loc = locate(98, 354, 18)
 	Bluemageint(var/mob/m)
 		alert("As a blue mage you get a choice of up to three blue mages abilities from the start.")
 		var/list/choices=list("Photosynthetic Wave","Seed","Geezard Claw","Goblin Strike","Poison Powder","Silver Fang","Mu Claw","Gelantinous Lake","Water Gun","Mesma Blade")
@@ -2158,7 +2209,7 @@ proc
 								if("No")
 									goto redostuff
 	Subjobint(var/mob/m)
-		var/list/jobs = list("Mystic Knight","Pirate","Gladiator","Astrologian","Viking","Bard","Dancer","Black Mage","White Mage","Red Mage","Blue Mage","Ranger","Monk","Beast Master","Samurai","Spellblade","Rogue","Paladin","Knight","Dark Knight","Dragoon","Machinist","Summoner","Chemist","Geomancer")
+		var/list/jobs = list("Mystic Knight","Chocobo Knight","Pirate","Gladiator","Astrologian","Viking","Bard","Dancer","Black Mage","White Mage","Red Mage","Blue Mage","Ranger","Monk","Beast Master","Samurai","Spellblade","Rogue","Paladin","Knight","Dark Knight","Dragoon","Machinist","Summoner","Chemist","Geomancer")
 		if(Oracle.Find(m.key))
 			jobs+="Oracle"
 		if(Timemage.Find(m.key))
@@ -2197,6 +2248,12 @@ proc
 			jobs-="Gladiator"
 		var/jobchoice = input(m,"What job kupo?") as anything in jobs
 		switch(jobchoice)
+			if("Chocobo Knight")
+				m.subjob="Chocobo Knight"
+				var/obj/perk/Jobperks/ChocoboKnight/ChocoboKnight/p1=new
+				var/obj/npc/Summons/CRank/ChocoSteed/p2=new
+				m.contents+=p1
+				m.contents+=p2
 			if("Pirate")
 				m.subjob="Pirate"
 				var/obj/perk/Jobperks/Pirate/Pirate/p1=new

@@ -96,9 +96,13 @@ obj/playershops
 							usr << output(A.suffix,"playershop.item")
 					if("Add Item")
 						for(var/obj/item/i in usr.contents)
-							itemlist+=i
+							if(i.equipped!=1)// This should make it so that equipped items do not show up on the list.
+								itemlist+=i
 						var/obj/item/choice=input("Choose an item for sale.") as null | anything in itemlist
 						if(choice==null)
+							return
+						if(choice.equipped==1)// An additional sanity check, in case any equipped items get past the prior filter, to make it so you can't put them on shops.
+							alert(usr,"You cannot sell equipped items!")
 							return
 						choice.cusprice=input("What price/unit do you wish to set?") as num
 						if(choice.amount>0)
