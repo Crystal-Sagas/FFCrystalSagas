@@ -1736,6 +1736,9 @@ obj
 				icon_state="33"
 			Grave22T
 				icon_state="34"
+		GreatDoor
+			icon='Map Icons/Tombdoor.dmi'
+			layer=5
 		Indoordec
 			icon='Map Icons/Indoordec.dmi'
 			Swordrackbot
@@ -2162,6 +2165,19 @@ obj
 			Curtains
 				icon='Icons/Curtains2.png'
 				layer=7
+		LucianKingStatues
+			icon='Map Icons/Kingstatues.dmi'
+			layer=5
+			Xezat
+				icon_state="xezat"
+			Faris
+				icon_state="faris"
+			Slydra
+				icon_state="slydra"
+			Galuf
+				icon_state="galuf"
+			Kelgar
+				icon_state="kelgar"
 		Outdoordecs
 			icon='Map Icons/Outdoordec.dmi'
 			Knightstatuetop
