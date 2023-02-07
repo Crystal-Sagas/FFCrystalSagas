@@ -739,11 +739,43 @@ mob
 			winset(usr,"Charsheet.addint","is-visible=true")
 			winset(usr,"Charsheet.addwis","is-visible=true")
 			winset(usr,"Charsheet.addcha","is-visible=true")
+
+
+			if(usr.str>usr.strcap)
+				usr.abilitypoints+=(usr.str-usr.strcap)
+				usr.str=usr.strcap
+				usr.Checkmod(1,usr.str,usr.addstr,usr)
+			if(usr.dex>usr.dexcap)
+				usr.abilitypoints+=(usr.dex-usr.dexcap)
+				usr.dex=usr.dexcap
+				usr.Checkmod(2,usr.dex,usr.adddex,usr)
+			if(usr.con>usr.concap)
+				usr.abilitypoints+=(usr.con-usr.concap)
+				usr.con=usr.concap
+				usr.Checkmod(3,usr.con,usr.addcon,usr)
+			if(usr.int>usr.intcap)
+				usr.abilitypoints+=(usr.int-usr.intcap)
+				usr.int=usr.intcap
+				usr.Checkmod(4,usr.int,usr.addint,usr)
+			if(usr.wis>usr.wiscap)
+				usr.abilitypoints+=(usr.wis-usr.wiscap)
+				usr.wis=usr.wiscap
+				usr.Checkmod(5,usr.wis,usr.addwis,usr)
+			if(usr.cha>usr.chacap)
+				usr.abilitypoints+=(usr.cha-usr.chacap)
+				usr.cha=usr.chacap
+				usr.Checkmod(6,usr.cha,usr.addcha,usr)
+			RefreshCharsheet(usr)
+
+
 		Addstrc()
 			if(usr.intitlescreen)
 				return
 			if(usr.abilitypoints>0)
 				if(usr.intutorial&&usr.str==16)
+					alert("You cannot increase your stat any higher right now.")
+					return
+				if(usr.str>=usr.strcap)
 					alert("You cannot increase your stat any higher right now.")
 					return
 				else
@@ -760,6 +792,9 @@ mob
 				if(usr.intutorial&&usr.dex==16)
 					alert("You cannot increase your stat any higher right now.")
 					return
+				if(usr.dex>=usr.dexcap)
+					alert("You cannot increase your stat any higher right now.")
+					return
 				else
 					usr.dex++
 					usr.abilitypoints--
@@ -772,6 +807,9 @@ mob
 				return
 			if(usr.abilitypoints>0)
 				if(usr.intutorial&&usr.con==16)
+					alert("You cannot increase your stat any higher right now.")
+					return
+				if(usr.con>=usr.concap)
 					alert("You cannot increase your stat any higher right now.")
 					return
 				else
@@ -788,6 +826,9 @@ mob
 				if(usr.intutorial&&usr.int==16)
 					alert("You cannot increase your stat any higher right now.")
 					return
+				if(usr.int>=usr.intcap)
+					alert("You cannot increase your stat any higher right now.")
+					return
 				else
 					usr.int++
 					usr.abilitypoints--
@@ -802,6 +843,9 @@ mob
 				if(usr.intutorial&&usr.wis==16)
 					alert("You cannot increase your stat any higher right now.")
 					return
+				if(usr.wis>=usr.wiscap)
+					alert("You cannot increase your stat any higher right now.")
+					return
 				else
 					usr.wis++
 					usr.abilitypoints--
@@ -814,6 +858,9 @@ mob
 				return
 			if(usr.abilitypoints>0)
 				if(usr.intutorial&&usr.cha==16)
+					alert("You cannot increase your stat any higher right now.")
+					return
+				if(usr.cha>=usr.chacap)
 					alert("You cannot increase your stat any higher right now.")
 					return
 				else

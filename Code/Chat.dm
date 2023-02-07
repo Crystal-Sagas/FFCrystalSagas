@@ -276,6 +276,7 @@ var/list/naughtywords = list("sex","penis","pussy","cock","ass","dick","breast",
 			m.sp+=40
 			m.mmp+=40
 			m.mp+=40
+			m.APcap=14
 	if(m.trpp>=80&&m.trpp<100)
 		if(m.rank=="Adept")
 			return
@@ -290,6 +291,7 @@ var/list/naughtywords = list("sex","penis","pussy","cock","ass","dick","breast",
 			m.sp+=30
 			m.mmp+=30
 			m.mp+=30
+			m.APcap=18
 	if(m.trpp>=150&&m.trpp<200)
 		if(m.rank=="Hero")
 			return
@@ -305,6 +307,13 @@ var/list/naughtywords = list("sex","penis","pussy","cock","ass","dick","breast",
 			m.sp+=35
 			m.mmp+=35
 			m.mp+=35
+			m.APcap=26
+			m.strcap=24
+			m.dexcap=24
+			m.concap=24
+			m.intcap=24
+			m.wiscap=24
+			m.chacap=24
 	if(m.trpp>=200)
 		if(m.rank=="Master")
 			return
@@ -318,3 +327,10 @@ var/list/naughtywords = list("sex","penis","pussy","cock","ass","dick","breast",
 			m.sp+=45
 			m.mmp+=45
 			m.mp+=45
+			m.APcap=30
+			m.strcap=26
+			m.dexcap=26
+			m.concap=26
+			m.intcap=26
+			m.wiscap=26
+			m.chacap=26

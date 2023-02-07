@@ -660,35 +660,41 @@ obj
 					name="Ability Score Improvement T1"
 					desc="+2 to ability score pool."
 					rank="T1"
+					cat="Unique"
 					rpcost=1
 				ASI2
 					name="Ability Score Improvement T2"
 					desc="+2 to ability score pool."
 					rank="T2"
+					cat="Unique"
 					rpcost=2
 					pre="Ability Score Improvement T1"
 				ASI3
 					name="Ability Score Improvement T3"
 					desc="+2 to ability score pool."
 					rank="T3"
+					cat="Unique"
 					rpcost=3
 					pre="Ability Score Improvement T2"
 				ASI4
 					name="Ability Score Improvement T4"
 					desc="+2 to ability score pool."
 					rank="T4"
+					cat="Unique"
 					rpcost=4
 					pre="Ability Score Improvement T3"
 				ASI5
 					name="Ability Score Improvement T5"
 					desc="+2 to ability score pool."
 					rank="T5"
+					cat="Unique"
 					rpcost=5
 					pre="Ability Score Improvement T4"
 				ASI6
 					name="Ability Score Improvement T6"
 					desc="+2 to ability score pool."
 					rank="T6"
+					cat="Unique"
 					rpcost=6
 					pre="Ability Score Improvement T5"
 			Strong

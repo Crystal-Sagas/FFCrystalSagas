@@ -379,6 +379,13 @@ mob
 				choice.sp+=30
 				choice.mmp+=30
 				choice.mp+=30
+				choice.APcap=22
+				choice.strcap=22
+				choice.dexcap=22
+				choice.concap=22
+				choice.intcap=22
+				choice.wiscap=22
+				choice.chacap=22
 				Updaterank(choice)
 			ManageAdmins()
 				if(usr.adminlv < 4)

@@ -257,6 +257,7 @@ mob
 							usr.sp+=40
 							usr.mmp+=40
 							usr.mp+=40
+							usr.APcap=14
 						if(usr.rank=="Adept")
 							usr.mhp+=70
 							usr.hp+=70
@@ -264,6 +265,7 @@ mob
 							usr.sp+=70
 							usr.mmp+=70
 							usr.mp+=70
+							usr.APcap=18
 						if(usr.rank=="Veteran")
 							usr.mhp+=100
 							usr.hp+=100
@@ -271,6 +273,13 @@ mob
 							usr.sp+=100
 							usr.mmp+=100
 							usr.mp+=100
+							usr.APcap=22
+							usr.strcap=22
+							usr.dexcap=22
+							usr.concap=22
+							usr.intcap=22
+							usr.wiscap=22
+							usr.chacap=22
 						if(usr.rank=="Hero")
 							usr.mhp+=135
 							usr.hp+=135
@@ -278,6 +287,13 @@ mob
 							usr.sp+=135
 							usr.mmp+=135
 							usr.mp+=135
+							usr.APcap=26
+							usr.strcap=24
+							usr.dexcap=24
+							usr.concap=24
+							usr.intcap=24
+							usr.wiscap=24
+							usr.chacap=24
 						if(usr.rank=="Master")
 							usr.mhp+=180
 							usr.hp+=180
@@ -285,6 +301,13 @@ mob
 							usr.sp+=180
 							usr.mmp+=180
 							usr.mp+=180
+							usr.APcap=30
+							usr.strcap=26
+							usr.dexcap=26
+							usr.concap=26
+							usr.intcap=26
+							usr.wiscap=26
+							usr.chacap=26
 						usr.rankchecked=1
 						alert(usr,"You have been granted your HP, MP, and SP bonus for your current rank.")
 				if(usr.patron)
