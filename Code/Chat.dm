@@ -290,7 +290,7 @@ var/list/naughtywords = list("sex","penis","pussy","cock","ass","dick","breast",
 			m.sp+=30
 			m.mmp+=30
 			m.mp+=30
-	if(m.trpp>=140&&m.trpp<200)
+	if(m.trpp>=150&&m.trpp<200)
 		if(m.rank=="Hero")
 			return
 		else
