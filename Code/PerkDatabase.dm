@@ -1930,7 +1930,7 @@ obj
 				Dancer
 					name="Dancer"
 					cat="Unique"
-					desc="The Dancer is able to switch between the 'Waltz' and the 'Tango' stance in order to change the bonus that they gain whilst sustaining a dance. When in 'Waltz' stance, they gain +1 AC. When in Tango stance, they gain +1 PAB. It takes one full turn to change stances, and you may select one stance on your first turn of a battle, as a free action. +20 HP, +80 MP, +20 SP."
+					desc="The Dancer is able to switch between the 'Waltz' and the 'Tango' stance in order to change the bonus that they gain whilst sustaining a dance. When in 'Waltz' stance, they gain +1 AC. When in Tango stance, they gain +1 PAB. It takes one full turn to change stances, and you may select one stance on your first turn of a battle, as a free action. All Dances count as a Bonus Action to activate and a Free Action to sustain, unless otherwise stated. +20 HP, +80 MP, +20 SP."
 				EvasiveSteps
 					rank="T1"
 					name="Evasive Steps"
