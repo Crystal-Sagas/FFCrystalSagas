@@ -155,8 +155,6 @@ var/list/naughtywords = list("sex","penis","pussy","cock","ass","dick","breast",
 	var/currenttime = time2text(world.realtime,"Day")
 	if(m.rppcheckdate==currenttime&&m.rppchecks==3)
 		return
-	if(m.rank=="Adept" && m.trpp>=100)
-		return
 	if(m.rppcheckdate!=currenttime)
 		m.rppcheckdate=currenttime
 		m.rppchecks=0
@@ -168,7 +166,14 @@ var/list/naughtywords = list("sex","penis","pussy","cock","ass","dick","breast",
 			m.emoteamount=0*/
 
 	//Every RPP bracket should total up to 6000 to hit their daily cap.
-	if(m.emoteamount>=6000 && m.rppchecks<1 && m.trpp>=100 && m.rank!="Adept")
+	if(m.emoteamount>=9000 && m.rppchecks<1 && m.trpp>=150 && m.trpp<200)
+		m.rpp+=1
+		m.trpp+=1
+		m.rppchecks+=1
+		m.emoteamount-=9000
+		m << output("You have reached an RPP milestone for the day. You have gained 1 RPP for a total of [m.rppchecks].","oocout")
+		Updaterank(m)
+	if(m.emoteamount>=6000 && m.rppchecks<1 && m.trpp>=100 && m.trpp<150)
 		m.rpp+=1
 		m.trpp+=1
 		m.rppchecks+=1
@@ -189,7 +194,7 @@ var/list/naughtywords = list("sex","penis","pussy","cock","ass","dick","breast",
 		m.emoteamount-=2000
 		m << output("You have reached an RPP milestone for the day. You have gained 1 RPP for a total of [m.rppchecks].","oocout")
 		Updaterank(m)
-	else if(m.emoteamount>=1200 && m.rppchecks<5 && m.trpp<catchuprate)
+	else if(m.emoteamount>=1200 && m.rppchecks<5 && m.trpp<50)
 		m.rpp+=1
 		m.trpp+=1
 		m.rppchecks+=1
