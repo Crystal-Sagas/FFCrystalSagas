@@ -5987,15 +5987,15 @@ obj
 				DrainSamba
 					name="Drain Samba"
 					rank="D"
-					desc="When the target of this dance is attacked, the attacker drains 20 HP from the target. Cannot exceed damage done by the ability or attack."
+					desc="When the target of this dance is attacked, the attacker drains 20 HP from the target. Cannot exceed damage done by the ability or attack. Drains 5 SP per turn active."
 				AspirSamba
 					name="Aspir Samba"
 					rank="D"
-					desc="When the target of this dance is attacked, the attacker drains 15 MP from the target. Cannot exceed damage done by the ability or attack."
+					desc="When the target of this dance is attacked, the attacker drains 15 MP from the target. Cannot exceed damage done by the ability or attack. Drains 5 SP per turn active."
 				SpectralJig
 					name="Spectral Jig"
 					rank="C"
-					desc="While dancing, as a reaction the dancer may halve all damage done until the start of the their next turn, using this ability ends their current dance instantly."
+					desc="While dancing, as a reaction the dancer may halve all damage done until the start of the their next turn, using this ability ends their current dance instantly. Drains 20 SP."
 				CelestialSashay
 					name="Celestial Sashay"
 					rank="C"
@@ -6003,27 +6003,27 @@ obj
 				BallroomBlitz
 					name="Ballroom Blitz"
 					rank="C"
-					desc="When the target of this dance is attacked, the attacker gains an effective +5 to their rolled attack roll, and is deal an additional 10 true damage."
+					desc="When the target of this dance is attacked, the attacker gains an effective +5 to their rolled attack roll, and is deal an additional 10 true damage. Drains 15 SP per turn active."
 				MartyrMacarena
 					name="Martyr's Macarena"
 					rank="C"
-					desc="While this dance is being performed, all allies take 15 less damage from attacks. However, when an ally would take damage from an attack, the dancer then takes 15 true damage."
+					desc="While this dance is being performed, all allies take 15 less damage from attacks. However, when an ally would take damage from an attack, the dancer then takes 15 true damage. Drains 15 SP per turn active."
 				ShieldSamba
 					name="Shield Samba"
 					rank="B"
-					desc="While dancing, as a bonus action, the Dancer may add the Shield Samba into the movements of their current dance. Until the start of their next turn allies within view gain 5 DR. This does not interrupt the current dance. This costs 50 MP."
+					desc="While dancing, as a bonus action, the Dancer may add the Shield Samba into the movements of their current dance. Until the start of their next turn allies within view gain 5 DR. This does not interrupt the current dance. This costs 20 MP."
 				HeathenFrolic
 					name="Heathen Frolic"
 					rank="B"
-					desc="While this dance is active the target has disadvantage on Magical attack rolls, Black Magic attack rolls, White Magic attack rolls, General Magic attack rolls, and Arcane Magic attack rolls. In addition, the Dancer gains advantage on saving throws against spells of those types - and has resistance to damage from spells of those types."
+					desc="While this dance is active the target has disadvantage on Magical attack rolls, Black Magic attack rolls, White Magic attack rolls, General Magic attack rolls, and Arcane Magic attack rolls. In addition, the Dancer gains advantage on saving throws against spells of those types - and has resistance to damage from spells of those types. Drains 15 SP per turn active."
 				FeatherStep
 					name="Feather Step"
 					rank="A"
-					desc="As a bonus action, while dancing, mix in a step as light as a feather into your dance. Make a melee attack roll. On a succesful attack the target is rendered vulnerable. Until the start of the dancer's next turn all attacks made against this target have advantage, and deal 15 additional damage."
+					desc="As a bonus action, while dancing, mix in a step as light as a feather into your dance. Make a melee attack roll. On a succesful attack the target is rendered vulnerable. Until the start of the dancer's next turn all attacks made against this target have advantage, and deal 15 additional damage. Drains 30 SP."
 				Resplendance
 					rank="S"
 					cat="Unique"
-					desc=" A dance that seems to twist time and dance around the user and the target. While performing the dance reality seems to fall away and they seem to be fighting in a white void. While the dance is active ; the target and the user are incapable of perceiving anything else. Attacks made towards them have advantage, and they also suffer disadvantage when making skill saves. They are also incapable of targeting anything else besides each other. If Finishing Flourish is used to end this dance, the additional damage it applies is 150 instead of 80."
+					desc=" A dance that seems to twist time and dance around the user and the target. While performing the dance reality seems to fall away and they seem to be fighting in a white void. While the dance is active ; the target and the user are incapable of perceiving anything else. Attacks made towards them have advantage, and they also suffer disadvantage when making skill saves. They are also incapable of targeting anything else besides each other. If Finishing Flourish is used to end this dance, the additional damage it applies is 150 instead of 80. Drains 20 SP per turn active."
 
 			RedMage
 				typing="magical"
