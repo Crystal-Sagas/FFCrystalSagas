@@ -5025,6 +5025,7 @@ obj
 						attack_roll_dice_sides = 12
 						atype="save"
 						savetype="Reflex"
+						basecheck=16
 						range=" 5x5 AoE in view."
 						mcost=70
 						desc="A tornado is created within range starting with a small swirling of wind before erupting into a full cyclone. The Tornado can be moved up to 4 tiles a turn as a bonus action. If the Tornado moves into the range of a creature, they must make the saving throw for this ability. Passive: This person's Wind Magic may now take on the 'Galeforce' attribute, allowing them to spend 8 MP in order to inflict 1d12 additional wind damage, and prompt a DC 20 Fortitude saving throw to inflict the 'Squall' status effect on failure, to any instance of Wind damage they cause. (Damage: 6d12+CHA Wind damage | Targets a 5x5 AoE in view, prompts a Reflex saving throw ; dealing full damage, knocking a target back 3 tiles, and inflicting 'Bleed' on a failure ; or half damage on a success. -70 mana, 5 Mana per turn to sustain (may last up to a maximum of 5 turns.))"
