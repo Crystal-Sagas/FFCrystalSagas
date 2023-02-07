@@ -363,22 +363,22 @@ mob
 							while(!ZOMG)
 								track(usr)
 								return 0
-			MakeHero()
+			MakeVeteran()
 				var/list/players=list()
 				for(var/mob/a in world)
 					players+=a
-				var/mob/choice = input("Which player would you like to make a HERO?") as anything in players
-				choice.rank="Hero"
-				choice.rankbonus=5
-				choice.maxsummonsC=5
-				choice.maxsummonsB=3
-				choice.maxsummonsA=2
-				choice.mhp+=35
-				choice.hp+=35
-				choice.msp+=35
-				choice.sp+=35
-				choice.mmp+=35
-				choice.mp+=35
+				var/mob/choice = input("Which player would you like to make a Veteran?") as anything in players
+				choice.rank="Veteran"
+				choice.rankbonus=4
+				choice.maxsummonsC=4
+				choice.maxsummonsB=2
+				choice.maxsummonsA=1
+				choice.mhp+=30
+				choice.hp+=30
+				choice.msp+=30
+				choice.sp+=30
+				choice.mmp+=30
+				choice.mp+=30
 				Updaterank(choice)
 			ManageAdmins()
 				if(usr.adminlv < 4)

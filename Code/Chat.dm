@@ -290,22 +290,7 @@ var/list/naughtywords = list("sex","penis","pussy","cock","ass","dick","breast",
 			m.sp+=30
 			m.mmp+=30
 			m.mp+=30
-	if(m.trpp>=100&&m.trpp<150)
-		if(m.rank=="Veteran")
-			return
-		else
-			m.rank="Veteran"
-			m.rankbonus=4
-			m.maxsummonsC=4
-			m.maxsummonsB=2
-			m.maxsummonsA=1
-			m.mhp+=30
-			m.hp+=30
-			m.msp+=30
-			m.sp+=30
-			m.mmp+=30
-			m.mp+=30
-	/*if(m.trpp>=150&&m.trpp<200)
+	if(m.trpp>=140&&m.trpp<200)
 		if(m.rank=="Hero")
 			return
 		else
@@ -319,7 +304,7 @@ var/list/naughtywords = list("sex","penis","pussy","cock","ass","dick","breast",
 			m.msp+=35
 			m.sp+=35
 			m.mmp+=35
-			m.mp+=35*/
+			m.mp+=35
 	if(m.trpp>=200)
 		if(m.rank=="Master")
 			return
