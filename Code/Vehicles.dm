@@ -735,3 +735,15 @@
 
 /mob
 	var/tmp/obj/Control
+
+/mob/ImStuck()
+	if(Control)
+		alert_interaction_fail("You're controlling something. We can't let you ImStuck or you'll break something important. Reconnect if you need to get out of here.")
+		return
+	. = ..()
+
+/mob/transit_move(atom/newloc, list/recursed, recurse_pull, recurse_follow)
+	if(Control)
+		return FALSE	// nope
+	. = ..()
+
