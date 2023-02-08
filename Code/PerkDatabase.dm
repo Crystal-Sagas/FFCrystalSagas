@@ -827,32 +827,33 @@ obj
 				verb
 					MeldMateria()
 						if(!usr.check_perk("Materia Melder"))
-							for(var/obj/item/materials/Synthesis/RawMako/a in usr.contents)
-								if(a.amount==0)
-									alert(usr,"You don't have any Raw Mako to meld Materia with!")
+							return
+						for(var/obj/item/materials/Synthesis/RawMako/a in usr.contents)
+							if(a.amount==0)
+								alert(usr,"You don't have any Raw Mako to meld Materia with!")
+							else
+								if(a.amount<5)
+									alert(usr,"You need 5 Raw Mako to meld a random Materia.")
 								else
-									if(a.amount<5)
-										alert(usr,"You need 5 Raw Mako to meld a random Materia.")
-									else
-										var/list/matchoice=list("Green Materia","Blue Materia","Yellow Materia","Purple Materia","Link Materia")
-										var/materia=input(usr,"Choose a type of Materia to meld. The Materia Melded will be random within that set.") as anything in matchoice
-										switch(materia)
-											if("Green Materia")
-												a.amount-=5
-												RandomGreenMateria(usr)
-											if("Blue Materia")
-												a.amount-=5
-												RandomBlueMateria(usr)
-											if("Yellow Materia")
-												a.amount-=5
-												RandomYellowMateria(usr)
-											if("Purple Materia")
-												a.amount-=5
-												RandomPurpleMateria(usr)
-											if("Link Materia")
-												a.amount-=5
-												var/obj/item/Materia/PassiveMateria/c=new
-												usr.contents+=c
+									var/list/matchoice=list("Green Materia","Blue Materia","Yellow Materia","Purple Materia","Link Materia")
+									var/materia=input(usr,"Choose a type of Materia to meld. The Materia Melded will be random within that set.") as anything in matchoice
+									switch(materia)
+										if("Green Materia")
+											a.amount-=5
+											RandomGreenMateria(usr)
+										if("Blue Materia")
+											a.amount-=5
+											RandomBlueMateria(usr)
+										if("Yellow Materia")
+											a.amount-=5
+											RandomYellowMateria(usr)
+										if("Purple Materia")
+											a.amount-=5
+											RandomPurpleMateria(usr)
+										if("Link Materia")
+											a.amount-=5
+											var/obj/item/Materia/PassiveMateria/c=new
+											usr.contents+=c
 		Gathering
 			cat="Crafting"
 			ptype="general"
