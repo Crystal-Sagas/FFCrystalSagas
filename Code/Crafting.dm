@@ -4339,7 +4339,10 @@ obj/item/verb
 						return
 
 					else
-						switch(input("Which Mythic enchantment do you wish to apply?") in list("Drain","Osmose","Angelic","Arcane","Destruction","Crippling","Corrosion","Mighty","Keen","Swift","Homing","Force Field","Mana Rod","Strong","Agile","Sturdy","Wise","Clever","Beautiful","Ogre","Clairvoyance","Teleporter","Esper Bane","Delver","Tamer","Sagely","Divine","Supersonic","Vengeful","Brutish"))
+						var/choice = input("Which Mythic enchantment do you wish to apply?") as null|anything in list("Drain","Osmose","Angelic","Arcane","Destruction","Crippling","Corrosion","Mighty","Keen","Swift","Homing","Force Field","Mana Rod","Strong","Agile","Sturdy","Wise","Clever","Beautiful","Ogre","Clairvoyance","Teleporter","Esper Bane","Delver","Tamer","Tactical","Sagely","Divine","Supersonic","Vengeful","Brutish")
+						if(!choice)
+							return
+						switch(choice)
 							if("Drain")
 								var/list/yesno = list("Yes","No")
 								var/yesnochoice = input("Drain Effect: This weapon restores half of the damage it deals to its wielder. This can only apply to one attack roll per round.") as anything in yesno
