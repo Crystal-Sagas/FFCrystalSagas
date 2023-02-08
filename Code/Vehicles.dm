@@ -410,8 +410,17 @@
 					src.Driver = usr
 					return
 
+/obj/ShipConsole/proc/shitcode_detect_vehicle()
+	RETURN_TYPE(/obj/Vehicle)
+	if(src.ThePod)
+		return ThePod
+	for(var/obj/Vehicles/Tech/Travel/Caravel/S in world)
+		if(S.PodID == PodID)
+			src.ThePod = S
+
 /obj/ShipConsole/verb/Leave()
 	set src in oview(5)
+	shitcode_detect_vehicle()
 	if(src.ThePod)
 		view(10,usr)<<"[usr] leaves the ship."
 		usr.transit_move(get_turf(ThePod), recurse_follow = 0)
@@ -469,8 +478,17 @@
 					src.Driver = usr
 					return
 
+/obj/RoverConsole/proc/shitcode_detect_vehicle()
+	RETURN_TYPE(/obj/Vehicle)
+	if(src.ThePod)
+		return ThePod
+	for(var/obj/Vehicles/Tech/Travel/Rover/S in world)
+		if(S.RoverID == RoverID)
+			src.ThePod = S
+
 /obj/RoverConsole/verb/Leave()
 	set src in oview(5)
+	shitcode_detect_vehicle()
 	if(src.ThePod)
 		view(10,usr)<<"[usr] leaves the ship."
 		usr.transit_move(get_turf(ThePod), recurse_follow = 0)
@@ -541,8 +559,17 @@
 					src.Driver = usr
 					return
 
+/obj/AirshipConsole/proc/shitcode_detect_vehicle()
+	RETURN_TYPE(/obj/Vehicle)
+	if(src.ThePod)
+		return ThePod
+	for(var/obj/Vehicles/Tech/Travel/Airship/S in world)
+		if(S.AirshipID == AirshipID)
+			src.ThePod = S
+
 /obj/AirshipConsole/verb/Leave()
 	set src in oview(5)
+	shitcode_detect_vehicle()
 	if(src.ThePod)
 		view(10,usr)<<"[usr] leaves the ship."
 		usr.transit_move(get_turf(ThePod), recurse_follow = 0)
@@ -631,8 +658,17 @@
 					src.Driver = usr
 					return
 
+/obj/BalambConsole/proc/shitcode_detect_vehicle()
+	RETURN_TYPE(/obj/Vehicle)
+	if(src.ThePod)
+		return ThePod
+	for(var/obj/Vehicles/Tech/Travel/Airship/S in world)
+		if(S.AirshipID == AirshipID)
+			src.ThePod = S
+
 /obj/BalambConsole/verb/Leave()
 	set src in oview(5)
+	shitcode_detect_vehicle()
 	if(src.ThePod)
 		view(10,usr)<<"[usr] leaves the ship."
 		usr.transit_move(get_turf(ThePod), recurse_follow = 0)
