@@ -175,6 +175,7 @@
 #include "Code\recipes\armor.dm"
 #include "Code\recipes\jeweler.dm"
 #include "Code\recipes\recipe.dm"
+#include "Code\recipes\weapons.dm"
 #include "Code\systems\_system.dm"
 #include "Code\systems\_ticker.dm"
 #include "Code\systems\repository\_repository.dm"
