@@ -306,12 +306,18 @@ obj
 		var
 			FATEID
 			party1=0
+			used = FALSE
 		icon='Icons/Artifact.png'
 		Click()// I'll break down why this is broke. IDK how to fix it yet tho. But I'm wrinkling my brain over it. ---Vi
+			if(used)
+				return
 			for(var/obj/Party/c in world) //This calls all party objects... IN THE WORLD.
 				if("[usr.partyID]"=="[c.partyID]")//If it encounters a Party object, is will search this object for it's ID.
 					for(var/obj/FATECrystal/b in global.fate_crystals)
 						if("[b.FATEID]"=="[c.FATEID]")
+							if(used)
+								return
+							used = TRUE
 							view(usr)<<output("You've found the Artifact! Mog will return it to the researchers! (<b>FATE</b> complete!!)","icout")
 							Victory(c,b)
 							sleep(4)
@@ -331,12 +337,18 @@ obj
 			FATEID
 			party1=0
 			party2=0
+			used = FALSE
 		icon='Icons/Client.png'
 		Click()
+			if(used)
+				return
 			for(var/obj/Party/c in world)
 				if("[usr.partyID]"=="[c.partyID]")
 					for(var/obj/FATECrystal/b in global.fate_crystals)
 						if("[b.FATEID]"=="[c.FATEID]")
+							if(used)
+								return
+							used = TRUE
 							view(usr)<<output("Client: Thank you for the package, here's your pay. (<b>FATE</b> complete!!)","icout")
 							Victory(c,b)
 							sleep(2)
