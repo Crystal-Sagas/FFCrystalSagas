@@ -567,6 +567,12 @@
 			return 1
 	return 0
 
+/obj/recipes/Weapons
+
+/obj/recipes/Weapons/New()
+	. = ..()
+	AssignCraftinginfo(src)
+
 /obj/recipes
 	Weapons
 		Longsword
