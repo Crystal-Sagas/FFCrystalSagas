@@ -573,1099 +573,709 @@
 	. = ..()
 	AssignCraftinginfo(src)
 
-/obj/recipes
-	Weapons
-		Longsword
-			weapontype="Longsword"
-			Bronze
-				material="Bronze"
-				mat1="Bronze"
-				amount1=8
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Melee/Longsword/Bronze/a=new
-					src.creates=a
-			Iron
-				material="Iron"
-				mat1="Iron"
-				amount1=8
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Melee/Longsword/Iron/a=new
-					src.creates=a
-			Steel
-				material="Steel"
-				mat1="Steel"
-				amount1=8
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Melee/Longsword/Steel/a=new
-					src.creates=a
-			Mythril
-				material="Mythril"
-				mat1="Mythril"
-				amount1=16
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Melee/Longsword/Mythril/a=new
-					src.creates=a
-			Adamantine
-				material="Adamantine"
-				mat1="Adamantine"
-				amount1=16
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Melee/Longsword/Adamantine/a=new
-					src.creates=a
-			Orichalcum
-				material="Orichalcum"
-				mat1="Orichalcum"
-				amount1=16
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Melee/Longsword/Orichalcum/a=new
-					src.creates=a
-		Scimitar
-			weapontype="Scimitar"
-			Bronze
-				material="Bronze"
-				mat1="Bronze"
-				amount1=8
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Melee/Scimitar/Bronze/a=new
-					src.creates=a
-			Iron
-				material="Iron"
-				mat1="Iron"
-				amount1=8
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Melee/Scimitar/Iron/a=new
-					src.creates=a
-			Steel
-				material="Steel"
-				mat1="Steel"
-				amount1=8
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Melee/Scimitar/Steel/a=new
-					src.creates=a
-			Mythril
-				material="Mythril"
-				mat1="Mythril"
-				amount1=16
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Melee/Scimitar/Mythril/a=new
-					src.creates=a
-			Adamantine
-				material="Adamantine"
-				mat1="Adamantine"
-				amount1=16
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Melee/Scimitar/Adamantine/a=new
-					src.creates=a
-			Orichalcum
-				material="Orichalcum"
-				mat1="Orichalcum"
-				amount1=16
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Melee/Scimitar/Orichalcum/a=new
-					src.creates=a
-		Shuriken
-			weapontype="Shuriken"
-			Bronze
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Ranged/ThrowingWeapons/Shuriken/Bronze/a=new
-					src.creates=a
-			Iron
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Ranged/ThrowingWeapons/Shuriken/Iron/a=new
-					src.creates=a
-			Steel
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Ranged/ThrowingWeapons/Shuriken/Steel/a=new
-					src.creates=a
-			Mythril
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Ranged/ThrowingWeapons/Shuriken/Mythril/a=new
-					src.creates=a
-			Adamantine
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Ranged/ThrowingWeapons/Shuriken/Adamantine/a=new
-					src.creates=a
-			Orichalcum
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Ranged/ThrowingWeapons/Shuriken/Orichalcum/a=new
-					src.creates=a
-		ThrowingKnives
-			weapontype="Throwing Knives"
-			Bronze
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Ranged/ThrowingWeapons/ThrowingKnives/Bronze/a=new
-					src.creates=a
-			Iron
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Ranged/ThrowingWeapons/ThrowingKnives/Iron/a=new
-					src.creates=a
-			Steel
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Ranged/ThrowingWeapons/ThrowingKnives/Steel/a=new
-					src.creates=a
-			Mythril
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Ranged/ThrowingWeapons/ThrowingKnives/Mythril/a=new
-					src.creates=a
-			Adamantine
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Ranged/ThrowingWeapons/ThrowingKnives/Adamantine/a=new
-					src.creates=a
-			Orichalcum
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Ranged/ThrowingWeapons/ThrowingKnives/Orichalcum/a=new
-					src.creates=a
-		Hammer
-			weapontype="Hammer"
-			Bronze
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Melee/Hammer/Bronze/a=new
-					src.creates=a
-			Iron
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Melee/Hammer/Iron/a=new
-					src.creates=a
-			Steel
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Melee/Hammer/Steel/a=new
-					src.creates=a
-			Mythril
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Melee/Hammer/Mythril/a=new
-					src.creates=a
-			Adamantine
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Melee/Hammer/Adamantine/a=new
-					src.creates=a
-			Orichalcum
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Melee/Hammer/Orichalcum/a=new
-					src.creates=a
-		Axe
-			weapontype="Axe"
-			Bronze
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Melee/Axe/Bronze/a=new
-					src.creates=a
-			Iron
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Melee/Axe/Iron/a=new
-					src.creates=a
-			Steel
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Melee/Axe/Steel/a=new
-					src.creates=a
-			Mythril
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Melee/Axe/Mythril/a=new
-					src.creates=a
-			Adamantine
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Melee/Axe/Adamantine/a=new
-					src.creates=a
-			Orichalcum
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Melee/Axe/Orichalcum/a=new
-					src.creates=a
+/obj/recipes/Weapons/Longsword
+	weapontype="Longsword"
+
+/obj/recipes/Weapons/Longsword/Bronze
+	material="Bronze"
+	mat1="Bronze"
+	amount1=8
+	creates = new /obj/item/Weapon/Melee/Longsword/Bronze
+
+/obj/recipes/Weapons/Longsword/Iron
+	material="Iron"
+	mat1="Iron"
+	amount1=8
+	creates = new /obj/item/Weapon/Melee/Longsword/Iron
+
+/obj/recipes/Weapons/Longsword/Steel
+	material="Steel"
+	mat1="Steel"
+	amount1=8
+	creates = new /obj/item/Weapon/Melee/Longsword/Steel
+
+/obj/recipes/Weapons/Longsword/Mythril
+	material="Mythril"
+	mat1="Mythril"
+	amount1=16
+	creates = new /obj/item/Weapon/Melee/Longsword/Mythril
+
+/obj/recipes/Weapons/Longsword/Adamantine
+	material="Adamantine"
+	mat1="Adamantine"
+	amount1=16
+	creates = new /obj/item/Weapon/Melee/Longsword/Adamantine
+
+/obj/recipes/Weapons/Longsword/Orichalcum
+	material="Orichalcum"
+	mat1="Orichalcum"
+	amount1=16
+	creates = new /obj/item/Weapon/Melee/Longsword/Orichalcum
+
+/obj/recipes/Weapons/Scimitar
+	weapontype="Scimitar"
+
+/obj/recipes/Weapons/Scimitar/Bronze
+	material="Bronze"
+	mat1="Bronze"
+	amount1=8
+	creates = new /obj/item/Weapon/Melee/Scimitar/Bronze
+
+/obj/recipes/Weapons/Scimitar/Iron
+	material="Iron"
+	mat1="Iron"
+	amount1=8
+	creates = new /obj/item/Weapon/Melee/Scimitar/Iron
+
+/obj/recipes/Weapons/Scimitar/Steel
+	material="Steel"
+	mat1="Steel"
+	amount1=8
+	creates = new /obj/item/Weapon/Melee/Scimitar/Steel
+
+/obj/recipes/Weapons/Scimitar/Mythril
+	material="Mythril"
+	mat1="Mythril"
+	amount1=16
+	creates = new /obj/item/Weapon/Melee/Scimitar/Mythril
+
+/obj/recipes/Weapons/Scimitar/Adamantine
+	material="Adamantine"
+	mat1="Adamantine"
+	amount1=16
+	creates = new /obj/item/Weapon/Melee/Scimitar/Adamantine
+
+/obj/recipes/Weapons/Scimitar/Orichalcum
+	material="Orichalcum"
+	mat1="Orichalcum"
+	amount1=16
+	creates = new /obj/item/Weapon/Melee/Scimitar/Orichalcum
+
+/obj/recipes/Weapons/Shuriken
+	weapontype="Shuriken"
+
+/obj/recipes/Weapons/Shuriken/Bronze
+	creates = new /obj/item/Weapon/Ranged/ThrowingWeapons/Shuriken/Bronze
+
+/obj/recipes/Weapons/Shuriken/Iron
+	creates = new /obj/item/Weapon/Ranged/ThrowingWeapons/Shuriken/Iron
+
+/obj/recipes/Weapons/Shuriken/Steel
+	creates = new /obj/item/Weapon/Ranged/ThrowingWeapons/Shuriken/Steel
+
+/obj/recipes/Weapons/Shuriken/Mythril
+	creates = new /obj/item/Weapon/Ranged/ThrowingWeapons/Shuriken/Mythril
+
+/obj/recipes/Weapons/Shuriken/Adamantine
+	creates = new /obj/item/Weapon/Ranged/ThrowingWeapons/Shuriken/Adamantine
+
+/obj/recipes/Weapons/Shuriken/Orichalcum
+	creates = new /obj/item/Weapon/Ranged/ThrowingWeapons/Shuriken/Orichalcum
+
+/obj/recipes/Weapons/ThrowingKnives
+	weapontype="Throwing Knives"
+
+/obj/recipes/Weapons/ThrowingKnives/Bronze
+	creates = new /obj/item/Weapon/Ranged/ThrowingWeapons/ThrowingKnives/Bronze
+
+/obj/recipes/Weapons/ThrowingKnives/Iron
+	creates = new /obj/item/Weapon/Ranged/ThrowingWeapons/ThrowingKnives/Iron
+
+/obj/recipes/Weapons/ThrowingKnives/Steel
+	creates = new /obj/item/Weapon/Ranged/ThrowingWeapons/ThrowingKnives/Steel
+
+/obj/recipes/Weapons/ThrowingKnives/Mythril
+	creates = new /obj/item/Weapon/Ranged/ThrowingWeapons/ThrowingKnives/Mythril
+
+/obj/recipes/Weapons/ThrowingKnives/Adamantine
+	creates = new /obj/item/Weapon/Ranged/ThrowingWeapons/ThrowingKnives/Adamantine
+
+/obj/recipes/Weapons/ThrowingKnives/Orichalcum
+	creates = new /obj/item/Weapon/Ranged/ThrowingWeapons/ThrowingKnives/Orichalcum
+
+/obj/recipes/Weapons/Hammer
+	weapontype="Hammer"
+
+/obj/recipes/Weapons/Hammer/Bronze
+	creates = new /obj/item/Weapon/Melee/Hammer/Bronze
+
+/obj/recipes/Weapons/Hammer/Iron
+	creates = new /obj/item/Weapon/Melee/Hammer/Iron
+
+/obj/recipes/Weapons/Hammer/Steel
+	creates = new /obj/item/Weapon/Melee/Hammer/Steel
+
+/obj/recipes/Weapons/Hammer/Mythril
+	creates = new /obj/item/Weapon/Melee/Hammer/Mythril
+
+/obj/recipes/Weapons/Hammer/Adamantine
+	creates = new /obj/item/Weapon/Melee/Hammer/Adamantine
+
+/obj/recipes/Weapons/Hammer/Orichalcum
+	creates = new /obj/item/Weapon/Melee/Hammer/Orichalcum
+
+/obj/recipes/Weapons/Axe
+	weapontype="Axe"
+
+/obj/recipes/Weapons/Axe/Bronze
+	creates = new /obj/item/Weapon/Melee/Axe/Bronze
+
+/obj/recipes/Weapons/Axe/Iron
+	creates = new /obj/item/Weapon/Melee/Axe/Iron
+
+/obj/recipes/Weapons/Axe/Steel
+	creates = new /obj/item/Weapon/Melee/Axe/Steel
+
+/obj/recipes/Weapons/Axe/Mythril
+	creates = new /obj/item/Weapon/Melee/Axe/Mythril
+
+/obj/recipes/Weapons/Axe/Adamantine
+	creates = new /obj/item/Weapon/Melee/Axe/Adamantine
+
+/obj/recipes/Weapons/Axe/Orichalcum
+	creates = new /obj/item/Weapon/Melee/Axe/Orichalcum
+
 		Dagger
 			weapontype="Dagger"
-			Bronze
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Melee/Dagger/Bronze/a=new
-					src.creates=a
-			Iron
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Melee/Dagger/Iron/a=new
-					src.creates=a
-			Steel
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Melee/Dagger/Steel/a=new
-					src.creates=a
-			Mythril
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Melee/Dagger/Mythril/a=new
-					src.creates=a
-			Adamantine
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Melee/Dagger/Adamantine/a=new
-					src.creates=a
-			Orichalcum
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Melee/Dagger/Orichalcum/a=new
-					src.creates=a
+Bronze
+	creates = new /obj/item/Weapon/Melee/Dagger/Bronze
+
+Iron
+	creates = new /obj/item/Weapon/Melee/Dagger/Iron
+
+Steel
+	creates = new /obj/item/Weapon/Melee/Dagger/Steel
+
+Mythril
+	creates = new /obj/item/Weapon/Melee/Dagger/Mythril
+
+Adamantine
+	creates = new /obj/item/Weapon/Melee/Dagger/Adamantine
+
+Orichalcum
+	creates = new /obj/item/Weapon/Melee/Dagger/Orichalcum
+
 		Claw
 			weapontype="Claw"
-			Bronze
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Melee/Claw/Bronze/a=new
-					src.creates=a
-			Iron
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Melee/Claw/Iron/a=new
-					src.creates=a
-			Steel
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Melee/Claw/Steel/a=new
-					src.creates=a
-			Mythril
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Melee/Claw/Mythril/a=new
-					src.creates=a
-			Adamantine
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Melee/Claw/Adamantine/a=new
-					src.creates=a
-			Orichalcum
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Melee/Claw/Orichalcum/a=new
-					src.creates=a
+Bronze
+	creates = new /obj/item/Weapon/Melee/Claw/Bronze
+
+Iron
+	creates = new /obj/item/Weapon/Melee/Claw/Iron
+
+Steel
+	creates = new /obj/item/Weapon/Melee/Claw/Steel
+
+Mythril
+	creates = new /obj/item/Weapon/Melee/Claw/Mythril
+
+Adamantine
+	creates = new /obj/item/Weapon/Melee/Claw/Adamantine
+
+Orichalcum
+	creates = new /obj/item/Weapon/Melee/Claw/Orichalcum
+
 		Gauntlet
 			weapontype="Gauntlet"
-			Bronze
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Melee/Gauntlet/Bronze/a=new
-					src.creates=a
-			Iron
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Melee/Gauntlet/Iron/a=new
-					src.creates=a
-			Steel
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Melee/Gauntlet/Steel/a=new
-					src.creates=a
-			Mythril
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Melee/Gauntlet/Mythril/a=new
-					src.creates=a
-			Adamantine
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Melee/Gauntlet/Adamantine/a=new
-					src.creates=a
-			Orichalcum
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Melee/Gauntlet/Orichalcum/a=new
-					src.creates=a
+Bronze
+	creates = new /obj/item/Weapon/Melee/Gauntlet/Bronze
+
+Iron
+	creates = new /obj/item/Weapon/Melee/Gauntlet/Iron
+
+Steel
+	creates = new /obj/item/Weapon/Melee/Gauntlet/Steel
+
+Mythril
+	creates = new /obj/item/Weapon/Melee/Gauntlet/Mythril
+
+Adamantine
+	creates = new /obj/item/Weapon/Melee/Gauntlet/Adamantine
+
+Orichalcum
+	creates = new /obj/item/Weapon/Melee/Gauntlet/Orichalcum
+
 		Whip
 			weapontype="Whip"
-			Bronze
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Melee/Whip/Bronze/a=new
-					src.creates=a
-			Iron
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Melee/Whip/Iron/a=new
-					src.creates=a
-			Steel
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Melee/Whip/Steel/a=new
-					src.creates=a
+Bronze
+	creates = new /obj/item/Weapon/Melee/Whip/Bronze
+
+Iron
+	creates = new /obj/item/Weapon/Melee/Whip/Iron
+
+Steel
+	creates = new /obj/item/Weapon/Melee/Whip/Steel
+
 			Mythril
 				New()
 					var/obj/item/Weapon/Melee/Whip/Mythril/a=new
 					src.creates=a
-			Adamantine
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Melee/Whip/Adamantine/a=new
-					src.creates=a
-			Orichalcum
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Melee/Whip/Orichalcum/a=new
-					src.creates=a
+Adamantine
+	creates = new /obj/item/Weapon/Melee/Whip/Adamantine
+
+Orichalcum
+	creates = new /obj/item/Weapon/Melee/Whip/Orichalcum
+
 		Greatsword
 			weapontype="Greatsword"
-			Bronze
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Melee/Greatsword/Bronze/a=new
-					src.creates=a
-			Iron
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Melee/Greatsword/Iron/a=new
-					src.creates=a
-			Steel
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Melee/Greatsword/Steel/a=new
-					src.creates=a
-			Mythril
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Melee/Greatsword/Mythril/a=new
-					src.creates=a
-			Adamantine
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Melee/Greatsword/Adamantine/a=new
-					src.creates=a
-			Orichalcum
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Melee/Greatsword/Orichalcum/a=new
-					src.creates=a
+Bronze
+	creates = new /obj/item/Weapon/Melee/Greatsword/Bronze
+
+Iron
+	creates = new /obj/item/Weapon/Melee/Greatsword/Iron
+
+Steel
+	creates = new /obj/item/Weapon/Melee/Greatsword/Steel
+
+Mythril
+	creates = new /obj/item/Weapon/Melee/Greatsword/Mythril
+
+Adamantine
+	creates = new /obj/item/Weapon/Melee/Greatsword/Adamantine
+
+Orichalcum
+	creates = new /obj/item/Weapon/Melee/Greatsword/Orichalcum
+
 		Katana
 			weapontype="Katana"
-			Bronze
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Melee/Katana/Bronze/a=new
-					src.creates=a
-			Iron
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Melee/Katana/Iron/a=new
-					src.creates=a
-			Steel
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Melee/Katana/Steel/a=new
-					src.creates=a
-			Mythril
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Melee/Katana/Mythril/a=new
-					src.creates=a
-			Adamantine
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Melee/Katana/Adamantine/a=new
-					src.creates=a
-			Orichalcum
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Melee/Katana/Orichalcum/a=new
-					src.creates=a
+Bronze
+	creates = new /obj/item/Weapon/Melee/Katana/Bronze
+
+Iron
+	creates = new /obj/item/Weapon/Melee/Katana/Iron
+
+Steel
+	creates = new /obj/item/Weapon/Melee/Katana/Steel
+
+Mythril
+	creates = new /obj/item/Weapon/Melee/Katana/Mythril
+
+Adamantine
+	creates = new /obj/item/Weapon/Melee/Katana/Adamantine
+
+Orichalcum
+	creates = new /obj/item/Weapon/Melee/Katana/Orichalcum
+
 		Spear
 			weapontype="Spear"
-			Bronze
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Melee/Spear/Bronze/a=new
-					src.creates=a
-			Iron
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Melee/Spear/Iron/a=new
-					src.creates=a
-			Steel
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Melee/Spear/Steel/a=new
-					src.creates=a
-			Mythril
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Melee/Spear/Mythril/a=new
-					src.creates=a
-			Adamantine
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Melee/Spear/Adamantine/a=new
-					src.creates=a
-			Orichalcum
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Melee/Spear/Orichalcum/a=new
-					src.creates=a
+Bronze
+	creates = new /obj/item/Weapon/Melee/Spear/Bronze
+
+Iron
+	creates = new /obj/item/Weapon/Melee/Spear/Iron
+
+Steel
+	creates = new /obj/item/Weapon/Melee/Spear/Steel
+
+Mythril
+	creates = new /obj/item/Weapon/Melee/Spear/Mythril
+
+Adamantine
+	creates = new /obj/item/Weapon/Melee/Spear/Adamantine
+
+Orichalcum
+	creates = new /obj/item/Weapon/Melee/Spear/Orichalcum
+
 		Scythe
 			weapontype="Scythe"
-			Bronze
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Melee/Scythe/Bronze/a=new
-					src.creates=a
-			Iron
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Melee/Scythe/Iron/a=new
-					src.creates=a
-			Steel
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Melee/Scythe/Steel/a=new
-					src.creates=a
-			Mythril
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Melee/Scythe/Mythril/a=new
-					src.creates=a
-			Adamantine
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Melee/Scythe/Adamantine/a=new
-					src.creates=a
-			Orichalcum
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Melee/Scythe/Orichalcum/a=new
-					src.creates=a
+Bronze
+	creates = new /obj/item/Weapon/Melee/Scythe/Bronze
+
+Iron
+	creates = new /obj/item/Weapon/Melee/Scythe/Iron
+
+Steel
+	creates = new /obj/item/Weapon/Melee/Scythe/Steel
+
+Mythril
+	creates = new /obj/item/Weapon/Melee/Scythe/Mythril
+
+Adamantine
+	creates = new /obj/item/Weapon/Melee/Scythe/Adamantine
+
+Orichalcum
+	creates = new /obj/item/Weapon/Melee/Scythe/Orichalcum
+
 		Bow
 			weapontype="Bow"
-			Bronze
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Ranged/Bow/Bronze/a=new
-					src.creates=a
-			Iron
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Ranged/Bow/Iron/a=new
-					src.creates=a
-			Steel
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Ranged/Bow/Steel/a=new
-					src.creates=a
-			Mythril
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Ranged/Bow/Mythril/a=new
-					src.creates=a
-			Adamantine
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Ranged/Bow/Adamantine/a=new
-					src.creates=a
-			Orichalcum
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Ranged/Bow/Orichalcum/a=new
-					src.creates=a
+Bronze
+	creates = new /obj/item/Weapon/Ranged/Bow/Bronze
+
+Iron
+	creates = new /obj/item/Weapon/Ranged/Bow/Iron
+
+Steel
+	creates = new /obj/item/Weapon/Ranged/Bow/Steel
+
+Mythril
+	creates = new /obj/item/Weapon/Ranged/Bow/Mythril
+
+Adamantine
+	creates = new /obj/item/Weapon/Ranged/Bow/Adamantine
+
+Orichalcum
+	creates = new /obj/item/Weapon/Ranged/Bow/Orichalcum
+
 		FocusSword
 			weapontype="Focus Sword"
-			Bronze
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Special/FocusSword/Bronze/a=new
-					src.creates=a
-			Iron
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Special/FocusSword/Iron/a=new
-					src.creates=a
-			Steel
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Special/FocusSword/Steel/a=new
-					src.creates=a
-			Mythril
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Special/FocusSword/Mythril/a=new
-					src.creates=a
-			Adamantine
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Special/FocusSword/Adamantine/a=new
-					src.creates=a
-			Orichalcum
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Special/FocusSword/Orichalcum/a=new
-					src.creates=a
+Bronze
+	creates = new /obj/item/Weapon/Special/FocusSword/Bronze
+
+Iron
+	creates = new /obj/item/Weapon/Special/FocusSword/Iron
+
+Steel
+	creates = new /obj/item/Weapon/Special/FocusSword/Steel
+
+Mythril
+	creates = new /obj/item/Weapon/Special/FocusSword/Mythril
+
+Adamantine
+	creates = new /obj/item/Weapon/Special/FocusSword/Adamantine
+
+Orichalcum
+	creates = new /obj/item/Weapon/Special/FocusSword/Orichalcum
+
 		Staff
 			weapontype="Staff"
-			Bronze
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Magical/Staff/Bronze/a=new
-					src.creates=a
-			Iron
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Magical/Staff/Iron/a=new
-					src.creates=a
-			Steel
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Magical/Staff/Steel/a=new
-					src.creates=a
-			Mythril
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Magical/Staff/Mythril/a=new
-					src.creates=a
-			Adamantine
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Magical/Staff/Adamantine/a=new
-					src.creates=a
-			Orichalcum
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Magical/Staff/Orichalcum/a=new
-					src.creates=a
+Bronze
+	creates = new /obj/item/Weapon/Magical/Staff/Bronze
+
+Iron
+	creates = new /obj/item/Weapon/Magical/Staff/Iron
+
+Steel
+	creates = new /obj/item/Weapon/Magical/Staff/Steel
+
+Mythril
+	creates = new /obj/item/Weapon/Magical/Staff/Mythril
+
+Adamantine
+	creates = new /obj/item/Weapon/Magical/Staff/Adamantine
+
+Orichalcum
+	creates = new /obj/item/Weapon/Magical/Staff/Orichalcum
+
 		Tome
 			weapontype="Tome"
-			Bronze
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Magical/Tome/Bronze/a=new
-					src.creates=a
-			Iron
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Magical/Tome/Iron/a=new
-					src.creates=a
-			Steel
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Magical/Tome/Steel/a=new
-					src.creates=a
-			Mythril
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Magical/Tome/Mythril/a=new
-					src.creates=a
-			Adamantine
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Magical/Tome/Adamantine/a=new
-					src.creates=a
-			Orichalcum
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Magical/Tome/Orichalcum/a=new
-					src.creates=a
+Bronze
+	creates = new /obj/item/Weapon/Magical/Tome/Bronze
+
+Iron
+	creates = new /obj/item/Weapon/Magical/Tome/Iron
+
+Steel
+	creates = new /obj/item/Weapon/Magical/Tome/Steel
+
+Mythril
+	creates = new /obj/item/Weapon/Magical/Tome/Mythril
+
+Adamantine
+	creates = new /obj/item/Weapon/Magical/Tome/Adamantine
+
+Orichalcum
+	creates = new /obj/item/Weapon/Magical/Tome/Orichalcum
+
 		SwordSpear
 			weapontype="Sword Spear"
-			Bronze
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Special/SwordSpear/Bronze/a=new
-					src.creates=a
-			Iron
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Special/SwordSpear/Iron/a=new
-					src.creates=a
-			Steel
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Special/SwordSpear/Steel/a=new
-					src.creates=a
-			Mythril
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Special/SwordSpear/Mythril/a=new
-					src.creates=a
-			Adamantine
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Special/SwordSpear/Adamantine/a=new
-					src.creates=a
-			Orichalcum
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Special/SwordSpear/Orichalcum/a=new
-					src.creates=a
+Bronze
+	creates = new /obj/item/Weapon/Special/SwordSpear/Bronze
+
+Iron
+	creates = new /obj/item/Weapon/Special/SwordSpear/Iron
+
+Steel
+	creates = new /obj/item/Weapon/Special/SwordSpear/Steel
+
+Mythril
+	creates = new /obj/item/Weapon/Special/SwordSpear/Mythril
+
+Adamantine
+	creates = new /obj/item/Weapon/Special/SwordSpear/Adamantine
+
+Orichalcum
+	creates = new /obj/item/Weapon/Special/SwordSpear/Orichalcum
+
 		ThiefSword
 			weapontype="Thief Sword"
-			Bronze
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Special/ThiefSword/Bronze/a=new
-					src.creates=a
-			Iron
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Special/ThiefSword/Iron/a=new
-					src.creates=a
-			Steel
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Special/ThiefSword/Steel/a=new
-					src.creates=a
-			Mythril
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Special/ThiefSword/Mythril/a=new
-					src.creates=a
-			Adamantine
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Special/ThiefSword/Adamantine/a=new
-					src.creates=a
-			Orichalcum
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Special/ThiefSword/Orichalcum/a=new
-					src.creates=a
+Bronze
+	creates = new /obj/item/Weapon/Special/ThiefSword/Bronze
+
+Iron
+	creates = new /obj/item/Weapon/Special/ThiefSword/Iron
+
+Steel
+	creates = new /obj/item/Weapon/Special/ThiefSword/Steel
+
+Mythril
+	creates = new /obj/item/Weapon/Special/ThiefSword/Mythril
+
+Adamantine
+	creates = new /obj/item/Weapon/Special/ThiefSword/Adamantine
+
+Orichalcum
+	creates = new /obj/item/Weapon/Special/ThiefSword/Orichalcum
+
 		BoltRapier
 			weapontype="Bolt Rapier"
-			Bronze
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Special/BoltRapier/Bronze/a=new
-					src.creates=a
-			Iron
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Special/BoltRapier/Iron/a=new
-					src.creates=a
-			Steel
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Special/BoltRapier/Steel/a=new
-					src.creates=a
-			Mythril
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Special/BoltRapier/Mythril/a=new
-					src.creates=a
-			Adamantine
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Special/BoltRapier/Adamantine/a=new
-					src.creates=a
-			Orichalcum
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Special/BoltRapier/Orichalcum/a=new
-					src.creates=a
+Bronze
+	creates = new /obj/item/Weapon/Special/BoltRapier/Bronze
+
+Iron
+	creates = new /obj/item/Weapon/Special/BoltRapier/Iron
+
+Steel
+	creates = new /obj/item/Weapon/Special/BoltRapier/Steel
+
+Mythril
+	creates = new /obj/item/Weapon/Special/BoltRapier/Mythril
+
+Adamantine
+	creates = new /obj/item/Weapon/Special/BoltRapier/Adamantine
+
+Orichalcum
+	creates = new /obj/item/Weapon/Special/BoltRapier/Orichalcum
+
 		WhipBlade
 			weapontype="Whipblade"
-			Bronze
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Special/WhipBlade/Bronze/a=new
-					src.creates=a
-			Iron
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Special/WhipBlade/Iron/a=new
-					src.creates=a
-			Steel
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Special/WhipBlade/Steel/a=new
-					src.creates=a
-			Mythril
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Special/WhipBlade/Mythril/a=new
-					src.creates=a
-			Adamantine
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Special/WhipBlade/Adamantine/a=new
-					src.creates=a
-			Orichalcum
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Special/WhipBlade/Orichalcum/a=new
-					src.creates=a
+Bronze
+	creates = new /obj/item/Weapon/Special/WhipBlade/Bronze
+
+Iron
+	creates = new /obj/item/Weapon/Special/WhipBlade/Iron
+
+Steel
+	creates = new /obj/item/Weapon/Special/WhipBlade/Steel
+
+Mythril
+	creates = new /obj/item/Weapon/Special/WhipBlade/Mythril
+
+Adamantine
+	creates = new /obj/item/Weapon/Special/WhipBlade/Adamantine
+
+Orichalcum
+	creates = new /obj/item/Weapon/Special/WhipBlade/Orichalcum
+
 		AkademiaCards
 			weapontype="Akademia Cards"
-			Bronze
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Ranged/ThrowingWeapons/AkademiaCards/Bronze/a=new
-					src.creates=a
-			Iron
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Ranged/ThrowingWeapons/AkademiaCards/Iron/a=new
-					src.creates=a
-			Steel
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Ranged/ThrowingWeapons/AkademiaCards/Steel/a=new
-					src.creates=a
-			Mythril
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Ranged/ThrowingWeapons/AkademiaCards/Mythril/a=new
-					src.creates=a
-			Adamantine
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Ranged/ThrowingWeapons/AkademiaCards/Adamantine/a=new
-					src.creates=a
-			Orichalcum
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Ranged/ThrowingWeapons/AkademiaCards/Orichalcum/a=new
-					src.creates=a
+Bronze
+	creates = new /obj/item/Weapon/Ranged/ThrowingWeapons/AkademiaCards/Bronze
+
+Iron
+	creates = new /obj/item/Weapon/Ranged/ThrowingWeapons/AkademiaCards/Iron
+
+Steel
+	creates = new /obj/item/Weapon/Ranged/ThrowingWeapons/AkademiaCards/Steel
+
+Mythril
+	creates = new /obj/item/Weapon/Ranged/ThrowingWeapons/AkademiaCards/Mythril
+
+Adamantine
+	creates = new /obj/item/Weapon/Ranged/ThrowingWeapons/AkademiaCards/Adamantine
+
+Orichalcum
+	creates = new /obj/item/Weapon/Ranged/ThrowingWeapons/AkademiaCards/Orichalcum
+
 		BlitzBall
 			weapontype="Blitz Ball"
-			Bronze
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Special/BlitzBall/Bronze/a=new
-					src.creates=a
-			Iron
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Special/BlitzBall/Iron/a=new
-					src.creates=a
-			Steel
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Special/BlitzBall/Steel/a=new
-					src.creates=a
-			Mythril
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Special/BlitzBall/Mythril/a=new
-					src.creates=a
-			Adamantine
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Special/BlitzBall/Adamantine/a=new
-					src.creates=a
-			Orichalcum
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Special/BlitzBall/Orichalcum/a=new
-					src.creates=a
+Bronze
+	creates = new /obj/item/Weapon/Special/BlitzBall/Bronze
+
+Iron
+	creates = new /obj/item/Weapon/Special/BlitzBall/Iron
+
+Steel
+	creates = new /obj/item/Weapon/Special/BlitzBall/Steel
+
+Mythril
+	creates = new /obj/item/Weapon/Special/BlitzBall/Mythril
+
+Adamantine
+	creates = new /obj/item/Weapon/Special/BlitzBall/Adamantine
+
+Orichalcum
+	creates = new /obj/item/Weapon/Special/BlitzBall/Orichalcum
+
 		Gunblade
 			weapontype="Gunblade"
-			Bronze
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Special/Gunblade/Bronze/a=new
-					src.creates=a
-			Iron
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Special/Gunblade/Iron/a=new
-					src.creates=a
-			Steel
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Special/Gunblade/Steel/a=new
-					src.creates=a
-			Mythril
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Special/Gunblade/Mythril/a=new
-					src.creates=a
-			Adamantine
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Special/Gunblade/Adamantine/a=new
-					src.creates=a
-			Orichalcum
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Special/Gunblade/Orichalcum/a=new
-					src.creates=a
+Bronze
+	creates = new /obj/item/Weapon/Special/Gunblade/Bronze
+
+Iron
+	creates = new /obj/item/Weapon/Special/Gunblade/Iron
+
+Steel
+	creates = new /obj/item/Weapon/Special/Gunblade/Steel
+
+Mythril
+	creates = new /obj/item/Weapon/Special/Gunblade/Mythril
+
+Adamantine
+	creates = new /obj/item/Weapon/Special/Gunblade/Adamantine
+
+Orichalcum
+	creates = new /obj/item/Weapon/Special/Gunblade/Orichalcum
+
 		Bowsword
 			weapontype="Bowsword"
-			Bronze
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Special/Bowsword/Bronze/a=new
-					src.creates=a
-			Iron
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Special/Bowsword/Iron/a=new
-					src.creates=a
-			Steel
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Special/Bowsword/Steel/a=new
-					src.creates=a
-			Mythril
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Special/Bowsword/Mythril/a=new
-					src.creates=a
-			Adamantine
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Special/Bowsword/Adamantine/a=new
-					src.creates=a
-			Orichalcum
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Special/Bowsword/Orichalcum/a=new
-					src.creates=a
+Bronze
+	creates = new /obj/item/Weapon/Special/Bowsword/Bronze
+
+Iron
+	creates = new /obj/item/Weapon/Special/Bowsword/Iron
+
+Steel
+	creates = new /obj/item/Weapon/Special/Bowsword/Steel
+
+Mythril
+	creates = new /obj/item/Weapon/Special/Bowsword/Mythril
+
+Adamantine
+	creates = new /obj/item/Weapon/Special/Bowsword/Adamantine
+
+Orichalcum
+	creates = new /obj/item/Weapon/Special/Bowsword/Orichalcum
+
 		BusterSword
 			weapontype="Buster Sword"
-			Bronze
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Special/BusterSword/Bronze/a=new
-					src.creates=a
-			Iron
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Special/BusterSword/Iron/a=new
-					src.creates=a
-			Steel
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Special/BusterSword/Steel/a=new
-					src.creates=a
-			Mythril
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Special/BusterSword/Mythril/a=new
-					src.creates=a
-			Adamantine
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Special/BusterSword/Adamantine/a=new
-					src.creates=a
-			Orichalcum
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Special/BusterSword/Orichalcum/a=new
-					src.creates=a
+Bronze
+	creates = new /obj/item/Weapon/Special/BusterSword/Bronze
+
+Iron
+	creates = new /obj/item/Weapon/Special/BusterSword/Iron
+
+Steel
+	creates = new /obj/item/Weapon/Special/BusterSword/Steel
+
+Mythril
+	creates = new /obj/item/Weapon/Special/BusterSword/Mythril
+
+Adamantine
+	creates = new /obj/item/Weapon/Special/BusterSword/Adamantine
+
+Orichalcum
+	creates = new /obj/item/Weapon/Special/BusterSword/Orichalcum
+
 		MorphingBlade
 			weapontype="Morphing Blade"
-			Bronze
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Special/MorphingBlade/Bronze/a=new
-					src.creates=a
-			Iron
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Special/MorphingBlade/Iron/a=new
-					src.creates=a
-			Steel
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Special/MorphingBlade/Steel/a=new
-					src.creates=a
-			Mythril
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Special/MorphingBlade/Mythril/a=new
-					src.creates=a
-			Adamantine
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Special/MorphingBlade/Adamantine/a=new
-					src.creates=a
-			Orichalcum
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Special/MorphingBlade/Orichalcum/a=new
-					src.creates=a
+Bronze
+	creates = new /obj/item/Weapon/Special/MorphingBlade/Bronze
+
+Iron
+	creates = new /obj/item/Weapon/Special/MorphingBlade/Iron
+
+Steel
+	creates = new /obj/item/Weapon/Special/MorphingBlade/Steel
+
+Mythril
+	creates = new /obj/item/Weapon/Special/MorphingBlade/Mythril
+
+Adamantine
+	creates = new /obj/item/Weapon/Special/MorphingBlade/Adamantine
+
+Orichalcum
+	creates = new /obj/item/Weapon/Special/MorphingBlade/Orichalcum
+
 		GunArm
 			weapontype="Gun Arm"
-			Bronze
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Special/GunArm/Bronze/a=new
-					src.creates=a
-			Iron
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Special/GunArm/Iron/a=new
-					src.creates=a
-			Steel
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Special/GunArm/Steel/a=new
-					src.creates=a
-			Mythril
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Special/GunArm/Mythril/a=new
-					src.creates=a
-			Adamantine
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Special/GunArm/Adamantine/a=new
-					src.creates=a
-			Orichalcum
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Special/GunArm/Orichalcum/a=new
-					src.creates=a
+Bronze
+	creates = new /obj/item/Weapon/Special/GunArm/Bronze
+
+Iron
+	creates = new /obj/item/Weapon/Special/GunArm/Iron
+
+Steel
+	creates = new /obj/item/Weapon/Special/GunArm/Steel
+
+Mythril
+	creates = new /obj/item/Weapon/Special/GunArm/Mythril
+
+Adamantine
+	creates = new /obj/item/Weapon/Special/GunArm/Adamantine
+
+Orichalcum
+	creates = new /obj/item/Weapon/Special/GunArm/Orichalcum
+
 		Bagangsaw
 			weapontype="Bagangsaw"
-			Bronze
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Special/Bagangsaw/Bronze/a=new
-					src.creates=a
-			Iron
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Special/Bagangsaw/Iron/a=new
-					src.creates=a
-			Steel
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Special/Bagangsaw/Steel/a=new
-					src.creates=a
-			Mythril
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Special/Bagangsaw/Mythril/a=new
-					src.creates=a
-			Adamantine
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Special/Bagangsaw/Adamantine/a=new
-					src.creates=a
-			Orichalcum
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Special/GunArm/Orichalcum/a=new
-					src.creates=a
+Bronze
+	creates = new /obj/item/Weapon/Special/Bagangsaw/Bronze
+
+Iron
+	creates = new /obj/item/Weapon/Special/Bagangsaw/Iron
+
+Steel
+	creates = new /obj/item/Weapon/Special/Bagangsaw/Steel
+
+Mythril
+	creates = new /obj/item/Weapon/Special/Bagangsaw/Mythril
+
+Adamantine
+	creates = new /obj/item/Weapon/Special/Bagangsaw/Adamantine
+
+Orichalcum
+	creates = new /obj/item/Weapon/Special/GunArm/Orichalcum
+
 		MagitekPistol
 			weapontype="Magitek Pistol"
-			Bronze
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Special/MagitekPistol/Bronze/a=new
-					src.creates=a
-			Iron
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Special/MagitekPistol/Iron/a=new
-					src.creates=a
-			Steel
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Special/MagitekPistol/Steel/a=new
-					src.creates=a
-			Mythril
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Special/MagitekPistol/Mythril/a=new
-					src.creates=a
-			Adamantine
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Special/MagitekPistol/Adamantine/a=new
-					src.creates=a
-			Orichalcum
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Special/MagitekPistol/Orichalcum/a=new
-					src.creates=a
+Bronze
+	creates = new /obj/item/Weapon/Special/MagitekPistol/Bronze
+
+Iron
+	creates = new /obj/item/Weapon/Special/MagitekPistol/Iron
+
+Steel
+	creates = new /obj/item/Weapon/Special/MagitekPistol/Steel
+
+Mythril
+	creates = new /obj/item/Weapon/Special/MagitekPistol/Mythril
+
+Adamantine
+	creates = new /obj/item/Weapon/Special/MagitekPistol/Adamantine
+
+Orichalcum
+	creates = new /obj/item/Weapon/Special/MagitekPistol/Orichalcum
+
 		MagitekRifle
 			weapontype="Magitek Rifle"
-			Bronze
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Special/MagitekRifle/Bronze/a=new
-					src.creates=a
-			Iron
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Special/MagitekRifle/Iron/a=new
-					src.creates=a
-			Steel
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Special/MagitekRifle/Steel/a=new
-					src.creates=a
-			Mythril
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Special/MagitekRifle/Mythril/a=new
-					src.creates=a
-			Adamantine
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Special/MagitekRifle/Adamantine/a=new
-					src.creates=a
-			Orichalcum
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Special/MagitekRifle/Orichalcum/a=new
-					src.creates=a
+Bronze
+	creates = new /obj/item/Weapon/Special/MagitekRifle/Bronze
+
+Iron
+	creates = new /obj/item/Weapon/Special/MagitekRifle/Iron
+
+Steel
+	creates = new /obj/item/Weapon/Special/MagitekRifle/Steel
+
+Mythril
+	creates = new /obj/item/Weapon/Special/MagitekRifle/Mythril
+
+Adamantine
+	creates = new /obj/item/Weapon/Special/MagitekRifle/Adamantine
+
+Orichalcum
+	creates = new /obj/item/Weapon/Special/MagitekRifle/Orichalcum
+
 		FocusCrystal
 			weapontype="Focus Crystal"
-			Bronze
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Magical/FocusCrystal/Bronze/a=new
-					src.creates=a
-			Iron
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Magical/FocusCrystal/Iron/a=new
-					src.creates=a
-			Steel
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Magical/FocusCrystal/Steel/a=new
-					src.creates=a
-			Mythril
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Magical/FocusCrystal/Mythril/a=new
-					src.creates=a
-			Adamantine
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Magical/FocusCrystal/Adamantine/a=new
-					src.creates=a
-			Orichalcum
-				New()
-					AssignCraftinginfo(src)
-					var/obj/item/Weapon/Magical/FocusCrystal/Orichalcum/a=new
-					src.creates=a
+Bronze
+	creates = new /obj/item/Weapon/Magical/FocusCrystal/Bronze
+
+Iron
+	creates = new /obj/item/Weapon/Magical/FocusCrystal/Iron
+
+Steel
+	creates = new /obj/item/Weapon/Magical/FocusCrystal/Steel
+
+Mythril
+	creates = new /obj/item/Weapon/Magical/FocusCrystal/Mythril
+
+Adamantine
+	creates = new /obj/item/Weapon/Magical/FocusCrystal/Adamantine
+
+Orichalcum
+	creates = new /obj/item/Weapon/Magical/FocusCrystal/Orichalcum
+
 
 /obj/recipes
 	Chemist
