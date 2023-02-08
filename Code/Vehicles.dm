@@ -368,180 +368,185 @@ obj/Vehicles/Tech
 						usr.Control = null
 
 
-obj/ShipConsole
+/obj/ShipConsole
 	name = "Steering Wheel"
-	var
-		Launching
-		SpeakerToggle=0
-		PodID
-		obj/Vehicles/Tech/Travel/Caravel/ThePod
-		mob/Driver
-	density=1
-	layer=3
-	verb
-		Pilot()
-			set src in oview(5)
-			if(src.PodID==0)
-				src.PodID=usr.currentship
-			if(src.Driver)
-				if(src.Driver == usr)
-					usr.Control = null
-					usr.client.perspective = MOB_PERSPECTIVE//Returns your perspective back to the player
-					usr.client.eye = usr.client.mob
-					src.Driver = null
-					return
-				else
-					usr << "Someone else is driving!"
-			else
-				if(src.ThePod)
-					usr.Control=src.ThePod
-					usr.client.perspective=EYE_PERSPECTIVE
-					usr.client.eye=src.ThePod
-					src.Driver = usr
-				else
-					for(var/obj/Vehicles/Tech/Travel/Caravel/S in world)
-						if(S.PodID == src.PodID)
-							src.ThePod = S
-							usr.Control = S
-							usr.client.perspective = EYE_PERSPECTIVE
-							usr.client.eye = S
-							src.Driver = usr
-							return
-		Leave()
-			set src in oview(5)
-			if(src.ThePod)
-				view(10,usr)<<"[usr] leaves the ship."
-				usr.transit_move(get_turf(ThePod), recurse_follow = 0)
-				return
-		//	usr.SendToSpawn() // If the pod has been deleted, sends user to spawn instead of a void.//
-		View()
-			set src in oview(5)
-			if(src.ThePod)
-				if(usr.client.eye == src.ThePod)
-					usr.client.perspective = MOB_PERSPECTIVE
-					usr.client.eye = usr.client.mob
-				else
-					usr.client.perspective=EYE_PERSPECTIVE
-					usr.client.eye=src.ThePod
+	density = TRUE
+	layer = 3
+	var/Launching
+	var/SpeakerToggle=0
+	var/PodID
+	var/obj/Vehicles/Tech/Travel/Caravel/ThePod
+	var/mob/Driver
 
-obj/RoverConsole
+/obj/ShipConsole/verb/Pilot()
+	set src in oview(5)
+	if(src.PodID==0)
+		src.PodID=usr.currentship
+	if(src.Driver)
+		if(src.Driver == usr)
+			usr.Control = null
+			usr.client.perspective = MOB_PERSPECTIVE//Returns your perspective back to the player
+			usr.client.eye = usr.client.mob
+			src.Driver = null
+			return
+		else
+			usr << "Someone else is driving!"
+	else
+		if(src.ThePod)
+			usr.Control=src.ThePod
+			usr.client.perspective=EYE_PERSPECTIVE
+			usr.client.eye=src.ThePod
+			src.Driver = usr
+		else
+			for(var/obj/Vehicles/Tech/Travel/Caravel/S in world)
+				if(S.PodID == src.PodID)
+					src.ThePod = S
+					usr.Control = S
+					usr.client.perspective = EYE_PERSPECTIVE
+					usr.client.eye = S
+					src.Driver = usr
+					return
+
+/obj/ShipConsole/verb/Leave()
+	set src in oview(5)
+	if(src.ThePod)
+		view(10,usr)<<"[usr] leaves the ship."
+		usr.transit_move(get_turf(ThePod), recurse_follow = 0)
+		return
+//	usr.SendToSpawn() // If the pod has been deleted, sends user to spawn instead of a void.//
+
+/obj/ShipConsole/verb/View()
+	set src in oview(5)
+	if(src.ThePod)
+		if(usr.client.eye == src.ThePod)
+			usr.client.perspective = MOB_PERSPECTIVE
+			usr.client.eye = usr.client.mob
+		else
+			usr.client.perspective=EYE_PERSPECTIVE
+			usr.client.eye=src.ThePod
+
+/obj/RoverConsole
 	name = "Steering Wheel"
-	var
-		Launching
-		SpeakerToggle=0
-		RoverID
-		obj/Vehicles/Tech/Travel/Rover/ThePod
-		mob/Driver
-	density=1
-	layer=3
 	icon='Lab.dmi'
 	icon_state="scan1"
-	verb
-		Pilot()
-			set src in oview(5)
-			if(src.RoverID==0)
-				src.RoverID=usr.currentship
-			if(src.Driver)
-				if(src.Driver == usr)
-					usr.Control = null
-					usr.client.perspective = MOB_PERSPECTIVE//Returns your perspective back to the player
-					usr.client.eye = usr.client.mob
-					src.Driver = null
-					return
-				else
-					usr << "Someone else is driving!"
-			else
-				if(src.ThePod)
-					usr.Control=src.ThePod
-					usr.client.perspective=EYE_PERSPECTIVE
-					usr.client.eye=src.ThePod
-					src.Driver = usr
-				else
-					for(var/obj/Vehicles/Tech/Travel/Rover/S in world)
-						if(S.RoverID == src.RoverID)
-							src.ThePod = S
-							usr.Control = S
-							usr.client.perspective = EYE_PERSPECTIVE
-							usr.client.eye = S
-							src.Driver = usr
-							return
-		Leave()
-			set src in oview(5)
-			if(src.ThePod)
-				view(10,usr)<<"[usr] leaves the ship."
-				usr.transit_move(get_turf(ThePod), recurse_follow = 0)
-				return
-		//	usr.SendToSpawn() // If the pod has been deleted, sends user to spawn instead of a void.//
-		View()
-			set src in oview(5)
-			if(src.ThePod)
-				if(usr.client.eye == src.ThePod)
-					usr.client.perspective = MOB_PERSPECTIVE
-					usr.client.eye = usr.client.mob
-				else
-					usr.client.perspective=EYE_PERSPECTIVE
-					usr.client.eye=src.ThePod
+	density = TRUE
+	layer = 3
+	var/Launching
+	var/SpeakerToggle=0
+	var/RoverID
+	var/obj/Vehicles/Tech/Travel/Rover/ThePod
+	var/mob/Driver
 
-obj/AirshipConsole
-	name = "Steering Wheel"
-	var
-		Launching
-		SpeakerToggle=0
-		AirshipID
-		obj/Vehicles/Tech/Travel/Airship/ThePod
-		mob/Driver
-	density=1
-	layer=3
-	verb
-		Raise()
-			set src in range(5,usr)
-			for(var/obj/Vehicles/Tech/Travel/Airship/S in world)
-				if(S.AirshipID == src.AirshipID)
-					S.density=0
-			alert(usr,"You have raised the Airship to Air elevation!")
-		Lower()
-			set src in range(5,usr)
-			for(var/obj/Vehicles/Tech/Travel/Airship/S in world)
-				if(S.AirshipID == src.AirshipID)
-					S.density=1
-			alert(usr,"You have lowered the Airship to ground elevation!")
-		Pilot()
-			set src in oview(5)
-			if(src.AirshipID==0)
-				src.AirshipID=usr.currentship
-			winset(usr,"aircontrol","is-visible=true")
-			if(src.Driver)
-				if(src.Driver == usr)
-					usr.Control = null
-					usr.client.perspective = MOB_PERSPECTIVE//Returns your perspective back to the player
-					usr.client.eye = usr.client.mob
-					src.Driver = null
-					return
-				else
-					usr << "Someone else is driving!"
-			else
-				if(src.ThePod)
-					usr.Control=src.ThePod
-					usr.client.perspective=EYE_PERSPECTIVE
-					usr.client.eye=src.ThePod
+/obj/RoverConsole/verb/Pilot()
+	set src in oview(5)
+	if(src.RoverID==0)
+		src.RoverID=usr.currentship
+	if(src.Driver)
+		if(src.Driver == usr)
+			usr.Control = null
+			usr.client.perspective = MOB_PERSPECTIVE//Returns your perspective back to the player
+			usr.client.eye = usr.client.mob
+			src.Driver = null
+			return
+		else
+			usr << "Someone else is driving!"
+	else
+		if(src.ThePod)
+			usr.Control=src.ThePod
+			usr.client.perspective=EYE_PERSPECTIVE
+			usr.client.eye=src.ThePod
+			src.Driver = usr
+		else
+			for(var/obj/Vehicles/Tech/Travel/Rover/S in world)
+				if(S.RoverID == src.RoverID)
+					src.ThePod = S
+					usr.Control = S
+					usr.client.perspective = EYE_PERSPECTIVE
+					usr.client.eye = S
 					src.Driver = usr
-				else
-					for(var/obj/Vehicles/Tech/Travel/Airship/S in world)
-						if(S.AirshipID == src.AirshipID)
-							src.ThePod = S
-							usr.Control = S
-							usr.client.perspective = EYE_PERSPECTIVE
-							usr.client.eye = S
-							src.Driver = usr
-							return
-		Leave()
+					return
+
+/obj/RoverConsole/verb/Leave()
+	set src in oview(5)
+	if(src.ThePod)
+		view(10,usr)<<"[usr] leaves the ship."
+		usr.transit_move(get_turf(ThePod), recurse_follow = 0)
+		return
+//	usr.SendToSpawn() // If the pod has been deleted, sends user to spawn instead of a void.//
+
+/obj/RoverConsole/verb/View()
+	set src in oview(5)
+	if(src.ThePod)
+		if(usr.client.eye == src.ThePod)
+			usr.client.perspective = MOB_PERSPECTIVE
+			usr.client.eye = usr.client.mob
+		else
+			usr.client.perspective=EYE_PERSPECTIVE
+			usr.client.eye=src.ThePod
+
+/obj/AirshipConsole
+	name = "Steering Wheel"
+	density = TRUE
+	layer = 3
+	var/Launching
+	var/SpeakerToggle=0
+	var/AirshipID
+	var/obj/Vehicles/Tech/Travel/Airship/ThePod
+	var/mob/Driver
+
+/obj/AirshipConsole/verb/Raise()
+	set src in range(5,usr)
+	for(var/obj/Vehicles/Tech/Travel/Airship/S in world)
+		if(S.AirshipID == src.AirshipID)
+			S.density=0
+	alert(usr,"You have raised the Airship to Air elevation!")
+
+/obj/AirshipConsole/verb/Lower()
+	set src in range(5,usr)
+	for(var/obj/Vehicles/Tech/Travel/Airship/S in world)
+		if(S.AirshipID == src.AirshipID)
+			S.density=1
+	alert(usr,"You have lowered the Airship to ground elevation!")
+
+/obj/AirshipConsole/verb/Pilot()
+	set src in oview(5)
+	if(src.AirshipID==0)
+		src.AirshipID=usr.currentship
+	winset(usr,"aircontrol","is-visible=true")
+	if(src.Driver)
+		if(src.Driver == usr)
+			usr.Control = null
+			usr.client.perspective = MOB_PERSPECTIVE//Returns your perspective back to the player
+			usr.client.eye = usr.client.mob
+			src.Driver = null
+			return
+		else
+			usr << "Someone else is driving!"
+	else
+		if(src.ThePod)
+			usr.Control=src.ThePod
+			usr.client.perspective=EYE_PERSPECTIVE
+			usr.client.eye=src.ThePod
+			src.Driver = usr
+		else
+			for(var/obj/Vehicles/Tech/Travel/Airship/S in world)
+				if(S.AirshipID == src.AirshipID)
+					src.ThePod = S
+					usr.Control = S
+					usr.client.perspective = EYE_PERSPECTIVE
+					usr.client.eye = S
+					src.Driver = usr
+					return
+
+/obj/AirshipConsole/verb/Leave()
 			set src in oview(5)
 			if(src.ThePod)
 				view(10,usr)<<"[usr] leaves the ship."
 				usr.transit_move(get_turf(ThePod), recurse_follow = 0)
 				return
 		//	usr.SendToSpawn() // If the pod has been deleted, sends user to spawn instead of a void.//
-		View()
+
+/obj/AirshipConsole/verb/View()
 			set src in oview(5)
 			if(src.ThePod)
 				if(usr.client.eye == src.ThePod)
