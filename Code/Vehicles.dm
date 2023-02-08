@@ -5,7 +5,7 @@
 	var/vehicle = FALSE
 
 /mob
-	var/currentship
+	var/tmp/currentship
 
 /obj/VehicleInterior/Shipoutside
 	layer=2
@@ -105,7 +105,7 @@
 /obj/Vehicles/Tech/Travel/Caravel
 	var/pass = ""
 	var/PodID
-	var/obj/ShipConsole/TheConsole
+	var/tmp/obj/ShipConsole/TheConsole
 	var/Recalled = 0
 	password = "locked"
 	pixel_x = -60
@@ -171,7 +171,7 @@
 /obj/Vehicles/Tech/Travel/Airship
 	var/pass=""
 	var/AirshipID
-	var/obj/AirshipConsole/TheConsole
+	var/tmp/obj/AirshipConsole/TheConsole
 	var/Recalled = 0
 	password = "locked"
 	pixel_x = -48
@@ -238,8 +238,8 @@
 /obj/Vehicles/Tech/Travel/Balamb
 	var/pass=""
 	var/AirshipID="Balamb"
-	var/obj/BalambConsole/TheConsole
-	var/obj/BalambDoor/TheDoor
+	var/tmp/obj/BalambConsole/TheConsole
+	var/tmp/obj/BalambDoor/TheDoor
 	var/Recalled = 0
 	password = "locked"
 	pixel_x = -48
@@ -306,7 +306,7 @@
 /obj/Vehicles/Tech/Travel/Rover
 	var/pass=""
 	var/RoverID
-	var/obj/RoverConsole/TheConsole
+	var/tmp/obj/RoverConsole/TheConsole
 	var/Recalled = 0
 	password = "locked"
 	pixel_x =  -92
@@ -378,8 +378,8 @@
 	var/Launching
 	var/SpeakerToggle=0
 	var/PodID
-	var/obj/Vehicles/Tech/Travel/Caravel/ThePod
-	var/mob/Driver
+	var/tmp/obj/Vehicles/Tech/Travel/Caravel/ThePod
+	var/tmp/mob/Driver
 
 /obj/ShipConsole/verb/Pilot()
 	set src in oview(5)
@@ -437,8 +437,8 @@
 	var/Launching
 	var/SpeakerToggle=0
 	var/RoverID
-	var/obj/Vehicles/Tech/Travel/Rover/ThePod
-	var/mob/Driver
+	var/tmp/obj/Vehicles/Tech/Travel/Rover/ThePod
+	var/tmp/mob/Driver
 
 /obj/RoverConsole/verb/Pilot()
 	set src in oview(5)
@@ -494,8 +494,8 @@
 	var/Launching
 	var/SpeakerToggle=0
 	var/AirshipID
-	var/obj/Vehicles/Tech/Travel/Airship/ThePod
-	var/mob/Driver
+	var/tmp/obj/Vehicles/Tech/Travel/Airship/ThePod
+	var/tmp/mob/Driver
 
 /obj/AirshipConsole/verb/Raise()
 	set src in range(5,usr)
@@ -565,7 +565,7 @@
 	icon_state="Closed1"
 	density=1
 	var/AirshipID="Balamb"
-	var/obj/Vehicles/Tech/Travel/Airship/ThePod
+	var/tmp/obj/Vehicles/Tech/Travel/Airship/ThePod
 
 /obj/BalambDoor/Click()
 	for(var/obj/Vehicles/Tech/Travel/Balamb/S in world)
@@ -582,8 +582,8 @@
 	var/Launching
 	var/SpeakerToggle=0
 	var/AirshipID="Balamb"
-	var/obj/Vehicles/Tech/Travel/Balamb/ThePod
-	var/mob/Driver
+	var/tmp/obj/Vehicles/Tech/Travel/Balamb/ThePod
+	var/tmp/mob/Driver
 	density = TRUE
 	layer = 3
 
@@ -698,4 +698,4 @@
 	..()
 
 /mob
-	var/obj/Control
+	var/tmp/obj/Control
