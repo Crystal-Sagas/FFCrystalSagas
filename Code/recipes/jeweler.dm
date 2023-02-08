@@ -2,6 +2,8 @@
 /obj/recipes/Jeweler
 	jeweler = TRUE
 
+//? Rings
+
 /obj/recipes/Jeweler/SilverRing
 	name="Silver Ring"
 	mat1="Silver"
@@ -21,6 +23,8 @@
 	mat3="Earth Gem"
 	amount3=1
 	creates = new /obj/item/Weapon/Jeweler/GoldRing
+
+//? Necklace
 
 /obj/recipes/Jeweler/SilverNecklace
 	name="Silver Necklace"
@@ -42,6 +46,8 @@
 	amount3=1
 	creates = new /obj/item/Weapon/Jeweler/GoldNecklace
 
+//? Bracelet
+
 /obj/recipes/Jeweler/SilverBracelet
 	name="Silver Bracelet"
 	mat1="Silver"
@@ -51,6 +57,18 @@
 	mat3="Fire Gem"
 	amount3=1
 	creates = new /obj/item/Weapon/Jeweler/SilverBracelet
+
+/obj/recipes/Jeweler/GoldBracelet
+	name="Gold Bracelet"
+	mat1="Gold"
+	amount1=5
+	mat2="Silver"
+	amount2=2
+	mat3="Fire Gem"
+	amount3=1
+	creates = new /obj/item/Weapon/Jeweler/GoldBracelet
+
+//? Earring
 
 /obj/recipes/Jeweler/SilverEarring
 	name="Silver Earring"
@@ -72,15 +90,7 @@
 	amount3=1
 	creates = new /obj/item/Weapon/Jeweler/GoldEarring
 
-/obj/recipes/Jeweler/GoldBracelet
-	name="Gold Bracelet"
-	mat1="Gold"
-	amount1=5
-	mat2="Silver"
-	amount2=2
-	mat3="Fire Gem"
-	amount3=1
-	creates = new /obj/item/Weapon/Jeweler/GoldBracelet
+//? Bangle
 
 /obj/recipes/Jeweler/BronzeBangle
 	name="Bronze Bangle"
