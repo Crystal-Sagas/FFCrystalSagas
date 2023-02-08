@@ -748,7 +748,6 @@ mob
 				usr.wis=10
 				usr.cha=10
 				usr.int=10
-				usr.APcap=10+((usr.rankbonus-1)*4)
 				usr.abilitypoints=10+((usr.rankbonus-1)*4)
 				for(var/obj/perk/p in usr.contents)
 					if(p.name=="Mako Affected")
@@ -825,7 +824,8 @@ mob
 						usr.APspent-=2
 
 			else
-				usr.abilitypoints= usr.APcap=-usr.APspent
+				usr.APcap=10+((usr.rankbonus-1)*4)
+				usr.abilitypoints= usr.APcap-usr.APspent
 
 			if(usr.str>usr.strcap)
 				usr.abilitypoints+=(usr.str-usr.strcap)
