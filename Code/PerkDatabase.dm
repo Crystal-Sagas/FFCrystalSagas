@@ -1668,7 +1668,7 @@ obj
 				ForceofNature
 					name="Force of Nature"
 					rank="T4"
-					desc="The Mystic Knight has learned to push their blade-casting to the utmost level. Whenever the Mystic Knight uses a General  or Job based Weapon Ability, if that Weapon Ability were to deal any damage at all to the target creature or creatures, they may spend half the MP cost of any Black or Arcane spell they know, in order to enforce its damage and effects in addition to that of the Weapon Ability's. They must still pay the cost of the Weapon Ability in question."
+					desc="The Mystic Knight has learned to push their blade-casting to the utmost level. Whenever the Mystic Knight uses a General  or Job based Weapon Ability, if that Weapon Ability were to deal any damage at all to the target creature or creatures, they may spend half the MP cost of any Black or Arcane spell they know, in order to enforce its damage and effects in addition to that of the Weapon Ability's. They must still pay the cost of the Weapon Ability in question.This can only be used once per turn."
 				BastionofMagic
 					name="Bastion of Magic"
 					rank="T5"
@@ -2670,7 +2670,7 @@ obj
 				BloodoftheWyvern
 					rank="T2"
 					name="Blood of the Wyvern"
-					desc="A dragon's dragon blood enhanced body grants them supernatural aerodynamics. They can cut through the air like an arrow. By calling on their dragon blood on take off, the Dragoon is able to greatly enhance their maximum jump height. The Dragoon can double their base Jump Height whenever they leave the ground. This has a 3 round cooldown, starting when the Dragoon next lands. With this perk, the dragon may choose to freely and immediately land on the ground."
+					desc="A dragon's dragon blood enhanced body grants them supernatural aerodynamics. They can cut through the air like an arrow. By calling on their dragon blood while grounded, the Dragoon is able to greatly enhance their maximum jump height. The Dragoon can double their base Jump Height whenever they leave the ground. This has a 3 round cooldown, starting when the Dragoon next lands. With this perk, the dragon may choose to freely and immediately land on the ground."
 				Glide
 					rank="T3"
 					name="Glide"
