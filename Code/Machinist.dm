@@ -274,36 +274,17 @@ obj
 				icon_state="Emissor"
 				verb
 					Terraform()
-						alert(usr,"Are you sure you wish to use Terraformer? It will be consumed after use..")
-						var/list/roles=list("Yes","No")
-						var/rolechoice=input(usr,"Use refresh?") as anything in roles
-						switch(rolechoice)
-							if("Yes")
-								view() << output("<font color=[usr.textcolor]><b>[usr]</b></font> reinvigorates a small patch of land with <b></font color=#A3F875>Science</b></font> to refresh the Natural Resources in an immediate vicinity!","icout")
-								usr.Lifestreamraincooldown=1
-								for(var/obj/node/Minenode/a in view(1))
-									if(a.name=="Mine Node")
-										a.icon_state="Ore"
-										a.used=0
-								for(var/obj/node/Dirtnode/a in view(1))
-									if(a.name=="Dirt Node")
-										a.icon_state="dirtpile"
-										a.used=0
-								for(var/obj/node/Makonode/a in view(1))
-									if(a.name=="Materia Node")
-										a.icon_state="activemako"
-										a.used=0
-								for(var/obj/node/Herbnode/a in view(1))
-									if(a.name=="Herb Node")
-										a.icon_state="Herb"
-										a.used=0
-								for(var/obj/node/Hunternode/a in view(1))
-									if(a.name=="Hunter Node")
-										a.icon_state="trap"
-										a.used=0
-								del src
-							if("No")
-								return
+						if(alert(usr, "Are you sure you wish to use Terraformer? It will be consumed after use..", "Node Refresh", "Yes", "No") != "Yes")
+							return
+						usr.visible_message(
+							"<b>[usr]</b>reinvigorates a small patch of land with <b><font color='#A3F875'>Science</b></font> to refresh the Natural Resources in an immediate vicinity!",
+							stream = "icout",
+							color = TRUE
+						)
+						usr.Lifestreamraincooldown=1
+						for(var/obj/node/N in view(1))
+							N.refresh()
+						del src
 			Augment
 				icon='Icons/Tech.dmi'
 				icon_state="CommChip"
