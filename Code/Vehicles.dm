@@ -147,7 +147,7 @@
 					usr<<"ID assigned! ID is [i]."
 					break
 		if(src.TheConsole)
-			usr.loc=locate(src.TheConsole.x,src.TheConsole.y-1,src.TheConsole.z)
+			usr.transit_move(get_turf(TheConsole), recurse_follow = 0)
 			UpdateArea(usr)
 			return
 		else
@@ -213,14 +213,14 @@
 					usr<<"ID assigned! ID is [i]."
 					break
 		if(src.TheConsole)
-			usr.loc=locate(src.TheConsole.x,src.TheConsole.y-1,src.TheConsole.z)
+			usr.transit_move(get_turf(src.TheConsole), recurse_follow = 0)
 			UpdateArea(usr)
 			return
 		else
 			for(var/obj/AirshipConsole/S in world)
 				if(S.AirshipID == src.AirshipID)
 					src.TheConsole = S
-					usr.force_move(get_turf(src.TheConsole))
+					usr.transit_move(get_turf(src.TheConsole), recurse_follow = 0)
 					return
 				usr << "Error! No ship consoles were found!"
 	else
@@ -287,7 +287,7 @@
 			for(var/obj/BalambDoor/S in world)
 				if(S.AirshipID == src.AirshipID)
 					src.TheDoor = S
-					usr.loc = locate(src.TheDoor.x, src.TheDoor.y-1, src.TheDoor.z)
+					usr.transit_move(get_turf(src.TheDoor), recurse_follow = 0)
 					UpdateArea(usr)
 					return
 				usr << "Error! No ship consoles were found!"
@@ -349,14 +349,14 @@
 					usr<<"ID assigned! ID is [i]."
 					break
 		if(src.TheConsole)
-			usr.loc=locate(src.TheConsole.x,src.TheConsole.y-1,src.TheConsole.z)
+			usr.transit_move(get_turf(src.TheConsole), recurse_follow = 0)
 			UpdateArea(usr)
 			return
 		else
 			for(var/obj/RoverConsole/S in world)
 				if(S.RoverID == src.RoverID)
 					src.TheConsole = S
-					usr.loc = locate(src.TheConsole.x, src.TheConsole.y-1, src.TheConsole.z)
+					usr.transit_move(get_turf(src.TheConsole), recurse_follow = 0)
 					UpdateArea(usr)
 					return
 				usr << "Error! No ship consoles were found!"
@@ -370,7 +370,6 @@
 		if(usr.Control)
 			src.TheConsole.Driver = null
 			usr.Control = null
-
 
 /obj/ShipConsole
 	name = "Steering Wheel"
