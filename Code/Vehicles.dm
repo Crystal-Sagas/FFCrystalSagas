@@ -539,22 +539,22 @@ obj/Vehicles/Tech
 					return
 
 /obj/AirshipConsole/verb/Leave()
-			set src in oview(5)
-			if(src.ThePod)
-				view(10,usr)<<"[usr] leaves the ship."
-				usr.transit_move(get_turf(ThePod), recurse_follow = 0)
-				return
-		//	usr.SendToSpawn() // If the pod has been deleted, sends user to spawn instead of a void.//
+	set src in oview(5)
+	if(src.ThePod)
+		view(10,usr)<<"[usr] leaves the ship."
+		usr.transit_move(get_turf(ThePod), recurse_follow = 0)
+		return
+//	usr.SendToSpawn() // If the pod has been deleted, sends user to spawn instead of a void.//
 
 /obj/AirshipConsole/verb/View()
-			set src in oview(5)
-			if(src.ThePod)
-				if(usr.client.eye == src.ThePod)
-					usr.client.perspective = MOB_PERSPECTIVE
-					usr.client.eye = usr.client.mob
-				else
-					usr.client.perspective=EYE_PERSPECTIVE
-					usr.client.eye=src.ThePod
+	set src in oview(5)
+	if(src.ThePod)
+		if(usr.client.eye == src.ThePod)
+			usr.client.perspective = MOB_PERSPECTIVE
+			usr.client.eye = usr.client.mob
+		else
+			usr.client.perspective=EYE_PERSPECTIVE
+			usr.client.eye=src.ThePod
 
 /obj/BalambDoor
 	name="Garden Door"
