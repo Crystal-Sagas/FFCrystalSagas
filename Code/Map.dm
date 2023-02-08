@@ -205,6 +205,8 @@ turf
 				icon_state="9"
 			Topright
 				icon_state="10"
+		Golddust
+			icon='Map Icons/Golddust.dmi'
 		Grass1
 			icon = 'Map Icons/Grass1.dmi'
 			Ftile
