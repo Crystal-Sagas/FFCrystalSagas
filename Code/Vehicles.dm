@@ -97,9 +97,8 @@
 
 /obj/Special/SpecialTele/Townwarper
 
-obj
-	Vehicles
-		Savable=0
+/obj/Vehicles
+	Savable=0
 
 obj/Vehicles/Tech
 	Travel
@@ -552,137 +551,143 @@ obj/AirshipConsole
 					usr.client.perspective=EYE_PERSPECTIVE
 					usr.client.eye=src.ThePod
 
-obj/BalambDoor
+/obj/BalambDoor
 	name="Garden Door"
 	icon='Map Icons/Doors.dmi'
 	icon_state="Closed1"
 	density=1
-	var
-		AirshipID="Balamb"
-		obj/Vehicles/Tech/Travel/Airship/ThePod
-	Click()
-		for(var/obj/Vehicles/Tech/Travel/Balamb/S in world)
-			if(S.AirshipID == src.AirshipID)
-				src.ThePod = S
-		usr.x=ThePod.x
-		usr.y=ThePod.y
-		usr.z=ThePod.z
+	var/AirshipID="Balamb"
+	var/obj/Vehicles/Tech/Travel/Airship/ThePod
 
-obj/BalambConsole
+/obj/BalambDoor/Click()
+	for(var/obj/Vehicles/Tech/Travel/Balamb/S in world)
+		if(S.AirshipID == src.AirshipID)
+			src.ThePod = S
+	usr.x=ThePod.x
+	usr.y=ThePod.y
+	usr.z=ThePod.z
+
+/obj/BalambConsole
 	name = "Steering Wheel"
 	icon='Lab.dmi'
 	icon_state="scan1"
-	var
-		Launching
-		SpeakerToggle=0
-		AirshipID="Balamb"
-		obj/Vehicles/Tech/Travel/Balamb/ThePod
-		mob/Driver
-	density=1
-	layer=3
-	verb
-		Raise()
-			set src in range(5,usr)
-			for(var/obj/Vehicles/Tech/Travel/Balamb/S in world)
+	var/Launching
+	var/SpeakerToggle=0
+	var/AirshipID="Balamb"
+	var/obj/Vehicles/Tech/Travel/Balamb/ThePod
+	var/mob/Driver
+	density = TRUE
+	layer = 3
+
+/obj/BalambConsole/verb/Raise()
+	set src in range(5,usr)
+	for(var/obj/Vehicles/Tech/Travel/Balamb/S in world)
+		if(S.AirshipID == src.AirshipID)
+			S.density=0
+	alert(usr,"You have raised the Airship to Air elevation!")
+
+/obj/BalambConsole/verb/Lower()
+	set src in range(5,usr)
+	for(var/obj/Vehicles/Tech/Travel/Balamb/S in world)
+		if(S.AirshipID == src.AirshipID)
+			S.density=1
+	alert(usr,"You have lowered the Airship to ground elevation!")
+
+/obj/BalambConsole/verb/Pilot()
+	set src in oview(5)
+	if(src.AirshipID==0)
+		src.AirshipID=usr.currentship
+	winset(usr,"aircontrol","is-visible=true")
+	if(src.Driver)
+		if(src.Driver == usr)
+			usr.Control = null
+			usr.client.perspective = MOB_PERSPECTIVE//Returns your perspective back to the player
+			usr.client.eye = usr.client.mob
+			src.Driver = null
+			return
+		else
+			usr << "Someone else is driving!"
+	else
+		if(src.ThePod)
+			usr.Control=src.ThePod
+			usr.client.perspective=EYE_PERSPECTIVE
+			usr.client.eye=src.ThePod
+			src.Driver = usr
+		else
+			for(var/obj/Vehicles/Tech/Travel/Airship/S in world)
 				if(S.AirshipID == src.AirshipID)
-					S.density=0
-			alert(usr,"You have raised the Airship to Air elevation!")
-		Lower()
-			set src in range(5,usr)
-			for(var/obj/Vehicles/Tech/Travel/Balamb/S in world)
-				if(S.AirshipID == src.AirshipID)
-					S.density=1
-			alert(usr,"You have lowered the Airship to ground elevation!")
-		Pilot()
-			set src in oview(5)
-			if(src.AirshipID==0)
-				src.AirshipID=usr.currentship
-			winset(usr,"aircontrol","is-visible=true")
-			if(src.Driver)
-				if(src.Driver == usr)
-					usr.Control = null
-					usr.client.perspective = MOB_PERSPECTIVE//Returns your perspective back to the player
-					usr.client.eye = usr.client.mob
-					src.Driver = null
-					return
-				else
-					usr << "Someone else is driving!"
-			else
-				if(src.ThePod)
-					usr.Control=src.ThePod
-					usr.client.perspective=EYE_PERSPECTIVE
-					usr.client.eye=src.ThePod
+					src.ThePod = S
+					usr.Control = S
+					usr.client.perspective = EYE_PERSPECTIVE
+					usr.client.eye = S
 					src.Driver = usr
-				else
-					for(var/obj/Vehicles/Tech/Travel/Airship/S in world)
-						if(S.AirshipID == src.AirshipID)
-							src.ThePod = S
-							usr.Control = S
-							usr.client.perspective = EYE_PERSPECTIVE
-							usr.client.eye = S
-							src.Driver = usr
-							return
-		Leave()
-			set src in oview(5)
-			if(src.ThePod)
-				view(10,usr)<<"[usr] leaves the ship."
-				usr.transit_move(get_turf(ThePod), recurse_follow = 0)
-				return
-		//	usr.SendToSpawn() // If the pod has been deleted, sends user to spawn instead of a void.//
-		View()
-			set src in oview(5)
-			if(src.ThePod)
-				if(usr.client.eye == src.ThePod)
-					usr.client.perspective = MOB_PERSPECTIVE
-					usr.client.eye = usr.client.mob
-				else
-					usr.client.perspective=EYE_PERSPECTIVE
-					usr.client.eye=src.ThePod
+					return
 
-client
-	North()
-		if(mob.Control && isobj(mob.Control))
-			step(mob.Control, NORTH)
-			return 0
-		..()
-	South()
-		if(mob.Control && isobj(mob.Control))
-			step(mob.Control, SOUTH)
-			return 0
-		..()
-	East()
-		if(mob.Control && isobj(mob.Control))
-			step(mob.Control, EAST)
-			return 0
-		..()
-	West()
-		if(mob.Control && isobj(mob.Control))
-			step(mob.Control, WEST)
-			return 0
-		..()
-	Northeast()
-		if(mob.Control && isobj(mob.Control))
-			step(mob.Control, NORTHEAST)
-			return 0
-		..()
-	Northwest()
-		if(mob.Control && isobj(mob.Control))
-			step(mob.Control, NORTHWEST)
-			return 0
-		..()
-	Southeast()
-		if(mob.Control && isobj(mob.Control))
-			step(mob.Control, SOUTHEAST)
-			return 0
-		..()
-	Southwest()
-		if(mob.Control && isobj(mob.Control))
-			step(mob.Control, SOUTHWEST)
-			return 0
-		..()
+/obj/BalambConsole/verb/Leave()
+	set src in oview(5)
+	if(src.ThePod)
+		view(10,usr)<<"[usr] leaves the ship."
+		usr.transit_move(get_turf(ThePod), recurse_follow = 0)
+		return
+//	usr.SendToSpawn() // If the pod has been deleted, sends user to spawn instead of a void.//
 
+/obj/BalambConsole/verb/View()
+	set src in oview(5)
+	if(src.ThePod)
+		if(usr.client.eye == src.ThePod)
+			usr.client.perspective = MOB_PERSPECTIVE
+			usr.client.eye = usr.client.mob
+		else
+			usr.client.perspective=EYE_PERSPECTIVE
+			usr.client.eye=src.ThePod
 
+/client/North()
+	if(mob.Control && isobj(mob.Control))
+		step(mob.Control, NORTH)
+		return 0
+	..()
 
-mob
-	var
-		obj/Control
+/client/South()
+	if(mob.Control && isobj(mob.Control))
+		step(mob.Control, SOUTH)
+		return 0
+	..()
+
+/client/East()
+	if(mob.Control && isobj(mob.Control))
+		step(mob.Control, EAST)
+		return 0
+	..()
+
+/client/West()
+	if(mob.Control && isobj(mob.Control))
+		step(mob.Control, WEST)
+		return 0
+	..()
+
+/client/Northeast()
+	if(mob.Control && isobj(mob.Control))
+		step(mob.Control, NORTHEAST)
+		return 0
+	..()
+
+/client/Northwest()
+	if(mob.Control && isobj(mob.Control))
+		step(mob.Control, NORTHWEST)
+		return 0
+	..()
+
+/client/Southeast()
+	if(mob.Control && isobj(mob.Control))
+		step(mob.Control, SOUTHEAST)
+		return 0
+	..()
+
+/client/Southwest()
+	if(mob.Control && isobj(mob.Control))
+		step(mob.Control, SOUTHWEST)
+		return 0
+	..()
+
+/mob
+	var/obj/Control
