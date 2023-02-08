@@ -215,7 +215,7 @@ mob/var
 	gatheringroles
 	maxgatheringroles
 	abilitypoints=10
-	APspent=-1 //This is intentionally set to -1 to force a particular proc to call.
+	APspent=9000 //Hehefunny number for rework.
 	APcap=10
 	intutorial
 	created

@@ -1064,7 +1064,7 @@ obj
 				SummonerofYevon
 					icon='Icons/Perk/SummonerofYevon.png'
 					name="Summoner of Yevon"
-					desc="This individual is a Summoner of Yevon. They are a devout of the religion of Yevon, and have the unique ability to travel to shrines of Yevon and obtain free Aeon summons by overcoming the trials within said shrines. When completing a shrine's trial, this summoner is granted the shrine's Aeon without any point cost. Aeons cost 50 MP to summon, regardless of which it is. In addition, up to two Aeons may be summoned at a time, and can be summoned to the field together."
+					desc="This individual is a Summoner of Yevon. They are a devout of the religion of Yevon, and have the unique ability to travel to shrines of Yevon and obtain free Aeon summons by overcoming the trials within said shrines. When completing a shrine's trial, this summoner is granted the shrine's Aeon without any point cost. Aeons cost 50 MP to summon, regardless of which it is. In addition, up to two Aeons may be summoned at a time, and can be summoned to the field together. They gain +4 WIS, +4 CHA, +4 INT)"
 				AppointedGuardian
 					icon='Icons/Perk/AppointedGuardian.png'
 					name="Appointed Guardian"

@@ -740,6 +740,92 @@ mob
 			winset(usr,"Charsheet.addwis","is-visible=true")
 			winset(usr,"Charsheet.addcha","is-visible=true")
 
+			if(usr.APspent==9000)//This is a data migration that will be temporary. After we test it and it goes live for an update or two, we can remove it.
+				usr.APspent=0
+				usr.str=10
+				usr.con=10
+				usr.dex=10
+				usr.wis=10
+				usr.cha=10
+				usr.int=10
+				usr.APcap=10+((usr.rankbonus-1)*4)
+				usr.abilitypoints=10+((usr.rankbonus-1)*4)
+				for(var/obj/perk/p in usr.contents)
+					if(p.name=="Mako Affected")
+						usr.str+=2
+						usr.con+=2
+						usr.dex+=2
+					if(p.name=="Aether Affected")
+						usr.wis+=2
+						usr.cha+=2
+						usr.int+=2
+					if(p.name=="Mako Poisoning")
+						usr.str+=2
+						usr.con-=2
+						usr.dex+=2
+					if(p.name=="Harbinger of Chaos")
+						usr.str+=2
+						usr.con+=2
+						usr.dex+=2
+						usr.wis+=2
+						usr.cha+=2
+						usr.int+=2
+					if(p.name=="Embodiment of Sin")
+						usr.str+=2
+						usr.con+=2
+						usr.dex+=2
+						usr.wis+=2
+						usr.cha+=2
+						usr.int+=2
+					if(p.name=="L'cie (Job)")
+						usr.str+=2
+						usr.con+=2
+						usr.dex+=2
+						usr.wis+=2
+						usr.cha+=2
+						usr.int+=2
+					if(p.name=="Imperfect Jenova Cells")
+						usr.str+=4
+						usr.con+=2
+						usr.dex+=4
+					if(p.name=="Perfect Jenova Cells")
+						usr.str+=4
+						usr.con+=4
+						usr.dex+=4
+					if(p.name=="Summoner of Yevon")
+						usr.wis+=4
+						usr.cha+=4
+						usr.int+=4
+					if(p.name=="Guado Physiology")
+						usr.wis+=2
+					if(p.name=="Elezen Physiology")
+						usr.dex+=2
+					if(p.name=="Layered Muscle")
+						usr.str+=2
+					if(p.name=="The Big One's Wisdom")
+						usr.wis+=2
+					if(p.name=="Pint Size")
+						usr.wis+=2
+					if(p.name=="Lifestream Conneciton")
+						usr.str+=2
+						usr.con+=2
+						usr.dex+=2
+					if(p.name=="Aether Connection")
+						usr.wis+=2
+						usr.cha+=2
+						usr.int+=2
+					if(p.name=="Pure Red Mage")
+						usr.abilitypoints+=2
+						usr.APspent-=2
+					if(p.name=="Red Empowerment")
+						usr.abilitypoints+=2
+						usr.APspent-=2
+					if(p.name=="Appointed Guardian")
+						usr.abilitypoints+=2
+						usr.APspent-=2
+
+			else
+				usr.abilitypoints= usr.APcap=-usr.APspent
 
 			if(usr.str>usr.strcap)
 				usr.abilitypoints+=(usr.str-usr.strcap)
@@ -780,6 +866,7 @@ mob
 					return
 				else
 					usr.str++
+					usr.APspent++
 					usr.abilitypoints--
 					usr.Checkmod(1,usr.str,usr.addstr,usr)
 					RefreshCharsheet(usr)
@@ -797,6 +884,7 @@ mob
 					return
 				else
 					usr.dex++
+					usr.APspent++
 					usr.abilitypoints--
 					usr.Checkmod(2,usr.dex,usr.adddex,usr)
 					RefreshCharsheet(usr)
@@ -814,6 +902,7 @@ mob
 					return
 				else
 					usr.con++
+					usr.APspent++
 					usr.abilitypoints--
 					usr.Checkmod(3,usr.con,usr.addcon,usr)
 					RefreshCharsheet(usr)
@@ -831,6 +920,7 @@ mob
 					return
 				else
 					usr.int++
+					usr.APspent++
 					usr.abilitypoints--
 					usr.Checkmod(4,usr.int,usr.addint,usr)
 					RefreshCharsheet(usr)
@@ -848,6 +938,7 @@ mob
 					return
 				else
 					usr.wis++
+					usr.APspent++
 					usr.abilitypoints--
 					usr.Checkmod(5,usr.wis,usr.addwis,usr)
 					RefreshCharsheet(usr)
@@ -865,6 +956,7 @@ mob
 					return
 				else
 					usr.cha++
+					usr.APspent++
 					usr.abilitypoints--
 					usr.Checkmod(6,usr.cha,usr.addcha,usr)
 					RefreshCharsheet(usr)

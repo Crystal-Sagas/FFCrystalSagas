@@ -1309,6 +1309,7 @@ proc
 			m.msp+=20
 			m.sp+=20
 			m.abilitypoints+=2
+			m.APspent-=2
 		if(o.name=="Tempered Fists I")
 			var/obj/perk/Jobperks/Monk/TemperedFists1/Tempered1/a = new /obj/perk/Jobperks/Monk/TemperedFists1/Tempered1
 			m.contents+=a
@@ -1355,6 +1356,7 @@ proc
 			m.msp+=20
 			m.sp+=20
 			m.abilitypoints+=2
+			m.APspent-=2
 			m.nolearn+="Sub Job"
 		if(o.name=="Synchronicity")
 			m.mmp+=30
