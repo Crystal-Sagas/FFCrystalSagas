@@ -295,6 +295,8 @@ var/list/naughtywords = list("sex","penis","pussy","cock","ass","dick","breast",
 	if(m.trpp>=150&&m.trpp<200)
 		if(m.rank=="Hero")
 			return
+		if(m.rank!="Veteran")
+			return
 		else
 			m.rank="Hero"
 			m.rankbonus=5
