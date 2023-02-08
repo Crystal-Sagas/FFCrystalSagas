@@ -735,545 +735,571 @@
 /obj/recipes/Weapons/Axe/Orichalcum
 	creates = new /obj/item/Weapon/Melee/Axe/Orichalcum
 
-		Dagger
-			weapontype="Dagger"
-Bronze
+/obj/recipes/Weapons/Dagger
+	weapontype = "Dagger"
+
+/obj/recipes/Weapons/Dagger/Bronze
 	creates = new /obj/item/Weapon/Melee/Dagger/Bronze
 
-Iron
+/obj/recipes/Weapons/Dagger/Iron
 	creates = new /obj/item/Weapon/Melee/Dagger/Iron
 
-Steel
+/obj/recipes/Weapons/Dagger/Steel
 	creates = new /obj/item/Weapon/Melee/Dagger/Steel
 
-Mythril
+/obj/recipes/Weapons/Dagger/Mythril
 	creates = new /obj/item/Weapon/Melee/Dagger/Mythril
 
-Adamantine
+/obj/recipes/Weapons/Dagger/Adamantine
 	creates = new /obj/item/Weapon/Melee/Dagger/Adamantine
 
-Orichalcum
+/obj/recipes/Weapons/Dagger/Orichalcum
 	creates = new /obj/item/Weapon/Melee/Dagger/Orichalcum
 
-		Claw
-			weapontype="Claw"
-Bronze
+/obj/recipes/Weapons/Claw
+	weapontype = "Claw"
+
+/obj/recipes/Weapons/Claw/Bronze
 	creates = new /obj/item/Weapon/Melee/Claw/Bronze
 
-Iron
+/obj/recipes/Weapons/Claw/Iron
 	creates = new /obj/item/Weapon/Melee/Claw/Iron
 
-Steel
+/obj/recipes/Weapons/Claw/Steel
 	creates = new /obj/item/Weapon/Melee/Claw/Steel
 
-Mythril
+/obj/recipes/Weapons/Claw/Mythril
 	creates = new /obj/item/Weapon/Melee/Claw/Mythril
 
-Adamantine
+/obj/recipes/Weapons/Claw/Adamantine
 	creates = new /obj/item/Weapon/Melee/Claw/Adamantine
 
-Orichalcum
+/obj/recipes/Weapons/Claw/Orichalcum
 	creates = new /obj/item/Weapon/Melee/Claw/Orichalcum
 
-		Gauntlet
-			weapontype="Gauntlet"
-Bronze
+/obj/recipes/Weapons/Gauntlet
+	weapontype = "Gauntlet"
+
+/obj/recipes/Weapons/Gauntlet/Bronze
 	creates = new /obj/item/Weapon/Melee/Gauntlet/Bronze
 
-Iron
+/obj/recipes/Weapons/Gauntlet/Iron
 	creates = new /obj/item/Weapon/Melee/Gauntlet/Iron
 
-Steel
+/obj/recipes/Weapons/Gauntlet/Steel
 	creates = new /obj/item/Weapon/Melee/Gauntlet/Steel
 
-Mythril
+/obj/recipes/Weapons/Gauntlet/Mythril
 	creates = new /obj/item/Weapon/Melee/Gauntlet/Mythril
 
-Adamantine
+/obj/recipes/Weapons/Gauntlet/Adamantine
 	creates = new /obj/item/Weapon/Melee/Gauntlet/Adamantine
 
-Orichalcum
+/obj/recipes/Weapons/Gauntlet/Orichalcum
 	creates = new /obj/item/Weapon/Melee/Gauntlet/Orichalcum
 
-		Whip
-			weapontype="Whip"
-Bronze
+/obj/recipes/Weapons/Whip
+	weapontype = "Whip"
+
+/obj/recipes/Weapons/Whip/Bronze
 	creates = new /obj/item/Weapon/Melee/Whip/Bronze
 
-Iron
+/obj/recipes/Weapons/Whip/Iron
 	creates = new /obj/item/Weapon/Melee/Whip/Iron
 
-Steel
+/obj/recipes/Weapons/Whip/Steel
 	creates = new /obj/item/Weapon/Melee/Whip/Steel
 
-			Mythril
-				New()
-					var/obj/item/Weapon/Melee/Whip/Mythril/a=new
-					src.creates=a
-Adamantine
+/obj/recipes/Weapons/Whip/Mythril
+	creates = new /obj/item/Weapon/Melee/Whip/Mythril
+
+/obj/recipes/Weapons/Whip/Adamantine
 	creates = new /obj/item/Weapon/Melee/Whip/Adamantine
 
-Orichalcum
+/obj/recipes/Weapons/Whip/Orichalcum
 	creates = new /obj/item/Weapon/Melee/Whip/Orichalcum
 
-		Greatsword
-			weapontype="Greatsword"
-Bronze
+/obj/recipes/Weapons/Greatsword
+	weapontype = "Greatsword"
+
+/obj/recipes/Weapons/Greatsword/Bronze
 	creates = new /obj/item/Weapon/Melee/Greatsword/Bronze
 
-Iron
+/obj/recipes/Weapons/Greatsword/Iron
 	creates = new /obj/item/Weapon/Melee/Greatsword/Iron
 
-Steel
+/obj/recipes/Weapons/Greatsword/Steel
 	creates = new /obj/item/Weapon/Melee/Greatsword/Steel
 
-Mythril
+/obj/recipes/Weapons/Greatsword/Mythril
 	creates = new /obj/item/Weapon/Melee/Greatsword/Mythril
 
-Adamantine
+/obj/recipes/Weapons/Greatsword/Adamantine
 	creates = new /obj/item/Weapon/Melee/Greatsword/Adamantine
 
-Orichalcum
+/obj/recipes/Weapons/Greatsword/Orichalcum
 	creates = new /obj/item/Weapon/Melee/Greatsword/Orichalcum
 
-		Katana
-			weapontype="Katana"
-Bronze
+/obj/recipes/Weapons/Katana
+	weapontype = "Katana"
+
+/obj/recipes/Weapons/Katana/Bronze
 	creates = new /obj/item/Weapon/Melee/Katana/Bronze
 
-Iron
+/obj/recipes/Weapons/Katana/Iron
 	creates = new /obj/item/Weapon/Melee/Katana/Iron
 
-Steel
+/obj/recipes/Weapons/Katana/Steel
 	creates = new /obj/item/Weapon/Melee/Katana/Steel
 
-Mythril
+/obj/recipes/Weapons/Katana/Mythril
 	creates = new /obj/item/Weapon/Melee/Katana/Mythril
 
-Adamantine
+/obj/recipes/Weapons/Katana/Adamantine
 	creates = new /obj/item/Weapon/Melee/Katana/Adamantine
 
-Orichalcum
+/obj/recipes/Weapons/Katana/Orichalcum
 	creates = new /obj/item/Weapon/Melee/Katana/Orichalcum
 
-		Spear
-			weapontype="Spear"
-Bronze
+/obj/recipes/Weapons/Spear
+	weapontype = "Spear"
+
+/obj/recipes/Weapons/Spear/Bronze
 	creates = new /obj/item/Weapon/Melee/Spear/Bronze
 
-Iron
+/obj/recipes/Weapons/Spear/Iron
 	creates = new /obj/item/Weapon/Melee/Spear/Iron
 
-Steel
+/obj/recipes/Weapons/Spear/Steel
 	creates = new /obj/item/Weapon/Melee/Spear/Steel
 
-Mythril
+/obj/recipes/Weapons/Spear/Mythril
 	creates = new /obj/item/Weapon/Melee/Spear/Mythril
 
-Adamantine
+/obj/recipes/Weapons/Spear/Adamantine
 	creates = new /obj/item/Weapon/Melee/Spear/Adamantine
 
-Orichalcum
+/obj/recipes/Weapons/Spear/Orichalcum
 	creates = new /obj/item/Weapon/Melee/Spear/Orichalcum
 
-		Scythe
-			weapontype="Scythe"
-Bronze
+/obj/recipes/Weapons/Scythe
+	weapontype = "Scythe"
+
+/obj/recipes/Weapons/Scythe/Bronze
 	creates = new /obj/item/Weapon/Melee/Scythe/Bronze
 
-Iron
+/obj/recipes/Weapons/Scythe/Iron
 	creates = new /obj/item/Weapon/Melee/Scythe/Iron
 
-Steel
+/obj/recipes/Weapons/Scythe/Steel
 	creates = new /obj/item/Weapon/Melee/Scythe/Steel
 
-Mythril
+/obj/recipes/Weapons/Scythe/Mythril
 	creates = new /obj/item/Weapon/Melee/Scythe/Mythril
 
-Adamantine
+/obj/recipes/Weapons/Scythe/Adamantine
 	creates = new /obj/item/Weapon/Melee/Scythe/Adamantine
 
-Orichalcum
+/obj/recipes/Weapons/Scythe/Orichalcum
 	creates = new /obj/item/Weapon/Melee/Scythe/Orichalcum
 
-		Bow
-			weapontype="Bow"
-Bronze
+/obj/recipes/Weapons/Bow
+	weapontype = "Bow"
+
+/obj/recipes/Weapons/Bow/Bronze
 	creates = new /obj/item/Weapon/Ranged/Bow/Bronze
 
-Iron
+/obj/recipes/Weapons/Bow/Iron
 	creates = new /obj/item/Weapon/Ranged/Bow/Iron
 
-Steel
+/obj/recipes/Weapons/Bow/Steel
 	creates = new /obj/item/Weapon/Ranged/Bow/Steel
 
-Mythril
+/obj/recipes/Weapons/Bow/Mythril
 	creates = new /obj/item/Weapon/Ranged/Bow/Mythril
 
-Adamantine
+/obj/recipes/Weapons/Bow/Adamantine
 	creates = new /obj/item/Weapon/Ranged/Bow/Adamantine
 
-Orichalcum
+/obj/recipes/Weapons/Bow/Orichalcum
 	creates = new /obj/item/Weapon/Ranged/Bow/Orichalcum
 
-		FocusSword
-			weapontype="Focus Sword"
-Bronze
+/obj/recipes/Weapons/FocusSword
+	weapontype = "Focus Sword"
+
+/obj/recipes/Weapons/FocusSword/Bronze
 	creates = new /obj/item/Weapon/Special/FocusSword/Bronze
 
-Iron
+/obj/recipes/Weapons/FocusSword/Iron
 	creates = new /obj/item/Weapon/Special/FocusSword/Iron
 
-Steel
+/obj/recipes/Weapons/FocusSword/Steel
 	creates = new /obj/item/Weapon/Special/FocusSword/Steel
 
-Mythril
+/obj/recipes/Weapons/FocusSword/Mythril
 	creates = new /obj/item/Weapon/Special/FocusSword/Mythril
 
-Adamantine
+/obj/recipes/Weapons/FocusSword/Adamantine
 	creates = new /obj/item/Weapon/Special/FocusSword/Adamantine
 
-Orichalcum
+/obj/recipes/Weapons/FocusSword/Orichalcum
 	creates = new /obj/item/Weapon/Special/FocusSword/Orichalcum
 
-		Staff
-			weapontype="Staff"
-Bronze
+/obj/recipes/Weapons/Staff
+	weapontype = "Staff"
+
+/obj/recipes/Weapons/Staff/Bronze
 	creates = new /obj/item/Weapon/Magical/Staff/Bronze
 
-Iron
+/obj/recipes/Weapons/Staff/Iron
 	creates = new /obj/item/Weapon/Magical/Staff/Iron
 
-Steel
+/obj/recipes/Weapons/Staff/Steel
 	creates = new /obj/item/Weapon/Magical/Staff/Steel
 
-Mythril
+/obj/recipes/Weapons/Staff/Mythril
 	creates = new /obj/item/Weapon/Magical/Staff/Mythril
 
-Adamantine
+/obj/recipes/Weapons/Staff/Adamantine
 	creates = new /obj/item/Weapon/Magical/Staff/Adamantine
 
-Orichalcum
+/obj/recipes/Weapons/Staff/Orichalcum
 	creates = new /obj/item/Weapon/Magical/Staff/Orichalcum
 
-		Tome
-			weapontype="Tome"
-Bronze
+/obj/recipes/Weapons/Tome
+	weapontype = "Tome"
+
+/obj/recipes/Weapons/Tome/Bronze
 	creates = new /obj/item/Weapon/Magical/Tome/Bronze
 
-Iron
+/obj/recipes/Weapons/Tome/Iron
 	creates = new /obj/item/Weapon/Magical/Tome/Iron
 
-Steel
+/obj/recipes/Weapons/Tome/Steel
 	creates = new /obj/item/Weapon/Magical/Tome/Steel
 
-Mythril
+/obj/recipes/Weapons/Tome/Mythril
 	creates = new /obj/item/Weapon/Magical/Tome/Mythril
 
-Adamantine
+/obj/recipes/Weapons/Tome/Adamantine
 	creates = new /obj/item/Weapon/Magical/Tome/Adamantine
 
-Orichalcum
+/obj/recipes/Weapons/Tome/Orichalcum
 	creates = new /obj/item/Weapon/Magical/Tome/Orichalcum
 
-		SwordSpear
-			weapontype="Sword Spear"
-Bronze
+/obj/recipes/Weapons/SwordSpear
+	weapontype = "Sword Spear"
+
+/obj/recipes/Weapons/SwordSpear/Bronze
 	creates = new /obj/item/Weapon/Special/SwordSpear/Bronze
 
-Iron
+/obj/recipes/Weapons/SwordSpear/Iron
 	creates = new /obj/item/Weapon/Special/SwordSpear/Iron
 
-Steel
+/obj/recipes/Weapons/SwordSpear/Steel
 	creates = new /obj/item/Weapon/Special/SwordSpear/Steel
 
-Mythril
+/obj/recipes/Weapons/SwordSpear/Mythril
 	creates = new /obj/item/Weapon/Special/SwordSpear/Mythril
 
-Adamantine
+/obj/recipes/Weapons/SwordSpear/Adamantine
 	creates = new /obj/item/Weapon/Special/SwordSpear/Adamantine
 
-Orichalcum
+/obj/recipes/Weapons/SwordSpear/Orichalcum
 	creates = new /obj/item/Weapon/Special/SwordSpear/Orichalcum
 
-		ThiefSword
-			weapontype="Thief Sword"
-Bronze
+/obj/recipes/Weapons/ThiefSword
+	weapontype = "Thief Sword"
+
+/obj/recipes/Weapons/ThiefSword/Bronze
 	creates = new /obj/item/Weapon/Special/ThiefSword/Bronze
 
-Iron
+/obj/recipes/Weapons/ThiefSword/Iron
 	creates = new /obj/item/Weapon/Special/ThiefSword/Iron
 
-Steel
+/obj/recipes/Weapons/ThiefSword/Steel
 	creates = new /obj/item/Weapon/Special/ThiefSword/Steel
 
-Mythril
+/obj/recipes/Weapons/ThiefSword/Mythril
 	creates = new /obj/item/Weapon/Special/ThiefSword/Mythril
 
-Adamantine
+/obj/recipes/Weapons/ThiefSword/Adamantine
 	creates = new /obj/item/Weapon/Special/ThiefSword/Adamantine
 
-Orichalcum
+/obj/recipes/Weapons/ThiefSword/Orichalcum
 	creates = new /obj/item/Weapon/Special/ThiefSword/Orichalcum
 
-		BoltRapier
-			weapontype="Bolt Rapier"
-Bronze
+/obj/recipes/Weapons/BoltRapier
+	weapontype = "Bolt Rapier"
+
+/obj/recipes/Weapons/BoltRapier/Bronze
 	creates = new /obj/item/Weapon/Special/BoltRapier/Bronze
 
-Iron
+/obj/recipes/Weapons/BoltRapier/Iron
 	creates = new /obj/item/Weapon/Special/BoltRapier/Iron
 
-Steel
+/obj/recipes/Weapons/BoltRapier/Steel
 	creates = new /obj/item/Weapon/Special/BoltRapier/Steel
 
-Mythril
+/obj/recipes/Weapons/BoltRapier/Mythril
 	creates = new /obj/item/Weapon/Special/BoltRapier/Mythril
 
-Adamantine
+/obj/recipes/Weapons/BoltRapier/Adamantine
 	creates = new /obj/item/Weapon/Special/BoltRapier/Adamantine
 
-Orichalcum
+/obj/recipes/Weapons/BoltRapier/Orichalcum
 	creates = new /obj/item/Weapon/Special/BoltRapier/Orichalcum
 
-		WhipBlade
-			weapontype="Whipblade"
-Bronze
+/obj/recipes/Weapons/WhipBlade
+	weapontype = "Whipblade"
+
+/obj/recipes/Weapons/WhipBlade/Bronze
 	creates = new /obj/item/Weapon/Special/WhipBlade/Bronze
 
-Iron
+/obj/recipes/Weapons/WhipBlade/Iron
 	creates = new /obj/item/Weapon/Special/WhipBlade/Iron
 
-Steel
+/obj/recipes/Weapons/WhipBlade/Steel
 	creates = new /obj/item/Weapon/Special/WhipBlade/Steel
 
-Mythril
+/obj/recipes/Weapons/WhipBlade/Mythril
 	creates = new /obj/item/Weapon/Special/WhipBlade/Mythril
 
-Adamantine
+/obj/recipes/Weapons/WhipBlade/Adamantine
 	creates = new /obj/item/Weapon/Special/WhipBlade/Adamantine
 
-Orichalcum
+/obj/recipes/Weapons/WhipBlade/Orichalcum
 	creates = new /obj/item/Weapon/Special/WhipBlade/Orichalcum
 
-		AkademiaCards
-			weapontype="Akademia Cards"
-Bronze
+/obj/recipes/Weapons/AkademiaCards
+	weapontype="Akademia Cards"
+
+/obj/recipes/Weapons/AkademiaCards/Bronze
 	creates = new /obj/item/Weapon/Ranged/ThrowingWeapons/AkademiaCards/Bronze
 
-Iron
+/obj/recipes/Weapons/AkademiaCards/Iron
 	creates = new /obj/item/Weapon/Ranged/ThrowingWeapons/AkademiaCards/Iron
 
-Steel
+/obj/recipes/Weapons/AkademiaCards/Steel
 	creates = new /obj/item/Weapon/Ranged/ThrowingWeapons/AkademiaCards/Steel
 
-Mythril
+/obj/recipes/Weapons/AkademiaCards/Mythril
 	creates = new /obj/item/Weapon/Ranged/ThrowingWeapons/AkademiaCards/Mythril
 
-Adamantine
+/obj/recipes/Weapons/AkademiaCards/Adamantine
 	creates = new /obj/item/Weapon/Ranged/ThrowingWeapons/AkademiaCards/Adamantine
 
-Orichalcum
+/obj/recipes/Weapons/AkademiaCards/Orichalcum
 	creates = new /obj/item/Weapon/Ranged/ThrowingWeapons/AkademiaCards/Orichalcum
 
-		BlitzBall
-			weapontype="Blitz Ball"
-Bronze
+/obj/recipes/Weapons/BlitzBall
+	weapontype = "Blitz Ball"
+
+/obj/recipes/Weapons/BlitzBall/Bronze
 	creates = new /obj/item/Weapon/Special/BlitzBall/Bronze
 
-Iron
+/obj/recipes/Weapons/BlitzBall/Iron
 	creates = new /obj/item/Weapon/Special/BlitzBall/Iron
 
-Steel
+/obj/recipes/Weapons/BlitzBall/Steel
 	creates = new /obj/item/Weapon/Special/BlitzBall/Steel
 
-Mythril
+/obj/recipes/Weapons/BlitzBall/Mythril
 	creates = new /obj/item/Weapon/Special/BlitzBall/Mythril
 
-Adamantine
+/obj/recipes/Weapons/BlitzBall/Adamantine
 	creates = new /obj/item/Weapon/Special/BlitzBall/Adamantine
 
-Orichalcum
+/obj/recipes/Weapons/BlitzBall/Orichalcum
 	creates = new /obj/item/Weapon/Special/BlitzBall/Orichalcum
 
-		Gunblade
-			weapontype="Gunblade"
-Bronze
+/obj/recipes/Weapons/Gunblade
+	weapontype = "Gunblade"
+
+/obj/recipes/Weapons/Gunblade/Bronze
 	creates = new /obj/item/Weapon/Special/Gunblade/Bronze
 
-Iron
+/obj/recipes/Weapons/Gunblade/Iron
 	creates = new /obj/item/Weapon/Special/Gunblade/Iron
 
-Steel
+/obj/recipes/Weapons/Gunblade/Steel
 	creates = new /obj/item/Weapon/Special/Gunblade/Steel
 
-Mythril
+/obj/recipes/Weapons/Gunblade/Mythril
 	creates = new /obj/item/Weapon/Special/Gunblade/Mythril
 
-Adamantine
+/obj/recipes/Weapons/Gunblade/Adamantine
 	creates = new /obj/item/Weapon/Special/Gunblade/Adamantine
 
-Orichalcum
+/obj/recipes/Weapons/Gunblade/Orichalcum
 	creates = new /obj/item/Weapon/Special/Gunblade/Orichalcum
 
-		Bowsword
-			weapontype="Bowsword"
-Bronze
+/obj/recipes/Weapons/Bowsword
+	weapontype = "Bowsword"
+
+/obj/recipes/Weapons/Bowsword/Bronze
 	creates = new /obj/item/Weapon/Special/Bowsword/Bronze
 
-Iron
+/obj/recipes/Weapons/Bowsword/Iron
 	creates = new /obj/item/Weapon/Special/Bowsword/Iron
 
-Steel
+/obj/recipes/Weapons/Bowsword/Steel
 	creates = new /obj/item/Weapon/Special/Bowsword/Steel
 
-Mythril
+/obj/recipes/Weapons/Bowsword/Mythril
 	creates = new /obj/item/Weapon/Special/Bowsword/Mythril
 
-Adamantine
+/obj/recipes/Weapons/Bowsword/Adamantine
 	creates = new /obj/item/Weapon/Special/Bowsword/Adamantine
 
-Orichalcum
+/obj/recipes/Weapons/Bowsword/Orichalcum
 	creates = new /obj/item/Weapon/Special/Bowsword/Orichalcum
 
-		BusterSword
-			weapontype="Buster Sword"
-Bronze
+/obj/recipes/Weapons/BusterSword
+	weapontype = "Buster Sword"
+
+/obj/recipes/Weapons/BusterSword/Bronze
 	creates = new /obj/item/Weapon/Special/BusterSword/Bronze
 
-Iron
+/obj/recipes/Weapons/BusterSword/Iron
 	creates = new /obj/item/Weapon/Special/BusterSword/Iron
 
-Steel
+/obj/recipes/Weapons/BusterSword/Steel
 	creates = new /obj/item/Weapon/Special/BusterSword/Steel
 
-Mythril
+/obj/recipes/Weapons/BusterSword/Mythril
 	creates = new /obj/item/Weapon/Special/BusterSword/Mythril
 
-Adamantine
+/obj/recipes/Weapons/BusterSword/Adamantine
 	creates = new /obj/item/Weapon/Special/BusterSword/Adamantine
 
-Orichalcum
+/obj/recipes/Weapons/BusterSword/Orichalcum
 	creates = new /obj/item/Weapon/Special/BusterSword/Orichalcum
 
-		MorphingBlade
-			weapontype="Morphing Blade"
-Bronze
+/obj/recipes/Weapons/MorphingBlade
+	weapontype = "Morphing Blade"
+
+/obj/recipes/Weapons/MorphingBlade/Bronze
 	creates = new /obj/item/Weapon/Special/MorphingBlade/Bronze
 
-Iron
+/obj/recipes/Weapons/MorphingBlade/Iron
 	creates = new /obj/item/Weapon/Special/MorphingBlade/Iron
 
-Steel
+/obj/recipes/Weapons/MorphingBlade/Steel
 	creates = new /obj/item/Weapon/Special/MorphingBlade/Steel
 
-Mythril
+/obj/recipes/Weapons/MorphingBlade/Mythril
 	creates = new /obj/item/Weapon/Special/MorphingBlade/Mythril
 
-Adamantine
+/obj/recipes/Weapons/MorphingBlade/Adamantine
 	creates = new /obj/item/Weapon/Special/MorphingBlade/Adamantine
 
-Orichalcum
+/obj/recipes/Weapons/MorphingBlade/Orichalcum
 	creates = new /obj/item/Weapon/Special/MorphingBlade/Orichalcum
 
-		GunArm
-			weapontype="Gun Arm"
-Bronze
+/obj/recipes/Weapons/GunArm
+	weapontype = "Gun Arm"
+
+/obj/recipes/Weapons/GunArm/Bronze
 	creates = new /obj/item/Weapon/Special/GunArm/Bronze
 
-Iron
+/obj/recipes/Weapons/GunArm/Iron
 	creates = new /obj/item/Weapon/Special/GunArm/Iron
 
-Steel
+/obj/recipes/Weapons/GunArm/Steel
 	creates = new /obj/item/Weapon/Special/GunArm/Steel
 
-Mythril
+/obj/recipes/Weapons/GunArm/Mythril
 	creates = new /obj/item/Weapon/Special/GunArm/Mythril
 
-Adamantine
+/obj/recipes/Weapons/GunArm/Adamantine
 	creates = new /obj/item/Weapon/Special/GunArm/Adamantine
 
-Orichalcum
+/obj/recipes/Weapons/GunArm/Orichalcum
 	creates = new /obj/item/Weapon/Special/GunArm/Orichalcum
 
-		Bagangsaw
-			weapontype="Bagangsaw"
-Bronze
+/obj/recipes/Weapons/Bagangsaw
+	weapontype = "Bagangsaw"
+
+/obj/recipes/Weapons/Bagangsaw/Bronze
 	creates = new /obj/item/Weapon/Special/Bagangsaw/Bronze
 
-Iron
+/obj/recipes/Weapons/Bagangsaw/Iron
 	creates = new /obj/item/Weapon/Special/Bagangsaw/Iron
 
-Steel
+/obj/recipes/Weapons/Bagangsaw/Steel
 	creates = new /obj/item/Weapon/Special/Bagangsaw/Steel
 
-Mythril
+/obj/recipes/Weapons/Bagangsaw/Mythril
 	creates = new /obj/item/Weapon/Special/Bagangsaw/Mythril
 
-Adamantine
+/obj/recipes/Weapons/Bagangsaw/Adamantine
 	creates = new /obj/item/Weapon/Special/Bagangsaw/Adamantine
 
-Orichalcum
-	creates = new /obj/item/Weapon/Special/GunArm/Orichalcum
+/obj/recipes/Weapons/Bagangsaw/Orichalcum
+	creates = new /obj/item/Weapon/Special/Bagangsaw/Orichalcum
 
-		MagitekPistol
-			weapontype="Magitek Pistol"
-Bronze
+/obj/recipes/Weapons/MagitekPistol
+	weapontype = "Magitek Pistol"
+
+/obj/recipes/Weapons/MagitekPistol/Bronze
 	creates = new /obj/item/Weapon/Special/MagitekPistol/Bronze
 
-Iron
+/obj/recipes/Weapons/MagitekPistol/Iron
 	creates = new /obj/item/Weapon/Special/MagitekPistol/Iron
 
-Steel
+/obj/recipes/Weapons/MagitekPistol/Steel
 	creates = new /obj/item/Weapon/Special/MagitekPistol/Steel
 
-Mythril
+/obj/recipes/Weapons/MagitekPistol/Mythril
 	creates = new /obj/item/Weapon/Special/MagitekPistol/Mythril
 
-Adamantine
+/obj/recipes/Weapons/MagitekPistol/Adamantine
 	creates = new /obj/item/Weapon/Special/MagitekPistol/Adamantine
 
-Orichalcum
+/obj/recipes/Weapons/MagitekPistol/Orichalcum
 	creates = new /obj/item/Weapon/Special/MagitekPistol/Orichalcum
 
-		MagitekRifle
-			weapontype="Magitek Rifle"
-Bronze
+/obj/recipes/Weapons/MagitekRifle
+	weapontype = "Magitek Rifle"
+
+/obj/recipes/Weapons/MagitekRifle/Bronze
 	creates = new /obj/item/Weapon/Special/MagitekRifle/Bronze
 
-Iron
+/obj/recipes/Weapons/MagitekRifle/Iron
 	creates = new /obj/item/Weapon/Special/MagitekRifle/Iron
 
-Steel
+/obj/recipes/Weapons/MagitekRifle/Steel
 	creates = new /obj/item/Weapon/Special/MagitekRifle/Steel
 
-Mythril
+/obj/recipes/Weapons/MagitekRifle/Mythril
 	creates = new /obj/item/Weapon/Special/MagitekRifle/Mythril
 
-Adamantine
+/obj/recipes/Weapons/MagitekRifle/Adamantine
 	creates = new /obj/item/Weapon/Special/MagitekRifle/Adamantine
 
-Orichalcum
+/obj/recipes/Weapons/MagitekRifle/Orichalcum
 	creates = new /obj/item/Weapon/Special/MagitekRifle/Orichalcum
 
-		FocusCrystal
-			weapontype="Focus Crystal"
-Bronze
+/obj/recipes/Weapons/FocusCrystal
+	weapontype = "Focus Crystal"
+
+/obj/recipes/Weapons/FocusCrystal/Bronze
 	creates = new /obj/item/Weapon/Magical/FocusCrystal/Bronze
 
-Iron
+/obj/recipes/Weapons/FocusCrystal/Iron
 	creates = new /obj/item/Weapon/Magical/FocusCrystal/Iron
 
-Steel
+/obj/recipes/Weapons/FocusCrystal/Steel
 	creates = new /obj/item/Weapon/Magical/FocusCrystal/Steel
 
-Mythril
+/obj/recipes/Weapons/FocusCrystal/Mythril
 	creates = new /obj/item/Weapon/Magical/FocusCrystal/Mythril
 
-Adamantine
+/obj/recipes/Weapons/FocusCrystal/Adamantine
 	creates = new /obj/item/Weapon/Magical/FocusCrystal/Adamantine
 
-Orichalcum
+/obj/recipes/Weapons/FocusCrystal/Orichalcum
 	creates = new /obj/item/Weapon/Magical/FocusCrystal/Orichalcum
 
 
