@@ -828,32 +828,30 @@ obj
 					MeldMateria()
 						if(!usr.check_perk("Materia Melder"))
 							return
-						for(var/obj/item/materials/Synthesis/RawMako/a in usr.contents)
-							if(a.amount==0)
-								alert(usr,"You don't have any Raw Mako to meld Materia with!")
-							else
-								if(a.amount<5)
-									alert(usr,"You need 5 Raw Mako to meld a random Materia.")
-								else
-									var/list/matchoice=list("Green Materia","Blue Materia","Yellow Materia","Purple Materia","Link Materia")
-									var/materia=input(usr,"Choose a type of Materia to meld. The Materia Melded will be random within that set.") as anything in matchoice
-									switch(materia)
-										if("Green Materia")
-											a.amount-=5
-											RandomGreenMateria(usr)
-										if("Blue Materia")
-											a.amount-=5
-											RandomBlueMateria(usr)
-										if("Yellow Materia")
-											a.amount-=5
-											RandomYellowMateria(usr)
-										if("Purple Materia")
-											a.amount-=5
-											RandomPurpleMateria(usr)
-										if("Link Materia")
-											a.amount-=5
-											var/obj/item/Materia/PassiveMateria/c=new
-											usr.contents+=c
+						// todo: actual inventory system
+						var/obj/item/materials/Synthesis/RawMako/our_stack = locate() in usr.contents
+						if(!our_stack || (our_stack.amount < 5))
+							usr.alert_interaction_fail("You don't have at least 5 Raw Mako.")
+							return
+						var/choice = input(usr, "Choose a type of Materia to meld. The Materia melded will be random in that set.") as null|anything in list("Green", "Blue", "Yellow", "Purple", "Link")
+						if(!choice)
+							return
+						switch(choice)
+							if("Green")
+								RandomGreenMateria(usr)
+							if("Blue")
+								RandomBlueMateria(usr)
+							if("Yellow Materia")
+								RandomYellowMateria(usr)
+							if("Purple Materia")
+								RandomPurpleMateria(usr)
+							if("Link Materia")
+								var/obj/item/Materia/PassiveMateria/c=new
+								usr.contents+=c
+								usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "icout", color = TRUE)
+						// todo: actual inventory system
+						our_stack.amount -= 5
+
 		Gathering
 			cat="Crafting"
 			ptype="general"
