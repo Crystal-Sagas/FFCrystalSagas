@@ -2670,7 +2670,7 @@ obj
 				BloodoftheWyvern
 					rank="T2"
 					name="Blood of the Wyvern"
-					desc="A dragon's dragon blood enchaned body grants them supernatural aerodynamics. They can cut through the air like an arrow. By calling on their dragon blood on take off, the Dragoon is able to greatly enhance their maximum jump height. The Dragoon can double their base Jump Height whenever they leave the ground. This has a 3 round cooldown, starting when the Dragoon next lands. With this perk, the dragon may choose to freely and immediately land on the ground."
+					desc="A dragon's dragon blood enhanced body grants them supernatural aerodynamics. They can cut through the air like an arrow. By calling on their dragon blood on take off, the Dragoon is able to greatly enhance their maximum jump height. The Dragoon can double their base Jump Height whenever they leave the ground. This has a 3 round cooldown, starting when the Dragoon next lands. With this perk, the dragon may choose to freely and immediately land on the ground."
 				Glide
 					rank="T3"
 					name="Glide"
@@ -2693,7 +2693,7 @@ obj
 				NidhoggsFury
 					rank="T4"
 					name="Nidhogg's Fury"
-					desc="This individual is able to merge mid-air momentum with magical power, and augment it. Whenever they use a Jump ability gtom 5 tiles airborne or higher, they may expel a 5x5 tile burst of energy as a Free Action, which deals damage equal to half of the fall damage the Dragoon would have taken from the fall were they not a dragoon as an automatic hit, and prompt a Fortitude saving throw (DC 18) which if failed, inflicts Heavy."
+					desc="This individual is able to merge mid-air momentum with magical power, and augment it. Whenever they use a Jump ability from 5 tiles airborne or higher, they may expel a 5x5 tile burst of energy as a Free Action, which deals damage equal to half of the fall damage the Dragoon would have taken from the fall were they not a dragoon as an automatic hit, and prompt a Fortitude saving throw (DC 18) which if failed, inflicts Heavy."
 
 
 			Machinist
