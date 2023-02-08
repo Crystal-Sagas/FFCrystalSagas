@@ -3412,124 +3412,112 @@ obj
 					var/obj/item/Weapon/Jeweler/SilverRing/a=new
 					src.creates=a
 			GoldRing
-				name="Silver Ring"
+				name="Gold Ring"
 				mat1="Gold"
 				amount1=3
 				mat2="Silver"
 				amount2=1
 				mat3="Earth Gem"
 				amount3=1
-				name="Gold Ring"
 				New()
 					var/obj/item/Weapon/Jeweler/GoldRing/a=new
 					src.creates=a
 			SilverNecklace
-				name="Silver Ring"
+				name="Silver Necklace"
 				mat1="Silver"
 				amount1=5
 				mat2="Steel"
 				amount2=2
 				mat3="Water Gem"
 				amount3=1
-				name="Silver Necklace"
 				New()
 					var/obj/item/Weapon/Jeweler/SilverNecklace/a=new
 					src.creates=a
 			GoldNecklace
-				name="Silver Ring"
+				name="Gold Necklace"
 				mat1="Gold"
 				amount1=5
 				mat2="Silver"
 				amount2=2
 				mat3="Water Gem"
 				amount3=1
-				name="Gold Necklace"
 				New()
 					var/obj/item/Weapon/Jeweler/GoldNecklace/a=new
 					src.creates=a
 			SilverBracelet
-				name="Silver Ring"
+				name="Silver Bracelet"
 				mat1="Silver"
 				amount1=5
 				mat2="Steel"
 				amount2=2
 				mat3="Fire Gem"
 				amount3=1
-				name="Silver Bracelet"
 				New()
 					var/obj/item/Weapon/Jeweler/SilverBracelet/a=new
 					src.creates=a
 			SilverEarring
-				name="Silver Ring"
+				name="Silver Earring"
 				mat1="Silver"
 				amount1=5
 				mat2="Steel"
 				amount2=2
 				mat3="Thunder Gem"
 				amount3=1
-				name="Silver Earring"
 				New()
 					var/obj/item/Weapon/Jeweler/SilverEarring/a=new
 					src.creates=a
 			GoldEarring
-				name="Silver Ring"
+				name="Gold Earring"
 				mat1="Gold"
 				amount1=5
 				mat2="Silver"
 				amount2=2
 				mat3="Thunder Gem"
 				amount3=1
-				name="Gold Earring"
 				New()
 					var/obj/item/Weapon/Jeweler/GoldEarring/a=new
 					src.creates=a
 			GoldBracelet
-				name="Silver Ring"
+				name="Gold Bracelet"
 				mat1="Gold"
 				amount1=5
 				mat2="Silver"
 				amount2=2
 				mat3="Fire Gem"
 				amount3=1
-				name="Gold Bracelet"
 				New()
 					var/obj/item/Weapon/Jeweler/GoldBracelet/a=new
 					src.creates=a
 			BronzeBangle
-				name="Silver Ring"
+				name="Bronze Bangle"
 				mat1="Bronze"
 				amount1=10
 				mat2="Steel"
 				amount2=5
 				mat3="Holy Gem"
 				amount3=1
-				name="Bronze Bangle"
 				New()
 					var/obj/item/Weapon/Jeweler/BronzeBangle/a=new
 					src.creates=a
 			MythrilBangle
-				name="Silver Ring"
+				name="Mythril Bangle"
 				mat1="Mythril"
 				amount1=10
 				mat2="Gold"
 				amount2=5
 				mat3="Holy Gem"
 				amount3=2
-				name="Bronze Bangle"
-				name="Mythril Bangle"
 				New()
 					var/obj/item/Weapon/Jeweler/MythrilBangle/a=new
 					src.creates=a
 			AdamantineBangle
-				name="Silver Ring"
+				name="Adamantine Bangle"
 				mat1="Adamantine"
 				amount1=10
 				mat2="Gold"
 				amount2=5
 				mat3="Holy Gem"
 				amount3=3
-				name="Bronze Bangle"
-				name="Adamantine Bangle"
 				New()
 					var/obj/item/Weapon/Jeweler/AdamantineBangle/a=new
 					src.creates=a
