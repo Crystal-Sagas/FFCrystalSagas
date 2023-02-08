@@ -172,6 +172,7 @@
 #include "Code\perks\render.dm"
 #include "Code\players\action_feedback.dm"
 #include "Code\races\render.dm"
+#include "Code\recipes\recipe.dm"
 #include "Code\systems\_system.dm"
 #include "Code\systems\_ticker.dm"
 #include "Code\systems\repository\_repository.dm"
