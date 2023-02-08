@@ -56,46 +56,47 @@
 			transit_move(locate(_tp.gotoX,_tp.gotoY,_tp.gotoZ))
 			return
 
-obj
-	Special
-		var
-			gotoX
-			gotoY
-			gotoZ
-			teltype
-		Teleporter
-			density=1
-			Enter(atom/a)
-				return 0
-			MapwarperN
-				teltype="mapX"
-				gotoY=2
-			MapwarperS
-				teltype="mapX"
-				gotoY=399
-			MapwarperE
-				teltype="mapY"
-				gotoX=2
-			MapwarperW
-				teltype="mapY"
-				gotoX=399
-			Normalwarper
-				teltype="normal"
-			Areawarper
-				teltype="area"
+/obj/Special
+	var/gotoX
+	var/gotoY
+	var/gotoZ
+	var/teltype
+
+/obj/Special/Teleporter
+	density = TRUE
+
+/obj/Special/Teleporter/Enter(atom/movable/AM, atom/oldloc)
+	return FALSE
+
+/obj/Special/Teleporter/MapwarperN
+	teltype="mapX"
+	gotoY=2
+
+/obj/Special/Teleporter/MapwarperS
+	teltype="mapX"
+	gotoY=399
+
+/obj/Special/Teleporter/MapwarperE
+	teltype="mapY"
+	gotoX=2
+
+/obj/Special/Teleporter/MapwarperW
+	teltype="mapY"
+	gotoX=399
+
+/obj/Special/Teleporter/Normalwarper
+	teltype="normal"
+
+/obj/Special/Teleporter/Areawarper
+	teltype="area"
 
 
-obj
-	Special
-		SpecialTele
-			Housewarper
-				gotoX
-				gotoY
-				gotoZ
-			Townwarper
-				gotoX
-				gotoY
-				gotoZ
+/obj/Special/SpecialTele
+
+/obj/Special/SpecialTele/Housewarper
+
+/obj/Special/SpecialTele/Townwarper
+
 obj
 	Vehicles
 		Savable=0
