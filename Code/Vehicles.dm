@@ -236,7 +236,6 @@
 	winset(usr,"aircontrol","is-visible=false")
 
 /obj/Vehicles/Tech/Travel/Balamb
-	Savable=0
 	var/pass=""
 	var/AirshipID="Balamb"
 	var/obj/BalambConsole/TheConsole
