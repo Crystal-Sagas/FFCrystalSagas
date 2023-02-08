@@ -1660,6 +1660,8 @@
 					AssignCraftinginfo(src)
 					var/obj/item/Weapon/Magical/FocusCrystal/Orichalcum/a=new
 					src.creates=a
+
+/obj/recipes
 	Chemist
 		Potions
 			Potion
