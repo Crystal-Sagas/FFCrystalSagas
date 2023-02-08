@@ -2178,6 +2178,8 @@ obj
 				icon_state="galuf"
 			Kelgar
 				icon_state="kelgar"
+			Dorghan
+				icon_state="dorghan"
 		Outdoordecs
 			icon='Map Icons/Outdoordec.dmi'
 			Knightstatuetop
