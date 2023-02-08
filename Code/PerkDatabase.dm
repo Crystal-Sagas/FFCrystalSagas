@@ -826,7 +826,7 @@ obj
 				desc="This individual has learned Midgar's ways of melding Materia together from the Life-stream, and are capable of converting raw Mako into different Materia Spheres."
 				verb
 					MeldMateria()
-						if(usr.Checkpre("Materia Melder",usr))
+						if(!usr.check_perk("Materia Melder"))
 							for(var/obj/item/materials/Synthesis/RawMako/a in usr.contents)
 								if(a.amount==0)
 									alert(usr,"You don't have any Raw Mako to meld Materia with!")

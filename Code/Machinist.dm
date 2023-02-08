@@ -476,7 +476,7 @@ obj
 							return
 
 				Upgrade()
-					if(usr.Checkpre("Initiate Roboticist",usr))
+					if(usr.check_perk("Initiate Roboticist"))
 						if(src.owner != usr.key)
 							alert(usr,"This is not your Robot, so you can not modify it.")
 						else

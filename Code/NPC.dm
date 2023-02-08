@@ -6281,7 +6281,7 @@ obj
 						ElementalShift()
 							set name="Elemental Shift"
 							var/obj/perk/Abilities/Geomancer/InfuseElemental/trues=new
-							if(usr.Checkperk(trues,usr))
+							if(usr.check_perk(trues))
 								var/list/shifts=list("Nature","Fire","Water","Earth","Lightning","Wind","Ice")
 								var/chosen=input(usr,"Which form would you like to shift this Elemental to?") as anything in shifts
 								switch(chosen)

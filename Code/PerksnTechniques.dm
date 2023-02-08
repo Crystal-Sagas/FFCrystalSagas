@@ -2112,7 +2112,7 @@ obj
 					usr.perkbuying=0
 					return
 				usr.perkbuying=1
-				if(usr.Checkperk(src,usr))
+				if(usr.check_perk(src))
 					alert(usr,"You already know this perk.")
 					usr.perkbuying=0
 					return
@@ -2157,7 +2157,7 @@ obj
 											alert("You cannot learn abilities of that rank right now.")
 											usr.perkbuying=0
 											return
-										if(usr.Checkpre(src.pre,usr))
+										if(usr.check_perk(pre))
 											if(usr.rpp>=src.rpcost)
 												if(src.level==2)
 													usr.subcabs+=1
@@ -2234,7 +2234,7 @@ obj
 											usr.perkbuying=0
 											return
 								if(src.pre)
-									if(usr.Checkpre(src.pre,usr))
+									if(usr.check_perk(src.pre))
 										if(usr.rpp>=src.rpcost)
 											if(src.rank=="T2" && usr.subjobcap<2)
 												alert("You are not capable of learning perks of this level from your Subjob without the Dual Job perk.")
@@ -2332,7 +2332,7 @@ obj
 								usr.perkbuying=0
 								return
 							if(src.pre)
-								if(usr.Checkpre(src.pre,usr))
+								if(usr.check_perk(src.pre))
 									if(usr.rpp>=src.rpcost)
 										usr.rpp-=src.rpcost
 										var/obj/perk/p = copyatom(src)

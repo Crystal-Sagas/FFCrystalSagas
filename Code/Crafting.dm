@@ -3746,7 +3746,7 @@ obj/item/Weapon/verb
 		if(src.gilded>=1)
 			alert(usr,"This is already Gilded!")
 			return
-		if(usr.Checkpre("Weaponsmith II",usr))
+		if(usr.check_perk("Weaponsmith II"))
 			if(src.weapon != 1)
 				alert(usr,"You cannot Gild this item, you can only gild Weapons!")
 			else
@@ -3807,7 +3807,7 @@ obj/item/Weapon/verb
 
 obj/item/verb
 	SetLore()
-		if(usr.Checkpre("Enchanter",usr))
+		if(usr.check_perk("Enchanter"))
 			if(src.weapon != 1)
 				alert(usr, "You cannot set this item's lore!")
 			else
@@ -3961,7 +3961,7 @@ obj/item/verb
 					if("Cancel")
 						return
 
-		if(usr.Checkpre("Enchanter",usr))
+		if(usr.check_perk("Enchanter"))
 			switch(input("Do you wish to add an elemental effect or status effect?") in list("Elemental","Status","Mythic","Cancel"))
 				if("Elemental")
 					if(src.enchanted)

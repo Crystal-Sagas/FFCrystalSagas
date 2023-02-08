@@ -21,7 +21,7 @@ obj
 						tperk = input("What perk would you like to teach this student?")as null|anything in teachperks
 						if(!tperk)
 							return
-						if(usr.Checkperk(tperk,m))
+						if(usr.check_perk(tperk))
 							alert("You cannot teach a skill they already know.")
 						else
 							m.contents+=tperk
@@ -48,18 +48,21 @@ obj
 			date
 
 
-
-mob/proc
-	Checkperk(var/obj/t,var/mob/m)
-		for(var/obj/perk/p in m.contents)
-			if(p.name==t.name)
-				return 1
-	Checkpre(var/t,var/mob/m)
-		for(var/obj/perk/p in m.contents)
-			if(p.name==t)
-				return 1
-
-
+/**
+ * Checks if we have a perk
+ *
+ * todo: id instead of name
+ *
+ * @params
+ * * what - Perk instance, or name
+ */
+/mob/proc/check_perk(obj/perk/what)
+	ASSERT(istype(what) || istext(what))
+	var/target_name = istype(what)? what.name : what
+	for(var/obj/perk/P in contents)
+		if(P.name == target_name)
+			return TRUE
+	return FALSE
 
 mob
 	verb

@@ -307,7 +307,7 @@ proc
 		var/amount
 		var/adjustprice=o.sprice
 		if(o.buy)
-			if(m.Checkpre("Born for Buisness",m))
+			if(m.check_perk("Born for Buisness"))
 				adjustprice=round(adjustprice / 2)
 			amount=input("How many do you wish to buy?") as num
 			adjustprice=adjustprice*amount
@@ -318,7 +318,7 @@ proc
 				m.money-=adjustprice
 				i += amount
 		else if(o.sell)
-			if(m.Checkpre("Salesman",m))
+			if(m.check_perk("Salesman"))
 				adjustprice=round(adjustprice/2)
 			else
 				adjustprice=round(adjustprice*0.3)
