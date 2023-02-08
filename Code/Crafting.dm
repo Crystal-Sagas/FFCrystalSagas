@@ -1,38 +1,39 @@
-obj
+/obj
 	var/robot=0
 	var/entype
 	var/mythic=0
 	var/mastercraft=0 //This will be for the Namazu rework and an eventual semi-unique that crafters who get t4 armor+weapon smithing can app for.
-atom
+
+/atom
 	var/owner=0
-atom
-	proc
-		DetermineMat(var/mob/m,var/no,var/obj/recipes/a)
-			var/matstring
-			switch(no)
-				if(1)
-					matstring=a.mat1
-				if(2)
-					matstring=a.mat2
-				if(3)
-					matstring=a.mat3
-				if(4)
-					matstring=a.mat4
-				if(5)
-					matstring=a.mat5
-				if(6)
-					matstring=a.mat6
-				if(7)
-					matstring=a.mat7
-				if(8)
-					matstring=a.mat8
-				if(9)
-					matstring=a.mat9
-				if(10)
-					matstring=a.mat10
-			for(var/obj/item/i in m.contents)
-				if("[i.name]"=="[matstring]")
-					return i
+
+/atom/proc/DetermineMat(var/mob/m,var/no,var/obj/recipes/a)
+	var/matstring
+	switch(no)
+		if(1)
+			matstring=a.mat1
+		if(2)
+			matstring=a.mat2
+		if(3)
+			matstring=a.mat3
+		if(4)
+			matstring=a.mat4
+		if(5)
+			matstring=a.mat5
+		if(6)
+			matstring=a.mat6
+		if(7)
+			matstring=a.mat7
+		if(8)
+			matstring=a.mat8
+		if(9)
+			matstring=a.mat9
+		if(10)
+			matstring=a.mat10
+	for(var/obj/item/i in m.contents)
+		if("[i.name]"=="[matstring]")
+			return i
+
 atom
 	proc
 		UpdateCraft(var/mob/m)

@@ -100,272 +100,277 @@
 /obj/Vehicles
 	Savable=0
 
-obj/Vehicles/Tech
-	Travel
-		Caravel
-			var/pass=""
-			var
-				PodID
-				obj/ShipConsole/TheConsole
-				var/Recalled = 0
-			password = "locked"
-			pixel_x =  -60
-			pixel_y = -20
-			name = "Caravel"
-			icon='Icons/Ship.dmi'
-			layer=7
-			density=1
-			vehicletype="ship"
-			owner=null
-			vehicle=1
-			verb/SetPassword()
-				var/choice
-				set src in view(4)
-				if(usr.key != src.owner)
-					alert(usr,"You are not the owner of this vehicle.")
-					return
-				else
-					choice=input("What would you like to set the password to?","Vehicle")as text
-					alert(usr,"Password set to [choice]")
-					src.pass=choice
-			verb/EnterVehicle()
-				set name="Enter"
-				var/choice
-				choice = input("What is the password?","Vehicle")as text
-				if(choice == src.pass)
-					set src in view(4)
-					if(!src.PodID)
-						var/list/already=new
-						usr<<"Assigning Ship ID..."
-						for(var/obj/Vehicles/Tech/Travel/Caravel/W in world)
-							already.Add(W.PodID)
-						for(var/i=1, i<30, i++)
-							if(already.Find(i))
-								continue
-							else
-								src.PodID=i
-								usr<<"ID assigned! ID is [i]."
-								break
-					if(src.TheConsole)
-						usr.loc=locate(src.TheConsole.x,src.TheConsole.y-1,src.TheConsole.z)
-						UpdateArea(usr)
-						return
-					else
-						for(var/obj/ShipConsole/S in world)
-							if(S.PodID == src.PodID)
-								src.TheConsole = S
-								usr.transit_move(get_turf(src.TheConsole), recurse_follow = 0)
-								return
-							usr << "Error! No ship consoles were found!"
-				else
-					alert(usr,"The password is incorrect.")
-			Click()
-				if(usr.client.eye == src)
-					usr.client.perspective = MOB_PERSPECTIVE
-					usr.client.eye = usr.client.mob
-					if(usr.Control)
-						src.TheConsole.Driver = null
-						usr.Control = null
-		Airship
-			var/pass=""
-			var
-				AirshipID
-				obj/AirshipConsole/TheConsole
-				var/Recalled = 0
-			password = "locked"
-			pixel_x =  -48
-			pixel_y = -42
-			name = "Airship"
-			icon='Icons/Airship.dmi'
-			layer=7
-			density=0
-			vehicletype="airship"
-			owner=null
-			vehicle=1
-			verb/SetPassword()
-				var/choice
-				set src in view(4)
-				if(usr.key != src.owner)
-					alert(usr,"You are not the owner of this vehicle.")
-					return
-				else
-					choice=input("What would you like to set the password to?","Vehicle")as text
-					alert(usr,"Password set to [choice]")
-					src.pass=choice
-			verb/EnterVehicle()
-				set name="Enter"
-				var/choice
-				choice = input("What is the password?","Vehicle")as text
-				if(choice == src.pass)
-					set src in view(4)
-					if(!src.AirshipID)
-						var/list/already=new
-						usr<<"Assigning Ship ID..."
-						for(var/obj/Vehicles/Tech/Travel/Airship/W in world)
-							already.Add(W.AirshipID)
-						for(var/i=1, i<30, i++)
-							if(already.Find(i))
-								continue
-							else
-								src.AirshipID=i
-								usr<<"ID assigned! ID is [i]."
-								break
-					if(src.TheConsole)
-						usr.loc=locate(src.TheConsole.x,src.TheConsole.y-1,src.TheConsole.z)
-						UpdateArea(usr)
-						return
-					else
-						for(var/obj/AirshipConsole/S in world)
-							if(S.AirshipID == src.AirshipID)
-								src.TheConsole = S
-								usr.force_move(get_turf(src.TheConsole))
-								return
-							usr << "Error! No ship consoles were found!"
-				else
-					alert(usr,"The password is incorrect.")
-			Click()
-				if(usr.client.eye == src)
-					usr.client.perspective = MOB_PERSPECTIVE
-					usr.client.eye = usr.client.mob
-					if(usr.Control)
-						src.TheConsole.Driver = null
-						usr.Control = null
-				winset(usr,"aircontrol","is-visible=false")
+/obj/Vehicles/Tech/Travel
 
-		Balamb
-			Savable=0
-			var/pass=""
-			var
-				AirshipID="Balamb"
-				obj/BalambConsole/TheConsole
-				obj/BalambDoor/TheDoor
-				var/Recalled = 0
-			password = "locked"
-			pixel_x =  -48
-			pixel_y = -42
-			name = "Balamb Garden"
-			icon='Icons/Balamb.dmi'
-			layer=7
-			density=1
-			vehicletype="airship"
-			owner=null
-			vehicle=1
-			verb/SetPassword()
-				var/choice
-				set src in view(4)
-				if(usr.key != src.owner)
-					alert(usr,"You are not the owner of this vehicle.")
-					return
-				else
-					choice=input("What would you like to set the password to?","Vehicle")as text
-					alert(usr,"Password set to [choice]")
-					src.pass=choice
-			verb/EnterVehicle()
-				set name="Enter"
-				var/choice
-				choice = input("What is the password?","Vehicle")as text
-				if(choice == src.pass)
-					set src in view(30)
-					if(!src.AirshipID)
-						var/list/already=new
-						usr<<"Assigning Ship ID..."
-						for(var/obj/Vehicles/Tech/Travel/Balamb/W in world)
-							already.Add(W.AirshipID)
-						for(var/i=1, i<30, i++)
-							if(already.Find(i))
-								continue
-							else
-								src.AirshipID=i
-								usr<<"ID assigned! ID is [i]."
-								break
-					if(src.TheDoor)
-						usr.transit_move(get_turf(src.TheDoor), recurse_follow = 0)
-						return
-					else
-						for(var/obj/BalambDoor/S in world)
-							if(S.AirshipID == src.AirshipID)
-								src.TheDoor = S
-								usr.loc = locate(src.TheDoor.x, src.TheDoor.y-1, src.TheDoor.z)
-								UpdateArea(usr)
-								return
-							usr << "Error! No ship consoles were found!"
-				else
-					alert(usr,"The password is incorrect.")
-			Click()
-				if(usr.client.eye == src)
-					usr.client.perspective = MOB_PERSPECTIVE
-					usr.client.eye = usr.client.mob
-					if(usr.Control)
-						src.TheConsole.Driver = null
-						usr.Control = null
-				winset(usr,"aircontrol","is-visible=false")
+/obj/Vehicles/Tech/Travel/Caravel
+	var/pass = ""
+	var/PodID
+	var/obj/ShipConsole/TheConsole
+	var/Recalled = 0
+	password = "locked"
+	pixel_x = -60
+	pixel_y = -20
+	name = "Caravel"
+	icon='Icons/Ship.dmi'
+	layer = 7
+	density = TRUE
+	vehicletype="ship"
+	vehicle = TRUE
 
-		Rover
-			var/pass=""
-			var
-				RoverID
-				obj/RoverConsole/TheConsole
-				var/Recalled = 0
-			password = "locked"
-			pixel_x =  -92
-			pixel_y = -64
-			name = "Rover"
-			icon='Icons/Landrover.dmi'
-			layer=7
-			density=1
-			vehicletype="player"
-			owner=null
-			vehicle=1
-			waterwalking=0
-			verb/SetPassword()
-				var/choice
-				set src in view(4)
-				if(usr.name != src.owner)
-					alert(usr,"You are not the owner of this vehicle.")
+/obj/Vehicles/Tech/Travel/Caravel/verb/SetPassword()
+	var/choice
+	set src in view(4)
+	if(usr.key != src.owner)
+		alert(usr,"You are not the owner of this vehicle.")
+		return
+	else
+		choice=input("What would you like to set the password to?","Vehicle")as text
+		alert(usr,"Password set to [choice]")
+		src.pass=choice
+
+/obj/Vehicles/Tech/Travel/Caravel/verb/EnterVehicle()
+	set name="Enter"
+	var/choice
+	choice = input("What is the password?","Vehicle")as text
+	if(choice == src.pass)
+		set src in view(4)
+		if(!src.PodID)
+			var/list/already=new
+			usr<<"Assigning Ship ID..."
+			for(var/obj/Vehicles/Tech/Travel/Caravel/W in world)
+				already.Add(W.PodID)
+			for(var/i=1, i<30, i++)
+				if(already.Find(i))
+					continue
+				else
+					src.PodID=i
+					usr<<"ID assigned! ID is [i]."
+					break
+		if(src.TheConsole)
+			usr.loc=locate(src.TheConsole.x,src.TheConsole.y-1,src.TheConsole.z)
+			UpdateArea(usr)
+			return
+		else
+			for(var/obj/ShipConsole/S in world)
+				if(S.PodID == src.PodID)
+					src.TheConsole = S
+					usr.transit_move(get_turf(src.TheConsole), recurse_follow = 0)
 					return
+				usr << "Error! No ship consoles were found!"
+	else
+		alert(usr,"The password is incorrect.")
+
+/obj/Vehicles/Tech/Travel/Caravel/Click()
+	if(usr.client.eye == src)
+		usr.client.perspective = MOB_PERSPECTIVE
+		usr.client.eye = usr.client.mob
+		if(usr.Control)
+			src.TheConsole.Driver = null
+			usr.Control = null
+
+/obj/Vehicles/Tech/Travel/Airship
+	var/pass=""
+	var/AirshipID
+	var/obj/AirshipConsole/TheConsole
+	var/Recalled = 0
+	password = "locked"
+	pixel_x = -48
+	pixel_y = -42
+	name = "Airship"
+	icon='Icons/Airship.dmi'
+	layer = 7
+	density = FALSE
+	vehicletype="airship"
+	vehicle = TRUE
+
+/obj/Vehicles/Tech/Travel/Airship/verb/SetPassword()
+	var/choice
+	set src in view(4)
+	if(usr.key != src.owner)
+		alert(usr,"You are not the owner of this vehicle.")
+		return
+	else
+		choice=input("What would you like to set the password to?","Vehicle")as text
+		alert(usr,"Password set to [choice]")
+		src.pass=choice
+
+/obj/Vehicles/Tech/Travel/Airship/verb/EnterVehicle()
+	set name="Enter"
+	var/choice
+	choice = input("What is the password?","Vehicle")as text
+	if(choice == src.pass)
+		set src in view(4)
+		if(!src.AirshipID)
+			var/list/already=new
+			usr<<"Assigning Ship ID..."
+			for(var/obj/Vehicles/Tech/Travel/Airship/W in world)
+				already.Add(W.AirshipID)
+			for(var/i=1, i<30, i++)
+				if(already.Find(i))
+					continue
 				else
-					choice=input("What would you like to set the password to?","Vehicle")as text
-					alert(usr,"Password set to [choice]")
-					src.pass=choice
-			verb/EnterVehicle()
-				set name="Enter"
-				var/choice
-				choice = input("What is the password?","Vehicle")as text
-				if(choice == src.pass)
-					set src in view(4)
-					if(!src.RoverID)
-						var/list/already=new
-						usr<<"Assigning Ship ID..."
-						for(var/obj/Vehicles/Tech/Travel/Rover/W in world)
-							already.Add(W.RoverID)
-						for(var/i=1, i<40, i++)
-							if(already.Find(i))
-								continue
-							else
-								src.RoverID=i
-								usr<<"ID assigned! ID is [i]."
-								break
-					if(src.TheConsole)
-						usr.loc=locate(src.TheConsole.x,src.TheConsole.y-1,src.TheConsole.z)
-						UpdateArea(usr)
-						return
-					else
-						for(var/obj/RoverConsole/S in world)
-							if(S.RoverID == src.RoverID)
-								src.TheConsole = S
-								usr.loc = locate(src.TheConsole.x, src.TheConsole.y-1, src.TheConsole.z)
-								UpdateArea(usr)
-								return
-							usr << "Error! No ship consoles were found!"
+					src.AirshipID=i
+					usr<<"ID assigned! ID is [i]."
+					break
+		if(src.TheConsole)
+			usr.loc=locate(src.TheConsole.x,src.TheConsole.y-1,src.TheConsole.z)
+			UpdateArea(usr)
+			return
+		else
+			for(var/obj/AirshipConsole/S in world)
+				if(S.AirshipID == src.AirshipID)
+					src.TheConsole = S
+					usr.force_move(get_turf(src.TheConsole))
+					return
+				usr << "Error! No ship consoles were found!"
+	else
+		alert(usr,"The password is incorrect.")
+
+/obj/Vehicles/Tech/Travel/Airship/Click()
+	if(usr.client.eye == src)
+		usr.client.perspective = MOB_PERSPECTIVE
+		usr.client.eye = usr.client.mob
+		if(usr.Control)
+			src.TheConsole.Driver = null
+			usr.Control = null
+	winset(usr,"aircontrol","is-visible=false")
+
+/obj/Vehicles/Tech/Travel/Balamb
+	Savable=0
+	var/pass=""
+	var/AirshipID="Balamb"
+	var/obj/BalambConsole/TheConsole
+	var/obj/BalambDoor/TheDoor
+	var/Recalled = 0
+	password = "locked"
+	pixel_x = -48
+	pixel_y = -42
+	name = "Balamb Garden"
+	icon='Icons/Balamb.dmi'
+	layer=7
+	density=1
+	vehicletype="airship"
+	vehicle = TRUE
+
+/obj/Vehicles/Tech/Travel/Balamb/verb/SetPassword()
+	var/choice
+	set src in view(4)
+	if(usr.key != src.owner)
+		alert(usr,"You are not the owner of this vehicle.")
+		return
+	else
+		choice=input("What would you like to set the password to?","Vehicle")as text
+		alert(usr,"Password set to [choice]")
+		src.pass=choice
+
+/obj/Vehicles/Tech/Travel/Balamb/verb/EnterVehicle()
+	set name="Enter"
+	var/choice
+	choice = input("What is the password?","Vehicle")as text
+	if(choice == src.pass)
+		set src in view(30)
+		if(!src.AirshipID)
+			var/list/already=new
+			usr<<"Assigning Ship ID..."
+			for(var/obj/Vehicles/Tech/Travel/Balamb/W in world)
+				already.Add(W.AirshipID)
+			for(var/i=1, i<30, i++)
+				if(already.Find(i))
+					continue
 				else
-					alert(usr,"The password is incorrect.")
-			Click()
-				if(usr.client.eye == src)
-					usr.client.perspective = MOB_PERSPECTIVE
-					usr.client.eye = usr.client.mob
-					if(usr.Control)
-						src.TheConsole.Driver = null
-						usr.Control = null
+					src.AirshipID=i
+					usr<<"ID assigned! ID is [i]."
+					break
+		if(src.TheDoor)
+			usr.transit_move(get_turf(src.TheDoor), recurse_follow = 0)
+			return
+		else
+			for(var/obj/BalambDoor/S in world)
+				if(S.AirshipID == src.AirshipID)
+					src.TheDoor = S
+					usr.loc = locate(src.TheDoor.x, src.TheDoor.y-1, src.TheDoor.z)
+					UpdateArea(usr)
+					return
+				usr << "Error! No ship consoles were found!"
+	else
+		alert(usr,"The password is incorrect.")
+
+/obj/Vehicles/Tech/Travel/Balamb/Click()
+	if(usr.client.eye == src)
+		usr.client.perspective = MOB_PERSPECTIVE
+		usr.client.eye = usr.client.mob
+		if(usr.Control)
+			src.TheConsole.Driver = null
+			usr.Control = null
+	winset(usr,"aircontrol","is-visible=false")
+
+/obj/Vehicles/Tech/Travel/Rover
+	var/pass=""
+	var/RoverID
+	var/obj/RoverConsole/TheConsole
+	var/Recalled = 0
+	password = "locked"
+	pixel_x =  -92
+	pixel_y = -64
+	name = "Rover"
+	icon='Icons/Landrover.dmi'
+	layer=7
+	density=1
+	vehicletype="player"
+	vehicle=1
+	waterwalking=0
+
+/obj/Vehicles/Tech/Travel/Rover/verb/SetPassword()
+	var/choice
+	set src in view(4)
+	if(usr.name != src.owner)
+		alert(usr,"You are not the owner of this vehicle.")
+		return
+	else
+		choice=input("What would you like to set the password to?","Vehicle")as text
+		alert(usr,"Password set to [choice]")
+		src.pass=choice
+
+/obj/Vehicles/Tech/Travel/Rover/verb/EnterVehicle()
+	set name="Enter"
+	var/choice
+	choice = input("What is the password?","Vehicle")as text
+	if(choice == src.pass)
+		set src in view(4)
+		if(!src.RoverID)
+			var/list/already=new
+			usr<<"Assigning Ship ID..."
+			for(var/obj/Vehicles/Tech/Travel/Rover/W in world)
+				already.Add(W.RoverID)
+			for(var/i=1, i<40, i++)
+				if(already.Find(i))
+					continue
+				else
+					src.RoverID=i
+					usr<<"ID assigned! ID is [i]."
+					break
+		if(src.TheConsole)
+			usr.loc=locate(src.TheConsole.x,src.TheConsole.y-1,src.TheConsole.z)
+			UpdateArea(usr)
+			return
+		else
+			for(var/obj/RoverConsole/S in world)
+				if(S.RoverID == src.RoverID)
+					src.TheConsole = S
+					usr.loc = locate(src.TheConsole.x, src.TheConsole.y-1, src.TheConsole.z)
+					UpdateArea(usr)
+					return
+				usr << "Error! No ship consoles were found!"
+	else
+		alert(usr,"The password is incorrect.")
+
+/obj/Vehicles/Tech/Travel/Rover/Click()
+	if(usr.client.eye == src)
+		usr.client.perspective = MOB_PERSPECTIVE
+		usr.client.eye = usr.client.mob
+		if(usr.Control)
+			src.TheConsole.Driver = null
+			usr.Control = null
 
 
 /obj/ShipConsole
