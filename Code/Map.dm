@@ -1741,6 +1741,21 @@ obj
 		GreatDoor
 			icon='Map Icons/Tombdoor.dmi'
 			layer=5
+		GroundWeapons
+			icon='Map Icons/Groundweps.dmi'
+			density=1
+			Katana1
+				icon_state="kat1"
+			Katana2
+				icon_state="kat2"
+			Sword1
+				icon_state="sword1"
+			Sword2
+				icon_state="sword2"
+			Axe1
+				icon_state="axe1"
+			Axe2
+				icon_state="axe2"
 		Indoordec
 			icon='Map Icons/Indoordec.dmi'
 			Swordrackbot
