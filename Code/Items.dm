@@ -437,7 +437,7 @@ obj
 				rank="D"
 				usable=1
 				amount=1
-				desc = "Restores 55 HP."
+				desc = " Restores 35 HP."
 				cat="Chemist"
 				materials = "Gyshal Green x1, Vomp Carrot x1"
 			HiPotion
@@ -447,7 +447,7 @@ obj
 				rank="C"
 				usable=1
 				amount=1
-				desc = "Restores 85 HP."
+				desc = " Restores 50 HP."
 				cat="Chemist"
 				materials = "Sharug Green x4, San d'Orian Carrots x2"
 			XPotion
@@ -457,7 +457,7 @@ obj
 				rank="C"
 				usable=1
 				amount=1
-				desc = "Restores 200 HP"
+				desc = " Restores 75 HP"
 				cat="Chemist"
 				materials = " Garidav Wildgrass x6, San d'Orian Carrots x2, Vomp Carrots x1, White Gem"
 			Ether

@@ -2804,7 +2804,7 @@ obj
 				CombatSynthesis
 					rank="T1"
 					name="Combat Synthesis"
-					desc="This Chemist is able to use their support based potions combatively. Rather than having to consume them, they are able to magically change the Potion item in question into a spray, and apply it to party members within a 5x5 radius of their current position when used."
+					desc="This Chemist is able to use their support based potions combatively. Rather than having to consume them, they are able to magically change the Potion item in question into a spray, and apply it to party members within a 5x5 radius of their current position when used. If used for a Chemist item that restores HP, MP, or SP - the restoration is reduced by 15 points when used in this way."
 				MassPoison
 					rank="T2"
 					name="Mass Poison"
@@ -2865,7 +2865,7 @@ obj
 				CurativeExpert
 					rank="T3"
 					name="Curative Expert"
-					desc="This Chemist is a master of enzymes, regenerative process, and antibodies. They have immunity to any status effect they have Lore for. In addition, they restore an additional +40 points for any resource one of their Chemist items restores, either to themselves or allies. With Remedy Lore, the Chemist has immunity to all status effects."
+					desc="This Chemist is a master of enzymes, regenerative process, and antibodies. They have immunity to any status effect they have Lore for. In addition, they restore an additional +25 points for any resource one of their Chemist items restores, either to themselves or allies. With Remedy Lore, the Chemist has immunity to all status effects."
 				EtherLore2
 					rank="T3"
 					name="Ether Lore II"
