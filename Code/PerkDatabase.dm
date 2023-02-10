@@ -7933,18 +7933,26 @@ obj
 					Gravity
 						rank="D"
 						desc="Create a centralized gravity field around a target in range. The field follows the target for as long as it is sustained; while under the effects of Gravity, the creature is afflicted with 'Heavy'. They also suffer 1d12+3 force damage per turn. Pierces 5 points of DR.(-8 mana per turn to sustain.) This can only be applied to one creature at a time."
+						mcost=8
+						range="1x1 in view."
 					Gravara
 						rank="C"
 						pre="Gravity"
 						desc="The user creates a 3x3 area of high gravitational force. While under the effects of Gravity, a creature is afflicted with Heavy, and take 2d10+5 force damage when starting a turn in the field. The field's epicenter can be moved up to 3 tiles as a bonus action. Pierces 8 points of DR. "
+						mcost=15
+						range="3x3 in view."
 					Graviga
 						rank="B"
 						pre="Gravara"
 						desc="Create a large area where gravity is heavily increased, and crush hostile creatures under its weight. While under the effects of Gravity, a creature is afflicted with Heavy, Hostile targets in the area are considered over encumbered no matter what their carry weight is. Targets also take 2d12+8 force damage if starting their turn in the field. Pierces 10 points of DR. The user can use their bonus action to move the field's epicenter by 5 tiles. The radius of this field is a 5x5 AoE. Graviga can be placed anywhere within 15 tiles of the caster. (-20 mana per turn to sustain.)"
+						mcost=20
+						range="5x5 in view."
 					Gravija
 						rank="A"
-						pre="Gravara"
+						pre="Graviga"
 						desc="Create a massive area where gravity is heavily increased, and crush hostile creatures under its weight. While under the effects of Gravity, a creature is afflicted with Heavy, Hostile targets in the area are considered over encumbered no matter what their carry weight is. Targets take 3d10+10 force damage if starting their turn in the field. Pierces 15 points of DR. The user can use their bonus action to move the field's epicenter by 5 tiles.  The radius of this field is a 7x7 AoE. Gravija can be placed anywhere within 15 tiles of the caster. (-30 mana per turn to sustain.)"
+						mcost=30
+						range="7x7 in view."
 
 
 obj
