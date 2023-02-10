@@ -322,7 +322,7 @@
 /obj/Vehicles/Tech/Travel/Rover/verb/SetPassword()
 	var/choice
 	set src in view(4)
-	if(usr.name != src.owner)
+	if(usr.key != src.owner)
 		alert(usr,"You are not the owner of this vehicle.")
 		return
 	else
