@@ -7230,7 +7230,7 @@ obj
 					mcost=100
 					damsource="dex"
 					costtype=" Mana or Ninpo."
-					desc="The user performs a series of Mantra with their hands, before ending in a 'prayer' like configuration. After doing so, vital energy surges forth in the form of a golden dragon that soars at a target creature, threatening to slam into and shred them with its glowing maw. Out of battle effects: This Ninja is now capable of communing with Dragons, Wyverns, and Drakes - and is well liked by them, having the blessing of the Dragon."
+					desc="The user performs a series of Mantra with their hands, before ending in a 'prayer' like configuration. After doing so, vital energy surges forth in the form of a golden dragon that soars at a target creature, threatening to slam into and shred them with its glowing maw, dealing Holy damage. Out of battle effects: This Ninja is now capable of communing with Dragons, Wyverns, and Drakes - and is well liked by them, having the blessing of the Dragon."
 				Hikigaeru
 					rank="A"
 					desc="The user of this technique summons forth a large Ninja Toad to fight at their side using a summoning scroll, with a sheet of its own. Attaining this ability grants +50 HP, and +2 STR, also granting the 'Toad Kata', 'Magic Tongue', and 'Oil Bullet' Blue Mage abilities at no cost. Grants permanent Immunity to the 'Toad' status.  Incompatible with Hebi and Namekuji. The Toad summoned is counted as a 'Large' creature. Out of battle effects: This person is able to commune with Toads. Their personal Toad summon is sentient and has the ability to speak. (-60 Mana or Ninpo.)"
@@ -7873,8 +7873,16 @@ obj
 						desc="The user creates a giant clock made of magic on the ground around them. The clock hands slow until they stop causing time to stop in the entire area except for the user and their allies. Targets in the AoE (5x5) must make a fortitude saving throw or be afflicted with stop for 4 turns. (DC 13+INT+Rank bonus.) (- 65 mana.)"
 					Old
 						rank="A"
-						pre="Stopaga"
-						desc="The user accelerates time around a target, causing it to rapidly age. This can be used on objects, plants or any creature. Make a magic attack roll. On a successful roll, advance the age of the target by 1d6 years through temporal displacement. (-85 mana.)"
+						pre="Hastega"
+						atype="save"
+						savetype="Will"
+						basecheck=15
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 12
+						attack_roll_dice_sides = 10
+						damsource="int"
+						mcost=85
+						desc="The user accelerates time around a target, causing it to rapidly age. Out of battle, This can be used on objects, plants, and other inanimant objects in order to decay them forcibly, to a total of 6 years in the future. As a combat attack, this rapidly decays the cells of the target, forcing a Will saving throw - and dealing 12d10+INT true damage on a failure, or half as much on a success. Against inanimate objects, and robots - this damage is doubled. (-85 mana.)"
 				Greens
 					icon='Icons/Perk/Barrier.png'
 					Reflect
