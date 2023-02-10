@@ -7834,7 +7834,7 @@ obj
 						desc="The user releases a burst of accelerating energy, which grants 'Haste' to a target in range. Haste lasts 2 turns. Out of Battle Effects: This spell can be cast on objects in order to make them 'lighter' by making them move 'faster' when force is applied to them. (6 tile range, -5 Mana.)"
 					Teleport
 						rank="E"
-						desc="As a movement action the user uses magic to place themselves in another place in space instantly. They can travel anywhere in view as long as the tile is unoccupied. The user can travel a maximum of 2 tiles per INT mod point. (-10 mana.)"
+						desc="As a bonus action the user uses magic to place themselves in another place in space instantly. They can travel anywhere in view as long as the tile is unoccupied. The user can travel a maximum of 2 tiles per INT mod point. (-10 mana.)"
 					Slowga
 						rank="C"
 						pre="Slow"
