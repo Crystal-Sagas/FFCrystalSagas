@@ -2491,7 +2491,7 @@ obj
 				PhantomBlade
 					rank="T3"
 					name="Phantom Blade"
-					desc="This individual has learned to meld their weapon with magic until there is almost no distinction between the two. When wielding a Melee weapon, they may add their PAB and PDB to their MAB and MDB as a global modifier respectively."
+					desc="This individual has learned to meld their weapon with magic until there is almost no distinction between the two. When wielding a Melee weapon, they may add their BASE PAB and PDB to their MAB and MDB as a global modifier respectively."
 				ExpertElementalInfusion
 					rank="T4"
 					name="Expert Elemental Infusion"
