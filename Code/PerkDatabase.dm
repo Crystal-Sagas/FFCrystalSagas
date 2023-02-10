@@ -841,14 +841,16 @@ obj
 								RandomGreenMateria(usr)
 							if("Blue")
 								RandomBlueMateria(usr)
-							if("Yellow Materia")
+							if("Yellow")
 								RandomYellowMateria(usr)
-							if("Purple Materia")
+							if("Purple")
 								RandomPurpleMateria(usr)
-							if("Link Materia")
+							if("Link")
 								var/obj/item/Materia/PassiveMateria/c=new
 								usr.contents+=c
 								usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "icout", color = TRUE)
+							else
+								return
 						// todo: actual inventory system
 						our_stack.amount -= 5
 
