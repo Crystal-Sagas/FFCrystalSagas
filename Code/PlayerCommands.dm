@@ -33,6 +33,8 @@ mob
 			result=rand(num1,num2)
 			view()<<output("[num1]~[num2]=[result]","icout")
 		Adminhelp()
+			usr<<output("The in game Admin-Help functionality is currently being reworked. If you need admin-help, please make a ticket in the Discord. It is easier for the staff to track, currently.","oocout")
+			return
 			var/obj/adminreport/r=new
 			r.name=input("What is the subject of this report?") as text
 			if(r.name==null)
