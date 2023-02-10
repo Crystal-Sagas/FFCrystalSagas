@@ -6583,13 +6583,13 @@ obj
 						var/obj/perk/Abilities/GeneralWeaponAbilities/Melee/Shout/sh=new
 						var/obj/perk/MonsterAbilities/Monster/DragonClaws/dc=new
 						var/obj/perk/Jobperks/Dragoon/Wyvern/wyv=new
-						var/obj/perk/MonsterPassives/Rideable/ride=new
+						//var/obj/perk/MonsterPassives/Rideable/ride=new
 						src.contents+=df
 						src.contents+=f
 						src.contents+=sh
 						src.contents+=dc
 						src.contents+=wyv
-						src.contents+=ride
+						//src.contents+=ride
 			DRank
 				name="---D Rank--"
 				price=500
