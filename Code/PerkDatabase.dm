@@ -1638,7 +1638,7 @@ obj
 				BladeCasting
 					name="Blade Casting"
 					rank="T1"
-					desc="The Mystic Knight is well versed in the traditional art of Kinetic Casting. With this ability, a Mystic Knight may expend 1 'Kinetic Stack' in order to, upon successfully hitting a target creature - cast a Black or Arcane spell at that target as a bomus action, for half of the spell's initial MP cost+10, unless the new cost would be higher than the old cost. This has a 1 round cooldown."
+					desc="The Mystic Knight is well versed in the traditional art of Kinetic Casting. With this ability, a Mystic Knight may expend 1 'Kinetic Stack' in order to, upon successfully hitting a target creature - cast a Black or Arcane spell at that target as a bomus action, for half of the spell's initial MP cost+10, unless the new cost would be higher than the old cost. This has a 2 round cooldown. Cannot be used if Force of Nature is on Cooldown."
 				LivingBlade
 					name="Living Blade"
 					rank="T2"
@@ -1670,7 +1670,7 @@ obj
 				ForceofNature
 					name="Force of Nature"
 					rank="T4"
-					desc="The Mystic Knight has learned to push their blade-casting to the utmost level. Whenever the Mystic Knight uses a General  or Job based Weapon Ability, if that Weapon Ability were to deal any damage at all to the target creature or creatures, they may spend half the MP cost of any Black or Arcane spell they know, in order to enforce its damage and effects in addition to that of the Weapon Ability's. They must still pay the cost of the Weapon Ability in question.This can only be used once per turn."
+					desc="The Mystic Knight has learned to push their blade-casting to the utmost level. Whenever the Mystic Knight uses a General  or Job based Weapon Ability, if that Weapon Ability were to deal any damage at all to the target creature or creatures, they may spend half the MP cost of any Black or Arcane spell they know, in order to enforce its damage and effects in addition to that of the Weapon Ability's. They must still pay the cost of the Weapon Ability in question.This  has a 3 round cooldown, and also cannot be used when Blade Casting is on Cooldown."
 				BastionofMagic
 					name="Bastion of Magic"
 					rank="T5"
@@ -7834,7 +7834,7 @@ obj
 						desc="The user releases a burst of accelerating energy, which grants 'Haste' to a target in range. Haste lasts 2 turns. Out of Battle Effects: This spell can be cast on objects in order to make them 'lighter' by making them move 'faster' when force is applied to them. (6 tile range, -5 Mana.)"
 					Teleport
 						rank="E"
-						desc="As a bonus action the user uses magic to place themselves in another place in space instantly. They can travel anywhere in view as long as the tile is unoccupied. The user can travel a maximum of 2 tiles per INT mod point. (-10 mana.)"
+						desc="As a movement action the user uses magic to place themselves in another place in space instantly. They can travel anywhere in view as long as the tile is unoccupied. The user can travel a maximum of 1 tile per INT mod point. This action is immune to Attacks of Opportunity and similar reaction due to being instant. (-10 mana.)"
 					Slowga
 						rank="C"
 						pre="Slow"
