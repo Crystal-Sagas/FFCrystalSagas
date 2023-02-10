@@ -1707,7 +1707,7 @@ obj
 								if(src.typing=="magical")
 									aresult=src.basecheck+amod+usr.rankbonus+src.addhit+2
 									dresult=abilitydamage+dmod+usr.mdb+src.adddam+10
-									if(usr.role=="Caster Tank"||usr.role=="Physical DPS"||usr.role=="Physical Support") //These roles all cap at 15 MDB Add.
+									if(usr.role=="Tank Caster"||usr.role=="Physical DPS"||usr.role=="Physical Support") //These roles all cap at 15 MDB Add.
 										if(usr.mdbadd<15)
 											dresult+=usr.mdbadd
 										else
@@ -1741,7 +1741,7 @@ obj
 											dresult+=usr.pdbadd
 										else
 											dresult+=15
-									else if(usr.role=="Caster Tank")
+									else if(usr.role=="Tank Caster")
 										if(usr.pdbadd<10)
 											dresult+=usr.pdbadd
 										else
@@ -1775,7 +1775,7 @@ obj
 								abilitydamage=raw_attack_damage_roll()
 								if(src.typing=="magical")
 									dresult=doresult+dmod+wepchoice.adddam+usr.mdb+src.adddam+abilitydamage
-									if(usr.role=="Caster Tank"||usr.role=="Physical DPS"||usr.role=="Physical Support") //These roles all cap at 15 MDB Add.
+									if(usr.role=="Tank Caster"||usr.role=="Physical DPS"||usr.role=="Physical Support") //These roles all cap at 15 MDB Add.
 										if(usr.mdbadd<15)
 											dresult+=usr.mdbadd
 										else
@@ -1807,7 +1807,7 @@ obj
 											dresult+=usr.pdbadd
 										else
 											dresult+=15
-									else if(usr.role=="Caster Tank")
+									else if(usr.role=="Tank Caster")
 										if(usr.pdbadd<10)
 											dresult+=usr.pdbadd
 										else
@@ -1853,7 +1853,7 @@ obj
 									abilitydamage=raw_attack_damage_roll()
 									if(src.typing=="magical")
 										dresult=doresult+dmod+wepchoice.adddam+usr.mdb+src.adddam+abilitydamage
-										if(usr.role=="Caster Tank"||usr.role=="Physical DPS"||usr.role=="Physical Support") //These roles all cap at 15 MDB Add.
+										if(usr.role=="Tank Caster"||usr.role=="Physical DPS"||usr.role=="Physical Support") //These roles all cap at 15 MDB Add.
 											if(usr.mdbadd<15)
 												dresult+=usr.mdbadd
 											else
@@ -1885,7 +1885,7 @@ obj
 												dresult+=usr.pdbadd
 											else
 												dresult+=15
-										else if(usr.role=="Caster Tank")
+										else if(usr.role=="Tank Caster")
 											if(usr.pdbadd<10)
 												dresult+=usr.pdbadd
 											else
@@ -1930,7 +1930,7 @@ obj
 								dmod=Checkdamtype(src.damsource,usr)
 								if(src.typing=="magical")
 									dresult=doresult+dmod+src.adddam+usr.mdb+10
-									if(usr.role=="Caster Tank"||usr.role=="Physical DPS"||usr.role=="Physical Support") //These roles all cap at 15 MDB Add.
+									if(usr.role=="Tank Caster"||usr.role=="Physical DPS"||usr.role=="Physical Support") //These roles all cap at 15 MDB Add.
 										if(usr.mdbadd<15)
 											dresult+=usr.mdbadd
 										else
@@ -1962,7 +1962,7 @@ obj
 											dresult+=usr.pdbadd
 										else
 											dresult+=15
-									else if(usr.role=="Caster Tank")
+									else if(usr.role=="Tank Caster")
 										if(usr.pdbadd<10)
 											dresult+=usr.pdbadd
 										else
@@ -2399,7 +2399,7 @@ obj
 								if(src.typing=="magical")
 									aresult=src.basecheck+amod+usr.rankbonus+src.addhit+2
 									dresult=abilitydamage+dmod+usr.mdb+src.adddam+10
-									if(usr.role=="Caster Tank"||usr.role=="Physical DPS"||usr.role=="Physical Support") //These roles all cap at 15 MDB Add.
+									if(usr.role=="Tank Caster"||usr.role=="Physical DPS"||usr.role=="Physical Support") //These roles all cap at 15 MDB Add.
 										if(usr.mdbadd<15)
 											dresult+=usr.mdbadd
 										else
@@ -2432,7 +2432,7 @@ obj
 											dresult+=usr.pdbadd
 										else
 											dresult+=15
-									else if(usr.role=="Caster Tank")
+									else if(usr.role=="Tank Caster")
 										if(usr.pdbadd<10)
 											dresult+=usr.pdbadd
 										else
@@ -2466,7 +2466,7 @@ obj
 								abilitydamage=raw_attack_damage_roll()
 								if(src.typing=="magical")
 									dresult=doresult+dmod+wepchoice.adddam+usr.mdb+src.adddam+abilitydamage
-									if(usr.role=="Caster Tank"||usr.role=="Physical DPS"||usr.role=="Physical Support") //These roles all cap at 15 MDB Add.
+									if(usr.role=="Tank Caster"||usr.role=="Physical DPS"||usr.role=="Physical Support") //These roles all cap at 15 MDB Add.
 										if(usr.mdbadd<15)
 											dresult+=usr.mdbadd
 										else
@@ -2498,7 +2498,7 @@ obj
 											dresult+=usr.pdbadd
 										else
 											dresult+=15
-									else if(usr.role=="Caster Tank")
+									else if(usr.role=="Tank Caster")
 										if(usr.pdbadd<10)
 											dresult+=usr.pdbadd
 										else
@@ -2544,7 +2544,7 @@ obj
 									abilitydamage=raw_attack_damage_roll()
 									if(src.typing=="magical")
 										dresult=doresult+dmod+wepchoice.adddam+usr.mdb+src.adddam+abilitydamage
-										if(usr.role=="Caster Tank"||usr.role=="Physical DPS"||usr.role=="Physical Support") //These roles all cap at 15 MDB Add.
+										if(usr.role=="Tank Caster"||usr.role=="Physical DPS"||usr.role=="Physical Support") //These roles all cap at 15 MDB Add.
 											if(usr.mdbadd<15)
 												dresult+=usr.mdbadd
 											else
@@ -2576,7 +2576,7 @@ obj
 												dresult+=usr.pdbadd
 											else
 												dresult+=15
-										else if(usr.role=="Caster Tank")
+										else if(usr.role=="Tank Caster")
 											if(usr.pdbadd<10)
 												dresult+=usr.pdbadd
 											else
@@ -2621,7 +2621,7 @@ obj
 								dmod=Checkdamtype(src.damsource,usr)
 								if(src.typing=="magical")
 									dresult=doresult+dmod+src.adddam+usr.mdb+10
-									if(usr.role=="Caster Tank"||usr.role=="Physical DPS"||usr.role=="Physical Support") //These roles all cap at 15 MDB Add.
+									if(usr.role=="Tank Caster"||usr.role=="Physical DPS"||usr.role=="Physical Support") //These roles all cap at 15 MDB Add.
 										if(usr.mdbadd<15)
 											dresult+=usr.mdbadd
 										else
@@ -2653,7 +2653,7 @@ obj
 											dresult+=usr.pdbadd
 										else
 											dresult+=15
-									else if(usr.role=="Caster Tank")
+									else if(usr.role=="Tank Caster")
 										if(usr.pdbadd<10)
 											dresult+=usr.pdbadd
 										else

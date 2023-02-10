@@ -14,6 +14,7 @@ obj
 									view()<<output("[usr.name] equips [src.name] to slot 1.","icout")
 									src.equipped=1
 									src.suffix = "equipped"
+									return
 								else if(usr.accessory2==null)
 									usr.accessory2=src
 									view()<<output("[usr.name] equips [src.name] to slot 2.","output1")
@@ -28,12 +29,14 @@ obj
 									view()<<output("[usr.name] unequips [src.name]","icout")
 									for(var/obj/globalmod/m in src.contents)
 										Removeglobalmod(usr,src)
+									return
 								if(usr.accessory2==src)
 									usr.accessory2=null
 									view()<<output("[usr.name] unequips [src.name]","output1")
 									view()<<output("[usr.name] unequips [src.name]","icout")
 									for(var/obj/globalmod/m in src.contents)
 										Removeglobalmod(usr,src)
+									return
 						if(src.weapontype in usr.weapontypes)
 							if(!src.equipped)
 								if(!usr.Ranktiercheck(src))

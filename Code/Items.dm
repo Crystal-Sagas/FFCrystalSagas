@@ -351,7 +351,7 @@ obj/item
 				dmod=Checkdamtype(src.damsource,usr)
 				if(src.typing=="magical")
 					dresult=doresult+src.adddam+usr.mdb+dmod
-					if(usr.role=="Caster Tank"||usr.role=="Physical DPS"||usr.role=="Physical Support") //These roles all cap at 15 MDB Add.
+					if(usr.role=="Tank Caster"||usr.role=="Physical DPS"||usr.role=="Physical Support") //These roles all cap at 15 MDB Add.
 						if(usr.mdbadd<15)
 							dresult+=usr.mdbadd
 						else
@@ -383,7 +383,7 @@ obj/item
 							dresult+=usr.pdbadd
 						else
 							dresult+=15
-					else if(usr.role=="Caster Tank")
+					else if(usr.role=="Tank Caster")
 						if(usr.pdbadd<10)
 							dresult+=usr.pdbadd
 						else

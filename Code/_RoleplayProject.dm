@@ -242,7 +242,7 @@ mob
 						usr.minednodes=0
 						for(var/obj/item/Mooglebox/a in usr.contents)
 							a.cooldown=0
-						alert(usr,"You were logged out during a cooldown reset, so your cooldowns are now reset.")
+						//alert(usr,"You were logged out during a cooldown reset, so your cooldowns are now reset.")
 				if(usr.eventmin || usr.tempeventmin)
 					winset(usr,"default.Eventmin","is-visible=true")
 				if(usr.rankchecked==0)

@@ -4707,6 +4707,8 @@ obj
 					Blizzaja
 						level=4
 						pre="Blizzaga"
+						basecheck=14
+						atype="save"
 						attack_roll_damage_dice = TRUE
 						attack_roll_dice_count = 5
 						attack_roll_dice_sides = 12
@@ -6481,6 +6483,7 @@ obj
 					attack_roll_dice_sides = 10
 					atype="weaponsave"
 					damsource="str"
+					basecheck=14
 					savetype="Fortitude"
 					range=" 3x3 AoE"
 					mcost=60
