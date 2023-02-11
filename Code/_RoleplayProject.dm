@@ -1912,7 +1912,7 @@ proc
 				m.contents+=k
 				alert("You rolled [hproll] for HP, [mproll] for MP, and [sproll] for SP!")
 		alert(m,"Hmm finally what equipment do you wish to use? You only get three slots for now.")
-		var/list/equip=list("Light Armor","Medium Armor","Heavy Armor","Shield","Tower Shield","Shuriken","Throwing Knives","Longsword","Scimitar","Hammer","Axe","Dagger","Claw","Gauntlet","Whip","Greatsword","Katana","Spear","Scythe","Bow","Bow Sword","Focus Sword","Staff","Tome","Sword Spear","Thief Sword","Bolt Rapier","Whipblade","Akademia Card","Buster Sword","Blitzball","Gun Blade","Ba'gangsaw","Gun Arm", "Magitek Pistol","Magitek Rifle")
+		var/list/equip=list("Light Armor","Medium Armor","Heavy Armor","Shield","Tower Shield","Shuriken","Rod","Throwing Knives","Longsword","Scimitar","Hammer","Axe","Dagger","Claw","Gauntlet","Whip","Greatsword","Katana","Spear","Scythe","Bow","Bow Sword","Focus Sword","Staff","Tome","Sword Spear","Thief Sword","Bolt Rapier","Whipblade","Akademia Card","Buster Sword","Blitzball","Gun Blade","Ba'gangsaw","Gun Arm", "Magitek Pistol","Magitek Rifle")
 		var/loop=1
 		m.weapontypes+="accessory"
 		while(loop)
@@ -1971,6 +1971,11 @@ proc
 						m.weapontypes+="Scimitar"
 						m.wpntypeamount+=1
 						var/obj/item/Weapon/Melee/Scimitar/Bronze/i=new
+						m.contents+=i
+					if("Rod")
+						m.weapontypes+="Rod"
+						m.wpntypeamount+=1
+						var/obj/item/Weapon/Magical/Rod/Bronze/i=new
 						m.contents+=i
 					if("Longsword")
 						m.weapontypes+="Longsword"

@@ -523,6 +523,17 @@ obj
 					Mythril
 					Adamantine
 					Orichalcum
+				Rod
+					equiptype="2h"
+					weight=8
+					weapontype="Rod"
+					icon='Icons/Items/Staff.dmi'
+					Bronze
+					Iron
+					Steel
+					Mythril
+					Adamantine
+					Orichalcum
 				Tome
 					equiptype="1h"
 					weight=5
@@ -1001,16 +1012,23 @@ obj
 				range2weapon=1
 				a.range="5 Tiles"
 				a.damsource="wis"
-				a.desc="A Focus Crystal, which can be wielded in one hand alongside a Focus Sword in order to cast magical blasts as a Bonus action. Deals Force damage. Grants +2 MAB and +5 MDB per metal tier."
-			if(a.weapontype=="Staff")
+				a.desc="A Focus Crystal, which can be wielded in one hand alongside a Focus Sword in order to cast magical blasts as a Bonus action. Deals Force damage. Grants +1 MAB and +2 MDB per metal tier."
+			if(a.weapontype=="Rod")
 				a.equiptype="2h"
 				range1weapon=1
 				range2weapon=2
 				a.range="5 Tiles"
 				a.damsource="wis"
+				a.desc="A magical rod, with a crystal fused as its ornamentation. Rods are usually employed as offensive weapons, channeling the caster's inner power to empower their magic. When a Rod is wielded, the wielder gains +2 MAB, and +5 MDB per Metal Tier. In addition, whenever a Rod basic attack, or a spell cast while the Rod is wielded hits a target, the wielder may spend 5 MP, SP, or HP in order to convert their vital energies into power, and deal 5 additional true damage per 5 MP, SP or HP spent (capping at 5*metal tier)."
+			if(a.weapontype=="Staff")
+				a.equiptype="2h"
+				range1weapon=1
+				range2weapon=2
+				a.range="5 Tiles"
+				a.damsource="cha"
 				a.desc="A Magical staff, which can be used for costless Magical attack rolls, which deal Force damage. A wielder of a Staff can spend 20 MP in order to createa 3x3 Area of Effect around the target of its attack, dealing 15 additional magical Force damage as an automatic hit to any creature in that range, once per turn, as a free action. Grants +2 MAB and +5 MDB per metal tier."
 			if(a.weapontype=="Tome")
-				a.equiptype="1h"
+				a.equiptype="2h"
 				range1weapon=1
 				range2weapon=2
 				a.damsource="int"
