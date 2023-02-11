@@ -7,7 +7,7 @@
 	/// next mob id
 	var/static/mob_id_next = 0
 	/// realtime used as a mutator for GUID-like behavior amongst mobs
-	var/static/mob_guid_mutator = "[world.realtime]"
+	var/static/mob_guid_mutator = "[num2text(world.realtime, 999)]"
 
 	//? Movement
 	/// Who we are following
