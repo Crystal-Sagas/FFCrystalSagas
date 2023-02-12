@@ -799,6 +799,8 @@ mob
 						usr.wis+=2
 					if(p.name=="Elezen Physiology")
 						usr.dex+=2
+					if(p.name=="Roegadyn Strength")
+						usr.str+=2
 					if(p.name=="Layered Muscle")
 						usr.str+=2
 					if(p.name=="The Big One's Wisdom")
