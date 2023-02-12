@@ -4196,7 +4196,7 @@ obj
 					strmod=0
 					dex=16
 					dexmod=3
-					con=114
+					con=14
 					conmod=2
 					int=10
 					intmod=0
