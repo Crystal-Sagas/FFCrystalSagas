@@ -893,12 +893,12 @@ proc
 					m.thieveryproficient=0
 				if("Mystic Knight")
 					m.job="Mystic Knight"
-					m.mhp+=50
-					m.hp+=50
-					m.mmp+=40
-					m.mp+=40
-					m.msp+=40
-					m.sp+=40
+					m.mhp+=55
+					m.hp+=55
+					m.mmp+=55
+					m.mp+=55
+					m.msp+=55
+					m.sp+=55
 					var/obj/perk/Jobperks/MysticKnight/MysticKnight/p1=new
 					m.contents+=p1
 					Magicuseincrease(m,2,3)
