@@ -187,14 +187,14 @@ var/list/naughtywords = list("sex","penis","pussy","cock","ass","dick","breast",
 		m.emoteamount-=6000
 		m << output("You have reached an RPP milestone for the day. You have gained 1 RPP for a total of [m.rppchecks].","oocout")
 		Updaterank(m)
-	if(m.emoteamount>=3000 && m.rppchecks<2 && m.trpp<100)
+	if(m.emoteamount>=3000 && m.rppchecks<2 && m.trpp>=80 && m.trpp<100)
 		m.rpp+=1
 		m.trpp+=1
 		m.rppchecks+=1
 		m.emoteamount-=3000
 		m << output("You have reached an RPP milestone for the day. You have gained 1 RPP for a total of [m.rppchecks].","oocout")
 		Updaterank(m)
-	if(m.emoteamount>=2000 && m.rppchecks<3 && m.trpp<80)
+	if(m.emoteamount>=2000 && m.rppchecks<3 && m.trpp>=50 m.trpp<80)
 		m.rpp+=1
 		m.trpp+=1
 		m.rppchecks+=1

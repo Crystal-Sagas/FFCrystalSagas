@@ -21,5 +21,5 @@ mob/Move()
 
 //Testing stuff.
 mob/verb/change_delay()
-	if(usr.adminlv<1) return
+	set name="Zippy Mode"
 	client.delay=input("The bigger the number, the slower you will walk.","Delay",client.delay)as num
