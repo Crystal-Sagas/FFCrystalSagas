@@ -1028,12 +1028,12 @@ obj
 				a.damsource="cha"
 				a.desc="A Magical staff, which can be used for costless Magical attack rolls, which deal Force damage. A wielder of a Staff can spend 20 MP in order to createa 3x3 Area of Effect around the target of its attack, dealing 15 additional magical Force damage as an automatic hit to any creature in that range, once per turn, as a free action. Grants +2 MAB and +5 MDB per metal tier."
 			if(a.weapontype=="Tome")
-				a.equiptype="2h"
+				a.equiptype="1h"
 				range1weapon=1
 				range2weapon=2
 				a.damsource="int"
 				a.range="5 Tiles"
-				a.desc="A Magical tome, which can be used for costless Magical attack rolls, which deal Force damage. The wielder of a Tome is capable of absoring MP equal to the damage its basic attack deals to a target creature, up to three times per turn. Grants +2 MAB and +5 MDB per metal tier."
+				a.desc="A Magical tome, which can be used for costless Magical attack rolls, which deal Force damage. The wielder of a Tome is capable of absoring MP equal to the damage its basic attack deals to a target creature, up to three times per turn. Grants +1 MAB and +2 MDB per metal tier."
 			if(a.weapontype=="Sword Spear")
 				a.equiptype="2h"
 				range1weapon=1
