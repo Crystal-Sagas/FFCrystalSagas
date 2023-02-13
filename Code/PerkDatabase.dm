@@ -3982,6 +3982,7 @@ obj
 						range=" 8 tile range."
 						costtype="Stamina"
 						atype="weaponsave"
+						basecheck=13
 						damsource="dex"
 						typing="physical"
 						ptype="spell"
