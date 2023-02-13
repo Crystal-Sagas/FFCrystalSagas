@@ -13,6 +13,7 @@ obj
 				attack_roll_damage_dice = TRUE
 				attack_roll_dice_count = 1
 				attack_roll_damage_upper = 12
+				attack_roll_dice_sides = 12
 				adddam=10
 				addhit=1
 				damsource="str"
@@ -50,6 +51,7 @@ obj
 				attack_roll_damage_dice = TRUE
 				attack_roll_dice_count = 2
 				attack_roll_damage_upper = 20
+				attack_roll_dice_sides = 20
 				adddam=5
 				addhit=0
 				damsource="INT"
@@ -70,6 +72,7 @@ obj
 				attack_roll_damage_dice = TRUE
 				attack_roll_dice_count = 2
 				attack_roll_damage_upper = 12
+				attack_roll_dice_sides = 12
 				adddam=5
 				addhit=0
 				damsource="CHA"

@@ -5496,6 +5496,7 @@ obj
 						attack_roll_damage_dice = TRUE
 						attack_roll_dice_count = 1
 						attack_roll_damage_upper = 8
+						attack_roll_dice_sides = 8
 						range=" 6 tile range."
 						mcost=15
 						desc="The caster creates a dark cloud. Upon contact the cloud lulls the target to sleep. (Damage: 1d8+WIS force | 6 Tile range, Magical attack roll, inflicts Sleep on hit. -15 mana.)"
@@ -5505,6 +5506,7 @@ obj
 						attack_roll_damage_dice = TRUE
 						attack_roll_dice_count = 3
 						attack_roll_damage_upper = 10
+						attack_roll_dice_sides = 10
 						range=" 5x5 AoE within 10 tiles."
 						mcost=60
 						desc="The user starts to exhale a strange white powder forming it into a ring of clouds around them. Once the cloud is built to a large size the user throws their arms out at the clouds disperse outward spreading among the area. If the cloud is breathed in it will make the afflicted drowsy, and an excessive amount will put them to sleep entirely. (Damage: 3d10+WIS Force | 5x5 AoE within 10 tiles, Magical attack roll. Inflicts Sleep on hit. - 60 Mana.)"
@@ -5513,6 +5515,7 @@ obj
 						attack_roll_damage_dice = TRUE
 						attack_roll_dice_count = 2
 						attack_roll_damage_upper = 4
+						attack_roll_dice_sides = 4
 						range=" 5 tile range."
 						savetype="Reflex"
 						atype="save"
