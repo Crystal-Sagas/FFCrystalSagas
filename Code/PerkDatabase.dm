@@ -6761,12 +6761,14 @@ obj
 					attack_roll_damage_dice = FALSE
 					attack_roll_damage_lower = 40
 					attack_roll_damage_upper = 50
+					attack_roll_dice_count = 5
+					attack_roll_dice_sides = 10
 					basecheck=15
 					mcost=50
 					range= " 3x3 AoE, sustainable, can move up to 5 tiles."
 					atype="save"
 					typing="physical"
-					desc="The Machinist pulls out a laser pointer, and designates a specific location, sending a signal to an orbital laser. This laser then bares down at a tile in view, prompting a Reflex saving throw, and dealing full damage on a failure, or half on a success. This orbital laser can then be moved for the cost of 20 additional SP, and the Machinist's bonus action on their turn, for a maximum of 3 rounds. Deals Force Damage. Costs 50 initial SP."
+					desc="The Machinist pulls out a laser pointer, and designates a specific location, sending a signal to an orbital laser. This laser then bares down at a tile in view, prompting a Reflex saving throw, and dealing full damage on a failure, or half on a success. This orbital laser can then be moved for the cost of 20 additional SP, and the Machinist's bonus action on their turn, for a maximum of 3 rounds. Deals 5d10 Force Damage. Costs 50 initial SP."
 
 
 			Paladin
