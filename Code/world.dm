@@ -9,6 +9,9 @@
 	hub_password = "12453j!A@olmi!"
 
 /world/New()
+	//? Init TGS
+	TgsNew()
+
 	Addcustoms()
 	Addbuildables()
 	Loadworld()
@@ -73,6 +76,9 @@
 	for(var/obj/npc/b in global.stable_holder.monsters)
 		b.archived=1
 
+	//? Init ticker
+	ticker.Construct(5 SECONDS)
+
 /world/Reboot(reason)
 	// AS PER BYOND REFSPEC
 	switch(reason)
@@ -91,9 +97,17 @@
 		if(3) // SIGUSR1
 			// proceed normally
 			pass()
-	// shutdown ticker
+	//? shutdown ticker
 	ticker?.Shutdown()
+	//? Inform TGS of reboot
+	TgsReboot()
 	..()
+
+/world/Topic(T, Addr, Master, Keys)
+	//? TGS topic hook
+	TGS_TOPIC
+	//? Return default
+	return ..()
 
 /**
  * data directory

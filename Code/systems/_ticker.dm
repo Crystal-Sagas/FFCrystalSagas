@@ -23,6 +23,13 @@ GLOBAL_DATUM_INIT(ticker, /datum/ticker, new)
 /datum/ticker/proc/Construct(delay)
 	spawn(delay)
 		construct_systems()
+		Ready()
+
+/datum/ticker/proc/Ready()
+	//? do not sleep offline, let TGS handle that
+	world.sleep_offline = FALSE
+	//? TGS init complete
+	world.TgsInitializationComplete()
 
 /datum/ticker/proc/Shutdown()
 	shutdown_systems()

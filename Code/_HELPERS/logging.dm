@@ -22,3 +22,12 @@ GLOBAL_LIST_EMPTY(logged_warnings)
 		return
 	// todo: message admins
 	world.log << "keyed-warning: [key] -> [message]"
+
+/proc/tgs_info_log(msg)
+	log_system("TGS-Info: [msg]")
+
+/proc/tgs_warning_log(msg)
+	log_system("TGS-Warning: [msg]")
+
+/proc/tgs_error_log(msg)
+	log_system("TGS-Error: [msg]")
