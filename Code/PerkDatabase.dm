@@ -2619,35 +2619,35 @@ obj
 				DarkResistance
 					rank="T1"
 					name="Dark Resistance"
-					desc="This individual has been steeped in darkness. They gain resistance to dark damage."
+					desc="The Dark Knight has trained to push themselves against crippling ailments that come with their dark arts. If the Dark Knight possesses this perk and any of the following abilities, Immolate Self, Frozen Heart, Weight of the World and Exhaust Soul; they gain Resistance to Burn, Frostbite, Heavy and Bleed respectively. If these self-inflicted ailments are active, their associated status resistance becomes Immunity."
 				Masochist
 					rank="T2"
 					name="Masochist"
-					desc="For every Dark Knight inflicted negative status ailment the black knight suffers from, they gain an increase of +1 Tile Movement, and +1 to MAB, and PAB, ; and +2 to MDB and PDB "
+					desc="For every self-inflicted Dark Knight negative status that they suffer from; the Dark Knight gains an increase of +1 of Tile Movement, +1 to their MAB, and PAB, and +2 to their MDB and PDB. This applies to Immolate Self, Frozen Heart, Weight of the World and Exhaust Soul."
 				Bloodthirst
 					rank="T2"
 					name="Bloodthirst"
-					desc="After three successful melee attacks, the fourth attack restores HP equal to the damage dealt to the target (for that fourth attack only)."
-				UnendingHunger
-					rank="T3"
-					name="Never Ending Hunger"
-					desc="This Dark Knight is accustomed to absorbing the essence of other creatures. Whenever a Dark Knight Ability Lifesteal effect procs, the Dark Knight restores an additional 10 HP in addition to any HP drained."
+					desc="After 3 successful melee attacks, the Dark Knight’s 4th attack restores HP equal to the damage dealt to the target. This is considered as its own Lifesteal proc."
 				DarkArts
 					rank="T2"
 					name="Dark Arts"
-					desc="A Dark Knight is trained not only in drawing out their inner darkness and angst for physical combat, but for runic purposes as well. A Dark Knight with this perk gains access to the 'Dark Arts' ability - as well as up to D Rank Black, and Arcane magic. When casting a Black Magic, Arcane Magic, or General Magic spell - a Dark Knight with this perk may substitute any amount of the Mana cost of the given spell with HP, draining only what is left over from their MP. If at least 5 HP was spent in this way for the spell's cost, that spell is considered a 'Dark Art' - and its damage type is changed to 'Dark' - in addition, any damage it deals is increased by a flat 8."
+					desc="The Dark Knight is trained not only in drawing out the power of their inner darkness for physical combat, but also the magical purposes of it as well. The Dark Knight with this perk gains access to the “Dark Arts” ability, granting them access to D Rank spells in both Black and Arcane Magic. Dark Arts allows the user to substitute any amount of MP from a General, Black or Arcane spell with HP, draining only what is left from their MP afterwards. If at least 5 HP is spent, the spell’s damage type is changed to “Dark” - and the damage the spell deals is increased by 8."
 				BlackerthanBlack
 					rank="T3"
 					name="Blacker than Black"
-					desc="This individual has been steeped in darkness for so long they have become one with the element and can at times be indistinguishable from it. They absorb all dark damage. Healing half the amount of damage that would have been dealt."
+					desc="The individual has been steeped in darkness for so long that they have become one with darkness itself. This allows the owner of this perk to absorb any Dark damage they take, healing half of the damage that would have been dealt to them."
+				UnendingHunger
+					rank="T3"
+					name="Never Ending Hunger"
+					desc="The Dark Knight has become accustomed to absorbing the life force from others. Whenever a Dark Knight procs a Lifesteal effect from the Dark Knight perk or ability list; they restore an additional +20 HP to any HP they drained."
 				OnewiththeDarkness
 					rank="T3"
 					name="One With the Darkness"
-					desc="This individual truly embodies the title of dark knight. When in the presence of shadow or darkness they are able become one with the darkness causing it to obscure their figure. This makes them almost unseeable except for those with high perception. Although this keeps them from being seen they are still subject to all the other senses. Gain advantage on stealth checks while at night or in a shadowed area. +2 AC whilst within the shadows or at night."
+					desc="The individual truly embodies the title of Dark Knight. When engulfed in the shadows, darkness or at nighttime; the individual becomes one with the night itself, gaining advantage on Stealth Checks, and a +2 AC"
 				Moxie
 					rank="T4"
 					name="Moxie"
-					desc="When felling an enemy the dark knight absorbs the hatred into themselves increasing their power. This can be chained between fights, but when the fighting stops the hatred that was gathered fades. +1 stack of moxie for every player killed, +1 stack for every 2 NPCS/Monsters, 1 stack of moxie gives +5 to all damage calculations. Fades after battle."
+					desc="When an enemy is defeated, the Dark Knight is able to absorb the downed foe’s hatred into themselves, increasing their power. This grants the Dark Knight a stack of Moxie which grants a +5 to all Damage Calculations. The Dark Knight gains +1 Moxie from every player KO, and +1 Moxie from every 2 NPC/Monster KOs. This bonus continues as long as the Dark Knight continues to fight, and fades once combat ends."
 				DarkMagus
 					rank="T4"
 					name="Dark Magus"
@@ -6883,15 +6883,15 @@ obj
 				BloodWeapon
 					name="Blood Weapon"
 					rank="E"
-					desc="This individual can cut themselves with their own blade allowing the blood to form a spiritual connection with the user. The more blood they spend, the more pleased their weapon becomes - and the more fierce in turn. This grants +4 extra damage to physical attacks for every 10 HP spent on activation ; to a maximum amount of stacks equal to the user's CON mod. These stacks are referred to as 'Dark' stacks. (Lasts 5 turns.)"
+					desc="This individual can cut themselves with their own blade allowing the blood to form a spiritual connection with the user. The more blood they spend, the more pleased their weapon becomes - and the more fierce in turn. | As a Standard Action the Dark Knight grants themselves 'Darkness' stacks that grant a +4 to PDB for every 10 HP spent; up to a maximum equal to the Dark Knight’s CON Modifier. (Lasts 5 turns.)|"
 				Intimidate
 					name="Intimidate"
 					rank="D"
-					desc="As a standard action, the Dark Knight slams their blade into the ground, and begins to beat at their chest - with glowing eyes. A single creature of their choice that is aggro'd on them must immediately switch targets, and may not target them for 1 turn. This costs 20 SP to activate, and is a bonus action."
+					desc="The Dark Knight slams their blade into the ground, beginning to beat at their chest with glowing eyes, forcing a nearby foe to temporarily avoid them. | As a Bonus Action, choose a single target. This target may not attack the Dark Knight until the start of the Dark Knight’s next turn. (Cost: 20 SP ) |"
 				Taunt
 					name="Taunt"
 					rank="D"
-					desc="As a master of negative emotions, the Dark Knight uses their ability to taunt and goad others combined with Dark Magic, to select a single enemy creature. That creature's aggro switches to the Dark Knight, and they may only attack the Dark Knight until the Dark Knight ends this effect with a bonus action, attacks another creature, or uses this ability on another creature. Costs 20 SP to activate."
+					desc="As a master of negative emotions, the Dark Knight channels said energy combined with Dark Magic to force a single target into combat with them and them alone. | As a Standard Action, the Dark Knight selects a single target. This target may only attack the Dark Knight. This effect ends if the Dark Knight attacks another creature, uses an ability on another creature, or ends it with a Bonus Action. (Cost: 20 SP to activate, Free to maintain) |"
 				DarkCannon
 					name="Dark Cannon"
 					rank="D"
@@ -6913,11 +6913,11 @@ obj
 				Lifeeater
 					name="Life Eater"
 					rank="D"
-					desc="As a bonus action, the Dark Knight infuses their blade with a lime green, soul-infused energy. Whenever the Dark Knight deals damage to a target creature, they restore half of the damage dealt to their own HP (up to a maximum of 20 per proc.) This counts as a Lifesteal proc. This ability costs 20 MP to activate, and lasts for 3 rounds."
+					desc="The Dark Knight infuses their weapon with a lime green, soul-infused energy that drains the very lifeforce from their foes. | As a Bonus Action, whenever the Dark Knight deals damage to a target, they restore up to half of the damage dealt to their own HP. | This is a Lifesteal Proc | Infusion |. (Cap: 40 HP per proc | Cost: 20MP | Lasts 3 turns.) |"
 				SoulEater
 					name="Soul Eater"
 					rank="C"
-					desc="The user surrounds their weapon in an aura of darkness being fed by their own life force. This increases the attack power of the weapon drastically. Adds +1 to hit, and 2d4 Darkness damage to standard attacks per 10 HP consumed. The bonus damage caps at 8d4. This lasts until ended as a bonus action. (-10 HP, up to -20.)"
+					desc="The Dark Knight surrounds their weapon in an aura of darkness that feeds off their very own life force, dramatically increasing their power. | As a bonus action the Dark Knight activates Soul Eater they are able to add the Dark Element to their attacks; and for each round it is active including the starting round, they must spend 10 HP, generating 1 stack of Soul Eater per 10 HP spent while active (Cap of 4 Stacks). They gain +1 PAB and deal an additional 2d4 Dark Damage on standard attacks per stack of Soul Eater. Each round the user may choose to instead drain 20 HP to generate Soul Eater quicker. (Lasts 5 rounds)|"
 				DarkFlame
 					name="Dark Flame"
 					rank="C"
@@ -6928,27 +6928,27 @@ obj
 					range=" 6 tiles."
 					mcost=30
 					costtype="Mana"
-					desc="While a weapon is under the effect of Blood Weapon you may stab the ground, causing black flames to erupt from the ground which causes a chain reaction of eruptions that travel towards a target. Upon reaching the target make an attack roll. (Damage: Weapon Damage + 4d4 Dark | Weapon Attack roll, max range of 6 tiles. This deals 1d6 additional Fire damage per Dark stack, consuming them. -30 Mana.)"
+					desc="While the Dark Knight has infused it’s weapon with the effects of Blood Weapon, they may stab the ground, causing a chain eruption of black flames that rapidly travels towards their target. These explosions can travel airborne.| Standard Action ( Weapon Damage + 4d4 (Dark) | Weapon Attack Roll | 6 Tile Range | Deals an additional 1d6 (Fire) per 'Darkness' stack, consuming them in the process | Cost: 30 MP )|"
 				ImmolateSelf
 					name="Immolate Self"
 					rank="C"
-					desc="The Dark Knight shrouds himself in hellish flames, immolating himself. This applies the 'Shadow Burn' negative status effect to the Dark Knight, which damages them for 5 HP per round but grants +3 PDB and allows them to optionally use Fire as their weapon's attack element, lasting until ended as a bonus action. Costs 20 MP to activate."
+					desc="The Dark Knight shrouds themselves in hellish flames, immolating themselves, in return for enhanced strength. | As a Bonus Action, the Dark Knight applies the ‘Shadow Burn’ negative status effect to themselves, dealing 5 HP of damage to them per turn, while also granting them a +3 to their PDB. This also allows the Dark Knight to change their weapon attack’s element to Fire. Lasts until ended as a Bonus action or until combat ends. (Cost: 20 MP to activate, 3% MAX HP per turn to maintain.)|"
 				WeightoftheWorld
 					name="Weight of the World"
 					rank="C"
-					desc="The Dark Knight shrouds himself in gravitational force, making it harder to move. This applies the 'Shadow Burden' negative status effect to the Dark Knight, which causes them to suffer -1 Tile Movement per turn, and incurs disadvantage on STR checks but grants +3 PDB, lasting until ended as a bonus action. Costs 20 MP to activate."
+					desc="The Dark Knight shrouds themselves in a gravitational force, making it harder for them to move, in return for enhanced strength. | As a Bonus Action, the Dark Knight applies the ‘Shadow Burden’ negative status effect to themselves, causing them to suffer a -2 to their Tile Movement, disadvantages on all STR checks and a +3 to their PDB while active. (Cost: 20 MP to activate, Free to maintain) |"
 				FrozenSoul
 					name="Frozen Heart"
 					rank="C"
-					desc="The Dark Knight turns their intentions inward, and allows their heart to become icy cold. This applies the 'Shadowridden Frostbite' negative status effect to the Dark Knight, which damages them for 5 HP per round, but grants +3 PDB and allows them to optionally use Ice as their weapon's attack element, lasting until ended as a bonus action. Costs 20 MP to activate."
+					desc="The Dark Knight turns their focus inwards, shutting themselves out to all around them, turning their heart an icy cold, granting them extra strength. | As a Bonus Action, the Dark Knight applies the ‘Shrouded Frostbite’ negative status effect to themselves, dealing 5 HP of damage to them per turn, while also granting them a +3 to their PDB. This also allows the Dark Knight to change their weapon attack’s element to Ice. Lasts until ended as a Bonus action or until combat ends. (Cost: 20 MP to activate, 3% MAX HP per turn to maintain.)|"
 				ExhaustedSoul
 					name="Exhausted Soul"
 					rank="C"
-					desc="The Dark Knight begins to exhaust their soul's very energy and stamina. This applies the 'Soul Exhaust' negative status effect to the Dark Knight, which causes them to burn 10 MP and 10 SP per turn, but grants +3 PDB, as well as +2 PAB and MAB until ended as a bonus action. Costs 10 MP and SP to activate."
+					desc="The Dark Knight begins to exhaust the energy and stamina from their very soul, empowering their strength. | As a Bonus Action the Dark Knight applies the ‘Exhausted Soul’ negative status effect to themselves, causing them to drain 10Mp and 10SP per turn in return for +3 PDB, +2 PAB and +2 MAB. Lasts until ended as a Bonus action or until combat ends. (Cost: 10 MP and SP to activate/ and per turn.)"
 				SalttheEarth
 					name="Salt the Earth"
 					rank="C"
-					desc="The dark knight cuts themselves spewing black blood around the area immediately around them. The area turns a sickly black and seeps miasma. Any creature standing in the area at the beginning of their turn takes 1d6 dark damage. Can be increased by 1d6 up to a maximum of 5d6 per 10 HP spent by the caster. Lasts for 5 turns and covers a 5tile radius around the user. (-10 HP, up to 50.)"
+					desc="The Dark Knight wounds themselves with their weapon, causing darkness infused blood to spew into the immediate area, coating it in a sickly black miasma. | As a Standard Action, the Dark Knight spends 10 to 50 HP to place a 5x5 tile AOE centered on themselves, which deals 1d6 per 10 HP spent to a maximum of 5d6 damage (Dark) to any enemies who start their turns within the AOE. (Lasts 5 turns.)"
 				DarkNebula
 					name="Dark Nebula"
 					rank="B"
@@ -6961,7 +6961,7 @@ obj
 					basecheck=13
 					costtype="Mana"
 					mcost=40
-					desc="The user holds out their hand using their life force to create a ball of dark Mana. The ball is then thrown it then expands upon hitting the ground forming a large globe that draws people towards it before exploding releasing the Mana in a shockwave that attacks the targets life force directly. (Damage: 5d10+WIS dark damage | Targets a 3x3 AoE within 7 tiles of the caster, prompting a Fortitude saving throw (DC 13+Rank Bonus+WIS). On a failure, draw affected creatures to the center, and deal full damage. On a success, take half damage. Dark Nebula deals 1d10 additional damage per Moxie stack when casted. -40 mana.)"
+					desc="The Dark Knight holds out their hand,to fire a ball of dark magic, which upon contact with the ground, expands outwards into a globe like shape, drawing in their enemies before exploding in a powerful shockwave of darkness. | Standard Action ( 5d10 + WIS Damage (Dark) + 1d10 additional damage per Moxie Stack ) | 3x3 tile Radius within 7 tiles of the Caster | Fortitude Save ( DC13 + Rank Bonus + WIS) | Targets are pulled to the center of the AOE and take full damage on a Failed Save, and half damage on a Successful one.| (Cost: 40 MP)"
 				SoulRender
 					name="Soul Render"
 					rank="B"
@@ -6973,11 +6973,11 @@ obj
 					attack_roll_dice_sides = 10
 					damsource="str"
 					range=" 3 tiles"
-					desc="As a Standard action the dark knight uses their built up negative Mana to surround their weapon in a dark Mana that extends along the weapon into a long blade. The blade of Mana can be swiped at an enemy with the ability to transfer some of the targets life force into the user although being costly to sustain. Make a Weapon Attack with a range of 3 tiles at a single target, dealing Weapon Damage+4d10+STR damage on a successful hit, and restoring half of the damage dealt (max of 50). This effect stacks with Life Eater, and is considered a Lifesteal proc. (-60 MP.)"
+					desc="The Dark Knight surrounds their weapon in dark mana, causing it to extend along it into a long blade. Which upon striking their target, drains a substantial amount of their life force. | Standard Action ( Weapon Damage + 4d10 + STR Damage ) | 3 Tile Range |  Restores half of damage dealt. This is an On-Hit Lifesteal Proc. Stacks with Life Eater. | (Cap: 50HP | Cost: 60 MP ) |"
 				SeeyouinHell
 					name="See you in Hell"
 					rank="A"
-					desc="When the user is about to be killed, they muster what little life force they have along with the negative emotions brought about by death, and send out a shock wave of Mana that deals high magical damage lashing at the targets soul in an attempt at bringing them down with the dark knight. This is used as an incidental action, and requires the target player to have not only dealt a direct and literal killing blow to the Dark Knight through a spell or attack roll, and for the target of See you in Hell killed to be below 40% HP. Automatically kills the person who kills the user as long as they have the mana left to cast the spell, and they are within a 2 tile radius. (-120 Mana)"
+					desc="The Dark Knight on the brink of death, musters what little life they have into their remaining negative emotions, sending out a shockwave of mana that lashes at their targets soul, attempting to kill them as well. | Use as a Free Action only if the caster was struck a killing blow via a direct spell or attack roll from a target within a 2 Tile Radius. If the target was below 40% of their Maximum HP, they automatically die alongside the Dark Knight. (Cost: 120 MP)"
 				SanguineCross
 					element="Dark"
 					name="Sanguine Cross"
@@ -6992,14 +6992,14 @@ obj
 					basecheck=15
 					mcost=80
 					costtype="Mana"
-					desc="The user of this technique draws on their Blood Arts to generate immense pressure around their weapon. They then stab it forth into the ground, and send dark pulsations in a cross pattern around their body - tearing the ground asunder, and threatening to obliterate creatures in its path with dark power. (Damage: Weapon Damage + 3d12+STR | 5 tile line in a cross centered on the caster, prompts a Reflex saving throw (DC 15+Rank Bonus+STR) ; dealing half on a successful save. On a failure, the target creature takes 1d12 additional dark damage for every dark stack on the user's weapon, expending those stacks. -80 Mana.)"
+					desc="The Dark Knight draws upon their immense power, channeling it into their weapon, to which they slam it into the ground, sending eruptions of darkness in a cross pattern, tearing the ground asunder in its path. | Standard Action (Weapon Damage + 3d12 + STR) | 5 Tile Line in a cross, centered on the caster | Reflex Save (DC:15 + Rank Bonus + STR ) | Deals Full Damage + 1d12 damage (Dark) per “Darkness” stack, consuming them in the process on a failed save. Deals half damage on a successful save.| (Cost: 80MP)"
 				MarkofDarkness
 					name="Mark of Darkness"
 					rank="S"
-					desc="The user surrounds their weapon with a pitch black aura completely obscuring the blade. The user then performs a powerful thrusting attack at the targets hearts. On a successful strike the blade will leave behind its aura creating a black outline around the targets heart, thus marking them. Make a standard attack roll dealing 10d8 dark damage. Target is rendered weak to dark element for 5 turns. Target receives 1d10 dark damage over 5 turns. (-100 Mana)"
+					desc="The Dark Knight surrounds their weapon with a pitch black aura that completely obscures the blade and attempts to pierce the target's heart. | As a Standard action, the user attacks their target. On a successful hit, the target takes 10d8 damage (Dark), and is rendered weak to the Dark Element and takes an additional 1d10 damage (Dark) per turn. (Cost: 100MP | Lasts 5 turns )"
 				Zeal
 					rank="S"
-					desc="The dark knight knows how to embody the ethereal power of shadows. Using their magic they can make their body intangible for only a second, and this is decently draining. As a reaction, makes the user invulnerable for a single round upon use, Disables physical attacks, as the character becomes incorporeal and cannot interact with the physical plane. Magic still works. (-100 Mana.)"
+					desc="The Dark Knight bathes themselves in dark ethereal magic, becoming intangible to avoid danger for a brief moment of time. | As a Reaction, the Dark Knight may become completely invulnerable to Physical Attacks and are unable to interact with the Physical plane until the start of their next turn. Magic still affects them. (Cost: 100 MP)"
 
 
 			Dragoon

@@ -8252,15 +8252,17 @@ mob
 				usr.send_chat("[n.name] has been added to your NPC list.","oocout")
 				RefreshNPC(usr)
 		Addperknpc()
-			var/obj/npc/n = usr.npcsheet
-			var/ap = input("What perk do you wish to give the NPC?") as null|anything in perklist
-			var/p = copyatom(ap)
-			n.contents+=p
+			if(usr.eventmin||usr.tempeventmin||usr.adminlv>0)
+				var/obj/npc/n = usr.npcsheet
+				var/ap = input("What perk do you wish to give the NPC?") as null|anything in perklist
+				var/p = copyatom(ap)
+				n.contents+=p
 		Addwepnpc()
-			var/obj/npc/n = usr.npcsheet
-			var/az = input("What weapon do you wish to give the NPC?") as null|anything in weplist
-			var/qw = copyatom(az)
-			n.contents+=qw
+			if(usr.eventmin||usr.tempeventmin||usr.adminlv>0)
+				var/obj/npc/n = usr.npcsheet
+				var/az = input("What weapon do you wish to give the NPC?") as null|anything in weplist
+				var/qw = copyatom(az)
+				n.contents+=qw
 		Viewnpcperks()
 			var/npcperks
 			var/obj/npc/n = usr.npcachoice
