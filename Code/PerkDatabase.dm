@@ -6930,7 +6930,7 @@ obj
 				ImmolateSelf
 					name="Immolate Self"
 					rank="C"
-					desc="The Dark Knight shrouds themselves in hellish flames, immolating themselves, in return for enhanced strength. | As a Bonus Action, the Dark Knight applies the ‘Shadow Burn’ negative status effect to themselves, dealing 5 HP of damage to them per turn, while also granting them a +3 to their PDB. This also allows the Dark Knight to change their weapon attack’s element to Fire. Lasts until ended as a Bonus action or until combat ends. (Cost: 20 MP to activate, 3% MAX HP per turn to maintain.)|"
+					desc="The Dark Knight shrouds themselves in hellish flames, immolating themselves, in return for enhanced strength. | As a Bonus Action, the Dark Knight applies the ‘Shadow Burn’ negative status effect to themselves, dealing 3% MAX HP of damage to them per turn, while also granting them a +3 to their PDB. This also allows the Dark Knight to change their weapon attack’s element to Fire. Lasts until ended as a Bonus action or until combat ends. (Cost: 20 MP to activate, 3% MAX HP per turn to maintain.)|"
 				WeightoftheWorld
 					name="Weight of the World"
 					rank="C"
@@ -6938,7 +6938,7 @@ obj
 				FrozenSoul
 					name="Frozen Heart"
 					rank="C"
-					desc="The Dark Knight turns their focus inwards, shutting themselves out to all around them, turning their heart an icy cold, granting them extra strength. | As a Bonus Action, the Dark Knight applies the ‘Shrouded Frostbite’ negative status effect to themselves, dealing 5 HP of damage to them per turn, while also granting them a +3 to their PDB. This also allows the Dark Knight to change their weapon attack’s element to Ice. Lasts until ended as a Bonus action or until combat ends. (Cost: 20 MP to activate, 3% MAX HP per turn to maintain.)|"
+					desc="The Dark Knight turns their focus inwards, shutting themselves out to all around them, turning their heart an icy cold, granting them extra strength. | As a Bonus Action, the Dark Knight applies the ‘Shrouded Frostbite’ negative status effect to themselves, dealing 3% MAX HP of damage to them per turn, while also granting them a +3 to their PDB. This also allows the Dark Knight to change their weapon attack’s element to Ice. Lasts until ended as a Bonus action or until combat ends. (Cost: 20 MP to activate, 3% MAX HP per turn to maintain.)|"
 				ExhaustedSoul
 					name="Exhausted Soul"
 					rank="C"
