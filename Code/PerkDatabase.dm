@@ -2079,7 +2079,7 @@ obj
 					name="Synchronicity"
 					rank="T2"
 					pre="Pure Red Mage"
-					desc="This Red Mage has focused purely on the art of Red Magic ; combining all forms of Magic as deftly as possible, for true synergy - they live in yin and yang, energetically. As a result, their raw mana is much more potent. They gain +30 MP to their mana pool permanently, and in addition - their General Magic Abilities gain +1 to hit, and deal 8 additional damage on hit."
+					desc="This Red Mage has focused purely on the art of Red Magic ; combining all forms of Magic as deftly as possible, for true synergy - they live in yin and yang, energetically. As a result, their raw mana is much more potent. They gain +30 MP to their mana pool permanently, and in addition - their Magic Abilities gain +1 to hit, and deal 8 additional damage on hit."
 				Attunement
 					name="Attunement"
 					rank="T3"
