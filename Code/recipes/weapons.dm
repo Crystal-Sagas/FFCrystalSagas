@@ -397,6 +397,27 @@
 /obj/recipes/Weapons/Staff/Orichalcum
 	creates = new /obj/item/Weapon/Magical/Staff/Orichalcum
 
+/obj/recipes/Weapons/Rod
+	weapontype = "Rod"
+
+/obj/recipes/Weapons/Rod/Bronze
+	creates = new /obj/item/Weapon/Magical/Staff/Bronze
+
+/obj/recipes/Weapons/Rod/Iron
+	creates = new /obj/item/Weapon/Magical/Staff/Iron
+
+/obj/recipes/Weapons/Rod/Steel
+	creates = new /obj/item/Weapon/Magical/Staff/Steel
+
+/obj/recipes/Weapons/Rod/Mythril
+	creates = new /obj/item/Weapon/Magical/Staff/Mythril
+
+/obj/recipes/Weapons/Rod/Adamantine
+	creates = new /obj/item/Weapon/Magical/Staff/Adamantine
+
+/obj/recipes/Weapons/Rod/Orichalcum
+	creates = new /obj/item/Weapon/Magical/Staff/Orichalcum
+
 /obj/recipes/Weapons/Tome
 	weapontype = "Tome"
 
