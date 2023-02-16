@@ -1019,7 +1019,7 @@ obj
 				range2weapon=2
 				a.range="5 Tiles"
 				a.damsource="wis"
-				a.desc="A magical rod, with a crystal fused as its ornamentation. Rods are usually employed as offensive weapons, channeling the caster's inner power to empower their magic. When a Rod is wielded, the wielder gains +2 MAB, and +5 MDB per Metal Tier. In addition, whenever a Rod basic attack, or a spell cast while the Rod is wielded hits a target, the wielder may spend 5 MP, SP, or HP in order to convert their vital energies into power, and deal 5 additional true damage per 5 MP, SP or HP spent (capping at 5*metal tier)."
+				a.desc="When a Rod is wielded, the wielder gains +2 MAB, and +5 MDB per Metal Tier. In addition, whenever a Rod basic attack, or a spell cast while the Rod is wielded hits a target, the wielder may spend 5 MP, SP, or HP in order to convert their vital energies into power, and deal 5 additional true damage per 5 MP, SP or HP spent (capping at 5*Metal Tier)."
 			if(a.weapontype=="Staff")
 				a.equiptype="2h"
 				range1weapon=1
