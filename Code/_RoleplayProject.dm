@@ -1483,8 +1483,8 @@ proc
 					m.mmp+=40
 					m.msp+=30
 					m.sp+=30
-					m.whitemagicable=2
-					m.greenmagicable=1
+					m.whitemagicable=3
+					m.greenmagicable=2
 					m.reflexproficient=0
 					m.willproficient=1
 					m.fortitudeproficient=0
@@ -1657,8 +1657,8 @@ proc
 					m.msp+=10
 					m.sp+=10
 					m.buysummons=1
-					m.greenmagicable=2
-					m.arcanemagicable=2
+					m.greenmagicable=3
+					m.arcanemagicable=3
 					Summonerint()
 					m.reflexproficient=1
 					m.willproficient=1
