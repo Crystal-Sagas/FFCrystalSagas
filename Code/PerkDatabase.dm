@@ -4763,6 +4763,7 @@ obj
 						mcost=45
 						atype="save"
 						savetype="Reflex"
+						basecheck=14
 						range=" 5x5 AoE at a point in view."
 						desc="An ancient runic circle forms under a target before superheating the area and erupting in a powerful column of flame. Out of Battle Effects: This individual is capable of igniting or extinguishing an object within 60ft of themselves. They can spread a fire within view 20ft in any direction. (Damage: 6d12+WIS fire damage | 5x5 AoE at a point in view, prompts a Reflex saving throw ; dealing full damage, and inflicting 'Burn' on a failure, or half damage on a success. -45 Mana.)"
 					Ardor
@@ -4812,6 +4813,7 @@ obj
 						range=" 5x5 AoE at a point in view."
 						atype="save"
 						savetype="Reflex"
+						basecheck=14
 						desc="An ancient runic circle forms above a target. Upon activation powerful bolts of lighting strike the area. Creatures with the 'Wet' status effect suffer disadvantage on this saving throw. In addition, a creature with 'Wet' releases a bolt of lightning with a 17 to hit against any creature within 3 tiles of them, dealing 2d12 additional thunder damage on a successful hit. (Damage: 5d12+WIS thunder damage | 5x5 AoE at a point in view, prompts a Reflex saving throw ; dealing full damage, and inflicting 'Paralyze' on a failure, or half damage on a success. -45 Mana.)"
 				Energy
 					element="Flare"
@@ -4857,6 +4859,7 @@ obj
 						range=" 5 tile wide, 15 tile long wave."
 						atype="save"
 						savetype="Reflex"
+						basecheck=18
 						mcost=120
 						desc="The user forms a sphere of energy in their hand. The sphere is charged until it radiates a blue glow surging with energy. It is then fired in front of the user, meant to obliterate most conventional forms of protective magic and destroy the chosen target without mercy. (Damage: 10d12+WIS force damage | 5 tile wide, 15 tile long wave. Prompts a Reflex saving throw, dealing full on a failure, or half on a success. Ignores the effects of reflect or shell, and up to 30 points of DR. -120 mana)"
 					Ultima
@@ -4877,6 +4880,7 @@ obj
 						attack_roll_dice_sides = 8
 						range=" 5x5 AoE in view. 3 Saves."
 						atype="save"
+						basecheck=14
 						savetype="Reflex"
 						desc="The user churns an area of the ground heating it and turning it into a molten crater of magma. They then cause the area to erupt firing molten debris. The first attack manifests as Fire, the second manifests as molten rock, and the third as scorching winds. Each element has a different associated status effect: Fire: Burn Earth: Heavy Wind: Bleed (Damage: 3d8+WIS fire/earth/wind | 5x5 AoE in view. Prompts 3 Reflex saving throws, one for each element. On a failure, take full damage and be inflicted with that element's status effect. On a success, take half damage. -70 mana.)"
 					Apocalypse
@@ -5082,7 +5086,7 @@ obj
 						range=" 8 tile range."
 						atype="save"
 						savetype="Fortitude"
-						basecheck=14
+						basecheck=18
 						mcost=65
 						desc="The user calls to the gods above asking for their divine light and assistance. Light bathes their immediate area, and is released in the form of eight holy orbs that are flung towards a singular target in range, and aim to converge upon them. (Damage: 8d10+CHA holy damage |8 tile range, prompts a Fortitude saving throw (DC 14+CHA+Rank bonus), inflicting full damage and 1 stack of exhaustion on a failure, or half as much damage on a success. -65 mana.)"
 				Dispel
@@ -5115,7 +5119,7 @@ obj
 						mcost=65
 						atype="save"
 						savetype="Fortitude"
-						basecheck=14
+						basecheck=16
 						range="3x3 AoE"
 						desc="The user casts forward a tightly packed ball of magic. Upon reaching its target the ball erupts, washing over everything in cleansing light. (6 tile range, 3x3 AoE ; prompts a Fortitude saving throw (DC 18) - dispelling all positive status effects on a failure. -65 mana.)"
 				Status
