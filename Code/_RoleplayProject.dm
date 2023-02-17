@@ -1798,9 +1798,9 @@ proc
 		switch(rolechoice)
 			if("Melee Tank")
 				m.role="Melee Tank"
-				hproll=rand(70,130)
-				mproll=rand(30,60)
-				sproll=rand(50,100)
+				hproll=rand(130,130)
+				mproll=rand(60,60)
+				sproll=rand(100,100)
 				m.mhp+=hproll
 				m.hp+=hproll
 				m.mmp+=mproll
@@ -1811,12 +1811,12 @@ proc
 				m.basedr+=4
 				var/obj/perk/Roleperks/MeleeTank/k = new
 				m.contents+=k
-				alert("You rolled [hproll] for HP, and [mproll] for MP")
+				alert("You rolled [hproll] for HP, [mproll] for MP, and [sproll] for SP!")
 			if("Tank Caster")
 				m.role="Tank Caster"
-				hproll=rand(60,120)
-				mproll=rand(70,100)
-				sproll=rand(30,50)
+				hproll=rand(120,120)
+				mproll=rand(100,100)
+				sproll=rand(50,50)
 				m.mhp+=hproll
 				m.hp+=hproll
 				m.mmp+=mproll
@@ -1827,12 +1827,12 @@ proc
 				m.basedr+=4
 				var/obj/perk/Roleperks/CasterTank/k = new
 				m.contents+=k
-				alert("You rolled [hproll] for HP, and [mproll] for MP")
+				alert("You rolled [hproll] for HP, [mproll] for MP, and [sproll] for SP!")
 			if("Physical DPS")
 				m.role="Physical DPS"
-				hproll=rand(50,90)
-				mproll=rand(40,80)
-				sproll=rand(60,120)
+				hproll=rand(90,90)
+				mproll=rand(80,80)
+				sproll=rand(120,120)
 				m.mhp+=hproll
 				m.hp+=hproll
 				m.mmp+=mproll
@@ -1843,12 +1843,12 @@ proc
 				m.pdb+=8
 				var/obj/perk/Roleperks/PhysicalDPS/k = new
 				m.contents+=k
-				alert("You rolled [hproll] for HP, and [mproll] for MP")
+				alert("You rolled [hproll] for HP, [mproll] for MP, and [sproll] for SP!")
 			if("Magical DPS")
 				m.role="Magical DPS"
-				hproll=rand(40,90)
-				mproll=rand(70,120)
-				sproll=rand(40,60)
+				hproll=rand(90,90)
+				mproll=rand(120,120)
+				sproll=rand(60,60)
 				m.mhp+=hproll
 				m.hp+=hproll
 				m.mmp+=mproll
@@ -1859,12 +1859,12 @@ proc
 				m.mdb+=8
 				var/obj/perk/Roleperks/MagicalDPS/k = new
 				m.contents+=k
-				alert("You rolled [hproll] for HP, and [mproll] for MP")
+				alert("You rolled [hproll] for HP, [mproll] for MP, and [sproll] for SP!")
 			if("Magical Support")
 				m.role="Magical Support"
-				hproll=rand(30,60)
-				mproll=rand(80,130)
-				sproll=rand(40,60)
+				hproll=rand(60,60)
+				mproll=rand(130,130)
+				sproll=rand(60,60)
 				m.mhp+=hproll
 				m.hp+=hproll
 				m.mmp+=mproll
@@ -1874,12 +1874,12 @@ proc
 				m.mab+=1
 				var/obj/perk/Roleperks/MagicalSupport/k = new
 				m.contents+=k
-				alert("You rolled [hproll] for HP, and [mproll] for MP")
+				alert("You rolled [hproll] for HP, [mproll] for MP, and [sproll] for SP!")
 			if("Physical Support")
 				m.role="Physical Support"
-				hproll=rand(40,70)
-				mproll=rand(50,70)
-				sproll=rand(70,120)
+				hproll=rand(70,70)
+				mproll=rand(70,70)
+				sproll=rand(120,120)
 				m.mhp+=hproll
 				m.hp+=hproll
 				m.mmp+=mproll
@@ -1889,12 +1889,12 @@ proc
 				m.pab+=1
 				var/obj/perk/Roleperks/PhysicalSupport/k = new
 				m.contents+=k
-				alert("You rolled [hproll] for HP, and [mproll] for MP")
+				alert("You rolled [hproll] for HP, [mproll] for MP, and [sproll] for SP!")
 			if("Generalist")
 				m.role="Generalist"
-				hproll=rand(30,60)
-				mproll=rand(30,60)
-				sproll=rand(30,60)
+				hproll=rand(60,60)
+				mproll=rand(60,60)
+				sproll=rand(60,60)
 				m.mhp+=hproll
 				m.hp+=hproll
 				m.mmp+=mproll
