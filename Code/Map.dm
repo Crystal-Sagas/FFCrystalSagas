@@ -3355,3 +3355,6 @@ obj
 				icon_state="bushplanter"
 			Crystal
 				icon_state="Floating Crystal"
+		YevonSigil
+			icon='Map Icons/Yevonsigil.dmi'
+			layer=5
