@@ -4711,6 +4711,7 @@ obj
 						pre="Blizzaga"
 						basecheck=14
 						atype="save"
+						savetype="Reflex"
 						attack_roll_damage_dice = TRUE
 						attack_roll_dice_count = 5
 						attack_roll_dice_sides = 12
