@@ -6649,7 +6649,7 @@ obj
 				UltimaInfusion
 					name="Ultima Infusion"
 					rank="S"
-					desc="This individual infuses their weapon with ultima magic granting it a brilliant green glow. Each weapon attack while this infusion is active, gain 20 PDB, and Weapon Attacks ignore the effects of shell and reflect. (-25 mana per turn active.)"
+					desc="This individual infuses their weapon with ultima magic granting it a brilliant green glow. Each weapon attack while this infusion is active, gain 20 PDB, and Weapon Attacks deal True Damage. (-25 mana per turn active.)"
 					cat="Unique"
 
 			Rogue
