@@ -2319,7 +2319,7 @@ obj
 						mcost=0
 						basecheck=10
 						attack_roll_damage_dice = TRUE
-						attack_roll_dice_count = 4
+						attack_roll_dice_count = 2
 						attack_roll_dice_sides = 12
 						adddam=5
 						addhit=4
