@@ -3355,6 +3355,18 @@ obj
 				icon_state="bushplanter"
 			Crystal
 				icon_state="Floating Crystal"
+		YevonFayths
+			FaythofBahamutJudgement
+				icon='Icons/Summon/Aeons/Bjfayth.png'
+				pixel_x=20
+			Pandemonafayth
+				icon='Icons/Summon/Aeons/pandemonafayth.png'
+				pixel_x=-5
+			Slydrafayth
+				icon='Icons/Summon/Aeons/slydrafayth.png'
+				pixel_x=-10
+			Quetzfayth
+				icon='Icons/Summon/Aeons/quetzfayth.png'
 		YevonSigil
 			icon='Map Icons/Yevonsigil.dmi'
 			layer=5
