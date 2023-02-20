@@ -1141,7 +1141,7 @@ obj
 				a.scaling=0
 				a.damagescales=0
 				a.damsource="dex"
-				a.desc="A Magitek Pistol, deals Force damage. When a target is dealt damage by a Magitek Pistol, they must roll a fortitude saving throw (DC 10), on failure they are inflicted with Burn, Poison, or Wet; of the user's choice."
+				a.desc="A Magitek Pistol, deals Force damage. When a target is dealt damage by a Magitek Pistol, they must roll a fortitude saving throw (DC 10+Metal Tier), on failure they are inflicted with Burn, Poison, or Wet; of the user's choice."
 				a.range="6 Tiles"
 			if(a.weapontype=="Magitek Rifle")
 				a.equiptype="2h"
@@ -1152,7 +1152,7 @@ obj
 				a.scaling=0
 				a.damsource="dex"
 				a.range="6 Tiles"
-				a.desc="A Magitek Rifle, deals Force damage. 2H. When a target is dealt damage by a Magitek Rifle, they are knocked back 1 tile, and must roll a Fortitude saving throw (DC 10) or be knocked prone."
+				a.desc="A Magitek Rifle, deals Force damage. 2H. When a target is dealt damage by a Magitek Rifle, they are knocked back 1 tile, and must roll a Fortitude saving throw (DC 10+ Metal Tier) or be knocked prone."
 			if(a.weptier=="Bronze")
 				range1true=range1bronze*range1weapon
 				range2true=range2bronze*range2weapon
