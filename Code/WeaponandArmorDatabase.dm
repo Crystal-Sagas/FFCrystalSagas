@@ -978,7 +978,7 @@ obj
 			if(a.weapontype=="Katana")
 				a.equiptype="2h"
 				range1weapon=1
-				range2weapon=1
+				range2weapon=2
 				a.damsource="str"
 				a.desc="A Katana, which ignores 3 static points of damage reduction, and 2 extra points per Metal Tier (2 at Bronze, 4 at Iron, 6 at Steel, 8 at Mythril, 10 at Adamantine, 12 at Orichalcum.)"
 			if(a.weapontype=="Spear")

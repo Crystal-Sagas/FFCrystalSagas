@@ -1635,7 +1635,7 @@ obj
 				BladeDancer
 					name="Warrior Dervish"
 					rank="T1"
-					desc="The Mystic Knight is particularly skilled in keeping up the momentum of their weapon for continued strikes. A Mystic Knight may expend a bonus to make an additional basic attack with their weapon, once per turn. Whenever this bonus action is used (regardless of hit or miss), the mystic knight gains 1 ‘Kinetic Stack’."
+					desc="The Mystic Knight is particularly skilled in keeping up the momentum of their weapon for continued strikes. A Mystic Knight may expend a bonus to make an additional basic attack with their weapon, once per turn. Whenever this bonus action is used (regardless of hit or miss), the mystic knight gains 1 ‘Kinetic Stack’. This perk goes on a 2 Turn Cooldown after use."
 				BladeCasting
 					name="Blade Casting"
 					rank="T1"
@@ -2587,7 +2587,7 @@ obj
 				IndomitableSpirit
 					rank="T3"
 					name="Indomitable Spirit"
-					desc="This individual has been gifted by the light. When they are in a weakened state they will be gifted the status 'Protect' status automatically - and gain resistance to physical damage, dark damage, and force damage. (Auto-protect at < 50% health)"
+					desc="This individual has been gifted by the light. When they are in a weakened state they will be gifted the status 'Protect' status automatically - and gain resistance to physical damage, dark damage, and force damage. (Auto-protect at less than 50% health)"
 				BlessingofAltruism
 					rank="T3"
 					name="Blessing of Altruism"
