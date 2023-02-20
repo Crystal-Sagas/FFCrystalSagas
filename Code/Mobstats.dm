@@ -223,6 +223,7 @@ mob/var
 	disadvantage
 	grid
 	obj/storage/storagelook
+	tmp/craftingactive
 	gyshal=0
 	sharug=0
 	azouph=0

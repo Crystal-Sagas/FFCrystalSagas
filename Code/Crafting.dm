@@ -424,6 +424,9 @@ obj/item/Weapon/verb
 		if(src.gilded>=1)
 			alert(usr,"This is already Gilded!")
 			return
+		if(usr.craftingactive=1)
+			return
+		usr.craftingactive=1
 		if(usr.check_perk("Weaponsmith II"))
 			if(src.weapon != 1)
 				alert(usr,"You cannot Gild this item, you can only gild Weapons!")
@@ -480,11 +483,15 @@ obj/item/Weapon/verb
 								UpdateCraft(usr)
 							else
 								alert(usr,"Applying a Platinum gilding requires at least 10 Platinum ore.")
+					usr.craftingactive=0
 		else
 			alert(usr,"Only a Weaponsmith is able to Gild an item.")
 
 obj/item/verb
 	SetLore()
+		if(usr.craftingactive=1)
+			return
+		usr.craftingactive=1
 		if(usr.check_perk("Enchanter"))
 			if(src.weapon != 1)
 				alert(usr, "You cannot set this item's lore!")
@@ -499,7 +506,10 @@ obj/item/verb
 							src.lored=1
 							src.addhit+=1
 							src.adddam+=3
+							if(src.name=null)
+								src.name="Lored [src.weptier] [src.weapontype]"
 							a.amount-=1
+							usr.craftingactive=0
 							UpdateCraft(usr)
 							switch(yeschoice)
 								if("Yes")
@@ -514,6 +524,9 @@ obj/item/verb
 						return
 
 	Enchant()
+		if(usr.craftingactive=1)
+			return
+		usr.craftingactive=1
 		if(usr.job=="Dragoon"||usr.subjob=="Dragoon")
 			if(src.weapontype=="Draconic")
 			else
@@ -951,6 +964,7 @@ obj/item/verb
 										view()<<output("[usr.name] enchants their [src.name]","icout")
 									else
 										alert(usr,"You don't have enough. You need at least 12 Dark Gems")
+						usr.craftingactive=0
 				if("Status")
 					if(src.enchanted==1)
 						alert(usr,"This item already has a basic Enhantment applied.")
@@ -1005,6 +1019,7 @@ obj/item/verb
 									src.enchantment=" Enchanted (Silence) +1 to hit, latently.| Attacks prompt DC 15 Saving Throw on hit, inflicting Silence on failure."
 							else
 								alert(usr,"You need 4 White Gems to apply the Silence enchantment.")
+							usr.craftingactive=0
 				if("Mythic")
 					if(src.armor==1 || src.jewelery==1)
 						alert(usr,"You can not apply Mythic enchantments to Armor or Accessories.")
@@ -1610,6 +1625,7 @@ obj/item/verb
 											return
 							if("Brutish")
 								return
+							usr.craftingactive=0
 				if("Cancel")
 					return
 		else
