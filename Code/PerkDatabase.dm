@@ -1639,7 +1639,7 @@ obj
 				BladeCasting
 					name="Blade Casting"
 					rank="T1"
-					desc="The Mystic Knight is well-versed in the art of Kinetic Casting. With this perk, a Mystic Knight may utilize melee weapons to increase their MDB by 2 and MAB by 1 per Metal Tier. This only applies if the Mystic Knight has at least 1 Kinetic Stack. This perk does not apply if the user is also wielding a magical Catalyst Weapon."
+					desc="The Mystic Knight is well-versed in the art of Kinetic Casting. With this perk, a Mystic Knight may utilize melee weapons in their main hand to increase their MDB by 2 and MAB by 1 per Metal Tier. This only applies if the Mystic Knight has at least 1 Kinetic Stack. This perk does not apply if the user is also wielding a magical Catalyst Weapon."
 				LivingBlade
 					name="Living Blade"
 					rank="T2"
