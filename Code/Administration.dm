@@ -509,17 +509,17 @@ mob
 				if(usr.adminlv<2)
 					return
 				if(usr.ghosting)
-					usr.overlays=usr.ghostovers
-					usr.icon=usr.ghosticon
+					usr.see_invisible=usr.adminlv
+					usr.invisibility=0
 					usr.density=1
 					usr.ghosting=0
+					usr<<"GOIN' UN-GHOST!"
 				else
-					usr.ghostovers=usr.overlays
-					usr.ghosticon=usr.icon
-					usr.icon=null
-					usr.overlays=null
+					usr.see_invisible=usr.adminlv
+					usr.invisibility=usr.adminlv
 					usr.density=0
 					usr.ghosting=1
+					usr<<"GOIN' GHOST!"
 			SetStartingRPP()
 				if(usr.adminlv<4)
 					return

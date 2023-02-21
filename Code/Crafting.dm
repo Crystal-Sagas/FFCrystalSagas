@@ -424,7 +424,7 @@ obj/item/Weapon/verb
 		if(src.gilded>=1)
 			alert(usr,"This is already Gilded!")
 			return
-		if(usr.craftingactive=1)
+		if(usr.craftingactive==1)
 			return
 		usr.craftingactive=1
 		if(usr.check_perk("Weaponsmith II"))
@@ -448,6 +448,7 @@ obj/item/Weapon/verb
 								src.gilded=1
 								src.name=tempname
 								a.amount-=10
+								usr.craftingactive=0
 								src.desc+=" | Silver gilded."
 								view()<<output("[usr.name] applies a <b>Silver</b> gilding to [storename]","icout")
 								UpdateCraft(usr)
@@ -463,6 +464,7 @@ obj/item/Weapon/verb
 								src.gilded=1
 								src.name=tempname
 								a.amount-=10
+								usr.craftingactive=0
 								src.desc+=" | Gold gilded."
 								view()<<output("[usr.name] applies a <b>Gold</b> gilding to [storename]","icout")
 								UpdateCraft(usr)
@@ -478,18 +480,19 @@ obj/item/Weapon/verb
 								src.gilded=1
 								src.name=tempname
 								a.amount-=10
+								usr.craftingactive=0
 								src.desc+=" | Platinum gilded."
 								view()<<output("[usr.name] applies a <b>Platinum</b> gilding to [storename]","icout")
 								UpdateCraft(usr)
 							else
 								alert(usr,"Applying a Platinum gilding requires at least 10 Platinum ore.")
-					usr.craftingactive=0
+
 		else
 			alert(usr,"Only a Weaponsmith is able to Gild an item.")
 
 obj/item/verb
 	SetLore()
-		if(usr.craftingactive=1)
+		if(usr.craftingactive==1)
 			return
 		usr.craftingactive=1
 		if(usr.check_perk("Enchanter"))
@@ -506,7 +509,7 @@ obj/item/verb
 							src.lored=1
 							src.addhit+=1
 							src.adddam+=3
-							if(src.name=null)
+							if(src.name==null)
 								src.name="Lored [src.weptier] [src.weapontype]"
 							a.amount-=1
 							usr.craftingactive=0
@@ -524,7 +527,7 @@ obj/item/verb
 						return
 
 	Enchant()
-		if(usr.craftingactive=1)
+		if(usr.craftingactive==1)
 			return
 		usr.craftingactive=1
 		if(usr.job=="Dragoon"||usr.subjob=="Dragoon")
@@ -964,7 +967,7 @@ obj/item/verb
 										view()<<output("[usr.name] enchants their [src.name]","icout")
 									else
 										alert(usr,"You don't have enough. You need at least 12 Dark Gems")
-						usr.craftingactive=0
+
 				if("Status")
 					if(src.enchanted==1)
 						alert(usr,"This item already has a basic Enhantment applied.")
@@ -1625,7 +1628,6 @@ obj/item/verb
 											return
 							if("Brutish")
 								return
-							usr.craftingactive=0
 				if("Cancel")
 					return
 		else
