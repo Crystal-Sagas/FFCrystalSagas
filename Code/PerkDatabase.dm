@@ -2644,23 +2644,23 @@ obj
 				BathedinLight
 					rank="T1"
 					name="Bathed in Light"
-					desc="This individual is blessed by a holy light. They gain more health than others when being healed by any source, gaining an extra +25 HP from any incoming healing spell."
+					desc="The Paladin is blessed by Holy Light. They gain more health when healed. | The Paladin is able to gain an extra +20 HP from all spells and abilities which grant healing. (This includes Life-Steal Effects.) This does NOT however include passive healing effects. (Such as the Regen Status) |"
 				HolyMight
 					rank="T2"
 					name="Holy Might"
-					desc="This user has embodied the power of light, and is able to transfer that light into their weapons, adding a holy element to an attack for no cost. In addition, they may call on the light for guidance at the cost of 10 MP to add +2 to a hit roll after it has already been rolled, once per round."
+					desc="The user becomes the embodiment of Holy Light and is able to transfer said light into their weapon. | The Paladin is able to add the Holy Element to any attack for free. In addition to this, they may spend 10 MP to gain a temporary +2 PAB or MAB to an attack roll after it’s already been rolled, once per round. |"
 				DivineRetribution
 					rank="T2"
 					name="Divine Retribution"
-					desc="The Paladin is able to apply Divine Judgement to those who attempt to hurt their allies. When using the Cover ability, the Paladin may spend 15 MP as a free action in order to summon a blade of light from the sky above the attacking creature ; prompting a DC 17 Fortitude saving throw. This blade deals 12d6 Holy damage on a failed save, or half as much on a success. This has a 2 round cooldown."
+					desc="The Paladin is able to apply Divine Judgement upon their foes. Using Holy Magic to summon a Blade of Light down on those who would harm their allies. | Free Action AFTER using the Cover Ability (12d6 Damage (Holy) | Fortitude Save ( DC17) | Full damage on a Failed save, Half on a Successful one. | (Cost: 15 MP | 2 Round Cooldown.)"
 				IndomitableSpirit
 					rank="T3"
 					name="Indomitable Spirit"
-					desc="This individual has been gifted by the light. When they are in a weakened state they will be gifted the status 'Protect' status automatically - and gain resistance to physical damage, dark damage, and force damage. (Auto-protect at less than 50% health)"
+					desc="The individual has been gifted by the light, which protects them in times of danger. | The Paladin upon dropping below 50% of their maximum HP gains the “Protect” status effect immediately as well as granting resistance to Physical, Dark, and Force Damage.|"
 				BlessingofAltruism
 					rank="T3"
 					name="Blessing of Altruism"
-					desc="The Paladin is blessed by the Lifestream when they protect others. Upon using the Cover ability, the Paladin is able to spend 10 MP in order to immediately heal themselves for 50 HP, and apply the 'Regenerate' status effect to themselves. This can only be used once per 3 rounds."
+					desc="The Paladin is blessed by the Lifestream when they protect others. | As a Free Action after using the Cover Ability, the Paladin is able to spend MP to immediately heal themselves 50 HP while also applying the “Regen” status to themselves. | (Cost: 10 MP | 3 Round Cooldown.)"
 				Templar
 					rank="T3"
 					name="Templar"
@@ -2668,7 +2668,7 @@ obj
 				EngulfedinLight
 					rank="T3"
 					name="Engulfed in Light"
-					desc="This individual is blessed by a holy light. They gain more health than others when being healed by any source, gaining an extra +20 HP from any incoming healing spell (stacking with Bathed in Light), and are granted a 10 HP temporary shield whenever they are healed. (Overwrites Bathed in Light.) (Requires Bathed in Light.)"
+					desc="This individual is blessed by a holy light. They gain more health than others when being healed by any source, gaining an extra +20 HP from any incoming healing spell , and are granted a 10 HP temporary shield whenever they are healed. (stacking with Bathed in Light)(Requires Bathed in Light.)"
 				Altruism
 					rank="T4"
 					name="Altruism"
@@ -6897,11 +6897,11 @@ obj
 				DivineThorns
 					name="Divine Thorns"
 					rank="E"
-					desc="As a bonus action, this individual creates an aura that reflects and mitigates 1d12 damage back to the creature that's hitting them as holy damage. This only applies to Melee attacks - and lasts 3 rounds. (- 10 mana.)"
+					desc="As a bonus action, the individual creates an aura that reflects and mitigates 1d12 damage (Holy) back at targets that strikes it with a Melee Attack. (Cost: 10 MP | Lasts 3 Rounds.)"
 				HolyEnchant
 					name="Holy Enchant"
 					rank="D"
-					desc="The Paladin is able to imbue their own weapon or an ally's weapon with a holy light, granting it a holy augmentation. This grants +2 to hit  also changing its element to Holy and allowing attacks made with the weapon to deal an additional 10 true damage on hit. This lasts for 3 rounds. Costs 10 Mana."
+					desc="The Paladin is able to imbue their weapon or an ally’s weapon with Holy Light, granting it a Holy Infusion. | As a Bonus Action, this Infusion grants a bonus +2 PAB while also changing the element of the weapon attacks to Holy. Attacks made while this is active deal 10 additional True Damage on hit. | Infusion | ( Cost 10 MP | Last 3 Rounds )|"
 				BracingBash
 					element="Physical"
 					name="Bracing Bash"
@@ -6914,10 +6914,10 @@ obj
 					range=" Melee"
 					mcost=15
 					costtype="Stamina"
-					desc="As a bonus action, the user swiftly attacks by standing their ground, and raises their shield or weapon ; using it to deal a heavy blow. (Damage: Weapon Damage+1d8+CON| Melee Attack Roll.  -15 stamina.)"
+					desc="The Paladin stands their ground, raising their shield or weapon, then delivers a swift powerful blow with it. | Bonus Action (Damage: Weapon Damage + 1d8 + CON ) | Melee Weapon Attack Roll | (Cost: 15 SP)"
 				Flash
 					rank="D"
-					desc="The user emits a holy light from their body which inflicts the blind status on anyone within their direct vicinity (Prompts a fortitude saving throw, which if failed afflicts blind to everyone in a 2 tile radius targeting the user, -15 Mana)"
+					desc="The individual emits a bright flash of Holy Light from their body in the attempts to blind all the targets around them. | Standard Action | 2 Tile Radius around the caster | Fortitude Save ( DC 12 + Rank Bonus + CHA ) | Applies Blind for 4 rounds on a Failed Save | (Cost: 15 MP) |"
 					basecheck=12
 					atype="save"
 					attack_roll_damage_dice = FALSE
@@ -6937,14 +6937,14 @@ obj
 					mcost=20
 					addhit=2
 					costtype="Mana"
-					desc="As a reaction, the user holds their weapon out in front of them then begins spinning it, and using their holy mana to form a magical disk around the shield that has the circumference of the weapon’s spin. The Mana in the center disk can be shot forward usually used as a counter attack that is half the size of the shield of light. This shield is nigh impenetrable by most forces. (Damage: 1d12+CHA | As a reaction, creates a 50 HP Shield to soak an attack that if it survives, makes a ranged attack roll with +2 to hit at the attacker and dissipates. -20 Mana)"
+					desc="The Paladin holds up their weapon in front of them, spinning it quickly while infusing it with Holy magic; creating a magical disk to protect the Paladin from harm. This disk may then be potentially used to launch a counter attack. | As a Reaction upon being attacked, the Paladin is granted 50 Temp HP in the form of shield. If the Shield is not broken, the Paladin launches it as a Ranged Attack Roll (Damage: 1d12 + CHA ) with a +2 to PAB as a Free Action. The Shield then dissipates. (Cost: 20 MP) | This can be used with Cover | )"
 				Cover
 					rank="C"
-					desc="The user can establish a link with their comrades in battle. In the heat of battle, as a reaction the paladin can teleport in front of a friendly target in view taking a single target attack that was meant for them. The paladin takes the damage instead - and when doing so, the damage is reduced by 15 points (to a minimum of 1). Can be used once per round for free, needing a reaction for any uses afterwards (free use refreshes upon the start of the Paladin's turn) Cover is exempt from Cooldowns. After the attack is taken, the Paladin instantly returns to their previous position. In the case of Multi-hit attacks and AoEs the Paladin covers all included allies, all instances of damages that all affected allies would take are instead assigned to the Paladin. Saves are auto-failed when covered for. All instances of damage being covered for, merge into a single combined instance with their base damage combined, which DR applies to only once. (-10 Mana.)"
+					desc="The user, while in the heat of battle, valiantly jumps in front of their allies, taking an attack that was otherwise meant for them. | Once per round as a Free Action, and then as a Reaction for any subsequent usages that round; the Paladin may take an attack for an ally. Teleporting in front of them, then returning back to their position afterwards. The Paladin reduces the damage of the attack by a flat 15 points. (To a minimum of 1). If the Paladin attempts to block a Multi-Hit Attack or an AOE, the Paladin takes ALL instances of damage from every party member and is assumed to have failed their save against the attack. The total is added together BEFORE any forms of DR are applied. (IE. The 15 given by Cover itself.) (Cost: 10 MP | No Cooldown.)"
 				HolyBarrier
 					name="Holy Barrier"
 					rank="C"
-					desc="The user creates a barrier of magic around themselves. This applies the 'Bubble' status effect to the caster, but the Bubble has 15 extra HP compared to normal. The user of this ability is immobilized whilst using it. (-40 mana.)"
+					desc="The individual creates a barrier of Magic around themselves using their Holy Magic. | As a Standard Action, the Paladin applies the 'Bubble' status to themselves with an additional 15 HP applied to it. The user is considered Immobilized whilst this ability is active. (Cost: 40 MP)"
 				Supercharge
 					rank="B"
 					atype="weapon"
@@ -6954,11 +6954,11 @@ obj
 					damsource="con"
 					mcost=40
 					costtype="Stamina"
-					desc="Charge forward, shield or weapon raised ; knocking down anything in the user's path. Can move in a straight line up to the user's maximum current movement speed. (Requires not having used a movement action). This attack requires the user to be at least 6 tiles from the target when initiating. This attack also deals additional damage equal to the user's Physical Damage Reduction. (Damage: Weapon damage + 2d12+CON | Weapon attack roll -40 stamina.)"
+					desc="The Paladin charges forward, shield or weapon raised; ready to knock down anything that stands within their path. | As a Movement Action, the Paladin is able to rush forward and make an attack; however must be AT LEAST 6 tiles away to use this ability. (Damage: Weapon Damage + 2d12 + CON + Additional damage to the users Physical DR) | Weapon Attack Roll | (Cost: 40 SP ) |"
 				PassageofArms
 					name="Passage of Arms"
 					rank="B"
-					desc="The user kneels on the ground concentrating their holy energy around them. While kneeling wings of holy light form in a 3 tile cone behind them. Any target in the cone receives a bonus of 10 to their DR including the user. The user can only use reactions while in this stance -- and sacrifices their normal standard, bonus, and movement actions. They can perform up to 2 paladin specific actions(except for cover) per turn as free actions. They may still use reactions in this state. (- 25 mana per turn to sustain.)"
+					desc="The individual kneels down, concentrating Holy Magic around them; causing them to sprout magical wings of Holy energy to protect themselves and their allies. | As a Standard Action, the Paladin creates a 3 Tile Cone behind them, granting the Paladin and any target behind them a bonus of +10 DR. The Paladin sacrifices their Standard, Bonus and Movement actions while sustaining this Stance, however are able to use two Paladin Abilities (Except Cover) per turn as Free Actions and may still use Reactions. (Cost: 25 MP to activate | 25 MP per turn to sustain. )"
 				Crossover
 					rank="A"
 					atype="weapon"
@@ -6968,7 +6968,7 @@ obj
 					damsource="cha"
 					mcost=65
 					costtype=" Melee"
-					desc="The user strikes at an opponent, making 3 separate attacks. Make an individual attack roll for each attack. These attacks are infused with potent holy energy, and on a successful hit ; that energy is 'stored' within the target. Each successful attack 'stores' 1d10 holy damage in the target. After 3 turns, if the Paladin is still above 0 HP, this 'stored' holy energy explodes, dealing damage equal to the amount 'stored' within the target. (Damage: Weapon damage + 1d8+CHA holy damage. | Melee attack, -65 Stamina.)"
+					desc="The individual infuses their weapon temporarily with Holy Magic and strikes three times at their target, releasing that energy with each strike into the target upon hit. | As a Standard action, the Paladin makes 3 Melee Weapon Attacks; for each successful hit, the enemy gains a stack of 'Holy Energy' (Roll 1d10 (Holy) for each stack). If after 3 rounds, the Paladin is still above 0 HP, these stacks explode for the total amount rolled. ( Damage: Weapon Damage + 1d8 + CHA (Holy) ) | Melee Weapon Attack Roll | (Cost: 65 SP)"
 				MinusStrike
 					name="Minus Strike"
 					rank="A"
@@ -6978,7 +6978,7 @@ obj
 					range=" Melee"
 					mcost=70
 					costtype="Stamina"
-					desc="Deals a blow that causes more damage the more injured the user is, by summoning a massive blade of holy light. This attack also deals damage equal to the difference in the user's maximum and current HP, halved. (Damage: Weapon Damage | Weapon Attack Roll, - 70 Stamina | +2 Cooldown)"
+					desc="The individual summons a massive blade of Holy Light and uses it to deal a damaging blow to an enemy, dealing more damage the more injured the user is. | As a Standard Action, the Paladin makes a standard Weapon Attack (Damage: Weapon Damage ) that upon hitting, deals additional damage equal to half of the difference between the Paladin’s current HP and Maximum HP. (Cost: 70 SP | Weapon Attack Roll |+2 Cooldown)"
 				Oversoul
 					rank="S"
 					attack_roll_damage_dice = TRUE
@@ -6986,7 +6986,7 @@ obj
 					attack_roll_dice_sides = 20
 					damsource="cha"
 					atype="weapon"
-					desc="The user imbues their weapon with holy light before charging at a single enemy. They make a single well focused blow striking at the very soul of the enemy with their light clad sword leaving the energy imbued within the target. If the attack is successful then from within the enemy several beams of light will pierce from their core as their soul starts to leave their body, concluding in a powerful blast of light. (Damage: Weapon Damage+2d20+CHA Holy damage | Melee attack roll, also removes 30% of target's CURRENT HP on hit. Can be used once a day. )"
+					desc="The individual imbues their weapon with Holy Light, then proceeds to charge down an enemy, making a well aimed blow directly at the target's very soul. Upon landing the blow, the target is infused with Holy Magic, causing swords of light to explode from their soul in a blast of bright light. | Standard Action (Damage: Weapon Damage + 2d10 + CHA (Holy) | Melee Weapon Attack Roll | Deals 30% of target’s CURRENT HP on hit. | (Cost: None | Once per day. ) |"
 
 
 			DarkKnight
