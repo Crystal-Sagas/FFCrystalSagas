@@ -25,7 +25,7 @@
 			if("Cancel")
 				return
 	else
-		if(usr.subjob=="Blue Mage")
+		if(usr.subjob=="Blue Mage"||usr.race=="Ronso")
 			switch(alert("[b.desc] (Rank: [b.rank]) (Cost: [b.rpcost])","[b.name]","Learn","Cancel"))
 				if("Learn")
 					if(usr.rpp>=b.rpcost)
