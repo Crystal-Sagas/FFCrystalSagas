@@ -34,7 +34,7 @@ mob
 				switch(choice)
 					if("Yes")
 						var/obj/Party/newparty=new
-						var/pname=input("What would you like to name this party?") as text
+						var/pname="[usr.name] Party"
 						newparty.name=pname
 						newparty.partyID=pname
 						newparty.leader=usr.name
