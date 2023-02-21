@@ -153,7 +153,7 @@ var/list/naughtywords = list("sex","penis","pussy","cock","ass","dick","breast",
 
 /proc/Checkreward(var/mob/m)
 	var/currenttime = time2text(world.realtime,"Day")
-	if(m.rppcheckdate==currenttime&&m.rppchecks==3)
+	if(m.rppcheckdate==currenttime&&m.rppchecks==5)
 		return
 	if(m.rppcheckdate!=currenttime)
 		m.rppcheckdate=currenttime

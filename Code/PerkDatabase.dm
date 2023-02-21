@@ -2381,60 +2381,76 @@ obj
 					desc="The Beastmaster is in tune with nature, they have somewhat heightened senses - and are able to track a given target through the wilderness or even a city as long as they have their scent or know their mannerisms. They are expert trackers. They gain advantage on Animal Handling, and Survival Rolls. In addition they pick a beast type they know best, gaining +2 AC and to Hit against creatures of that type. A Beast Tamer can only tame monsters from their chosen classification. (Chosen Type: ) +40 HP, +30 MP, +30 SP."
 				WildSense
 					rank="T1"
+					name="Wild Sense"
 					desc="A Beast Master has a natural understanding of monsters and their behaviors through study of body language and their environments, capable of deducing the attitude and behaviors of monsters through careful study of their target. A Beast Master may use Insight Checks to determine the attitude, behaviors, and any abnormalities related to such. If the Beast Master specializes in the beast type they gain advantage on this roll."
 				WildEmpathy
 					rank="T1"
+					name="Wild Empathy"
 					desc="A Beast Master has a natural ability to connect with monsters, displaying a unique connection with nature as to mimic the necessary behaviors to seemingly communicate with beasts on a mundane level. A Beast Master may use Charisma Skill Checks on beasts to limited effect. If a Beast Master specializes in the beast type they gain advantage on this roll. If they do not they must succeed a DC 15 + Monster Rank Wild Sense check or roll at disadvantage. (Monster Rank D = 1, C = 2, etcetera)"
 				VeterinaryTraining
 					rank="T2"
+					name="Veterinary Training"
 					desc="This Beast Master has studied not only the behaviors of Monsters but their anatomy as well. A Beast Master may use this knowledge both to aid their monsters and to harm others. As a standard action the Beast Master may perform triage on an adjacent monster once per 3 rounds, healing it for Rank Bonus d10 HP or removing 1 status effect. They may alternatively use their action to perform a Perception Roll against a monster to determine if it has a weakness. Gain Advantage against monsters they specialize in."
 				ExpandedSpecialty
 					rank="T3"
+					name="Expanded Specialty"
 					desc="This Beast Master has expanded their knowledge base, and have mastered their art to the point of being able to tame an additional monster classification."
 				PackLeader
 					rank="T2"
+					name="PackLeader"
 					desc="This Beastmaster has opted to learn the ways of bringing a larger variety of beasts under their control, taming a pack of monsters to hound their foes from all sides for both quantity and versatility in their form. Pack Master can summon 2 monsters at a time and can tame D rank or lower monsters. They can also learn Command abilities. Incompatible with Lone Wolf."
 				ExpandedStudy
 					rank="T2"
+					name="Expanded Study"
 					pre="PackLeader"
 					desc="The Pack Master understands the value in variety and flexibility a more diverse group of monsters brings, as well as how to cover their weaknesses in combat. The Pack Leader gains an additional classification of monsters to specialize in."
 				ExpandedPack
 					rank="T3"
+					name="Expanded Pack"
 					pre="PackLeader"
 					desc="The Pack Master has grown in power, and as such carries a more imposing presence among monsters. Able to exert their dominance over a larger pack as a result of their ability, the Beast Master can now summon a third monster at a time, but it must be 1 rank lower than their highest tameable rank. They can now tame up to C rank monsters."
 				PackTactics
 					rank="T3"
+					name="Pack Tactics"
 					pre="PackLeader"
 					desc="The Pack Master is an expert of directing his beasts from a horde of monsters into an organized pack of hounding beasts, capable of overwhelming their opponents with ease. They and their monsters gain the Pack Tactics ability, applying a -1 to hit and -1 to AC against opponents they have attacked in the last round for each monster they have summoned."
 				WildCaller
 					rank="T4"
+					name="Wild Caller"
 					pre="PackLeader"
 					desc="The Pack Master has reached the pinnacle of their ability, a true master of the wild and over his pack. They can now tame up to B rank monsters."
 				LoneWolf
 					rank="T2"
+					name="LoneWolf"
 					desc="This Beastmaster has opted to prioritize their skills in raising a smaller number of monsters, spending their time specializing their beasts to make their talents shine. Their companions are true threats, rivaling the power and potency of summoners of equal level. This Beastmaster can summon 1 Monster at a time, and can tame C rank or lower Monsters and their monsters have an additional training slot. Incompatible with Pack Leader."
 				Unified
 					rank="T3"
+					name="Unified"
 					pre="LoneWolf"
 					desc="The Lone Wolf has furthered their bond with their small group of monsters, prioritizing their power and bond over variety and flexibility. This Beast Master can now Tame up to B rank monsters. The Lone Wolf can also learn C rank and lower Blue Magic from their monsters, but can only use spells learned from their currently summoned partner."
 				FightAsOne
+					name="Fight As One"
 					rank="T3"
 					pre="LoneWolf"
 					desc="The Lone Wolf is an expert at fighting alongside their monsters, capable of keeping up in melee with even the most ferocious of their beasts. The Lone Wolf gains flanking bonuses so long as they and their monster are adjacent to the same enemy, regardless of position. Can not proc the same time as Tag Team."
 				TagTeam
 					rank="T3"
+					name="Tag Team"
 					pre="LoneWolf"
 					desc="The Lone Wolf is an expert at working together to synchronize their attacks with their beasts, hounding their foes to ensure attacks land. When the Lone Wolfor Monster attacks a target with a single target attack they apply a mark of ‘vulnerable’, giving the other +4 to hit the vulnerable target and +8 Damage. Only 1 target can be marked at a time and only 1 mark can be had at a time. A Mark can not be applied the same round it is activated. Can not be used at the same time as Fight as One."
 				TrueMonster
 					rank="T4"
+					name="True Monster"
 					pre="LoneWolf"
 					desc="The Lone Wolf has ascended to the status of being a true monster, one with their beasts and capable of fighting with a true ferocity and style identical to that of their partner. This Beast Master may now learn and use Blue Mage skills from their Monsters up to B rank. They can only be used so long as the monster who knows the skill is their summoned partner."
 				MightOfTheWild
 					rank="T4"
+					name="Might Of The Wild"
 					pre="LoneWolf"
 					desc="The Lone Wolf has attained a mastery in beast taming few have achieved and are now capable of commanding all but the strongest of monsters. This Beast Master can tame up to A Rank Monsters. A Rank Monsters may have additional requirements to tame them beyond the normal."
 				BeastUnchained
 					rank="T4"
+					name="Beast Unchained"
 					pre="LoneWolf"
 					desc="The Lone Wolf and their partner have ascended above the role of master and pet. The Lone Wolf’s partner monster can continue to fight for a number of  rounds equal to the Beast Master’s Charisma Modifier before being recalled."
 
@@ -6468,38 +6484,47 @@ obj
 					desc="A Technique which is used by Beast Masters both to capture monsters and to punish insubordinate monsters. As a bonus action the Beast Master may convert their attacks for the round into ‘non lethal’ attacks. They can only deal up to half of their damage rolls, but defenses and mitigations are applied to the full damage to determine damage dealt. These Non-Lethal attacks can not reduce a target below 1 HP. Cost 20 SP."
 					mcost=20
 					rank="D"
+					name="Taming Strikes"
 				Callout
 					desc="The Beast Master and their beast can communicate with one another in basic ways, the most well known of which being signals for threats. As a bonus action the Beast Tamer or their Monster can Call Out an enemy they can sense, alerting the other to their position. The Beast Master and their Monster can target any enemies the other could target. Cost 25 SP."
 					mcost=25
 					rank="C"
+					name="Callout"
 				CommandSwitch
 					desc="The Pack Master has instilled a sense of unity in his monsters and they understand their weaknesses. As a Reaction when a monster is attacked the Pack Master may order a switch, prompting two of their monsters to trade positions so long as they are within 3 tiles of one another. When this is done, resolve the attack against the new monster. Both monsters involved also drain for this technique. Lone Wolves can learn and use Switch to trade places with their partner. Cost 25 SP."
 					mcost=25
 					rank="C"
+					name="CommandSwitch"
 				CommandMush
 					desc="The Pack Master’s call encourages their monsters to hustle and speed up, by spending their standard action they gain 4 tile movement they can distribute among their monsters.Costs 30 SP."
 					mcost=30
 					rank="C"
+					name="CommandMush"
 				CommandSetUp
 					desc="The Pack Master uses their standard action to direct their monsters, giving them methods to support one another. One monster of their choice gains an extra Standard Action or 2 different monsters gain an extra bonus action. 40 SP"
 					mcost=40
 					rank="C"
+					name="CommandSetUp"
 				CommandHeckle
 					desc="The Pack Master gives a command to his monsters to heckle a target, hindering their ability to move freely rather than aiming for direct damage. The target makes a Reflex  Save, DC 8+Rank Bonus+Charisma or is afflicted with Slow and has their movement speed reduced by half. If they are hit by an attack of opportunity by these monsters they must make the save again or be knocked prone. DCs Increases by 3 per adjacent monster. Lasts 1 round per adjacent monster at the time of casting, ends early if they start their turn with no adjacent monsters. 45 SP."
 					mcost=45
 					rank="B"
+					name="CommandHeckle"
 				CommandGuard
 					desc="The Pack Master gives direct commands for his monsters to group up and guard one another, denying opponents the option to attack them freely. When this is in effect the Pack Master and Monsters under their control gain the ‘Guard’ status, gaining +1 AC for every adjacent ally with the Guard status. 50 SP."
 					mcost=50
 					rank="B"
+					name="CommandGuard"
 				CommandSwarm
 					desc="The Pack Master gives an order for his monsters to descend upon a single target as a full round action afflicting their target with the ‘Target’ status. Each successive monster to attack a ‘Target’ gains +3 to hit and deals +5 damage on all attacks they make. If all of their monsters attack the same target in 1 turn the final monster gains an additional standard attack. This status lasts for 3 rounds, requiring a standard action to sustain each turn, and caps at 3 stacks. 50 SP,  15 to upkeep."
 					mcost=50
 					rank="A"
+					name="CommandSwarm"
 				CommandStampede
 					desc="The Pack Master has instilled a command into his pack for whenever they see him critically wounded. When the Pack Master is knocked unconscious they may use this as a free action, causing their monsters to go completely berserk and stampede through the battlefield. The Pack Master rolls to pick a target for each of their summoned monsters. Each target must make a Reflex Save, DC 10+Rank Bonus+Charisma + The Monster’s Rank. If they fail they suffer 10d10 + The Monster’s PDB or MDB damage, ignoring DR or half as much on a save. The Pack Master must roll death saving throws for every monster involved in this ability in accordance to the lethality of the encounter. "
 					mcost=50
 					rank="A"
+					name="CommandStampede"
 
 
 
