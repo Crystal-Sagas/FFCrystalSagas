@@ -264,6 +264,10 @@ proc
 			m.contents+=a
 			m.contents+=b
 			view() << output("[m.name] has learned the way of the Moogle!","icout")
+		if(o.name=="LoneWolf")
+			m.nolearn+="PackLeader"
+		if(o.name=="PackLeader")
+			m.nolearn+="LoneWolf"
 //OnionKnight
 		if(o.name=="Onion Knight")
 			m.ajob="Onion Knight"
