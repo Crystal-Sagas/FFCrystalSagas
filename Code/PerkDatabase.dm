@@ -7008,7 +7008,7 @@ obj
 				Taunt
 					name="Taunt"
 					rank="D"
-					desc="As a master of negative emotions, the Dark Knight channels said energy combined with Dark Magic to force a single target into combat with them and them alone. | As a Standard Action, the Dark Knight selects a single target. This target may only attack the Dark Knight. This effect ends if the Dark Knight attacks another creature, uses an ability on another creature, or ends it with a Bonus Action. (Cost: 20 SP to activate, Free to maintain) |"
+					desc="As a master of negative emotions, the Dark Knight channels said energy combined with Dark Magic to force a single target into combat with them and them alone. | As a Standard Action, the Dark Knight selects a single target. This target may only attack the Dark Knight. This effect ends if the Dark Knight attacks another creature, uses an ability on another creature, or chooses to no longer sustain the Taunt. (Cost: 20 SP to activate, 10 SP and a Free Action to maintain) |"
 				DarkCannon
 					name="Dark Cannon"
 					rank="D"
