@@ -78,6 +78,8 @@ obj
 							var/yeschoice=input("Would you like to take a FATE quest for your party?") as anything in yesno
 							switch(yeschoice)
 								if("Yes")
+									if(p.currentFATE!=null)return
+									p.currentFATE=1 //Sanity checks. Stops you from clicking yes repeatedly and stacking FATES
 									var/obj/FATEs/newfate=new
 									var/obj/npc/fightmob=new
 									var/obj/Artifact/artifact=new
