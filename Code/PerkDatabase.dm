@@ -2421,7 +2421,6 @@ obj
 					desc="The Pack Master has reached the pinnacle of their ability, a true master of the wild and over his pack. They can now tame up to B rank monsters."
 				LoneWolf
 					rank="T2"
-					name="LoneWolf"
 					desc="This Beastmaster has opted to prioritize their skills in raising a smaller number of monsters, spending their time specializing their beasts to make their talents shine. Their companions are true threats, rivaling the power and potency of summoners of equal level. This Beastmaster can summon 1 Monster at a time, and can tame C rank or lower Monsters and their monsters have an additional training slot. Incompatible with Pack Leader."
 				Unified
 					rank="T3"
@@ -2453,7 +2452,6 @@ obj
 					name="Beast Unchained"
 					pre="LoneWolf"
 					desc="The Lone Wolf and their partner have ascended above the role of master and pet. The Lone Wolf’s partner monster can continue to fight for a number of  rounds equal to the Beast Master’s Charisma Modifier before being recalled."
-
 
 				//Pre-Rework stuff. To be removed once we are sure we have no beast masters with any of these perks.
 				CatchandControl1
@@ -6533,10 +6531,12 @@ obj
 				CalmMonster
 					name="Calm Monster"
 					rank="D"
+					cat="Unique"
 					desc="The user attempts to calm down an aggressive monster. They can make a naturalist roll in order to influence the creature. The DM can decide what DC and what affect the calm with have. This can be making the monster less aggressive and gaining disadvantage, making the monster lose all will to fight, etc."
 				StrategicLeadership
 					name="Strategic Leadership"
 					rank="C"
+					cat="Unique"
 					desc="This individual uses their standard action to give out commands to all their controlled creatures. Any actions the creatures take this turn gain a bonus of the users Charisma mod to their rolls."
 
 			Samurai
