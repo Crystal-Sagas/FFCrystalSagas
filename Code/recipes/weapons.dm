@@ -401,22 +401,22 @@
 	weapontype = "Rod"
 
 /obj/recipes/Weapons/Rod/Bronze
-	creates = new /obj/item/Weapon/Magical/Staff/Bronze
+	creates = new /obj/item/Weapon/Magical/Rod/Bronze
 
 /obj/recipes/Weapons/Rod/Iron
-	creates = new /obj/item/Weapon/Magical/Staff/Iron
+	creates = new /obj/item/Weapon/Magical/Rod/Iron
 
 /obj/recipes/Weapons/Rod/Steel
-	creates = new /obj/item/Weapon/Magical/Staff/Steel
+	creates = new /obj/item/Weapon/Magical/Rod/Steel
 
 /obj/recipes/Weapons/Rod/Mythril
-	creates = new /obj/item/Weapon/Magical/Staff/Mythril
+	creates = new /obj/item/Weapon/Magical/Rod/Mythril
 
 /obj/recipes/Weapons/Rod/Adamantine
-	creates = new /obj/item/Weapon/Magical/Staff/Adamantine
+	creates = new /obj/item/Weapon/Magical/Rod/Adamantine
 
 /obj/recipes/Weapons/Rod/Orichalcum
-	creates = new /obj/item/Weapon/Magical/Staff/Orichalcum
+	creates = new /obj/item/Weapon/Magical/Rod/Orichalcum
 
 /obj/recipes/Weapons/Tome
 	weapontype = "Tome"
