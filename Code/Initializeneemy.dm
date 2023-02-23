@@ -1573,7 +1573,7 @@
 		var/obj/perk/MonsterAbilities/BLU/AdamantDrum/b=new
 		var/obj/perk/Abilities/GreenMagic/Protects/Protect/c=new
 		var/obj/perk/Abilities/GreenMagic/Shells/Shell/d=new
-		var/obj/perk/Abilities/GreenMagic/Bubble/e=new
+		var/obj/perk/Abilities/WhiteMagic/Healing/Regen/e=new
 		var/obj/perk/ElementalPerks/Earth/element=new
 		var/obj/perk/MonsterPassives/Unbreakable/trait=new
 		var/obj/perk/MonsterPassives/Calamity/trait2=new
