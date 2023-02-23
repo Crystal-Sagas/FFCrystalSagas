@@ -486,7 +486,7 @@ mob
 			winset(usr,"Charsheet.rank","text=\"Rank: [M.rank]\"")
 			winset(usr,"Charsheet.rankbonus","text=\"Rank Bonus: [M.rankbonus]\"")
 			winset(usr,"Charsheet.AC","text=\"[M.ac]\"")
-			winset(usr,"Charsheet.DR","text=\"[M.basedr]\"")
+			winset(usr,"Charsheet.DR","text=\"[M.basedr+M.conmod]\"")
 			winset(usr,"Charsheet.SPD","text=\"[M.speed]+[M.speedadd]\"")
 			winset(usr,"Charsheet.pab","text=\"[M.pab]+[M.pabadd]\"")
 			winset(usr,"Charsheet.pdb","text=\"[M.pdb]+[M.pdbadd]\"")
@@ -698,10 +698,10 @@ mob
 			if(usr.intitlescreen)
 				return
 			if(!npcsheet)
-				view() << output("<font size=1><font color=[usr.textcolor]>[usr.name] flashes their DR showing a base Damage Reduction of [usr.basedr]</font>","icout")
+				view() << output("<font size=1><font color=[usr.textcolor]>[usr.name] flashes their DR showing a base Damage Reduction of [usr.basedr+usr.conmod]</font>","icout")
 			else
 				var/obj/npc/n = npcsheet
-				view() << output("<font size=1><font color=#ffff99>[n.name] flashes their DR showing a base Damage Reduction of [n.basedr]</font>","icout")
+				view() << output("<font size=1><font color=#ffff99>[n.name] flashes their DR showing a base Damage Reduction of [n.basedr+n.conmod]</font>","icout")
 		ShowSpeed()
 			if(usr.intitlescreen)
 				return
@@ -824,6 +824,8 @@ mob
 					if(p.name=="Appointed Guardian")
 						usr.abilitypoints+=2
 						usr.APspent-=2
+					if(usr.job=="Machinist")
+						usr.int+=2
 
 			else
 				usr.APcap=10+((usr.rankbonus-1)*4)
@@ -1645,7 +1647,7 @@ mob/proc
 		winset(m,"Charsheet.Fort","text=\"Fortitude:[m.fort]\"")
 		winset(m,"Charsheet.Will","text=\"Will:[m.will]\"")
 	ACcheck(mob/m)
-		m.ac=m.baseac+acmod+dexmod+conmod+rankbonus
+		m.ac=m.baseac+acmod+dexmod+rankbonus
 		winset(m,"Charsheet.AC","text=\"[m.ac]\"")
 atom
 	proc
@@ -1830,16 +1832,16 @@ mob
 					amod=Checkdamtype(wepchoice.damsource,m)
 					if(a.typing=="magical")
 						aresult=aoresult+wepchoice.addhit+amod+m.rankbonus+m.mab+a.addhit+3
-						if(usr.mabadd<15)// Global cap for mage attack bonus add is 15.
+						if(usr.mabadd<10)// Global cap for mage attack bonus add is 15.
 							aresult+=usr.mabadd
 						else
-							aresult+=15
+							aresult+=10
 					else
 						aresult=aoresult+wepchoice.addhit+amod+m.rankbonus+m.pab+a.addhit+3
-						if(usr.pabadd<15)// Global cap for physical attack bonus add is 15.
+						if(usr.pabadd<10)// Global cap for physical attack bonus add is 15.
 							aresult+=usr.pabadd
 						else
-							aresult+=15
+							aresult+=10
 					doresult=rand(wepchoice.range1,wepchoice.range2)
 					dmod=Checkdamtype(a.damsource,m)
 					abilitydamage=a.raw_attack_damage_roll()
@@ -1908,16 +1910,16 @@ mob
 				amod=Checkdamtype(a.damsource,m)
 				if(a.typing=="magical")
 					aresult=aoresult+a.addhit+amod+m.rankbonus+m.mab+3
-					if(usr.mabadd<15)// Global cap for mage attack bonus add is 15.
+					if(usr.mabadd<10)// Global cap for mage attack bonus add is 15.
 						aresult+=usr.mabadd
 					else
-						aresult+=15
+						aresult+=10
 				else
 					aresult=aoresult+a.addhit+amod+m.rankbonus+m.pab+3
-					if(usr.pabadd<15)// Global cap for physical attack bonus add is 15.
+					if(usr.pabadd<10)// Global cap for physical attack bonus add is 15.
 						aresult+=usr.pabadd
 					else
-						aresult+=15
+						aresult+=10
 				doresult=a.raw_attack_damage_roll()
 				dmod=Checkdamtype(a.damsource,m)
 				if(a.typing=="magical")

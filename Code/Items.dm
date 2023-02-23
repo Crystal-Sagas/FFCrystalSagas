@@ -337,16 +337,16 @@ obj/item
 				amod=Checkdamtype(src.damsource,usr)
 				if(src.typing=="magical")
 					aresult=aoresult+src.addhit+usr.rankbonus+usr.mab+amod
-					if(usr.mabadd<15)// Global cap for magical attack bonus add is 15.
+					if(usr.mabadd<10)// Global cap for magical attack bonus add is 15.
 						aresult+=usr.mabadd
 					else
-						aresult+=15
+						aresult+=10
 				else
 					aresult=aoresult+src.addhit+usr.rankbonus+usr.pab+amod
-					if(usr.pabadd<15)// Global cap for physical attack bonus add is 15.
+					if(usr.pabadd<10)// Global cap for physical attack bonus add is 15.
 						aresult+=usr.pabadd
 					else
-						aresult+=15
+						aresult+=10
 				doresult=rand(src.range1,src.range2)
 				dmod=Checkdamtype(src.damsource,usr)
 				if(src.typing=="magical")

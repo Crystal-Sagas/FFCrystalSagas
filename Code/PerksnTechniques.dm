@@ -1842,16 +1842,16 @@ obj
 									amod=Checkdamtype(wepchoice.damsource,usr)
 									if(src.typing=="magical")
 										aresult=aoresult+wepchoice.addhit+amod+usr.rankbonus+usr.mab+src.addhit
-										if(usr.mabadd<15)// Global cap for magical attack bonus add is 15.
+										if(usr.mabadd<10)// Global cap for magical attack bonus add is 15.
 											aresult+=usr.mabadd
 										else
-											aresult+=15
+											aresult+=10
 									else
 										aresult=aoresult+wepchoice.addhit+amod+usr.rankbonus+usr.pab+src.addhit
-										if(usr.pabadd<15)// Global cap for physical attack bonus add is 15.
+										if(usr.pabadd<10)// Global cap for physical attack bonus add is 15.
 											aresult+=usr.pabadd
 										else
-											aresult+=15
+											aresult+=10
 									doresult=rand(wepchoice.range1,wepchoice.range2)
 									dmod=Checkdamtype(wepchoice.damsource,usr)
 									abilitydamage=raw_attack_damage_roll()
@@ -1920,16 +1920,16 @@ obj
 								amod=Checkdamtype(src.damsource,usr)
 								if(src.typing=="magical")
 									aresult=aoresult+src.addhit+amod+usr.rankbonus+usr.mab+2
-									if(usr.mabadd<15)// Global cap for mage attack bonus add is 15.
+									if(usr.mabadd<10)// Global cap for mage attack bonus add is 15.
 										aresult+=usr.mabadd
 									else
-										aresult+=15
+										aresult+=10
 								else
 									aresult=aoresult+src.addhit+amod+usr.rankbonus+usr.pab
-									if(usr.pabadd<15)// Global cap for physical attack bonus add is 15.
+									if(usr.pabadd<10)// Global cap for physical attack bonus add is 15.
 										aresult+=usr.pabadd
 									else
-										aresult+=15
+										aresult+=10
 								doresult=raw_attack_damage_roll()
 								dmod=Checkdamtype(src.damsource,usr)
 								if(src.typing=="magical")
@@ -2533,16 +2533,16 @@ obj
 									amod=Checkdamtype(wepchoice.damsource,usr)
 									if(src.typing=="magical")
 										aresult=aoresult+wepchoice.addhit+amod+usr.rankbonus+usr.mab+src.addhit
-										if(usr.mabadd<15)// Global cap for magical attack bonus add is 15.
+										if(usr.mabadd<10)// Global cap for magical attack bonus add is 15.
 											aresult+=usr.mabadd
 										else
-											aresult+=15
+											aresult+=10
 									else
 										aresult=aoresult+wepchoice.addhit+amod+usr.rankbonus+usr.pab+src.addhit
-										if(usr.pabadd<15)// Global cap for phys attack bonus add is 15.
+										if(usr.pabadd<10)// Global cap for phys attack bonus add is 15.
 											aresult+=usr.pabadd
 										else
-											aresult+=15
+											aresult+=10
 									doresult=rand(wepchoice.range1,wepchoice.range2)
 									dmod=Checkdamtype(wepchoice.damsource,usr)
 									abilitydamage=raw_attack_damage_roll()
@@ -2611,16 +2611,16 @@ obj
 								amod=Checkdamtype(src.damsource,usr)
 								if(src.typing=="magical")
 									aresult=aoresult+src.addhit+amod+usr.rankbonus+usr.mab+2
-									if(usr.mabadd<15)// Global cap for magical attack bonus add is 15.
+									if(usr.mabadd<10)// Global cap for magical attack bonus add is 15.
 										aresult+=usr.mabadd
 									else
-										aresult+=15
+										aresult+=10
 								else
 									aresult=aoresult+src.addhit+amod+usr.rankbonus+usr.pab
-									if(usr.pabadd<15)// Global cap for phys attack bonus add is 15.
+									if(usr.pabadd<10)// Global cap for phys attack bonus add is 15.
 										aresult+=usr.pabadd
 									else
-										aresult+=15
+										aresult+=10
 								doresult=raw_attack_damage_roll()
 								dmod=Checkdamtype(src.damsource,usr)
 								if(src.typing=="magical")
