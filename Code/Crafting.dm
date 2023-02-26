@@ -976,7 +976,7 @@ obj/item/verb
 						src.entype="armor"
 					else
 						src.entype="weapon"
-					switch(input("What status effect do you wish to instill?") in list("Poison","Blind","Silence",""))
+					switch(input("What status effect do you wish to instill?") in list("Poison","Blind","Silence","Sleep","Slow","Stop","Doom","Paralyze","Toad",""))
 						if("Poison")
 							var/obj/item/dgem = usr.Determinecraftmat("Bio Gem")
 							if(dgem==null)
@@ -1022,7 +1022,88 @@ obj/item/verb
 									src.enchantment=" Enchanted (Silence) +1 to hit, latently.| Attacks prompt DC 15 Saving Throw on hit, inflicting Silence on failure."
 							else
 								alert(usr,"You need 4 White Gems to apply the Silence enchantment.")
-							usr.craftingactive=0
+						if("Sleep")
+							var/obj/item/dgem = usr.Determinecraftmat("Black Gem")
+							if(dgem==null)
+								alert(usr,"You don't seem to have any Black Gems")
+								return
+							if(dgem.amount>=4)
+								if(src.entype=="armor")
+									src.enchantment=" Enchanted (Sleep) | Gives advantage against Sleep saving throws."
+								if(src.entype=="weapon")
+									alert(usr,"This Enchantment cannot be applied to weapons.")
+									return
+							else
+								alert(usr,"You need 4 Black Gems to apply the Sleep enchantment.")
+						if("Slow")
+							var/obj/item/dgem = usr.Determinecraftmat("White Gem")
+							if(dgem==null)
+								alert(usr,"You don't seem to have any White Gems")
+								return
+							if(dgem.amount>=4)
+								if(src.entype=="armor")
+									src.enchantment=" Enchanted (Slow) | Gives advantage against Slow saving throws."
+								if(src.entype=="weapon")
+									alert(usr,"This Enchantment cannot be applied to weapons.")
+									return
+							else
+								alert(usr,"You need 4 White Gems to apply the Slow enchantment.")
+						if("Stop")
+							var/obj/item/dgem = usr.Determinecraftmat("Holy Gem")
+							if(dgem==null)
+								alert(usr,"You don't seem to have any Holy Gems")
+								return
+							if(dgem.amount>=4)
+								if(src.entype=="armor")
+									src.enchantment=" Enchanted (Stop) | Gives advantage against Stop saving throws."
+								if(src.entype=="weapon")
+									alert(usr,"This Enchantment cannot be applied to weapons.")
+									return
+							else
+								alert(usr,"You need 4 Holy Gems to apply the Stop enchantment.")
+								return
+						if("Doom")
+							var/obj/item/dgem = usr.Determinecraftmat("Dark Gem")
+							if(dgem==null)
+								alert(usr,"You don't seem to have any Dark Gems")
+								return
+							if(dgem.amount>=4)
+								if(src.entype=="armor")
+									src.enchantment=" Enchanted (Doom) | Gives advantage against Doom saving throws."
+								if(src.entype=="weapon")
+									alert(usr,"This Enchantment cannot be applied to weapons.")
+									return
+							else
+								alert(usr,"You need 4 Dark Gems to apply the Doom enchantment.")
+								return
+						if("Paralyze")
+							var/obj/item/dgem = usr.Determinecraftmat("Thunder Gem")
+							if(dgem==null)
+								alert(usr,"You don't seem to have any Thunder Gems")
+								return
+							if(dgem.amount>=4)
+								if(src.entype=="armor")
+									src.enchantment=" Enchanted (Paralyze) | Gives advantage against Paralyze saving throws."
+								if(src.entype=="weapon")
+									alert(usr,"This Enchantment cannot be applied to weapons.")
+									return
+							else
+								alert(usr,"You need 4 Thunder Gems to apply the Paralyze enchantment.")
+								return
+						if("Toad")
+							var/obj/item/dgem = usr.Determinecraftmat("Bio Gem")
+							if(dgem==null)
+								alert(usr,"You don't seem to have any Bio Gems")
+								return
+							if(dgem.amount>=4)
+								if(src.entype=="armor")
+									src.enchantment=" Enchanted (Toad) | Gives advantage against Toad saving throws."
+								if(src.entype=="weapon")
+									alert(usr,"This Enchantment cannot be applied to weapons.")
+									return
+							else
+								alert(usr,"You need 4 Bio Gems to apply the Toad enchantment.")
+								return
 				if("Mythic")
 					if(src.armor==1 || src.jewelery==1)
 						alert(usr,"You can not apply Mythic enchantments to Armor or Accessories.")

@@ -80,8 +80,8 @@ obj
 											for(var/obj/globalmod/m in src.contents)
 												Applyglobalmod(usr,src)
 									if("armor")
-										if(usr.armor)
-											alert("You already have armor equipped")
+										if(usr.armor||usr.job=="Monk"||usr.subjob=="Monk")
+											alert("You already have armor equipped, or are a Monk and thus cannot equip armor!")
 											return
 										else
 											usr.armor = src

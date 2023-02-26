@@ -2269,6 +2269,7 @@ obj
 				TemperedFists2
 					rank="T2"
 					name="Tempered Fists II"
+					pre="Tempered Fists I"
 					desc="This individual has trained their fists to act like weapons. As long as they wield no weapon their base their base damage roll is 2d8, and they gain +2 to hit, and +3 damage. Note: Requires no weapon, and no armor to be equipped."
 					Tempered2
 						name="Monk Fists II"
@@ -2290,6 +2291,7 @@ obj
 				TemperedFists3
 					rank="T3"
 					name="Tempered Fists III"
+					pre="Tempered Fists II"
 					desc="This individual has trained their fists to act like weapons. As long as they wield no weapon their base damage roll is 2d10, and they gain +3 to hit, and +4 damage. Note: Requires no weapon, and no armor to be equipped."
 					Tempered3
 						name="Monk Fists III"
@@ -2311,6 +2313,7 @@ obj
 				TemperedFists4
 					rank="T4"
 					name="Tempered Fists IV"
+					pre="Tempered Fists III"
 					desc="This individual has trained their fists to act like weapons. As long as they wield no weapon their base damage roll is 2d12, and they gain +4 to hit, and +5 damage. Note: Requires no weapon, and no armor to be equipped."
 					Tempered4
 						name="Monk Fists IV"
@@ -2319,8 +2322,8 @@ obj
 						mcost=0
 						basecheck=10
 						attack_roll_damage_dice = TRUE
-						attack_roll_dice_count = 2
-						attack_roll_dice_sides = 12
+						attack_roll_dice_count = 12
+						attack_roll_dice_sides = 2
 						adddam=5
 						addhit=4
 						range="Melee"
@@ -2332,6 +2335,7 @@ obj
 				TemperedFists5
 					rank="T5"
 					name="Tempered Fists V"
+					pre="Tempered Fists IV"
 					desc="This individual has trained their fists to act like weapons. As long as they wield no weapon their base damage roll is 2d20, and they gain +5 to hit, and +10 damage. Note: Requires no weapon, and no armor to be equipped."
 					Tempered5
 						name="Monk Fists V"
@@ -2340,8 +2344,8 @@ obj
 						mcost=0
 						basecheck=10
 						attack_roll_damage_dice = TRUE
-						attack_roll_dice_count = 2
-						attack_roll_dice_sides = 20
+						attack_roll_dice_count = 20
+						attack_roll_dice_sides = 2
 						adddam=10
 						addhit=5
 						range="Melee"
@@ -2357,18 +2361,22 @@ obj
 				TemperedBody2
 					rank="T2"
 					name="Tempered Body II"
+					pre="Tempered Body I"
 					desc="This individual has trained their body to withstand all sorts of wear. As long as they are not wearing armor their DR, AC, and all saves are increased by 2."
 				TemperedBody3
 					rank="T3"
 					name="Tempered Body III"
+					pre="Tempered Body II"
 					desc="This individual has trained their body to withstand all sorts of wear. As long as they are not wearing armor their DR, AC, and saves are increased by 3."
 				TemperedBody4
 					rank="T4"
 					name="Tempered Body IV"
+					pre="Tempered Body III"
 					desc="This individual has trained their body to withstand all sorts of wear. As long as they are not wearing armor their DR, AC, and saves are increased by 4."
 				TemperedBody5
 					rank="T5"
 					name="Tempered Body V"
+					pre="Tempered Body IV"
 					desc="This individual has trained their body to withstand all sorts of wear. As long as they are not wearing armor their DR, AC, and saves are increased by 5."
 
 
@@ -6271,7 +6279,7 @@ obj
 				typing="physical"
 				element="Monk"
 				ChiBlast
-					element="Laser"
+					element="Force"
 					name="Chi Blast"
 					rank="E"
 					attack_roll_damage_dice = TRUE
@@ -6281,8 +6289,8 @@ obj
 					range=" 6 tiles."
 					mcost=10
 					costtype="Mana"
-					typing="magical"
-					desc="The individual gathers their chi energy, and releases it in a potent burst - which causes it to hurl forth as a sphere of pure energy. You may add both Physical and Magical damage bonus to this technique. (Damage: 1d6+WIS Force damage | Ranged magical attack roll, -10 Mana.)"
+					typing="physical"
+					desc="The individual gathers their chi energy, and releases it in a potent burst - which causes it to hurl forth as a sphere of pure energy. You may add Physical damage bonus to this technique. (Damage: 1d6+WIS Force damage | Ranged magical attack roll, -10 Mana.)"
 				FocusedCounter
 					name="Focused Counter"
 					rank="D"
