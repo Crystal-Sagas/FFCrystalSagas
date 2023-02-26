@@ -115,10 +115,10 @@ obj
 				desc="This creature is horrifying, and any player character who begins battle against this creature must roll a Will save (DC 20) in order to steel themselves, otherwise suffering -8 to hit, and -8 to AC for the entirety of battle."
 			CounterAttacker
 				name="Counter Attacker"
-				desc="This creature is vengeful, and any time it takes Melee damage, it may perform an instantaneous counter-attack, using any physical attack in its arsenal."
+				desc="This creature is vengeful, and any time it takes Melee damage, it may optionally perform an instantaneous counter-attack, using any physical attack in its arsenal at half damage but full cost.."
 			CounterSpell
 				name="Counter Spell"
-				desc="This creature is vengeful, and any time it takes Magic damage, it may perform an instantaneous counter-attack, using any spell in its arsenal."
+				desc="This creature is vengeful, and any time it takes Magic damage, it may optionally perform an instantaneous counter-attack, using any spell in its arsenal at half damage but full cost."
 			ToadSkin
 				name="Toad Skin"
 				desc="This creature has magical toad skin. If it is dealt damage via a Melee attack, it may inflict the attacker with 'Toad' for the cost of 20 MP."
@@ -163,28 +163,28 @@ obj
 				desc="This creature is able to defy the laws of gravity. It is immune to the Gravity spells, as well as the 'Heavy' status effect."
 			Dense
 				name="Dense"
-				desc="This creature is Dense. It takes half damage from all physical based attacks."
+				desc="This creature is Dense. It gains advantage against physical-inflicted status ailments."
 			Solid
 				name="Solid"
-				desc="This creature is Solid. It takes half damage from all physical based attacks, and -5 after that."
+				desc="This creature is Solid. It takes 5 less damage from all physical attacks per Rank, starting at 5 at D-Rank."
 			Unbreakable
 				name="Unbreakable"
-				desc="This creature is Unbreakable. It takes half damage from all physical based attacks, and -10 after that."
+				desc="This creature is Unbreakable. It takes 10 less damage from all physical attacks per Rank, starting at 10 at D-Rank."
 			Magical
 				name="Magical"
-				desc="This creature is Magical. It takes half damage from all magic based attacks."
+				desc="This creature is Magical. It gains advantage against magical-inflicted status ailments."
 			Tonberry
 				name="Tonberry"
 				desc="This creature is a Tonberry. It bares a grudge for its fallen allies. For every creature that the opposing party has killed during the encounter, the Tonberry deals +20 additional true damage on all of its attacks."
 			Aetherial
 				name="Aetherial"
-				desc="This creature is Aetherial. It takes half damage from all magic based attacks, and -5 after that."
+				desc="This creature is Aetherial. It takes 5 less damage from all magical attacks per Rank, starting at 5 at D-Rank."
 			Ascended
 				name="Ascended"
-				desc="This creature is Aetherial. It takes half damage from all magic based attacks, and -10 after that."
+				desc="This creature is Aetherial. It takes 10 less damage from all magical attacks per Rank, starting at 10 at D-Rank."
 			OmniElemental
 				name="OmniElemental"
-				desc="This creature is Omni Elemental. It takes half damage from all Fire, Water, Thunder, Wind, Earth, and Ice based attacks."
+				desc="This creature is Omni Elemental. It takes half damage from all Fire, Water, Thunder, Wind, Earth, and Ice based attacks, but are weak to Bio, Holy, Dark and Force."
 		SummonPassives
 			icon='Icons/Perk/Summoner.png'
 			Carbuncle
