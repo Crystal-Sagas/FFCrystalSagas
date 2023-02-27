@@ -115,10 +115,10 @@ obj
 				desc="This creature is horrifying, and any player character who begins battle against this creature must roll a Will save (DC 20) in order to steel themselves, otherwise suffering -8 to hit, and -8 to AC for the entirety of battle."
 			CounterAttacker
 				name="Counter Attacker"
-				desc="This creature is vengeful, and any time it takes Melee damage, it may optionally perform an instantaneous counter-attack, using any physical attack in its arsenal at half damage but full cost.."
+				desc="This creature is vengeful, and any time it takes Melee damage, it may optionally perform an instantaneous counter-attack, using any physical attack in its arsenal at half damage but full cost. This cannot be reacted to."
 			CounterSpell
 				name="Counter Spell"
-				desc="This creature is vengeful, and any time it takes Magic damage, it may optionally perform an instantaneous counter-attack, using any spell in its arsenal at half damage but full cost."
+				desc="This creature is vengeful, and any time it takes Magic damage, it may optionally perform an instantaneous counter-attack, using any spell in its arsenal at half damage but full cost. This cannot be reacted to."
 			ToadSkin
 				name="Toad Skin"
 				desc="This creature has magical toad skin. If it is dealt damage via a Melee attack, it may inflict the attacker with 'Toad' for the cost of 20 MP."
@@ -967,27 +967,27 @@ obj
 				Heiroflucis
 					icon='Icons/Perk/Heiroflucis.png'
 					name="Heir of Lucis"
-					desc="This individual is the Prince / Princess of Lucis. They are the sole descendant of the King of Lucis, and they are destined to take the helm as ruler after him. They have limited access to the Kingsglaive's weapon-warping ability. The Heir may appoint 1 Kingsglaive per Royal Arm collected, utilizing the Arms as a conduit to grant the power as opposed to the Ring, which has seperate benefits. (twice per encounter). The Heir gains +20 HP, +20 MP, +20 SP, as well as +2 PAB, +2 MAB, and +4 PDB, +4 MDB, +1 AC."
+					desc="This individual is the Prince / Princess of Lucis. They are Heir to the power of the Kings and Queens of Lucis, and are destined to take the helm of ruler after the current King or Queen. They have the ability to utilize Warp Strike by default, gaining power as they collect Royal Arms. Once they have gained possession of three Royal Arms, they unlock Armiger, Warp, and Phase. Additionally, they may appoint one Kingsglaive per Royal Arm collected, Royal Arms serving as a conduit to grant this power. The Heir gains +70 HP, +50 MP, +50 SP, +2 PAB, +2 MAB, +4 PDB, +4 MDB, +1 AC latently."
 					Warp
 						name="Warp"
 						ability=1
 						rank="C"
-						desc="If the Heir of Lucis has a weapon on a specific tile, they may spend 15 MP in order to roll a Reflex saving throw, with a DC of 15, as a reaction to an incoming attack. On a success, they warp to the weapon, and mitigate the attack."
+						desc="As a Bonus Action, the Heir of Lucis may materialize a weapon from their Armiger and throw it to a specific tile or surface within 6 tiles for 10 SP. This does not do damage and instead plants the weapon on this tile. They can recall it back to their Armiger as a Bonus Action and 10 MP. Lastly, as a Free Action once a turn they may either warp to that planted weapon or as a Reaction in response to an incoming attack giving resistance to that attack’s damage and warping themselves to the weapon. This last effect has a two Round cooldown and costs 15 MP, otherwise this technique does not have a cooldown. The Heir may ‘hang’ by the weapon on the tile they warped to, preventing falling."
 					Warpstrike
 						name="Warp Strike"
 						ability=1
-						rank="B"
-						desc="As a standard action, the Heir of Lucis or a Kingsglaive member may toss their weapon at a target, with a maximum range of up to 8 tiles. Upon doing so, roll a standard attack with the weapon against them. Regardless of whether it hits or not, they may then spend 20 MP to teleport to the location, and gain an additional attack on the creature."
+						rank="D"
+						desc="As a standard action and for 10 SP and 20 MP the Heir of Lucis or a Kingsglaive member may launch their weapon at a target at blazing speeds, with a maximum range of up to 8 tiles. They roll a standard attack at Advantage. The Heir of Lucis or Kingsglaive then warps in a flash of azure - leaving a tracer of energy connecting them to their starting position - to an adjacent tile to the target."
 					Phase
 						name="Phase"
 						ability=1
-						rank="B"
-						desc="The Heir of Lucis may spend 5 MP as part of their movement action to add 2 tiles to their movement, vanishing and reappearing in a flash."
+						rank="C"
+						desc="The user focuses on a target watching their every move. Just before their opponent is about to land a blow the user expends a large amount of energy to teleport a short distance from the attack leaving only an afterimage of light in their place. They may appear on any tile within three tiles of their original position. (As a reaction, dodge a single ability / spell. -50 Mana.)"
 					Arminger
 						name="Arminger"
-						ability=1
-						rank="B"
-						desc="The Heir of Lucis may actively swap weapons between any weapon in their inventory using the 'Arminger' ability, only requiring a bonus action to do so. Upon switching to a new weapon, that weapon gains the 'Arminger' buff, boosting its respective damage bonus (either PDB or MDB) by 5."
+						ability=0
+						rank="T4"
+						desc="The Heir of Lucis need not bear a weapon within their hands, as such can be evoked from the Aether around them in a flash of azure light at exactly the time where it is needed. As a Bonus Action, the Heir of Lucis may swap between any weapon or shield in their inventory using the ‘Armiger’ ability for 10 MP. Upon switching to a new weapon, the weapon gains the ‘Armiger’ buff for 1 Round, boosting its respective damage bonus (PDB or MDB) by 5. One Round cooldown on use. OOC Effects: The Heir of Lucis’ weapons when equipped are not visibly equipped, though they still gain the weapon’s bonuses - as they materialize when they’re specifically being used or at the choice of the Heir. The Heir of Lucis’ Weapons and shields cannot be subject to Mug rolls as they are intangible, though anything else on their person can be.."
 					ArmingerUnleashed
 						name="Arminger Unleashed"
 						ability=1
@@ -996,7 +996,8 @@ obj
 						desc="The Heir of Lucis may attack a singular time with each weapon in their arsenal, up to a maximum of 5 attacks. This ability has no cooldown. In addition, when the Heir of Lucis knows this ability, all weapons in their arsenal are considered equipped and may be utilized for Weapon Abilities, with no action cost. The Heir of Lucis gains a permanent +10 PDB and MDB due to this effect, which can stack with Arminger's +5 on switch. Using Arminger Unleashed costs 80 MP."
 				Kingsglaive
 					icon='Icons/Perk/Kingsglaive.png'
-					desc="Having been anointed by the King of Lucis this individual has gained a share of their power. Notably they have gained the warping ability. This lasts for as long as the king is alive, and the crystal is in control of the kingdom of insomnia. Warping to your weapon is a bonus action. Kingsglaive may only use their weapon-warping ability twice per encounter. (Incompatible with Appointed Guardian.)"
+					rank="T4"
+					desc="Having been anointed by the King of Lucis or the Heir of Lucis, this individual has gained a share of their power. Notably, they've gained the warping ability. This lasts for as long as the King/Heir is alive, and the Aether Crystal is in control of the Kingdom of Insomnia. The ability to use Warp Strike is only twice per encounter, unless the Kingsglaive is fighting on the same side as King/Heir in an engagement, or fighting within Insomnia. A Kingsglaive gains +1 PAB, +1 MAB, +2 PDB, +2 MDB, +10 HP, +10 MP, latently. (Unable to be combined with Appointed Guardian)"
 			JunctionMaster
 				icon='Icons/Perk/Junctionmaster.png'
 				name="Junction Master"
@@ -1495,7 +1496,7 @@ obj
 				CombatIntelligence
 					rank="T1"
 					name="Combat Intelligence"
-					desc="For every unique type of weapon that the Gladiator has attacked with in a single combat scene, the Gladiator gains +1 PAB and MAB, as well as deals 5 additional true damage on attacks (capping at +4 PAB and MAB and 10 additional true damage.) In addition, they gain 1 'Combat Intelligence' stack each time they switch from one weapon type to another."
+					desc="For every unique type of weapon that the Gladiator has attacked with in a single combat scene, the Gladiator gains +1 PAB and MAB, as well as deals 2 additional true damage on attacks (capping at +5 PAB and MAB and 10 additional true damage.) In addition, they gain 1 'Combat Intelligence' stack each time they switch from one weapon type to another."
 				GladiatorialMight
 					rank="T1"
 					name="Gladiatorial Might"
@@ -1507,7 +1508,7 @@ obj
 				Generalist
 					rank="T2"
 					name="Generalist"
-					desc="This Gladiator has trained to become a Generalist. Gladiators are the most capable users of weaponry and general weapon abilities. If this Gladiator deals damage to a creature using a General Weapon Ability, that ability also deals 10 true damage."
+					desc="This Gladiator has trained to become a Generalist. Gladiators are the most capable users of weaponry and general weapon abilities. If this Gladiator deals damage to a creature using a General Ability, that ability also deals 10 true damage."
 				CombatGenius
 					name="Combat Genius"
 					rank="T2"
@@ -1527,11 +1528,11 @@ obj
 				Finisher
 					rank="T3"
 					name="Finisher"
-					desc="This Gladiator is capable of utilizing General Weapon Abilities as 'finishers'. Upon doing so, they expend all Combat Intelligence stacks. However, this attack is considered an automatic hit, or in the case of a saving throw, an automatic failure on the defender's part. In addition, it deals 25 additional damage. This requires at least 5 Combat Intelligence Stacks to use. May only be used once per fight."
+					desc="This Gladiator is capable of utilizing General Abilities as 'finishers'. Upon doing so, they expend all Combat Intelligence stacks. However, this attack is considered an automatic hit, or in the case of a saving throw, an automatic failure on the defender's part. In addition, it deals 25 additional damage. This requires at least 5 Combat Intelligence Stacks to use. May only be used once per fight."
 				Rage
 					rank="T3"
 					name="Rage"
-					desc="This Gladiator is able to convert their stacks to pure fury, entering a Gladiatorial Rage. By consuming 10 Combat Intelligence stacks, they may disable their ability to gain stacks for 3 rounds, but for this duration, they are considered at 0 Combat Intelligence stacks ; their attacks deal 15 additional true damage, and gain +2 PAB. They also gain +2 DR."
+					desc="This Gladiator is able to convert their stacks to pure fury, entering a Gladiatorial Rage. By consuming Combat 3 Intelligence stacks, their attacks deal 25 additional true damage, and gain +6 PAB. They also gain +5 DR. The user can sustain this by expending combat stacks further past the 3 initial rounds; this cost a Combat Intelligence Stack per turn. During this Rage, they cannot gain any combat Intelligence Stacks."
 				Desperation
 					rank="T3"
 					name="Desperation"
@@ -2666,7 +2667,7 @@ obj
 				BathedinLight
 					rank="T1"
 					name="Bathed in Light"
-					desc="The Paladin is blessed by Holy Light. They gain more health when healed. | The Paladin is able to gain an extra +20 HP from all spells and abilities which grant healing. (This includes Life-Steal Effects.) This does NOT however include passive healing effects. (Such as the Regen Status) |"
+					desc="The Paladin is blessed by Holy Light. They gain more health when healed. | The Paladin is able to gain an extra +10 HP from all spells which grant healing. (This includes Life-Steal Effects.) This does NOT however include passive healing effects. (Such as the Regen Status) |"
 				HolyMight
 					rank="T2"
 					name="Holy Might"
@@ -2689,8 +2690,9 @@ obj
 					desc="This individual is a Templar, a Holy warrior. They are able to learn up to B rank White magic, and C rank Green magic."
 				EngulfedinLight
 					rank="T3"
+					pre="Bathed in Light"
 					name="Engulfed in Light"
-					desc="This individual is blessed by a holy light. They gain more health than others when being healed by any source, gaining an extra +20 HP from any incoming healing spell , and are granted a 10 HP temporary shield whenever they are healed. (stacking with Bathed in Light)(Requires Bathed in Light.)"
+					desc="This individual is blessed by a holy light. They gain more health than others when being healed by magic, increasing the bonus from healing spells to 25, and are granted a 10 HP temporary shield whenever they are healed."
 				Altruism
 					rank="T4"
 					name="Altruism"
@@ -2787,7 +2789,7 @@ obj
 				NidhoggsFury
 					rank="T4"
 					name="Nidhogg's Fury"
-					desc="This individual is able to merge mid-air momentum with magical power, and augment it. Whenever they use a Jump ability from 5 tiles airborne or higher, they may expel a 5x5 tile burst of energy as a Free Action, which deals damage equal to half of the fall damage the Dragoon would have taken from the fall were they not a dragoon as an automatic hit, and prompt a Fortitude saving throw (DC 18) which if failed, inflicts Heavy."
+					desc="This individual is able to merge mid-air momentum with magical power, and augment it. Whenever they use a Jump ability from 5 tiles airborne or higher, they may expel a 5x5 tile burst of energy as an incidental action, which deals damage equal to half of the fall damage the Dragoon would have taken from the fall were they not a dragoon as an automatic hit, and prompt a Fortitude saving throw (DC 18) which if failed, inflicts Heavy."
 
 
 			Machinist
@@ -2883,6 +2885,15 @@ obj
 					rank="T3"
 					name="Grand Summon"
 					desc="When summoning a Summon, the Summoner may use their bonus action in order to spend 50 SP in order to infuse their own life-force into the summoning process. That energy is then amplified, and released from the summoner as a 3x3 AoE around the summon's point of summoning, dealing 40 true damage to enemy target creatures."
+				DimensionalRegeneration
+					rank="T3"
+					name="Dimensional Regeneration"
+					desc="When in their native dimension, Summons are able to heal much quicker than in our plane. When not on the field, Summons are treated as having the 'Regen' Status effect, restoring HP so long as their either neither KOed or on the field of battle."
+				DimensionalRefreshment
+					rank="T3"
+					name="Dimensional Refreshment"
+					desc="When in their native dimension, Summons are able to rest much quicker than in our plane. When not on the field, Summons are treated as having the 'Refresh' Status effect, restoring SP and MP so long as their either neither KOed or on the field of battle."
+
 				DualSummon
 					rank="T4"
 					name="Dual Summon"
@@ -4886,7 +4897,7 @@ obj
 						attack_roll_dice_sides = 6
 						range=" 10 tile range, 2 attack rolls."
 						mcost=15
-						desc="The aether above the target becomes volatile before two bolts of electricity arc down towards the target. These attack rolls gain +3 to hit against creatures who have the 'wet' status effect applied to them. Out of Battle Effects: This individual is capable of generating or taking an electrical charge from an object within 30ft. They can sense whether an object has an electrical charge or not. (Damage: 2d6+WIS thunder damage | 10 tile range, 2 seperate magical attack rolls. -15 Mana.)"
+						desc="The aether above the target becomes volatile before bolts of electricity arc down towards the target, jumping from one to the next. Deals the same damage to one additional target so long as they are inflicted with 'Wet' and within 3 tiles of the original target. Out of Battle Effects: This individual is capable of generating or taking an electrical charge from an object within 30ft. They can sense whether an object has an electrical charge or not. (Damage: 2d6+WIS thunder damage | 10 tile range, 1  magical attack roll -15 Mana.)"
 					Thundaga
 						level=3
 						pre="Thundara"

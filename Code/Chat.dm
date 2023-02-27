@@ -80,7 +80,7 @@ var/list/naughtywords = list("sex","penis","pussy","cock","ass","dick","breast",
 	if(usr.tempeventmin)
 		AuditLog(text)
 	if(!findtext(t,"("))
-		usr.emoteamount += round(length(t)*0.5)
+		usr.emoteamount += round(length(t)*0.75)
 	usr.overlays += 'Exclamation.dmi'
 	spawn(40)
 	usr.overlays -= 'Exclamation.dmi'

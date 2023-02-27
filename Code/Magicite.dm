@@ -196,7 +196,7 @@ obj/npc/Summons/ARank
 		mp=300
 		msp=250
 		sp=250
-		str=290
+		str=20
 		strmod=5
 		dex=14
 		dexmod=2

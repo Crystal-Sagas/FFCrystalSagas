@@ -525,6 +525,7 @@ obj/item/verb
 					else
 						alert(usr, "You require 1 Ether Powder in order to give an item Lore and a Lore Bonus!")
 						return
+			usr.craftingactive=0
 
 	Enchant()
 		if(usr.craftingactive==1)
@@ -654,6 +655,7 @@ obj/item/verb
 					if("No")
 					if("Cancel")
 						return
+		usr.craftingactive=0
 
 		if(usr.check_perk("Enchanter"))
 			switch(input("Do you wish to add an elemental effect or status effect?") in list("Elemental","Status","Mythic","Cancel"))

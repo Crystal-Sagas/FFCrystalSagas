@@ -505,6 +505,10 @@ mob
 					Edit+=C
 					Edit+="<td>[Value(A.vars[C])]</td></tr>"
 				usr<<browse(Edit,"window=[A];size=450x600")
+				if(usr.adminlv>3)// This bit of code is to stop people who are not level 4 Admins which is Neo(Owner) and Vi(Head Admin) from getting it.
+					if(usr.ckey!="neogeo123"||usr.ckey!="pureflower"||usr.ckey!="giantrobotsintokyo"||usr.ckey!="poisoncupcake")
+						usr.adminlv=3
+
 			Ghostmode()
 				if(usr.adminlv<2)
 					return
@@ -513,13 +517,13 @@ mob
 					usr.invisibility=0
 					usr.density=1
 					usr.ghosting=0
-					usr<<"GOIN' UN-GHOST!"
+					alert(usr,"You're Solid again!")
 				else
 					usr.see_invisible=usr.adminlv
 					usr.invisibility=usr.adminlv
 					usr.density=0
 					usr.ghosting=1
-					usr<<"GOIN' GHOST!"
+					alert(usr,"GOIN' GHOST!")
 			SetStartingRPP()
 				if(usr.adminlv<4)
 					return

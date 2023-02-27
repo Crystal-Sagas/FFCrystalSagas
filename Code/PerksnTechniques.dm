@@ -586,12 +586,12 @@ proc
 			wyv.archived=0
 		if(o.name=="Deep Draconic Connection")
 			for(var/obj/npc/Monsters/Dragoon/Wyvern/wyv in m.contents)
-				wyv.mhp+=120
-				wyv.hp+=120
-				wyv.mmp+=120
-				wyv.mp+=120
-				wyv.msp+=120
-				wyv.sp+=120
+				wyv.mhp+=150
+				wyv.hp+=150
+				wyv.mmp+=150
+				wyv.mp+=150
+				wyv.msp+=150
+				wyv.sp+=150
 				wyv.str+=4
 				wyv.dex+=4
 				wyv.con+=4
