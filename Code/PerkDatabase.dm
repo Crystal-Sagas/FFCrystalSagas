@@ -6401,7 +6401,7 @@ obj
 					basecheck=14
 					desc="The user grapples the opponent holding them in their arms as they kick off the ground, and soar upwards before crashing down, and slamming the opponent into the ground. Note: Can even be used on trains. Make a strength roll against the target. If the target fails the roll they are grappled and launched with the user towards a location within 6 tiles. (Damage: 5d10+WIS | STR saving throw (DC  14+STR+Rank bonus), dealing full damage on a failure, or none on a success. - 40 stamina.)"
 				ChiWave
-					element="Laser"
+					element="Force"
 					name="Chi Wave"
 					rank="B"
 					basecheck=15
