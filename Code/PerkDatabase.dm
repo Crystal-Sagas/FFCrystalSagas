@@ -2667,7 +2667,7 @@ obj
 				BathedinLight
 					rank="T1"
 					name="Bathed in Light"
-					desc="The Paladin is blessed by Holy Light. They gain more health when healed. | The Paladin is able to gain an extra +10 HP from all spells which grant healing. (This includes Life-Steal Effects.) This does NOT however include passive healing effects. (Such as the Regen Status) |"
+					desc="The Paladin is blessed by Holy Light. They gain more health when healed. | The Paladin is able to gain an extra +20 HP from all spells and abilities which grant healing. (This includes Life-Steal Effects.) This does NOT however include passive healing effects OR items. (Such as the Regen Status, Potions, etc) |"
 				HolyMight
 					rank="T2"
 					name="Holy Might"
