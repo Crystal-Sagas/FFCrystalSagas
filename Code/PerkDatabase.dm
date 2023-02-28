@@ -4895,9 +4895,9 @@ obj
 						attack_roll_damage_dice = TRUE
 						attack_roll_dice_count = 2
 						attack_roll_dice_sides = 6
-						range=" 10 tile range, 2 attack rolls."
+						range=" 10 tile range"
 						mcost=15
-						desc="The aether above the target becomes volatile before bolts of electricity arc down towards the target, jumping from one to the next. Deals the same damage to one additional target so long as they are inflicted with 'Wet' and within 3 tiles of the original target. Out of Battle Effects: This individual is capable of generating or taking an electrical charge from an object within 30ft. They can sense whether an object has an electrical charge or not. (Damage: 2d6+WIS thunder damage | 10 tile range, 1  magical attack roll -15 Mana.)"
+						desc="The aether above the target becomes volatile before bolts of electricity arc down towards the target, jumping from one to the next. Deals the same damage to one additional target so long as they are inflicted with 'Wet' and within 3 tiles of the original target. Out of Battle Effects: This individual is capable of generating or taking an electrical charge from an object within 30ft. They can sense whether an object has an electrical charge or not. (Damage: 2d6+WIS thunder damage | 10 tile range, 1 magical attack roll -15 Mana.)"
 					Thundaga
 						level=3
 						pre="Thundara"
