@@ -1,0 +1,209 @@
+"aa" = (/obj/map/Terrain2/WallM,/obj/map/LightingEffects/Updark,/turf/map/Waterinterior/Water1,/area/SunkenTempleofQarn)
+"ab" = (/obj/map/Waterfall1,/obj/map/LightingEffects/Updark,/turf/map/Waterinterior/Water1,/area/SunkenTempleofQarn)
+"ac" = (/turf/map/Waterinterior/Water1,/area/SunkenTempleofQarn)
+"ad" = (/obj/map/Terrain2/WallL,/turf/map/Waterinterior/Water1,/area/SunkenTempleofQarn)
+"ae" = (/obj/map/Terrain2/WallM,/turf/map/Waterinterior/Water1,/area/SunkenTempleofQarn)
+"af" = (/obj/map/Waterfall1,/turf/map/Waterinterior/Water1,/area/SunkenTempleofQarn)
+"ag" = (/obj/map/Terrain2/WallR,/turf/map/Waterinterior/Water1,/area/SunkenTempleofQarn)
+"ah" = (/obj/map/Terrain2/BaseL,/turf/map/Waterinterior/Water1,/area/SunkenTempleofQarn)
+"ai" = (/obj/map/Terrain2/BaseR,/turf/map/Waterinterior/Water1,/area/SunkenTempleofQarn)
+"aj" = (/obj/map/Waterfall1/bottom,/turf/map/Waterinterior/Water1,/area/SunkenTempleofQarn)
+"ak" = (/turf/map/SDV/Walls/Wall3,/area/SunkenTempleofQarn)
+"al" = (/obj/map/LightingEffects/Updark,/turf/map/Tiles/Tile10,/area/SunkenTempleofQarn)
+"am" = (/obj/map/Effects/intodark,/turf/map/SDV/Walls/Wall3,/area/SunkenTempleofQarn)
+"an" = (/turf/map/Tiles/Tile10,/area/SunkenTempleofQarn)
+"ao" = (/turf/map/Tiles/Tile12,/area/SunkenTempleofQarn)
+"ap" = (/obj/map/Shells/shell3,/turf/map/Tiles/Tile10,/area/SunkenTempleofQarn)
+"aq" = (/obj/map/Shells/shell2,/turf/map/Tiles/Tile10,/area/SunkenTempleofQarn)
+"ar" = (/obj/map/Colums/Stonetop,/turf/map/Tiles/Tile10,/area/SunkenTempleofQarn)
+"as" = (/obj/map/Colums/Stonemid,/turf/map/Tiles/Tile10,/area/SunkenTempleofQarn)
+"at" = (/obj/map/Foliage/Puddle2,/turf/map/Tiles/Tile12,/area/SunkenTempleofQarn)
+"au" = (/obj/map/LightingEffects/Updark,/turf/map/SDV/Walls/Wall3,/area/SunkenTempleofQarn)
+"av" = (/obj/map/Effects/intodark,/turf/map/Tiles/Tile10,/area/SunkenTempleofQarn)
+"aw" = (/obj/map/Colums/Stonebot,/turf/map/Tiles/Tile10,/area/SunkenTempleofQarn)
+"ax" = (/obj/map/Colums/Stonetop,/turf/map/Tiles/Tile12,/area/SunkenTempleofQarn)
+"ay" = (/obj/map/Foliage/Rock4,/turf/map/Waterinterior/Water1,/area/SunkenTempleofQarn)
+"az" = (/obj/map/Shells/shell4,/turf/map/Tiles/Tile12,/area/SunkenTempleofQarn)
+"aA" = (/obj/map/LightingEffects/Updark,/turf/map/Waterinterior/Water1,/area/SunkenTempleofQarn)
+"aB" = (/obj/map/Shells/allshells,/turf/map/Tiles/Tile10,/area/SunkenTempleofQarn)
+"aC" = (/obj/map/Foliage/Puddle2,/turf/map/Tiles/Tile10,/area/SunkenTempleofQarn)
+"aD" = (/obj/map/Foliage/Rock1,/turf/map/Waterinterior/Water1,/area/SunkenTempleofQarn)
+"aE" = (/obj/map/LightingEffects/Updark,/turf/map/Tiles/Tile12,/area/SunkenTempleofQarn)
+"aF" = (/obj/map/Foliage/Rock5,/turf/map/Waterinterior/Water1,/area/SunkenTempleofQarn)
+"aG" = (/obj/map/Foliage/Rock5R,/turf/map/Waterinterior/Water1,/area/SunkenTempleofQarn)
+"aH" = (/obj/map/Terrain2/Spiretop,/turf/map/Waterinterior/Water1,/area/SunkenTempleofQarn)
+"aI" = (/obj/map/Foliage/Rock3,/turf/map/Waterinterior/Water1,/area/SunkenTempleofQarn)
+"aJ" = (/obj/map/Colums/Stonetop,/turf/map/Waterinterior/Water1,/area/SunkenTempleofQarn)
+"aK" = (/obj/map/Terrain2/Spirebot,/turf/map/Waterinterior/Water1,/area/SunkenTempleofQarn)
+"aL" = (/obj/map/Colums/Stonemid,/turf/map/Waterinterior/Water1,/area/SunkenTempleofQarn)
+"aM" = (/obj/map/Terrain2/Spirebase,/turf/map/Waterinterior/Water1,/area/SunkenTempleofQarn)
+"aN" = (/obj/map/Colums/Stonebot,/turf/map/Waterinterior/Water1,/area/SunkenTempleofQarn)
+"aO" = (/obj/map/Terrain2/Spiretopdirt,/turf/map/Waterinterior/Water1,/area/SunkenTempleofQarn)
+"aP" = (/obj/map/Effects/intodark,/turf/map/Waterinterior/Water1,/area/SunkenTempleofQarn)
+"aQ" = (/obj/map/Effects/intodark,/obj/map/Indoordec/Candlethinglit,/turf/map/SDV/Walls/Wall3,/area/SunkenTempleofQarn)
+"aR" = (/obj/map/LightingEffects/Updark,/obj/map/Indoordec/Candlething,/turf/map/Tiles/Tile10,/area/SunkenTempleofQarn)
+"aS" = (/obj/map/Indoordec/Skull,/turf/map/Tiles/Tile10,/area/SunkenTempleofQarn)
+"aT" = (/obj/map/Colums/Stonemid,/obj/map/Effects/intodark,/turf/map/SDV/Walls/Wall3,/area/SunkenTempleofQarn)
+"aU" = (/obj/map/LightingEffects/Updark,/obj/map/Indoordec/Armourstandtop,/turf/map/Tiles/Tile10,/area/SunkenTempleofQarn)
+"aV" = (/obj/map/Indoordec/Armourstand,/turf/map/Tiles/Tile10,/area/SunkenTempleofQarn)
+"aW" = (/obj/map/Indoordec/Emptyracktop,/turf/map/Tiles/Tile10,/area/SunkenTempleofQarn)
+"aX" = (/obj/map/Indoordec/Emptyrackbot,/turf/map/Tiles/Tile10,/area/SunkenTempleofQarn)
+"aY" = (/obj/map/Indoordec/Spearracktop,/turf/map/Tiles/Tile10,/area/SunkenTempleofQarn)
+"aZ" = (/obj/map/Indoordec/Spearrackbot,/turf/map/Tiles/Tile10,/area/SunkenTempleofQarn)
+"ba" = (/obj/map/Monument/TopL,/turf/map/Tiles/Tile10,/area/SunkenTempleofQarn)
+"bb" = (/obj/map/Monument/TopR,/turf/map/Tiles/Tile10,/area/SunkenTempleofQarn)
+"bc" = (/obj/map/Monument/BotL,/turf/map/Tiles/Tile10,/area/SunkenTempleofQarn)
+"bd" = (/obj/map/Monument/BotR,/turf/map/Tiles/Tile10,/area/SunkenTempleofQarn)
+"be" = (/obj/map/Terrain2/WallM,/obj/map/LightingEffects/Updark,/obj/map/Terrain2/WallM,/turf/map/Waterinterior/Water1,/area/SunkenTempleofQarn)
+"bf" = (/obj/map/StairCaseStone/BotL,/obj/map/LightingEffects/Updark,/turf/map/Waterinterior/Water1,/area/SunkenTempleofQarn)
+"bg" = (/obj/map/StairCaseStone/BotM,/obj/map/LightingEffects/Updark,/turf/map/Waterinterior/Water1,/area/SunkenTempleofQarn)
+"bh" = (/obj/map/StairCaseStone/BotR,/obj/map/LightingEffects/Updark,/turf/map/Waterinterior/Water1,/area/SunkenTempleofQarn)
+"bi" = (/obj/map/Terrain2/WallR,/obj/map/Terrain2/WallM,/turf/map/Waterinterior/Water1,/area/SunkenTempleofQarn)
+"bj" = (/obj/map/StairCaseStone/MidL,/turf/map/Waterinterior/Water1,/area/SunkenTempleofQarn)
+"bk" = (/obj/map/StairCaseStone/Mid,/turf/map/Waterinterior/Water1,/area/SunkenTempleofQarn)
+"bl" = (/obj/map/StairCaseStone/MidR,/turf/map/Waterinterior/Water1,/area/SunkenTempleofQarn)
+"bm" = (/obj/map/Terrain2/BaseM,/obj/map/Effects/intodark,/turf/map/Waterinterior/Water1,/area/SunkenTempleofQarn)
+"bn" = (/obj/map/Terrain2/BaseR,/obj/map/Effects/intodark,/turf/map/Waterinterior/Water1,/area/SunkenTempleofQarn)
+"bo" = (/obj/map/StairCaseStone/MidL,/obj/map/Effects/intodark,/turf/map/Waterinterior/Water1,/area/SunkenTempleofQarn)
+"bp" = (/obj/map/StairCaseStone/Mid,/obj/map/Effects/intodark,/turf/map/Waterinterior/Water1,/area/SunkenTempleofQarn)
+"bq" = (/obj/map/StairCaseStone/MidR,/obj/map/Effects/intodark,/turf/map/Waterinterior/Water1,/area/SunkenTempleofQarn)
+"br" = (/obj/map/StairCaseStone/TopL,/turf/map/Tiles/Tile10,/area/SunkenTempleofQarn)
+"bs" = (/obj/map/StairCaseStone/TopR,/turf/map/Tiles/Tile10,/area/SunkenTempleofQarn)
+"bt" = (/obj/map/LightingEffects/Updark,/obj/map/Effects/intodark,/turf/map/Tiles/Tile10,/area/SunkenTempleofQarn)
+"bu" = (/obj/map/Foliage/Puddle2,/obj/map/Colums/Stonemid,/turf/map/Tiles/Tile10,/area/SunkenTempleofQarn)
+"bv" = (/obj/map/Dabigboistatue,/turf/map/Waterinterior/Water1,/area/SunkenTempleofQarn)
+"bw" = (/obj/map/Colums/Stonebot,/obj/map/Indoordec/Candlethinglit,/turf/map/Tiles/Tile10,/area/SunkenTempleofQarn)
+"bx" = (/obj/map/Indoordec/Candlething,/turf/map/Tiles/Tile10,/area/SunkenTempleofQarn)
+"by" = (/obj/map/Terrain2/WallM,/obj/map/Effects/intodark,/turf/map/Waterinterior/Water1,/area/SunkenTempleofQarn)
+"bz" = (/obj/map/Terrain2/BaseM,/obj/map/LightingEffects/Updark,/turf/map/Waterinterior/Water1,/area/SunkenTempleofQarn)
+"bA" = (/obj/map/Effects/intodark,/turf/map/Tiles/Tile12,/area/SunkenTempleofQarn)
+"bB" = (/obj/map/Effects/black,/turf/map/Waterinterior/Water1,/area/SunkenTempleofQarn)
+"bC" = (/obj/map/Foliage/Rock2,/turf/map/Waterinterior/Water1,/area/SunkenTempleofQarn)
+"bD" = (/obj/map/LightingEffects/Updark,/obj/map/Outdoordecs/Chest3,/turf/map/Tiles/Tile10,/area/SunkenTempleofQarn)
+"bE" = (/obj/map/Indoordec/CoinStack,/turf/map/Tiles/Tile10,/area/SunkenTempleofQarn)
+"bF" = (/obj/map/Terrain2/Spirebase,/obj/map/Effects/intodark,/turf/map/Waterinterior/Water1,/area/SunkenTempleofQarn)
+"bG" = (/obj/map/Outdoordecs/Chest3,/turf/map/Tiles/Tile10,/area/SunkenTempleofQarn)
+"bH" = (/obj/map/Indoordec/Candlethinglit,/turf/map/Tiles/Tile10,/area/SunkenTempleofQarn)
+"bI" = (/obj/map/Colums/Stonetop,/turf/map/SDV/Walls/Wall3,/area/SunkenTempleofQarn)
+"bJ" = (/obj/map/Indoordec/Litlamptop,/turf/map/SDV/Walls/Wall3,/area/SunkenTempleofQarn)
+"bK" = (/obj/map/Effects/intodark,/obj/map/Colums/Stonemid,/turf/map/SDV/Walls/Wall3,/area/SunkenTempleofQarn)
+"bL" = (/obj/map/Effects/intodark,/obj/map/Indoordec/Litlamp,/turf/map/SDV/Walls/Wall3,/area/SunkenTempleofQarn)
+"bM" = (/turf/map/Tiles/Tile30,/area/SunkenTempleofQarn)
+"bN" = (/obj/map/Monument/TopR,/turf/map/Tiles/Tile12,/area/SunkenTempleofQarn)
+"bO" = (/obj/map/XLicons/Crystal,/turf/map/Waterinterior/Water1,/area/SunkenTempleofQarn)
+"bP" = (/obj/map/Monument/BotL,/turf/map/Tiles/Tile12,/area/SunkenTempleofQarn)
+"bQ" = (/obj/map/Monument/BotR,/turf/map/Tiles/Tile12,/area/SunkenTempleofQarn)
+"bR" = (/obj/map/Colums/Stonemid,/turf/map/Tiles/Tile12,/area/SunkenTempleofQarn)
+"bS" = (/obj/map/Shells/shell4,/turf/map/Tiles/Tile10,/area/SunkenTempleofQarn)
+"bT" = (/obj/map/Terrain2/WallM,/obj/map/Terrain2/Spiretopdirt,/turf/map/Waterinterior/Water1,/area/SunkenTempleofQarn)
+"bU" = (/obj/map/Terrain2/WallM,/obj/map/Terrain2/Spirebot,/turf/map/Waterinterior/Water1,/area/SunkenTempleofQarn)
+"bV" = (/obj/map/Terrain2/WallM,/obj/map/Terrain2/Spirebase,/turf/map/Waterinterior/Water1,/area/SunkenTempleofQarn)
+"bW" = (/obj/map/Terrain2/TopTL,/obj/map/LightingEffects/Updark,/turf/map/Waterinterior/Water1,/area/SunkenTempleofQarn)
+"bX" = (/obj/map/Terrain2/TopTM,/obj/map/LightingEffects/Updark,/turf/map/Waterinterior/Water1,/area/SunkenTempleofQarn)
+"bY" = (/obj/map/Terrain2/TopTR,/obj/map/LightingEffects/Updark,/turf/map/Waterinterior/Water1,/area/SunkenTempleofQarn)
+
+(1,1,1) = {"
+aaaaaaababababababababababababaaaabeaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaauauauauauauaubfbgbgbhauauauauauauaaaaaaaaaaaaaaaaaa
+adaeaeafafafafafafafafafafafafaeaebiaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeakakakakakakakakbjbkbkblakakakakakakakakbmbmbmbmbmbmbm
+ahadaeafafafafafafafafafafafafaeagbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbnakakakamamamamamaQbobpbpbqaQamamamamamakakakaAaAaAaAaAaA
+acahaeajajajajajajajajajajajajaeaiaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAakakakamalalalalalaRbraoaobsaRalalalalalamakakakaPacacacac
+acacakalalalalalalalalalalalalakacacacacacacacacacacacacacacacacacacacacacacacacakakakamalanananananananaoaoanananananananalamakakakacacacac
+acakamananananaoananaoananananamakacacacacacacacacacacacacacacacacacacacacacacaPakakambtanananananarananaoaoananarananaCananalamakakaPacacac
+akamalananananaoananaoananananalamakacacacacacacacacacacacacacacacacacacacacacakakakalananananananbuananaoaoananasananananananalakakakacacac
+akalanananapanaoananaoanaqanananalakacacacacacacacacacacacacacacacacacacacacacakakakanaAaAaAaAaAanawananaoaoananawanaAaAaAaAaAanakakakacacac
+akanananaoananaoaoaoaoananaoanananakacacacacacacacacacacacacacacacacacacacacacakakakanacacacacacanananaoaoaoaoanananacacacacacanakakakacacac
+akananaraoanaoaoaoaoaoaoanaoarananakacacacacacacacacacacacacacacacacacacacacacakakakacacbvacacacaAaAaAaoaoaoaoaAaAaAacbvacacacaAakakakacacac
+amananasaoaoaoataoaoaoaoaoaoasananamacacacacacacacacacacacacacacacacacacacacacamamakaPaPaPaPaPaPaPacacaoaoaoaoacacaPaPaPaPaPaPaPakamamacacac
+auavanawanaxaoaoaoaoaoaoaxanawanavauayayayayayacacacacacacacacacacacacacacacacauauamanananananananacaPaoaoaoaoaPacanananananananamauauacacac
+akakanananasaoaoaoaoaoazasanananakamayayayayayayacacacacacacacacacacacacacacacakakauanananananananaPaoaoaoaoaoaoaPanananananaCanauakakacacac
+aAakavananawananaoaoananawananavakaAacacacacayayayacacacacacacacacacacacacacacakakakanananaCanananaoaoaoaoaoaoaoaoanananananananakakakacacac
+acamakavananaBanaoaoanaCananavakamacacacacacayayayacacacacacacacacacacacacacacamamakavavananananaoaoaoaoaoaoaoaoaoaoananananavavakakakacacac
+acaAamakavavananaoaoananavavakamaAacacacacacayayayacacacacacacacacacacacacacacaAaAakakakavananananananaoaoaoaoananananananavakakakamamacacac
+acacaAamamakavavataoavavakamamaAacacacacacacayayayacacacacacacacacacacacacaHacacacamakakakavavananaranaoaoaoaoanarananavavakakakamaAaAacacac
+acacacaAaAamamakaoaoakamamaAaAacacacacacacacayayayacacacacacacacacacacacacaMacacacaAamamakakakavanasaCaoaoaoaoanasanavakakakamamaAacacacacac
+acacacacacaAaAakaoaoakaAaAacacacacacacacacacayayayacacacacacacacacacacacacaKacacacacaAaAamakakakanbwanaoaoaoaoanbwanakakakamaAaAacacacacacac
+acacacacacacacamaoaoamacacacacaDacacacacacacacayayacacacacacacacacacacacacacacacacacacacaAakakakanbxanaoaoaoaoanbxanakakakaAacacacacacacacac
+acacacacacacacaEaoaoaEacacaFaGacacacacacacacacayayacacacacacacacacacacacacacacacacacacacacakakakanananaoaoaoaoanananakakakacacacacacacacacac
+acacacacacacacaoaoaoaoacacacacacacaHacacacacacayayacacacacacacacacacacacacacacacacacaOacacakakakanananaoaoaoaoanananakakakacacacacaHacacacac
+acacacaIacacaJaoaoaoaoaJacacacacacaKacacacacacayayacacacacacacacacacacacacacacacacacaMacacamakakananaoaoaoaoaoaoananakakamacacacacaMacacacac
+acacacacacacaLakaoaoakaLacacacacacaMacacacacacayayacacacacacacacacacacacacacacacacacaKacacauamakanananaoaoaoaoanananakamauacacacacaKacacacac
+acacacacacacaNamaoaoamaNacacacaHacacacacacacayayayacacacacacacacacacacacacacacacacacacacacakauakanaraoaoaoaoaoaoaranakauakacacacacacacacacac
+acacacaOacacacaEaoaoaEacacacacaKacacacacacacayayayacacacacacacacacacacacacacacacacacacacacakakakavasanaoaoaoaoanasavakakakacacacacacacacacac
+acacacaKacacacaoaoataoacacaHacaMacacaHacacacayayayacacacacacacacacacacacacaFaGacacacacaPaPakakakakbwanaoaoaoaoaCbwakakakacacacacacacacacacac
+acaHacaMacacaJaoaoaoaoaJacaKacacacacaKacacacayayayacacacacacacacacacacacacacacacacacacakakakakakakbxanaoaoaoaoanbxakakakacacacacacacacacacac
+acaKacacacacaLakaoaoakaLacaMacacacacaMacacacacayayaPaPaPaPaPaPaPaPaPaPaPaPaPaPaPaPaPaPakakakakakamananaoaoaoaoananakakakacacacacacacacacacac
+acaMacacacacaNamaoaoamaNacacacacacacacacacacacakakakakakakakakakakakakakakakakakakakakakakamamamalananaoaoaoaoananakakakacacacacacacacacacac
+acacacacacacacaEaoaoaEacacacacacacacacacacacakakakakakakakakamamakakakakakakakakakakakamamalalalananaoaoaoaoaoaoanakakakacacacacacacacacacac
+acacacacacacaJaoaoaoaoaJacacacacaJacacacacaJakakamaQamamamamaAaAamamamamamamamaQamamamalalananananananaoaoaoaoananakakakacacacacacacacacacac
+acacaFaGacacaLakaoaoakaLacacacacaLacacacacaLakakalaRalalalalajajalalalalalalalaRalalalananaoanananananaoaoaoaoananakakamacacaOacacacacacacac
+acacacacacacaNamaoaoamaNaPaPaPaPaNaPaPaPaPaNakakanaoacanananacacananananacananananananananaoaoananananaoaoaoaoaCanakamauacacaMacacacacacacac
+acacacacaOacacaEaoaoaEamamataoaoamamaoaoamamamamanaoaoanaSaoacacacaoanananaoanaoanananananaoaoaoanananaoaoaoaoananakauakacacaKacacacacacacac
+acacacacaKacacaoaoaoaoaEaEaoaoaoaEaEaoataEaEaEaEaoaoaoaoaoaoaoaoaoaoaoaoaoaoaoaoaoaoaoaoaoaoaoaoaoaoaoaoaoaoaoananakakakacacacacacacacacacac
+acacacacaMacaJataoaoaoaxaoaoataoaxaoaoaoaoaxaoaoaoaoaoaoaoaoaoaoaoaoataoaoaoaoaoaoaoaoaoaoaoaoaoaoaoaoaoaoaoaoananakakakacacacacacacacacacac
+acacacacacacaLamamaoaoaTamaoaoaoaTamaoaoamaTakakanaoaoananaoanananaoanananaoanaoanananananaoaoaoanananananananananakakakacacacacacacacacacac
+acacacacacacaNaAaAaAaAaNaAaAaAaAaNaAaAaAaAaNacakanaoanaCacananacacananananananananananananaoaoanananananananavavavakakakacacacacacacacacacac
+acacacacacacacacacacacacacacacacacacacacacacacakavavavavavavavaPaPaPacananavavaPavavavananaoanananananavavavakakakakamamacacacacacacacacacac
+acacacacacacacacacacacacacacacacacacacacacacacakakakakakakakakakakakacacanakakakakakakavavanananavavavakakakakakakamaAaAacacacacacacacacacac
+acacacacacacacacacacacacacacacacacacacacacacacamamamamamamamamakakamacacacamamamamakakakakavavavakakakakakakamamamaAacacacacacacacacacacacac
+acacacacacacacacacacacacacacacacacacacacacacacaAaAaAaAaAaAaAaAakamaUacacanauauauauamamakakakakakakakakamamamaAaAaAacacacacacacacacacacacacac
+acacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacakalaVanananakakakakaAaAamamakakakamamamaAaAaAacacacacacacacacacacacacacacacac
+acacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacakaWanaoaoanakakakakacacaAaAamamamaAaAaAacacacacacacacacacacacacacacacacacacac
+ayayayacacacacacacacacacacacacacacacacacacacacacacacacacacacacakaXanaoaoaYakakakakacacacacaAaAaAacacacacacacaHacacacacacacacacacacacacacacac
+ayayayacacacacacacacacacacacacacacacacacacacacacayayayayacacayamananananaZakakakakacacacacacacacacacacacacacaMacacacacacacacacacacacacacacac
+ayayayayayayayayayayayayayayayayayayayayayayayayayayayayayayayaAamanbabbanakakakakacacacacacacacacacacacacacaKacacacacacacacacacacacacacacac
+acacayayayayayayayayayayayayayayayayayayayayayayayayayayayayayacaAambcbdanamamamamacacacacacacacacacacacacacacacacacacacacacacacacacacacacac
+acacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacaAamamamaAaAaAaAacacacacacacacacacacacacacacacacacacacacacacacacacacacacac
+"}
+
+(1,1,2) = {"
+bBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbB
+bBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbB
+acacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacaeaeaeaeae
+acacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacaeaeaeaeae
+acacacacacacacacacacacacaPaPaPacacacacacacacacacacacacacacacacacacacacacacacacacacaOacacacacacacacacacacacacacacacacacacacacacacacaeaeaeaeae
+acacacacacacacacacacacaPakakakaPacacacacacacacacacacacacacacacacacacacacacacacacacaKacacacacacacacacacacacacacacacacacacacacacacacaeaeaeaeae
+acacacacacacacacacacaPakakakakakaPacacacacacacacacacbCacacacacacaOacacacacacacacacaMacacacacacacacacacacacacacacacacacacacacacacacaeaeaeaeae
+acacacacacacaPaPaPaPakakamamamakakaPaPaPaPacacacacacacacacacacacaKacacacacacacacacacacacacacacacacacacacacacacacacacacaHacacacacacaeaeaeaeae
+acacacacacaPakakakakakamalalalamakakakakakaPacacacacacacacacacacaMacacacacacacacacacacacacacacacacacacacacaDacacacacacaKacacacacacaeaeaeaeae
+acacacacaPakakakakakamalacacacalamakakakakakaPacacacacacaHacacacacacacacacacacacacacacacaIacacacacacacacacacaOacacacacaMacacacacacaeaeaeaeae
+acacaPaPakakamamamamalacacacacacalamamamamakakaPaPacacacaKacacacacacacacaFaGacacacacacacacaHacacacacacacacacaKacacacacacacacacacacaeaeaeaeae
+acaPakakakamalalbDalacacacacacacacalalalalamakakakaPacacaMacacacacacacacacacacacacacacacacaKacacacacacacacacaMacacacacacacacacacacaeaeaeaeae
+acakakakamalbEbEacacacananananananananananalamakakakaPaPaPaPaPaPaPaPaPaPaPaPaPaPaPaPaPaPaPbFaPaPaPaPaPaPaPaPaPaPaPaPaPaPaPaPaPacacaeaeaeaeae
+acakamamalbEbEacacanananaBanananananananananalamamakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakacacaeaeaeaeae
+acakalalbEbEacacanananananananananananananananalalamakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakacacaeaeaeaeae
+acakacacbGacacbHananananaoaoaoaoananananapananananalakbIakbJakakakbIakbJakakakakbIakbJakakakbIakakakakakakakakakakakakakakakakacacaeaeaeaeae
+acakacacacacanbxananaoaoaoaoaoaoaoaoananananananaoanambKambLamamambKambLamamamambKambLamamambKamamamamamamamamamamamamamakakakacacaeaeaeaeae
+aPamacacacacacananaoaobMbMaoaoaoaoaoaoananananaoaoanalawalalalalalawalaEalalaEalawalalalalalawalalalalalalalalalalalalalakakakacacaeaeaeaeae
+akaAacacacacacbabNaoaobMbMaoaoaoaoaoaoaoaoaoaoaoaoaoaoaoaoaoaoaoaoaoaoaoaoaoaoaoaoaoaoaoaoaoaoaoaoaoaoaoaoaoaoaoananananakakakacacaeaeaeaeae
+akacacacbOacacbPbQaoaoaoaoaoaoaoaoaoaoaoaoaoaoaoaoaoaoaxaoaoaoaoaoaxaoaoaoaoaoaoaxaoaoaoaoaoaxaoaoaoaoaoaoaoaoaoaoanananakakakacacaeaeaeaeae
+amacacacacacacanaoanaoananaoaoaoaoaoaoaoaoaoaoaoaoaoaobRaoaoaoaoaobRaoaoaoaoaoaobRaoaoaoaoaobRaoaoaoaoaoaoaoaoaoaoaoananakakakacacaeaeaeaeae
+aAakacacacacacbHananananananaoaoaoaoaoaoaoananaoaoanavawavavavavavawavbAavavbAavawavavavavavawananananaoaoaoaoaoaoaoananakakakacacaeaeaeaeae
+acakacacacacanbxananananananaoaoaoaoaoaoananananaoanakakakakakakakakakakakakakakakakakakakakanananananaoaoaoaoaoaoaoananakakakacacaeaeaeaeae
+acakacacbGacacananananaoanaoaoaoaoaoaoananbSanananavakakakakakakakakakakakakakakakakakakakakanananananaoaoaoaoaoaoanananakakakacacaeaeaeaeae
+acakavavbEbEacacananaoaoaoaoaoaoaoaoanananananavavakaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAamamamanananananaoaoaoaoaoananananamamamacacaeaeaeaeae
+acaAakakavbEbEacacananananananaqananananananavakakaAacacacacacacacacacacacacacacacacacauauauananarananaoaoaoaoananarananauauauacacaeaeaeaeae
+aeacaAaAakavbEbGacacacananananananananananavakaAaAacacaeaeaeaeaeaeaeaeaeaeaeaeaeaeacacakakakaAaAasanaoaoaoaoaoaoanasaAaAakakakacacaeaeaeaeae
+aeaeacacaAakavavavavacacacacacacacavavavavakaAacacacaeaeaeaeaeaeaeaeaeaeaeaebTaeaeacacakakakacacawananaoaoaoaoananawacacakakakacacaeaeaeaeae
+aeaeaeaeacaAakakakakavacacacacacavakakakakaAacaeaeaeaeaeaeaebTaeaeaeaeaeaeaebUaeaeacacakakakacacananaoaoaoaoaoaoananacacakakakacacaeaeaeaeae
+aeaeaeaeaeacaAaAaAaAakavacacacavakaAaAaAaAacaeaeaeaeaeaeaeaebUaeaeaeaeaeaeaebVaeaeacacakakakacacanananaoaoaoaoanananacacakakakacacaeaeaeaeae
+aeaeaeaeaeaeacacacacaAakavavavakaAacacacacaeaeaeaeaeaeaeaeaebVaeaeaeaeaeaeaeaeaeaeacacakakakacacanananaoaoaoaoanananacacakakakacacaeaeaeaeae
+aeaeaeaeaeaeaeaeaeaeacaAakakakaAacaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeacacakakakacacanananaoaoaoaoanananacacakakakacacaeaeaeaeae
+aeaeaeaeaeaeaeaeaeaeaeacaAaAaAacaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeacacakakakacacanananaoaoaoaoanananacacakakakacacaeaeaeaeae
+aeaeaeaeaeaeaeaeaeaeaeaeacacacaeaeaeaeaeaeaeaebTaeaeaeaeaeaeaeaeaeaeaeaeaebTaeaeaeacacakakakaPaPanananaoaoaoaoanananaPaPakakakacacaeaeaeaeae
+aeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaebUaeaeaeaeaeaeaeaeaeaeaeaeaebUaeaeaeacacakamamafafanananaoaoaoaoanananafafamamakacacaeaeaeaeae
+aeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaebVaeaeaeaeaeaeaeaeaeaeaeaeaebVaeaeaeaPacamauauajajananaoaoaoaoaoaoananajajauauamacaPaeaeaeaeae
+aeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeacaAakakacacanaoaoaoaoaoaoaoaoanacacakakaAacaeaeaeaeaeae
+aeaebybybybybybybybybybybybyaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeacacakakacacarananaoaoaoaoananaracacakakacacaeaeaeaeaeae
+bybybWbXbXbXbXbXbXbXbXbXbXbYbybybybybybybybybybybybybybybybybybybybybybybybybybybybyacacakakacacasananaoaoaoaoananasacacakakacacaeaeaeaeaeae
+aaaaafafafafafafafafafafafafaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPacamakaPaPawananaoaoaoaoananawaPaPakamacaPaeaeaeaeaeae
+aeaeafafafafafafafafafafafafaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeacaAamakananananaoaoaoaoananananakamaAacaeaeaeaeaeaeae
+aeaeafafafafafafafafafafafafaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeacaAamakavananaoaoaoaoananavakamaAacaeaeaeaeaeaeaeae
+aeaeafafafafafafafafafafafafaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeacaAamakananaoaoaoaoananakamaAacaeaeaeaeaeaeaeaeae
+aeaeafafafafafafafafafafafafaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeacaAakanaoaoaoaoaoaoanakaAacaeaeaeaeaeaeaeaeaeae
+aeaeafafafafafafafafafafafafaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeakananaoaoaoaoananakaeaeaeaeaeaeaeaeaeaeaeae
+aeaeafafafafafafafafafafafafaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeakanaoaoaoaoaoaoanakaeaeaeaeaeaeaeaeaeaeaeae
+bybyafafafafafafafafafafafafbybybybybybybybybybybybybybybybybybybybybybybybybybybybybybybybybybyakananaoaoaoaoananakbybybybybybybybybybybyby
+aaaaafafafafafafafafafafafafaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaakanaoaoaoaoanakaaaaaaaaaaaaaaaaaaaaaaaaaa
+bybyafafafafafafafafafafafafbybybybybybybybybybybybybybybybybybybybybybybybybybybybybybybybybybybyakakaoaoaoaoakakbybybybybybybybybybybybyby
+bzbzababababababababababababbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbAbAbAbAbzbzbzbzbzbzbzbzbzbzbzbzbzbzbz
+"}

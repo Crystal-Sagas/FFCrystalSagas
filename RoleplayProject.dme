@@ -53,6 +53,7 @@
 #include "__spaceman_dmm.dm"
 #include "Skin.dmf"
 #include "NeoWorldofTerra.dmm"
+#include "Sunken_Temple_of_Qarn.dmm"
 #include "__DEFINES\_bitflags.dm"
 #include "__DEFINES\_core.dm"
 #include "__DEFINES\_globals.dm"
