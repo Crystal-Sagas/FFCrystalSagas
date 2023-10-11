@@ -1422,46 +1422,46 @@ proc
 		m.UpdateCraft(m)
 		m.Savecheck(m)
 	SavePerk()
-		var/savefile/S=new("Perks")
+		var/savefile/S = new("data/Perks")
 		S["Perks"]<<perklist
 	LoadPerk()
 		if(fexists("Perks"))
-			var/savefile/S=new("Perks")
+			var/savefile/S = new("data/Perks")
 			S["Perks"]>>perklist
 	Saveweps()
-		var/savefile/S=new("Weapons")
+		var/savefile/S = new("data/Weapons")
 		S["Weapons"]<<weplist
 	Savematerials()
-		var/savefile/S=new("Materials")
+		var/savefile/S = new("data/Materials")
 		S["Items"]<<materiallist
 	Saverecipes()
-		var/savefile/S=new("Recipes")
+		var/savefile/S = new("data/Recipes")
 		S["Recipes"]<<recipelist
 	Savesummons()
-		var/savefile/S=new("Summons")
+		var/savefile/S = new("data/Summons")
 		S["Summons"]<<summonlist
 	Savebestiary()
-		var/savefile/S=new("Bestiary")
+		var/savefile/S = new("data/Bestiary")
 		S["Bestiary"]<<bestiary
 	Loadrecipes()
 		if(fexists("Recipes"))
-			var/savefile/S=new("Recipes")
+			var/savefile/S = new("data/Recipes")
 			S["Recipes"]<<recipelist
 	Loadmaterials()
 		if(fexists("Materials"))
-			var/savefile/S=new("Materials")
+			var/savefile/S = new("data/Materials")
 			S["Materials"]<<materiallist
 	LoadWeps()
 		if(fexists("Weapons"))
-			var/savefile/S=new("Weapons")
+			var/savefile/S = new("data/Weapons")
 			S["Weapons"]>>weplist
 	Loadsummons()
 		if(fexists("Summons"))
-			var/savefile/S=new("Summons")
+			var/savefile/S = new("data/Summons")
 			S["Summons"]>>summonlist
 	Loadbestiary()
 		if(fexists("Bestiary"))
-			var/savefile/S=new("Bestiary")
+			var/savefile/S = new("data/Bestiary")
 			S["Bestiary"]>>bestiary
 	Initperk()
 		for(var/A in typesof(/obj/perk)) if(A!=/obj/perk) perklist+=new A

@@ -7,11 +7,11 @@ var
 var/list/Bans=new
 
 proc/Save_Ban()
-	var/savefile/S=new("Ban Save")
+	var/savefile/S = new("data/Ban Save")
 	S["Bans"]<<Bans
 proc/Load_Ban()
 	if(fexists("Ban Save"))
-		var/savefile/S=new("Ban Save")
+		var/savefile/S = new("data/Ban Save")
 		S["Bans"]>>Bans
 atom
 	proc
@@ -1101,7 +1101,7 @@ proc
 		world<<output("<small>Server: Saving Objects...","icout")
 		var/Amount=0
 		var/E=1
-		var/savefile/F=new("Save/World/File[E]")
+		var/savefile/F = new("data/Save/World/File[E]")
 		var/list/Types=new
 		for(var/obj/A in world) if(A.Savable==1)
 			A.savedx=A.x
@@ -1132,7 +1132,7 @@ proc
 		wowza:
 			filenum++
 			if(fexists("Save/World/File[filenum]"))
-				var/savefile/F=new("Save/World/File[filenum]")
+				var/savefile/F = new("data/Save/World/File[filenum]")
 				var/list/L=new
 				F["Types"]>>L
 				for(var/obj/A in L)

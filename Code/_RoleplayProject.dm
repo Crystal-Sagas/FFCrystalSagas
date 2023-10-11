@@ -198,7 +198,7 @@ mob
 				src<<sound(null)
 				sleep()
 				src<< 'Audio/Cursor Ready.ogg'
-				var/savefile/F=new("Save/[src.ckey]")
+				var/savefile/F = new("data/Save/[src.ckey]")
 				Read(F)
 				F["x"]>>src.x
 				F["y"]>>src.y
@@ -340,7 +340,7 @@ mob
 					return
 				if(src.loc==locate(37,239,28))
 					return
-				var/savefile/F=new("Save/[src.ckey]")
+				var/savefile/F = new("data/Save/[src.ckey]")
 				F["x"]<<src.x
 				F["y"]<<src.y
 				F["z"]<<src.z
@@ -434,7 +434,7 @@ proc
 		world<<output("<small>Server: Saving Objects...","icout")
 		var/Amount=0
 		var/E=1
-		var/savefile/F=new("Save/World/File[E]")
+		var/savefile/F = new("data/Save/World/File[E]")
 		var/list/Types=new
 		for(var/obj/A in world) if(A.Savable==1)
 			A.savedx=A.x
@@ -467,7 +467,7 @@ proc
 		wowza:
 			filenum++
 			if(fexists("Save/World/File[filenum]"))
-				var/savefile/F=new("Save/World/File[filenum]")
+				var/savefile/F = new("data/Save/World/File[filenum]")
 				var/list/L=new
 				F["Types"]>>L
 				for(var/obj/A in L)
