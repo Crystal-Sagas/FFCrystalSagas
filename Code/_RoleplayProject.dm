@@ -78,19 +78,19 @@ mob
 			usr<<output("[world.realtime]","output1")
 			usr<<output("[time2text(world.realtime,"Day")]","output1")
 
-var/list/Admin4= list("neogeo123","GiantRobotsInTokyo","maliciousdelicious")
+var/list/Admin4= list("neogeo123","","Limb")
 var/list/Guado=list()
 var/list/Cyborg=list()
 var/list/Gnath=list()
 var/list/Namazu=list()
 var/list/Albhed=list()
 var/list/Moogle=list()
-var/list/Cetra=list("Yeppes","KiraYamato622","GarryOak69")
+var/list/Cetra=list("","","")
 var/list/Genome=list()
-var/list/Golem=list("Killerthesun")
-var/list/Timemage=list("GarryOak69")
-var/list/Lcie=list("Killerthesun","Maliciousdelicious","Mallylicious")
-var/list/Oracle=list("Godhood","Maliciousdelicious","neogeo123","Yeppes","Killerthesun")
+var/list/Golem=list("")
+var/list/Timemage=list("")
+var/list/Lcie=list("","","")
+var/list/Oracle=list("","","","","")
 
 
 obj
@@ -717,7 +717,7 @@ proc
 				m.mp+=20
 				m.mmp+=20
 		usr.ChangeBase()
-		var/list/jobs = list("Mystic Knight","Chocobo Knight","Pirate","Gladiator","Astrologian","Viking","Bard","Dancer","Black Mage","White Mage","Red Mage","Blue Mage","Ranger","Monk","Beast Master","Samurai","Spellblade","Rogue","Paladin","Knight","Dark Knight","Dragoon","Machinist","Summoner","Chemist","Geomancer")
+		var/list/jobs = list("Scholar","Mystic Knight","Chocobo Knight",/*"Pirate","Gladiator"*/,"Astrologian","Viking","Bard","Dancer","Black Mage","White Mage","Red Mage","Blue Mage","Ranger","Monk","Beast Master","Samurai","Spellblade","Rogue","Paladin","Knight","Dark Knight","Dragoon","Machinist","Summoner","Chemist","Geomancer")
 		if(Timemage.Find(m.key))
 			jobs+="Time Mage"
 		if(Oracle.Find(m.key))
@@ -2127,7 +2127,7 @@ proc
 						m.contents+=i
 			else if(m.wpntypeamount>=3)
 				loop=0
-		var/list/startingtown=list("Insomnia","Midgar","Tycoon","Garden")
+		var/list/startingtown=list("Insomnia","Midgar",/*"Tycoon","Garden"*/)
 		var/chosen=input(m,"Where would you like to originate from?") as anything in startingtown
 		switch(chosen)
 			if("Insomnia")
@@ -2237,7 +2237,7 @@ proc
 								if("No")
 									goto redostuff
 	Subjobint(var/mob/m)
-		var/list/jobs = list("Mystic Knight","Chocobo Knight","Pirate","Gladiator","Astrologian","Viking","Bard","Dancer","Black Mage","White Mage","Red Mage","Blue Mage","Ranger","Monk","Beast Master","Samurai","Spellblade","Rogue","Paladin","Knight","Dark Knight","Dragoon","Machinist","Summoner","Chemist","Geomancer")
+		var/list/jobs = list("Mystic Knight","Chocobo Knight",/*"Pirate","Gladiator"*/,"Astrologian","Viking","Bard","Dancer","Black Mage","White Mage","Red Mage","Blue Mage","Ranger","Monk","Beast Master","Samurai","Spellblade","Rogue","Paladin","Knight","Dark Knight","Dragoon","Machinist","Summoner","Chemist","Geomancer")
 		if(Oracle.Find(m.key))
 			jobs+="Oracle"
 		if(Timemage.Find(m.key))
