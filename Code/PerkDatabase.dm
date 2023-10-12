@@ -2793,7 +2793,7 @@ obj
 				CounterMeteor
 					rank="T3"
 					name="Counter Meteor"
-					desc="This individual has their magic protecting them at all times. Anytime they take a direct hit from a non magical attack, a single medium sized meteor will be summoned from space to strike at where their opponent was when they made the attack, though this slightly drains their mana pool. This deals 15-20 damage + INT. | Autohit, Ignores Damage Reduction. -5 Mana for every proc. This procs once per round, per creature."
+					desc="This individual has their magic protecting them at all times. Anytime they take a direct hit from a non magical attack, a single medium sized meteor will be summoned from space to strike at where their opponent was when they made the attack, though this slightly drains their mana pool. This deals 15-20 damage + INT. | Autohit. -5 Mana for every proc. This procs once per round, per creature."
 					CMeteor
 						ability=1
 						name="Counter Comet"
@@ -3029,7 +3029,7 @@ obj
 					name="Holy Judgement"
 					jobneed="Oracle"
 					rank="T2"
-					desc="An Oracle is guided by the light of justice. As a result, their Holy magic is particularly potent - able to cling to the souls of those it affects. When dealing damage to a creature using Holy damage, that creature gains 1 stack of 'Judgement'. If the creature gains a total of 5 Judgement stacks, an explosion of Holy energy radiates from the creature, dealing an automatic 50 Holy damage to all enemy creatures in a 3x3 area of effect, ignoring damage reduction."
+					desc="An Oracle is guided by the light of justice. As a result, their Holy magic is particularly potent - able to cling to the souls of those it affects. When dealing damage to a creature using Holy damage, that creature gains 1 stack of 'Judgement'. If the creature gains a total of 5 Judgement stacks, an explosion of Holy energy radiates from the creature, dealing an automatic 50 Holy damage to all enemy creatures in a 3x3 area of effect."
 				VanquisherofEvil
 					name="Vanquisher of Evil"
 					jobneed="Oracle"
