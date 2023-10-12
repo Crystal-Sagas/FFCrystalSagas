@@ -7894,30 +7894,156 @@ obj
 				typing="magical"
 				level=3
 				element="General"
+
 				Ruby_Light
 					rank = "D"
 					name = "Ruby Light"
 					mcost = 20
 					range = "4 tile range"
 					desc = "Carbuncle casts Reflect on an individual. Range 4 tiles, costs 20 mp, Reflect's effect- The creature erects a barrier around itself and one ally that is capable of reflecting one attack, melee or magic back at the attacker, then dissipating. Counts as a positive status effect."
+
 				Diamond_Light
 					rank = "D"
 					name = "Diamond Light"
 					mcost = 20
 					range = "4 tile range"
 					desc = "Carbuncle casts Vanish on an individual. Range 4 tiles, costs 20 mp, Vanish's effect - The creature becomes invisible to sight. While invisible all creatures cannot sense the creature using sight giving them advantage to attacks against anyone who cannot sense them. Vanish lasts 3 rounds or until the creature attacks someone."
+
 				Emerald_Light
 					rank = "D"
 					name = "Emerald Light"
 					mcost = 20
 					range = "4 tile range"
 					desc = "Carbuncle casts Haste on an individual. Range 4 tiles, costs 20 mp, Hastes effect - Grants one additional basic attack per turn, as well as bonus of +2 to PAB and MAB, and 1 additional Tile Movement. 2 turn duration. If used on a Slowed individual, simply cancels out Slow."
+
 				Moonstone_Light
 					rank = "D"
 					name = "Moonstone Light"
 					mcost = 20
 					range = "4 tile range"
 					desc = "Carbuncle casts Shell on an individual. Range 4 tiles, costs 20 mp, Shell's effect - Similar to protect a magical shell is placed around the affected sapping the power of magic causing it to deal less damage. + 8 reduction against magical attacks. Lasts for four turns."
+
+				ShrapnelSeed
+					element="Nature"
+					rank="D"
+					name="Shrapnel Seed"
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 8
+					damsource="wis"
+					range=" 7 tile range."
+					mcost= 10
+					desc="The creature fires a hard seed that explodes into shrapnel when it hits. (Damage: 2d8+WIS slashing | 7 Tile range, Magical Attack Roll, inflicts 'Bleed' on hit.  -10 Mana.) (BLU)"
+
+				PhotosyntheticWave
+					name="Photosynthetic Wave"
+					rank="C"
+					heal=1
+					desc="This ability can only be used amidst sunlight. The creature releases photosynthetic waves which upon touching a target creature, heals it for exactly 55 HP. (7 tile range, 30 Mana.) (BLU)"
+					mcost = 30
+
+				Chestnut
+					name = "Chestnut"
+					rank = "C"
+					desc = "Targets 1, Range 6 tiles, Effect- Deals damage equal to the amount of health removed from this monster. Caps at 75 damage Costs 40MP"
+					mcost = 40
+
+				Shriek
+					name = "Shriek"
+					rank = "D"
+					desc = "Targets 1, Range 6 tiles, Effect- DC 14 fortitude save or silenced. Costs 30MP"
+					range = "6 tile range"
+					mcost = 30
+
+				GeezardClaw
+					element="Physical"
+					rank="D"
+					name="Geezard Claw"
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 4
+					atype="weapon"
+					mcost=10
+					range=" melee"
+					damsource="wis"
+					desc=" The creature raises its arm into the air, and generates a blade of Mana from its claws which it slashes down upon a target with. This inflicts Weakness on the target if it hits. (Damage: Weapon Damage + 2d4+WIS Slashing | Weapon Attack Roll, inflicts Weakness on hit, -10 Mana.) (BLU)"
+
+				Goblin_Strike
+					rank = "D"
+					name = "Goblin Strike"
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 4
+					atype="weapon"
+					mcost = 10
+					range = "melee"
+					damsource = "wis"
+					desc = "Targets 1, Range Melee, Effect- Roll Magic Attack on hit deal 2D4+WIS, Then roll a Physical Attack With a bonus +1 to hit, on Hit deal Weapon Damage. Costs 10MP"
+
+				Goblin_Hammer
+					rank = "C"
+					name = "Goblin Hammer"
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 10
+					atype = "weapon"
+					mcost = "0-100"
+					range = "melee"
+					damsource = "str"
+					desc = "Targets 1, Range Melee, Effect- Before rolling stat a number between 0-100 that is the mana cost of this ability for the turn. Make a Physical attack roll, On hit deal 2d10+STR damage to the opponent and drain their MP the same amount as the cost for the spell. Costs Between 0-100MP"
+
+				Crude_Potion
+					rank = "D"
+					name = "Crude Potion"
+					mcost = 10
+					range = "self"
+					desc = "Targets Self, Range Self, Effect. Drink a poorly crafted potion that restores 25HP. Costs 10MP"
+
+				Steal
+					rank = "C"
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 12
+					damsource = "str"
+					atype = "weapon"
+					mcost = 15
+					range = "melee"
+					desc = "Targets 1, Range Melee, Effect Make an attack roll on hit deal 2d12+STR, roll 1d100 then steal that much gold from the opponent. If flanking then steal 100 gold on hit. Costs 15MP"
+
+				PoisonPowder
+					element="Dark"
+					rank="D"
+					name="Poison Powder"
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 2
+					desc="The creature collects a magical powder on its wings. When enough powder has been collected it flaps its wing spreading the powder throughout the area. Even the smallest breath can inflict poison. Prompts a flat Fortitude saving throw (DC 15), inflicting poison on failure. (10 tile range, 3x3 AoE, - 10 Mana.) (BLU)"
+					mcost = 10
+					range = "10 tile range, 3x3 squares on impact."
+
+				Monster_Gaze
+					rank = "D"
+					name = "Monster Gaze"
+					mcost = 15
+					range = "7 tile range"
+					desc = "Targets 1, Range 7 Tiles, Effect- Target makes a Fortitude save. On failure they become paralyzed."
+
+				Sticky_Webs
+					rank = "C"
+					name = "Sticky Webs"
+					mcost = 15
+					range = "6 tile movement 3x3 area on impact"
+					desc = "Targets anyone in a 3x3, Range 6 tiles. Effect- Spits a web on the ground that causes slow for anyone who is inside it. Costs 15MP"
+
+				Spider_Bite
+					rank = "C"
+					mcost = 15
+					range = "melee"
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 6
+					damsource = "str"
+					desc = "This creature bites the opponent for 2d6+str if it hits the opponent makes a fortitude save (DC 15) or becomes poisoned."
 
 
 
@@ -7943,37 +8069,6 @@ obj
 					range="Melee"
 					mcost="Variable"
 					desc="The creature creates a huge hammer made of Magic, which when slamming into a target, drains them of their MP. This Hammer has a variable Mana cost (maximum of 100) - and on hit, depletes the target creature of Mana equal to the Mana spent to cast this spell. (Damage: 2d10+STR Force damage | Melee attack roll, Mana cost variable.) (BLU)"
-				ShrapnelSeed
-					element="Nature"
-					rank="D"
-					name="Shrapnel Seed"
-					attack_roll_damage_dice = TRUE
-					attack_roll_dice_count = 2
-					attack_roll_dice_sides = 8
-					damsource="wis"
-					range=" 7 tile range."
-					mcost=10
-					desc="The creature fires a hard seed that explodes into shrapnel when it hits. (Damage: 2d8+WIS slashing | 7 Tile range, Magical Attack Roll, inflicts 'Bleed' on hit.  -10 Mana.) (BLU)"
-				GeezardClaw
-					element="Physical"
-					rank="D"
-					name="Geezard Claw"
-					attack_roll_damage_dice = TRUE
-					attack_roll_dice_count = 2
-					attack_roll_dice_sides = 4
-					atype="weapon"
-					mcost=10
-					range=" Melee"
-					damsource="wis"
-					desc=" The creature raises its arm into the air, and generates a blade of Mana from its claws which it slashes down upon a target with. This inflicts Weakness on the target if it hits. (Damage: Weapon Damage + 2d4+WIS Slashing | Weapon Attack Roll, inflicts Weakness on hit, -10 Mana.) (BLU)"
-				PoisonPowder
-					element="Dark"
-					rank="D"
-					name="Poison Powder"
-					attack_roll_damage_dice = TRUE
-					attack_roll_dice_count = 2
-					attack_roll_dice_sides = 2
-					desc="The creature collects a magical powder on its wings. When enough powder has been collected it flaps its wing spreading the powder throughout the area. Even the smallest breath can inflict poison. Prompts a flat Fortitude saving throw (DC 15), inflicting poison on failure. (10 tile range, 3x3 AoE, - 10 Mana.) (BLU)"
 				MonsterFlame
 					element="Fire"
 					rank="D"
@@ -8076,11 +8171,6 @@ obj
 				Reflect
 					rank="C"
 					desc="The creature erects a barrier around itself and one ally that is capable of reflecting one attack, melee or magic back at the attacker, then dissipating. Counts as a positive status effect. (-30 Mana) (BLU)"
-				PhotosyntheticWave
-					name="Photosynthetic Wave"
-					rank="C"
-					heal=1
-					desc="This ability can only be used amidst sunlight. The creature releases photosynthetic waves which upon touching a target creature, heals it for exactly 55 HP. (7 tile range, 30 Mana.) (BLU)"
 				MagicTongue
 					element="Physical"
 					name="Magic Tongue"
