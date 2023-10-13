@@ -4,11 +4,13 @@ obj
 		monsterperk
 //Weakness
 			Weakness_Lightning
-				desc = "This creature takes 1.5x damage from all lighning sources."
+				desc = "This creature takes 1.5x damage from all Lighning sources."
 			Weakness_Fire
-				desc = "This creature takes 1.5x damage from all fire sources."
-			Waakness_Ice
+				desc = "This creature takes 1.5x damage from all Fire sources."
+			Weakness_Ice
 				desc = "This creature takes 1.5x damage from all Ice sources."
+			Weakness_Holy
+				desc = "This creature takes 1.5x damage from all Holy sources."
 
 //Resistance
 			Resistance_Black_Magic
@@ -17,6 +19,8 @@ obj
 				desc = "This creature takes 0.5 damage from all Dark sources."
 			Resistance_Status_Effects
 				desc = "This creature gains +2 vs Status effects and Negative Status Effects last 2 turns less minimum 1"
+			Resistance_Wind
+				desc = "This creature takes 0.5 damage from all Wind sources."
 
 //Size Categories
 			Tiny
@@ -24,9 +28,13 @@ obj
 			Small
 				desc = "+2 AC, +2 to hit a creature for every 1 size category larger they are. +2 reflex, +10ft knockback against this creature."
 
-//Summons
+//Special
 			Mana_Connection
 				desc = "This creature when summoned regains 10mp every turn which is taken straight from the summoner."
+			Ripose
+				desc = " Counter- If someone misses this monster it may attempt a normal attack right after."
+			Drainer
+				desc = "May use its bonus action to cast drain on a target that is within melee range."
 
 //Adept
 			Nature_Adept
@@ -42,14 +50,16 @@ obj
 			Climber_1
 				desc = "This creature may climb up to half its movement on walls and ceilings as a move action"
 
+
 //  D RANK MONSTERS
+
+
 //CARBUNCLE
 		CarbunclePerk
 			Reaction_Emergency_Protection
 				desc = "If itself or an ally within range of its light spell would be defeated from an attack this creature can expend 30mp and cast any light spell on the target this turn. Damage will be recalculated as needed."
 			Bonus_Action_Extended_Casting
 				desc = "If Carbuncle has cast any of its light spells it can extend another 10mp to add Protect to the target."
-
 
 
 //MANDRAGORA
@@ -73,10 +83,11 @@ obj
 
 
 //EYE WING
-		Sizer_Up
-			desc = "The first time an opponent moves up to attack in melee this creature may cast Monster Gaze as a reaction."
-		Aerodynamic
-			desc = " As a bonus action this creature may cast Aero."
+		EyewingPerk
+			Size_Up
+				desc = "The first time an opponent moves up to attack in melee this creature may cast Monster Gaze as a reaction."
+			Aerodynamic
+				desc = " As a bonus action this creature may cast Aero."
 
 
 //Black Widdow

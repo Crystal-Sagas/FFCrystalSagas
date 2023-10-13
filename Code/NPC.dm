@@ -6609,7 +6609,9 @@ obj
 				encountersize=2
 				rank="D"
 				ac=14
-				rankbonus=1
+				rankbonus=0
+
+//GOBLIN
 				Goblin
 					name="Goblin"
 					icon='Goblin.png'
@@ -6617,36 +6619,55 @@ obj
 					resistance="Dark"
 					overimage='PNG/NPCOvers/Goblinover.png'
 					unroot=1
-					mhp=120
-					hp=120
-					mmp=250
-					mp=250
-					sp=30
-					msp=30
+					mhp=90
+					hp=90
+					mmp=90
+					mp=90
+					sp=90
+					msp=90
 					str=14
-					strmod=1
-					baseac=12
-					dex=10
-					dexmod=0
-					con=10
-					conmod=0
+					strmod=2
+					baseac=16
+					dex=16
+					dexmod=3
+					con=12
+					conmod=1
 					int=10
 					intmod=0
 					wis=12
 					wismod=1
 					cha=10
 					chamod=0
-					mab=10
-					pab=10
-					mdb=8
-					pdb=8
+					mab=2
+					pab=3
+					mdb=20
+					pdb=25
+					fort = 2
+					rflx = 6
+					will = 2
+					basedr = 4
+					speed = 7
 					New()
 						var/obj/perk/MonsterAbilities/BLU/GoblinStrike/a=new
 						var/obj/perk/MonsterAbilities/BLU/MagicHammer/b=new
 						var/obj/item/Weapon/NPCWeapons/Punch/c=new
+						var/obj/perk/monsterperk/Small/d=new
+						var/obj/perk/GoblinPerk/Side_Step/e=new
+						var/obj/perk/GoblinPerk/Emergency_Potion/f=new
+						var/obj/perk/MonsterAbilities/BLU/Crude_Potion/g=new
+						var/obj/perk/MonsterAbilities/BLU/Steal/h=new
+						var/obj/perk/monsterperk/Weakness_Ice/i=new
+						var/obj/perk/monsterperk/Resistance_Dark/j=new
 						src.contents+=a
 						src.contents+=b
 						src.contents+=c
+						src.contents+=d
+						src.contents+=e
+						src.contents+=f
+						src.contents+=g
+						src.contents+=h
+						src.contents+=i
+						src.contents+=j
 						src.eweapon=c
 						var/obj/status/HPBar/hpb = new
 						src.contents+=hpb
@@ -6654,6 +6675,9 @@ obj
 						src.contents+=spb
 						var/obj/status/MPBar/mpb = new
 						src.contents+=mpb
+
+
+//MANDRAGORA
 				Mandragora
 					name="Mandragora"
 					icon='Icons/Monsters/Mandragora.png'
@@ -6684,6 +6708,11 @@ obj
 					pab=2
 					mdb=30
 					pdb=20
+					fort = 4
+					rflx = 4
+					will = 5
+					basedr = 3
+					speed = 6
 					New()
 						var/obj/perk/MonsterAbilities/BLU/ShrapnelSeed/a=new
 						var/obj/perk/MonsterAbilities/BLU/PhotosyntheticWave/b=new
@@ -6716,6 +6745,9 @@ obj
 						src.contents+=spb
 						var/obj/status/MPBar/mpb = new
 						src.contents+=mpb
+
+
+//GEEZARD
 				Geezard
 					name="Geezard"
 					icon='Icons/Monsters/Geezard.png'
@@ -6723,34 +6755,53 @@ obj
 					resistance="Drain"
 					encountersize=4
 					unroot=1
-					mhp=150
-					hp=150
-					mmp=200
-					mp=200
-					sp=150
-					msp=150
-					str=10
-					strmod=0
-					baseac=13
-					dex=10
-					dexmod=0
-					con=10
-					conmod=0
+					mhp=110
+					hp=110
+					mmp=110
+					mp=110
+					sp=110
+					msp=110
+					str=14
+					strmod=2
+					baseac=15
+					dex=14
+					dexmod=2
+					con=14
+					conmod=2
 					int=10
 					intmod=0
-					wis=10
-					wismod=0
+					wis=14
+					wismod=2
 					cha=10
 					chamod=0
-					mab=8
-					pab=12
-					mdb=10
-					pdb=10
+					mab=3
+					pab=3
+					mdb=25
+					pdb=25
+					fort = 3
+					rflx = 5
+					will = 3
+					basedr = 3
+					speed = 6
 					New()
 						var/obj/perk/MonsterAbilities/BLU/GeezardClaw/a=new
 						var/obj/item/Weapon/NPCWeapons/Punch/c=new
+						var/obj/perk/monsterperk/Weakness_Holy/d=new
+						var/obj/perk/monsterperk/Resistance_Dark/e=new
+						var/obj/perk/monsterperk/Small/f=new
+						var/obj/perk/monsterperk/Ripose/g=new
+						var/obj/perk/monsterperk/Drainer/h=new
+						var/obj/perk/Abilities/BlackMagic/Flame/Fira/i=new
+						var/obj/perk/Abilities/ArcaneMagic/Drains/Drain/j=new
 						src.contents+=a
 						src.contents+=c
+						src.contents+=d
+						src.contents+=e
+						src.contents+=f
+						src.contents+=g
+						src.contents+=h
+						src.contents+=i
+						src.contents+=j
 						src.eweapon=c
 						var/obj/status/HPBar/hpb = new
 						src.contents+=hpb
@@ -6758,6 +6809,9 @@ obj
 						src.contents+=spb
 						var/obj/status/MPBar/mpb = new
 						src.contents+=mpb
+
+
+//EYE WING
 				EyeWing
 					name="Eye Wing"
 					icon='Icons/Monsters/EyeWing.png'
@@ -6765,34 +6819,53 @@ obj
 					resistance="Fire"
 					encountersize=4
 					unroot=1
-					mhp=145
-					hp=145
-					mmp=250
-					mp=250
-					sp=200
-					msp=200
+					mhp=90
+					hp=90
+					mmp=130
+					mp=130
+					sp=90
+					msp=90
 					str=10
 					strmod=0
 					baseac=13
-					dex=10
-					dexmod=0
-					con=10
-					conmod=0
+					dex=16
+					dexmod=3
+					con=12
+					conmod=1
 					int=10
 					intmod=0
-					wis=10
-					wismod=0
+					wis=16
+					wismod=3
 					cha=10
 					chamod=0
-					mab=9
-					pab=9
-					mdb=11
-					pdb=11
+					mab=4
+					pab=1
+					mdb= 30
+					pdb= 15
+					fort = 4
+					rflx = 6
+					will = 1
+					basedr = 2
+					speed = 7
 					New()
 						var/obj/perk/Abilities/WhiteMagic/Wind/Aero/a=new
 						var/obj/perk/MonsterAbilities/BLU/PoisonPowder/b=new
+						var/obj/perk/monsterperk/Weakness_Lightning/c=new
+						var/obj/perk/monsterperk/Resistance_Wind/d=new
+						var/obj/perk/monsterperk/Small/e=new
+						var/obj/perk/monsterperk/Wind_Adept/f=new
+						var/obj/perk/monsterperk/Fly_1/g=new
+						var/obj/perk/EyewingPerk/Size_Up/h=new
+						var/obj/perk/EyewingPerk/Aerodynamic/i=new
 						src.contents+=a
 						src.contents+=b
+						src.contents+=c
+						src.contents+=d
+						src.contents+=e
+						src.contents+=f
+						src.contents+=g
+						src.contents+=h
+						src.contents+=i
 						var/obj/status/HPBar/hpb = new
 						src.contents+=hpb
 						var/obj/status/SPBar/spb = new
