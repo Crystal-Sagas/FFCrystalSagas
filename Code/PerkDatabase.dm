@@ -756,7 +756,7 @@ obj
 				MakoPoisoning
 					icon='Icons/Perk/MakoPoisoning.png'
 					name="Mako Poisoning"
-					desc="This individual has been exposed to pure, raw Mako through some means - and managed to survive. They gain the following effects: +20 MP, +20 SP. -2 CON, +2 STR, +2 DEX, +20 Permanent MP."
+					desc="This individual has been exposed to pure, raw Mako through some means - and managed to survive. Their body is currently trying to fight the massive dose of mako. They hear voices ocassionally some distant some not so distant. They also see vivid images from time to time as if they were ethereal beings. Once enough time has passed (1 month IRL) their body will either lose the fight against the mako or they will combine with the mako and the status will be replaced with Mako Affected."
 				MakoAffected
 					icon='Icons/Perk/MakoAffected.png'
 					name="Mako Affected"
@@ -1555,11 +1555,11 @@ obj
 				BornforBusiness
 					rank="T2"
 					name="Born for Business"
-					desc="This individual has a great eye for deals. They are able to buy materials from resource suppliers for half the normal cost."
+					desc="(Needs to be coded in) This individual has a great eye for deals. They are able to buy materials from resource suppliers for half the normal cost."
 				MasterGatherer
 					rank="T2"
 					name="Master Gatherer"
-					desc="This Merchant understands the importance of gathering, and thus have refined their skill. They proc any Gathering node (Ore node, Hunting Spot, Nature Node, Soil Mound) they interact with twice."
+					desc="(Needs Coded In)This Merchant understands the importance of gathering, and thus have refined their skill. They proc any Gathering node (Ore node, Hunting Spot, Nature Node, Soil Mound) they interact with twice."
 				Salesman
 					rank="T2"
 					name="Salesman"
@@ -1567,12 +1567,12 @@ obj
 				MasteroftheLand
 					rank="T3"
 					name="Master of the Land"
-					desc="This Merchant has dedicated themselves to gathering what they need to maintain their business. When they use a Gather Node, that node's respawn cooldown is halved."
+					desc="(Needs to be coded in) This Merchant has dedicated themselves to gathering what they need to maintain their business. When they use a Gather Node, that node's respawn cooldown is halved."
 				Duplicator
 					cat="Unique"
 					rank="T5"
 					name="Duplicator"
-					desc="This Merchant is somehow able to duplicate any item they have seemingly through their connections to the rest of the Merchant world. For 5000 Gil, they can duplicate any crafting material in their inventory - once per day."
+					desc="(needs GM present) This Merchant is somehow able to duplicate any item they have seemingly through their connections to the rest of the Merchant world. For 5000 Gil, they can duplicate any crafting material in their inventory - once per day."
 				MoogleMerchant
 					rank="T5"
 					name="Moogle Merchant"

@@ -6872,33 +6872,11 @@ obj
 						src.contents+=spb
 						var/obj/status/MPBar/mpb = new
 						src.contents+=mpb
+
+//C RANKS
 			CRank
 				encountersize=3
-				mhp=215
-				hp=215
-				mmp=300
-				mp=300
-				sp=300
-				msp=300
-				baseac=22
-				ac=22
-				str=16
-				strmod=3
-				dex=14
-				dexmod=2
-				con=14
-				conmod=2
-				int=14
-				intmod=2
-				wis=16
-				wismod=3
-				cha=16
-				chamod=3
-				mab=12
-				pab=12
-				mdb=15
-				pdb=15
-				rankbonus=3
+				rankbonus= 0
 				rank="C"
 				name="--C Rank--"
 				New()
@@ -6909,6 +6887,37 @@ obj
 					weakness="Dark"
 					resistance="Metal"
 					icon='Icons/Monsters/SilverLobo.png'
+					mhp=215
+					hp=215
+					mmp=300
+					mp=300
+					sp=300
+					msp=300
+					baseac=22
+					ac=22
+					str=16
+					strmod=3
+					dex=14
+					dexmod=2
+					con=14
+					conmod=2
+					int=14
+					intmod=2
+					wis=16
+					wismod=3
+					cha=16
+					chamod=3
+					mab=12
+					pab=12
+					mdb=15
+					pdb=15
+					fort = 4
+					rflx = 6
+					will = 1
+					basedr = 2
+					speed = 7
+					New()
+
 				Chocobo
 					name="Chocobo"
 					unroot=1
@@ -7063,33 +7072,12 @@ obj
 					name="Dorky Face"
 					unroot=1
 					icon='Icons/Monsters/DorkyFace.png'
+
+
+//B RANKS
 			BRank
-				rankbonus=4
+				rankbonus=0
 				encountersize=4
-				mhp=550
-				hp=550
-				mmp=450
-				mp=450
-				sp=450
-				msp=450
-				baseac=23
-				ac=23
-				str=16
-				strmod=3
-				dex=14
-				dexmod=2
-				con=14
-				conmod=2
-				int=14
-				intmod=2
-				wis=16
-				wismod=3
-				cha=16
-				chamod=3
-				mab=15
-				pab=15
-				mdb=16
-				pdb=16
 				rank="B"
 				name="--B Rank--"
 				New()
@@ -7100,6 +7088,36 @@ obj
 					resistance="Bio"
 					unroot=1
 					icon='Icons/Monsters/Gigantoad.png'
+					mhp=215
+					hp=215
+					mmp=300
+					mp=300
+					sp=300
+					msp=300
+					baseac=22
+					ac=22
+					str=16
+					strmod=3
+					dex=14
+					dexmod=2
+					con=14
+					conmod=2
+					int=14
+					intmod=2
+					wis=16
+					wismod=3
+					cha=16
+					chamod=3
+					mab=12
+					pab=12
+					mdb=15
+					pdb=15
+					fort = 4
+					rflx = 6
+					will = 1
+					basedr = 2
+					speed = 7
+					New()
 				Gargoyle
 					name="Gargoyle"
 					weakness="Holy"

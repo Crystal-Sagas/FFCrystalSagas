@@ -1103,11 +1103,11 @@ proc
 			m.mp+=100
 			m.mmp+=100
 		if(o.name=="Mako Poisoning")
-			m.con-=2
-			m.str+=2
-			m.dex+=2
-			m.mp+=20
-			m.mmp+=20
+			m.con-=0
+			m.str+=0
+			m.dex+=0
+			m.mp+=0
+			m.mmp+=0
 			m.Checkmod(1,m.str,m.addstr,m)
 			m.Checkmod(2,m.dex,m.adddex,m)
 			m.Checkmod(3,m.con,m.addcon,m)
