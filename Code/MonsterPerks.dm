@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 obj
 	perk
 		monsterperk
@@ -10,7 +10,7 @@ obj
 				desc = "+4 AC +2 to hit for each size category the opponent is above Small +4 Reflex."
 			Mana_Connection
 				desc = "This creature when summoned regains 10mp every turn which is taken straight from the summoner."
-=======
+
 //GENERAL PERKS
 obj
 	perk
@@ -69,14 +69,12 @@ obj
 
 //CARBUNCLE
 		CarbunclePerk
->>>>>>> Dels-branch
 			Reaction_Emergency_Protection
 				desc = "If itself or an ally within range of its light spell would be defeated from an attack this creature can expend 30mp and cast any light spell on the target this turn. Damage will be recalculated as needed."
 			Bonus_Action_Extended_Casting
 				desc = "If Carbuncle has cast any of its light spells it can extend another 10mp to add Protect to the target."
 
-<<<<<<< HEAD
-=======
+
 
 //MANDRAGORA
 		MandragoraPerk
@@ -111,4 +109,4 @@ obj
 			desc = "When an enemy provokes attack of opportunity from this creature they may spit a web at the opponent if it hits they become slowed until the end of their next turn."
 		Bonus_Action_Web_Fighter
 			desc = "When the black widow is in range of an opponent slowed by webs they can make a bonus bite attack."
->>>>>>> Dels-branch
+
