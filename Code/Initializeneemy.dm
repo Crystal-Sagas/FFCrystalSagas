@@ -13,61 +13,107 @@
 	enemy.contents+=spb
 	var/obj/status/MPBar/mpb = new
 	enemy.contents+=mpb
+
+
+//GOBLIN
 	if(enemy.name=="Goblin")
 		var/obj/perk/MonsterAbilities/BLU/GoblinStrike/a=new
 		var/obj/perk/MonsterAbilities/BLU/MagicHammer/b=new
-		var/obj/perk/MonsterAbilities/Monster/CrudePotion/d=new
 		var/obj/item/Weapon/NPCWeapons/Punch/c=new
-		var/obj/perk/ElementalPerks/Earth/element=new
-		var/obj/perk/MonsterPassives/Dense/trait=new
-		enemy.contents+=element
-		enemy.contents+=trait
+		var/obj/perk/monsterperk/Small/d=new
+		var/obj/perk/GoblinPerk/Side_Step/e=new
+		var/obj/perk/GoblinPerk/Emergency_Potion/f=new
+		var/obj/perk/MonsterAbilities/BLU/Crude_Potion/g=new
+		var/obj/perk/MonsterAbilities/BLU/Steal/h=new
 		enemy.contents+=a
 		enemy.contents+=b
+		enemy.contents+=c
 		enemy.contents+=d
-		enemy.eweapon=c
+		enemy.contents+=e
+		enemy.contents+=f
+		enemy.contents+=g
+		enemy.contents+=h
+
+
+//MANDRAGORA
 	if(enemy.name=="Mandragora")
 		var/obj/perk/MonsterAbilities/BLU/ShrapnelSeed/a=new
 		var/obj/perk/MonsterAbilities/BLU/PhotosyntheticWave/b=new
-		var/obj/item/Weapon/NPCWeapons/Punch/c=new
-		var/obj/perk/ElementalPerks/Bio/element=new
-		var/obj/perk/MonsterPassives/Annoying/trait=new
-		enemy.contents+=element
-		enemy.contents+=trait
-		enemy.contents+=a
-		enemy.contents+=b
-		enemy.contents+=c
-		enemy.eweapon=c
-	if(enemy.name=="Geezard")
-		var/obj/perk/MonsterAbilities/BLU/GeezardClaw/a=new
-		var/obj/perk/Abilities/ArcaneMagic/Drains/Drain/b=new
-		var/obj/perk/Abilities/BlackMagic/Flame/Fire/d=new
-		var/obj/item/Weapon/NPCWeapons/Punch/c=new
-		var/obj/perk/ElementalPerks/Bio/element=new
-		var/obj/perk/MonsterPassives/Mutant/trait=new
-		enemy.contents+=element
-		enemy.contents+=trait
+		var/obj/perk/MonsterAbilities/BLU/Chestnut/c=new
+		var/obj/perk/MonsterAbilities/BLU/Shriek/d=new
+		var/obj/item/Weapon/NPCWeapons/Punch/e=new
+		var/obj/perk/monsterperk/Weakness_Fire/f=new
+		var/obj/perk/monsterperk/Resistance_Black_Magic/g=new
+		var/obj/perk/monsterperk/Small/h=new
+		var/obj/perk/monsterperk/Nature_Adept/i=new
+		var/obj/perk/MandragoraPerk/Natures_Bandaid/j=new
+		var/obj/perk/MandragoraPerk/Reaction_Worry_Spore/k=new
+		var/obj/perk/MandragoraPerk/Safe_Space/l=new
 		enemy.contents+=a
 		enemy.contents+=b
 		enemy.contents+=c
 		enemy.contents+=d
-		enemy.eweapon=c
+		enemy.contents+=e
+		enemy.contents+=f
+		enemy.contents+=g
+		enemy.contents+=h
+		enemy.contents+=i
+		enemy.contents+=j
+		enemy.contents+=k
+		enemy.contents+=l
+
+
+
+//GEEZARD
+	if(enemy.name=="Geezard")
+		var/obj/perk/MonsterAbilities/BLU/GeezardClaw/a=new
+		var/obj/item/Weapon/NPCWeapons/Punch/c=new
+		var/obj/perk/monsterperk/Weakness_Holy/d=new
+		var/obj/perk/monsterperk/Resistance_Dark/e=new
+		var/obj/perk/monsterperk/Small/f=new
+		var/obj/perk/monsterperk/Ripose/g=new
+		var/obj/perk/monsterperk/Drainer/h=new
+		var/obj/perk/Abilities/BlackMagic/Flame/Fira/i=new
+		var/obj/perk/Abilities/ArcaneMagic/Drains/Drain/j=new
+		enemy.contents+=a
+		enemy.contents+=c
+		enemy.contents+=d
+		enemy.contents+=e
+		enemy.contents+=f
+		enemy.contents+=g
+		enemy.contents+=h
+		enemy.contents+=i
+		enemy.contents+=j
+
+
+
+//EYE WING
 	if(enemy.name=="Eye Wing")
 		var/obj/perk/Abilities/WhiteMagic/Wind/Aero/a=new
 		var/obj/perk/MonsterAbilities/BLU/PoisonPowder/b=new
-		var/obj/perk/Abilities/GeneralMagicAbilities/Laserga/las=new
-		var/obj/perk/Abilities/ArcaneMagic/Darkness/Darkaga/c=new
-		var/obj/perk/ElementalPerks/Thunder/element=new
-		var/obj/perk/MonsterPassives/AntiGravity/trait=new
-		var/obj/perk/MonsterPassives/Magical/trait2=new
-		enemy.contents+=element
-		enemy.contents+=trait
-		enemy.contents+=trait2
+		var/obj/perk/monsterperk/Weakness_Lightning/c=new
+		var/obj/perk/monsterperk/Resistance_Wind/d=new
+		var/obj/perk/monsterperk/Small/e=new
+		var/obj/perk/monsterperk/Wind_Adept/f=new
+		var/obj/perk/monsterperk/Fly_1/g=new
+		var/obj/perk/EyewingPerk/Size_Up/h=new
+		var/obj/perk/EyewingPerk/Aerodynamic/i=new
 		enemy.contents+=a
 		enemy.contents+=b
-		enemy.contents+=las
 		enemy.contents+=c
-///C Rank
+		enemy.contents+=d
+		enemy.contents+=e
+		enemy.contents+=f
+		enemy.contents+=g
+		enemy.contents+=h
+		enemy.contents+=i
+
+
+
+///C RANK
+
+
+//SILVER LOBO
 	if(enemy.name=="Silver Lobo")
 		var/obj/perk/MonsterAbilities/BLU/SilverFang/b=new
 		var/obj/perk/Abilities/WhiteMagic/Wind/Aero/a=new

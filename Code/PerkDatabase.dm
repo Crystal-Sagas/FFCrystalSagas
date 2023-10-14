@@ -90,256 +90,6 @@ obj
 				icon='Icons/Perk/Apocalypse.png'
 				name="Dark Attuned"
 				desc="This creature is attuned to the element of Holy. It is immune to the 'Weakness', 'Doom', 'Break', 'Heavy', 'Blind', and 'Silence' status effects, and takes half damage from dark damage, but 2x from holy damage."
-		MonsterPassives
-			icon='Icons/Perk/MonsterAbility.png'
-			Mecha
-				name="Mecha"
-				desc="This construct is a mecha. Its Melee abilities have an additional tile range of 2, regardless of their base Melee range - this also applies to General Weapon Abilities which extend projectiles. Magitek Mecha are also capable of using their Laser Defense Orb as a reaction to being attack, and when doing so - may fire it twice."
-			Pilotable
-				name="Pilotable"
-				desc="This creature or construct is pilotable. Its owner is capable of piloting it. In doing so, they enter its body or chassis, and the player character is stored inside, taking no damage from attacks while inside unless it is destroyed. This creature or construct uses the pilot's action economy, rather than having its own."
-			Rideable
-				name="Rideable"
-				desc="This creature is rideable. It may be mounted by an ally, and in doing so, this creature takes half of the damage that creature would take when it is targeted, until this creature is KOed, the riding creature only taking half as well."
-			SelfDestruct
-				name="Self Destruct"
-				desc="This creature, upon taking 3 total instances of damage, will self destruct at its current location ; dealing damage equal to its current HP as true damage to all creatures within a 3x3 AoE around it."
-			MajorSelfDestruct
-				name="Major Self Destruct"
-				desc="This creature, upon taking 3 total instances of damage, will self destruct at its current location ; dealing damage equal to its current HP to as true damage to all creatures within a 5x5 AoE around it."
-			PackTactics
-				name="Pack Tactics"
-				desc="This creature, and any creature alongside it, who shares this perk - incur a -1 to AC and to hit values towards player characters fighting them, so long as it is standing (stacking up to a maximum of -8.)"
-			Horror
-				name="Horror"
-				desc="This creature is horrifying, and any player character who begins battle against this creature must roll a Will save (DC 20) in order to steel themselves, otherwise suffering -8 to hit, and -8 to AC for the entirety of battle."
-			CounterAttacker
-				name="Counter Attacker"
-				desc="This creature is vengeful, and any time it takes Melee damage, it may optionally perform an instantaneous counter-attack, using any physical attack in its arsenal at half damage but full cost. This cannot be reacted to."
-			CounterSpell
-				name="Counter Spell"
-				desc="This creature is vengeful, and any time it takes Magic damage, it may optionally perform an instantaneous counter-attack, using any spell in its arsenal at half damage but full cost. This cannot be reacted to."
-			ToadSkin
-				name="Toad Skin"
-				desc="This creature has magical toad skin. If it is dealt damage via a Melee attack, it may inflict the attacker with 'Toad' for the cost of 20 MP."
-			Taunt
-				name="Taunt"
-				desc="This creature is extremely irritating, and at the beginning of battle - it may select a single player character to draw aggro from. That creature must make a Will save (DC 15) or may only attack that creature until it is defeated. Support abilities may still be used on allies while this effect is active."
-			Destructive
-				name="Destructive"
-				desc="This creature is destructive. Whenever it makes a melee attack, it releases a 5x5 pulse from the tile it attacked, dealing 20 true damage to any creature in the vicinity of the attack."
-			Devourer
-				name="Devourer"
-				desc="This creature is a devourer in nature. Whenever it deals damage to a creature, it restores 30 HP, up to twice per round."
-			Regenerator
-				name="Regenerator"
-				desc="This creature is a regenerator. At the beginning of each turn, it regenerates 25 HP."
-			Medic
-				name="Medic"
-				desc="This creature is a medic. At the beginning of each of its turns, all of its allies heal for 30 HP so long as it is alive."
-			Calamity
-				name="Calamitous"
-				desc="This creature is an omen of death. At the beginning of each of its turns, all of its enemies are dealt 10 automatic true damage so long as it is alive."
-			Flight
-				name="Flight"
-				desc="This creature is able to fly. It has a maximum flight elevation of 5 tiles, and when airborne may move at a speed of 5 tiles per turn."
-			Immovable
-				name="Immovable"
-				desc="This creature is Immovable. It is immune to being knocked prone, as well as the 'Slow', 'Stop', 'Heavy', and 'Weakness' status effects."
-			Mutant
-				name="Mutant"
-				desc="This creature is a Mutant. It is immune to the 'Poison', 'Burn', and 'Bleed' status effects."
-			Anomaly
-				name="Anomaly"
-				desc="This creature is a Time anomaly. It is immune to the 'Doom', 'Slow', 'Stop', and 'Break' status effects ; in addition, it always has 'Haste'."
-			Annoying
-				name="Annoying"
-				desc="This creature has a magically annoying voice. It is immune to the 'Silence' status effect."
-			Metallic
-				name="Metallic"
-				desc="This creature is made of metal. It is immune to the 'Poison', 'Bleed', 'Burn', and 'Weakness' status effects."
-			AntiGravity
-				name="Anti Gravity"
-				desc="This creature is able to defy the laws of gravity. It is immune to the Gravity spells, as well as the 'Heavy' status effect."
-			Dense
-				name="Dense"
-				desc="This creature is Dense. It gains advantage against physical-inflicted status ailments."
-			Solid
-				name="Solid"
-				desc="This creature is Solid. It takes 5 less damage from all physical attacks per Rank, starting at 5 at D-Rank."
-			Unbreakable
-				name="Unbreakable"
-				desc="This creature is Unbreakable. It takes 10 less damage from all physical attacks per Rank, starting at 10 at D-Rank."
-			Magical
-				name="Magical"
-				desc="This creature is Magical. It gains advantage against magical-inflicted status ailments."
-			Tonberry
-				name="Tonberry"
-				desc="This creature is a Tonberry. It bares a grudge for its fallen allies. For every creature that the opposing party has killed during the encounter, the Tonberry deals +20 additional true damage on all of its attacks."
-			Aetherial
-				name="Aetherial"
-				desc="This creature is Aetherial. It takes 5 less damage from all magical attacks per Rank, starting at 5 at D-Rank."
-			Ascended
-				name="Ascended"
-				desc="This creature is Aetherial. It takes 10 less damage from all magical attacks per Rank, starting at 10 at D-Rank."
-			OmniElemental
-				name="OmniElemental"
-				desc="This creature is Omni Elemental. It takes half damage from all Fire, Water, Thunder, Wind, Earth, and Ice based attacks, but are weak to Bio, Holy, Dark and Force."
-		SummonPassives
-			icon='Icons/Perk/Summoner.png'
-			Carbuncle
-				desc="The Eidolon Carbuncle is known primarily as a seer of the Eidolon world, specializing in aiding itself and its summoner with the 'Futuresight' ability. Once per round, Carbuncle may spend its reaction in order to grant a party member +1 AC in response to an incoming attack, or grant them advantage on a saving throw."
-			Sylph
-				desc="The Eidolon Sylph is known primarily as a healer of the Eidolon world, specializing in healing others. When Sylph heals a party member, that party member is healed for an additional 15 HP."
-			Boko
-				desc="The Eidolon Boko is mountable. A party member is able to ride Boko, by spending their bonus action to mount it. If the player is attacked while mounted, Boko may take full damage in their place ; causing the rider to take only half damage."
-			Remora
-				desc="The Eidolon Remora is actually a swarm of much smaller fish that take the form of a larger one. For every 20 HP Remora loses, its attacks suffer -5 damage."
-			CaitSith
-				name="Cait Sith"
-				desc="The Eidolon Cait Sith is a well known trickster of the Eidolon world. When Cait Sith attacks an enemy creature with its claws, that creature must make a DC 14 Fortitude saving throw, or be inflicted with the 'Blind' status effect."
-			Ifrit
-				desc="The Eidolon Ifrit is a spirit of fire. When Ifrit would take Fire damage, it is healed for that much instead. In addition, Fire spells cost 10 less MP than the standard cost for this Eidolon. (To a minimum of 1.)"
-			Shiva
-				desc="The Eidolon Shiva is a spirit of frost. When Shiva would take Ice damage, it is healed for that much instead. In addition, Ice spells cost 10 less MP than the standard cost for this Eidolon. (To a minimum of 1.)"
-			Ramuh
-				desc="The Eidolon Ramuh is a spirit of thunder. When Shiva would take Thunder damage, it is healed for that much instead. In addition, Thunder spells cost 10 less MP than the standard cost for this Eidolon. (To a minimum of 1.)"
-			Siren
-				desc="The Eidolon Siren is a well known muse of the Eidolon world, specializing in the lifting of spirits. Whenever a friendly creature is affected by one of Siren's Bard songs, they are healed for 5 HP per turn in addition to that song's effects."
-			Golem
-				desc="The Eidolon Golem is a spirit of nature. When Golem would take Bio or Earth damage, it is healed for that much instead. In addition, Geomancer and Earth spells cost 10 less MP than the standard cost for this Eidolon. (To a minimum of 1.)"
-			Kirin
-				desc="The Eidolon Kirin is a holy spirit. When Kirin would take Holy damage, it is healed for that much instead. In addition, White Magic spells cost 10 less MP than the standard cost for this Eidolon. (To a minimum of 1.)  Kirin is mountable, by expending a Bonus action. If the player is attacked while mounted, Kirin may take full damage in their place ; causing the rider to take only half damage."
-			Titan
-				desc="The Eidolon Titan is the lord of the crags. When Titan would take Earth damage, it is healed for that much instead. In addition, Earth spells cost 20 less MP than the standard cost for this Eidolon. (To a minimum of 1.)"
-			Garuda
-				desc="The Eidolon Garuda is the lady of the winds. When Garuda would take Wind damage, it is healed for that much instead. In addition, Wind spells cost 20 less MP than the standard cost for this Eidolon. (To a minimum of 1.)"
-			Bismark
-				desc="The Eidolon Bismark is the lord of the ocean. When Bismark would take Water damage, it is healed for that much instead. In addition, Water spells cost 20 less MP than the standard cost for this Eidolon. (To a minimum of 1.)"
-			Fenrir
-				desc="The Eidolon Fenrir is a warrior of the Eidolon world. When Fenrir deals damage to an enemy creature with a physical attack, that creature must make a DC 15 Fortitude saving throw, being inflicted with 'Weakness' on a failed save. A party member is able to ride Fenrir, by spending their bonus action to mount it. If the player is attacked while mounted, Fenrir may take full damage in their place ; causing the rider to take only half damage."
-			Ixion
-				desc="The Eidolon Ixion is Ramuh's greatest warrior. When Ixion deals Thunder damage to an enemy creature, that creature must make a DC 11 Fortitude saving throw, being inflicted with 'Stun' on a failed save. A party member is able to ride Ixion, by spending their bonus action to mount it. If the player is attacked while mounted, Ixion may take full damage in their place ; causing the rider to take only half damage."
-			Diabolos
-				desc="The Eidolon Diabolos is a spirit of Darkness. When Diabolos takes Dark damage, it heals for that much instead. In addition, Dark spells cost 20 less MP for Diabolos (to a minimum of 1.)"
-			Valefor
-				desc="The Eidolon Valefor is a guardian spirit, trained in the art of magic to defend others. When Valefor casts a Black Magic spell, it regenerates 8 HP, as it recycles the magical energy."
-			Ravana
-				desc="The Eidolon Ravana is a spirit of war, trained in the art of combat. Ravana may perform two attacks per round, as long as those attacks are both either a weapon attack, or a General Weapon ability."
-			Ashura
-				desc="The Eidolon Ashura is a spirit of war, trained in the art of combat. Ashura may perform two attacks per round, as long as one attack is a magical attack, and one is a weapon attack or general weapon ability."
-			Odin
-				desc="The Eidolon Odin is a spirit of wisdom, and might. He naturally inspires his summoner in combat. When Odin is summoned, the summoner and all party members gain the 'Bravery' status effect in addition to Odin's summoning."
-			Leviathan
-				desc="The Eidolon Leviathan is the king of the whorl. Whenever Leviathan deals Water damage to an enemy creature, that creature is inflicted with the 'Whorl' status effect."
-			Bahamut
-				desc="The Eidolon Bahamut is the prince of dragons. Dragon creatures have disadvantage on attacks against Bahamut. In addition, Bahamut has resistance to Force damage."
-			Alexander
-				desc="The Eidolon Alexander is a spirit of protection. When Alexander is summoned, all party members gain the 'Protect' and 'Shell' status effects."
-			Hades
-				desc="The Eidolon Hades is a spirit of the underworld. When Hades is summoned, all enemy creatures must make a DC 14 Fortitude saving throw, being inflicted with 'Poison' and 'Burn' on a failed save."
-			Cerberus
-				desc="The Eidolon Cebrerus is the servant of Hades, and guardian of the underworld. Due to its three heads, when Cerberus is first summoned, it may cast three spell attacks at 0 MP cost."
-			Anima
-				desc="The Eidolon Anima is a keeper of the dead. It is immune to the Doom status effect, and while it is summoned ; all party members gain immunity to the Doom status."
-			Hecatoncheir
-				desc="The Eidolon Hecatoncheir is a guardian of the Eidolon world. While Hecatoncheir is summoned, its summoner may spend a bonus action and 10 MP in order to allow Hecatoncheir to cast 'Matra Magic' for 0 MP once per round."
-			Lakshmi
-				desc="The Eidolon Lakshmi is the sovereign of sleep. While she is summoned, if an enemy creature is inflicted with 'Sleep' - that creature takes 20 additional damage from all sources."
-			NeoBahamut
-				name="Neo Bahamut"
-				desc="The Eidolon Neo Bahamut is the king of dragons. While Neo Bahamut is summoned, Dragon creatures can not attack Bahamut or its summoner. In addition, it has immunity to Force damaeg."
-			Eden
-				desc="The Eidolon Eden is a spirit of paradise. While Eden is summoned, the battlefield changes to 'Eden' - gaining the following field effect: Flee rolls become impossible. Until Eden is reduced to 0 HP, this effect persists. Eden may cast 3 spells per turn, and Eden's summoner is granted the 'Bravery' and 'Haste' status effects at the start of each turn."
-			Ark
-				desc="The Eidolon Ark is a spirit of innovation and transportation. The Ark has a combat elevation of 8 tiles, and when using the 'Ram' ability - may cast 'Matra Magic' in addition for 0 MP."
-			Shinryu
-				desc="The Eidolon Shinryu is a banished knight of the Eidolon World's dragons. While Shinryu is summoned, creatures named 'Omega' have disadvantage on attacks against Shinryu and its summoner. In addition, Shinryu may cast 'Dragoflare' as a bonus action."
-			MagusSisters
-				name="Magus Sisters"
-				desc="The Magus Sisters are the court magicians of the Eidolon World. While the Magus Sisters are summoned, they may perform 3 standard actions per turn, one for each sister."
-			Phoenix
-				desc="The Eidolon Phoenix is a spirit of rebirth and cycles. While Phoenix is summoned, all party members gain the 'Regenerate' status effect at the start of each round, and heal 5 HP. In addition, if Phoenix reaches 0 HP ; it may choose one party member to apply the 'Reraise' status effect to."
-			Raiden
-				desc="The Eidolon Raiden is the greatest warrior and hero of the Eidolon world. When Raiden is summoned, all party members gain the 'Bravery','Haste',and 'Faith' status effects, and the next instance of damage they inflict upon an enemy creature is increased by 20 points."
-			Lich
-				desc="The Lich is a master of the undead. While Lich is summoned, if a Necromancer Summon of B Rank or lower (minus Lich) reaches 0 HP ; Lich may spend 20 MP to rejuvenate it at full HP. Lich takes 2x Holy damage."
-			Scarmiglione
-				desc="Scarmiglione is the master of the undead. While Scarmiglione is summoned, the Summoner may spend a bonus action once per round to summon a C Rank or lower Necromancer Summon for 0 MP. Scarmiglione takes 2x Holy damage."
-			Syldra
-				desc="The Aeon Syldra was once Yevon's head of coastal affairs. While Syldra is summoned, if there is at least 1 Water tile within the battlefield, Syldra's party gains +5 PDB and MDB."
-			Quetzalli
-				desc="The Aeon Quetzalli was once Yevon's head of airspace affairs. While Quetzalli is summoned, if the party is on an Airship or there is a 'Sky' tile within the battlefield, Quetzalli's party gains +8 PDB and MDB. Quetzalli inflicts 'Squall' on creatures it deals Wind damage to."
-			Seraph
-				desc="The Aeon Seraph was once Yevon's head of medical affairs. While Seraph is summoned, any healing the party recieves is increased by 10 points (except from Regeneration effects.) In addition, the party gains resistance to Holy damage."
-			Percival
-				desc="The Aeon Percial was once Yevon's head Guardian. While Percival is summoned, party members with the 'Guardian' perk gain +3 PAB, +3 MAB, +5 PDB and +5 MDB."
-			Pandemona
-				desc="The Aeon Pandemona was once Yevon's head of magical affairs. While Pandemona is summoned, party members spend 10 less MP on Black, Arcane, White, and Green magic (to a minimum of 1.)"
-			Madeen
-				desc="The Aeon Madeen was once Yevon's Queen. While Madeen is summoned, party members are inspired - and gain the 'Bravery', and 'Haste' status effects."
-			Yojimbo
-				desc="The Aeon Yojimbo was once Yevon's head of foreign affairs. When Yojimbo is summoned, the party becomes immune to Mug checks at the end of battle. In addition, party members heal for HP equal to their personal Charisma modifier at the start of each turn."
-			Atomos
-				desc="The Aeon Atomos was once Yevon's head of judicial affairs. While Atomos is summoned, enemy creatures suffer -1 Tile Movement per turn (to a minimum of 1.)"
-			Salamander
-				desc="The Aeon Salamander was once Yevon's head of armoury and military infrastructure. While Salamander is summoned, party members with Steel tier and higher weapons gain +5 PAB. In addition, if that weapon is enchanted, that party member gains +10 PDB."
-			BahamutJudgement
-				name="Bahamut Judgement"
-				desc="The Aeon Bahamut Judgement was once Yevon's King. While Bahamut Judgement is summoned, all party members regenerate 5 HP at the start of their turn, and all enemy creatures suffer 3 damage at the start of their turns."
-			Byrnhildr
-				desc="The Aeon Byrnhildr was once Yevon's captain of the royal guard. While Byrnhildr is summoned, all party members gain 3 global damage reduction, and +2 AC."
-			Enkidu
-				desc="The Aeon Enkidu was once Yevon's head of social affairs. While Enkidu is summoned, if the party has at least 3 members, all party members gain +5 PAB, MAB, +4 PDB, MDB, +1 AC, and +2 global damage reduction."
-			FinalAeon
-				name="Final Aeon"
-				desc="The Final Aeon is a Summoner of Yevon's personal guardian, given the power of all Aeons simultaneously. This state is achieved by transforming a guardian into the Final Aeon temporarily, by paying the Final Aeon's summon cost. This creature heals the party for 8 HP at the start of each of is turns. While the Final Aeon is summoned, the guardian chosen as its manifestation can not take damage, nor can they take actions - as they are the Final Aeon itself. If the Final Aeon reaches 0 HP ; it reverts to that guardian."
-			Cyclops
-				desc="The Eidolon Cyclops is a defender of the Eidolon World. When an enemy creature is damaged by a 'Laser' spell cast by Cyclops, that creature is inflicted with 'Bleed' and 'Weakness'."
-			Tsukuyomi
-				desc="The Eidolon Tsukuyomi is a shinobi of the Eidolon World. While Tsukuyomi is summoned, any party member who has the 'Ninja' advanced job gains +5 MAB, PAB, PDB, and MDB. Tsukuyomi deals 10 additional damage to enemy creatures if she is considered Obscured."
-			MistDragon
-				name="Mist Dragon"
-				desc="The Eidolon Mist Dragon is the head mage of the dragons of the Eidolon World. When Mist Dragon is attacked, if it is attacked by an attack without elemental damage ; that attack deals half damage. In addition, when it is attacked, Mist Dragon may counter attack with a spell it knows for 0 MP as a reaction."
-			Crusader
-				desc="The Eidolon Crusader is a holy warrioress of the Eidolon World. While Crusader is summoned, any party member who is a 'Knight','Paladin','Samurai','Mystic Knight', or 'Viking' gains +10 PDB and heals for 5 HP at the start of each round."
-			Unicorn
-				desc="The Eidolon Unicorn is a healer of the Eidolon World. While Unicorn is summoned, all party members heal for 3 HP at the start of each round. In addition, all party members gain +10 to any incoming healing spells (excluding regeneration effects.)"
-			CactuarCarlos
-				name="Cactuar Carlos"
-				desc="The Eidolon Cactuar Carlos is a legendary healer of the Eidolon World. While Cactuar Carlos is summoned, Cactuar may not cast Hundred Needles or Thousand Needles on the party. In addition, Cactuar Carlos' Maracas inflict 'Blind' on creatures they deal damage to."
-			Typhon
-				desc="The Eidolon Typhon is a spirit of scourge. While Typhon is summoned, whenever an enemy creature takes damage from the 'Poison' status effect, that creature takes an additional 10 damage."
-			KingMog
-				name="Good King Moogle Mog"
-				desc="The Eidolon Good King Moogle Mog is the king of all Moogles. When King Mog is first summoned, party members gain the 'Haste' and 'Bravery' status effects. If a party member is a Moogle, that party member gains +12 PDB and +12 MDB as they are inspired by the good king's presence."
-			Djinn
-				desc="The Eidolon Djinn is a bandit from the Eidolon World. While Djinn is summoned, all 'Rogues' in the party gain +5 PDB, and +3 PAB. In addition, all party members gain resistance to Fire damage."
-			Rubicante
-				desc="The Eidolon Rubicante is a wanderer from the Eidolon World. While Rubicante is summoned, party members gain absorption of Fire damage, and all Monks in the party gain +5 PDB and +3 PAB."
-			Belias
-				desc="Belias is a Scion of flame. When Belias takes Fire damage, he absorbs it. In addition, his Melee Weapon attacks deal Fire damage, and inflict 'Burn' on hit."
-			Mateus
-				desc="Mateus is a Scion of frost. When Matesu takes Ice damage, he absorbs it. In addition, his Melee weapon attacks deal Ice damage, and inflict 'Frostbite' on hit."
-			Adramalech
-				desc="Adramalech is a Scion of the skies. When Adramalech takes Thunder damage, he absorbs it. In addition, his Melee attacks deal Thunder damage, and deal 15 additional damage to opponents inflicted with 'Wet'."
-			Hashmal
-				desc="Hashmal is a Scion of the Earth. When Hashmal takes Earth damage, he absorbs it. In addition, his Melee weapon attacks deal Earth damage, and inflict 'Heavy' on hit."
-			Zalera
-				desc="Zalera is a Scion of death and decay. Zalera is immune to the Doom status effect, and absorbs Dark damage. When Zalera incurs a saving throw to apply a status effect, the defending creature takes disadvantage on the save."
-			Shemhazai
-				desc="Shemhazai is a Scion of souls and magical energy. Shemhazai absorbs Force damage, and whenever a magic ability is cast while Shemhazai is summoned, both Shemhazai and its summoner gain 15 MP. If a Ranger is in the party, Shemhazai grants them +3 PAB and +5 PDB."
-			Cuchulainn
-				desc="Cuchulainn is a Scion of poison and scourge. Cuchulainn absorbs Bio damage, and whenever a creature is inflicted with Poison by Cuchulainn, they take 20 additional damage."
-			Zeromus
-				desc="Zeromus is a Scion of space and time. Zeromus is immune to Time Mage abilities, and its claw attack inflicts 'Slow' on hit."
-			Exodus
-				desc="Exodus is a Scion of celestial power. Whenever it hits an enemy creature with the Comet spell, it damages that creature's MP pool for 10 MP, and heals a party member of the summoner's choice for 10 HP."
-			Famfrit
-				desc="Famfrit is a Scion of brine and storm. Whenever it hits an enemy creature with its Ewer, that creature is inflicted with 'Wet' and 'Whorl' simultaneously."
-			Chaos
-				desc="Chaos is a Scion of the wind, and of war. Whenever Chaos casts the 'Tornado' spell, it may also cast the 'Fleche' spell for free."
-
 		Boss
 			Sin
 				icon='Icons/Bossfate.png'
@@ -1006,7 +756,7 @@ obj
 				MakoPoisoning
 					icon='Icons/Perk/MakoPoisoning.png'
 					name="Mako Poisoning"
-					desc="This individual has been exposed to pure, raw Mako through some means - and managed to survive. They gain the following effects: +20 MP, +20 SP. -2 CON, +2 STR, +2 DEX, +20 Permanent MP."
+					desc="This individual has been exposed to pure, raw Mako through some means - and managed to survive. Their body is currently trying to fight the massive dose of mako. They hear voices ocassionally some distant some not so distant. They also see vivid images from time to time as if they were ethereal beings. Once enough time has passed (1 month IRL) their body will either lose the fight against the mako or they will combine with the mako and the status will be replaced with Mako Affected."
 				MakoAffected
 					icon='Icons/Perk/MakoAffected.png'
 					name="Mako Affected"
@@ -1019,7 +769,7 @@ obj
 				Imperfectjenovacells
 					icon='Icons/Perk/ImperfectJenovaCells.png'
 					name="Imperfect Jenova Cells"
-					desc="The user has been injected as a fetus with cells from an otherworldly creature that have drastically affected their growth. The baby is born as a super soldier, and will grow into a warrior that will stand above the others. This individual is also capable of injecting their cells into another slowly turning them into a clone of the user. Those cloned will slowly start to take on the appearance of the original body changing their hair color, body shape, and even sex. Clones are capable of learning abilities that the original body has at half the cost. This individual however did not get a perfected gene of the jenova cells, and their body as well as the body of the clones to degrade over time usually killing the individual before the age of 40. {Ex. Angeal, Genesis} (Requires IC Circumstance or an app, app will be significantly harder.) Boost: +50 Permanent HP, +30 MP, +30 SP. +4 STR, +4 DEX, +2 CON."
+					desc="The user has been injected as a fetus with cells from an otherworldly creature that have drastically affected their growth. The baby is born as a super soldier, and will grow into a warrior that will stand above the others. This individual is also capable of injecting their cells into another slowly killing the injected after 1 month resetting their own deadth flag by 1 month. Injections can only happen to a WILLING player or to a player who has been defeated in a danger 3 scenerio. This individual however did not get a perfected gene of the jenova cells, and their body will  degrade over time usually killing the individual 1 month after their cells activate. Boost: +50 Permanent HP, +30 MP, +30 SP. +4 STR, +4 DEX, +2 CON."
 				CuredJenovaCells
 					icon='Icons/Perk/ImperfectJenovaCells.png'
 					name="Cured Jenova Cells"
@@ -1360,15 +1110,15 @@ obj
 				Pirate
 					name="Pirate"
 					cat="Unique"
-					desc="Pirates are great wariors of the Sea, and are at home when along the tides. When a Pirate is near an active Water AoE tile, or a Water Tile on the map (within 2 tiles) - they gain 5 HP, SP, and MP regeneration per turn. Pirates also gain +1 PAB when wielding either a Scimitar or a Magitek Pistol. Pirates are immune to the 'Wet' and 'Whorl' status effects, and have resistance to Water damage. Mainjob Pirates gain +40 HP, +70 SP, and +70 MP."
+					desc="Pirates are great wariors of the Sea, and are at home when along the tides. Pirates gain +1 PAB when wielding either a Scimitar or a Magitek Pistol. Pirates are immune to the 'Wet' and 'Whorl' status effects, and have resistance to Water damage. Mainjob Pirates gain +40 HP, +70 SP, and +70 MP."
 				WaveWalker
 					name="Wave Walker"
 					rank="T1"
-					desc="This Pirate has gained the ability to walk across the water, by willing the waves to create platforms underneath their feet. They can now walk on water tiles, and can not be knocked prone while atop them."
+					desc="This Pirate has gained the ability to walk across the water, by willing the waves to create platforms underneath their feet."
 				SeaMaster
 					name="Sea Master"
 					rank="T1"
-					desc="This Pirate is a Master of the Sea. When they are fighting within an active Water AoE or an Water tile, and they are within 10 tiles of it, they gain +1 PAB, and MAB."
+					desc="This Pirate is a Master of the Sea. When they are fighting on an active Water AoE or a Water tile, they gain +1 PAB, and MAB."
 				WaveTamer
 					name="Wave Tamer"
 					rank="T1"
@@ -1384,30 +1134,29 @@ obj
 				BlessingofPoseidon
 					name="Blessing of Poseidon"
 					rank="T3"
-					desc="This Pirate is blessed by the sea god, Poseidon. So long as they are within an active Water AoE, or a water tile, they gain +15 PDB and +15 MDB."
+					desc="This Pirate is blessed by the sea god, Poseidon. So long as they are on an active Water AoE, or a water tile, they gain +10 PDB and +10 MDB."
 				SwiftlikeWave
 					name="Swift as a Wave"
 					rank="T3"
-					desc="This Pirate is trained to move with the swiftness of a raging wave. So long as they are within an active Water AoE, or a water tile, they are able to perform an additional standard attack, once per round, as a free action ; at the cost of 15 SP. After using this perk, it goes on cooldown for 1 round."
-			SkyPirate
-				name="Sky Pirate"
+					desc="This Pirate is trained to move with the swiftness of a raging wave. So long as they are on an active Water AoE, or a water tile, they are able to perform an additional standard attack, once per round, as a bonus action ; at the cost of 25 SP. After using this perk, it goes on cooldown for 1 round."
+			SeaCaptain
+				name="Sea Captain"
 				rank="T3"
 				cat="Unique"
-				desc="This Pirate has trained in the ways of the Sky Pirate. They now have the ability to cast their Pirate abilities as Wind tiles, and with Wind damage instead of Water tiles with Water damage. They also gain any Pirate effects from active Wind AoEs and Sky Tiles in addition to Water AoEs and Water Tiles."
+				desc="This pirate has developed the skills to lead a crew of people. When the Sea Captain is fighting with allies they all gain the WaveWalker feat as long as they are withing 3 tiles of him."
 				icon='Icons/Perk/SkyPirate.png'
-			SkyWalker
-				ajob="Sky Pirate"
-				name="Sky Walker"
+			CaptainsCall
+				ajob="Sea Captain"
+				name="Captains Call"
 				rank="T3"
-				desc="This Pirate has gained the ability to walk on air. They are immune to fall damage, and passively have the 'Float' status effect, able to toggle and disable it at will."
+				desc="As a bonus action The Sea captain can spend 20 sp and call out a hoarse battle cry giving all allies a +3 PAB and MAB  to their next attack. This last until the end of the Sea Captains next turn."
 				icon='Icons/Perk/SkyPirate.png'
-			SkyBlade
-				ajob="Sky Pirate"
-				name="Sky Blade"
+			WalkThePlank
+				ajob="Sea Captain"
+				name="Walk the Plank"
 				rank="T4"
-				desc="This Pirate has gained the ability to release blades of wind from their Melee Weapon. When performing a Weapon Ability, or a Standard Attack with a Melee Weapon, they may spend a bonus action in order to release a blade of wind, which automatically hits a target for 30 true damage."
+				desc="The Sea Captain chooses a target that is on a body of water that he resides on. That target must make a Will Save DC 20 if they fail they must begin walking away from the captain. Any creature who fails this roll cannot target the captain until the end of their next turn. The Captain also gains a +5 PAB and MAB when targeting that creature while the effects are active."
 				icon='Icons/Perk/SkyPirate.png'
-
 
 			ChocoboKnight
 				jobneed="Chocobo Knight"
@@ -1496,7 +1245,7 @@ obj
 				CombatIntelligence
 					rank="T1"
 					name="Combat Intelligence"
-					desc="For every unique type of weapon that the Gladiator has attacked with in a single combat scene, the Gladiator gains +1 PAB and MAB, as well as deals 2 additional true damage on attacks (capping at +5 PAB and MAB and 10 additional true damage.) In addition, they gain 1 'Combat Intelligence' stack each time they switch from one weapon type to another."
+					desc="For every unique type of weapon that the Gladiator has attacked with in a single combat scene, the Gladiator gains +1 PAB and MAB, (capping at +5 PAB and MAB.) In addition, they gain 1 'Combat Intelligence' stack each time they switch from one weapon type to another."
 				GladiatorialMight
 					rank="T1"
 					name="Gladiatorial Might"
@@ -1504,11 +1253,11 @@ obj
 				CombatFocused
 					rank="T1"
 					name="Combat Focused"
-					desc="This Gladiator has become entirely focused on combat, and glory. For every turn that passes in combat, the Gladiator gains +1 PDB (capping at +5.) which persists for the duration of combat."
+					desc="This Gladiator has become entirely focused on combat, and glory. For every consecutive turn the Gladiator attacks, the Gladiator gains +1 PDB (capping at +5.) which persists as long as he is attacking."
 				Generalist
 					rank="T2"
 					name="Generalist"
-					desc="This Gladiator has trained to become a Generalist. Gladiators are the most capable users of weaponry and general weapon abilities. If this Gladiator deals damage to a creature using a General Ability, that ability also deals 10 true damage."
+					desc="This Gladiator has trained to become a Generalist. Gladiators are the most capable users of weaponry and general weapon abilities. If this Gladiator deals damage to a creature using a General Ability, The Gladiator gains a combat intelligence stack"
 				CombatGenius
 					name="Combat Genius"
 					rank="T2"
@@ -1516,7 +1265,7 @@ obj
 				WeaponMaster
 					rank="T2"
 					name="Weapon Master"
-					desc="Whenever a Gladiator attacks with a Melee attack, they gain +1 Combat Intelligence stack. In addition, for every Combat Intelligence stack a Gladiator has, they gain +1 PAB (up to 2)."
+					desc="Whenever a Gladiator attacks with a Melee attack, they gain +1 Combat Intelligence stack."
 				CounterAttack
 					rank="T2"
 					name="Counter Attack"
@@ -1532,38 +1281,38 @@ obj
 				Rage
 					rank="T3"
 					name="Rage"
-					desc="This Gladiator is able to convert their stacks to pure fury, entering a Gladiatorial Rage. By consuming Combat 3 Intelligence stacks, their attacks deal 25 additional true damage, and gain +6 PAB. They also gain +5 DR. The user can sustain this by expending combat stacks further past the 3 initial rounds; this cost a Combat Intelligence Stack per turn. During this Rage, they cannot gain any combat Intelligence Stacks."
+					desc="This Gladiator is able to convert their stacks to pure fury, entering a Gladiatorial Rage. By consuming 3 Intelligence stacks, They gain +6 PAB. They also gain +5 DR. The user can sustain this by expending combat stacks further past the 3 initial rounds; this cost a Combat Intelligence Stack per turn. During this Rage, they cannot gain any combat Intelligence Stacks. When in this rage they cannot be healed."
 				Desperation
 					rank="T3"
 					name="Desperation"
-					desc="If a Gladiator with this feature is reduced to below 50% HP, they gain +1 PAB, +2 DR, +1 AC, and have resistance to Physical, Slashing, Piercing, and Bludgeoning damage until they raise back above 50% HP."
+					desc="If a Gladiator with this feature is reduced to below 25% HP, they gain +1 PAB, +2 DR, +1 AC, and have resistance to Physical, Slashing, Piercing, and Bludgeoning damage until they raise back above 25% HP."
 				FullForce
 					rank="T4"
 					name="Full Force"
-					desc="If a creature who is targeted by this Gladiator is above 50% HP, the Gladiator deals 15 additional True Damage to them with any attack that they use."
+					desc="If a creature who is targeted by this Gladiator is above 50% HP, the Gladiator deals 15 additional Damage of the type being delt to them with any attack that they use."
 				CoupDeGrace
 					rank="T4"
 					name="Coup De Grace"
-					desc="This Gladiator is an expert at defeating an opponent who is already on their back legs. When this Gladiator attacks a creature who is at 50% or less HP, the attack's to hit roll, or saving throw DC is increased by 2."
+					desc="This Gladiator is an expert at defeating an opponent who is already on their back legs. When this Gladiator attacks a creature who is at 25% or less HP, the attack's to hit roll, or saving throw DC is increased by 2."
 				Gunbreaker
 					icon='Icons/Perk/Gunbreaker.png'
 					cat="Unique"
 					name="Gunbreaker"
 					rank="T3"
-					desc="This Gladiator has trained in the art of the Gunbreaker. They have learned how to use a Gunblade if they have not already, and in addition - they gain a bonus of +8 PAB while wielding a Gunblade. Also, any attacks made with a Gunblade deal 15 additional true damage."
+					desc="This Gladiator has trained in the art of the Gunbreaker. They have learned how to use a Gunblade if they have not already"
 
 			Gunplay
 				icon='Icons/Perk/Gunbreaker.png'
 				name="Gunplay"
 				ajob="Gunbreaker"
 				rank="T2"
-				desc="This Gunbreaker has trained in the art of Gunplay. So long as they are wielding a Gunblade, they gain the maximum bonuses from all T1, and T2 Gladiator passives, passively and regardless of stacks."
+				desc="This Gunbreaker has trained in the art of Gunplay. So long as they are wielding a Gunblade, they gain Combat Intellegence when they attack with a ranged basic attack."
 			Triggerburst
 				icon='Icons/Perk/Gunbreaker.png'
 				name="Trigger Burst"
 				rank="T2"
 				ajob="Gunbreaker"
-				desc="This Gunbreaker has mastered the art of the Trigger Burst. Whenever utilizing a General Weapon Ability, as a bonus action, they may spend 25 SP in order to release a Trigger Burst, thus allowing them to perform another General Weapon Ability of rank C or lower, without paying its SP cost - and dealing 15 additional true damage.."
+				desc="This Gunbreaker has mastered the art of the Trigger Burst. Whenever utilizing a General Weapon Ability, as a bonus action, they may spend 25 SP in order to release a Trigger Burst, thus allowing them to perform another General Weapon Ability of rank C or lower."
 			LionHeart
 				icon='Icons/Perk/Gunbreaker.png'
 				name="Lion Heart"
@@ -1806,11 +1555,11 @@ obj
 				BornforBusiness
 					rank="T2"
 					name="Born for Business"
-					desc="This individual has a great eye for deals. They are able to buy materials from resource suppliers for half the normal cost."
+					desc="(Needs to be coded in) This individual has a great eye for deals. They are able to buy materials from resource suppliers for half the normal cost."
 				MasterGatherer
 					rank="T2"
 					name="Master Gatherer"
-					desc="This Merchant understands the importance of gathering, and thus have refined their skill. They proc any Gathering node (Ore node, Hunting Spot, Nature Node, Soil Mound) they interact with twice."
+					desc="(Needs Coded In)This Merchant understands the importance of gathering, and thus have refined their skill. They proc any Gathering node (Ore node, Hunting Spot, Nature Node, Soil Mound) they interact with twice."
 				Salesman
 					rank="T2"
 					name="Salesman"
@@ -1818,12 +1567,12 @@ obj
 				MasteroftheLand
 					rank="T3"
 					name="Master of the Land"
-					desc="This Merchant has dedicated themselves to gathering what they need to maintain their business. When they use a Gather Node, that node's respawn cooldown is halved."
+					desc="(Needs to be coded in) This Merchant has dedicated themselves to gathering what they need to maintain their business. When they use a Gather Node, that node's respawn cooldown is halved."
 				Duplicator
 					cat="Unique"
 					rank="T5"
 					name="Duplicator"
-					desc="This Merchant is somehow able to duplicate any item they have seemingly through their connections to the rest of the Merchant world. For 5000 Gil, they can duplicate any crafting material in their inventory - once per day."
+					desc="(needs GM present) This Merchant is somehow able to duplicate any item they have seemingly through their connections to the rest of the Merchant world. For 5000 Gil, they can duplicate any crafting material in their inventory - once per day."
 				MoogleMerchant
 					rank="T5"
 					name="Moogle Merchant"
@@ -3044,7 +2793,7 @@ obj
 				CounterMeteor
 					rank="T3"
 					name="Counter Meteor"
-					desc="This individual has their magic protecting them at all times. Anytime they take a direct hit from a non magical attack, a single medium sized meteor will be summoned from space to strike at where their opponent was when they made the attack, though this slightly drains their mana pool. This deals 15-20 damage + INT. | Autohit, Ignores Damage Reduction. -5 Mana for every proc. This procs once per round, per creature."
+					desc="This individual has their magic protecting them at all times. Anytime they take a direct hit from a non magical attack, a single medium sized meteor will be summoned from space to strike at where their opponent was when they made the attack, though this slightly drains their mana pool. This deals 15-20 damage + INT. | Autohit. -5 Mana for every proc. This procs once per round, per creature."
 					CMeteor
 						ability=1
 						name="Counter Comet"
@@ -3280,7 +3029,7 @@ obj
 					name="Holy Judgement"
 					jobneed="Oracle"
 					rank="T2"
-					desc="An Oracle is guided by the light of justice. As a result, their Holy magic is particularly potent - able to cling to the souls of those it affects. When dealing damage to a creature using Holy damage, that creature gains 1 stack of 'Judgement'. If the creature gains a total of 5 Judgement stacks, an explosion of Holy energy radiates from the creature, dealing an automatic 50 Holy damage to all enemy creatures in a 3x3 area of effect, ignoring damage reduction."
+					desc="An Oracle is guided by the light of justice. As a result, their Holy magic is particularly potent - able to cling to the souls of those it affects. When dealing damage to a creature using Holy damage, that creature gains 1 stack of 'Judgement'. If the creature gains a total of 5 Judgement stacks, an explosion of Holy energy radiates from the creature, dealing an automatic 50 Holy damage to all enemy creatures in a 3x3 area of effect."
 				VanquisherofEvil
 					name="Vanquisher of Evil"
 					jobneed="Oracle"
@@ -7863,7 +7612,7 @@ obj
 					mcost=15
 					atype="weapon"
 					range=" Melee."
-					desc="The Pirate wraps their weapon in a bubble, and then strikes at an opponent, causing it to pop on hit. On hit, knocks the target back 5 tiles. Deals water damage. This creates a 3x3 Water AoE as a puddle at the point of attack, regardless of miss or hit, which persists for 3 rounds. Any enemy creatures within this AoE suffer -5 AC per turn.. Costs 15 SP."
+					desc="The Pirate wraps their weapon in a bubble, and then strikes at an opponent, causing it to pop on hit. On hit, knocks the target back 5 tiles. Deals water damage. This creates a 3x3 Water AoE as a puddle at the point of attack, regardless of miss or hit, which persists for 3 rounds. Any enemy creatures within this AoE suffer -3 AC. Costs 15 SP."
 				BubbleBeam
 					rank="C"
 					name="Bubble Beam"
@@ -7885,7 +7634,7 @@ obj
 					mcost=35
 					atype="weapon"
 					range=" 7 tiles, 3 tile wide. Generates 5x5 persisting AoE."
-					desc="The Pirate releases a swing of their blade, as a 3 tile wide 'crescent' strike, striking any creature that it passes through. This then creates a 5x5 Water AoE at the point of contact, which persists for 3 rounds. Any enemy creatures within this AoE are dealt 20 wind damage at the start of their turns. Costs 35 SP."
+					desc="The Pirate releases a swing of their blade, as a 3 tile wide 'crescent' strike, striking any creature that it passes through. This then creates a 5x5 Water AoE at the point of contact, which persists for 3 rounds. Any enemy creatures within this AoE are dealt 10 wind damage at the start of their turns. Costs 35 SP."
 				LakeBlade
 					rank="C"
 					name="Lake Blade"
@@ -8130,7 +7879,7 @@ obj
 						mcost=30
 						range="7x7 in view."
 
-
+//Del Note- Monster Abilities
 obj
 	perk
 		MonsterAbilities
@@ -8145,6 +7894,161 @@ obj
 				typing="magical"
 				level=3
 				element="General"
+
+				Ruby_Light
+					rank = "D"
+					name = "Ruby Light"
+					mcost = 20
+					range = "4 tile range"
+					desc = "Carbuncle casts Reflect on an individual. Range 4 tiles, costs 20 mp, Reflect's effect- The creature erects a barrier around itself and one ally that is capable of reflecting one attack, melee or magic back at the attacker, then dissipating. Counts as a positive status effect."
+
+				Diamond_Light
+					rank = "D"
+					name = "Diamond Light"
+					mcost = 20
+					range = "4 tile range"
+					desc = "Carbuncle casts Vanish on an individual. Range 4 tiles, costs 20 mp, Vanish's effect - The creature becomes invisible to sight. While invisible all creatures cannot sense the creature using sight giving them advantage to attacks against anyone who cannot sense them. Vanish lasts 3 rounds or until the creature attacks someone."
+
+				Emerald_Light
+					rank = "D"
+					name = "Emerald Light"
+					mcost = 20
+					range = "4 tile range"
+					desc = "Carbuncle casts Haste on an individual. Range 4 tiles, costs 20 mp, Hastes effect - Grants one additional basic attack per turn, as well as bonus of +2 to PAB and MAB, and 1 additional Tile Movement. 2 turn duration. If used on a Slowed individual, simply cancels out Slow."
+
+				Moonstone_Light
+					rank = "D"
+					name = "Moonstone Light"
+					mcost = 20
+					range = "4 tile range"
+					desc = "Carbuncle casts Shell on an individual. Range 4 tiles, costs 20 mp, Shell's effect - Similar to protect a magical shell is placed around the affected sapping the power of magic causing it to deal less damage. + 8 reduction against magical attacks. Lasts for four turns."
+
+				ShrapnelSeed
+					element="Nature"
+					rank="D"
+					name="Shrapnel Seed"
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 8
+					damsource="wis"
+					range=" 7 tile range."
+					mcost= 10
+					desc="The creature fires a hard seed that explodes into shrapnel when it hits. (Damage: 2d8+WIS slashing | 7 Tile range, Magical Attack Roll, inflicts 'Bleed' on hit.  -10 Mana.) (BLU)"
+
+				PhotosyntheticWave
+					name="Photosynthetic Wave"
+					rank="C"
+					heal=1
+					desc="This ability can only be used amidst sunlight. The creature releases photosynthetic waves which upon touching a target creature, heals it for exactly 55 HP. (7 tile range, 30 Mana.) (BLU)"
+					mcost = 30
+
+				Chestnut
+					name = "Chestnut"
+					rank = "C"
+					desc = "Targets 1, Range 6 tiles, Effect- Deals damage equal to the amount of health removed from this monster. Caps at 75 damage Costs 40MP"
+					mcost = 40
+
+				Shriek
+					name = "Shriek"
+					rank = "D"
+					desc = "Targets 1, Range 6 tiles, Effect- DC 14 fortitude save or silenced. Costs 30MP"
+					range = "6 tile range"
+					mcost = 30
+
+				GeezardClaw
+					element="Physical"
+					rank="D"
+					name="Geezard Claw"
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 4
+					atype="weapon"
+					mcost=10
+					range=" melee"
+					damsource="wis"
+					desc=" The creature raises its arm into the air, and generates a blade of Mana from its claws which it slashes down upon a target with. This inflicts Weakness on the target if it hits. (Damage: Weapon Damage + 2d4+WIS Slashing | Weapon Attack Roll, inflicts Weakness on hit, -10 Mana.) (BLU)"
+
+				Goblin_Strike
+					rank = "D"
+					name = "Goblin Strike"
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 4
+					atype="weapon"
+					mcost = 10
+					range = "melee"
+					damsource = "wis"
+					desc = "Targets 1, Range Melee, Effect- Roll Magic Attack on hit deal 2D4+WIS, Then roll a Physical Attack With a bonus +1 to hit, on Hit deal Weapon Damage. Costs 10MP"
+
+				Goblin_Hammer
+					rank = "C"
+					name = "Goblin Hammer"
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 10
+					atype = "weapon"
+					mcost = "0-100"
+					range = "melee"
+					damsource = "str"
+					desc = "Targets 1, Range Melee, Effect- Before rolling stat a number between 0-100 that is the mana cost of this ability for the turn. Make a Physical attack roll, On hit deal 2d10+STR damage to the opponent and drain their MP the same amount as the cost for the spell. Costs Between 0-100MP"
+
+				Crude_Potion
+					rank = "D"
+					name = "Crude Potion"
+					mcost = 10
+					range = "self"
+					desc = "Targets Self, Range Self, Effect. Drink a poorly crafted potion that restores 25HP. Costs 10MP"
+
+				Steal
+					rank = "C"
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 12
+					damsource = "str"
+					atype = "weapon"
+					mcost = 15
+					range = "melee"
+					desc = "Targets 1, Range Melee, Effect Make an attack roll on hit deal 2d12+STR, roll 1d100 then steal that much gold from the opponent. If flanking then steal 100 gold on hit. Costs 15MP"
+
+				PoisonPowder
+					element="Dark"
+					rank="D"
+					name="Poison Powder"
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 2
+					desc="The creature collects a magical powder on its wings. When enough powder has been collected it flaps its wing spreading the powder throughout the area. Even the smallest breath can inflict poison. Prompts a flat Fortitude saving throw (DC 15), inflicting poison on failure. (10 tile range, 3x3 AoE, - 10 Mana.) (BLU)"
+					mcost = 10
+					range = "10 tile range, 3x3 squares on impact."
+
+				Monster_Gaze
+					rank = "D"
+					name = "Monster Gaze"
+					mcost = 15
+					range = "7 tile range"
+					desc = "Targets 1, Range 7 Tiles, Effect- Target makes a Fortitude save. On failure they become paralyzed."
+
+				Sticky_Webs
+					rank = "C"
+					name = "Sticky Webs"
+					mcost = 15
+					range = "6 tile movement 3x3 area on impact"
+					desc = "Targets anyone in a 3x3, Range 6 tiles. Effect- Spits a web on the ground that causes slow for anyone who is inside it. Costs 15MP"
+
+				Spider_Bite
+					rank = "C"
+					mcost = 15
+					range = "melee"
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 6
+					damsource = "str"
+					desc = "This creature bites the opponent for 2d6+str if it hits the opponent makes a fortitude save (DC 15) or becomes poisoned."
+
+
+
+//Old Abilites
+
 				Acid
 					element="Dark"
 					rank="D"
@@ -8165,37 +8069,6 @@ obj
 					range="Melee"
 					mcost="Variable"
 					desc="The creature creates a huge hammer made of Magic, which when slamming into a target, drains them of their MP. This Hammer has a variable Mana cost (maximum of 100) - and on hit, depletes the target creature of Mana equal to the Mana spent to cast this spell. (Damage: 2d10+STR Force damage | Melee attack roll, Mana cost variable.) (BLU)"
-				ShrapnelSeed
-					element="Nature"
-					rank="D"
-					name="Shrapnel Seed"
-					attack_roll_damage_dice = TRUE
-					attack_roll_dice_count = 2
-					attack_roll_dice_sides = 8
-					damsource="wis"
-					range=" 7 tile range."
-					mcost=10
-					desc="The creature fires a hard seed that explodes into shrapnel when it hits. (Damage: 2d8+WIS slashing | 7 Tile range, Magical Attack Roll, inflicts 'Bleed' on hit.  -10 Mana.) (BLU)"
-				GeezardClaw
-					element="Physical"
-					rank="D"
-					name="Geezard Claw"
-					attack_roll_damage_dice = TRUE
-					attack_roll_dice_count = 2
-					attack_roll_dice_sides = 4
-					atype="weapon"
-					mcost=10
-					range=" Melee"
-					damsource="wis"
-					desc=" The creature raises its arm into the air, and generates a blade of Mana from its claws which it slashes down upon a target with. This inflicts Weakness on the target if it hits. (Damage: Weapon Damage + 2d4+WIS Slashing | Weapon Attack Roll, inflicts Weakness on hit, -10 Mana.) (BLU)"
-				PoisonPowder
-					element="Dark"
-					rank="D"
-					name="Poison Powder"
-					attack_roll_damage_dice = TRUE
-					attack_roll_dice_count = 2
-					attack_roll_dice_sides = 2
-					desc="The creature collects a magical powder on its wings. When enough powder has been collected it flaps its wing spreading the powder throughout the area. Even the smallest breath can inflict poison. Prompts a flat Fortitude saving throw (DC 15), inflicting poison on failure. (10 tile range, 3x3 AoE, - 10 Mana.) (BLU)"
 				MonsterFlame
 					element="Fire"
 					rank="D"
@@ -8298,11 +8171,6 @@ obj
 				Reflect
 					rank="C"
 					desc="The creature erects a barrier around itself and one ally that is capable of reflecting one attack, melee or magic back at the attacker, then dissipating. Counts as a positive status effect. (-30 Mana) (BLU)"
-				PhotosyntheticWave
-					name="Photosynthetic Wave"
-					rank="C"
-					heal=1
-					desc="This ability can only be used amidst sunlight. The creature releases photosynthetic waves which upon touching a target creature, heals it for exactly 55 HP. (7 tile range, 30 Mana.) (BLU)"
 				MagicTongue
 					element="Physical"
 					name="Magic Tongue"
@@ -8821,7 +8689,6 @@ obj
 					name="Counter Comet"
 					rank="S"
 					desc="he creature surrounds itself with an aura of energy that causes anything which attacks it to be struck automatically by a homing comet from above. This aura lasts for three turns. Comets are automatic hits, and deal flat damage. (Comet damage: 50 Force damage. -150 Mana. )(BLU)"
-
 			Monster
 				ability=1
 				icon='Icons/Perk/MonsterAbility.png'

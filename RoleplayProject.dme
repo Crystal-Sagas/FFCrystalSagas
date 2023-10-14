@@ -51,8 +51,12 @@
 #include "__compile_options.dm"
 #include "__init.dm"
 #include "__spaceman_dmm.dm"
+<<<<<<< HEAD
 #include "Del's Notes.dm"
 #include "Skin.dmf"
+=======
+#include "SkinDel.dmf"
+>>>>>>> Dels-branch
 #include "NeoWorldofTerra.dmm"
 #include "Sunken_Temple_of_Qarn.dmm"
 #include "__DEFINES\_bitflags.dm"
@@ -102,6 +106,10 @@
 #include "Code\Markers.dm"
 #include "Code\Materia.dm"
 #include "Code\Mobstats.dm"
+<<<<<<< HEAD
+=======
+#include "Code\MonsterPerkdatabase.dm"
+>>>>>>> Dels-branch
 #include "Code\MonsterPerks.dm"
 #include "Code\Movement Delay.dm"
 #include "Code\NPC.dm"
@@ -123,6 +131,7 @@
 #include "Code\Stardewresources.dm"
 #include "Code\Stockcasting.dm"
 #include "Code\Storage.dm"
+#include "Code\SummonPerkDatabase.dm"
 #include "Code\Teaching.dm"
 #include "Code\TechObjects.dm"
 #include "Code\testinghyperlinks.dm"
