@@ -480,7 +480,7 @@ proc
 		if(m.created)
 			return
 		m.created=1
-		var/list/races = list("Human","Guado","Ronso","Namazu","Gnath","Miqo'te","Moogle","Viera","Elezen","Lalafell","Roegadyn","Au Ra","Gria")
+		var/list/races = list("Human","Guado","Cyborg","Ronso","Namazu","Gnath","Miqo'te","Moogle","Viera","Elezen","Lalafell","Roegadyn","Au Ra","Gria")
 		if(Cyborg.Find(m.key))
 			races+="Cyborg"
 		if(Albhed.Find(m.key))
