@@ -8045,6 +8045,115 @@ obj
 					damsource = "str"
 					desc = "This creature bites the opponent for 2d6+str if it hits the opponent makes a fortitude save (DC 15) or becomes poisoned."
 
+				Howl
+					rank = "C"
+					mcost = 30
+					range = "3x3 tile range centered on caster."
+					desc = "Targets anyone in a 3x3 square centered on the caster. Effect- All enemies in the range make a DC 14 Fortitude save or become paralyzed. Cost 30MP."
+
+				ChocoKick
+					rank = "C"
+					mcost = 30
+					range = "melee"
+					desc = "Targets one enemy in melee range, attacking them twice with both talons. Effect- Multi-Attack x2 Physical Attack deals 2d12+Str each attack. Costs 30SP"
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 12
+					damsource = "str"
+
+				Ultra_Waves
+					rank = "C"
+					name = "Ultra Waves"
+					mcost = 30
+					range = "4 tile line."
+					desc = "Targets anyone in a 4-tile Line, dealing 3d12+WIS Damage, and causes a 4-tile Knockback. Costs 30MP."
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 3
+					attack_roll_dice_sides = 12
+					damsource = "wis"
+
+				Paralyzing_Sting
+					rank = "C"
+					name = "Paralyzing Sting"
+					mcost = 30
+					range = "6 tiles."
+					desc = "Targets 1 enemy within 6 tile range, dealing 2d12+WIS damage. On hit, the target makes a Fortitude save with DC 16 or becomes paralyzed. Costs 30MP"
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 12
+					damsource = "wis"
+
+				Gelatinous_Lake
+					rank = "C"
+					name = "Gelatinous Lake"
+					mcost = 30
+					range = "5x5 field that follows the Flan."
+					desc = "Affects anyone within a 5x5 field around the Flan, as long as they aren't Flans themselves. Anyone who is not a Flan will have their tile speed lowered by 2. Costs 30MP, 5MP Sustain."
+
+				Goo_Stream
+					rank = "C"
+					name = "Goo Stream"
+					mcost = 30
+					range = "6 tile range."
+					desc = "Targets 1 creature within a 6 tile range, dealing 2d8+WIS damage. On hit, also reduces target's AC by 2 for 3 rounds. Costs 30MP."
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 8
+					damsource = "wis"
+
+				Blinder_Beak
+					rank = "C"
+					name = "Blinder Beak"
+					mcost = 0
+					range = "Melee"
+					desc = "Targets 1 creature in melee range, dealing 2d8+STR damage to them. The target then makes a Fortitude save of DC14 or gains the Blind Status."
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 8
+					damsource = "str"
+
+				Charge
+					rank = "C"
+					mcost = 30
+					range = "Special - Until it hits a wall or expended 2x movement speed."
+					desc = "The creature charges in a straight line until it hits a wall or moves 2x its movement speed. Anything hit by the charge takes 3d10+STR Damage and is knocked back 3 tiles. They also make a DC18 Reflex Save or fall prone. If the creature hits a wall, the Rock Fall Lair Effect activates. Cost 30SP."
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 3
+					attack_roll_dice_sides = 10
+					damsource = "str"
+
+				Horn_Skewer
+					rank = "C"
+					name = "Horn Skewer"
+					mcost = 20
+					range = "Melee"
+					desc = "The monster attacks with its massive horns, dealing 2d12+STR Damage on hit and causing bleed. Costs 20SP."
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 12
+					damsource = "str"
+
+				Build_Up_Steam
+					rank = "C"
+					name = "Build-up Steam"
+					mcost = 20
+					range = "Self"
+					desc = "The monster stomps around in anger, increasing its PDB by 5 until the end of battle. (Max 15) Costs 20SP."
+
+				GiganToad_Tongue_Restrict
+					rank = "B"
+					name = "Tongue Restrict"
+					mcost = 0
+					range = "6 tile range."
+					desc = "When attacking, the opponent makes a Fortitude Save of DC18. If they fail, they become paralyzed and considered grabbed by the toad."
+
+				GiganToad_Consume
+					rank = "B"
+					name = "Consume"
+					mcost = 0
+					range = "Special - See Description."
+					desc = "If an opponent is grabbed by this creature, tongue or otherwise, they can either drag the creature 2 squares for every 2 points of strength they have over the opponent (Minimum 2 squares). If they end or start their turn in a square next to the toad, they will be consumed by the toad, taking 4d12 Acid damage each turn until the toad is killed and they are rescued. While inside the toad, any attack the victim makes comes at the cost of 2d12 Acid damage. The victim can make a fortitude check DC12 to climb out of the Toad once it has been slain."
+
 
 
 //Old Abilites
