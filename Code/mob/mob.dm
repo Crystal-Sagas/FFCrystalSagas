@@ -28,6 +28,12 @@
 	//  todo: impl
 	var/tmp/datum/battle/active_battle
 
+	//? Save / Load
+	/// did we get loaded? if not, do not allow saving to prevent wipes
+	var/tmp/load_complete = FALSE
+	/// mutex to prevent save/loads from hitting each other
+	var/tmp/load_mutex = FALSE
+
 /mob/New(loc)
 	// generate tag
 	generate_tag()

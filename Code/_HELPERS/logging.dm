@@ -10,6 +10,9 @@
 /proc/log_error(msg)
 	world.log << "\[[timestamp()]\] [msg]"
 
+/proc/log_world(msg)
+	world.log << "\[[timestamp()]\] [msg]"
+
 /// key-message list of warnings
 GLOBAL_LIST_EMPTY(logged_warnings)
 

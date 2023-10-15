@@ -142,12 +142,20 @@ obj
 mob
 	proc
 		Play()
+			if(load_mutex)
+				return
+			if(load_complete)
+				return
 			var/list/choices=list("Yes","No")
 			var/choose=input(usr,"Are you sure you wish to make a new character?") as anything in choices
 			switch(choose)
 				if("Yes")
 				if("No")
 					return
+			if(load_complete)
+				return
+			if(load_mutex)
+				return
 			client.images -= __lobby_image
 			src.loc = locate(219,229,2)
 			src.density=1
@@ -192,139 +200,146 @@ mob
 			for(var/obj/item/b in materiallist)
 				var/obj/item/a=copyatom(b)
 				usr.contents+=a
+			load_complete = TRUE
 		Load()
-			client.images -= __lobby_image
-			if(fexists("Save/[src.ckey]"))
-				src<<sound(null)
-				sleep()
-				src<< 'Audio/Cursor Ready.ogg'
-				var/savefile/F = new("data/Save/[src.ckey]")
-				Read(F)
-				F["x"]>>src.x
-				F["y"]>>src.y
-				F["z"]>>src.z
-				src.loc = locate(src.x,src.y,src.z)
-				src.density=1
-				addLightPlane()
-				setLightOverlay(outside_light)
-				src.client.eye = src
-				src.client.perspective = EYE_PERSPECTIVE
-				src.intitlescreen=0
-				for(var/obj/Eye/e in world)
-					if(e.owner==usr.ckey)
-						del(e)
-				if(usr.adminlv >0)
-					winset(src,"default.Adminbut","is-visible=true")
-					winset(usr,"default.Nar","is-visible=true")
-					usr.verbs+=typesof(/mob/Admin/verb/)
-				if(usr.eventmin)
-					usr.verbs+=typesof(/mob/eventmin/verb/)
-				for(var/obj/o in usr.client.screen)
-					del(o)
-				for(var/image/i in usr.client.screen)
-					del(i)
-				src.aoetiles=0
-				src.aoeclick=0
-				src.building=0
-				for(var/obj/Builds/b in usr.contents)
-					del(b)
-				usr.bposition=null
-				usr.battler=0
-				for(var/obj/cooldownchecker/chk in world)
-					if(usr.totalpasses<chk.totalpasses)
-						usr.stockdrawn=0
-						usr.Lifestreamraincooldown=0
-						usr.FATEcooldown=0
-						usr.dailyfates=0
-						usr.limitbreakused=0
-						usr.tempeventmin=0
-						usr.totalpasses=chk.totalpasses
-						usr.minednodes=0
-						for(var/obj/item/Mooglebox/a in usr.contents)
-							a.cooldown=0
-						//alert(usr,"You were logged out during a cooldown reset, so your cooldowns are now reset.")
-				if(usr.eventmin || usr.tempeventmin)
-					winset(usr,"default.Eventmin","is-visible=true")
-				if(usr.rankchecked==0)
-					if(usr.rank=="Fledgling")
-						usr.rankchecked=1
-					else
-						if(usr.rank=="Rookie")
-							usr.rankchecked=1
-							usr.mhp+=40
-							usr.hp+=40
-							usr.msp+=40
-							usr.sp+=40
-							usr.mmp+=40
-							usr.mp+=40
-							usr.APcap=14
-						if(usr.rank=="Adept")
-							usr.mhp+=70
-							usr.hp+=70
-							usr.msp+=70
-							usr.sp+=70
-							usr.mmp+=70
-							usr.mp+=70
-							usr.APcap=18
-						if(usr.rank=="Veteran")
-							usr.mhp+=100
-							usr.hp+=100
-							usr.msp+=100
-							usr.sp+=100
-							usr.mmp+=100
-							usr.mp+=100
-							usr.APcap=22
-							usr.strcap=22
-							usr.dexcap=22
-							usr.concap=22
-							usr.intcap=22
-							usr.wiscap=22
-							usr.chacap=22
-						if(usr.rank=="Hero")
-							usr.mhp+=135
-							usr.hp+=135
-							usr.msp+=135
-							usr.sp+=135
-							usr.mmp+=135
-							usr.mp+=135
-							usr.APcap=26
-							usr.strcap=24
-							usr.dexcap=24
-							usr.concap=24
-							usr.intcap=24
-							usr.wiscap=24
-							usr.chacap=24
-						if(usr.rank=="Master")
-							usr.mhp+=180
-							usr.hp+=180
-							usr.msp+=180
-							usr.sp+=180
-							usr.mmp+=180
-							usr.mp+=180
-							usr.APcap=30
-							usr.strcap=26
-							usr.dexcap=26
-							usr.concap=26
-							usr.intcap=26
-							usr.wiscap=26
-							usr.chacap=26
-						usr.rankchecked=1
-						alert(usr,"You have been granted your HP, MP, and SP bonus for your current rank.")
-				if(usr.patron)
-					if(!usr.firsttimerewards)
-						var/obj/item/Mooglebox/MoogleShopBox/a=new
-						var/obj/item/Mooglebox/MoogleGathererBox/b=new
-						usr.contents+=a
-						usr.contents+=b
-						usr.firsttimerewards=1
-					usr.Checkmonth()
-				RefreshCharsheet(usr)
-				Refreshinventoryscreen(usr)
-				RefreshAll(usr)
-				UpdateArea(usr)
-			else
+			if(!fexists("Save/[src.ckey]"))
 				alert("You do not have a save file.")
 				return
+			if(load_complete)
+				return
+			if(load_mutex)
+				return
+			load_mutex = TRUE
+			client.images -= __lobby_image
+			src<<sound(null)
+			sleep()
+			src<< 'Audio/Cursor Ready.ogg'
+			var/savefile/F = new("data/Save/[src.ckey]")
+			Read(F)
+			F["x"]>>src.x
+			F["y"]>>src.y
+			F["z"]>>src.z
+			src.loc = locate(src.x,src.y,src.z)
+			src.density=1
+			addLightPlane()
+			setLightOverlay(outside_light)
+			src.client.eye = src
+			src.client.perspective = EYE_PERSPECTIVE
+			src.intitlescreen=0
+			for(var/obj/Eye/e in world)
+				if(e.owner==usr.ckey)
+					del(e)
+			if(usr.adminlv >0)
+				winset(src,"default.Adminbut","is-visible=true")
+				winset(usr,"default.Nar","is-visible=true")
+				usr.verbs+=typesof(/mob/Admin/verb/)
+			if(usr.eventmin)
+				usr.verbs+=typesof(/mob/eventmin/verb/)
+			for(var/obj/o in usr.client.screen)
+				del(o)
+			for(var/image/i in usr.client.screen)
+				del(i)
+			src.aoetiles=0
+			src.aoeclick=0
+			src.building=0
+			for(var/obj/Builds/b in usr.contents)
+				del(b)
+			usr.bposition=null
+			usr.battler=0
+			for(var/obj/cooldownchecker/chk in world)
+				if(usr.totalpasses<chk.totalpasses)
+					usr.stockdrawn=0
+					usr.Lifestreamraincooldown=0
+					usr.FATEcooldown=0
+					usr.dailyfates=0
+					usr.limitbreakused=0
+					usr.tempeventmin=0
+					usr.totalpasses=chk.totalpasses
+					usr.minednodes=0
+					for(var/obj/item/Mooglebox/a in usr.contents)
+						a.cooldown=0
+					//alert(usr,"You were logged out during a cooldown reset, so your cooldowns are now reset.")
+			if(usr.eventmin || usr.tempeventmin)
+				winset(usr,"default.Eventmin","is-visible=true")
+			if(usr.rankchecked==0)
+				if(usr.rank=="Fledgling")
+					usr.rankchecked=1
+				else
+					if(usr.rank=="Rookie")
+						usr.rankchecked=1
+						usr.mhp+=40
+						usr.hp+=40
+						usr.msp+=40
+						usr.sp+=40
+						usr.mmp+=40
+						usr.mp+=40
+						usr.APcap=14
+					if(usr.rank=="Adept")
+						usr.mhp+=70
+						usr.hp+=70
+						usr.msp+=70
+						usr.sp+=70
+						usr.mmp+=70
+						usr.mp+=70
+						usr.APcap=18
+					if(usr.rank=="Veteran")
+						usr.mhp+=100
+						usr.hp+=100
+						usr.msp+=100
+						usr.sp+=100
+						usr.mmp+=100
+						usr.mp+=100
+						usr.APcap=22
+						usr.strcap=22
+						usr.dexcap=22
+						usr.concap=22
+						usr.intcap=22
+						usr.wiscap=22
+						usr.chacap=22
+					if(usr.rank=="Hero")
+						usr.mhp+=135
+						usr.hp+=135
+						usr.msp+=135
+						usr.sp+=135
+						usr.mmp+=135
+						usr.mp+=135
+						usr.APcap=26
+						usr.strcap=24
+						usr.dexcap=24
+						usr.concap=24
+						usr.intcap=24
+						usr.wiscap=24
+						usr.chacap=24
+					if(usr.rank=="Master")
+						usr.mhp+=180
+						usr.hp+=180
+						usr.msp+=180
+						usr.sp+=180
+						usr.mmp+=180
+						usr.mp+=180
+						usr.APcap=30
+						usr.strcap=26
+						usr.dexcap=26
+						usr.concap=26
+						usr.intcap=26
+						usr.wiscap=26
+						usr.chacap=26
+					usr.rankchecked=1
+					alert(usr,"You have been granted your HP, MP, and SP bonus for your current rank.")
+			if(usr.patron)
+				if(!usr.firsttimerewards)
+					var/obj/item/Mooglebox/MoogleShopBox/a=new
+					var/obj/item/Mooglebox/MoogleGathererBox/b=new
+					usr.contents+=a
+					usr.contents+=b
+					usr.firsttimerewards=1
+				usr.Checkmonth()
+			RefreshCharsheet(usr)
+			Refreshinventoryscreen(usr)
+			RefreshAll(usr)
+			UpdateArea(usr)
+			load_complete = TRUE
+			load_mutex = FALSE
 		Save()
 			//? DO NOT REMOVE THIS CHECK UNDER ANY CIRCUMSTANCES.
 			//  Explanation:
@@ -335,16 +350,24 @@ mob
 			if(intitlescreen)
 				return
 			//? END
+			if(!load_complete)
+				return
+			if(load_mutex)
+				return
+			load_mutex = TRUE
 			if(key)
 				if(!src.loc)
+					load_mutex = FALSE
 					return
 				if(src.loc==locate(37,239,28))
+					load_mutex = FALSE
 					return
 				var/savefile/F = new("data/Save/[src.ckey]")
 				F["x"]<<src.x
 				F["y"]<<src.y
 				F["z"]<<src.z
 				Write(F)
+			load_mutex = FALSE
 		AutoSave()
 			Save()
 			spawn(6000)

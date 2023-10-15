@@ -8,9 +8,22 @@
 	hub="LazyBunnyStudios.TheCrystalSagas"
 	hub_password = "12453j!A@olmi!"
 
+var/global/world_log_path
+var/global/world_log_directory
+var/global/action_log_path
+var/global/action_log_file
+
 /world/New()
 	//? Init TGS
 	TgsNew()
+
+	// shunt logs if TGS is available
+	global.world_log_directory = "data/logs/[time2text(world.realtime, "YYYY")]/[time2text(world.realtime, "MM")]/[time2text(world.realtime, "DD")]/server-[time2text(world.realtime, "hh-mm-ss")]"
+	global.world_log_path = "[global.world_log_directory]/dd.log"
+	if(TgsAvailable())
+		world.log = global.world_log_path
+	global.action_log_path = "[global.world_log_directory]/game.log"
+	global.action_log_file = file(global.action_log_path)
 
 	Addcustoms()
 	Addbuildables()
