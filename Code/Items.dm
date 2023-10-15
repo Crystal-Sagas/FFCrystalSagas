@@ -195,12 +195,15 @@ obj
 				switch(alert(usr,"[src.desc] Cost:[src.shopprice]",,"Buy","Cancel"))
 					if("Buy")
 						if(src.amount>=1)
-							var/amocho=input("How many?") as num
+							var/amocho=input("How many?") as num|null
+							if(isnull(amocho))
+								return
 							if(amocho<0)
 								alert(usr,"You need a positive number here.")
 							var/adjprice=(amocho*src.shopprice)
 							if(usr.money>=adjprice)
 								usr.money-=adjprice
+								log_action("[key_name(usr)] [audit_coord(usr)] bought [amocho] of [src] for [adjprice] from a NPC vendor")
 								for(var/obj/item/stock/Stockgem/i in usr.contents)
 									if(i.name==src.name)
 										i.stock+=amocho
@@ -225,6 +228,7 @@ obj
 								var/obj/item/i=copyatom(src)
 								i.instore=0
 								usr.contents+=i
+								log_action("[key_name(usr)] [audit_coord(usr)] bought [src] for [shopprice] from a NPC vendor")
 								usr<<output("You purchased [src.name]","oocout")
 
 							else

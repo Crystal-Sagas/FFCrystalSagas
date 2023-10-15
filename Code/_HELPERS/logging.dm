@@ -47,6 +47,12 @@ GLOBAL_LIST_EMPTY(logged_warnings)
 /proc/key_name(mob/M)
 	return "([M.ckey]/[M.name])"
 
+/proc/audit_coord(atom/M)
+	M = get_turf(M)
+	if(isnull(M))
+		return "(nullspace?)"
+	return "([M.x], [M.y], [M.z])"
+
 /proc/log_action(msg)
 	if(isnull(global.action_log_file))
 		return
