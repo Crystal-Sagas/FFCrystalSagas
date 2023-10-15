@@ -10,7 +10,6 @@ GLOBAL_DATUM_INIT(ticker, /datum/ticker, new)
 
 /datum/ticker/New()
 	make_systems()
-	async_call(src, /datum/ticker/proc/Construct, 5 SECONDS)
 
 /datum/ticker/proc/make_systems()
 	systems = list()
