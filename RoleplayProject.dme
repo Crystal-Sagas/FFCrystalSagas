@@ -51,8 +51,6 @@
 #include "__compile_options.dm"
 #include "__init.dm"
 #include "__spaceman_dmm.dm"
-#include "Del's Notes.dm"
-#include "Skin.dmf"
 #include "SkinDel.dmf"
 #include "NeoWorldofTerra.dmm"
 #include "Sunken_Temple_of_Qarn.dmm"

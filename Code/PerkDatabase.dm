@@ -8154,6 +8154,61 @@ obj
 					range = "Special - See Description."
 					desc = "If an opponent is grabbed by this creature, tongue or otherwise, they can either drag the creature 2 squares for every 2 points of strength they have over the opponent (Minimum 2 squares). If they end or start their turn in a square next to the toad, they will be consumed by the toad, taking 4d12 Acid damage each turn until the toad is killed and they are rescued. While inside the toad, any attack the victim makes comes at the cost of 2d12 Acid damage. The victim can make a fortitude check DC12 to climb out of the Toad once it has been slain."
 
+				Whispering_Wind
+					rank = "D"
+					name = "Whispering Wind"
+					mcost = 30
+					range = "5x5 area centered on caster."
+					desc = "Non-Elemental Magic damage that surrounds the caster and hits enemies within a 5x5 area centered on the caster. The damage is 2d4+Int. After the attack subsides, a gentle wind blows, casting cure on all allies within a 5x5 area, centered on the caster."
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 4
+					damsource = "int"
+
+				Hellfire
+					rank = "C"
+					mcost = 50
+					range = "7 squares."
+					desc = "Ifrit can amass a large amount of fire to unleash on a single target. When casting this spell, it takes 1 turn to charge up unless Ifrit has been hit by fire-based attacks, or he's standing in fire. The attack deals 4d12+WIS damage. Costs 50MP."
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 4
+					attack_roll_dice_sides = 12
+					damsource = "wis"
+
+				Diamond_Dust
+					rank = "C"
+					name = "Diamond Dust"
+					mcost = 50
+					range = "7x7 area centered on caster."
+					desc = "Shiva can expel the ice storm around her to hit everyone in a 7x7 radius focused on herself. Everyone in that radius must make a Fortitude save or take 3d8+WIS damage and be slowed. Half Damage on a save and no slow. If the targets are wet they become paralyzed as well. Costs 50MP. Lasts 3 turns."
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 3
+					attack_roll_dice_sides = 8
+					damsource = "wis"
+
+				Judgement_Bolt
+					rank = "C"
+					name = "Judgement Bolt"
+					mcost = 50
+					range = "5x5 area from within 6 squares of user."
+					desc = "Ramuh summons a thunder storm that encompasses a 5x5 area of his choice - within 6 squares of himself. Each creature starting their turn in that storm takes 3 bolts of Lightning on a failed reflex save for each. Each bolt does 2d6+WIS Damage. Costs 50MP. Lasts 3 turns."
+
+				Glare
+					rank = "C"
+					mcost = 30
+					range = "6 tiles, in line of sight."
+					desc = "As long as there's a line of sight, and both sides are looking at each other, even if just a glimpse, the target has to succeed a Will Save of DC16 or be paralyzed."
+
+				Stone_Throw
+					rank = "C"
+					name = "Stone Throw"
+					mcost = 20
+					range = "8 tile range."
+					desc = "This creature can throw a rock or boulder at an enemy with great accuracy, dealing 2d10+STR damage and a 10ft knockback on impact."
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 10
+					damsource = "str"
 
 
 //Old Abilites

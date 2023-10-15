@@ -15,6 +15,8 @@ obj
 				desc = "This creature takes 1.5x damage from all Dark sources."
 			Weakness_Water
 				desc = "This creature takes 1.5x damage from all Water sources."
+			Weakness_Wind
+				desc = "This creature takes 1.5x damage from all Wind sources."
 
 //Resistance
 			Resistance_Black_Magic
@@ -37,6 +39,8 @@ obj
 				desc = "This creature takes 0.5 damage from all Lightning sources."
 			Resistance_Physical
 				desc = "This creature takes 0.5 damage from all Physical attacks."
+			Resistance_Bludgeoning
+				desc = "This creature takes 0.5 damage from all Bludgeoning attacks."
 			Resistance_Magical_NonLightning
 				desc = "This creature takes 0.5 damage from all Magical attacks, except Lightning."
 
@@ -45,6 +49,12 @@ obj
 				desc = "This creature is immune to all Poison sources and effects."
 			Immune_Physical
 				desc = "This creature is immune to all Physical Attack sources."
+			Immune_Fire
+				desc = "This creature takes no damage from Fire-based effects/attacks."
+			Immune_Ice
+				desc = "This creature takes no damage from Ice-based effects/attacks."
+			Immune_Lightning
+				desc = "This creature takes no damage from Lightning-based effects/attacks."
 			Immune_Slow
 				desc = "This creature is immune to all Slowing effects."
 			Immune_Mind
@@ -75,7 +85,22 @@ obj
 				desc = "Anytime this creature takes 15 damage or more, it gains 5PDB (Max 30.)"
 			Float
 				desc = "This creature floats passively above the ground."
-
+			Fire_Healing
+				desc = "When damaged by fire, recover 1/4th the damage as health."
+			Fire_Skin
+				desc = "When someone ends their turn in melee-range of Ifrit, they take 1d8 Fire damage."
+			Ice_Healing
+				desc = "When damaged by Ice, recover 1/4th the damage as health."
+			Cold_Shoulder
+				desc = "Creates an Ice Storm terrain effect in a 3x3 field around Shiva. Anyone standing or starting their turn inside the storm must make a Fortitude save DC18 or be slowed, as well as taking 1d8 Ice Damage at the start of their turn."
+			Thunder_Healing
+				desc = "When damaged by Lightning, recover 1/4th of the damage as health."
+			Spark_of_Anger
+				desc = "Roll a d6 for every enemy on the field and anyone nearby with the Wet condition. Even - They take no damage. Odds - They are struck with a bolt of Lightning that deals 1d8 Lightning Damage."
+			Skybound_Pro
+				desc = "This creature's punches add 15ft of Knock-up."
+			Windup
+				desc = "If this creature takes a turn to windup, double knock-up ranges."
 
 
 
@@ -88,6 +113,8 @@ obj
 				desc = "+2 Movement Speed"
 			Magic_Adept
 				desc = "+2 to hit and DC for all spells cast by this creature."
+			Fire_Adept
+				desc = "+2 to hit and DC with Fire spells."
 
 //Movement
 			Fly_1
@@ -98,6 +125,7 @@ obj
 				desc = "This creature may climb up to half its movement on walls and ceilings as a move action"
 			Swimmer_1
 				desc = "This creature can swim up to half their movement in water without penalties."
+
 
 //Enhancements
 			Enhanced_Smell
@@ -112,6 +140,12 @@ obj
 				desc = "This creature gains +5DR vs Magic."
 			Expert_Focus
 				desc = "This creature gains Fortitude +4"
+			Reach_10ft
+				desc = "This creature has a melee range of 2 squares, instead of 1."
+			Wizen_Sage
+				desc = "This creature gains +2 WIS."
+			Thick_Skin
+				desc = "This creature has +5DR."
 
 //Lair Effects
 			Lair_Effect_Unsteady_Footing
@@ -123,6 +157,7 @@ obj
 
 //  D RANK MONSTERS
 
+//  D RANK SUMMONS BEGINS
 
 //CARBUNCLE
 		CarbunclePerk
@@ -130,6 +165,25 @@ obj
 				desc = "If itself or an ally within range of its light spell would be defeated from an attack this creature can expend 30mp and cast any light spell on the target this turn. Damage will be recalculated as needed."
 			Bonus_Action_Extended_Casting
 				desc = "If Carbuncle has cast any of its light spells it can extend another 10mp to add Protect to the target."
+
+//SYLPH
+		SylphPerk
+			Bonus_Action_Lullaby
+				desc = "When anyone gets within 3 tiles of this creature, they must make a DC14 Will Save or gain the sleep condition."
+			Reaction_Soften_The_Blow_Minor
+				desc = "When Sylph is attacked from a distance, this creature can respond by attacking the attack itself with a D Rank spell. If the attack is not strong vs the defender's attack, lessen the damage this creature takes by the damage dealt to said attack."
+
+//BOKO
+		BokoPerk
+			Reaction_BokoSentinel
+				desc = "When an opponent moves past this Summon, it may make 2 Attack of Opportunities."
+			Bonus_Action_BokoSwift
+				desc = "This Summon may take an extra move action this turn as a bonus action."
+
+
+
+
+//  D RANK SUMMONS END
 
 
 //MANDRAGORA
@@ -223,6 +277,33 @@ obj
 				desc = "If adjacent to another Sin Scale, this creature can take a 5ft step in any direction without provoking attack of opportunity."
 
 
+//C RANK SUMMONS BEGINS
+
+
+//IFRIT
+		IfritPerk
+			Reaction_Fire_Power
+				desc = "When Ifrit is in Fire, or has been recently hit by fire-based attacks/effects, he gains 1d8 fire damage to his next attack."
+			Bonus_Action_Fire_Poke
+				desc = "As a Bonus Action, Ifrit can cast the Fire spell."
+
+//SHIVA
+		ShivaPerk
+			Reaction_Icy_Stare
+				desc = "When Shiva is attacked, she can cast Glare on the opponent who hurt her."
+			Bonus_Action_Blizzard_Kiss
+				desc = "Shiva can cast blizzard as a Bonus Action."
+
+//RAMUH
+		RamuhPerk
+			Reaction_Eyes_In_The_Back_Of_My_Head
+				desc = "When someone gets behind Ramuh, he can cast Thunder against them."
+			Bonus_Action_Thunder_Party
+				desc = "Ramuh can cast Thunder as a bonus action."
+
+//C RANK SUMMONS END
+
+
 //B RANK MONSTERS
 
 
@@ -240,3 +321,14 @@ obj
 				desc = "This creature can make a basic ranged attack as a bonus action."
 			Reaction_PoisonHide
 				desc = "When this creature is attacked by a physical melee attack, the attacker makes a DC18 Fortitude Save or becomes poisoned."
+
+
+//B RANK SUMMONS BEGIN
+
+
+//TITAN
+		TitanPerk
+			Bonus_Action_Muscle_Bulge
+				desc = "Titan increases his PDB by 10, but lowers his DR by 5 until the start of his next turn."
+			Reaction_Fly_Swat
+				desc = "When Titan is attacked, he can react by smacking the creature that attacked it if it is within Melee range with a simple punch."
