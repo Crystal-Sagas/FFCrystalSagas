@@ -12,7 +12,7 @@ var/list/naughtywords = list("sex","penis","pussy","cock","ass","dick","breast",
 	if(length(Info)>=8000)
 		Info="This entry was too long to be apended to the chat log."
 	if(src.client)
-		var/outputFile = file("ChatLogs/[src.ckey]/[time2text(world.realtime,"DD-MM-YY")].html")
+		var/outputFile = file("data/ChatLogs/[src.ckey]/[time2text(world.realtime,"DD-MM-YY")].html")
 		if(fexists(outputFile))
 			outputFile << "<font color = black>[time2text(world.realtime,"hh:mm")]</font> [Info]"
 		else
@@ -21,7 +21,7 @@ var/list/naughtywords = list("sex","penis","pussy","cock","ass","dick","breast",
 /mob/proc/Adminlog(var/Info)
 	set background = 1
 	if(src.client)
-		var/outputFile = file("ChatLogs/Adminlogs.html")
+		var/outputFile = file("data/ChatLogs/Adminlogs.html")
 		if(fexists(outputFile))
 			outputFile << "<font color = black>[time2text(world.realtime,"DD-MM-YY hh:mm")]</font> <font color = blue> [Info]</font>"
 		else
@@ -32,7 +32,7 @@ var/list/naughtywords = list("sex","penis","pussy","cock","ass","dick","breast",
 	if(length(Info)>=8000)
 		Info="This entry was too long to be apended to the chat log."
 	if(src.client)
-		var/outputFile = file("AuditLogs/[src.ckey]/[time2text(world.realtime,"DD-MM-YY")].html")
+		var/outputFile = file("data/AuditLogs/[src.ckey]/[time2text(world.realtime,"DD-MM-YY")].html")
 		if(fexists(outputFile))
 			outputFile << "<font color = black>[time2text(world.realtime,"hh:mm")]</font> [Info]"
 		else
@@ -53,6 +53,7 @@ var/list/naughtywords = list("sex","penis","pussy","cock","ass","dick","breast",
 		else
 			preface="says"
 		var/text = "<font color=[src.textcolor]><font size = 1><b>[src.name] [preface]:</b> <font color=white>[t]</font>"
+		log_say(src, t)
 		view() << output("[text]","icout")
 		ChatLog(text)
 		if(usr.tempeventmin)
@@ -64,7 +65,7 @@ var/list/naughtywords = list("sex","penis","pussy","cock","ass","dick","breast",
 			usr.emoteamount+=round(c*0.5)
 		usr.overlays+='Exclamation.dmi'
 		spawn(40)
-		usr.overlays-='Exclamation.dmi'
+			usr.overlays-='Exclamation.dmi'
 		Checkreward(usr)
 
 /mob/verb/Say(t as text)
@@ -75,6 +76,7 @@ var/list/naughtywords = list("sex","penis","pussy","cock","ass","dick","breast",
 	if(findtext(t,"!"))
 		preface = "shouts"
 	var/text = "<font color=[usr.textcolor]><font size = 1><b>[usr.name] [preface]:</b> <font color=white>[t]</font>"
+	log_say(src, t)
 	viewers() << output("[text]","icout")
 	ChatLog(text)
 	if(usr.tempeventmin)
@@ -103,6 +105,7 @@ var/list/naughtywords = list("sex","penis","pussy","cock","ass","dick","breast",
 				//client.HttpPost("https://discordapp.com/api/webhooks/790720751123824670/Bpgk49jrKVq3Zcav6IBlccwtUerlhNMc0TI1XaahGaOLZfnkqOwxTDF_PBMOQpMvM0Qr",list(content="( ͡° ͜ʖ ͡°)"))
 		var/text = "<font color=[src.textcolor]><font size = 0.5>[src.name] [m]</font><br>"
 		ChatLog(text)
+		log_emote(src, t)
 		view()<< output("<font color=[src.textcolor]><font size = 0.5>[src.name] [m]","icout")
 		charamount = length(m)
 		usr.emoteamount+=charamount
@@ -117,6 +120,7 @@ var/list/naughtywords = list("sex","penis","pussy","cock","ass","dick","breast",
 		usr << "<B><font color=#C0FFC0>You have been muted!"
 		return
 	else
+		log_ooc(src, t)
 		view() << output("<font color=[src.textcolor]><font size = 1><b>[src.name] says:</b><font color=white> ([t])</font>","looc")
 
 /mob/verb/Localooc()

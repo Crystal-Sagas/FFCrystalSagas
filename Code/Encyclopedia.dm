@@ -55,14 +55,14 @@ mob/verb
 				c="Requests and Quests"
 			if("Looking for Party")
 				c="Looking for Party"
-		text2file("[i][m]","Encyclopedia/[c]/[n].txt")
+		text2file("[i][m]","data/Encyclopedia/[c]/[n].txt")
 	ShowRulesCat()
 		var/row
 		var/d
 		winset(usr,"Encyclopedia.Contents","cells=1x1")
 		for(var/r in flist("Encyclopedia/Rules/"))
 			row++
-			d = file("Encyclopedia/Rules/[r]")
+			d = file("data/Encyclopedia/Rules/[r]")
 			var/obj/ency/rules/p = new /obj/ency/rules
 			p.name = r
 			p.entrytext = file2text(d)
@@ -74,7 +74,7 @@ mob/verb
 		winset(usr,"Encyclopedia.Contents","cells=1x1")
 		for(var/r in flist("Encyclopedia/Factions/"))
 			row++
-			d = file("Encyclopedia/Factions/[r]")
+			d = file("data/Encyclopedia/Factions/[r]")
 			var/obj/ency/rules/p = new /obj/ency/rules
 			p.name = r
 			p.entrytext = file2text(d)
@@ -86,7 +86,7 @@ mob/verb
 		winset(usr,"Encyclopedia.Contents","cells=1x1")
 		for(var/r in flist("Encyclopedia/Jobs/"))
 			row++
-			d = file("Encyclopedia/Jobs/[r]")
+			d = file("data/Encyclopedia/Jobs/[r]")
 			var/obj/ency/rules/p = new /obj/ency/rules
 			p.name = r
 			p.entrytext = file2text(d)
@@ -98,7 +98,7 @@ mob/verb
 		winset(usr,"Encyclopedia.Contents","cells=1x1")
 		for(var/r in flist("Encyclopedia/Combat/"))
 			row++
-			d = file("Encyclopedia/Combat/[r]")
+			d = file("data/Encyclopedia/Combat/[r]")
 			var/obj/ency/rules/p = new /obj/ency/rules
 			p.name = r
 			p.entrytext = file2text(d)
@@ -110,7 +110,7 @@ mob/verb
 		winset(usr,"Encyclopedia.Contents","cells=1x1")
 		for(var/r in flist("Encyclopedia/Crafting/"))
 			row++
-			d = file("Encyclopedia/Crafting/[r]")
+			d = file("data/Encyclopedia/Crafting/[r]")
 			var/obj/ency/rules/p = new /obj/ency/rules
 			p.name = r
 			p.entrytext = file2text(d)
@@ -122,7 +122,7 @@ mob/verb
 		winset(usr,"Encyclopedia.Contents","cells=1x1")
 		for(var/r in flist("Encyclopedia/Uniques/"))
 			row++
-			d = file("Encyclopedia/Uniques/[r]")
+			d = file("data/Encyclopedia/Uniques/[r]")
 			var/obj/ency/rules/p = new /obj/ency/rules
 			p.name = r
 			p.entrytext = file2text(d)
@@ -134,7 +134,7 @@ mob/verb
 		winset(usr,"Encyclopedia.Contents","cells=1x1")
 		for(var/r in flist("Encyclopedia/World Events/"))
 			row++
-			d = file("Encyclopedia/World Events/[r]")
+			d = file("data/Encyclopedia/World Events/[r]")
 			var/obj/ency/rules/p = new /obj/ency/rules
 			p.name = r
 			p.entrytext = file2text(d)
@@ -146,7 +146,7 @@ mob/verb
 		winset(usr,"Encyclopedia.Contents","cells=1x1")
 		for(var/r in flist("Encyclopedia/World Info/"))
 			row++
-			d = file("Encyclopedia/World Info/[r]")
+			d = file("data/Encyclopedia/World Info/[r]")
 			var/obj/ency/rules/p = new /obj/ency/rules
 			p.name = r
 			p.entrytext = file2text(d)
@@ -158,7 +158,7 @@ mob/verb
 		winset(usr,"Encyclopedia.Contents","cells=1x1")
 		for(var/r in flist("Encyclopedia/Requests and Quests/"))
 			row++
-			d = file("Encyclopedia/Requests and Quests/[r]")
+			d = file("data/Encyclopedia/Requests and Quests/[r]")
 			var/obj/ency/rules/p = new /obj/ency/rules
 			p.name = r
 			p.entrytext = file2text(d)
@@ -170,7 +170,7 @@ mob/verb
 		winset(usr,"Encyclopedia.Contents","cells=1x1")
 		for(var/r in flist("Encyclopedia/Rulings/"))
 			row++
-			d = file("Encyclopedia/Rulings/[r]")
+			d = file("data/Encyclopedia/Rulings/[r]")
 			var/obj/ency/rules/p = new /obj/ency/rules
 			p.name = r
 			p.entrytext = file2text(d)
@@ -182,7 +182,7 @@ mob/verb
 		winset(usr,"Encyclopedia.Contents","cells=1x1")
 		for(var/r in flist("Encyclopedia/Looking for Party/"))
 			row++
-			d = file("Encyclopedia/Looking for Party/[r]")
+			d = file("data/Encyclopedia/Looking for Party/[r]")
 			var/obj/ency/rules/p = new /obj/ency/rules
 			p.name = r
 			p.entrytext = file2text(d)
