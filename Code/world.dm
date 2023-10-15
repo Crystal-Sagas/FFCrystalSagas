@@ -29,27 +29,27 @@ var/global/action_log_file
 	Addbuildables()
 	Loadworld()
 	Load_Ban()
-	if(fexists("Materials"))
+	if(fexists("data/Materials"))
 		Loadmaterials()
 	else
 		Initcraft()
-	if(fexists("Perks"))
+	if(fexists("data/Perks"))
 		LoadPerk()
 	else
 		Initperk()
-	if(fexists("Weapons"))
+	if(fexists("data/Weapons"))
 		LoadWeps()
 	else
 		Initwep()
-	if(fexists("Recipes"))
+	if(fexists("data/Recipes"))
 		Loadrecipes()
 	else
 		Initrecipes()
-	if(fexists("Summons"))
+	if(fexists("data/Summons"))
 		Loadsummons()
 	else
 		Initsummons()
-	if(fexists("Bestiary"))
+	if(fexists("data/Bestiary"))
 		Loadbestiary()
 	else
 		Initbestiary()

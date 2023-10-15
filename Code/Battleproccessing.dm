@@ -316,6 +316,8 @@ proc
 			if(istype(A,/area/Buildarea))
 				return 1
 	Applyglobalmod(var/mob/m, var/obj/globalmod/g)
+		if(!istype(g))
+			return
 		m.addstr += g.mstr
 		m.adddex += g.mdex
 		m.addcon += g.mcon
