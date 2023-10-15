@@ -34,3 +34,14 @@ GLOBAL_LIST_EMPTY(logged_warnings)
 
 /proc/tgs_error_log(msg)
 	log_system("TGS-Error: [msg]")
+
+/proc/log_say(mob/M, msg)
+	log_action("SAY: [key_name(M)]: [msg]")
+
+/proc/log_emote(mob/M, msg)
+	log_action("EMOTE: [key_name(M)]: [msg]")
+
+/proc/log_action(msg)
+	if(isnull(global.action_log_file))
+		return
+	global.action_log_file << "[\[[timestamp()]\]] [msg]"
