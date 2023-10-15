@@ -435,6 +435,7 @@ GLOBAL_LIST_BOILERPLATE(resource_nodes, /obj/node)
 		c.amount+=2
 		usr<<output("You also find 2 Stone.")
 	usr.minednodes+=1
+	log_action("GATHER: [key_name(usr)] mined [src] [audit_coord(src)]")
 	UpdateCraft(usr)
 
 /obj/node/Makonode
@@ -470,6 +471,7 @@ GLOBAL_LIST_BOILERPLATE(resource_nodes, /obj/node)
 		usr<<output("You also find 2 Stone.","oocout")
 	UpdateCraft(usr)
 	usr.minednodes+=1
+	log_action("GATHER: [key_name(usr)] mined [src] [audit_coord(src)]")
 
 /obj/node/Herbnode
 	name="Herb Node"
@@ -651,6 +653,7 @@ GLOBAL_LIST_BOILERPLATE(resource_nodes, /obj/node)
 		usr<<output("You also find 2 Wood.")
 	UpdateCraft(usr)
 	usr.minednodes+=1
+	log_action("GATHER: [key_name(usr)] mined [src] [audit_coord(src)]")
 
 /obj/node/Hunternode
 	name="Hunter Node"
@@ -808,6 +811,7 @@ GLOBAL_LIST_BOILERPLATE(resource_nodes, /obj/node)
 		usr<<output("You also find 2 Wood.")
 	UpdateCraft(usr)
 	usr.minednodes+=1
+	log_action("GATHER: [key_name(usr)] mined [src] [audit_coord(src)]")
 
 /obj/node/Dirtnode
 	name="Dirt Node"
@@ -997,3 +1001,4 @@ GLOBAL_LIST_BOILERPLATE(resource_nodes, /obj/node)
 		usr<<output("You also find 2 Stone.")
 	UpdateCraft(usr)
 	usr.minednodes+=1
+	log_action("GATHER: [key_name(usr)] mined [src] [audit_coord(src)]")

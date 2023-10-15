@@ -1425,6 +1425,7 @@ obj
 		// if not, proceed with just dropping
 		force_move(get_turf(user))
 		user.carryweight -= weight
+		log_action("DROP: [key_name(user)] [audit_coord(user)] [src]")
 		user.visible_message("[user] has dropped [src]!", stream = "icout")
 		// just refresh inventory because SURELY THIS ISNT A CRAFTING MATERIAL IF IT ISNT A STACK, RIGHT?
 		Refreshinventoryscreen(user)
