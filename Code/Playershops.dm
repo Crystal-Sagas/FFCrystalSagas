@@ -209,7 +209,7 @@ obj/playershops
 										return
 									usr.money-=adjprice
 									src.storedmon+=adjprice
-									log_action("[key_name(usr)] bought [numba] of [choice] for [adjprice] from a player shop owned by [shopowner]")
+									log_action("BUY: [key_name(usr)] bought [numba] of [choice] for [adjprice] from a player shop owned by [shopowner]")
 									if(numba<choice.amount)
 										if(choice.craftingmaterialtrue==1)
 											for(var/obj/item/p in usr.contents)

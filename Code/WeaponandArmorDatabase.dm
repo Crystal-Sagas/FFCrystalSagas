@@ -91,6 +91,7 @@ obj
 						return
 					else
 						if(usr in view(1,src))
+							log_action("PICKUP: [key_name(usr)] picked up [src]")
 							view(usr) << output("[usr.name] has picked up [src.name]!","icout")
 							src.Move(usr)
 							Refreshinventoryscreen(usr)

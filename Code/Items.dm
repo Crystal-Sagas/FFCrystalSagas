@@ -143,12 +143,14 @@ obj
 						if(a.name==src.name)
 							a.amount+=Transfer
 							UpdateCraft(usr)
+							log_action("PICKUP: [key_name(usr)] picked up [Transfer] of [src]")
 							view(usr) << output("[usr.name] has picked up [src]!","icout")
 							del src
 						UpdateCraft(usr)
 				else
 					usr.contents+=src
 					UpdateCraft(usr)
+				log_action("PICKUP: [key_name(usr)] picked up [src]")
 				view(usr) << output("[usr.name] has picked up [src]!","icout")
 			if(src.instorage==1)
 				var/obj/storage/s=usr.storagelook
@@ -161,15 +163,19 @@ obj
 							if(o.name==src.name)
 								usr.carryweight+=src.weight+=amo
 								o.amount+=amo
-								del(src)
 								s.slots--
 								usr.RefreshStorage()
+								log_action("PICKUP: [key_name(usr)] picked up [amo] of [src] at [audit_coord(src)]")
+								view(usr) << output("[usr.name] has picked up [amo] of [src]!","icout")
+								del(src)
 								return
 						usr.carryweight+=src.weight*src.amount
 						src.instorage=0
+						log_action("PICKUP: [key_name(usr)] picked up [amo] of [src] at [audit_coord(src)]")
 						src.Move(usr)
 						s.slots--
 						usr.UpdateCraft()
+						view(usr) << output("[usr.name] has picked up [amo] of [src]!","icout")
 					else if(amo<src.amount)
 						for(var/obj/item/o in usr.contents)
 							if(o.name==src.name)
@@ -183,10 +189,12 @@ obj
 						o.instorage=0
 						usr.contents+=o
 						UpdateCraft(usr)
-						view(usr) << output("[usr.name] has picked up [src]!","icout")
+						log_action("PICKUP: [key_name(usr)] picked up [amo] of [src] at [audit_coord(src)]")
+						view(usr) << output("[usr.name] has picked up [amo] of [src]!","icout")
 				else
 					src.instorage=0
 					s.slots--
+					log_action("PICKUP: [key_name(usr)] picked up [src] at [audit_coord(src)]")
 					src.Move(usr)
 				usr.RefreshStorage()
 				UpdateCraft(usr)
@@ -203,7 +211,7 @@ obj
 							var/adjprice=(amocho*src.shopprice)
 							if(usr.money>=adjprice)
 								usr.money-=adjprice
-								log_action("[key_name(usr)] [audit_coord(usr)] bought [amocho] of [src] for [adjprice] from a NPC vendor")
+								log_action("BUY: [key_name(usr)] [audit_coord(usr)] bought [amocho] of [src] for [adjprice] from a NPC vendor")
 								for(var/obj/item/stock/Stockgem/i in usr.contents)
 									if(i.name==src.name)
 										i.stock+=amocho
@@ -228,7 +236,7 @@ obj
 								var/obj/item/i=copyatom(src)
 								i.instore=0
 								usr.contents+=i
-								log_action("[key_name(usr)] [audit_coord(usr)] bought [src] for [shopprice] from a NPC vendor")
+								log_action("BUY: [key_name(usr)] [audit_coord(usr)] bought [src] for [shopprice] from a NPC vendor")
 								usr<<output("You purchased [src.name]","oocout")
 
 							else
@@ -239,9 +247,10 @@ obj
 			else
 				if(src.bolted==1)
 					return
+				log_action("PICKUP: [key_name(usr)] picked up [src] at [audit_coord(src)]")
+				view(usr) << output("[usr.name] has picked up [src.name]!","icout")
 				usr.contents+=src
 				Refreshinventoryscreen(usr)
-				view(usr) << output("[usr.name] has picked up [src.name]!","icout")
 
 
 mob
@@ -1436,6 +1445,7 @@ obj
 	amount -= amt
 	user.carryweight -= weight * amt
 	// feedback
+	log_action("DROP: [key_name(user)] [audit_coord(user)] dropped [amt] of [src]")
 	user.visible_message("[user] has dropped [amt] of [src]!", stream ="icout")
 	// just refresh crafting screen because surely this is a crafting material and not a normal item right??
 	UpdateCraft(user)
