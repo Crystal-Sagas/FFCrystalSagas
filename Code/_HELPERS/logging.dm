@@ -56,4 +56,4 @@ GLOBAL_LIST_EMPTY(logged_warnings)
 /proc/log_action(msg)
 	if(isnull(global.action_log_file))
 		return
-	global.action_log_file << "[\[[timestamp()]\]] [msg]"
+	global.action_log_file << "\[[timestamp()]\] [msg]"

@@ -105,7 +105,7 @@ var/list/naughtywords = list("sex","penis","pussy","cock","ass","dick","breast",
 				//client.HttpPost("https://discordapp.com/api/webhooks/790720751123824670/Bpgk49jrKVq3Zcav6IBlccwtUerlhNMc0TI1XaahGaOLZfnkqOwxTDF_PBMOQpMvM0Qr",list(content="( ͡° ͜ʖ ͡°)"))
 		var/text = "<font color=[src.textcolor]><font size = 0.5>[src.name] [m]</font><br>"
 		ChatLog(text)
-		log_emote(src, t)
+		log_emote(src, m)
 		view()<< output("<font color=[src.textcolor]><font size = 0.5>[src.name] [m]","icout")
 		charamount = length(m)
 		usr.emoteamount+=charamount
