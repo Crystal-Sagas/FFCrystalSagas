@@ -5,6 +5,8 @@ obj
 //Weakness
 			Weakness_Lightning
 				desc = "This creature takes 1.5x damage from all Lighning sources."
+			Weakness_Lightning_2
+				desc = "This creature takes 2x damage from all Lightning sources."
 			Weakness_Fire
 				desc = "This creature takes 1.5x damage from all Fire sources."
 			Weakness_Ice
@@ -55,6 +57,8 @@ obj
 				desc = "This creature takes no damage from Ice-based effects/attacks."
 			Immune_Lightning
 				desc = "This creature takes no damage from Lightning-based effects/attacks."
+			Immune_Earth
+				desc = "This creature takes no damage from Earth-based effects/attacks."
 			Immune_Slow
 				desc = "This creature is immune to all Slowing effects."
 			Immune_Mind
@@ -101,6 +105,14 @@ obj
 				desc = "This creature's punches add 15ft of Knock-up."
 			Windup
 				desc = "If this creature takes a turn to windup, double knock-up ranges."
+			Magick_Battery
+				desc = "The Guardian contains a built-in Magick Battery, allowing it to use some of its perks by spending energy stored within the battery. It needs a Machanist's help to recharge it, or its owner has to use a Battery Charger. This rank Magick Battery has a 100 point pool. It drains both MP and SP to keep the battery running."
+			Barrier_Booster
+				desc = "By spending 10 battery, this creature can boost any shell or protect spell being used to double its duration as well as its DR."
+
+
+
+
 
 
 
@@ -146,6 +158,13 @@ obj
 				desc = "This creature gains +2 WIS."
 			Thick_Skin
 				desc = "This creature has +5DR."
+			Sturdy_1
+				desc = "This robot has +15DR as it is made of metal."
+			Sturdy_2
+				desc = "This robot has +30DR as it is made of metal."
+
+
+
 
 //Lair Effects
 			Lair_Effect_Unsteady_Footing
@@ -332,3 +351,70 @@ obj
 				desc = "Titan increases his PDB by 10, but lowers his DR by 5 until the start of his next turn."
 			Reaction_Fly_Swat
 				desc = "When Titan is attacked, he can react by smacking the creature that attacked it if it is within Melee range with a simple punch."
+
+
+
+
+
+
+
+
+
+
+//ROBOT SECTION
+
+
+//D RANK ROBOTS
+
+
+
+//C RANK ROBOTS
+
+//DEFENDER
+		DefenderPerk
+			Bonus_Action_Mode_Defender
+				desc = "The Defender can plant itself into the ground, transforming into a generator that produces a 5x5 stationary shield around itself. Any ally inside the shield gains the effects of Protect and Shell. Takes a bonus action to revert."
+			Reaction_Bodyguard
+				desc = "The Defender can move half of its speed towards an ally that is about to take damage. It has to end next to said ally, or else this action is invalid. If succesful, the Defender can take the hit for them at a -5DR penalty, as it can't steady itself for the attack."
+
+//STRIKER
+		StrikerPerk
+			Bonus_Action_Overclock_Speed
+				desc = "As a Bonus Action, the Striker can overclock itself, increasing its speed and reflexes at the cost of armor. It gains +4 Speed and Reflex, +2 AC, and -5DR."
+			Bonus_Action_Stealth_Mode
+				desc = "As a Bonus Action, the Striker can cloak itself, hiding out of sight as long as it remained out of enemy sight prior."
+			Reaction_Blur
+				desc = "Once per round, the Striker can use a reaction to induce disadvantage on one attack directed at it."
+
+
+
+//B RANK ROBOTS
+
+
+//GUARDIAN
+		GuardianPerk
+			Bonus_Action_Mobile_Barrier
+				desc = "As a Bonus Action, the Guardian is able to use either its left hand to create a physical barrier, or its right hand to create a magical barrier. This barrier grants 16 Temporary HP vs Physical or Magical attacks. Lasts until the start of its next turn."
+			Reaction_Nihil
+				desc = "The Guardian can, one per round, spend a reaction to cancel-out a physical or magical attack."
+			Action_Healing_Battery
+				desc = "The Guardian can spend its Barrier to heal itself on a 2:1 Ratio."
+			Action_Battery_Charge
+				desc = "The Guardian can syphon either its MP or SP in order to charge its own Magick Battery at a ratio of 10:5."
+			Action_Barrier_Breaker
+				desc = "Made to protect as well as break Barriers, the Guardian is able to shatter any Protect or Shell-based Sustained Barriers."
+
+//BLITZER
+		BlitzerPerk
+			Bonus_Action_Fluid_Assault
+				desc = "As a Bonus Action, the Blitzer can use its move action to double move. Anyone it passes in said movement can be chosen to be attacked with a basic Tail Blade attack."
+			Reaction_Graceful_Movement
+				desc = "When attacked, the Blitzer can react and try to dodge out of the way, increasing its AC by 4 for the first attack it tries to dodge. Once per round."
+			Passive_Battle_Stances
+				desc = "The Blitzer has the ability to switch stances, but it requires to have at least one of the two active at all times."
+			Passive_Feral_Stance
+				desc = "The Blitzer can enter a Feral Stance, sacrificing DR to boost its own PDB on a 3:1 Ratio (Max 4) as weel as enhancing its speed and reflexes with a 3:2 Ratio (Max 8.) Switching stances costs a standard action."
+			Passive_Krieger_Stance
+				desc = "The Blitzer can enter a Krieger Stance, sacrificing Speed for PAB on a 1:1 Ratio as well as swapping Strength and Dexterity values. In Krieger Stance it also gains unique abilities, only aceessible in that stance. Switching Stance costs an action."
+
+

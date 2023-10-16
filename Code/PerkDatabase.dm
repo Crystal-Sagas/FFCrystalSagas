@@ -7878,6 +7878,12 @@ obj
 						mcost=30
 						range="7x7 in view."
 
+
+
+
+
+
+
 //Del Note- Monster Abilities
 obj
 	perk
