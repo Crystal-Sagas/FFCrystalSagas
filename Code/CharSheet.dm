@@ -871,12 +871,11 @@ mob
 				// if(usr.str>=usr.strcap)
 				// 	alert("You cannot increase your stat any higher right now.")
 				// 	return
-				else
-					usr.str++
-					usr.APspent++
-					usr.abilitypoints--
-					usr.Checkmod(1,usr.str,usr.addstr,usr)
-					RefreshCharsheet(usr)
+				usr.str++
+				usr.APspent++
+				usr.abilitypoints--
+				usr.Checkmod(1,usr.str,usr.addstr,usr)
+				RefreshCharsheet(usr)
 			else
 				alert("You don't have any points to spend.")
 		Adddexc()
@@ -886,12 +885,11 @@ mob
 				// if(usr.dex>=usr.dexcap)
 				// 	alert("You cannot increase your stat any higher right now.")
 				// 	return
-				else
-					usr.dex++
-					usr.APspent++
-					usr.abilitypoints--
-					usr.Checkmod(2,usr.dex,usr.adddex,usr)
-					RefreshCharsheet(usr)
+				usr.dex++
+				usr.APspent++
+				usr.abilitypoints--
+				usr.Checkmod(2,usr.dex,usr.adddex,usr)
+				RefreshCharsheet(usr)
 			else
 				alert("You don't have any points to spend.")
 		Addconc()
@@ -901,12 +899,11 @@ mob
 				// if(usr.con>=usr.concap)
 				// 	alert("You cannot increase your stat any higher right now.")
 				// 	return
-				else
-					usr.con++
-					usr.APspent++
-					usr.abilitypoints--
-					usr.Checkmod(3,usr.con,usr.addcon,usr)
-					RefreshCharsheet(usr)
+				usr.con++
+				usr.APspent++
+				usr.abilitypoints--
+				usr.Checkmod(3,usr.con,usr.addcon,usr)
+				RefreshCharsheet(usr)
 			else
 				alert("You don't have any points to spend.")
 		Addintc()
@@ -916,12 +913,11 @@ mob
 				// if(usr.int>=usr.intcap)
 				// 	alert("You cannot increase your stat any higher right now.")
 				// 	return
-				else
-					usr.int++
-					usr.APspent++
-					usr.abilitypoints--
-					usr.Checkmod(4,usr.int,usr.addint,usr)
-					RefreshCharsheet(usr)
+				usr.int++
+				usr.APspent++
+				usr.abilitypoints--
+				usr.Checkmod(4,usr.int,usr.addint,usr)
+				RefreshCharsheet(usr)
 			else
 				alert("You don't have any points to spend.")
 		Addwisc()
@@ -931,12 +927,11 @@ mob
 				// if(usr.wis>=usr.wiscap)
 				// 	alert("You cannot increase your stat any higher right now.")
 				// 	return
-				else
-					usr.wis++
-					usr.APspent++
-					usr.abilitypoints--
-					usr.Checkmod(5,usr.wis,usr.addwis,usr)
-					RefreshCharsheet(usr)
+				usr.wis++
+				usr.APspent++
+				usr.abilitypoints--
+				usr.Checkmod(5,usr.wis,usr.addwis,usr)
+				RefreshCharsheet(usr)
 			else
 				alert("You don't have any points to spend.")
 		Addchac()
@@ -946,12 +941,11 @@ mob
 				// if(usr.cha>=usr.chacap)
 				// 	alert("You cannot increase your stat any higher right now.")
 				// 	return
-				else
-					usr.cha++
-					usr.APspent++
-					usr.abilitypoints--
-					usr.Checkmod(6,usr.cha,usr.addcha,usr)
-					RefreshCharsheet(usr)
+				usr.cha++
+				usr.APspent++
+				usr.abilitypoints--
+				usr.Checkmod(6,usr.cha,usr.addcha,usr)
+				RefreshCharsheet(usr)
 			else
 				alert("You don't have any points to spend.")
 
