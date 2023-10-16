@@ -1425,7 +1425,7 @@ proc
 		var/savefile/S = new("data/Perks")
 		S["Perks"]<<perklist
 	LoadPerk()
-		if(fexists("Perks"))
+		if(fexists("data/Perks"))
 			var/savefile/S = new("data/Perks")
 			S["Perks"]>>perklist
 	Saveweps()
@@ -1444,23 +1444,23 @@ proc
 		var/savefile/S = new("data/Bestiary")
 		S["Bestiary"]<<bestiary
 	Loadrecipes()
-		if(fexists("Recipes"))
+		if(fexists("data/Recipes"))
 			var/savefile/S = new("data/Recipes")
 			S["Recipes"]<<recipelist
 	Loadmaterials()
-		if(fexists("Materials"))
+		if(fexists("data/Materials"))
 			var/savefile/S = new("data/Materials")
 			S["Materials"]<<materiallist
 	LoadWeps()
-		if(fexists("Weapons"))
+		if(fexists("data/Weapons"))
 			var/savefile/S = new("data/Weapons")
 			S["Weapons"]>>weplist
 	Loadsummons()
-		if(fexists("Summons"))
+		if(fexists("data/Summons"))
 			var/savefile/S = new("data/Summons")
 			S["Summons"]>>summonlist
 	Loadbestiary()
-		if(fexists("Bestiary"))
+		if(fexists("data/Bestiary"))
 			var/savefile/S = new("data/Bestiary")
 			S["Bestiary"]>>bestiary
 	Initperk()

@@ -10,7 +10,7 @@ proc/Save_Ban()
 	var/savefile/S = new("data/Ban Save")
 	S["Bans"]<<Bans
 proc/Load_Ban()
-	if(fexists("Ban Save"))
+	if(fexists("data/Ban Save"))
 		var/savefile/S = new("data/Ban Save")
 		S["Bans"]>>Bans
 atom
@@ -1117,7 +1117,7 @@ proc
 		if(Amount % 250 != 0)
 			F["Types"]<<Types
 		hacklol:
-			if(fexists("Save/World/File[E++]"))
+			if(fexists("data/Save/World/File[E++]"))
 				fdel("Save/World/File[E++]")
 				world<<"<small>Server: Objects DEBUG system check: extra objects file deleted!"
 				E++
@@ -1131,7 +1131,7 @@ proc
 		var/filenum=0
 		wowza:
 			filenum++
-			if(fexists("Save/World/File[filenum]"))
+			if(fexists("data/Save/World/File[filenum]"))
 				var/savefile/F = new("data/Save/World/File[filenum]")
 				var/list/L=new
 				F["Types"]>>L

@@ -201,7 +201,7 @@ mob
 				usr.contents+=a
 			load_complete = TRUE
 		Load()
-			if(!fexists("Save/[src.ckey]"))
+			if(!fexists("data/Save/[src.ckey]"))
 				alert("You do not have a save file.")
 				return
 			if(load_complete)
@@ -472,7 +472,7 @@ proc
 		if(Amount % 250 != 0)
 			F["Types"]<<Types
 		hacklol:
-			if(fexists("Save/World/File[E++]"))
+			if(fexists("data/Save/World/File[E++]"))
 				fdel("Save/World/File[E++]")
 				world<<"<small>Server: Objects DEBUG system check: extra objects file deleted!"
 				E++
@@ -488,7 +488,7 @@ proc
 		var/filenum=0
 		wowza:
 			filenum++
-			if(fexists("Save/World/File[filenum]"))
+			if(fexists("data/Save/World/File[filenum]"))
 				var/savefile/F = new("data/Save/World/File[filenum]")
 				var/list/L=new
 				F["Types"]>>L
