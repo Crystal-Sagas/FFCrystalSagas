@@ -586,8 +586,6 @@ obj
 						var/choice = input(usr, "Choose a type of Materia to meld. The Materia melded will be random in that set.") as null|anything in list("Green", "Blue", "Yellow", "Purple", "Link")
 						if(!choice)
 							return
-						if(our_stack.amount < 5)
-							return
 						switch(choice)
 							if("Green")
 								RandomGreenMateria(usr)
@@ -1439,7 +1437,7 @@ obj
 					desc="At the start of an encounter, or battle; the astrologian is capable of entering into a stance as a free action: Diurnal - granting a five hp shield along with any green magic they cast.(Cannot stack this) Nocturnal - Lowers the cost of green magic by a flat 5 mana. 30 HP, 70 MP, 20 SP."
 				Redraw
 					rank="T1"
-					desc="When using Arcane Draw allows the user to redraw 1 time."
+					desc="Allows one reroll for arcane draw per turn as a free action."
 				QuickDraw
 					name="Quick Draw"
 					rank="T2"
@@ -7881,6 +7879,12 @@ obj
 						mcost=30
 						range="7x7 in view."
 
+
+
+
+
+
+
 //Del Note- Monster Abilities
 obj
 	perk
@@ -8047,6 +8051,170 @@ obj
 					damsource = "str"
 					desc = "This creature bites the opponent for 2d6+str if it hits the opponent makes a fortitude save (DC 15) or becomes poisoned."
 
+				Howl
+					rank = "C"
+					mcost = 30
+					range = "3x3 tile range centered on caster."
+					desc = "Targets anyone in a 3x3 square centered on the caster. Effect- All enemies in the range make a DC 14 Fortitude save or become paralyzed. Cost 30MP."
+
+				ChocoKick
+					rank = "C"
+					mcost = 30
+					range = "melee"
+					desc = "Targets one enemy in melee range, attacking them twice with both talons. Effect- Multi-Attack x2 Physical Attack deals 2d12+Str each attack. Costs 30SP"
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 12
+					damsource = "str"
+
+				Ultra_Waves
+					rank = "C"
+					name = "Ultra Waves"
+					mcost = 30
+					range = "4 tile line."
+					desc = "Targets anyone in a 4-tile Line, dealing 3d12+WIS Damage, and causes a 4-tile Knockback. Costs 30MP."
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 3
+					attack_roll_dice_sides = 12
+					damsource = "wis"
+
+				Paralyzing_Sting
+					rank = "C"
+					name = "Paralyzing Sting"
+					mcost = 30
+					range = "6 tiles."
+					desc = "Targets 1 enemy within 6 tile range, dealing 2d12+WIS damage. On hit, the target makes a Fortitude save with DC 16 or becomes paralyzed. Costs 30MP"
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 12
+					damsource = "wis"
+
+				Gelatinous_Lake
+					rank = "C"
+					name = "Gelatinous Lake"
+					mcost = 30
+					range = "5x5 field that follows the Flan."
+					desc = "Affects anyone within a 5x5 field around the Flan, as long as they aren't Flans themselves. Anyone who is not a Flan will have their tile speed lowered by 2. Costs 30MP, 5MP Sustain."
+
+				Goo_Stream
+					rank = "C"
+					name = "Goo Stream"
+					mcost = 30
+					range = "6 tile range."
+					desc = "Targets 1 creature within a 6 tile range, dealing 2d8+WIS damage. On hit, also reduces target's AC by 2 for 3 rounds. Costs 30MP."
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 8
+					damsource = "wis"
+
+				Blinder_Beak
+					rank = "C"
+					name = "Blinder Beak"
+					mcost = 0
+					range = "Melee"
+					desc = "Targets 1 creature in melee range, dealing 2d8+STR damage to them. The target then makes a Fortitude save of DC14 or gains the Blind Status."
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 8
+					damsource = "str"
+
+				Charge
+					rank = "C"
+					mcost = 30
+					range = "Special - Until it hits a wall or expended 2x movement speed."
+					desc = "The creature charges in a straight line until it hits a wall or moves 2x its movement speed. Anything hit by the charge takes 3d10+STR Damage and is knocked back 3 tiles. They also make a DC18 Reflex Save or fall prone. If the creature hits a wall, the Rock Fall Lair Effect activates. Cost 30SP."
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 3
+					attack_roll_dice_sides = 10
+					damsource = "str"
+
+				Horn_Skewer
+					rank = "C"
+					name = "Horn Skewer"
+					mcost = 20
+					range = "Melee"
+					desc = "The monster attacks with its massive horns, dealing 2d12+STR Damage on hit and causing bleed. Costs 20SP."
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 12
+					damsource = "str"
+
+				Build_Up_Steam
+					rank = "C"
+					name = "Build-up Steam"
+					mcost = 20
+					range = "Self"
+					desc = "The monster stomps around in anger, increasing its PDB by 5 until the end of battle. (Max 15) Costs 20SP."
+
+				GiganToad_Tongue_Restrict
+					rank = "B"
+					name = "Tongue Restrict"
+					mcost = 0
+					range = "6 tile range."
+					desc = "When attacking, the opponent makes a Fortitude Save of DC18. If they fail, they become paralyzed and considered grabbed by the toad."
+
+				GiganToad_Consume
+					rank = "B"
+					name = "Consume"
+					mcost = 0
+					range = "Special - See Description."
+					desc = "If an opponent is grabbed by this creature, tongue or otherwise, they can either drag the creature 2 squares for every 2 points of strength they have over the opponent (Minimum 2 squares). If they end or start their turn in a square next to the toad, they will be consumed by the toad, taking 4d12 Acid damage each turn until the toad is killed and they are rescued. While inside the toad, any attack the victim makes comes at the cost of 2d12 Acid damage. The victim can make a fortitude check DC12 to climb out of the Toad once it has been slain."
+
+				Whispering_Wind
+					rank = "D"
+					name = "Whispering Wind"
+					mcost = 30
+					range = "5x5 area centered on caster."
+					desc = "Non-Elemental Magic damage that surrounds the caster and hits enemies within a 5x5 area centered on the caster. The damage is 2d4+Int. After the attack subsides, a gentle wind blows, casting cure on all allies within a 5x5 area, centered on the caster."
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 4
+					damsource = "int"
+
+				Hellfire
+					rank = "C"
+					mcost = 50
+					range = "7 squares."
+					desc = "Ifrit can amass a large amount of fire to unleash on a single target. When casting this spell, it takes 1 turn to charge up unless Ifrit has been hit by fire-based attacks, or he's standing in fire. The attack deals 4d12+WIS damage. Costs 50MP."
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 4
+					attack_roll_dice_sides = 12
+					damsource = "wis"
+
+				Diamond_Dust
+					rank = "C"
+					name = "Diamond Dust"
+					mcost = 50
+					range = "7x7 area centered on caster."
+					desc = "Shiva can expel the ice storm around her to hit everyone in a 7x7 radius focused on herself. Everyone in that radius must make a Fortitude save or take 3d8+WIS damage and be slowed. Half Damage on a save and no slow. If the targets are wet they become paralyzed as well. Costs 50MP. Lasts 3 turns."
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 3
+					attack_roll_dice_sides = 8
+					damsource = "wis"
+
+				Judgement_Bolt
+					rank = "C"
+					name = "Judgement Bolt"
+					mcost = 50
+					range = "5x5 area from within 6 squares of user."
+					desc = "Ramuh summons a thunder storm that encompasses a 5x5 area of his choice - within 6 squares of himself. Each creature starting their turn in that storm takes 3 bolts of Lightning on a failed reflex save for each. Each bolt does 2d6+WIS Damage. Costs 50MP. Lasts 3 turns."
+
+				Glare
+					rank = "C"
+					mcost = 30
+					range = "6 tiles, in line of sight."
+					desc = "As long as there's a line of sight, and both sides are looking at each other, even if just a glimpse, the target has to succeed a Will Save of DC16 or be paralyzed."
+
+				Stone_Throw
+					rank = "C"
+					name = "Stone Throw"
+					mcost = 20
+					range = "8 tile range."
+					desc = "This creature can throw a rock or boulder at an enemy with great accuracy, dealing 2d10+STR damage and a 10ft knockback on impact."
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 10
+					damsource = "str"
 
 
 //Old Abilites
