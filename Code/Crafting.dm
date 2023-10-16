@@ -224,7 +224,9 @@ obj
 				if(src.instore)
 					switch(alert(usr,"[src.desc] Cost:[src.shopprice]",,"Buy","Cancel"))
 						if("Buy")
-							var/amocho=input("How many?") as num
+							var/amocho=input("How many?") as num|null
+							if(isnull(amocho) || amocho < 0)
+								return
 							var/adjprice=(amocho*src.shopprice)
 							if(usr.money>=adjprice)
 								usr.money-=adjprice

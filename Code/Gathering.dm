@@ -841,6 +841,8 @@ GLOBAL_LIST_BOILERPLATE(resource_nodes, /obj/node)
 	// silently sanity check again after alert()
 	if(!can_harvest(user, TRUE))
 		return
+	if(!user.client || !usr.client)
+		return
 	if(roll==1)
 		if(usr.check_perk("Expert Sifter"))
 			for(var/obj/item/materials/Synthesis/FireGem/b in usr.contents)
