@@ -1439,7 +1439,7 @@ obj
 					desc="At the start of an encounter, or battle; the astrologian is capable of entering into a stance as a free action: Diurnal - granting a five hp shield along with any green magic they cast.(Cannot stack this) Nocturnal - Lowers the cost of green magic by a flat 5 mana. 30 HP, 70 MP, 20 SP."
 				Redraw
 					rank="T1"
-					desc="Allows one reroll for arcane draw per turn as a free action."
+					desc="When using Arcane Draw allows the user to redraw 1 time."
 				QuickDraw
 					name="Quick Draw"
 					rank="T2"
