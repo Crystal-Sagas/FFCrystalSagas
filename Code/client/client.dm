@@ -37,15 +37,15 @@ GLOBAL_LIST_EMPTY(clients)
 		// neopoke
 		"neogeo123",
 		// rabbit
-		"maliciousdelicious",
+		,
 		// silicons
 		"silicons",
-		"scvi",
-		"iops",
+		,
+		,
 		// vi
-		"giantrobotsintokyo",
-		"poisoncupcake",
-		"pureflower",
+		,
+		,
+		,
 	)
 
 /client/New()

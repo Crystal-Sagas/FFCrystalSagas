@@ -769,7 +769,7 @@ obj
 				Imperfectjenovacells
 					icon='Icons/Perk/ImperfectJenovaCells.png'
 					name="Imperfect Jenova Cells"
-					desc="The user has been injected as a fetus with cells from an otherworldly creature that have drastically affected their growth. The baby is born as a super soldier, and will grow into a warrior that will stand above the others. This individual is also capable of injecting their cells into another slowly killing the injected after 1 month resetting their own deadth flag by 1 month. Injections can only happen to a WILLING player or to a player who has been defeated in a danger 3 scenerio. This individual however did not get a perfected gene of the jenova cells, and their body will  degrade over time usually killing the individual 1 month after their cells activate. Boost: +50 Permanent HP, +30 MP, +30 SP. +4 STR, +4 DEX, +2 CON."
+					desc="The user has been injected with cells from an otherworldly creature that have drastically affected their growth. they are created as a super soldier, and will grow into a warrior that will stand above the others. This individual is also capable of injecting their cells into another slowly killing the injected after 1 month resetting their own death flag by 1 month. Injections can only happen to a WILLING player or to a player who has been defeated in a danger 3 scenerio. This individual however did not get a perfected gene of the jenova cells, and their body will  degrade over time usually killing the individual 1 month after their cells activate. Boost: +50 Permanent HP, +30 MP, +30 SP. +4 STR, +4 DEX, +2 CON."
 				CuredJenovaCells
 					icon='Icons/Perk/ImperfectJenovaCells.png'
 					name="Cured Jenova Cells"
@@ -777,7 +777,7 @@ obj
 				Perfectjenovacells
 					icon='Icons/Perk/PerfectJenovaCells.png'
 					name="Perfect Jenova Cells"
-					desc="This individual has received a much more perfected version of Jenova cells removing the degrading aspect from them. They are also able to incubate their cells inside of a host taking them over, and turning into a perfect copy. This essentially allows this individual to return to life after death. (Ex. Sephiroth) | Boost: +100 Permanent HP, +50 Permanent MP, +50 SP. +4 STR, +4 CON, +4 DEX."
+					desc="This individual has received a much more perfected version of Jenova cells removing the degrading aspect from them. .They do not have the death flag of the imperfect cells.  | Boost: +100 Permanent HP, +50 Permanent MP, +50 SP. +4 STR, +4 CON, +4 DEX."
 				OneWingedAngel
 					icon='Icons/Perk/PerfectJenovaCells.png'
 					name="One Winged Angel"
@@ -4130,7 +4130,6 @@ obj
 					level=3
 					rank="C"
 					damsource="int"
-					atype="weapon"
 					ptype="spell"
 					costtype="Mana"
 					range="Melee"
