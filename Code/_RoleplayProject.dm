@@ -184,7 +184,6 @@ mob
 			src.trpp=startingrpp
 			Checkreward(usr)
 			src.see_invisible=1
-			src.intutorial=0
 			src.datejoined = time2text(world.realtime,"MM-DD-YYYY")
 			alert("Thank you for playing. The first step is to create your character. Before you do so it would be best to read over the systems in the ingame Encyclopedia, or the game's Discord server. Click the Moogle when you are ready to begin, but for now lets start with the basics.")
 			src.name = input("What is your character's name?") as text

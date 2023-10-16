@@ -217,7 +217,6 @@ mob/var
 	abilitypoints=10
 	APspent=9000 //Hehefunny number for rework.
 	APcap=10
-	intutorial
 	created
 	advantage
 	disadvantage

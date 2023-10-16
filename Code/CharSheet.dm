@@ -868,12 +868,9 @@ mob
 			if(usr.intitlescreen)
 				return
 			if(usr.abilitypoints>0)
-				if(usr.intutorial&&usr.str==16)
-					alert("You cannot increase your stat any higher right now.")
-					return
-				if(usr.str>=usr.strcap)
-					alert("You cannot increase your stat any higher right now.")
-					return
+				// if(usr.str>=usr.strcap)
+				// 	alert("You cannot increase your stat any higher right now.")
+				// 	return
 				else
 					usr.str++
 					usr.APspent++
@@ -886,12 +883,9 @@ mob
 			if(usr.intitlescreen)
 				return
 			if(usr.abilitypoints>0)
-				if(usr.intutorial&&usr.dex==16)
-					alert("You cannot increase your stat any higher right now.")
-					return
-				if(usr.dex>=usr.dexcap)
-					alert("You cannot increase your stat any higher right now.")
-					return
+				// if(usr.dex>=usr.dexcap)
+				// 	alert("You cannot increase your stat any higher right now.")
+				// 	return
 				else
 					usr.dex++
 					usr.APspent++
@@ -904,12 +898,9 @@ mob
 			if(usr.intitlescreen)
 				return
 			if(usr.abilitypoints>0)
-				if(usr.intutorial&&usr.con==16)
-					alert("You cannot increase your stat any higher right now.")
-					return
-				if(usr.con>=usr.concap)
-					alert("You cannot increase your stat any higher right now.")
-					return
+				// if(usr.con>=usr.concap)
+				// 	alert("You cannot increase your stat any higher right now.")
+				// 	return
 				else
 					usr.con++
 					usr.APspent++
@@ -922,12 +913,9 @@ mob
 			if(usr.intitlescreen)
 				return
 			if(usr.abilitypoints>0)
-				if(usr.intutorial&&usr.int==16)
-					alert("You cannot increase your stat any higher right now.")
-					return
-				if(usr.int>=usr.intcap)
-					alert("You cannot increase your stat any higher right now.")
-					return
+				// if(usr.int>=usr.intcap)
+				// 	alert("You cannot increase your stat any higher right now.")
+				// 	return
 				else
 					usr.int++
 					usr.APspent++
@@ -940,12 +928,9 @@ mob
 			if(usr.intitlescreen)
 				return
 			if(usr.abilitypoints>0)
-				if(usr.intutorial&&usr.wis==16)
-					alert("You cannot increase your stat any higher right now.")
-					return
-				if(usr.wis>=usr.wiscap)
-					alert("You cannot increase your stat any higher right now.")
-					return
+				// if(usr.wis>=usr.wiscap)
+				// 	alert("You cannot increase your stat any higher right now.")
+				// 	return
 				else
 					usr.wis++
 					usr.APspent++
@@ -958,12 +943,9 @@ mob
 			if(usr.intitlescreen)
 				return
 			if(usr.abilitypoints>0)
-				if(usr.intutorial&&usr.cha==16)
-					alert("You cannot increase your stat any higher right now.")
-					return
-				if(usr.cha>=usr.chacap)
-					alert("You cannot increase your stat any higher right now.")
-					return
+				// if(usr.cha>=usr.chacap)
+				// 	alert("You cannot increase your stat any higher right now.")
+				// 	return
 				else
 					usr.cha++
 					usr.APspent++
