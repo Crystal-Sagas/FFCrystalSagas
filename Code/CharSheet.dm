@@ -831,36 +831,36 @@ mob
 				usr.APcap=10+((usr.rankbonus-1)*4)
 				usr.abilitypoints= usr.APcap-usr.APspent
 
-			if(usr.str>usr.strcap)
-				usr.abilitypoints+=(usr.str-usr.strcap)
-				usr.APspent-=(usr.str-usr.strcap)
-				usr.str=usr.strcap
-				usr.Checkmod(1,usr.str,usr.addstr,usr)
-			if(usr.dex>usr.dexcap)
-				usr.abilitypoints+=(usr.dex-usr.dexcap)
-				usr.APspent-=(usr.dex-usr.dexcap)
-				usr.dex=usr.dexcap
-				usr.Checkmod(2,usr.dex,usr.adddex,usr)
-			if(usr.con>usr.concap)
-				usr.abilitypoints+=(usr.con-usr.concap)
-				usr.APspent-=(usr.con-usr.concap)
-				usr.con=usr.concap
-				usr.Checkmod(3,usr.con,usr.addcon,usr)
-			if(usr.int>usr.intcap)
-				usr.abilitypoints+=(usr.int-usr.intcap)
-				usr.APspent-=(usr.int-usr.intcap)
-				usr.int=usr.intcap
-				usr.Checkmod(4,usr.int,usr.addint,usr)
-			if(usr.wis>usr.wiscap)
-				usr.abilitypoints+=(usr.wis-usr.wiscap)
-				usr.APspent-=(usr.wis-usr.wiscap)
-				usr.wis=usr.wiscap
-				usr.Checkmod(5,usr.wis,usr.addwis,usr)
-			if(usr.cha>usr.chacap)
-				usr.abilitypoints+=(usr.cha-usr.chacap)
-				usr.APspent-=(usr.cha-usr.chacap)
-				usr.cha=usr.chacap
-				usr.Checkmod(6,usr.cha,usr.addcha,usr)
+			// if(usr.str>usr.strcap)
+			// 	usr.abilitypoints+=(usr.str-usr.strcap)
+			// 	usr.APspent-=(usr.str-usr.strcap)
+			// 	usr.str=usr.strcap
+			// 	usr.Checkmod(1,usr.str,usr.addstr,usr)
+			// if(usr.dex>usr.dexcap)
+			// 	usr.abilitypoints+=(usr.dex-usr.dexcap)
+			// 	usr.APspent-=(usr.dex-usr.dexcap)
+			// 	usr.dex=usr.dexcap
+			// 	usr.Checkmod(2,usr.dex,usr.adddex,usr)
+			// if(usr.con>usr.concap)
+			// 	usr.abilitypoints+=(usr.con-usr.concap)
+			// 	usr.APspent-=(usr.con-usr.concap)
+			// 	usr.con=usr.concap
+			// 	usr.Checkmod(3,usr.con,usr.addcon,usr)
+			// if(usr.int>usr.intcap)
+			// 	usr.abilitypoints+=(usr.int-usr.intcap)
+			// 	usr.APspent-=(usr.int-usr.intcap)
+			// 	usr.int=usr.intcap
+			// 	usr.Checkmod(4,usr.int,usr.addint,usr)
+			// if(usr.wis>usr.wiscap)
+			// 	usr.abilitypoints+=(usr.wis-usr.wiscap)
+			// 	usr.APspent-=(usr.wis-usr.wiscap)
+			// 	usr.wis=usr.wiscap
+			// 	usr.Checkmod(5,usr.wis,usr.addwis,usr)
+			// if(usr.cha>usr.chacap)
+			// 	usr.abilitypoints+=(usr.cha-usr.chacap)
+			// 	usr.APspent-=(usr.cha-usr.chacap)
+			// 	usr.cha=usr.chacap
+			// 	usr.Checkmod(6,usr.cha,usr.addcha,usr)
 			RefreshCharsheet(usr)
 
 

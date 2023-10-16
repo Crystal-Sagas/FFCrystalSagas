@@ -2936,6 +2936,8 @@ obj
 			speed=3
 			special
 
+			// all 'caps' are unused.
+
 			str = 10
 			strcap=20
 			addstr=0
