@@ -3479,31 +3479,31 @@ obj
 			CRank
 				rank="C"
 				rankbonus=2
-				AdultDrake
+				AdultDrake // Del note 1- slightly modified for now will need a rework still
 					name="Adult Drake"
 					icon='Icons/Monsters/Dragonblue.png'
 					summon=1
-					mhp=255
-					hp=255
+					mhp=200
+					hp=200
 					mmp=200
 					mp=200
 					msp=200
 					sp=200
-					baseac=22
+					baseac=18
 					str=20
-					strmod=5
+					strmod=0
 					dex=18
-					dexmod=4
+					dexmod=0
 					con=18
 					conmod=4
 					int=12
-					intmod=1
+					intmod=0
 					wis=12
-					wismod=1
+					wismod=0
 					cha=12
-					chamod=1
-					mab=11
-					pab=11
+					chamod=0
+					mab= 4
+					pab= 3
 					pdb=22
 					mdb=18
 					speed=4
@@ -3516,7 +3516,7 @@ obj
 						src.contents+=b
 						src.contents+=c
 						src.contents+=flame
-				ChocoSteed
+				ChocoSteed // Del note 2- slightly modified for now will need a rework still
 					name="Chocobo Steed"
 					icon='Icons/Summon/Boko.png'
 					summon=1
@@ -3526,21 +3526,21 @@ obj
 					mp=200
 					msp=200
 					sp=200
-					baseac=22
+					baseac=18
 					str=20
-					strmod=5
+					strmod=0
 					dex=18
-					dexmod=4
+					dexmod=0
 					con=18
-					conmod=4
+					conmod=0
 					int=12
-					intmod=1
+					intmod=0
 					wis=12
-					wismod=1
+					wismod=0
 					cha=12
-					chamod=1
-					mab=8
-					pab=8
+					chamod=0
+					mab=4
+					pab=5
 					pdb=18
 					mdb=18
 					speed=4
@@ -3750,7 +3750,7 @@ obj
 						src.contents+=mpb
 						var/obj/perk/SummonPassives/Ramuh/summ=new
 						src.contents+=summ
-				Siren
+				/*Siren
 					resistance="Wind"
 					icon='Icons/Summon/Siren.png'
 					summon=1
@@ -3894,7 +3894,7 @@ obj
 						var/obj/status/MPBar/mpb = new
 						src.contents+=mpb
 						var/obj/perk/SummonPassives/Kirin/summ=new
-						src.contents+=summ
+						src.contents+=summ*/
 			BRank
 				rank="B"
 				rankbonus=3
@@ -7125,6 +7125,7 @@ obj
 						src.contents+=spb
 						var/obj/status/MPBar/mpb=new
 						src.contents+=mpb
+
 				Caterchipillar
 					name="Caterchipillar"
 					unroot=1
@@ -7188,7 +7189,7 @@ obj
 						var/obj/status/MPBar/mpb=new
 						src.contents+=mpb
 
-				Bagoly
+				/*Bagoly
 					name="Bagoly"
 					unroot=1
 					weakness="Thunder"
@@ -7205,7 +7206,7 @@ obj
 					weakness="Ice"
 					resistance="Bio"
 					unroot=1
-					icon='Icons/Monsters/Hornet.png'
+					icon='Icons/Monsters/Hornet.png'*/
 				Flan
 					name="Flan"
 					weakness="General"
@@ -7272,12 +7273,12 @@ obj
 						src.contents+=spb
 						var/obj/status/MPBar/mpb=new
 						src.contents+=mpb
-				Sahaugin
+				/*Sahaugin
 					name="Sahaugin"
 					weakness="Thunder"
 					resistance="Fire"
 					unroot=1
-					icon='Icons/Monsters/Sahaugin.png'
+					icon='Icons/Monsters/Sahaugin.png'*/
 				Rukh
 					name="Rukh"
 					weakness="Thunder"
@@ -7484,13 +7485,13 @@ obj
 						src.contents+=spb
 						var/obj/status/MPBar/mpb=new
 						src.contents+=mpb
-				Ankheg
+				Ankheg // Del note 3- slightly modified for now will need a rework still
 					name="Ankheg"
 					weakness="Fire"
 					resistance="Earth"
 					unroot=1
 					icon='Icons/Monsters/Ankheg.png'
-				Mortibody
+				/*Mortibody
 					name="Mortibody"
 					weakness="Holy"
 					resistance="Dark"
@@ -7509,14 +7510,14 @@ obj
 					resistance="Water"
 					name="Sting Ray"
 					unroot=1
-					icon='Icons/Monsters/Stingray.png'
-				Mesmerize
+					icon='Icons/Monsters/Stingray.png'*/
+				Mesmerize // Del note 4- slightly modified for now will need a rework still
 					name="Mesmerize"
 					weakness="Comet"
 					resistance="Holy"
 					unroot=1
 					icon='Icons/Monsters/Mesmerize.png'
-				Steeling
+				/*Steeling
 					name="Steeling"
 					weakness="Holy"
 					resistance="Metal"
@@ -7553,14 +7554,14 @@ obj
 					resistance="Nature"
 					name="Funguar"
 					unroot=1
-					icon='Icons/Monsters/Funguar.png'
-				BlazeBeetle
+					icon='Icons/Monsters/Funguar.png'*/
+				BlazeBeetle // Del note 5- slightly modified for now will need a rework still
 					weakness="Ice"
 					resistance="Fire"
 					name="Blaze Beetle"
 					unroot=1
 					icon='Icons/Monsters/BlazeBeetle.png'
-				Crawler
+				/*Crawler
 					name="Crawler"
 					weakness="Fire"
 					resistance="Earth"
@@ -7595,7 +7596,7 @@ obj
 					resistance="Dark"
 					name="Dorky Face"
 					unroot=1
-					icon='Icons/Monsters/DorkyFace.png'
+					icon='Icons/Monsters/DorkyFace.png'*/
 
 
 //B RANKS
@@ -7668,7 +7669,7 @@ obj
 						src.contents+=spb
 						var/obj/status/MPBar/mpb=new
 						src.contents+=mpb
-				Gargoyle
+				/*Gargoyle
 					name="Gargoyle"
 					weakness="Holy"
 					resistance="Dark"
@@ -7710,7 +7711,7 @@ obj
 					weakness="Thunder"
 					resistance="Wind"
 					unroot=1
-					icon='Icons/Monsters/Aeronite.png'
+					icon='Icons/Monsters/Aeronite.png'*/
 				Buel
 					name="Buel"
 					weakness="Lightning"
@@ -7778,7 +7779,7 @@ obj
 						src.contents+=spb
 						var/obj/status/MPBar/mpb=new
 						src.contents+=mpb
-				Darkmare
+				/*Darkmare
 					name="Darkmare"
 					weakness="Comet"
 					resistance="Dark"
@@ -7798,14 +7799,14 @@ obj
 					resistance="Fire"
 					name="Hell Hound"
 					unroot=1
-					icon='Icons/Monsters/Hellhound.png'
-				WoollyCroc
+					icon='Icons/Monsters/Hellhound.png'*/
+				WoollyCroc // Del note 6- slightly modified for now will need a rework still
 					weakness="Thunder"
 					resistance="Water"
 					name="Woolly Croc"
 					unroot=1
 					icon='Icons/Monsters/WoollyCroc.png'
-				NatureGolem
+				/*NatureGolem
 					weakness="Fire"
 					resistance="Nature"
 					name="Nature Golem"
@@ -7816,14 +7817,14 @@ obj
 					resistance="Thunder"
 					unroot=1
 					name="Slaven"
-					icon='Icons/Monsters/Slaven.png'
-				Shoopuff
+					icon='Icons/Monsters/Slaven.png'*/
+				Shoopuff // Del note 7- slightly modified for now will need a rework still
 					name="Shoopuff"
 					weakness="Flare"
 					resistance="Water"
 					unroot=1
 					icon='Icons/Monsters/Shoopuff.png'
-				Oiling
+				/*Oiling
 					name="Oiling"
 					weakness="Fire"
 					resistance="Bio"
@@ -7953,7 +7954,7 @@ obj
 					weakness="Comet"
 					resistance="Metal"
 					unroot=1
-					icon='Icons/Monsters/Aramadilio.png'
+					icon='Icons/Monsters/Aramadilio.png'*/
 			ARank
 				encountersize=4
 				rankbonus=5
@@ -7985,7 +7986,7 @@ obj
 				name="--A Rank--"
 				New()
 					InitializeEnemy(src)
-				DeathScythe
+				/*DeathScythe
 					weakness="Holy"
 					resistance="Dark"
 					name="Death Scythe"
@@ -8111,12 +8112,12 @@ obj
 					weakness="Holy"
 					resistance="Dark"
 					unroot=1
-					icon='Icons/Monsters/Catoblepas.png'
+					icon='Icons/Monsters/Catoblepas.png'*/
 			SRank
 				rank="A"
 				name="--S Rank--"
 				rankbonus=5
-				Sin
+				/*Sin
 					BodyofSin
 						name="Body of Sin"
 						icon='Icons/Monsters/Sin.png'
@@ -8296,7 +8297,7 @@ obj
 						src.contents+=jen1
 						var/obj/perk/MonsterAbilities/Monster/Tentacle/wepy=new
 						src.contents+=wepy
-						src.eweapon=wepy
+						src.eweapon=wepy*/
 			FateBoss
 				rank="C"
 				worldboss=1

@@ -329,6 +329,8 @@ var/list/naughtywords = list("sex","penis","pussy","cock","ass","dick","breast",
 		else
 			m.rank="Master"
 			m.rankbonus=6
+			m.maxsummonsC=7
+			m.maxsummonsB=4
 			m.maxsummonsA=3
 			m.mhp+=45
 			m.hp+=45

@@ -278,7 +278,7 @@ mob
 				if("Hero")
 					ranks=6
 				if("Master")
-					ranks=6
+					ranks=7
 			switch(i.weptier)
 				if("Bronze")
 					weps=1

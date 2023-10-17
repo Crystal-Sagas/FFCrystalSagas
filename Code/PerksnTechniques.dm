@@ -80,7 +80,7 @@ mob
 
 proc
 	Summonerint()
-		var/list/choices=list("Carbuncle","Sylph","Boko","Remora","Cait Sith")
+		var/list/choices=list("Carbuncle","Sylph","Boko",/*"Remora","Cait Sith"*/)
 		var/loop=1
 		var/chosen=0
 		while(loop)

@@ -11,10 +11,14 @@
 12/10/23
 1. Added Monster Perks and Abilities from some of the monsters will do more later.
 2. D rank Monster perks and abilities have been added from the current Bestiary.
+
+17/10/23
+1. messed up 16/10/23s work so gotta start from the previous day. So far made proper changes that did not mess stuff up so far.
 */
 
 //QUICK REFERENCES
 /*
 Del Note- Monster Abilities = takes me straight to the monsters abilities section
+Del note 1-7 monsters need to be made.
 
 */

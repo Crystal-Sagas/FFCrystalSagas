@@ -250,7 +250,6 @@ mob
 						usr.rankchecked=1
 					else
 						if(usr.rank=="Rookie")
-							usr.rankchecked=1
 							usr.mhp+=40
 							usr.hp+=40
 							usr.msp+=40
@@ -717,7 +716,7 @@ proc
 				m.mp+=20
 				m.mmp+=20
 		usr.ChangeBase()
-		var/list/jobs = list("Merchant","Scholar","Mystic Knight","Chocobo Knight",/*"Pirate","Gladiator"*/,"Astrologian","Viking","Bard","Dancer","Black Mage","White Mage","Red Mage","Blue Mage","Ranger","Monk","Beast Master","Samurai","Spellblade","Rogue","Paladin","Knight","Dark Knight","Dragoon","Machinist","Summoner","Chemist","Geomancer")
+		var/list/jobs = list("Merchant","Scholar","Mystic Knight",/*"Chocobo Knight",/Pirate","Gladiator"*/,"Astrologian","Viking","Bard","Dancer","Black Mage","White Mage","Red Mage",/*"Blue Mage"*/,"Ranger","Monk","Beast Master","Samurai","Spellblade","Rogue","Paladin","Knight","Dark Knight","Dragoon","Machinist","Summoner","Chemist","Geomancer")
 		if(Timemage.Find(m.key))
 			jobs+="Time Mage"
 		if(Oracle.Find(m.key))
@@ -733,9 +732,9 @@ proc
 				if("Chocobo Knight")
 					m.job="Chocobo Knight"
 					var/obj/perk/Jobperks/ChocoboKnight/ChocoboKnight/p1=new
-					var/obj/npc/Summons/CRank/ChocoSteed/p2=new
+					//var/obj/npc/Summons/CRank/ChocoSteed/p2=new
 					m.contents+=p1
-					m.contents+=p2
+					//m.contents+=p2
 					m.mhp+=80
 					m.msp+=70
 					m.mmp+=40
@@ -2237,7 +2236,7 @@ proc
 								if("No")
 									goto redostuff
 	Subjobint(var/mob/m)
-		var/list/jobs = list("Merchant","Mystic Knight","Chocobo Knight",/*"Pirate","Gladiator"*/,"Astrologian","Viking","Bard","Dancer","Black Mage","White Mage","Red Mage","Blue Mage","Ranger","Monk","Beast Master","Samurai","Spellblade","Rogue","Paladin","Knight","Dark Knight","Dragoon","Machinist","Summoner","Chemist","Geomancer")
+		var/list/jobs = list("Merchant","Mystic Knight",/*"Chocobo Knight","Pirate","Gladiator"*/,"Astrologian","Viking","Bard","Dancer","Black Mage","White Mage","Red Mage",/*"Blue Mage"*/,"Ranger","Monk","Beast Master","Samurai","Spellblade","Rogue","Paladin","Knight","Dark Knight","Dragoon","Machinist","Summoner","Chemist","Geomancer")
 		if(Oracle.Find(m.key))
 			jobs+="Oracle"
 		if(Timemage.Find(m.key))
@@ -2249,9 +2248,9 @@ proc
 			if("Chocobo Knight")
 				m.subjob="Chocobo Knight"
 				var/obj/perk/Jobperks/ChocoboKnight/ChocoboKnight/p1=new
-				var/obj/npc/Summons/CRank/ChocoSteed/p2=new
+				//var/obj/npc/Summons/CRank/ChocoSteed/p2=new
 				m.contents+=p1
-				m.contents+=p2
+				//m.contents+=p2
 			if("Pirate")
 				m.subjob="Pirate"
 				var/obj/perk/Jobperks/Pirate/Pirate/p1=new
