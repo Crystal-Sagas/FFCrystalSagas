@@ -759,9 +759,9 @@ mob
 						usr.cha+=2
 						usr.int+=2
 					if(p.name=="Mako Poisoning")
-						usr.str+=2
-						usr.con-=2
-						usr.dex+=2
+						usr.str+=0
+						usr.con-=0
+						usr.dex+=0
 					if(p.name=="Harbinger of Chaos")
 						usr.str+=2
 						usr.con+=2
@@ -817,13 +817,13 @@ mob
 						usr.int+=2
 					if(p.name=="Pure Red Mage")
 						usr.abilitypoints+=2
-						usr.APspent-=2
+/*						usr.APspent-=2*/
 					if(p.name=="Red Empowerment")
 						usr.abilitypoints+=2
-						usr.APspent-=2
+/*						usr.APspent-=2*/
 					if(p.name=="Appointed Guardian")
 						usr.abilitypoints+=2
-						usr.APspent-=2
+/*						usr.APspent-=2*/
 					if(usr.job=="Machinist")
 						usr.int+=2
 

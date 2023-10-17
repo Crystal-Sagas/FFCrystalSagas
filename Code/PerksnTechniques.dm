@@ -369,12 +369,12 @@ proc
 			alert(usr,"You have lost access to all normal Summons (except Scholar attunement Summons) ; and gained access to all Necromancer summons.")
 ///crafting specs
 		if(o.name=="Heir of Lucis")
-			m.mhp+=20
-			m.hp+=20
-			m.mmp+=20
-			m.mp+=20
-			m.msp+=20
-			m.sp+=20
+			m.mhp+=70
+			m.hp+=70
+			m.mmp+=50
+			m.mp+=50
+			m.msp+=50
+			m.sp+=50
 			m.pab+=2
 			m.mab+=2
 			m.pdb+=4
@@ -524,7 +524,7 @@ proc
 		//Weaponsmith
 		if(o.name=="Weaponsmith II")
 			m.smithing=1
-//Chocobo Knight
+/*Chocobo Knight
 		if(o.name=="Rookie Rider")
 			var/list/choices=list("Adult Drake","Mesmerize","Blaze Beetle","Ankheg")
 			var/chosen=input(m,"Which companion would you like to bond with?") as anything in choices
@@ -577,7 +577,7 @@ proc
 					m.contents+=a
 				if("Fat Chocobo")
 					var/obj/npc/Summons/BRank/FatChocobo/a=new
-					m.contents+=a
+					m.contents+=a*/
 //Dragoon
 		if(o.name=="Wyvern Trainer")
 			var/obj/npc/Monsters/Dragoon/Wyvern/wyv=new
@@ -1354,13 +1354,12 @@ proc
 			m.baserflx+=1
 			m.basewill+=1
 			m.basefort+=1
-		if(o.name=="Pure Red Mage")
+		if(o.name=="Pure Red Mage") //Del redmage test
 			m.mmp+=20
 			m.mp+=20
 			m.msp+=20
 			m.sp+=20
 			m.abilitypoints+=2
-			m.APspent-=2
 			m.nolearn+="Sub Job"
 		if(o.name=="Synchronicity")
 			m.mmp+=30

@@ -8112,7 +8112,7 @@ obj
 					name = "Blinder Beak"
 					mcost = 0
 					range = "Melee"
-					desc = "Targets 1 creature in melee range, dealing 2d8+STR damage to them. The target then makes a Fortitude save of DC14 or gains the Blind Status."
+					desc = "Targets 1 creature in melee range, dealing 2d8+STR damage to them. The target then makes a Fortitude save of (DC14) or gains the Blind Status."
 					attack_roll_damage_dice = TRUE
 					attack_roll_dice_count = 2
 					attack_roll_dice_sides = 8
@@ -8151,7 +8151,7 @@ obj
 					name = "Tongue Restrict"
 					mcost = 0
 					range = "6 tile range."
-					desc = "When attacking, the opponent makes a Fortitude Save of DC18. If they fail, they become paralyzed and considered grabbed by the toad."
+					desc = "When attacking, the opponent makes a Fortitude Save of (DC18). If they fail, they become paralyzed and considered grabbed by the toad."
 
 				GiganToad_Consume
 					rank = "B"
@@ -8186,7 +8186,7 @@ obj
 					name = "Diamond Dust"
 					mcost = 50
 					range = "7x7 area centered on caster."
-					desc = "Shiva can expel the ice storm around her to hit everyone in a 7x7 radius focused on herself. Everyone in that radius must make a Fortitude save or take 3d8+WIS damage and be slowed. Half Damage on a save and no slow. If the targets are wet they become paralyzed as well. Costs 50MP. Lasts 3 turns."
+					desc = "Shiva can expel the ice storm around her to hit everyone in a 7x7 radius focused on herself. Everyone in that radius must make a Fortitude save (DC16) or take 3d8+WIS damage and be slowed. Half Damage on a save and no slow. If the targets are wet they become paralyzed as well. Costs 50MP. Lasts 3 turns."
 					attack_roll_damage_dice = TRUE
 					attack_roll_dice_count = 3
 					attack_roll_dice_sides = 8
@@ -8197,13 +8197,13 @@ obj
 					name = "Judgement Bolt"
 					mcost = 50
 					range = "5x5 area from within 6 squares of user."
-					desc = "Ramuh summons a thunder storm that encompasses a 5x5 area of his choice - within 6 squares of himself. Each creature starting their turn in that storm takes 3 bolts of Lightning on a failed reflex save for each. Each bolt does 2d6+WIS Damage. Costs 50MP. Lasts 3 turns."
+					desc = "Ramuh summons a thunder storm that encompasses a 5x5 area of his choice - within 6 squares of himself. Each creature starting their turn in that storm takes 3 bolts of Lightning on a failed reflex save (DC 16) for each. Each bolt does 2d6+WIS Damage. Costs 50MP. Lasts 3 turns."
 
 				Glare
 					rank = "C"
 					mcost = 30
 					range = "6 tiles, in line of sight."
-					desc = "As long as there's a line of sight, and both sides are looking at each other, even if just a glimpse, the target has to succeed a Will Save of DC16 or be paralyzed."
+					desc = "As long as there's a line of sight, and both sides are looking at each other, even if just a glimpse, the target has to succeed a Will Save of (DC16) or be paralyzed."
 
 				Stone_Throw
 					rank = "C"

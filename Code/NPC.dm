@@ -2960,7 +2960,7 @@ obj
 			chacap=20
 			chamod=0
 			addcha=0
-			rankbonus=1
+			rankbonus=0
 			encountersize=1
 
 			pab=0
@@ -3202,10 +3202,8 @@ obj
 			icon='Mannequin.dmi'
 		Summons
 			companiontype="Summon"
-			speed=5
 			DRank
 				rank="D"
-				rankbonus=2
 				Carbuncle
 					resistance="Holy"
 					icon='Icons/Summon/Carbuncle.png'
@@ -3478,8 +3476,7 @@ obj
 						src.contents+=summ
 			CRank
 				rank="C"
-				rankbonus=2
-				AdultDrake
+				/*AdultDrake
 					name="Adult Drake"
 					icon='Icons/Monsters/Dragonblue.png'
 					summon=1
@@ -3548,7 +3545,7 @@ obj
 						var/obj/perk/MonsterAbilities/Monster/ChocoKick/a=new
 						var/obj/perk/MonsterPassives/Rideable/b=new
 						src.contents+=a
-						src.contents+=b
+						src.contents+=b*/
 				Ifrit
 					resistance="Fire"
 					icon='Icons/Summon/Ifrit.png'
@@ -3559,24 +3556,24 @@ obj
 					mp=220
 					sp=240
 					msp=240
-					baseac=15
+					baseac=13
 					ac=15
 					str=16
-					strmod=3
+					strmod=0
 					dex=14
-					dexmod=2
+					dexmod=0
 					con=18
-					conmod=4
+					conmod=0
 					int=12
-					intmod=1
+					intmod=0
 					wis=14
-					wismod=2
+					wismod=0
 					cha=10
 					chamod=0
-					mab=6
-					pab=6
-					mdb=50
-					pdb=50
+					mab=0
+					pab=0
+					mdb=20
+					pdb= 15
 					fort = 8
 					rflx = 6
 					will = 5
@@ -3629,7 +3626,7 @@ obj
 					mp=300
 					sp=180
 					msp=180
-					baseac=16
+					baseac=13
 					ac=16
 					str=12
 					strmod=1
@@ -3638,15 +3635,15 @@ obj
 					con=12
 					conmod=1
 					int=14
-					intmod=2
+					intmod=0
 					wis=16
-					wismod=3
+					wismod=0
 					cha=14
-					chamod=2
-					mab=7
-					pab=4
-					mdb=50
-					pdb=20
+					chamod=0
+					mab=0
+					pab=0
+					mdb=25
+					pdb=15
 					fort = 5
 					rflx = 7
 					will = 7
@@ -3694,7 +3691,7 @@ obj
 					mp=320
 					sp=180
 					msp=180
-					baseac=15
+					baseac=11
 					ac=15
 					str=10
 					strmod=0
@@ -3703,15 +3700,15 @@ obj
 					con=12
 					conmod=1
 					int=14
-					intmod=2
-					wis=18
-					wismod=4
+					intmod=0
+					wis=16
+					wismod=0
 					cha=14
-					chamod=2
-					mab=12
-					pab=4
-					mdb=55
-					pdb=15
+					chamod=0
+					mab=0
+					pab=0
+					mdb=25
+					pdb=10
 					fort = 5
 					rflx = 6
 					will = 8
@@ -3750,7 +3747,7 @@ obj
 						src.contents+=mpb
 						var/obj/perk/SummonPassives/Ramuh/summ=new
 						src.contents+=summ
-				Siren
+/*				Siren
 					resistance="Wind"
 					icon='Icons/Summon/Siren.png'
 					summon=1
@@ -3894,12 +3891,12 @@ obj
 						var/obj/status/MPBar/mpb = new
 						src.contents+=mpb
 						var/obj/perk/SummonPassives/Kirin/summ=new
-						src.contents+=summ
+						src.contents+=summ*/
 			BRank
 				rank="B"
 				rankbonus=3
 				AlphaDrake
-					name="Alpha Drake"
+/*					name="Alpha Drake"
 					icon='Icons/Monsters/Dragonblue.png'
 					summon=1
 					mhp=300
@@ -4056,7 +4053,7 @@ obj
 						src.contents+=c
 						src.contents+=dark1
 						src.contents+=dark2
-						src.contents+=aero
+						src.contents+=aero*/
 				Titan
 					resistance="Earth"
 					icon='Icons/Summon/Titan.png'
@@ -4125,7 +4122,7 @@ obj
 						src.contents+=mpb
 						var/obj/perk/SummonPassives/Titan/summ=new
 						src.contents+=summ
-				Garuda
+/*				Garuda
 					resistance="Wind"
 					icon='Icons/Summon/Garuda.png'
 					summon=1
@@ -5369,7 +5366,7 @@ obj
 						var/obj/status/MPBar/mpb = new
 						src.contents+=mpb
 						var/obj/perk/SummonPassives/Raiden/summ=new
-						src.contents+=summ
+						src.contents+=summ*/
 			Necromancer
 				resistance="Dark"
 				rank="Necromancer"
@@ -5728,7 +5725,7 @@ obj
 							src.contents+=mpb
 							var/obj/perk/SummonPassives/Scarmiglione/summ=new
 							src.contents+=summ
-			Aeons
+			Aeons //Aeon Del note needs new aeons
 				summon=1
 				rankbonus=6
 				name="-----------Aeons-----------"

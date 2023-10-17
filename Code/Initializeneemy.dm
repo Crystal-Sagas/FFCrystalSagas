@@ -152,7 +152,7 @@
 		enemy.eweapon=weapon
 		enemy.contents+=b
 		enemy.contents+=a
-	if(enemy.name=="Bagoly")
+/*	if(enemy.name=="Bagoly")
 		var/obj/perk/Abilities/WhiteMagic/Wind/Aerora/b=new
 		var/obj/perk/ElementalPerks/Aero/element=new
 		var/obj/perk/MonsterPassives/Taunt/trait=new
@@ -187,7 +187,7 @@
 		enemy.contents+=trait2
 		enemy.contents+=weapon
 		enemy.eweapon=weapon
-		enemy.contents+=b
+		enemy.contents+=b*/
 	if(enemy.name=="Flan")
 		var/obj/perk/MonsterAbilities/BLU/GelatinousLake/b=new
 		var/obj/perk/MonsterAbilities/Monster/GooStream/c=new
@@ -202,7 +202,7 @@
 		enemy.eweapon=weapon
 		enemy.contents+=b
 		enemy.contents+=c
-	if(enemy.name=="Sahaugin")
+/*	if(enemy.name=="Sahaugin")
 		var/obj/perk/MonsterAbilities/BLU/WaterGun/b=new
 		var/obj/perk/Abilities/BlackMagic/Lightning/Thunder/thun=new
 		var/obj/perk/MonsterAbilities/Monster/SahauginTrident/c=new
@@ -486,7 +486,7 @@
 		enemy.contents+=weapon
 		enemy.eweapon=weapon
 		enemy.contents+=b
-		enemy.contents+=d
+		enemy.contents+=d*/
 //B Rank
 	if(enemy.name=="Gigantoad")
 		var/obj/perk/MonsterAbilities/BLU/OilBullet/b=new
@@ -502,7 +502,7 @@
 		enemy.eweapon=weapon
 		enemy.contents+=b
 		enemy.contents+=d
-	if(enemy.name=="Gargoyle")
+/*	if(enemy.name=="Gargoyle")
 		var/obj/perk/Abilities/ArcaneMagic/Darkness/Darkja/b=new
 		var/obj/perk/Abilities/WhiteMagic/Wind/Aeroja/d=new
 		var/obj/perk/ElementalPerks/Dark/element=new
@@ -1745,7 +1745,7 @@
 		enemy.contents+=e
 		enemy.contents+=f
 		enemy.contents+=g
-
+*/
 //S Rank
 /proc/Spawnextras(var/obj/npc/starter)
 	var/target1

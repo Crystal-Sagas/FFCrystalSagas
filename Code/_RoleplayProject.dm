@@ -739,7 +739,7 @@ proc
 				m.mp+=20
 				m.mmp+=20
 		usr.ChangeBase()
-		var/list/jobs = list("Merchant","Scholar","Mystic Knight","Chocobo Knight",/*"Pirate","Gladiator"*/,"Astrologian","Viking","Bard","Dancer","Black Mage","White Mage","Red Mage",/*"Blue Mage*/,"Ranger","Monk","Beast Master","Samurai","Spellblade","Rogue","Paladin","Knight","Dark Knight","Dragoon","Machinist","Summoner","Chemist","Geomancer")
+		var/list/jobs = list("Merchant","Scholar","Mystic Knight",/*"Chocobo Knight","Pirate","Gladiator"*/,"Astrologian","Viking","Bard","Dancer","Black Mage","White Mage","Red Mage",/*"Blue Mage*/,"Ranger","Monk","Beast Master","Samurai","Spellblade","Rogue","Paladin","Knight","Dark Knight","Dragoon","Machinist","Summoner","Chemist","Geomancer")
 		if(Timemage.Find(m.key))
 			jobs+="Time Mage"
 		if(Oracle.Find(m.key))
@@ -752,12 +752,12 @@ proc
 		else
 			var/jobchoice = input(m,"What job kupo?") as anything in jobs
 			switch(jobchoice)
-				if("Chocobo Knight")
+				/*if("Chocobo Knight")
 					m.job="Chocobo Knight"
 					var/obj/perk/Jobperks/ChocoboKnight/ChocoboKnight/p1=new
 					var/obj/npc/Summons/CRank/ChocoSteed/p2=new
-					m.contents+=p1
-					m.contents+=p2
+					/*m.contents+=p1
+					m.contents+=p2*/
 					m.mhp+=80
 					m.msp+=70
 					m.mmp+=40
@@ -785,7 +785,7 @@ proc
 					m.persuasionproficient=1
 					m.stealthproficient=1
 					m.survivalproficient=1
-					m.thieveryproficient=1
+					m.thieveryproficient=1*/
 				if("Pirate")
 					m.job="Pirate"
 					var/obj/perk/Jobperks/Pirate/Pirate/p1=new
@@ -2259,7 +2259,7 @@ proc
 								if("No")
 									goto redostuff
 	Subjobint(var/mob/m)
-		var/list/jobs = list("Merchant","Mystic Knight","Chocobo Knight",/*"Pirate","Gladiator"*/,"Astrologian","Viking","Bard","Dancer","Black Mage","White Mage","Red Mage",/*"Blue Mage"*/,"Ranger","Monk","Beast Master","Samurai","Spellblade","Rogue","Paladin","Knight","Dark Knight","Dragoon","Machinist","Summoner","Chemist","Geomancer")
+		var/list/jobs = list("Merchant","Mystic Knight",/*"Chocobo Knight","Pirate","Gladiator"*/,"Astrologian","Viking","Bard","Dancer","Black Mage","White Mage","Red Mage",/*"Blue Mage"*/,"Ranger","Monk","Beast Master","Samurai","Spellblade","Rogue","Paladin","Knight","Dark Knight","Dragoon","Machinist","Summoner","Chemist","Geomancer")
 		if(Oracle.Find(m.key))
 			jobs+="Oracle"
 		if(Timemage.Find(m.key))
@@ -2268,12 +2268,12 @@ proc
 		m.subjobcap=2
 		var/jobchoice = input(m,"What job kupo?") as anything in jobs
 		switch(jobchoice)
-			if("Chocobo Knight")
+			/*if("Chocobo Knight")
 				m.subjob="Chocobo Knight"
 				var/obj/perk/Jobperks/ChocoboKnight/ChocoboKnight/p1=new
 				var/obj/npc/Summons/CRank/ChocoSteed/p2=new
 				m.contents+=p1
-				m.contents+=p2
+				m.contents+=p2*/
 			if("Pirate")
 				m.subjob="Pirate"
 				var/obj/perk/Jobperks/Pirate/Pirate/p1=new

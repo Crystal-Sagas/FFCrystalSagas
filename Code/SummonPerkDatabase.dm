@@ -18,7 +18,7 @@ obj
 			Shiva
 				desc="The Eidolon Shiva is a spirit of frost. When Shiva would take Ice damage, it is healed for that much instead. In addition, Ice spells cost 10 less MP than the standard cost for this Eidolon. (To a minimum of 1.)"
 			Ramuh
-				desc="The Eidolon Ramuh is a spirit of thunder. When Shiva would take Thunder damage, it is healed for that much instead. In addition, Thunder spells cost 10 less MP than the standard cost for this Eidolon. (To a minimum of 1.)"
+				desc="The Eidolon Ramuh is a spirit of thunder. When Ramuh would take Thunder damage, it is healed for that much instead. In addition, Thunder spells cost 10 less MP than the standard cost for this Eidolon. (To a minimum of 1.)"
 			Siren
 				desc="The Eidolon Siren is a well known muse of the Eidolon world, specializing in the lifting of spirits. Whenever a friendly creature is affected by one of Siren's Bard songs, they are healed for 5 HP per turn in addition to that song's effects."
 			Golem
