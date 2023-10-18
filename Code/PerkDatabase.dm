@@ -185,7 +185,7 @@ obj
 					rpcost=2
 					stattype=1
 					stattypedisplay="Constitution"
-					statrequirement=1
+					legacy_stat_requirement=1
 					conreq=14
 					desc="Gives a flat bonus of 20 HP."
 					pre="Tier 1 HP"
@@ -195,7 +195,7 @@ obj
 					rpcost=3
 					stattype=1
 					stattypedisplay="Constitution"
-					statrequirement=1
+					legacy_stat_requirement=1
 					conreq=16
 					desc="Gives a flat bonus of 20 HP."
 					pre="Tier 2 HP"
@@ -205,7 +205,7 @@ obj
 					rpcost=4
 					stattype=1
 					stattypedisplay="Constitution"
-					statrequirement=1
+					legacy_stat_requirement=1
 					conreq=18
 					desc="Gives a flat bonus of 50 HP."
 					pre="Tier 3 HP"
@@ -215,7 +215,7 @@ obj
 					rpcost=5
 					stattype=1
 					stattypedisplay="Constitution"
-					statrequirement=1
+					legacy_stat_requirement=1
 					conreq=20
 					desc="Gives a flat bonus of 40 HP."
 					pre="Tier 4 HP"
@@ -225,7 +225,7 @@ obj
 					rpcost=6
 					stattype=1
 					stattypedisplay="Constitution"
-					statrequirement=1
+					legacy_stat_requirement=1
 					conreq=22
 					desc="Gives a flat bonus of 100 HP."
 					pre="Tier 5 HP"
@@ -242,48 +242,55 @@ obj
 					rpcost=2
 					stattype=3
 					stattypedisplay="Wisdom"
-					statrequirement=1
-					wisreq=14
+					purchase_stat_requirements_any = list(
+						"wis" = 14,
+						"int" = 14,
+						"cha" = 14,
+					)
 					desc="Gives a flat bonus of 20 MP."
 					pre="Tier 1 MP"
 				MP3
 					name="Tier 3 MP"
 					rank="T3"
 					rpcost=3
-					stattype=3
-					stattypedisplay="Wisdom"
-					statrequirement=1
-					wisreq=16
+					purchase_stat_requirements_any = list(
+						"wis" = 16,
+						"int" = 16,
+						"cha" = 16,
+					)
 					desc="Gives a flat bonus of 20 MP."
 					pre="Tier 2 MP"
 				MP4
 					name="Tier 4 MP"
 					rank="T4"
 					rpcost=4
-					stattype=3
-					stattypedisplay="Wisdom"
-					statrequirement=1
-					wisreq=18
+					purchase_stat_requirements_any = list(
+						"wis" = 18,
+						"int" = 18,
+						"cha" = 18,
+					)
 					desc="Gives a flat bonus of 80 MP."
 					pre="Tier 3 MP"
 				MP5
 					name="Tier 5 MP"
 					rank="T5"
 					rpcost=5
-					stattype=3
-					stattypedisplay="Wisdom"
-					statrequirement=1
-					wisreq=20
+					purchase_stat_requirements_any = list(
+						"wis" = 20,
+						"int" = 20,
+						"cha" = 20,
+					)
 					desc="Gives a flat bonus of 60 MP."
 					pre="Tier 4 MP"
 				MP6
 					name="Tier 6 MP"
 					rank="T6"
 					rpcost=6
-					stattype=3
-					stattypedisplay="Wisdom"
-					statrequirement=1
-					wisreq=22
+					purchase_stat_requirements_any = list(
+						"wis" = 22,
+						"int" = 22,
+						"cha" = 22,
+					)
 					desc="Gives a flat bonus of 100 MP."
 					pre="Tier 5 MP"
 			SP
@@ -299,7 +306,7 @@ obj
 					rpcost=2
 					stattype=2
 					stattypedisplay="Strength"
-					statrequirement=1
+					legacy_stat_requirement=1
 					strreq=14
 					desc="Gives a flat bonus of 20 SP."
 					pre="Tier 1 SP"
@@ -309,7 +316,7 @@ obj
 					rpcost=3
 					stattype=2
 					stattypedisplay="Strength"
-					statrequirement=1
+					legacy_stat_requirement=1
 					strreq=16
 					desc="Gives a flat bonus of 20 SP."
 					pre="Tier 2 SP"
@@ -319,7 +326,7 @@ obj
 					rpcost=4
 					stattype=2
 					stattypedisplay="Strength"
-					statrequirement=1
+					legacy_stat_requirement=1
 					strreq=18
 					desc="Gives a flat bonus of 80 SP."
 					pre="Tier 3 SP"
@@ -329,7 +336,7 @@ obj
 					rpcost=5
 					stattype=2
 					stattypedisplay="Strength"
-					statrequirement=1
+					legacy_stat_requirement=1
 					strreq=20
 					desc="Gives a flat bonus of 60 SP."
 					pre="Tier 4 SP"
@@ -339,7 +346,7 @@ obj
 					rpcost=6
 					stattype=2
 					stattypedisplay="Strength"
-					statrequirement=1
+					legacy_stat_requirement=1
 					strreq=22
 					desc="Gives a flat bonus of 100 SP."
 					pre="Tier 5 SP"
@@ -351,7 +358,7 @@ obj
 					rank="T1"
 					stattype=4
 					stattypedisplay="Dexterity"
-					statrequirement=1
+					legacy_stat_requirement=1
 					dexreq=10
 					rpcost=1
 				Speed2
@@ -361,7 +368,7 @@ obj
 					rpcost=2
 					stattype=4
 					stattypedisplay="Dexterity"
-					statrequirement=1
+					legacy_stat_requirement=1
 					dexreq=14
 					pre="Speed(T1)"
 				Speed3
@@ -371,7 +378,7 @@ obj
 					rpcost=3
 					stattype=4
 					stattypedisplay="Dexterity"
-					statrequirement=1
+					legacy_stat_requirement=1
 					dexreq=16
 					pre="Speed(T2)"
 				Speed4
@@ -381,7 +388,7 @@ obj
 					rpcost=4
 					stattype=4
 					stattypedisplay="Dexterity"
-					statrequirement=1
+					legacy_stat_requirement=1
 					dexreq=18
 					pre="Speed(T3)"
 				Speed5
@@ -391,7 +398,7 @@ obj
 					rpcost=5
 					stattype=4
 					stattypedisplay="Dexterity"
-					statrequirement=1
+					legacy_stat_requirement=1
 					dexreq=20
 					pre="Speed(T4)"
 				Speed6
@@ -401,7 +408,7 @@ obj
 					rpcost=6
 					stattype=4
 					stattypedisplay="Dexterity"
-					statrequirement=1
+					legacy_stat_requirement=1
 					dexreq=22
 					pre="Speed(T5)"
 			AbilityScoreImprovements
@@ -501,7 +508,7 @@ obj
 				rank="T3"
 				stattype=5
 				stattypedisplay="Charisma"
-				statrequirement=1
+				legacy_stat_requirement=1
 				chareq=16
 				desc="This character is an inspiring leader. They may spend 60 Mana in order to apply a bonus equal to their CHA modifier towards AC, to hit, global damage reduction, and global damage to their entire party for 2 rounds."
 			Defensive

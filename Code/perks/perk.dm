@@ -15,6 +15,12 @@
 	/// sides of dice to roll for dice roll damage calculations
 	var/attack_roll_dice_sides
 
+	//? requirements for purchase
+	/// list of stats required
+	var/list/purchase_stat_requirements
+	/// one of these must be met
+	var/list/purchase_stat_requirements_any
+
 /**
  * we have a valid standard attack or healing roll
  */

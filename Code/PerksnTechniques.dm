@@ -6,7 +6,7 @@ obj
 	var
 		stattype
 		stattypedisplay
-		statrequirement=0
+		legacy_stat_requirement=0
 atom
 	proc
 		Checkstats(var/obj/a, var/mob/b, var/type)
@@ -2122,12 +2122,67 @@ obj
 					alert(usr,"You already know this perk.")
 					usr.perkbuying=0
 					return
-				if(src.statrequirement==1)
+				if(src.legacy_stat_requirement==1)
 					var/type = src.stattype
 					if(Checkstats(src,usr,type)==1)
 						usr.perkbuying=0
 						return
-					else
+				if(!isnull(purchase_stat_requirements))
+					for(var/stat in purchase_stat_requirements)
+						var/val = purchase_stat_requirements[stat]
+						var/theirs
+						switch(stat)
+							// todo: this is shitcode
+							if("int")
+								theirs = usr.int
+							if("dex")
+								theirs = usr.dex
+							if("con")
+								theirs = usr.con
+							if("wis")
+								theirs = usr.wis
+							if("cha")
+								theirs = usr.cha
+							if("str")
+								theirs = usr.str
+						if(!isnull(theirs) && val > theirs)
+							var/list/built = list()
+							for(var/stat in purchase_stat_requirements)
+								built += "[purchase_stat_requirements[stat]] [uppertext(stat)]"
+							var/rendered = jointext(built, ", ")
+							alert(usr, "You need at least [rendered] to purchase this perk.")
+							usr.perkbuying = FALSE
+							return
+				if(!isnull(purchase_stat_requirements_any))
+					var/passed = FALSE
+					for(var/stat in purchase_stat_requirements_any)
+						var/val = purchase_stat_requirements_any[stat]
+						var/theirs
+						switch(stat)
+							// todo: this is shitcode
+							if("int")
+								theirs = usr.int
+							if("dex")
+								theirs = usr.dex
+							if("con")
+								theirs = usr.con
+							if("wis")
+								theirs = usr.wis
+							if("cha")
+								theirs = usr.cha
+							if("str")
+								theirs = usr.str
+						if(!isnull(theirs) && val <= theirs)
+							passed = TRUE
+							break
+					if(!passed)
+						var/list/built = list()
+						for(var/stat in purchase_stat_requirements_any)
+							built += "[purchase_stat_requirements_any[stat]] [uppertext(stat)]"
+						var/rendered = jointext(built, ", or ")
+						alert(usr, "You need to have [rendered] to purchase this perk.")
+						usr.perkbuying = FALSE
+						return
 				if(src.name in usr.nolearn)
 					alert("You cannot learn this perk, as a perk you know is incompatible.")
 					usr.perkbuying=0
