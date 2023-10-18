@@ -1810,7 +1810,7 @@ proc
 				m.basedr+=4
 				var/obj/perk/Roleperks/MeleeTank/k = new
 				m.contents+=k
-				alert("You rolled [hproll] for HP, [mproll] for MP, and [sproll] for SP!")
+				alert("You gained [hproll] for HP, [mproll] for MP, and [sproll] for SP!")
 			if("Tank Caster")
 				m.role="Tank Caster"
 				hproll=rand(120,120)
@@ -1826,7 +1826,7 @@ proc
 				m.basedr+=4
 				var/obj/perk/Roleperks/CasterTank/k = new
 				m.contents+=k
-				alert("You rolled [hproll] for HP, [mproll] for MP, and [sproll] for SP!")
+				alert("You gained [hproll] for HP, [mproll] for MP, and [sproll] for SP!")
 			if("Physical DPS")
 				m.role="Physical DPS"
 				hproll=rand(90,90)
@@ -1842,7 +1842,7 @@ proc
 				m.pdb+=8
 				var/obj/perk/Roleperks/PhysicalDPS/k = new
 				m.contents+=k
-				alert("You rolled [hproll] for HP, [mproll] for MP, and [sproll] for SP!")
+				alert("You gained [hproll] for HP, [mproll] for MP, and [sproll] for SP!")
 			if("Magical DPS")
 				m.role="Magical DPS"
 				hproll=rand(90,90)
@@ -1858,7 +1858,7 @@ proc
 				m.mdb+=8
 				var/obj/perk/Roleperks/MagicalDPS/k = new
 				m.contents+=k
-				alert("You rolled [hproll] for HP, [mproll] for MP, and [sproll] for SP!")
+				alert("You gained [hproll] for HP, [mproll] for MP, and [sproll] for SP!")
 			if("Magical Support")
 				m.role="Magical Support"
 				hproll=rand(60,60)
@@ -1873,7 +1873,7 @@ proc
 				m.mab+=1
 				var/obj/perk/Roleperks/MagicalSupport/k = new
 				m.contents+=k
-				alert("You rolled [hproll] for HP, [mproll] for MP, and [sproll] for SP!")
+				alert("You gained [hproll] for HP, [mproll] for MP, and [sproll] for SP!")
 			if("Physical Support")
 				m.role="Physical Support"
 				hproll=rand(70,70)
@@ -1888,7 +1888,7 @@ proc
 				m.pab+=1
 				var/obj/perk/Roleperks/PhysicalSupport/k = new
 				m.contents+=k
-				alert("You rolled [hproll] for HP, [mproll] for MP, and [sproll] for SP!")
+				alert("You gained [hproll] for HP, [mproll] for MP, and [sproll] for SP!")
 			if("Generalist")
 				m.role="Generalist"
 				hproll=rand(60,60)
@@ -1909,7 +1909,7 @@ proc
 				m.rpp+=5
 				var/obj/perk/Roleperks/Generalist/k = new
 				m.contents+=k
-				alert("You rolled [hproll] for HP, [mproll] for MP, and [sproll] for SP!")
+				alert("You gained [hproll] for HP, [mproll] for MP, and [sproll] for SP!")
 		alert(m,"Hmm finally what equipment do you wish to use? You only get three slots for now.")
 		var/list/equip=list("Light Armor","Medium Armor","Heavy Armor","Shield","Tower Shield","Shuriken","Rod","Throwing Knives","Longsword","Scimitar","Hammer","Axe","Dagger","Claw","Gauntlet","Whip","Greatsword","Katana","Spear","Scythe","Bow","Bow Sword","Focus Sword","Staff","Tome","Sword Spear","Thief Sword","Bolt Rapier","Whipblade","Akademia Card","Buster Sword","Blitzball","Gun Blade","Ba'gangsaw","Gun Arm", "Magitek Pistol","Magitek Rifle")
 		var/loop=1

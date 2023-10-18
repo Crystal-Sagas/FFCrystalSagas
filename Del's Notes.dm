@@ -20,5 +20,13 @@
 /*
 Del Note- Monster Abilities = takes me straight to the monsters abilities section
 Del note 1-7 monsters need to be made.
+Del test hidden 2- found where the invisible +2 was coming in from.
+
+*/
+
+//PROBLEMS
+
+/*
+1. Summons get a random +2 MAB/PAB and a Hidden +2 MAB/PAB and I still can't find where.
 
 */

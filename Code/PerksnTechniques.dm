@@ -1692,14 +1692,13 @@ obj
 								players={"<font color=#EC2323>[usr.name] has flashed a card: <a href="byond://?src=\ref[usr]&action=look&value=\ref[src]"><font color=#FFFFFF>[src]</a>!! <a href="byond://?src=\ref[usr]&action=blu&value=\ref[src]"> <font color=#0FBFD7><b>BLU!</b></a>"}
 							view() << output("[players]","icout")
 						if("Attack")
+							var/healbonus=usr.chamod*2
 							if(src.atype=="heal")
-								var/healbonus=usr.chamod*2
 								doresult=raw_attack_damage_roll()
 								dresult=doresult+src.adddam+healbonus
 								view()<<output("<font size=1><font color=[usr.textcolor]>[usr] <font color=white>is using the <font color=[usr.textcolor]>[src.name]<font color=white> ability! They have healed a target for <font color=#A8F596><b>[dresult]</b></font> HP!","icout")
 							if(src.atype=="curada")
 								var/curadabonus=usr.mhp*0.5
-								var/healbonus=usr.chamod*2
 								doresult=raw_attack_damage_roll()
 								dresult=doresult+curadabonus+healbonus
 								view()<<output("<font size=1><font color=[usr.textcolor]>[usr] <font color=white>is using the <font color=[usr.textcolor]>[src.name]<font color=white> ability! They have healed a target for <font color=#A8F596><b>[dresult]</b></font> HP!","icout")
@@ -1709,7 +1708,7 @@ obj
 								dmod=Checkdamtype(src.damsource,usr)
 								abilitydamage=raw_attack_damage_roll()
 								if(src.typing=="magical")
-									aresult=src.basecheck+amod+usr.rankbonus+src.addhit+2
+									aresult=src.basecheck+amod+usr.rankbonus+src.addhit+0
 									dresult=abilitydamage+dmod+usr.mdb+src.adddam+10
 									if(usr.role=="Tank Caster"||usr.role=="Physical DPS"||usr.role=="Physical Support") //These roles all cap at 15 MDB Add.
 										if(usr.mdbadd<15)
@@ -1919,7 +1918,7 @@ obj
 								aoresult=rand(1,20)
 								amod=Checkdamtype(src.damsource,usr)
 								if(src.typing=="magical")
-									aresult=aoresult+src.addhit+amod+usr.rankbonus+usr.mab+2
+									aresult=aoresult+src.addhit+amod+usr.rankbonus+usr.mab+0 //del test hidden 2
 									if(usr.mabadd<10)// Global cap for mage attack bonus add is 15.
 										aresult+=usr.mabadd
 									else
@@ -2032,7 +2031,7 @@ obj
 									dmod=Checkdamtype(src.damsource,z)
 									abilitydamage=raw_attack_damage_roll()
 									if(src.typing=="magical")
-										aresult=src.basecheck+amod+z.rankbonus+src.addhit+2
+										aresult=src.basecheck+amod+z.rankbonus+src.addhit+0
 										dresult=abilitydamage+dmod+z.mdb+src.adddam+10
 									else
 										aresult=src.basecheck+amod+z.rankbonus+src.addhit
@@ -2401,7 +2400,7 @@ obj
 								dmod=Checkdamtype(src.damsource,usr)
 								abilitydamage=raw_attack_damage_roll()
 								if(src.typing=="magical")
-									aresult=src.basecheck+amod+usr.rankbonus+src.addhit+2
+									aresult=src.basecheck+amod+usr.rankbonus+src.addhit+0
 									dresult=abilitydamage+dmod+usr.mdb+src.adddam+10
 									if(usr.role=="Tank Caster"||usr.role=="Physical DPS"||usr.role=="Physical Support") //These roles all cap at 15 MDB Add.
 										if(usr.mdbadd<15)
@@ -2610,7 +2609,7 @@ obj
 								aoresult=rand(1,20)
 								amod=Checkdamtype(src.damsource,usr)
 								if(src.typing=="magical")
-									aresult=aoresult+src.addhit+amod+usr.rankbonus+usr.mab+2
+									aresult=aoresult+src.addhit+amod+usr.rankbonus+usr.mab+0 //del test hidden 2
 									if(usr.mabadd<10)// Global cap for magical attack bonus add is 15.
 										aresult+=usr.mabadd
 									else

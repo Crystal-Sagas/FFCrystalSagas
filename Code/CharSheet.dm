@@ -759,9 +759,9 @@ mob
 						usr.cha+=2
 						usr.int+=2
 					if(p.name=="Mako Poisoning")
-						usr.str+=2
-						usr.con-=2
-						usr.dex+=2
+						usr.str+=0
+						usr.con-=0
+						usr.dex+=0
 					if(p.name=="Harbinger of Chaos")
 						usr.str+=2
 						usr.con+=2
@@ -1760,7 +1760,7 @@ mob
 				alert(m,"This ability will use the weapon equipped to your right hand.")
 				amod=Checkdamtype(wepchoice.damsource,m)
 				if(a.typing=="magical")
-					aresult=a.basecheck+amod+m.rankbonus+a.addhit+4
+					aresult=a.basecheck+amod+m.rankbonus+a.addhit+4 //del test hidden +4 did not work for the summons
 				else
 					aresult=a.basecheck+amod+m.rankbonus+a.addhit+4
 				doresult=rand(wepchoice.range1,wepchoice.range2)

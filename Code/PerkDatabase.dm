@@ -7957,6 +7957,8 @@ obj
 					name = "Shriek"
 					rank = "D"
 					desc = "Targets 1, Range 6 tiles, Effect- DC 14 fortitude save or silenced. Costs 30MP"
+					savetype= "Fortitude"
+					basecheck= 14
 					range = "6 tile range"
 					mcost = 30
 
@@ -8024,6 +8026,8 @@ obj
 					attack_roll_dice_sides = 2
 					desc="The creature collects a magical powder on its wings. When enough powder has been collected it flaps its wing spreading the powder throughout the area. Even the smallest breath can inflict poison. Prompts a flat Fortitude saving throw (DC 15), inflicting poison on failure. (10 tile range, 3x3 AoE, - 10 Mana.) (BLU)"
 					mcost = 10
+					savetype="Fortitude"
+					basecheck=15
 					range = "10 tile range, 3x3 squares on impact."
 
 				Monster_Gaze
@@ -8031,6 +8035,8 @@ obj
 					name = "Monster Gaze"
 					mcost = 15
 					range = "7 tile range"
+					savetype="Fortitude"
+					basecheck=15
 					desc = "Targets 1, Range 7 Tiles, Effect- Target makes a Fortitude save. On failure they become paralyzed."
 
 				Sticky_Webs
@@ -8048,6 +8054,8 @@ obj
 					attack_roll_dice_count = 2
 					attack_roll_dice_sides = 6
 					damsource = "str"
+					savetype="Fortitude"
+					basecheck=15
 					desc = "This creature bites the opponent for 2d6+str if it hits the opponent makes a fortitude save (DC 15) or becomes poisoned."
 
 				Howl
@@ -8055,6 +8063,8 @@ obj
 					mcost = 30
 					range = "3x3 tile range centered on caster."
 					desc = "Targets anyone in a 3x3 square centered on the caster. Effect- All enemies in the range make a DC 14 Fortitude save or become paralyzed. Cost 30MP."
+					savetype="Fortitude"
+					basecheck=14
 
 				ChocoKick
 					rank = "C"
@@ -8086,6 +8096,8 @@ obj
 					attack_roll_damage_dice = TRUE
 					attack_roll_dice_count = 2
 					attack_roll_dice_sides = 12
+					savetype="Fortitude"
+					basecheck=16
 					damsource = "wis"
 
 				Gelatinous_Lake
@@ -8115,6 +8127,8 @@ obj
 					attack_roll_damage_dice = TRUE
 					attack_roll_dice_count = 2
 					attack_roll_dice_sides = 8
+					savetype="Fortitude"
+					basecheck=14
 					damsource = "str"
 
 				Charge
@@ -8151,6 +8165,8 @@ obj
 					mcost = 0
 					range = "6 tile range."
 					desc = "When attacking, the opponent makes a Fortitude Save of DC18. If they fail, they become paralyzed and considered grabbed by the toad."
+					savetype="Fortitude"
+					basecheck=18
 
 				GiganToad_Consume
 					rank = "B"
@@ -8158,6 +8174,8 @@ obj
 					mcost = 0
 					range = "Special - See Description."
 					desc = "If an opponent is grabbed by this creature, tongue or otherwise, they can either drag the creature 2 squares for every 2 points of strength they have over the opponent (Minimum 2 squares). If they end or start their turn in a square next to the toad, they will be consumed by the toad, taking 4d12 Acid damage each turn until the toad is killed and they are rescued. While inside the toad, any attack the victim makes comes at the cost of 2d12 Acid damage. The victim can make a fortitude check DC12 to climb out of the Toad once it has been slain."
+					savetype="Fortitude"
+					basecheck=12
 
 				Whispering_Wind
 					rank = "D"
@@ -8185,24 +8203,33 @@ obj
 					name = "Diamond Dust"
 					mcost = 50
 					range = "7x7 area centered on caster."
-					desc = "Shiva can expel the ice storm around her to hit everyone in a 7x7 radius focused on herself. Everyone in that radius must make a Fortitude save or take 3d8+WIS damage and be slowed. Half Damage on a save and no slow. If the targets are wet they become paralyzed as well. Costs 50MP. Lasts 3 turns."
+					desc = "Shiva can expel the ice storm around her to hit everyone in a 7x7 radius focused on herself. Everyone in that radius must make a Fortitude save or take 1d8+WIS damage and be slowed. Half Damage on a save and no slow. If the targets are wet they become paralyzed as well. Costs 50MP. Lasts 2 turns."
 					attack_roll_damage_dice = TRUE
-					attack_roll_dice_count = 3
+					attack_roll_dice_count = 1
 					attack_roll_dice_sides = 8
+					savetype="Fortitude"
+					basecheck=14
 					damsource = "wis"
 
 				Judgement_Bolt
 					rank = "C"
 					name = "Judgement Bolt"
 					mcost = 50
+					attack_roll_dice_count = 1
+					attack_roll_dice_sides = 4
+					damsource = "wis"
 					range = "5x5 area from within 6 squares of user."
-					desc = "Ramuh summons a thunder storm that encompasses a 5x5 area of his choice - within 6 squares of himself. Each creature starting their turn in that storm takes 3 bolts of Lightning on a failed reflex save for each. Each bolt does 2d6+WIS Damage. Costs 50MP. Lasts 3 turns."
+					desc = "Ramuh summons a thunder storm that encompasses a 5x5 area of his choice - within 6 squares of himself. Each creature starting their turn in that storm takes 3 bolts of Lightning on a failed reflex save for each. Each bolt does 1d4+WIS Damage. Costs 50MP. Lasts 3 turns."
+					savetype="Reflex"
+					basecheck=15
 
 				Glare
 					rank = "C"
 					mcost = 30
 					range = "6 tiles, in line of sight."
 					desc = "As long as there's a line of sight, and both sides are looking at each other, even if just a glimpse, the target has to succeed a Will Save of DC16 or be paralyzed."
+					savetype="Will"
+					basecheck=16
 
 				Stone_Throw
 					rank = "C"

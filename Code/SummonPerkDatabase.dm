@@ -14,11 +14,11 @@ obj
 				name="Cait Sith"
 				desc="The Eidolon Cait Sith is a well known trickster of the Eidolon world. When Cait Sith attacks an enemy creature with its claws, that creature must make a DC 14 Fortitude saving throw, or be inflicted with the 'Blind' status effect."
 			Ifrit
-				desc="The Eidolon Ifrit is a spirit of fire. When Ifrit would take Fire damage, it is healed for that much instead. In addition, Fire spells cost 10 less MP than the standard cost for this Eidolon. (To a minimum of 1.)"
+				desc="The Eidolon Ifrit is a spirit of fire. Fire spells cost 10 less MP than the standard cost for this Eidolon. (To a minimum of 1.)"
 			Shiva
-				desc="The Eidolon Shiva is a spirit of frost. When Shiva would take Ice damage, it is healed for that much instead. In addition, Ice spells cost 10 less MP than the standard cost for this Eidolon. (To a minimum of 1.)"
+				desc="The Eidolon Shiva is a spirit of frost. Ice spells cost 10 less MP than the standard cost for this Eidolon. (To a minimum of 1.)"
 			Ramuh
-				desc="The Eidolon Ramuh is a spirit of thunder. When Shiva would take Thunder damage, it is healed for that much instead. In addition, Thunder spells cost 10 less MP than the standard cost for this Eidolon. (To a minimum of 1.)"
+				desc="The Eidolon Ramuh is a spirit of thunder. Thunder spells cost 10 less MP than the standard cost for this Eidolon. (To a minimum of 1.)"
 			Siren
 				desc="The Eidolon Siren is a well known muse of the Eidolon world, specializing in the lifting of spirits. Whenever a friendly creature is affected by one of Siren's Bard songs, they are healed for 5 HP per turn in addition to that song's effects."
 			Golem

@@ -127,7 +127,6 @@
 #include "Code\Teaching.dm"
 #include "Code\TechObjects.dm"
 #include "Code\testinghyperlinks.dm"
-#include "Code\TripleTriad.dm"
 #include "Code\Turntracking.dm"
 #include "Code\Vehicles.dm"
 #include "Code\WeaponandArmorDatabase.dm"
