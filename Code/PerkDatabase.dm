@@ -1503,12 +1503,12 @@ obj
 				ElementalEidolonEmpowermentOffensive
 					name="Elemental Eidolon Empowerment Offensive"
 					rank="T4"
-					desc="A Scholar with this feature gains +1d8 damage of its Eidolon's primary elemental affinity to all non-elemental Magic attacks, as well as all Physical attacks."
+					desc="A Scholar with this feature gains +1d8 damage of its Eidolon's primary elemental affinity to all Magic attacks, as well as all Physical attacks."
 				TrueElementalEmpowerment
 					name="True Elemental Empowerment"
 					rank="T5"
 					cat="Unique"
-					desc="A Scholar with this feature now has 'Absorption' for its Eidolon's primary elemental affinity, healing for half of the total elemental damage dealt instead of halving it - whilst reducing the remaining damage dealt to them to 0."
+					desc="A Scholar with this feature now has 'Absorption' for its Eidolon's primary elemental affinity, healing for 1/4th of the total elemental damage dealt - whilst reducing the remaining damage dealt to them to 0."
 				SharedPrecision
 					name="Shared Precision"
 					rank="T2"
@@ -1545,7 +1545,7 @@ obj
 					name="Ultimate Connection"
 					rank="T4"
 					cat="Unique"
-					desc="A Scholar with this feature increases its Eidolon's base HP by 100, and its MP by 100. It also gains +2 to both Physical and Magical attack bonus, 5 flat damage reduction, and +2 to AC. (Requires Refined Fortitude, Refined Mana Pool, and Deepened Connection.)"
+					desc="A Scholar with this feature increases its Eidolon's base HP by 500, and its MP by 500. It also gains +5 to both Physical and Magical attack bonus, 5 flat damage reduction, and +5 to AC. As well as 1 custom move created move created with GM approval. (Requires Refined Fortitude, Refined Mana Pool, and Deepened Connection.)"
 
 
 			Merchant
