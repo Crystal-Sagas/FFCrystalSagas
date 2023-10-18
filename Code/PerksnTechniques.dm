@@ -2147,8 +2147,8 @@ obj
 								theirs = usr.str
 						if(!isnull(theirs) && val > theirs)
 							var/list/built = list()
-							for(var/stat in purchase_stat_requirements)
-								built += "[purchase_stat_requirements[stat]] [uppertext(stat)]"
+							for(var/needed_stat in purchase_stat_requirements)
+								built += "[purchase_stat_requirements[needed_stat]] [uppertext(needed_stat)]"
 							var/rendered = jointext(built, ", ")
 							alert(usr, "You need at least [rendered] to purchase this perk.")
 							usr.perkbuying = FALSE
