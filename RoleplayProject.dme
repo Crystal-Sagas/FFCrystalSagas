@@ -117,7 +117,6 @@
 #include "Code\Profile.dm"
 #include "Code\RedMateria.dm"
 #include "Code\RPobjects.dm"
-#include "Code\Shopold.dm"
 #include "Code\Shops.dm"
 #include "Code\Stablemaster.dm"
 #include "Code\Stardewresources.dm"
