@@ -257,7 +257,7 @@ obj/NPCshop
 			s10.shopprice=2000
 			src.contents+=s10
 //Stock 11
-			var/obj/item/material/diamond/s11=new
+			var/obj/item/material/gem/diamond/s11=new
 			s11.instore=1
 			s11.shopprice=2000
 			src.contents+=s11

@@ -30,11 +30,6 @@
 	icon_state = "Leather"
 	id = "Leather"
 
-/obj/item/material/diamond
-	name = "Diamond"
-	icon_state = "Diamond"
-	id = "Diamond"
-
 /obj/item/material/wool
 	name = "Wool"
 	icon_state = "Wool"

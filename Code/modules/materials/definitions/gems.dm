@@ -3,6 +3,11 @@
 	icon_state = "gem_white"
 	id = "gem_white"
 
+/obj/item/material/gem/diamond
+	name = "Diamond"
+	icon_state = "Diamond"
+	id = "Diamond"
+
 /obj/item/material/gem/white
 	name="White Gem"
 	icon_state = "gem_white"

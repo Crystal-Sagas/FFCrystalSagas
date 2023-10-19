@@ -239,13 +239,13 @@
 			usr<<output("You expertly find a earth gem.","alert")
 	if(roll>11)
 		if(usr.check_perk("Expert Sifter" || "Master Gatherer")) //Del test sifting merchant
-			for(var/obj/item/material/diamond/b in usr.contents)
+			for(var/obj/item/material/gem/diamond/b in usr.contents)
 				b.amount+=2
 			use()
 			usr<<output("You expertly find 2 diamonds.","oocout")
 			usr<<output("You expertly find 2 diamonds.","alert")
 		else
-			for(var/obj/item/material/diamond/b in usr.contents)
+			for(var/obj/item/material/gem/diamond/b in usr.contents)
 				b.amount+=1
 			use()
 			usr<<output("You expertly find a diamond.","oocout")
