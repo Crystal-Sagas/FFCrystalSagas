@@ -38,7 +38,7 @@ atom
 	proc
 		UpdateCraft(var/mob/m)
 			var/row
-			for(var/material/A in usr.contents)
+			for(var/obj/item/material/A in usr.contents)
 				if(A.name!="Ore" && A.name!="Synthesis" && A.name!="materials" &&A.name!="herbs")
 					row++
 					winset(m, "craftmats", "current-cell=1,[row]")
@@ -87,7 +87,7 @@ mob
 			if(usr.intitlescreen)
 				return
 			winset(usr,"Crafting","is-visible=true")
-			for(var/material/A in usr.contents)
+			for(var/obj/item/material/A in usr.contents)
 				row++
 				winset(usr, "craftmats", "current-cell=1,[row]")
 				src << output(A,"craftmats")
@@ -116,7 +116,7 @@ mob
 		SeeMaterials()
 			var/row
 			winset(usr,"Crafting.materials","cells=0x0")
-			for(var/material/o in usr.contents)
+			for(var/obj/item/material/o in usr.contents)
 				row++
 				src<<output(o,"materials:1,[row]")
 		SeeMechs()
@@ -235,7 +235,7 @@ obj/item/Weapon/verb
 				var/mchoice=input(usr,"Which Metal would you like to apply to this weapon as a Gilding? Silver: +1 | Gold: +2 | Platinum: +3") as anything in metchoice
 				switch(mchoice)
 					if("Silver")
-						for(var/material/ingot/silver/a in usr.contents)
+						for(var/obj/item/material/ingot/silver/a in usr.contents)
 							if(a.amount>=10)
 								storename=src.name
 								tempname="Silver [src.name]"
@@ -251,7 +251,7 @@ obj/item/Weapon/verb
 							else
 								alert(usr,"Applying a Silver gilding requires at least 10 Silver ore.")
 					if("Gold")
-						for(var/material/ingot/gold/a in usr.contents)
+						for(var/obj/item/material/ingot/gold/a in usr.contents)
 							if(a.amount>=10)
 								storename=src.name
 								tempname="Gold [src.name]"
@@ -267,7 +267,7 @@ obj/item/Weapon/verb
 							else
 								alert(usr,"Applying a Gold gilding requires at least 10 Gold ore.")
 					if("Platinum")
-						for(var/material/ingot/platinum/a in usr.contents)
+						for(var/obj/item/material/ingot/platinum/a in usr.contents)
 							if(a.amount>=10)
 								storename=src.name
 								tempname="Platinum [src.name]"
@@ -295,7 +295,7 @@ obj/item/verb
 			if(src.weapon != 1)
 				alert(usr, "You cannot set this item's lore!")
 			else
-				for(var/material/EtherPowder/a in usr.contents)
+				for(var/obj/item/material/EtherPowder/a in usr.contents)
 					if(a.amount>=1)
 						if(src.lored==0)
 							var/list/yesno=list("Yes","No")

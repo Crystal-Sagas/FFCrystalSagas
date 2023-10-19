@@ -139,7 +139,7 @@ obj
 				var/Materiallode=src.name
 				var/Transfer=src.amount
 				if(Materiallode in usr.contents)
-					for(var/material/a in usr.contents)
+					for(var/obj/item/material/a in usr.contents)
 						if(a.name==src.name)
 							a.amount+=Transfer
 							UpdateCraft(usr)

@@ -2,7 +2,7 @@
 /obj
 	var/craftingmaterialtrue=0
 
-/material
+/obj/item/material
 	craftable=1
 	craftingmaterialtrue=1
 	price=1
@@ -44,7 +44,7 @@
 		if(src in usr.contents)
 			return
 		var/Transfer=src.amount
-		for(var/material/a in usr.contents)
+		for(var/obj/item/material/a in usr.contents)
 			if(a.name==src.name)
 				a.amount+=Transfer
 				log_action("[usr] picked up [Transfer] of [src]")

@@ -3,10 +3,10 @@
  *
  * todo: move to /obj/item/stack/materials
  */
-/material
+/obj/item/material
 	name = "unknown material"
 	icon = 'content/icons/items/materials.dmi'
-	abstract_type = /material
+	abstract_type = /obj/item/material
 	/// unique id - used for save/load; must be unique and fulfilling the equivalence-relation on the same material
 	var/id
 
