@@ -409,7 +409,7 @@ GLOBAL_LIST_BOILERPLATE(resource_nodes, /obj/node)
 			additional_text = " and 1 gold"
 	usr.send_chat("You mined [amount] pieces of [reward_name], getting 5 stone (static)[additional_text] in the process.[describe_modifiers]", "oocout")
 	// use up
-	log_action("GATHER: [key_name(usr)] mined [src] (+[amount] [reward_name]) (+5 stone)[additional_text] [audit_coord(src)]")
+	log_action("GATHER: [key_name(usr)] mined [src] (+[amount] [reward_name]) (+5 stone)[additional_log] [audit_coord(src)]")
 	usr.minednodes++
 	use()
 	//! legacy: update craft
