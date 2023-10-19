@@ -5,47 +5,39 @@ obj
 		var/gilded=0
 		Weapon
 			Click()
-				for(var/obj/playershops/shoptable/a in world)
-					if(src in a.contents)
-						winset(usr,"playershop.selected","text=\"Selected: [src.name]\"")
-						winset(usr,"playershop.desc","text=\"[src.desc]\"")
-						winset(usr,"playershop.lore","text=\"[src.lore]\"")
-						winset(usr,"playershop.enchant","text=\"[src.enchantment]\"")
-						return
-				for(var/obj/playershops/Moogle/a in world)
-					if(src in a.contents)
-						winset(usr,"playershop.selected","text=\"Selected: [src.name]\"")
-						winset(usr,"playershop.desc","text=\"[src.desc]\"")
-						winset(usr,"playershop.lore","text=\"[src.lore]\"")
-						winset(usr,"playershop.enchant","text=\"[src.enchantment]\"")
-						return
-				for(var/obj/npc/z in world)
-					if(src in z.contents)
-						var/aoresult
-						var/aresult
-						var/amod
-						var/doresult
-						var/dmod
-						var/dresult
-						var/critdam
-						aoresult=rand(1,20)
-						amod=Checkdamtype(src.damsource,z)
-						if(src.typing=="magical")
-							aresult=aoresult+src.addhit+amod+usr.rankbonus+z.mab
-						else
-							aresult=aoresult+src.addhit+amod+usr.rankbonus+z.pab
-						doresult=rand(src.range1,src.range2)
-						dmod=Checkdamtype(src.damsource,usr)
-						if(src.typing=="magical")
-							dresult=doresult+dmod+src.adddam+z.mdb
-						else
-							dresult=doresult+dmod+src.adddam+z.pdb
-						critdam=dresult+doresult
-						if(aoresult==20)
-							view()<<output("<font size=1><font color=[usr.textcolor]>[z] <font color=white>rolled a <b><font color=#3CF82C>CRITICAL</b> <font color=white>attack roll, using their <font color=[usr.textcolor]>[src.name]<font color=white>! Result: <font color=#3CF82C><b>[aresult] to hit</b><font color=white>, dealing <b><font color=#FFA852>[critdam] damage</b><font color=white>, as an automatic hit!","icout")
-						else
-							view()<<output("<font size=1><font color=[usr.textcolor]>[z] <font color=white>rolled an attack roll, using their <font color=[usr.textcolor]>[src.name]<font color=white>!  Result: <font color=#8EF5DE><b>[aresult] to hit</b><font color=white>, dealing <b><font color=#FFA852>[dresult] damage</b><font color=white> if successful!<br>Tile Range:[src.range]","output1")
-							view()<<output("<font size=1><font color=[usr.textcolor]>[z] <font color=white>rolled an attack roll, using their <font color=[usr.textcolor]>[src.name]<font color=white>! Result: <font color=#8EF5DE><b>[aresult] to hit</b><font color=white>, dealing <b><font color=#FFA852>[dresult] damage</b><font color=white> if successful!<br>Tile Range:[src.range]","icout")
+				if(istype(loc, /obj/playershops/shoptable) || istype(loc, /obj/playershops/Moogle))
+					winset(usr,"playershop.selected","text=\"Selected: [src.name]\"")
+					winset(usr,"playershop.desc","text=\"[src.desc]\"")
+					winset(usr,"playershop.lore","text=\"[src.lore]\"")
+					winset(usr,"playershop.enchant","text=\"[src.enchantment]\"")
+					return
+				if(istype(loc, /obj/npc))
+					var/obj/npc/z = loc
+					var/aoresult
+					var/aresult
+					var/amod
+					var/doresult
+					var/dmod
+					var/dresult
+					var/critdam
+					aoresult=rand(1,20)
+					amod=Checkdamtype(src.damsource,z)
+					if(src.typing=="magical")
+						aresult=aoresult+src.addhit+amod+usr.rankbonus+z.mab
+					else
+						aresult=aoresult+src.addhit+amod+usr.rankbonus+z.pab
+					doresult=rand(src.range1,src.range2)
+					dmod=Checkdamtype(src.damsource,usr)
+					if(src.typing=="magical")
+						dresult=doresult+dmod+src.adddam+z.mdb
+					else
+						dresult=doresult+dmod+src.adddam+z.pdb
+					critdam=dresult+doresult
+					if(aoresult==20)
+						view()<<output("<font size=1><font color=[usr.textcolor]>[z] <font color=white>rolled a <b><font color=#3CF82C>CRITICAL</b> <font color=white>attack roll, using their <font color=[usr.textcolor]>[src.name]<font color=white>! Result: <font color=#3CF82C><b>[aresult] to hit</b><font color=white>, dealing <b><font color=#FFA852>[critdam] damage</b><font color=white>, as an automatic hit!","icout")
+					else
+						view()<<output("<font size=1><font color=[usr.textcolor]>[z] <font color=white>rolled an attack roll, using their <font color=[usr.textcolor]>[src.name]<font color=white>!  Result: <font color=#8EF5DE><b>[aresult] to hit</b><font color=white>, dealing <b><font color=#FFA852>[dresult] damage</b><font color=white> if successful!<br>Tile Range:[src.range]","output1")
+						view()<<output("<font size=1><font color=[usr.textcolor]>[z] <font color=white>rolled an attack roll, using their <font color=[usr.textcolor]>[src.name]<font color=white>! Result: <font color=#8EF5DE><b>[aresult] to hit</b><font color=white>, dealing <b><font color=#FFA852>[dresult] damage</b><font color=white> if successful!<br>Tile Range:[src.range]","icout")
 
 				if(src.instore)
 					switch(alert(usr,"[src.desc] Cost:[src.shopprice]",,"Buy","Cancel"))
@@ -83,18 +75,15 @@ obj
 									return
 						if("Cancel")
 							return
-				if(src in world)
-					for(var/obj/npc/c in world)
-						if(src in c.contents)
-							return
-					if(src in usr.contents)
-						return
-					else
-						if(usr in view(1,src))
-							log_action("PICKUP: [key_name(usr)] picked up [src]")
-							view(usr) << output("[usr.name] has picked up [src.name]!","icout")
-							src.Move(usr)
-							Refreshinventoryscreen(usr)
+				if(istype(loc, /obj/npc))
+					return
+				if(src in usr.contents)
+					return
+				if(usr in view(1,src))
+					log_action("PICKUP: [key_name(usr)] picked up [src]")
+					view(usr) << output("[usr.name] has picked up [src.name]!","icout")
+					src.Move(usr)
+					Refreshinventoryscreen(usr)
 
 			New()
 				if(src.name=="Bronze")
@@ -117,9 +106,11 @@ obj
 					src.weptier="Orichalcum"
 				if(src.initialized==0)
 					AssignWeaponDamage(src)
+
 			weapon=1
 			equipable=1
 			icon='Icons/Items/Longsword.dmi'
+
 			Jeweler
 				jewelery=1
 				equiptype="accessory"
