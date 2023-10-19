@@ -317,39 +317,6 @@ obj
 				EsperSoul
 					name="Esper Soul"
 					icon_state="espersoul"
-				WhiteGem
-					name="White Gem"
-					icon='Icons/Crafting/White Gem.dmi'
-				BlackGem
-					name="Black Gem"
-					icon='Icons/Crafting/Black Gem.dmi'
-				ThunderGem
-					name="Thunder Gem"
-					icon='Icons/Crafting/Thunder Gem.dmi'
-				FireGem
-					name="Fire Gem"
-					icon='Icons/Crafting/Fire Gem.dmi'
-				WaterGem
-					name="Water Gem"
-					icon='Icons/Crafting/Water Gem.dmi'
-				EarthGem
-					name="Earth Gem"
-					icon='Icons/Crafting/Earth Gem.dmi'
-				BioGem
-					name="Bio Gem"
-					icon='Icons/Crafting/Bio Gem.dmi'
-				IceGem
-					name="Ice Gem"
-					icon='Icons/Crafting/Ice Gem.dmi'
-				WindGem
-					name="Wind Gem"
-					icon='Icons/Crafting/Wind Gem.dmi'
-				HolyGem
-					name="Holy Gem"
-					icon='Icons/Crafting/Holy Gem.dmi'
-				DarkGem
-					name="Dark Gem"
-					icon='Icons/Crafting/Dark Gem.dmi'
 				BombCore
 					name="Bomb Core"
 					icon_state="bombcore"

@@ -207,47 +207,47 @@ obj/NPCshop
 		icon_state="Flower"
 		New()
 ///Stock 1
-			var/obj/item/materials/Synthesis/HolyGem/s1=new
+			var/obj/item/materials/gem/holy/s1=new
 			s1.instore=1
 			s1.shopprice=2000
 			src.contents+=s1
 ///Stock 2
-			var/obj/item/materials/Synthesis/DarkGem/s2=new
+			var/obj/item/materials/gem/dark/s2=new
 			s2.instore=1
 			s2.shopprice=2000
 			src.contents+=s2
 ///Stock 3
-			var/obj/item/materials/Synthesis/FireGem/s3=new
+			var/obj/item/materials/gem/fire/s3=new
 			s3.instore=1
 			s3.shopprice=2000
 			src.contents+=s3
 ///Stock 4
-			var/obj/item/materials/Synthesis/IceGem/s4=new
+			var/obj/item/materials/gem/ice/s4=new
 			s4.instore=1
 			s4.shopprice=2000
 			src.contents+=s4
 //Stock 5
-			var/obj/item/materials/Synthesis/ThunderGem/s5=new
+			var/obj/item/materials/gem/thunder/s5=new
 			s5.instore=1
 			s5.shopprice=2000
 			src.contents+=s5
 //Stock 6
-			var/obj/item/materials/Synthesis/WindGem/s6=new
+			var/obj/item/materials/gem/wind/s6=new
 			s6.instore=1
 			s6.shopprice=2000
 			src.contents+=s6
 //Stock 7
-			var/obj/item/materials/Synthesis/EarthGem/s7=new
+			var/obj/item/materials/gem/earth/s7=new
 			s7.instore=1
 			s7.shopprice=2000
 			src.contents+=s7
 //Stock 8
-			var/obj/item/materials/Synthesis/WhiteGem/s8=new
+			var/obj/item/materials/gem/white/s8=new
 			s8.instore=1
 			s8.shopprice=2000
 			src.contents+=s8
 //Stock 9
-			var/obj/item/materials/Synthesis/BlackGem/s9=new
+			var/obj/item/materials/gem/black/s9=new
 			s9.instore=1
 			s9.shopprice=2000
 			src.contents+=s9

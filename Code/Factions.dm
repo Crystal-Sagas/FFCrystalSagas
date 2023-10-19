@@ -898,31 +898,31 @@ obj
 									a.amount+=1
 									usr << output("You have gained 1 [a]!","oocout")
 							if(gem1>=1 && gem1<4)
-								for(var/obj/item/materials/Synthesis/ThunderGem/a in usr.contents)
+								for(var/obj/item/materials/gem/thunder/a in usr.contents)
 									a.amount+=1
 									usr << output("You have gained 1 [a]!","oocout")
 							if(gem1>=4 && gem1<6)
-								for(var/obj/item/materials/Synthesis/FireGem/a in usr.contents)
+								for(var/obj/item/materials/gem/fire/a in usr.contents)
 									a.amount+=1
 									usr << output("You have gained 1 [a]!","oocout")
 							if(gem1>=6 && gem1<6)
-								for(var/obj/item/materials/Synthesis/WaterGem/a in usr.contents)
+								for(var/obj/item/materials/gem/water/a in usr.contents)
 									a.amount+=1
 									usr << output("You have gained 1 [a]!","oocout")
 							if(gem1>=8 && gem1<12)
-								for(var/obj/item/materials/Synthesis/EarthGem/a in usr.contents)
+								for(var/obj/item/materials/gem/earth/a in usr.contents)
 									a.amount+=1
 									usr << output("You have gained 1 [a]!","oocout")
 							if(gem1>=12 && gem1<15)
-								for(var/obj/item/materials/Synthesis/IceGem/a in usr.contents)
+								for(var/obj/item/materials/gem/ice/a in usr.contents)
 									a.amount+=1
 									usr << output("You have gained 1 [a]!","oocout")
 							if(gem1>=15 && gem1<18)
-								for(var/obj/item/materials/Synthesis/WindGem/a in usr.contents)
+								for(var/obj/item/materials/gem/wind/a in usr.contents)
 									a.amount+=1
 									usr << output("You have gained 1 [a]!","oocout")
 							if(gem1>=18 && gem1<=20)
-								for(var/obj/item/materials/Synthesis/BioGem/a in usr.contents)
+								for(var/obj/item/materials/gem/bio/a in usr.contents)
 									a.amount+=1
 									usr << output("You have gained 1 [a]!","oocout")
 						if(src.Loghouse==1)
