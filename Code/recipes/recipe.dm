@@ -579,7 +579,7 @@
 					src.creates=a
 					src.name=a.name
 			Ether
-				mat1="Ether Powder
+				mat1="Ether Powder"
 				mat2="Garidav Wildgrass"
 				amount1=1
 				amount2=1
@@ -614,7 +614,7 @@
 			BlindPoison
 				mat1="Flying Eye's Eye"
 				mat2="Vomp Carrots"
-				mat3="Ether Powder
+				mat3="Ether Powder"
 				amount1=1
 				amount2=3
 				amount3=2
@@ -654,7 +654,7 @@
 			EchoHerbs
 				mat1="Holy Gem"
 				mat2="Vomp Carrots"
-				mat3="Ether Powder
+				mat3="Ether Powder"
 				amount1=1
 				amount2=3
 				amount3=2
@@ -678,7 +678,7 @@
 			HiPotion
 				mat1="White Gem"
 				mat2="Vomp Carrots"
-				mat3="Ether Powder
+				mat3="Ether Powder"
 				amount1=2
 				amount2=3
 				amount3=5
@@ -689,7 +689,7 @@
 			RegenOrb
 				mat1="White Gem"
 				mat2="Sharug Greens"
-				mat3="Ether Powder
+				mat3="Ether Powder"
 				mat4="Coeurl Whisker"
 				amount1=5
 				amount2=3
@@ -702,7 +702,7 @@
 			MaxEther
 				mat1="Black Gem"
 				mat2="Vomp Carrots"
-				mat3="Ether Powder
+				mat3="Ether Powder"
 				amount1=5
 				amount2=3
 				amount3=2
@@ -713,7 +713,7 @@
 			RefreshOrb
 				mat1="White Gem"
 				mat2="Sharug Greens"
-				mat3="Ether Powder
+				mat3="Ether Powder"
 				mat4="Sahaugin Scale"
 				amount1=5
 				amount2=3
@@ -757,7 +757,7 @@
 			Remedy
 				mat1="Gysahl Greens"
 				mat2="Sharug Greens"
-				mat3="Ether Powder
+				mat3="Ether Powder"
 				mat4="Zuu Feather"
 				amount1=5
 				amount2=3
@@ -1741,7 +1741,7 @@
 						src.name=a.name
 			Insomnia
 				ManaPylon
-					mat1="Ether Powder
+					mat1="Ether Powder"
 					mat2="Mythril ingot"
 					amount1=10
 					amount2=5
@@ -1784,7 +1784,7 @@
 			Yevon
 				YevonShrine
 					mat1="Stone"
-					mat2="Ether Powder
+					mat2="Ether Powder"
 					mat3="Mythril ingot"
 					amount1=100
 					amount2=50
@@ -1807,7 +1807,7 @@
 			Akademia
 				StatueofFalcie
 					mat1="Stone"
-					mat2="Ether Powder
+					mat2="Ether Powder"
 					mat3="Silver ingot"
 					amount1=100
 					amount2=5

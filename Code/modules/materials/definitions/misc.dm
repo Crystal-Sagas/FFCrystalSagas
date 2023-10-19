@@ -16,7 +16,7 @@
 	id = "raw_mako"
 
 /obj/item/material/EtherPowder
-	name = "Ether Powder
+	name = "Ether Powder"
 	icon_state = "etherpowder"
 	id = "ether_powder"
 
