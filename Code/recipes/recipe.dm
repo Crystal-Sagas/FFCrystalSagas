@@ -588,7 +588,7 @@
 					src.creates=a
 					src.name=a.name
 			Poison
-				mat1="Bio Gem"
+				mat1="bio gem"
 				mat2="Coeurl Whisker"
 				mat3="Tonberry Knife"
 				amount1=1
@@ -623,7 +623,7 @@
 					src.creates=a
 					src.name=a.name
 			FrogPoison
-				mat1="Dark Gem"
+				mat1="dark gem"
 				mat2="San d'Orian Carrots"
 				mat3="Gigantoad Slime"
 				amount1=2
@@ -634,7 +634,7 @@
 					src.creates=a
 					src.name=a.name
 			BerserkPoison
-				mat1="Fire Gem"
+				mat1="fire gem"
 				mat2="Vomp Carrots"
 				amount1=2
 				amount2=5
@@ -643,7 +643,7 @@
 					src.creates=a
 					src.name=a.name
 			Antidote
-				mat1="Bio Gem"
+				mat1="bio gem"
 				mat2="Gysahl Greens"
 				amount1=1
 				amount2=3
@@ -652,7 +652,7 @@
 					src.creates=a
 					src.name=a.name
 			EchoHerbs
-				mat1="Holy Gem"
+				mat1="holy gem"
 				mat2="Vomp Carrots"
 				mat3="ether powder"
 				amount1=1
@@ -663,7 +663,7 @@
 					src.creates=a
 					src.name=a.name
 			Eyedrops
-				mat1="Dark Gem"
+				mat1="dark gem"
 				mat2="Vomp Carrots"
 				mat3="aether powder"
 				mat4="Flying Eye's Eye"
@@ -676,7 +676,7 @@
 					src.creates=a
 					src.name=a.name
 			HiPotion
-				mat1="White Gem"
+				mat1="white gem"
 				mat2="Vomp Carrots"
 				mat3="ether powder"
 				amount1=2
@@ -687,7 +687,7 @@
 					src.creates=a
 					src.name=a.name
 			RegenOrb
-				mat1="White Gem"
+				mat1="white gem"
 				mat2="Sharug Greens"
 				mat3="ether powder"
 				mat4="Coeurl Whisker"
@@ -700,7 +700,7 @@
 					src.creates=a
 					src.name=a.name
 			MaxEther
-				mat1="Black Gem"
+				mat1="black gem"
 				mat2="Vomp Carrots"
 				mat3="ether powder"
 				amount1=5
@@ -711,7 +711,7 @@
 					src.creates=a
 					src.name=a.name
 			RefreshOrb
-				mat1="White Gem"
+				mat1="white gem"
 				mat2="Sharug Greens"
 				mat3="ether powder"
 				mat4="Sahaugin Scale"
@@ -803,7 +803,7 @@
 				name="Fire Bomb Bag"
 				mat1="steel ingot"
 				mat2="aether powder"
-				mat3="Fire Gem"
+				mat3="fire gem"
 				amount1=5
 				amount2=3
 				amount3=1
@@ -820,7 +820,7 @@
 				name="Water Bomb Bag"
 				mat1="steel ingot"
 				mat2="aether powder"
-				mat3="Water Gem"
+				mat3="water gem"
 				amount1=5
 				amount2=3
 				amount3=1
@@ -837,7 +837,7 @@
 				name="Thunder Bomb Bag"
 				mat1="steel ingot"
 				mat2="aether powder"
-				mat3="Thunder Gem"
+				mat3="thunder gem"
 				amount1=5
 				amount2=3
 				amount3=1
@@ -854,7 +854,7 @@
 				name="Earth Bomb Bag"
 				mat1="steel ingot"
 				mat2="aether powder"
-				mat3="Earth Gem"
+				mat3="earth gem"
 				amount1=5
 				amount2=3
 				amount3=1
@@ -871,7 +871,7 @@
 				name="Ice Bomb Bag"
 				mat1="steel ingot"
 				mat2="aether powder"
-				mat3="Ice Gem"
+				mat3="ice gem"
 				amount1=5
 				amount2=3
 				amount3=1
@@ -888,7 +888,7 @@
 				name="Bio Bomb Bag"
 				mat1="steel ingot"
 				mat2="aether powder"
-				mat3="Bio Gem"
+				mat3="bio gem"
 				amount1=5
 				amount2=3
 				amount3=1
@@ -905,7 +905,7 @@
 				name="Wind Bomb Bag"
 				mat1="steel ingot"
 				mat2="aether powder"
-				mat3="Wind Gem"
+				mat3="wind gem"
 				amount1=5
 				amount2=3
 				amount3=1
@@ -922,7 +922,7 @@
 				name="Dark Bomb Bag"
 				mat1="steel ingot"
 				mat2="aether powder"
-				mat3="Dark Gem"
+				mat3="dark gem"
 				amount1=5
 				amount2=3
 				amount3=1
@@ -939,7 +939,7 @@
 				name="Holy Bomb Bag"
 				mat1="steel ingot"
 				mat2="aether powder"
-				mat3="Holy Gem"
+				mat3="holy gem"
 				mat4="leather"
 				amount4=10
 				mat5="wool"
@@ -1007,7 +1007,7 @@
 					amount1=1
 					mat2="bronze ingot"
 					amount2=1
-					mat3="Fire Gem"
+					mat3="fire gem"
 					amount3=1
 					New()
 						var/obj/item/Weapon/Machinist/Wrench/a=new
@@ -1018,7 +1018,7 @@
 					amount1=5
 					mat2="mythril ingot"
 					amount2=1
-					mat3="Earth Gem"
+					mat3="earth gem"
 					amount3=1
 					New()
 						var/obj/item/Weapon/Machinist/Chainsaw/a=new
@@ -1029,7 +1029,7 @@
 					amount1=5
 					mat2="mythril ingot"
 					amount2=1
-					mat3="Earth Gem"
+					mat3="earth gem"
 					amount3=1
 					New()
 						var/obj/item/Weapon/Machinist/Drillsword/a=new
@@ -1040,7 +1040,7 @@
 					amount1=5
 					mat2="mythril ingot"
 					amount2=1
-					mat3="Earth Gem"
+					mat3="earth gem"
 					amount3=1
 					New()
 						var/obj/item/Weapon/Machinist/Drillspear/a=new
@@ -1051,7 +1051,7 @@
 					amount1=5
 					mat2="mythril ingot"
 					amount2=1
-					mat3="Fire Gem"
+					mat3="fire gem"
 					amount3=1
 					New()
 						var/obj/item/Weapon/Machinist/RocketLauncher/a=new
@@ -1064,7 +1064,7 @@
 							amount1=3
 							mat2="mythril ingot"
 							amount2=1
-							mat3="Fire Gem"
+							mat3="fire gem"
 							amount3=1
 							New()
 								var/obj/item/Weapon/Machinist/Ammo/Basic/FireBullet/a=new
@@ -1075,7 +1075,7 @@
 							amount1=3
 							mat2="mythril ingot"
 							amount2=1
-							mat3="Thunder Gem"
+							mat3="thunder gem"
 							amount3=1
 							New()
 								var/obj/item/Weapon/Machinist/Ammo/Basic/ThunderBullet/a=new
@@ -1086,7 +1086,7 @@
 							amount1=3
 							mat2="mythril ingot"
 							amount2=1
-							mat3="Earth Gem"
+							mat3="earth gem"
 							amount3=1
 							New()
 								var/obj/item/Weapon/Machinist/Ammo/Basic/EarthBullet/a=new
@@ -1097,7 +1097,7 @@
 							amount1=3
 							mat2="mythril ingot"
 							amount2=1
-							mat3="Water Gem"
+							mat3="water gem"
 							amount3=1
 							New()
 								var/obj/item/Weapon/Machinist/Ammo/Basic/WaterBullet/a=new
@@ -1122,7 +1122,7 @@
 							amount1=5
 							mat2="adamantine ingot"
 							amount2=1
-							mat3="Wind Gem"
+							mat3="wind gem"
 							amount3=1
 							New()
 								var/obj/item/Weapon/Machinist/Ammo/Advanced/AeroBullet/a=new
@@ -1133,7 +1133,7 @@
 							amount1=5
 							mat2="adamantine ingot"
 							amount2=1
-							mat3="Ice Gem"
+							mat3="ice gem"
 							amount3=1
 							New()
 								var/obj/item/Weapon/Machinist/Ammo/Advanced/IceBullet/a=new
@@ -1144,7 +1144,7 @@
 							amount1=5
 							mat2="adamantine ingot"
 							amount2=1
-							mat3="Bio Gem"
+							mat3="bio gem"
 							amount3=1
 							New()
 								var/obj/item/Weapon/Machinist/Ammo/Advanced/BioBullet/a=new
@@ -1155,7 +1155,7 @@
 							amount1=5
 							mat2="adamantine ingot"
 							amount2=1
-							mat3="Dark Gem"
+							mat3="dark gem"
 							amount3=1
 							New()
 								var/obj/item/Weapon/Machinist/Ammo/Advanced/DarkBullet/a=new
@@ -1166,7 +1166,7 @@
 							amount1=5
 							mat2="adamantine ingot"
 							amount2=1
-							mat3="Holy Gem"
+							mat3="holy gem"
 							amount3=1
 							New()
 								var/obj/item/Weapon/Machinist/Ammo/Advanced/HolyBullet/a=new
@@ -1188,9 +1188,9 @@
 						amount1=10
 						mat2="adamantine ingot"
 						amount2=1
-						mat3="Dark Gem"
+						mat3="dark gem"
 						amount3=1
-						mat4="Black Gem"
+						mat4="black gem"
 						amount4=1
 						New()
 							var/obj/item/Weapon/Machinist/Ammo/Nethicite/a=new
@@ -1201,9 +1201,9 @@
 					amount1=10
 					mat2="mythril ingot"
 					amount2=1
-					mat3="Thunder Gem"
+					mat3="thunder gem"
 					amount3=1
-					mat4="Black Gem"
+					mat4="black gem"
 					amount4=1
 					New()
 						var/obj/item/Weapon/Machinist/LaserOffenseOrb/a=new
@@ -1214,9 +1214,9 @@
 					amount1=10
 					mat2="mythril ingot"
 					amount2=1
-					mat3="Thunder Gem"
+					mat3="thunder gem"
 					amount3=1
-					mat4="White Gem"
+					mat4="white gem"
 					amount4=1
 					New()
 						var/obj/item/Weapon/Machinist/LaserDefenseOrb/a=new
@@ -1227,7 +1227,7 @@
 					amount1=4
 					mat2="mythril ingot"
 					amount2=2
-					mat3="Thunder Gem"
+					mat3="thunder gem"
 					amount3=1
 					New()
 						var/obj/item/Weapon/Machinist/Taser/a=new
@@ -1238,7 +1238,7 @@
 					amount1=15
 					mat2="mythril ingot"
 					amount2=1
-					mat3="Earth Gem"
+					mat3="earth gem"
 					amount3=1
 					New()
 						var/obj/item/Weapon/Machinist/WreckingBall/a=new
@@ -1249,7 +1249,7 @@
 					amount1=8
 					mat2="mythril ingot"
 					amount2=15
-					mat3="Dark Gem"
+					mat3="dark gem"
 					amount3=1
 					New()
 						var/obj/item/Weapon/Machinist/BeamCannon/a=new
@@ -1260,7 +1260,7 @@
 					amount1=10
 					mat2="mythril ingot"
 					amount2=5
-					mat3="Holy Gem"
+					mat3="holy gem"
 					amount3=1
 					mat4="adamantine ingot"
 					amount4=2
@@ -1273,7 +1273,7 @@
 					amount1=5
 					mat2="mythril ingot"
 					amount2=3
-					mat3="Fire Gem"
+					mat3="fire gem"
 					amount3=1
 					New()
 						var/obj/item/Weapon/Machinist/Flamethrower/a=new
@@ -1284,7 +1284,7 @@
 					amount1=5
 					mat2="mythril ingot"
 					amount2=3
-					mat3="Bio Gem"
+					mat3="bio gem"
 					amount3=1
 					New()
 						var/obj/item/Weapon/Machinist/BioBlaster/a=new
@@ -1298,7 +1298,7 @@
 						amount1=10
 						mat2="steel ingot"
 						amount2=10
-						mat3="Fire Gem"
+						mat3="fire gem"
 						amount3=1
 						mat4="mythril ingot"
 						amount4=2
@@ -1311,7 +1311,7 @@
 						amount1=10
 						mat2="steel ingot"
 						amount2=10
-						mat3="Earth Gem"
+						mat3="earth gem"
 						amount3=1
 						mat4="mythril ingot"
 						amount4=2
@@ -1324,7 +1324,7 @@
 						amount1=10
 						mat2="steel ingot"
 						amount2=10
-						mat3="Wind Gem"
+						mat3="wind gem"
 						amount3=1
 						mat4="mythril ingot"
 						amount4=2
@@ -1338,7 +1338,7 @@
 						amount1=10
 						mat2="steel ingot"
 						amount2=10
-						mat3="Fire Gem"
+						mat3="fire gem"
 						amount3=1
 						New()
 							var/obj/item/Machinist/Modules/StrengthModule/a=new
@@ -1349,7 +1349,7 @@
 						amount1=10
 						mat2="steel ingot"
 						amount2=10
-						mat3="Ice Gem"
+						mat3="ice gem"
 						amount3=1
 						New()
 							var/obj/item/Machinist/Modules/WisdomModule/a=new
@@ -1362,7 +1362,7 @@
 						amount1=10
 						mat2="steel ingot"
 						amount2=10
-						mat3="Black Gem"
+						mat3="black gem"
 						amount3=1
 						mat4="mythril ingot"
 						amount4=5
@@ -1375,7 +1375,7 @@
 						amount1=10
 						mat2="steel ingot"
 						amount2=10
-						mat3="Holy Gem"
+						mat3="holy gem"
 						amount3=1
 						mat4="mythril ingot"
 						amount4=5
@@ -1389,7 +1389,7 @@
 						amount1=10
 						mat2="steel ingot"
 						amount2=10
-						mat3="Wind Gem"
+						mat3="wind gem"
 						amount3=1
 						New()
 							var/obj/item/Machinist/Modules/DexterityModule/a=new
@@ -1400,7 +1400,7 @@
 						amount1=10
 						mat2="steel ingot"
 						amount2=10
-						mat3="Earth Gem"
+						mat3="earth gem"
 						amount3=1
 						New()
 							var/obj/item/Machinist/Modules/ConstitutionModule/a=new
@@ -1411,7 +1411,7 @@
 						amount1=10
 						mat2="steel ingot"
 						amount2=10
-						mat3="Thunder Gem"
+						mat3="thunder gem"
 						amount3=1
 						New()
 							var/obj/item/Machinist/Modules/IntelligenceModule/a=new
@@ -1422,7 +1422,7 @@
 						amount1=10
 						mat2="steel ingot"
 						amount2=10
-						mat3="Water Gem"
+						mat3="water gem"
 						amount3=1
 						New()
 							var/obj/item/Machinist/Modules/CharismaModule/a=new
@@ -1567,7 +1567,7 @@
 				amount5=5
 				mat6="leather"
 				amount6=50
-				mat7="Earth Gem"
+				mat7="earth gem"
 				amount7=10
 				New()
 					var/obj/Vehicles/Tech/Travel/Rover/a=new
@@ -1586,7 +1586,7 @@
 				amount5=5
 				mat6="leather"
 				amount6=50
-				mat7="Water Gem"
+				mat7="water gem"
 				amount7=10
 				New()
 					var/obj/Vehicles/Tech/Travel/Caravel/a=new
@@ -1605,7 +1605,7 @@
 				amount5=35
 				mat6="leather"
 				amount6=50
-				mat7="Wind Gem"
+				mat7="wind gem"
 				amount7=25
 				New()
 					var/obj/Vehicles/Tech/Travel/Airship/a=new
@@ -1771,7 +1771,7 @@
 						src.creates=a
 						src.name=a.name
 				ShellGenerator
-					mat1="Earth Gem"
+					mat1="earth gem"
 					amount1=5
 					mat2="steel ingot"
 					amount2=15

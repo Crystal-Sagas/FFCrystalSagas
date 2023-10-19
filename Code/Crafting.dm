@@ -461,7 +461,7 @@ obj/item/verb
 						return
 					switch(input("What element do you wish to add?") in list("Fire","Ice","Water","Thunder","Wind","Earth","Bio","Dark","Holy"))
 						if("Fire")
-							var/obj/item/fgem = usr.Determinecraftmat("Fire Gem")
+							var/obj/item/fgem = usr.Determinecraftmat("fire gem")
 							if(fgem==null)
 								alert(usr,"You don't seem to have any Fire Gems")
 								return
@@ -495,7 +495,7 @@ obj/item/verb
 										alert(usr,"You don't have enough. You need at least 12 Fire Gems")
 
 						if("Ice")
-							var/obj/item/igem = usr.Determinecraftmat("Ice Gem")
+							var/obj/item/igem = usr.Determinecraftmat("ice gem")
 							if(igem==null)
 								alert(usr,"You don't seem to have any Ice Gems")
 								return
@@ -529,7 +529,7 @@ obj/item/verb
 										alert(usr,"You don't have enough. You need at least 12 Ice Gems")
 
 						if("Thunder")
-							var/obj/item/tgem = usr.Determinecraftmat("Thunder Gem")
+							var/obj/item/tgem = usr.Determinecraftmat("thunder gem")
 							if(tgem==null)
 								alert(usr,"You don't seem to have any Thunder Gems")
 								return
@@ -563,7 +563,7 @@ obj/item/verb
 										alert(usr,"You don't have enough. You need at least 12 Thunder Gems")
 
 						if("Water")
-							var/obj/item/wgem = usr.Determinecraftmat("Water Gem")
+							var/obj/item/wgem = usr.Determinecraftmat("water gem")
 							if(wgem==null)
 								alert(usr,"You don't seem to have any Water Gems")
 								return
@@ -597,7 +597,7 @@ obj/item/verb
 										alert(usr,"You don't have enough. You need at least 12 Water Gems")
 
 						if("Wind")
-							var/obj/item/wigem = usr.Determinecraftmat("Wind Gem")
+							var/obj/item/wigem = usr.Determinecraftmat("wind gem")
 							if(wigem==null)
 								alert(usr,"You don't seem to have any Wind Gems")
 								return
@@ -631,7 +631,7 @@ obj/item/verb
 										alert(usr,"You don't have enough. You need at least 12 Wind Gems")
 
 						if("Earth")
-							var/obj/item/egem = usr.Determinecraftmat("Earth Gem")
+							var/obj/item/egem = usr.Determinecraftmat("earth gem")
 							if(egem==null)
 								alert(usr,"You don't seem to have any Earth Gems")
 								return
@@ -665,7 +665,7 @@ obj/item/verb
 										alert(usr,"You don't have enough. You need at least 12 Earth Gems")
 
 						if("Bio")
-							var/obj/item/bgem = usr.Determinecraftmat("Bio Gem")
+							var/obj/item/bgem = usr.Determinecraftmat("bio gem")
 							if(bgem==null)
 								alert(usr,"You don't seem to have any Bio Gems")
 								return
@@ -699,7 +699,7 @@ obj/item/verb
 										alert(usr,"You don't have enough. You need at least 12 Bio Gems")
 
 						if("Holy")
-							var/obj/item/hgem = usr.Determinecraftmat("Holy Gem")
+							var/obj/item/hgem = usr.Determinecraftmat("holy gem")
 							if(hgem==null)
 								alert(usr,"You don't seem to have any Holy Gems")
 								return
@@ -733,7 +733,7 @@ obj/item/verb
 										alert(usr,"You don't have enough. You need at least 12 Holy Gems")
 
 						if("Dark")
-							var/obj/item/dgem = usr.Determinecraftmat("Dark Gem")
+							var/obj/item/dgem = usr.Determinecraftmat("dark gem")
 							if(dgem==null)
 								alert(usr,"You don't seem to have any Dark Gems")
 								return
@@ -776,7 +776,7 @@ obj/item/verb
 						src.entype="weapon"
 					switch(input("What status effect do you wish to instill?") in list("Poison","Blind","Silence","Sleep","Slow","Stop","Doom","Paralyze","Toad",""))
 						if("Poison")
-							var/obj/item/dgem = usr.Determinecraftmat("Bio Gem")
+							var/obj/item/dgem = usr.Determinecraftmat("bio gem")
 							if(dgem==null)
 								alert(usr,"You don't seem to have any Bio Gems")
 								return
@@ -791,7 +791,7 @@ obj/item/verb
 							else
 								alert(usr,"You need 4 Bio Gems to apply the Poison enchantment.")
 						if("Blind")
-							var/obj/item/dgem = usr.Determinecraftmat("Dark Gem")
+							var/obj/item/dgem = usr.Determinecraftmat("dark gem")
 							if(dgem==null)
 								alert(usr,"You don't seem to have any Dark Gems")
 								return
@@ -806,7 +806,7 @@ obj/item/verb
 							else
 								alert(usr,"You need 4 Dark Gems to apply the Blind enchantment.")
 						if("Silence")
-							var/obj/item/dgem = usr.Determinecraftmat("White Gem")
+							var/obj/item/dgem = usr.Determinecraftmat("white gem")
 							if(dgem==null)
 								alert(usr,"You don't seem to have any White Gems")
 								return
@@ -821,7 +821,7 @@ obj/item/verb
 							else
 								alert(usr,"You need 4 White Gems to apply the Silence enchantment.")
 						if("Sleep")
-							var/obj/item/dgem = usr.Determinecraftmat("Black Gem")
+							var/obj/item/dgem = usr.Determinecraftmat("black gem")
 							if(dgem==null)
 								alert(usr,"You don't seem to have any Black Gems")
 								return
@@ -834,7 +834,7 @@ obj/item/verb
 							else
 								alert(usr,"You need 4 Black Gems to apply the Sleep enchantment.")
 						if("Slow")
-							var/obj/item/dgem = usr.Determinecraftmat("White Gem")
+							var/obj/item/dgem = usr.Determinecraftmat("white gem")
 							if(dgem==null)
 								alert(usr,"You don't seem to have any White Gems")
 								return
@@ -847,7 +847,7 @@ obj/item/verb
 							else
 								alert(usr,"You need 4 White Gems to apply the Slow enchantment.")
 						if("Stop")
-							var/obj/item/dgem = usr.Determinecraftmat("Holy Gem")
+							var/obj/item/dgem = usr.Determinecraftmat("holy gem")
 							if(dgem==null)
 								alert(usr,"You don't seem to have any Holy Gems")
 								return
@@ -861,7 +861,7 @@ obj/item/verb
 								alert(usr,"You need 4 Holy Gems to apply the Stop enchantment.")
 								return
 						if("Doom")
-							var/obj/item/dgem = usr.Determinecraftmat("Dark Gem")
+							var/obj/item/dgem = usr.Determinecraftmat("dark gem")
 							if(dgem==null)
 								alert(usr,"You don't seem to have any Dark Gems")
 								return
@@ -875,7 +875,7 @@ obj/item/verb
 								alert(usr,"You need 4 Dark Gems to apply the Doom enchantment.")
 								return
 						if("Paralyze")
-							var/obj/item/dgem = usr.Determinecraftmat("Thunder Gem")
+							var/obj/item/dgem = usr.Determinecraftmat("thunder gem")
 							if(dgem==null)
 								alert(usr,"You don't seem to have any Thunder Gems")
 								return
@@ -889,7 +889,7 @@ obj/item/verb
 								alert(usr,"You need 4 Thunder Gems to apply the Paralyze enchantment.")
 								return
 						if("Toad")
-							var/obj/item/dgem = usr.Determinecraftmat("Bio Gem")
+							var/obj/item/dgem = usr.Determinecraftmat("bio gem")
 							if(dgem==null)
 								alert(usr,"You don't seem to have any Bio Gems")
 								return
@@ -924,7 +924,7 @@ obj/item/verb
 								switch(yesnochoice)
 									if("Yes")
 										var/addenchant=" This weapon restores half of the damage it deals to its wielder. This can only apply to one attack roll per round."
-										var/obj/item/dgem = usr.Determinecraftmat("Dark Gem")
+										var/obj/item/dgem = usr.Determinecraftmat("dark gem")
 										if(dgem==null)
 											alert(usr,"You don't seem to have any Dark Gems (15 needed).")
 											return
@@ -945,7 +945,7 @@ obj/item/verb
 								switch(yesnochoice)
 									if("Yes")
 										var/addenchant=" This weapon restores half of the damage it deals to its wielder as MP. This can only apply to one attack roll per round."
-										var/obj/item/dgem = usr.Determinecraftmat("Holy Gem")
+										var/obj/item/dgem = usr.Determinecraftmat("holy gem")
 										if(dgem==null)
 											alert(usr,"You don't seem to have any Holy Gems (15 needed).")
 											return
@@ -966,7 +966,7 @@ obj/item/verb
 								switch(yesnochoice)
 									if("Yes")
 										var/addenchant=" This weapon restores 20 HP to its wielder and allies within 5 tiles on a succesful hit. Deals 2x damage to Undead. The healing pulse only procs once per round."
-										var/obj/item/dgem = usr.Determinecraftmat("White Gem")
+										var/obj/item/dgem = usr.Determinecraftmat("white gem")
 										if(dgem==null)
 											alert(usr,"You don't seem to have any White Gems (15 needed).")
 											return
@@ -987,7 +987,7 @@ obj/item/verb
 								switch(yesnochoice)
 									if("Yes")
 										var/addenchant=" This weapon restores 1/4 of the damage it deals as MP to its wielder and allies within 5 tiles."
-										var/obj/item/dgem = usr.Determinecraftmat("Black Gem")
+										var/obj/item/dgem = usr.Determinecraftmat("black gem")
 										if(dgem==null)
 											alert(usr,"You don't seem to have any Black Gems (15 needed).")
 											return
@@ -1006,7 +1006,7 @@ obj/item/verb
 								switch(yesnochoice)
 									if("Yes")
 										var/addenchant=" This weapon's attacks deal 10 damage as an automatic hit to enemy creatures within 5 tiles of the target."
-										var/obj/item/dgem = usr.Determinecraftmat("Fire Gem")
+										var/obj/item/dgem = usr.Determinecraftmat("fire gem")
 										if(dgem==null)
 											alert(usr,"You don't seem to have any Fire Gems (15 needed).")
 											return
@@ -1025,7 +1025,7 @@ obj/item/verb
 								switch(yesnochoice)
 									if("Yes")
 										var/addenchant=" This weapon's attacks inflict 'Bleed', and 'Heavy' on hit."
-										var/obj/item/dgem = usr.Determinecraftmat("Dark Gem")
+										var/obj/item/dgem = usr.Determinecraftmat("dark gem")
 										if(dgem==null)
 											alert(usr,"You don't seem to have any Dark Gems (15 needed).")
 											return
@@ -1044,7 +1044,7 @@ obj/item/verb
 								switch(yesnochoice)
 									if("Yes")
 										var/addenchant=" This weapon's attacks inflict 'Poison', and 'Burn' on hit."
-										var/obj/item/dgem = usr.Determinecraftmat("Bio Gem")
+										var/obj/item/dgem = usr.Determinecraftmat("bio gem")
 										if(dgem==null)
 											alert(usr,"You don't seem to have any Bio Gems (15 needed).")
 											return
@@ -1063,7 +1063,7 @@ obj/item/verb
 								switch(yesnochoice)
 									if("Yes")
 										var/addenchant=" This weapon gains +7 additional damage (latently added)."
-										var/obj/item/dgem = usr.Determinecraftmat("Earth Gem")
+										var/obj/item/dgem = usr.Determinecraftmat("earth gem")
 										if(dgem==null)
 											alert(usr,"You don't seem to have any Earth Gems (15 needed).")
 											return
@@ -1082,7 +1082,7 @@ obj/item/verb
 								switch(yesnochoice)
 									if("Yes")
 										var/addenchant=" This weapon's crit range is reduced by 1. (latently added)."
-										var/obj/item/dgem = usr.Determinecraftmat("Ice Gem")
+										var/obj/item/dgem = usr.Determinecraftmat("ice gem")
 										if(dgem==null)
 											alert(usr,"You don't seem to have any Ice Gems (15 needed).")
 											return
@@ -1102,7 +1102,7 @@ obj/item/verb
 								switch(yesnochoice)
 									if("Yes")
 										var/addenchant=" This Weapon gains a +3 to hit bonus (latently added), and may attack an extra time per attack action."
-										var/obj/item/dgem = usr.Determinecraftmat("Wind Gem")
+										var/obj/item/dgem = usr.Determinecraftmat("wind gem")
 										if(dgem==null)
 											alert(usr,"You don't seem to have any Wind Gems (15 needed).")
 											return
@@ -1121,7 +1121,7 @@ obj/item/verb
 								switch(yesnochoice)
 									if("Yes")
 										var/addenchant=" This Weapon may once per round, when missing an attack roll allow the wielder to spend 5 MP to re-roll the attack."
-										var/obj/item/dgem = usr.Determinecraftmat("Thunder Gem")
+										var/obj/item/dgem = usr.Determinecraftmat("thunder gem")
 										if(dgem==null)
 											alert(usr,"You don't seem to have any Thunder Gems (15 needed).")
 											return
@@ -1140,7 +1140,7 @@ obj/item/verb
 								switch(yesnochoice)
 									if("Yes")
 										var/addenchant=" While this weapon is equipped and wielded, Magical attacks towards the user when dealing damage, restore their MP and SP for half of the damage they take after resistance and damage reductions are applied."
-										var/obj/item/dgem = usr.Determinecraftmat("White Gem")
+										var/obj/item/dgem = usr.Determinecraftmat("white gem")
 										if(dgem==null)
 											alert(usr,"You don't seem to have any White Gems. (15  needed).")
 											return
@@ -1159,7 +1159,7 @@ obj/item/verb
 								switch(yesnochoice)
 									if("Yes")
 										var/addenchant=" While this weapon is equipped, the wielder may spend 40 MP to gain effective resistance against a single roll's instance of damage, as a reaction."
-										var/obj/item/dgem = usr.Determinecraftmat("Earth Gem")
+										var/obj/item/dgem = usr.Determinecraftmat("earth gem")
 										if(dgem==null)
 											alert(usr,"You don't seem to have any Earth Gems. (15  needed).")
 											return
@@ -1178,7 +1178,7 @@ obj/item/verb
 								switch(yesnochoice)
 									if("Yes")
 										var/addenchant=" While this weapon is equipped, the wielder gains +5 PDB, and +2 STR as a global modifier. This effect can not stack with itself."
-										var/obj/item/dgem = usr.Determinecraftmat("Fire Gem")
+										var/obj/item/dgem = usr.Determinecraftmat("fire gem")
 										if(dgem==null)
 											alert(usr,"You don't seem to have any Fire Gems. (15  needed).")
 											return
@@ -1197,7 +1197,7 @@ obj/item/verb
 								switch(yesnochoice)
 									if("Yes")
 										var/addenchant=" While this weapon is equipped, the wielder gains +2 PAB, and +2 DEX as a global modifier."
-										var/obj/item/dgem = usr.Determinecraftmat("Wind Gem")
+										var/obj/item/dgem = usr.Determinecraftmat("wind gem")
 										if(dgem==null)
 											alert(usr,"You don't seem to have any Wind Gems. (15  needed).")
 											return
@@ -1216,7 +1216,7 @@ obj/item/verb
 								switch(yesnochoice)
 									if("Yes")
 										var/addenchant=" While this weapon is equipped, the wielder gains +1 AC, and +2 CON as a global modifier. This effect cannot stack with itself."
-										var/obj/item/dgem = usr.Determinecraftmat("Earth Gem")
+										var/obj/item/dgem = usr.Determinecraftmat("earth gem")
 										if(dgem==null)
 											alert(usr,"You don't seem to have any Earth Gems. (15  needed).")
 											return
@@ -1235,7 +1235,7 @@ obj/item/verb
 								switch(yesnochoice)
 									if("Yes")
 										var/addenchant=" While this weapon is equipped, the wielder gains +4 MAB, and +2 WIS as a global modifier. This effect cannot stack with itself."
-										var/obj/item/dgem = usr.Determinecraftmat("Water Gem")
+										var/obj/item/dgem = usr.Determinecraftmat("water gem")
 										if(dgem==null)
 											alert(usr,"You don't seem to have any Water Gems. (15  needed).")
 											return
@@ -1254,7 +1254,7 @@ obj/item/verb
 								switch(yesnochoice)
 									if("Yes")
 										var/addenchant=" While this weapon is equipped, the wielder gains +4 MAB, and +2 INT as a global modifier. This effect cannot stack with itself."
-										var/obj/item/dgem = usr.Determinecraftmat("Thunder Gem")
+										var/obj/item/dgem = usr.Determinecraftmat("thunder gem")
 										if(dgem==null)
 											alert(usr,"You don't seem to have any Thunder Gems. (15  needed).")
 											return
@@ -1273,7 +1273,7 @@ obj/item/verb
 								switch(yesnochoice)
 									if("Yes")
 										var/addenchant=" While this weapon is equipped, the wielder gains +4 MAB, and +2 CHA as a global modifier. This effect cannot stack with itself."
-										var/obj/item/dgem = usr.Determinecraftmat("Bio Gem")
+										var/obj/item/dgem = usr.Determinecraftmat("bio gem")
 										if(dgem==null)
 											alert(usr,"You don't seem to have any Bio Gems. (15  needed).")
 											return
@@ -1292,7 +1292,7 @@ obj/item/verb
 								switch(yesnochoice)
 									if("Yes")
 										var/addenchant=" While this weapon is equipped, the wielder gains +10 PDB, but may not use Abilities or Spells of any type."
-										var/obj/item/dgem = usr.Determinecraftmat("Dark Gem")
+										var/obj/item/dgem = usr.Determinecraftmat("dark gem")
 										if(dgem==null)
 											alert(usr,"You don't seem to have any Dark Gems. (15  needed).")
 											return
@@ -1311,7 +1311,7 @@ obj/item/verb
 								switch(yesnochoice)
 									if("Yes")
 										var/addenchant=" While this weapon is equipped, the wielder gains immunity to Blind, advantage on Perception checks, and +2 WIS."
-										var/obj/item/dgem = usr.Determinecraftmat("Dark Gem")
+										var/obj/item/dgem = usr.Determinecraftmat("dark gem")
 										if(dgem==null)
 											alert(usr,"You don't seem to have any Dark Gems. (15  needed).")
 											return
@@ -1330,7 +1330,7 @@ obj/item/verb
 								switch(yesnochoice)
 									if("Yes")
 										var/addenchant=" This weapon allows placement of Teleportation glyphs as Bonus Actions, for 40 MP. Allows activation of created glyphs as Standard Action, at 10 MP cost. Releases 10 damage auto-hit 3x3 burst on teleport, from previous location."
-										var/obj/item/dgem = usr.Determinecraftmat("Dark Gem")
+										var/obj/item/dgem = usr.Determinecraftmat("dark gem")
 										if(dgem==null)
 											alert(usr,"You don't seem to have any Dark Gems. (15  needed).")
 											return
@@ -1349,7 +1349,7 @@ obj/item/verb
 								switch(yesnochoice)
 									if("Yes")
 										var/addenchant=" Deals 30 additional damage on weapon attacks which deal damage to Espers, Summons, Eidolons, Aeons, Scions, and Half Espers when using this weapon."
-										var/obj/item/dgem = usr.Determinecraftmat("Holy Gem")
+										var/obj/item/dgem = usr.Determinecraftmat("holy gem")
 										if(dgem==null)
 											alert(usr,"You don't seem to have any Holy Gems. (15  needed).")
 											return
@@ -1368,7 +1368,7 @@ obj/item/verb
 								switch(yesnochoice)
 									if("Yes")
 										var/addenchant=" Grants advantage on skill checks during Dungeons while wielded."
-										var/obj/item/dgem = usr.Determinecraftmat("Holy Gem")
+										var/obj/item/dgem = usr.Determinecraftmat("holy gem")
 										if(dgem==null)
 											alert(usr,"You don't seem to have any Holy Gems. (15  needed).")
 											return
@@ -1387,7 +1387,7 @@ obj/item/verb
 								switch(yesnochoice)
 									if("Yes")
 										var/addenchant=" Grants +5 to all Beastmaster related rolls while wielded."
-										var/obj/item/dgem = usr.Determinecraftmat("Holy Gem")
+										var/obj/item/dgem = usr.Determinecraftmat("holy gem")
 										if(dgem==null)
 											alert(usr,"You don't seem to have any Holy Gems. (15  needed).")
 											return
@@ -1406,7 +1406,7 @@ obj/item/verb
 								switch(yesnochoice)
 									if("Yes")
 										var/addenchant=" Changes weapon's typing to 'magical' from 'physical' and its scaling to WIS."
-										var/obj/item/dgem = usr.Determinecraftmat("Dark Gem")
+										var/obj/item/dgem = usr.Determinecraftmat("dark gem")
 										if(dgem==null)
 											alert(usr,"You don't seem to have any Dark Gems. (15  needed).")
 											return
@@ -1427,7 +1427,7 @@ obj/item/verb
 								switch(yesnochoice)
 									if("Yes")
 										var/addenchant=" Changes weapon's typing to 'magical' from 'physical' and its scaling to INT."
-										var/obj/item/dgem = usr.Determinecraftmat("Dark Gem")
+										var/obj/item/dgem = usr.Determinecraftmat("dark gem")
 										if(dgem==null)
 											alert(usr,"You don't seem to have any Dark Gems. (15  needed).")
 											return
@@ -1448,7 +1448,7 @@ obj/item/verb
 								switch(yesnochoice)
 									if("Yes")
 										var/addenchant=" Changes weapon's typing to 'magical' from 'physical' and its scaling to CHA."
-										var/obj/item/dgem = usr.Determinecraftmat("White Gem")
+										var/obj/item/dgem = usr.Determinecraftmat("white gem")
 										if(dgem==null)
 											alert(usr,"You don't seem to have any White Gems. (15  needed).")
 											return
@@ -1469,7 +1469,7 @@ obj/item/verb
 								switch(yesnochoice)
 									if("Yes")
 										var/addenchant=" Grants +2 Speed while wielded."
-										var/obj/item/dgem = usr.Determinecraftmat("Wind Gem")
+										var/obj/item/dgem = usr.Determinecraftmat("wind gem")
 										if(dgem==null)
 											alert(usr,"You don't seem to have any Wind Gems. (15  needed).")
 											return
@@ -1490,7 +1490,7 @@ obj/item/verb
 								switch(yesnochoice)
 									if("Yes")
 										var/addenchant=" Grants the wielder +2 PDB and +2 MDB for each instance of damage they take, stacking up to 8 PDB and 8 MDB, lasts until end of battle."
-										var/obj/item/dgem = usr.Determinecraftmat("Fire Gem")
+										var/obj/item/dgem = usr.Determinecraftmat("fire gem")
 										if(dgem==null)
 											alert(usr,"You don't seem to have any Fire Gems. (15  needed).")
 											return

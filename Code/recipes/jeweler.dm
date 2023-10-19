@@ -10,7 +10,7 @@
 	amount1=3
 	mat2="steel ingot"
 	amount2=1
-	mat3="Earth Gem"
+	mat3="earth gem"
 	amount3=1
 	creates = new /obj/item/Weapon/Jeweler/SilverRing
 
@@ -20,7 +20,7 @@
 	amount1=3
 	mat2="silver ingot"
 	amount2=1
-	mat3="Earth Gem"
+	mat3="earth gem"
 	amount3=1
 	creates = new /obj/item/Weapon/Jeweler/GoldRing
 
@@ -32,7 +32,7 @@
 	amount1=5
 	mat2="steel ingot"
 	amount2=2
-	mat3="Water Gem"
+	mat3="water gem"
 	amount3=1
 	creates = new /obj/item/Weapon/Jeweler/SilverNecklace
 
@@ -42,7 +42,7 @@
 	amount1=5
 	mat2="silver ingot"
 	amount2=2
-	mat3="Water Gem"
+	mat3="water gem"
 	amount3=1
 	creates = new /obj/item/Weapon/Jeweler/GoldNecklace
 
@@ -54,7 +54,7 @@
 	amount1=5
 	mat2="steel ingot"
 	amount2=2
-	mat3="Fire Gem"
+	mat3="fire gem"
 	amount3=1
 	creates = new /obj/item/Weapon/Jeweler/SilverBracelet
 
@@ -64,7 +64,7 @@
 	amount1=5
 	mat2="silver ingot"
 	amount2=2
-	mat3="Fire Gem"
+	mat3="fire gem"
 	amount3=1
 	creates = new /obj/item/Weapon/Jeweler/GoldBracelet
 
@@ -76,7 +76,7 @@
 	amount1=5
 	mat2="steel ingot"
 	amount2=2
-	mat3="Thunder Gem"
+	mat3="thunder gem"
 	amount3=1
 	creates = new /obj/item/Weapon/Jeweler/SilverEarring
 
@@ -86,7 +86,7 @@
 	amount1=5
 	mat2="silver ingot"
 	amount2=2
-	mat3="Thunder Gem"
+	mat3="thunder gem"
 	amount3=1
 	creates = new /obj/item/Weapon/Jeweler/GoldEarring
 
@@ -98,7 +98,7 @@
 	amount1=10
 	mat2="steel ingot"
 	amount2=5
-	mat3="Holy Gem"
+	mat3="holy gem"
 	amount3=1
 	creates = new /obj/item/Weapon/Jeweler/BronzeBangle
 
@@ -108,7 +108,7 @@
 	amount1=10
 	mat2="gold ingot"
 	amount2=5
-	mat3="Holy Gem"
+	mat3="holy gem"
 	amount3=2
 	creates = new /obj/item/Weapon/Jeweler/MythrilBangle
 
@@ -118,6 +118,6 @@
 	amount1=10
 	mat2="gold ingot"
 	amount2=5
-	mat3="Holy Gem"
+	mat3="holy gem"
 	amount3=3
 	creates = new /obj/item/Weapon/Jeweler/AdamantineBangle
