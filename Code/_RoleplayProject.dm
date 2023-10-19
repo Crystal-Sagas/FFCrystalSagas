@@ -88,7 +88,7 @@ var/list/Moogle=list()
 var/list/Cetra=list("PurplePatoot","","")
 var/list/Genome=list()
 var/list/Golem=list("")
-var/list/Timemage=list("")
+var/list/Timemage=list("silicons")
 var/list/Lcie=list("","","")
 var/list/Oracle=list("","","","","")
 

@@ -1559,22 +1559,22 @@ obj
 					rank="T1"
 					name="Craftsmanship"
 					desc="This individual is a trained Merchant. They are able to take up 2 crafting roles instead of just one."
-				BornforBusiness
+				NothingWasted
 					rank="T2"
-					name="Born for Business"
-					desc="(Needs to be coded in) This individual has a great eye for deals. They are able to buy materials from resource suppliers for half the normal cost."
-				MasterGatherer
-					rank="T2"
-					name="Master Gatherer"
-					desc="(Needs Coded In)This Merchant understands the importance of gathering, and thus have refined their skill. They proc any Gathering node (Ore node, Hunting Spot, Nature Node, Soil Mound) they interact with twice."
+					name="Nothing Wasted"
+					desc="This individual knows the value of a brick or a block of wood and never leaves any behind when gathering. Increase the amount of wood or stone gained by 1 per node."
 				Salesman
 					rank="T2"
 					name="Salesman"
 					desc="The merchant has studied the art of the sale. When selling items to an NPC they sell the item at 50% the original price instead of 30."
+				MasterGatherer
+					rank="T3"
+					name="Master Gatherer"
+					desc="This Merchant understands the importance of gathering, and thus have refined their skill. They proc any Gathering node (Ore node, Hunting Spot, Nature Node, Soil Mound) they gain 2x the resource (+1 to resource if comboed with the gatherer T3 perk)."
 				MasteroftheLand
 					rank="T3"
 					name="Master of the Land"
-					desc="(Needs to be coded in) This Merchant has dedicated themselves to gathering what they need to maintain their business. When they use a Gather Node, that node's respawn cooldown is halved."
+					desc="This Merchant has dedicated themselves to gathering what they need to maintain their business. When they gather from a node that node has a better chance at getting them what they want increase there rolls by 10."
 				Duplicator
 					cat="Unique"
 					rank="T5"
@@ -8179,7 +8179,7 @@ obj
 					damsource = "int"
 
 				Hellfire
-					rank = "C"
+					rank = "B"
 					mcost = 50
 					range = "7 squares."
 					desc = "Ifrit can amass a large amount of fire to unleash on a single target. When casting this spell, it takes 1 turn to charge up unless Ifrit has been hit by fire-based attacks, or he's standing in fire. The attack deals 4d12+WIS damage. Costs 50MP."
@@ -8189,7 +8189,7 @@ obj
 					damsource = "wis"
 
 				Diamond_Dust
-					rank = "C"
+					rank = "B"
 					name = "Diamond Dust"
 					mcost = 50
 					range = "7x7 area centered on caster."
@@ -8200,7 +8200,7 @@ obj
 					damsource = "wis"
 
 				Judgement_Bolt
-					rank = "C"
+					rank = "B"
 					name = "Judgement Bolt"
 					mcost = 50
 					range = "5x5 area from within 6 squares of user."

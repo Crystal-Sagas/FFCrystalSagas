@@ -735,7 +735,7 @@ obj
 					equiptype="armor"
 					weapontype="Heavy Armor"
 					icon='Icons/Items/HeavyArmor.dmi'
-					desc="A set of Heavy armor. Its defensive boons are quite massive, but it has heavy side effects. You suffer disadvantage on DEX checks, Stealth checks, Reflex saving throws, and suffer halved movement speed without proper perks. Bronze: 3 AC | Iron: 4 AC | Steel: 5 AC | Mythril: 6 AC | Adamantine: 7 AC | Orichalcum: 8 AC"
+					desc="A set of Heavy armor. Its defensive boons are quite massive, but it has heavy side effects. You suffer disadvantage on DEX checks, Stealth checks, Reflex saving throws, and suffer halved movement speed without proper perks (unuseable by spellcasters). Bronze: 3 AC | Iron: 4 AC | Steel: 5 AC | Mythril: 6 AC | Adamantine: 7 AC | Orichalcum: 8 AC"
 					armortype="Heavy"
 					Bronze
 						weptier="Bronze"

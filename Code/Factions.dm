@@ -148,8 +148,8 @@ obj
 				ShinraGrunt
 					icon='Icons/Monsters/Grunt.png'
 					name="Shinra Grunt"
-					mhp=65
-					hp=65
+					mhp=150
+					hp=150
 					mmp=100
 					mp=100
 					sp=70
