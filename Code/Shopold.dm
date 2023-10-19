@@ -158,13 +158,13 @@ obj
 			Click()
 				Shopprocces(usr,src,Pickcraft(20,usr),20)
 		Shopleather
-			name="Leather"
+			name="leather"
 			icon='Gysahl.dmi'
 			sprice=100
 			Click()
 				Shopprocces(usr,src,Pickcraft(21,usr),21)
 		Shopwool
-			name="Wool"
+			name="wool"
 			icon='Gysahl.dmi'
 			sprice=200
 			Click()

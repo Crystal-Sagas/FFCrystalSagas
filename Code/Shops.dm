@@ -119,12 +119,12 @@ obj/NPCshop
 			s6.shopprice=140
 			src.contents+=s6
 //Stock 7
-			var/obj/item/materials/Leather/s7=new
+			var/obj/item/materials/leather/s7=new
 			s7.instore=1
 			s7.shopprice=50
 			src.contents+=s7
 //Stock 8
-			var/obj/item/materials/Wool/s8=new
+			var/obj/item/materials/wool/s8=new
 			s8.instore=1
 			s8.shopprice=70
 			src.contents+=s8

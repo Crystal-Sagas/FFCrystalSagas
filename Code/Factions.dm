@@ -930,7 +930,7 @@ obj
 								a.amount+=20
 								usr << output("You have gained 20 [a]!","oocout")
 						if(src.Lodge==1)
-							for(var/obj/item/materials/Leather/a in usr.contents)
+							for(var/obj/item/materials/leather/a in usr.contents)
 								a.amount+=15
 								usr << output("You have gained 15 [a]!","oocout")
 						if(src.Commerce==1)
@@ -973,7 +973,7 @@ obj
 								for(var/obj/item/materials/herbs/garidav_wildgrass/a in usr.contents)
 									a.amount+=4
 									usr << output("You have gained 4 [a]!","oocout")
-							for(var/obj/item/materials/Wool/a in usr.contents)
+							for(var/obj/item/materials/wool/a in usr.contents)
 								a.amount+=10
 								usr << output("You have gained 10 [a]!","oocout")
 						if(src.Reactor==1)
@@ -1142,7 +1142,7 @@ obj
 			HuntingLodge
 				icon='Map Icons/Buildings/Nicehouse.dmi'
 				name="Hunting Lodge"
-				desc="A Hunting Lodge, which generates 15 Leather per 24 hour period."
+				desc="A Hunting Lodge, which generates 15 leather per 24 hour period."
 				Lodge=1
 				Gatherer=1
 			Commercecenter
@@ -1154,7 +1154,7 @@ obj
 			Farm
 				icon='Map Icons/Buildings/farm.png'
 				name="Farm"
-				desc="A Farm, which generates 10 Wool, and 1 random Herb per 24 hour period."
+				desc="A Farm, which generates 10 wool, and 1 random Herb per 24 hour period."
 				Farm=1
 				Gatherer=1
 		Insomnia

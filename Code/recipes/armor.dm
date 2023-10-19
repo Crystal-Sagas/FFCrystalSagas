@@ -8,7 +8,7 @@
 //? Light Armor
 
 /obj/recipes/Armor/LightArmor
-	mat2="Leather"
+	mat2="leather"
 	amount2=4
 	weapontype="Light Armor"
 
@@ -40,7 +40,7 @@
 //? Medium Armor
 
 /obj/recipes/Armor/MediumArmor
-	mat2="Wool"
+	mat2="wool"
 	amount2=4
 	weapontype="Medium Armor"
 

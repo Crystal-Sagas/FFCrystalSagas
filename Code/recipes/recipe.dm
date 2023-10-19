@@ -807,9 +807,9 @@
 				amount1=5
 				amount2=3
 				amount3=1
-				mat4="Leather"
+				mat4="leather"
 				amount4=10
-				mat5="Wool"
+				mat5="wool"
 				mat6="Bomb Core"
 				amount6=1
 				New()
@@ -824,9 +824,9 @@
 				amount1=5
 				amount2=3
 				amount3=1
-				mat4="Leather"
+				mat4="leather"
 				amount4=10
-				mat5="Wool"
+				mat5="wool"
 				mat6="Bomb Core"
 				amount6=1
 				New()
@@ -841,9 +841,9 @@
 				amount1=5
 				amount2=3
 				amount3=1
-				mat4="Leather"
+				mat4="leather"
 				amount4=10
-				mat5="Wool"
+				mat5="wool"
 				mat6="Bomb Core"
 				amount6=1
 				New()
@@ -858,9 +858,9 @@
 				amount1=5
 				amount2=3
 				amount3=1
-				mat4="Leather"
+				mat4="leather"
 				amount4=10
-				mat5="Wool"
+				mat5="wool"
 				mat6="Bomb Core"
 				amount6=1
 				New()
@@ -875,9 +875,9 @@
 				amount1=5
 				amount2=3
 				amount3=1
-				mat4="Leather"
+				mat4="leather"
 				amount4=10
-				mat5="Wool"
+				mat5="wool"
 				mat6="Bomb Core"
 				amount6=1
 				New()
@@ -892,9 +892,9 @@
 				amount1=5
 				amount2=3
 				amount3=1
-				mat4="Leather"
+				mat4="leather"
 				amount4=10
-				mat5="Wool"
+				mat5="wool"
 				mat6="Bomb Core"
 				amount6=1
 				New()
@@ -909,9 +909,9 @@
 				amount1=5
 				amount2=3
 				amount3=1
-				mat4="Leather"
+				mat4="leather"
 				amount4=10
-				mat5="Wool"
+				mat5="wool"
 				mat6="Bomb Core"
 				amount6=1
 				New()
@@ -926,9 +926,9 @@
 				amount1=5
 				amount2=3
 				amount3=1
-				mat4="Leather"
+				mat4="leather"
 				amount4=10
-				mat5="Wool"
+				mat5="wool"
 				mat6="Bomb Core"
 				amount6=1
 				New()
@@ -940,9 +940,9 @@
 				mat1="Steel"
 				mat2="Aether Powder"
 				mat3="Holy Gem"
-				mat4="Leather"
+				mat4="leather"
 				amount4=10
-				mat5="Wool"
+				mat5="wool"
 				mat6="Bomb Core"
 				amount6="1"
 				amount5=5
@@ -1565,7 +1565,7 @@
 				amount4=5
 				mat5="Raw Mako"
 				amount5=5
-				mat6="Leather"
+				mat6="leather"
 				amount6=50
 				mat7="Earth Gem"
 				amount7=10
@@ -1576,7 +1576,7 @@
 			Ship
 				mat1="Wood"
 				amount1=80
-				mat2="Wool"
+				mat2="wool"
 				amount2=50
 				mat3="Steel"
 				amount3=50
@@ -1584,7 +1584,7 @@
 				amount4=2
 				mat5="Raw Mako"
 				amount5=5
-				mat6="Leather"
+				mat6="leather"
 				amount6=50
 				mat7="Water Gem"
 				amount7=10
@@ -1595,7 +1595,7 @@
 			Airship
 				mat1="Wood"
 				amount1=100
-				mat2="Wool"
+				mat2="wool"
 				amount2=150
 				mat3="Steel"
 				amount3=50
@@ -1603,7 +1603,7 @@
 				amount4=15
 				mat5="Raw Mako"
 				amount5=35
-				mat6="Leather"
+				mat6="leather"
 				amount6=50
 				mat7="Wind Gem"
 				amount7=25
@@ -1630,9 +1630,9 @@
 			amount2=50
 			mat3="Steel"
 			amount3=5
-			mat4="Leather"
+			mat4="leather"
 			amount4=15
-			mat5="Wool"
+			mat5="wool"
 			amount5=15
 			New()
 				var/obj/House/a=new
@@ -1646,9 +1646,9 @@
 			amount3=15
 			mat4="Mythril"
 			amount4=10
-			mat5="Leather"
+			mat5="leather"
 			amount5=30
-			mat6="Wool"
+			mat6="wool"
 			amount6=30
 			New()
 				var/obj/Fortress/a=new
@@ -1657,8 +1657,8 @@
 			Global
 				Fategiver
 					name="FATE Giver"
-					mat1="Wool"
-					mat2="Leather"
+					mat1="wool"
+					mat2="leather"
 					mat3="Stone"
 					amount1=5
 					amount2=5
@@ -1703,7 +1703,7 @@
 				HuntingLodge
 					mat1="Wood"
 					mat2="Stone"
-					mat3="Leather"
+					mat3="leather"
 					amount1=80
 					amount2=50
 					amount3=5
@@ -1729,8 +1729,8 @@
 				Farm
 					mat1="Wood"
 					mat2="Stone"
-					mat3="Leather"
-					mat4="Wool"
+					mat3="leather"
+					mat4="wool"
 					amount1=50
 					amount2=50
 					amount3=3
@@ -1830,8 +1830,8 @@
 						src.name=a.name
 				InspiringBanner
 					mat1="Wood"
-					mat2="Wool"
-					mat3="Leather"
+					mat2="wool"
+					mat3="leather"
 					amount1=100
 					amount2=20
 					amount3=20
