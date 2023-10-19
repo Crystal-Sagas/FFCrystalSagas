@@ -1465,7 +1465,8 @@ proc
 	Initperk()
 		for(var/A in typesof(/obj/perk)) if(A!=/obj/perk) perklist+=new A
 	Initcraft()
-		for(var/C in typesof(/obj/item/materials)) if (C!=/obj/item/materials) materiallist+=new C
+		for(var/C in non_abstract_typesof(/obj/item/materials))
+			materiallist +=new C
 	Initwep()
 		for(var/B in typesof(/obj/item/Weapon)) if(B!=/obj/item/Weapon) weplist+=new B
 	Initrecipes()

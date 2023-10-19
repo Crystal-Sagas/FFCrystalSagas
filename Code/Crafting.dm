@@ -88,14 +88,13 @@ mob
 				return
 			winset(usr,"Crafting","is-visible=true")
 			for(var/obj/item/materials/A in usr.contents)
-				if(A.name!="Ore" && A.name!="Synthesis" && A.name!="materials" &&A.name!="herbs")
-					row++
-					winset(usr, "craftmats", "current-cell=1,[row]")
-					src << output(A,"craftmats")
-					if(A.amount>0)
-						A.suffix="[A.amount]"
-					winset(usr, "craftmats", "current-cell=2,[row]")
-					src << output(A.suffix,"craftmats")
+				row++
+				winset(usr, "craftmats", "current-cell=1,[row]")
+				src << output(A,"craftmats")
+				if(A.amount>0)
+					A.suffix="[A.amount]"
+				winset(usr, "craftmats", "current-cell=2,[row]")
+				src << output(A.suffix,"craftmats")
 			usr.SeeMechs()
 			usr.SeePots()
 			usr.SeeWeps()
@@ -212,124 +211,6 @@ mob
 					row++
 					src<<output(o,"armorrecipes:1,[row]")
 
-
-obj
-	var/craftingmaterialtrue=0
-	item
-		materials
-			craftable=1
-			craftingmaterialtrue=1
-			price=1
-			amount=0
-			weight=0
-			Click()
-				if(src.instore)
-					switch(alert(usr,"[src.desc] Cost:[src.shopprice]",,"Buy","Cancel"))
-						if("Buy")
-							var/amocho=input("How many?") as num|null
-							if(isnull(amocho) || amocho < 0)
-								return
-							var/adjprice=(amocho*src.shopprice)
-							if(usr.money>=adjprice)
-								usr.money-=adjprice
-								for(var/obj/item/i in usr.contents)
-									if(i.name==src.name)
-										i.amount+=amocho
-										usr<<output("You purchased [amocho] [src.name]/s","oocout")
-										return
-								usr<<output("You purchased [amocho] [src.name]/s","oocout")
-							else
-								alert(usr,"You don't enough for that many.")
-								return
-						if("Cancel")
-							return
-				for(var/obj/playershops/shoptable/a in world)
-					if(src in a.contents)
-						winset(usr,"playershop.selected","text=\"Selected: [src.name]\"")
-						winset(usr,"playershop.desc","text=\"[src.desc]\"")
-						winset(usr,"playershop.lore","text=\"[src.lore]\"")
-						winset(usr,"playershop.enchant","text=\"[src.enchantment]\"")
-						return
-				for(var/obj/playershops/Moogle/a in world)
-					if(src in a.contents)
-						winset(usr,"playershop.selected","text=\"Selected: [src.name]\"")
-						winset(usr,"playershop.desc","text=\"[src.desc]\"")
-						winset(usr,"playershop.lore","text=\"[src.lore]\"")
-						winset(usr,"playershop.enchant","text=\"[src.enchantment]\"")
-						return
-				if(src in usr.contents)
-					return
-				else
-					var/Transfer=src.amount
-					for(var/obj/item/materials/a in usr.contents)
-						if(a.name==src.name)
-							a.amount+=Transfer
-							UpdateCraft(usr)
-							del src
-
-			Synthesis
-				icon='Icons/Crafting/Synthesis.dmi'
-				Wood
-					icon='Icons/Crafting/Synthesis.dmi'
-					icon_state="wood"
-				Stone
-					icon='Icons/Crafting/Synthesis.dmi'
-					icon_state="stone"
-				RawMako
-					name="Raw Mako"
-					icon='Icons/Crafting/Mako.dmi'
-				EtherPowder
-					name="Ether Powder"
-					icon_state="etherpowder"
-				AetherPowder
-					name="Aether Powder"
-					icon_state="aetherpowder"
-				Leather
-					name="Leather"
-					icon_state="leather"
-				Wool
-					name="Wool"
-					icon_state="wool"
-				EsperSoul
-					name="Esper Soul"
-					icon_state="espersoul"
-				BombCore
-					name="Bomb Core"
-					icon_state="bombcore"
-				DragonScale
-					name="Dragon Scale"
-					icon_state="dragonscale"
-				FlyingEyesEye
-					name="Flying Eye's Eye"
-					icon_state="evileye"
-				FlyingEyesWing
-					name="Flying Eye's Wing"
-					icon_state="evilwing"
-				TonberryKnife
-					name="Tonberry Knife"
-					icon_state="tonberryknife"
-				GigantoadSlime
-					name="Gigantoad Slime"
-					icon_state="gigantoadslime"
-				ZuuFeather
-					name="Zuu Feather"
-					icon_state="zuufeather"
-				PixieSand
-					name="Pixie Sand"
-					icon_state="pixiesand"
-				CoeurlWhisker
-					name="Coeurl Whisker"
-					icon_state="coeurlwhisker"
-				SahauginScale
-					name="Sahaugin Scale"
-					icon_state="sahauginscale"
-				Diamond
-					name="Diamond"
-					icon_state="diamond"
-
-
-
-
 //											Enchanting
 obj/item/Weapon/verb
 	Gild()
@@ -414,7 +295,7 @@ obj/item/verb
 			if(src.weapon != 1)
 				alert(usr, "You cannot set this item's lore!")
 			else
-				for(var/obj/item/materials/Synthesis/EtherPowder/a in usr.contents)
+				for(var/obj/item/materials/EtherPowder/a in usr.contents)
 					if(a.amount>=1)
 						if(src.lored==0)
 							var/list/yesno=list("Yes","No")

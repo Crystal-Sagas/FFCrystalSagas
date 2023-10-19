@@ -846,7 +846,7 @@ obj
 							var/random2=rand(1,10)
 							var/random3=rand(1,10)
 							var/gem1=rand(1,20)
-							for(var/obj/item/materials/Synthesis/Stone/a in usr.contents)
+							for(var/obj/item/materials/Stone/a in usr.contents)
 								a.amount+=20
 								usr << output("You have gained 20 [a]!","oocout")
 							if(random1>=1 && random1<4)
@@ -926,11 +926,11 @@ obj
 									a.amount+=1
 									usr << output("You have gained 1 [a]!","oocout")
 						if(src.Loghouse==1)
-							for(var/obj/item/materials/Synthesis/Wood/a in usr.contents)
+							for(var/obj/item/materials/Wood/a in usr.contents)
 								a.amount+=20
 								usr << output("You have gained 20 [a]!","oocout")
 						if(src.Lodge==1)
-							for(var/obj/item/materials/Synthesis/Leather/a in usr.contents)
+							for(var/obj/item/materials/Leather/a in usr.contents)
 								a.amount+=15
 								usr << output("You have gained 15 [a]!","oocout")
 						if(src.Commerce==1)
@@ -973,11 +973,11 @@ obj
 								for(var/obj/item/materials/herbs/garidav_wildgrass/a in usr.contents)
 									a.amount+=4
 									usr << output("You have gained 4 [a]!","oocout")
-							for(var/obj/item/materials/Synthesis/Wool/a in usr.contents)
+							for(var/obj/item/materials/Wool/a in usr.contents)
 								a.amount+=10
 								usr << output("You have gained 10 [a]!","oocout")
 						if(src.Reactor==1)
-							for(var/obj/item/materials/Synthesis/RawMako/a in usr.contents)
+							for(var/obj/item/materials/RawMako/a in usr.contents)
 								a.amount+=1
 								usr << output("You have gained 1 [a]!","oocout")
 						src.Collectcooldown=1

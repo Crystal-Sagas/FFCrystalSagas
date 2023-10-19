@@ -36,3 +36,13 @@
 		if(length(potential) != depth)
 			continue
 		. += sub
+
+/**
+ * return non abstract subtypes
+ */
+/proc/non_abstract_typesof(path)
+	. = list()
+	for(var/datum/scan as anything in typesof(path))
+		if(initial(scan.abstract_type) == scan)
+			continue
+		. += scan

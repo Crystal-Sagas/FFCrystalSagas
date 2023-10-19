@@ -1,4 +1,5 @@
 /obj/item/materials/ingot
+	abstract_type = /obj/item/materials/ingot
 	icon_state = "ingot_platinum"
 
 /obj/item/materials/ingot/bronze

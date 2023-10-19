@@ -1,4 +1,5 @@
 /obj/item/materials/herbs
+	abstract_type = /obj/item/materials/herbs
 	icon_state = "gysahl"
 
 /obj/item/materials/herbs/gysahl_greens

@@ -1,4 +1,5 @@
 /obj/item/materials/gem
+	abstract_type = /obj/item/materials/gem
 	icon_state = "gem_white"
 
 /obj/item/materials/gem/white
