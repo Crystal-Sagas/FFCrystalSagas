@@ -8,10 +8,10 @@ obj
 			for(var/obj/Destinationflag/D in world)
 				destinations+=D
 			var/obj/Destinationflag/place = input("Aye, where you wishing to go?") as null|anything in destinations
+			if(place==null)
+				return
 			if(place.travelprice>usr.money)
 				alert(usr,"You don't have enough Gil!")
-				return
-			if(place==null)
 				return
 			var/turf/dest_turf = get_turf(place)
 			if(!dest_turf)
