@@ -21,7 +21,7 @@
 /obj/item/materials/herbs/sandorian_carrots
 	name="\improper San d'Orian Carrots"
 	icon_state = "sandorian_carrots"
-	id = "herb_sandorian_carrots"
+	id = "herb_sandorian_carrot"
 
 /obj/item/materials/herbs/vomp_carrots
 	name="\improper Vomp Carrots"

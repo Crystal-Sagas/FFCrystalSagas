@@ -45,11 +45,10 @@ obj
 						return
 				if(src in usr.contents)
 					return
-				else
-					var/Transfer=src.amount
-					for(var/obj/item/materials/a in usr.contents)
-						if(a.name==src.name)
-							a.amount+=Transfer
-							log_action("[usr] picked up [Transfer] of [src]")
-							UpdateCraft(usr)
-							del src
+				var/Transfer=src.amount
+				for(var/obj/item/materials/a in usr.contents)
+					if(a.name==src.name)
+						a.amount+=Transfer
+						log_action("[usr] picked up [Transfer] of [src]")
+						UpdateCraft(usr)
+						del src
