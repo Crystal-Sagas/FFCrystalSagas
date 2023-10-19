@@ -2003,112 +2003,112 @@ obj
 							view() << output("[players]","icout")
 						if("Cancel")
 							return
-			for(var/obj/npc/z in world)
-				if(src in z.contents)
-					players={"<font color=#EC2323>[z.name] has flashed a card: <a href="byond://?src=\ref[usr]&action=look&value=\ref[src]"><font color=#FFFFFF>[src]</a>!!"}
-					if(src.ability==1)
-						switch(alert("[src.desc] (Rank:[src.rank])","[src.name]","Reveal","Cancel","Attack"))
-							if("Reveal")
-								if(src.blu==1)
-									players={"<font color=#EC2323>[z.name] has flashed a card: <a href="byond://?src=\ref[usr]&action=look&value=\ref[src]"><font color=#FFFFFF>[src]</a>!! <a href="byond://?src=\ref[usr]&action=blu&value=\ref[src]"> <font color=#0FBFD7><b>BLU!</b></a>"}
-									view() << output("[players]","icout")
+			if(istype(loc, /obj/npc))
+				var/obj/npc/z = loc
+				players={"<font color=#EC2323>[z.name] has flashed a card: <a href="byond://?src=\ref[usr]&action=look&value=\ref[src]"><font color=#FFFFFF>[src]</a>!!"}
+				// just an ability flash
+				if(!src.ability)
+					switch(alert(usr, "[src.desc] (Rank:[src.rank])","[src.name]","Reveal","Cancel"))
+						if("Reveal")
+							if(src.blu==1)
+								players={"<font color=#EC2323>[z.name] has flashed a card: <a href="byond://?src=\ref[usr]&action=look&value=\ref[src]"><font color=#FFFFFF>[src]</a>!! <a href="byond://?src=\ref[usr]&action=blu&value=\ref[src]"> <font color=#0FBFD7><b>BLU!</b></a>"}
+							view() << output("[players]","icout")
+					return
+				// non ability; attack roll
+				switch(alert("[src.desc] (Rank:[src.rank])","[src.name]","Reveal","Cancel","Attack"))
+					if("Reveal")
+						if(src.blu==1)
+							players={"<font color=#EC2323>[z.name] has flashed a card: <a href="byond://?src=\ref[usr]&action=look&value=\ref[src]"><font color=#FFFFFF>[src]</a>!! <a href="byond://?src=\ref[usr]&action=blu&value=\ref[src]"> <font color=#0FBFD7><b>BLU!</b></a>"}
+							view() << output("[players]","icout")
+						else
+							view() << output("[players]","icout")
+					if("Attack")
+						if(src.atype=="heal")
+							var/healbonus=z.chamod*2
+							doresult=raw_attack_damage_roll()
+							dresult=doresult+src.adddam+healbonus
+							view()<<output("<font size=1><font color=[usr.textcolor]>[z] <font color=white>is using the <font color=[z.textcolor]>[src.name]<font color=white> ability! They have healed a target for <font color=#A8F596><b>[dresult]</b></font> HP!","icout")
+						if(src.atype=="curada")
+							var/curadabonus=z.mhp*0.5
+							var/healbonus=z.chamod*2
+							doresult=raw_attack_damage_roll()
+							dresult=doresult+curadabonus+healbonus
+							view()<<output("<font size=1><font color=[usr.textcolor]>[z] <font color=white>is using the <font color=[z.textcolor]>[src.name]<font color=white> ability! They have healed a target for <font color=#A8F596><b>[dresult]</b></font> HP!","icout")
+						if(src.atype=="save")
+							doresult=raw_attack_damage_roll()
+							amod=Checkdamtype(src.damsource,z)
+							dmod=Checkdamtype(src.damsource,z)
+							abilitydamage=raw_attack_damage_roll()
+							if(src.typing=="magical")
+								aresult=src.basecheck+amod+z.rankbonus+src.addhit+2
+								dresult=abilitydamage+dmod+z.mdb+src.adddam+10
+							else
+								aresult=src.basecheck+amod+z.rankbonus+src.addhit
+								dresult=abilitydamage+dmod+z.pdb+src.adddam
+							view()<<output("<font size=1><font color=[usr.textcolor]>[z] <font color=white>is using the <font color=[usr.textcolor]>[src.name]<font color=white> ability!  Saving throw: <font color=#8EF5DE><b>[aresult] [src.savetype]!</b><font color=white>, dealing <b><font color=#FFA852>[dresult] damage</b><font color=white> on a failed save!<br> Cost: <b><font color=#0FBFD7>[src.mcost] [src.costtype]</b> | Tile Range:[src.range]","icout")
+						if(src.atype=="weaponsave")
+							var/obj/item/Weapon/wepchoice = z.eweapon
+							alert(usr,"This ability will use the weapon equipped to your right hand.")
+							amod=Checkdamtype(wepchoice.damsource,z)
+							if(src.typing=="magical")
+								aresult=src.basecheck+amod+usr.rankbonus+src.addhit
+							else
+								aresult=src.basecheck+amod+usr.rankbonus+src.addhit
+							doresult=rand(wepchoice.range1,wepchoice.range2)
+							dmod=Checkdamtype(wepchoice.damsource,z)
+							abilitydamage=raw_attack_damage_roll()
+							if(src.typing=="magical")
+								dresult=doresult+dmod+wepchoice.adddam+z.mdb+src.adddam+abilitydamage
+							else
+								dresult=doresult+dmod+wepchoice.adddam+z.pdb+src.adddam+abilitydamage
+							view()<<output("<font size=1><font color=[usr.textcolor]>[z] <font color=white>is using the <font color=[usr.textcolor]>[src.name]<font color=white> ability with their [wepchoice.name]!  Saving throw: <font color=#8EF5DE><b>[aresult] [src.savetype]!</b><font color=white>, dealing <b><font color=#FFA852>[dresult] damage</b><font color=white> on a failed save!<br> Cost: <b><font color=#0FBFD7>[src.mcost] [src.costtype]</b> | Tile Range:[src.range]","icout")
+						if(src.atype=="weapon")
+							alert(usr,"This ability will use the weapon equipped to your right hand.")
+							if(z.eweapon==0)
+								alert(usr,"You don't have a weapon equipped to use this ability!")
+							else
+								var/obj/item/Weapon/wepchoice = z.eweapon
+								aoresult=rand(1,20)
+								amod=Checkdamtype(wepchoice.damsource,z)
+								if(src.typing=="magical")
+									aresult=aoresult+wepchoice.addhit+amod+z.rankbonus+z.mab+src.addhit
 								else
-									view() << output("[players]","icout")
-							if("Attack")
-								if(src.atype=="heal")
-									var/healbonus=z.chamod*2
-									doresult=raw_attack_damage_roll()
-									dresult=doresult+src.adddam+healbonus
-									view()<<output("<font size=1><font color=[usr.textcolor]>[z] <font color=white>is using the <font color=[z.textcolor]>[src.name]<font color=white> ability! They have healed a target for <font color=#A8F596><b>[dresult]</b></font> HP!","icout")
-								if(src.atype=="curada")
-									var/curadabonus=z.mhp*0.5
-									var/healbonus=z.chamod*2
-									doresult=raw_attack_damage_roll()
-									dresult=doresult+curadabonus+healbonus
-									view()<<output("<font size=1><font color=[usr.textcolor]>[z] <font color=white>is using the <font color=[z.textcolor]>[src.name]<font color=white> ability! They have healed a target for <font color=#A8F596><b>[dresult]</b></font> HP!","icout")
-								if(src.atype=="save")
-									doresult=raw_attack_damage_roll()
-									amod=Checkdamtype(src.damsource,z)
-									dmod=Checkdamtype(src.damsource,z)
-									abilitydamage=raw_attack_damage_roll()
-									if(src.typing=="magical")
-										aresult=src.basecheck+amod+z.rankbonus+src.addhit+2
-										dresult=abilitydamage+dmod+z.mdb+src.adddam+10
-									else
-										aresult=src.basecheck+amod+z.rankbonus+src.addhit
-										dresult=abilitydamage+dmod+z.pdb+src.adddam
-									view()<<output("<font size=1><font color=[usr.textcolor]>[z] <font color=white>is using the <font color=[usr.textcolor]>[src.name]<font color=white> ability!  Saving throw: <font color=#8EF5DE><b>[aresult] [src.savetype]!</b><font color=white>, dealing <b><font color=#FFA852>[dresult] damage</b><font color=white> on a failed save!<br> Cost: <b><font color=#0FBFD7>[src.mcost] [src.costtype]</b> | Tile Range:[src.range]","icout")
-								if(src.atype=="weaponsave")
-									var/obj/item/Weapon/wepchoice = z.eweapon
-									alert(usr,"This ability will use the weapon equipped to your right hand.")
-									amod=Checkdamtype(wepchoice.damsource,z)
-									if(src.typing=="magical")
-										aresult=src.basecheck+amod+usr.rankbonus+src.addhit
-									else
-										aresult=src.basecheck+amod+usr.rankbonus+src.addhit
-									doresult=rand(wepchoice.range1,wepchoice.range2)
-									dmod=Checkdamtype(wepchoice.damsource,z)
-									abilitydamage=raw_attack_damage_roll()
-									if(src.typing=="magical")
-										dresult=doresult+dmod+wepchoice.adddam+z.mdb+src.adddam+abilitydamage
-									else
-										dresult=doresult+dmod+wepchoice.adddam+z.pdb+src.adddam+abilitydamage
-									view()<<output("<font size=1><font color=[usr.textcolor]>[z] <font color=white>is using the <font color=[usr.textcolor]>[src.name]<font color=white> ability with their [wepchoice.name]!  Saving throw: <font color=#8EF5DE><b>[aresult] [src.savetype]!</b><font color=white>, dealing <b><font color=#FFA852>[dresult] damage</b><font color=white> on a failed save!<br> Cost: <b><font color=#0FBFD7>[src.mcost] [src.costtype]</b> | Tile Range:[src.range]","icout")
-								if(src.atype=="weapon")
-									alert(usr,"This ability will use the weapon equipped to your right hand.")
-									if(z.eweapon==0)
-										alert(usr,"You don't have a weapon equipped to use this ability!")
-									else
-										var/obj/item/Weapon/wepchoice = z.eweapon
-										aoresult=rand(1,20)
-										amod=Checkdamtype(wepchoice.damsource,z)
-										if(src.typing=="magical")
-											aresult=aoresult+wepchoice.addhit+amod+z.rankbonus+z.mab+src.addhit
-										else
-											aresult=aoresult+wepchoice.addhit+amod+z.rankbonus+z.pab+src.addhit
-										doresult=rand(wepchoice.range1,wepchoice.range2)
-										dmod=Checkdamtype(wepchoice.damsource,z)
-										abilitydamage=raw_attack_damage_roll()
-										if(src.typing=="magical")
-											dresult=doresult+dmod+wepchoice.adddam+z.mdb+src.adddam+abilitydamage
-										else
-											dresult=doresult+dmod+wepchoice.adddam+z.pdb+src.adddam+abilitydamage
-										critdam=dresult+doresult
-										var/truecrit=wepchoice.critrange-z.critmod
-										if(aoresult>=truecrit)
-											view()<<output("<font size=1><font color=[usr.textcolor]>[z] <font color=white>rolled a <b><font color=#3CF82C>CRITICAL</b> <font color=white>attack roll, using the <font color=[usr.textcolor]>[src.name]<font color=white> ability with their [wepchoice.name]! Result: <font color=#3CF82C><b>[aresult] to hit</b><font color=white>, dealing <b><font color=#FFA852>[critdam] damage</b><font color=white>, as an automatic hit! Cost: <b><font color=#0FBFD7>[src.mcost] [src.costtype]</b>","icout")
-										else
-											view()<<output("<font size=1><font color=[usr.textcolor]>[z] <font color=white>rolled an attack roll, using the <font color=[usr.textcolor]>[src.name]<font color=white> ability with their [wepchoice.name]!  Result: <font color=#8EF5DE><b>[aresult] to hit</b><font color=white>, dealing <b><font color=#FFA852>[dresult] damage</b><font color=white> if successful!<br> Cost: <b><font color=#0FBFD7>[src.mcost] [src.costtype]</b> | Tile Range:[src.range]","icout")
-								if(src.atype=="standard")
-									aoresult=rand(1,20)
-									amod=Checkdamtype(src.damsource,z)
-									if(src.typing=="magical")
-										aresult=aoresult+src.addhit+amod+z.rankbonus+z.mab+2
-									else
-										aresult=aoresult+src.addhit+amod+z.rankbonus+z.pab
-									doresult=raw_attack_damage_roll()
-									dmod=Checkdamtype(src.damsource,z)
-									if(src.typing=="magical")
-										dresult=doresult+dmod+src.adddam+z.mdb+10
-									else
-										dresult=doresult+dmod+src.adddam+z.pdb
-									critdam=dresult+doresult
-									var/truecrit=src.critrange-z.critmod
-									if(aoresult>=truecrit)
-										view()<<output("<font size=1><font color=[usr.textcolor]>[z] <font color=white>rolled a <b><font color=#3CF82C>CRITICAL</b> <font color=white>attack roll, using the <font color=[usr.textcolor]>[src.name]<font color=white> ability! Result: <font color=#3CF82C><b>[aresult] to hit</b><font color=white>, dealing <b><font color=#FFA852>[critdam] damage</b><font color=white>, as an automatic hit! Cost: <b><font color=#0FBFD7>[src.mcost] [src.costtype]</b>","icout")
-									else
-										view()<<output("<font size=1><font color=[usr.textcolor]>[z] <font color=white>rolled an attack roll, using the <font color=[usr.textcolor]>[src.name]<font color=white> ability!  Result: <font color=#8EF5DE><b>[aresult] to hit</b><font color=white>, dealing <b><font color=#FFA852>[dresult] damage</b><font color=white> if successful!<br> Cost: <b><font color=#0FBFD7>[src.mcost] [src.costtype]</b> | Tile Range:[src.range]","output1")
-										view()<<output("<font size=1><font color=[usr.textcolor]>[z] <font color=white>rolled an attack roll, using the <font color=[usr.textcolor]>[src.name]<font color=white> ability! Result: <font color=#8EF5DE><b>[aresult] to hit</b><font color=white>, dealing <b><font color=#FFA852>[dresult] damage</b><font color=white> if successful!<br> Cost: <b><font color=#0FBFD7>[src.mcost] [src.costtype]</b> | Tile Range:[src.range]","icout")
-							if("Cancel")
-								return
-					else
-						switch(alert("[src.desc] (Rank:[src.rank])","[src.name]","Reveal","Cancel"))
-							if("Reveal")
-								if(src.blu==1)
-									players={"<font color=#EC2323>[z.name] has flashed a card: <a href="byond://?src=\ref[usr]&action=look&value=\ref[src]"><font color=#FFFFFF>[src]</a>!! <a href="byond://?src=\ref[usr]&action=blu&value=\ref[src]"> <font color=#0FBFD7><b>BLU!</b></a>"}
-								view() << output("[players]","icout")
-							if("Cancel")
-								return
+									aresult=aoresult+wepchoice.addhit+amod+z.rankbonus+z.pab+src.addhit
+								doresult=rand(wepchoice.range1,wepchoice.range2)
+								dmod=Checkdamtype(wepchoice.damsource,z)
+								abilitydamage=raw_attack_damage_roll()
+								if(src.typing=="magical")
+									dresult=doresult+dmod+wepchoice.adddam+z.mdb+src.adddam+abilitydamage
+								else
+									dresult=doresult+dmod+wepchoice.adddam+z.pdb+src.adddam+abilitydamage
+								critdam=dresult+doresult
+								var/truecrit=wepchoice.critrange-z.critmod
+								if(aoresult>=truecrit)
+									view()<<output("<font size=1><font color=[usr.textcolor]>[z] <font color=white>rolled a <b><font color=#3CF82C>CRITICAL</b> <font color=white>attack roll, using the <font color=[usr.textcolor]>[src.name]<font color=white> ability with their [wepchoice.name]! Result: <font color=#3CF82C><b>[aresult] to hit</b><font color=white>, dealing <b><font color=#FFA852>[critdam] damage</b><font color=white>, as an automatic hit! Cost: <b><font color=#0FBFD7>[src.mcost] [src.costtype]</b>","icout")
+								else
+									view()<<output("<font size=1><font color=[usr.textcolor]>[z] <font color=white>rolled an attack roll, using the <font color=[usr.textcolor]>[src.name]<font color=white> ability with their [wepchoice.name]!  Result: <font color=#8EF5DE><b>[aresult] to hit</b><font color=white>, dealing <b><font color=#FFA852>[dresult] damage</b><font color=white> if successful!<br> Cost: <b><font color=#0FBFD7>[src.mcost] [src.costtype]</b> | Tile Range:[src.range]","icout")
+						if(src.atype=="standard")
+							aoresult=rand(1,20)
+							amod=Checkdamtype(src.damsource,z)
+							if(src.typing=="magical")
+								aresult=aoresult+src.addhit+amod+z.rankbonus+z.mab+2
+							else
+								aresult=aoresult+src.addhit+amod+z.rankbonus+z.pab
+							doresult=raw_attack_damage_roll()
+							dmod=Checkdamtype(src.damsource,z)
+							if(src.typing=="magical")
+								dresult=doresult+dmod+src.adddam+z.mdb+10
+							else
+								dresult=doresult+dmod+src.adddam+z.pdb
+							critdam=dresult+doresult
+							var/truecrit=src.critrange-z.critmod
+							if(aoresult>=truecrit)
+								view()<<output("<font size=1><font color=[usr.textcolor]>[z] <font color=white>rolled a <b><font color=#3CF82C>CRITICAL</b> <font color=white>attack roll, using the <font color=[usr.textcolor]>[src.name]<font color=white> ability! Result: <font color=#3CF82C><b>[aresult] to hit</b><font color=white>, dealing <b><font color=#FFA852>[critdam] damage</b><font color=white>, as an automatic hit! Cost: <b><font color=#0FBFD7>[src.mcost] [src.costtype]</b>","icout")
+							else
+								view()<<output("<font size=1><font color=[usr.textcolor]>[z] <font color=white>rolled an attack roll, using the <font color=[usr.textcolor]>[src.name]<font color=white> ability!  Result: <font color=#8EF5DE><b>[aresult] to hit</b><font color=white>, dealing <b><font color=#FFA852>[dresult] damage</b><font color=white> if successful!<br> Cost: <b><font color=#0FBFD7>[src.mcost] [src.costtype]</b> | Tile Range:[src.range]","output1")
+								view()<<output("<font size=1><font color=[usr.textcolor]>[z] <font color=white>rolled an attack roll, using the <font color=[usr.textcolor]>[src.name]<font color=white> ability! Result: <font color=#8EF5DE><b>[aresult] to hit</b><font color=white>, dealing <b><font color=#FFA852>[dresult] damage</b><font color=white> if successful!<br> Cost: <b><font color=#0FBFD7>[src.mcost] [src.costtype]</b> | Tile Range:[src.range]","icout")
+					if("Cancel")
+						return
 				else if(src in usr.contents&&src.showee)
 					alert("[src.name]:[src.desc]")
 			//* bandaided
