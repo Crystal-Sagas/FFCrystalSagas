@@ -25,7 +25,7 @@ obj
 					DeployGatherer()
 						set name="Deploy"
 						set src in view(usr)
-						var/obj/node/GatheringMoogle/a=new
+						var/obj/resource_node/GatheringMoogle/a=new
 						a.x=usr.x
 						a.y=usr.y
 						a.z=usr.z
@@ -234,14 +234,14 @@ obj
 									return
 
 
-GLOBAL_LIST_BOILERPLATE(resource_nodes, /obj/node)
+GLOBAL_LIST_BOILERPLATE(resource_nodes, /obj/resource_node)
 
 /**
  * base type of resource nodes
  *
  * todo: repath to /obj/resource_node
  */
-/obj/node
+/obj/resource_node
 	/// icon state when available. tmp because prototype-only def
 	var/tmp/icon_state_full
 	/// icon state when used. tmp because prototype-only def
@@ -251,7 +251,7 @@ GLOBAL_LIST_BOILERPLATE(resource_nodes, /obj/node)
 	// todo: evaluate; seems to be used for moogle retainers.
 	var/cooldown = FALSE
 
-/obj/node/update_icon()
+/obj/resource_node/update_icon()
 	icon_state = used? icon_state_empty : icon_state_full
 
 /**
@@ -263,7 +263,7 @@ GLOBAL_LIST_BOILERPLATE(resource_nodes, /obj/node)
  *
  * @return TRUE / FALSE based on success / failure
  */
-/obj/node/proc/can_harvest(mob/user, silent)
+/obj/resource_node/proc/can_harvest(mob/user, silent)
 	if(is_used())
 		if(!silent)
 			user.alert_interaction_fail("This node is already used for the day.", src)
@@ -277,29 +277,29 @@ GLOBAL_LIST_BOILERPLATE(resource_nodes, /obj/node)
 /**
  * refreshes and preps us for usage again.
  */
-/obj/node/proc/refresh()
+/obj/resource_node/proc/refresh()
 	used = FALSE
 	update_icon()
 
 /**
  * uses us up
  */
-/obj/node/proc/use()
+/obj/resource_node/proc/use()
 	used = TRUE
 	update_icon()
 
 /**
  * checks if we're used
  */
-/obj/node/proc/is_used()
+/obj/resource_node/proc/is_used()
 	return used
 
-/obj/node/GatheringMoogle
+/obj/resource_node/GatheringMoogle
 	name="Gathering Moogle"
 	icon='Icons/GatherMoogle.png'
 	density = TRUE
 
-/obj/node/GatheringMoogle/verb/PackUpGatherer()
+/obj/resource_node/GatheringMoogle/verb/PackUpGatherer()
 	set name="Pack Up"
 	set src in view(usr)
 	if(src.owner!=usr.key)
@@ -314,7 +314,7 @@ GLOBAL_LIST_BOILERPLATE(resource_nodes, /obj/node)
 		Refreshinventoryscreen(usr)
 		del src
 
-/obj/node/GatheringMoogle/Click()
+/obj/resource_node/GatheringMoogle/Click()
 	if(src.owner!=usr.key)
 		alert(usr,"This Moogle is not yours!")
 		return
@@ -337,7 +337,7 @@ GLOBAL_LIST_BOILERPLATE(resource_nodes, /obj/node)
 	view() << output("[usr.name] has gathered 200 Gil from their Gathering Moogle!","icout")
 	src.used=1
 
-/obj/node/Minenode
+/obj/resource_node/mining
 	name="Mine Node"
 	icon = 'Icons/Nodes.dmi'
 	icon_state = "Ore"
@@ -345,7 +345,7 @@ GLOBAL_LIST_BOILERPLATE(resource_nodes, /obj/node)
 	icon_state_full = "Ore"
 	density=1
 
-/obj/node/Minenode/Click()
+/obj/resource_node/mining/Click()
 	var/mob/user = usr
 	if(!(usr in view(1,src)))
 		return
@@ -415,7 +415,7 @@ GLOBAL_LIST_BOILERPLATE(resource_nodes, /obj/node)
 	//! legacy: update craft
 	UpdateCraft(usr)
 
-/obj/node/Makonode
+/obj/resource_node/mako
 	name="Materia Node"
 	icon = 'Icons/Nodes.dmi'
 	icon_state = "activemako"
@@ -423,7 +423,7 @@ GLOBAL_LIST_BOILERPLATE(resource_nodes, /obj/node)
 	icon_state_full = "activemako"
 	density = TRUE
 
-/obj/node/Makonode/Click()
+/obj/resource_node/mako/Click()
 	var/mob/user = usr
 	if(!(usr in view(1,src)))
 		return
@@ -460,14 +460,14 @@ GLOBAL_LIST_BOILERPLATE(resource_nodes, /obj/node)
 	usr.minednodes+=1
 	log_action("GATHER: [key_name(usr)] mined [src] [audit_coord(src)]")
 
-/obj/node/Herbnode
+/obj/resource_node/foraging
 	name="Herb Node"
 	icon = 'Icons/Nodes.dmi'
 	icon_state = "Herb"
 	icon_state_empty = "Sprout"
 	icon_state_full = "Herb"
 
-/obj/node/Herbnode/Click()
+/obj/resource_node/foraging/Click()
 	var/mob/user = usr
 	if(!(usr in view(1,src)))
 		return
@@ -721,7 +721,7 @@ GLOBAL_LIST_BOILERPLATE(resource_nodes, /obj/node)
 	usr.minednodes+=1
 	log_action("GATHER: [key_name(usr)] mined [src] [audit_coord(src)]")
 
-/obj/node/Hunternode
+/obj/resource_node/hunting
 	name="Hunter Node"
 	icon = 'Icons/Nodes.dmi'
 	icon_state = "trap"
@@ -729,7 +729,7 @@ GLOBAL_LIST_BOILERPLATE(resource_nodes, /obj/node)
 	icon_state_empty = "opentrap"
 	density = TRUE
 
-/obj/node/Hunternode/Click()
+/obj/resource_node/hunting/Click()
 	var/mob/user = usr
 	if(!(usr in view(1, src)))
 		return
@@ -950,7 +950,7 @@ GLOBAL_LIST_BOILERPLATE(resource_nodes, /obj/node)
 	usr.minednodes+=1
 	log_action("GATHER: [key_name(usr)] mined [src] [audit_coord(src)]")
 
-/obj/node/Dirtnode
+/obj/resource_node/sifting
 	name="Dirt Node"
 	icon = 'Icons/Nodes.dmi'
 	icon_state = "dirtpile"
@@ -958,7 +958,7 @@ GLOBAL_LIST_BOILERPLATE(resource_nodes, /obj/node)
 	icon_state_empty = "remains"
 	density = TRUE
 
-/obj/node/Dirtnode/Click()
+/obj/resource_node/sifting/Click()
 	var/mob/user = usr
 	if(!(usr in view(1, src)))
 		return

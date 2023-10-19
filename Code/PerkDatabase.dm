@@ -7403,23 +7403,23 @@ obj
 								if("Yes")
 									view() << output("<font color=[usr.textcolor]><b>[usr]</b></font> has called upon the power of the <b></font color=#A3F875>Lifestream</b></font> to refresh the Natural Resources around them!","icout")
 									usr.Lifestreamraincooldown=1
-									for(var/obj/node/Minenode/a in view(12))
+									for(var/obj/resource_node/mining/a in view(12))
 										if(a.name=="Mine Node")
 											a.icon_state="Ore"
 											a.used=0
-									for(var/obj/node/Dirtnode/a in view(12))
+									for(var/obj/resource_node/sifting/a in view(12))
 										if(a.name=="Dirt Node")
 											a.icon_state="dirtpile"
 											a.used=0
-									for(var/obj/node/Makonode/a in view(12))
+									for(var/obj/resource_node/mako/a in view(12))
 										if(a.name=="Materia Node")
 											a.icon_state="activemako"
 											a.used=0
-									for(var/obj/node/Herbnode/a in view(12))
+									for(var/obj/resource_node/foraging/a in view(12))
 										if(a.name=="Herb Node")
 											a.icon_state="Herb"
 											a.used=0
-									for(var/obj/node/Hunternode/a in view(12))
+									for(var/obj/resource_node/hunting/a in view(12))
 										if(a.name=="Hunter Node")
 											a.icon_state="trap"
 											a.used=0

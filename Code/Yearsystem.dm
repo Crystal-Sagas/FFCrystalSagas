@@ -47,7 +47,7 @@ var/daytime = "Night"
 
 /proc/RefreshDay()
 	set background = TRUE
-	for(var/obj/node/N in global.resource_nodes)
+	for(var/obj/resource_node/N in global.resource_nodes)
 		N.refresh()
 	for(var/mob/a in world)
 		a.stockdrawn=0
@@ -65,7 +65,7 @@ var/daytime = "Night"
 		a.Collectcooldown=0
 	for(var/obj/Factionupgrades/a in world)
 		a.Collectcooldown=0
-	for(var/obj/node/GatheringMoogle/a in world)
+	for(var/obj/resource_node/GatheringMoogle/a in world)
 		a.used=0
 	for(var/obj/item/Mooglebox/a in world)
 		a.cooldown=0

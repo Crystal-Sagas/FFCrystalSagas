@@ -282,7 +282,7 @@ obj
 							color = TRUE
 						)
 						usr.Lifestreamraincooldown=1
-						for(var/obj/node/N in view(1))
+						for(var/obj/resource_node/N in view(1))
 							N.refresh()
 						del src
 			Augment
