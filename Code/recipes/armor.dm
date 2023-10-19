@@ -71,7 +71,7 @@
 //? Heavy Armor
 
 /obj/recipes/Armor/HeavyArmor
-	mat2="Stone"
+	mat2="stone"
 	amount2=5
 	weapontype="Heavy Armor"
 

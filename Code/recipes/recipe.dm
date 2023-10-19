@@ -579,7 +579,7 @@
 					src.creates=a
 					src.name=a.name
 			Ether
-				mat1="Ether Powder"
+				mat1="ether powder"
 				mat2="Garidav Wildgrass"
 				amount1=1
 				amount2=1
@@ -614,7 +614,7 @@
 			BlindPoison
 				mat1="Flying Eye's Eye"
 				mat2="Vomp Carrots"
-				mat3="Ether Powder"
+				mat3="ether powder"
 				amount1=1
 				amount2=3
 				amount3=2
@@ -654,7 +654,7 @@
 			EchoHerbs
 				mat1="Holy Gem"
 				mat2="Vomp Carrots"
-				mat3="Ether Powder"
+				mat3="ether powder"
 				amount1=1
 				amount2=3
 				amount3=2
@@ -665,7 +665,7 @@
 			Eyedrops
 				mat1="Dark Gem"
 				mat2="Vomp Carrots"
-				mat3="Aether Powder"
+				mat3="aether powder"
 				mat4="Flying Eye's Eye"
 				amount1=1
 				amount2=3
@@ -678,7 +678,7 @@
 			HiPotion
 				mat1="White Gem"
 				mat2="Vomp Carrots"
-				mat3="Ether Powder"
+				mat3="ether powder"
 				amount1=2
 				amount2=3
 				amount3=5
@@ -689,7 +689,7 @@
 			RegenOrb
 				mat1="White Gem"
 				mat2="Sharug Greens"
-				mat3="Ether Powder"
+				mat3="ether powder"
 				mat4="Coeurl Whisker"
 				amount1=5
 				amount2=3
@@ -702,7 +702,7 @@
 			MaxEther
 				mat1="Black Gem"
 				mat2="Vomp Carrots"
-				mat3="Ether Powder"
+				mat3="ether powder"
 				amount1=5
 				amount2=3
 				amount3=2
@@ -713,7 +713,7 @@
 			RefreshOrb
 				mat1="White Gem"
 				mat2="Sharug Greens"
-				mat3="Ether Powder"
+				mat3="ether powder"
 				mat4="Sahaugin Scale"
 				amount1=5
 				amount2=3
@@ -757,7 +757,7 @@
 			Remedy
 				mat1="Gysahl Greens"
 				mat2="Sharug Greens"
-				mat3="Ether Powder"
+				mat3="ether powder"
 				mat4="Zuu Feather"
 				amount1=5
 				amount2=3
@@ -802,7 +802,7 @@
 			FireBomb
 				name="Fire Bomb Bag"
 				mat1="Steel"
-				mat2="Aether Powder"
+				mat2="aether powder"
 				mat3="Fire Gem"
 				amount1=5
 				amount2=3
@@ -819,7 +819,7 @@
 			WaterBomb
 				name="Water Bomb Bag"
 				mat1="Steel"
-				mat2="Aether Powder"
+				mat2="aether powder"
 				mat3="Water Gem"
 				amount1=5
 				amount2=3
@@ -836,7 +836,7 @@
 			ThunderBomb
 				name="Thunder Bomb Bag"
 				mat1="Steel"
-				mat2="Aether Powder"
+				mat2="aether powder"
 				mat3="Thunder Gem"
 				amount1=5
 				amount2=3
@@ -853,7 +853,7 @@
 			EarthBomb
 				name="Earth Bomb Bag"
 				mat1="Steel"
-				mat2="Aether Powder"
+				mat2="aether powder"
 				mat3="Earth Gem"
 				amount1=5
 				amount2=3
@@ -870,7 +870,7 @@
 			IceBomb
 				name="Ice Bomb Bag"
 				mat1="Steel"
-				mat2="Aether Powder"
+				mat2="aether powder"
 				mat3="Ice Gem"
 				amount1=5
 				amount2=3
@@ -887,7 +887,7 @@
 			BioBomb
 				name="Bio Bomb Bag"
 				mat1="Steel"
-				mat2="Aether Powder"
+				mat2="aether powder"
 				mat3="Bio Gem"
 				amount1=5
 				amount2=3
@@ -904,7 +904,7 @@
 			WindBomb
 				name="Wind Bomb Bag"
 				mat1="Steel"
-				mat2="Aether Powder"
+				mat2="aether powder"
 				mat3="Wind Gem"
 				amount1=5
 				amount2=3
@@ -921,7 +921,7 @@
 			DarkBomb
 				name="Dark Bomb Bag"
 				mat1="Steel"
-				mat2="Aether Powder"
+				mat2="aether powder"
 				mat3="Dark Gem"
 				amount1=5
 				amount2=3
@@ -938,7 +938,7 @@
 			HolyBomb
 				name="Holy Bomb Bag"
 				mat1="Steel"
-				mat2="Aether Powder"
+				mat2="aether powder"
 				mat3="Holy Gem"
 				mat4="leather"
 				amount4=10
@@ -956,9 +956,9 @@
 
 	Machinist
 		Manual
-			mat1="Wood"
+			mat1="wood"
 			amount1=5
-			mat2="Raw Mako"
+			mat2="raw mako"
 			amount2=2
 			New()
 				var/obj/item/Machinist/Manual/a=new
@@ -967,7 +967,7 @@
 		Terraformer
 			mat1="Steel"
 			amount1=2
-			mat2="Raw Mako"
+			mat2="raw mako"
 			amount2=1
 			New()
 				var/obj/item/Machinist/Terraformer/a=new
@@ -1447,7 +1447,7 @@
 					amount1=10
 					mat2="Steel"
 					amount2=5
-					mat3="Raw Mako"
+					mat3="raw mako"
 					amount3=1
 					mat4="Bronze"
 					amount4=1
@@ -1472,7 +1472,7 @@
 					amount1=10
 					mat2="Steel"
 					amount2=5
-					mat3="Raw Mako"
+					mat3="raw mako"
 					amount3=1
 					mat4="Bronze"
 					amount4=1
@@ -1484,7 +1484,7 @@
 					amount1=10
 					mat2="Steel"
 					amount2=5
-					mat3="Raw Mako"
+					mat3="raw mako"
 					amount3=1
 					mat4="Bronze"
 					amount4=1
@@ -1497,7 +1497,7 @@
 					amount1=15
 					mat2="Steel"
 					amount2=10
-					mat3="Raw Mako"
+					mat3="raw mako"
 					amount3=2
 					mat4="Bronze"
 					amount4=5
@@ -1509,7 +1509,7 @@
 					amount1=15
 					mat2="Steel"
 					amount2=10
-					mat3="Raw Mako"
+					mat3="raw mako"
 					amount3=2
 					mat4="Bronze"
 					amount4=5
@@ -1523,7 +1523,7 @@
 					amount1=15
 					mat2="Steel"
 					amount2=10
-					mat3="Raw Mako"
+					mat3="raw mako"
 					amount3=5
 					mat4="Bronze"
 					amount4=5
@@ -1541,7 +1541,7 @@
 					amount1=50
 					mat2="Steel"
 					amount2=35
-					mat3="Raw Mako"
+					mat3="raw mako"
 					amount3=10
 					mat4="Bronze"
 					amount4=10
@@ -1555,15 +1555,15 @@
 						src.name=a.name
 		Vehicles
 			Landrover
-				mat1="Wood"
+				mat1="wood"
 				amount1=100
-				mat2="Stone"
+				mat2="stone"
 				amount2=150
 				mat3="Steel"
 				amount3=50
 				mat4="Mythril"
 				amount4=5
-				mat5="Raw Mako"
+				mat5="raw mako"
 				amount5=5
 				mat6="leather"
 				amount6=50
@@ -1574,7 +1574,7 @@
 					src.creates=a
 					src.name=a.name
 			Ship
-				mat1="Wood"
+				mat1="wood"
 				amount1=80
 				mat2="wool"
 				amount2=50
@@ -1582,7 +1582,7 @@
 				amount3=50
 				mat4="Mythril"
 				amount4=2
-				mat5="Raw Mako"
+				mat5="raw mako"
 				amount5=5
 				mat6="leather"
 				amount6=50
@@ -1593,7 +1593,7 @@
 					src.creates=a
 					src.name=a.name
 			Airship
-				mat1="Wood"
+				mat1="wood"
 				amount1=100
 				mat2="wool"
 				amount2=150
@@ -1601,7 +1601,7 @@
 				amount3=50
 				mat4="Mythril"
 				amount4=15
-				mat5="Raw Mako"
+				mat5="raw mako"
 				amount5=35
 				mat6="leather"
 				amount6=50
@@ -1615,18 +1615,18 @@
 
 	Buildings
 		PersonalShop
-			mat1="Wood"
+			mat1="wood"
 			amount1=5
-			mat2="Stone"
+			mat2="stone"
 			amount2=5
 			New()
 				var/obj/playershops/shoptable/a=new
 				src.creates=a
 				src.name=a.name
 		House
-			mat1="Wood"
+			mat1="wood"
 			amount1=100
-			mat2="Stone"
+			mat2="stone"
 			amount2=50
 			mat3="Steel"
 			amount3=5
@@ -1638,9 +1638,9 @@
 				var/obj/House/a=new
 				src.creates=a
 		Fortress
-			mat1="Wood"
+			mat1="wood"
 			amount1=500
-			mat2="Stone"
+			mat2="stone"
 			amount2=250
 			mat3="Steel"
 			amount3=15
@@ -1659,7 +1659,7 @@
 					name="FATE Giver"
 					mat1="wool"
 					mat2="leather"
-					mat3="Stone"
+					mat3="stone"
 					amount1=5
 					amount2=5
 					amount3=5
@@ -1678,8 +1678,8 @@
 						var/obj/Factionupgrades/Global/Recruiter/a=new
 						src.creates=a
 				Mine
-					mat1="Wood"
-					mat2="Stone"
+					mat1="wood"
+					mat2="stone"
 					mat3="Steel"
 					mat4="Mythril"
 					amount1=100
@@ -1690,8 +1690,8 @@
 						var/obj/Factionupgrades/Global/Mine/a=new
 						src.creates=a
 				Loghouse
-					mat1="Wood"
-					mat2="Stone"
+					mat1="wood"
+					mat2="stone"
 					mat3="Steel"
 					amount1=80
 					amount2=50
@@ -1701,8 +1701,8 @@
 						src.creates=a
 						src.name=a.name
 				HuntingLodge
-					mat1="Wood"
-					mat2="Stone"
+					mat1="wood"
+					mat2="stone"
 					mat3="leather"
 					amount1=80
 					amount2=50
@@ -1712,8 +1712,8 @@
 						src.creates=a
 						src.name=a.name
 				Commercecenter
-					mat1="Wood"
-					mat2="Stone"
+					mat1="wood"
+					mat2="stone"
 					mat3="Steel"
 					mat4="Mythril"
 					mat5="Gold"
@@ -1727,8 +1727,8 @@
 						src.creates=a
 						src.name=a.name
 				Farm
-					mat1="Wood"
-					mat2="Stone"
+					mat1="wood"
+					mat2="stone"
 					mat3="leather"
 					mat4="wool"
 					amount1=50
@@ -1741,7 +1741,7 @@
 						src.name=a.name
 			Insomnia
 				ManaPylon
-					mat1="Ether Powder"
+					mat1="ether powder"
 					mat2="Mythril"
 					amount1=10
 					amount2=5
@@ -1750,8 +1750,8 @@
 						src.creates=a
 						src.name=a.name
 				SomnusStatue
-					mat1="Stone"
-					mat2="Aether Powder"
+					mat1="stone"
+					mat2="aether powder"
 					amount1=60
 					amount2=100
 					New()
@@ -1760,7 +1760,7 @@
 						src.name=a.name
 			Midgar
 				MakoReactor
-					mat1="Raw Mako"
+					mat1="raw mako"
 					mat2="Steel"
 					mat3="Silver"
 					amount1=10
@@ -1783,8 +1783,8 @@
 						src.name=a.name
 			Yevon
 				YevonShrine
-					mat1="Stone"
-					mat2="Ether Powder"
+					mat1="stone"
+					mat2="ether powder"
 					mat3="Mythril"
 					amount1=100
 					amount2=50
@@ -1794,7 +1794,7 @@
 						src.creates=a
 						src.name=a.name
 				FaythStatue
-					mat1="Stone"
+					mat1="stone"
 					mat2="Gold"
 					mat3="Silver"
 					amount1=100
@@ -1806,8 +1806,8 @@
 						src.name=a.name
 			Akademia
 				StatueofFalcie
-					mat1="Stone"
-					mat2="Ether Powder"
+					mat1="stone"
+					mat2="ether powder"
 					mat3="Silver"
 					amount1=100
 					amount2=5
@@ -1818,7 +1818,7 @@
 						src.name=a.name
 			Independant
 				Treasury
-					mat1="Wood"
+					mat1="wood"
 					mat2="Gold"
 					mat3="Silver"
 					amount1=100
@@ -1829,7 +1829,7 @@
 						src.creates=a
 						src.name=a.name
 				InspiringBanner
-					mat1="Wood"
+					mat1="wood"
 					mat2="wool"
 					mat3="leather"
 					amount1=100
@@ -1840,7 +1840,7 @@
 						src.creates=a
 						src.name=a.name
 				WarriorStatue
-					mat1="Stone"
+					mat1="stone"
 					mat2="Gold"
 					mat3="Silver"
 					amount1=80
@@ -1851,7 +1851,7 @@
 						src.creates=a
 						src.name=a.name
 				RogueStatue
-					mat1="Stone"
+					mat1="stone"
 					mat2="Gold"
 					mat3="Silver"
 					amount1=80
@@ -1862,7 +1862,7 @@
 						src.creates=a
 						src.name=a.name
 				BlackMageStatue
-					mat1="Stone"
+					mat1="stone"
 					mat2="Gold"
 					mat3="Silver"
 					amount1=80
@@ -1873,7 +1873,7 @@
 						src.creates=a
 						src.name=a.name
 				WhiteMageStatue
-					mat1="Stone"
+					mat1="stone"
 					mat2="Gold"
 					mat3="Silver"
 					amount1=80
@@ -1884,7 +1884,7 @@
 						src.creates=a
 						src.name=a.name
 				RedMageStatue
-					mat1="Stone"
+					mat1="stone"
 					mat2="Gold"
 					mat3="Silver"
 					amount1=80

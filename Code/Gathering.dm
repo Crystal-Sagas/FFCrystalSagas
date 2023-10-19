@@ -392,7 +392,7 @@ GLOBAL_LIST_BOILERPLATE(resource_nodes, /obj/node)
 	var/describe_modifiers = length(amount_modifier_describe)? " [jointext(amount_modifier_describe, " ")]" : ""
 	// give them the materials
 	usr.adjust_material_amount(reward_type, amount)
-	usr.adjust_material_amount(/obj/item/material/Stone, 5)
+	usr.adjust_material_amount(/obj/item/material/stone, 5)
 	// calculate additional rewards
 	var/additional_roll = rand(1, 20)
 	var/additional_text
@@ -409,7 +409,7 @@ GLOBAL_LIST_BOILERPLATE(resource_nodes, /obj/node)
 			additional_text = " and 1 gold"
 	usr.send_chat("You mined [amount] pieces of [reward_name], getting 5 stone (static)[additional_text] in the process.[describe_modifiers]", "oocout")
 	// use up
-	log_action("GATHER: [key_name(usr)] mined [src] (+5 stone)[additional_text] [audit_coord(src)]")
+	log_action("GATHER: [key_name(usr)] mined [src] (+[amount] [reward_name]) (+5 stone)[additional_text] [audit_coord(src)]")
 	usr.minednodes++
 	use()
 	//! legacy: update craft
@@ -435,23 +435,23 @@ GLOBAL_LIST_BOILERPLATE(resource_nodes, /obj/node)
 	if(usr.check_perk("Expert Miner" && "Master Gatherer"))
 		use()
 		usr<<output("You have gathered 3 Raw Mako from the Lifestream.","oocout")
-		for(var/obj/item/material/RawMako/b in usr.contents)
+		for(var/obj/item/material/raw_mako/b in usr.contents)
 			b.amount+=3
 	else if(usr.check_perk("Expert Miner" || "Master Gatherer"))
-		for(var/obj/item/material/RawMako/b in usr.contents)
+		for(var/obj/item/material/raw_mako/b in usr.contents)
 			b.amount+=2
 		use()
 		usr<<output("You have gathered 2 Raw Mako from the Lifestream.","oocout")
 	else
-		for(var/obj/item/material/RawMako/b in usr.contents)
+		for(var/obj/item/material/raw_mako/b in usr.contents)
 			b.amount+=1
 		use()
 		usr<<output("You have gathered 1 Raw Mako from the Lifestream.","oocout")
-	for(var/obj/item/material/Stone/c in usr.contents)
+	for(var/obj/item/material/stone/c in usr.contents)
 		if(usr.check_perk("Nothing Wasted"))
 			c.amount+=4
-			usr<<output("You also find 3 Stone...Nothing Wasted earned you 1 more.","oocout")
-			usr<<output("You also find 3 Stone...Nothing Wasted earned you 1 more.","alert")
+			usr<<output("You also find 3 stone...Nothing Wasted earned you 1 more.","oocout")
+			usr<<output("You also find 3 stone...Nothing Wasted earned you 1 more.","alert")
 		else
 			c.amount+=3
 			usr<<output("You also find 3 stone.","oocout")
@@ -708,7 +708,7 @@ GLOBAL_LIST_BOILERPLATE(resource_nodes, /obj/node)
 				b.amount+=1
 			use()
 			usr<<output("You have picked 1 pinch of Ether Powder","oocout")
-	for(var/obj/item/material/Wood/c in usr.contents)
+	for(var/obj/item/material/wood/c in usr.contents)
 		if(usr.check_perk("Nothing Wasted"))
 			c.amount+=4
 			usr<<output("You also find 3 Wood...Nothing Wasted earned you 1 more.","oocout")
@@ -937,7 +937,7 @@ GLOBAL_LIST_BOILERPLATE(resource_nodes, /obj/node)
 			use()
 			usr<<output("You find a shoat in your trap, and get manage to skin 15 pieces of leather.","oocout")
 			usr<<output("You find a shoat in your trap, and get manage to skin 15 pieces of leather.","alert")
-	for(var/obj/item/material/Wood/c in usr.contents)
+	for(var/obj/item/material/wood/c in usr.contents)
 		if(usr.check_perk("Nothing Wasted"))
 			c.amount+=4
 			usr<<output("You also find 3 Wood...Nothing Wasted earned you 1 more.","oocout")
@@ -1202,15 +1202,15 @@ GLOBAL_LIST_BOILERPLATE(resource_nodes, /obj/node)
 			use()
 			usr<<output("You expertly find a diamond.","oocout")
 			usr<<output("You expertly find a diamond.","alert")
-	for(var/obj/item/material/Stone/c in usr.contents)
+	for(var/obj/item/material/stone/c in usr.contents)
 		if(usr.check_perk("Nothing Wasted"))
 			c.amount+=4
-			usr<<output("You also find 3 Stone...Nothing Wasted earned you 1 more.","oocout")
-			usr<<output("You also find 3 Stone...Nothing Wasted earned you 1 more.","alert")
+			usr<<output("You also find 3 stone...Nothing Wasted earned you 1 more.","oocout")
+			usr<<output("You also find 3 stone...Nothing Wasted earned you 1 more.","alert")
 		else
 			c.amount+=3
-			usr<<output("You also find 3 Stone.","oocout")
-			usr<<output("You also find 3 Stone.","alert")
+			usr<<output("You also find 3 stone.","oocout")
+			usr<<output("You also find 3 stone.","alert")
 	UpdateCraft(usr)
 	usr.minednodes+=1
 	log_action("GATHER: [key_name(usr)] mined [src] [audit_coord(src)]")

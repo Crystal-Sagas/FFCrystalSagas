@@ -129,12 +129,12 @@ obj/NPCshop
 			s8.shopprice=70
 			src.contents+=s8
 //Stock 9
-			var/obj/item/material/Wood/s9=new
+			var/obj/item/material/wood/s9=new
 			s9.instore=1
 			s9.shopprice=70
 			src.contents+=s9
 //Stock 10
-			var/obj/item/material/Stone/s10=new
+			var/obj/item/material/stone/s10=new
 			s10.instore=1
 			s10.shopprice=70
 			src.contents+=s10
@@ -267,7 +267,7 @@ obj/NPCshop
 		icon_state="Shinra"
 		name="Mako Vendor"
 		New()
-			var/obj/item/material/RawMako/s1=new
+			var/obj/item/material/raw_mako/s1=new
 			s1.instore=1
 			s1.shopprice=700
 			src.contents+=s1
