@@ -794,31 +794,31 @@ obj
 		AssignCraftinginfo(var/obj/recipes/a)
 			if(a.name=="Bronze")
 				a.name="Bronze [a.weapontype]"
-				a.mat1="Bronze"
+				a.mat1="bronze ingot"
 				a.weptier="Bronze"
 				a.amount1=12
 			if(a.name=="Iron")
 				a.name="Iron [a.weapontype]"
-				a.mat1="Iron"
-				a.mat2="Bronze"
+				a.mat1="iron ingot"
+				a.mat2="bronze ingot"
 				a.weptier="Iron"
 				a.amount1=8
 				a.amount2=12
 			if(a.name=="Steel")
 				a.name="Steel [a.weapontype]"
-				a.mat1="Steel"
-				a.mat2="Bronze"
-				a.mat3="Iron"
+				a.mat1="steel ingot"
+				a.mat2="bronze ingot"
+				a.mat3="iron ingot"
 				a.weptier="Steel"
 				a.amount1=8
 				a.amount2=12
 				a.amount3=6
 			if(a.name=="Mythril")
 				a.name="Mythril [a.weapontype]"
-				a.mat1="Mythril"
-				a.mat2="Bronze"
-				a.mat3="Iron"
-				a.mat4="Steel"
+				a.mat1="mythril ingot"
+				a.mat2="bronze ingot"
+				a.mat3="iron ingot"
+				a.mat4="steel ingot"
 				a.mat5="Esper Soul"
 				a.weptier="Mythril"
 				a.amount1=8
@@ -828,13 +828,13 @@ obj
 				a.amount5=1
 			if(a.name=="Adamantine")
 				a.name="Mythic [a.weapontype]"
-				a.mat1="Adamantine"
-				a.mat2="Bronze"
-				a.mat3="Iron"
-				a.mat4="Steel"
-				a.mat5="Mythril"
+				a.mat1="adamantine ingot"
+				a.mat2="bronze ingot"
+				a.mat3="iron ingot"
+				a.mat4="steel ingot"
+				a.mat5="mythril ingot"
 				a.mat6="Esper Soul"
-				a.mat7="Gold"
+				a.mat7="gold ingot"
 				a.weptier="Adamantine"
 				a.amount1=8
 				a.amount2=12
@@ -845,15 +845,15 @@ obj
 				a.amount7=10
 			if(a.name=="Orichalcum")
 				a.name="Legendary [a.weapontype]"
-				a.mat1="Orichalcum"
+				a.mat1="orichalcum ingot"
 				a.weptier="Orichalcum"
-				a.mat2="Bronze"
-				a.mat3="Iron"
-				a.mat4="Steel"
-				a.mat5="Mythril"
-				a.mat6="Adamantine"
+				a.mat2="bronze ingot"
+				a.mat3="iron ingot"
+				a.mat4="steel ingot"
+				a.mat5="mythril ingot"
+				a.mat6="adamantine ingot"
 				a.mat7="Esper Soul"
-				a.mat8="Platinum"
+				a.mat8="platinum ingot"
 				a.amount1=10
 				a.amount1=8
 				a.amount2=20

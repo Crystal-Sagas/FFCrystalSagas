@@ -106,12 +106,12 @@ obj
 									var/mtype
 									var/typeage
 									var/list/slaylist=new
-									var/list/slayerrewardsD=list("wool","leather","Bronze","Iron","Flying Eye's Wing","Flying Eye's Eye")
-									var/list/slayerrewardsC=list("wool","leather","Bronze","Iron","Steel","Flying Eye's Wing","Flying Eye's Eye","Bomb Core","Sahaugin Scale")
-									var/list/slayerrewardsB=list("Mythril","Silver","Esper Soul","Gigantoad Slime","Tonberry Knife","Coeurl Whisker")
+									var/list/slayerrewardsD=list("wool","leather","bronze ingot","iron ingot","Flying Eye's Wing","Flying Eye's Eye")
+									var/list/slayerrewardsC=list("wool","leather","bronze ingot","iron ingot","steel ingot","Flying Eye's Wing","Flying Eye's Eye","Bomb Core","Sahaugin Scale")
+									var/list/slayerrewardsB=list("mythril ingot","silver ingot","Esper Soul","Gigantoad Slime","Tonberry Knife","Coeurl Whisker")
 									var/list/artifactrewards=list("aether powder","ether powder","White Gem","Black Gem","Thunder Gem","Fire Gem","Water Gem","Earth Gem","Bio Gem","Ice Gem","Wind Gem","Holy Gem","Dark Gem")
-									var/list/deliveryrewards=list("stone","wood","Bronze","Iron","raw mako","wool","leather")
-									var/list/bossrewards=list("Mythril","Adamantine","raw mako","Esper Soul","Silver","Gold")
+									var/list/deliveryrewards=list("stone","wood","bronze ingot","iron ingot","raw mako","wool","leather")
+									var/list/bossrewards=list("mythril ingot","adamantine ingot","raw mako","Esper Soul","silver ingot","gold ingot")
 									switch(tchoice)
 										if("Slayer")
 											mtype="Slayer"
