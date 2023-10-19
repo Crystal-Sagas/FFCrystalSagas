@@ -12,7 +12,7 @@
 		return
 	if(!can_harvest(user, FALSE))
 		return
-	if(!user.check_perk(/obj/perk/Gathering/Miner))
+	if(!user.check_perk(/obj/perk/Gathering/Miner/Miner1))
 		alert(user, "You need to learn how to mine properly first.")
 		return
 

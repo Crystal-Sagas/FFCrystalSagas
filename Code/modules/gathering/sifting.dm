@@ -12,7 +12,7 @@
 		return
 	if(!can_harvest(user, FALSE))
 		return
-	if(!user.check_perk(/obj/perk/Gathering/Sifter))
+	if(!user.check_perk(/obj/perk/Gathering/Sifter/Sifter1))
 		alert("You need to learn how to sift through dirt first.")
 		return
 

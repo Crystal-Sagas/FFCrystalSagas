@@ -11,7 +11,7 @@
 		return
 	if(!can_harvest(user, FALSE))
 		return
-	if(!usr.check_perk("Gatherer"))
+	if(!user.check_perk(/obj/perk/Gathering/Gatherer/Gatherer1))
 		alert("You need to learn how to pick the proper herbs first.")
 		return
 	var/roll
