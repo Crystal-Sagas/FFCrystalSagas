@@ -9,37 +9,37 @@
 
 /obj/recipes/Weapons/Longsword/Bronze
 	material="Bronze"
-	mat1="bronze ingot"
+	mat1="Bronze ingot"
 	amount1=8
 	creates = new /obj/item/Weapon/Melee/Longsword/Bronze
 
 /obj/recipes/Weapons/Longsword/Iron
 	material="Iron"
-	mat1="iron ingot"
+	mat1="Iron ingot"
 	amount1=8
 	creates = new /obj/item/Weapon/Melee/Longsword/Iron
 
 /obj/recipes/Weapons/Longsword/Steel
 	material="Steel"
-	mat1="steel ingot"
+	mat1="Steel ingot"
 	amount1=8
 	creates = new /obj/item/Weapon/Melee/Longsword/Steel
 
 /obj/recipes/Weapons/Longsword/Mythril
 	material="Mythril"
-	mat1="mythril ingot"
+	mat1="Mythril ingot"
 	amount1=16
 	creates = new /obj/item/Weapon/Melee/Longsword/Mythril
 
 /obj/recipes/Weapons/Longsword/Adamantine
 	material="Adamantine"
-	mat1="adamantine ingot"
+	mat1="Adamantine ingot"
 	amount1=16
 	creates = new /obj/item/Weapon/Melee/Longsword/Adamantine
 
 /obj/recipes/Weapons/Longsword/Orichalcum
 	material="Orichalcum"
-	mat1="orichalcum ingot"
+	mat1="Orichalcum ingot"
 	amount1=16
 	creates = new /obj/item/Weapon/Melee/Longsword/Orichalcum
 
@@ -48,37 +48,37 @@
 
 /obj/recipes/Weapons/Scimitar/Bronze
 	material="Bronze"
-	mat1="bronze ingot"
+	mat1="Bronze ingot"
 	amount1=8
 	creates = new /obj/item/Weapon/Melee/Scimitar/Bronze
 
 /obj/recipes/Weapons/Scimitar/Iron
 	material="Iron"
-	mat1="iron ingot"
+	mat1="Iron ingot"
 	amount1=8
 	creates = new /obj/item/Weapon/Melee/Scimitar/Iron
 
 /obj/recipes/Weapons/Scimitar/Steel
 	material="Steel"
-	mat1="steel ingot"
+	mat1="Steel ingot"
 	amount1=8
 	creates = new /obj/item/Weapon/Melee/Scimitar/Steel
 
 /obj/recipes/Weapons/Scimitar/Mythril
 	material="Mythril"
-	mat1="mythril ingot"
+	mat1="Mythril ingot"
 	amount1=16
 	creates = new /obj/item/Weapon/Melee/Scimitar/Mythril
 
 /obj/recipes/Weapons/Scimitar/Adamantine
 	material="Adamantine"
-	mat1="adamantine ingot"
+	mat1="Adamantine ingot"
 	amount1=16
 	creates = new /obj/item/Weapon/Melee/Scimitar/Adamantine
 
 /obj/recipes/Weapons/Scimitar/Orichalcum
 	material="Orichalcum"
-	mat1="orichalcum ingot"
+	mat1="Orichalcum ingot"
 	amount1=16
 	creates = new /obj/item/Weapon/Melee/Scimitar/Orichalcum
 

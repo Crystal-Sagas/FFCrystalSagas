@@ -4,56 +4,56 @@
 	id = "gem_white"
 
 /obj/item/material/gem/white
-	name="white gem"
+	name="White Gem"
 	icon_state = "gem_white"
 	id = "gem_white"
 
 /obj/item/material/gem/black
-	name="black gem"
+	name="Black Gem"
 	icon_state = "gem_black"
 	id = "gem_black"
 
 /obj/item/material/gem/thunder
-	name="thunder gem"
+	name="Thunder Gem"
 	icon_state = "gem_thunder"
 	id = "gem_thunder"
 
 /obj/item/material/gem/fire
-	name="fire gem"
+	name="Fire Gem"
 	icon_state = "gem_fire"
 	id = "gem_fire"
 
 /obj/item/material/gem/water
-	name="water gem"
+	name="Water Gem"
 	icon_state = "gem_water"
 	id = "gem_water"
 
 /obj/item/material/gem/earth
-	name="earth gem"
+	name="Earth Gem"
 	icon_state = "gem_earth"
 	id = "gem_earth"
 
 /obj/item/material/gem/bio
-	name="bio gem"
+	name="Bio Gem"
 	icon_state = "gem_bio"
 	id = "gem_bio"
 
 /obj/item/material/gem/ice
-	name="ice gem"
+	name="Ice Gem"
 	icon_state = "gem_ice"
 	id = "gem_ice"
 
 /obj/item/material/gem/wind
-	name="wind gem"
+	name="Wind Gem"
 	icon_state = "gem_wind"
 	id = "gem_wind"
 
 /obj/item/material/gem/holy
-	name="holy gem"
+	name="Holy Gem"
 	icon_state = "gem_holy"
 	id = "gem_holy"
 
 /obj/item/material/gem/dark
-	name="dark gem"
+	name="Dark Gem"
 	icon_state = "gem_dark"
 	id = "gem_dark"

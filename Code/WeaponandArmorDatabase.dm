@@ -794,31 +794,31 @@ obj
 		AssignCraftinginfo(var/obj/recipes/a)
 			if(a.name=="Bronze")
 				a.name="Bronze [a.weapontype]"
-				a.mat1="bronze ingot"
+				a.mat1="Bronze ingot"
 				a.weptier="Bronze"
 				a.amount1=12
 			if(a.name=="Iron")
 				a.name="Iron [a.weapontype]"
-				a.mat1="iron ingot"
-				a.mat2="bronze ingot"
+				a.mat1="Iron ingot"
+				a.mat2="Bronze ingot"
 				a.weptier="Iron"
 				a.amount1=8
 				a.amount2=12
 			if(a.name=="Steel")
 				a.name="Steel [a.weapontype]"
-				a.mat1="steel ingot"
-				a.mat2="bronze ingot"
-				a.mat3="iron ingot"
+				a.mat1="Steel ingot"
+				a.mat2="Bronze ingot"
+				a.mat3="Iron ingot"
 				a.weptier="Steel"
 				a.amount1=8
 				a.amount2=12
 				a.amount3=6
 			if(a.name=="Mythril")
 				a.name="Mythril [a.weapontype]"
-				a.mat1="mythril ingot"
-				a.mat2="bronze ingot"
-				a.mat3="iron ingot"
-				a.mat4="steel ingot"
+				a.mat1="Mythril ingot"
+				a.mat2="Bronze ingot"
+				a.mat3="Iron ingot"
+				a.mat4="Steel ingot"
 				a.mat5="Esper Soul"
 				a.weptier="Mythril"
 				a.amount1=8
@@ -828,13 +828,13 @@ obj
 				a.amount5=1
 			if(a.name=="Adamantine")
 				a.name="Mythic [a.weapontype]"
-				a.mat1="adamantine ingot"
-				a.mat2="bronze ingot"
-				a.mat3="iron ingot"
-				a.mat4="steel ingot"
-				a.mat5="mythril ingot"
+				a.mat1="Adamantine ingot"
+				a.mat2="Bronze ingot"
+				a.mat3="Iron ingot"
+				a.mat4="Steel ingot"
+				a.mat5="Mythril ingot"
 				a.mat6="Esper Soul"
-				a.mat7="gold ingot"
+				a.mat7="Gold ingot"
 				a.weptier="Adamantine"
 				a.amount1=8
 				a.amount2=12
@@ -845,15 +845,15 @@ obj
 				a.amount7=10
 			if(a.name=="Orichalcum")
 				a.name="Legendary [a.weapontype]"
-				a.mat1="orichalcum ingot"
+				a.mat1="Orichalcum ingot"
 				a.weptier="Orichalcum"
-				a.mat2="bronze ingot"
-				a.mat3="iron ingot"
-				a.mat4="steel ingot"
-				a.mat5="mythril ingot"
-				a.mat6="adamantine ingot"
+				a.mat2="Bronze ingot"
+				a.mat3="Iron ingot"
+				a.mat4="Steel ingot"
+				a.mat5="Mythril ingot"
+				a.mat6="Adamantine ingot"
 				a.mat7="Esper Soul"
-				a.mat8="platinum ingot"
+				a.mat8="Platinum ingot"
 				a.amount1=10
 				a.amount1=8
 				a.amount2=20

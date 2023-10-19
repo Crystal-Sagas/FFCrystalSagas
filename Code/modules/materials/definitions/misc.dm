@@ -6,7 +6,7 @@
 	id = "wood"
 
 /obj/item/material/stone
-	name = "stone""
+	name = "stone"
 	icon_state = "stone"
 	id = "stone"
 
