@@ -117,20 +117,12 @@ obj
 	item
 		var/stockgem=0
 		Click()
-			for(var/obj/playershops/shoptable/a in world)
-				if(src in a.contents)
-					winset(usr,"playershop.selected","text=\"Selected: [src.name]\"")
-					winset(usr,"playershop.desc","text=\"[src.desc]\"")
-					winset(usr,"playershop.enchant","text=\"[src.enchantment]\"")
-					winset(usr,"playershop.lore","text=\"[src.lore]\"")
-					return
-			for(var/obj/playershops/Moogle/a in world)
-				if(src in a.contents)
-					winset(usr,"playershop.selected","text=\"Selected: [src.name]\"")
-					winset(usr,"playershop.desc","text=\"[src.desc]\"")
-					winset(usr,"playershop.enchant","text=\"[src.enchantment]\"")
-					winset(usr,"playershop.lore","text=\"[src.lore]\"")
-					return
+			if(istype(loc, /obj/playershops/shoptable) || istype(loc, /obj/playershops/Moogle))
+				winset(usr,"playershop.selected","text=\"Selected: [src.name]\"")
+				winset(usr,"playershop.desc","text=\"[src.desc]\"")
+				winset(usr,"playershop.enchant","text=\"[src.enchantment]\"")
+				winset(usr,"playershop.lore","text=\"[src.lore]\"")
+				return
 			if(src.bolted==1)
 				return
 			if(src in usr.contents)
