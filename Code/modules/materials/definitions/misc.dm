@@ -1,44 +1,44 @@
 /obj/item/material
 
 /obj/item/material/wood
-	name = "wood"
-	icon_state = "wood"
-	id = "wood"
+	name = "Wood"
+	icon_state = "Wood"
+	id = "Wood"
 
 /obj/item/material/stone
-	name = "stone"
-	icon_state = "stone"
-	id = "stone"
+	name = "Stone"
+	icon_state = "Stone"
+	id = "Stone"
 
 /obj/item/material/raw_mako
-	name = "raw mako"
+	name = "Raw Mako"
 	icon_state = "mako"
 	id = "raw_mako"
 
 /obj/item/material/EtherPowder
-	name = "ether powder"
+	name = "Ether Powder
 	icon_state = "etherpowder"
 	id = "ether_powder"
 
 /obj/item/material/AetherPowder
-	name = "aether powder"
+	name = "Aether Powder
 	icon_state = "aetherpowder"
 	id = "aether_powder"
 
 /obj/item/material/leather
-	name = "leather"
-	icon_state = "leather"
-	id = "leather"
+	name = "Leather"
+	icon_state = "Leather"
+	id = "Leather"
 
 /obj/item/material/diamond
-	name = "diamond"
-	icon_state = "diamond"
-	id = "diamond"
+	name = "Diamond"
+	icon_state = "Diamond"
+	id = "Diamond"
 
 /obj/item/material/wool
-	name = "wool"
-	icon_state = "wool"
-	id = "wool"
+	name = "Wool"
+	icon_state = "Wool"
+	id = "Wool"
 
 /obj/item/material/esper_soul
 	name = "Esper Soul"

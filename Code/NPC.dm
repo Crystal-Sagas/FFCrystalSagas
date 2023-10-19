@@ -1204,7 +1204,7 @@
 			if(a.name==reward1)
 				m.send_chat("Gained +1 [reward1]!", stream = "oocout")
 				a.amount+=1
-				if(reward1=="wood"||reward1=="stone")
+				if(reward1=="Wood"||reward1=="Stone")
 					a.amount+=4
 					m.send_chat("Gained +4 [reward1]!", stream = "oocout")
 				break
@@ -1212,7 +1212,7 @@
 			if(b.name==reward2)
 				m.send_chat("Gained +1 [reward2]!", stream = "oocout")
 				b.amount+=1
-				if(reward2=="wood"||reward2=="stone")
+				if(reward2=="Wood"||reward2=="Stone")
 					b.amount+=4
 					m.send_chat("Gained +4 [reward2]!", stream = "oocout")
 				break
@@ -1220,7 +1220,7 @@
 			if(c.name==reward3)
 				m.send_chat("Gained +1 [reward3]!", stream = "oocout")
 				c.amount+=1
-				if(reward3=="wood"||reward3=="stone")
+				if(reward3=="Wood"||reward3=="Stone")
 					c.amount+=4
 					m.send_chat("Gained +4 [reward3]!", stream = "oocout")
 				break
