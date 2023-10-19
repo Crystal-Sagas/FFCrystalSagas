@@ -321,17 +321,13 @@ GLOBAL_LIST_BOILERPLATE(resource_nodes, /obj/node)
 	if(src.used)
 		alert(usr,"This Moogle has already been gathered from today.")
 		return
-	for(var/obj/item/materials/herbs/a in usr.contents)
-		a.amount+=1
 	view() << output("[usr.name] has gathered 1 of each Herb type from their Gathering Moogle!","icout")
-	for(var/obj/item/materials/Ore/b in usr.contents)
-		b.amount+=1
 	view() << output("[usr.name] has gathered 1 of each Ore type from their Gathering Moogle!","icout")
-	for(var/obj/item/materials/Synthesis/c in usr.contents)
+	for(var/obj/item/materials/c in usr.contents)
 		c.amount+=1
-	for(var/obj/item/materials/Ore/Platinum/d in usr.contents)//These are to prevent people from getting these higher tier, rare items from gathering moogles. Prob can be coded better but this is functional at least.
+	for(var/obj/item/materials/ingot/platinum/d in usr.contents)//These are to prevent people from getting these higher tier, rare items from gathering moogles. Prob can be coded better but this is functional at least.
 		d.amount-=1
-	for(var/obj/item/materials/Ore/Orichalcum/e in usr.contents)
+	for(var/obj/item/materials/ingot/orichalcum/e in usr.contents)
 		e.amount-=1
 	for(var/obj/item/materials/Synthesis/EsperSoul/f in usr.contents)
 		f.amount-=1
@@ -371,15 +367,15 @@ GLOBAL_LIST_BOILERPLATE(resource_nodes, /obj/node)
 		if(usr.check_perk("Expert Miner" && "Master Gatherer"))
 			use()
 			usr<<output("You have expertly mined 4 pieces of bronze","oocout")
-			for(var/obj/item/materials/Ore/Bronze/b in usr.contents)
+			for(var/obj/item/materials/ingot/bronze/b in usr.contents)
 				b.amount+=4
 		else if(usr.check_perk("Expert Miner" || "Master Gatherer"))
-			for(var/obj/item/materials/Ore/Bronze/b in usr.contents)
+			for(var/obj/item/materials/ingot/bronze/b in usr.contents)
 				b.amount+=2
 			use()
 			usr<<output("You have mined 2 pieces of bronze","oocout")
 		else
-			for(var/obj/item/materials/Ore/Bronze/b in usr.contents)
+			for(var/obj/item/materials/ingot/bronze/b in usr.contents)
 				b.amount+=1
 			use()
 			usr<<output("You have mined 1 piece of bronze","oocout")
@@ -387,15 +383,15 @@ GLOBAL_LIST_BOILERPLATE(resource_nodes, /obj/node)
 		if(usr.check_perk("Expert Miner" && "Master Gatherer"))
 			use()
 			usr<<output("You have expertly mined 4 pieces of iron","oocout")
-			for(var/obj/item/materials/Ore/Iron/b in usr.contents)
+			for(var/obj/item/materials/ingot/iron/b in usr.contents)
 				b.amount+=4
 		else if(usr.check_perk("Expert Miner" || "Master Gatherer"))
-			for(var/obj/item/materials/Ore/Iron/b in usr.contents)
+			for(var/obj/item/materials/ingot/iron/b in usr.contents)
 				b.amount+=2
 			use()
 			usr<<output("You have mined 2 pieces of iron","oocout")
 		else
-			for(var/obj/item/materials/Ore/Iron/b in usr.contents)
+			for(var/obj/item/materials/ingot/iron/b in usr.contents)
 				b.amount+=1
 			use()
 			usr<<output("You have mined 1 piece of iron","oocout")
@@ -403,15 +399,15 @@ GLOBAL_LIST_BOILERPLATE(resource_nodes, /obj/node)
 		if(usr.check_perk("Expert Miner" && "Master Gatherer"))
 			use()
 			usr<<output("You have expertly mined 4 pieces of steel","oocout")
-			for(var/obj/item/materials/Ore/Steel/b in usr.contents)
+			for(var/obj/item/materials/ingot/steel/b in usr.contents)
 				b.amount+=4
 		else if(usr.check_perk("Expert Miner" || "Master Gatherer"))
-			for(var/obj/item/materials/Ore/Steel/b in usr.contents)
+			for(var/obj/item/materials/ingot/steel/b in usr.contents)
 				b.amount+=2
 			use()
 			usr<<output("You have mined 2 pieces of steel","oocout")
 		else
-			for(var/obj/item/materials/Ore/Steel/b in usr.contents)
+			for(var/obj/item/materials/ingot/steel/b in usr.contents)
 				b.amount+=1
 			use()
 			usr<<output("You have mined 1 piece of steel","oocout")
@@ -419,15 +415,15 @@ GLOBAL_LIST_BOILERPLATE(resource_nodes, /obj/node)
 		if(usr.check_perk("Expert Miner" && "Master Gatherer"))
 			use()
 			usr<<output("You have expertly mined 4 pieces of mythril","oocout")
-			for(var/obj/item/materials/Ore/Mythril/b in usr.contents)
+			for(var/obj/item/materials/ingot/mythril/b in usr.contents)
 				b.amount+=4
 		else if(usr.check_perk("Expert Miner" || "Master Gatherer"))
-			for(var/obj/item/materials/Ore/Mythril/b in usr.contents)
+			for(var/obj/item/materials/ingot/mythril/b in usr.contents)
 				b.amount+=2
 			use()
 			usr<<output("You have mined 2 pieces of mythril","oocout")
 		else
-			for(var/obj/item/materials/Ore/Mythril/b in usr.contents)
+			for(var/obj/item/materials/ingot/mythril/b in usr.contents)
 				b.amount+=1
 			use()
 			usr<<output("You have mined 1 piece of Mythril","oocout")
@@ -435,15 +431,15 @@ GLOBAL_LIST_BOILERPLATE(resource_nodes, /obj/node)
 		if(usr.check_perk("Expert Miner" && "Master Gatherer"))
 			use()
 			usr<<output("You have expertly mined 3 pieces of adamantine","oocout")
-			for(var/obj/item/materials/Ore/Adamantine/b in usr.contents)
+			for(var/obj/item/materials/ingot/adamantine/b in usr.contents)
 				b.amount+=4
 		else if(usr.check_perk("Expert Miner" || "Master Gatherer"))
-			for(var/obj/item/materials/Ore/Adamantine/b in usr.contents)
+			for(var/obj/item/materials/ingot/adamantine/b in usr.contents)
 				b.amount+=2
 			use()
 			usr<<output("You have mined 2 pieces of adamantine","oocout")
 		else
-			for(var/obj/item/materials/Ore/Adamantine/b in usr.contents)
+			for(var/obj/item/materials/ingot/adamantine/b in usr.contents)
 				b.amount+=1
 			use()
 			usr<<output("You have mined 1 piece of adamantine","oocout")
@@ -452,11 +448,11 @@ GLOBAL_LIST_BOILERPLATE(resource_nodes, /obj/node)
 		usr.minednodes+=1
 		return
 	if(roll2>16&&roll2<20)
-		for(var/obj/item/materials/Ore/Silver/b in usr.contents)
+		for(var/obj/item/materials/ingot/silver/b in usr.contents)
 			b.amount+=1
 		usr<<output("Hmm? You seem to find something else. A piece of silver","oocout")
 	if(roll2==20)
-		for(var/obj/item/materials/Ore/Gold/b in usr.contents)
+		for(var/obj/item/materials/ingot/gold/b in usr.contents)
 			b.amount+=1
 		usr<<output("Hmm? You seem to find something else. A piece of gold","oocout")
 	for(var/obj/item/materials/Synthesis/Stone/c in usr.contents)

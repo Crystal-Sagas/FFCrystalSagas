@@ -220,6 +220,8 @@ obj
 			craftable=1
 			craftingmaterialtrue=1
 			price=1
+			amount=0
+			weight=0
 			Click()
 				if(src.instore)
 					switch(alert(usr,"[src.desc] Cost:[src.shopprice]",,"Buy","Cancel"))
@@ -265,32 +267,6 @@ obj
 							UpdateCraft(usr)
 							del src
 
-
-
-
-
-			amount=0
-			weight=0
-			Ore
-				icon='Icons/Crafting/Ironingot.dmi'
-				Bronze
-					icon='Icons/Crafting/Bronzeingot.dmi'
-				Iron
-					icon='Icons/Crafting/Ironingot.dmi'
-				Steel
-					icon='Icons/Crafting/Steelingot.dmi'
-				Mythril
-					icon='Icons/Crafting/Mythrilingot.dmi'
-				Adamantine
-					icon='Icons/Crafting/Adamantineingot.dmi'
-				Orichalcum
-					icon='Icons/Crafting/Orichalcumingot.dmi'
-				Silver
-					icon='Icons/Crafting/Silveringot.dmi'
-				Gold
-					icon='Icons/Crafting/Goldingot.dmi'
-				Platinum
-					icon='Icons/Crafting/Platinumingot.dmi'
 			Synthesis
 				icon='Icons/Crafting/Synthesis.dmi'
 				Wood
@@ -378,7 +354,7 @@ obj/item/Weapon/verb
 				var/mchoice=input(usr,"Which Metal would you like to apply to this weapon as a Gilding? Silver: +1 | Gold: +2 | Platinum: +3") as anything in metchoice
 				switch(mchoice)
 					if("Silver")
-						for(var/obj/item/materials/Ore/Silver/a in usr.contents)
+						for(var/obj/item/materials/ingot/silver/a in usr.contents)
 							if(a.amount>=10)
 								storename=src.name
 								tempname="Silver [src.name]"
@@ -394,7 +370,7 @@ obj/item/Weapon/verb
 							else
 								alert(usr,"Applying a Silver gilding requires at least 10 Silver ore.")
 					if("Gold")
-						for(var/obj/item/materials/Ore/Gold/a in usr.contents)
+						for(var/obj/item/materials/ingot/gold/a in usr.contents)
 							if(a.amount>=10)
 								storename=src.name
 								tempname="Gold [src.name]"
@@ -410,7 +386,7 @@ obj/item/Weapon/verb
 							else
 								alert(usr,"Applying a Gold gilding requires at least 10 Gold ore.")
 					if("Platinum")
-						for(var/obj/item/materials/Ore/Platinum/a in usr.contents)
+						for(var/obj/item/materials/ingot/platinum/a in usr.contents)
 							if(a.amount>=10)
 								storename=src.name
 								tempname="Platinum [src.name]"

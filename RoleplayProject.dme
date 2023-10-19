@@ -177,6 +177,7 @@
 #include "Code\modules\materials\materials.dm"
 #include "Code\modules\materials\definitions\gems.dm"
 #include "Code\modules\materials\definitions\herbs.dm"
+#include "Code\modules\materials\definitions\ingots.dm"
 #include "Code\modules\perks\perk.dm"
 #include "Code\modules\perks\render.dm"
 #include "Code\players\action_feedback.dm"

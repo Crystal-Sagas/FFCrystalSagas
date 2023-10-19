@@ -109,12 +109,12 @@ obj/NPCshop
 			s4.shopprice=450
 			src.contents+=s4
 //Stock 5
-			var/obj/item/materials/Ore/Bronze/s5=new
+			var/obj/item/materials/ingot/bronze/s5=new
 			s5.instore=1
 			s5.shopprice=80
 			src.contents+=s5
 //Stock 6
-			var/obj/item/materials/Ore/Iron/s6=new
+			var/obj/item/materials/ingot/iron/s6=new
 			s6.instore=1
 			s6.shopprice=140
 			src.contents+=s6

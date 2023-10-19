@@ -26,7 +26,7 @@ obj/item
 					var/rando
 					var/rando2
 					for(var/obj/item/materials/m in usr.contents)
-						if(istype(m,/obj/item/materials/Ore/Platinum)||istype(m,/obj/item/materials/Ore/Orichalcum))
+						if(istype(m,/obj/item/materials/ingot/platinum)||istype(m,/obj/item/materials/ingot/orichalcum))
 
 						else
 							rando=rand(1,4)

@@ -850,51 +850,51 @@ obj
 								a.amount+=20
 								usr << output("You have gained 20 [a]!","oocout")
 							if(random1>=1 && random1<4)
-								for(var/obj/item/materials/Ore/Bronze/a in usr.contents)
+								for(var/obj/item/materials/ingot/bronze/a in usr.contents)
 									a.amount+=1
 									usr << output("You have gained 1 [a]!","oocout")
 							if(random1>=4 && random1<6)
-								for(var/obj/item/materials/Ore/Iron/a in usr.contents)
+								for(var/obj/item/materials/ingot/iron/a in usr.contents)
 									a.amount+=1
 									usr << output("You have gained 1 [a]!","oocout")
 							if(random1>=6 && random1<8)
-								for(var/obj/item/materials/Ore/Steel/a in usr.contents)
+								for(var/obj/item/materials/ingot/steel/a in usr.contents)
 									a.amount+=1
 									usr << output("You have gained 1 [a]!","oocout")
 							if(random1>=8 && random1<11)
-								for(var/obj/item/materials/Ore/Mythril/a in usr.contents)
+								for(var/obj/item/materials/ingot/mythril/a in usr.contents)
 									a.amount+=1
 									usr << output("You have gained 1 [a]!","oocout")
 							if(random2>=1 && random2<4)
-								for(var/obj/item/materials/Ore/Bronze/a in usr.contents)
+								for(var/obj/item/materials/ingot/bronze/a in usr.contents)
 									a.amount+=1
 									usr << output("You have gained 1 [a]!","oocout")
 							if(random2>=4 && random2<6)
-								for(var/obj/item/materials/Ore/Iron/a in usr.contents)
+								for(var/obj/item/materials/ingot/iron/a in usr.contents)
 									a.amount+=1
 									usr << output("You have gained 1 [a]!","oocout")
 							if(random2>=6 && random2<8)
-								for(var/obj/item/materials/Ore/Steel/a in usr.contents)
+								for(var/obj/item/materials/ingot/steel/a in usr.contents)
 									a.amount+=1
 									usr << output("You have gained 1 [a]!","oocout")
 							if(random2>=8 && random2<11)
-								for(var/obj/item/materials/Ore/Mythril/a in usr.contents)
+								for(var/obj/item/materials/ingot/mythril/a in usr.contents)
 									a.amount+=1
 									usr << output("You have gained 1 [a]!","oocout")
 							if(random3>=1 && random3<4)
-								for(var/obj/item/materials/Ore/Bronze/a in usr.contents)
+								for(var/obj/item/materials/ingot/bronze/a in usr.contents)
 									a.amount+=1
 									usr << output("You have gained 1 [a]!","oocout")
 							if(random3>=4 && random3<6)
-								for(var/obj/item/materials/Ore/Iron/a in usr.contents)
+								for(var/obj/item/materials/ingot/iron/a in usr.contents)
 									a.amount+=1
 									usr << output("You have gained 1 [a]!","oocout")
 							if(random3>=6 && random3<8)
-								for(var/obj/item/materials/Ore/Steel/a in usr.contents)
+								for(var/obj/item/materials/ingot/steel/a in usr.contents)
 									a.amount+=1
 									usr << output("You have gained 1 [a]!","oocout")
 							if(random3>=8 && random3<11)
-								for(var/obj/item/materials/Ore/Mythril/a in usr.contents)
+								for(var/obj/item/materials/ingot/mythril/a in usr.contents)
 									a.amount+=1
 									usr << output("You have gained 1 [a]!","oocout")
 							if(gem1>=1 && gem1<4)
