@@ -724,7 +724,7 @@
 					src.creates=a
 					src.name=a.name
 			GoldNeedle
-				mat1="Gold ingot"
+				mat1="Gold Ingot"
 				mat2="Sharug Greens"
 				mat3="Diamond"
 				amount1=1
@@ -801,7 +801,7 @@
 		Bombs
 			FireBomb
 				name="Fire Bomb Bag"
-				mat1="Steel ingot"
+				mat1="Steel Ingot"
 				mat2="Aether Powder
 				mat3="Fire Gem"
 				amount1=5
@@ -818,7 +818,7 @@
 					src.name=a.name
 			WaterBomb
 				name="Water Bomb Bag"
-				mat1="Steel ingot"
+				mat1="Steel Ingot"
 				mat2="Aether Powder
 				mat3="Water Gem"
 				amount1=5
@@ -835,7 +835,7 @@
 					src.name=a.name
 			ThunderBomb
 				name="Thunder Bomb Bag"
-				mat1="Steel ingot"
+				mat1="Steel Ingot"
 				mat2="Aether Powder
 				mat3="Thunder Gem"
 				amount1=5
@@ -852,7 +852,7 @@
 					src.name=a.name
 			EarthBomb
 				name="Earth Bomb Bag"
-				mat1="Steel ingot"
+				mat1="Steel Ingot"
 				mat2="Aether Powder
 				mat3="Earth Gem"
 				amount1=5
@@ -869,7 +869,7 @@
 					src.name=a.name
 			IceBomb
 				name="Ice Bomb Bag"
-				mat1="Steel ingot"
+				mat1="Steel Ingot"
 				mat2="Aether Powder
 				mat3="Ice Gem"
 				amount1=5
@@ -886,7 +886,7 @@
 					src.name=a.name
 			BioBomb
 				name="Bio Bomb Bag"
-				mat1="Steel ingot"
+				mat1="Steel Ingot"
 				mat2="Aether Powder
 				mat3="Bio Gem"
 				amount1=5
@@ -903,7 +903,7 @@
 					src.name=a.name
 			WindBomb
 				name="Wind Bomb Bag"
-				mat1="Steel ingot"
+				mat1="Steel Ingot"
 				mat2="Aether Powder
 				mat3="Wind Gem"
 				amount1=5
@@ -920,7 +920,7 @@
 					src.name=a.name
 			DarkBomb
 				name="Dark Bomb Bag"
-				mat1="Steel ingot"
+				mat1="Steel Ingot"
 				mat2="Aether Powder
 				mat3="Dark Gem"
 				amount1=5
@@ -937,7 +937,7 @@
 					src.name=a.name
 			HolyBomb
 				name="Holy Bomb Bag"
-				mat1="Steel ingot"
+				mat1="Steel Ingot"
 				mat2="Aether Powder
 				mat3="Holy Gem"
 				mat4="Leather"
@@ -965,7 +965,7 @@
 				src.name=a.name
 				src.creates=a
 		Terraformer
-			mat1="Steel ingot"
+			mat1="Steel Ingot"
 			amount1=2
 			mat2="Raw Mako"
 			amount2=1
@@ -974,14 +974,14 @@
 				src.creates=a
 				src.name=a.name
 		Linkshell
-			mat1="Mythril ingot"
+			mat1="Mythril Ingot"
 			amount1=1
 			New()
 				var/obj/item/Machinist/Linkshell/a=new
 				src.creates=a
 				src.name=a.name
 		Speaker
-			mat1="Steel ingot"
+			mat1="Steel Ingot"
 			amount1=1
 			New()
 				var/obj/item/Machinist/Speaker/a=new
@@ -990,11 +990,11 @@
 		Weapons
 			T1
 				BallisticPistol
-					mat1="Steel ingot"
+					mat1="Steel Ingot"
 					amount1=5
-					mat2="Mythril ingot"
+					mat2="Mythril Ingot"
 					amount2=5
-					mat3="Adamantine ingot"
+					mat3="Adamantine Ingot"
 					amount3=1
 					mat4="Tonberry Knife"
 					amount4=1
@@ -1003,9 +1003,9 @@
 						src.creates=a
 						src.name=a.name
 				Wrench
-					mat1="Steel ingot"
+					mat1="Steel Ingot"
 					amount1=1
-					mat2="Bronze ingot"
+					mat2="Bronze Ingot"
 					amount2=1
 					mat3="Fire Gem"
 					amount3=1
@@ -1014,9 +1014,9 @@
 						src.creates=a
 						src.name=a.name
 				Chainsaw
-					mat1="Steel ingot"
+					mat1="Steel Ingot"
 					amount1=5
-					mat2="Mythril ingot"
+					mat2="Mythril Ingot"
 					amount2=1
 					mat3="Earth Gem"
 					amount3=1
@@ -1025,9 +1025,9 @@
 						src.creates=a
 						src.name=a.name
 				Drillsword
-					mat1="Steel ingot"
+					mat1="Steel Ingot"
 					amount1=5
-					mat2="Mythril ingot"
+					mat2="Mythril Ingot"
 					amount2=1
 					mat3="Earth Gem"
 					amount3=1
@@ -1036,9 +1036,9 @@
 						src.creates=a
 						src.name=a.name
 				Drillspear
-					mat1="Steel ingot"
+					mat1="Steel Ingot"
 					amount1=5
-					mat2="Mythril ingot"
+					mat2="Mythril Ingot"
 					amount2=1
 					mat3="Earth Gem"
 					amount3=1
@@ -1047,9 +1047,9 @@
 						src.creates=a
 						src.name=a.name
 				RocketLauncher
-					mat1="Steel ingot"
+					mat1="Steel Ingot"
 					amount1=5
-					mat2="Mythril ingot"
+					mat2="Mythril Ingot"
 					amount2=1
 					mat3="Fire Gem"
 					amount3=1
@@ -1060,9 +1060,9 @@
 				Ammo
 					Basic
 						FireBullet
-							mat1="Steel ingot"
+							mat1="Steel Ingot"
 							amount1=3
-							mat2="Mythril ingot"
+							mat2="Mythril Ingot"
 							amount2=1
 							mat3="Fire Gem"
 							amount3=1
@@ -1071,9 +1071,9 @@
 								src.creates=a
 								src.name=a.name
 						ThunderBullet
-							mat1="Steel ingot"
+							mat1="Steel Ingot"
 							amount1=3
-							mat2="Mythril ingot"
+							mat2="Mythril Ingot"
 							amount2=1
 							mat3="Thunder Gem"
 							amount3=1
@@ -1082,9 +1082,9 @@
 								src.creates=a
 								src.name=a.name
 						EarthBullet
-							mat1="Steel ingot"
+							mat1="Steel Ingot"
 							amount1=3
-							mat2="Mythril ingot"
+							mat2="Mythril Ingot"
 							amount2=1
 							mat3="Earth Gem"
 							amount3=1
@@ -1093,9 +1093,9 @@
 								src.creates=a
 								src.name=a.name
 						WaterBullet
-							mat1="Steel ingot"
+							mat1="Steel Ingot"
 							amount1=3
-							mat2="Mythril ingot"
+							mat2="Mythril Ingot"
 							amount2=1
 							mat3="Water Gem"
 							amount3=1
@@ -1104,9 +1104,9 @@
 								src.creates=a
 								src.name=a.name
 						LowAPRound
-							mat1="Steel ingot"
+							mat1="Steel Ingot"
 							amount1=3
-							mat2="Mythril ingot"
+							mat2="Mythril Ingot"
 							amount2=1
 							mat3="Tonberry Knife"
 							amount3=1
@@ -1118,9 +1118,9 @@
 				Ammo
 					Advanced
 						AeroBullet
-							mat1="Steel ingot"
+							mat1="Steel Ingot"
 							amount1=5
-							mat2="Adamantine ingot"
+							mat2="Adamantine Ingot"
 							amount2=1
 							mat3="Wind Gem"
 							amount3=1
@@ -1129,9 +1129,9 @@
 								src.creates=a
 								src.name=a.name
 						IceBullet
-							mat1="Steel ingot"
+							mat1="Steel Ingot"
 							amount1=5
-							mat2="Adamantine ingot"
+							mat2="Adamantine Ingot"
 							amount2=1
 							mat3="Ice Gem"
 							amount3=1
@@ -1140,9 +1140,9 @@
 								src.creates=a
 								src.name=a.name
 						BioBullet
-							mat1="Steel ingot"
+							mat1="Steel Ingot"
 							amount1=5
-							mat2="Adamantine ingot"
+							mat2="Adamantine Ingot"
 							amount2=1
 							mat3="Bio Gem"
 							amount3=1
@@ -1151,9 +1151,9 @@
 								src.creates=a
 								src.name=a.name
 						DarkBullet
-							mat1="Steel ingot"
+							mat1="Steel Ingot"
 							amount1=5
-							mat2="Adamantine ingot"
+							mat2="Adamantine Ingot"
 							amount2=1
 							mat3="Dark Gem"
 							amount3=1
@@ -1162,9 +1162,9 @@
 								src.creates=a
 								src.name=a.name
 						HolyBullet
-							mat1="Steel ingot"
+							mat1="Steel Ingot"
 							amount1=5
-							mat2="Adamantine ingot"
+							mat2="Adamantine Ingot"
 							amount2=1
 							mat3="Holy Gem"
 							amount3=1
@@ -1173,9 +1173,9 @@
 								src.creates=a
 								src.name=a.name
 						HighAPRound
-							mat1="Steel ingot"
+							mat1="Steel Ingot"
 							amount1=5
-							mat2="Adamantine ingot"
+							mat2="Adamantine Ingot"
 							amount2=1
 							mat3="Zuu Feather"
 							amount3=1
@@ -1184,9 +1184,9 @@
 								src.creates=a
 								src.name=a.name
 					Nethicite
-						mat1="Steel ingot"
+						mat1="Steel Ingot"
 						amount1=10
-						mat2="Adamantine ingot"
+						mat2="Adamantine Ingot"
 						amount2=1
 						mat3="Dark Gem"
 						amount3=1
@@ -1197,9 +1197,9 @@
 							src.creates=a
 							src.name=a.name
 				LaserOffenseOrb
-					mat1="Steel ingot"
+					mat1="Steel Ingot"
 					amount1=10
-					mat2="Mythril ingot"
+					mat2="Mythril Ingot"
 					amount2=1
 					mat3="Thunder Gem"
 					amount3=1
@@ -1210,9 +1210,9 @@
 						src.creates=a
 						src.name=a.name
 				LaserDefenseOrb
-					mat1="Steel ingot"
+					mat1="Steel Ingot"
 					amount1=10
-					mat2="Mythril ingot"
+					mat2="Mythril Ingot"
 					amount2=1
 					mat3="Thunder Gem"
 					amount3=1
@@ -1223,9 +1223,9 @@
 						src.creates=a
 						src.name=a.name
 				Taser
-					mat1="Steel ingot"
+					mat1="Steel Ingot"
 					amount1=4
-					mat2="Mythril ingot"
+					mat2="Mythril Ingot"
 					amount2=2
 					mat3="Thunder Gem"
 					amount3=1
@@ -1234,9 +1234,9 @@
 						src.creates=a
 						src.name=a.name
 				WreckingBall
-					mat1="Steel ingot"
+					mat1="Steel Ingot"
 					amount1=15
-					mat2="Mythril ingot"
+					mat2="Mythril Ingot"
 					amount2=1
 					mat3="Earth Gem"
 					amount3=1
@@ -1245,9 +1245,9 @@
 						src.creates=a
 						src.name=a.name
 				BeamCannon
-					mat1="Steel ingot"
+					mat1="Steel Ingot"
 					amount1=8
-					mat2="Mythril ingot"
+					mat2="Mythril Ingot"
 					amount2=15
 					mat3="Dark Gem"
 					amount3=1
@@ -1256,22 +1256,22 @@
 						src.creates=a
 						src.name=a.name
 				EnergySword
-					mat1="Steel ingot"
+					mat1="Steel Ingot"
 					amount1=10
-					mat2="Mythril ingot"
+					mat2="Mythril Ingot"
 					amount2=5
 					mat3="Holy Gem"
 					amount3=1
-					mat4="Adamantine ingot"
+					mat4="Adamantine Ingot"
 					amount4=2
 					New()
 						var/obj/item/Weapon/Machinist/EnergySword/a=new
 						src.creates=a
 						src.name=a.name
 				Flamethrower
-					mat1="Steel ingot"
+					mat1="Steel Ingot"
 					amount1=5
-					mat2="Mythril ingot"
+					mat2="Mythril Ingot"
 					amount2=3
 					mat3="Fire Gem"
 					amount3=1
@@ -1280,9 +1280,9 @@
 						src.creates=a
 						src.name=a.name
 				BioBlaster
-					mat1="Steel ingot"
+					mat1="Steel Ingot"
 					amount1=5
-					mat2="Mythril ingot"
+					mat2="Mythril Ingot"
 					amount2=3
 					mat3="Bio Gem"
 					amount3=1
@@ -1294,39 +1294,39 @@
 			T2
 				Cores
 					PowerCore
-						mat1="Iron ingot"
+						mat1="Iron Ingot"
 						amount1=10
-						mat2="Steel ingot"
+						mat2="Steel Ingot"
 						amount2=10
 						mat3="Fire Gem"
 						amount3=1
-						mat4="Mythril ingot"
+						mat4="Mythril Ingot"
 						amount4=2
 						New()
 							var/obj/item/Machinist/Cores/PowerCore/a=new
 							src.creates=a
 							src.name=a.name
 					DefenseCore
-						mat1="Iron ingot"
+						mat1="Iron Ingot"
 						amount1=10
-						mat2="Steel ingot"
+						mat2="Steel Ingot"
 						amount2=10
 						mat3="Earth Gem"
 						amount3=1
-						mat4="Mythril ingot"
+						mat4="Mythril Ingot"
 						amount4=2
 						New()
 							var/obj/item/Machinist/Cores/DefenseCore/a=new
 							src.creates=a
 							src.name=a.name
 					SpeedCore
-						mat1="Iron ingot"
+						mat1="Iron Ingot"
 						amount1=10
-						mat2="Steel ingot"
+						mat2="Steel Ingot"
 						amount2=10
 						mat3="Wind Gem"
 						amount3=1
-						mat4="Mythril ingot"
+						mat4="Mythril Ingot"
 						amount4=2
 						New()
 							var/obj/item/Machinist/Cores/SpeedCore/a=new
@@ -1334,9 +1334,9 @@
 							src.name=a.name
 				Modules
 					Strength
-						mat1="Iron ingot"
+						mat1="Iron Ingot"
 						amount1=10
-						mat2="Steel ingot"
+						mat2="Steel Ingot"
 						amount2=10
 						mat3="Fire Gem"
 						amount3=1
@@ -1345,9 +1345,9 @@
 							src.creates=a
 							src.name=a.name
 					Wisdom
-						mat1="Iron ingot"
+						mat1="Iron Ingot"
 						amount1=10
-						mat2="Steel ingot"
+						mat2="Steel Ingot"
 						amount2=10
 						mat3="Ice Gem"
 						amount3=1
@@ -1358,26 +1358,26 @@
 			T3
 				Cores
 					ElementalCore
-						mat1="Iron ingot"
+						mat1="Iron Ingot"
 						amount1=10
-						mat2="Steel ingot"
+						mat2="Steel Ingot"
 						amount2=10
 						mat3="Black Gem"
 						amount3=1
-						mat4="Mythril ingot"
+						mat4="Mythril Ingot"
 						amount4=5
 						New()
 							var/obj/item/Machinist/Cores/ElementalCore/a=new
 							src.contents+=a
 							src.name=a.name
 					HPCore
-						mat1="Iron ingot"
+						mat1="Iron Ingot"
 						amount1=10
-						mat2="Steel ingot"
+						mat2="Steel Ingot"
 						amount2=10
 						mat3="Holy Gem"
 						amount3=1
-						mat4="Mythril ingot"
+						mat4="Mythril Ingot"
 						amount4=5
 						New()
 							var/obj/item/Machinist/Cores/HPCore/a=new
@@ -1385,9 +1385,9 @@
 							src.name=a.name
 				Modules
 					Dexterity
-						mat1="Iron ingot"
+						mat1="Iron Ingot"
 						amount1=10
-						mat2="Steel ingot"
+						mat2="Steel Ingot"
 						amount2=10
 						mat3="Wind Gem"
 						amount3=1
@@ -1396,9 +1396,9 @@
 							src.creates=a
 							src.name=a.name
 					Constitution
-						mat1="Iron ingot"
+						mat1="Iron Ingot"
 						amount1=10
-						mat2="Steel ingot"
+						mat2="Steel Ingot"
 						amount2=10
 						mat3="Earth Gem"
 						amount3=1
@@ -1407,9 +1407,9 @@
 							src.creates=a
 							src.name=a.name
 					Intelligence
-						mat1="Iron ingot"
+						mat1="Iron Ingot"
 						amount1=10
-						mat2="Steel ingot"
+						mat2="Steel Ingot"
 						amount2=10
 						mat3="Thunder Gem"
 						amount3=1
@@ -1418,9 +1418,9 @@
 							src.creates=a
 							src.name=a.name
 					Charisma
-						mat1="Iron ingot"
+						mat1="Iron Ingot"
 						amount1=10
-						mat2="Steel ingot"
+						mat2="Steel Ingot"
 						amount2=10
 						mat3="Water Gem"
 						amount3=1
@@ -1430,11 +1430,11 @@
 							src.name=a.name
 			T4
 				Augment
-					mat1="Iron ingot"
+					mat1="Iron Ingot"
 					amount1=15
-					mat2="Steel ingot"
+					mat2="Steel Ingot"
 					amount2=20
-					mat3="Gold ingot"
+					mat3="Gold Ingot"
 					amount3=5
 					New()
 						var/obj/item/Machinist/Augment/CyberneticAugmentation/a=new
@@ -1443,22 +1443,22 @@
 		Misc
 			T3
 				ForceFieldEmitter
-					mat1="Iron ingot"
+					mat1="Iron Ingot"
 					amount1=10
-					mat2="Steel ingot"
+					mat2="Steel Ingot"
 					amount2=5
 					mat3="Raw Mako"
 					amount3=1
-					mat4="Bronze ingot"
+					mat4="Bronze Ingot"
 					amount4=1
 					New()
 						var/obj/item/Machinist/ForceFieldEmitter/a=new
 						src.creates=a
 						src.name=a.name
 				ForceFieldRemote
-					mat1="Iron ingot"
+					mat1="Iron Ingot"
 					amount1=4
-					mat2="Bronze ingot"
+					mat2="Bronze Ingot"
 					amount2=5
 					New()
 						var/obj/item/Machinist/ForceFieldRemote/a=new
@@ -1468,50 +1468,50 @@
 		Robots
 			T2
 				Defender
-					mat1="Iron ingot"
+					mat1="Iron Ingot"
 					amount1=10
-					mat2="Steel ingot"
+					mat2="Steel Ingot"
 					amount2=5
 					mat3="Raw Mako"
 					amount3=1
-					mat4="Bronze ingot"
+					mat4="Bronze Ingot"
 					amount4=1
 					New()
 						var/obj/npc/Robots/T2/Defender/a=new
 						src.creates=a
 				Striker
-					mat1="Iron ingot"
+					mat1="Iron Ingot"
 					amount1=10
-					mat2="Steel ingot"
+					mat2="Steel Ingot"
 					amount2=5
 					mat3="Raw Mako"
 					amount3=1
-					mat4="Bronze ingot"
+					mat4="Bronze Ingot"
 					amount4=1
 					New()
 						var/obj/npc/Robots/T2/Striker/a=new
 						src.creates=a
 			T3
 				Blitzer
-					mat1="Iron ingot"
+					mat1="Iron Ingot"
 					amount1=15
-					mat2="Steel ingot"
+					mat2="Steel Ingot"
 					amount2=10
 					mat3="Raw Mako"
 					amount3=2
-					mat4="Bronze ingot"
+					mat4="Bronze Ingot"
 					amount4=5
 					New()
 						var/obj/npc/Robots/T3/Blitzer/a=new
 						src.creates=a
 				Guardian
-					mat1="Iron ingot"
+					mat1="Iron Ingot"
 					amount1=15
-					mat2="Steel ingot"
+					mat2="Steel Ingot"
 					amount2=10
 					mat3="Raw Mako"
 					amount3=2
-					mat4="Bronze ingot"
+					mat4="Bronze Ingot"
 					amount4=5
 					New()
 						var/obj/npc/Robots/T3/Guardian/a=new
@@ -1519,17 +1519,17 @@
 		Magitek
 			T4
 				MagitekArmor
-					mat1="Iron ingot"
+					mat1="Iron Ingot"
 					amount1=15
-					mat2="Steel ingot"
+					mat2="Steel Ingot"
 					amount2=10
 					mat3="Raw Mako"
 					amount3=5
-					mat4="Bronze ingot"
+					mat4="Bronze Ingot"
 					amount4=5
-					mat5="Mythril ingot"
+					mat5="Mythril Ingot"
 					amount5=10
-					mat6="Adamantine ingot"
+					mat6="Adamantine Ingot"
 					amount6=10
 					New()
 						var/obj/npc/Robots/T4/MagitekArmor/a=new
@@ -1537,17 +1537,17 @@
 						src.name=a.name
 			T5
 				MagitekMecha
-					mat1="Iron ingot"
+					mat1="Iron Ingot"
 					amount1=50
-					mat2="Steel ingot"
+					mat2="Steel Ingot"
 					amount2=35
 					mat3="Raw Mako"
 					amount3=10
-					mat4="Bronze ingot"
+					mat4="Bronze Ingot"
 					amount4=10
-					mat5="Mythril ingot"
+					mat5="Mythril Ingot"
 					amount5=20
-					mat6="Adamantine ingot"
+					mat6="Adamantine Ingot"
 					amount6=20
 					New()
 						var/obj/npc/Robots/T5/MagitekMecha/a=new
@@ -1559,9 +1559,9 @@
 				amount1=100
 				mat2="Stone"
 				amount2=150
-				mat3="Steel ingot"
+				mat3="Steel Ingot"
 				amount3=50
-				mat4="Mythril ingot"
+				mat4="Mythril Ingot"
 				amount4=5
 				mat5="Raw Mako"
 				amount5=5
@@ -1578,9 +1578,9 @@
 				amount1=80
 				mat2="Wool"
 				amount2=50
-				mat3="Steel ingot"
+				mat3="Steel Ingot"
 				amount3=50
-				mat4="Mythril ingot"
+				mat4="Mythril Ingot"
 				amount4=2
 				mat5="Raw Mako"
 				amount5=5
@@ -1597,9 +1597,9 @@
 				amount1=100
 				mat2="Wool"
 				amount2=150
-				mat3="Steel ingot"
+				mat3="Steel Ingot"
 				amount3=50
-				mat4="Mythril ingot"
+				mat4="Mythril Ingot"
 				amount4=15
 				mat5="Raw Mako"
 				amount5=35
@@ -1628,7 +1628,7 @@
 			amount1=100
 			mat2="Stone"
 			amount2=50
-			mat3="Steel ingot"
+			mat3="Steel Ingot"
 			amount3=5
 			mat4="Leather"
 			amount4=15
@@ -1642,9 +1642,9 @@
 			amount1=500
 			mat2="Stone"
 			amount2=250
-			mat3="Steel ingot"
+			mat3="Steel Ingot"
 			amount3=15
-			mat4="Mythril ingot"
+			mat4="Mythril Ingot"
 			amount4=10
 			mat5="Leather"
 			amount5=30
@@ -1668,9 +1668,9 @@
 						src.creates=a
 				Recruiter
 					name="Military Recruiter"
-					mat1="Mythril ingot"
-					mat2="Gold ingot"
-					mat3="Silver ingot"
+					mat1="Mythril Ingot"
+					mat2="Gold Ingot"
+					mat3="Silver Ingot"
 					amount1=5
 					amount2=5
 					amount3=5
@@ -1680,8 +1680,8 @@
 				Mine
 					mat1="Wood"
 					mat2="Stone"
-					mat3="Steel ingot"
-					mat4="Mythril ingot"
+					mat3="Steel Ingot"
+					mat4="Mythril Ingot"
 					amount1=100
 					amount2=100
 					amount3=5
@@ -1692,7 +1692,7 @@
 				Loghouse
 					mat1="Wood"
 					mat2="Stone"
-					mat3="Steel ingot"
+					mat3="Steel Ingot"
 					amount1=80
 					amount2=50
 					amount3=5
@@ -1714,9 +1714,9 @@
 				Commercecenter
 					mat1="Wood"
 					mat2="Stone"
-					mat3="Steel ingot"
-					mat4="Mythril ingot"
-					mat5="Gold ingot"
+					mat3="Steel Ingot"
+					mat4="Mythril Ingot"
+					mat5="Gold Ingot"
 					amount1=50
 					amount2=50
 					amount3=5
@@ -1742,7 +1742,7 @@
 			Insomnia
 				ManaPylon
 					mat1="Ether Powder"
-					mat2="Mythril ingot"
+					mat2="Mythril Ingot"
 					amount1=10
 					amount2=5
 					New()
@@ -1761,8 +1761,8 @@
 			Midgar
 				MakoReactor
 					mat1="Raw Mako"
-					mat2="Steel ingot"
-					mat3="Silver ingot"
+					mat2="Steel Ingot"
+					mat3="Silver Ingot"
 					amount1=10
 					amount2=20
 					amount3=15
@@ -1773,9 +1773,9 @@
 				ShellGenerator
 					mat1="Earth Gem"
 					amount1=5
-					mat2="Steel ingot"
+					mat2="Steel Ingot"
 					amount2=15
-					mat3="Mythril ingot"
+					mat3="Mythril Ingot"
 					amount3=8
 					New()
 						var/obj/Factionupgrades/Midgar/ShellGenerator/a=new
@@ -1785,7 +1785,7 @@
 				YevonShrine
 					mat1="Stone"
 					mat2="Ether Powder"
-					mat3="Mythril ingot"
+					mat3="Mythril Ingot"
 					amount1=100
 					amount2=50
 					amount3=15
@@ -1795,8 +1795,8 @@
 						src.name=a.name
 				FaythStatue
 					mat1="Stone"
-					mat2="Gold ingot"
-					mat3="Silver ingot"
+					mat2="Gold Ingot"
+					mat3="Silver Ingot"
 					amount1=100
 					amount2=5
 					amount3=5
@@ -1808,7 +1808,7 @@
 				StatueofFalcie
 					mat1="Stone"
 					mat2="Ether Powder"
-					mat3="Silver ingot"
+					mat3="Silver Ingot"
 					amount1=100
 					amount2=5
 					amount3=10
@@ -1819,8 +1819,8 @@
 			Independant
 				Treasury
 					mat1="Wood"
-					mat2="Gold ingot"
-					mat3="Silver ingot"
+					mat2="Gold Ingot"
+					mat3="Silver Ingot"
 					amount1=100
 					amount2=5
 					amount3=5
@@ -1841,8 +1841,8 @@
 						src.name=a.name
 				WarriorStatue
 					mat1="Stone"
-					mat2="Gold ingot"
-					mat3="Silver ingot"
+					mat2="Gold Ingot"
+					mat3="Silver Ingot"
 					amount1=80
 					amount2=5
 					amount3=5
@@ -1852,8 +1852,8 @@
 						src.name=a.name
 				RogueStatue
 					mat1="Stone"
-					mat2="Gold ingot"
-					mat3="Silver ingot"
+					mat2="Gold Ingot"
+					mat3="Silver Ingot"
 					amount1=80
 					amount2=5
 					amount3=5
@@ -1863,8 +1863,8 @@
 						src.name=a.name
 				BlackMageStatue
 					mat1="Stone"
-					mat2="Gold ingot"
-					mat3="Silver ingot"
+					mat2="Gold Ingot"
+					mat3="Silver Ingot"
 					amount1=80
 					amount2=5
 					amount3=5
@@ -1874,8 +1874,8 @@
 						src.name=a.name
 				WhiteMageStatue
 					mat1="Stone"
-					mat2="Gold ingot"
-					mat3="Silver ingot"
+					mat2="Gold Ingot"
+					mat3="Silver Ingot"
 					amount1=80
 					amount2=5
 					amount3=5
@@ -1885,8 +1885,8 @@
 						src.name=a.name
 				RedMageStatue
 					mat1="Stone"
-					mat2="Gold ingot"
-					mat3="Silver ingot"
+					mat2="Gold Ingot"
+					mat3="Silver Ingot"
 					amount1=80
 					amount2=5
 					amount3=5
