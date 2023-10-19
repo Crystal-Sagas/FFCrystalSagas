@@ -90,7 +90,7 @@ var/list/Genome=list()
 var/list/Golem=list("")
 var/list/Timemage=list("silicons")
 var/list/Lcie=list("","","")
-var/list/Oracle=list("","","","","")
+var/list/Oracle=list("Da Boi Kyro","","","","")
 
 
 obj

@@ -2,6 +2,17 @@
 obj
 	perk
 		monsterperk
+//This wipes special perks
+			Divine_Forshadowing
+				icon='Icons/Perk/Oracle.png'
+				desc = "Someone who has taken the Oracle and Astrologian path together is able to give a reading to a group of adventurers before they go on their mission. This costs the Astroracle 50MP which is not regainable until the Astroacle finishes a misson.24% or less your forshadowing fails it was off the mark, 25-49% you got some parts right but not all of it and were able to assist the party you gave the telling to by a small margin. +1 MAB and PAB, +5PDB and MDB +1 DR. 50-74% you were very accurate in your reading and were able to give double that bonus to them costs. 75-99% you were spot on and trippled the bonus you gave them. 100%- you had a vison so profound that you knew the outcome before it began. 4x the bonus the the party that was going on their mission and 1.5x reward for completing it."
+
+			Toxin_Cure
+				icon='Icons/Perk/SummonerofYevon.png'
+				name= "Toxin Cure"
+				desc= "This person can remove the toxin caused by Spawns of Sin removing 1 stack of toxins at the cost of 10MP and HP this cannot be restored in any manner until the Summoner has finished a mission. Once completed the summoner is restored the lost points form exerting themselves. They may do this as often as they have the MP and HP to cast the cure."
+
+
 //Weakness
 			Weakness_Lightning
 				desc = "This creature takes 1.5x damage from all Lighning sources."
