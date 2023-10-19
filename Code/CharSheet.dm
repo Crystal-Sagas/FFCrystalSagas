@@ -1571,7 +1571,7 @@ mob/proc
 		m.insight=m.basein+wismod+insbonus
 		m.investigation=m.baseinv+intmod+invbonus
 		m.magic=m.basemagic+wismod+magbonus
-		m.magitekOperation=m.basemagio+wismod+magibonus
+		m.magitekOperation=m.basemagio+intmod+magibonus
 		m.medicine=m.basemed+intmod+medibonus
 		m.naturalist=m.basenat+chamod+natbonus
 		m.perception=m.baseper+wismod+percbonus

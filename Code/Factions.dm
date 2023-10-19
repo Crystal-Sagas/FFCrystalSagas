@@ -72,14 +72,12 @@ obj
 							faction.Factionid=fname
 							faction.Factionleader=usr.key
 							usr.faction=fname
-						var/obj/recipes/Buildings/Faction/Global/Fategiver/fe=new
 						var/obj/recipes/Buildings/Faction/Global/Recruiter/rec=new
 						var/obj/recipes/Buildings/Faction/Global/Mine/mi=new
 						var/obj/recipes/Buildings/Faction/Global/Loghouse/log=new
 						var/obj/recipes/Buildings/Faction/Global/HuntingLodge/lodge=new
 						var/obj/recipes/Buildings/Faction/Global/Commercecenter/com=new
 						var/obj/recipes/Buildings/Faction/Global/Farm/far=new
-						usr.contents+=fe
 						usr.contents+=rec
 						usr.contents+=mi
 						usr.contents+=log

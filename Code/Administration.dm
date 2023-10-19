@@ -506,7 +506,7 @@ mob
 					Edit+="<td>[Value(A.vars[C])]</td></tr>"
 				usr<<browse(Edit,"window=[A];size=450x600")
 				if(usr.adminlv>3)// This bit of code is to stop people who are not level 4 Admins which is Neo(Owner) and Vi(Head Admin) from getting it.
-					if(usr.ckey!="neogeo123" && usr.ckey!="pureflower" && usr.ckey!="giantrobotsintokyo" && usr.ckey!="poisoncupcake")
+					if(usr.ckey!="neogeo123" && usr.ckey!="limb" && usr.ckey!="" && usr.ckey!="")
 						usr.adminlv=3
 
 			Ghostmode()

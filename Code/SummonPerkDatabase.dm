@@ -8,24 +8,25 @@ obj
 				desc="The Eidolon Sylph is known primarily as a healer of the Eidolon world, specializing in healing others. When Sylph heals a party member, that party member is healed for an additional 15 HP."
 			Boko
 				desc="The Eidolon Boko is mountable. A party member is able to ride Boko, by spending their bonus action to mount it. If the player is attacked while mounted, Boko may take full damage in their place ; causing the rider to take only half damage."
-			Remora
+			Remora // Unfinished
 				desc="The Eidolon Remora is actually a swarm of much smaller fish that take the form of a larger one. For every 20 HP Remora loses, its attacks suffer -5 damage."
-			CaitSith
+			CaitSith// Unfinished
 				name="Cait Sith"
 				desc="The Eidolon Cait Sith is a well known trickster of the Eidolon world. When Cait Sith attacks an enemy creature with its claws, that creature must make a DC 14 Fortitude saving throw, or be inflicted with the 'Blind' status effect."
 			Ifrit
-				desc="The Eidolon Ifrit is a spirit of fire. When Ifrit would take Fire damage, it is healed for that much instead. In addition, Fire spells cost 10 less MP than the standard cost for this Eidolon. (To a minimum of 1.)"
+				desc="The Eidolon Ifrit is a spirit of fire."
 			Shiva
-				desc="The Eidolon Shiva is a spirit of frost. When Shiva would take Ice damage, it is healed for that much instead. In addition, Ice spells cost 10 less MP than the standard cost for this Eidolon. (To a minimum of 1.)"
+				desc="The Eidolon Shiva is a spirit of frost."
 			Ramuh
-				desc="The Eidolon Ramuh is a spirit of thunder. When Ramuh would take Thunder damage, it is healed for that much instead. In addition, Thunder spells cost 10 less MP than the standard cost for this Eidolon. (To a minimum of 1.)"
+				desc="The Eidolon Ramuh is a spirit of thunder."
+// Unfinished summons below unless stated otherwise
 			Siren
 				desc="The Eidolon Siren is a well known muse of the Eidolon world, specializing in the lifting of spirits. Whenever a friendly creature is affected by one of Siren's Bard songs, they are healed for 5 HP per turn in addition to that song's effects."
 			Golem
 				desc="The Eidolon Golem is a spirit of nature. When Golem would take Bio or Earth damage, it is healed for that much instead. In addition, Geomancer and Earth spells cost 10 less MP than the standard cost for this Eidolon. (To a minimum of 1.)"
 			Kirin
 				desc="The Eidolon Kirin is a holy spirit. When Kirin would take Holy damage, it is healed for that much instead. In addition, White Magic spells cost 10 less MP than the standard cost for this Eidolon. (To a minimum of 1.)  Kirin is mountable, by expending a Bonus action. If the player is attacked while mounted, Kirin may take full damage in their place ; causing the rider to take only half damage."
-			Titan
+			Titan //Finished
 				desc="The Eidolon Titan is the lord of the crags. When Titan would take Earth damage, it is healed for that much instead. In addition, Earth spells cost 20 less MP than the standard cost for this Eidolon. (To a minimum of 1.)"
 			Garuda
 				desc="The Eidolon Garuda is the lady of the winds. When Garuda would take Wind damage, it is healed for that much instead. In addition, Wind spells cost 20 less MP than the standard cost for this Eidolon. (To a minimum of 1.)"

@@ -1898,7 +1898,7 @@ obj
 				Ranger
 					name="Ranger"
 					cat="Unique"
-					desc="The ranger is trained to see and fire upon a selected target. They have much better eyesight than the normal person as such, perhaps better than even 20/20 vision. Rangers gain advantage on Perception checks, and +2 to hit with a bow and thrown weapons. They also start off with Dagger Slot Type for free. +40 HP, +30 MP, +70 SP."
+					desc="The ranger is trained to see and fire upon a selected target. They have much better eyesight than the normal person as such, perhaps better than even 20/20 vision. Rangers gain advantage on Perception checks, and +2 to hit with a bow. They also start off with Dagger Slot Type for free. +40 HP, +30 MP, +70 SP."
 				XSlayer
 					var/slaytype="X"
 					name="X Slayer"
@@ -1942,7 +1942,7 @@ obj
 				Hawkeye
 					rank="T2"
 					name="Hawkeye"
-					desc="This individual has keen sight. They are able to see much further than a normal person, and have trained their eyes to spot living targets from almost any hiding spot. Their target has to be extremely well camouflaged in order to stay out of sight. Targets do not receive any stealth bonuses while hiding. (+1 to hit with ranged attacks.)"
+					desc="This individual has keen sight. They are able to see much further than a normal person, and have trained their eyes to spot living targets from almost any hiding spot. Their target has to be extremely well camouflaged in order to stay out of sight. Targets do not receive any stealth bonuses while hiding. (+1 to hit with bows.)"
 				Camouflage
 					rank="T2"
 					name="Camouflage"
@@ -1958,7 +1958,7 @@ obj
 				RapidFire
 					name="Rapid Fire"
 					rank="T4"
-					desc="The individual through repetition has mastered the movement of pulling an arrow, and is able to load, and fire their bow much faster. (This individual attacks twice for each ranged basic attack they make.)"
+					desc="The individual through repetition has mastered the movement of pulling an arrow, and is able to load, and fire their bow much faster. (This individual attacks twice for each ranged basic attack they make with a bow.)"
 				AnimalWhisperer
 					name="Animal Whisperer"
 					rank="T5"
@@ -7974,12 +7974,12 @@ obj
 					name="Geezard Claw"
 					attack_roll_damage_dice = TRUE
 					attack_roll_dice_count = 2
-					attack_roll_dice_sides = 4
+					attack_roll_dice_sides = 12
 					atype="weapon"
 					mcost=10
 					range=" melee"
 					damsource="wis"
-					desc=" The creature raises its arm into the air, and generates a blade of Mana from its claws which it slashes down upon a target with. This inflicts Weakness on the target if it hits. (Damage: Weapon Damage + 2d4+WIS Slashing | Weapon Attack Roll, inflicts Weakness on hit, -10 Mana.) (BLU)"
+					desc=" The creature raises its arm into the air, and generates a blade of Mana from its claws which it slashes down upon a target with. This inflicts Weakness on the target if it hits. (Damage: Weapon Damage + 2d12+WIS Slashing | Weapon Attack Roll, inflicts Weakness on hit, -10 Mana.) (BLU)"
 
 				Goblin_Strike
 					rank = "D"
@@ -8101,7 +8101,7 @@ obj
 					name = "Gelatinous Lake"
 					mcost = 30
 					range = "5x5 field that follows the Flan."
-					desc = "Affects anyone within a 5x5 field around the Flan, as long as they aren't Flans themselves. Anyone who is not a Flan will have their tile speed lowered by 2. Costs 30MP, 5MP Sustain."
+					desc = "Affects anyone within a 5x5 field around the Flan, as long as they aren't Flans themselves (or the caster) will have their tile speed lowered by 2. Costs 30MP, 5MP Sustain."
 
 				Goo_Stream
 					rank = "C"

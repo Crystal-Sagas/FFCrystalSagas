@@ -85,7 +85,7 @@ var/list/Gnath=list()
 var/list/Namazu=list()
 var/list/Albhed=list()
 var/list/Moogle=list()
-var/list/Cetra=list("","","")
+var/list/Cetra=list("PurplePatoot","","")
 var/list/Genome=list()
 var/list/Golem=list("")
 var/list/Timemage=list("")
@@ -502,7 +502,7 @@ proc
 		if(m.created)
 			return
 		m.created=1
-		var/list/races = list("Human","Guado","Ronso","Namazu","Gnath","Miqo'te","Moogle","Viera","Elezen","Lalafell","Roegadyn","Au Ra","Gria")
+		var/list/races = list("Human","Guado","Cyborg","Ronso","Namazu","Gnath","Miqo'te","Moogle","Viera","Elezen","Lalafell","Roegadyn","Au Ra","Gria")
 		if(Cyborg.Find(m.key))
 			races+="Cyborg"
 		if(Albhed.Find(m.key))
@@ -739,7 +739,7 @@ proc
 				m.mp+=20
 				m.mmp+=20
 		usr.ChangeBase()
-		var/list/jobs = list("Merchant","Scholar","Mystic Knight",/*"Chocobo Knight","Pirate","Gladiator"*/,"Astrologian","Viking","Bard","Dancer","Black Mage","White Mage","Red Mage",/*"Blue Mage*/,"Ranger","Monk","Beast Master","Samurai","Spellblade","Rogue","Paladin","Knight","Dark Knight","Dragoon","Machinist","Summoner","Chemist","Geomancer")
+		var/list/jobs = list("Merchant","Scholar","Mystic Knight",/*"Chocobo Knight","Pirate","Gladiator"*/,"Astrologian","Viking","Bard","Dancer","Black Mage","White Mage","Red Mage","Blue Mage","Ranger","Monk","Beast Master","Samurai","Spellblade","Rogue","Paladin","Knight","Dark Knight","Dragoon","Machinist","Summoner","Chemist","Geomancer")
 		if(Timemage.Find(m.key))
 			jobs+="Time Mage"
 		if(Oracle.Find(m.key))
@@ -2166,7 +2166,7 @@ proc
 				m.loc = locate(98, 354, 18)
 	Bluemageint(var/mob/m)
 		alert("As a blue mage you get a choice of up to three blue mages abilities from the start.")
-		var/list/choices=list("Photosynthetic Wave","Seed","Geezard Claw","Goblin Strike","Poison Powder","Silver Fang","Mu Claw","Gelantinous Lake","Water Gun","Mesma Blade")
+		var/list/choices=list("Photosynthetic Wave","Shrapnel Seed","Geezard Claw","Goblin Strike","Poison Powder","Silver Fang","Mu Claw","Gelantinous Lake","Water Gun","Mesma Blade")
 		var/loop=1
 		var/a
 		while(loop)
@@ -2259,7 +2259,7 @@ proc
 								if("No")
 									goto redostuff
 	Subjobint(var/mob/m)
-		var/list/jobs = list("Merchant","Mystic Knight",/*"Chocobo Knight","Pirate","Gladiator"*/,"Astrologian","Viking","Bard","Dancer","Black Mage","White Mage","Red Mage",/*"Blue Mage"*/,"Ranger","Monk","Beast Master","Samurai","Spellblade","Rogue","Paladin","Knight","Dark Knight","Dragoon","Machinist","Summoner","Chemist","Geomancer")
+		var/list/jobs = list("Merchant","Mystic Knight",/*"Chocobo Knight","Pirate","Gladiator"*/,"Astrologian","Viking","Bard","Dancer","Black Mage","White Mage","Red Mage","Blue Mage","Ranger","Monk","Beast Master","Samurai","Spellblade","Rogue","Paladin","Knight","Dark Knight","Dragoon","Machinist","Summoner","Chemist","Geomancer")
 		if(Oracle.Find(m.key))
 			jobs+="Oracle"
 		if(Timemage.Find(m.key))
