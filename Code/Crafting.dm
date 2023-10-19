@@ -271,36 +271,6 @@ obj
 
 			amount=0
 			weight=0
-			herbs
-				icon='Icons/Crafting/Gysahl.dmi'
-				GysahlGreens
-					name="Gysahl Greens"
-				SharugGreens
-					name="Sharug Greens"
-					icon='Icons/Crafting/Sharug.dmi'
-				AzouphGreens
-					name="Azouph Greens"
-					icon='Icons/Crafting/Azouph.dmi'
-				SandorianCarrots
-					name="San d'Orian Carrots"
-					icon='Icons/Crafting/Sandoriancarrots.dmi'
-				VompCarrots
-					name="Vomp Carrots"
-					icon='Icons/Crafting/Vomp.dmi'
-				ZeghamCarrots
-					name="Zegham Carrots"
-					icon='Icons/Crafting/Zegham.dmi'
-				GausebitGrass
-					name="Gausebit Grass"
-					icon='Icons/Crafting/Gausebit.dmi'
-				GaridavWildgrass
-					name="Garidav Wildgrass"
-					icon='Icons/Crafting/Synthesis.dmi'
-					icon_state="garidav"
-				TopkekkoWildgrass
-					name="Topkekko Wildgrass"
-					icon='Icons/Crafting/Synthesis.dmi'
-					icon_state="topkekko"
 			Ore
 				icon='Icons/Crafting/Ironingot.dmi'
 				Bronze

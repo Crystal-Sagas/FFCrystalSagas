@@ -942,35 +942,35 @@ obj
 						if(src.Farm==1)
 							var/herb=rand(1,10)
 							if(herb>=1 && herb < 2)
-								for(var/obj/item/materials/herbs/GysahlGreens/a in usr.contents)
+								for(var/obj/item/materials/herbs/gysahl_greens/a in usr.contents)
 									a.amount+=4
 									usr << output("You have gained 4 [a]!","oocout")
 							if(herb>=2 && herb < 3)
-								for(var/obj/item/materials/herbs/SharugGreens/a in usr.contents)
+								for(var/obj/item/materials/herbs/sharug_greens/a in usr.contents)
 									a.amount+=4
 									usr << output("You have gained 4 [a]!","oocout")
 							if(herb>=3 && herb < 4)
-								for(var/obj/item/materials/herbs/AzouphGreens/a in usr.contents)
+								for(var/obj/item/materials/herbs/azouph_greens/a in usr.contents)
 									a.amount+=4
 									usr << output("You have gained 4 [a]!","oocout")
 							if(herb>=5 && herb < 6)
-								for(var/obj/item/materials/herbs/SandorianCarrots/a in usr.contents)
+								for(var/obj/item/materials/herbs/sandorian_carrots/a in usr.contents)
 									a.amount+=4
 									usr << output("You have gained 4 [a]!","oocout")
 							if(herb>=6 && herb < 7)
-								for(var/obj/item/materials/herbs/VompCarrots/a in usr.contents)
+								for(var/obj/item/materials/herbs/vomp_carrots/a in usr.contents)
 									a.amount+=4
 									usr << output("You have gained 4 [a]!","oocout")
 							if(herb>=7 && herb < 8)
-								for(var/obj/item/materials/herbs/ZeghamCarrots/a in usr.contents)
+								for(var/obj/item/materials/herbs/zegham_carrots/a in usr.contents)
 									a.amount+=4
 									usr << output("You have gained 4 [a]!","oocout")
 							if(herb>=8 && herb < 9)
-								for(var/obj/item/materials/herbs/GausebitGrass/a in usr.contents)
+								for(var/obj/item/materials/herbs/gausebit_grass/a in usr.contents)
 									a.amount+=4
 									usr << output("You have gained 4 [a]!","oocout")
 							if(herb>=9 && herb < 11)
-								for(var/obj/item/materials/herbs/GaridavWildgrass/a in usr.contents)
+								for(var/obj/item/materials/herbs/garidav_wildgrass/a in usr.contents)
 									a.amount+=4
 									usr << output("You have gained 4 [a]!","oocout")
 							for(var/obj/item/materials/Synthesis/Wool/a in usr.contents)
