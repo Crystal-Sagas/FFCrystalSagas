@@ -665,7 +665,7 @@
 			Eyedrops
 				mat1="Dark Gem"
 				mat2="Vomp Carrots"
-				mat3="Aether Powder
+				mat3="Aether Powder"
 				mat4="Flying Eye's Eye"
 				amount1=1
 				amount2=3
@@ -802,7 +802,7 @@
 			FireBomb
 				name="Fire Bomb Bag"
 				mat1="Steel Ingot"
-				mat2="Aether Powder
+				mat2="Aether Powder"
 				mat3="Fire Gem"
 				amount1=5
 				amount2=3
@@ -819,7 +819,7 @@
 			WaterBomb
 				name="Water Bomb Bag"
 				mat1="Steel Ingot"
-				mat2="Aether Powder
+				mat2="Aether Powder"
 				mat3="Water Gem"
 				amount1=5
 				amount2=3
@@ -836,7 +836,7 @@
 			ThunderBomb
 				name="Thunder Bomb Bag"
 				mat1="Steel Ingot"
-				mat2="Aether Powder
+				mat2="Aether Powder"
 				mat3="Thunder Gem"
 				amount1=5
 				amount2=3
@@ -853,7 +853,7 @@
 			EarthBomb
 				name="Earth Bomb Bag"
 				mat1="Steel Ingot"
-				mat2="Aether Powder
+				mat2="Aether Powder"
 				mat3="Earth Gem"
 				amount1=5
 				amount2=3
@@ -870,7 +870,7 @@
 			IceBomb
 				name="Ice Bomb Bag"
 				mat1="Steel Ingot"
-				mat2="Aether Powder
+				mat2="Aether Powder"
 				mat3="Ice Gem"
 				amount1=5
 				amount2=3
@@ -887,7 +887,7 @@
 			BioBomb
 				name="Bio Bomb Bag"
 				mat1="Steel Ingot"
-				mat2="Aether Powder
+				mat2="Aether Powder"
 				mat3="Bio Gem"
 				amount1=5
 				amount2=3
@@ -904,7 +904,7 @@
 			WindBomb
 				name="Wind Bomb Bag"
 				mat1="Steel Ingot"
-				mat2="Aether Powder
+				mat2="Aether Powder"
 				mat3="Wind Gem"
 				amount1=5
 				amount2=3
@@ -921,7 +921,7 @@
 			DarkBomb
 				name="Dark Bomb Bag"
 				mat1="Steel Ingot"
-				mat2="Aether Powder
+				mat2="Aether Powder"
 				mat3="Dark Gem"
 				amount1=5
 				amount2=3
@@ -938,7 +938,7 @@
 			HolyBomb
 				name="Holy Bomb Bag"
 				mat1="Steel Ingot"
-				mat2="Aether Powder
+				mat2="Aether Powder"
 				mat3="Holy Gem"
 				mat4="Leather"
 				amount4=10
@@ -1751,7 +1751,7 @@
 						src.name=a.name
 				SomnusStatue
 					mat1="Stone"
-					mat2="Aether Powder
+					mat2="Aether Powder"
 					amount1=60
 					amount2=100
 					New()

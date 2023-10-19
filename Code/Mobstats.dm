@@ -223,50 +223,6 @@ mob/var
 	grid
 	obj/storage/storagelook
 	tmp/craftingactive
-	gyshal=0
-	sharug=0
-	azouph=0
-	sandorian=0
-	vomp=0
-	zegham=0
-	gausebit=0
-	garidav=0
-	tokopekko=0
-	bronze=0
-	iron=0
-	steel=0
-	mythril=0
-	adamantine=0
-	platinum=0
-	gold=0
-	silver=0
-	rawmako=0
-	etherpowder=0
-	aetherpowder=0
-	leather=0
-	wool=0
-	whitegem=0
-	blackgem=0
-	espersoul=0
-	thundergem=0
-	firegem=0
-	watergem=0
-	biogem=0
-	icegem=0
-	windgem=0
-	holygem=0
-	darkgem=0
-	bombcore=0
-	dragonscale=0
-	flyingeye=0
-	flyingwing=0
-	tonknife=0
-	gigantoadslime=0
-	zuufeather=0
-	pixiesand=0
-	coeurlwhisker=0
-	sahauginscale=0
-	diamond=0
 	critmod=0
 
 	obj/item/righthand

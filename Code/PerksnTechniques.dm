@@ -1652,7 +1652,6 @@ obj
 		var/rank
 		var/rpcost
 		var/pre
-		var/showee
 		var/ontree
 		var/jobneed
 		var/rankneed
@@ -2109,8 +2108,6 @@ obj
 								view()<<output("<font size=1><font color=[usr.textcolor]>[z] <font color=white>rolled an attack roll, using the <font color=[usr.textcolor]>[src.name]<font color=white> ability! Result: <font color=#8EF5DE><b>[aresult] to hit</b><font color=white>, dealing <b><font color=#FFA852>[dresult] damage</b><font color=white> if successful!<br> Cost: <b><font color=#0FBFD7>[src.mcost] [src.costtype]</b> | Tile Range:[src.range]","icout")
 					if("Cancel")
 						return
-				else if(src in usr.contents&&src.showee)
-					alert("[src.name]:[src.desc]")
 			//* bandaided
 			if(src in global.perk_shop.perks)
 				if(usr.perkbuying==1)
@@ -2749,9 +2746,6 @@ obj
 							view() << output("[players]","icout")
 						if("Cancel")
 							return
-			else if(src in usr.contents&&src.showee)
-				alert("[src.name]:[src.desc]")
-
 
 obj
 	proc

@@ -359,9 +359,9 @@ GLOBAL_LIST_BOILERPLATE(resource_nodes, /obj/node)
 	var/ore_roll = rand(1, 100)
 	// get modifiers
 	if(usr.check_perk(/obj/perk/Jobperks/Merchant/MasteroftheLand))
-		roll += 10
+		ore_roll += 10
 	if(usr.check_perk(/obj/perk/Gathering/Miner/Miner2))
-		roll += 10
+		ore_roll += 10
 	// get reward type
 	var/reward_type
 	switch(ore_roll)

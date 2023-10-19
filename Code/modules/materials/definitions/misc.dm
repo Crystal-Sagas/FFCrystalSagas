@@ -21,7 +21,7 @@
 	id = "ether_powder"
 
 /obj/item/material/AetherPowder
-	name = "Aether Powder
+	name = "Aether Powder"
 	icon_state = "aetherpowder"
 	id = "aether_powder"
 
