@@ -354,112 +354,65 @@ GLOBAL_LIST_BOILERPLATE(resource_nodes, /obj/node)
 	if(!usr.check_perk("Miner"))
 		alert("You need to learn how to mine properly first.")
 		return
-	var/roll
-	var/roll2
-	roll=rand(1,100)
-	if(usr.check_perk("Seasoned Miner" && "Master of the Land"))
-		roll+=20
-	else if(usr.check_perk("Seasoned Miner" || "Master of the Land"))
-		roll+=10
-	else
-		roll+=0
-	if(roll<=39)
-		if(usr.check_perk("Expert Miner" && "Master Gatherer"))
-			use()
-			usr<<output("You have expertly mined 4 pieces of bronze","oocout")
-			for(var/obj/item/material/ingot/bronze/b in usr.contents)
-				b.amount+=4
-		else if(usr.check_perk("Expert Miner" || "Master Gatherer"))
-			for(var/obj/item/material/ingot/bronze/b in usr.contents)
-				b.amount+=2
-			use()
-			usr<<output("You have mined 2 pieces of bronze","oocout")
-		else
-			for(var/obj/item/material/ingot/bronze/b in usr.contents)
-				b.amount+=1
-			use()
-			usr<<output("You have mined 1 piece of bronze","oocout")
-	if(roll<=69&&roll>39)
-		if(usr.check_perk("Expert Miner" && "Master Gatherer"))
-			use()
-			usr<<output("You have expertly mined 4 pieces of iron","oocout")
-			for(var/obj/item/material/ingot/iron/b in usr.contents)
-				b.amount+=4
-		else if(usr.check_perk("Expert Miner" || "Master Gatherer"))
-			for(var/obj/item/material/ingot/iron/b in usr.contents)
-				b.amount+=2
-			use()
-			usr<<output("You have mined 2 pieces of iron","oocout")
-		else
-			for(var/obj/item/material/ingot/iron/b in usr.contents)
-				b.amount+=1
-			use()
-			usr<<output("You have mined 1 piece of iron","oocout")
-	if(roll<=89&&roll>=70)
-		if(usr.check_perk("Expert Miner" && "Master Gatherer"))
-			use()
-			usr<<output("You have expertly mined 4 pieces of steel","oocout")
-			for(var/obj/item/material/ingot/steel/b in usr.contents)
-				b.amount+=4
-		else if(usr.check_perk("Expert Miner" || "Master Gatherer"))
-			for(var/obj/item/material/ingot/steel/b in usr.contents)
-				b.amount+=2
-			use()
-			usr<<output("You have mined 2 pieces of steel","oocout")
-		else
-			for(var/obj/item/material/ingot/steel/b in usr.contents)
-				b.amount+=1
-			use()
-			usr<<output("You have mined 1 piece of steel","oocout")
-	if(roll<=99&&roll>=90)
-		if(usr.check_perk("Expert Miner" && "Master Gatherer"))
-			use()
-			usr<<output("You have expertly mined 4 pieces of mythril","oocout")
-			for(var/obj/item/material/ingot/mythril/b in usr.contents)
-				b.amount+=4
-		else if(usr.check_perk("Expert Miner" || "Master Gatherer"))
-			for(var/obj/item/material/ingot/mythril/b in usr.contents)
-				b.amount+=2
-			use()
-			usr<<output("You have mined 2 pieces of mythril","oocout")
-		else
-			for(var/obj/item/material/ingot/mythril/b in usr.contents)
-				b.amount+=1
-			use()
-			usr<<output("You have mined 1 piece of Mythril","oocout")
-	if(roll>=100)
-		if(usr.check_perk("Expert Miner" && "Master Gatherer"))
-			use()
-			usr<<output("You have expertly mined 3 pieces of adamantine","oocout")
-			for(var/obj/item/material/ingot/adamantine/b in usr.contents)
-				b.amount+=4
-		else if(usr.check_perk("Expert Miner" || "Master Gatherer"))
-			for(var/obj/item/material/ingot/adamantine/b in usr.contents)
-				b.amount+=2
-			use()
-			usr<<output("You have mined 2 pieces of adamantine","oocout")
-		else
-			for(var/obj/item/material/ingot/adamantine/b in usr.contents)
-				b.amount+=1
-			use()
-			usr<<output("You have mined 1 piece of adamantine","oocout")
-	roll2=rand(1,20)
-	if(roll2<17)
-		usr.minednodes+=1
-		return
-	if(roll2>16&&roll2<20)
-		for(var/obj/item/material/ingot/silver/b in usr.contents)
-			b.amount+=1
-		usr<<output("Hmm? You seem to find something else. A piece of silver","oocout")
-	if(roll2==20)
-		for(var/obj/item/material/ingot/gold/b in usr.contents)
-			b.amount+=1
-		usr<<output("Hmm? You seem to find something else. A piece of gold","oocout")
-	for(var/obj/item/material/Stone/c in usr.contents)
-		c.amount+=5
-		usr<<output("You also find 5 Stone.")
-	usr.minednodes+=1
-	log_action("GATHER: [key_name(usr)] mined [src] [audit_coord(src)]")
+
+	// initial roll out of 100
+	var/ore_roll = rand(1, 100)
+	// get modifiers
+	if(usr.check_perk(/obj/perk/Jobperks/Merchant/MasteroftheLand))
+		roll += 10
+	if(usr.check_perk(/obj/perk/Gathering/Miner/Miner2))
+		roll += 10
+	// get reward type
+	var/reward_type
+	switch(ore_roll)
+		if(1 to 39)
+			reward_type = /obj/item/material/ingot/bronze
+		if(40 to 69)
+			reward_type = /obj/item/material/ingot/iron
+		if(70 to 89)
+			reward_type = /obj/item/material/ingot/steel
+		if(90 to 99)
+			reward_type = /obj/item/material/ingot/mythril
+		if(100 to INFINITY)
+			reward_type = /obj/item/material/ingot/adamantine
+	// get modifiers
+	var/list/amount_modifier_describe = list()
+	var/amount_modifier = 0
+	var/amount_multiplier = 1
+	if(usr.check_perk(/obj/perk/Jobperks/Merchant/MasterGatherer))
+		amount_multiplier *= 2
+		amount_modifier_describe += "(Master Gatherer x2)"
+	if(usr.check_perk(/obj/perk/Gathering/Miner/Miner3))
+		amount_multiplier *= 2
+		amount_modifier_describe += "(Expert Miner x2)"
+	// finalize
+	var/amount = (1 + amount_modifier) * amount_multiplier
+	var/obj/item/material/casted_reward = reward_type
+	var/reward_name = initial(casted_reward.name)
+	var/describe_modifiers = length(amount_modifier_describe)? " [jointext(amount_modifier_describe, " ")]" : ""
+	// give them the materials
+	usr.adjust_material_amount(reward_type, amount)
+	usr.adjust_material_amount(/obj/item/material/Stone, 5)
+	// calculate additional rewards
+	var/additional_roll = rand(1, 20)
+	var/additional_text
+	var/additional_log
+	switch(additional_roll)
+		if(1 to 16)
+		if(17 to 19)
+			usr.adjust_material_amount(/obj/item/material/ingot/silver, 1)
+			additional_log = " (+1 silver)"
+			additional_text = " and 1 silver"
+		if(20)
+			usr.adjust_material_amount(/obj/item/material/ingot/gold, 1)
+			additional_log = " (+1 gold)"
+			additional_text = " and 1 gold"
+	usr.send_chat("You mined [amount] pieces of [reward_name], getting 5 stone (static)[additional_text] in the process.[describe_modifiers]", "oocout")
+	// use up
+	log_action("GATHER: [key_name(usr)] mined [src] (+5 stone)[additional_text] [audit_coord(src)]")
+	usr.minednodes++
+	use()
+	//! legacy: update craft
 	UpdateCraft(usr)
 
 /obj/node/Makonode

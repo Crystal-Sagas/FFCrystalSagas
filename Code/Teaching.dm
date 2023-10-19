@@ -54,10 +54,12 @@ obj
  * todo: id instead of name
  *
  * @params
- * * what - Perk instance, or name
+ * * what - Perk instance, typepath, or name
  */
 /mob/proc/check_perk(obj/perk/what)
-	ASSERT(istype(what) || istext(what))
+	ASSERT(istype(what) || istext(what) || ispath(what))
+	if(ispath(what))
+		what = initial(what.name)
 	var/target_name = istype(what)? what.name : what
 	for(var/obj/perk/P in contents)
 		if(P.name == target_name)
