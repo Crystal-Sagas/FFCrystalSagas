@@ -2,7 +2,7 @@
 /obj
 	var/craftingmaterialtrue=0
 
-/obj/item/materials
+/material
 	craftable=1
 	craftingmaterialtrue=1
 	price=1
@@ -29,24 +29,22 @@
 						return
 				if("Cancel")
 					return
-		for(var/obj/playershops/shoptable/a in world)
-			if(src in a.contents)
-				winset(usr,"playershop.selected","text=\"Selected: [src.name]\"")
-				winset(usr,"playershop.desc","text=\"[src.desc]\"")
-				winset(usr,"playershop.lore","text=\"[src.lore]\"")
-				winset(usr,"playershop.enchant","text=\"[src.enchantment]\"")
-				return
-		for(var/obj/playershops/Moogle/a in world)
-			if(src in a.contents)
-				winset(usr,"playershop.selected","text=\"Selected: [src.name]\"")
-				winset(usr,"playershop.desc","text=\"[src.desc]\"")
-				winset(usr,"playershop.lore","text=\"[src.lore]\"")
-				winset(usr,"playershop.enchant","text=\"[src.enchantment]\"")
-				return
+		if(istype(loc, /obj/playershops/shoptable))
+			winset(usr,"playershop.selected","text=\"Selected: [src.name]\"")
+			winset(usr,"playershop.desc","text=\"[src.desc]\"")
+			winset(usr,"playershop.lore","text=\"[src.lore]\"")
+			winset(usr,"playershop.enchant","text=\"[src.enchantment]\"")
+			return
+		if(istype(loc, /obj/playershops/Moogle))
+			winset(usr,"playershop.selected","text=\"Selected: [src.name]\"")
+			winset(usr,"playershop.desc","text=\"[src.desc]\"")
+			winset(usr,"playershop.lore","text=\"[src.lore]\"")
+			winset(usr,"playershop.enchant","text=\"[src.enchantment]\"")
+			return
 		if(src in usr.contents)
 			return
 		var/Transfer=src.amount
-		for(var/obj/item/materials/a in usr.contents)
+		for(var/material/a in usr.contents)
 			if(a.name==src.name)
 				a.amount+=Transfer
 				log_action("[usr] picked up [Transfer] of [src]")

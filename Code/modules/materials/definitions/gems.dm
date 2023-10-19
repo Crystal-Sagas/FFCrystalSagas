@@ -1,59 +1,59 @@
-/obj/item/materials/gem
-	abstract_type = /obj/item/materials/gem
+/material/gem
+	abstract_type = /material/gem
 	icon_state = "gem_white"
 	id = "gem_white"
 
-/obj/item/materials/gem/white
+/material/gem/white
 	name="white gem"
 	icon_state = "gem_white"
 	id = "gem_white"
 
-/obj/item/materials/gem/black
+/material/gem/black
 	name="black gem"
 	icon_state = "gem_black"
 	id = "gem_black"
 
-/obj/item/materials/gem/thunder
+/material/gem/thunder
 	name="thunder gem"
 	icon_state = "gem_thunder"
 	id = "gem_thunder"
 
-/obj/item/materials/gem/fire
+/material/gem/fire
 	name="fire gem"
 	icon_state = "gem_fire"
 	id = "gem_fire"
 
-/obj/item/materials/gem/water
+/material/gem/water
 	name="water gem"
 	icon_state = "gem_water"
 	id = "gem_water"
 
-/obj/item/materials/gem/earth
+/material/gem/earth
 	name="earth gem"
 	icon_state = "gem_earth"
 	id = "gem_earth"
 
-/obj/item/materials/gem/bio
+/material/gem/bio
 	name="bio gem"
 	icon_state = "gem_bio"
 	id = "gem_bio"
 
-/obj/item/materials/gem/ice
+/material/gem/ice
 	name="ice gem"
 	icon_state = "gem_ice"
 	id = "gem_ice"
 
-/obj/item/materials/gem/wind
+/material/gem/wind
 	name="wind gem"
 	icon_state = "gem_wind"
 	id = "gem_wind"
 
-/obj/item/materials/gem/holy
+/material/gem/holy
 	name="holy gem"
 	icon_state = "gem_holy"
 	id = "gem_holy"
 
-/obj/item/materials/gem/dark
+/material/gem/dark
 	name="dark gem"
 	icon_state = "gem_dark"
 	id = "gem_dark"

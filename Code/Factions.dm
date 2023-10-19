@@ -846,91 +846,91 @@ obj
 							var/random2=rand(1,10)
 							var/random3=rand(1,10)
 							var/gem1=rand(1,20)
-							for(var/obj/item/materials/Stone/a in usr.contents)
+							for(var/material/Stone/a in usr.contents)
 								a.amount+=20
 								usr << output("You have gained 20 [a]!","oocout")
 							if(random1>=1 && random1<4)
-								for(var/obj/item/materials/ingot/bronze/a in usr.contents)
+								for(var/material/ingot/bronze/a in usr.contents)
 									a.amount+=1
 									usr << output("You have gained 1 [a]!","oocout")
 							if(random1>=4 && random1<6)
-								for(var/obj/item/materials/ingot/iron/a in usr.contents)
+								for(var/material/ingot/iron/a in usr.contents)
 									a.amount+=1
 									usr << output("You have gained 1 [a]!","oocout")
 							if(random1>=6 && random1<8)
-								for(var/obj/item/materials/ingot/steel/a in usr.contents)
+								for(var/material/ingot/steel/a in usr.contents)
 									a.amount+=1
 									usr << output("You have gained 1 [a]!","oocout")
 							if(random1>=8 && random1<11)
-								for(var/obj/item/materials/ingot/mythril/a in usr.contents)
+								for(var/material/ingot/mythril/a in usr.contents)
 									a.amount+=1
 									usr << output("You have gained 1 [a]!","oocout")
 							if(random2>=1 && random2<4)
-								for(var/obj/item/materials/ingot/bronze/a in usr.contents)
+								for(var/material/ingot/bronze/a in usr.contents)
 									a.amount+=1
 									usr << output("You have gained 1 [a]!","oocout")
 							if(random2>=4 && random2<6)
-								for(var/obj/item/materials/ingot/iron/a in usr.contents)
+								for(var/material/ingot/iron/a in usr.contents)
 									a.amount+=1
 									usr << output("You have gained 1 [a]!","oocout")
 							if(random2>=6 && random2<8)
-								for(var/obj/item/materials/ingot/steel/a in usr.contents)
+								for(var/material/ingot/steel/a in usr.contents)
 									a.amount+=1
 									usr << output("You have gained 1 [a]!","oocout")
 							if(random2>=8 && random2<11)
-								for(var/obj/item/materials/ingot/mythril/a in usr.contents)
+								for(var/material/ingot/mythril/a in usr.contents)
 									a.amount+=1
 									usr << output("You have gained 1 [a]!","oocout")
 							if(random3>=1 && random3<4)
-								for(var/obj/item/materials/ingot/bronze/a in usr.contents)
+								for(var/material/ingot/bronze/a in usr.contents)
 									a.amount+=1
 									usr << output("You have gained 1 [a]!","oocout")
 							if(random3>=4 && random3<6)
-								for(var/obj/item/materials/ingot/iron/a in usr.contents)
+								for(var/material/ingot/iron/a in usr.contents)
 									a.amount+=1
 									usr << output("You have gained 1 [a]!","oocout")
 							if(random3>=6 && random3<8)
-								for(var/obj/item/materials/ingot/steel/a in usr.contents)
+								for(var/material/ingot/steel/a in usr.contents)
 									a.amount+=1
 									usr << output("You have gained 1 [a]!","oocout")
 							if(random3>=8 && random3<11)
-								for(var/obj/item/materials/ingot/mythril/a in usr.contents)
+								for(var/material/ingot/mythril/a in usr.contents)
 									a.amount+=1
 									usr << output("You have gained 1 [a]!","oocout")
 							if(gem1>=1 && gem1<4)
-								for(var/obj/item/materials/gem/thunder/a in usr.contents)
+								for(var/material/gem/thunder/a in usr.contents)
 									a.amount+=1
 									usr << output("You have gained 1 [a]!","oocout")
 							if(gem1>=4 && gem1<6)
-								for(var/obj/item/materials/gem/fire/a in usr.contents)
+								for(var/material/gem/fire/a in usr.contents)
 									a.amount+=1
 									usr << output("You have gained 1 [a]!","oocout")
 							if(gem1>=6 && gem1<6)
-								for(var/obj/item/materials/gem/water/a in usr.contents)
+								for(var/material/gem/water/a in usr.contents)
 									a.amount+=1
 									usr << output("You have gained 1 [a]!","oocout")
 							if(gem1>=8 && gem1<12)
-								for(var/obj/item/materials/gem/earth/a in usr.contents)
+								for(var/material/gem/earth/a in usr.contents)
 									a.amount+=1
 									usr << output("You have gained 1 [a]!","oocout")
 							if(gem1>=12 && gem1<15)
-								for(var/obj/item/materials/gem/ice/a in usr.contents)
+								for(var/material/gem/ice/a in usr.contents)
 									a.amount+=1
 									usr << output("You have gained 1 [a]!","oocout")
 							if(gem1>=15 && gem1<18)
-								for(var/obj/item/materials/gem/wind/a in usr.contents)
+								for(var/material/gem/wind/a in usr.contents)
 									a.amount+=1
 									usr << output("You have gained 1 [a]!","oocout")
 							if(gem1>=18 && gem1<=20)
-								for(var/obj/item/materials/gem/bio/a in usr.contents)
+								for(var/material/gem/bio/a in usr.contents)
 									a.amount+=1
 									usr << output("You have gained 1 [a]!","oocout")
 						if(src.Loghouse==1)
-							for(var/obj/item/materials/Wood/a in usr.contents)
+							for(var/material/Wood/a in usr.contents)
 								a.amount+=20
 								usr << output("You have gained 20 [a]!","oocout")
 						if(src.Lodge==1)
-							for(var/obj/item/materials/leather/a in usr.contents)
+							for(var/material/leather/a in usr.contents)
 								a.amount+=15
 								usr << output("You have gained 15 [a]!","oocout")
 						if(src.Commerce==1)
@@ -942,42 +942,42 @@ obj
 						if(src.Farm==1)
 							var/herb=rand(1,10)
 							if(herb>=1 && herb < 2)
-								for(var/obj/item/materials/herbs/gysahl_greens/a in usr.contents)
+								for(var/material/herbs/gysahl_greens/a in usr.contents)
 									a.amount+=4
 									usr << output("You have gained 4 [a]!","oocout")
 							if(herb>=2 && herb < 3)
-								for(var/obj/item/materials/herbs/sharug_greens/a in usr.contents)
+								for(var/material/herbs/sharug_greens/a in usr.contents)
 									a.amount+=4
 									usr << output("You have gained 4 [a]!","oocout")
 							if(herb>=3 && herb < 4)
-								for(var/obj/item/materials/herbs/azouph_greens/a in usr.contents)
+								for(var/material/herbs/azouph_greens/a in usr.contents)
 									a.amount+=4
 									usr << output("You have gained 4 [a]!","oocout")
 							if(herb>=5 && herb < 6)
-								for(var/obj/item/materials/herbs/sandorian_carrots/a in usr.contents)
+								for(var/material/herbs/sandorian_carrots/a in usr.contents)
 									a.amount+=4
 									usr << output("You have gained 4 [a]!","oocout")
 							if(herb>=6 && herb < 7)
-								for(var/obj/item/materials/herbs/vomp_carrots/a in usr.contents)
+								for(var/material/herbs/vomp_carrots/a in usr.contents)
 									a.amount+=4
 									usr << output("You have gained 4 [a]!","oocout")
 							if(herb>=7 && herb < 8)
-								for(var/obj/item/materials/herbs/zegham_carrots/a in usr.contents)
+								for(var/material/herbs/zegham_carrots/a in usr.contents)
 									a.amount+=4
 									usr << output("You have gained 4 [a]!","oocout")
 							if(herb>=8 && herb < 9)
-								for(var/obj/item/materials/herbs/gausebit_grass/a in usr.contents)
+								for(var/material/herbs/gausebit_grass/a in usr.contents)
 									a.amount+=4
 									usr << output("You have gained 4 [a]!","oocout")
 							if(herb>=9 && herb < 11)
-								for(var/obj/item/materials/herbs/garidav_wildgrass/a in usr.contents)
+								for(var/material/herbs/garidav_wildgrass/a in usr.contents)
 									a.amount+=4
 									usr << output("You have gained 4 [a]!","oocout")
-							for(var/obj/item/materials/wool/a in usr.contents)
+							for(var/material/wool/a in usr.contents)
 								a.amount+=10
 								usr << output("You have gained 10 [a]!","oocout")
 						if(src.Reactor==1)
-							for(var/obj/item/materials/RawMako/a in usr.contents)
+							for(var/material/RawMako/a in usr.contents)
 								a.amount+=1
 								usr << output("You have gained 1 [a]!","oocout")
 						src.Collectcooldown=1

@@ -109,32 +109,32 @@ obj/NPCshop
 			s4.shopprice=450
 			src.contents+=s4
 //Stock 5
-			var/obj/item/materials/ingot/bronze/s5=new
+			var/material/ingot/bronze/s5=new
 			s5.instore=1
 			s5.shopprice=80
 			src.contents+=s5
 //Stock 6
-			var/obj/item/materials/ingot/iron/s6=new
+			var/material/ingot/iron/s6=new
 			s6.instore=1
 			s6.shopprice=140
 			src.contents+=s6
 //Stock 7
-			var/obj/item/materials/leather/s7=new
+			var/material/leather/s7=new
 			s7.instore=1
 			s7.shopprice=50
 			src.contents+=s7
 //Stock 8
-			var/obj/item/materials/wool/s8=new
+			var/material/wool/s8=new
 			s8.instore=1
 			s8.shopprice=70
 			src.contents+=s8
 //Stock 9
-			var/obj/item/materials/Wood/s9=new
+			var/material/Wood/s9=new
 			s9.instore=1
 			s9.shopprice=70
 			src.contents+=s9
 //Stock 10
-			var/obj/item/materials/Stone/s10=new
+			var/material/Stone/s10=new
 			s10.instore=1
 			s10.shopprice=70
 			src.contents+=s10
@@ -207,57 +207,57 @@ obj/NPCshop
 		icon_state="Flower"
 		New()
 ///Stock 1
-			var/obj/item/materials/gem/holy/s1=new
+			var/material/gem/holy/s1=new
 			s1.instore=1
 			s1.shopprice=2000
 			src.contents+=s1
 ///Stock 2
-			var/obj/item/materials/gem/dark/s2=new
+			var/material/gem/dark/s2=new
 			s2.instore=1
 			s2.shopprice=2000
 			src.contents+=s2
 ///Stock 3
-			var/obj/item/materials/gem/fire/s3=new
+			var/material/gem/fire/s3=new
 			s3.instore=1
 			s3.shopprice=2000
 			src.contents+=s3
 ///Stock 4
-			var/obj/item/materials/gem/ice/s4=new
+			var/material/gem/ice/s4=new
 			s4.instore=1
 			s4.shopprice=2000
 			src.contents+=s4
 //Stock 5
-			var/obj/item/materials/gem/thunder/s5=new
+			var/material/gem/thunder/s5=new
 			s5.instore=1
 			s5.shopprice=2000
 			src.contents+=s5
 //Stock 6
-			var/obj/item/materials/gem/wind/s6=new
+			var/material/gem/wind/s6=new
 			s6.instore=1
 			s6.shopprice=2000
 			src.contents+=s6
 //Stock 7
-			var/obj/item/materials/gem/earth/s7=new
+			var/material/gem/earth/s7=new
 			s7.instore=1
 			s7.shopprice=2000
 			src.contents+=s7
 //Stock 8
-			var/obj/item/materials/gem/white/s8=new
+			var/material/gem/white/s8=new
 			s8.instore=1
 			s8.shopprice=2000
 			src.contents+=s8
 //Stock 9
-			var/obj/item/materials/gem/black/s9=new
+			var/material/gem/black/s9=new
 			s9.instore=1
 			s9.shopprice=2000
 			src.contents+=s9
 //Stock 10
-			var/obj/item/materials/bomb_core/s10=new
+			var/material/bomb_core/s10=new
 			s10.instore=1
 			s10.shopprice=2000
 			src.contents+=s10
 //Stock 11
-			var/obj/item/materials/diamond/s11=new
+			var/material/diamond/s11=new
 			s11.instore=1
 			s11.shopprice=2000
 			src.contents+=s11
@@ -267,7 +267,7 @@ obj/NPCshop
 		icon_state="Shinra"
 		name="Mako Vendor"
 		New()
-			var/obj/item/materials/RawMako/s1=new
+			var/material/RawMako/s1=new
 			s1.instore=1
 			s1.shopprice=700
 			src.contents+=s1
@@ -278,47 +278,47 @@ obj/NPCshop
 		icon_state="Shop"
 		New()
 ///Stock 1
-			var/obj/item/materials/flying_eyes_eye/s1=new
+			var/material/flying_eyes_eye/s1=new
 			s1.instore=1
 			s1.shopprice=4000
 			src.contents+=s1
 ///Stock 2
-			var/obj/item/materials/flying_eyes_wing/s2=new
+			var/material/flying_eyes_wing/s2=new
 			s2.instore=1
 			s2.shopprice=4000
 			src.contents+=s2
 ///Stock 3
-			var/obj/item/materials/tonberry_knife/s3=new
+			var/material/tonberry_knife/s3=new
 			s3.instore=1
 			s3.shopprice=9000
 			src.contents+=s3
 ///Stock 4
-			var/obj/item/materials/gigantoad_slime/s4=new
+			var/material/gigantoad_slime/s4=new
 			s4.instore=1
 			s4.shopprice=4000
 			src.contents+=s4
 //Stock 5
-			var/obj/item/materials/zuu_feather/s5=new
+			var/material/zuu_feather/s5=new
 			s5.instore=1
 			s5.shopprice=4000
 			src.contents+=s5
 //Stock 6
-			var/obj/item/materials/pixe_sand/s6=new
+			var/material/pixe_sand/s6=new
 			s6.instore=1
 			s6.shopprice=4000
 			src.contents+=s6
 //Stock 7
-			var/obj/item/materials/coeurl_whsker/s7=new
+			var/material/coeurl_whsker/s7=new
 			s7.instore=1
 			s7.shopprice=4000
 			src.contents+=s7
 //Stock 8
-			var/obj/item/materials/sahaugin_scale/s8=new
+			var/material/sahaugin_scale/s8=new
 			s8.instore=1
 			s8.shopprice=4000
 			src.contents+=s8
 //Stock 9
-			var/obj/item/materials/dragon_scale/s9=new
+			var/material/dragon_scale/s9=new
 			s9.instore=1
 			s9.shopprice=4000
 			src.contents+=s9
