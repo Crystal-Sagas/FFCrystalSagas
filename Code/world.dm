@@ -62,8 +62,8 @@ var/global/action_log_file
 	// init global stablemaster obj
 	for(var/obj/npc/Monsters/q in bestiary)
 		var/obj/npc/Monsters/newmonster=copyatom(q)
-		global.stablemaster_obj.contents += newmonster
-	for(var/obj/npc/Monsters/f in global.stablemaster_obj.contents)
+		global.stablemaster_obj?.contents += newmonster
+	for(var/obj/npc/Monsters/f in global.stablemaster_obj?.contents)
 		InitializeEnemy(f)
 		f.archived=0
 	// init global npc archive

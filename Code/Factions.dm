@@ -65,13 +65,15 @@ obj
 							alert(usr,"You do not have enough Gil to start a Faction!")
 							return
 						var/obj/Faction/faction=new
-						for(var/obj/Factionholder/a in world)
+						do
+							var/obj/Factionholder/a = global.faction_holder
 							a.contents+=faction
 							var/fname=input(usr,"What would you like to name your Faction?") as text
 							faction.name=fname
 							faction.Factionid=fname
 							faction.Factionleader=usr.key
 							usr.faction=fname
+						while(FALSE)
 						var/obj/recipes/Buildings/Faction/Global/Recruiter/rec=new
 						var/obj/recipes/Buildings/Faction/Global/Mine/mi=new
 						var/obj/recipes/Buildings/Faction/Global/Loghouse/log=new
@@ -651,11 +653,17 @@ obj
 						var/obj/status/MPBar/mpb = new
 						src.contents+=mpb
 
+GLOBAL_DATUM(faction_holder, /obj/Factionholder)
 
-obj
-	Factionholder
-		Savable=1
+/obj/Factionholder
+	Savable=1
 
+/obj/Factionholder/New()
+	// highlander time
+	if(!isnull(global.faction_holder))
+		contents += global.faction_holder.contents
+		del global.faction_holder
+	global.faction_holder = src
 
 obj
 	Faction
