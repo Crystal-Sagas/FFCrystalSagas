@@ -39,7 +39,7 @@ atom
 		UpdateCraft(var/mob/m)
 			var/row
 			for(var/obj/item/materials/A in usr.contents)
-				if(A.name!="Ore" && A.name!="Synthesis" && A.name!="materials" &&A.name!="Herbs")
+				if(A.name!="Ore" && A.name!="Synthesis" && A.name!="materials" &&A.name!="herbs")
 					row++
 					winset(m, "craftmats", "current-cell=1,[row]")
 					m << output(A,"craftmats")
@@ -88,7 +88,7 @@ mob
 				return
 			winset(usr,"Crafting","is-visible=true")
 			for(var/obj/item/materials/A in usr.contents)
-				if(A.name!="Ore" && A.name!="Synthesis" && A.name!="materials" &&A.name!="Herbs")
+				if(A.name!="Ore" && A.name!="Synthesis" && A.name!="materials" &&A.name!="herbs")
 					row++
 					winset(usr, "craftmats", "current-cell=1,[row]")
 					src << output(A,"craftmats")
@@ -271,7 +271,7 @@ obj
 
 			amount=0
 			weight=0
-			Herbs
+			herbs
 				icon='Icons/Crafting/Gysahl.dmi'
 				GysahlGreens
 					name="Gysahl Greens"
