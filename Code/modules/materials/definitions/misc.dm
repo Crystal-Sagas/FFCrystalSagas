@@ -1,75 +1,75 @@
 /obj/item/materials
 
 /obj/item/materials/Wood
-	icon_state="wood"
+	icon_state = "wood"
 
 /obj/item/materials/Stone
-	icon_state="stone"
+	icon_state = "stone"
 
 /obj/item/materials/RawMako
-	name="Raw Mako"
+	name = "raw mako"
 	icon='Icons/Crafting/Mako.dmi'
 
 /obj/item/materials/EtherPowder
-	name="Ether Powder"
-	icon_state="etherpowder"
+	name = "ether powder"
+	icon_state = "etherpowder"
 
 /obj/item/materials/AetherPowder
-	name="Aether Powder"
-	icon_state="aetherpowder"
+	name = "aether powder"
+	icon_state = "aetherpowder"
 
 /obj/item/materials/leather
-	name="leather"
-	icon_state="leather"
+	name = "leather"
+	icon_state = "leather"
+
+/obj/item/materials/diamond
+	name = "\improper diamond"
+	icon_state = "diamond"
 
 /obj/item/materials/wool
-	name="wool"
-	icon_state="wool"
+	name = "wool"
+	icon_state = "wool"
 
-/obj/item/materials/EsperSoul
-	name="Esper Soul"
-	icon_state="espersoul"
+/obj/item/materials/esper_soul
+	name = "\improper Esper Soul"
+	icon_state = "espersoul"
 
-/obj/item/materials/BombCore
-	name="Bomb Core"
-	icon_state="bombcore"
+/obj/item/materials/bomb_core
+	name = "\improper Bomb Core"
+	icon_state = "bombcore"
 
-/obj/item/materials/DragonScale
-	name="Dragon Scale"
-	icon_state="dragonscale"
+/obj/item/materials/dragon_scale
+	name = "\improper Dragon Scale"
+	icon_state = "dragonscale"
 
-/obj/item/materials/FlyingEyesEye
-	name="Flying Eye's Eye"
-	icon_state="evileye"
+/obj/item/materials/flying_eyes_eye
+	name = "\improper Flying Eye's Eye"
+	icon_state = "evileye"
 
-/obj/item/materials/FlyingEyesWing
-	name="Flying Eye's Wing"
-	icon_state="evilwing"
+/obj/item/materials/flying_eyes_wing
+	name = "\improper Flying Eye's Wing"
+	icon_state = "evilwing"
 
-/obj/item/materials/TonberryKnife
-	name="Tonberry Knife"
-	icon_state="tonberryknife"
+/obj/item/materials/tonberry_knife
+	name = "\improper Tonberry Knife"
+	icon_state = "tonberryknife"
 
-/obj/item/materials/GigantoadSlime
-	name="Gigantoad Slime"
-	icon_state="gigantoadslime"
+/obj/item/materials/gigantoad_slime
+	name = "\improper Gigantoad Slime"
+	icon_state = "gigantoadslime"
 
-/obj/item/materials/ZuuFeather
-	name="Zuu Feather"
-	icon_state="zuufeather"
+/obj/item/materials/zuu_feather
+	name = "\improper Zuu Feather"
+	icon_state = "zuufeather"
 
-/obj/item/materials/PixieSand
-	name="Pixie Sand"
-	icon_state="pixiesand"
+/obj/item/materials/pixe_sand
+	name = "\improper Pixie Sand"
+	icon_state = "pixiesand"
 
-/obj/item/materials/CoeurlWhisker
-	name="Coeurl Whisker"
-	icon_state="coeurlwhisker"
+/obj/item/materials/coeurl_whsker
+	name = "\improper Coeurl Whisker"
+	icon_state = "coeurlwhisker"
 
-/obj/item/materials/SahauginScale
-	name="Sahaugin Scale"
-	icon_state="sahauginscale"
-
-/obj/item/materials/Diamond
-	name="Diamond"
-	icon_state="diamond"
+/obj/item/materials/sahaugin_scale
+	name = "\improper Sahaugin Scale"
+	icon_state = "sahauginscale"

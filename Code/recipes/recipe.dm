@@ -601,7 +601,7 @@
 			SilencePoison
 				mat1="Pixie Sand"
 				mat2="Sahaugin Scale"
-				mat3="Diamond"
+				mat3="diamond"
 				mat4="Flying Eye's Wing"
 				amount1=1
 				amount2=1
@@ -726,7 +726,7 @@
 			GoldNeedle
 				mat1="Gold"
 				mat2="Sharug Greens"
-				mat3="Diamond"
+				mat3="diamond"
 				amount1=1
 				amount2=3
 				amount3=1
@@ -737,7 +737,7 @@
 			MaidensKiss
 				mat1="Zegham Carrots"
 				mat2="Vomp Carrots"
-				mat3="Diamond"
+				mat3="diamond"
 				amount1=2
 				amount2=2
 				amount3=1
@@ -747,7 +747,7 @@
 					src.name=a.name
 			Tranquilizer
 				mat1="Topkekko Wildgrass"
-				mat2="Diamond"
+				mat2="diamond"
 				amount1=2
 				amount2=1
 				New()

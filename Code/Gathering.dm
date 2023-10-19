@@ -330,7 +330,7 @@ GLOBAL_LIST_BOILERPLATE(resource_nodes, /obj/node)
 		d.amount-=1
 	for(var/obj/item/materials/ingot/orichalcum/e in usr.contents)
 		e.amount-=1
-	for(var/obj/item/materials/EsperSoul/f in usr.contents)
+	for(var/obj/item/materials/esper_soul/f in usr.contents)
 		f.amount-=1
 
 	usr.money+=200
@@ -693,49 +693,49 @@ GLOBAL_LIST_BOILERPLATE(resource_nodes, /obj/node)
 			usr<<output("You have picked 1 pinch of Aether Powder","oocout")
 	if(roll>75&&roll<81)
 		if(usr.check_perk("Expert Gatherer" && "Master Gatherer"))
-			for(var/obj/item/materials/GigantoadSlime/b in usr.contents)
+			for(var/obj/item/materials/gigantoad_slime/b in usr.contents)
 				b.amount+=3
 			use()
 			usr<<output("You have picked 3 viles of Gigan Toad Slime","oocout")
 		else if(usr.check_perk("Expert Gatherer" || "Master Gatherer"))
-			for(var/obj/item/materials/GigantoadSlime/b in usr.contents)
+			for(var/obj/item/materials/gigantoad_slime/b in usr.contents)
 				b.amount+=2
 			use()
 			usr<<output("You have picked up 2 vles of Gigan Toad Slime","oocout")
 		else
-			for(var/obj/item/materials/GigantoadSlime/b in usr.contents)
+			for(var/obj/item/materials/gigantoad_slime/b in usr.contents)
 				b.amount+=1
 			use()
 			usr<<output("You have picked 1 vile of Gigan Toad Slime","oocout")
 	if(roll>80&&roll<86)
 		if(usr.check_perk("Expert Gatherer" && "Master Gatherer"))
-			for(var/obj/item/materials/PixieSand/b in usr.contents)
+			for(var/obj/item/materials/pixe_sand/b in usr.contents)
 				b.amount+=3
 			use()
 			usr<<output("You have picked 3 pinches of Pixie Sand","oocout")
 		else if(usr.check_perk("Expert Gatherer" || "Master Gatherer"))
-			for(var/obj/item/materials/PixieSand/b in usr.contents)
+			for(var/obj/item/materials/pixe_sand/b in usr.contents)
 				b.amount+=2
 			use()
 			usr<<output("You have picked 2 pinches of Pixie Sand","oocout")
 		else
-			for(var/obj/item/materials/PixieSand/b in usr.contents)
+			for(var/obj/item/materials/pixe_sand/b in usr.contents)
 				b.amount+=1
 			use()
 			usr<<output("You have picked 1 pinch of Pixie Sand","oocout")
 	if(roll>85&&roll<96)
 		if(usr.check_perk("Expert Gatherer" && "Master Gatherer"))
-			for(var/obj/item/materials/CoeurlWhisker/b in usr.contents)
+			for(var/obj/item/materials/coeurl_whsker/b in usr.contents)
 				b.amount+=3
 			use()
 			usr<<output("You have picked 3 Coeurl Whiskers","oocout")
 		else if(usr.check_perk("Expert Gatherer" || "Master Gatherer"))
-			for(var/obj/item/materials/CoeurlWhisker/b in usr.contents)
+			for(var/obj/item/materials/coeurl_whsker/b in usr.contents)
 				b.amount+=2
 			use()
 			usr<<output("You have picked 2 Coeurl Whiskers","oocout")
 		else
-			for(var/obj/item/materials/CoeurlWhisker/b in usr.contents)
+			for(var/obj/item/materials/coeurl_whsker/b in usr.contents)
 				b.amount+=1
 			use()
 			usr<<output("You have picked 1 Coeurl Whsker","oocout")
@@ -872,57 +872,57 @@ GLOBAL_LIST_BOILERPLATE(resource_nodes, /obj/node)
 			usr<<output("You find a sheep in your trap, and get manage to expertly shave 5 pieces of wool.","alert")
 	if(roll>40&&roll<51)
 		if(usr.check_perk("Expert Hunter" && "Master Gatherer"))
-			for(var/obj/item/materials/FlyingEyesEye/b in usr.contents)
+			for(var/obj/item/materials/flying_eyes_eye/b in usr.contents)
 				b.amount+=4
 			use()
 			usr<<output("You find an ahriman in your trap, and get manage to expertly tear four eyes from it. (Don't ask from where)","oocout")
 			usr<<output("You find an ahriman in your trap, and get manage to expertly tear four eyes from it. (Don't ask from where)","alert")
 	else if(usr.check_perk("Expert Hunter" || "Master Gatherer"))
-		for(var/obj/item/materials/FlyingEyesEye/b in usr.contents)
+		for(var/obj/item/materials/flying_eyes_eye/b in usr.contents)
 			b.amount+=2
 			use()
 			usr<<output("You find a ahriman in your trap, and get manage to tear out two of its eyes.","oocout")
 			usr<<output("You find a ahriman in your trap, and get manage to tear out two of its eyes.","alert")
 	else
-		for(var/obj/item/materials/FlyingEyesEye/b in usr.contents)
+		for(var/obj/item/materials/flying_eyes_eye/b in usr.contents)
 			b.amount+=1
 			use()
 			usr<<output("You find a ahriman in your trap, and get manage to tear out its eye.","oocout")
 			usr<<output("You find a ahriman in your trap, and get manage to tear out its eye.","alert")
 	if(roll>50&&roll<61)
 		if(usr.check_perk("Expert Hunter" && "Master Gatherer"))
-			for(var/obj/item/materials/FlyingEyesWing/b in usr.contents)
+			for(var/obj/item/materials/flying_eyes_wing/b in usr.contents)
 				b.amount+=4
 			use()
 			usr<<output("You find an ahriman in your trap, and get manage to expertly tear four wings from it. (Don't ask from where.)","oocout")
 			usr<<output("You find an ahriman in your trap, and get manage to expertly tear four wings from it. (Don't ask from where.)","alert")
 		else if(usr.check_perk("Expert Hunter" || "Master Gatherer"))
-			for(var/obj/item/materials/FlyingEyesWing/b in usr.contents)
+			for(var/obj/item/materials/flying_eyes_wing/b in usr.contents)
 				b.amount+=2
 			use()
 			usr<<output("You find a ahriman in your trap, and get manage to tear out two wings.","oocout")
 			usr<<output("You find a ahriman in your trap, and get manage to tear out two wings.","alert")
 		else
-			for(var/obj/item/materials/FlyingEyesWing/b in usr.contents)
+			for(var/obj/item/materials/flying_eyes_wing/b in usr.contents)
 				b.amount+=1
 			use()
 			usr<<output("You find a ahriman in your trap, and get manage to tear out a wing.","oocout")
 			usr<<output("You find a ahriman in your trap, and get manage to tear out a wing.","alert")
 	if(roll>60&&roll<71)
 		if(usr.check_perk("Expert Hunter" && "Master Gatherer"))
-			for(var/obj/item/materials/ZuuFeather/b in usr.contents)
+			for(var/obj/item/materials/zuu_feather/b in usr.contents)
 				b.amount+=4
 			use()
 			usr<<output("You find a zuu in your trap, and get manage to expertly harvest four feathers from it.","oocout")
 			usr<<output("You find a zuu in your trap, and get manage to expertly harvest four feathers from it.","alert")
 		else if(usr.check_perk("Expert Hunter" || "Master Gatherer"))
-			for(var/obj/item/materials/ZuuFeather/b in usr.contents)
+			for(var/obj/item/materials/zuu_feather/b in usr.contents)
 				b.amount+=2
 			use()
 			usr<<output("You find a zuu in your trap, and get manage to harvest two feathers.","oocout")
 			usr<<output("You find a zuu in your trap, and get manage to harvest two feathers.","alert")
 		else
-			for(var/obj/item/materials/ZuuFeather/b in usr.contents)
+			for(var/obj/item/materials/zuu_feather/b in usr.contents)
 				b.amount+=1
 			use()
 			usr<<output("You find a zuu in your trap, and get manage to harvest a feather.","oocout")
@@ -1238,17 +1238,17 @@ GLOBAL_LIST_BOILERPLATE(resource_nodes, /obj/node)
 			usr<<output("You expertly find a earth gem.","alert")
 	if(roll>11)
 		if(usr.check_perk("Expert Sifter" || "Master Gatherer")) //Del test sifting merchant
-			for(var/obj/item/materials/Diamond/b in usr.contents)
+			for(var/obj/item/materials/diamond/b in usr.contents)
 				b.amount+=2
 			use()
 			usr<<output("You expertly find 2 diamonds.","oocout")
 			usr<<output("You expertly find 2 diamonds.","alert")
 		else
-			for(var/obj/item/materials/Diamond/b in usr.contents)
+			for(var/obj/item/materials/diamond/b in usr.contents)
 				b.amount+=1
 			use()
-			usr<<output("You expertly find a Diamond.","oocout")
-			usr<<output("You expertly find a Diamond.","alert")
+			usr<<output("You expertly find a diamond.","oocout")
+			usr<<output("You expertly find a diamond.","alert")
 	for(var/obj/item/materials/Stone/c in usr.contents)
 		if(usr.check_perk("Nothing Wasted"))
 			c.amount+=4
