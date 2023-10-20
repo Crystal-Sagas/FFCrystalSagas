@@ -6,4 +6,4 @@
 	//  todo: this does nothing yet
 	var/tmp/list/abilities
 
-#warn hook attacks
+// todo
