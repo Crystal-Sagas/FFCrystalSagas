@@ -199,6 +199,7 @@
 #include "Code\perks\races.dm"
 #include "Code\perks\jobs\astrologian.dm"
 #include "Code\perks\jobs\mystic_knight.dm"
+#include "Code\perks\jobs\red_mage.dm"
 #include "Code\perks\magic\arcane.dm"
 #include "Code\perks\magic\black.dm"
 #include "Code\perks\magic\green.dm"
