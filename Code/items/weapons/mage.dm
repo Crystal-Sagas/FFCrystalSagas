@@ -1,2 +1,46 @@
-
-#warn fill
+/obj/item/Weapon/Magical
+	typing="magical"
+	Staff
+		equiptype="2h"
+		weight=8
+		weapontype="Staff"
+		icon='Icons/Items/Staff.dmi'
+		Bronze
+		Iron
+		Steel
+		Mythril
+		Adamantine
+		Orichalcum
+	Rod
+		equiptype="2h"
+		weight=8
+		weapontype="Rod"
+		icon='Icons/Items/Staff.dmi'
+		Bronze
+		Iron
+		Steel
+		Mythril
+		Adamantine
+		Orichalcum
+	Tome
+		equiptype="1h"
+		weight=5
+		weapontype="Tome"
+		icon='Icons/Items/Tome.dmi'
+		Bronze
+		Iron
+		Steel
+		Mythril
+		Adamantine
+		Orichalcum
+	FocusCrystal
+		equiptype="1h"
+		weight=4
+		weapontype="Focus Crystal"
+		icon='Icons/Items/Focus Crystal.dmi'
+		Bronze
+		Iron
+		Steel
+		Mythril
+		Adamantine
+		Orichalcum

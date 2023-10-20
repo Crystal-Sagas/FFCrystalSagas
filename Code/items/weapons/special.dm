@@ -1,0 +1,158 @@
+/obj/item/Weapon/Special
+	FocusSword
+		equiptype="1h"
+		weight=3
+		weapontype="Focus Sword"
+		icon='Icons/Items/Focussword.dmi'
+		Bronze
+		Iron
+		Steel
+		Mythril
+		Adamantine
+		Orichalcum
+	SwordSpear
+		equiptype="2h"
+		weight=14
+		weapontype="Sword Spear"
+		icon='Icons/Items/Sword Spear.png'
+		Bronze
+		Iron
+		Steel
+		Mythril
+		Adamantine
+		Orichalcum
+	ThiefSword
+		equiptype="1h"
+		weight=10
+		weapontype="Thief Sword"
+		icon='Icons/Items/Thiefsword.dmi'
+		Bronze
+		Iron
+		Steel
+		Mythril
+		Adamantine
+		Orichalcum
+	BoltRapier
+		equiptype="1h"
+		weight=3
+		weapontype="Bolt Rapier"
+		icon='Icons/Items/Boltrapier.dmi'
+		Bronze
+		Iron
+		Steel
+		Mythril
+		Adamantine
+		Orichalcum
+	WhipBlade
+		equiptype="2h"
+		weight=8
+		weapontype="Whip Blade"
+		icon='Icons/Items/Whipblade.dmi'
+		Bronze
+		Iron
+		Steel
+		Mythril
+		Adamantine
+		Orichalcum
+	BlitzBall
+		equiptype="2h"
+		weight=5
+		weapontype="Blitz Ball"
+		icon='Icons/Items/Blitzball.dmi'
+		Bronze
+		Iron
+		Steel
+		Mythril
+		Adamantine
+		Orichalcum
+	Gunblade
+		equiptype="1h"
+		weight=10
+		weapontype="Gun Blade"
+		icon='Icons/Items/Gunblade.dmi'
+		Bronze
+		Iron
+		Steel
+		Mythril
+		Adamantine
+		Orichalcum
+	Bowsword
+		equiptype="2h"
+		weight=10
+		weapontype="Bowsword"
+		icon='Icons/Items/Bow Sword.png'
+		Bronze
+		Iron
+		Steel
+		Mythril
+		Adamantine
+		Orichalcum
+	Bagangsaw
+		equiptype="2h"
+		weight=20
+		weapontype="Bagangsaw"
+		icon='Icons/Items/Bagsaw.dmi'
+		Bronze
+		Iron
+		Steel
+		Mythril
+		Adamantine
+		Orichalcum
+	BusterSword
+		equiptype="2h"
+		weight=30
+		weapontype="Buster Sword"
+		icon='Icons/Items/Bustersword.dmi'
+		Bronze
+		Iron
+		Steel
+		Mythril
+		Adamantine
+		Orichalcum
+	MorphingBlade
+		equiptype="2h"
+		weight=40
+		weapontype="Morphing Blade"
+		icon='Icons/Items/Morphingblade.png'
+		verb
+			Morph()
+				MorphingSwap(src, usr)
+		Bronze
+		Iron
+		Steel
+		Mythril
+		Adamantine
+		Orichalcum
+	GunArm
+		equiptype="1h"
+		weight=10
+		weapontype="Gun Arm"
+		Bronze
+		Iron
+		Steel
+		Mythril
+		Adamantine
+		Orichalcum
+		icon='Icons/Items/Gunarm.dmi'
+	MagitekPistol
+		equiptype="1h"
+		icon='Icons/Items/Pistol.dmi'
+		weapontype="Magitek Pistol"
+		weight=4
+		Bronze
+		Iron
+		Steel
+		Mythril
+		Adamantine
+		Orichalcum
+	MagitekRifle
+		icon='Icons/Items/Rifle.dmi'
+		equiptype="2h"
+		weapontype="Magitek Rifle"
+		weight=8
+		Bronze
+		Iron
+		Steel
+		Mythril
+		Adamantine
+		Orichalcum

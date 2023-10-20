@@ -173,6 +173,8 @@
 #include "Code\items\weapon.dm"
 #include "Code\items\weapons\mage.dm"
 #include "Code\items\weapons\melee.dm"
+#include "Code\items\weapons\ranged.dm"
+#include "Code\items\weapons\special.dm"
 #include "Code\mob\following.dm"
 #include "Code\mob\inventory.dm"
 #include "Code\mob\login.dm"
