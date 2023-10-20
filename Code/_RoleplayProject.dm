@@ -201,7 +201,7 @@ mob
 				usr.contents+=a
 			load_complete = TRUE
 		Load()
-			if(!fexists("data/Save/[src.ckey]"))
+			if(!fexists("data/save/character/[src.ckey]"))
 				alert("You do not have a save file.")
 				return
 			if(load_complete)
@@ -213,7 +213,7 @@ mob
 			src<<sound(null)
 			sleep()
 			src<< 'Audio/Cursor Ready.ogg'
-			var/savefile/F = new("data/Save/[src.ckey]")
+			var/savefile/F = new("data/save/character/[src.ckey]")
 			Read(F)
 			F["x"]>>src.x
 			F["y"]>>src.y
@@ -361,7 +361,7 @@ mob
 				if(src.loc==locate(37,239,28))
 					load_mutex = FALSE
 					return
-				var/savefile/F = new("data/Save/[src.ckey]")
+				var/savefile/F = new("data/save/character/[src.ckey]")
 				F["x"]<<src.x
 				F["y"]<<src.y
 				F["z"]<<src.z
@@ -456,7 +456,7 @@ proc
 		world<<output("<small>Server: Saving Objects...","icout")
 		var/Amount=0
 		var/E=1
-		var/savefile/F = new("data/Save/World/File[E]")
+		var/savefile/F = new("data/save/world/fragment[E]")
 		var/list/Types=new
 		for(var/obj/A in world) if(A.Savable==1)
 			A.savedx=A.x
@@ -467,13 +467,13 @@ proc
 			if(Amount % 250 == 0)
 				F["Types"]<<Types
 				E++
-				F=new("Save/World/File[E]")
+				F=new("data/save/world/fragment[E]")
 				Types=new
 		if(Amount % 250 != 0)
 			F["Types"]<<Types
 		hacklol:
-			if(fexists("data/Save/World/File[E++]"))
-				fdel("Save/World/File[E++]")
+			if(fexists("data/save/world/fragment[E++]"))
+				fdel("data/save/world/fragment[E++]")
 				world<<"<small>Server: Objects DEBUG system check: extra objects file deleted!"
 				E++
 				goto hacklol
@@ -488,8 +488,8 @@ proc
 		var/filenum=0
 		wowza:
 			filenum++
-			if(fexists("data/Save/World/File[filenum]"))
-				var/savefile/F = new("data/Save/World/File[filenum]")
+			if(fexists("data/save/world/fragment[filenum]"))
+				var/savefile/F = new("data/save/world/fragment[filenum]")
 				var/list/L=new
 				F["Types"]>>L
 				for(var/obj/A in L)

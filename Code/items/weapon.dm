@@ -21,4 +21,8 @@
 	. = ..()
 	if(!modified)
 		weapon_tier = initial(weapon_tier)
-	#warn impl - initial all weapon vars
+	#warn impl - recalculate everything
+
+/obj/item/Weapon/proc/recalculate()
+	// called to rebuild stats on boot for non-modified (custom) weapons
+	#warn impl

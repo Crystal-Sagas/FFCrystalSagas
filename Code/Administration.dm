@@ -802,6 +802,7 @@ mob
 					if("Yes")
 						i.weapon=1
 						i.usable=1
+						i.modified = TRUE
 						var/irange=input("What is the starting damage range for this weapon?") as num
 						i.range1=irange
 						var/irange2=input("What is the ending range for this weapon?") as num
@@ -1101,7 +1102,7 @@ proc
 		world<<output("<small>Server: Saving Objects...","icout")
 		var/Amount=0
 		var/E=1
-		var/savefile/F = new("data/Save/World/File[E]")
+		var/savefile/F = new("data/save/world/fragment[E]")
 		var/list/Types=new
 		for(var/obj/A in world) if(A.Savable==1)
 			A.savedx=A.x
@@ -1112,13 +1113,13 @@ proc
 			if(Amount % 250 == 0)
 				F["Types"]<<Types
 				E++
-				F=new("Save/World/File[E]")
+				F=new("data/save/world/fragment[E]")
 				Types=new
 		if(Amount % 250 != 0)
 			F["Types"]<<Types
 		hacklol:
-			if(fexists("data/Save/World/File[E++]"))
-				fdel("Save/World/File[E++]")
+			if(fexists("data/save/world/fragment[E++]"))
+				fdel("data/save/world/fragment[E++]")
 				world<<"<small>Server: Objects DEBUG system check: extra objects file deleted!"
 				E++
 				goto hacklol
@@ -1131,8 +1132,8 @@ proc
 		var/filenum=0
 		wowza:
 			filenum++
-			if(fexists("data/Save/World/File[filenum]"))
-				var/savefile/F = new("data/Save/World/File[filenum]")
+			if(fexists("data/save/world/fragment[filenum]"))
+				var/savefile/F = new("data/save/world/fragment[filenum]")
 				var/list/L=new
 				F["Types"]>>L
 				for(var/obj/A in L)
