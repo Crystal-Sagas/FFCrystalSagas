@@ -21,4 +21,4 @@
 	. = ..()
 	if(!modified)
 		weapon_tier = initial(weapon_tier)
-	// #warn impl - initial all weapon vars
+	#warn impl - initial all weapon vars
