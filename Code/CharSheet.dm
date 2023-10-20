@@ -1676,59 +1676,11 @@ mob
 				if(a.typing=="magical")
 					aresult=a.basecheck+amod+m.rankbonus+a.addhit+4
 					dresult=(abilitydamage+dmod+m.mdb+a.adddam)
-					if(usr.role=="Tank Caster"||usr.role=="Physical DPS"||usr.role=="Physical Support") //These roles all cap at 15 MDB Add.
-						if(usr.mdbadd<15)
-							dresult+=usr.mdbadd
-						else
-							dresult+=15
-					else if(usr.role=="Melee Tank")
-						if(usr.mdbadd<10)
-							dresult+=usr.mdbadd
-						else
-							dresult+=10
-					else if(usr.role=="Magical DPS")
-						if(usr.mdbadd<35)
-							dresult+=usr.mdbadd
-						else
-							dresult+=35
-					else if(usr.role=="Magical Support")
-						if(usr.mdbadd<20)
-							dresult+=usr.mdbadd
-						else
-							dresult+=20
-					else if(usr.role=="Generalist")
-						if(usr.mdbadd<25)
-							dresult+=usr.mdbadd
-						else
-							dresult+=25
+					dresult += usr.mdbadd
 				else
 					aresult=a.basecheck+amod+m.rankbonus+a.addhit+4
 					dresult=(abilitydamage+dmod+m.pdb+a.adddam)
-					if(usr.role=="Melee Tank"||usr.role=="Magical DPS"||usr.role=="Magical Support") //These roles all cap at 15 PDB Add.
-						if(usr.pdbadd<15)
-							dresult+=usr.pdbadd
-						else
-							dresult+=15
-					else if(usr.role=="Tank Caster")
-						if(usr.pdbadd<10)
-							dresult+=usr.pdbadd
-						else
-							dresult+=10
-					else if(usr.role=="Physical DPS")
-						if(usr.pdbadd<35)
-							dresult+=usr.pdbadd
-						else
-							dresult+=35
-					else if(usr.role=="Physical Support")
-						if(usr.pdbadd<20)
-							dresult+=usr.pdbadd
-						else
-							dresult+=20
-					else if(usr.role=="Generalist")
-						if(usr.pdbadd<25)
-							dresult+=usr.pdbadd
-						else
-							dresult+=25
+					dresult += usr.pdbadd
 				dresult*=2
 				view()<<output("<font size=1><font color=[m.textcolor]>[m] <font color=white>is using the <font color=[m.textcolor]>[a.name]<font color=white> ability!  Saving throw: <font color=#8EF5DE><b>[aresult] [a.savetype]!</b><font color=white>, dealing <b><font color=#FFA852>[dresult] damage</b><font color=white> on a failed save!<br> Cost: <b><font color=#0FBFD7>[a.mcost] [a.costtype]</b> | Tile Range:[a.range]","icout")
 			if(a.atype=="weaponsave")
@@ -1744,58 +1696,10 @@ mob
 				abilitydamage=a.raw_attack_damage_roll()
 				if(a.typing=="magical")
 					dresult=(doresult+dmod+wepchoice.adddam+m.mdb+a.adddam+abilitydamage)
-					if(usr.role=="Tank Caster"||usr.role=="Physical DPS"||usr.role=="Physical Support") //These roles all cap at 15 MDB Add.
-						if(usr.mdbadd<15)
-							dresult+=usr.mdbadd
-						else
-							dresult+=15
-					else if(usr.role=="Melee Tank")
-						if(usr.mdbadd<10)
-							dresult+=usr.mdbadd
-						else
-							dresult+=10
-					else if(usr.role=="Magical DPS")
-						if(usr.mdbadd<35)
-							dresult+=usr.mdbadd
-						else
-							dresult+=35
-					else if(usr.role=="Magical Support")
-						if(usr.mdbadd<20)
-							dresult+=usr.mdbadd
-						else
-							dresult+=20
-					else if(usr.role=="Generalist")
-						if(usr.mdbadd<25)
-							dresult+=usr.mdbadd
-						else
-							dresult+=25
+					dresult += usr.mdbadd
 				else
 					dresult=(doresult+dmod+wepchoice.adddam+m.pdb+a.adddam+abilitydamage)
-					if(usr.role=="Melee Tank"||usr.role=="Magical DPS"||usr.role=="Magical Support") //These roles all cap at 15 PDB Add.
-						if(usr.pdbadd<15)
-							dresult+=usr.pdbadd
-						else
-							dresult+=15
-					else if(usr.role=="Tank Caster")
-						if(usr.pdbadd<10)
-							dresult+=usr.pdbadd
-						else
-							dresult+=10
-					else if(usr.role=="Physical DPS")
-						if(usr.pdbadd<35)
-							dresult+=usr.pdbadd
-						else
-							dresult+=35
-					else if(usr.role=="Physical Support")
-						if(usr.pdbadd<20)
-							dresult+=usr.pdbadd
-						else
-							dresult+=20
-					else if(usr.role=="Generalist")
-						if(usr.pdbadd<25)
-							dresult+=usr.pdbadd
-						else
-							dresult+=25
+					dresult += usr.pdbadd
 				dresult*=2
 				view()<<output("<font size=1><font color=[usr.textcolor]>[usr] <font color=white>is using the <font color=[m.textcolor]>[a.name]<font color=white> ability with their [wepchoice.name]!  Saving throw: <font color=#8EF5DE><b>[aresult] [a.savetype]!</b><font color=white>, dealing <b><font color=#FFA852>[dresult] damage</b><font color=white> on a failed save!<br> Cost: <b><font color=#0FBFD7>[a.mcost] [a.costtype]</b> | Tile Range:[a.range]","icout")
 			if(a.atype=="weapon")
@@ -1808,73 +1712,19 @@ mob
 					amod=Checkdamtype(wepchoice.damsource,m)
 					if(a.typing=="magical")
 						aresult=aoresult+wepchoice.addhit+amod+m.rankbonus+m.mab+a.addhit+3
-						if(usr.mabadd<10)// Global cap for mage attack bonus add is 15.
-							aresult+=usr.mabadd
-						else
-							aresult+=10
+						aresult += usr.mabadd
 					else
 						aresult=aoresult+wepchoice.addhit+amod+m.rankbonus+m.pab+a.addhit+3
-						if(usr.pabadd<10)// Global cap for physical attack bonus add is 15.
-							aresult+=usr.pabadd
-						else
-							aresult+=10
+						aresult += usr.pabadd
 					doresult=rand(wepchoice.range1,wepchoice.range2)
 					dmod=Checkdamtype(a.damsource,m)
 					abilitydamage=a.raw_attack_damage_roll()
 					if(a.typing=="magical")
 						dresult=(doresult+dmod+wepchoice.adddam+m.mdb+a.adddam+abilitydamage)
-						if(usr.role=="Tank Caster"||usr.role=="Physical DPS"||usr.role=="Physical Support") //These roles all cap at 15 MDB Add.
-							if(usr.mdbadd<15)
-								dresult+=usr.mdbadd
-							else
-								dresult+=15
-						else if(usr.role=="Melee Tank")
-							if(usr.mdbadd<10)
-								dresult+=usr.mdbadd
-							else
-								dresult+=10
-						else if(usr.role=="Magical DPS")
-							if(usr.mdbadd<35)
-								dresult+=usr.mdbadd
-							else
-								dresult+=35
-						else if(usr.role=="Magical Support")
-							if(usr.mdbadd<20)
-								dresult+=usr.mdbadd
-							else
-								dresult+=20
-						else if(usr.role=="Generalist")
-							if(usr.mdbadd<25)
-								dresult+=usr.mdbadd
-							else
-								dresult+=25
+						dresult += usr.mdbadd
 					else
 						dresult=(doresult+dmod+wepchoice.adddam+m.pdb+a.adddam+abilitydamage)
-						if(usr.role=="Melee Tank"||usr.role=="Magical DPS"||usr.role=="Magical Support") //These roles all cap at 15 PDB Add.
-							if(usr.pdbadd<15)
-								dresult+=usr.pdbadd
-							else
-								dresult+=15
-						else if(usr.role=="Tank Caster")
-							if(usr.pdbadd<10)
-								dresult+=usr.pdbadd
-							else
-								dresult+=10
-						else if(usr.role=="Physical DPS")
-							if(usr.pdbadd<35)
-								dresult+=usr.pdbadd
-							else
-								dresult+=35
-						else if(usr.role=="Physical Support")
-							if(usr.pdbadd<20)
-								dresult+=usr.pdbadd
-							else
-								dresult+=20
-						else if(usr.role=="Generalist")
-							if(usr.pdbadd<25)
-								dresult+=usr.pdbadd
-							else
-								dresult+=25
+						dresult += usr.pdbadd
 					dresult*=2
 					critdam=dresult+doresult
 					if(aoresult>=wepchoice.critrange)
@@ -1886,72 +1736,18 @@ mob
 				amod=Checkdamtype(a.damsource,m)
 				if(a.typing=="magical")
 					aresult=aoresult+a.addhit+amod+m.rankbonus+m.mab+3
-					if(usr.mabadd<10)// Global cap for mage attack bonus add is 15.
-						aresult+=usr.mabadd
-					else
-						aresult+=10
+					aresult += usr.mabadd
 				else
 					aresult=aoresult+a.addhit+amod+m.rankbonus+m.pab+3
-					if(usr.pabadd<10)// Global cap for physical attack bonus add is 15.
-						aresult+=usr.pabadd
-					else
-						aresult+=10
+					aresult += usr.pabadd
 				doresult=a.raw_attack_damage_roll()
 				dmod=Checkdamtype(a.damsource,m)
 				if(a.typing=="magical")
 					dresult=(doresult+dmod+a.adddam+m.mdb)
-					if(usr.role=="Tank Caster"||usr.role=="Physical DPS"||usr.role=="Physical Support") //These roles all cap at 15 MDB Add.
-						if(usr.mdbadd<15)
-							dresult+=usr.mdbadd
-						else
-							dresult+=15
-					else if(usr.role=="Melee Tank")
-						if(usr.mdbadd<10)
-							dresult+=usr.mdbadd
-						else
-							dresult+=10
-					else if(usr.role=="Magical DPS")
-						if(usr.mdbadd<35)
-							dresult+=usr.mdbadd
-						else
-							dresult+=35
-					else if(usr.role=="Magical Support")
-						if(usr.mdbadd<20)
-							dresult+=usr.mdbadd
-						else
-							dresult+=20
-					else if(usr.role=="Generalist")
-						if(usr.mdbadd<25)
-							dresult+=usr.mdbadd
-						else
-							dresult+=25
+					dresult += usr.mdbadd
 				else
 					dresult=(doresult+dmod+a.adddam+m.pdb)
-					if(usr.role=="Melee Tank"||usr.role=="Magical DPS"||usr.role=="Magical Support") //These roles all cap at 15 PDB Add.
-						if(usr.pdbadd<15)
-							dresult+=usr.pdbadd
-						else
-							dresult+=15
-					else if(usr.role=="Tank Caster")
-						if(usr.pdbadd<10)
-							dresult+=usr.pdbadd
-						else
-							dresult+=10
-					else if(usr.role=="Physical DPS")
-						if(usr.pdbadd<35)
-							dresult+=usr.pdbadd
-						else
-							dresult+=35
-					else if(usr.role=="Physical Support")
-						if(usr.pdbadd<20)
-							dresult+=usr.pdbadd
-						else
-							dresult+=20
-					else if(usr.role=="Generalist")
-						if(usr.pdbadd<25)
-							dresult+=usr.pdbadd
-						else
-							dresult+=25
+					dresult += usr.pdbadd
 				dresult*=2
 				critdam=dresult+doresult
 				if(aoresult>=a.critrange)
