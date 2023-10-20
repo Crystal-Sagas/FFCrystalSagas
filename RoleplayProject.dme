@@ -164,6 +164,7 @@
 #include "Code\fates\crystal.dm"
 #include "Code\fates\fate.dm"
 #include "Code\game\damage_types.dm"
+#include "Code\items\item.dm"
 #include "Code\items\render.dm"
 #include "Code\mob\following.dm"
 #include "Code\mob\inventory.dm"

@@ -1,11 +1,12 @@
 // todo: /datum/prototype/perk
 
 /obj/perk
-	//* new attack system
-	/// set this to the typepath of an attack if you want a lazy-set attack
-	var/tmp/ability_attack
+	//* new ability-attack system
+	/// set this to the typepath of an attack if you want a lazy-set attack (or attacks)
+	var/tmp/list/attacks
 	/// set this to list of typepaths of abilities
-	var/tmp/list/ability_grant
+	//  todo: this does nothing yet
+	var/tmp/list/abilities
 
 	//? basic roll-to-hit for active abilities with an attack button
 	/// uniform random, or dice roll?
