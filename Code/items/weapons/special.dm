@@ -114,9 +114,6 @@
 		weight=40
 		weapontype="Morphing Blade"
 		icon='Icons/Items/Morphingblade.png'
-		verb
-			Morph()
-				MorphingSwap(src, usr)
 		Bronze
 		Iron
 		Steel

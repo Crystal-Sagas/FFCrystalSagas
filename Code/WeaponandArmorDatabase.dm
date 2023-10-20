@@ -162,9 +162,6 @@ obj
 					icon='Icons/Jewelery/Adamantinebangle.png'
 
 
-
-
-
 obj
 	var/armor
 	item
@@ -383,12 +380,6 @@ obj
 				damagescales=0
 				scaling=1
 				armortype=null
-
-
-obj
-	proc
-		MorphingSwap(var/obj/item/Weapon/a, var/mob/m)
-			return
 
 obj
 var/weapontype
