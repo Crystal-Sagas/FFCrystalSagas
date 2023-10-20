@@ -5,6 +5,7 @@
 	atype="standard"
 	basecheck=10
 	typing="magical"
+
 	Hydro
 		element="Water"
 		icon='Icons/Perk/Water.png'

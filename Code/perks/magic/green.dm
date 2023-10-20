@@ -2,6 +2,7 @@
 	typing="magical"
 	magicneed="Green Magic"
 	atype="standard"
+
 	Barelement
 		mcost=15
 		level=2

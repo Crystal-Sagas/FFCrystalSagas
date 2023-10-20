@@ -12,7 +12,6 @@
 	var/revive=0
 	var/greenmagic=0
 	var/multi=0
-	var/regen=0
 	var/refresh=0
 
 /obj/perk/New(loc)

@@ -200,6 +200,7 @@
 #include "Code\perks\magic\arcane.dm"
 #include "Code\perks\magic\black.dm"
 #include "Code\perks\magic\green.dm"
+#include "Code\perks\magic\white.dm"
 #include "Code\players\action_feedback.dm"
 #include "Code\races\render.dm"
 #include "Code\recipes\armor.dm"

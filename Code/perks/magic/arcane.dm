@@ -6,6 +6,7 @@
 	basecheck=10
 	typing="magical"
 	element="General"
+
 	Darkness
 		element="Dark"
 		icon='Icons/Perk/Apocalypse.png'

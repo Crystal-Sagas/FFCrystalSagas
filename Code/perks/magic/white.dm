@@ -6,6 +6,7 @@
 	basecheck=10
 	typing="magical"
 	element="Heal"
+
 	Healing
 		atype="heal"
 		heal=1
@@ -19,7 +20,6 @@
 			attack_roll_dice_sides = 8
 			desc="The user has learned to treat simple wounds through magic. They can cure 10 + 1d8 + CHA Mod x 2 HP. Out of Battle Effects: This user can cure cuts, scrapes, bruises, and burns. They can use magic to restore vitality in small plants such as flowers and 5ft patches of foliage. (-10 mana.)"
 		Cura
-			regen=1
 			level=2
 			adddam = 15
 			pre="Cure"
@@ -29,7 +29,6 @@
 			attack_roll_dice_sides = 12
 			desc="The user has learned how to use magic to cure moderate wounds. They can cure 15 + 2d12 + CHA Mod x 2 HP. Out of Battle Effects: The user is capable of healing open wounds, set broken bones, and even cure up to third degree burns instantly. They can rejuvenate medium sized plants such as bushes or ferns, or a 10ft patch of grass. (-15 Mana.)"
 		Curaga
-			regen=1
 			level=3
 			revive=1
 			adddam=20
@@ -40,7 +39,6 @@
 			attack_roll_dice_sides = 12
 			desc="The user has learned how to heal major wounds through the use of magic. Heals  20 + 3d12 + CHA Mod x 2 HP. 6 tile range. Out of Battle Effects: The user is able to reattach limbs that have been severed, cure major wounds that even stitches wouldn’t fix, heals all types of burns. They can also rejuvenate large plants including young trees, and patches of foliage up to 20ft. (-30 Mana.)"
 		Curaja
-			regen=1
 			level=4
 			revive=1
 			adddam=30
@@ -51,7 +49,6 @@
 			attack_roll_dice_sides = 12
 			desc="The user has learned how to heal even the most dire wounds. They heal 30 + 4d12 HP + CHA Mod x 2. 6 tile range. Out of Battle Effects: The user is capable of restoring limbs as long as the wound has not healed over. They can set and instantly heal broken bones, and can cure even the deepest burns. They can rejuvenate mature trees and patches of foliage up to 30 ft. (-40 Mana.)"
 		Curada
-			regen=1
 			revive=1
 			level=5
 			atype="curada"
