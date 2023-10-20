@@ -136,6 +136,7 @@
 #include "Code\world.dm"
 #include "Code\Yearsystem.dm"
 #include "Code\_HELPERS\_core.dm"
+#include "Code\_HELPERS\characters.dm"
 #include "Code\_HELPERS\logging.dm"
 #include "Code\_HELPERS\time.dm"
 #include "Code\_HELPERS\types.dm"
