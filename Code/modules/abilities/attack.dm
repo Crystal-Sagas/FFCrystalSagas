@@ -1,16 +1,20 @@
 /**
  * ability to perform an attack
  */
-/datum/action/attack
+/datum/ability/attack
+	abstract_type = /datum/ability/attack
 	/// list of attacks to perform
 	var/list/datum/attack/attack_instances
 
 // todo
 
 /**
- * wip
+ * data on an attack roll
+ *
+ * this does not take into account what modifiers to use. that's not this datum's job.
  */
 /datum/attack
+	abstract_type = /datum/attack
 	/// roll type
 	var/attack_roll_type = ATTACK_ROLL_EXACT
 
@@ -33,5 +37,18 @@
 		var/datum/damage_type/casted = damage_type
 		damage_type = initial(casted.id)
 
-/datum/attack/proc/add_to_attack(datum/event_args/attack/attack)
+/**
+ * add our damage packet to an attack
+ *
+ * todo: this doesn't work well for non dnd-likes
+ *
+ * @params
+ * * attack - the attack event
+ * * damage_mod - the +- to damage
+ * * hit_mod - the +- to hit
+ *
+ * @return the modified attack event
+ */
+/datum/attack/proc/add_to_attack(datum/event_args/attack/attack, damage_mod = 0, hit_mod = 0)
 	// todo
+	return attack
