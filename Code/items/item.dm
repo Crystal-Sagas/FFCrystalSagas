@@ -10,16 +10,4 @@
 	/// if FALSE, we should reset to our typepath's stats as opposed to loading stats from disk
 	var/modified = FALSE
 
-	//* old stats system - moved to here and well documented
-	/// weapon tier - use defines
-	var/weapon_tier
-
-
-
-/obj/item/Read(savefile/F)
-	. = ..()
-	if(!modified)
-		weapon_tier = initial(weapon_tier)
-	// #warn impl - initial all weapon vars
-
 // todo
