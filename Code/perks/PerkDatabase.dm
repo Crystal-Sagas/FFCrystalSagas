@@ -182,50 +182,45 @@ obj
 					name="Tier 2 HP"
 					rank="T2"
 					rpcost=2
-					stattype=1
-					stattypedisplay="Constitution"
-					legacy_stat_requirement=1
-					conreq=14
+					purchase_stat_requirements = list(
+						"con" = 14,
+					)
 					desc="Gives a flat bonus of 20 HP."
 					pre="Tier 1 HP"
 				HP3
 					name="Tier 3 HP"
 					rank="T3"
 					rpcost=3
-					stattype=1
-					stattypedisplay="Constitution"
-					legacy_stat_requirement=1
-					conreq=16
+					purchase_stat_requirements = list(
+						"con" = 16,
+					)
 					desc="Gives a flat bonus of 20 HP."
 					pre="Tier 2 HP"
 				HP4
 					name="Tier 4 HP"
 					rank="T4"
 					rpcost=4
-					stattype=1
-					stattypedisplay="Constitution"
-					legacy_stat_requirement=1
-					conreq=18
+					purchase_stat_requirements = list(
+						"con" = 18,
+					)
 					desc="Gives a flat bonus of 50 HP."
 					pre="Tier 3 HP"
 				HP5
 					name="Tier 5 HP"
 					rank="T5"
 					rpcost=5
-					stattype=1
-					stattypedisplay="Constitution"
-					legacy_stat_requirement=1
-					conreq=20
+					purchase_stat_requirements = list(
+						"con" = 20,
+					)
 					desc="Gives a flat bonus of 40 HP."
 					pre="Tier 4 HP"
 				HP6
 					name="Tier 6 HP"
 					rank="T6"
 					rpcost=6
-					stattype=1
-					stattypedisplay="Constitution"
-					legacy_stat_requirement=1
-					conreq=22
+					purchase_stat_requirements = list(
+						"con" = 22,
+					)
 					desc="Gives a flat bonus of 100 HP."
 					pre="Tier 5 HP"
 			MP
@@ -303,50 +298,45 @@ obj
 					name="Tier 2 SP"
 					rank="T2"
 					rpcost=2
-					stattype=2
-					stattypedisplay="Strength"
-					legacy_stat_requirement=1
-					strreq=14
+					purchase_stat_requirements = list(
+						"str" = 14,
+					)
 					desc="Gives a flat bonus of 20 SP."
 					pre="Tier 1 SP"
 				SP3
 					name="Tier 3 SP"
 					rank="T3"
 					rpcost=3
-					stattype=2
-					stattypedisplay="Strength"
-					legacy_stat_requirement=1
-					strreq=16
+					purchase_stat_requirements = list(
+						"str" = 16,
+					)
 					desc="Gives a flat bonus of 20 SP."
 					pre="Tier 2 SP"
 				SP4
 					name="Tier 4 SP"
 					rank="T4"
 					rpcost=4
-					stattype=2
-					stattypedisplay="Strength"
-					legacy_stat_requirement=1
-					strreq=18
+					purchase_stat_requirements = list(
+						"str" = 18,
+					)
 					desc="Gives a flat bonus of 80 SP."
 					pre="Tier 3 SP"
 				SP5
 					name="Tier 5 SP"
 					rank="T5"
 					rpcost=5
-					stattype=2
-					stattypedisplay="Strength"
-					legacy_stat_requirement=1
-					strreq=20
+					purchase_stat_requirements = list(
+						"str" = 20,
+					)
 					desc="Gives a flat bonus of 60 SP."
 					pre="Tier 4 SP"
 				SP6
 					name="Tier 6 SP"
 					rank="T6"
 					rpcost=6
-					stattype=2
-					stattypedisplay="Strength"
-					legacy_stat_requirement=1
-					strreq=22
+					purchase_stat_requirements = list(
+						"str" = 22,
+					)
 					desc="Gives a flat bonus of 100 SP."
 					pre="Tier 5 SP"
 			Speed
@@ -355,60 +345,51 @@ obj
 					name="Speed(T1)"
 					desc="Grants +1 Tile Movement per turn, for a total of 4."
 					rank="T1"
-					stattype=4
-					stattypedisplay="Dexterity"
-					legacy_stat_requirement=1
-					dexreq=10
 					rpcost=1
 				Speed2
 					name="Speed(T2)"
 					desc="Grants +2 Tile Movement per turn, for a total of 5."
 					rank="T2"
 					rpcost=2
-					stattype=4
-					stattypedisplay="Dexterity"
-					legacy_stat_requirement=1
-					dexreq=14
+					purchase_stat_requirements = list(
+						"dex" = 14,
+					)
 					pre="Speed(T1)"
 				Speed3
 					name="Speed(T3)"
 					desc="Grants +3 Tile Movement per turn, for a total of 6."
 					rank="T3"
 					rpcost=3
-					stattype=4
-					stattypedisplay="Dexterity"
-					legacy_stat_requirement=1
-					dexreq=16
+					purchase_stat_requirements = list(
+						"dex" = 16,
+					)
 					pre="Speed(T2)"
 				Speed4
 					name="Speed(T4)"
 					desc="Grants +4 Tile Movement per turn, for a total of 7."
 					rank="T4"
 					rpcost=4
-					stattype=4
-					stattypedisplay="Dexterity"
-					legacy_stat_requirement=1
-					dexreq=18
+					purchase_stat_requirements = list(
+						"dex" = 18,
+					)
 					pre="Speed(T3)"
 				Speed5
 					name="Speed(T5)"
 					desc="Grants +5 Tile Movement per turn, for a total of 8."
 					rank="T5"
 					rpcost=5
-					stattype=4
-					stattypedisplay="Dexterity"
-					legacy_stat_requirement=1
-					dexreq=20
+					purchase_stat_requirements = list(
+						"dex" = 20,
+					)
 					pre="Speed(T4)"
 				Speed6
 					name="Speed(T6)"
 					desc="Grants +6 Tile Movement per turn, for a total of 9."
 					rank="T6"
 					rpcost=6
-					stattype=4
-					stattypedisplay="Dexterity"
-					legacy_stat_requirement=1
-					dexreq=22
+					purchase_stat_requirements = list(
+						"dex" = 22,
+					)
 					pre="Speed(T5)"
 			AbilityScoreImprovements
 				icon='Icons/Perk/AbilityScore.png'
@@ -505,10 +486,9 @@ obj
 				icon='Icons/Perk/Leader.png'
 				cat="Unique"
 				rank="T3"
-				stattype=5
-				stattypedisplay="Charisma"
-				legacy_stat_requirement=1
-				chareq=16
+				purchase_stat_requirements = list(
+					"cha" = 16,
+				)
 				desc="This character is an inspiring leader. They may spend 60 Mana in order to apply a bonus equal to their CHA modifier towards AC, to hit, global damage reduction, and global damage to their entire party for 2 rounds."
 			Defensive
 				icon='Icons/Perk/Defensive.png'

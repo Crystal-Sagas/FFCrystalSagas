@@ -6,4 +6,18 @@
 	//  todo: this does nothing yet
 	var/tmp/list/abilities
 
+	//* serialization
+	/// if FALSE, we should reset to our typepath's stats as opposed to loading stats from disk
+	var/modified = FALSE
+
+	//* old stats system - moved to here and well documented
+	/// weapon tier - use defines
+	var/weapon_tier
+
+
+
+/obj/item/Read(savefile/F)
+	. = ..()
+	// #warn impl - initial all weapon vars
+
 // todo

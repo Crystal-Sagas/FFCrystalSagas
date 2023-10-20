@@ -6,53 +6,6 @@ obj
 	var
 		stattype
 		stattypedisplay
-		legacy_stat_requirement=0
-atom
-	proc
-		Checkstats(var/obj/a, var/mob/b, var/type)
-			switch(type)
-				if(1)
-					if(b.con>=a.conreq)
-						return 0
-					else
-						alert(usr,"You require at least [a.conreq] [a.stattypedisplay] to buy this perk.")
-						return 1
-				if(2)
-					if(b.str>=a.strreq)
-						return 0
-					else
-						alert(usr,"You require at least [a.strreq] [a.stattypedisplay] to buy this perk.")
-						return 1
-				if(3)
-					if(b.wis>=a.wisreq)
-						return 0
-					else
-						alert(usr,"You require at least [a.wisreq] [a.stattypedisplay] to buy this perk.")
-						return 1
-				if(4)
-					if(b.dex>=a.dexreq)
-						return 0
-					else
-						alert(usr,"You require at least [a.dexreq] [a.stattypedisplay] to buy this perk.")
-						return 1
-				if(5)
-					if(b.cha>=a.chareq)
-						return 0
-					else
-						alert(usr,"You require at least [a.chareq] [a.stattypedisplay] to buy this perk.")
-						return 1
-
-
-
-
-
-obj
-	var
-		conreq
-		strreq
-		wisreq
-		dexreq
-		chareq
 
 mob
 	proc
@@ -1914,11 +1867,6 @@ obj
 					alert(usr,"You already know this perk.")
 					usr.perkbuying=0
 					return
-				if(src.legacy_stat_requirement==1)
-					var/type = src.stattype
-					if(Checkstats(src,usr,type)==1)
-						usr.perkbuying=0
-						return
 				if(!isnull(purchase_stat_requirements))
 					for(var/stat in purchase_stat_requirements)
 						var/val = purchase_stat_requirements[stat]

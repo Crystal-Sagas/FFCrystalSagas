@@ -70,6 +70,8 @@
 #include "__DEFINES\tgs.config.dm"
 #include "__DEFINES\tgs.dm"
 #include "__DEFINES\time.dm"
+#include "__DEFINES\tiers\character_rank.dm"
+#include "__DEFINES\tiers\metal_tier.dm"
 #include "Code\_RoleplayProject.dm"
 #include "Code\Administration.dm"
 #include "Code\Area.dm"
