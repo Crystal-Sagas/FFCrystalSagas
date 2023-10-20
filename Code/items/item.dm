@@ -18,6 +18,8 @@
 
 /obj/item/Read(savefile/F)
 	. = ..()
-	// #warn impl - initial all weapon vars
+	if(!modified)
+		weapon_tier = initial(weapon_tier)
+	#warn impl - initial all weapon vars
 
 // todo
