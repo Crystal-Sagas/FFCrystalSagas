@@ -5,33 +5,34 @@
 
 	//* old stats system - moved to here and well documented
 	/// weapon tier - use defines
-	var/weapon_tier = WEAPON_TIER_BRONZE
+	var/tmp/weapon_tier = WEAPON_TIER_BRONZE
 	/// innate tohit bonus
-	var/weapon_innate_hit = 0
+	var/tmp/weapon_innate_hit = 0
 	/// innate damage bonus
-	var/weapon_innate_damage = 0
+	var/tmp/weapon_innate_damage = 0
 	/// innate crit bonus; if you set this to any negative number, the weapon can't crit at all as its crit range will be above 20.
-	var/weapon_innate_crit = 0
+	var/tmp/weapon_innate_crit = 0
 	/// innate hands required
-	var/weapon_handedness = 1
+	var/tmp/weapon_handedness = 1
 	/// what stat we scale with (damage and to hit)
-	var/weapon_stat = CHARACTER_STAT_STR
+	var/tmp/weapon_stat = CHARACTER_STAT_STR
 	/// tile range
-	var/weapon_range = 1
+	var/tmp/weapon_range = 1
 
 	/// constant multiplier for tier_scaling_constant - added to damage as a constant
-	var/weapon_scale_constant = 0
+	var/tmp/weapon_scale_constant = 0
 	/// floor of damage roll, multiplied by tier
-	var/weapon_scale_low = 1
+	var/tmp/weapon_scale_low = 1
 	/// ceiling of damage roll, multiplied by tier
-	var/weapon_scale_high = 2
+	var/tmp/weapon_scale_high = 2
 
 	/// description
-	var/weapon_desc = "A weapon of some kind."
+	var/tmp/weapon_desc = "A weapon of some kind."
 
 /obj/item/Weapon/Read(savefile/F)
 	. = ..()
 	if(!modified)
+		// rebuild our stats from the code if we're not a modified weapon
 		rebuild()
 
 /obj/item/Weapon/proc/rebuild()
@@ -44,7 +45,6 @@
 	damsource = weapon_stat
 	range = "[weapon_range] tiles"
 	desc = weapon_desc
-	#warn impl
 
 	// flat boost multiplied to weapon_scale_constant
 	var/tier_scaling_constant = 0
