@@ -500,47 +500,6 @@ obj
 		src.damsource="dex"
 		src.desc="A set of Throwing Knives, which deal piercing damage, have a reduced critical hit rate, +3 latent to hit bonus, and are ranged ;  for each attack action made with them, you may use a 'free action' - to spend 20 SP in order to perform an additional attack (up to once per turn)."
 		src.range="6 Tiles"
-	if(src.weapontype=="Claw")
-		src.equiptype="2h"
-		src.addhit=1
-		range1weapon=1
-		range2weapon=0.5
-		src.damsource="dex"
-		src.desc="Claws may attack twice per Standard action (once per round). If at least two attacks made with a Claw hit in the same round, the Claw inflicts Bleed. Claws have a critical hit range of 19-20."
-		src.critrange=19
-	if(src.weapontype=="Whip")
-		src.equiptype="1h"
-		range1weapon=1
-		range2weapon=2
-		src.addhit=2
-		src.damsource="dex"
-		src.desc="A Whip, which is extremely accurate but does little damage. Whips have a latent +2 to hit, and if an opponent's DEX score is lower than the wielder's, Whip attacks gain +3 to hit."
-	if(src.weapontype=="Greatsword")
-		src.equiptype="2h"
-		src.addhit=1
-		range1weapon=1
-		range2weapon=2
-		src.damsource="str"
-		src.desc="A Greatsword, which must be wielded in two hands. While a Greatsword is wielded, the wielder gains +2 STR. In addition, their basic attacks target the center tile, and two tiles beside the tile in front of them."
-	if(src.weapontype=="Katana")
-		src.equiptype="2h"
-		range1weapon=1
-		range2weapon=2
-		src.damsource="str"
-		src.desc="A Katana, which ignores 3 static points of damage reduction, and 2 extra points per Metal Tier (2 at Bronze, 4 at Iron, 6 at Steel, 8 at Mythril, 10 at Adamantine, 12 at Orichalcum.)"
-	if(src.weapontype=="Spear")
-		src.equiptype="2h"
-		range1weapon=1
-		range2weapon=2
-		src.damsource="str"
-		src.desc="A spear, which has a Melee range of 2 tiles. Spears when wielded, allow the user to spend 30 SP on hit, to ignore up to 25 points of damage reduction as a free action, once per round."
-	if(src.weapontype=="Scythe")
-		src.equiptype="2h"
-		range1weapon=1
-		range2weapon=2
-		src.critrange=19
-		src.damsource="dex"
-		src.desc="A Scythe, which is extremely proficient in hacking and cleaving. Scythes inflict Bleed whenever they hit a target. If a target creature is afflicted with Bleed, a Scythe deals 2d8 additional damage on hit, up to once per round."
 	if(src.weapontype=="Bow")
 		src.equiptype="2h"
 		range1weapon=1

@@ -81,13 +81,12 @@ GENERATE_PATHS_FOR_WEAPON_METAL_TIERS(/obj/item/Weapon/Melee/Claw)
 	weight=2
 	weapontype="Claw"
 	icon='Icons/Items/Gauntlet.png'
-	weapon_handedness = 1
-	weapon_scale_constant = 0
-	weapon_scale_low = 1
-	weapon_scale_high = 2
-	weapon_stat = CHARACTER_STAT_STR
-	weapon_desc = "A long, curved blade. Scimitars specialize in taking advantage of their unique shape to catch opponents off guard. Scimitar have a latent +4 to hit bonus, and if utilized alongside Sneak Attack, deal 15 unreducable true damage in addition to the attack's damage."
-	weapon_innate_hit = 4
+	weapon_handedness = 2
+	weapon_scale_low = 0.5
+	weapon_scale_high = 1
+	weapon_stat = CHARACTER_STAT_DEX
+	weapon_desc = "Claws may attack twice per Standard action (once per round). If at least two attacks made with a Claw hit in the same round, the Claw inflicts Bleed. Claws have a critical hit range of 19-20."
+	weapon_innate_crit = 1
 
 GENERATE_PATHS_FOR_WEAPON_METAL_TIERS(/obj/item/Weapon/Melee/Whip)
 /obj/item/Weapon/Melee/Whip
@@ -95,61 +94,54 @@ GENERATE_PATHS_FOR_WEAPON_METAL_TIERS(/obj/item/Weapon/Melee/Whip)
 	weapontype="Whip"
 	icon='Icons/Items/Whip.dmi'
 	weapon_handedness = 1
-	weapon_scale_constant = 0
 	weapon_scale_low = 1
 	weapon_scale_high = 2
-	weapon_stat = CHARACTER_STAT_STR
-	weapon_desc = "A long, curved blade. Scimitars specialize in taking advantage of their unique shape to catch opponents off guard. Scimitar have a latent +4 to hit bonus, and if utilized alongside Sneak Attack, deal 15 unreducable true damage in addition to the attack's damage."
-	weapon_innate_hit = 4
+	weapon_stat = CHARACTER_STAT_DEX
+	weapon_desc = "A Whip, which is extremely accurate but does little damage. Whips have a latent +2 to hit, and if an opponent's DEX score is lower than the wielder's, Whip attacks gain +3 to hit."
+	weapon_innate_hit = 2
 
 GENERATE_PATHS_FOR_WEAPON_METAL_TIERS(/obj/item/Weapon/Melee/Greatsword)
 /obj/item/Weapon/Melee/Greatsword
 	weight=15
 	weapontype="Greatsword"
 	icon='Icons/Items/Greatsword.dmi'
-	weapon_handedness = 1
-	weapon_scale_constant = 0
+	weapon_handedness = 2
 	weapon_scale_low = 1
 	weapon_scale_high = 2
 	weapon_stat = CHARACTER_STAT_STR
-	weapon_desc = "A long, curved blade. Scimitars specialize in taking advantage of their unique shape to catch opponents off guard. Scimitar have a latent +4 to hit bonus, and if utilized alongside Sneak Attack, deal 15 unreducable true damage in addition to the attack's damage."
-	weapon_innate_hit = 4
+	weapon_desc = "A Greatsword, which must be wielded in two hands. While a Greatsword is wielded, the wielder gains +2 STR. In addition, their basic attacks target the center tile, and two tiles beside the tile in front of them."
+	weapon_innate_hit = 1
 
 GENERATE_PATHS_FOR_WEAPON_METAL_TIERS(/obj/item/Weapon/Melee/Katana)
 /obj/item/Weapon/Melee/Katana
 	weight=8
 	weapontype="Katana"
 	icon='Icons/Items/Katana.dmi'
-	weapon_handedness = 1
-	weapon_scale_constant = 0
+	weapon_handedness = 2
 	weapon_scale_low = 1
 	weapon_scale_high = 2
 	weapon_stat = CHARACTER_STAT_STR
-	weapon_desc = "A long, curved blade. Scimitars specialize in taking advantage of their unique shape to catch opponents off guard. Scimitar have a latent +4 to hit bonus, and if utilized alongside Sneak Attack, deal 15 unreducable true damage in addition to the attack's damage."
-	weapon_innate_hit = 4
+	weapon_desc = "A Katana, which ignores 3 static points of damage reduction, and 2 extra points per Metal Tier (2 at Bronze, 4 at Iron, 6 at Steel, 8 at Mythril, 10 at Adamantine, 12 at Orichalcum.)"
 
 GENERATE_PATHS_FOR_WEAPON_METAL_TIERS(/obj/item/Weapon/Melee/Scythe)
 /obj/item/Weapon/Melee/Scythe
 	weight=15
 	weapontype="Scythe"
 	icon='Icons/Items/Scythe.dmi'
-	weapon_handedness = 1
-	weapon_scale_constant = 0
+	weapon_handedness = 2
 	weapon_scale_low = 1
 	weapon_scale_high = 2
-	weapon_stat = CHARACTER_STAT_STR
-	weapon_desc = "A long, curved blade. Scimitars specialize in taking advantage of their unique shape to catch opponents off guard. Scimitar have a latent +4 to hit bonus, and if utilized alongside Sneak Attack, deal 15 unreducable true damage in addition to the attack's damage."
-	weapon_innate_hit = 4
+	weapon_stat = CHARACTER_STAT_DEX
+	weapon_desc = "A Scythe, which is extremely proficient in hacking and cleaving. Scythes inflict Bleed whenever they hit a target. If a target creature is afflicted with Bleed, a Scythe deals 2d8 additional damage on hit, up to once per round."
+	weapon_innate_crit = 1
 
 GENERATE_PATHS_FOR_WEAPON_METAL_TIERS(/obj/item/Weapon/Melee/Spear)
 /obj/item/Weapon/Melee/Spear
 	weight=10
 	weapontype="Spear"
 	icon='Icons/Items/Spear.dmi'
-	weapon_handedness = 1
-	weapon_scale_constant = 0
+	weapon_handedness = 2
 	weapon_scale_low = 1
 	weapon_scale_high = 2
 	weapon_stat = CHARACTER_STAT_STR
-	weapon_desc = "A long, curved blade. Scimitars specialize in taking advantage of their unique shape to catch opponents off guard. Scimitar have a latent +4 to hit bonus, and if utilized alongside Sneak Attack, deal 15 unreducable true damage in addition to the attack's damage."
-	weapon_innate_hit = 4
+	weapon_desc = "A spear, which has a Melee range of 2 tiles. Spears when wielded, allow the user to spend 30 SP on hit, to ignore up to 25 points of damage reduction as a free action, once per round."
