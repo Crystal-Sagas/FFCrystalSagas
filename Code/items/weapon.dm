@@ -57,26 +57,44 @@
 			tier_scaling_constant = 1
 			tier_scaling_low = 1
 			tier_scaling_high = 6
+			//! legacy : set weptier
+			weptier = "Bronze"
+			//! end
 		if(WEAPON_TIER_IRON)
 			tier_scaling_constant = 2
 			tier_scaling_low = 1
 			tier_scaling_high = 8
+			//! legacy : set weptier
+			weptier = "Iron"
+			//! end
 		if(WEAPON_TIER_STEEL)
 			tier_scaling_constant = 3
 			tier_scaling_low = 1
 			tier_scaling_high = 10
+			//! legacy : set weptier
+			weptier = "Steel"
+			//! end
 		if(WEAPON_TIER_MYTHRIL)
 			tier_scaling_constant = 4
 			tier_scaling_low = 1
 			tier_scaling_high = 12
+			//! legacy : set weptier
+			weptier = "Mythril"
+			//! end
 		if(WEAPON_TIER_ADAMANTINE)
 			tier_scaling_constant = 5
 			tier_scaling_low = 1
 			tier_scaling_high = 16
+			//! legacy : set weptier
+			weptier = "Adamantine"
+			//! end
 		if(WEAPON_TIER_ORICHALCUM)
 			tier_scaling_constant = 6
 			tier_scaling_low = 2
 			tier_scaling_high = 40
+			//! legacy : set weptier
+			weptier = "Orichalcum"
+			//! end
 
 	addhit = weapon_scale_constant * tier_scaling_constant
 	range1 = weapon_scale_low * tier_scaling_low
