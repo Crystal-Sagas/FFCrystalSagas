@@ -2023,10 +2023,10 @@ obj
 					rank="T1"
 					name="Trapmaster"
 					desc="This individual has a sense for traps. They have learned how to set traps skillfully and can do so as a bonus action. This also allows them to notice any traps in their vision passively."
-				Flee
+				Weakpointspecialist
 					rank="T2"
-					name="Flee"
-					desc="This individual knows how to choose their battles. When they are escaping from a battle they may add their current Rank bonus to their flee result, and also have advantage on the Dexterity check for fleeing."
+					name="Weak Point Specialist"
+					desc="+2 critical range as a global mod. When a critical strike is landed the victim must roll a dc 16 fortitude save or be knocked prone. This effect is only procable once per turn."
 				FlurryofPetals
 					rank="T2"
 					name="Flurry of Petals"
