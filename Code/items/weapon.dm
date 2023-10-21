@@ -96,7 +96,7 @@
 			weptier = "Orichalcum"
 			//! end
 
-	addhit = weapon_scale_constant * tier_scaling_constant
+	adddam += weapon_scale_constant * tier_scaling_constant
 	range1 = weapon_scale_low * tier_scaling_low
 	range2 = weapon_scale_high * tier_scaling_high
 
