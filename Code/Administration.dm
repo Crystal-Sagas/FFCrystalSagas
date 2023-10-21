@@ -989,7 +989,7 @@ proc/DetermineVarValue(variable)
 
 	return "- [variable] -"
 
-mob/Topic(href,href_list[])
+/mob/Topic(href, list/href_list)
 	switch(href_list["action"])
 		if("edit")
 			var/variable = href_list["var"]
@@ -997,16 +997,17 @@ mob/Topic(href,href_list[])
 			if(istype(vari,/list))
 				switch(input(usr,"Do what?") as null|anything in list("Edit List","View List"))
 					if("Edit List")
-						var/x=input(usr,"Enter new list, Divide each entry by ; (EX. Item1;Item2; etc.):",,dd_list2text(vari,";"))as null|text
-						if(x)vari=dd_text2list(x,";")
+						var/x= input(usr,"Enter new list, Divide each entry by ; (EX. Item1;Item2; etc.):", , jointext(vari, ";"))as null|text
+						if(x)
+							vari = splittext(x, ";")
 					if("View List")
 						for(var/L in vari)
-							usr << L
+							usr.send_chat("[L]")
 				return
 			var/class = input(usr,"Change [variable] to what?","Variable Type") as null|anything \
 				in list("text","num","type","reference","verb","icon","file","list","true","false","list","restore to default")
 
-			if(!class)
+			if(isnull(class))
 				return
 
 			var/new_value
@@ -1036,7 +1037,8 @@ mob/Topic(href,href_list[])
 					new_value = l
 					usr.list_view(l,variable)
 				if("verb")
-					new_value = text2path(input(usr,"Type in the verb's path:","Verb",src.vars[variable]) as text|null)
+					new_value = input(usr,"Type in the verb's path:","Verb", src.vars[variable]) as text|null
+					new_value = text2path(new_value)
 				if("true")
 					new_value = TRUE
 				if("false")
@@ -1051,43 +1053,6 @@ mob/Topic(href,href_list[])
 			log_world("VAREDIT: [key_name(usr)] changed [src] ([ref_tag(src)]), [variable] from [old_render] to [new_render].")
 			src.vars[variable] = new_value
 			usr:Edit(src)
-
-proc
-	dd_replacetext(text, search_string, replacement_string)
-		// A nice way to do this is to split the text into an array based on the search_string,
-		// then put it back together into text using replacement_string as the new separator.
-		var/list/textList = dd_text2list(text, search_string)
-		return dd_list2text(textList, replacement_string)
-	dd_text2list(text, separator)
-		var/textlength      = length(text)
-		var/separatorlength = length(separator)
-		var/list/textList   = new /list()
-		var/searchPosition  = 1
-		var/findPosition    = 1
-		var/buggyText
-		while (1)															// Loop forever.
-			findPosition = findtext(text, separator, searchPosition, 0)
-			buggyText = copytext(text, searchPosition, findPosition)		// Everything from searchPosition to findPosition goes into a list element.
-			textList += "[buggyText]"										// Working around weird problem where "text" != "text" after this copytext().
-
-			searchPosition = findPosition + separatorlength					// Skip over separator.
-			if (findPosition == 0)											// Didn't find anything at end of string so stop here.
-				return textList
-			else
-				if (searchPosition > textlength)							// Found separator at very end of string.
-					textList += ""											// So add empty element.
-					return textList
-	dd_list2text(list/the_list, separator)
-		var/total = the_list.len
-		if (total == 0)														// Nothing to work with.
-			return
-
-		var/newText = "[the_list[1]]"										// Treats any object/number as text also.
-		var/count
-		for (count = 2, count <= total, count++)
-			if (separator) newText += separator
-			newText += "[the_list[count]]"
-		return newText
 
 mob/proc/list_view(aList,title)
 	if(!aList || !islist(aList)) return//CRASH("List null or incorrect type")
@@ -1105,6 +1070,7 @@ mob/proc/list_view(aList,title)
 		src << browse(html,"window=[title]")
 	else
 		src << browse(html)
+
 mob/proc/AddListLink(variable,listname,index)
 	if(islist(variable))
 		return "<a href=byond://?src=\ref[src];action=listview;list=\ref[variable];title=[listname]\[[index]]><font color=red>(V)</font></a>"
