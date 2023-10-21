@@ -1,9 +1,131 @@
 /obj/item/Weapon/Melee
 	typing="physical"
+
+/obj/item/Weapon/Melee/Longsword
+	icon='Icons/Items/Longsword.dmi'
+	weapon_handedness = 1
+	weapon_scale_constant = 1
+	weapon_scale_low = 1
+	weapon_scale_high = 2
+	weapon_stat = CHARACTER_STAT_STR
+	weapon_range = 1
+	weapon_desc = "Longswords are considered a rather versatile weapon due to it's balanced design. And can be used Offensively or Defensively.  A longsword user is capable of switching between offensive, defensive or neutral modes. In Offensive, they sacrifice AC for PAB and MAB, in Defensive they sacrifice PAB and MAB for AC.  Neutral cancels out either mode. Offense and Defense mode trades are capped at Metal Tier."
+	weapon_innate_hit = 1
+
+/obj/item/Weapon/Melee/Scimitar
+	icon='Icons/Items/Scimitar.png'
+	weapon_handedness = 1
+	weapon_scale_constant = 0
+	weapon_scale_low = 1
+	weapon_scale_high = 2
+	weapon_stat = CHARACTER_STAT_STR
+	weapon_range = 1
+	weapon_desc = "A long, curved blade. Scimitars specialize in taking advantage of their unique shape to catch opponents off guard. Scimitar have a latent +4 to hit bonus, and if utilized alongside Sneak Attack, deal 15 unreducable true damage in addition to the attack's damage."
+	weapon_innate_hit = 4
+
+/obj/item/Weapon/Melee/Hammer
+	weapon_handedness = 1
+	weapon_scale_constant = 0
+	weapon_scale_low = 1
+	weapon_scale_high = 2
+	weapon_stat = CHARACTER_STAT_STR
+	weapon_range = 1
+	weapon_desc = "A long, curved blade. Scimitars specialize in taking advantage of their unique shape to catch opponents off guard. Scimitar have a latent +4 to hit bonus, and if utilized alongside Sneak Attack, deal 15 unreducable true damage in addition to the attack's damage."
+	weapon_innate_hit = 4
+
+/obj/item/Weapon/Melee/Axe
+	weapon_handedness = 1
+	weapon_scale_constant = 0
+	weapon_scale_low = 1
+	weapon_scale_high = 2
+	weapon_stat = CHARACTER_STAT_STR
+	weapon_range = 1
+	weapon_desc = "A long, curved blade. Scimitars specialize in taking advantage of their unique shape to catch opponents off guard. Scimitar have a latent +4 to hit bonus, and if utilized alongside Sneak Attack, deal 15 unreducable true damage in addition to the attack's damage."
+	weapon_innate_hit = 4
+
+/obj/item/Weapon/Melee/Dagger
+	weapon_handedness = 1
+	weapon_scale_constant = 0
+	weapon_scale_low = 1
+	weapon_scale_high = 2
+	weapon_stat = CHARACTER_STAT_STR
+	weapon_range = 1
+	weapon_desc = "A long, curved blade. Scimitars specialize in taking advantage of their unique shape to catch opponents off guard. Scimitar have a latent +4 to hit bonus, and if utilized alongside Sneak Attack, deal 15 unreducable true damage in addition to the attack's damage."
+	weapon_innate_hit = 4
+
+/obj/item/Weapon/Melee/Gauntlet
+	weapon_handedness = 1
+	weapon_scale_constant = 0
+	weapon_scale_low = 1
+	weapon_scale_high = 2
+	weapon_stat = CHARACTER_STAT_STR
+	weapon_range = 1
+	weapon_desc = "A long, curved blade. Scimitars specialize in taking advantage of their unique shape to catch opponents off guard. Scimitar have a latent +4 to hit bonus, and if utilized alongside Sneak Attack, deal 15 unreducable true damage in addition to the attack's damage."
+	weapon_innate_hit = 4
+
+/obj/item/Weapon/Melee/Claw
+	weapon_handedness = 1
+	weapon_scale_constant = 0
+	weapon_scale_low = 1
+	weapon_scale_high = 2
+	weapon_stat = CHARACTER_STAT_STR
+	weapon_range = 1
+	weapon_desc = "A long, curved blade. Scimitars specialize in taking advantage of their unique shape to catch opponents off guard. Scimitar have a latent +4 to hit bonus, and if utilized alongside Sneak Attack, deal 15 unreducable true damage in addition to the attack's damage."
+	weapon_innate_hit = 4
+
+/obj/item/Weapon/Melee/Whip
+	weapon_handedness = 1
+	weapon_scale_constant = 0
+	weapon_scale_low = 1
+	weapon_scale_high = 2
+	weapon_stat = CHARACTER_STAT_STR
+	weapon_range = 1
+	weapon_desc = "A long, curved blade. Scimitars specialize in taking advantage of their unique shape to catch opponents off guard. Scimitar have a latent +4 to hit bonus, and if utilized alongside Sneak Attack, deal 15 unreducable true damage in addition to the attack's damage."
+	weapon_innate_hit = 4
+
+/obj/item/Weapon/Melee/Greatsword
+	weapon_handedness = 1
+	weapon_scale_constant = 0
+	weapon_scale_low = 1
+	weapon_scale_high = 2
+	weapon_stat = CHARACTER_STAT_STR
+	weapon_range = 1
+	weapon_desc = "A long, curved blade. Scimitars specialize in taking advantage of their unique shape to catch opponents off guard. Scimitar have a latent +4 to hit bonus, and if utilized alongside Sneak Attack, deal 15 unreducable true damage in addition to the attack's damage."
+	weapon_innate_hit = 4
+
+/obj/item/Weapon/Melee/Katana
+	weapon_handedness = 1
+	weapon_scale_constant = 0
+	weapon_scale_low = 1
+	weapon_scale_high = 2
+	weapon_stat = CHARACTER_STAT_STR
+	weapon_range = 1
+	weapon_desc = "A long, curved blade. Scimitars specialize in taking advantage of their unique shape to catch opponents off guard. Scimitar have a latent +4 to hit bonus, and if utilized alongside Sneak Attack, deal 15 unreducable true damage in addition to the attack's damage."
+	weapon_innate_hit = 4
+
+/obj/item/Weapon/Melee/Scythe
+	weapon_handedness = 1
+	weapon_scale_constant = 0
+	weapon_scale_low = 1
+	weapon_scale_high = 2
+	weapon_stat = CHARACTER_STAT_STR
+	weapon_range = 1
+	weapon_desc = "A long, curved blade. Scimitars specialize in taking advantage of their unique shape to catch opponents off guard. Scimitar have a latent +4 to hit bonus, and if utilized alongside Sneak Attack, deal 15 unreducable true damage in addition to the attack's damage."
+	weapon_innate_hit = 4
+
+/obj/item/Weapon/Melee/Spear
+	weapon_handedness = 1
+	weapon_scale_constant = 0
+	weapon_scale_low = 1
+	weapon_scale_high = 2
+	weapon_stat = CHARACTER_STAT_STR
+	weapon_range = 1
+	weapon_desc = "A long, curved blade. Scimitars specialize in taking advantage of their unique shape to catch opponents off guard. Scimitar have a latent +4 to hit bonus, and if utilized alongside Sneak Attack, deal 15 unreducable true damage in addition to the attack's damage."
+	weapon_innate_hit = 4
+
+/obj/item/Weapon/Melee
 	Longsword
-		equiptype="1h"
 		weight=5
-		icon='Icons/Items/Longsword.dmi'
 		weapontype="Longsword"
 		Bronze
 		Iron
@@ -12,9 +134,7 @@
 		Adamantine
 		Orichalcum
 	Scimitar
-		equiptype="1h"
 		weight=5
-		icon='Icons/Items/Scimitar.png'
 		weapontype="Scimitar"
 		Bronze
 		Iron

@@ -500,22 +500,6 @@ obj
 		src.damsource="dex"
 		src.desc="A set of Throwing Knives, which deal piercing damage, have a reduced critical hit rate, +3 latent to hit bonus, and are ranged ;  for each attack action made with them, you may use a 'free action' - to spend 20 SP in order to perform an additional attack (up to once per turn)."
 		src.range="6 Tiles"
-	if(src.weapontype=="Longsword")
-		src.equiptype="1h"
-		src.addhit=1
-		range1weapon=1
-		range2weapon=2
-		src.damsource="str"
-		src.desc="Longswords are considered a rather versatile weapon due to it's balanced design. And can be used Offensively or Defensively.  A longsword user is capable of switching between offensive, defensive or neutral modes. In Offensive, they sacrifice AC for PAB and MAB, in Defensive they sacrifice PAB and MAB for AC.  Neutral cancels out either mode. Offense and Defense mode trades are capped at Metal Tier."
-	if(src.weapontype=="Scimitar")
-		src.equiptype="1h"
-		range1weapon=1
-		range2weapon=2
-		src.damagescales=0
-		src.scaling=0
-		src.damsource="str"
-		src.addhit=4
-		src.desc="A long, curved blade. Scimitars specialize in taking advantage of their unique shape to catch opponents off guard. Scimitar have a latent +4 to hit bonus, and if utilized alongside Sneak Attack, deal 15 unreducable true damage in addition to the attack's damage."
 	if(src.weapontype=="Hammer")
 		src.equiptype="1h"
 		range1weapon=1
@@ -599,34 +583,6 @@ obj
 		range2weapon=1
 		src.damsource="dex"
 		src.desc="A Focus Sword, which when equipped allows the usage of a Focus Crystal alongside it. If wielded this way, the Focus Crystal may attack as a bonus action."
-	if(src.weapontype=="Focus Crystal")
-		src.equiptype="1h"
-		range1weapon=1
-		range2weapon=1
-		src.range="5 Tiles"
-		src.damsource="wis"
-		src.desc="A Focus Crystal, which can be wielded in one hand alongside a Focus Sword in order to cast magical blasts as a Bonus action. Deals Force damage. Grants +1 MAB and +2 MDB per metal tier."
-	if(src.weapontype=="Rod")
-		src.equiptype="2h"
-		range1weapon=1
-		range2weapon=2
-		src.range="5 Tiles"
-		src.damsource="wis"
-		src.desc="When a Rod is wielded, the wielder gains +2 MAB, and +5 MDB per Metal Tier. In addition, whenever a Rod basic attack, or a spell cast while the Rod is wielded hits a target, the wielder may spend 5 MP, SP, or HP in order to convert their vital energies into power, and deal 5 additional true damage per 5 MP, SP or HP spent (capping at 5*Metal Tier)."
-	if(src.weapontype=="Staff")
-		src.equiptype="2h"
-		range1weapon=1
-		range2weapon=2
-		src.range="5 Tiles"
-		src.damsource="cha"
-		src.desc="A Magical staff, which can be used for costless Magical attack rolls, which deal Force damage. A wielder of a Staff can spend 20 MP in order to createa 3x3 Area of Effect around the target of its attack, dealing 15 additional magical Force damage as an automatic hit to any creature in that range, once per turn, as a free action. Grants +2 MAB and +5 MDB per metal tier."
-	if(src.weapontype=="Tome")
-		src.equiptype="1h"
-		range1weapon=1
-		range2weapon=2
-		src.damsource="int"
-		src.range="5 Tiles"
-		src.desc="A Magical tome, which can be used for costless Magical attack rolls, which deal Force damage. The wielder of a Tome is capable of absoring MP equal to the damage its basic attack deals to a target creature, up to three times per turn. Grants +1 MAB and +2 MDB per metal tier."
 	if(src.weapontype=="Sword Spear")
 		src.equiptype="2h"
 		range1weapon=1
