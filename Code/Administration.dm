@@ -388,15 +388,17 @@ mob
 				choice.chacap=22
 				Updaterank(choice)
 			ManageAdmins()
-				if(usr.adminlv < 4)
-					usr << output("<font color=[src.textcolor]><font size = 0.5>Nuh uh uh</font>","oocout")
-					return
-				for(var/mob/M in world)
-					if(!M.client)
-						return
-					M.adminlv = input("What level admin would you like to make this person? Remember 0 = no admin.") as num
-					var/text = "[usr.key] changed [M.key]'s admin level to [M.adminlv]"
-					Adminlog(text)
+				usr.send_chat("This verb is disabled as it never really worked.")
+				return
+				// if(usr.adminlv < 4)
+				// 	usr << output("<font color=[src.textcolor]><font size = 0.5>Nuh uh uh</font>","oocout")
+				// 	return
+				// for(var/mob/M in world)
+				// 	if(!M.client)
+				// 		return
+				// 	M.adminlv = input("What level admin would you like to make this person? Remember 0 = no admin.") as num
+				// 	var/text = "[usr.key] changed [M.key]'s admin level to [M.adminlv]"
+				// 	Adminlog(text)
 			XYZTeleport()
 				if(usr.adminlv < 1)
 					usr << output("<font color=[src.textcolor]><font size = 0.5>Nuh uh uh</font>","oocout")
@@ -1004,36 +1006,50 @@ mob/Topic(href,href_list[])
 			var/class = input(usr,"Change [variable] to what?","Variable Type") as null|anything \
 				in list("text","num","type","reference","verb","icon","file","list","true","false","list","restore to default")
 
-			if(!class) return
+			if(!class)
+				return
+
+			var/new_value
 
 			switch(class)
 				if("text")
-					if(variable == "desc") src.vars[variable] = input(usr,"Enter new text:","Text",src.vars[variable]) as message
-					else src.vars[variable] = input(usr,"Enter new text:","Text",src.vars[variable]) as text
+					if(variable == "desc")
+						new_value = input(usr,"Enter new text:","Text",src.vars[variable]) as message|null
+					else
+						new_value = input(usr,"Enter new text:","Text",src.vars[variable]) as text|null
 				if("num")
-					src.vars[variable] = input(usr,"Enter new number:","Num",src.vars[variable]) as num
+					new_value = input(usr,"Enter new number:","Num",src.vars[variable]) as num|null
 				if("type")
-					src.vars[variable] = input(usr,"Enter type:","Type",src.vars[variable]) \
-						in typesof(/atom)
+					new_value = input(usr,"Enter type:","Type",src.vars[variable]) \
+						as null|anything in typesof(/atom)
 				if("reference")
-					src.vars[variable] = input(usr,"Select reference:","Reference", \
-						src.vars[variable]) as mob|obj|turf|area in world
+					new_value = input(usr,"Select reference:","Reference", \
+						src.vars[variable]) as mob|obj|turf|area|null in world
 				if("file")
-					src.vars[variable] = input(usr,"Pick file:","File",src.vars[variable]) \
-						as file
+					new_value = input(usr,"Pick file:","File",src.vars[variable]) \
+						as file|null
 				if("icon")
-					src.vars[variable] = input(usr,"Pick icon:","Icon",src.vars[variable]) \
-						as icon
+					new_value = input(usr,"Pick icon:","Icon",src.vars[variable]) \
+						as icon|null
 				if("list")
 					var/l = list()
-					src.vars[variable] = l
+					new_value = l
 					usr.list_view(l,variable)
 				if("verb")
-					src.vars[variable] = text2path(input(usr,"Type in the verb's path:","Verb",src.vars[variable]) as text)
+					new_value = text2path(input(usr,"Type in the verb's path:","Verb",src.vars[variable]) as text|null)
 				if("true")
-					src.vars[variable] = 1
+					new_value = TRUE
 				if("false")
-					src.vars[variable] = null
+					new_value = FALSE
+
+			if(isnull(new_value))
+				return
+
+			var/old_value = src.vars[variable]
+			var/old_render = istext(old_value)? "\"[old_value]\"" : "[old_value]"
+			var/new_render = istext(new_value)? "\"[new_value]\"" : "[new_value]"
+			log_world("VAREDIT: [key_name(usr)] changed [src] ([ref_tag(src)]), [variable] from [old_render] to [new_render].")
+			src.vars[variable] = new_value
 			usr:Edit(src)
 
 proc
