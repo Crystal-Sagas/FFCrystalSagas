@@ -42,7 +42,7 @@ var/daytime = "Night"
 
 /proc/DayLooper()
 	while(TRUE)
-		async_call(null, /proc/RefreshDay)
+		async_call(null, GLOBAL_PROC_REF(RefreshDay))
 		sleep(864000)
 
 /proc/RefreshDay()

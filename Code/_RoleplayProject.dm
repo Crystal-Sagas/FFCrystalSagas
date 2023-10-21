@@ -200,6 +200,7 @@ mob
 				var/obj/item/a=copyatom(b)
 				usr.contents+=a
 			load_complete = TRUE
+			AutoSave()
 		Load()
 			if(!fexists("data/save/character/[src.ckey]"))
 				alert("You do not have a save file.")
@@ -339,6 +340,7 @@ mob
 			UpdateArea(usr)
 			load_complete = TRUE
 			load_mutex = FALSE
+			AutoSave()
 		Save()
 			//? DO NOT REMOVE THIS CHECK UNDER ANY CIRCUMSTANCES.
 			//  Explanation:

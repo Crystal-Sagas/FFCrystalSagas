@@ -58,7 +58,7 @@ GLOBAL_LIST_EMPTY(clients)
 	// calls mob.Login()
 	. = ..()
 	// setup viewport
-	async_call(src, /client/proc/init_viewport_blocking)
+	async_call(src, PROC_REF(init_viewport_blocking))
 
 /client/Destruct()
 	// unregister global
@@ -81,7 +81,7 @@ GLOBAL_LIST_EMPTY(clients)
 	if(LAZYLIST_ACCESS(assets_loaded, A))
 		return TRUE
 	LAZYLIST_DISTINCTADD(assets_queued, A)
-	async_call(src, /client/proc/transmit_assets)
+	async_call(src, PROC_REF(transmit_assets))
 	BLOCK_ON(LAZYLIST_ACCESS(assets_loaded, A))
 	return TRUE
 
