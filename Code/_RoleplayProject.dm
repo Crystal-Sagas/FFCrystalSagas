@@ -78,7 +78,7 @@ mob
 			usr<<output("[world.realtime]","output1")
 			usr<<output("[time2text(world.realtime,"Day")]","output1")
 
-var/list/Admin4= list("neogeo123","","limb")
+var/list/Admin4= list("neogeo123","limb","Mimikyuu","Cenamderi3","Nanaris","Amlynn24","Kyro17")
 var/list/Guado=list()
 var/list/Cyborg=list()
 var/list/Gnath=list()
