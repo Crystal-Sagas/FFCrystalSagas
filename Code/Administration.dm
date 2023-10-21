@@ -1024,7 +1024,7 @@ mob/Topic(href,href_list[])
 						as null|anything in typesof(/atom)
 				if("reference")
 					new_value = input(usr,"Select reference:","Reference", \
-						src.vars[variable]) as mob|obj|turf|area|null in world
+						src.vars[variable]) as null|mob|obj|turf|area in world
 				if("file")
 					new_value = input(usr,"Pick file:","File",src.vars[variable]) \
 						as file|null
