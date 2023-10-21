@@ -112,6 +112,7 @@ obj
 			icon='Icons/Items/Longsword.dmi'
 
 			Jeweler
+				weapon_system = FALSE
 				jewelery=1
 				equiptype="accessory"
 				weapontype="accessory"
@@ -167,6 +168,7 @@ obj
 	item
 		Weapon
 			Armor
+				weapon_system = FALSE
 				weapon=0
 				armor=1
 				equiptype="armor"

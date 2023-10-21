@@ -4,6 +4,9 @@
 /obj/item/Weapon
 
 	//* old stats system - moved to here and well documented
+	/// use weapon system?
+	/// this is here because some things are under /Weapon but aren't .. weapons.
+	var/tmp/weapon_system = TRUE
 	/// weapon tier - use defines
 	var/tmp/weapon_tier = WEAPON_TIER_BRONZE
 	/// innate tohit bonus
@@ -36,6 +39,9 @@
 		rebuild()
 
 /obj/item/Weapon/proc/rebuild()
+	// don't rebuild non weapons
+	if(!weapon_system)
+		return
 	// called to rebuild stats on boot for non-modified (custom) weapons
 	//! these are legacy vars
 	addhit = weapon_innate_hit
