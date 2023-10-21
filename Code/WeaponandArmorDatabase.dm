@@ -500,36 +500,6 @@ obj
 		src.damsource="dex"
 		src.desc="A set of Throwing Knives, which deal piercing damage, have a reduced critical hit rate, +3 latent to hit bonus, and are ranged ;  for each attack action made with them, you may use a 'free action' - to spend 20 SP in order to perform an additional attack (up to once per turn)."
 		src.range="6 Tiles"
-	if(src.weapontype=="Hammer")
-		src.equiptype="1h"
-		range1weapon=1
-		range2weapon=2
-		src.addhit=-2
-		src.damsource="str"
-		src.desc="A Hammer, which is not very accurate but does high damage. If a Hammer hits an opponent, the wielder may choose to apply a 2 tile Knockback in a direction of their choosing. If the target hits a wall or surface in doing so, they take 2d10 additional damage."
-	if(src.weapontype=="Axe")
-		src.equiptype="1h"
-		src.critrange=19
-		range1weapon=1
-		range2weapon=2
-		src.damsource="str"
-		src.desc="An Axe, which has a higher chance to critically hit than most other weapons. When an attack is made with an Axe, the wielder may choose to spend 20 SP in order to release a 3 tile line, that deals 10 true damage as an automatic hit to those it crosses, in the direction the attack is being made. This can only be procced once per turn, only on standard attacks, and ignores damage reduction."
-	if(src.weapontype=="Dagger")
-		src.equiptype="1h"
-		src.addhit=1
-		range1weapon=1
-		range2weapon=1
-		src.damsource="dex"
-		src.desc="A dagger, which has a knack for critically hitting; rolling crits at 17 or higher, and has a latent +1 to hit bonus. On a critical hit, a Dagger ignores ALL damage reduction, and inflicts Weakness, but for 1 turn rather than its standard duration."
-		src.critrange=17
-	if(src.weapontype=="Gauntlet")
-		src.equiptype="2h"
-		src.addhit=1
-		range1weapon=1
-		range2weapon=0.5
-		src.damsource="str"
-		src.desc="A Gauntlet may attack twice per Standard action (once per round). If at least two attacks made with a Gauntlet hit in the same round, the Gauntlet deals 5 additional true damage per metal tier to the target, and knocks the target back 2 tiles per metal tier (if the user wishes for Knockback.)."
-		src.critrange=20
 	if(src.weapontype=="Claw")
 		src.equiptype="2h"
 		src.addhit=1
@@ -702,52 +672,3 @@ obj
 		src.damsource="dex"
 		src.range="6 Tiles"
 		src.desc="A Magitek Rifle, deals Force damage. 2H. When a target is dealt damage by a Magitek Rifle, they are knocked back 1 tile, and must roll a Fortitude saving throw (DC 10+ Metal Tier) or be knocked prone."
-	if(src.weptier=="Bronze")
-		range1true=range1bronze*range1weapon
-		range2true=range2bronze*range2weapon
-		src.range1=range1true
-		src.range2=range2true
-	if(src.weptier=="Iron")
-		range1true=range1iron*range1weapon
-		range2true=range2iron*range2weapon
-		src.range1=range1true
-		src.range2=range2true
-	if(src.weptier=="Steel")
-		range1true=range1steel*range1weapon
-		range2true=range2steel*range2weapon
-		src.range1=range1true
-		src.range2=range2true
-	if(src.weptier=="Mythril")
-		range1true=range1mythril*range1weapon
-		range2true=range2mythril*range2weapon
-		src.range1=range1true
-		src.range2=range2true
-	if(src.weptier=="Adamantine")
-		range1true=range1adamantine*range1weapon
-		range2true=range2adamantine*range2weapon
-		src.range1=range1true
-		src.range2=range2true
-	if(src.weptier=="Orichalcum")
-		range1true=range1orichalcum*range1weapon
-		range2true=range2orichalcum*range2weapon
-		src.range1=range1true
-		src.range2=range2true
-		if(src.weapontype=="Buster Sword")
-			src.range2+=20
-		if(src.weapontype=="Spear")
-			src.range2+=40
-		if(src.weapontype=="Bagangsaw")
-			src.range2+=40
-	if(src.damagescales==1)
-		if(src.weptier=="Bronze")
-			src.adddam=bronzetier*src.scaling
-		if(src.weptier=="Iron")
-			src.adddam=irontier*src.scaling
-		if(src.weptier=="Steel")
-			src.adddam=steeltier*src.scaling
-		if(src.weptier=="Mythril")
-			src.adddam=mythriltier*src.scaling
-		if(src.weptier=="Adamantine")
-			src.adddam=adamantinetier*src.scaling
-		if(src.weptier=="Orichalcum")
-			src.adddam=orichalcumtier*src.scaling
