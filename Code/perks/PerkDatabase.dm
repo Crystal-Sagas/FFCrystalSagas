@@ -1919,7 +1919,7 @@ obj
 				Hasso
 					rank="T2"
 					name="Hasso"
-					desc="The samurai has trained in many different duelist styles for katanas. Whenever a Katana, Dagger, Longsword, Greatsword, Buster Sword, Gunblade, or Whipblade is being wielded, this individual can add a bonus 3 to PDB."
+					desc="The samurai has trained in many different duelist styles for katanas. Whenever a Katana, Dagger, Longsword, Greatsword, Buster Sword, Gunblade, or Whip Blade is being wielded, this individual can add a bonus 3 to PDB."
 				Katsuryu
 					rank="T3"
 					name="Katsuryu"
