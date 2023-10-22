@@ -817,14 +817,14 @@ mob
 						usr.int+=2
 					if(p.name=="Pure Red Mage")
 						usr.abilitypoints+=2
-/*						usr.APspent-=2*/
+						usr.APspent -= 2
 					if(p.name=="Red Empowerment")
 						usr.abilitypoints+=2
-/*						usr.APspent-=2*/
+						usr.APspent -= 2
 					if(p.name=="Appointed Guardian")
 						usr.abilitypoints+=2
-/*						usr.APspent-=2*/
-					if(usr.job=="Machinist")
+						usr.APspent -= 2
+					if(p.name=="Machinist")
 						usr.int+=2
 
 			else
