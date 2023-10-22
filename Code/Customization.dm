@@ -398,10 +398,10 @@ obj
 							return
 						sicon+=Color
 						C.name+="([Color])"
+			C.icon=sicon
 			if(recolored)
 				usr.customoverlays+=C
 			usr.overlays += C
-			C.icon=sicon
 
 
 obj/status/HPBar
