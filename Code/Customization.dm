@@ -385,23 +385,28 @@ obj
 				for(var/A in usr.customoverlays)
 					row++
 					src << output(A,"Customizegrid:1,[row]")
-			var/sicon
-			var/obj/customs/added/C =new /obj/customs/added
-			sicon=src.icon
-			C.name=src.name
-			var/recolored = FALSE
-			if(!istype(src, /obj/customs/added) && !usr.nocolorask)
+			if(istype(src,/obj/customs/added))
+				usr.overlays+=src
+			if(usr.nocolorask)
+				usr.overlays+=src
+			else
+				var/sicon
+				var/obj/customs/added/C=new /obj/customs/added
+				C.pixel_x=src.pixel_x
+				C.pixel_y=src.pixel_y
+				sicon=src.icon
+				var/Color
 				switch(alert("Do you want to make a custom color?",,"Yes","No"))
 					if("Yes")
-						var/Color =input("Please choose a color") as color|null
-						if(isnull(Color))
-							return
-						sicon+=Color
-						C.name+="([Color])"
-			C.icon=sicon
-			if(recolored)
+						Color =input("Please choose a color") as color
+				if(Color)
+					sicon+=Color
+				C.icon=sicon
+				C.name=src.name
+				if(Color)
+					C.name+="([Color])"
 				usr.customoverlays+=C
-			usr.overlays += C
+				usr.overlays += C
 
 
 obj/status/HPBar
