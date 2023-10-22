@@ -35,7 +35,7 @@ GENERATE_PATHS_FOR_WEAPON_METAL_TIERS(/obj/item/Weapon/Magical/Tome)
 	weapon_stat = CHARACTER_STAT_INT
 	weapon_scale_low = 1
 	weapon_scale_high = 2
-	weapon_desc = "A Magical tome, which can be used for costless Magical attack rolls, which deal Force damage. The wielder of a Tome is capable of absoring MP equal to the damage its basic attack deals to a target creature, up to three times per turn. Grants +1 MAB and +2 MDB per metal tier."
+	weapon_desc = "A Magical tome, which can be used for costless Magical attack rolls, which deal Force damage. The wielder of a Tome is capable of absoring MP equal to the damage its basic attack deals to a target creature, up to three times per turn. Grants +2 MAB and +3 MDB per metal tier."
 
 GENERATE_PATHS_FOR_WEAPON_METAL_TIERS(/obj/item/Weapon/Magical/FocusCrystal)
 /obj/item/Weapon/Magical/FocusCrystal
@@ -47,4 +47,4 @@ GENERATE_PATHS_FOR_WEAPON_METAL_TIERS(/obj/item/Weapon/Magical/FocusCrystal)
 	weapon_stat = CHARACTER_STAT_WIS
 	weapon_scale_low = 1
 	weapon_scale_high = 1
-	weapon_desc = "A Focus Crystal, which can be wielded in one hand alongside a Focus Sword in order to cast magical blasts as a Bonus action. Deals Force damage. Grants +1 MAB and +2 MDB per metal tier."
+	weapon_desc = "A Focus Crystal, which can be wielded in one hand alongside a Focus Sword in order to cast magical blasts as a Bonus action. Deals Force damage. Grants +2 MAB and +3 MDB per metal tier."
