@@ -5,7 +5,7 @@
 
 /obj/item/material/gem/diamond
 	name = "Diamond"
-	icon_state = "Diamond"
+	icon_state = "gem_diamond"
 	id = "Diamond"
 
 /obj/item/material/gem/white

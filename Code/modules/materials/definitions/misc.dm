@@ -2,12 +2,12 @@
 
 /obj/item/material/wood
 	name = "Wood"
-	icon_state = "Wood"
+	icon_state = "wood"
 	id = "Wood"
 
 /obj/item/material/stone
 	name = "Stone"
-	icon_state = "Stone"
+	icon_state = "stone"
 	id = "Stone"
 
 /obj/item/material/raw_mako
@@ -27,12 +27,12 @@
 
 /obj/item/material/leather
 	name = "Leather"
-	icon_state = "Leather"
+	icon_state = "leather"
 	id = "Leather"
 
 /obj/item/material/wool
 	name = "Wool"
-	icon_state = "Wool"
+	icon_state = "wool"
 	id = "Wool"
 
 /obj/item/material/esper_soul
