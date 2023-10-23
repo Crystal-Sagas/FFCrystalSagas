@@ -55,8 +55,8 @@ GENERATE_PATHS_FOR_WEAPON_METAL_TIERS(/obj/item/Weapon/Special/WhipBlade)
 	icon='Icons/Items/Whipblade.dmi'
 	weapon_handedness = 1
 	weapon_scale_low = 1
-	weapon_scale_high = 1
-	weapon_scale_constant = 1
+	weapon_scale_high = 2
+	weapon_innate_hit = 2
 	weapon_stat = CHARACTER_STAT_DEX
 	weapon_desc = "A whip with segmented blades on it. The segments of the blade can detach and reattach, and be manipulated magically as separate razor-blades, for ranged attacks."
 	weapon_range = 3
