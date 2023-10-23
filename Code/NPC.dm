@@ -3023,7 +3023,7 @@ obj
 						if(a.partyID==usr.partyID)
 							questparty=a
 					Startbattle(usr,src,questparty)
-			if(src in global.stablemaster_obj.contents)
+			if(src in global.stablemaster_obj?.contents)
 				if(usr.job=="Beast Master" || usr.subjob=="Beast Master")
 					alert(usr,"[src.desc]")
 					var/list/buychoice=list("Yes","No")
@@ -3045,7 +3045,7 @@ obj
 					alert(usr,"Only a Beastmaster is able to buy Monsters from a Stablemaster.")
 					return
 			else
-				if (src in global.stablemaster_obj.contents)
+				if (src in global.stablemaster_obj?.contents)
 					return
 				if(src in global.npc_archive.npcs)
 					usr.npcachoice = src
