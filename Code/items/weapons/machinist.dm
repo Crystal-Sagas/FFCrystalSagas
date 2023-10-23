@@ -53,7 +53,7 @@
 	weapon_base_high = 35
 	weapon_innate_hit = 1
 	weapon_innate_damage = 2
-	weapon_stat = CHARACTER
+	weapon_stat = CHARACTER_STAT_STR
 	weapon_handedness = 1
 
 /obj/item/Weapon/Machinist/BallisticPistol
