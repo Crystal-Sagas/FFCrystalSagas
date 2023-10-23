@@ -29,6 +29,11 @@
 	/// ceiling of damage roll, multiplied by tier
 	var/tmp/weapon_scale_high = 2
 
+	/// base low damage roll
+	var/tmp/weapon_base_low = 0
+	/// base high damage roll
+	var/tmp/weapon_base_high = 0
+
 	/// description
 	var/tmp/weapon_desc = "A weapon of some kind."
 
@@ -51,6 +56,9 @@
 	damsource = weapon_stat
 	range = "[weapon_range] tiles"
 	desc = weapon_desc
+
+	range1 = weapon_base_low
+	range2 = weapon_base_high
 
 	// flat boost multiplied to weapon_scale_constant
 	var/tier_scaling_constant = 0
@@ -103,6 +111,6 @@
 			//! end
 
 	adddam += weapon_scale_constant * tier_scaling_constant
-	range1 = weapon_scale_low * tier_scaling_low
-	range2 = weapon_scale_high * tier_scaling_high
+	range1 += weapon_scale_low * tier_scaling_low
+	range2 += weapon_scale_high * tier_scaling_high
 

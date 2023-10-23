@@ -175,6 +175,7 @@
 #include "Code\items\item.dm"
 #include "Code\items\render.dm"
 #include "Code\items\weapon.dm"
+#include "Code\items\weapons\machinist.dm"
 #include "Code\items\weapons\mage.dm"
 #include "Code\items\weapons\melee.dm"
 #include "Code\items\weapons\ranged.dm"
