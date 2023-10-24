@@ -239,8 +239,11 @@ obj/item/Weapon/verb
 							if(a.amount>=10)
 								storename=src.name
 								tempname="Silver [src.name]"
-								src.addhit+=1
-								src.adddam+=1
+								if(istype(src, /obj/item/Weapon))
+									var/obj/item/Weapon/casted = src
+									casted.weapon_forced_add_hit += 1
+									casted.weapon_forced_add_dam += 1
+									casted.rebuild()
 								src.gilded=1
 								src.name=tempname
 								a.amount-=10
@@ -255,8 +258,11 @@ obj/item/Weapon/verb
 							if(a.amount>=10)
 								storename=src.name
 								tempname="Gold [src.name]"
-								src.addhit+=2
-								src.adddam+=2
+								if(istype(src, /obj/item/Weapon))
+									var/obj/item/Weapon/casted = src
+									casted.weapon_forced_add_hit += 2
+									casted.weapon_forced_add_dam += 2
+									casted.rebuild()
 								src.gilded=1
 								src.name=tempname
 								a.amount-=10
@@ -271,8 +277,11 @@ obj/item/Weapon/verb
 							if(a.amount>=10)
 								storename=src.name
 								tempname="Platinum [src.name]"
-								src.addhit+=3
-								src.adddam+=3
+								if(istype(src, /obj/item/Weapon))
+									var/obj/item/Weapon/casted = src
+									casted.weapon_forced_add_hit += 3
+									casted.weapon_forced_add_dam += 3
+									casted.rebuild()
 								src.gilded=1
 								src.name=tempname
 								a.amount-=10
@@ -303,8 +312,11 @@ obj/item/verb
 							src.name = input("What shall this item be called henceforth?") as text
 							src.lore = input("What is the lore/description of this particular item?") as message
 							src.lored=1
-							src.addhit+=1
-							src.adddam+=3
+							if(istype(src, /obj/item/Weapon))
+								var/obj/item/Weapon/casted = src
+								casted.weapon_forced_add_hit += 1
+								casted.weapon_forced_add_dam += 3
+								casted.rebuild()
 							if(src.name==null)
 								src.name="Lored [src.weptier] [src.weapontype]"
 							a.amount-=1
@@ -335,8 +347,11 @@ obj/item/verb
 				switch(choose)
 					if("Yes")
 						var/newname="Draconic [src.name]"
-						src.damsource="dex"
 						src.weapontype="Draconic"
+						if(istype(src, /obj/item/Weapon))
+							var/obj/item/Weapon/casted = src
+							casted.weapon_forced_stat = CHARACTER_STAT_DEX
+							casted.rebuild()
 						alert(usr,"You have made this weapon Draconic")
 						src.name=newname
 						return
@@ -359,8 +374,11 @@ obj/item/verb
 								return
 							else if(mtier.amount>=10)
 								mtier.amount-=10
-								src.addhit+=1
-								src.adddam+=1
+								if(istype(src, /obj/item/Weapon))
+									var/obj/item/Weapon/casted = src
+									casted.weapon_forced_add_hit += 1
+									casted.weapon_forced_add_dam += 1
+									casted.rebuild()
 								src.mastercraft=1
 								alert(usr,"You have made this weapon a Masterpiece!")
 								src.name=newname
@@ -375,8 +393,11 @@ obj/item/verb
 								return
 							else if(mtier.amount>=10)
 								mtier.amount-=10
-								src.addhit+=1
-								src.adddam+=1
+								if(istype(src, /obj/item/Weapon))
+									var/obj/item/Weapon/casted = src
+									casted.weapon_forced_add_hit += 1
+									casted.weapon_forced_add_dam += 1
+									casted.rebuild()
 								src.mastercraft=1
 								alert(usr,"You have made this weapon a Masterpiece!")
 								src.name=newname
@@ -391,8 +412,11 @@ obj/item/verb
 								return
 							else if(mtier.amount>=10)
 								mtier.amount-=10
-								src.addhit+=1
-								src.adddam+=1
+								if(istype(src, /obj/item/Weapon))
+									var/obj/item/Weapon/casted = src
+									casted.weapon_forced_add_hit += 1
+									casted.weapon_forced_add_dam += 1
+									casted.rebuild()
 								src.mastercraft=1
 								alert(usr,"You have made this weapon a Masterpiece!")
 								src.name=newname
@@ -407,8 +431,11 @@ obj/item/verb
 								return
 							else if(mtier.amount>=10)
 								mtier.amount-=10
-								src.addhit+=1
-								src.adddam+=1
+								if(istype(src, /obj/item/Weapon))
+									var/obj/item/Weapon/casted = src
+									casted.weapon_forced_add_hit += 1
+									casted.weapon_forced_add_dam += 1
+									casted.rebuild()
 								src.mastercraft=1
 								alert(usr,"You have made this weapon a Masterpiece!")
 								src.name=newname
@@ -423,8 +450,11 @@ obj/item/verb
 								return
 							else if(mtier.amount>=10)
 								mtier.amount-=10
-								src.addhit+=1
-								src.adddam+=1
+								if(istype(src, /obj/item/Weapon))
+									var/obj/item/Weapon/casted = src
+									casted.weapon_forced_add_hit += 1
+									casted.weapon_forced_add_dam += 1
+									casted.rebuild()
 								src.mastercraft=1
 								alert(usr,"You have made this weapon a Masterpiece!")
 								src.name=newname
@@ -439,8 +469,11 @@ obj/item/verb
 								return
 							else if(mtier.amount>=10)
 								mtier.amount-=10
-								src.addhit+=1
-								src.adddam+=1
+								if(istype(src, /obj/item/Weapon))
+									var/obj/item/Weapon/casted = src
+									casted.weapon_forced_add_hit += 1
+									casted.weapon_forced_add_dam += 1
+									casted.rebuild()
 								src.mastercraft=1
 								alert(usr,"You have made this weapon a Masterpiece!")
 								src.name=newname
@@ -478,7 +511,10 @@ obj/item/verb
 									if(fgem.amount>=8)
 										fgem.amount-=8
 										src.enchantment=" Enchanted(Intermediate) Fire +1 to hit, latently."
-										src.addhit+=1
+										if(istype(src, /obj/item/Weapon))
+											var/obj/item/Weapon/casted = src
+											casted.weapon_forced_add_hit += 1
+											casted.rebuild()
 										src.enchanted=1
 										view()<<output("[usr.name] enchants their [src.name]","icout")
 									else
@@ -487,8 +523,11 @@ obj/item/verb
 									if(fgem.amount>=12)
 										fgem.amount-=12
 										src.enchantment=" Enchanted(Expert) Fire +1 to hit and +3 to damage, latently."
-										src.addhit+=1
-										src.adddam+=3
+										if(istype(src, /obj/item/Weapon))
+											var/obj/item/Weapon/casted = src
+											casted.weapon_forced_add_hit += 1
+											casted.weapon_forced_add_dam += 3
+											casted.rebuild()
 										src.enchanted=1
 										view()<<output("[usr.name] enchants their [src.name]","icout")
 									else
@@ -512,7 +551,10 @@ obj/item/verb
 									if(igem.amount>=8)
 										igem.amount-=8
 										src.enchantment=" Enchanted(Intermediate) Ice +1 to hit, latently."
-										src.addhit+=1
+										if(istype(src, /obj/item/Weapon))
+											var/obj/item/Weapon/casted = src
+											casted.weapon_forced_add_hit += 1
+											casted.rebuild()
 										src.enchanted=1
 										view()<<output("[usr.name] enchants their [src.name]","icout")
 									else
@@ -521,8 +563,11 @@ obj/item/verb
 									if(igem.amount>=12)
 										igem.amount-=12
 										src.enchantment=" Enchanted(Expert) Ice +1 to hit and +3 to damage, latently."
-										src.addhit+=1
-										src.adddam+=3
+										if(istype(src, /obj/item/Weapon))
+											var/obj/item/Weapon/casted = src
+											casted.weapon_forced_add_hit += 1
+											casted.weapon_forced_add_dam += 3
+											casted.rebuild()
 										src.enchanted=1
 										view()<<output("[usr.name] enchants their [src.name]","icout")
 									else
@@ -546,7 +591,10 @@ obj/item/verb
 									if(tgem.amount>=8)
 										tgem.amount-=8
 										src.enchantment=" Enchanted(Intermediate) Thunder +1 to hit, latently."
-										src.addhit+=1
+										if(istype(src, /obj/item/Weapon))
+											var/obj/item/Weapon/casted = src
+											casted.weapon_forced_add_hit += 1
+											casted.rebuild()
 										src.enchanted=1
 										view()<<output("[usr.name] enchants their [src.name]","icout")
 									else
@@ -555,8 +603,11 @@ obj/item/verb
 									if(tgem.amount>=12)
 										tgem.amount-=12
 										src.enchantment=" Enchanted(Expert) Thunder +1 to hit and +3 to damage, latently."
-										src.addhit+=1
-										src.adddam+=3
+										if(istype(src, /obj/item/Weapon))
+											var/obj/item/Weapon/casted = src
+											casted.weapon_forced_add_hit += 1
+											casted.weapon_forced_add_dam += 3
+											casted.rebuild()
 										src.enchanted=1
 										view()<<output("[usr.name] enchants their [src.name]","icout")
 									else
@@ -580,7 +631,10 @@ obj/item/verb
 									if(wgem.amount>=8)
 										wgem.amount-=8
 										src.enchantment=" Enchanted(Intermediate) Water +1 to hit, latently."
-										src.addhit+=1
+										if(istype(src, /obj/item/Weapon))
+											var/obj/item/Weapon/casted = src
+											casted.weapon_forced_add_hit += 1
+											casted.rebuild()
 										src.enchanted=1
 										view()<<output("[usr.name] enchants their [src.name]","icout")
 									else
@@ -589,8 +643,11 @@ obj/item/verb
 									if(wgem.amount>=12)
 										wgem.amount-=12
 										src.enchantment=" Enchanted(Expert) Water +1 to hit and +3, latently."
-										src.addhit+=1
-										src.adddam+=3
+										if(istype(src, /obj/item/Weapon))
+											var/obj/item/Weapon/casted = src
+											casted.weapon_forced_add_hit += 1
+											casted.weapon_forced_add_dam += 3
+											casted.rebuild()
 										src.enchanted=1
 										view()<<output("[usr.name] enchants their [src.name]","icout")
 									else
@@ -614,7 +671,10 @@ obj/item/verb
 									if(wigem.amount>=8)
 										wigem.amount-=8
 										src.enchantment=" Enchanted(Intermediate) Wind +1 to hit, latently."
-										src.addhit+=1
+										if(istype(src, /obj/item/Weapon))
+											var/obj/item/Weapon/casted = src
+											casted.weapon_forced_add_hit += 1
+											casted.rebuild()
 										src.enchanted=1
 										view()<<output("[usr.name] enchants their [src.name]","icout")
 									else
@@ -623,8 +683,11 @@ obj/item/verb
 									if(wigem.amount>=12)
 										wigem.amount-=12
 										src.enchantment=" Enchanted(Expert) Wind +1 to hit and +3 to damage, latently."
-										src.addhit+=1
-										src.adddam+=3
+										if(istype(src, /obj/item/Weapon))
+											var/obj/item/Weapon/casted = src
+											casted.weapon_forced_add_hit += 1
+											casted.weapon_forced_add_dam += 3
+											casted.rebuild()
 										src.enchanted=1
 										view()<<output("[usr.name] enchants their [src.name]","icout")
 									else
@@ -648,7 +711,10 @@ obj/item/verb
 									if(egem.amount>=8)
 										egem.amount-=8
 										src.enchantment=" Enchanted(Intermediate) Earth +1 to hit, latently."
-										src.addhit+=1
+										if(istype(src, /obj/item/Weapon))
+											var/obj/item/Weapon/casted = src
+											casted.weapon_forced_add_hit += 1
+											casted.rebuild()
 										src.enchanted=1
 										view()<<output("[usr.name] enchants their [src.name]","icout")
 									else
@@ -657,8 +723,11 @@ obj/item/verb
 									if(egem.amount>=12)
 										egem.amount-=12
 										src.enchantment=" Enchanted(Expert) Earth +1 to hit and +3 to damage, latently."
-										src.addhit+=1
-										src.adddam+=3
+										if(istype(src, /obj/item/Weapon))
+											var/obj/item/Weapon/casted = src
+											casted.weapon_forced_add_hit += 1
+											casted.weapon_forced_add_dam += 3
+											casted.rebuild()
 										src.enchanted=1
 										view()<<output("[usr.name] enchants their [src.name]","icout")
 									else
@@ -682,7 +751,10 @@ obj/item/verb
 									if(bgem.amount>=8)
 										bgem.amount-=8
 										src.enchantment=" Enchanted(Intermediate) Bio +1 to hit, latently."
-										src.addhit+=1
+										if(istype(src, /obj/item/Weapon))
+											var/obj/item/Weapon/casted = src
+											casted.weapon_forced_add_hit += 1
+											casted.rebuild()
 										src.enchanted=1
 										view()<<output("[usr.name] enchants their [src.name]","icout")
 									else
@@ -691,8 +763,11 @@ obj/item/verb
 									if(bgem.amount>=12)
 										bgem.amount-=12
 										src.enchantment=" Enchanted(Expert) Bio +1 to hit and +3 to damage, latently."
-										src.addhit+=1
-										src.adddam+=3
+										if(istype(src, /obj/item/Weapon))
+											var/obj/item/Weapon/casted = src
+											casted.weapon_forced_add_hit += 1
+											casted.weapon_forced_add_dam += 3
+											casted.rebuild()
 										src.enchanted=1
 										view()<<output("[usr.name] enchants their [src.name]","icout")
 									else
@@ -716,7 +791,10 @@ obj/item/verb
 									if(hgem.amount>=8)
 										hgem.amount-=8
 										src.enchantment=" Enchanted(Intermediate) Holy +1 to hit, latently."
-										src.addhit+=1
+										if(istype(src, /obj/item/Weapon))
+											var/obj/item/Weapon/casted = src
+											casted.weapon_forced_add_hit += 1
+											casted.rebuild()
 										src.enchanted=1
 										view()<<output("[usr.name] enchants their [src.name]","icout")
 									else
@@ -725,8 +803,11 @@ obj/item/verb
 									if(hgem.amount>=12)
 										hgem.amount-=12
 										src.enchantment=" Enchanted(Expert) Holy +1 to hit and +3 to damage, latently."
-										src.addhit+=1
-										src.adddam+=3
+										if(istype(src, /obj/item/Weapon))
+											var/obj/item/Weapon/casted = src
+											casted.weapon_forced_add_hit += 1
+											casted.weapon_forced_add_dam += 3
+											casted.rebuild()
 										src.enchanted=1
 										view()<<output("[usr.name] enchants their [src.name]","icout")
 									else
@@ -750,7 +831,10 @@ obj/item/verb
 									if(dgem.amount>=8)
 										dgem.amount-=8
 										src.enchantment=" Enchanted(Intermediate) Dark +1 to hit, latently."
-										src.addhit+=1
+										if(istype(src, /obj/item/Weapon))
+											var/obj/item/Weapon/casted = src
+											casted.weapon_forced_add_hit += 1
+											casted.rebuild()
 										src.enchanted=1
 										view()<<output("[usr.name] enchants their [src.name]","icout")
 									else
@@ -759,8 +843,11 @@ obj/item/verb
 									if(dgem.amount>=12)
 										dgem.amount-=12
 										src.enchantment=" Enchanted(Expert) Dark +1 to hit and +3 to damage, latently."
-										src.addhit+=1
-										src.adddam+=3
+										if(istype(src, /obj/item/Weapon))
+											var/obj/item/Weapon/casted = src
+											casted.weapon_forced_add_hit += 1
+											casted.weapon_forced_add_dam += 3
+											casted.rebuild()
 										src.enchanted=1
 										view()<<output("[usr.name] enchants their [src.name]","icout")
 									else
@@ -784,8 +871,11 @@ obj/item/verb
 								if(src.entype=="armor")
 									src.enchantment=" Enchanted (Poison) | Gives advantage against Poison saving throws."
 								if(src.entype=="weapon")
-									src.addhit+=1
-									src.adddam+=1
+									if(istype(src, /obj/item/Weapon))
+										var/obj/item/Weapon/casted = src
+										casted.weapon_forced_add_hit += 1
+										casted.weapon_forced_add_dam += 1
+										casted.rebuild()
 									src.enchanted=1
 									src.enchantment=" Enchanted (Poison) +1 to hit and +1 damage, latently. | Attacks prompt DC 15 Saving Throw on hit, inflicting Poison on failure."
 							else
@@ -799,8 +889,11 @@ obj/item/verb
 								if(src.entype=="armor")
 									src.enchantment=" Enchanted (Blind) | Gives advantage against Blind saving throws."
 								if(src.entype=="weapon")
-									src.addhit+=1
-									src.adddam+=1
+									if(istype(src, /obj/item/Weapon))
+										var/obj/item/Weapon/casted = src
+										casted.weapon_forced_add_hit += 1
+										casted.weapon_forced_add_dam += 1
+										casted.rebuild()
 									src.enchanted=1
 									src.enchantment=" Enchanted (Blind) +1 to hit, latently.| Attacks prompt DC 15 Saving Throw on hit, inflicting Blind on failure."
 							else
@@ -814,8 +907,11 @@ obj/item/verb
 								if(src.entype=="armor")
 									src.enchantment=" Enchanted (Silence) | Gives advantage against Silence saving throws."
 								if(src.entype=="weapon")
-									src.addhit+=1
-									src.adddam+=1
+									if(istype(src, /obj/item/Weapon))
+										var/obj/item/Weapon/casted = src
+										casted.weapon_forced_add_hit += 1
+										casted.weapon_forced_add_dam += 1
+										casted.rebuild()
 									src.enchanted=1
 									src.enchantment=" Enchanted (Silence) +1 to hit, latently.| Attacks prompt DC 15 Saving Throw on hit, inflicting Silence on failure."
 							else
@@ -929,8 +1025,11 @@ obj/item/verb
 											alert(usr,"You don't seem to have any Dark Gems (15 needed).")
 											return
 										if(dgem.amount>=15)
-											src.addhit+=1
-											src.adddam+=5
+											if(istype(src, /obj/item/Weapon))
+												var/obj/item/Weapon/casted = src
+												casted.weapon_forced_add_hit += 1
+												casted.weapon_forced_add_dam += 5
+												casted.rebuild()
 											src.mythic=1
 											src.enchantment="[src.enchantment] | [addenchant]"
 											return
@@ -950,8 +1049,11 @@ obj/item/verb
 											alert(usr,"You don't seem to have any Holy Gems (15 needed).")
 											return
 										if(dgem.amount>=15)
-											src.addhit+=1
-											src.adddam+=5
+											if(istype(src, /obj/item/Weapon))
+												var/obj/item/Weapon/casted = src
+												casted.weapon_forced_add_hit += 1
+												casted.weapon_forced_add_dam += 5
+												casted.rebuild()
 											src.mythic=1
 											src.enchantment="[src.enchantment] | [addenchant]"
 											return
@@ -971,8 +1073,11 @@ obj/item/verb
 											alert(usr,"You don't seem to have any White Gems (15 needed).")
 											return
 										if(dgem.amount>=15)
-											src.addhit+=1
-											src.adddam+=5
+											if(istype(src, /obj/item/Weapon))
+												var/obj/item/Weapon/casted = src
+												casted.weapon_forced_add_hit += 1
+												casted.weapon_forced_add_dam += 5
+												casted.rebuild()
 											src.mythic=1
 											src.enchantment="[src.enchantment] | [addenchant]"
 											return
@@ -992,8 +1097,11 @@ obj/item/verb
 											alert(usr,"You don't seem to have any Black Gems (15 needed).")
 											return
 										if(dgem.amount>=15)
-											src.addhit+=1
-											src.adddam+=5
+											if(istype(src, /obj/item/Weapon))
+												var/obj/item/Weapon/casted = src
+												casted.weapon_forced_add_hit += 1
+												casted.weapon_forced_add_dam += 5
+												casted.rebuild()
 											src.mythic=1
 											src.enchantment="[src.enchantment] | [addenchant]"
 											return
@@ -1011,8 +1119,11 @@ obj/item/verb
 											alert(usr,"You don't seem to have any Fire Gems (15 needed).")
 											return
 										if(dgem.amount>=15)
-											src.addhit+=1
-											src.adddam+=5
+											if(istype(src, /obj/item/Weapon))
+												var/obj/item/Weapon/casted = src
+												casted.weapon_forced_add_hit += 1
+												casted.weapon_forced_add_dam += 5
+												casted.rebuild()
 											src.mythic=1
 											src.enchantment="[src.enchantment] | [addenchant]"
 											return
@@ -1030,8 +1141,11 @@ obj/item/verb
 											alert(usr,"You don't seem to have any Dark Gems (15 needed).")
 											return
 										if(dgem.amount>=15)
-											src.addhit+=1
-											src.adddam+=5
+											if(istype(src, /obj/item/Weapon))
+												var/obj/item/Weapon/casted = src
+												casted.weapon_forced_add_hit += 1
+												casted.weapon_forced_add_dam += 5
+												casted.rebuild()
 											src.mythic=1
 											src.enchantment="[src.enchantment] | [addenchant]"
 											return
@@ -1049,8 +1163,11 @@ obj/item/verb
 											alert(usr,"You don't seem to have any Bio Gems (15 needed).")
 											return
 										if(dgem.amount>=15)
-											src.addhit+=1
-											src.adddam+=5
+											if(istype(src, /obj/item/Weapon))
+												var/obj/item/Weapon/casted = src
+												casted.weapon_forced_add_hit += 1
+												casted.weapon_forced_add_dam += 5
+												casted.rebuild()
 											src.mythic=1
 											src.enchantment="[src.enchantment] | [addenchant]"
 											return
@@ -1068,8 +1185,11 @@ obj/item/verb
 											alert(usr,"You don't seem to have any Earth Gems (15 needed).")
 											return
 										if(dgem.amount>=15)
-											src.addhit+=1
-											src.adddam+=12
+											if(istype(src, /obj/item/Weapon))
+												var/obj/item/Weapon/casted = src
+												casted.weapon_forced_add_hit += 1
+												casted.weapon_forced_add_dam += 12
+												casted.rebuild()
 											src.mythic=1
 											src.enchantment="[src.enchantment] | [addenchant]"
 											return
@@ -1087,9 +1207,12 @@ obj/item/verb
 											alert(usr,"You don't seem to have any Ice Gems (15 needed).")
 											return
 										if(dgem.amount>=15)
-											src.critrange-=1
-											src.adddam+=5
-											src.addhit+=1
+											if(istype(src, /obj/item/Weapon))
+												var/obj/item/Weapon/casted = src
+												casted.weapon_forced_add_hit += 1
+												casted.weapon_forced_add_dam += 5
+												casted.rebuild()
+												casted.weapon_forced_add_crit += 1
 											src.mythic=1
 											src.enchantment="[src.enchantment] | [addenchant]"
 											return
@@ -1107,8 +1230,11 @@ obj/item/verb
 											alert(usr,"You don't seem to have any Wind Gems (15 needed).")
 											return
 										if(dgem.amount>=15)
-											src.adddam+=5
-											src.addhit+=3
+											if(istype(src, /obj/item/Weapon))
+												var/obj/item/Weapon/casted = src
+												casted.weapon_forced_add_hit += 3
+												casted.weapon_forced_add_dam += 5
+												casted.rebuild()
 											src.mythic=1
 											src.enchantment="[src.enchantment] | [addenchant]"
 											return
@@ -1126,8 +1252,11 @@ obj/item/verb
 											alert(usr,"You don't seem to have any Thunder Gems (15 needed).")
 											return
 										if(dgem.amount>=15)
-											src.adddam+=5
-											src.addhit+=1
+											if(istype(src, /obj/item/Weapon))
+												var/obj/item/Weapon/casted = src
+												casted.weapon_forced_add_hit += 1
+												casted.weapon_forced_add_dam += 5
+												casted.rebuild()
 											src.mythic=1
 											src.enchantment="[src.enchantment] | [addenchant]"
 											return
@@ -1145,8 +1274,11 @@ obj/item/verb
 											alert(usr,"You don't seem to have any White Gems. (15  needed).")
 											return
 										if(dgem.amount>=15)
-											src.adddam+=5
-											src.addhit+=1
+											if(istype(src, /obj/item/Weapon))
+												var/obj/item/Weapon/casted = src
+												casted.weapon_forced_add_hit += 1
+												casted.weapon_forced_add_dam += 5
+												casted.rebuild()
 											src.mythic=1
 											src.enchantment="[src.enchantment] | [addenchant]"
 											return
@@ -1164,8 +1296,11 @@ obj/item/verb
 											alert(usr,"You don't seem to have any Earth Gems. (15  needed).")
 											return
 										if(dgem.amount>=15)
-											src.adddam+=5
-											src.addhit+=1
+											if(istype(src, /obj/item/Weapon))
+												var/obj/item/Weapon/casted = src
+												casted.weapon_forced_add_hit += 1
+												casted.weapon_forced_add_dam += 5
+												casted.rebuild()
 											src.mythic=1
 											src.enchantment="[src.enchantment] | [addenchant]"
 											return
@@ -1183,8 +1318,11 @@ obj/item/verb
 											alert(usr,"You don't seem to have any Fire Gems. (15  needed).")
 											return
 										if(dgem.amount>=15)
-											src.adddam+=5
-											src.addhit+=1
+											if(istype(src, /obj/item/Weapon))
+												var/obj/item/Weapon/casted = src
+												casted.weapon_forced_add_hit += 1
+												casted.weapon_forced_add_dam += 5
+												casted.rebuild()
 											src.mythic=1
 											src.enchantment="[src.enchantment] | [addenchant]"
 											return
@@ -1202,8 +1340,11 @@ obj/item/verb
 											alert(usr,"You don't seem to have any Wind Gems. (15  needed).")
 											return
 										if(dgem.amount>=15)
-											src.adddam+=5
-											src.addhit+=1
+											if(istype(src, /obj/item/Weapon))
+												var/obj/item/Weapon/casted = src
+												casted.weapon_forced_add_hit += 1
+												casted.weapon_forced_add_dam += 5
+												casted.rebuild()
 											src.mythic=1
 											src.enchantment="[src.enchantment] | [addenchant]"
 											return
@@ -1221,8 +1362,11 @@ obj/item/verb
 											alert(usr,"You don't seem to have any Earth Gems. (15  needed).")
 											return
 										if(dgem.amount>=15)
-											src.adddam+=5
-											src.addhit+=1
+											if(istype(src, /obj/item/Weapon))
+												var/obj/item/Weapon/casted = src
+												casted.weapon_forced_add_hit += 1
+												casted.weapon_forced_add_dam += 5
+												casted.rebuild()
 											src.mythic=1
 											src.enchantment="[src.enchantment] | [addenchant]"
 											return
@@ -1240,8 +1384,11 @@ obj/item/verb
 											alert(usr,"You don't seem to have any Water Gems. (15  needed).")
 											return
 										if(dgem.amount>=15)
-											src.adddam+=5
-											src.addhit+=1
+											if(istype(src, /obj/item/Weapon))
+												var/obj/item/Weapon/casted = src
+												casted.weapon_forced_add_hit += 1
+												casted.weapon_forced_add_dam += 5
+												casted.rebuild()
 											src.mythic=1
 											src.enchantment="[src.enchantment] | [addenchant]"
 											return
@@ -1259,8 +1406,11 @@ obj/item/verb
 											alert(usr,"You don't seem to have any Thunder Gems. (15  needed).")
 											return
 										if(dgem.amount>=15)
-											src.adddam+=5
-											src.addhit+=1
+											if(istype(src, /obj/item/Weapon))
+												var/obj/item/Weapon/casted = src
+												casted.weapon_forced_add_hit += 1
+												casted.weapon_forced_add_dam += 5
+												casted.rebuild()
 											src.mythic=1
 											src.enchantment="[src.enchantment] | [addenchant]"
 											return
@@ -1278,8 +1428,11 @@ obj/item/verb
 											alert(usr,"You don't seem to have any Bio Gems. (15  needed).")
 											return
 										if(dgem.amount>=15)
-											src.adddam+=5
-											src.addhit+=1
+											if(istype(src, /obj/item/Weapon))
+												var/obj/item/Weapon/casted = src
+												casted.weapon_forced_add_hit += 1
+												casted.weapon_forced_add_dam += 5
+												casted.rebuild()
 											src.mythic=1
 											src.enchantment="[src.enchantment] | [addenchant]"
 											return
@@ -1297,8 +1450,11 @@ obj/item/verb
 											alert(usr,"You don't seem to have any Dark Gems. (15  needed).")
 											return
 										if(dgem.amount>=15)
-											src.adddam+=5
-											src.addhit+=1
+											if(istype(src, /obj/item/Weapon))
+												var/obj/item/Weapon/casted = src
+												casted.weapon_forced_add_hit += 1
+												casted.weapon_forced_add_dam += 5
+												casted.rebuild()
 											src.mythic=1
 											src.enchantment="[src.enchantment] | [addenchant]"
 											return
@@ -1316,8 +1472,11 @@ obj/item/verb
 											alert(usr,"You don't seem to have any Dark Gems. (15  needed).")
 											return
 										if(dgem.amount>=15)
-											src.adddam+=5
-											src.addhit+=1
+											if(istype(src, /obj/item/Weapon))
+												var/obj/item/Weapon/casted = src
+												casted.weapon_forced_add_hit += 1
+												casted.weapon_forced_add_dam += 5
+												casted.rebuild()
 											src.mythic=1
 											src.enchantment="[src.enchantment] | [addenchant]"
 											return
@@ -1335,8 +1494,11 @@ obj/item/verb
 											alert(usr,"You don't seem to have any Dark Gems. (15  needed).")
 											return
 										if(dgem.amount>=15)
-											src.adddam+=5
-											src.addhit+=1
+											if(istype(src, /obj/item/Weapon))
+												var/obj/item/Weapon/casted = src
+												casted.weapon_forced_add_hit += 1
+												casted.weapon_forced_add_dam += 5
+												casted.rebuild()
 											src.mythic=1
 											src.enchantment="[src.enchantment] | [addenchant]"
 											return
@@ -1354,8 +1516,11 @@ obj/item/verb
 											alert(usr,"You don't seem to have any Holy Gems. (15  needed).")
 											return
 										if(dgem.amount>=15)
-											src.adddam+=5
-											src.addhit+=1
+											if(istype(src, /obj/item/Weapon))
+												var/obj/item/Weapon/casted = src
+												casted.weapon_forced_add_hit += 1
+												casted.weapon_forced_add_dam += 5
+												casted.rebuild()
 											src.mythic=1
 											src.enchantment="[src.enchantment] | [addenchant]"
 											return
@@ -1373,8 +1538,11 @@ obj/item/verb
 											alert(usr,"You don't seem to have any Holy Gems. (15  needed).")
 											return
 										if(dgem.amount>=15)
-											src.adddam+=5
-											src.addhit+=1
+											if(istype(src, /obj/item/Weapon))
+												var/obj/item/Weapon/casted = src
+												casted.weapon_forced_add_hit += 1
+												casted.weapon_forced_add_dam += 5
+												casted.rebuild()
 											src.mythic=1
 											src.enchantment="[src.enchantment] | [addenchant]"
 											return
@@ -1392,8 +1560,11 @@ obj/item/verb
 											alert(usr,"You don't seem to have any Holy Gems. (15  needed).")
 											return
 										if(dgem.amount>=15)
-											src.adddam+=5
-											src.addhit+=1
+											if(istype(src, /obj/item/Weapon))
+												var/obj/item/Weapon/casted = src
+												casted.weapon_forced_add_hit += 1
+												casted.weapon_forced_add_dam += 5
+												casted.rebuild()
 											src.mythic=1
 											src.enchantment="[src.enchantment] | [addenchant]"
 											return
@@ -1411,10 +1582,13 @@ obj/item/verb
 											alert(usr,"You don't seem to have any Dark Gems. (15  needed).")
 											return
 										if(dgem.amount>=15)
-											src.adddam+=5
-											src.addhit+=1
+											if(istype(src, /obj/item/Weapon))
+												var/obj/item/Weapon/casted = src
+												casted.weapon_forced_add_hit += 1
+												casted.weapon_forced_add_dam += 5
+												casted.rebuild()
+												casted.weapon_forced_stat = CHARACTER_STAT_WIS
 											src.typing="magical"
-											src.damsource="wis"
 											src.mythic=1
 											src.enchantment="[src.enchantment] | [addenchant]"
 											return
@@ -1432,10 +1606,13 @@ obj/item/verb
 											alert(usr,"You don't seem to have any Dark Gems. (15  needed).")
 											return
 										if(dgem.amount>=15)
-											src.adddam+=5
-											src.addhit+=1
+											if(istype(src, /obj/item/Weapon))
+												var/obj/item/Weapon/casted = src
+												casted.weapon_forced_add_hit += 1
+												casted.weapon_forced_add_dam += 5
+												casted.rebuild()
+												casted.weapon_forced_stat = CHARACTER_STAT_INT
 											src.typing="magical"
-											src.damsource="int"
 											src.mythic=1
 											src.enchantment="[src.enchantment] | [addenchant]"
 											return
@@ -1453,10 +1630,13 @@ obj/item/verb
 											alert(usr,"You don't seem to have any White Gems. (15  needed).")
 											return
 										if(dgem.amount>=15)
-											src.adddam+=5
-											src.addhit+=1
+											if(istype(src, /obj/item/Weapon))
+												var/obj/item/Weapon/casted = src
+												casted.weapon_forced_add_hit += 1
+												casted.weapon_forced_add_dam += 5
+												casted.rebuild()
+												casted.weapon_forced_stat = CHARACTER_STAT_CHA
 											src.typing="magical"
-											src.damsource="cha"
 											src.mythic=1
 											src.enchantment="[src.enchantment] | [addenchant]"
 											return
@@ -1474,10 +1654,11 @@ obj/item/verb
 											alert(usr,"You don't seem to have any Wind Gems. (15  needed).")
 											return
 										if(dgem.amount>=15)
-											src.adddam+=5
-											src.addhit+=1
-											src.typing="magical"
-											src.damsource="wis"
+											if(istype(src, /obj/item/Weapon))
+												var/obj/item/Weapon/casted = src
+												casted.weapon_forced_add_hit += 1
+												casted.weapon_forced_add_dam += 5
+												casted.rebuild()
 											src.mythic=1
 											src.enchantment="[src.enchantment] | [addenchant]"
 											return
@@ -1495,10 +1676,11 @@ obj/item/verb
 											alert(usr,"You don't seem to have any Fire Gems. (15  needed).")
 											return
 										if(dgem.amount>=15)
-											src.adddam+=5
-											src.addhit+=1
-											src.typing="magical"
-											src.damsource="wis"
+											if(istype(src, /obj/item/Weapon))
+												var/obj/item/Weapon/casted = src
+												casted.weapon_forced_add_hit += 1
+												casted.weapon_forced_add_dam += 5
+												casted.rebuild()
 											src.mythic=1
 											src.enchantment="[src.enchantment] | [addenchant]"
 											return

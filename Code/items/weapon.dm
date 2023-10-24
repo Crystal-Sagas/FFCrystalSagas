@@ -37,6 +37,18 @@
 	/// description
 	var/tmp/weapon_desc = "A weapon of some kind."
 
+	//* set re-typing without completely disabling updates
+	//  todo: this is terrible and the new entity mapper system should do something less terrible
+	/// non-tmp override stat
+	var/weapon_forced_stat
+	/// non-tmp add hit
+	var/weapon_forced_add_hit = 0
+	/// non-tmp add damage
+	var/weapon_forced_add_dam = 0
+	/// non-tmp add crit
+	var/weapon_forced_add_crit = 0
+
+
 /obj/item/Weapon/Read(savefile/F)
 	. = ..()
 	if(!modified)
@@ -49,11 +61,11 @@
 		return
 	// called to rebuild stats on boot for non-modified (custom) weapons
 	//! these are legacy vars
-	addhit = weapon_innate_hit
-	adddam = weapon_innate_damage
-	critrange = 20 - weapon_innate_crit
+	addhit = weapon_innate_hit + weapon_forced_add_hit
+	adddam = weapon_innate_damage + weapon_forced_add_dam
+	critrange = 20 - weapon_innate_crit - weapon_forced_add_crit
 	equiptype = weapon_handedness > 1? "2h" : "1h"
-	damsource = weapon_stat
+	damsource = isnull(weapon_forced_stat)? weapon_stat : weapon_forced_stat
 	range = "[weapon_range] tiles"
 	desc = weapon_desc
 
