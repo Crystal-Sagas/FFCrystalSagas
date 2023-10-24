@@ -1,6 +1,45 @@
+var/global/obj/cooldownchecker/day_checker
+
 /obj/cooldownchecker
-	Savable=1
 	var/totalpasses=0
+	/// last day of week we were checked
+	//  todo: better system
+	var/last_dayofweek
+
+/obj/cooldownchecker/New()
+	var/savefile/day_save = new("data/legacy/day_system")
+	day_save["day"] >> last_dayofweek
+	if(!isnull(global.day_checker))
+		stack_trace("deleted an enemy day checker")
+		del global.day_checker
+	global.day_checker = src
+	loop()
+
+/obj/cooldownchecker/proc/loop()
+	set waitfor = FALSE
+	do_loop()
+
+/obj/cooldownchecker/proc/do_loop()
+	while(TRUE)
+		auto_prime()
+		sleep(1 MINUTES)
+
+/obj/cooldownchecker/proc/auto_prime()
+	var/current_dayofweek = time2text(world.realtime, "Day")
+	if(current_dayofweek == last_dayofweek)
+		return
+	last_dayofweek = current_dayofweek
+	totalpasses++
+	log_world("TIME: day-looper firing")
+	spawn(15 SECONDS) // don't hit anything else if it's at world boot this is shitcode oh well
+		if(global.day_checker != src)
+			log_world("TIME: day-looper aborted")
+			return
+		RefreshDay()
+		log_world("TIME: day-looper finished")
+
+		var/savefile/day_save = new("data/legacy/day_system")
+		day_save["day"] << last_dayofweek
 
 var/year = 1466
 var/yearcount
@@ -9,7 +48,6 @@ var/month = 1
 var/monthname
 var/monthcount
 var/daytime = "Night"
-
 
 /proc/Time()
 	while(TRUE)
@@ -39,11 +77,6 @@ var/daytime = "Night"
 			Agecheck()
 			world<<output("It is now Year [year]AS","oocout")
 		sleep(432000)
-
-/proc/DayLooper()
-	while(TRUE)
-		async_call(null, GLOBAL_PROC_REF(RefreshDay))
-		sleep(864000)
 
 /proc/RefreshDay()
 	set background = TRUE

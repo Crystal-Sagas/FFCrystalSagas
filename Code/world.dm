@@ -30,6 +30,7 @@ var/global/action_log_file
 	Addbuildables()
 	Loadworld()
 	Load_Ban()
+	new /obj/cooldownchecker
 	if(fexists("data/Materials"))
 		Loadmaterials()
 	else
@@ -55,7 +56,6 @@ var/global/action_log_file
 	else
 		Initbestiary()
 	spawn Time()
-	spawn DayLooper()
 	// init global perk shop
 	global.perk_shop.perks += perklist
 	// init global recipe shop
