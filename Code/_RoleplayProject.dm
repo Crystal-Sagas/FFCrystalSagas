@@ -246,19 +246,19 @@ mob
 				del(b)
 			usr.bposition=null
 			usr.battler=0
-			for(var/obj/cooldownchecker/chk in world)
-				if(usr.totalpasses<chk.totalpasses)
-					usr.stockdrawn=0
-					usr.Lifestreamraincooldown=0
-					usr.FATEcooldown=0
-					usr.dailyfates=0
-					usr.limitbreakused=0
-					usr.tempeventmin=0
-					usr.totalpasses=chk.totalpasses
-					usr.minednodes=0
-					for(var/obj/item/Mooglebox/a in usr.contents)
-						a.cooldown=0
-					//alert(usr,"You were logged out during a cooldown reset, so your cooldowns are now reset.")
+			var/obj/cooldownchecker/chk = global.day_checker
+			if(usr.totalpasses<chk.totalpasses)
+				usr.stockdrawn=0
+				usr.Lifestreamraincooldown=0
+				usr.FATEcooldown=0
+				usr.dailyfates=0
+				usr.limitbreakused=0
+				usr.tempeventmin=0
+				usr.totalpasses=chk.totalpasses
+				usr.minednodes=0
+				for(var/obj/item/Mooglebox/a in usr.contents)
+					a.cooldown=0
+				//alert(usr,"You were logged out during a cooldown reset, so your cooldowns are now reset.")
 			if(usr.eventmin || usr.tempeventmin)
 				winset(usr,"default.Eventmin","is-visible=true")
 			if(usr.rankchecked==0)

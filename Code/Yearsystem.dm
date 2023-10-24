@@ -9,6 +9,9 @@ var/global/obj/cooldownchecker/day_checker
 /obj/cooldownchecker/New()
 	var/savefile/day_save = new("data/legacy/day_system")
 	day_save["day"] >> last_dayofweek
+	day_save["totalpasses"] >> totalpasses
+	if(isnull(totalpasses))
+		totalpasses = 0
 	if(!isnull(global.day_checker))
 		stack_trace("deleted an enemy day checker")
 		del global.day_checker
@@ -29,17 +32,18 @@ var/global/obj/cooldownchecker/day_checker
 	if(current_dayofweek == last_dayofweek)
 		return
 	last_dayofweek = current_dayofweek
-	totalpasses++
 	log_world("TIME: day-looper firing")
 	spawn(15 SECONDS) // don't hit anything else if it's at world boot this is shitcode oh well
 		if(global.day_checker != src)
 			log_world("TIME: day-looper aborted")
 			return
-		RefreshDay()
+		totalpasses++
+		RefreshDay(totalpasses)
 		log_world("TIME: day-looper finished")
 
 		var/savefile/day_save = new("data/legacy/day_system")
 		day_save["day"] << last_dayofweek
+		day_save["totalpasses"] << totalpasses
 
 var/year = 1466
 var/yearcount
@@ -78,7 +82,7 @@ var/daytime = "Night"
 			world<<output("It is now Year [year]AS","oocout")
 		sleep(432000)
 
-/proc/RefreshDay()
+/proc/RefreshDay(total_passes)
 	set background = TRUE
 	for(var/obj/resource_node/N in global.resource_nodes)
 		N.refresh()
@@ -88,12 +92,10 @@ var/daytime = "Night"
 		a.FATEcooldown=0
 		a.dailyfates=0
 		a.limitbreakused=0
-		a.totalpasses+=1
+		a.totalpasses = total_passes
 		a.FATEcooldown=0
 		a.minednodes=0
 		a.Save()
-	for(var/obj/cooldownchecker/a in world)
-		a.totalpasses+=1
 	for(var/obj/Faction/a in world)
 		a.Collectcooldown=0
 	for(var/obj/Factionupgrades/a in world)
