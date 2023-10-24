@@ -9,9 +9,10 @@ var/global/obj/cooldownchecker/day_checker
 /obj/cooldownchecker/New()
 	var/savefile/day_save = new("data/legacy/day_system")
 	day_save["day"] >> last_dayofweek
-	day_save["totalpasses"] >> totalpasses
+	day_save["totalpasses1"] >> totalpasses
 	if(isnull(totalpasses))
-		totalpasses = 0
+		//! WARNING WARNING SHITCODE ALERT: THIS IS NEEDED TO MIGRATE FROM OLD SYSTEM
+		totalpasses = 1000
 	if(!isnull(global.day_checker))
 		stack_trace("deleted an enemy day checker")
 		del global.day_checker
@@ -43,7 +44,7 @@ var/global/obj/cooldownchecker/day_checker
 
 		var/savefile/day_save = new("data/legacy/day_system")
 		day_save["day"] << last_dayofweek
-		day_save["totalpasses"] << totalpasses
+		day_save["totalpasses1"] << totalpasses
 
 var/year = 1466
 var/yearcount
