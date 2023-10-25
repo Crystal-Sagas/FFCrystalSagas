@@ -35,43 +35,43 @@ GLOBAL_DATUM_INIT(ticker, /datum/ticker, new)
 
 /datum/ticker/proc/construct_systems(silent)
 	// todo: sort order
-	var/start = TIMEOFDAY
+	var/start = REAL_TIME
 	init_log("Starting up subsystems...", TRUE)
 	for(var/datum/system/sys in systems)
-		var/sys_start = TIMEOFDAY
+		var/sys_start = REAL_TIME
 		sys.Construct()
-		init_log("[sys.type] startup in [round((TIMEOFDAY - sys_start) * 0.1, 0.1)] seconds.", TRUE)
-	init_log("Systems startup completed in [round((TIMEOFDAY - start) * 0.1, 0.1)] seconds.", !silent)
+		init_log("[sys.type] startup in [round((REAL_TIME - sys_start) * 0.1, 0.1)] seconds.", TRUE)
+	init_log("Systems startup completed in [round((REAL_TIME - start) * 0.1, 0.1)] seconds.", !silent)
 	load_systems(silent)
 
 /datum/ticker/proc/shutdown_systems(silent)
 	// todo: sort order
 	init_log("Shutting down subsystems...", TRUE)
 	save_systems(silent)
-	var/start = TIMEOFDAY
+	var/start = REAL_TIME
 	for(var/datum/system/sys in systems)
-		var/sys_start = TIMEOFDAY
+		var/sys_start = REAL_TIME
 		sys.Construct()
-		init_log("[sys.type] shutdown in [round((TIMEOFDAY - sys_start) * 0.1, 0.1)] seconds.", TRUE)
-	init_log("Systems shutdown completed in [round((TIMEOFDAY - start) * 0.1, 0.1)] seconds.", !silent)
+		init_log("[sys.type] shutdown in [round((REAL_TIME - sys_start) * 0.1, 0.1)] seconds.", TRUE)
+	init_log("Systems shutdown completed in [round((REAL_TIME - start) * 0.1, 0.1)] seconds.", !silent)
 
 /datum/ticker/proc/load_systems(silent)
-	var/start = TIMEOFDAY
+	var/start = REAL_TIME
 	for(var/datum/system/sys in systems)
-		var/sys_start = TIMEOFDAY
+		var/sys_start = REAL_TIME
 		if(!load_system(sys))
 			continue
-		init_log("[sys.type] load in [round((TIMEOFDAY - sys_start) * 0.1, 0.1)] seconds.", TRUE)
-	init_log("System state loaded in [round((TIMEOFDAY - start) * 0.1, 0.1)] seconds.", !silent)
+		init_log("[sys.type] load in [round((REAL_TIME - sys_start) * 0.1, 0.1)] seconds.", TRUE)
+	init_log("System state loaded in [round((REAL_TIME - start) * 0.1, 0.1)] seconds.", !silent)
 
 /datum/ticker/proc/save_systems(silent)
-	var/start = TIMEOFDAY
+	var/start = REAL_TIME
 	for(var/datum/system/sys in systems)
-		var/sys_start = TIMEOFDAY
+		var/sys_start = REAL_TIME
 		if(!save_system(sys))
 			continue
-		init_log("[sys.type] save in [round((TIMEOFDAY - sys_start) * 0.1, 0.1)] seconds.", TRUE)
-	init_log("System state saved in [round((TIMEOFDAY - start) * 0.1, 0.1)] seconds.", !silent)
+		init_log("[sys.type] save in [round((REAL_TIME - sys_start) * 0.1, 0.1)] seconds.", TRUE)
+	init_log("System state saved in [round((REAL_TIME - start) * 0.1, 0.1)] seconds.", !silent)
 
 /datum/ticker/proc/init_log(msg, public)
 	if(public)

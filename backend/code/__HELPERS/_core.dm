@@ -3,8 +3,15 @@
  *
  * why? because we can sometimes tag things instead of use a direct ref, as tags don't get reused. (hopefully.)
  */
-/proc/REF(datum/D)
-	return istype(D)? (isnull(D.tag)? ref(D) : D.tag) : ref(D)
+/proc/AUTO_REF(datum/D)
+	if(!istype(D))
+		return ref(D)
+	if(!D.use_tag)
+		return ref(D)
+	if(isnull(D.tag))
+		SOFT_CRASH("datum [D] ([D.type]) marked to use tag but lacking tag")
+		return ref(D)
+	return D.tag
 
 /**
  * throws a runtime error - this does not preserve original line numbers.
