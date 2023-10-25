@@ -156,6 +156,7 @@
 #include "Code\client\client.dm"
 #include "Code\client\movement.dm"
 #include "Code\client\viewport.dm"
+#include "Code\client\security\upload.dm"
 #include "Code\datums\abstract.dm"
 #include "Code\datums\asset.dm"
 #include "Code\datums\battle.dm"

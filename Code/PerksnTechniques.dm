@@ -1697,7 +1697,7 @@ obj
 									amod=Checkdamtype(wepchoice.damsource,usr)
 									if(src.typing=="magical")
 										aresult=aoresult+wepchoice.addhit+amod+usr.rankbonus+usr.mab+src.addhit
-										dresult += usr.mdbadd
+										aresult += usr.mabadd
 									else
 										aresult=aoresult+wepchoice.addhit+amod+usr.rankbonus+usr.pab+src.addhit
 										aresult += usr.pdbadd
