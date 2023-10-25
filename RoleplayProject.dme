@@ -84,6 +84,8 @@
 #include "backend\code\__DEFINES\tick.dm"
 #include "backend\code\__DEFINES\dylibs\rust_g.dm"
 #include "backend\code\__DEFINES\dylibs\spaceman_dmm.dm"
+#include "backend\code\__HELPERS\comparators.dm"
+#include "backend\code\__HELPERS\lists\sort.dm"
 #include "backend\code\datums\callback.dm"
 #include "backend\code\datums\weakref.dm"
 #include "backend\code\game\boot.dm"
