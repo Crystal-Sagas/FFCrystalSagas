@@ -22,8 +22,8 @@
 
 /datum/prototype/deserialize(list/data)
 	. = ..()
-	id = data[VARNAME(src, id)]
+	id = data[NAMEOF(src, id)]
 
 /datum/prototype/serialize()
 	. = ..()
-	.[VARNAME(src, id)] = id
+	.[NAMEOF(src, id)] = id

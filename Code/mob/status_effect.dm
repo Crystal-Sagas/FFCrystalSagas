@@ -16,13 +16,13 @@
 
 /datum/prototype/status_effect/serialize()
 	. = ..()
-	.[VARNAME(src, name)] = name
-	.[VARNAME(src, desc)] = desc
+	.[NAMEOF(src, name)] = name
+	.[NAMEOF(src, desc)] = desc
 
 /datum/prototype/status_effect/deserialize(list/data)
 	. = ..()
-	name = data[VARNAME(src, name)]
-	desc = data[VARNAME(src, desc)]
+	name = data[NAMEOF(src, name)]
+	desc = data[NAMEOF(src, desc)]
 
 /datum/prototype/status_effect/validate_serializable()
 	return ..() && length(id) && istext(id)
@@ -46,14 +46,14 @@
 
 /datum/status_instance/serialize()
 	return ..() + list(
-		VARNAME(src, id) = id,
-		VARNAME(src, turns_left) = turns_left,
+		NAMEOF(src, id) = id,
+		NAMEOF(src, turns_left) = turns_left,
 	)
 
 /datum/status_instance/deserialize(list/data)
 	. = ..()
-	id = data[VARNAME(src, id)]
-	turns_left = data[VARNAME(src, turns_left)]
+	id = data[NAMEOF(src, id)]
+	turns_left = data[NAMEOF(src, turns_left)]
 
 /**
  * called on apply, regardless of if it's just refreshing or not; this happens even if we don't actually increase the duration
