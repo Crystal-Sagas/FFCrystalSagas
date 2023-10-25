@@ -1,7 +1,7 @@
 //* Controller definition helpers
 
-#define CONTROLLER_DEF(NAME, VARNAME) \
-var/global/datum/controller/##NAME/##VARNAME; \
+#define CONTROLLER_DEF(NAME, NAMEOF) \
+var/global/datum/controller/##NAME/##NAMEOF; \
 /datum/controller/##NAME
 
 #define SUBSYSTEM_DEF(NAME) \

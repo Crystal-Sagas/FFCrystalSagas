@@ -29,13 +29,31 @@ GLOBAL_REAL_DATUM(Initialization, /datum/server_initialization)
 
 /datum/server_initialization/proc/Boot()
 	first_thing_to_run()
+	forever_loop()
 
 /**
  * This runs before **anything** else.
  */
 /datum/server_initialization/proc/first_thing_to_run()
+	//? https://github.com/SpaceManiac/SpacemanDMM/blob/master/crates/dm-langserver/src/debugger/launched.rs#L76
+	//? https://github.com/willox/auxtools/blob/master/debug_server/src/lib.rs
 	/// enable auxtools debugging
 	var/debug_server = world.GetConfig("env", "AUXTOOLS_DEBUG_DLL")
 	if (debug_server)
 		DYLIB_CALL(debug_server, "auxtools_init")()
 		enable_debugging()
+
+//? FUNNY THING
+//? After we fixed the infinite loops, this game is so costless to run,
+//? That there is **NOTHING TO HOOK** for the auxtools debugger.
+//? Thus we need to SYNTHETICALLY GENERATE AN ALWAYS-RUNNING LOOP,
+//? so it can "attach" to that instead.
+//? Otherwise the debugger just fucking breaks.
+//? We can remove this if we ever get a proper managed master-ticker loop.
+/datum/server_initialization/proc/forever_loop()
+	set waitfor = FALSE
+	do_forever_loop()
+
+/datum/server_initialization/proc/do_forever_loop()
+	while(TRUE)
+		sleep(world.tick_lag)

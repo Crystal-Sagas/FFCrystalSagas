@@ -1,4 +1,4 @@
-
+/*
 #warn yikes
 
 #define GLOBAL_VAR(NAME) \
@@ -21,6 +21,7 @@
 
 #define GLOBAL_DATUM_INIT(NAME, PATH, VAL) \
 /datum/controller/globals/var##PATH/##NAME;
+*/
 
 #define GLOBAL_REAL_VAR(NAME) \
 var/global/##NAME;

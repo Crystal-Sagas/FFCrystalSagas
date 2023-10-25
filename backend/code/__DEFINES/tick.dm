@@ -3,4 +3,4 @@
 /// sleep current proc if lagging
 #define YIELD_IF_LAGGING YIELD(80)
 
-#warn better tick logic
+// todo: better tick logic
