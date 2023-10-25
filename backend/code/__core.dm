@@ -13,14 +13,21 @@
 
 //* Core Helpers *//
 
-/// get turf something is on, recursing out of all contents lists
-#define get_turf(A) get_step(A, NONE)
+/// gets the turf we're on, if any, via get step no dir
+#define get_turf(__atom) get_step(__atom, NONE)
+/// gets the area we're on, if any, via get step no dir
+#define get_area(__atom) (get_step(__atom, NONE)?:loc)
+
+//* Engine *//
+
+/// world icon size, we assume you will not change this for the love of all that is holy
+#define WORLD_ICON_SIZE 32
 
 //* Static Analysis *//
 
 #define NAMEOF(THING, VAR) #VAR || ##THING.##VAR
 
-//* Calling
+//* Calling *//
 
 #if DM_VERSION < 515
 	#define SELF_PROC_REF(X) (.proc/##X)
@@ -61,14 +68,14 @@
 #define DYLIB_CALL call
 #endif
 
-//* Deletion
+//* Deletion *//
 
 #define QDEL_NULL(THING) if(!isnull(THING)) { qdel(THING); THING = null; };
 #define QDEL_LIST(LIST) if(!isnull(LIST)) { for(var/i in 1 to length(LIST)) { qdel(LIST[i]); }; LIST.len = 0; LIST = null;}
 #define QDEL_LIST_ASSOC_VAL if(!isnull(LIST)) { for(var/key in LIST) { qdel(LIST[key]); }; LIST.len = 0; LIST = null;}
 #define QDEL_LIST_ASSOC_KEY if(!isnull(LIST)) { for(var/key in LIST) { qdel(key); }; LIST.len = 0; LIST = null;}
 
-//* Grabbing mob / clients from mob-client variables
+//* Grabbing mob / clients from mob-client variables *//
 
 /// Gets mob from a var that holds mob or client, if the var is valid
 #define MOB_FROM_VAR(V) (istype(V, /client)? (V:mob) : (ismob(V)? V : null))

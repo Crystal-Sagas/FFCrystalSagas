@@ -49,6 +49,11 @@
 		for(var/datum/D as anything in signal_lookup[signal])
 			D.unregister_signal(src, signal)
 
+/**
+ * raise signal
+ *
+ * signal handlers will be called with (raising, ...) where raising is just us, and ... are additional args provided for the signal.
+ */
 /datum/proc/__raise_signal(signal, ...)
 	. = NONE
 	#warn impl
