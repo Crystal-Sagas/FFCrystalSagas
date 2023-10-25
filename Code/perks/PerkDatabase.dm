@@ -4007,38 +4007,38 @@ obj
 				atype="standard"
 				Smoke
 					rank="E"
-					desc="The Rogue is able to create a dense smoke screen by throwing down specially prepared smoke bombs. Creates a 3x3 AoE that obscures the caster of the ability. If a creature enters this Smoke, the Rogue becomes targetable to that creature. If the Rogue is attacking another creature in a Smoke bomb they themselves casted, they gain advantage on attack rolls against that creature. This Smoke can be dispelled by any amount of damage from an attack that utilizes Wind damage, and it has an AC of 10, and fails saves automatically. This has a 3 turn cooldown. Smoke lasts for 2 turns. 3/day."
+					desc="The Rogue is able to create a dense smoke screen by throwing down specially prepared smoke bombs. Creates a 3x3 AoE that obscures the caster of the ability. If a creature enters this Smoke, the Rogue becomes targetable to that creature. If the Rogue is attacking another creature in a Smoke bomb they themselves casted, they gain advantage on attack rolls against that creature. This Smoke can be dispelled by any amount of damage from an attack that utilizes Wind damage, and it has an AC of 10, and fails saves automatically. This has a 3 turn cooldown. Smoke lasts for 2 turns. 3 / encounter."
 				RopeKnife
 					name="Rope Knife"
 					rank="E"
 					desc="The user attaches a rope to a throwing weapon. Make a weapon attack roll. On a successful attack deal weapon damage, and make a strength check vs the opponent's strength. If the user is successful the target is draw towards the user a maximum number of tiles equal to their strength mod. If the opponent wins they have the same option. The rope knife can be used as a grappling hook outside of combat, allowing the user to traverse vertical obstacles. 50ft range."
 				Image
 					rank="D"
-					desc="The user uses a specially prepared tag that quickens their pace forming a strange mirage around them that looks like there are two of the user. Grants one instance of blink. 5/day."
+					desc="The user uses a specially prepared tag that quickens their pace forming a strange mirage around them that looks like there are two of the user. Grants one instance of blink. 5 / encounter."
 				Mug
 					rank="C"
 					desc="This Rogue is trained in the art of thievery beyond that of a normal individual. When performing a 'Mug' check during a PVP or PVE battle, they may add +5 to their Thievery roll's result after it has been rolled."
 				Shadowbind
 					rank="C"
-					desc="As a bonus action when making an attack with thrown weapons. Add an additional weapon into the volley specially prepared with a seal. If the attack hits, the target must make a DC:16 will saving throw or suffer the effects of slow. 5/day."
+					desc="As a bonus action when making an attack with thrown weapons. Add an additional weapon into the volley specially prepared with a seal. If the attack hits, the target must make a DC:16 will saving throw or suffer the effects of slow. 5 / encounter."
 				Bloodfest
 					rank="C"
 					desc="The user focuses directly around them making deep cutting attacks towards all targets in their vicinity. They can make any number of weapon attacks against targets within 5 feet (only one per creature). After a successful attack, the target must make a fortitude saving throw. Dex DC. Or suffer the 'Bleed' status effect. In addition, if at least one creature was dealt damage in this way, the Rogue gains +10 PDB for 3 rounds. Costs 20 Stamina."
 				SpellbreakerVolley
 					name="Spellbreaker Volley"
 					rank="B"
-					desc="As a reaction, use a specially prepared throwing weapon imbued with a charm that absorbs MP from a spell. Can only be used on single target spells in users' throw range. Negate the spell. The higher the rank the more tools will be needed E=1, D=2 etc. 10/day."
+					desc="As a reaction, use a specially prepared throwing weapon imbued with a charm that absorbs MP from a spell. Can only be used on single target spells in users' throw range. Negate the spell. The higher the rank the more tools will be needed E=1, D=2 etc. 10 / encounter."
 				AuraSteal
 					name="Aura Steal"
 					rank="B"
-					desc="The user stabs a knife into an opponent's aura using it as a siphon to steal positive aspects and draw them into the user. The target makes a DC: 15 Will saving throw or has all positive status effects drained from them, and placed upon the user. 2/day"
+					desc="The user stabs a knife into an opponent's aura using it as a siphon to steal positive aspects and draw them into the user. The target makes a DC: 15 Will saving throw or has all positive status effects drained from them, and placed upon the user. 2 / encounter"
 				Gauntlet
 					rank="B"
-					desc="Five throwing weapons are thrown in a circle. Once they land specially prepared tags on the weapons activate causing them to explode releasing energy on everything inside the circle. Targets a 15ft area. Targets in the AoE must make a DC:17 reflex saving throw or take 4d12 force damage. 3/day."
+					desc="Five throwing weapons are thrown in a circle. Once they land specially prepared tags on the weapons activate causing them to explode releasing energy on everything inside the circle. Targets a 15ft area. Targets in the AoE must make a DC:17 reflex saving throw or take 4d12 force damage. 3 / encounter."
 				MirageDive
 					name="Mirage Dive"
 					rank="S"
-					desc="The user slaps a specially prepared tag onto themselves surging their bodies with energy. While mirage dive is active the user gains haste, quicken, and 3 stacks of blink, ; additionally, abilities do not consume SP while active. Lasts for 3 turns. 1/day."
+					desc="The user slaps a specially prepared tag onto themselves surging their bodies with energy. While mirage dive is active the user gains haste, quicken, and 3 stacks of blink, ; additionally, abilities do not consume SP while active. Lasts for 3 turns. 1 / encounter."
 
 
 			MachAbilities
@@ -4219,7 +4219,7 @@ obj
 					attack_roll_dice_sides = 20
 					damsource="cha"
 					atype="weapon"
-					desc="The individual imbues their weapon with Holy Light, then proceeds to charge down an enemy, making a well aimed blow directly at the target's very soul. Upon landing the blow, the target is infused with Holy Magic, causing swords of light to explode from their soul in a blast of bright light. | Standard Action (Damage: Weapon Damage + 2d10 + CHA (Holy) | Melee Weapon Attack Roll | Deals 30% of target’s CURRENT HP on hit. | (Cost: None | Once per day. ) |"
+					desc="The individual imbues their weapon with Holy Light, then proceeds to charge down an enemy, making a well aimed blow directly at the target's very soul. Upon landing the blow, the target is infused with Holy Magic, causing swords of light to explode from their soul in a blast of bright light. | Standard Action (Damage: Weapon Damage + 2d10 + CHA (Holy) | Melee Weapon Attack Roll | Deals 30% of target’s CURRENT HP on hit. | (Cost: None | Once per encounter. ) |"
 
 
 			DarkKnight
@@ -4542,7 +4542,7 @@ obj
 					range=" 10 tile range."
 					addhit=2
 					damsource="dex"
-					desc="The user of this technique releases a flurry of Shuriken unsealed from a scroll, that attack separately as their own attack rolls. Up to three attack rolls are made, to targets of the caster's choice. 3/day."
+					desc="The user of this technique releases a flurry of Shuriken unsealed from a scroll, that attack separately as their own attack rolls. Up to three attack rolls are made, to targets of the caster's choice. 3 / encounter."
 				Dokumoya
 					element="Bio"
 					rank="B"
@@ -4556,22 +4556,22 @@ obj
 					desc="The user of this technique performs a series of Mantra seals, condensing poisonous fog in their stomach, then releasing it in a corrosive mist. Creatures who start their turn in the cloud formed take Bio damage and are inflicted with 'Poison' each time they do so."
 				Shunshin
 					rank="B"
-					desc="The user of this technique throws down a smoke-bomb, while also focusing their energy internally with a formed Mantra. They then flicker out of the smoke bomb to a position within 10 tiles to hide in the shadows with a supernatural camouflage, and are automatically stealthed without having to make a stealth check. It requires a DC 15 Perception check to notice them during this stealth. 3/day. Out of battle effects: A Ninja who uses this technique may escape a scene completely unseen, with no discernable knowledge of which direction they might have gone, without sensory techniques being utilized. (-20 Stamina or Ninpo.)"
+					desc="The user of this technique throws down a smoke-bomb, while also focusing their energy internally with a formed Mantra. They then flicker out of the smoke bomb to a position within 10 tiles to hide in the shadows with a supernatural camouflage, and are automatically stealthed without having to make a stealth check. It requires a DC 15 Perception check to notice them during this stealth. 3 / encounter. Out of battle effects: A Ninja who uses this technique may escape a scene completely unseen, with no discernable knowledge of which direction they might have gone, without sensory techniques being utilized. (-20 Stamina or Ninpo.)"
 				Katon
 					rank="B"
-					desc="The user opens a scroll containing a powerful fire spell. The fire bursts out from the scroll in a 4 tile cone. Targets in the AoE must make a DC 22 Reflex saving throw or suffer 7d10 fire damage and be inflicted with 'Burn' and 'Weak'. 3/day."
+					desc="The user opens a scroll containing a powerful fire spell. The fire bursts out from the scroll in a 4 tile cone. Targets in the AoE must make a DC 22 Reflex saving throw or suffer 7d10 fire damage and be inflicted with 'Burn' and 'Weak'. 3 / encounter."
 				Suiton
 					rank="B"
-					desc="The user opens a scroll containing a powerful water spell. A wave of water bursts out from the scroll sweeping away a 5x5 area infront of the user. Targets in the AoE must make a DC: 22 fortitude saving throw or suffer 7d10 water damage and be inflicted with wet. 3/day"
+					desc="The user opens a scroll containing a powerful water spell. A wave of water bursts out from the scroll sweeping away a 5x5 area infront of the user. Targets in the AoE must make a DC: 22 fortitude saving throw or suffer 7d10 water damage and be inflicted with wet. 3 / encounter"
 				Doton
 					rank="B"
-					desc="The user opens a scroll throwing it onto the ground where the magic stored is released creating a patch of cursed earth 7x7 tiles in size. Targets starting their turn in the affected area suffer 4d10 earth damage. 12 tile range. This cursed earth remains for 4 rounds. 3/day"
+					desc="The user opens a scroll throwing it onto the ground where the magic stored is released creating a patch of cursed earth 7x7 tiles in size. Targets starting their turn in the affected area suffer 4d10 earth damage. 12 tile range. This cursed earth remains for 4 rounds. 3 / encounter"
 				Fuuton
 					rank="B"
-					desc="The user opens a scroll summoning a cutting whirlwind that travels to an area before releasing a torrent of cutting wind. Targets a 3x3 area. Targets in the AoE must make a fortitude saving throw DC: 22 or suffer 8d12 wind damage, and be inflicted with 'Bleed' until healed. 12 tile range. 3/day."
+					desc="The user opens a scroll summoning a cutting whirlwind that travels to an area before releasing a torrent of cutting wind. Targets a 3x3 area. Targets in the AoE must make a fortitude saving throw DC: 22 or suffer 8d12 wind damage, and be inflicted with 'Bleed' until healed. 12 tile range. 3 / encounter."
 				Hyoton
 					rank="B"
-					desc="The user opens a scroll releasing a frozen wind on a 5x5 tile area in front of them. The wind freezes all sources of water. Targets in the AoE must make a DC: 22 fortitude save or take 7d10 ice damage, and be afflicted with 'Slow' and 'Frostbite'. 3/day."
+					desc="The user opens a scroll releasing a frozen wind on a 5x5 tile area in front of them. The wind freezes all sources of water. Targets in the AoE must make a DC: 22 fortitude save or take 7d10 ice damage, and be afflicted with 'Slow' and 'Frostbite'. 3 / encounter."
 				Kirigakure
 					rank="B"
 					desc="The user performs a series of Mantra which generates magical energy around them. This energy is then transformed into a mist, which manifests in a 7x7 AoE. Any party members or creatures who are friendly to the Ninja that start their turn within this Mist gain the 'Veil' status effect. In addition, any character with the Ninja perk who is within this mist gains a bonus of +5 to AC so long as they are within it. Out of battle effects: This Ninja may manipulate naturally occuring Mist and Fog, and clear or dispel non magical Mist/Fog based effects. (-50 Mana or Ninpo.)"

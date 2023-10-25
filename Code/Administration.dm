@@ -911,7 +911,7 @@ mob
 
 
 proc/Edited(atom/O)
-	var/html = "<html><body bgcolor=black text=#CCCCCC link=white vlink=white alink=white>"
+	var/list/html = list("<html><body bgcolor=black text=#CCCCCC link=white vlink=white alink=white>")
 	var/variables[0]
 	html += "<h3 align=center>[O.name] ([O.type])</h3>"
 	html += "<table width=100%>\n"
@@ -955,7 +955,7 @@ proc/Edited(atom/O)
 			may potentially cause an error if modified.  If you ignore that warning and \
 			continue to modify the variable, you alone are responsible for whatever \
 			mayhem results!</body></html>"
-	usr << browse(html,"window=Edit;size=400x400")
+	usr << browse(html.Join(""),"window=Edit;size=400x400")
 
 proc/DetermineVarType(variable)
 	if(istext(variable)) return "Text"

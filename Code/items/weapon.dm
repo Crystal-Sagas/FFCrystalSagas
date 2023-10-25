@@ -48,6 +48,10 @@
 	/// non-tmp add crit
 	var/weapon_forced_add_crit = 0
 
+	//* legacy storage
+	/// gild id
+	var/weapon_static_gilding
+
 
 /obj/item/Weapon/Read(savefile/F)
 	. = ..()
@@ -68,6 +72,10 @@
 	damsource = isnull(weapon_forced_stat)? weapon_stat : weapon_forced_stat
 	range = "[weapon_range] tiles"
 	desc = weapon_desc
+
+	if(weapon_static_gilding)
+		gilded = TRUE
+		desc += "| [capitalize(weapon_static_gilding)]"
 
 	range1 = weapon_base_low
 	range2 = weapon_base_high

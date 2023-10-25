@@ -245,6 +245,7 @@ obj/item/Weapon/verb
 									casted.weapon_forced_add_dam += 1
 									casted.rebuild()
 								src.gilded=1
+								src.weapon_static_gilding = "silver"
 								src.name=tempname
 								a.amount-=10
 								usr.craftingactive=0
@@ -264,6 +265,7 @@ obj/item/Weapon/verb
 									casted.weapon_forced_add_dam += 2
 									casted.rebuild()
 								src.gilded=1
+								src.weapon_static_gilding = "gold"
 								src.name=tempname
 								a.amount-=10
 								usr.craftingactive=0
@@ -283,6 +285,7 @@ obj/item/Weapon/verb
 									casted.weapon_forced_add_dam += 3
 									casted.rebuild()
 								src.gilded=1
+								src.weapon_static_gilding = "platinum"
 								src.name=tempname
 								a.amount-=10
 								usr.craftingactive=0
