@@ -16,7 +16,7 @@
 	RETURN_TYPE(/list)
 	. = list()
 	/// store core data like perks, etc
-	.["core"] = serialize()
+	.["entity"] = serialize()
 
 /**
  * Restores full state, not just base state
@@ -25,5 +25,5 @@
  */
 /atom/movable/proc/entity_deserialize(list/data)
 	/// restore core data like perks, etc
-	if(islist(data["core"]))
-		deserialize(data["core"])
+	if(islist(data["entity"]))
+		deserialize(data["entity"])

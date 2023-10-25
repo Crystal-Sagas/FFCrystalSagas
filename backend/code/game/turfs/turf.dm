@@ -14,4 +14,5 @@
 	/// danger flags to avoid
 	var/turf_path_danger = NONE
 	/// pathfinding id - used to avoid needing a big closed list to iterate through every cycle of jps
+	//  todo: JPS
 	var/tmp/pathfinding_cycle
