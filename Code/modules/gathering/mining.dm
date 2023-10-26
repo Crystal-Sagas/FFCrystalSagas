@@ -70,7 +70,7 @@
 			additional_text = " and 1 gold"
 	user.send_chat("You mined [amount] pieces of [reward_name], getting [user.check_perk(/obj/perk/Jobperks/Merchant/NothingWasted)? "4 stone (Nothing Wasted)" : "3 stone"] [additional_text] in the process.[describe_modifiers]", "oocout")
 	// use up
-	log_action("GATHER: [key_name(user)] mined [src] (+[amount] [reward_name]) (+5 stone)[additional_log] [audit_coord(src)]")
+	log_action("GATHER: [key_name(user)] mined [src] (+[amount] [reward_name]) [user.check_perk(/obj/perk/Jobperks/Merchant/NothingWasted)? "+4 stone (Nothing Wasted)" : "+3 stone"][additional_log] [audit_coord(src)]")
 	user.minednodes++
 	use()
 	//! legacy: update craft
