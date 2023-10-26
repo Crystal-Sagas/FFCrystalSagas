@@ -71,10 +71,10 @@
 	var/describe_modifiers = length(amount_modifier_describe)? " [jointext(amount_modifier_describe, " ")]" : ""
 	// give them the materials
 	user.adjust_material_amount(reward_type, amount)
-	user.adjust_material_amount(/obj/item/material/stone, user.check_perk(/obj/perk/Jobperks/Merchant/NothingWasted)? 4 : 3)
-	user.send_chat("You sifted [amount] [reward_name]s, getting [user.check_perk(/obj/perk/Jobperks/Merchant/NothingWasted)? "4 stone (Nothing Wasted)" : "3 stone"] in the process.[describe_modifiers]", "oocout")
+	user.adjust_material_amount(/obj/item/material/stone, user.check_perk(/obj/perk/Jobperks/Merchant/NothingWasted)? 6 : 5)
+	user.send_chat("You sifted [amount] [reward_name]s, getting [user.check_perk(/obj/perk/Jobperks/Merchant/NothingWasted)? "6 stone (Nothing Wasted)" : "5 stone"] in the process.[describe_modifiers]", "oocout")
 	// use up
-	log_action("GATHER: [key_name(user)] mined [src] (+[amount] [reward_name]) (+[user.check_perk(/obj/perk/Jobperks/Merchant/NothingWasted)? 4 : 3] stone) [audit_coord(src)]")
+	log_action("GATHER: [key_name(user)] mined [src] (+[amount] [reward_name]) (+[user.check_perk(/obj/perk/Jobperks/Merchant/NothingWasted)? 6 : 5] stone) [audit_coord(src)]")
 	user.minednodes++
 	use()
 	//! legacy: update craft
