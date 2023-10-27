@@ -270,6 +270,7 @@
 #include "Code\systems\repository\status_effect.dm"
 #include "Code\world\error.dm"
 #include "Code\world\error_viewer.dm"
+#include "content\code\game\world.dm"
 // END_INCLUDE
 
 #include "backend/code/___include_last.dm"

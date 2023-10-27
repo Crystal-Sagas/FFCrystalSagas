@@ -67,7 +67,7 @@ CONTROLLER_DEF(system, System)
 
 /datum/controller/system/proc/set_fps(fps)
 	fps = round(clamp(fps, 1, 100), 1)
-	var/old = world.fps
+	// var/old = world.fps
 	world.fps = fps
 
 /*
