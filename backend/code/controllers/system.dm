@@ -29,6 +29,7 @@ CONTROLLER_DEF(system, System)
 	#warn impl
 
 /datum/controller/system/proc/initialize(delay = 5 SECONDS)
+	#warn don't sleep the fucking config/database lmao
 	sleep(delay)
 	init_announce_notice("-- system: startup --")
 	#warn config
