@@ -1,7 +1,7 @@
 /// ckey-client association list
-GLOBAL_LIST_EMPTY(client_lookup)
+LEGACY_GLOBAL_LIST_EMPTY(client_lookup)
 /// client list
-GLOBAL_LIST_EMPTY(clients)
+LEGACY_GLOBAL_LIST_EMPTY(clients)
 
 /**
  * root definition for client

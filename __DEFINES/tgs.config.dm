@@ -1,5 +1,5 @@
 #define TGS_EXTERNAL_CONFIGURATION
-#define TGS_DEFINE_AND_SET_GLOBAL(Name, Value) GLOBAL_VAR_INIT(Name, Value)
+#define TGS_DEFINE_AND_SET_GLOBAL(Name, Value) LEGACY_GLOBAL_VAR_INIT(Name, Value)
 #define TGS_READ_GLOBAL(Name) global.##Name
 #define TGS_WRITE_GLOBAL(Name, Value) global.##Name = Value
 #define TGS_PROTECT_DATUM(Path)

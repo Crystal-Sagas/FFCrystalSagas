@@ -40,7 +40,7 @@ mob
 		Click()
 			Charcreate(usr)
 
-GLOBAL_DATUM_INIT(perk_shop, /datum/global_perk_shop, new)
+LEGACY_GLOBAL_DATUM_INIT(perk_shop, /datum/global_perk_shop, new)
 /**
  * global perk holder datum
  */
@@ -48,7 +48,7 @@ GLOBAL_DATUM_INIT(perk_shop, /datum/global_perk_shop, new)
 	/// holds perk /obj's
 	var/list/perks = list()
 
-GLOBAL_DATUM_INIT(recipe_shop, /datum/global_recipe_shop, new)
+LEGACY_GLOBAL_DATUM_INIT(recipe_shop, /datum/global_recipe_shop, new)
 /**
  * global recipe holder datum
  */
@@ -56,7 +56,7 @@ GLOBAL_DATUM_INIT(recipe_shop, /datum/global_recipe_shop, new)
 	/// holds recipe /obj's
 	var/list/recipes = list()
 
-GLOBAL_DATUM_INIT(stable_holder, /datum/global_stable_holder, new)
+LEGACY_GLOBAL_DATUM_INIT(stable_holder, /datum/global_stable_holder, new)
 /**
  * global stable holder datum
  */

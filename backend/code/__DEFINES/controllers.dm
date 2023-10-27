@@ -1,10 +1,10 @@
 //* Controller definition helpers
 
+// todo: auto-recover / New() handling, but for now it isn't done, because if a controller
+//       somehow goes missing, you got way bigger issues.
 #define CONTROLLER_DEF(NAME, NAMEOF) \
 var/global/datum/controller/##NAME/##NAMEOF; \
 /datum/controller/##NAME
-
-#warn impl
 
 /*
 #define SUBSYSTEM_DEF(NAME) \

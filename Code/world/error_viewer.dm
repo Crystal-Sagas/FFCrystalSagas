@@ -1,4 +1,4 @@
-GLOBAL_DATUM_INIT(runtime_viewer, /datum/runtime_viewer, new)
+LEGACY_GLOBAL_DATUM_INIT(runtime_viewer, /datum/runtime_viewer, new)
 
 /client/verb/view_runtimes()
 	set name = "View Runtimes"

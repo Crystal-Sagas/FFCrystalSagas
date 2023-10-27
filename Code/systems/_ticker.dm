@@ -1,4 +1,4 @@
-GLOBAL_DATUM_INIT(ticker, /datum/ticker, new)
+LEGACY_GLOBAL_DATUM_INIT(ticker, /datum/ticker, new)
 /**
  * master game ticker in charge of everything
  */

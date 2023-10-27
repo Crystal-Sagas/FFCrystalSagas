@@ -2882,7 +2882,7 @@
 		result=m.chamod
 	return result
 
-GLOBAL_DATUM_INIT(npc_archive, /datum/global_npc_archive, new)
+LEGACY_GLOBAL_DATUM_INIT(npc_archive, /datum/global_npc_archive, new)
 /**
  * global npc holder
  */

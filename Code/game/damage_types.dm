@@ -1,4 +1,4 @@
-GLOBAL_LIST_INIT(damage_types, init_damage_types())
+LEGACY_GLOBAL_LIST_INIT(damage_types, init_damage_types())
 
 /proc/init_damage_types()
 	. = list()
