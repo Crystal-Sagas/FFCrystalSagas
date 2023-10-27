@@ -3,8 +3,8 @@
  *
  * This is special in that it's initialized early.
  */
-CONTROLLER_DEF(logging, Logging)
-	name = "Logging"
+CONTROLLER_DEF(logging, Logger)
+	name = "Logger"
 
 	var/root_dir
 
@@ -15,6 +15,7 @@ CONTROLLER_DEF(logging, Logging)
 	var/logfile_inventory
 	var/logfile_mechanics
 	var/logfile_roleplay
+	var/logfile_subsystem
 	var/logfile_tgui
 	var/logfile_world
 
@@ -42,6 +43,7 @@ CONTROLLER_DEF(logging, Logging)
 	SETUP_LOG(logfile_inventory, "inventory.log")
 	SETUP_LOG(logfile_mechanics, "mechanics.log")
 	SETUP_LOG(logfile_roleplay, "roleplay.log")
+	SETUP_LOG(logfile_subsystem, "subsystem.log")
 	SETUP_LOG(logfile_tgui, "tgui.log")
 	SETUP_LOG(logfile_world, "world.log")
 	#undef SETUP_LOG

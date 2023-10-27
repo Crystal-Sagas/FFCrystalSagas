@@ -18,9 +18,9 @@ CONTROLLER_DEF(system, System)
 */
 
 /datum/controller/system/New()
-	if(isnull(global.Logging))
-		global.Logging = new
-		global.Logging.setup_logging()
+	if(isnull(global.Logger))
+		global.Logger = new
+		global.Logger.setup_logging()
 	if(isnull(global.GLOB))
 		global.GLOB = new
 

@@ -8,5 +8,5 @@
 	view = 34
 
 /world/Reboot(reason)
-	Logging.shutdown_logging()
+	Logger.shutdown_logging()
 	return ..()

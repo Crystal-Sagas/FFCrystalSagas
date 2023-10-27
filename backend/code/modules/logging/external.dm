@@ -31,6 +31,9 @@
 /datum/controller/logging/proc/to_roleplay_log(msg)
 	WRITE_LOG(logfile_roleplay, msg)
 
+/datum/controller/logging/proc/to_subsystem_log(msg)
+	WRITE_LOG(logfile_subsystem, msg)
+
 /datum/controller/logging/proc/to_tgui_log(msg)
 	WRITE_LOG(logfile_tgui, msg)
 
@@ -41,6 +44,9 @@
 
 /datum/controller/logging/proc/log_config(msg)
 	to_config_log(msg)
+
+/datum/controller/logging/proc/log_subsystem(datum/controller/source, msg)
+	to_subsystem_log("[source.pretty_identifier()]: [msg]")
 
 /*
 
