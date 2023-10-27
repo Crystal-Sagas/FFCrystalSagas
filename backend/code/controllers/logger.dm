@@ -35,7 +35,7 @@ CONTROLLER_DEF(logging, Logger)
 	root_dir = directory
 	dd_log = "[directory]/dd.log"
 
-	#define SETUP_LOG(VAR, FNAME) VAR = FNAME; WRITE_LOG(VAR, "Server setup at RT-[realtime].");
+	#define SETUP_LOG(VAR, FNAME) VAR = "[directory]/[FNAME]"; WRITE_LOG(VAR, "Server setup at RT-[realtime].");
 	SETUP_LOG(logfile_access, "access.log")
 	SETUP_LOG(logfile_admin, "admin.log")
 	SETUP_LOG(logfile_asset, "asset.log")
