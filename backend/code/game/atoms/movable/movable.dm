@@ -5,7 +5,7 @@
 	abstract_type = /atom/movable
 
 	//* Entity Serialization
-	/// our entity ID
+	/// our entity ID; must be unique
 	/// if this is null, we will never be serialized
 	var/entity_id
 	/// are we modified? if so, we store our entity serialization/deserialization data, rather than just our ID
