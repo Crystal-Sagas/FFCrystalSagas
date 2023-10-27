@@ -35,9 +35,7 @@ GLOBAL_LIST_EMPTY(clients)
 	/// for now, hardcode keys with profiler access
 	var/static/list/debug_access = list(
 		// neopoke
-		"neogeo123",
-		// rabbit
-		"maliciousdelicious",
+		"neogeo123",,
 		// silicons
 		"silicons",
 		"scvi",
@@ -46,6 +44,8 @@ GLOBAL_LIST_EMPTY(clients)
 		"giantrobotsintokyo",
 		"poisoncupcake",
 		"pureflower",
+		//Delphonse
+		"limb",
 	)
 
 /client/New()
