@@ -56,3 +56,5 @@ GENERATE_PATHS_FOR_WEAPON_METAL_TIERS(/obj/item/Weapon/Ranged/Bow)
 	weapon_stat = CHARACTER_STAT_DEX
 	weapon_range = 6
 	weapon_desc = "A bow, which is useful for ranged attacks! Bows deal 5 additional damage per tile travelled (capping at 25), when they hit a target creature."
+
+#warn entity IDs

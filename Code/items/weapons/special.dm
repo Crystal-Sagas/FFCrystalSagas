@@ -171,3 +171,5 @@ GENERATE_PATHS_FOR_WEAPON_METAL_TIERS(/obj/item/Weapon/Special/MagitekRifle)
 	weapon_scale_high = 2
 	weapon_stat = CHARACTER_STAT_DEX
 	weapon_desc = "A Magitek Rifle, deals Force damage. 2H. When a target is dealt damage by a Magitek Rifle, they are knocked back 1 tile, and must roll a Fortitude saving throw (DC 10+ Metal Tier) or be knocked prone."
+
+#warn entity IDs

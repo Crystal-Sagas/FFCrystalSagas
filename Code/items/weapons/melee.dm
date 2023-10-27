@@ -145,3 +145,5 @@ GENERATE_PATHS_FOR_WEAPON_METAL_TIERS(/obj/item/Weapon/Melee/Spear)
 	weapon_scale_high = 2
 	weapon_stat = CHARACTER_STAT_STR
 	weapon_desc = "A spear, which has a Melee range of 2 tiles. Spears when wielded, allow the user to spend 30 SP on hit, to ignore up to 25 points of damage reduction as a free action, once per round."
+
+#warn entity IDs

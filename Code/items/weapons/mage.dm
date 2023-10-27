@@ -48,3 +48,5 @@ GENERATE_PATHS_FOR_WEAPON_METAL_TIERS(/obj/item/Weapon/Magical/FocusCrystal)
 	weapon_scale_low = 1
 	weapon_scale_high = 1
 	weapon_desc = "A Focus Crystal, which can be wielded in one hand alongside a Focus Sword in order to cast magical blasts as a Bonus action. Deals Force damage. Grants +2 MAB and +3 MDB per metal tier."
+
+#warn entity IDs
