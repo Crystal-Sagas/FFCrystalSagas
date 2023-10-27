@@ -572,6 +572,9 @@ obj
 						var/choice = input(usr, "Choose a type of Materia to meld. The Materia melded will be random in that set.") as null|anything in list("Green", "Blue", "Yellow", "Purple", "Link")
 						if(!choice)
 							return
+						if(!our_stack || (our_stack.amount < 5))
+							usr.alert_interaction_fail("You don't have at least 5 Raw Mako.")
+							return
 						switch(choice)
 							if("Green")
 								RandomGreenMateria(usr)
