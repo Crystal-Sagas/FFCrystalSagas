@@ -53,7 +53,7 @@
 	var/describe_modifiers = length(amount_modifier_describe)? " [jointext(amount_modifier_describe, " ")]" : ""
 	// give them the materials
 	user.adjust_material_amount(reward_type, amount)
-	user.adjust_material_amount(/obj/item/material/stone, 5)
+	user.adjust_material_amount(/obj/item/material/stone, user.check_perk(/obj/perk/Jobperks/Merchant/NothingWasted)? 4 : 3)
 	// calculate additional rewards
 	var/additional_roll = rand(1, 20)
 	var/additional_text
@@ -68,9 +68,9 @@
 			user.adjust_material_amount(/obj/item/material/ingot/gold, 1)
 			additional_log = " (+1 gold)"
 			additional_text = " and 1 gold"
-	user.send_chat("You mined [amount] pieces of [reward_name], getting 5 stone (static)[additional_text] in the process.[describe_modifiers]", "oocout")
+	user.send_chat("You mined [amount] pieces of [reward_name], getting [user.check_perk(/obj/perk/Jobperks/Merchant/NothingWasted)? "4 stone (Nothing Wasted)" : "3 stone"] [additional_text] in the process.[describe_modifiers]", "oocout")
 	// use up
-	log_action("GATHER: [key_name(user)] mined [src] (+[amount] [reward_name]) (+5 stone)[additional_log] [audit_coord(src)]")
+	log_action("GATHER: [key_name(user)] mined [src] (+[amount] [reward_name]) [user.check_perk(/obj/perk/Jobperks/Merchant/NothingWasted)? "+4 stone (Nothing Wasted)" : "+3 stone"][additional_log] [audit_coord(src)]")
 	user.minednodes++
 	use()
 	//! legacy: update craft
