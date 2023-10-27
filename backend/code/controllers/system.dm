@@ -6,6 +6,8 @@
 CONTROLLER_DEF(system, System)
 	name = "System"
 
+/*
+
 	/// repositories
 	var/list/datum/controller/repository/repositories = list()
 	/// subsystems
@@ -13,11 +15,16 @@ CONTROLLER_DEF(system, System)
 	/// entity mappers
 	var/list/datum/controller/entitymap/entitymaps = list()
 
-#warn impl
+*/
 
 /datum/controller/system/New()
-	if(isnull(GLOB))
-		GLOB = new
+	if(isnull(global.Logging))
+		global.Logging = new
+		global.Logging.setup_logging()
+	if(isnull(global.GLOB))
+		global.GLOB = new
+
+/*
 
 	#warn impl
 
@@ -56,10 +63,15 @@ CONTROLLER_DEF(system, System)
 
 	sort_list(subsystems, /proc/cmp_subsystem_shutdown_order)
 
+*/
+
 /datum/controller/system/proc/set_fps(fps)
-	fps = clamp(fps, 1, 100)
+	fps = round(clamp(fps, 1, 100), 1)
 	var/old = world.fps
 	world.fps = fps
+
+/*
 	for(var/datum/controller/subsystem/subsystem in subsystems)
 		subsystem.fps_changed(old, fps)
+*/
 

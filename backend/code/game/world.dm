@@ -1,5 +1,3 @@
-
-#warn impl
 /world
 	name = "Phantasmagorica"
 	fps = 40
@@ -8,3 +6,7 @@
 	area = /area/unallocated
 	visibility = FALSE
 	view = 34
+
+/world/Reboot(reason)
+	Logging.shutdown_logging()
+	return ..()

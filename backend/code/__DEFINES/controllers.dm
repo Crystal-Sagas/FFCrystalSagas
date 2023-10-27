@@ -4,6 +4,9 @@
 var/global/datum/controller/##NAME/##NAMEOF; \
 /datum/controller/##NAME
 
+#warn impl
+
+/*
 #define SUBSYSTEM_DEF(NAME) \
 var/global/datum/controller/subsystem/##NAME/SS##NAME; \
 /datum/controller/subsystem/##NAME
@@ -17,6 +20,7 @@ var/global/datum/controller/entitymap/##NAME/ES##NAME; \
 /datum/controller/entitymap/##NAME
 
 #warn impl
+*/
 
 //* /datum/controller/subsystem/var/subsystem_flags
 
@@ -28,6 +32,10 @@ var/global/datum/controller/entitymap/##NAME/ES##NAME; \
 #define SS_NO_FIRE (1<<2)
 /// does not initialize
 #define SS_NO_INIT (1<<3)
+/// apply wait immediatley on firing, rather than only after a non-paused run.
+#define SS_KEEP_TIMING (1<<4)
+/// do not run whenever able to, if currently paused, instead wait for next interval
+#define SS_ENFORCE_INTERVAL (1<<5)
 
 DEFINE_BITFIELD(subsystem_flags, list(
 	/datum/controller/subsystem = list(
@@ -38,6 +46,8 @@ DEFINE_BITFIELD(subsystem_flags, list(
 	BITFIELD("Background", SS_BACKGROUND),
 	BITFIELD("No Fire", SS_NO_FIRE),
 	BITFIELD("No Init", SS_NO_INIT),
+	BITFIELD("Keep Timing", SS_KEEP_TIMING),
+	BITFIELD("Enforce Interval", SS_ENFORCE_INTERVAL),
 ))
 
 //* /datum/controller/subsystem/var/runlevels
@@ -117,8 +127,12 @@ DEFINE_BITFIELD(subsystem_runlevels, list(
 
 //* Helpers
 
+/*
+
 /// use during subsystem fire() call chain - returns if we should yield
 #define SS_SHOULD_YIELD prob(2)
 #warn impl
 /// automatically yields ; do if(SS_AUTO_YIELD): return in fire().
 #define SS_AUTO_YIELD (SS_SHOULD_YIELD? pause() : FALSE)
+
+*/
