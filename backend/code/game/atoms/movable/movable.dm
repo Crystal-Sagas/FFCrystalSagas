@@ -36,3 +36,9 @@
 	/// restore core data like perks, etc
 	if(!isnull(data["entity"]))
 		deserialize(data["entity"])
+
+/**
+ * Resets to default
+ */
+/atom/movable/proc/entity_reset()
+	entity_modified = FALSE
