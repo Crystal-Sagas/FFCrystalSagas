@@ -59,12 +59,15 @@ GLOBAL_LIST_EMPTY(clients)
 	. = ..()
 	// setup viewport
 	async_call(src, SELF_PROC_REF(init_viewport_blocking))
+	world.log << "Client [ckey] connected from IP [address] with CID [computer_id]"
 
 /client/Destruct()
 	// unregister global
 	global.client_lookup -= ckey
 	global.clients -= src
+	world.log << "Client [ckey] disconnected from IP [address] with CID [computer_id]"
 	return ..()
+
 
 /**
  * returns if we are connecting from the host computer (or are launching the server directly in dreamseeker)

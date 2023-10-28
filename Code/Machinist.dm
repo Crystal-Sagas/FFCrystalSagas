@@ -254,7 +254,8 @@ obj
 					src.contents+=blast
 					src.eweapon=esword
 			verb
-				Destroy()
+				DestroyRobot()
+					set name = "Destroy"
 					if(usr != src.owner)
 						alert(usr,"You can't destroy someone else's robot!")
 						return
