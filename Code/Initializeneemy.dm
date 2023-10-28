@@ -173,6 +173,21 @@
 		enemy.contents+=h
 		enemy.contents+=i
 		enemy.contents+=j
+	if(enemy.name=="Behemoth Infant")
+		var/obj/perk/monsterperk/Weakness_Ice/a=new
+		var/obj/perk/monsterperk/Resistance_Bludgeoning/b=new
+		var/obj/item/Weapon/NPCWeapons/Horn/c=new
+		var/obj/perk/MonsterAbilities/BLU/Baby_Charge/d=new
+		var/obj/perk/BehemothInfantPerks/Bonus_Action_Fend_for_Itself/e=new
+		var/obj/perk/BehemothInfantPerks/Reaction_Cute_Charm/f=new
+		var/obj/perk/BehemothInfantPerks/Rage/g=new
+		enemy.contents+=a
+		enemy.contents+=b
+		enemy.contents+=c
+		enemy.contents+=d
+		enemy.contents+=e
+		enemy.contents+=f
+		enemy.contents+=g
 /*	if(enemy.name=="Bagoly")
 		var/obj/perk/Abilities/WhiteMagic/Wind/Aerora/b=new
 		var/obj/perk/ElementalPerks/Aero/element=new

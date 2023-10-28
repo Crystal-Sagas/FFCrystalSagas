@@ -5684,6 +5684,7 @@ obj
 
 				Glare
 					rank = "C"
+					name = "Glare"
 					mcost = 30
 					range = "6 tiles, in line of sight."
 					desc = "As long as there's a line of sight, and both sides are looking at each other, even if just a glimpse, the target has to succeed a Will Save of (DC16) or be paralyzed."
@@ -5699,6 +5700,16 @@ obj
 					attack_roll_dice_sides = 10
 					damsource = "str"
 
+				Baby_Charge
+					rank = "D"
+					name = "Baby Charge"
+					mcost = 20
+					range = "8 tile range."
+					desc = "The creature charges in a straight line until it hits a wall or opponent. If it its an opponent that opponent takes 1d12 + Str +PDB and makes a DC 16 Reflex safe or be knocked back 3 tiles. If its a wall this creature takes damage for every square traveled as if hit with knockback into a wall."
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 1
+					attack_roll_dice_sides = 12
+					damsource = "str"
 
 //Old Abilites
 
