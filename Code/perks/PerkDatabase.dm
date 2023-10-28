@@ -5317,6 +5317,62 @@ obj
 	perk
 		MonsterAbilities
 			icon='Icons/Perk/MonsterAbility.png'
+
+			RobotAbilities
+				atype="standard"
+				basecheck=10
+				ability=1
+				icon='Icons/Perk/Machinist.png'
+				blu=0
+				costtype="Stamina"
+				element="General"
+
+				Pounce
+					rank = "D"
+					name = "Pounce"
+					mcost = 20
+					range = "8 tile movement must end on a square next to an opponent"
+					desc = "This creature moves with accelerating speed, jumping onto its target in an attempt to pin it down before using its sword to stab it. Damage: Make a Sword Attack. Effect: Prone."
+
+				Sniper_Art_Silencing_Shot
+					rank = "D"
+					name = "Sniper Art: Silencing Shot"
+					mcost = 20
+					range = "6 tiles"
+					desc = "The Striker aims its laser at the head of an enemy, the Laser sacrifices half of its damage to induce Silence. Damage: Half of Laser. Effect: Silence."
+
+				Tail_Blade_Feral_Stance
+					rank = "D"
+					name = "Tail Blade (Feral Stance)"
+					mcost = 15
+					range = "Melee"
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 4
+					damsource="dex"
+					desc = "Flicks their mechanical tail at an enemy dealing 2d4 + Dex Slashing Damage as it pierces or slashes the opponent."
+
+				Kriegsmesser_Krieger_Stance
+					rank = "C"
+					name = "Kriegsmesser (Krieger Stance)"
+					mcost = 20
+					range = "Melee"
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 10
+					damsource="str"
+					desc = "The Blitzer’s Tail Blade becomes a heavier, deadlier weapon, dealing 2d10+STR Slashing Damage."
+
+				Heilige_Nacht_Krieger_Stance
+					rank = "C"
+					name = "Heilige Nacht (Krieger Stance)"
+					mcost = 30
+					range = "Owner/Self"
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 10
+					damsource="str"
+					desc = "The Blitzer gains the ability to be wielded by its owner, becoming a weapon that deals 2d10+STR Magical Slashing Damage (Bypassing Physical Resistance)"
 			BLU
 				atype="standard"
 				basecheck=10
