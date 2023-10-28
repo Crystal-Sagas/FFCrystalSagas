@@ -161,13 +161,12 @@ obj
 			var/augment
 			robot=1
 			New()
+/*
 				var/obj/item/Weapon/Special/MagitekRifle/Steel/a=new
-				var/obj/item/Weapon/Melee/Longsword/Steel/b=new
 				var/obj/item/Weapon/Machinist/EnergySword/esword=new
 				var/obj/item/Weapon/Machinist/BioBlaster/biob=new
 				var/obj/item/Weapon/Machinist/Flamethrower/flamer=new
 				var/obj/item/Weapon/Machinist/LaserDefenseOrb/lorb=new
-				var/obj/perk/Abilities/Paladin/Cover/tank=new
 				var/obj/perk/Abilities/GeneralWeaponAbilities/Melee/Launch/striker=new
 				var/obj/perk/Abilities/GeneralWeaponAbilities/Melee/StellarCircle/stellar=new
 				var/obj/perk/Abilities/GeneralWeaponAbilities/Melee/Braver/braver=new
@@ -179,80 +178,99 @@ obj
 				var/obj/perk/MonsterPassives/AntiGravity/antigrav=new
 				var/obj/perk/MonsterPassives/Dense/dense=new
 				var/obj/perk/MonsterPassives/Destructive/destructive=new
-				var/obj/perk/Abilities/GeneralMagicAbilities/Laser/laser1=new
 				var/obj/perk/Abilities/GeneralMagicAbilities/Laserga/laser2=new
 				var/obj/perk/Abilities/BlackMagic/Energy/Flare/laser3=new
 				var/obj/perk/Abilities/BlackMagic/Energy/Scathe/laser4=new
 				var/obj/perk/Abilities/BlackMagic/Energy/Megaflare/laser5=new
 				var/obj/perk/Abilities/GeneralMagicAbilities/Pierce/pierce1=new
 				var/obj/perk/Abilities/GeneralMagicAbilities/Piercega/pierce2=new
+*/
+				var/obj/perk/DefenderPerk/Bonus_Action_Mode_Defender/Mode_Defender=new
+				var/obj/perk/DefenderPerk/Reaction_Bodyguard/BodyGuard=new
+				var/obj/perk/StrikerPerk/Bonus_Action_Overclock_Speed/Overclock=new
+				var/obj/perk/StrikerPerk/Bonus_Action_Stealth_Mode/Stealth=new
+				var/obj/perk/StrikerPerk/Reaction_Blur/Blur=new
+				var/obj/perk/GuardianPerk/Bonus_Action_Mobile_Barrier/Mobile=new
+				var/obj/perk/GuardianPerk/Reaction_Nihil/Nihil=new
+				var/obj/perk/GuardianPerk/Action_Healing_Battery/HBattery=new
+				var/obj/perk/GuardianPerk/Action_Battery_Charge/CBattery=new
+				var/obj/perk/GuardianPerk/Action_Barrier_Breaker/Breaker=new
+				var/obj/perk/BlitzerPerk/Bonus_Action_Fluid_Assault/Fluid=new
+				var/obj/perk/BlitzerPerk/Reaction_Graceful_Movement/Graceful=new
+				var/obj/perk/BlitzerPerk/Passive_Battle_Stances/PBS=new
+				var/obj/perk/BlitzerPerk/Passive_Feral_Stance/PFS=new
+				var/obj/perk/BlitzerPerk/Passive_Krieger_Stance/PKS=new
+				var/obj/perk/monsterperk/Weakness_Lightning_2/L2=new
+				var/obj/perk/monsterperk/Resistance_Bludgeoning/RB=new
+				var/obj/perk/monsterperk/Sturdy_1/S1=new
+				var/obj/perk/monsterperk/Sturdy_2/S2=new
+				var/obj/item/Weapon/NPCWeapons/Punch/wep=new
+				var/obj/item/Weapon/NPCWeapons/Bite/wep2=new
+				var/obj/perk/Abilities/GreenMagic/Protects/Protect/Protect=new
+				var/obj/perk/Abilities/GreenMagic/Shells/Shell/Shell=new
+				var/obj/item/Weapon/Melee/Longsword/Steel/LSS=new
+				var/obj/perk/Abilities/GeneralMagicAbilities/Laser/laser1=new
+				var/obj/perk/MonsterAbilities/RobotAbilities/Pounce/Pounce=new
+				var/obj/perk/MonsterAbilities/RobotAbilities/Sniper_Art_Silencing_Shot/SASS=new
+				var/obj/perk/MonsterAbilities/RobotAbilities/Tail_Blade_Feral_Stance/TBFS=new
+				var/obj/perk/MonsterAbilities/RobotAbilities/Kriegsmesser_Krieger_Stance/KKS=new
+				var/obj/perk/MonsterAbilities/RobotAbilities/Heilige_Nacht_Krieger_Stance/HNKS=new
+
 				if(src.name=="Defender")
-					src.contents+=b
-					src.contents+=metallic
-					src.contents+=dense
-					src.contents+=tank
+					src.contents+=Mode_Defender
+					src.contents+=BodyGuard
+					src.contents+=L2
+					src.contents+=RB
+					src.contents+=S1
 					src.contents+=laser1
-					src.contents+=laser2
-					src.eweapon=b
+					src.contents+=wep
+					src.contents+=Protect
+					src.contents+=Shell
 				if(src.name=="Striker")
-					src.contents+=b
-					src.contents+=metallic
-					src.contents+=striker
-					src.contents+=destructive
+					src.contents+=Overclock
+					src.contents+=Stealth
+					src.contents+=Blur
+					src.contents+=L2
+					src.contents+=RB
+					src.contents+=S1
 					src.contents+=laser1
-					src.contents+=laser2
-					src.eweapon=b
+					src.contents+=LSS
+					src.contents+=Pounce
+					src.contents+=SASS
 				if(src.name=="Blitzer")
-					src.contents+=b
-					src.contents+=metallic
-					src.contents+=destructive
-					src.contents+=laser1
-					src.contents+=laser2
-					src.contents+=laser3
-					src.contents+=striker
-					src.contents+=pierce1
-					src.eweapon=b
+					src.contents+=Fluid
+					src.contents+=Graceful
+					src.contents+=PBS
+					src.contents+=PFS
+					src.contents+=PKS
+					src.contents+=L2
+					src.contents+=RB
+					src.contents+=S2
+					src.contents+=wep2
+					src.contents+=TBFS
+					src.contents+=KKS
+					src.contents+=HNKS
 				if(src.name=="Guardian")
-					src.contents+=b
-					src.contents+=metallic
-					src.contents+=dense
-					src.contents+=tank
+					src.contents+=Mobile
+					src.contents+=Nihil
+					src.contents+=HBattery
+					src.contents+=CBattery
+					src.contents+=Breaker
+					src.contents+=L2
+					src.contents+=RB
+					src.contents+=S2
 					src.contents+=laser1
-					src.contents+=laser2
-					src.contents+=laser3
-					src.contents+=braver
-					src.eweapon=a
+					src.contents+=wep
+					src.contents+=Protect
+					src.contents+=Shell
 				if(src.name=="Magitek Armor")
-					src.contents+=biob
-					src.contents+=flamer
-					src.contents+=metallic
-					src.contents+=pilot
-					src.contents+=dense
-					src.contents+=laser1
-					src.contents+=laser2
-					src.contents+=laser3
-					src.contents+=laser4
-					src.contents+=pierce1
-					src.contents+=pierce2
-					src.eweapon=biob
+					src.contents+=L2
+					src.contents+=RB
+					src.contents+=S2
 				if(src.name=="Magitek Mecha")
-					src.contents+=lorb
-					src.contents+=esword
-					src.contents+=metallic
-					src.contents+=antigrav
-					src.contents+=dense
-					src.contents+=pilot
-					src.contents+=mech
-					src.contents+=laser1
-					src.contents+=laser2
-					src.contents+=laser3
-					src.contents+=laser4
-					src.contents+=laser5
-					src.contents+=stellar
-					src.contents+=braver
-					src.contents+=rough
-					src.contents+=blast
-					src.eweapon=esword
+					src.contents+=L2
+					src.contents+=RB
+					src.contents+=S2
 			verb
 				DestroyRobot()
 					set name = "Destroy"
@@ -444,6 +462,7 @@ obj
 						alert(usr,"You are not a Roboticist, and can not modify Robots.")
 						return
 			T2
+//STRIKER
 				Striker
 					icon='Bases/Robots/Striker.dmi'
 					icon_state="striker"
@@ -452,29 +471,35 @@ obj
 					maxmodules=2
 					maxaugment=1
 					name="Striker"
-					mhp=115
-					hp=115
-					mmp=200
-					mp=200
-					sp=200
-					msp=200
-					str=14
-					strmod=2
-					baseac=13
-					dex=14
-					dexmod=2
-					con=10
-					conmod=0
-					int=16
-					intmod=3
-					wis=12
-					wismod=1
+					mhp=100
+					hp=100
+					mmp=80
+					mp=80
+					sp=130
+					msp=130
+					str=16
+					strmod=3
+					baseac=16
+					dex=16
+					dexmod=3
+					con=14
+					conmod=2
+					int=10
+					intmod=0
+					wis=10
+					wismod=0
 					cha=10
 					chamod=0
 					mab=9
 					pab=9
 					mdb=18
 					pdb=18
+					fort = 6
+					rflx = 10
+					will = 4
+					basedr = 20
+					speed = 8
+//DEFENDER
 				Defender
 					icon='Bases/Robots/Defender.dmi'
 					icon_state="defender"
@@ -483,29 +508,35 @@ obj
 					maxmodules=2
 					maxaugment=1
 					name="Defender"
-					mhp=170
-					hp=170
-					mmp=200
-					mp=200
-					sp=200
-					msp=200
-					str=18
-					strmod=4
+					mhp=120
+					hp=120
+					mmp=100
+					mp=100
+					sp=120
+					msp=120
+					str=14
+					strmod=2
 					baseac=18
-					dex=10
-					dexmod=0
-					con=10
-					conmod=0
-					int=18
-					intmod=4
-					wis=12
-					wismod=1
+					dex=12
+					dexmod=1
+					con=14
+					conmod=2
+					int=10
+					intmod=0
+					wis=0
+					wismod=0
 					cha=10
 					chamod=0
-					mab=9
-					pab=9
-					mdb=12
-					pdb=12
+					mab=3
+					pab=5
+					mdb=15
+					pdb=25
+					fort = 6
+					rflx = 5
+					will = 4
+					basedr = 27
+					speed = 5
+//BLITZER
 			T3
 				Blitzer
 					icon='Bases/Robots/Striker.dmi'
@@ -515,29 +546,35 @@ obj
 					maxmodules=2
 					maxaugment=2
 					name="Blitzer"
-					mhp=125
-					hp=125
+					mhp=240
+					hp=240
 					mmp=200
 					mp=200
-					sp=200
-					msp=200
-					str=22
-					strmod=6
-					baseac=18
-					dex=22
-					dexmod=6
-					con=10
-					conmod=0
-					int=18
-					intmod=4
-					wis=12
-					wismod=1
+					sp=240
+					msp=240
+					str=14
+					strmod=2
+					baseac=22
+					dex=20
+					dexmod=5
+					con=14
+					conmod=2
+					int=10
+					intmod=0
+					wis=10
+					wismod=0
 					cha=10
 					chamod=0
-					mab=12
-					pab=12
-					mdb=25
-					pdb=25
+					mab=6
+					pab=10
+					mdb=30
+					pdb=40
+					fort = 7
+					rflx = 12
+					will = 9
+					basedr = 42
+					speed = 12
+//GUARDIAN
 				Guardian
 					icon='Bases/Robots/Defender.dmi'
 					icon_state="guardian"
@@ -546,29 +583,35 @@ obj
 					maxmodules=2
 					maxaugment=2
 					name="Guardian"
-					mhp=280
-					hp=280
-					mmp=0
-					mp=0
-					sp=0
-					msp=0
-					str=18
-					strmod=4
-					baseac=25
-					dex=10
-					dexmod=0
-					con=10
-					conmod=0
+					mhp=120
+					hp=120
+					mmp=100
+					mp=100
+					sp=120
+					msp=120
+					str=14
+					strmod=2
+					baseac=18
+					dex=12
+					dexmod=1
+					con=14
+					conmod=2
 					int=10
 					intmod=0
-					wis=12
-					wismod=1
+					wis=0
+					wismod=0
 					cha=10
 					chamod=0
-					mab=10
-					pab=10
-					mdb=8
-					pdb=8
+					mab=3
+					pab=5
+					mdb=15
+					pdb=25
+					fort = 6
+					rflx = 5
+					will = 4
+					basedr = 27
+					speed = 5
+//MAGITEKARMOR (Needs made still)
 			T4
 				MagitekArmor
 					icon='Bases/Robots/MagitekArmor.dmi'
@@ -600,7 +643,13 @@ obj
 					pab=19
 					mdb=35
 					pdb=35
+					fort = 6
+					rflx = 5
+					will = 4
+					basedr = 27
+					speed = 5
 			T5
+//MAGITEKMECHA (Needs made still)
 				MagitekMecha
 					icon='Bases/Robots/MagitekMech.dmi'
 					icon_state="standard"
@@ -632,6 +681,11 @@ obj
 					pab=23
 					mdb=45
 					pdb=45
+					fort = 6
+					rflx = 5
+					will = 4
+					basedr = 27
+					speed = 5
 
 obj
 	Vehicle
