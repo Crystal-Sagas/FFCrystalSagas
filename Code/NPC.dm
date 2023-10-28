@@ -6979,6 +6979,7 @@ obj
 						var/obj/perk/monsterperk/Fly_1/g=new
 						var/obj/perk/EyewingPerk/Size_Up/h=new
 						var/obj/perk/EyewingPerk/Aerodynamic/i=new
+						var/obj/perk/MonsterAbilities/BLU/Monster_Gaze/j=new
 						src.contents+=a
 						src.contents+=b
 						src.contents+=c
@@ -6988,6 +6989,7 @@ obj
 						src.contents+=g
 						src.contents+=h
 						src.contents+=i
+						src.contents+=j
 						var/obj/status/HPBar/hpb = new
 						src.contents+=hpb
 						var/obj/status/SPBar/spb = new

@@ -444,6 +444,7 @@ obj
 						alert(usr,"You are not a Roboticist, and can not modify Robots.")
 						return
 			T2
+//STRIKER
 				Striker
 					icon='Bases/Robots/Striker.dmi'
 					icon_state="striker"
@@ -452,29 +453,35 @@ obj
 					maxmodules=2
 					maxaugment=1
 					name="Striker"
-					mhp=115
-					hp=115
-					mmp=200
-					mp=200
-					sp=200
-					msp=200
-					str=14
-					strmod=2
-					baseac=13
-					dex=14
-					dexmod=2
-					con=10
-					conmod=0
-					int=16
-					intmod=3
-					wis=12
-					wismod=1
+					mhp=100
+					hp=100
+					mmp=80
+					mp=80
+					sp=130
+					msp=130
+					str=16
+					strmod=3
+					baseac=16
+					dex=16
+					dexmod=3
+					con=14
+					conmod=2
+					int=10
+					intmod=0
+					wis=10
+					wismod=0
 					cha=10
 					chamod=0
 					mab=9
 					pab=9
 					mdb=18
 					pdb=18
+					fort = 6
+					rflx = 10
+					will = 4
+					basedr = 20
+					speed = 8
+//DEFENDER
 				Defender
 					icon='Bases/Robots/Defender.dmi'
 					icon_state="defender"
@@ -483,29 +490,35 @@ obj
 					maxmodules=2
 					maxaugment=1
 					name="Defender"
-					mhp=170
-					hp=170
-					mmp=200
-					mp=200
-					sp=200
-					msp=200
-					str=18
-					strmod=4
+					mhp=120
+					hp=120
+					mmp=100
+					mp=100
+					sp=120
+					msp=120
+					str=14
+					strmod=2
 					baseac=18
-					dex=10
-					dexmod=0
-					con=10
-					conmod=0
-					int=18
-					intmod=4
-					wis=12
-					wismod=1
+					dex=12
+					dexmod=1
+					con=14
+					conmod=2
+					int=10
+					intmod=0
+					wis=0
+					wismod=0
 					cha=10
 					chamod=0
-					mab=9
-					pab=9
-					mdb=12
-					pdb=12
+					mab=3
+					pab=5
+					mdb=15
+					pdb=25
+					fort = 6
+					rflx = 5
+					will = 4
+					basedr = 27
+					speed = 5
+//BLITZER
 			T3
 				Blitzer
 					icon='Bases/Robots/Striker.dmi'
@@ -515,29 +528,35 @@ obj
 					maxmodules=2
 					maxaugment=2
 					name="Blitzer"
-					mhp=125
-					hp=125
+					mhp=240
+					hp=240
 					mmp=200
 					mp=200
-					sp=200
-					msp=200
-					str=22
-					strmod=6
-					baseac=18
-					dex=22
-					dexmod=6
-					con=10
-					conmod=0
-					int=18
-					intmod=4
-					wis=12
-					wismod=1
+					sp=240
+					msp=240
+					str=14
+					strmod=2
+					baseac=22
+					dex=20
+					dexmod=5
+					con=14
+					conmod=2
+					int=10
+					intmod=0
+					wis=10
+					wismod=0
 					cha=10
 					chamod=0
-					mab=12
-					pab=12
-					mdb=25
-					pdb=25
+					mab=6
+					pab=10
+					mdb=30
+					pdb=40
+					fort = 7
+					rflx = 12
+					will = 9
+					basedr = 42
+					speed = 12
+//GUARDIAN
 				Guardian
 					icon='Bases/Robots/Defender.dmi'
 					icon_state="guardian"
@@ -546,29 +565,35 @@ obj
 					maxmodules=2
 					maxaugment=2
 					name="Guardian"
-					mhp=280
-					hp=280
-					mmp=0
-					mp=0
-					sp=0
-					msp=0
-					str=18
-					strmod=4
-					baseac=25
-					dex=10
-					dexmod=0
-					con=10
-					conmod=0
+					mhp=120
+					hp=120
+					mmp=100
+					mp=100
+					sp=120
+					msp=120
+					str=14
+					strmod=2
+					baseac=18
+					dex=12
+					dexmod=1
+					con=14
+					conmod=2
 					int=10
 					intmod=0
-					wis=12
-					wismod=1
+					wis=0
+					wismod=0
 					cha=10
 					chamod=0
-					mab=10
-					pab=10
-					mdb=8
-					pdb=8
+					mab=3
+					pab=5
+					mdb=15
+					pdb=25
+					fort = 6
+					rflx = 5
+					will = 4
+					basedr = 27
+					speed = 5
+//MAGITEKARMOR (Needs made still)
 			T4
 				MagitekArmor
 					icon='Bases/Robots/MagitekArmor.dmi'
@@ -600,7 +625,13 @@ obj
 					pab=19
 					mdb=35
 					pdb=35
+					fort = 6
+					rflx = 5
+					will = 4
+					basedr = 27
+					speed = 5
 			T5
+//MAGITEKMECHA (Needs made still)
 				MagitekMecha
 					icon='Bases/Robots/MagitekMech.dmi'
 					icon_state="standard"
@@ -632,6 +663,11 @@ obj
 					pab=23
 					mdb=45
 					pdb=45
+					fort = 6
+					rflx = 5
+					will = 4
+					basedr = 27
+					speed = 5
 
 obj
 	Vehicle
