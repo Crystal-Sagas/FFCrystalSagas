@@ -56,11 +56,11 @@ fi
 
 # prep for rust-g build
 dpkg --add-architecture i386
-rustup target add i686-unknown-linux-gnu
+~/.cargo/bin/rustup target add i686-unknown-linux-gnu
 
 echo "Deploying rust-g..."
 git checkout "$RUST_G_VERSION"
 env PKG_CONFIG_ALLOW_CROSS=1
-cargo build --release --target=i686-unknown-linux-gnu --all-features
+~/.cargo/bin/cargo build --release --target=i686-unknown-linux-gnu --all-features
 mv target/i686-unknown-linux-gnu/release/librust_g.so "$1/librust_g.so"
 cd ..
