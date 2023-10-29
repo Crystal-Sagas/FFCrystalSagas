@@ -98,6 +98,7 @@
 		var/obj/perk/monsterperk/Fly_1/g=new
 		var/obj/perk/EyewingPerk/Size_Up/h=new
 		var/obj/perk/EyewingPerk/Aerodynamic/i=new
+		var/obj/perk/MonsterAbilities/BLU/Monster_Gaze/j=new
 		enemy.contents+=a
 		enemy.contents+=b
 		enemy.contents+=c
@@ -107,6 +108,7 @@
 		enemy.contents+=g
 		enemy.contents+=h
 		enemy.contents+=i
+		enemy.contents+=j
 
 
 
@@ -115,43 +117,77 @@
 
 //SILVER LOBO
 	if(enemy.name=="Silver Lobo")
-		var/obj/perk/MonsterAbilities/BLU/SilverFang/b=new
-		var/obj/perk/Abilities/WhiteMagic/Wind/Aero/a=new
-		var/obj/perk/ElementalPerks/Aero/element=new
-		var/obj/perk/MonsterPassives/PackTactics/trait=new
-		var/obj/item/Weapon/NPCWeapons/Bite/weapon=new
-		enemy.contents+=element
-		enemy.contents+=trait
-		enemy.contents+=weapon
-		enemy.eweapon=weapon
-		enemy.contents+=b
+		var/obj/perk/MonsterAbilities/BLU/SilverFang/a=new
+		var/obj/perk/MonsterAbilities/BLU/Howl/b=new
+		var/obj/perk/monsterperk/Weakness_Dark/c=new
+		var/obj/perk/monsterperk/Resistance_Physical/d=new
+		var/obj/perk/monsterperk/Pack_Tactics/e=new
+		var/obj/perk/monsterperk/Enhanced_Smell/f=new
+		var/obj/perk/SilverLoboPerk/Reaction_Counter/g=new
+		var/obj/perk/SilverLoboPerk/Reaction_Flank_Guard/h=new
 		enemy.contents+=a
+		enemy.contents+=b
+		enemy.contents+=c
+		enemy.contents+=d
+		enemy.contents+=e
+		enemy.contents+=f
+		enemy.contents+=g
+		enemy.contents+=h
 	if(enemy.name=="Chocobo")
-		var/obj/perk/MonsterAbilities/Monster/ChocoKick/b=new
-		var/obj/perk/ElementalPerks/Earth/element=new
-		var/obj/perk/MonsterPassives/PackTactics/trait=new
-		var/obj/perk/MonsterPassives/Rideable/trait2=new
-		var/obj/item/Weapon/NPCWeapons/Bite/weapon=new
-		enemy.contents+=element
-		enemy.contents+=trait
-		enemy.contents+=trait2
-		enemy.contents+=weapon
-		enemy.eweapon=weapon
-		enemy.contents+=b
-	if(enemy.name=="Caterchipillar")
-		var/obj/perk/MonsterAbilities/Monster/StickyWeb/b=new
-		var/obj/perk/Abilities/ArcaneMagic/Bios/Bio/a=new
-		var/obj/perk/ElementalPerks/Bio/element=new
-		var/obj/perk/MonsterPassives/Devourer/trait=new
-		var/obj/perk/MonsterPassives/Rideable/trait2=new
-		var/obj/item/Weapon/NPCWeapons/Bite/weapon=new
-		enemy.contents+=element
-		enemy.contents+=trait
-		enemy.contents+=trait2
-		enemy.contents+=weapon
-		enemy.eweapon=weapon
-		enemy.contents+=b
+		var/obj/perk/MonsterAbilities/BLU/ChocoKick/a=new
+		var/obj/perk/Abilities/GreenMagic/Haste/b=new
+		var/obj/perk/monsterperk/Weakness_Lightning/c=new
+		var/obj/perk/monsterperk/Resistance_Wind/d=new
+		var/obj/perk/monsterperk/Swift/e=new
+		var/obj/perk/monsterperk/Large/f=new
+		var/obj/perk/monsterperk/Mount_1/g=new
+		var/obj/perk/ChocoboPerk/Bonus_Action_ChocoSwift/h=new
+		var/obj/perk/ChocoboPerk/Reaction_ChocoSentinel/i=new
 		enemy.contents+=a
+		enemy.contents+=b
+		enemy.contents+=c
+		enemy.contents+=d
+		enemy.contents+=e
+		enemy.contents+=f
+		enemy.contents+=g
+		enemy.contents+=h
+		enemy.contents+=i
+	if(enemy.name=="Caterchipillar")
+		var/obj/perk/MonsterAbilities/BLU/Ultra_Waves/a=new
+		var/obj/perk/MonsterAbilities/BLU/Sticky_Webs/b=new
+		var/obj/perk/MonsterAbilities/BLU/Paralyzing_Sting/c=new
+		var/obj/perk/monsterperk/Weakness_Fire/d=new
+		var/obj/perk/monsterperk/Resistance_Status_Effects/e=new
+		var/obj/perk/monsterperk/Immune_Poison/f=new
+		var/obj/perk/monsterperk/Chitin_Armor/g=new
+		var/obj/perk/CaterchipillarPerk/Bonus_Action_DefenseCurl/h=new
+		var/obj/perk/CaterchipillarPerk/Reaction_LongReach/i=new
+		var/obj/perk/monsterperk/Resistance_Water/j=new
+		enemy.contents+=a
+		enemy.contents+=b
+		enemy.contents+=c
+		enemy.contents+=d
+		enemy.contents+=e
+		enemy.contents+=f
+		enemy.contents+=g
+		enemy.contents+=h
+		enemy.contents+=i
+		enemy.contents+=j
+	if(enemy.name=="Behemoth Infant")
+		var/obj/perk/monsterperk/Weakness_Ice/a=new
+		var/obj/perk/monsterperk/Resistance_Bludgeoning/b=new
+		var/obj/item/Weapon/NPCWeapons/Horn/c=new
+		var/obj/perk/MonsterAbilities/BLU/Baby_Charge/d=new
+		var/obj/perk/BehemothInfantPerks/Bonus_Action_Fend_for_Itself/e=new
+		var/obj/perk/BehemothInfantPerks/Reaction_Cute_Charm/f=new
+		var/obj/perk/BehemothInfantPerks/Rage/g=new
+		enemy.contents+=a
+		enemy.contents+=b
+		enemy.contents+=c
+		enemy.contents+=d
+		enemy.contents+=e
+		enemy.contents+=f
+		enemy.contents+=g
 /*	if(enemy.name=="Bagoly")
 		var/obj/perk/Abilities/WhiteMagic/Wind/Aerora/b=new
 		var/obj/perk/ElementalPerks/Aero/element=new
@@ -189,19 +225,30 @@
 		enemy.eweapon=weapon
 		enemy.contents+=b*/
 	if(enemy.name=="Flan")
-		var/obj/perk/MonsterAbilities/BLU/GelatinousLake/b=new
-		var/obj/perk/MonsterAbilities/Monster/GooStream/c=new
-		var/obj/perk/ElementalPerks/Earth/element=new
-		var/obj/perk/MonsterPassives/Mutant/trait=new
-		var/obj/perk/MonsterPassives/Solid/trait2=new
-		var/obj/item/Weapon/NPCWeapons/Punch/weapon=new
-		enemy.contents+=element
-		enemy.contents+=trait
-		enemy.contents+=trait2
-		enemy.contents+=weapon
-		enemy.eweapon=weapon
+		var/obj/perk/MonsterAbilities/BLU/Gelatinous_Lake/a=new
+		var/obj/perk/MonsterAbilities/BLU/Goo_Stream/b=new
+		var/obj/perk/Abilities/BlackMagic/Flame/Fira/c=new
+		var/obj/perk/Abilities/BlackMagic/Lightning/Thundara/d=new
+		var/obj/perk/Abilities/BlackMagic/Hydro/Watera/e=new
+		var/obj/perk/monsterperk/Weakness_Fire/f=new
+		var/obj/perk/monsterperk/Resistance_Ice/g=new
+		var/obj/perk/monsterperk/Immune_Physical/h=new
+		var/obj/perk/monsterperk/Magic_Adept/i=new
+		var/obj/perk/monsterperk/Potent/j=new
+		var/obj/perk/FlanPerk/Bonus_Action_Flan_DualCast/k=new
+		var/obj/perk/FlanPerk/Reaction_Flan_Spellmunity/l=new
+		enemy.contents+=a
 		enemy.contents+=b
 		enemy.contents+=c
+		enemy.contents+=d
+		enemy.contents+=e
+		enemy.contents+=f
+		enemy.contents+=g
+		enemy.contents+=h
+		enemy.contents+=i
+		enemy.contents+=j
+		enemy.contents+=k
+		enemy.contents+=l
 /*	if(enemy.name=="Sahaugin")
 		var/obj/perk/MonsterAbilities/BLU/WaterGun/b=new
 		var/obj/perk/Abilities/BlackMagic/Lightning/Thunder/thun=new
@@ -489,19 +536,26 @@
 		enemy.contents+=d*/
 //B Rank
 	if(enemy.name=="Gigantoad")
-		var/obj/perk/MonsterAbilities/BLU/OilBullet/b=new
-		var/obj/perk/MonsterAbilities/BLU/MagicTongue/d=new
-		var/obj/perk/ElementalPerks/Water/element=new
-		var/obj/perk/MonsterPassives/Dense/trait=new
-		var/obj/perk/MonsterPassives/Regenerator/trait2=new
-		var/obj/item/Weapon/NPCWeapons/Punch/weapon=new
-		enemy.contents+=element
-		enemy.contents+=trait
-		enemy.contents+=trait2
-		enemy.contents+=weapon
-		enemy.eweapon=weapon
+		var/obj/perk/MonsterAbilities/BLU/GiganToad_Tongue_Restrict/a=new
+		var/obj/perk/MonsterAbilities/BLU/GiganToad_Consume/b=new
+		var/obj/perk/monsterperk/Immune_Toad/c=new
+		var/obj/perk/monsterperk/Large/d=new
+		var/obj/perk/monsterperk/Weakness_Lightning/e=new
+		var/obj/perk/monsterperk/Resistance_Water/f=new
+		var/obj/perk/monsterperk/Expert_Focus/g=new
+		var/obj/perk/monsterperk/Swimmer_1/h=new
+		var/obj/perk/GiganToadPerk/Bonus_Action_SticklerTongue/i=new
+		var/obj/perk/GiganToadPerk/Reaction_PoisonHide/j=new
+		enemy.contents+=a
 		enemy.contents+=b
+		enemy.contents+=c
 		enemy.contents+=d
+		enemy.contents+=e
+		enemy.contents+=f
+		enemy.contents+=g
+		enemy.contents+=h
+		enemy.contents+=i
+		enemy.contents+=j
 /*	if(enemy.name=="Gargoyle")
 		var/obj/perk/Abilities/ArcaneMagic/Darkness/Darkja/b=new
 		var/obj/perk/Abilities/WhiteMagic/Wind/Aeroja/d=new

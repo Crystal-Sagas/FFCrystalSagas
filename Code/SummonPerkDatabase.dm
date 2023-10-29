@@ -27,7 +27,7 @@ obj
 			Kirin
 				desc="The Eidolon Kirin is a holy spirit. When Kirin would take Holy damage, it is healed for that much instead. In addition, White Magic spells cost 10 less MP than the standard cost for this Eidolon. (To a minimum of 1.)  Kirin is mountable, by expending a Bonus action. If the player is attacked while mounted, Kirin may take full damage in their place ; causing the rider to take only half damage."
 			Titan //Finished
-				desc="The Eidolon Titan is the lord of the crags. When Titan would take Earth damage, it is healed for that much instead. In addition, Earth spells cost 20 less MP than the standard cost for this Eidolon. (To a minimum of 1.)"
+				desc="The Eidolon Titan is the lord of the crags. Earth spells cost 20 less MP than the standard cost for this Eidolon. (To a minimum of 1.)"
 			Garuda
 				desc="The Eidolon Garuda is the lady of the winds. When Garuda would take Wind damage, it is healed for that much instead. In addition, Wind spells cost 20 less MP than the standard cost for this Eidolon. (To a minimum of 1.)"
 			Bismark

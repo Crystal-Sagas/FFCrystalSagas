@@ -301,7 +301,14 @@ obj
 			Bonus_Action_ScaleDance
 				desc = "If adjacent to another Sin Scale, this creature can take a 5ft step in any direction without provoking attack of opportunity."
 
-
+//Behemoth Infant
+		BehemothInfantPerks
+			Bonus_Action_Fend_for_Itself
+				desc= "when this creature is not within 5 tiles of its mother or owner it gains +2 tile movement, +5 PDB and +2 PAB. It may attack anything in melee with it but its must use its move action to return to its mother or owner."
+			Reaction_Cute_Charm
+				desc= "When this creature attacks the target makes a DC 14 Will save. On a fail the target gets disadvantage when targeting this creature."
+			Rage
+				desc= "when this creature takes 30 or more damage from an attack increase its PDB by 5 for the rest of combat up to a max of 15."
 //C RANK SUMMONS BEGINS
 
 

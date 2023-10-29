@@ -1022,7 +1022,6 @@ proc
 					m.stealthproficient=0
 					m.survivalproficient=0
 					m.thieveryproficient=0
-					m.nolearn+="Sub Job"
 					Scholarint()
 				if("Merchant")
 					m.job="Merchant"

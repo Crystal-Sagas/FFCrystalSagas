@@ -5,10 +5,6 @@
 	/// use tags instead of refs?
 	var/use_tag = FALSE
 
-	//? abstract.dm
-	/// abstract type - certain datums have a "root" that shouldn't be instantiated.
-	var/abstract_type = /datum
-
 	//? weakref.dm
 	/// weak reference
 	var/datum/weakref/weakref

@@ -230,61 +230,37 @@ proc
 			m.mhp+=60
 			m.hp+=60
 //scholar boosts
-		if(o.name=="Physical Eidolon Empowerment")
-			for(var/obj/npc/Summons/a in m.contents)
-				if(a.scholarsum==1)
-					var/atk=round(a.pab*0.5)
-					m.pab+=atk
-		if(o.name=="Magical Eidolon Empowerment")
-			for(var/obj/npc/Summons/a in m.contents)
-				if(a.scholarsum==1)
-					var/atk=round(a.mab*0.5)
-					m.mab+=atk
-		if(o.name=="Defensive Eidolon Empowerment")
-			for(var/obj/npc/Summons/a in m.contents)
-				if(a.scholarsum==1)
-					var/def=round(a.basedr*0.5)
-					m.basedr+=def
-					m.baseac+=1
 		if(o.name=="Shared Precision")
 			for(var/obj/npc/Summons/a in m.contents)
 				if(a.scholarsum==1)
-					var/atk=round(m.pab*0.5)
-					var/matk=round(m.mab*0.5)
-					a.pab+=atk
-					a.mab+=matk
+					a.pab += 2
+					a.mab += 2
 		if(o.name=="Shared Defense")
 			for(var/obj/npc/Summons/a in m.contents)
 				if(a.scholarsum==1)
-					var/def=round(m.baseac*0.25)
-					a.baseac+=def
+					a.baseac += 2
 		if(o.name=="Shared Power")
 			for(var/obj/npc/Summons/a in m.contents)
 				if(a.scholarsum==1)
-					var/atk=round(m.pdb*0.5)
-					var/matk=round(m.mdb*0.5)
-					a.pab+=atk
-					a.mab+=matk
+					a.pdb += 5
+					a.mdb += 5
 		if(o.name=="Shared Fortitude")
 			for(var/obj/npc/Summons/a in m.contents)
 				if(a.scholarsum==1)
-					var/def=round(m.basedr*0.5)
-					a.basedr+=def
+					a.basedr += 5
 		if(o.name=="Refined Fortitude")
 			for(var/obj/npc/Summons/a in m.contents)
 				if(a.scholarsum==1)
-					var/vit = a.mhp*2
-					a.mhp = vit
-					a.hp = vit
+					a.mhp += 150
+					a.hp += 150
+					a.basedr += 10
 		if(o.name=="Refined Mana Pool")
 			for(var/obj/npc/Summons/a in m.contents)
 				if(a.scholarsum==1)
-					var/vit = a.mmp*2
-					var/vit2 = a.msp*2
-					a.mmp = vit
-					a.mp = vit
-					a.msp = vit2
-					a.sp = vit2
+					a.mmp += 200
+					a.mp += 200
+					a.msp += 50
+					a.sp += 50
 		if(o.name=="Ultimate Connection")
 			for(var/obj/npc/Summons/a in m.contents)
 				if(a.scholarsum==1)

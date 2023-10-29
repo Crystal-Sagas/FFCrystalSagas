@@ -1,6 +1,11 @@
 // todo: /datum/prototype/perk
 
 /obj/perk
+	//* Serialization
+	//  todo: move to /datum/prototype/perk
+	/// Unique ID
+	var/id
+
 	//* new ability-attack system
 	/// set this to the typepath of an attack ability or attack datum if you want a lazy-set attack (or attacks)
 	var/tmp/list/attacks
