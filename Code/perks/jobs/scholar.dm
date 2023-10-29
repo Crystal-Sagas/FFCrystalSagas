@@ -8,15 +8,15 @@
 	PhysicalEidolonEmpowerment
 		name="Physical Eidolon Empowerment"
 		rank="T2"
-		desc="A Scholar with this feature gains its Eidolon's Physical Attack Bonus to hit on all physical attacks rolls."
+		desc="A Scholar with this feature gains +1 PAB as a Globalmod. If their Eidolon has a higher PAB then MAB, they gain +3 instead. If their Eidolon has the same PAB as their MAB, they gain +2 instead."
 	MagicalEidolonEmpowerment
 		name="Magical Eidolon Empowerment"
 		rank="T2"
-		desc="A Scholar with this features gains its Eidolon's Magical Attack Bonus to hit on all magical attack rolls."
+		desc="Magical Eidolon Empowerment - A Scholar with this feature gains +1 MAB as a Globalmod. If their Eidolon has a higher MAB then PAB, they gain +3 instead. If their Eidolon has the same MAB as their PAB, they gain +2 instead."
 	DefensiveEidolonEmpowerment
 		name="Defensive Eidolon Empowerment"
 		rank="T2"
-		desc="A Scholar with this feature gains its Eidolon's Damage Reduction, and +1 AC."
+		desc="Defensive Eidolon Empowerment - A Scholar with this feature gains +3 DR, and +1 AC. If their Eidolon has 10 or more DR, they get +5 DR instead. This is added as a Globalmod."
 	ElementalEidolonEmpowermentDefensive
 		name="Elemental Eidolon Empowerment Defensive"
 		rank="T3"
@@ -24,7 +24,7 @@
 	ElementalEidolonEmpowermentOffensive
 		name="Elemental Eidolon Empowerment Offensive"
 		rank="T4"
-		desc="A Scholar with this feature gains +1d8 damage of its Eidolon's primary elemental affinity to all Magic attacks, as well as all Physical attacks."
+		desc="A Scholar with this feature gains +5 PDB and +5 MDB as a Globalmod. If their Eidolon has equal PDB and MDB, these bonuses are increased to +6. If their Eidolon has a higher MDB then PDB, or vice versa, that bonus is increased to +7. Using their connection, a Scholar may also change the damage type of an attack to their Eidolon's primary elemental affinity and impose a DC 16 fortitude save on an opponent or they take the status effect associated with that primary elemental affinity (Water - Wet, Lightning - Paralyze, Bio - Poison, Dark - Weakness, Earth - Heavy, Ice - Frostbite, Fire - Burn. Holy - Silence). This has a 1 Turn cooldown."
 	TrueElementalEmpowerment
 		name="True Elemental Empowerment"
 		rank="T5"
@@ -33,27 +33,27 @@
 	SharedPrecision
 		name="Shared Precision"
 		rank="T2"
-		desc="A Scholar with this feature grants its Eidolon any Attack Roll bonuses that they personally have access to."
+		desc = "A Scholar with this feature grants its Eidolon +2 to hit with magical and physical attacks. This increase is automatically factored into the Eidolon's stats."
 	SharedDefense
 		name="Shared Defense"
 		rank="T2"
-		desc="A Scholar with this feature grants its Eidolon any AC bonuses that they personally have access to."
+		desc = "A Scholar with this feature grants its Eidolon +2 AC. This increase is automatically factored into the Eidolon's stats."
 	SharedPower
 		name="Shared Power"
 		rank="T2"
-		desc="A Scholar with this feature grants its Eidolon any damage bonuses that they personally have access to."
+		desc = "A Scholar with this feature grants its Eidolon +5 damage to magical and physical attacks. This increase is automatically factored into the Eidolon's stats."
 	SharedFortitude
 		name="Shared Fortitude"
 		rank="T2"
-		desc="A Scholar with this feature grants its Eidolon any damage reduction bonuses that they personally have access to."
+		desc = "A Scholar with this feature grants its Eidolon +5 additional DR. This increase is automatically factored into the Eidolon's stats."
 	RefinedFortitude
 		name="Refined Fortitude"
 		rank="T3"
-		desc="A Scholar with this feature doubles its Eidolon's base HP."
+		desc = "A Scholar with this feature adds +150 to its Eidolon's base HP and increases its DR by 10. This increase is automatically factored into the Eidolon's stats."
 	RefinedManaPool
 		name="Refined Mana Pool"
 		rank="T3"
-		desc="A Scholar with this feature doubles its Eidolon's base MP pool."
+		desc = "A Scholar with this feature adds +200 to their Eidolon's MP and +50 to their SP. This increase is automatically factored into the Eidolon's stats."
 	DeepenedConnection
 		name="Deepened Connection"
 		rank="T3"
