@@ -6979,6 +6979,7 @@ obj
 						var/obj/perk/monsterperk/Fly_1/g=new
 						var/obj/perk/EyewingPerk/Size_Up/h=new
 						var/obj/perk/EyewingPerk/Aerodynamic/i=new
+						var/obj/perk/MonsterAbilities/BLU/Monster_Gaze/j=new
 						src.contents+=a
 						src.contents+=b
 						src.contents+=c
@@ -6988,6 +6989,7 @@ obj
 						src.contents+=g
 						src.contents+=h
 						src.contents+=i
+						src.contents+=j
 						var/obj/status/HPBar/hpb = new
 						src.contents+=hpb
 						var/obj/status/SPBar/spb = new
@@ -7417,6 +7419,64 @@ obj
 						src.contents+=spb
 						var/obj/status/MPBar/mpb=new
 						src.contents+=mpb
+
+				Behemoth_Infant
+					name="Behemoth Infant"
+					weakness="Ice"
+					resistance="Bludgeoning"
+					unroot=1
+					icon='Icons/Monsters/Baby_Behemoth.png'
+					mhp=200
+					hp=200
+					mmp=160
+					mp=160
+					sp=200
+					msp=200
+					baseac=14
+					ac=14
+					str=16
+					strmod=3
+					dex=14
+					dexmod=2
+					con=14
+					conmod=2
+					int=10
+					intmod=0
+					wis=10
+					wismod=0
+					cha=10
+					chamod=0
+					mab=3
+					pab=6
+					mdb=15
+					pdb=25
+					fort = 6
+					rflx = 6
+					will = 4
+					basedr = 5
+					speed = 6
+					New()
+						var/obj/perk/monsterperk/Weakness_Ice/a=new
+						var/obj/perk/monsterperk/Resistance_Bludgeoning/b=new
+						var/obj/item/Weapon/NPCWeapons/Horn/c=new
+						var/obj/perk/MonsterAbilities/BLU/Baby_Charge/d=new
+						var/obj/perk/BehemothInfantPerks/Bonus_Action_Fend_for_Itself/e=new
+						var/obj/perk/BehemothInfantPerks/Reaction_Cute_Charm/f=new
+						var/obj/perk/BehemothInfantPerks/Rage/g=new
+						src.contents+=a
+						src.contents+=b
+						src.contents+=c
+						src.contents+=d
+						src.contents+=e
+						src.contents+=f
+						src.contents+=g
+						var/obj/status/HPBar/hpb=new
+						src.contents+=hpb
+						var/obj/status/SPBar/spb=new
+						src.contents+=spb
+						var/obj/status/MPBar/mpb=new
+						src.contents+=mpb
+
 				Sin_Scale
 					name="Sin Scale"
 					weakness="Holy"

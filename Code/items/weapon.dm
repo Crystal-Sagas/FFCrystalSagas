@@ -2,6 +2,7 @@
  * legacy weapons
  */
 /obj/item/Weapon
+	abstract_type = /obj/item/Weapon
 
 	//* old stats system - moved to here and well documented
 	/// use weapon system?

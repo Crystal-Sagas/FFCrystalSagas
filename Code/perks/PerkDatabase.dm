@@ -89,428 +89,6 @@ obj
 				icon='Icons/Perk/Apocalypse.png'
 				name="Dark Attuned"
 				desc="This creature is attuned to the element of Holy. It is immune to the 'Weakness', 'Doom', 'Break', 'Heavy', 'Blind', and 'Silence' status effects, and takes half damage from dark damage, but 2x from holy damage."
-		Boss
-			Sin
-				icon='Icons/Bossfate.png'
-				BossSin
-					name="Boss (Sin)"
-					desc="Sin is a boss creature, and is immune to Doom, Break, Stun, Petrify, Toad, Silence, Poison, Berserk, Paralyze, Weakness, Heavy, and Stop."
-				MiasmaticSin
-					name="Miasmatic Sin"
-					desc="Sin releases a seeping miasma from every tile that is at the edge of its overall shape. These miasma clouds spread at a speed of 2 tiles per turn, and can only be removed via Wind based AoE attacks. A creature within this cloud suffers disadvantage on attack rolls, and takes 2d12 damage per turn."
-				EnvoyofSin
-					name="Envoy of Sin"
-					desc="The Sin Tentacle, while implanted in the ground - sucks the Lifestream out of the planet, and actively siphons it into a barrier around Sin. As long as at least two Sin Tentacles are alive, Sin is immune to all damage."
-				HeraldofSin
-					name="Herald of Sin"
-					desc="The Sin Scale, while it is alive - is a Herald of Sin. For every Sin Scale that is alive, all Sinspawn gain +1 PAB, and MAB ; and all characters in view suffer -1 to AC and attack rolls for both magical and physical attacks."
-				SinSpawn
-					name="Sin Spawn"
-					desc="After three turns of battle, and every turn thereafter Sin is able to, as a bonus action - spawn exactly 2 Sin Spawn type creatures at any tile within 10 tiles of an edge of its body. When battle begins, Sin spawns 6 Sinspawn type creatures."
-			Jenova
-				BossJenova
-					icon='Icons/Bossfate.png'
-					name="Boss (Jenova)"
-					desc="Jenova is a boss creature, and is immune to Doom, stun, petrify, toad, silence, and berserk."
-				Geostigma
-					name="Geostigma"
-					desc="Jenova’s presence is a blight to the planet and all life on it. At the end of every round a geostigma spreads towards all living things from Jenova’s location. The geostigma moves to an adjacent tile as long as something is living there, 1 tile per turn ; starting at Jenova’s location (grass, creature, plant etc.) Creatures that start their turn in an infected tile suffer 1d10 poison damage."
-				ParasiteSpores
-					name="Parasite Spores"
-					desc=" Every 200 HP Jenova loses, she sheds parts of her body spreading it to any Geostigma infected tile in view. After 2 rounds, new Jenova.Zygotes sprout in place of the body parts. 2 sprout for every 200 HP lost.  "
-				BiologicalParasite
-					name="Biological Parasite"
-					desc="Jenova injects a creature in range with a proboscis inserting some of its DNA into the target and stealing some of the target's DNA. Jenova makes a physical attack roll.On a successful roll Jenova can copy one ability or perk from its target. As a bonus action Jenova can transfer the stolen trait to one of its offspring.  Target must make a Will saving throw. DC:14 or suffer weakness. 5ft range.  -20 SP"
-				Gas
-					name="Gas"
-					ability=1
-					desc="Jenova.ZYGOTE spews a toxic gas in a 3 tile cone in front of it. Targets caught in the AoE must make a fortitude saving throw or suffer poison and blind. If the target is standing on a tile infected by Geostigma they roll at disadvantage. "
-
-		Roleperks
-			ptype="job"
-			jobneed="nada"
-			MeleeTank
-				icon='Icons/Perk/Meleetank.png'
-				name="Melee Tank"
-				desc="A Melee Tank gains +2 to AC, and reduces the damage of all physical attacks by 4 extra points regardless of damage reduction or piercing. (AC increase, and 4 global DR added automatically.)"
-			CasterTank
-				icon='Icons/Perk/Tankcaster.png'
-				name="Tank Caster"
-				desc="A Tank Caster gains +2 to AC, and reduces the damage of all magical attacks by 4 extra points regardless of damage reduction or piercing, as well as 4 global damage reduction. (AC increase, and 4 global DR added automatically.)"
-			PhysicalDPS
-				icon='Icons/Perk/PhysicalDPS.png'
-				name="Physical DPS"
-				desc="A Physical DPS character gains +3 to hit on Physical attack rolls, and deals +8 flat damage on all Physical based attacks. (Hit and damage bonus added to sheet automatically.)"
-			MagicalDPS
-				icon='Icons/Perk/MagicalDPS.png'
-				name="Magical DPS"
-				desc="A Magical DPS character gains +3 to hit on Magical attack rolls, and deals +8 flat damage on all Magic based attacks. (Hit and damage bonus dded to sheet automatically.)"
-			PhysicalSupport
-				icon='Icons/Perk/Physicalsupport.png'
-				name="Physical Support"
-				desc="A Physical Support's Healing Abilities gain an additional +5 to all heals, on top of what is rolled, and they gain +1 to all Melee attack rolls. (Hit bonus added to the sheet automatically.) A Physical support spends 10 less SP on abilities (to a minimum of 5 SP.)"
-			MagicalSupport
-				icon='Icons/Perk/Magicalsupport.png'
-				name="Magical Support"
-				desc="A Magical Support's Healing Abilities gain an additional +10 to all heals, on top of what is rolled, and they gain +1 to all Magical attack rolls. (Hit bonus added to sheet automatically.) A Magical Support spends 10 less MP on abilities (to a minimum of 5 MP.)"
-			Generalist
-				icon='Icons/Perk/Specialist.png'
-				name="Specialist"
-				desc=" Generalist gains +2 Damage Reduction from all sources, +2 AC, +2 to hit, and deals 5 extra damage on all attacks and abilities. In addition, they gain +5 extra RPP on creation. (All bonuses added to sheet automatically.)"
-		GeneralPerks
-			cat="General"
-			ptype="general"
-			Job
-				icon='Icons/Perk/Subjob.png'
-				Subjob
-					rank="T1"
-					name="Sub Job"
-					desc="This individual is able to pick an additional class to supplement their current one. They are only currently able to learn up to three C rank or lower abilities, and may buy up to the Tier 2 perks from this job. They also gain access to its inherent passive, as listed in the 'Job perk' (though they do not benefit from its starting HP, MP, and SP, nor any other bonuses listed with that set)"
-				Dualjob
-					rank="T4"
-					name="Dual Job"
-					pre="Sub Job"
-					desc="This individual, through rigorous study has achieved the ability to learn fully from two jobs at once. They have access to the full repertoire of that job's perks, and abilities."
-			HP
-				icon='Icons/Perk/HP.png'
-				HP1
-					name="Tier 1 HP"
-					rank="T1"
-					rpcost=1
-					desc="Gives a flat bonus of 50 HP."
-				HP2
-					name="Tier 2 HP"
-					rank="T2"
-					rpcost=2
-					purchase_stat_requirements = list(
-						"con" = 14,
-					)
-					desc="Gives a flat bonus of 20 HP."
-					pre="Tier 1 HP"
-				HP3
-					name="Tier 3 HP"
-					rank="T3"
-					rpcost=3
-					purchase_stat_requirements = list(
-						"con" = 16,
-					)
-					desc="Gives a flat bonus of 20 HP."
-					pre="Tier 2 HP"
-				HP4
-					name="Tier 4 HP"
-					rank="T4"
-					rpcost=4
-					purchase_stat_requirements = list(
-						"con" = 18,
-					)
-					desc="Gives a flat bonus of 50 HP."
-					pre="Tier 3 HP"
-				HP5
-					name="Tier 5 HP"
-					rank="T5"
-					rpcost=5
-					purchase_stat_requirements = list(
-						"con" = 20,
-					)
-					desc="Gives a flat bonus of 40 HP."
-					pre="Tier 4 HP"
-				HP6
-					name="Tier 6 HP"
-					rank="T6"
-					rpcost=6
-					purchase_stat_requirements = list(
-						"con" = 22,
-					)
-					desc="Gives a flat bonus of 100 HP."
-					pre="Tier 5 HP"
-			MP
-				icon='Icons/Perk/Mana.png'
-				MP1
-					name="Tier 1 MP"
-					rank="T1"
-					rpcost=1
-					desc="Gives a flat bonus of 40 MP."
-				MP2
-					name="Tier 2 MP"
-					rank="T2"
-					rpcost=2
-					stattype=3
-					stattypedisplay="Wisdom"
-					purchase_stat_requirements_any = list(
-						"wis" = 14,
-						"int" = 14,
-						"cha" = 14,
-					)
-					desc="Gives a flat bonus of 20 MP."
-					pre="Tier 1 MP"
-				MP3
-					name="Tier 3 MP"
-					rank="T3"
-					rpcost=3
-					purchase_stat_requirements_any = list(
-						"wis" = 16,
-						"int" = 16,
-						"cha" = 16,
-					)
-					desc="Gives a flat bonus of 20 MP."
-					pre="Tier 2 MP"
-				MP4
-					name="Tier 4 MP"
-					rank="T4"
-					rpcost=4
-					purchase_stat_requirements_any = list(
-						"wis" = 18,
-						"int" = 18,
-						"cha" = 18,
-					)
-					desc="Gives a flat bonus of 80 MP."
-					pre="Tier 3 MP"
-				MP5
-					name="Tier 5 MP"
-					rank="T5"
-					rpcost=5
-					purchase_stat_requirements_any = list(
-						"wis" = 20,
-						"int" = 20,
-						"cha" = 20,
-					)
-					desc="Gives a flat bonus of 60 MP."
-					pre="Tier 4 MP"
-				MP6
-					name="Tier 6 MP"
-					rank="T6"
-					rpcost=6
-					purchase_stat_requirements_any = list(
-						"wis" = 22,
-						"int" = 22,
-						"cha" = 22,
-					)
-					desc="Gives a flat bonus of 100 MP."
-					pre="Tier 5 MP"
-			SP
-				icon='Icons/Perk/Stamina.png'
-				SP1
-					name="Tier 1 SP"
-					rank="T1"
-					rpcost=1
-					desc="Gives a flat bonus of 40 SP."
-				SP2
-					name="Tier 2 SP"
-					rank="T2"
-					rpcost=2
-					purchase_stat_requirements = list(
-						"str" = 14,
-					)
-					desc="Gives a flat bonus of 20 SP."
-					pre="Tier 1 SP"
-				SP3
-					name="Tier 3 SP"
-					rank="T3"
-					rpcost=3
-					purchase_stat_requirements = list(
-						"str" = 16,
-					)
-					desc="Gives a flat bonus of 20 SP."
-					pre="Tier 2 SP"
-				SP4
-					name="Tier 4 SP"
-					rank="T4"
-					rpcost=4
-					purchase_stat_requirements = list(
-						"str" = 18,
-					)
-					desc="Gives a flat bonus of 80 SP."
-					pre="Tier 3 SP"
-				SP5
-					name="Tier 5 SP"
-					rank="T5"
-					rpcost=5
-					purchase_stat_requirements = list(
-						"str" = 20,
-					)
-					desc="Gives a flat bonus of 60 SP."
-					pre="Tier 4 SP"
-				SP6
-					name="Tier 6 SP"
-					rank="T6"
-					rpcost=6
-					purchase_stat_requirements = list(
-						"str" = 22,
-					)
-					desc="Gives a flat bonus of 100 SP."
-					pre="Tier 5 SP"
-			Speed
-				icon='Icons/Perk/Speed.png'
-				Speed1
-					name="Speed(T1)"
-					desc="Grants +1 Tile Movement per turn, for a total of 4."
-					rank="T1"
-					rpcost=1
-				Speed2
-					name="Speed(T2)"
-					desc="Grants +2 Tile Movement per turn, for a total of 5."
-					rank="T2"
-					rpcost=2
-					purchase_stat_requirements = list(
-						"dex" = 14,
-					)
-					pre="Speed(T1)"
-				Speed3
-					name="Speed(T3)"
-					desc="Grants +3 Tile Movement per turn, for a total of 6."
-					rank="T3"
-					rpcost=3
-					purchase_stat_requirements = list(
-						"dex" = 16,
-					)
-					pre="Speed(T2)"
-				Speed4
-					name="Speed(T4)"
-					desc="Grants +4 Tile Movement per turn, for a total of 7."
-					rank="T4"
-					rpcost=4
-					purchase_stat_requirements = list(
-						"dex" = 18,
-					)
-					pre="Speed(T3)"
-				Speed5
-					name="Speed(T5)"
-					desc="Grants +5 Tile Movement per turn, for a total of 8."
-					rank="T5"
-					rpcost=5
-					purchase_stat_requirements = list(
-						"dex" = 20,
-					)
-					pre="Speed(T4)"
-				Speed6
-					name="Speed(T6)"
-					desc="Grants +6 Tile Movement per turn, for a total of 9."
-					rank="T6"
-					rpcost=6
-					purchase_stat_requirements = list(
-						"dex" = 22,
-					)
-					pre="Speed(T5)"
-			AbilityScoreImprovements
-				icon='Icons/Perk/AbilityScore.png'
-				ASI1
-					name="Ability Score Improvement T1"
-					desc="+2 to ability score pool."
-					rank="T1"
-					cat="Unique"
-					rpcost=1
-				ASI2
-					name="Ability Score Improvement T2"
-					desc="+2 to ability score pool."
-					rank="T2"
-					cat="Unique"
-					rpcost=2
-					pre="Ability Score Improvement T1"
-				ASI3
-					name="Ability Score Improvement T3"
-					desc="+2 to ability score pool."
-					rank="T3"
-					cat="Unique"
-					rpcost=3
-					pre="Ability Score Improvement T2"
-				ASI4
-					name="Ability Score Improvement T4"
-					desc="+2 to ability score pool."
-					rank="T4"
-					cat="Unique"
-					rpcost=4
-					pre="Ability Score Improvement T3"
-				ASI5
-					name="Ability Score Improvement T5"
-					desc="+2 to ability score pool."
-					rank="T5"
-					cat="Unique"
-					rpcost=5
-					pre="Ability Score Improvement T4"
-				ASI6
-					name="Ability Score Improvement T6"
-					desc="+2 to ability score pool."
-					rank="T6"
-					cat="Unique"
-					rpcost=6
-					pre="Ability Score Improvement T5"
-			Strong
-				icon='Icons/Perk/Strong.png'
-				name="Strong"
-				rank="T2"
-				rpcost=2
-				desc="This character is exceptionally strong, they deal +5 extra damage with physical attacks."
-			Potent
-				icon='Icons/Perk/Potent.png'
-				name="Potent"
-				rank="T2"
-				rpcost=2
-				desc="This character is exceptionally potent, they deal +5 extra damage with magical attacks."
-			Durable
-				icon='Icons/Perk/Durable.png'
-				name="Durable"
-				rank="T2"
-				rpcost=2
-				desc="This character is exceptionally durable, they gain +1 AC."
-			Precise
-				icon='Icons/Perk/Precise.png'
-				name="Precise"
-				rank="T2"
-				rpcost=2
-				desc="This character is exceptionally precise, they gain +1 to hit with physical attacks."
-			Accurate
-				icon='Icons/Perk/Accurate.png'
-				name="Accurate"
-				rank="T2"
-				rpcost=2
-				desc="This character is exceptionally accurate, they gain +1 to hit with magical attacks."
-			Sturdy
-				icon='Icons/Perk/Sturdy.png'
-				name="Sturdy"
-				rank="T2"
-				rpcost=2
-				desc="This character is exceptionally sturdy, they gain +2 physical damage reduction."
-			Blessed
-				icon='Icons/Perk/Blessed.png'
-				name="Blessed"
-				rank="T2"
-				rpcost=2
-				desc="This character is exceptionally blessed, they gain +2 magical damage reduction."
-			Swift
-				icon='Icons/Perk/Swift.png'
-				cat="Unique"
-				name="Swift"
-				rank="T3"
-				desc="This character is exceptionally swift. They gain an extra bonus action on every turn."
-			InspiringLeader
-				icon='Icons/Perk/Leader.png'
-				cat="Unique"
-				rank="T3"
-				purchase_stat_requirements = list(
-					"cha" = 16,
-				)
-				desc="This character is an inspiring leader. They may spend 60 Mana in order to apply a bonus equal to their CHA modifier towards AC, to hit, global damage reduction, and global damage to their entire party for 2 rounds."
-			Defensive
-				icon='Icons/Perk/Defensive.png'
-				name="Defensive"
-				rank="T3"
-				rpcost=3
-				desc="This character is a defensive fighter. They gain an extra reaction every round, and reactions cost 5 less MP/Stamina/Ninpo/Stacks, etc to cast."
-			ExtraAttack
-				icon='Icons/Perk/ExtraAttack.png'
-				cat="Unique"
-				name="Extra Attack"
-				rank="T4"
-				rpcost=4
-				desc="This character is a master combatant. They may cast an extra General Weapon Ability, General Magic Ability, or use an extra basic attack as part of their standard attack action."
-			ActionSurge
-				icon='Icons/Perk/ActionSurge.png'
-				cat="Unique"
-				name="Action Surge"
-				rank="T5"
-				desc="This individual is able to perform many more actions than the normal individual in a burst of inspiration. Once per 24 OOC hours, this character may activate Action Surge at the end of their turn in order to gain an extra turn."
-
-
 		Crafting
 			cat="Crafting"
 			ptype="general"
@@ -571,6 +149,9 @@ obj
 							return
 						var/choice = input(usr, "Choose a type of Materia to meld. The Materia melded will be random in that set.") as null|anything in list("Green", "Blue", "Yellow", "Purple", "Link")
 						if(!choice)
+							return
+						if(!our_stack || (our_stack.amount < 5))
+							usr.alert_interaction_fail("You don't have at least 5 Raw Mako.")
 							return
 						switch(choice)
 							if("Green")
@@ -1193,79 +774,6 @@ obj
 					rank="T5"
 					cat="Unique"
 					desc="This Knight has proven to be incomparably reckless compared to other Knights. Rather than having nigh unstoppable defenses, like their more vigorous counterparts - this Knight has chosen to pursue the path of flashy recklessness, and throws caution to the wind. This, however, grants them the benefit of growing stronger throughout the duration of combat. A Knight with this perk gains +2 STR per round of combat, capping at +6 after 3 rounds, which lasts until the end of battle. Incompatible with 'Unmatched Vigor'."
-
-
-
-			Scholar
-				jobneed="Scholar"
-				icon='Icons/Perk/Scholar.png'
-				Scholar
-					name="Scholar"
-					cat="Unique"
-					desc="A Scholar is able to choose a single C/B rank Summon of their choice, and make a contract with it. They gain this Summon at no cost, and it becomes their permanent, personalized Summon. This summon costs 5 MP less to summon than normal, as well. Scholars have access to B Rank White Magic, and B rank Arcane Magic. Scholar can not be combined with Summoner in any way. Scholar is incompatible with the Subjob perk, and cannot be taken as a Subjob. +10 HP, +70 MP, +20 SP. Note: The chosen Eidolon does not have access to its Overdrive ability."
-				PhysicalEidolonEmpowerment
-					name="Physical Eidolon Empowerment"
-					rank="T2"
-					desc="A Scholar with this feature gains its Eidolon's Physical Attack Bonus to hit on all physical attacks rolls."
-				MagicalEidolonEmpowerment
-					name="Magical Eidolon Empowerment"
-					rank="T2"
-					desc="A Scholar with this features gains its Eidolon's Magical Attack Bonus to hit on all magical attack rolls."
-				DefensiveEidolonEmpowerment
-					name="Defensive Eidolon Empowerment"
-					rank="T2"
-					desc="A Scholar with this feature gains its Eidolon's Damage Reduction, and +1 AC."
-				ElementalEidolonEmpowermentDefensive
-					name="Elemental Eidolon Empowerment Defensive"
-					rank="T3"
-					desc="A Scholar with this feature gains resistance to its Eidolon's primary elemental affinity."
-				ElementalEidolonEmpowermentOffensive
-					name="Elemental Eidolon Empowerment Offensive"
-					rank="T4"
-					desc="A Scholar with this feature gains +1d8 damage of its Eidolon's primary elemental affinity to all Magic attacks, as well as all Physical attacks."
-				TrueElementalEmpowerment
-					name="True Elemental Empowerment"
-					rank="T5"
-					cat="Unique"
-					desc="A Scholar with this feature now has 'Absorption' for its Eidolon's primary elemental affinity, healing for 1/4th of the total elemental damage dealt - whilst reducing the remaining damage dealt to them to 0."
-				SharedPrecision
-					name="Shared Precision"
-					rank="T2"
-					desc="A Scholar with this feature grants its Eidolon any Attack Roll bonuses that they personally have access to."
-				SharedDefense
-					name="Shared Defense"
-					rank="T2"
-					desc="A Scholar with this feature grants its Eidolon any AC bonuses that they personally have access to."
-				SharedPower
-					name="Shared Power"
-					rank="T2"
-					desc="A Scholar with this feature grants its Eidolon any damage bonuses that they personally have access to."
-				SharedFortitude
-					name="Shared Fortitude"
-					rank="T2"
-					desc="A Scholar with this feature grants its Eidolon any damage reduction bonuses that they personally have access to."
-				RefinedFortitude
-					name="Refined Fortitude"
-					rank="T3"
-					desc="A Scholar with this feature doubles its Eidolon's base HP."
-				RefinedManaPool
-					name="Refined Mana Pool"
-					rank="T3"
-					desc="A Scholar with this feature doubles its Eidolon's base MP pool."
-				DeepenedConnection
-					name="Deepened Connection"
-					rank="T3"
-					desc="A Scholar with this feature reduces its Eidolon's summoning cost by an extra 15 MP."
-				EidolonSiphon
-					name="Eidolon Siphon"
-					rank="T4"
-					desc="A Scholar with this feature gains MP equal to half of the damage its Eidolon deals whenever it deals damage to a target."
-				UltimateConnection
-					name="Ultimate Connection"
-					rank="T4"
-					cat="Unique"
-					desc="A Scholar with this feature increases its Eidolon's base HP by 500, and its MP by 500. It also gains +5 to both Physical and Magical attack bonus, 5 flat damage reduction, and +5 to AC. As well as 1 custom move created move created with GM approval. (Requires Refined Fortitude, Refined Mana Pool, and Deepened Connection.)"
-
 
 			Merchant
 				jobneed="Merchant"
@@ -5314,6 +4822,62 @@ obj
 	perk
 		MonsterAbilities
 			icon='Icons/Perk/MonsterAbility.png'
+
+			RobotAbilities
+				atype="standard"
+				basecheck=10
+				ability=1
+				icon='Icons/Perk/Machinist.png'
+				blu=0
+				costtype="Stamina"
+				element="General"
+
+				Pounce
+					rank = "D"
+					name = "Pounce"
+					mcost = 20
+					range = "8 tile movement must end on a square next to an opponent"
+					desc = "This creature moves with accelerating speed, jumping onto its target in an attempt to pin it down before using its sword to stab it. Damage: Make a Sword Attack. Effect: Prone."
+
+				Sniper_Art_Silencing_Shot
+					rank = "D"
+					name = "Sniper Art: Silencing Shot"
+					mcost = 20
+					range = "6 tiles"
+					desc = "The Striker aims its laser at the head of an enemy, the Laser sacrifices half of its damage to induce Silence. Damage: Half of Laser. Effect: Silence."
+
+				Tail_Blade_Feral_Stance
+					rank = "D"
+					name = "Tail Blade (Feral Stance)"
+					mcost = 15
+					range = "Melee"
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 4
+					damsource="dex"
+					desc = "Flicks their mechanical tail at an enemy dealing 2d4 + Dex Slashing Damage as it pierces or slashes the opponent."
+
+				Kriegsmesser_Krieger_Stance
+					rank = "C"
+					name = "Kriegsmesser (Krieger Stance)"
+					mcost = 20
+					range = "Melee"
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 10
+					damsource="str"
+					desc = "The Blitzer’s Tail Blade becomes a heavier, deadlier weapon, dealing 2d10+STR Slashing Damage."
+
+				Heilige_Nacht_Krieger_Stance
+					rank = "C"
+					name = "Heilige Nacht (Krieger Stance)"
+					mcost = 30
+					range = "Owner/Self"
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 10
+					damsource="str"
+					desc = "The Blitzer gains the ability to be wielded by its owner, becoming a weapon that deals 2d10+STR Magical Slashing Damage (Bypassing Physical Resistance)"
 			BLU
 				atype="standard"
 				basecheck=10
@@ -5625,6 +5189,7 @@ obj
 
 				Glare
 					rank = "C"
+					name = "Glare"
 					mcost = 30
 					range = "6 tiles, in line of sight."
 					desc = "As long as there's a line of sight, and both sides are looking at each other, even if just a glimpse, the target has to succeed a Will Save of (DC16) or be paralyzed."
@@ -5640,6 +5205,16 @@ obj
 					attack_roll_dice_sides = 10
 					damsource = "str"
 
+				Baby_Charge
+					rank = "D"
+					name = "Baby Charge"
+					mcost = 20
+					range = "8 tile range."
+					desc = "The creature charges in a straight line until it hits a wall or opponent. If it its an opponent that opponent takes 1d12 + Str +PDB and makes a DC 16 Reflex safe or be knocked back 3 tiles. If its a wall this creature takes damage for every square traveled as if hit with knockback into a wall."
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 1
+					attack_roll_dice_sides = 12
+					damsource = "str"
 
 //Old Abilites
 

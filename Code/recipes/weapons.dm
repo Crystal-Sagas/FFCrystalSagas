@@ -503,7 +503,7 @@
 	creates = new /obj/item/Weapon/Special/BoltRapier/Orichalcum
 
 /obj/recipes/Weapons/WhipBlade
-	weapontype = "Whipblade"
+	weapontype = "Whip Blade"
 
 /obj/recipes/Weapons/WhipBlade/Bronze
 	creates = new /obj/item/Weapon/Special/WhipBlade/Bronze

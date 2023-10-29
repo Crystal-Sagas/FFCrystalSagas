@@ -1,18 +1,4 @@
 /**
- * packs our data into a list for saving
- *
- * do not include location or type information, it'll be included automatically.
- */
-/datum/proc/serialize()
-	return list()
-
-/**
- * unpacks our data from a list
- */
-/datum/proc/deserialize(list/data)
-	return
-
-/**
  * checks if our data state is consistent for serialization
  */
 /datum/proc/validate_serializable()

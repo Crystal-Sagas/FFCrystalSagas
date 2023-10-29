@@ -9,17 +9,18 @@
 
 	//* Timers
 	/// active timer datums to clear on destroy
-	var/list/datum/timer/timers
+	// var/list/datum/timer/timers
 
-	//* Garbage Collection
+	// //* Garbage Collection
 	/// tracks time we were deleted, or contains an enum
-	var/gc_destroyed
+	// var/gc_destroyed
 
-	//* Datum Signals
+	// //* Datum Signals
 	/// datum signals: signal --> list of datums associated to procrefs to call
-	var/list/signal_lookup
+	// var/list/signal_lookup
 	/// datum signals: datum --> list of signals we registered on them
-	var/list/signal_outgoing
+	// var/list/signal_outgoing
+
 
 /**
  * clone
@@ -30,10 +31,12 @@
 /**
  * called when we're being deleted
  */
-/datum/Destroy()
-	QDEL_LIST(timers)
-	clear_signals()
+/datum/proc/Destroy()
+	// QDEL_LIST(timers)
+	// clear_signals()
 	return QDEL_HINT_QUEUE
+
+/*
 
 /datum/proc/register_signal(datum/target, signal, procref)
 	#warn impl
@@ -57,6 +60,8 @@
 /datum/proc/__raise_signal(signal, ...)
 	. = NONE
 	#warn impl
+
+*/
 
 /**
  * do we count as containing someone? used for UIs and other checks
