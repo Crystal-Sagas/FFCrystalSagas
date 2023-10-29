@@ -21,20 +21,18 @@ if ! [ -x "$has_cargo" ]; then
 	. ~/.profile
 fi
 
-# grab required apt packages: git, grep, and 32-bit libssl
-if ! ( [ -x "$has_git" ] && [ -x "$has_grep" ] && [ -f "/usr/lib/i386-linux-gnu/libssl.so" ] ); then
-	echo "Installing apt dependencies..."
-	if ! [ -x "$has_sudo" ]; then
-		dpkg --add-architecture i386
-		apt-get update
-		apt-get install -y git libssl-dev:i386
-		rm -rf /var/lib/apt/lists/*
-	else
-		sudo dpkg --add-architecture i386
-		sudo apt-get update
-		sudo apt-get install -y git libssl-dev:i386
-		sudo rm -rf /var/lib/apt/lists/*
-	fi
+# install apt dependencies
+echo "Installing apt dependencies..."
+if ! [ -x "$has_sudo" ]; then
+	dpkg --add-architecture i386
+	apt-get update
+	apt-get install -y git lib32z1 pkg-config libssl-dev:i386 libssl-dev
+	rm -rf /var/lib/apt/lists/*
+else
+	sudo dpkg --add-architecture i386
+	sudo apt-get update
+	sudo apt-get install -y git lib32z1 pkg-config libssl-dev:i386 libssl-dev
+	sudo rm -rf /var/lib/apt/lists/*
 fi
 
 # load dependencies from game directory
@@ -60,7 +58,6 @@ dpkg --add-architecture i386
 
 echo "Deploying rust-g..."
 git checkout "$RUST_G_VERSION"
-env PKG_CONFIG_ALLOW_CROSS=1
-~/.cargo/bin/cargo build --release --target=i686-unknown-linux-gnu --all-features
+env PKG_CONFIG_ALLOW_CROSS=1 ~/.cargo/bin/cargo build --release --target=i686-unknown-linux-gnu --all-features
 mv target/i686-unknown-linux-gnu/release/librust_g.so "$1/librust_g.so"
 cd ..

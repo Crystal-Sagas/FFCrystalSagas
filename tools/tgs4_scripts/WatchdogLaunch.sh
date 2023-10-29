@@ -21,18 +21,16 @@ if ! [ -x "$has_cargo" ]; then
 	. ~/.profile
 fi
 
-# grab required apt packages from what we used in PreCompile
-if ! ( [ -x "$has_git" ] && [ -x "$has_grep" ] && [ -f "/usr/lib/i386-linux-gnu/libssl.so" ] ); then
-	echo "Installing apt dependencies..."
-	if ! [ -x "$has_sudo" ]; then
-		dpkg --add-architecture i386
-		apt-get update
-		apt-get install -y lib32z1 git pkg-config libssl-dev:i386 libssl-dev libssl1.1:i386
-		rm -rf /var/lib/apt/lists/*
-	else
-		sudo dpkg --add-architecture i386
-		sudo apt-get update
-		sudo apt-get install -y lib32z1 git pkg-config libssl-dev:i386 libssl-dev libssl1.1:i386
-		sudo rm -rf /var/lib/apt/lists/*
-	fi
+# install apt dependencies
+echo "Installing apt dependencies..."
+if ! [ -x "$has_sudo" ]; then
+	dpkg --add-architecture i386
+	apt-get update
+	apt-get install -y git lib32z1 pkg-config libssl-dev:i386 libssl-dev
+	rm -rf /var/lib/apt/lists/*
+else
+	sudo dpkg --add-architecture i386
+	sudo apt-get update
+	sudo apt-get install -y git lib32z1 pkg-config libssl-dev:i386 libssl-dev
+	sudo rm -rf /var/lib/apt/lists/*
 fi
