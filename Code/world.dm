@@ -3,8 +3,6 @@
  */
 /world
 
-var/global/world_log_path
-var/global/world_log_directory
 var/global/action_log_path
 var/global/action_log_file
 
@@ -12,12 +10,11 @@ var/global/action_log_file
 	//? Init TGS
 	TgsNew()
 
+	// todo: to capture all logs, we need to put in temporary logs on boot and shunt it over
 	// shunt logs if TGS is available
-	global.world_log_directory = "data/logs/[time2text(world.realtime, "YYYY")]/[time2text(world.realtime, "MM")]/[time2text(world.realtime, "DD")]/server-[time2text(world.realtime, "hh-mm-ss")]"
-	global.world_log_path = "[global.world_log_directory]/dd.log"
 	if(TgsAvailable())
-		world.log = global.world_log_path
-	global.action_log_path = "[global.world_log_directory]/game.log"
+		world.log = Logger.dd_log
+	global.action_log_path = "[Logger.root_dir]/legacy.log"
 	global.action_log_file = file(global.action_log_path)
 
 	Addcustoms()
