@@ -1,13 +1,10 @@
 /datum/prototype/struct/loot_pack/fate_artifact
-	amt = 5
+	amt = 3
 	some = list(
-		/obj/item/material/wood = 15,
-		/obj/item/material/stone = 15,
 		/obj/item/material/ingot/bronze = 7,
-		/obj/item/material/ingot/iron = 4,
-		/obj/item/material/ingot/steel = 2,
-		/obj/item/material/ingot/mythril = 1,
-		/obj/item/material/ingot/adamantine = 0,
+		/obj/item/material/ingot/iron = 5,
+		/obj/item/material/ingot/steel = 3,
+		/obj/item/material/ingot/mythril = 2,
 		/obj/item/material/ingot/silver = 2,
 		/obj/item/material/ingot/gold = 1,
 		/obj/item/material/gem/bio = 3,

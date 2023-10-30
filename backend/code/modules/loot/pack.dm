@@ -8,7 +8,7 @@
 	abstract_type = /datum/prototype/struct/loot_pack
 	/// items that always spawn associated to amount (defaulting to 1)
 	var/list/always
-	/// items that are associated to chance; nulls are allowed.
+	/// items that are associated to chance; nulls are allowed. Minimum chance is '1'.
 	var/list/some
 	/// standard amount for the "some" list when none is provided
 	var/amt = 0
@@ -54,12 +54,15 @@
 
 /datum/prototype/struct/loot_pack/proc/draw_single()
 	SHOULD_NOT_OVERRIDE(TRUE)
+	if(!length(some))
+		return null
 	var/total = cached_tally || cache_tally()
 	var/rng = rand(1, total)
 	for(var/thing in some)
 		rng -= some[thing] || 1
 		if(rng <= 0)
 			return thing
+	CRASH("how?")
 
 /datum/prototype/struct/loot_pack/proc/draw_multi(amt)
 	SHOULD_NOT_OVERRIDE(TRUE)
@@ -68,8 +71,8 @@
 		. = list()
 		for(var/i in 1 to amt)
 			var/got = draw_single()
-			if(got)
-				. += got
+			if(!isnull(got))
+				.[got] += 1
 		return
 	var/total = cached_tally || cache_tally()
 	var/list/to_pick = list()
