@@ -84,7 +84,9 @@ obj
 									var/obj/npc/fightmob=new
 									var/obj/Artifact/artifact=new
 									var/obj/Client/client=new
-									var/list/ftype=list("Slayer","Artifact","Delivery","World Boss")
+									// var/list/ftype=list("Slayer","Artifact","Delivery","World Boss")
+									//! disabled rest pending rework
+									var/list/ftype=list("Artifact")
 									var/list/frank=list("D","C","B","A")
 									var/tchoice=input("Which type of FATE would you like to take?") as anything in ftype
 									if(tchoice=="World Boss")

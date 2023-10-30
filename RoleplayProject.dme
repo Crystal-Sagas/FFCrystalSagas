@@ -316,6 +316,7 @@
 #include "Code\world\error.dm"
 #include "Code\world\error_viewer.dm"
 #include "content\code\administration\tgs_chat_commands.dm"
+#include "content\code\loot\fate_artifact.dm"
 // END_INCLUDE
 
 #include "backend/code/___include_last.dm"
