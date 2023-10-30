@@ -1,4 +1,4 @@
-GLOBAL_LIST_BOILERPLATE(resource_nodes, /obj/resource_node)
+LEGACY_GLOBAL_LIST_BOILERPLATE(resource_nodes, /obj/resource_node)
 
 /**
  * base type of resource nodes

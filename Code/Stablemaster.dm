@@ -1,4 +1,4 @@
-GLOBAL_DATUM(stablemaster_obj, /obj/Stablemaster)
+LEGACY_GLOBAL_DATUM(stablemaster_obj, /obj/Stablemaster)
 
 obj
 	Stablemaster

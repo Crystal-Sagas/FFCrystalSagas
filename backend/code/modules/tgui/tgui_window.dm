@@ -63,7 +63,7 @@
 		inline_html = "",
 		inline_js = "",
 		inline_css = "")
-	Logging.log_tgui(client,
+	Logger.log_tgui(client,
 		context = "[id]/initialize",
 		window = src)
 	if(!client)
@@ -220,13 +220,13 @@
 	if(mouse_event_macro_set)
 		remove_mouse_macro()
 	if(can_be_suspended && can_be_suspended())
-		Logging.log_tgui(client,
+		Logger.log_tgui(client,
 			context = "[id]/close (suspending)",
 			window = src)
 		status = TGUI_WINDOW_READY
 		send_message("suspend")
 		return
-	Logging.log_tgui(client,
+	Logger.log_tgui(client,
 		context = "[id]/close",
 		window = src)
 	release_lock()

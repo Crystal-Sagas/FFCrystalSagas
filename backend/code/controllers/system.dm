@@ -6,6 +6,8 @@
 CONTROLLER_DEF(system, System)
 	name = "System"
 
+/*
+
 	/// repositories
 	var/list/datum/controller/repository/repositories = list()
 	/// subsystems
@@ -13,15 +15,21 @@ CONTROLLER_DEF(system, System)
 	/// entity mappers
 	var/list/datum/controller/entitymap/entitymaps = list()
 
-#warn impl
+*/
 
 /datum/controller/system/New()
-	if(isnull(GLOB))
-		GLOB = new
+	if(isnull(global.Logger))
+		global.Logger = new
+		global.Logger.setup_logging()
+	if(isnull(global.GLOB))
+		global.GLOB = new
+
+/*
 
 	#warn impl
 
 /datum/controller/system/proc/initialize(delay = 5 SECONDS)
+	#warn don't sleep the fucking config/database lmao
 	sleep(delay)
 	init_announce_notice("-- system: startup --")
 	#warn config
@@ -56,10 +64,15 @@ CONTROLLER_DEF(system, System)
 
 	sort_list(subsystems, /proc/cmp_subsystem_shutdown_order)
 
+*/
+
 /datum/controller/system/proc/set_fps(fps)
-	fps = clamp(fps, 1, 100)
-	var/old = world.fps
+	fps = round(clamp(fps, 1, 100), 1)
+	// var/old = world.fps
 	world.fps = fps
+
+/*
 	for(var/datum/controller/subsystem/subsystem in subsystems)
 		subsystem.fps_changed(old, fps)
+*/
 

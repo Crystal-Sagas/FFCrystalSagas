@@ -58,14 +58,14 @@ CONTROLLER_DEF(configuration, Config)
 	for(var/section in defaults)
 		if(!istext(section))
 			if(!isnull(emit_for_filename))
-				Logging.log_config("file [emit_for_filename] - non-text section [json_encode(section)] tripped on admin reducer")
+				Logger.log_config("file [emit_for_filename] - non-text section [json_encode(section)] tripped on admin reducer")
 			continue
 		var/list/details = defaults[section]
 		output[section] = islist(details)? details.Copy() : details
 	for(var/section in overrides)
 		if(!istext(section))
 			if(!isnull(emit_for_filename))
-				Logging.log_config("file [emit_for_filename] - non-text section [json_encode(section)] tripped on admin reducer")
+				Logger.log_config("file [emit_for_filename] - non-text section [json_encode(section)] tripped on admin reducer")
 			continue
 		var/list/details = defaults[section]
 		output[section] = islist(details)? merge_assoc_list(output[section], details) : details
@@ -80,14 +80,14 @@ CONTROLLER_DEF(configuration, Config)
 	for(var/section in defaults)
 		if(!istext(section))
 			if(!isnull(emit_for_filename))
-				Logging.log_config("file [emit_for_filename] - non-text section [json_encode(section)] tripped on admin reducer")
+				Logger.log_config("file [emit_for_filename] - non-text section [json_encode(section)] tripped on admin reducer")
 			continue
 		var/list/details = defaults[section]
 		output[section] = islist(details)? details.Copy() : details
 	for(var/section in overrides)
 		if(!istext(section))
 			if(!isnull(emit_for_filename))
-				Logging.log_config("file [emit_for_filename] - non-text section [json_encode(section)] tripped on admin reducer")
+				Logger.log_config("file [emit_for_filename] - non-text section [json_encode(section)] tripped on admin reducer")
 			continue
 		var/list/details = defaults[section]
 		output[section] = islist(details)? merge_assoc_list(output[section], details) : details

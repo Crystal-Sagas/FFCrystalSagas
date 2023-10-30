@@ -14,7 +14,7 @@
 	world.log << "\[[timestamp()]\] [msg]"
 
 /// key-message list of warnings
-GLOBAL_LIST_EMPTY(logged_warnings)
+LEGACY_GLOBAL_LIST_EMPTY(logged_warnings)
 
 /**
  * warn once and never again

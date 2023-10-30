@@ -653,7 +653,7 @@ obj
 						var/obj/status/MPBar/mpb = new
 						src.contents+=mpb
 
-GLOBAL_DATUM(faction_holder, /obj/Factionholder)
+LEGACY_GLOBAL_DATUM(faction_holder, /obj/Factionholder)
 
 /obj/Factionholder
 	Savable=1
