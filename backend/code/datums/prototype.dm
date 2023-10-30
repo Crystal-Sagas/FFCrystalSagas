@@ -59,11 +59,11 @@
 
 /datum/prototype/serialize()
 	. = ..()
-	.[NAMEOF(src, id)] = id
+	.["id"] = id
 
 /datum/prototype/deserialize(list/data)
 	. = ..()
-	id = data[NAMEOF(src, id)]
+	id = data["id"]
 
 /**
  * Supertype of "simple" prototypes without any serious amount of processing to register/unregister

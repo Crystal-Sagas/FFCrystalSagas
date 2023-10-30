@@ -1,7 +1,7 @@
 mob/var
 	editing=0
 
-	maxfates=10
+	maxfates=5
 
 	money=100
 	housemade=0
