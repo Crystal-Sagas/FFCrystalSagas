@@ -23,7 +23,10 @@ obj
 				if("Change Leader")
 					var/lchoice=input("Who would you like to give leadership?") as anything in src.members
 					src.leader=lchoice
-
+		Del()
+			if(istype(currentFATE))
+				del currentFATE
+			return ..()
 
 mob
 	verb

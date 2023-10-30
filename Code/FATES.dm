@@ -17,6 +17,13 @@ obj
 			CoordX
 			CoordY
 			CoordZ
+		Del()
+			for(var/obj/FATECrystal/crystal in fate_crystals)
+				if(crystal.FATEID == FATEID)
+					crystal.occupied = FALSE
+					crystal.icon_state = "inactive"
+					crystal.FATEID = null
+			return ..()
 		SlayerFATE
 			FATEtype="Slayer"
 		CaptureFATE
