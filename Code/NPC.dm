@@ -1228,8 +1228,6 @@
 		// 		break
 		if(m.hp<=0)
 			m.hp=0
-		m.money+=gilreward
-		m.send_chat("Gained [gilreward] Gil!!", stream = "oocout")
 		m.battler=0
 		m.dailyfates+=1
 		if(m.dailyfates>=m.maxfates)
