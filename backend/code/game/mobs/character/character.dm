@@ -2,6 +2,20 @@
  * All playable characters and NPCs are part of this.
  */
 /mob/character
+	/// character_resource IDs associated to list of sources
+	var/list/has_resources = list()
+	/// character_roll IDs associated to list of sources
+	var/list/has_rolls = list()
+	/// character_stat IDs associated to list of sources
+	var/list/has_stats = list()
+
+/mob/character/Initialize(mapload)
+	build_intrinsics()
+	return ..()
+
+
+/*
+/mob/character
 	//* Stats
 	/// base stats - set to typepath to fetch
 	/// these will be serialized, per-mob.
@@ -33,3 +47,4 @@
 
 /mob/character/evict_player()
 	#warn impl
+*/

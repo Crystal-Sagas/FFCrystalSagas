@@ -3,6 +3,18 @@
  */
 /atom
 
+/atom/New()
+	// todo: SSatoms
+	Initialize(FALSE)
+
+/**
+ * Initialize. You should always call parent.
+ *
+ * @return initialization hint
+ */
+/atom/proc/Initialize(mapload)
+	return
+
 /**
  * icon update proc
  * override this to do actions to icons, icon states, vis contents, overlays, etc.
