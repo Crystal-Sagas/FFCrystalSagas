@@ -451,8 +451,13 @@ mob
 		del src
 		..()
 
+var/global/world_saving = FALSE
+
 proc
 	Saveworld()
+		if(world_saving)
+			return
+		world_saving = TRUE
 		Save_Ban()
 		SavePerk()
 		world<<output("<small>Server: Saving Objects...","icout")
@@ -481,8 +486,7 @@ proc
 				goto hacklol
 		world<<output("<small>Server: Objects Saved([Amount]).","icout")
 		world<<output("World has been succesfully saved :)","oocout")
-
-
+		world_saving = FALSE
 
 	Loadworld()
 		world<<output("<small>Server: Loading Items...","icout")
