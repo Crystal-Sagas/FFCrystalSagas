@@ -181,6 +181,7 @@ mob
 			for(var/image/i in usr.client.screen)
 				del(i)
 			src.rpp=startingrpp
+			src.character_version = CHARACTER_VERSION_STARTING
 			src.trpp=startingrpp
 			Checkreward(usr)
 			src.see_invisible=1
@@ -215,7 +216,12 @@ mob
 			sleep()
 			src<< 'Audio/Cursor Ready.ogg'
 			var/savefile/F = new("data/save/character/[src.ckey]")
+			F["version"] >> src.character_version
+			if(isnull(src.character_version))
+				src.character_version = CHARACTER_VERSION_LEGACY
+			global.legacy_character_handler.preload(src, F)
 			Read(F)
+			global.legacy_character_handler.migrate(src, F)
 			F["x"]>>src.x
 			F["y"]>>src.y
 			F["z"]>>src.z
@@ -367,6 +373,7 @@ mob
 				F["x"]<<src.x
 				F["y"]<<src.y
 				F["z"]<<src.z
+				F["version"] << src.character_version
 				Write(F)
 			load_mutex = FALSE
 		AutoSave()

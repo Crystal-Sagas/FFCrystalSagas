@@ -33,6 +33,8 @@
 	var/tmp/load_complete = FALSE
 	/// mutex to prevent save/loads from hitting each other
 	var/tmp/load_mutex = FALSE
+	/// current version
+	var/character_version
 
 /mob/New(loc)
 	// generate tag
