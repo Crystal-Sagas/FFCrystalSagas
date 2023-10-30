@@ -321,12 +321,9 @@
 #include "Code\systems\_ticker.dm"
 #include "Code\world\error.dm"
 #include "Code\world\error_viewer.dm"
-<<<<<<< HEAD
-#include "content\code\game\world.dm"
-=======
 #include "content\code\administration\tgs_chat_commands.dm"
+#include "content\code\game\world.dm"
 #include "content\code\loot\fate_artifact.dm"
->>>>>>> upstream/main
 // END_INCLUDE
 
 #include "backend/code/___include_last.dm"
