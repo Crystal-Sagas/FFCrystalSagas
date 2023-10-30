@@ -1,7 +1,7 @@
 mob/var
 	editing=0
 
-	maxfates=10
+	maxfates=5
 
 	money=100
 	housemade=0
@@ -289,9 +289,25 @@ mob
 			usr << sound(null, 0, 0, 0, 0)
 	verb
 		ImStuck()
-			usr.x=200
-			usr.y=186
-			usr.z=1
+			var/turf/target
+			if(isnull(starting_city))
+				starting_city = input(src, "You do not have a starting city set, or it is invalid, for some reason. Please select it.", "I'm Stuck!") as null|anything in global.starting_cities
+				if(isnull(starting_city))
+					return
+			switch(starting_city)
+				if(STARTING_CITY_INSOMNIA)
+					target = locate(200, 186, 1)
+				if(STARTING_CITY_MIDGAR)
+					target = locate(125, 297, 17)
+				else
+					starting_city = input(src, "You do not have a starting city set, or it is invalid, for some reason. Please select it.", "I'm Stuck!") as null|anything in global.starting_cities
+					if(isnull(starting_city))
+						return
+			if(!isnull(target))
+				force_move(target)
+			else
+				alert(src, "Invalid starting city / location. Contact an admin. Moving you to Insomnia.", "FUCK", "Okay")
+				force_move(locate(200, 186, 1))
 	verb
 		Stealth()
 			if(usr.stealthing)

@@ -34,6 +34,10 @@
 	/// mutex to prevent save/loads from hitting each other
 	var/tmp/load_mutex = FALSE
 
+	//? Legacy Shit
+	/// starting city enum
+	var/starting_city
+
 /mob/New(loc)
 	// generate tag
 	generate_tag()

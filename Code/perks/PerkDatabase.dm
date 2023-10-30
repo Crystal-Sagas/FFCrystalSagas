@@ -4709,7 +4709,11 @@ obj
 					Warp
 						rank="B"
 						pre="Teleport"
-						desc="Changes a target's location in space. As a standard action warp anything in view placing it up to 10 tiles away in any direction. When used on a hostile target, the target can make a fortitude saving throw to negate the effect. Spell can also be cast as a 30 minute ritual to warp the user and everyone directly around them to a spot they have previously been to, as long as the caster has marked it. (- 55 mana.)"
+						atype = "save"
+						savetype = "Fortitude"
+						basecheck = 10
+						mcost = 55
+						desc="Changes a target's location in space. As a standard action warp anything in view placing it up to 10 tiles away in any direction. When used on a hostile target, the target can make a fortitude saving throw to negate the effect. Spell can also be cast as a 30 minute ritual to warp the user and everyone directly around them to a spot they have previously been to, as long as the caster has marked it. (Fortitude saving throw, DC 13 + INT + Rankbonus, - 55 mana.)"
 					Stopaga
 						rank="A"
 						pre="Stop"

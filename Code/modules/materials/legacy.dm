@@ -8,6 +8,9 @@
 	price=1
 	amount=0
 	weight=0
+	New(loc, amt)
+		if(!isnull(amt))
+			src.amount = amt
 	Click()
 		if(src.instore)
 			switch(alert(usr,"[src.desc] Cost:[src.shopprice]",,"Buy","Cancel"))

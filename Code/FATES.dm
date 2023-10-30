@@ -1,5 +1,7 @@
 obj
 	FATEs
+		/// loot pack path
+		var/loot_pack
 		var
 			locationarea
 			FATEID
@@ -84,7 +86,9 @@ obj
 									var/obj/npc/fightmob=new
 									var/obj/Artifact/artifact=new
 									var/obj/Client/client=new
-									var/list/ftype=list("Slayer","Artifact","Delivery","World Boss")
+									// var/list/ftype=list("Slayer","Artifact","Delivery","World Boss")
+									//! disabled rest pending rework
+									var/list/ftype=list("Artifact")
 									var/list/frank=list("D","C","B","A")
 									var/tchoice=input("Which type of FATE would you like to take?") as anything in ftype
 									if(tchoice=="World Boss")
@@ -109,7 +113,6 @@ obj
 									var/list/slayerrewardsD=list("Wool","Leather","Bronze Ingot","iron Ingot","Flying Eye's Wing","Flying Eye's Eye")
 									var/list/slayerrewardsC=list("Wool","Leather","Bronze Ingot","iron Ingot","steel Ingot","Flying Eye's Wing","Flying Eye's Eye","Bomb Core","Sahaugin Scale")
 									var/list/slayerrewardsB=list("Mythril Ingot","Silver Ingot","Esper Soul","Gigantoad Slime","Tonberry Knife","Coeurl Whisker")
-									var/list/artifactrewards=list("Aether powder","Ether Powder","White Gem","Black Gem","Thunder Gem","Fire Gem","Water Gem","Earth Gem","Bio Gem","Ice Gem","Wind Gem","Holy Gem","Dark Gem")
 									var/list/deliveryrewards=list("Stone","Wood","Bronze Ingot","iron Ingot","Raw Mako","Wool","Leather")
 									var/list/bossrewards=list("Mythril Ingot","Adamantine Ingot","Raw Mako","Esper Soul","Silver Ingot","Gold Ingot")
 									switch(tchoice)
@@ -158,13 +161,9 @@ obj
 												newfate.Reward2=pick(slayerrewardsC)
 												newfate.Reward3=pick(slayerrewardsC)
 											if(mtype=="Artifact")
-												var/obj/Artifact/arti=new
-												var/obj/Artifact/fateartifact=copyatom(arti)
+												var/obj/Artifact/fateartifact = new
 												fateartifact.FATEID=newfate.FATEID
-												newfate.Reward1=pick(artifactrewards)
-												newfate.Reward2=pick(artifactrewards)
-												newfate.Reward3=pick(artifactrewards)
-												newfate.Gilreward=100
+												newfate.loot_pack = /datum/prototype/struct/loot_pack/fate_artifact
 												artifact=fateartifact
 											if(mtype=="Delivery")
 												var/obj/Client/cli=new

@@ -71,6 +71,7 @@
 #include "__DEFINES\prototypes.dm"
 #include "__DEFINES\signals.dm"
 #include "__DEFINES\skin.dm"
+#include "__DEFINES\starting_cities.dm"
 #include "__DEFINES\tgs.config.dm"
 #include "__DEFINES\characters\character_rank.dm"
 #include "__DEFINES\content\stats.dm"
@@ -115,6 +116,7 @@
 #include "backend\code\controllers\system.dm"
 #include "backend\code\datums\callback.dm"
 #include "backend\code\datums\datum.dm"
+#include "backend\code\datums\prototype.dm"
 #include "backend\code\datums\weakref.dm"
 #include "backend\code\game\boot.dm"
 #include "backend\code\game\world.dm"
@@ -126,6 +128,7 @@
 #include "backend\code\game\turfs\turf.dm"
 #include "backend\code\game\turfs\subtypes\unallocated.dm"
 #include "backend\code\modules\logging\external.dm"
+#include "backend\code\modules\loot\pack.dm"
 #include "backend\code\modules\tgs\includes.dm"
 #include "backend\code\modules\tgui_panel\to_chat.dm"
 #include "Code\_RoleplayProject.dm"
@@ -212,7 +215,6 @@
 #include "Code\datums\browser.dm"
 #include "Code\datums\datum.dm"
 #include "Code\datums\dispose.dm"
-#include "Code\datums\prototype.dm"
 #include "Code\datums\serialize.dm"
 #include "Code\datums\signals.dm"
 #include "Code\DiscordWebHook\DiscordWebhook.dm"
@@ -238,7 +240,6 @@
 #include "Code\mob\movement.dm"
 #include "Code\mob\pulling.dm"
 #include "Code\mob\stats.dm"
-#include "Code\mob\status_effect.dm"
 #include "Code\mob\character\character.dm"
 #include "Code\modules\abilities\ability.dm"
 #include "Code\modules\abilities\attack.dm"
@@ -318,11 +319,14 @@
 #include "Code\recipes\weapons.dm"
 #include "Code\systems\_system.dm"
 #include "Code\systems\_ticker.dm"
-#include "Code\systems\repository\_repository.dm"
-#include "Code\systems\repository\status_effect.dm"
 #include "Code\world\error.dm"
 #include "Code\world\error_viewer.dm"
+<<<<<<< HEAD
 #include "content\code\game\world.dm"
+=======
+#include "content\code\administration\tgs_chat_commands.dm"
+#include "content\code\loot\fate_artifact.dm"
+>>>>>>> upstream/main
 // END_INCLUDE
 
 #include "backend/code/___include_last.dm"
