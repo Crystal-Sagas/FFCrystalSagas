@@ -303,7 +303,7 @@ mob
 					starting_city = input(src, "You do not have a starting city set, or it is invalid, for some reason. Please select it.", "I'm Stuck!") as null|anything in global.starting_cities
 					if(isnull(starting_city))
 						return
-			if(!isnull(Target))
+			if(!isnull(target))
 				force_move(target)
 			else
 				alert(src, "Invalid starting city / location. Contact an admin. Moving you to Insomnia.", "FUCK", "Okay")
