@@ -2160,9 +2160,11 @@ proc
 			if("Insomnia")
 				alert(m,"Almost done, kupo. There is nothing more I can help you with here, but make sure to spend your starting AP on raising your ability scores, and talk to my friends to learn more about the game. Enjoy, kupo.")
 				m.loc = locate(200, 186, 1)
+				m.starting_city = STARTING_CITY_INSOMNIA
 			if("Midgar")
 				alert(m,"Almost done, kupo. There is nothing more I can help you with here, but make sure to spend your starting AP on raising your ability scores, and talk to my friends to learn more about the game. Enjoy, kupo.")
 				m.loc = locate(125, 297, 17)
+				m.starting_city = STARTING_CITY_MIDGAR
 			if("Tycoon")
 				alert(m,"Almost done, kupo. There is nothing more I can help you with here, but make sure to spend your starting AP on raising your ability scores, and talk to my friends to learn more about the game. Enjoy, kupo.")
 				m.loc = locate(97, 238, 10)

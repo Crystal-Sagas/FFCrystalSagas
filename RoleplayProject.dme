@@ -71,6 +71,7 @@
 #include "__DEFINES\prototypes.dm"
 #include "__DEFINES\signals.dm"
 #include "__DEFINES\skin.dm"
+#include "__DEFINES\starting_cities.dm"
 #include "__DEFINES\tgs.config.dm"
 #include "__DEFINES\characters\character_rank.dm"
 #include "__DEFINES\content\stats.dm"
