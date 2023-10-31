@@ -38,12 +38,6 @@
 			winset(usr,"playershop.lore","text=\"[src.lore]\"")
 			winset(usr,"playershop.enchant","text=\"[src.enchantment]\"")
 			return
-		if(istype(loc, /obj/playershops/Moogle))
-			winset(usr,"playershop.selected","text=\"Selected: [src.name]\"")
-			winset(usr,"playershop.desc","text=\"[src.desc]\"")
-			winset(usr,"playershop.lore","text=\"[src.lore]\"")
-			winset(usr,"playershop.enchant","text=\"[src.enchantment]\"")
-			return
 		if(src in usr.contents)
 			return
 		var/Transfer=src.amount

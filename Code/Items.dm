@@ -117,7 +117,7 @@ obj
 	item
 		var/stockgem=0
 		Click()
-			if(istype(loc, /obj/playershops/shoptable) || istype(loc, /obj/playershops/Moogle))
+			if(istype(loc, /obj/playershops/shoptable))
 				winset(usr,"playershop.selected","text=\"Selected: [src.name]\"")
 				winset(usr,"playershop.desc","text=\"[src.desc]\"")
 				winset(usr,"playershop.enchant","text=\"[src.enchantment]\"")
