@@ -43,8 +43,8 @@ mob
 			for(var/obj/adminreportholder/a in world)
 				a.contents+=r
 			usr<<output("Your report has been submitted. Please be patient while an admin fixes your problem. If you don't receive a response in a timely manner, please submit a ticket on our discord channel.","oocout")
-			// var/text="[usr.key] has submitted a report. @Administrator"
-			// client.HttpPost("https://discord.com/api/webhooks/812746179644620840/TQZH7noDnk2L_SZhwe2NajRXPC2ciAegmR2f-fchql96-A1anIfZZ4rcW3NFqgKW2c9T",list(content=text))
+			// todo: not hardcoded admin ping ID
+			world.TgsTargetedChatBroadcast("[key_name(usr)] submitted an adminhelp: [desc]. <@810115110390726656>", admin_only = TRUE)
 		OpenAdminPanel()
 			if(usr.adminlv>0)
 				winset(usr,"AdminPanel","is-visible=true")
