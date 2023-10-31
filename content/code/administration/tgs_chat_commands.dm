@@ -30,3 +30,16 @@
 
 /datum/tgs_chat_command/dev_status/Run(datum/tgs_chat_user/sender, params)
 	return "Server online for [time2text(world.time, "hh-mm-ss")] (world.time) with [length(global.clients)] players."
+
+/datum/tgs_chat_command/dev_republish
+	name = "dev-republish"
+	help_text = "dev-republish hub hub_password"
+	admin_only = TRUE
+
+/datum/tgs_chat_command/dev_republish/Run(datum/tgs_chat_user/sender, params)
+	var/list/split = splittext(params, " ")
+	if(length(split) != 2)
+		return "Invalid format; use 'dev-republish <hub> <password>'"
+	world.hub = split[1]
+	world.hub_password = split[2]
+	return "Changed hub publication to [world.hub_password]@[world.hub]; [world.visibility]-[world.status]-[world.game_state]-[world.name]-[world.host]-[world.url]"
