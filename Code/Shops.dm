@@ -33,7 +33,7 @@ mob/var/obj/NPCshop/browsing
 			SOFT_CRASH("neither auto value nor market value for [path] was set on [type]")
 			continue
 		value = max(FLOOR1(value), 1)
-		var/obj/item/instance = new path
+		var/obj/item/instance = new path(src)
 		instance.instore = TRUE
 		instance.shopprice = value
 
