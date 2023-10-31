@@ -10,6 +10,13 @@
  * * source - (optional) datum / list that we're currently scanning variables of
  */
 /proc/vv_detect_datatype(key, value, source)
+	if(istext(value))
+		return VV_CLASS_TEXT
+	else if(isnum(value))
+		return VV_CLASS_NUMBER
+	else if(ispath(value))
+		return VV_CLASS_PATH
+
 	#warn impl
 
 /**

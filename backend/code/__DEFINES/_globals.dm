@@ -33,6 +33,10 @@ GLOBAL_INTERNAL_INIT(NAME, list());
 /datum/controller/globals/var##PATH/##NAME; \
 GLOBAL_INTERNAL_INIT(NAME, VAL);
 
+#define GLOBAL_PROTECT(NAME) \
+/datum/controller/globals/vv_get_var(datum/vv_context/actor, var_name, raw_read) { return var_name == NAME? "!vv-forbidden!" : ..(); } \
+/datum/controller/globals/vv_edit_var(datum/vv_context/actor, var_name, var_value, mass_edit, raw_edit) { return var_name == NAME? VV_EDIT_REJECT : ..(); }
+
 #define GLOBAL_REAL_VAR(NAME) \
 var/global/##NAME;
 
