@@ -7,7 +7,7 @@
 
 #if DM_VERSION < 515
 	#define CEILING1(N) CEILING(N, 1)
-	#define FLOOR1(N) FLOOR(N, !)
+	#define FLOOR1(N) FLOOR(N, 1)
 #else
 	#define CEILING1(N) ceil(N)
 	#define FLOOR1(N) floor(N)

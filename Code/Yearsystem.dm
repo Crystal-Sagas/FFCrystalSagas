@@ -101,10 +101,6 @@ var/daytime = "Night"
 		a.Collectcooldown=0
 	for(var/obj/Factionupgrades/a in world)
 		a.Collectcooldown=0
-	for(var/obj/resource_node/GatheringMoogle/a in world)
-		a.used=0
-	for(var/obj/item/Mooglebox/a in world)
-		a.cooldown=0
 	world.send_chat("It's a new day! All 24 hour cooldowns have been reset.", stream = "icout")
 	Saveworld()
 	//sleep(150)

@@ -169,8 +169,6 @@
 #include "Code\Objects.dm"
 #include "Code\Particle Effects.dm"
 #include "Code\Party.dm"
-#include "Code\Patreon.dm"
-#include "Code\pay2win_bullshit.dm"
 #include "Code\Perkshop.dm"
 #include "Code\PerksnTechniques.dm"
 #include "Code\PlayerCommands.dm"
