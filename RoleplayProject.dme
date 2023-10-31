@@ -143,6 +143,7 @@
 #include "Code\Chemist.dm"
 #include "Code\Crafting.dm"
 #include "Code\Customization.dm"
+#include "Code\economy.dm"
 #include "Code\Encyclopedia.dm"
 #include "Code\EquipSystem.dm"
 #include "Code\Eventmin.dm"

@@ -2,6 +2,7 @@
 	abstract_type = /obj/item/material/herbs
 	icon_state = "gysahl"
 	id = "herb_gysahl"
+	market_value = 200
 
 /obj/item/material/herbs/gysahl_greens
 	name="Gysahl Greens"
