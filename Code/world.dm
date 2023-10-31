@@ -22,30 +22,12 @@ var/global/action_log_file
 	Loadworld()
 	Load_Ban()
 	new /obj/cooldownchecker
-	if(fexists("data/Materials"))
-		Loadmaterials()
-	else
-		Initcraft()
-	if(fexists("data/Perks"))
-		LoadPerk()
-	else
-		Initperk()
-	if(fexists("data/Weapons"))
-		LoadWeps()
-	else
-		Initwep()
-	if(fexists("data/Recipes"))
-		Loadrecipes()
-	else
-		Initrecipes()
-	if(fexists("data/Summons"))
-		Loadsummons()
-	else
-		Initsummons()
-	if(fexists("data/Bestiary"))
-		Loadbestiary()
-	else
-		Initbestiary()
+	Initcraft()
+	Initperk()
+	Initwep()
+	Initrecipes()
+	Initsummons()
+	Initbestiary()
 	spawn Time()
 	// init global perk shop
 	global.perk_shop.perks += perklist
