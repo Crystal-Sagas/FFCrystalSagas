@@ -29,4 +29,4 @@
 	admin_only = TRUE
 
 /datum/tgs_chat_command/dev_status/Run(datum/tgs_chat_user/sender, params)
-	return "Server online for [time2text(world.time, "HH-MM-SS")] (world.time) with [length(global.clients)] players."
+	return "Server online for [time2text(world.time, "hh-mm-ss")] (world.time) with [length(global.clients)] players."
