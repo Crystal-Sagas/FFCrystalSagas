@@ -1,1 +1,26 @@
 # Admin Configuration
+
+# Ranks
+
+[[Rank]]
+name = "Administrator"
+rights = ["Debug", "Introspect", "Ban", "Observe", "Ticket", "Sensitive", "World", "Cvar", "Moderation", "Legacy-3"]
+groups = ["Admin", "Event", "Coder"]
+
+[[Rank]]
+name = "Event Manager"
+rights = ["Introspect", "Observe", "Ticket", "World", "Legacy-3"]
+groups = ["Event"]
+
+[[Rank]]
+name = "Maintainer"
+rights = ["Debug", "Introspect", "Observe", "Ticket", "Sensitive", "World", "Cvar", "Moderation"]
+groups = ["Coder"]
+
+# Admins
+
+# [[Admin]]
+# ckey = "CKEY HERE"
+# rank = "RANK NAME"
+# rights = "OVERRIDE RIGHT NAMES"
+# groups = "OVERRIDE GROUP NAMES"
