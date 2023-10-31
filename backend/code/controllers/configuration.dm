@@ -36,7 +36,7 @@ CONTROLLER_DEF(configuration, Config)
 	var/admin_path_default = "config_default/admin.toml"
 	var/admin_path_config = "config/admin.toml"
 
-	var/list/admin_defualt = rustg_read_toml_file(admin_path_default)
+	var/list/admin_default = rustg_read_toml_file(admin_path_default)
 	var/list/admin_config = rustg_read_toml_file(admin_path_config)
 
 	var/list/config = awful_admin_reducer(

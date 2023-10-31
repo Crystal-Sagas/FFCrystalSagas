@@ -1,3 +1,8 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
+
+//* This file must be on the top for compile order. *//
+
 //* Privileges
 
 /// grants debug access to introspection suite; this is a very dangerous permission to give.

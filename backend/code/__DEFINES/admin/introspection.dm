@@ -8,6 +8,8 @@
 #define VV_VERB_DECLARE(PATH, NAME) ADMIN_VERB_DECLARE(PATH, ADMIN_PRIV_INTROSPECT)
 /// grab the vv_context of a client
 #define VV_CLIENT_CONTEXT(C) C.admin?.introspection
+/// send an error message to the client
+#define VV_CLIENT_ERROR(MSG) C.send_chat(MSG, stream = "oocout")
 
 //* general
 
@@ -54,7 +56,38 @@
 ##path/can_vv_bind(datum/vv_context/actor) { return FALSE; } \
 ##path/can_vv_delete(datum/vv_context/actor) { return FALSE; }
 
+/// create vv dropdown data entry
+#define VV_DROPDOWN_ENTRY(NAME) list("name" = NAME)
+
 //* ui constants
 
 #define VV_MARK_DIRECT "N"
 #define VV_MARK_BINDING "B"
+
+//* classes
+
+/// we ask clients about these classes
+#define VV_GET_CLASSES list(
+	VV_CLASS_NUMBER,
+	VV_CLASS_TEXT,
+	VV_CLASS_MULTILINE_TEXT,
+)
+
+//? primitives
+#define VV_CLASS_TEXT "Text"
+#define VV_CLASS_MULTILINE_TEXT "Message"
+#define VV_CLASS_NUMBER "Number"
+
+//? entities
+#define VV_CLASS_REFERENCE "Reference"
+#define VV_CLASS_PLAYER "Player"
+#define VV_CLASS_CLIENT "client"
+
+//? typepaths
+#define VV_CLASS_PATH "Path"
+
+//? lists
+#define VV_CLASS_EDIT_LIST "List - Edit"
+#define VV_CLASS_NEW_LIST "List - New"
+
+#warn finish
