@@ -33,11 +33,13 @@
 	name = "Leather"
 	icon_state = "leather"
 	id = "Leather"
+	market_value = 20
 
 /obj/item/material/wool
 	name = "Wool"
 	icon_state = "wool"
 	id = "Wool"
+	market_value = 20
 
 /obj/item/material/esper_soul
 	name = "Esper Soul"
