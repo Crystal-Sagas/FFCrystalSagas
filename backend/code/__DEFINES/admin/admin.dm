@@ -1,0 +1,4 @@
+
+#define ADMIN_VERB_DECLARE(PATH, PRIVILEGES)
+
+#warn impl

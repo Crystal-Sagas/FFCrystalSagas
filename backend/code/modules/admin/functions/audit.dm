@@ -1,8 +1,12 @@
 /**
  * standardized render of someone's ckey and character name
  */
-/proc/audit_key_name(target)
-	#warn impl
+/proc/audit_key_name(mob/target)
+	if(isclient(target))
+		target = target:mob
+	if(!istype(target))
+		return "(*null*)"
+	return "[target.ckey || "*no-ckey*"]/([target.name])"
 
 /**
  * standardized render of something's location

@@ -17,9 +17,9 @@ name = "Maintainer"
 rights = ["Debug", "Introspect", "Observe", "Ticket", "Sensitive", "World", "Cvar", "Moderation"]
 groups = ["Coder"]
 
-# Admins
+# Users
 
-# [[Admin]]
+# [[User]]
 # ckey = "CKEY HERE"
 # rank = "RANK NAME"
 # rights = "OVERRIDE RIGHT NAMES"

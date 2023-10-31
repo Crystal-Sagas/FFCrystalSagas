@@ -5,7 +5,9 @@
 
 /// this is used on all introspect client verb paths
 /// use this to hook it into your admin system
-#define VV_VERB_DECLARE(PATH, NAME)
+#define VV_VERB_DECLARE(PATH, NAME) ADMIN_VERB_DECLARE(PATH, ADMIN_PRIV_INTROSPECT)
+/// grab the vv_context of a client
+#define VV_CLIENT_CONTEXT(C) C.admin?.introspection
 
 //* general
 

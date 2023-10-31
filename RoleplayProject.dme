@@ -132,6 +132,7 @@
 #include "backend\code\game\turfs\subtypes\unallocated.dm"
 #include "backend\code\modules\admin\admin_holder.dm"
 #include "backend\code\modules\admin\admin_rank.dm"
+#include "backend\code\modules\admin\audit_helpers.dm"
 #include "backend\code\modules\admin\introspection\context.dm"
 #include "backend\code\modules\admin\introspection\delete.dm"
 #include "backend\code\modules\admin\introspection\external.dm"

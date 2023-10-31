@@ -24,6 +24,7 @@
 //! legacy: grants adminlv 4
 #define ADMIN_LEGACY_4 (1<<23)
 
+//* These are used in config loading as enums - do not change willy-nilly.
 DEFINE_BITFIELD(admin_permissions, list(
 	/datum/admin_holder = list(
 		"privileges",
@@ -48,6 +49,7 @@ DEFINE_BITFIELD(admin_permissions, list(
 #define ADMIN_GROUP_EVENT (1<<1)
 #define ADMIN_GROUP_CODER (1<<2)
 
+//* These are used in config loading as enums - do not change willy-nilly.
 DEFINE_BITFIELD(admin_permissions, list(
 	/datum/admin_holder = list(
 		"groups",

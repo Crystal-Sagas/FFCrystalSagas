@@ -2,6 +2,7 @@
 GLOBAL_LIST_EMPTY(client_lookup)
 /// client list
 GLOBAL_LIST_EMPTY(clients)
+
 /**
  * /client, which represents players
  *
@@ -10,6 +11,12 @@ GLOBAL_LIST_EMPTY(clients)
 /client
 	/// force /client to inherit from /datum
 	parent_type = /datum
+
+	//* Administration
+	/// admin holder
+	var/datum/admin_holder/admin
+
+	//* Garbage Collection
 	/// manually calling Destroy from Del, gc should ignore us
 	var/gc_client_deleting = FALSE
 
