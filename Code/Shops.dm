@@ -57,126 +57,29 @@ mob/var/obj/NPCshop/browsing
 		/obj/item/stock/Stockgem/Draingem,
 	)
 
-/obj/NPCshop
-	GeneralShop
-		icon='Icons/NPCs.dmi'
-		icon_state="Ramen"
-		name="General Shop"
-		New()
-///Stock 1
-			var/obj/item/Chemist/Potion/s1=new
-			s1.instore=1
-			s1.shopprice=700
-			src.contents+=s1
-///Stock 2
-			var/obj/item/Chemist/Ether/s2=new
-			s2.instore=1
-			s2.shopprice=500
-			src.contents+=s2
-///Stock 3
-			var/obj/item/Chemist/Antidote/s3=new
-			s3.instore=1
-			s3.shopprice=450
-			src.contents+=s3
-///Stock 4
-			var/obj/item/Chemist/Echoherbs/s4=new
-			s4.instore=1
-			s4.shopprice=450
-			src.contents+=s4
-//Stock 5
-			var/obj/item/material/ingot/bronze/s5=new
-			s5.instore=1
-			s5.shopprice=80
-			src.contents+=s5
-//Stock 6
-			var/obj/item/material/ingot/iron/s6=new
-			s6.instore=1
-			s6.shopprice=140
-			src.contents+=s6
-//Stock 7
-			var/obj/item/material/leather/s7=new
-			s7.instore=1
-			s7.shopprice=50
-			src.contents+=s7
-//Stock 8
-			var/obj/item/material/wool/s8=new
-			s8.instore=1
-			s8.shopprice=70
-			src.contents+=s8
-//Stock 9
-			var/obj/item/material/wood/s9=new
-			s9.instore=1
-			s9.shopprice=70
-			src.contents+=s9
-//Stock 10
-			var/obj/item/material/stone/s10=new
-			s10.instore=1
-			s10.shopprice=70
-			src.contents+=s10
+/obj/NPCshop/GeneralShop
+	icon='Icons/NPCs.dmi'
+	icon_state="Ramen"
+	name="General Shop"
+	auto_stock = list(
+		/obj/item/material/ingot/bronze,
+		/obj/item/material/ingot/iron,
+		/obj/item/material/ingot/steel,
+		/obj/item/material/ingot/mythril,
+		/obj/item/material/leather,
+		/obj/item/material/wool,
+		/obj/item/material/wood,
+		/obj/item/material/stone,
+	)
 
-//Weapon Shop
-/obj/NPCshop
-	WeaponShop
-		name="General Weaponsmith"
-		icon='Icons/NPCs.dmi'
-		icon_state="Shop"
-		New()
-///Stock 1
-			var/obj/item/Weapon/Melee/Longsword/Iron/s1=new
-			s1.instore=1
-			s1.shopprice=1000
-			src.contents+=s1
-///Stock 2
-			var/obj/item/Weapon/Melee/Hammer/Iron/s2=new
-			s2.instore=1
-			s2.shopprice=1000
-			src.contents+=s2
-///Stock 3
-			var/obj/item/Weapon/Melee/Axe/Iron/s3=new
-			s3.instore=1
-			s3.shopprice=1000
-			src.contents+=s3
-///Stock 4
-			var/obj/item/Weapon/Melee/Spear/Iron/s4=new
-			s4.instore=1
-			s4.shopprice=1000
-			src.contents+=s4
-//Stock 5
-			var/obj/item/Weapon/Ranged/Bow/Iron/s5=new
-			s5.instore=1
-			s5.shopprice=1000
-			src.contents+=s5
-//Stock 6
-			var/obj/item/Weapon/Magical/Tome/Iron/s6=new
-			s6.instore=1
-			s6.shopprice=1000
-			src.contents+=s6
-//Stock 7
-			var/obj/item/Weapon/Magical/Staff/Iron/s7=new
-			s7.instore=1
-			s7.shopprice=1000
-			src.contents+=s7
-//Stock 8
-			var/obj/item/Weapon/Magical/FocusCrystal/Iron/s8=new
-			s8.instore=1
-			s8.shopprice=1000
-			src.contents+=s8
-//Stock 9
-			var/obj/item/Weapon/Ranged/ThrowingWeapons/ThrowingKnives/Iron/s9=new
-			s9.instore=1
-			s9.shopprice=1000
-			src.contents+=s9
-//Stock 10
-			var/obj/item/Weapon/Melee/Scimitar/Iron/s10=new
-			s10.instore=1
-			s10.shopprice=1000
-			src.contents+=s10
-//Stock 11
-			var/obj/item/Weapon/Melee/Whip/Iron/s11=new
-			s11.instore=1
-			s11.shopprice=1000
-			src.contents+=s11
-//Gem Shop
+/obj/NPCshop/WeaponShop
+	name="General Weaponsmith"
+	icon='Icons/NPCs.dmi'
+	icon_state="Shop"
+
+/obj/NPCshop/WeaponShop/New()
+	del(src)
+
 /obj/NPCshop/GemShop
 	name="Gem Shop"
 	icon='Icons/NPCs.dmi'
@@ -196,17 +99,13 @@ mob/var/obj/NPCshop/browsing
 		/obj/item/material/gem/bio,
 	)
 
-//Materia Shop
-/obj/NPCshop
-	MateriaVendor
-		icon='Icons/NPCs.dmi'
-		icon_state="Shinra"
-		name="Mako Vendor"
-		New()
-			var/obj/item/material/raw_mako/s1=new
-			s1.instore=1
-			s1.shopprice=700
-			src.contents+=s1
+/obj/NPCshop/MateriaVendor
+	icon='Icons/NPCs.dmi'
+	icon_state="Shinra"
+	name="Mako Vendor"
+	auto_stock = list(
+		/obj/item/material/raw_mako,
+	)
 
 /obj/NPCshop/MysidiaShop
 	name="Mysidia Shop"
