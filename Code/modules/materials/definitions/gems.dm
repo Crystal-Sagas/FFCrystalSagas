@@ -2,6 +2,7 @@
 	abstract_type = /obj/item/material/gem
 	icon_state = "gem_white"
 	id = "gem_white"
+	market_value = 200
 
 /obj/item/material/gem/diamond
 	name = "Diamond"

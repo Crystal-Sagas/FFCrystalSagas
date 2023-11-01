@@ -255,11 +255,11 @@
 		var/context = href_list["window_id"]
 		if (href_list["ns"])
 			context += " ([href_list["ns"]])"
-		Logging.log_tgui(usr, href_list["message"],
+		Logger.log_tgui(usr, href_list["message"],
 			context = context)
 	// Reload all tgui windows
 	if(type == "cacheReloaded")
-		Logging.log_tgui(usr, context = "debug/reload")
+		Logger.log_tgui(usr, context = "debug/reload")
 		// Mark as reloaded
 		usr.client.tgui_cache_reloaded = TRUE
 		// Notify windows
@@ -275,7 +275,7 @@
 	if(window_id)
 		window = usr.client.tgui_windows[window_id]
 		if(!window)
-			Logging.log_tgui(usr,
+			Logger.log_tgui(usr,
 				"Error: Couldn't find the window datum, force closing.",
 				context = window_id)
 			SStgui.force_close_window(usr, window_id)

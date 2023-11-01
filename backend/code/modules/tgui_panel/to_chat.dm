@@ -4,6 +4,53 @@
  */
 
 /**
+ * Sends the message to the recipient (target).
+ *
+ * Recommended way to write to_chat calls:
+ * ```
+ * to_chat(client,
+ *     type = MESSAGE_TYPE_INFO,
+ *     html = "You have found <strong>[object]</strong>")
+ * ```
+ */
+/proc/to_chat_immediate(
+	target,
+	html,
+	type = null,
+	text = null,
+	avoid_highlighting = FALSE,
+)
+	if(target == world)
+		target = global.clients
+	else if(!islist(target))
+		target = list(target)
+
+	for(var/thing in target)
+		var/client/C = CLIENT_FROM_VAR(thing)
+		C.send_chat(html || text)
+
+/**
+ * Sends the message to the recipient (target).
+ *
+ * Recommended way to write to_chat calls:
+ * ```
+ * to_chat(client,
+ *     type = MESSAGE_TYPE_INFO,
+ *     html = "You have found <strong>[object]</strong>")
+ * ```
+ */
+/proc/to_chat(
+	target,
+	html,
+	type = null,
+	text = null,
+	avoid_highlighting = FALSE,
+)
+	return to_chat_immediate(target, html, type, text, avoid_highlighting)
+
+/*
+
+/**
  * Circumvents the message queue and sends the message
  * to the recipient (target) as soon as possible.
  */
@@ -92,3 +139,5 @@
 	if(html) message["html"] = html
 	if(avoid_highlighting) message["avoidHighlighting"] = avoid_highlighting
 	SSchat.queue(target, message)
+
+*/

@@ -1,4 +1,4 @@
-GLOBAL_LIST_BOILERPLATE(fate_crystals, /obj/FATECrystal)
+LEGACY_GLOBAL_LIST_BOILERPLATE(fate_crystals, /obj/FATECrystal)
 /**
  * fate crystal where fates are spawned from
  *

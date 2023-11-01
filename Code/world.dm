@@ -1,16 +1,14 @@
-/**
- * root definition of /world
- */
 /world
+	// todo: these should all be in boot from world params or .env or something
+	name = "The Crystal Sagas"
 	fps = 40		// 40 frames per second
 	icon_size = 32	// 32x32 icon size by default
 	view = "35x20"
 	hub="LazyBunnyStudios.TheCrystalSagas"
 	hub_password = "12453j!A@olmi!"
 	mob = /mob/character
+	visibility = TRUE
 
-var/global/world_log_path
-var/global/world_log_directory
 var/global/action_log_path
 var/global/action_log_file
 
@@ -18,12 +16,15 @@ var/global/action_log_file
 	//? Init TGS
 	TgsNew()
 
+	//! legacy shit here
+	//  only set visibility if tgs is up
+	visibility = !!TgsAvailable()
+
+	// todo: to capture all logs, we need to put in temporary logs on boot and shunt it over
 	// shunt logs if TGS is available
-	global.world_log_directory = "data/logs/[time2text(world.realtime, "YYYY")]/[time2text(world.realtime, "MM")]/[time2text(world.realtime, "DD")]/server-[time2text(world.realtime, "hh-mm-ss")]"
-	global.world_log_path = "[global.world_log_directory]/dd.log"
 	if(TgsAvailable())
-		world.log = global.world_log_path
-	global.action_log_path = "[global.world_log_directory]/game.log"
+		world.log = Logger.dd_log
+	global.action_log_path = "[Logger.root_dir]/legacy.log"
 	global.action_log_file = file(global.action_log_path)
 
 	Addcustoms()
@@ -31,30 +32,12 @@ var/global/action_log_file
 	Loadworld()
 	Load_Ban()
 	new /obj/cooldownchecker
-	if(fexists("data/Materials"))
-		Loadmaterials()
-	else
-		Initcraft()
-	if(fexists("data/Perks"))
-		LoadPerk()
-	else
-		Initperk()
-	if(fexists("data/Weapons"))
-		LoadWeps()
-	else
-		Initwep()
-	if(fexists("data/Recipes"))
-		Loadrecipes()
-	else
-		Initrecipes()
-	if(fexists("data/Summons"))
-		Loadsummons()
-	else
-		Initsummons()
-	if(fexists("data/Bestiary"))
-		Loadbestiary()
-	else
-		Initbestiary()
+	Initcraft()
+	Initperk()
+	Initwep()
+	Initrecipes()
+	Initsummons()
+	Initbestiary()
 	spawn Time()
 	// init global perk shop
 	global.perk_shop.perks += perklist

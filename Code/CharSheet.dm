@@ -19,14 +19,6 @@ atom
 					m<<output("Equipped","InventoryScreen.gear")
 				else
 					m<<output("Unequipped","InventoryScreen.gear")
-			for(var/obj/item/Mooglebox/A in m.contents)
-				row++
-				winset(m,"InventoryScreen.gear","current-cell=1,[row]")
-				m<<output(A,"gear:1,[row]")
-			for(var/obj/item/Patreonitems/G in m.contents)
-				row++
-				winset(m,"InventoryScreen.gear","current-cell=1,[row]")
-				m<<output(G,"gear:1,[row]")
 			for(var/obj/item/magicite/Mag in m.contents)
 				row++
 				winset(m,"InventoryScreen.gear","current-cell=1,[row]")
@@ -589,14 +581,6 @@ mob
 					usr<<output("Equipped","InventoryScreen.gear")
 				else
 					usr<<output("Unequipped","InventoryScreen.gear")
-			for(var/obj/item/Mooglebox/A in usr.contents)
-				row++
-				winset(usr,"InventoryScreen.gear","current-cell=1,[row]")
-				usr<<output(A,"gear:1,[row]")
-			for(var/obj/item/Patreonitems/G in usr.contents)
-				row++
-				winset(usr,"InventoryScreen.gear","current-cell=1,[row]")
-				usr<<output(G,"gear:1,[row]")
 			for(var/obj/item/magicite/Mag in usr.contents)
 				row++
 				winset(usr,"InventoryScreen.gear","current-cell=1,[row]")

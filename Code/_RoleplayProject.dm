@@ -40,7 +40,7 @@ mob
 		Click()
 			Charcreate(usr)
 
-GLOBAL_DATUM_INIT(perk_shop, /datum/global_perk_shop, new)
+LEGACY_GLOBAL_DATUM_INIT(perk_shop, /datum/global_perk_shop, new)
 /**
  * global perk holder datum
  */
@@ -48,7 +48,7 @@ GLOBAL_DATUM_INIT(perk_shop, /datum/global_perk_shop, new)
 	/// holds perk /obj's
 	var/list/perks = list()
 
-GLOBAL_DATUM_INIT(recipe_shop, /datum/global_recipe_shop, new)
+LEGACY_GLOBAL_DATUM_INIT(recipe_shop, /datum/global_recipe_shop, new)
 /**
  * global recipe holder datum
  */
@@ -56,7 +56,7 @@ GLOBAL_DATUM_INIT(recipe_shop, /datum/global_recipe_shop, new)
 	/// holds recipe /obj's
 	var/list/recipes = list()
 
-GLOBAL_DATUM_INIT(stable_holder, /datum/global_stable_holder, new)
+LEGACY_GLOBAL_DATUM_INIT(stable_holder, /datum/global_stable_holder, new)
 /**
  * global stable holder datum
  */
@@ -256,8 +256,6 @@ mob
 				usr.tempeventmin=0
 				usr.totalpasses=chk.totalpasses
 				usr.minednodes=0
-				for(var/obj/item/Mooglebox/a in usr.contents)
-					a.cooldown=0
 				//alert(usr,"You were logged out during a cooldown reset, so your cooldowns are now reset.")
 			if(usr.eventmin || usr.tempeventmin)
 				winset(usr,"default.Eventmin","is-visible=true")
@@ -326,14 +324,6 @@ mob
 						usr.chacap=26
 					usr.rankchecked=1
 					alert(usr,"You have been granted your HP, MP, and SP bonus for your current rank.")
-			if(usr.patron)
-				if(!usr.firsttimerewards)
-					var/obj/item/Mooglebox/MoogleShopBox/a=new
-					var/obj/item/Mooglebox/MoogleGathererBox/b=new
-					usr.contents+=a
-					usr.contents+=b
-					usr.firsttimerewards=1
-				usr.Checkmonth()
 			RefreshCharsheet(usr)
 			Refreshinventoryscreen(usr)
 			RefreshAll(usr)
@@ -451,8 +441,13 @@ mob
 		del src
 		..()
 
+var/global/world_saving = FALSE
+
 proc
 	Saveworld()
+		if(world_saving)
+			return
+		world_saving = TRUE
 		Save_Ban()
 		SavePerk()
 		world<<output("<small>Server: Saving Objects...","icout")
@@ -481,8 +476,7 @@ proc
 				goto hacklol
 		world<<output("<small>Server: Objects Saved([Amount]).","icout")
 		world<<output("World has been succesfully saved :)","oocout")
-
-
+		world_saving = FALSE
 
 	Loadworld()
 		world<<output("<small>Server: Loading Items...","icout")
@@ -2156,9 +2150,11 @@ proc
 			if("Insomnia")
 				alert(m,"Almost done, kupo. There is nothing more I can help you with here, but make sure to spend your starting AP on raising your ability scores, and talk to my friends to learn more about the game. Enjoy, kupo.")
 				m.loc = locate(200, 186, 1)
+				m.starting_city = STARTING_CITY_INSOMNIA
 			if("Midgar")
 				alert(m,"Almost done, kupo. There is nothing more I can help you with here, but make sure to spend your starting AP on raising your ability scores, and talk to my friends to learn more about the game. Enjoy, kupo.")
 				m.loc = locate(125, 297, 17)
+				m.starting_city = STARTING_CITY_MIDGAR
 			if("Tycoon")
 				alert(m,"Almost done, kupo. There is nothing more I can help you with here, but make sure to spend your starting AP on raising your ability scores, and talk to my friends to learn more about the game. Enjoy, kupo.")
 				m.loc = locate(97, 238, 10)
@@ -2260,7 +2256,7 @@ proc
 								if("No")
 									goto redostuff
 	Subjobint(var/mob/m)
-		var/list/jobs = list("Merchant","Mystic Knight",/*"Chocobo Knight","Pirate","Gladiator"*/,"Astrologian","Viking","Bard","Dancer","Black Mage","White Mage","Red Mage","Blue Mage","Ranger","Monk","Beast Master","Samurai","Spellblade","Rogue","Paladin","Knight","Dark Knight","Dragoon","Machinist","Summoner","Chemist","Geomancer")
+		var/list/jobs = list("Merchant","Mystic Knight",/*"Chocobo Knight","Pirate","Gladiator"*/,"Astrologian","Viking","Bard","Dancer","Black Mage","White Mage","Red Mage","Blue Mage","Ranger","Monk","Beast Master","Samurai","Spellblade","Rogue","Paladin","Knight","Dark Knight","Dragoon","Machinist","Summoner","Chemist","Geomancer", "Scholar")
 		if(Oracle.Find(m.key))
 			jobs+="Oracle"
 		if(Timemage.Find(m.key))

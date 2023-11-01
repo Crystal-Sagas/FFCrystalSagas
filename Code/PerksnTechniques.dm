@@ -211,12 +211,6 @@ proc
 			m.con+=2
 			m.int+=2
 			m.cha+=2
-		if(o.name=="Moogle Merchant")
-			var/obj/item/Mooglebox/MoogleShopBox/a=new
-			var/obj/item/Mooglebox/MoogleGathererBox/b=new
-			m.contents+=a
-			m.contents+=b
-			view() << output("[m.name] has learned the way of the Moogle!","icout")
 		if(o.name=="LoneWolf")
 			m.nolearn+="PackLeader"
 		if(o.name=="PackLeader")

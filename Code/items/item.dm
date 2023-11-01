@@ -10,4 +10,9 @@
 	/// if FALSE, we should reset to our typepath's stats as opposed to loading stats from disk
 	var/modified = FALSE
 
+	//* economy
+	/// market value, aka default price of item
+	//  todo: economy/worth system, static prices kind of suck
+	var/market_value
+
 // todo

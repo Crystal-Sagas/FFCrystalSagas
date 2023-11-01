@@ -4,41 +4,51 @@
  * authentication / authorization / connect / disconnect logs
  */
 /datum/controller/logging/proc/to_access_log(msg)
+	WRITE_LOG(logfile_access, msg)
 
 /datum/controller/logging/proc/to_admin_log(msg)
-	#warn impl
+	WRITE_LOG(logfile_admin, msg)
 
 /datum/controller/logging/proc/to_asset_log(msg)
-	#warn impl
+	WRITE_LOG(logfile_asset, msg)
+
 
 /datum/controller/logging/proc/to_config_log(msg)
-	#warn impl
+	WRITE_LOG(logfile_config, msg)
 
 /datum/controller/logging/proc/to_inventory_log(msg)
-	#warn impl
+	WRITE_LOG(logfile_inventory, msg)
 
 /**
  * mechanical combat logging
  */
 /datum/controller/logging/proc/to_mechanics_log(msg)
-	#warn impl
-
-/datum/controller/logging/proc/to_misc_log(msg)
-	#warn impl
+	WRITE_LOG(logfile_mechanics, msg)
 
 /**
- * rp & rp combat logging
+ * rp action log
  */
 /datum/controller/logging/proc/to_roleplay_log(msg)
-	#warn impl
+	WRITE_LOG(logfile_roleplay, msg)
+
+/datum/controller/logging/proc/to_subsystem_log(msg)
+	WRITE_LOG(logfile_subsystem, msg)
 
 /datum/controller/logging/proc/to_tgui_log(msg)
-	#warn impl
+	WRITE_LOG(logfile_tgui, msg)
+
+/datum/controller/logging/proc/to_world_log(msg)
+	WRITE_LOG(logfile_world, msg)
 
 //* Managed Logging Procs *//
 
 /datum/controller/logging/proc/log_config(msg)
 	to_config_log(msg)
+
+/datum/controller/logging/proc/log_subsystem(datum/controller/source, msg)
+	to_subsystem_log("[source.pretty_identifier()]: [msg]")
+
+/*
 
 /**
  * Appends a tgui-related log entry.
@@ -69,8 +79,10 @@
 		src_object = window.locked_by.src_object
 	// Insert src_object info
 	if(src_object)
-		entry += "\nUsing: [src_object.type] [REF(src_object)]"
+		entry += "\nUsing: [src_object.type] [AUTO_REF(src_object)]"
 	// Insert message
 	if(message)
 		entry += "\n[message]"
 	to_tgui_log(entry)
+
+*/

@@ -1,7 +1,7 @@
-GLOBAL_VAR_INIT_INPLACE(runtime_count, global.runtime_count || 0)
-GLOBAL_VAR_INIT_INPLACE(runtime_skipped, global.runtime_skipped || 0)
-GLOBAL_LIST_INIT_INPLACE(runtime_data, global.runtime_data || list())
-GLOBAL_LIST_INIT_INPLACE(runtime_skipping, global.runtime_skipping || list())
+LEGACY_GLOBAL_VAR_INIT_INPLACE(runtime_count, global.runtime_count || 0)
+LEGACY_GLOBAL_VAR_INIT_INPLACE(runtime_skipped, global.runtime_skipped || 0)
+LEGACY_GLOBAL_LIST_INIT_INPLACE(runtime_data, global.runtime_data || list())
+LEGACY_GLOBAL_LIST_INIT_INPLACE(runtime_skipping, global.runtime_skipping || list())
 
 #define RUNTIME_SKIP_TIME (5 MINUTES)
 #define RUNTIME_SKIP_THRESHOLD 15

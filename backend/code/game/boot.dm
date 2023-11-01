@@ -4,7 +4,7 @@
  * * 1. /datum/server_initialization is ran by the boot delegate that's defined last - this brings up the auxtools debugger first-thing
  * * 2. all /static variables in procs and prototypes (type variables) init in reverse order of compile
  * * 3. all /global variables in global scope init in order of compile
- * * 4. the System service is created as part of that - it should be the only real global that inits in this way
+ * * 4. the System service is created by server initialization during that
  * * 5. during New(), the System service creates the Configuration service, and the managed GLOB service
  * * 6. the managed GLOB service inits managed globals as part of this during its New()
  * * 7. the System service creates the Database service and attempts to connect it
@@ -28,8 +28,12 @@ GLOBAL_REAL_DATUM(Initialization, /datum/server_initialization)
 /datum/server_initialization
 
 /datum/server_initialization/proc/Boot()
+	// init auxtools
 	first_thing_to_run()
+	// start debug ticker
 	forever_loop()
+	// boot System
+	global.System = new(src)
 
 /**
  * This runs before **anything** else.

@@ -1175,23 +1175,14 @@
 	sleep(4)
 
 /atom/proc/Victory(var/obj/Party/party,var/obj/FATECrystal/fate)
-	var/reward1
-	var/reward2
-	var/reward3
-	var/gilreward
-	var/bossreward
 	for(var/mob/M in hearers(20, fate))
 		M << sound(null, channel = 1)
 		M << sound('Audio/Fanfare.wav', channel = 1)
 	sleep(22)
+	var/loot_pack
 	for(var/obj/FATEs/quest in world)
 		if("[quest.FATEID]"=="[party.FATEID]")
-			reward1=quest.Reward1
-			reward2=quest.Reward2
-			reward3=quest.Reward3
-			gilreward=quest.Gilreward
-			if(quest.bossfate)
-				bossreward=quest.bossfate
+			loot_pack = quest.loot_pack
 			del quest
 	fate.occupied=0
 	fate.FATEID=null
@@ -1200,40 +1191,13 @@
 		sleep(2)
 		m.bposition=null
 		UpdateArea(m)
-		for(var/obj/item/a in m.contents)
-			if(a.name==reward1)
-				m.send_chat("Gained +1 [reward1]!", stream = "oocout")
-				a.amount+=1
-				if(reward1=="Wood"||reward1=="Stone")
-					a.amount+=4
-					m.send_chat("Gained +4 [reward1]!", stream = "oocout")
-				break
-		for(var/obj/item/b in m.contents)
-			if(b.name==reward2)
-				m.send_chat("Gained +1 [reward2]!", stream = "oocout")
-				b.amount+=1
-				if(reward2=="Wood"||reward2=="Stone")
-					b.amount+=4
-					m.send_chat("Gained +4 [reward2]!", stream = "oocout")
-				break
-		for(var/obj/item/c in m.contents)
-			if(c.name==reward3)
-				m.send_chat("Gained +1 [reward3]!", stream = "oocout")
-				c.amount+=1
-				if(reward3=="Wood"||reward3=="Stone")
-					c.amount+=4
-					m.send_chat("Gained +4 [reward3]!", stream = "oocout")
-				break
-		for(var/obj/item/d in m.contents)
-			if(d.name==bossreward)
-				m.send_chat("You beat a World Boss! Gained +1 [bossreward]!", stream = "oocout")
-				m.dailyfates+=1
-				d.amount+=1
-				break
+		if(ispath(loot_pack, /datum/prototype/struct/loot_pack))
+			var/datum/prototype/struct/loot_pack/giving = new loot_pack
+			var/list/paths = giving.flatten()
+			for(var/path in paths)
+				m.legacy_inventory_ingest(path, paths[path], "FATE reward: +")
 		if(m.hp<=0)
 			m.hp=0
-		m.money+=gilreward
-		m.send_chat("Gained [gilreward] Gil!!", stream = "oocout")
 		m.battler=0
 		m.dailyfates+=1
 		if(m.dailyfates>=m.maxfates)
@@ -2882,7 +2846,7 @@
 		result=m.chamod
 	return result
 
-GLOBAL_DATUM_INIT(npc_archive, /datum/global_npc_archive, new)
+LEGACY_GLOBAL_DATUM_INIT(npc_archive, /datum/global_npc_archive, new)
 /**
  * global npc holder
  */

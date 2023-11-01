@@ -8,6 +8,9 @@
 	price=1
 	amount=0
 	weight=0
+	New(loc, amt)
+		if(!isnull(amt))
+			src.amount = amt
 	Click()
 		if(src.instore)
 			switch(alert(usr,"[src.desc] Cost:[src.shopprice]",,"Buy","Cancel"))
@@ -30,12 +33,6 @@
 				if("Cancel")
 					return
 		if(istype(loc, /obj/playershops/shoptable))
-			winset(usr,"playershop.selected","text=\"Selected: [src.name]\"")
-			winset(usr,"playershop.desc","text=\"[src.desc]\"")
-			winset(usr,"playershop.lore","text=\"[src.lore]\"")
-			winset(usr,"playershop.enchant","text=\"[src.enchantment]\"")
-			return
-		if(istype(loc, /obj/playershops/Moogle))
 			winset(usr,"playershop.selected","text=\"Selected: [src.name]\"")
 			winset(usr,"playershop.desc","text=\"[src.desc]\"")
 			winset(usr,"playershop.lore","text=\"[src.lore]\"")

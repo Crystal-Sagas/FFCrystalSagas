@@ -394,6 +394,7 @@ obj
 				var/stock=0
 				stockgem=1
 				amount=5
+				market_value = 200
 				Firegem
 					icon='Icons/Perk/Fire.png'
 					name="Fire"

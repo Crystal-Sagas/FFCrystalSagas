@@ -5,4 +5,10 @@
  */
 CONTROLLER_DEF(globals, GLOB)
 
-#warn impl
+/datum/controller/globals/New()
+	construct()
+
+/datum/controller/globals/proc/construct()
+	var/list/procpaths = global_init_procs()
+	for(var/procpath in procpaths)
+		call(src, procpath)()
