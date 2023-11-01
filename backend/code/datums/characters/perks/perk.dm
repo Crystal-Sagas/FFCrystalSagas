@@ -9,7 +9,7 @@
 	/// set to typepath to init
 	/// this is a shared reference, and any characters with us share this modifier.
 	#warn impl
-	var/datum/character_stats/stat_modifier
+	var/datum/character_roll/character_stats/stat_modifier
 
 #warn impl
 #warn impl prototype

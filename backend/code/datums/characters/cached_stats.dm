@@ -2,7 +2,7 @@
 /**
  * cached version of character stats; read only. writes will be overwritten on update.
  */
-/datum/character_stats_cached
+/datum/character_roll/character_stats_cached
 	var/str = 0
 	var/strmod = 0
 	var/dex = 0

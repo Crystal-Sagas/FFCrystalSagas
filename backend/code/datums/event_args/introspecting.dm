@@ -10,4 +10,4 @@
 	var/list/introspection_data
 
 /datum/event_args/introspecting/proc/add_introspection(list/data)
-	introspection_data[++introspection_data] = data
+	introspection_data[++introspection_data.len] = data

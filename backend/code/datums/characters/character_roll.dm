@@ -1,5 +1,3 @@
-#warn globals
-
 /**
  * core rolls
  *
@@ -13,10 +11,6 @@
 	var/name = "Some Roll"
 	/// unique id
 	var/id
-	/// stats this is based on: associate to number for divisor
-	var/list/from_stat = list()
-	/// stat modifiers this is based on: associate to number for divisor
-	var/list/from_stat_mod = list()
 	/// rand low
 	var/base_low = 1
 	/// rand high

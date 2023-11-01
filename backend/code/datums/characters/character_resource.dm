@@ -1,4 +1,10 @@
-#warn globals
+GLOBAL_LIST_INIT(character_resources, init_character_resources())
+
+/proc/init_character_resources()
+
+/proc/resolve_character_resource(datum/character_resource/resolving)
+
+#warn a
 
 /**
  * core resources: e.g. HP, MP, SP
@@ -15,3 +21,8 @@
 	var/short_name = "UNKW"
 	/// unique ID
 	var/id
+	/// base amount
+	var/base_maximum = 0
+
+#warn from stat?
+#warn resolve stat paths in from stat lists New()

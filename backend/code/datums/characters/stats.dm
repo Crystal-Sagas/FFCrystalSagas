@@ -1,7 +1,7 @@
 /**
  * character stats holder
  */
-/datum/character_stats
+/datum/character_roll/character_stats
 	var/str = 0
 	var/dex = 0
 	var/con = 0
@@ -9,7 +9,7 @@
 	var/wis = 0
 	var/cha = 0
 
-/datum/character_stats/base
+/datum/character_roll/character_stats/base
 	str = 10
 	dex = 10
 	con = 10
