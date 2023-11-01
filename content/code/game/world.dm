@@ -6,4 +6,5 @@
 	view = "35x20"
 	hub="LazyBunnyStudios.TheCrystalSagas"
 	hub_password = "12453j!A@olmi!"
+	visibility = TRUE
 	mob = /mob/character
