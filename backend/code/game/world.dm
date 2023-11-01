@@ -8,6 +8,10 @@
 	visibility = FALSE
 	view = 34
 
+// /world/New()
+// 	TgsNew()
+// 	return ..()
+
 /world/Reboot(reason)
 	Logger.shutdown_logging()
 	return ..()
