@@ -11,6 +11,6 @@
 		INTROSPECTION_GENERIC_CREATE(
 			INTROSPECTION_GENERIC_NEUTRAL,
 			"Base Roll",
-			"+ [roll_prototype.base_low]~[roll_prototype.base_high]",
-		),
+			"+ [roll_prototype.base_low]~[roll_prototype.base_high]"
+		)
 	)
