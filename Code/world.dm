@@ -8,7 +8,7 @@
 	hub_password = "12453j!A@olmi!"
 	mob = /mob/character
 	visibility = TRUE
-	status = "Made for players, by players; <a href='https://discord.gg/Nb8vHhDRrY'>Discord</a>"
+	status = "<b>The Crystal Sagas</b><br><br>Made for players, by players; <a href='https://discord.gg/Nb8vHhDRrY'>Discord</a>"
 
 var/global/action_log_path
 var/global/action_log_file
