@@ -72,7 +72,9 @@ mob
 				for(var/mob/inv in view(usr))
 					if(inv.partyID!=usr.partyID)
 						invites+=inv
-				var/mob/invchoice = input(usr,"Who would you like to invite to your party?") as anything in invites
+				var/mob/invchoice = input(usr,"Who would you like to invite to your party?") as null|anything in invites
+				if(isnull(invchoice))
+					return
 				if(invchoice.inparty==1)
 					alert(usr,"This person is already in a party!")
 					return

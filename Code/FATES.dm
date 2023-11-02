@@ -293,13 +293,8 @@ obj
 										client.FATEID=newfate.FATEID
 										client.layer=999
 									if(newfate.FATEtype=="Artifact")
-										var/randx=rand(-15, 15)
-										var/randy=rand(-15, 15)
-										var/artifactx=fatelocation.x-randx
-										var/artifacty=fatelocation.y-randy
-										artifact.x=artifactx
-										artifact.y=artifacty
-										artifact.z=fatelocation.z
+										var/turf/where_to_place = pick(range(7, fatelocation))
+										artifact.force_move(where_to_place)
 										artifact.layer=999
 										artifact.FATEID=newfate.FATEID
 									usr.usingfate=0
