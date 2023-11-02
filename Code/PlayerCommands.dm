@@ -44,7 +44,7 @@ mob
 				a.contents+=r
 			usr<<output("Your report has been submitted. Please be patient while an admin fixes your problem. If you don't receive a response in a timely manner, please submit a ticket on our discord channel.","oocout")
 			// todo: not hardcoded admin ping ID
-			world.TgsTargetedChatBroadcast("[key_name(usr)] submitted an adminhelp: [desc]. <@810115110390726656>", admin_only = TRUE)
+			world.TgsTargetedChatBroadcast("[key_name(usr)] submitted an adminhelp - [r.name]: [r.desc]. <@&810115110390726656>", admin_only = TRUE)
 		OpenAdminPanel()
 			if(usr.adminlv>0)
 				winset(usr,"AdminPanel","is-visible=true")
