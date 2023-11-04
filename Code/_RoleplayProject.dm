@@ -256,8 +256,6 @@ mob
 				usr.tempeventmin=0
 				usr.totalpasses=chk.totalpasses
 				usr.minednodes=0
-				for(var/obj/item/Mooglebox/a in usr.contents)
-					a.cooldown=0
 				//alert(usr,"You were logged out during a cooldown reset, so your cooldowns are now reset.")
 			if(usr.eventmin || usr.tempeventmin)
 				winset(usr,"default.Eventmin","is-visible=true")
@@ -326,14 +324,6 @@ mob
 						usr.chacap=26
 					usr.rankchecked=1
 					alert(usr,"You have been granted your HP, MP, and SP bonus for your current rank.")
-			if(usr.patron)
-				if(!usr.firsttimerewards)
-					var/obj/item/Mooglebox/MoogleShopBox/a=new
-					var/obj/item/Mooglebox/MoogleGathererBox/b=new
-					usr.contents+=a
-					usr.contents+=b
-					usr.firsttimerewards=1
-				usr.Checkmonth()
 			RefreshCharsheet(usr)
 			Refreshinventoryscreen(usr)
 			RefreshAll(usr)

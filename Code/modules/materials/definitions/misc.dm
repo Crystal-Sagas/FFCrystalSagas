@@ -1,19 +1,23 @@
 /obj/item/material
+	market_value = 500
 
 /obj/item/material/wood
 	name = "Wood"
 	icon_state = "wood"
 	id = "Wood"
+	market_value = 5
 
 /obj/item/material/stone
 	name = "Stone"
 	icon_state = "stone"
 	id = "Stone"
+	market_value = 5
 
 /obj/item/material/raw_mako
 	name = "Raw Mako"
 	icon_state = "mako"
 	id = "raw_mako"
+	market_value = 500
 
 /obj/item/material/EtherPowder
 	name = "Ether Powder"
@@ -29,11 +33,13 @@
 	name = "Leather"
 	icon_state = "leather"
 	id = "Leather"
+	market_value = 20
 
 /obj/item/material/wool
 	name = "Wool"
 	icon_state = "wool"
 	id = "Wool"
+	market_value = 20
 
 /obj/item/material/esper_soul
 	name = "Esper Soul"

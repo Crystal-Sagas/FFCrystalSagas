@@ -56,10 +56,7 @@
 		winset(usr,"Profile.Metadata2","text=\"Event Points: [M.ep]/[M.tep]\"")
 	else
 		usr<<browse(usr.profile,"window=Profile.profile")
-		if(usr.patron)
-			winset(usr,"Profile.patron","is-visible=true")
-		else
-			winset(usr,"Profile.patron","is-visible=false")
+		winset(usr,"Profile.patron","is-visible=false")
 		winset(usr,"Profile.ProfilePic","image=[usr.profilepic]")
 		winset(usr,"Profile.Metadata1","text=\"Date Joined: [usr.datejoined]\"")
 		winset(usr,"Profile.Metadata2","text=\"Event Points: [usr.ep]/[usr.tep]\"")

@@ -25,23 +25,23 @@ obj
 		icon=null
 		Savable=0
 		Insomnia
-			travelprice=500
+			travelprice=50
 			name="Insomnia"
 		Midgar
-			travelprice=500
+			travelprice=50
 			name="Midgar"
 		Yevon
-			travelprice=500
+			travelprice=50
 			name="Yevon"
 		Baron
-			travelprice=100
+			travelprice=10
 			name="Baron"
 		Tycoon
-			travelprice=100
+			travelprice=10
 			name="Tycoon"
 		Zanarkand
-			travelprice=100
+			travelprice=10
 			name="Zanarkand"
 		CostaDelSol
-			travelprice=100
+			travelprice=10
 			name="Costa Del Sol"
