@@ -11,4 +11,13 @@
 	if(!istype(target))
 		send_chat("cannot delete - not a datum", target)
 		return FALSE
-	#warn impl
+	if(isturf(target))
+		// you should probably override this for your codebase: e.g. ss13 ScrapeAway/ChangeTurf.
+		new world.turf(target)
+		return TRUE
+	else if(isarea(target) && length(target:contents) > 0)
+		send_chat("refusing to delete non-empty /area", target)
+		return FALSE
+	// this is where you hook in any gc systems
+	del(target)
+	return TRUE

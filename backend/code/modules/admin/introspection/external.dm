@@ -28,7 +28,6 @@
  * * raw_edit - edit requested was raw, do not do automatic handling
  */
 /datum/proc/vv_edit_var(datum/vv_context/actor, var_name, var_value, mass_edit, raw_edit)
-	#warn overrides
 	return VV_EDIT_NORMAL
 
 /**
