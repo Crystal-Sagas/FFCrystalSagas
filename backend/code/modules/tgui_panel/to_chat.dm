@@ -21,7 +21,7 @@
 	avoid_highlighting = FALSE,
 )
 	if(target == world)
-		target = global.clients
+		target = GLOB.clients
 	else if(!islist(target))
 		target = list(target)
 

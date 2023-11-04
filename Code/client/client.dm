@@ -1,8 +1,3 @@
-/// ckey-client association list
-LEGACY_GLOBAL_LIST_EMPTY(client_lookup)
-/// client list
-LEGACY_GLOBAL_LIST_EMPTY(clients)
-
 /**
  * root definition for client
  */
@@ -52,28 +47,15 @@ LEGACY_GLOBAL_LIST_EMPTY(clients)
 	// grant profiler access; world/Reboot is patched to not allow rebooting with app admin
 	if((ckey in debug_access) || is_localhost())
 		world.SetConfig("APP/admin", ckey, "role=admin")
-	// register global
-	global.client_lookup[ckey] = src
-	global.clients += src
 	// calls mob.Login()
 	. = ..()
 	// setup viewport
 	async_call(src, SELF_PROC_REF(init_viewport_blocking))
 	world.log << "Client [ckey] connected from IP [address] with CID [computer_id]"
 
-/client/Destruct()
-	// unregister global
-	global.client_lookup -= ckey
-	global.clients -= src
+/client/Del()
 	world.log << "Client [ckey] disconnected from IP [address] with CID [computer_id]"
 	return ..()
-
-
-/**
- * returns if we are connecting from the host computer (or are launching the server directly in dreamseeker)
- */
-/client/proc/is_localhost()
-	return address in list(null, "127.0.0.1", "::1")
 
 /**
  * loads asset; blocks until done.

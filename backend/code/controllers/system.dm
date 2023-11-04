@@ -18,11 +18,18 @@ CONTROLLER_DEF(system, System)
 */
 
 /datum/controller/system/New()
+	// set up logging
 	if(isnull(global.Logger))
 		global.Logger = new
 		global.Logger.setup_logging()
+	// set up global variables
 	if(isnull(global.GLOB))
 		global.GLOB = new
+	// set up & load
+	if(isnull(global.Config))
+		global.Config = new
+		// global.Config.load_config()
+		global.Config.load_admins(reload_entries = TRUE)
 
 /*
 

@@ -8,7 +8,10 @@
  * * actor - actor
  * * raw_query - query requested was raw, do not inject helper / wrapper vars
  *
- * @return list, or null to forbid
+ * Associate a value to a VV class to 'hint' that it's an easily editable value.
+ * Values without VV classes will not show outside of advanced mode.
+ *
+ * @return list of varnames associated to vv class or null, or null to forbid
  */
 /datum/proc/vv_var_query(datum/vv_context/actor)
 	return vars
@@ -25,7 +28,6 @@
  * * raw_edit - edit requested was raw, do not do automatic handling
  */
 /datum/proc/vv_edit_var(datum/vv_context/actor, var_name, var_value, mass_edit, raw_edit)
-	#warn overrides
 	return VV_EDIT_NORMAL
 
 /**
@@ -39,9 +41,9 @@
  * @return variable value
  */
 /datum/proc/vv_get_var(datum/vv_context/actor, var_name, raw_read)
-	#warn overrides
-	#warn redo?
-	return vars[var_name]
+	if(var_name in vars)
+		return vars[var_name]
+	return "!-- vv read miss (contact a coder) --!"
 
 /**
  * checks if we can be marked as a datum; this means someone is trying to grab a reference to us
@@ -50,7 +52,6 @@
  * * actor - actor
  */
 /datum/proc/can_vv_mark(datum/vv_context/actor)
-	#warn overrides
 	return TRUE
 
 /**
@@ -79,6 +80,8 @@
 /**
  * can call a proc of a given name with the given params
  *
+ * todo: currently unused
+ *
  * @params
  * * actor - actor
  * * proc_name - proc name
@@ -102,10 +105,12 @@
  *
  * this does not include the base dropdowns for callproc, delete, etc
  *
+ * Use VV_DROPDOWN_ENTRY to make entries.
+ *
  * @params
  * * actor - actor
  *
- * @return list(key = name)
+ * @return list(key = entry)
  */
 /datum/proc/vv_dropdown(datum/vv_context/actor)
 	return list()
