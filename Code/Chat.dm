@@ -169,6 +169,13 @@ var/list/naughtywords = list("sex","penis","pussy","cock","ass","dick","breast",
 		else
 			m.emoteamount=0*/
 
+	//! TEPMORARY: PROGRESSION FREEZE
+	if(m.trpp >= 80)
+		if(m.emoteamount >= 6000 && m.rppchecks < 1)
+			m.rppchecks++
+			m.send_chat("You are currently at the 80 RPP progression cap put into place during storyline catchup. Your emotes/participation will be stored for later, but you will not continue to gain RPP until the lock is lifted.", stream = "oocout")
+		return
+
 	//Every RPP bracket should total up to 6000 to hit their daily cap.
 	if(m.emoteamount>=12000 && m.rppchecks<1 && m.trpp>=200)
 		m.rpp+=1
@@ -212,64 +219,6 @@ var/list/naughtywords = list("sex","penis","pussy","cock","ass","dick","breast",
 		m.emoteamount-=1200
 		m << output("You have reached an RPP milestone for the day. You have gained 1 RPP for a total of [m.rppchecks].","oocout")
 		Updaterank(m)
-
-	/*if(m.trpp<catchuprate)
-		if(m.emoteamount>=750&&m.rppchecks==0)
-			m.rpp+=1
-			m.trpp+=1
-			m.rppchecks+=1
-			m << output("You have reached the first milestone for the day. You have gained 1 RPP for a total of 1.","oocout")
-			Updaterank(m)
-		if(m.emoteamount>=1500&&m.rppchecks==1)
-			m.rpp+=1
-			m.trpp+=1
-			m.rppchecks+=1
-			m << output("You have reached the second milestone for the day. You have gained 1 RPP for a total of 2.","oocout")
-			Updaterank(m)
-		if(m.emoteamount>=3000&&m.rppchecks==2)
-			m.rpp+=1
-			m.trpp+=1
-			m.rppchecks+=1
-			m << output("You have reached the third milestone for the day. Since you are below the catchup rate you can continue to earn RPP at an accelerated rate. You have gained 1 RPP for a total of 3.","oocout")
-			Updaterank(m)
-		if(m.emoteamount>=3500&&m.rppchecks==3)
-			m.rpp+=1
-			m.trpp+=1
-			m.rppchecks+=1
-			m << output("You have reached the second milestone for the day. You have gained 1 RPP for a total of 4.","oocout")
-			Updaterank(m)
-		if(m.emoteamount>=4000&&m.rppchecks==4)
-			m.rpp+=1
-			m.trpp+=1
-			m.rppchecks+=1
-			m << output("You have reached the second milestone for the day. You have gained 1 RPP for a total of 5.","oocout")
-			Updaterank(m)
-	else
-		if(m.emoteamount>=1500&&m.rppchecks==0)
-			m.rpp+=1
-			m.trpp+=1
-			m.rppchecks+=1
-			m << output("You have reached the first milestone for the day. You have gained 1 RPP for a total of 1.","oocout")
-			Updaterank(m)
-		if(m.emoteamount>=3000&&m.rppchecks==1)
-			if(m.trpp>100)
-				return
-			m.rpp+=1
-			m.trpp+=1
-			m.rppchecks+=1
-			m << output("You have reached the second milestone for the day. You have gained 1 RPP for a total of 2.","oocout")
-			Updaterank(m)
-		if(m.emoteamount>=7500&&m.rppchecks==2)
-			if(m.trpp>80)
-				return
-			if(m.trpp>100)
-				return
-			m.rpp+=1
-			m.trpp+=1
-			m.rppchecks+=1
-			m << output("You have reached the final milestone for the day. You have gained 1 RPP for a total of 3.","oocout")
-			Updaterank(m)
-			*/
 
 /proc/Updaterank(var/mob/m)
 	if(m.trpp<80&&m.trpp>=45)
