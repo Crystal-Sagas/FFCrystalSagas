@@ -3,6 +3,7 @@
  */
 /atom
 	abstract_type = /atom
+	plane = GAME_PLANE
 
 	/// flags bitfield
 	var/atom_flags = NONE
@@ -12,9 +13,11 @@
  *
  * First argument is always 'mapload', which is set based on if this is part of a map loading operation.
  */
+/*
 /atom/proc/Initialize(mapload)
 	atom_flags |= ATOM_FLAG_INITIALIZED
 	#warn initialization
+*/
 
 /atom/clone(x, y, z)
 	CRASH("not implemented")
