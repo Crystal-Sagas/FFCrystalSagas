@@ -5,8 +5,13 @@
 	abstract_type = /atom
 	plane = GAME_PLANE
 
+	//* Core
 	/// flags bitfield
 	var/atom_flags = NONE
+
+	//* Fluff
+	/// What people see when they examine us
+	var/desc
 
 /**
  * Called to initialize the atom
@@ -18,6 +23,11 @@
 	atom_flags |= ATOM_FLAG_INITIALIZED
 	#warn initialization
 */
+// todo: just a shim
+/atom/New()
+	Initialize(FALSE)
+// todo: just a shim
+/atom/proc/Initialize(mapload)
 
 /atom/clone(x, y, z)
 	CRASH("not implemented")
