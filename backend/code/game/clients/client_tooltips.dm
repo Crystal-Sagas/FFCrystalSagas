@@ -1,3 +1,9 @@
+/client/proc/open_tooltip(atom/movable/anchor, mouse_params, title, content, theme)
+	tooltips?.show(anchor, mouse_params, title, content, theme)
+
+/client/proc/close_tooltip()
+	tooltips?.hide()
+
 /*
 Tooltips v1.1 - 22/10/15
 Developed by Wire (#goonstation on irc.synirc.net)
@@ -34,7 +40,7 @@ Notes:
 	/// control ID
 	var/skin_id = BROWSER_ID_TOOLTIPS
 	/// our file
-	var/tooltips_html = 'code/modules/tooltip/tooltip.html'
+	var/tooltips_html = 'html/html/tooltip.html'
 	/// jquery file
 	//  todo: asset cache
 	var/jquery_html = 'html/js/jquery-3.7.1.min.js'
@@ -98,32 +104,3 @@ Notes:
 		winshow(src.owner, src.control, 0)
 	src.queueHide = src.showing ? 1 : 0
 	return 1
-/* TG SPECIFIC CODE */
-
-
-//Open a tooltip for user, at a location based on params
-//Theme is a CSS class in tooltip.html, by default this wrapper chooses a CSS class based on the user's UI_style (Midnight, Plasmafire, Retro)
-//Includes sanity.checks
-/proc/openToolTip(mob/user = null, atom/movable/tip_src = null, params = null,title = "",content = "",theme = "")
-	if(istype(user))
-		if(user.client && user.client.tooltips && user.client.prefs.tooltips)
-			if(!theme && user.client.prefs && user.client.prefs.UI_style)
-				theme = lowertext(user.client.prefs.UI_style)
-			if(!theme)
-				theme = "default"
-			user.client.tooltips.show(tip_src, params,title,content,theme)
-
-
-//Arbitrarily close a user's tooltip
-//Includes sanity checks.
-/proc/closeToolTip(mob/user)
-	if(istype(user))
-		if(user.client && user.client.tooltips)
-			user.client.tooltips.hide()
-
-/**
- * Closes tooltip
- *
- * @params
- * * target - client or mob
- */
