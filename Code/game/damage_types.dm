@@ -2,7 +2,7 @@ LEGACY_GLOBAL_LIST_INIT(damage_types, init_damage_types())
 
 /proc/init_damage_types()
 	. = list()
-	for(var/datum/damage_type/path as anything in non_abstract_typesof(/datum/damage_type))
+	for(var/datum/damage_type/path as anything in subtypes_of_non_abstract(/datum/damage_type))
 		path = new path
 		.[path.id] = path
 

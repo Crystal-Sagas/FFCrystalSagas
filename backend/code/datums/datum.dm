@@ -11,9 +11,9 @@
 	/// active timer datums to clear on destroy
 	// var/list/datum/timer/timers
 
-	// //* Garbage Collection
+	//* Garbage Collection
 	/// tracks time we were deleted, or contains an enum
-	// var/gc_destroyed
+	var/gc_destroyed
 
 	// //* Datum Signals
 	/// datum signals: signal --> list of datums associated to procrefs to call

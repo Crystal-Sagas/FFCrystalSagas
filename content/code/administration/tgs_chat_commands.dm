@@ -21,7 +21,7 @@
 
 /datum/tgs_chat_command/dev_announcement/Run(datum/tgs_chat_user/sender, params)
 	world.send_chat("Server: [params]", stream = "oocout")
-	return "Broadcasted '[params]' to [length(global.clients)] players."
+	return "Broadcasted '[params]' to [length(GLOB.clients)] players."
 
 /datum/tgs_chat_command/dev_status
 	name = "dev-status"
@@ -29,7 +29,7 @@
 	admin_only = TRUE
 
 /datum/tgs_chat_command/dev_status/Run(datum/tgs_chat_user/sender, params)
-	return "Server online for [time2text(world.time, "hh-mm-ss")] (world.time) with [length(global.clients)] players."
+	return "Server online for [time2text(world.time, "hh-mm-ss")] (world.time) with [length(GLOB.clients)] players."
 
 /datum/tgs_chat_command/dev_republish
 	name = "dev-republish"

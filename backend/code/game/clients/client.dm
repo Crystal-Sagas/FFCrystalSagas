@@ -8,24 +8,36 @@ GLOBAL_LIST_EMPTY(clients)
  * todo: better description of its pitfalls and nuances
  */
 /client
+	//* Overrides
+	/// Disable BYOND stat panel because it's laggy compared to browserstat
+	//  todo: kill BYOND stat panel for browserstat
+	// show_verb_panel = FALSE
 	/// force /client to inherit from /datum
 	parent_type = /datum
+
+	//* Core
 	/// manually calling Destroy from Del, gc should ignore us
 	var/gc_client_deleting = FALSE
 
+	//* Client Components
+	/// tooltips
+	var/datum/client_tooltips/tooltips
+
 /client/New()
-	#warn impl
 	// register global
 	GLOB.client_lookup[ckey] = src
 	GLOB.clients += src
 	// calls mob.Login()
 	. = ..()
+	// create tooltips
+	tooltips = new(src)
 
 /client/Destroy()
+	// kill tooltips
+	QDEL_NULL(tooltips)
 	// unregister global
 	GLOB.client_lookup -= ckey
 	GLOB.clients -= src
-	#warn impl
 	..()
 	return gc_client_deleting? QDEL_HINT_UNMANAGED : QDEL_HINT_IMMEDIATE
 

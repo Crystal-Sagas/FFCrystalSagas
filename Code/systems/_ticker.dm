@@ -13,8 +13,8 @@ LEGACY_GLOBAL_DATUM_INIT(ticker, /datum/ticker, new)
 
 /datum/ticker/proc/make_systems()
 	systems = list()
-	for(var/path in subtypesof(/datum/system))
-		if(is_abstract(path))
+	for(var/path in subtypes_of(/datum/system))
+		if(is_typepath_abstract(path))
 			continue
 		var/datum/system/sys = new path
 		systems += sys

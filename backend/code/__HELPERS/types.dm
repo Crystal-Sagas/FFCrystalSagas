@@ -14,9 +14,15 @@
 	return split
 
 /**
+ * is datum or path abstract
+ */
+/proc/is_typepath_abstract(datum/D)
+	return ispath(D)? (initial(D.abstract_type) == D) : (D.abstract_type == D.type)
+
+/**
  * subtypes of path
  */
-/proc/subtypesof(path)
+/proc/subtypes_of(path)
 	return typesof(path) - path
 
 /**
@@ -40,7 +46,7 @@
 /**
  * return non abstract subtypes
  */
-/proc/non_abstract_typesof(path)
+/proc/subtypes_of_non_abstract(path)
 	. = list()
 	for(var/datum/scan as anything in typesof(path))
 		if(initial(scan.abstract_type) == scan)
