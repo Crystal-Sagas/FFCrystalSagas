@@ -67,7 +67,7 @@
 //* classes
 
 /// we ask clients about these classes
-#define VV_GET_CLASSES list(
+GLOBAL_REAL_LIST(vv_get_classes) = list(
 	VV_CLASS_NUMBER,
 	VV_CLASS_TEXT,
 	VV_CLASS_MULTILINE_TEXT,

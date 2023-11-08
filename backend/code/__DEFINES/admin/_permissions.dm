@@ -60,7 +60,7 @@ DEFINE_BITFIELD(admin_permissions, list(
 		"groups",
 	),
 ), list(
-	BITFIELD(ADMIN_GROUP_ADMIN, "Admin"),
-	BITFIELD(ADMIN_GROUP_EVENT, "Event"),
-	BITFIELD(ADMIN_GROUP_CODER, "Coder"),
+	BITFIELD("Admin", ADMIN_GROUP_ADMIN),
+	BITFIELD("Event", ADMIN_GROUP_EVENT),
+	BITFIELD("Coder", ADMIN_GROUP_CODER),
 ))
