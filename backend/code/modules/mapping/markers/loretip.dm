@@ -8,7 +8,7 @@
 	var/lore_title
 	/// Short description - defaults to desc
 	var/lore_short
-	/// Long description - user must click to pop up to see this
+	/// Long description - user must click to pop up to see this. HTML is allowed and encouraged.
 	var/lore_long
 
 /obj/map_marker/loretip/Initialize(mapload)
@@ -21,6 +21,10 @@
 /obj/map_marker/loretip/MouseEntered(location, control, params)
 	. = ..()
 	var/mob/showing = usr
+	var/content = lore_short || desc
+	if(!isnull(lore_long))
+		content += "<hr><div style='text-align: right;'>Double-Click to see more!</div>"
+	showing?.client?.open_tooltip(src, params, lore_title || name, content)
 	#warn impl
 
 /obj/map_marker/loretip/MouseExited(location, control, params)
@@ -28,6 +32,15 @@
 	var/mob/showing = usr
 	showing?.client?.close_tooltip()
 
+// todo: this proc should probably have some abstraction
 /obj/map_marker/loretip/DblClick(location, control, params)
 	. = ..()
-	#warn impl
+	if(isnull(lore_long))
+		return
+	var/mob/showing = usr
+	if(isnull(showing))
+		return
+	var/datum/browser/window = new("loretip_[ref(src)]", lore_title || name, 400, 400)
+	window.open(showing, {"
+	[lore_long || "error; please report this to a coder!"]
+	"})

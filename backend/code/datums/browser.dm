@@ -18,7 +18,7 @@
 	if(!isnull(window_id))
 		src.window_id = window_id
 	else
-		src.window_id = "[++src.next_window_id]"
+		src.window_id = "browser_[++src.next_window_id]"
 	if(!isnull(title))
 		src.title = title
 	if(!isnull(width))
@@ -41,7 +41,7 @@
 	user << browse(null, "window=[window_id]")
 
 /datum/browser/proc/header()
-	var/list/additional = list(
+	var/list/additional_headers = list(
 		"<title>[title]</title>",
 	)
 	// todo: stylesheets
@@ -52,7 +52,7 @@
 	<head>
 		<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>
 		<meta http-equiv='X-UA-Compatible' content='IE=edge'>
-		[jointext(additional, "")]
+		[jointext(additional_headers, "")]
 	</head>
 	<body scroll=auto>
 	"}
