@@ -4,6 +4,7 @@
 	layer = CONTEXT_LORETIP_LAYER
 	plane = CONTEXT_PLANE
 	icon = 'backend/icons/map_objects/loretips.dmi'
+	icon_state = "default"
 
 	/// Title - defaults to name
 	var/lore_title
