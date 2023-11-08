@@ -4,6 +4,7 @@
  * We're stealing TG's GLOB naming.
  */
 CONTROLLER_DEF(globals, GLOB)
+	name = "Globals"
 
 /datum/controller/globals/New()
 	construct()

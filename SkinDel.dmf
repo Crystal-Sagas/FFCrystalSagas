@@ -9329,15 +9329,6 @@ window "default"
 		menu = "menu"
 		outer-size = 1366x728
 		inner-size = 1350x669
-	elem "browser_tooltips"
-		type = BROWSER
-		pos = 0,0
-		size = 1350x432
-		anchor1 = 0,0
-		anchor2 = 100,100
-		background-color = none
-		is-visible = false
-		saved-params = ""
 	elem "label1"
 		type = LABEL
 		pos = 624,432
@@ -9777,14 +9768,6 @@ window "default"
 		saved-params = "is-checked"
 		text = "Narrate"
 		command = "Announce"
-	elem "game_map"
-		type = MAP
-		pos = 0,-3
-		size = 1349x435
-		anchor1 = 0,0
-		anchor2 = 100,66
-		saved-params = "zoom-mode"
-		on-size = ".on_viewport [[width]] [[height]]"
 	elem "button2"
 		type = BUTTON
 		pos = 1075,537
@@ -9798,6 +9781,23 @@ window "default"
 		text = ""
 		image = 'PNG\\AoE.png'
 		command = "AOE"
+	elem "game_map"
+		type = MAP
+		pos = 0,-3
+		size = 1349x435
+		anchor1 = 0,0
+		anchor2 = 100,66
+		saved-params = "zoom-mode"
+		on-size = ".on_viewport [[width]] [[height]]"
+	elem "browser_tooltips"
+		type = BROWSER
+		pos = 0,0
+		size = 1350x432
+		anchor1 = 0,0
+		anchor2 = 100,66
+		background-color = none
+		is-visible = false
+		saved-params = ""
 
 window "faction"
 	elem "faction"
