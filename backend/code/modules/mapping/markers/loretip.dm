@@ -5,6 +5,7 @@
 	plane = CONTEXT_PLANE
 	icon = 'backend/icons/map_objects/loretips.dmi'
 	icon_state = "default"
+	invisibility = INVISIBILITY_NONE
 
 	/// Title - defaults to name
 	var/lore_title

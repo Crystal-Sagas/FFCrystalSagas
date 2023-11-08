@@ -87,8 +87,10 @@ Notes:
 		content = "<p>[content]</p>"
 	//Make our dumb param object
 	mouse_params = {"{ "cursor": "[mouse_params]", "screenLoc": "[anchor.screen_loc]" }"}
+	// patch for x/y
+	var/list/owner_view = decode_view_size(owner.view)
 	//Send stuff to the tooltip
-	owner << output(list2params(list(mouse_params, src.owner.view, "[title][content]", theme, special)), "[skin_id]:tooltip.update")
+	owner << output(list2params(list(mouse_params, owner_view[1], owner_view[2], "[title][content]", theme, special)), "[skin_id]:tooltip.update")
 
 	showing = FALSE
 
