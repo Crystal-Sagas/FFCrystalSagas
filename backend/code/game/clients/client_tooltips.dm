@@ -39,7 +39,7 @@ Notes:
 	/// owning client
 	var/client/owner
 	/// control ID
-	var/skin_id = BROWSER_ID_TOOLTIPS
+	var/skin_id = SKIN_BROWSER_ID_TOOLTIPS
 	/// our file
 	var/tooltips_html = 'html/html/tooltip.html'
 	/// jquery file
@@ -60,14 +60,14 @@ Notes:
 /**
  * Binds to the client and sends necessary data
  */
-/datum/client_tooltips/proc/bind_client(clent/C)
+/datum/client_tooltips/proc/bind_client(client/C)
 	owner = C
 	// todo: this should be asset cache's job.
 	C << browse_rsc(jquery_html, "jquery.min.js")
 	C << browse(file2text(tooltips_html), "window=[skin_id]")
 
 /datum/client_tooltips/proc/show(atom/movable/anchor, mouse_params, title, content, theme = "default", special = "none")
-	if(QDELETED(thing) || (!title && !content) || QDELETED(owner))
+	if(QDELETED(anchor) || (!title && !content) || QDELETED(owner))
 		return FALSE
 
 	// initialize first
@@ -86,9 +86,9 @@ Notes:
 	else if (!title && content)
 		content = "<p>[content]</p>"
 	//Make our dumb param object
-	params = {"{ "cursor": "[params]", "screenLoc": "[thing.screen_loc]" }"}
+	mouse_params = {"{ "cursor": "[mouse_params]", "screenLoc": "[anchor.screen_loc]" }"}
 	//Send stuff to the tooltip
-	owner << output(list2params(list(params, src.owner.view, "[title][content]", theme, special)), "[skin_id]:tooltip.update")
+	owner << output(list2params(list(mouse_params, src.owner.view, "[title][content]", theme, special)), "[skin_id]:tooltip.update")
 
 	showing = FALSE
 

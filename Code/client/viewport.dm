@@ -20,7 +20,7 @@
 	PRIVATE_PROC(TRUE)
 	. = FALSE
 	// get vars only; they have to manually refit
-	var/got = winget(src, SKIN_ID_GAME_MAP, "size")
+	var/got = winget(src, SKIN_MAP_ID_MAIN, "size")
 	var/list/split = splittext(got, "x")
 	var/got_spx
 	var/got_spy
@@ -56,7 +56,7 @@
 	 * and then expand the user's view as necessary
 	 */
 	// first set their map to not letterbox & stretch to fit because we are not using manual `view` adjustments
-	winset(src, SKIN_ID_GAME_MAP, "letterbox=true;zoom=0")
+	winset(src, SKIN_MAP_ID_MAIN, "letterbox=true;zoom=0")
 	// then compute how much zoom on either side they can handle
 	var/list/what_we_want = decode_view_size(world.view)
 	// get ratio
