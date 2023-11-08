@@ -110,11 +110,8 @@ window "AdminPanel"
 		size = 736x564
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		is-visible = false
 		saved-params = "pos;size;is-minimized;is-maximized"
-		outer-size = 744x623
-		inner-size = 736x586
 	elem "label197"
 		type = LABEL
 		pos = 720,41
@@ -177,7 +174,6 @@ window "AdminPanel"
 		size = 72x32
 		anchor1 = 29,17
 		anchor2 = 39,23
-		background-color = none
 		saved-params = "is-checked"
 		text = "Delete User Buildings"
 		command = "Deletebuildings"
@@ -198,7 +194,6 @@ window "AdminPanel"
 		size = 72x32
 		anchor1 = 15,60
 		anchor2 = 25,65
-		background-color = none
 		saved-params = "is-checked"
 		text = "Fanfare"
 		command = "Fanfare"
@@ -208,7 +203,6 @@ window "AdminPanel"
 		size = 72x32
 		anchor1 = 29,24
 		anchor2 = 39,30
-		background-color = none
 		saved-params = "is-checked"
 		text = "Create Obj"
 		command = "Createobj"
@@ -218,7 +212,6 @@ window "AdminPanel"
 		size = 72x32
 		anchor1 = 4,24
 		anchor2 = 14,30
-		background-color = none
 		saved-params = "is-checked"
 		text = "Goto Landmark"
 		command = "GotoLandmark"
@@ -228,7 +221,6 @@ window "AdminPanel"
 		size = 72x32
 		anchor1 = 15,24
 		anchor2 = 25,30
-		background-color = none
 		saved-params = "is-checked"
 		text = "Create Fast Travel"
 		command = "CreateFastTravel"
@@ -251,7 +243,6 @@ window "AdminPanel"
 		size = 72x32
 		anchor1 = 15,53
 		anchor2 = 25,58
-		background-color = none
 		saved-params = "is-checked"
 		text = "Add Unique"
 		command = "AddUnique"
@@ -262,7 +253,6 @@ window "AdminPanel"
 		anchor1 = 3,68
 		anchor2 = 98,100
 		saved-params = ""
-		tab-background-color = none
 	elem "label30"
 		type = LABEL
 		pos = 576,48
@@ -291,7 +281,6 @@ window "AdminPanel"
 		size = 90x32
 		anchor1 = 82,24
 		anchor2 = 95,30
-		background-color = none
 		saved-params = "is-checked"
 		text = "NaughtyWords"
 		command = "Naughtyfilter"
@@ -301,7 +290,6 @@ window "AdminPanel"
 		size = 72x32
 		anchor1 = 65,10
 		anchor2 = 75,16
-		background-color = none
 		saved-params = "is-checked"
 		text = "Delete"
 		command = "Delete"
@@ -311,7 +299,6 @@ window "AdminPanel"
 		size = 90x32
 		anchor1 = 82,31
 		anchor2 = 95,37
-		background-color = none
 		saved-params = "is-checked"
 		text = "Timeskip"
 		command = "Timeskip"
@@ -321,7 +308,6 @@ window "AdminPanel"
 		size = 72x32
 		anchor1 = 54,17
 		anchor2 = 64,23
-		background-color = none
 		saved-params = "is-checked"
 		text = "Edit"
 		command = "Edit"
@@ -331,7 +317,6 @@ window "AdminPanel"
 		size = 90x32
 		anchor1 = 83,10
 		anchor2 = 95,16
-		background-color = none
 		saved-params = "is-checked"
 		text = "StartingRPP"
 		command = "SetStartingRPP"
@@ -341,7 +326,6 @@ window "AdminPanel"
 		size = 72x32
 		anchor1 = 40,17
 		anchor2 = 50,23
-		background-color = none
 		saved-params = "is-checked"
 		text = "Ban"
 		command = "Ban"
@@ -351,7 +335,6 @@ window "AdminPanel"
 		size = 72x32
 		anchor1 = 40,10
 		anchor2 = 50,16
-		background-color = none
 		saved-params = "is-checked"
 		text = "Create Custom Item"
 		command = "Createcustomitem"
@@ -361,7 +344,6 @@ window "AdminPanel"
 		size = 72x32
 		anchor1 = 40,24
 		anchor2 = 50,30
-		background-color = none
 		saved-params = "is-checked"
 		text = "Give Perk"
 		command = "GivePerk"
@@ -371,7 +353,6 @@ window "AdminPanel"
 		size = 72x32
 		anchor1 = 54,10
 		anchor2 = 64,16
-		background-color = none
 		saved-params = "is-checked"
 		text = "Save World"
 		command = "ManualSave"
@@ -381,7 +362,6 @@ window "AdminPanel"
 		size = 72x32
 		anchor1 = 29,10
 		anchor2 = 39,16
-		background-color = none
 		saved-params = "is-checked"
 		text = "Ghostmode"
 		command = "Ghostmode"
@@ -391,7 +371,6 @@ window "AdminPanel"
 		size = 72x32
 		anchor1 = 15,31
 		anchor2 = 25,37
-		background-color = none
 		saved-params = "is-checked"
 		text = "Boot"
 		command = "Boot"
@@ -401,7 +380,6 @@ window "AdminPanel"
 		size = 72x32
 		anchor1 = 15,46
 		anchor2 = 25,51
-		background-color = none
 		saved-params = "is-checked"
 		text = "Create Item"
 		command = "Createitem"
@@ -411,7 +389,6 @@ window "AdminPanel"
 		size = 72x32
 		anchor1 = 4,53
 		anchor2 = 14,58
-		background-color = none
 		saved-params = "is-checked"
 		text = "Make Eventmin"
 		command = "MakeEventmin"
@@ -421,7 +398,6 @@ window "AdminPanel"
 		size = 72x32
 		anchor1 = 15,38
 		anchor2 = 25,44
-		background-color = none
 		saved-params = "is-checked"
 		text = "Report Panel"
 		command = "ViewReportWindow"
@@ -431,7 +407,6 @@ window "AdminPanel"
 		size = 72x32
 		anchor1 = 4,46
 		anchor2 = 14,51
-		background-color = none
 		saved-params = "is-checked"
 		text = "AoE Cleanup"
 		command = "CleanupAoE"
@@ -441,7 +416,6 @@ window "AdminPanel"
 		size = 72x32
 		anchor1 = 4,38
 		anchor2 = 14,44
-		background-color = none
 		saved-params = "is-checked"
 		text = "Reward"
 		command = "Reward"
@@ -451,7 +425,6 @@ window "AdminPanel"
 		size = 90x32
 		anchor1 = 82,17
 		anchor2 = 95,23
-		background-color = none
 		saved-params = "is-checked"
 		text = "Manage Admins"
 		command = "ManageAdmins"
@@ -461,7 +434,6 @@ window "AdminPanel"
 		size = 72x32
 		anchor1 = 4,31
 		anchor2 = 14,37
-		background-color = none
 		saved-params = "is-checked"
 		text = "Mute"
 		command = "Mute"
@@ -471,7 +443,6 @@ window "AdminPanel"
 		size = 72x32
 		anchor1 = 4,17
 		anchor2 = 14,23
-		background-color = none
 		saved-params = "is-checked"
 		text = "XYZ Teleport"
 		command = "XYZTeleport"
@@ -481,7 +452,6 @@ window "AdminPanel"
 		size = 72x32
 		anchor1 = 4,10
 		anchor2 = 14,16
-		background-color = none
 		saved-params = "is-checked"
 		text = "Teleport"
 		command = "Teleport"
@@ -491,7 +461,6 @@ window "AdminPanel"
 		size = 72x32
 		anchor1 = 15,17
 		anchor2 = 25,23
-		background-color = none
 		saved-params = "is-checked"
 		text = "Observe"
 		command = "Observe"
@@ -501,7 +470,6 @@ window "AdminPanel"
 		size = 72x32
 		anchor1 = 15,10
 		anchor2 = 25,16
-		background-color = none
 		saved-params = "is-checked"
 		text = "Summon"
 		command = "Summon"
@@ -548,7 +516,6 @@ window "AdminPanel"
 		size = 60x21
 		anchor1 = 10,4
 		anchor2 = 18,7
-		background-color = none
 		saved-params = ""
 		text = "Lv1 Admin "
 	elem "label34"
@@ -557,7 +524,6 @@ window "AdminPanel"
 		size = 60x20
 		anchor1 = 85,4
 		anchor2 = 93,8
-		background-color = none
 		saved-params = ""
 		text = "Lv4 Admin"
 	elem "label33"
@@ -566,7 +532,6 @@ window "AdminPanel"
 		size = 60x20
 		anchor1 = 59,4
 		anchor2 = 67,8
-		background-color = none
 		saved-params = ""
 		text = "Lv3 Admin"
 	elem "label32"
@@ -575,7 +540,6 @@ window "AdminPanel"
 		size = 60x20
 		anchor1 = 32,4
 		anchor2 = 40,8
-		background-color = none
 		saved-params = ""
 		text = "Lv2 Admin "
 
@@ -586,20 +550,16 @@ window "Adminreports"
 		size = 358x356
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		is-visible = false
 		saved-params = "pos;size;is-minimized;is-maximized"
 		statusbar = false
 		can-resize = false
-		outer-size = 366x393
-		inner-size = 358x356
 	elem "label43"
 		type = LABEL
 		pos = 0,0
 		size = 358x352
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		saved-params = ""
 		text = ""
 		image-mode = stretch
@@ -656,12 +616,9 @@ window "Alertchat"
 		size = 959x480
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		title = "Alert"
 		is-pane = true
-		outer-size = 967x539
-		inner-size = 959x502
 	elem "Alert"
 		type = OUTPUT
 		pos = 0,0
@@ -699,12 +656,9 @@ window "Build"
 		size = 486x474
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		is-visible = false
 		saved-params = "pos;size;is-minimized;is-maximized"
 		can-resize = false
-		outer-size = 494x533
-		inner-size = 486x496
 	elem "label88"
 		type = LABEL
 		pos = 0,0
@@ -880,21 +834,17 @@ window "CharSheet"
 		size = 766x638
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		is-visible = false
 		saved-params = "pos;size;is-minimized;is-maximized"
 		statusbar = false
 		can-resize = false
 		on-close = "Closecharsheet"
-		outer-size = 774x675
-		inner-size = 766x638
 	elem "label58"
 		type = LABEL
 		pos = 0,0
 		size = 766x642
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		saved-params = ""
 		text = ""
 		image = 'Sheet\\Statistics.png'
@@ -915,7 +865,6 @@ window "CharSheet"
 		size = 76x29
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		saved-params = "is-checked"
 		text = ""
 		image = 'Sheet\\Summons.png'
@@ -926,7 +875,6 @@ window "CharSheet"
 		size = 76x29
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		saved-params = "is-checked"
 		text = ""
 		image = 'Sheet\\NPClist.png'
@@ -1073,7 +1021,6 @@ window "CharSheet"
 		size = 97x40
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		saved-params = "is-checked"
 		text = ""
 		image = 'Sheet\\stockbutt.png'
@@ -1084,7 +1031,6 @@ window "CharSheet"
 		size = 97x40
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		saved-params = "is-checked"
 		text = ""
 		image = 'Sheet\\Materiabutt.png'
@@ -1095,7 +1041,6 @@ window "CharSheet"
 		size = 76x35
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		saved-params = "is-checked"
 		text = ""
 		image = 'Sheet\\persabilities.png'
@@ -1106,7 +1051,6 @@ window "CharSheet"
 		size = 75x35
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		saved-params = "is-checked"
 		text = ""
 		image = 'Sheet\\Statsabilities.png'
@@ -1117,7 +1061,6 @@ window "CharSheet"
 		size = 72x35
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		saved-params = "is-checked"
 		text = ""
 		image = 'Sheet\\Rollsskills.png'
@@ -1139,7 +1082,6 @@ window "CharSheet"
 		anchor1 = -1,-1
 		anchor2 = -1,-1
 		text-color = #f8f8f8
-		background-color = none
 		saved-params = ""
 		text = ""
 		image = 'Sheet\\Infobox.png'
@@ -1150,7 +1092,6 @@ window "CharSheet"
 		anchor1 = -1,-1
 		anchor2 = -1,-1
 		text-color = #f8f8f8
-		background-color = none
 		saved-params = ""
 		text = ""
 		image = 'Sheet\\Infobox.png'
@@ -1161,7 +1102,6 @@ window "CharSheet"
 		anchor1 = -1,-1
 		anchor2 = -1,-1
 		text-color = #f8f8f8
-		background-color = none
 		saved-params = ""
 		text = ""
 		image = 'Sheet\\Infobox.png'
@@ -1274,7 +1214,6 @@ window "CharSheet"
 		size = 90x14
 		anchor1 = 76,92
 		anchor2 = 88,95
-		background-color = none
 		is-visible = false
 		saved-params = "is-checked"
 		text = ""
@@ -1286,7 +1225,6 @@ window "CharSheet"
 		size = 90x14
 		anchor1 = 63,92
 		anchor2 = 75,95
-		background-color = none
 		is-visible = false
 		saved-params = "is-checked"
 		text = ""
@@ -1298,7 +1236,6 @@ window "CharSheet"
 		size = 90x14
 		anchor1 = 51,92
 		anchor2 = 62,95
-		background-color = none
 		is-visible = false
 		saved-params = "is-checked"
 		text = ""
@@ -1310,7 +1247,6 @@ window "CharSheet"
 		size = 90x14
 		anchor1 = 23,93
 		anchor2 = 34,95
-		background-color = none
 		is-visible = false
 		saved-params = "is-checked"
 		text = ""
@@ -1322,7 +1258,6 @@ window "CharSheet"
 		size = 90x14
 		anchor1 = 37,93
 		anchor2 = 49,95
-		background-color = none
 		is-visible = false
 		saved-params = "is-checked"
 		text = ""
@@ -1445,7 +1380,6 @@ window "CharSheet"
 		size = 110x50
 		anchor1 = 75,77
 		anchor2 = 89,85
-		background-color = none
 		saved-params = "is-checked"
 		text = ""
 		image = 'Sheet\\CHA.png'
@@ -1466,7 +1400,6 @@ window "CharSheet"
 		size = 90x14
 		anchor1 = 10,93
 		anchor2 = 22,95
-		background-color = none
 		is-visible = false
 		saved-params = "is-checked"
 		text = ""
@@ -1478,7 +1411,6 @@ window "CharSheet"
 		size = 92x50
 		anchor1 = 63,77
 		anchor2 = 75,85
-		background-color = none
 		saved-params = "is-checked"
 		text = ""
 		image = 'Sheet\\WIS.png'
@@ -1499,7 +1431,6 @@ window "CharSheet"
 		size = 96x50
 		anchor1 = 50,77
 		anchor2 = 63,85
-		background-color = none
 		saved-params = "is-checked"
 		text = ""
 		image = 'Sheet\\INTEL.png'
@@ -1520,7 +1451,6 @@ window "CharSheet"
 		size = 105x50
 		anchor1 = 36,77
 		anchor2 = 50,85
-		background-color = none
 		saved-params = "is-checked"
 		text = ""
 		image = 'Sheet\\CONST.png'
@@ -1541,7 +1471,6 @@ window "CharSheet"
 		size = 111x50
 		anchor1 = 21,77
 		anchor2 = 36,85
-		background-color = none
 		saved-params = "is-checked"
 		text = ""
 		image = 'Sheet\\DEX.png'
@@ -1562,7 +1491,6 @@ window "CharSheet"
 		size = 86x50
 		anchor1 = 10,77
 		anchor2 = 21,85
-		background-color = none
 		saved-params = "is-checked"
 		text = ""
 		image = 'Sheet\\STR.png'
@@ -1630,7 +1558,6 @@ window "CharSheet"
 		size = 76x29
 		anchor1 = 49,9
 		anchor2 = 56,13
-		background-color = none
 		border = sunken
 		saved-params = ""
 		text = ""
@@ -1653,7 +1580,6 @@ window "CharSheet"
 		size = 76x29
 		anchor1 = 56,9
 		anchor2 = 64,13
-		background-color = none
 		border = line
 		saved-params = "is-checked"
 		text = ""
@@ -1698,19 +1624,15 @@ window "Crafting"
 		size = 906x592
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		is-visible = false
 		saved-params = "pos;size;is-minimized;is-maximized"
 		can-resize = false
-		outer-size = 914x651
-		inner-size = 906x614
 	elem "label115"
 		type = LABEL
 		pos = -8,-8
 		size = 1200x1200
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		saved-params = ""
 		text = ""
 		image = 'Sheet\\Gui Label 2.png'
@@ -1741,7 +1663,6 @@ window "Crafting"
 		size = 97x40
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		saved-params = "is-checked"
 		text = ""
 		image = 'Sheet\\SwapArmorCat.png'
@@ -1752,7 +1673,6 @@ window "Crafting"
 		size = 97x40
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		saved-params = "is-checked"
 		text = ""
 		image = 'Sheet\\swapwepcat.png'
@@ -1794,7 +1714,6 @@ window "Crafting"
 		size = 424x32
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		saved-params = ""
 		text = ""
 		image = 'PNG\\Recipes.png'
@@ -1804,7 +1723,6 @@ window "Crafting"
 		size = 424x20
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		saved-params = ""
 		text = ""
 		image = 'PNG\\Materials.png'
@@ -1899,12 +1817,9 @@ window "Customitem"
 		size = 488x541
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		is-visible = false
 		saved-params = "pos;size;is-minimized;is-maximized"
 		on-close = "Closecustomitem"
-		outer-size = 496x600
-		inner-size = 488x563
 	elem "Itemperks"
 		type = GRID
 		pos = 192,184
@@ -1933,7 +1848,6 @@ window "Customitem"
 		size = 24x20
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		is-visible = false
 		saved-params = "is-checked"
 		text = "+"
@@ -1953,7 +1867,6 @@ window "Customitem"
 		size = 60x20
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		saved-params = ""
 		text = ""
 	elem "Description"
@@ -1972,7 +1885,6 @@ window "Customitem"
 		size = 24x20
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		is-visible = false
 		saved-params = "is-checked"
 		text = "+"
@@ -2011,7 +1923,6 @@ window "Customitem"
 		size = 60x20
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		is-visible = false
 		saved-params = "is-checked"
 		text = "Finish"
@@ -2022,7 +1933,6 @@ window "Customitem"
 		size = 24x20
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		saved-params = "is-checked"
 		text = "C"
 		command = "Createitem"
@@ -2032,7 +1942,6 @@ window "Customitem"
 		size = 80x20
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		saved-params = ""
 		text = ""
 	elem "Name"
@@ -2041,7 +1950,6 @@ window "Customitem"
 		size = 60x20
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		saved-params = ""
 		text = ""
 	elem "label36"
@@ -2069,7 +1977,6 @@ window "Customitem"
 		size = 60x20
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		saved-params = ""
 		text = ""
 	elem "Itemicon"
@@ -2078,7 +1985,6 @@ window "Customitem"
 		size = 32x32
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		saved-params = "is-checked"
 		text = ""
 		command = ""
@@ -6779,19 +6685,15 @@ window "PerkWindow"
 		size = 766x499
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		is-visible = false
 		saved-params = "pos;size;is-minimized;is-maximized"
 		can-resize = false
-		outer-size = 774x558
-		inner-size = 766x521
 	elem "label174"
 		type = LABEL
 		pos = 0,0
 		size = 765x512
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		saved-params = ""
 		text = ""
 		image = 'Sheet\\Perkshop.png'
@@ -6812,7 +6714,6 @@ window "PerkWindow"
 		size = 156x29
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		saved-params = "is-checked"
 		text = ""
 		image = 'Sheet\\Advanced Job.png'
@@ -6823,7 +6724,6 @@ window "PerkWindow"
 		size = 153x28
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		saved-params = "is-checked"
 		text = ""
 		image = 'Sheet\\GAbilities.png'
@@ -6834,7 +6734,6 @@ window "PerkWindow"
 		size = 153x27
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		saved-params = "is-checked"
 		text = ""
 		image = 'Sheet\\GMagic.png'
@@ -6845,7 +6744,6 @@ window "PerkWindow"
 		size = 153x27
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		saved-params = "is-checked"
 		text = ""
 		image = 'Sheet\\AMagic.png'
@@ -6856,7 +6754,6 @@ window "PerkWindow"
 		size = 153x27
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		saved-params = "is-checked"
 		text = ""
 		image = 'Sheet\\SJAbilities.png'
@@ -6867,7 +6764,6 @@ window "PerkWindow"
 		size = 153x27
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		saved-params = "is-checked"
 		text = ""
 		image = 'Sheet\\WMagic.png'
@@ -6878,7 +6774,6 @@ window "PerkWindow"
 		size = 153x27
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		saved-params = "is-checked"
 		text = ""
 		image = 'Sheet\\JAbilities.png'
@@ -6889,7 +6784,6 @@ window "PerkWindow"
 		size = 155x26
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		saved-params = "is-checked"
 		text = ""
 		image = 'Sheet\\BMagic.png'
@@ -6900,7 +6794,6 @@ window "PerkWindow"
 		size = 156x29
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		saved-params = "is-checked"
 		text = ""
 		image = 'Sheet\\Subjobperks.png'
@@ -6911,7 +6804,6 @@ window "PerkWindow"
 		size = 155x28
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		saved-params = "is-checked"
 		text = ""
 		image = 'Sheet\\Generalperks.png'
@@ -6922,7 +6814,6 @@ window "PerkWindow"
 		size = 156x30
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		saved-params = "is-checked"
 		text = ""
 		image = 'Sheet\\Craftingperks.png'
@@ -6933,7 +6824,6 @@ window "PerkWindow"
 		size = 155x28
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		saved-params = "is-checked"
 		text = ""
 		image = 'Sheet\\Jobperks.png'
@@ -6966,13 +6856,10 @@ window "Perklook"
 		size = 347x457
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		is-visible = false
 		saved-params = "pos;size;is-minimized;is-maximized"
 		statusbar = false
 		can-resize = false
-		outer-size = 355x494
-		inner-size = 347x457
 	elem "rank"
 		type = LABEL
 		pos = 11,412
@@ -7278,20 +7165,17 @@ window "Profile"
 		size = 640x480
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		is-visible = false
 		saved-params = "pos;size;is-minimized;is-maximized"
 		statusbar = false
 		can-resize = false
 		on-close = "Closecharsheet"
-		outer-size = 648x517
 	elem "label214"
 		type = LABEL
 		pos = 8,240
 		size = 8x232
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		saved-params = ""
 		text = ""
 		image = 'Sheet\\GUI 3.png'
@@ -7321,7 +7205,6 @@ window "Profile"
 		size = 224x8
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		saved-params = ""
 		text = ""
 		image = 'Sheet\\GUI 3.png'
@@ -7331,7 +7214,6 @@ window "Profile"
 		size = 8x232
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		saved-params = ""
 		text = ""
 		image = 'Sheet\\GUI 3.png'
@@ -7351,7 +7233,6 @@ window "Profile"
 		size = 224x8
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		saved-params = ""
 		text = ""
 		image = 'Sheet\\GUI 3.png'
@@ -7372,7 +7253,6 @@ window "Profile"
 		size = 8x200
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		saved-params = ""
 		text = ""
 		image = 'Sheet\\GUI 3.png'
@@ -7382,7 +7262,6 @@ window "Profile"
 		size = 8x200
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		saved-params = ""
 		text = ""
 		image = 'Sheet\\GUI 3.png'
@@ -7392,7 +7271,6 @@ window "Profile"
 		size = 224x8
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		saved-params = ""
 		text = ""
 		image = 'Sheet\\GUI 3.png'
@@ -7402,7 +7280,6 @@ window "Profile"
 		size = 224x8
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		saved-params = ""
 		text = ""
 		image = 'Sheet\\GUI 3.png'
@@ -7432,7 +7309,6 @@ window "Profile"
 		size = 24x20
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		is-visible = false
 		saved-params = ""
 		text = ""
@@ -7443,7 +7319,6 @@ window "Profile"
 		size = 600x374
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		saved-params = ""
 		text = ""
 		image = 'Sheet\\GUI Label.png'
@@ -7453,7 +7328,6 @@ window "Profile"
 		size = 600x374
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		saved-params = ""
 		text = ""
 		image = 'Sheet\\GUI Label.png'
@@ -7625,7 +7499,6 @@ window "Profile"
 		size = 368x424
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		saved-params = ""
 	elem "Edit2"
 		type = BUTTON
@@ -7645,7 +7518,6 @@ window "Profile"
 		size = 60x20
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		border = sunken
 		saved-params = ""
 		text = ""
@@ -7656,7 +7528,6 @@ window "Profile"
 		size = 60x20
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		border = line
 		saved-params = "is-checked"
 		text = ""
@@ -7668,7 +7539,6 @@ window "Profile"
 		size = 60x20
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		border = line
 		saved-params = "is-checked"
 		text = ""
@@ -9156,20 +9026,16 @@ window "adminlook"
 		size = 579x357
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		is-visible = false
 		saved-params = "pos;size;is-minimized;is-maximized"
 		title = "Admin Look"
 		icon = 'Sheet\\Chocobo.png'
-		outer-size = 587x416
-		inner-size = 579x379
 	elem "label177"
 		type = LABEL
 		pos = 0,-32
 		size = 1200x1200
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		saved-params = ""
 		text = ""
 		image = 'Sheet\\Gui Label 2.png'
@@ -9179,7 +9045,6 @@ window "adminlook"
 		size = 232x24
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		saved-params = ""
 		text = "Items"
 	elem "label175"
@@ -9188,7 +9053,6 @@ window "adminlook"
 		size = 232x20
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		saved-params = ""
 		text = "Abilities"
 	elem "label61"
@@ -9197,7 +9061,6 @@ window "adminlook"
 		size = 248x20
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		saved-params = ""
 		text = "Perks"
 	elem "label15"
@@ -9206,7 +9069,6 @@ window "adminlook"
 		size = 240x24
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		saved-params = ""
 		text = "Crafting Materials"
 	elem "item"
@@ -9257,22 +9119,18 @@ window "aircontrol"
 		size = 231x100
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		is-visible = false
 		saved-params = "pos;size;is-minimized;is-maximized"
 		title = "Airship Controls"
 		can-close = false
 		can-resize = false
 		icon = 'Icons\\swheel.png'
-		outer-size = 239x159
-		inner-size = 231x122
 	elem "label173"
 		type = LABEL
 		pos = -4,0
 		size = 236x120
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		saved-params = ""
 		text = ""
 		image = 'Sheet\\GUI 3.png'
@@ -9324,12 +9182,9 @@ window "compass"
 		size = 206x33
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		is-visible = false
 		saved-params = "pos;size;is-minimized;is-maximized"
 		title = "Compass"
-		outer-size = 214x92
-		inner-size = 206x55
 	elem "comp"
 		type = LABEL
 		pos = 0,0
@@ -9348,13 +9203,10 @@ window "craftingrecipes"
 		size = 540x427
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		is-visible = false
 		saved-params = "pos;size;is-minimized;is-maximized"
 		title = "Recipes"
 		can-resize = false
-		outer-size = 548x486
-		inner-size = 540x449
 	elem "grid2"
 		type = GRID
 		pos = 24,40
@@ -9371,7 +9223,6 @@ window "craftingrecipes"
 		size = 544x29
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		saved-params = ""
 		text = ""
 		image = 'Sheet\\Gui Label 2.png'
@@ -9381,7 +9232,6 @@ window "craftingrecipes"
 		size = 496x16
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		saved-params = ""
 		text = "Recipes"
 		image = 'Sheet\\GUI Label.png'
@@ -9391,7 +9241,6 @@ window "craftingrecipes"
 		size = 24x412
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		saved-params = ""
 		text = ""
 		image = 'Sheet\\Gui Label 2.png'
@@ -9401,7 +9250,6 @@ window "craftingrecipes"
 		size = 24x412
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		saved-params = ""
 		text = ""
 		image = 'Sheet\\Gui Label 2.png'
@@ -9411,7 +9259,6 @@ window "craftingrecipes"
 		size = 544x20
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		saved-params = ""
 		text = ""
 		image = 'Sheet\\Gui Label 2.png'
@@ -9423,20 +9270,16 @@ window "customrolls"
 		size = 408x269
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		is-visible = false
 		saved-params = "pos;size;is-minimized;is-maximized"
 		title = "Custom Rolls"
 		icon = 'Sheet\\Chocobo.png'
-		outer-size = 416x328
-		inner-size = 408x291
 	elem "label124"
 		type = LABEL
 		pos = 0,0
 		size = 408x48
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		saved-params = ""
 		text = ""
 		image = 'Sheet\\GUI 3.png'
@@ -9446,7 +9289,6 @@ window "customrolls"
 		size = 408x48
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		saved-params = ""
 		text = ""
 		image = 'Sheet\\GUI 3.png'
@@ -9457,7 +9299,6 @@ window "customrolls"
 		anchor1 = -1,-1
 		anchor2 = -1,-1
 		text-color = #f8f8f8
-		background-color = none
 		saved-params = "is-checked"
 		text = "New Custom Roll"
 		image = 'Sheet\\Gui Label 2.png'
@@ -9475,7 +9316,7 @@ window "customrolls"
 window "default"
 	elem "default"
 		type = MAIN
-		pos = 372,0
+		pos = 281,0
 		size = 1350x650
 		anchor1 = -1,-1
 		anchor2 = -1,-1
@@ -9486,8 +9327,17 @@ window "default"
 		icon = 'Sheet\\Chocobo.png'
 		macro = "macro"
 		menu = "menu"
-		outer-size = 1358x734
-		inner-size = 1350x672
+		outer-size = 1366x728
+		inner-size = 1350x669
+	elem "browser_tooltips"
+		type = BROWSER
+		pos = 0,0
+		size = 1350x432
+		anchor1 = 0,0
+		anchor2 = 100,100
+		background-color = none
+		is-visible = false
+		saved-params = ""
 	elem "label1"
 		type = LABEL
 		pos = 624,432
@@ -9956,20 +9806,16 @@ window "faction"
 		size = 408x326
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		is-visible = false
 		saved-params = "pos;size;is-minimized;is-maximized"
 		can-resize = false
 		icon = 'Sheet\\Chocobo.png'
-		outer-size = 416x385
-		inner-size = 408x348
 	elem "label130"
 		type = LABEL
 		pos = 0,272
 		size = 408x56
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		saved-params = ""
 		text = ""
 		image = 'Sheet\\GUI 3.png'
@@ -9979,7 +9825,6 @@ window "faction"
 		size = 74x24
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		saved-params = "is-checked"
 		text = ""
 		image = 'PNG\\Leave.png'
@@ -9991,7 +9836,6 @@ window "faction"
 		anchor1 = -1,-1
 		anchor2 = -1,-1
 		text-color = #f8f8f8
-		background-color = none
 		saved-params = ""
 		text = "Faction"
 		image = 'Sheet\\GUI 3.png'
@@ -10013,7 +9857,6 @@ window "faction"
 		anchor1 = -1,-1
 		anchor2 = -1,-1
 		text-color = #f8f8f8
-		background-color = none
 		saved-params = ""
 		text = "Members"
 		image = 'Sheet\\GUI 3.png'
@@ -10036,13 +9879,10 @@ window "ingredients"
 		size = 540x428
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		is-visible = false
 		saved-params = "pos;size;is-minimized;is-maximized"
 		title = "Ingredients"
 		can-resize = false
-		outer-size = 548x487
-		inner-size = 540x450
 	elem "grid2"
 		type = GRID
 		pos = 24,40
@@ -10059,7 +9899,6 @@ window "ingredients"
 		size = 544x29
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		saved-params = ""
 		text = ""
 		image = 'Sheet\\Gui Label 2.png'
@@ -10069,7 +9908,6 @@ window "ingredients"
 		size = 496x16
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		saved-params = ""
 		text = "Ingredients"
 		image = 'Sheet\\GUI Label.png'
@@ -10079,7 +9917,6 @@ window "ingredients"
 		size = 24x412
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		saved-params = ""
 		text = ""
 		image = 'Sheet\\Gui Label 2.png'
@@ -10089,7 +9926,6 @@ window "ingredients"
 		size = 24x412
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		saved-params = ""
 		text = ""
 		image = 'Sheet\\Gui Label 2.png'
@@ -10099,7 +9935,6 @@ window "ingredients"
 		size = 544x20
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		saved-params = ""
 		text = ""
 		image = 'Sheet\\Gui Label 2.png'
@@ -10111,20 +9946,16 @@ window "party"
 		size = 408x326
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		is-visible = false
 		saved-params = "pos;size;is-minimized;is-maximized"
 		can-resize = false
 		icon = 'Sheet\\Chocobo.png'
-		outer-size = 416x385
-		inner-size = 408x348
 	elem "label130"
 		type = LABEL
 		pos = 0,272
 		size = 408x56
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		saved-params = ""
 		text = ""
 		image = 'Sheet\\GUI 3.png'
@@ -10134,7 +9965,6 @@ window "party"
 		size = 74x24
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		saved-params = "is-checked"
 		text = ""
 		image = 'PNG\\Leave.png'
@@ -10145,7 +9975,6 @@ window "party"
 		size = 74x24
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		saved-params = "is-checked"
 		text = ""
 		image = 'PNG\\Invite.png'
@@ -10156,7 +9985,6 @@ window "party"
 		size = 74x24
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		saved-params = "is-checked"
 		text = ""
 		image = 'PNG\\Create.png'
@@ -10168,7 +9996,6 @@ window "party"
 		anchor1 = -1,-1
 		anchor2 = -1,-1
 		text-color = #f8f8f8
-		background-color = none
 		saved-params = ""
 		text = "Party"
 		image = 'Sheet\\GUI 3.png'
@@ -10190,7 +10017,6 @@ window "party"
 		anchor1 = -1,-1
 		anchor2 = -1,-1
 		text-color = #f8f8f8
-		background-color = none
 		saved-params = ""
 		text = "Members"
 		image = 'Sheet\\GUI 3.png'
@@ -10202,7 +10028,6 @@ window "party"
 		anchor1 = -1,-1
 		anchor2 = -1,-1
 		text-color = #f8f8f8
-		background-color = none
 		saved-params = ""
 		text = "Active FATE"
 		image = 'Sheet\\GUI 3.png'
@@ -10234,12 +10059,9 @@ window "playershop"
 		size = 280x486
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		is-visible = false
 		saved-params = "pos;size;is-minimized;is-maximized"
 		can-resize = false
-		outer-size = 288x545
-		inner-size = 280x508
 	elem "selected"
 		type = LABEL
 		pos = 0,168
@@ -10247,7 +10069,6 @@ window "playershop"
 		anchor1 = -1,-1
 		anchor2 = -1,-1
 		text-color = #f8f8f8
-		background-color = none
 		saved-params = ""
 		text = "Selected:"
 		image = 'Sheet\\GUI Label.png'
@@ -10271,7 +10092,6 @@ window "playershop"
 		anchor1 = -1,-1
 		anchor2 = -1,-1
 		text-color = #f8f8f8
-		background-color = none
 		saved-params = ""
 		text = "Lore"
 		image = 'Sheet\\GUI Label.png'
@@ -10295,7 +10115,6 @@ window "playershop"
 		anchor1 = -1,-1
 		anchor2 = -1,-1
 		text-color = #f8f8f8
-		background-color = none
 		saved-params = ""
 		text = "Enchantment"
 		image = 'Sheet\\GUI Label.png'
@@ -10319,7 +10138,6 @@ window "playershop"
 		anchor1 = -1,-1
 		anchor2 = -1,-1
 		text-color = #f8f8f8
-		background-color = none
 		saved-params = ""
 		text = "Description"
 		image = 'Sheet\\GUI Label.png'
@@ -10340,7 +10158,6 @@ window "playershop"
 		anchor1 = -1,-1
 		anchor2 = -1,-1
 		text-color = #f8f8f8
-		background-color = none
 		saved-params = ""
 		text = "Stock"
 		image = 'Sheet\\GUI Label.png'
@@ -10352,13 +10169,10 @@ window "recipeout"
 		size = 331x392
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		is-visible = false
 		saved-params = "pos;size;is-minimized;is-maximized"
 		statusbar = false
 		can-resize = false
-		outer-size = 339x429
-		inner-size = 331x392
 	elem "recipe"
 		type = LABEL
 		pos = 8,224
@@ -10533,12 +10347,9 @@ window "stablemaster"
 		size = 280x276
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		is-visible = false
 		saved-params = "pos;size;is-minimized;is-maximized"
 		can-resize = false
-		outer-size = 288x335
-		inner-size = 280x298
 	elem "beast"
 		type = GRID
 		pos = 0,32
@@ -10556,7 +10367,6 @@ window "stablemaster"
 		anchor1 = -1,-1
 		anchor2 = -1,-1
 		text-color = #f8f8f8
-		background-color = none
 		saved-params = ""
 		text = "Stock"
 		image = 'Sheet\\GUI Label.png'
@@ -10568,13 +10378,10 @@ window "statusscreen"
 		size = 432x311
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		is-visible = false
 		saved-params = "pos;size;is-minimized;is-maximized"
 		can-resize = false
 		icon = 'Potion.dmi'
-		outer-size = 440x370
-		inner-size = 432x333
 	elem "grid"
 		type = GRID
 		pos = 0,40

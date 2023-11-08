@@ -41,7 +41,7 @@ Notes:
 	/// control ID
 	var/skin_id = SKIN_BROWSER_ID_TOOLTIPS
 	/// our file
-	var/tooltips_html = 'html/html/tooltip.html'
+	var/tooltips_html = 'html/html/tooltips.html'
 	/// jquery file
 	//  todo: asset cache
 	var/jquery_html = 'html/js/jquery-3.7.1.min.js'
