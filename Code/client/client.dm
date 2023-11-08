@@ -2,6 +2,7 @@
  * root definition for client
  */
 /client
+	view = "35x20"
 
 	//? Assets
 	/// assets loaded - datums

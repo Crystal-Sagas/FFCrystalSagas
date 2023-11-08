@@ -1,3 +1,6 @@
+/// *sigh*
+#define LEGACY_DARKNESS_PLANE -26
+
 /// /atom's render here by default
 #define GAME_PLANE -25
 
