@@ -1,5 +1,6 @@
 /client/proc/open_tooltip(atom/movable/anchor, mouse_params, title, content, theme)
-	tooltips?.show(anchor, mouse_params, title, content, theme)
+	// todo: our own theme
+	tooltips?.show(anchor, mouse_params, title, content, theme = "midnight")
 
 /client/proc/close_tooltip()
 	tooltips?.hide()
@@ -65,16 +66,17 @@ Notes:
 	C << browse_rsc(jquery_html, "jquery.min.js")
 	C << browse(file2text(tooltips_html), "window=[skin_id]")
 
-#warn impl below
+/datum/client_tooltips/proc/show(atom/movable/anchor, mouse_params, title, content, theme = "default", special = "none")
+	if(QDELETED(thing) || (!title && !content) || QDELETED(owner))
+		return FALSE
 
-/datum/client_tooltips/proc/show(atom/movable/thing, params = null, title = null, content = null, theme = "default", special = "none")
-	if (!thing || (!title && !content) || !src.owner || !isnum(world.icon_size))
-		return 0
-	if (!src.init)
-		//Initialize some vars
-		src.init = 1
-		src.owner << output(list2params(list(world.icon_size, src.control)), "[src.control]:tooltip.init")
-	src.showing = 1
+	// initialize first
+	if(!initialized)
+		initialized = TRUE
+		owner << output(list2params(list(world.icon_size, skin_id)), "[skin_id]:tooltip.init")
+
+	// output
+	showing = TRUE
 
 	if (title && content)
 		title = "<h1>[title]</h1>"
@@ -83,24 +85,27 @@ Notes:
 		title = "<p>[title]</p>"
 	else if (!title && content)
 		content = "<p>[content]</p>"
-		//Make our dumb param object
+	//Make our dumb param object
 	params = {"{ "cursor": "[params]", "screenLoc": "[thing.screen_loc]" }"}
+	//Send stuff to the tooltip
+	owner << output(list2params(list(params, src.owner.view, "[title][content]", theme, special)), "[skin_id]:tooltip.update")
 
-		//Send stuff to the tooltip
-	src.owner << output(list2params(list(params, src.owner.view, "[title][content]", theme, special)), "[src.control]:tooltip.update")
+	showing = FALSE
 
-		//If a hide() was hit while we were showing, run hide() again to avoid stuck tooltips
-	src.showing = 0
-	if (src.queueHide)
-		src.hide()
-	return 1
+	//If a hide() was hit while we were showing, run hide() again to avoid stuck tooltips
+	if (hide_queued)
+		hide()
 
+	return TRUE
 
 /datum/client_tooltips/proc/hide()
-	if (src.queueHide)
+	if(hide_queued)
+		// already queued? in 1 ds, kill it once showing expires, just in case it doesn't..
 		spawn(1)
-			winshow(src.owner, src.control, 0)
+			winshow(owner, skin_id, FALSE)
 	else
-		winshow(src.owner, src.control, 0)
-	src.queueHide = src.showing ? 1 : 0
-	return 1
+		// otherwise, kill it immediately
+		winshow(owner, skin_id, FALSE)
+	// queue if it's blocked by browse()
+	hide_queued = showing? TRUE : FALSE
+	return TRUE

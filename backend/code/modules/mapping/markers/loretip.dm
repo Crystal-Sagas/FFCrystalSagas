@@ -25,7 +25,6 @@
 	if(!isnull(lore_long))
 		content += "<hr><div style='text-align: right;'>Double-Click to see more!</div>"
 	showing?.client?.open_tooltip(src, params, lore_title || name, content)
-	#warn impl
 
 /obj/map_marker/loretip/MouseExited(location, control, params)
 	. = ..()
