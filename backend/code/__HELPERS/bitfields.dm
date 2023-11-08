@@ -2,7 +2,7 @@ GLOBAL_LIST_INIT(bitfields, init_bitfields())
 
 /proc/init_bitfields()
 	. = list()
-	for(var/datum/bitfield/casted as anything in subtypesof(/datum/bitfield))
+	for(var/datum/bitfield/casted as anything in subtypes_of(/datum/bitfield))
 		var/datum/bitfield/instance = new casted
 		.[casted] = instance
 

@@ -118,7 +118,7 @@
 	return pick(arglist(args))
 
 /proc/_picklist(list/L)
-	return SAFEPICK(L)
+	return SAFELIST_PICK(L)
 
 /proc/_prob(P)
 	return prob(P)
@@ -237,8 +237,6 @@
 /proc/_step_away(ref, trg, max)
 	step_away(ref, trg, max)
 
-/proc/_has_trait(datum/thing,trait)
-	return HAS_TRAIT(thing,trait)
 /proc/_instantiate_at(thing, location)
 	new thing(location)
 
@@ -247,13 +245,9 @@
 	var/turf/T = get_turf(s)
 	return locate(clamp(T.x + x, 1, world.maxx), clamp(T.y + y, 1, world.maxy), clamp(T.z + z, 1, world.maxz))
 
-/proc/_add_trait(datum/thing,trait,source)
-	ADD_TRAIT(thing,trait,source)
 /proc/_random_turf_in_range(s = usr, r = 7)
 	return _turf_in_offset(s, rand(-r, r), rand(-r, r))
 
-/proc/_remove_trait(datum/thing,trait,source)
-	REMOVE_TRAIT(thing,trait,source)
 /proc/_random_turf_in_view(s = usr, r = 7)
 	var/list/v = view(s, r)
 	. = list()

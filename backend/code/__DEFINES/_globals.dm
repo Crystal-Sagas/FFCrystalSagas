@@ -38,13 +38,13 @@ GLOBAL_INTERNAL_INIT(NAME, VAL);
 /datum/controller/globals/vv_edit_var(datum/vv_context/actor, var_name, var_value, mass_edit, raw_edit) { return var_name == NAME? VV_EDIT_REJECT : ..(); }
 
 #define GLOBAL_REAL_VAR(NAME) \
-var/global/##NAME;
+var/global/##NAME
 
 #define GLOBAL_REAL_LIST(NAME) \
-var/global/list/##NAME;
+var/global/list/##NAME
 
 #define GLOBAL_REAL_DATUM(NAME, PATH) \
-var/global##PATH/##NAME;
+var/global##PATH/##NAME
 
 //! Defined at top of compile order so no override, well, runtimes.
 /datum/controller/globals/proc/global_init_procs()

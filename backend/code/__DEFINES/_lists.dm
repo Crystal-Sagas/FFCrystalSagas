@@ -6,3 +6,5 @@
 #define LAZYLIST_ACCESS(L, K) L?[K]
 #define LAZYLIST_LENGTH(L) length(L)
 #define LAZYLIST_SET(L, K, V) if(!L) { L = list(); }; L[K] = V;
+
+#define SAFELIST_PICK(L) (length(L) > 0? pick(L) : null)

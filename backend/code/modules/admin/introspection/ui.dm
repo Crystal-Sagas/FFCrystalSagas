@@ -23,4 +23,4 @@
 	//* show to user
 
 	// use direct browse(), no extraneous datums which are chances for shit to break
-	src << browse(browse_html, "window=introspect-[browser_id];display=1;size=300x800;can_close=1;can_resize=1;can_minimize=0;titlebar=1;broder=0")
+	src << browse(browser_html, "window=introspect-[browser_id];display=1;size=300x800;can_close=1;can_resize=1;can_minimize=0;titlebar=1;broder=0")
