@@ -33,14 +33,14 @@ obj
 
 image
 	master_plane
-		plane = 0
+		plane = GAME_PLANE
 		blend_mode = BLEND_MULTIPLY
 		appearance_flags = PLANE_MASTER | NO_CLIENT_COLOR
 		color = list(null,null,null,"#0000","#000f")
 		mouse_opacity = 0
 
 	darkness
-		plane = -1
+		plane = LEGACY_DARKNESS_PLANE
 		blend_mode = BLEND_ADD
 		mouse_opacity = 0
 		icon = 'darkness.dmi'

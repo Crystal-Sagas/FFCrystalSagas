@@ -1,6 +1,8 @@
 //! Core viewport procs
 //! These don't obey the read-write lock, and should only be called from the synchronized procs!
 
+GLOBAL_VAR_INIT(wanted_world_view, "35x20")
+
 /**
  * called on client init to do this without blocking client/New
  */
@@ -20,7 +22,7 @@
 	PRIVATE_PROC(TRUE)
 	. = FALSE
 	// get vars only; they have to manually refit
-	var/got = winget(src, SKIN_ID_GAME_MAP, "size")
+	var/got = winget(src, SKIN_MAP_ID_MAIN, "size")
 	var/list/split = splittext(got, "x")
 	var/got_spx
 	var/got_spy
@@ -29,12 +31,12 @@
 		got_spy = text2num(split[2])
 	if(!isnum(got_spx) || !isnum(got_spy))
 		stack_trace("fetch_viewport failed to get spx/spy")
-		var/list/world_view = decode_view_size(world.view)
+		var/list/world_view = decode_view_size(GLOB.wanted_world_view)
 		got_spx = (WORLD_ICON_SIZE * world_view[1])
 		got_spy = (WORLD_ICON_SIZE * world_view[2])
 	else if(got_spx <= 200 || got_spy <= 200)
 		// if it's too small don't bother
-		var/list/world_view = decode_view_size(world.view)
+		var/list/world_view = decode_view_size(GLOB.wanted_world_view)
 		got_spx = (WORLD_ICON_SIZE * world_view[1])
 		got_spy = (WORLD_ICON_SIZE * world_view[2])
 	if(got_spx != assumed_viewport_spx || got_spy != assumed_viewport_spy)
@@ -56,9 +58,9 @@
 	 * and then expand the user's view as necessary
 	 */
 	// first set their map to not letterbox & stretch to fit because we are not using manual `view` adjustments
-	winset(src, SKIN_ID_GAME_MAP, "letterbox=true;zoom=0")
+	winset(src, SKIN_MAP_ID_MAIN, "letterbox=true;zoom=0")
 	// then compute how much zoom on either side they can handle
-	var/list/what_we_want = decode_view_size(world.view)
+	var/list/what_we_want = decode_view_size(GLOB.wanted_world_view)
 	// get ratio
 	var/aspect_ratio = assumed_viewport_spx / assumed_viewport_spy
 	// calculate

@@ -2,11 +2,7 @@
  * root definition for client
  */
 /client
-	/// statpanel isn't a thing, don't have this on
-	//? actually yes it is, admins get a stat panel wtf
-	// show_verb_panel = FALSE
-	/// force client to inherit from /datum
-	parent_type = /datum
+	view = "35x20"
 
 	//? Assets
 	/// assets loaded - datums
