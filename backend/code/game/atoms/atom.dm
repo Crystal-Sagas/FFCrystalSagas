@@ -9,10 +9,6 @@
 	/// flags bitfield
 	var/atom_flags = NONE
 
-	//* Fluff
-	/// What people see when they examine us
-	var/desc
-
 /**
  * Called to initialize the atom
  *

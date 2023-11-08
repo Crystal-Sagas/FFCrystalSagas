@@ -12,6 +12,7 @@
 #define FILE_DIR "backend"
 #define FILE_DIR "backend/icons"
 #define FILE_DIR "backend/icons/debug"
+#define FILE_DIR "backend/icons/map_objects"
 #define FILE_DIR "Bases"
 #define FILE_DIR "Bases/Gnath"
 #define FILE_DIR "Bases/Human"

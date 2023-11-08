@@ -3,6 +3,7 @@
 	desc = "Some point of interest is here."
 	layer = CONTEXT_LORETIP_LAYER
 	plane = CONTEXT_PLANE
+	icon = 'backend/icons/map_objects/loretips.dmi'
 
 	/// Title - defaults to name
 	var/lore_title
