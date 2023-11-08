@@ -60,10 +60,12 @@
 			'client_view_h': 0,
 			'text': '',
 			'theme': '',
+			'map_id': '',
 			'padding': 2,
-			init: function(tileSize, control) {
+			init: function(tileSize, control, map_id) {
 				tooltip.tileSize = parseInt(tileSize);
 				tooltip.control = control;
+				tooltip.map_id = map_id;
 			},
 			hide: function() {
 				window.location = 'byond://winset?id='+tooltip.control+';is-visible=false';
@@ -175,7 +177,7 @@
 				var posX = Math.round(((left - 1) * realIconSizeX) + leftOffset + tooltip.padding); //-1 to position at the left of the target tile
 				var posY = Math.round(((tilesShownY - top + 1) * realIconSizeY) + topOffset + tooltip.padding); //+1 to position at the bottom of the target tile
 
-				//alert(mapWidth+' | '+mapHeight+' | '+tilesShown+' | '+realIconSize+' | '+leftOffset+' | '+topOffset+' | '+left+' | '+top+' | '+posX+' | '+posY); //DEBUG
+				// alert(mapWidth+' | '+mapHeight+' | '+tilesShownX+' | '+tilesShownY+' | '+realIconSizeX+' | '+realIconSizeY+' | '+leftOffset+' | '+topOffset+' | '+left+' | '+top+' | '+posX+' | '+posY); //DEBUG
 
 				$('body').attr('class', tooltip.theme);
 
@@ -216,7 +218,7 @@
 				tooltip.special = special;
 
 				//Go get the map details
-				window.location = 'byond://winget?callback=tooltip.updateCallback;id=mapwindow.map;property=size,view-size';
+				window.location = 'byond://winget?callback=tooltip.updateCallback;id=' + tooltip.map_id + ';property=size,view-size';
 			},
 		};
 	</script>

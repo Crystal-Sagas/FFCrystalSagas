@@ -9793,8 +9793,8 @@ window "default"
 		type = BROWSER
 		pos = 0,0
 		size = 1350x432
-		anchor1 = 0,0
-		anchor2 = 100,66
+		anchor1 = -1,-1
+		anchor2 = -1,-1
 		background-color = none
 		is-visible = false
 		saved-params = ""

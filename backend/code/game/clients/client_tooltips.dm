@@ -40,6 +40,8 @@ Notes:
 	var/client/owner
 	/// control ID
 	var/skin_id = SKIN_BROWSER_ID_TOOLTIPS
+	/// map control ID
+	var/map_id = SKIN_MAP_ID_MAIN
 	/// our file
 	var/tooltips_html = 'html/html/tooltips.html'
 	/// jquery file
@@ -73,7 +75,7 @@ Notes:
 	// initialize first
 	if(!initialized)
 		initialized = TRUE
-		owner << output(list2params(list(world.icon_size, skin_id)), "[skin_id]:tooltip.init")
+		owner << output(list2params(list(world.icon_size, skin_id, map_id)), "[skin_id]:tooltip.init")
 
 	// output
 	showing = TRUE
