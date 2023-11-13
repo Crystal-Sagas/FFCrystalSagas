@@ -43,7 +43,7 @@ GENERATE_PATHS_FOR_WEAPON_METAL_TIERS(/obj/item/Weapon/Ranged/ThrowingWeapons/Ak
 	weapon_scale_high = 1
 	weapon_scale_constant = 3
 	weapon_range = 6
-	weapon_desc = "Very sharp cards which can be thrown as projectiles and summoned back magically. Whenever an Akademia Card attack roll deals damage to a creature, that creature also takes an additional 5 HP, MP, and SP damage. Grants +2 MAB and +5 MDB per metal tier."
+	weapon_desc = "Very sharp cards which can be thrown as projectiles and summoned back magically. Whenever an Akademia Card attack roll deals damage to a creature, that creature also takes an additional 5 HP, MP, and SP damage. Grants +2 MAB and +3 MDB per metal tier."
 
 GENERATE_PATHS_FOR_WEAPON_METAL_TIERS(/obj/item/Weapon/Ranged/Bow, "WeaponBow")
 /obj/item/Weapon/Ranged/Bow
@@ -51,8 +51,8 @@ GENERATE_PATHS_FOR_WEAPON_METAL_TIERS(/obj/item/Weapon/Ranged/Bow, "WeaponBow")
 	weapontype="Bow"
 	icon='Icons/Items/Bow.dmi'
 	weapon_handedness = 2
-	weapon_scale_low = 1
-	weapon_scale_high = 1
+	weapon_scale_low = 2
+	weapon_scale_high = 2
 	weapon_stat = CHARACTER_STAT_DEX
 	weapon_range = 6
-	weapon_desc = "A bow, which is useful for ranged attacks! Bows deal 5 additional damage per tile travelled (capping at 25), when they hit a target creature."
+	weapon_desc = "A bow, which is useful for ranged attacks! A bow’s piercing arrows ignore 2 x Metal Tier DR."

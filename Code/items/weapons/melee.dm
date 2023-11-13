@@ -24,8 +24,8 @@ GENERATE_PATHS_FOR_WEAPON_METAL_TIERS(/obj/item/Weapon/Melee/Scimitar, "WeaponSc
 	weapon_scale_low = 1
 	weapon_scale_high = 2
 	weapon_stat = CHARACTER_STAT_STR
-	weapon_desc = "A long, curved blade. Scimitars specialize in taking advantage of their unique shape to catch opponents off guard. Scimitar have a latent +4 to hit bonus, and if utilized alongside Sneak Attack, deal 15 unreducable true damage in addition to the attack's damage."
-	weapon_innate_hit = 4
+	weapon_desc = "A long, curved blade. Scimitars specialize in taking advantage of their unique shape to catch opponents off guard. Scimitar have a latent +2 to hit bonus, and if utilized alongside Sneak Attack, deal 15 unreducable true damage in addition to the attack's damage."
+	weapon_innate_hit = 2
 
 GENERATE_PATHS_FOR_WEAPON_METAL_TIERS(/obj/item/Weapon/Melee/Hammer, "WeaponHammer")
 /obj/item/Weapon/Melee/Hammer
@@ -37,7 +37,6 @@ GENERATE_PATHS_FOR_WEAPON_METAL_TIERS(/obj/item/Weapon/Melee/Hammer, "WeaponHamm
 	weapon_scale_high = 2
 	weapon_stat = CHARACTER_STAT_STR
 	weapon_desc = "A Hammer, which is not very accurate but does high damage. If a Hammer hits an opponent, the wielder may choose to apply a 2 tile Knockback in a direction of their choosing. If the target hits a wall or surface in doing so, they take 2d10 additional damage."
-	weapon_innate_hit = -2
 
 GENERATE_PATHS_FOR_WEAPON_METAL_TIERS(/obj/item/Weapon/Melee/Axe, "WeaponAxe")
 /obj/item/Weapon/Melee/Axe
@@ -49,7 +48,7 @@ GENERATE_PATHS_FOR_WEAPON_METAL_TIERS(/obj/item/Weapon/Melee/Axe, "WeaponAxe")
 	weapon_scale_high = 2
 	weapon_stat = CHARACTER_STAT_STR
 	weapon_innate_crit = 1
-	weapon_desc = "An Axe, which has a higher chance to critically hit than most other weapons. When an attack is made with an Axe, the wielder may choose to spend 20 SP in order to release a 3 tile line, that deals 10 true damage as an automatic hit to those it crosses, in the direction the attack is being made. This can only be procced once per turn, only on standard attacks, and ignores damage reduction."
+	weapon_desc = "An Axe, which has a higher chance to critically hit than most other weapons. Once per turn on a standard attack the wielder may choose to spend 20 SP in order to deal an additional Metal Tier * 5 damage as true damage to their target."
 
 GENERATE_PATHS_FOR_WEAPON_METAL_TIERS(/obj/item/Weapon/Melee/Dagger, "WeaponDagger")
 /obj/item/Weapon/Melee/Dagger
@@ -73,7 +72,7 @@ GENERATE_PATHS_FOR_WEAPON_METAL_TIERS(/obj/item/Weapon/Melee/Gauntlet, "WeaponGa
 	weapon_scale_low = 0.5
 	weapon_scale_high = 1
 	weapon_stat = CHARACTER_STAT_STR
-	weapon_desc = "A Gauntlet may attack twice per Standard action (once per round). If at least two attacks made with a Gauntlet hit in the same round, the Gauntlet deals 5 additional true damage per metal tier to the target, and knocks the target back 2 tiles per metal tier (if the user wishes for Knockback.)."
+	weapon_desc = "If a Gauntlet attack is made as a standard action, the user may use their bonus action to attack a second time for 20 SP. If at least two gauntlet attacks hit in the same round, the Gauntlet inflicts an additional 5 true damage per metal tier, and knocks the target back a distance of 1 x Strength Bonus if the wielder wishes to knock them back."
 	weapon_innate_hit = 1
 
 GENERATE_PATHS_FOR_WEAPON_METAL_TIERS(/obj/item/Weapon/Melee/Claw, "WeaponClaw")
@@ -85,7 +84,7 @@ GENERATE_PATHS_FOR_WEAPON_METAL_TIERS(/obj/item/Weapon/Melee/Claw, "WeaponClaw")
 	weapon_scale_low = 0.5
 	weapon_scale_high = 1
 	weapon_stat = CHARACTER_STAT_DEX
-	weapon_desc = "Claws may attack twice per Standard action (once per round). If at least two attacks made with a Claw hit in the same round, the Claw inflicts Bleed. Claws have a critical hit range of 19-20."
+	weapon_desc = "If a Claw attack is made as a standard action, the user may use their bonus action to attack a second time for 20 SP. If at least two claw attacks hit in the same round, the Claw inflicts bleed. Claws have a critical range of 19-20."
 	weapon_innate_crit = 1
 
 GENERATE_PATHS_FOR_WEAPON_METAL_TIERS(/obj/item/Weapon/Melee/Whip, "WeaponWhip")
