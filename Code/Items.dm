@@ -242,7 +242,7 @@ obj
 				log_action("PICKUP: [key_name(usr)] picked up [src] at [audit_coord(src)]")
 				view(usr) << output("[usr.name] has picked up [src.name]!","icout")
 				usr.contents+=src
-				Refreshinventoryscreen(usr)
+				usr.Refreshinventoryscreen()
 
 
 mob
@@ -1366,7 +1366,7 @@ obj
 		log_action("DROP: [key_name(user)] [audit_coord(user)] [src]")
 		user.visible_message("[user] has dropped [src]!", stream = "icout")
 		// just refresh inventory because SURELY THIS ISNT A CRAFTING MATERIAL IF IT ISNT A STACK, RIGHT?
-		Refreshinventoryscreen(user)
+		user.Refreshinventoryscreen()
 		return
 	// if it is, ask for amount
 	if(amount <= 0)

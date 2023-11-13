@@ -1,6 +1,6 @@
-/datum/prototype/struct/loot_pack/fate_artifact
-	id = "LootPackArtifactFateReward"
-	amt = 3
+/datum/prototype/struct/loot_pack/incentive_box
+	id = "LootPackJoinIncentiveBox"
+	amt = 30
 	some = list(
 		/obj/item/material/ingot/bronze = 7,
 		/obj/item/material/ingot/iron = 5,
@@ -8,18 +8,19 @@
 		/obj/item/material/ingot/mythril = 2,
 		/obj/item/material/ingot/silver = 2,
 		/obj/item/material/ingot/gold = 1,
-		/obj/item/material/gem/bio = 3,
-		/obj/item/material/gem/black = 3,
-		/obj/item/material/gem/dark = 3,
-		/obj/item/material/gem/diamond = 3,
-		/obj/item/material/gem/earth = 3,
-		/obj/item/material/gem/fire = 3,
-		/obj/item/material/gem/holy = 3,
-		/obj/item/material/gem/ice = 3,
-		/obj/item/material/gem/thunder = 3,
-		/obj/item/material/gem/water = 3,
-		/obj/item/material/gem/white = 3,
-		/obj/item/material/gem/wind = 3,
+		/obj/item/material/gem/bio = 2,
+		/obj/item/material/gem/black = 2,
+		/obj/item/material/gem/dark = 2,
+		/obj/item/material/gem/diamond = 2,
+		/obj/item/material/gem/earth = 2,
+		/obj/item/material/gem/fire = 2,
+		/obj/item/material/gem/holy = 2,
+		/obj/item/material/gem/ice = 2,
+		/obj/item/material/gem/thunder = 2,
+		/obj/item/material/gem/water = 2,
+		/obj/item/material/gem/white = 2,
+		/obj/item/material/gem/wind = 2,
+		/obj/item/material/raw_mako = 2,
 		/obj/item/material/AetherPowder = 1,
 		/obj/item/material/bomb_core = 1,
 		/obj/item/material/coeurl_whsker = 1,
@@ -32,5 +33,5 @@
 		/obj/item/material/EtherPowder = 1,
 	)
 	always = list(
-		/obj/Money = 50,
+		/obj/Money = 1500,
 	)

@@ -1,41 +1,26 @@
-atom
-	proc
-		Refreshinventoryscreen(var/mob/m)
-			if(usr.intitlescreen)
-				return
-			var/row
-			var/row2
-			var/row3
-			winset(m,"Inventoryscreen.Money","text=\"[m.money]\"")
-			winset(usr,"InventoryScreen.gsp","text=\"[m.GSP]\"")
-			winset(m,"Inventoryscreen.gear","cells=0x0")
-			winset(m,"Inventoryscreen.machi","cells=0x0")
-			winset(m,"Inventoryscreen.chemi","cells=0x0")
-			for(var/obj/item/Weapon/A in m.contents)
-				row++
-				m<<output(A,"gear:1,[row]")
-				winset(m,"InventoryScreen.gear","current-cell=2,[row]")
-				if(A.equipped==1)
-					m<<output("Equipped","InventoryScreen.gear")
-				else
-					m<<output("Unequipped","InventoryScreen.gear")
-			for(var/obj/item/magicite/Mag in m.contents)
-				row++
-				winset(m,"InventoryScreen.gear","current-cell=1,[row]")
-				m<<output(Mag,"gear:1,[row]")
-			for(var/obj/item/Key/K in m.contents)
-				row++
-				winset(m,"InventoryScreen.gear","current-cell=1,[row]")
-				m<<output(K,"gear:1,[row]")
-			for(var/obj/item/Machinist/B in m.contents)
-				row2++
-				winset(m,"InventoryScreen.machi","current-cell=1,[row2]")
-				m<<output(B,"machi:1,[row2]")
-			for(var/obj/item/Chemist/C in m.contents)
-				if(C.chemistused==0)
-					row3++
-					winset(m,"InventoryScreen.chemi","current-cell=1,[row3]")
-					m<<output(C,"chemi:1,[row3]")
+// todo: nuke this shit from orbit
+/mob/proc/Refreshinventoryscreen()
+	if(usr.intitlescreen)
+		return
+	var/row
+	winset(src,"Inventoryscreen.Money","text=\"[src.money]\"")
+	winset(src,"Inventoryscreen.gear","cells=0x0")
+	for(var/obj/item/Weapon/A in src.contents)
+		row++
+		src<<output(A,"gear:1,[row]")
+		winset(src,"InventoryScreen.gear","current-cell=2,[row]")
+		if(A.equipped==1)
+			src<<output("Equipped","InventoryScreen.gear")
+		else
+			src<<output("Unequipped","InventoryScreen.gear")
+	for(var/obj/item/I in src.contents)
+		if(istype(I, /obj/item/Weapon))
+			continue
+		if(istype(I, /obj/item/material))
+			continue
+		row++
+		winset(src,"InventoryScreen.gear","current-cell=1,[row]")
+		src<<output(I,"gear:1,[row]")
 
 obj
 	limitbreakaura
@@ -562,42 +547,8 @@ mob
 					else
 						usr<<output("Unequipped","weapongrid")
 		InventoryScreen()
-			if(usr.intitlescreen)
-				return
-			var/row
-			var/row2
-			var/row3
 			winset(usr,"Inventoryscreen","is-visible=true")
-			winset(usr,"Inventoryscreen.Money","text=\"[usr.money]\"")
-			winset(usr,"InventoryScreen.gsp","text=\"[usr.GSP]\"")
-			winset(usr,"Inventoryscreen.gear","cells=0x0")
-			winset(usr,"Inventoryscreen.machi","cells=0x0")
-			winset(usr,"Inventoryscreen.chemi","cells=0x0")
-			for(var/obj/item/Weapon/A in usr.contents)
-				row++
-				usr<<output(A,"gear:1,[row]")
-				winset(usr,"InventoryScreen.gear","current-cell=2,[row]")
-				if(A.equipped==1)
-					usr<<output("Equipped","InventoryScreen.gear")
-				else
-					usr<<output("Unequipped","InventoryScreen.gear")
-			for(var/obj/item/magicite/Mag in usr.contents)
-				row++
-				winset(usr,"InventoryScreen.gear","current-cell=1,[row]")
-				usr<<output(Mag,"gear:1,[row]")
-			for(var/obj/item/Key/K in usr.contents)
-				row++
-				winset(usr,"InventoryScreen.gear","current-cell=1,[row]")
-				usr<<output(K,"gear:1,[row]")
-			for(var/obj/item/Machinist/B in usr.contents)
-				row2++
-				winset(usr,"InventoryScreen.machi","current-cell=1,[row2]")
-				usr<<output(B,"machi:1,[row2]")
-			for(var/obj/item/Chemist/C in usr.contents)
-				if(C.chemistused==0)
-					row3++
-					winset(usr,"InventoryScreen.chemi","current-cell=1,[row3]")
-					usr<<output(C,"chemi:1,[row3]")
+			usr.Refreshinventoryscreen()
 		Materiawindow()
 			if(usr.intitlescreen)
 				return

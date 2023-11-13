@@ -83,7 +83,7 @@ obj
 					log_action("PICKUP: [key_name(usr)] picked up [src]")
 					view(usr) << output("[usr.name] has picked up [src.name]!","icout")
 					src.Move(usr)
-					Refreshinventoryscreen(usr)
+					usr.Refreshinventoryscreen()
 
 			New()
 				if(src.name=="Bronze")

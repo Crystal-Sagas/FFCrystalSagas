@@ -4977,15 +4977,18 @@ window "Icchat"
 window "InventoryScreen"
 	elem "InventoryScreen"
 		type = MAIN
-		pos = 464,0
+		pos = 281,0
 		size = 496x626
 		anchor1 = -1,-1
 		anchor2 = -1,-1
+		background-color = none
 		is-visible = false
 		saved-params = "pos;size;is-minimized;is-maximized"
 		statusbar = false
 		can-resize = false
 		on-close = "CloseEquip"
+		outer-size = 512x665
+		inner-size = 496x626
 	elem "label11"
 		type = LABEL
 		pos = 0,0
@@ -4998,80 +5001,13 @@ window "InventoryScreen"
 		text = ""
 		image = 'Sheet\\GUI Label.png'
 		image-mode = stretch
-	elem "gsp"
-		type = LABEL
-		pos = 128,14
-		size = 136x20
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		text-color = #080808
-		background-color = #dcdcf8
-		saved-params = ""
-		text = ""
-	elem "button83"
-		type = BUTTON
-		pos = 267,9
-		size = 32x32
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		background-color = #8eacb6
-		border = line
-		saved-params = "is-checked"
-		text = ""
-		image = 'Icons\\GSP.png'
-		command = "DropGSP"
-	elem "machi"
-		type = GRID
-		pos = 0,272
-		size = 496x96
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		text-color = #ffffff
-		background-color = #576670
-		saved-params = ""
-		cells = 2x1
-		current-cell = 1,1
-		highlight-color = #000000
-	elem "label87"
-		type = LABEL
-		pos = 0,368
-		size = 496x24
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		text-color = #f8f8f8
-		background-color = #000080
-		saved-params = ""
-		text = "Chemist"
-		image = 'Sheet\\Gui Label 2.png'
-	elem "label7"
-		type = LABEL
-		pos = 0,248
-		size = 496x24
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		text-color = #f8f8f8
-		background-color = #000080
-		saved-params = ""
-		text = "Machinist"
-		image = 'Sheet\\Gui Label 2.png'
-	elem "chemi"
-		type = GRID
-		pos = 0,392
-		size = 496x168
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		text-color = #ffffff
-		background-color = #576670
-		saved-params = ""
-		cells = 2x1
-		current-cell = 1,1
-		highlight-color = #000000
 	elem "label86"
 		type = LABEL
-		pos = 0,560
-		size = 600x312
+		pos = 0,592
+		size = 496x40
 		anchor1 = -1,-1
 		anchor2 = -1,-1
+		background-color = none
 		saved-params = ""
 		text = ""
 		image = 'Sheet\\GUI Label.png'
@@ -5099,7 +5035,7 @@ window "InventoryScreen"
 		command = "Dropmoney"
 	elem "button120"
 		type = BUTTON
-		pos = 32,16
+		pos = 36,12
 		size = 60x20
 		anchor1 = -1,-1
 		anchor2 = -1,-1
@@ -5117,12 +5053,12 @@ window "InventoryScreen"
 		text-color = #f8f8f8
 		background-color = #000080
 		saved-params = ""
-		text = "Gear"
+		text = "Inventory"
 		image = 'Sheet\\Gui Label 2.png'
 	elem "gear"
 		type = GRID
 		pos = 0,64
-		size = 496x184
+		size = 496x528
 		anchor1 = -1,-1
 		anchor2 = -1,-1
 		text-color = #ffffff
@@ -9320,15 +9256,12 @@ window "default"
 		size = 1350x650
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		is-default = true
 		saved-params = "pos;size;is-minimized;is-maximized"
 		title = "Crystal Sagas"
 		icon = 'Sheet\\Chocobo.png'
 		macro = "macro"
 		menu = "menu"
-		outer-size = 1366x728
-		inner-size = 1350x669
 	elem "label1"
 		type = LABEL
 		pos = 624,432
@@ -9368,7 +9301,6 @@ window "default"
 		size = 365x255
 		anchor1 = 75,73
 		anchor2 = 100,100
-		background-color = none
 		saved-params = ""
 		text = ""
 		image = 'Sheet\\GUI Label.png'
@@ -9795,7 +9727,6 @@ window "default"
 		size = 1350x432
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		is-visible = false
 		saved-params = ""
 
