@@ -1296,8 +1296,8 @@ proc
 					m.job="Ranger"
 					var/obj/perk/Jobperks/Ranger/Ranger/p1=new
 					m.contents+=p1
-					m.hp+=40
-					m.mhp+=40
+					m.hp+=30
+					m.mhp+=30
 					m.mp+=30
 					m.mmp+=30
 					m.msp+=70
