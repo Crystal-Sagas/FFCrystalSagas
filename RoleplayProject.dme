@@ -291,6 +291,7 @@
 #include "Code\perks\jobs\knight.dm"
 #include "Code\perks\jobs\machinist.dm"
 #include "Code\perks\jobs\merchant.dm"
+#include "Code\perks\jobs\monk.dm"
 #include "Code\perks\jobs\mystic_knight.dm"
 #include "Code\perks\jobs\oracle.dm"
 #include "Code\perks\jobs\paladin.dm"

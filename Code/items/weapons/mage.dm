@@ -11,7 +11,7 @@ GENERATE_PATHS_FOR_WEAPON_METAL_TIERS(/obj/item/Weapon/Magical/Staff, "WeaponSta
 	weapon_stat = CHARACTER_STAT_CHA
 	weapon_scale_low = 1
 	weapon_scale_high = 2
-	weapon_desc = "A Magical staff, which can be used for costless Magical attack rolls, which deal Force damage. A wielder of a Staff can spend 20 MP in order to createa 3x3 Area of Effect around the target of its attack, dealing 15 additional magical Force damage as an automatic hit to any creature in that range, once per turn, as a free action. Grants +2 MAB and +5 MDB per metal tier."
+	weapon_desc = "A magical staff, which can be used for costless Magical attack rolls, which deal force damage. A wielder of a staff may also spend 5 MP in order to increase a direct healing spell’s (Cure line as an example) healing by 5. This increase is capped at 5*Metal Tier."
 
 GENERATE_PATHS_FOR_WEAPON_METAL_TIERS(/obj/item/Weapon/Magical/Rod, "WeaponRod")
 /obj/item/Weapon/Magical/Rod
@@ -23,7 +23,7 @@ GENERATE_PATHS_FOR_WEAPON_METAL_TIERS(/obj/item/Weapon/Magical/Rod, "WeaponRod")
 	weapon_stat = CHARACTER_STAT_WIS
 	weapon_scale_low = 1
 	weapon_scale_high = 2
-	weapon_desc = "When a Rod is wielded, the wielder gains +2 MAB, and +5 MDB per Metal Tier. In addition, whenever a Rod basic attack, or a spell cast while the Rod is wielded hits a target, the wielder may spend 5 MP, SP, or HP in order to convert their vital energies into power, and deal 5 additional true damage per 5 MP, SP or HP spent (capping at 5*Metal Tier)."
+	weapon_desc = "Whenever a Rod basic attack or a spell cast while the Rod is wielded hits a target, the wielder may spend 5 MP in order to overcharge their spellcasting, and deal 5 additional damage per 5 MP (capping at 5*Metal Tier)."
 
 GENERATE_PATHS_FOR_WEAPON_METAL_TIERS(/obj/item/Weapon/Magical/Tome, "WeaponTome")
 /obj/item/Weapon/Magical/Tome
@@ -34,8 +34,8 @@ GENERATE_PATHS_FOR_WEAPON_METAL_TIERS(/obj/item/Weapon/Magical/Tome, "WeaponTome
 	weapon_range = 5
 	weapon_stat = CHARACTER_STAT_INT
 	weapon_scale_low = 1
-	weapon_scale_high = 2
-	weapon_desc = "A Magical tome, which can be used for costless Magical attack rolls, which deal Force damage. The wielder of a Tome is capable of absoring MP equal to the damage its basic attack deals to a target creature, up to three times per turn. Grants +2 MAB and +3 MDB per metal tier."
+	weapon_scale_high = 1
+	weapon_desc = "A Magical tome, which can be used for costless Magical attack rolls, which deals force damage. The wielder of a tome is capable of absorbing MP equal to the damage its basic attack deals to a target creature (max metal tier x 10 MP a turn)."
 
 GENERATE_PATHS_FOR_WEAPON_METAL_TIERS(/obj/item/Weapon/Magical/FocusCrystal, "WeaponFocusCrystal")
 /obj/item/Weapon/Magical/FocusCrystal

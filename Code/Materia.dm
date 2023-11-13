@@ -24,7 +24,7 @@ obj
 				costtype="Stamina"
 			RabbitDash
 				name="Rabbit's Dash"
-				desc="The user of this technique harnesses their inner speed, and utilizes it to escape an incoming attack. As a reaction to an incoming attack or DC effect, this ability may be used to incur disadvantage on an attack roll, or grant advantage on a saving throw, whilst also allowing the user of this technique to move +3 tiles on use. Costs 20 Stamina to use."
+				desc="The user of this technique harnesses their inner speed, and utilizes it to escape an incoming attack. As a reaction to an incoming attack or DC effect, this ability may be used to incur disadvantage on an attack roll, or grant advantage on a saving throw, whilst also allowing the user of this technique to move +3 tiles at the end of that opponent’s turn. Costs 20 Stamina to use."
 				costtype="Stamina"
 				rank="C"
 				ability=0

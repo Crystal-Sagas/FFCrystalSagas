@@ -180,33 +180,18 @@ obj
 					Bronze
 						name="Bronze Shield"
 						weptier="Bronze"
-						New()
-							var/obj/globalmod/BronzeShield/gm=new
-							src.contents+=gm
 					Iron
 						name="Iron Shield"
 						weptier="Iron"
-						New()
-							var/obj/globalmod/IronShield/gm=new
-							src.contents+=gm
 					Steel
 						name="Steel Shield"
 						weptier="Steel"
-						New()
-							var/obj/globalmod/SteelShield/gm=new
-							src.contents+=gm
 					Mythril
 						name="Mythril Shield"
 						weptier="Mythril"
-						New()
-							var/obj/globalmod/MythrilShield/gm=new
-							src.contents+=gm
 					Adamantine
 						name="Adamantine Shield"
 						weptier="Adamantine"
-						New()
-							var/obj/globalmod/AdamantineShield/gm=new
-							src.contents+=gm
 					Orichalcum
 						weptier="Orichalcum"
 						name="Orichalcum Shield"
@@ -218,33 +203,18 @@ obj
 					Bronze
 						name="Bronze Tower Shield"
 						weptier="Bronze"
-						New()
-							var/obj/globalmod/BronzeTowerShield/gm=new
-							src.contents+=gm
 					Iron
 						name="Iron Tower Shield"
 						weptier="Iron"
-						New()
-							var/obj/globalmod/IronTowerShield/gm=new
-							src.contents+=gm
 					Steel
 						name="Steel Tower Shield"
 						weptier="Steel"
-						New()
-							var/obj/globalmod/SteelTowerShield/gm=new
-							src.contents+=gm
 					Mythril
 						name="Mythril Tower Shield"
 						weptier="Mythril"
-						New()
-							var/obj/globalmod/MythrilTowerShield/gm=new
-							src.contents+=gm
 					Adamantine
 						name="Adamantine Tower Shield"
 						weptier="Adamantine"
-						New()
-							var/obj/globalmod/AdamantineTowerShield/gm=new
-							src.contents+=gm
 					Orichalcum
 						weptier="Orichalcum"
 						name="Orichalcum Tower Shield"
@@ -258,123 +228,69 @@ obj
 					Bronze
 						weptier="Bronze"
 						name="Bronze Light Armor"
-						New()
-							var/obj/globalmod/BronzeLightArmor/gm=new
-							src.contents+=gm
 					Iron
 						weptier="Iron"
 						name="Iron Light Armor"
-						New()
-							var/obj/globalmod/IronLightArmor/gm=new
-							src.contents+=gm
 					Steel
 						weptier="Steel"
 						name="Steel Light Armor"
-						New()
-							var/obj/globalmod/SteelLightArmor/gm=new
-							src.contents+=gm
 					Mythril
 						weptier="Mythril"
 						name="Mythril Light Armor"
-						New()
-							var/obj/globalmod/MythrilLightArmor/gm=new
-							src.contents+=gm
 					Adamantine
 						weptier="Adamantine"
 						name="Adamantine Light Armor"
-						New()
-							var/obj/globalmod/AdamantineLightArmor/gm=new
-							src.contents+=gm
 					Orichalcum
 						weptier="Orichalcum"
 						name="Orichalcum Light Armor"
-						New()
-							var/obj/globalmod/OrichalcumLightArmor/gm=new
-							src.contents+=gm
 				MediumArmor
 					equiptype="armor"
 					weapontype="Medium Armor"
 					icon='Icons/Items/MediumArmor.dmi'
 					armortype="Medium"
-					desc="A set of Medium armor. Its defensive boons are quite good, but it is somewhat encumbering. You suffer disadvantage to stealth related checks while wearing it. Bronze: 2 AC | Iron: 3 AC | Steel: 4 AC | Mythril: 5 AC | Adamantine: 6 AC | Orichalcum: 7 AC"
+					desc="A set of Medium armor. It defends the wearer but does not permit as easy of evasive movements. Disadvantage to stealth related checks while wearing it. Bronze: 2 AC, 2 DR | Iron: 3 AC, 4 DR | Steel: 4 AC, 6 DR | Mythril: 5 AC, 8 DR | Adamantine: 6 AC, 10 DR | Orichalcum: 7 AC, 12 DR"
 					Bronze
 						weptier="Bronze"
 						name="Bronze Medium Armor"
-						New()
-							var/obj/globalmod/BronzeMediumArmor/gm=new
-							src.contents+=gm
 					Iron
 						weptier="Iron"
 						name="Iron Medium Armor"
-						New()
-							var/obj/globalmod/IronMediumArmor/gm=new
-							src.contents+=gm
 					Steel
 						weptier="Steel"
 						name="Steel Medium Armor"
-						New()
-							var/obj/globalmod/SteelMediumArmor/gm=new
-							src.contents+=gm
 					Mythril
 						weptier="Mythril"
 						name="Mythril Medium Armor"
-						New()
-							var/obj/globalmod/MythrilMediumArmor/gm=new
-							src.contents+=gm
 					Adamantine
 						weptier="Adamantine"
 						name="Adamantine Medium Armor"
-						New()
-							var/obj/globalmod/AdamantineMediumArmor/gm=new
-							src.contents+=gm
 					Orichalcum
 						weptier="Orichalcum"
 						name="Orichalcum Medium Armor"
-						New()
-							var/obj/globalmod/OrichalcumMediumArmor/gm=new
-							src.contents+=gm
 				HeavyArmor
 					equiptype="armor"
 					weapontype="Heavy Armor"
 					icon='Icons/Items/HeavyArmor.dmi'
-					desc="A set of Heavy armor. Its defensive boons are quite massive, but it has heavy side effects. You suffer disadvantage on DEX checks, Stealth checks, Reflex saving throws, and suffer halved movement speed without proper perks. Bronze: 3 AC | Iron: 4 AC | Steel: 5 AC | Mythril: 6 AC | Adamantine: 7 AC | Orichalcum: 8 AC"
+					desc="A set of Heavy armor. Its defensive boons are quite massive, but it has heavy side effects. Disadvantage on DEX checks, Stealth checks, Reflex saving throws, and suffer -2 movement speed (Min. 2). Bronze: 3 AC, 4 DR | Iron: 4 AC, 8 DR | Steel: 5 AC, 12 DR | Mythril: 6 AC, 16 DR | Adamantine: 7 AC, 20 DR | Orichalcum: 8 AC, 24 DR"
 					armortype="Heavy"
 					Bronze
 						weptier="Bronze"
 						name="Bronze Heavy Armor"
-						New()
-							var/obj/globalmod/BronzeHeavyArmor/gm=new
-							src.contents+=gm
 					Iron
 						name="Iron Heavy Armor"
 						weptier="Iron"
-						New()
-							var/obj/globalmod/IronHeavyArmor/gm=new
-							src.contents+=gm
 					Steel
 						name="Steel Heavy Armor"
 						weptier="Steel"
-						New()
-							var/obj/globalmod/SteelHeavyArmor/gm=new
-							src.contents+=gm
 					Mythril
 						name="Mythril Heavy Armor"
 						weptier="Mythril"
-						New()
-							var/obj/globalmod/MythrilHeavyArmor/gm=new
-							src.contents+=gm
 					Adamantine
 						name="Adamantine Heavy Armor"
 						weptier="Adamantine"
-						New()
-							var/obj/globalmod/AdamantineHeavyArmor/gm=new
-							src.contents+=gm
 					Orichalcum
 						name="Orichalcum Heavy Armor"
 						weptier="Orichalcum"
-						New()
-							var/obj/globalmod/OrichalcumHeavyArmor/gm=new
-							src.contents+=gm
 obj
 	item
 		Weapon

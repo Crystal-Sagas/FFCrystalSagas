@@ -15,12 +15,11 @@
 	/// tracks time we were deleted, or contains an enum
 	var/gc_destroyed
 
-	// //* Datum Signals
+	//* Datum Signals
 	/// datum signals: signal --> list of datums associated to procrefs to call
 	// var/list/signal_lookup
 	/// datum signals: datum --> list of signals we registered on them
 	// var/list/signal_outgoing
-
 
 /**
  * clone

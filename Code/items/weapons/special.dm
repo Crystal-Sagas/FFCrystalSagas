@@ -71,7 +71,7 @@ GENERATE_PATHS_FOR_WEAPON_METAL_TIERS(/obj/item/Weapon/Special/BlitzBall, "Weapo
 	weapon_scale_high = 1
 	weapon_scale_constant = 2
 	weapon_stat = CHARACTER_STAT_STR
-	weapon_desc = "A ball that is made super-durable, for the purposes of the game 'Blitz-Ball' - but modified for combat as well. It can have modifications added to it in order for it to be more dangerous, such as razor-blades or other things. When it hits an opponent, it returns to the user automatically. In addition, when using a Blitzball, the wielder may spend 5 MP in order to cause it to bounce off of up to 5 target creatures within 6 tiles of the initial target at a time, applying the same to-hit and damage to them as initially rolled."
+	weapon_desc = "A ball that is made super-durable, for the purposes of the game \"Blitz-Ball\"-but modified for combat as well. It can have modifications added to it in order for it to be more dangerous, such as razor-blades or other things. When it hits an opponent, it returns to the user automatically. In addition, when using a blitzball,the wielder may spend 20 SP in order to cause it to bounce off of up to 2 target creatures within 6 tiles of the initial target at a time, applying the same to-hit and half of the damage to them as initially rolled."
 	weapon_range = 6
 
 GENERATE_PATHS_FOR_WEAPON_METAL_TIERS(/obj/item/Weapon/Special/Gunblade, "WeaponGunblade")
@@ -107,7 +107,7 @@ GENERATE_PATHS_FOR_WEAPON_METAL_TIERS(/obj/item/Weapon/Special/Bagangsaw, "Weapo
 	weapon_scale_high = 2
 	weapon_scale_constant = 3
 	weapon_stat = CHARACTER_STAT_STR
-	weapon_desc = "A staff with a rotating saw-blade at the end. Slashing damage. 2 tile Melee range. On hit, the wielder of a Bagangsaw can spend 20 SP to 'jam it' into a target, immediately rooting them in place and causing them to take 30 automatic damage per turn, unless the target breaks free with a STR check on their turn. While a target is Bagangsaw Jammed, the wielder may not use any other attacks or abilities, and must remain stationary."
+	weapon_desc = "A staff with a rotating saw-blade at the end. Slashing damage. 2 tile Melee range. On a successful standard attack, the wielder of a Bagangsaw can spend 20 SP to 'jam it' into a target, subjecting them to the whirling saw-blade and causing them to take 5*Metal Tier true damage and Bleed for 1 Turn."
 
 GENERATE_PATHS_FOR_WEAPON_METAL_TIERS(/obj/item/Weapon/Special/BusterSword, "WeaponBusterSword")
 /obj/item/Weapon/Special/BusterSword
@@ -140,11 +140,11 @@ GENERATE_PATHS_FOR_WEAPON_METAL_TIERS(/obj/item/Weapon/Special/GunArm, "WeaponGu
 	icon='Icons/Items/Gunarm.dmi'
 	weapon_handedness = 1
 	weapon_scale_low = 1
-	weapon_scale_high = 2
+	weapon_scale_high = 1
 	weapon_scale_constant = 1
 	weapon_innate_damage = 5
 	weapon_stat = CHARACTER_STAT_DEX
-	weapon_desc = "A semi-automatic gun that is attached in place of your hand -- can be multiple different types of attachments such as rocket fists, hydraulic fists, a drill, grenade launcher, cannon ball launcher, etc. When a Gun Arm deals damage to a target creature, the wielder may spend 20 SP to release up to 4 sets of 10 damage, which are seperately reducable via damage reduction, as a 'barrage'."
+	weapon_desc = "A semi-automatic gun that is attached in place of your hand or fastened to it -- can be multiple different types of attachments such as rocket fists, hydraulic fists, a drill, grenade launcher, cannon ball launcher, etc. Once per turn, when a Gun Arm attack hits a target creature, the wielder may spend 20 SP to release (Metal Tier+1) sets of 10 true damage to any enemy within the user’s range."
 
 GENERATE_PATHS_FOR_WEAPON_METAL_TIERS(/obj/item/Weapon/Special/MagitekPistol, "WeaponMagitekPistol")
 /obj/item/Weapon/Special/MagitekPistol
