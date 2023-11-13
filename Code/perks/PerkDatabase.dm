@@ -952,46 +952,6 @@ obj
 					name="Improv Master"
 					desc="This individual has learned to improvise thier movements essentially mixing two types of dances at once. When dancing they can use 2 dances at the same time. This does not interrupt or refresh the build-up for Finishing Flourish."
 
-			BlackMage
-				jobneed="Black Mage"
-				icon='Icons/Perk/Black Mage.png'
-				BlackMage
-					name="Black Mage"
-					cat="Unique"
-					desc="A Black Mage is a master of destructive magic. All Black Magic spells cast by a Black Mage deal an additional 1d8+INT Darkness damage. +15 HP, +80 MP, +20 SP."
-				Twincast
-					rank="T2"
-					name="Twincast"
-					desc="Masters of black magic, they are capable of casting the same spell in immediate succession of the first though with the draw back of a heavier cost. (Able to cast the same black magic spell as a bonus action for 2x the spell's base cost. This cost cannot be reduced in any way and supercedes any reduction to costs.)"
-				ArcanistAdaption
-					rank="T2"
-					name="Arcanist Adaption"
-					desc="This individual has learned how different status ailments affect their body. Any spell they have that causes a status ailment gives them enough knowledge to have T1 resistance against said status ailment."
-				LastingAffliction
-					rank="T3"
-					name="Lasting Affliction"
-					desc="Doubles the length debuffs placed by this user are active."
-				BlackResonance
-					rank="T3"
-					name="Black Resonance"
-					desc="This perk causes the magic of the black mage to grow more powerful the longer they are uninterrupted and consistently casting spells. (Causes spells to gain a +3 to hit and to damage for each one cast while not moving and casting a spell each round. This has a cap of +15. Loses a stack on movement.)"
-				ArcaneWarlock
-					rank="T3"
-					name="Arcane Warlock"
-					desc="The mage's experience has enabled them to learn up to S rank Arcane spells."
-				ElementalCelerity
-					rank="T4"
-					name="Elemental Celerity"
-					desc="Base elemental abilities can be cast as a bonus action instead of a standard action."
-				HellCaster
-					rank="T4"
-					name="Hell Caster"
-					desc="This individual has learned to fuse black and arcane magic to create truly hellish magic. All base elemental black magic (Fire, Blizzard, Water, Thunder) Becomes Hell (X). A hell spell inflicts different status effects depending on the level of the spell. E rank abilities inflict blind on a failed fortitude saving throw. D rank abilities inflict blind and silence on a failed save. C rank abilities inflict silence, poison, and blind on a failed save, and B rank abilities inflict poison, blind, silence, and slow on a failed save. Hell status effects have a DC of 20, flatly."
-					cat="Unique"
-				MasteroftheElements
-					rank="T5"
-					name="Master of the Elements"
-					desc="This individual has become a master of offensive Black Magic - and as such, any elemental Black Magic spell that they cast is half the cost."
 
 			WhiteMage
 				jobneed="White Mage"
