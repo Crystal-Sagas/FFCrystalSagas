@@ -101,7 +101,7 @@ obj
 		Click()
 			if(usr in view(1,src))
 				usr.money += value
-				Refreshinventoryscreen(usr)
+				usr.Refreshinventoryscreen()
 				del(src)
 	GSP
 		var/value = 0
@@ -109,5 +109,5 @@ obj
 		Click()
 			if(usr in view(1,src))
 				usr.GSP += value
-				Refreshinventoryscreen(usr)
+				usr.Refreshinventoryscreen()
 				del(src)

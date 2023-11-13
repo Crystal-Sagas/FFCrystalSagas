@@ -155,7 +155,7 @@
 							for(var/obj/globalmod/m in src.contents)
 								Applyglobalmod(usr,src)
 				RefreshCharsheet(usr)
-				Refreshinventoryscreen(usr)
+				usr.Refreshinventoryscreen()
 				RefreshAll(usr)
 			else if(src.equipped)
 				src.equipped=0
@@ -247,13 +247,13 @@
 							view()<<output("[usr.name] unequips [src.name]","icout")
 							for(var/obj/globalmod/m in src.contents)
 								Removeglobalmod(usr,src)
-				Refreshinventoryscreen(usr)
+				usr.Refreshinventoryscreen()
 				RefreshAll(usr)
 				RefreshCharsheet(usr)
 		else
 			alert("You cannot equip [src.weapontype]s")
 	usr.RefreshEquipment()
-	Refreshinventoryscreen(usr)
+	usr.Refreshinventoryscreen()
 	RefreshAll(usr)
 	RefreshCharsheet(usr)
 

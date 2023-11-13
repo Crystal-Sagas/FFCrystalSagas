@@ -1,6 +1,6 @@
-/datum/prototype/struct/loot_pack/fate_artifact
-	id = "LootPackArtifactFateReward"
-	amt = 3
+/datum/prototype/struct/loot_pack/incentive_box
+	id = "LootPackJoinIncentiveBox"
+	amt = 30
 	some = list(
 		/obj/item/material/ingot/bronze = 7,
 		/obj/item/material/ingot/iron = 5,
@@ -20,6 +20,7 @@
 		/obj/item/material/gem/water = 3,
 		/obj/item/material/gem/white = 3,
 		/obj/item/material/gem/wind = 3,
+		/obj/item/material/raw_mako = 2,
 		/obj/item/material/AetherPowder = 1,
 		/obj/item/material/bomb_core = 1,
 		/obj/item/material/coeurl_whsker = 1,
@@ -32,5 +33,5 @@
 		/obj/item/material/EtherPowder = 1,
 	)
 	always = list(
-		/obj/Money = 50,
+		/obj/Money = 1500,
 	)

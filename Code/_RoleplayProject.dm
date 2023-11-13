@@ -325,7 +325,7 @@ mob
 					usr.rankchecked=1
 					alert(usr,"You have been granted your HP, MP, and SP bonus for your current rank.")
 			RefreshCharsheet(usr)
-			Refreshinventoryscreen(usr)
+			usr.Refreshinventoryscreen()
 			RefreshAll(usr)
 			UpdateArea(usr)
 			load_complete = TRUE
