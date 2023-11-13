@@ -180,33 +180,18 @@ obj
 					Bronze
 						name="Bronze Shield"
 						weptier="Bronze"
-						New()
-							var/obj/globalmod/BronzeShield/gm=new
-							src.contents+=gm
 					Iron
 						name="Iron Shield"
 						weptier="Iron"
-						New()
-							var/obj/globalmod/IronShield/gm=new
-							src.contents+=gm
 					Steel
 						name="Steel Shield"
 						weptier="Steel"
-						New()
-							var/obj/globalmod/SteelShield/gm=new
-							src.contents+=gm
 					Mythril
 						name="Mythril Shield"
 						weptier="Mythril"
-						New()
-							var/obj/globalmod/MythrilShield/gm=new
-							src.contents+=gm
 					Adamantine
 						name="Adamantine Shield"
 						weptier="Adamantine"
-						New()
-							var/obj/globalmod/AdamantineShield/gm=new
-							src.contents+=gm
 					Orichalcum
 						weptier="Orichalcum"
 						name="Orichalcum Shield"
@@ -218,33 +203,18 @@ obj
 					Bronze
 						name="Bronze Tower Shield"
 						weptier="Bronze"
-						New()
-							var/obj/globalmod/BronzeTowerShield/gm=new
-							src.contents+=gm
 					Iron
 						name="Iron Tower Shield"
 						weptier="Iron"
-						New()
-							var/obj/globalmod/IronTowerShield/gm=new
-							src.contents+=gm
 					Steel
 						name="Steel Tower Shield"
 						weptier="Steel"
-						New()
-							var/obj/globalmod/SteelTowerShield/gm=new
-							src.contents+=gm
 					Mythril
 						name="Mythril Tower Shield"
 						weptier="Mythril"
-						New()
-							var/obj/globalmod/MythrilTowerShield/gm=new
-							src.contents+=gm
 					Adamantine
 						name="Adamantine Tower Shield"
 						weptier="Adamantine"
-						New()
-							var/obj/globalmod/AdamantineTowerShield/gm=new
-							src.contents+=gm
 					Orichalcum
 						weptier="Orichalcum"
 						name="Orichalcum Tower Shield"
@@ -258,39 +228,21 @@ obj
 					Bronze
 						weptier="Bronze"
 						name="Bronze Light Armor"
-						New()
-							var/obj/globalmod/BronzeLightArmor/gm=new
-							src.contents+=gm
 					Iron
 						weptier="Iron"
 						name="Iron Light Armor"
-						New()
-							var/obj/globalmod/IronLightArmor/gm=new
-							src.contents+=gm
 					Steel
 						weptier="Steel"
 						name="Steel Light Armor"
-						New()
-							var/obj/globalmod/SteelLightArmor/gm=new
-							src.contents+=gm
 					Mythril
 						weptier="Mythril"
 						name="Mythril Light Armor"
-						New()
-							var/obj/globalmod/MythrilLightArmor/gm=new
-							src.contents+=gm
 					Adamantine
 						weptier="Adamantine"
 						name="Adamantine Light Armor"
-						New()
-							var/obj/globalmod/AdamantineLightArmor/gm=new
-							src.contents+=gm
 					Orichalcum
 						weptier="Orichalcum"
 						name="Orichalcum Light Armor"
-						New()
-							var/obj/globalmod/OrichalcumLightArmor/gm=new
-							src.contents+=gm
 				MediumArmor
 					equiptype="armor"
 					weapontype="Medium Armor"
@@ -300,39 +252,21 @@ obj
 					Bronze
 						weptier="Bronze"
 						name="Bronze Medium Armor"
-						New()
-							var/obj/globalmod/BronzeMediumArmor/gm=new
-							src.contents+=gm
 					Iron
 						weptier="Iron"
 						name="Iron Medium Armor"
-						New()
-							var/obj/globalmod/IronMediumArmor/gm=new
-							src.contents+=gm
 					Steel
 						weptier="Steel"
 						name="Steel Medium Armor"
-						New()
-							var/obj/globalmod/SteelMediumArmor/gm=new
-							src.contents+=gm
 					Mythril
 						weptier="Mythril"
 						name="Mythril Medium Armor"
-						New()
-							var/obj/globalmod/MythrilMediumArmor/gm=new
-							src.contents+=gm
 					Adamantine
 						weptier="Adamantine"
 						name="Adamantine Medium Armor"
-						New()
-							var/obj/globalmod/AdamantineMediumArmor/gm=new
-							src.contents+=gm
 					Orichalcum
 						weptier="Orichalcum"
 						name="Orichalcum Medium Armor"
-						New()
-							var/obj/globalmod/OrichalcumMediumArmor/gm=new
-							src.contents+=gm
 				HeavyArmor
 					equiptype="armor"
 					weapontype="Heavy Armor"
@@ -342,39 +276,21 @@ obj
 					Bronze
 						weptier="Bronze"
 						name="Bronze Heavy Armor"
-						New()
-							var/obj/globalmod/BronzeHeavyArmor/gm=new
-							src.contents+=gm
 					Iron
 						name="Iron Heavy Armor"
 						weptier="Iron"
-						New()
-							var/obj/globalmod/IronHeavyArmor/gm=new
-							src.contents+=gm
 					Steel
 						name="Steel Heavy Armor"
 						weptier="Steel"
-						New()
-							var/obj/globalmod/SteelHeavyArmor/gm=new
-							src.contents+=gm
 					Mythril
 						name="Mythril Heavy Armor"
 						weptier="Mythril"
-						New()
-							var/obj/globalmod/MythrilHeavyArmor/gm=new
-							src.contents+=gm
 					Adamantine
 						name="Adamantine Heavy Armor"
 						weptier="Adamantine"
-						New()
-							var/obj/globalmod/AdamantineHeavyArmor/gm=new
-							src.contents+=gm
 					Orichalcum
 						name="Orichalcum Heavy Armor"
 						weptier="Orichalcum"
-						New()
-							var/obj/globalmod/OrichalcumHeavyArmor/gm=new
-							src.contents+=gm
 obj
 	item
 		Weapon
