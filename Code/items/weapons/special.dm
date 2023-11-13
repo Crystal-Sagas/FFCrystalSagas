@@ -71,7 +71,7 @@ GENERATE_PATHS_FOR_WEAPON_METAL_TIERS(/obj/item/Weapon/Special/BlitzBall, "Weapo
 	weapon_scale_high = 1
 	weapon_scale_constant = 2
 	weapon_stat = CHARACTER_STAT_STR
-	weapon_desc = "A ball that is made super-durable, for the purposes of the game "Blitz-Ball'-but modified for combat as well. It can have modifications added to it in order for it to be more dangerous, such as razor-blades or other things. When it hits an opponent, it returns to the user automatically. In addition, when using a blitzball,the wielder may spend 20 SP in order to cause it to bounce off of up to 2 target creatures within 6 tiles of the initial target at a time, applying the same to-hit and half of the damage to them as initially rolled."
+	weapon_desc = "A ball that is made super-durable, for the purposes of the game \"Blitz-Ball\"-but modified for combat as well. It can have modifications added to it in order for it to be more dangerous, such as razor-blades or other things. When it hits an opponent, it returns to the user automatically. In addition, when using a blitzball,the wielder may spend 20 SP in order to cause it to bounce off of up to 2 target creatures within 6 tiles of the initial target at a time, applying the same to-hit and half of the damage to them as initially rolled."
 	weapon_range = 6
 
 GENERATE_PATHS_FOR_WEAPON_METAL_TIERS(/obj/item/Weapon/Special/Gunblade, "WeaponGunblade")

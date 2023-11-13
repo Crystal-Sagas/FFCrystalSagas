@@ -111,7 +111,7 @@
 		mcost=20
 		desc="The user dashes forward as a Standard Action, weapon braced and pointed forwards as they rush through everything in front of them. This can be utilized either on the ground, or in mid-air. Attacks of Opportunity are not triggered by this technique, but it also counts as the user’s movement action. (Damage: Weapon Damage+1d12+DEX| 5 Tile line, which the user moves along. Melee attack roll. -20 Stamina.)"
 	CelestialShooter
-		id = "DragoonCelestialShooter
+		id = "DragoonCelestialShooter"
 		element="Physical"
 		name="Celestial Shooter"
 		rank="B"
