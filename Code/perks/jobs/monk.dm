@@ -51,7 +51,7 @@
 			addhit=1
 			range="Melee"
 			costtype="Stamina"
-			atype="weapon"
+			atype="standard"
 			damsource="str"
 			typing="physical"
 			ptype="spell"
@@ -73,7 +73,7 @@
 			addhit=2
 			range="Melee"
 			costtype="Stamina"
-			atype="weapon"
+			atype="standard"
 			damsource="str"
 			typing="physical"
 			ptype="spell"
@@ -95,7 +95,7 @@
 			addhit=3
 			range="Melee"
 			costtype="Stamina"
-			atype="weapon"
+			atype="standard"
 			damsource="str"
 			typing="physical"
 			ptype="spell"
@@ -117,7 +117,7 @@
 			addhit=4
 			range="Melee"
 			costtype="Stamina"
-			atype="weapon"
+			atype="standard"
 			damsource="str"
 			typing="physical"
 			ptype="spell"
@@ -139,7 +139,7 @@
 			addhit=5
 			range="Melee"
 			costtype="Stamina"
-			atype="weapon"
+			atype="standard"
 			damsource="str"
 			typing="physical"
 			ptype="spell"
