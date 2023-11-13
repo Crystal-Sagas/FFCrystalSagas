@@ -5,6 +5,10 @@
 	//  todo: move to /datum/prototype/perk
 	/// Unique ID
 	var/id
+	/// modified ; set to TRUE to serialize everything rather than just store by path
+	/// you must set this to TRUE for custom perks, or it'll be wiped on reboot.
+	//  todo: move to /datum/prototype
+	var/modified = FALSE
 
 	//* new ability-attack system
 	/// set this to the typepath of an attack ability or attack datum if you want a lazy-set attack (or attacks)
