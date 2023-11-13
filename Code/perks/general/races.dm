@@ -107,7 +107,7 @@
 
 /obj/perk/Raceperks/Viera/Rabbitlegs
 	name="Rabbit Legs"
-	desc="This race has very strong legs, even at birth. They can jump up to 3 additional tiles admist movement in any direction for 5 Mana. In addition, Viera take 20 less points of fall damage."
+	desc="This race has very strong legs, even at birth. When they begin their turn on solid ground, they can jump up to 2 additional tiles amidst movement in any direction for 10 SP. In addition, Viera take 20 less points of fall damage."
 
 /obj/perk/Raceperks/Lalafell
 	icon='Icons/Perk/Lalafell.png'
