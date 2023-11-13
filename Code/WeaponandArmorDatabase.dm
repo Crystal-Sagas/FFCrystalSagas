@@ -248,7 +248,7 @@ obj
 					weapontype="Medium Armor"
 					icon='Icons/Items/MediumArmor.dmi'
 					armortype="Medium"
-					desc="A set of Medium armor. Its defensive boons are quite good, but it is somewhat encumbering. You suffer disadvantage to stealth related checks while wearing it. Bronze: 2 AC | Iron: 3 AC | Steel: 4 AC | Mythril: 5 AC | Adamantine: 6 AC | Orichalcum: 7 AC"
+					desc="A set of Medium armor. It defends the wearer but does not permit as easy of evasive movements. Disadvantage to stealth related checks while wearing it. Bronze: 2 AC, 2 DR | Iron: 3 AC, 4 DR | Steel: 4 AC, 6 DR | Mythril: 5 AC, 8 DR | Adamantine: 6 AC, 10 DR | Orichalcum: 7 AC, 12 DR"
 					Bronze
 						weptier="Bronze"
 						name="Bronze Medium Armor"
@@ -271,7 +271,7 @@ obj
 					equiptype="armor"
 					weapontype="Heavy Armor"
 					icon='Icons/Items/HeavyArmor.dmi'
-					desc="A set of Heavy armor. Its defensive boons are quite massive, but it has heavy side effects. You suffer disadvantage on DEX checks, Stealth checks, Reflex saving throws, and suffer halved movement speed without proper perks. Bronze: 3 AC | Iron: 4 AC | Steel: 5 AC | Mythril: 6 AC | Adamantine: 7 AC | Orichalcum: 8 AC"
+					desc="A set of Heavy armor. Its defensive boons are quite massive, but it has heavy side effects. Disadvantage on DEX checks, Stealth checks, Reflex saving throws, and suffer -2 movement speed (Min. 2). Bronze: 3 AC, 4 DR | Iron: 4 AC, 8 DR | Steel: 5 AC, 12 DR | Mythril: 6 AC, 16 DR | Adamantine: 7 AC, 20 DR | Orichalcum: 8 AC, 24 DR"
 					armortype="Heavy"
 					Bronze
 						weptier="Bronze"
