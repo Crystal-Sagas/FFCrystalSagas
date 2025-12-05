@@ -44,7 +44,7 @@
 		loaded.deserialize(instance_data)
 		if(lookup[loaded.id])
 			system_log("load: collision on id [loaded.id] with existing; discarding.")
-			dispose(loaded)
+			loaded = null  // Let GC handle cleanup
 			continue
 		lookup[loaded.id] = loaded
 		++count

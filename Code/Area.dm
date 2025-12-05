@@ -168,4 +168,5 @@ proc
 		animate(ncard,alpha=255,time=30)
 		m.client.screen+=ncard
 		sleep(50)
-		del(ncard)
+		m.client.screen -= ncard
+		ncard = null

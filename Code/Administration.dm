@@ -462,7 +462,7 @@ mob
 						alert("You cannot kick someone of a higher level than you.")
 						return
 					else
-						del(dude)
+						dude.loc = null
 						var/text = "[usr.key] booted ([dude.key][dude.name])"
 						Adminlog(text)
 			Viewcontents(atom/target in world)
@@ -554,7 +554,7 @@ mob
 						world<<output("[Choice:key] was BANNED for [Reason].","oocout")
 						var/text1 = "[usr.key] banned ([Choice] for [Reason])"
 						Adminlog(text1)
-						del(Choice)
+						Choice.loc = null
 					if("Remove")
 						if(!("Cancel" in Bans)) Bans+="Cancel"
 						var/Choice=input(src,"Remove which ban?") in Bans
@@ -605,9 +605,9 @@ mob
 				if(adminlv<1)
 					return
 				for(var/obj/Aoeind/o in world)
-					del(o)
+					o.relocateToNull()
 				for(var/obj/Encounterbox/e in world)
-					del(e)
+					e.relocateToNull()
 				for(var/mob/m in world)
 					if(m.client)
 						m.aoetiles=0
@@ -636,12 +636,16 @@ mob
 				if(istype(A,/area/))
 					usr<<"You can't delete Areas."
 					return
+				if(istype(A,/turf/))
+					usr<<"You can't delete Turfs."
+					return
 				var/text = "[usr.key] deleted [A]"
 				Adminlog(text)
 				for(var/mob/m in world)
 					if(src in m.contents)
 						m.contents-=src
-				del(A)
+				var/atom/movable/AM = A
+				AM.relocateToNull()
 			ViewReportWindow()
 				var/row
 				var/row2

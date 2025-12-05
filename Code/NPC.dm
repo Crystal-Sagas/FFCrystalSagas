@@ -3153,7 +3153,7 @@ obj
 						switch(alert("Are you sure you want to delete this NPC?","Yes","No"))
 							if("Yes")
 								usr.npcamount--
-								del(src)
+								src.relocateToNull()
 							if("No")
 								return
 			else if(src in world)

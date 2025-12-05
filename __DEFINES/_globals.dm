@@ -25,7 +25,7 @@
  * various more functional global list defines
  */
 
-/// shoves something into list on new, and out on dispose  - *not* Del()
+/// shoves something into list on new, and out on Destruct()
 /// *Warning*: Beware of global init order. If another global inits before this, you'll have issues.
 #define GLOBAL_LIST_BOILERPLATE(Name, Path)   \
 var/global/list##Path/##Name = list();        \

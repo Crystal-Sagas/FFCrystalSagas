@@ -13,7 +13,7 @@ obj
 						src.desc=newdesc
 					if("Delete")
 						usr.rpflags--
-						del(src)
+						src.relocateToNull()
 					if("Cancel")
 						return
 	RPobject

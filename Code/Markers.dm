@@ -262,7 +262,7 @@ atom
 					choose.z=1
 					view(a) << output("[b.name] has removed [choose.name] from [a.name]!","icout")
 					sleep(1)
-					del(choose)
+					choose.relocateToNull()
 		RefreshStatus(var/atom/a, var/atom/b)
 			set name="View Status"
 			var/row
@@ -360,7 +360,7 @@ obj/lettermarkers
 proc
 	Designateletter(var/obj/npc/n)
 		for(var/obj/lettermarkers/l in n.vis_contents)
-			del(l)
+			l.relocateToNull()
 		n.let=null
 		var/list/alphabet=list("A","B","C","D","E","F")
 		var/choice=input("Choose the letter you wish to designate this NPC as.") as anything in alphabet

@@ -161,7 +161,7 @@ obj
 							if(o.name==src.name)
 								usr.carryweight+=src.weight+=amo
 								o.amount+=amo
-								del(src)
+								src.relocateToNull()
 								s.slots--
 								usr.RefreshStorage()
 								return
@@ -429,7 +429,7 @@ obj
 								view() << output("[usr.name] used [src.name]:[src.desc]","icout")
 								src.amount-=1
 								if(src.amount<=0)
-									del(src)
+									src.relocateToNull()
 							if("Cancel")
 								return
 			Potion
@@ -715,7 +715,7 @@ obj/item/customitem
 		winset(usr,"Customitem.Finish","is-visible=false")
 		for(var/obj/item/customitem/o in usr.contents)
 			if(!o.finished)
-				del(o)
+				o.relocateToNull()
 	Itemaddperk()
 		var/list/choices=new
 		if(!usr.makingitem)
@@ -789,13 +789,13 @@ obj
 					var/obj/item/N = new
 					N.amount=input("How many do you wish to sell?")as num
 					if(N.amount>itemon.amount)
-						del(N)
+						N.relocateToNull()
 						return
 					else if(N.amount>itemon.amount)
 						usr.contents-=itemon
 						itemon.mouse_opacity=0
 						itemon.loc=locate(src.x,src.y,src.z)
-						del(N)
+						N.relocateToNull()
 					else
 						itemon.amount-=N.amount
 						N.name = itemon.name
@@ -899,7 +899,7 @@ obj
 							if(X.Active)
 								for(var/obj/Effects/ForceField/A in world)
 									if(A.FieldPassword==Passcheck)
-										del(A)
+										A.relocateToNull()
 								X.Active=0
 							else
 								X.FFOn("Specific")
@@ -911,7 +911,7 @@ obj
 							if(X.Active)
 								for(var/obj/Effects/ForceField/A in world)
 									if(A.Password==Passcheck)
-										del(A)
+										A.relocateToNull()
 								X.Active=0
 							else
 								X.FFOn("Broad")
@@ -1383,14 +1383,12 @@ obj
 				proc/FFOff(var/ShutdownType)
 					set background = TRUE
 					for(var/obj/Effects/ForceField/A in world)
-						if(A.disposing)
-							continue
 						if(ShutdownType=="Broad")
 							if(A.Password==src.Password)
-								del(A)
+								A.relocateToNull()
 						else if(ShutdownType=="Specific")
 							if(A.FieldPassword==src.FieldPassword)
-								del(A)
+								A.relocateToNull()
 
 /**
  * Verb to drop something from inventory.

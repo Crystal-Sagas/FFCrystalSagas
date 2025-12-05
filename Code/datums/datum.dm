@@ -13,18 +13,6 @@
 	/// weak reference
 	var/datum/weakref/weakref
 
-	//? dispose.dm
-	/**
-	 * are we mid delete?
-	 *
-	 * ? this is not implemented on most types. ?
-	 *
-	 * possibe values:
-	 * * null - not mid delete
-	 * * nonnegative number - world.time of deletion
-	 */
-	var/disposing = null
-
 	//? serialize.dm
 	/// implements the serialization system?
 	var/serializable = FALSE
@@ -47,12 +35,10 @@
 	tag = null
 
 /**
- * datum del hook to ensure deletion logic runs
+ * datum del hook to ensure cleanup logic runs
  */
 /datum/Del()
-	/// cleanup logic
-	if(disposing == null)
-		Destruct()
+	Destruct()
 	return ..()
 
 /**

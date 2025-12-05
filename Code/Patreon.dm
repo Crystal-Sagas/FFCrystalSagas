@@ -13,7 +13,7 @@ obj/item
 				Claim()
 					usr.money+=5000
 					alert(usr,"Thank you for supporting us! You're gil has increased by 5000.")
-					del(src)
+					src.relocateToNull()
 					Refreshinventoryscreen(usr)
 
 		MaterialCrate
@@ -34,7 +34,7 @@ obj/item
 								rando2=rand(1,3)
 								m.amount+=rando2
 								usr<<output("You gain [rando2] [m.name]/s","oocout")
-					del(src)
+					src.relocateToNull()
 
 
 

@@ -177,7 +177,7 @@ mob
 						anitime=10
 				targ.vis_contents+=aniobj
 				sleep(anitime)
-				del(aniobj)
+				aniobj.relocateToNull()
 
 
 			EFanfare()
@@ -291,12 +291,16 @@ mob
 				if(istype(A,/area/))
 					usr<<"You can't delete Areas."
 					return
+				if(istype(A,/turf/))
+					usr<<"You can't delete Turfs."
+					return
 				var/text = "[usr.key] deleted [A]"
 				Adminlog(text)
 				for(var/mob/m in world)
 					if(src in m.contents)
 						m.contents-=src
-				del(A)
+				var/atom/movable/AM = A
+				AM.relocateToNull()
 
 			EGiveCustomPerk(var/obj/npc/a)
 				switch(alert("Do you wish to create a perk or an ability?",,"Perk","Ability"))

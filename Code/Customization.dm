@@ -101,7 +101,7 @@ mob
 			var/obj/customs/added/A = new /obj/customs/added
 			A.icon = input("Select an icon to use.","Change Icon") as null|icon
 			if(A.icon==null)
-				del(A)
+				A.relocateToNull()
 				return
 			A.name = input("Please set the name of your new item.") as text
 			usr.customoverlays+=A
@@ -380,7 +380,7 @@ obj
 			var/row
 			if(usr.deletemode && istype(src,/obj/customs/added))
 				usr.customoverlays-=src
-				del(src)
+				src.relocateToNull()
 				winset(usr,"Customize.Customizegrid","cells=0x0")
 				for(var/A in usr.customoverlays)
 					row++

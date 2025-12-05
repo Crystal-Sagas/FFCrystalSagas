@@ -65,7 +65,7 @@
 				if(i.name==o.name)
 					o.amount+=amo
 					usr.carryweight-=i.weight*i.amount
-					del(i)
+					i.relocateToNull()
 					usr.RefreshStorage()
 					return
 			i.instorage=1

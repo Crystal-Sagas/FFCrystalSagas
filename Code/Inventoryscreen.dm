@@ -102,7 +102,7 @@ obj
 			if(usr in view(1,src))
 				usr.money += value
 				Refreshinventoryscreen(usr)
-				del(src)
+				src.relocateToNull()
 	GSP
 		var/value = 0
 		icon='Icons/GSP.png'
@@ -110,4 +110,4 @@ obj
 			if(usr in view(1,src))
 				usr.GSP += value
 				Refreshinventoryscreen(usr)
-				del(src)
+				src.relocateToNull()

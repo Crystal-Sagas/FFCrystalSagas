@@ -17,13 +17,13 @@ obj
 							sleep(20)
 							var/obj/prop/p2 = copyatom(src.glyphico)
 							p2.loc=locate(p.x,p.y,p.z)
-							del(p)
+							p.relocateToNull()
 							sleep(20)
 							var/obj/npc/n= copyatom(src.materiasummon)
 							n.loc=locate(p2.x,p2.y,p2.z)
 							n.owner=usr.key
 							n.archived=0
-							del(p2)
+							p2.relocateToNull()
 						else
 							alert("In order to summon a creature from a Red Materia, it must be equipped!")
 							return

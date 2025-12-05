@@ -72,7 +72,7 @@ mob
 			winset(usr,"Students","cells=0x0")
 			var/row
 			for(var/obj/rep/T in usr.contents)
-				del(T)
+				T.relocateToNull()
 			for(var/mob/m in oview())
 				row++
 				var/obj/rep/R = new /obj/rep

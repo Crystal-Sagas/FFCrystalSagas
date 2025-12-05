@@ -117,7 +117,7 @@ obj
 			usr.client.screen+=C
 		MouseExited()
 			for(var/obj/Cursor/C in usr.client.screen)
-				del(C)
+				C.relocateToNull()
 	Load
 		icon='Loadgame.png'
 		icon_state="load"
@@ -135,7 +135,7 @@ obj
 			C.transform = M
 		MouseExited()
 			for(var/obj/Cursor/C in usr.client.screen)
-				del(C)
+				C.relocateToNull()
 	Cursor
 		icon='Icons/Cursor.dmi'
 
@@ -163,15 +163,15 @@ mob
 			src.intitlescreen=0
 			for(var/obj/Eye/e in world)
 				if(e.owner==usr.ckey)
-					del(e)
+					e.relocateToNull()
 			if(Admin4.Find(ckey) || client.is_localhost())
 				adminlv = 4
 				winset(src, "default.Adminbut", "is-visible=true")
 				verbs += typesof(/mob/Admin/verb/)
 			for(var/obj/o in usr.client.screen)
-				del(o)
+				o.relocateToNull()
 			for(var/image/i in usr.client.screen)
-				del(i)
+				usr.client.screen -= i
 			src.rpp=startingrpp
 			src.trpp=startingrpp
 			Checkreward(usr)
@@ -212,7 +212,7 @@ mob
 				src.intitlescreen=0
 				for(var/obj/Eye/e in world)
 					if(e.owner==usr.ckey)
-						del(e)
+						e.relocateToNull()
 				if(usr.adminlv >0)
 					winset(src,"default.Adminbut","is-visible=true")
 					winset(usr,"default.Nar","is-visible=true")
@@ -220,14 +220,14 @@ mob
 				if(usr.eventmin)
 					usr.verbs+=typesof(/mob/eventmin/verb/)
 				for(var/obj/o in usr.client.screen)
-					del(o)
+					o.relocateToNull()
 				for(var/image/i in usr.client.screen)
-					del(i)
+					usr.client.screen -= i
 				src.aoetiles=0
 				src.aoeclick=0
 				src.building=0
 				for(var/obj/Builds/b in usr.contents)
-					del(b)
+					b.relocateToNull()
 				usr.bposition=null
 				usr.battler=0
 				for(var/obj/cooldownchecker/chk in world)
@@ -392,7 +392,7 @@ mob
 		Unequipglobalmods(src)
 		for(var/obj/Aoeind/o in world)
 			if(o.owner==src.ckey)
-				del(o)
+				o.relocateToNull()
 		for(var/obj/status/HPBar/a in usr.contents)
 			usr.overlays-=a
 		for(var/obj/status/MPBar/a in usr.contents)
@@ -407,7 +407,7 @@ mob
 				usr.partyID=null
 				usr.inparty=0
 				if(a.totalmembers==0)
-					del a
+					a.relocateToNull()
 		usr.bposition=null
 		usr.battler=0
 		usr.turntracker=0
@@ -419,12 +419,12 @@ mob
 		usr.aoenote=null
 		for(var/obj/item/Chemist/C in usr.contents)
 			if(C.chemistused==1)
-				del C
+				C.relocateToNull()
 		for(var/obj/ency/a in usr.contents)
-			del a
+			a.relocateToNull()
 		if(!usr.intitlescreen)
 			usr.Save()
-		del src
+		src.loc = null
 		..()
 
 proc

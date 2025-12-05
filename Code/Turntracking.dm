@@ -112,7 +112,7 @@ obj
 					if(a3==usr|src.owner==usr.key)
 						var/turn
 						for(var/obj/trackerind/t in a3.vis_contents)
-							del(t)
+							t.relocateToNull()
 						turn=currentbat.turnid+1
 						if(turn>src.battlers)
 							turn=1
@@ -153,9 +153,9 @@ obj
 					usr.turntracker=0
 					for(var/atom/movable/a in view())
 						for(var/obj/trackerind/t in a.vis_contents)
-							del(t)
+							t.relocateToNull()
 					view(25) << output("<b>The battle has ended.</b>","icout")
-					del(src)
+					src.relocateToNull()
 		proc
 			Organizebattlers()
 				var/atom/h

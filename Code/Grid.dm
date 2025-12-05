@@ -35,5 +35,5 @@ mob/verb/Grid()
 	else
 		for(var/image/g in usr.client.images)
 			if(g.icon=='Icons/grid.dmi')
-				del(g)
+				usr.client.images -= g
 		usr.grid=0

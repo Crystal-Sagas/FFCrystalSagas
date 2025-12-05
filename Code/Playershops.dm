@@ -1,6 +1,8 @@
 obj
 	var
-		amount=0
+		amount = 1          // Current stack size (for stackable items)
+		stackable = FALSE   // Whether this item type can stack
+		maxStack = 99       // Maximum stack size for this item type
 
 atom
 	proc

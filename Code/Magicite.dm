@@ -12,13 +12,13 @@ obj/item/magicite
 		sleep(20)
 		var/obj/prop/p2 = copyatom(src.glyphico)
 		p2.loc=locate(p.x,p.y,p.z)
-		del(p)
+		p.relocateToNull()
 		sleep(20)
 		var/obj/npc/n= copyatom(src.scion)
 		n.loc=locate(p2.x,p2.y,p2.z)
 		n.owner=usr.key
 		n.archived=0
-		del(p2)
+		p2.relocateToNull()
 	Belias
 		glyphico= new /obj/prop/beliasglyph
 		scion = new /obj/npc/Summons/ARank/Belias

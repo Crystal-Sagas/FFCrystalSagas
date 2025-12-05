@@ -1,20 +1,16 @@
 {
+	// Use IntelliSense to learn about possible attributes.
+	// Hover to view descriptions of existing attributes.
+	// For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
 	"version": "0.2.0",
 	"configurations": [
 		{
 			"type": "byond",
 			"request": "launch",
-			"name": "Launch in DreamSeeker",
-			"preLaunchTask": "Build - DM",
-			"dmb": "${workspaceFolder}/${command:CurrentDMB}"
-		},
-		{
-			"type": "byond",
-			"request": "launch",
-			"name": "Launch in DreamDaemon",
-			"preLaunchTask": "Build - DM",
+			"name": "Launch DreamSeeker",
+			"preLaunchTask": "dm: build - ${command:CurrentDME}",
 			"dmb": "${workspaceFolder}/${command:CurrentDMB}",
-			"dreamDaemon": true
+			"internalConsoleOptions": "neverOpen"
 		}
 	]
 }

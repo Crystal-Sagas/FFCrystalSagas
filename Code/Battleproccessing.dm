@@ -21,7 +21,7 @@
 	if(usr.aoeclick)
 		if(src.owner==usr.key)
 			usr.aoetiles--
-			del(src)
+			src.relocateToNull()
 	else
 		alert(usr,"[desc]")
 
@@ -71,7 +71,7 @@ mob
 					if("Clear")
 						for(var/obj/Aoeind/o in world)
 							if(o.owner==usr.key)
-								del(o)
+								o.relocateToNull()
 						usr.aoetiles=0
 					if("Create")
 						var/obj/Aoeind/a=new
@@ -106,7 +106,7 @@ mob
 			view()<<output("[usr.name] is preparing a reaction!","icout")
 			animate(r, transform = matrix()*2,alpha=0, time = 10)
 			spawn(50)
-			del(r)
+				r.relocateToNull()
 
 
 atom
@@ -835,11 +835,11 @@ mob
 			winset(usr,"GM","is-visible=true")
 			for(var/obj/globalmod/g in usr.contents)
 				if(g.selected)
-					del(g)
+					g.relocateToNull()
 		CloseGM()
 			for(var/obj/globalmod/g in usr.contents)
 				if(g.selected)
-					del(g)
+					g.relocateToNull()
 			winset(usr,"GM.gname","text=\"\"")
 			winset(usr,"GM.conf","is-visible=false")
 			winset(usr,"GM.critminus","is-visible=false")

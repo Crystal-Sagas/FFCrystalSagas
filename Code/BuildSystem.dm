@@ -123,11 +123,11 @@ obj
 										for(var/obj/Builds/a in world)
 											if(a.eventobject==1)
 												if(a.owner==usr.key)
-													del (a)
+													a.relocateToNull()
 									if("No")
-										del(src)
+										src.relocateToNull()
 							else
-								del(src)
+								src.relocateToNull()
 						if("No")
 							return
 				else
@@ -140,12 +140,12 @@ obj
 			if(usr.building)
 				usr.building=0
 				for(var/obj/Builds/o in usr.contents)
-					del(o)
+					o.relocateToNull()
 				usr<<output("You are no longer building","oocout")
 				return
 			else
 				for(var/obj/Builds/o in usr.contents)
-					del(o)
+					o.relocateToNull()
 				sleep()
 				var/obj/Builds/Buildobjects/Door/doorio = new
 				var/obj/Builds/B = new()

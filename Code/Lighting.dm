@@ -75,8 +75,8 @@ mob/proc/addLightPlane()
 mob/proc/removeLightPlane()
 	client.screen -= master_plane
 	client.screen -= darkness
-	del(darkness)
-	del(master_plane)
+	darkness = null
+	master_plane = null
 
 mob/proc/setLightOverlay(var/light)
 	light = abs(light)

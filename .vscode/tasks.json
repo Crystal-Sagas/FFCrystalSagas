@@ -4,6 +4,15 @@
 		{
 			"type": "dreammaker",
 			"dme": "RoleplayProject.dme",
+			"presentation": {
+				"echo": true,
+				"reveal": "never",
+				"revealProblems": "onProblem",
+				"focus": false,
+				"panel": "shared",
+				"showReuseMessage": true,
+				"clear": false
+			},
 			"problemMatcher": [
 				"$dreammaker"
 			],
@@ -11,13 +20,13 @@
 				"kind": "build",
 				"isDefault": true
 			},
-			"label": "Build - DM",
-			"dependsOn": "Parse"
+			"label": "dm: build - RoleplayProject.dme"
 		},
 		{
-			"command": "${command:dreammaker.reparse}",
-			"group": "build",
-			"label": "Parse"
+			"label": "dm: build - RoleplayProject.dme",
+			"type": "shell",
+			"command": "echo Skipping direct build; use existing Dream Maker task via VS Code task runner",
+			"group": "build"
 		}
 	]
 }
