@@ -32,7 +32,7 @@ GLOBAL_DATUM_INIT(character_creation, /datum/character_creation_controller, new)
 	)
 
 	/// Whether to use browse chat for dialogue (future feature)
-	var/useBrowseChat = FALSE
+	var/useBrowseChat = TRUE
 
 /**
  * Initialize the creation controller
@@ -151,7 +151,7 @@ GLOBAL_DATUM_INIT(character_creation, /datum/character_creation_controller, new)
  * Called when player clicks the Moogle NPC
  *
  * @param M The mob (player) to create a character for
- * @return TRUE if creation completed, FALSE if failed/cancelled
+ * @return TRUE if creation started/completed, FALSE if failed/cancelled
  */
 /datum/character_creation_controller/proc/beginCreation(mob/M)
 	if(!M)
@@ -160,6 +160,20 @@ GLOBAL_DATUM_INIT(character_creation, /datum/character_creation_controller, new)
 	// Prevent double creation
 	if(M:created)
 		return FALSE
+
+	// Use browse chat dialogue system (async, non-blocking)
+	if(useBrowseChat)
+		var/datum/character_creation_dialogue/dialogue = new(M)
+		return dialogue.start()
+
+	// Legacy blocking flow (fallback)
+	return beginCreationLegacy(M)
+
+/**
+ * Legacy character creation flow (blocking alerts/inputs)
+ * Preserved for fallback if browse chat is disabled
+ */
+/datum/character_creation_controller/proc/beginCreationLegacy(mob/M)
 	M:created = 1
 
 	// Welcome from Moogle

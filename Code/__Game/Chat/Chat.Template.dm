@@ -1,6 +1,6 @@
 /*
 	Chat.Template.dm
-	
+
 	HTML/CSS/JavaScript template generation for the browse-based chat system.
 	This file contains the getChatWindowHTML() proc that generates the full chat interface.
 */
@@ -22,7 +22,7 @@
 			padding: 0;
 			box-sizing: border-box;
 		}
-		
+
 		body {
 			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 			background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
@@ -34,7 +34,7 @@
 			font-size: 14px;
 			padding-top: 8px;
 		}
-		
+
 		/* Filter Tabs */
 		.filter-tabs {
 			display: flex;
@@ -44,7 +44,7 @@
 			border-bottom: 1px solid rgba(90, 101, 112, 0.2);
 			flex-shrink: 0;
 		}
-		
+
 		.filter-tab {
 			padding: 4px 10px;
 			border-radius: 3px;
@@ -58,20 +58,20 @@
 			text-transform: uppercase;
 			letter-spacing: 0.5px;
 		}
-		
+
 		.filter-tab:hover {
 			background: rgba(90, 101, 112, 0.25);
 			transform: translateY(-1px);
 			box-shadow: 0 1px 4px rgba(90, 101, 112, 0.3);
 		}
-		
+
 		.filter-tab.active {
 			background: rgba(90, 101, 112, 0.4);
 			color: #b0bec5;
 			border-color: rgba(90, 101, 112, 0.6);
 			box-shadow: 0 0 8px rgba(90, 101, 112, 0.4);
 		}
-		
+
 		/* Chat Container */
 		.chat-container {
 			flex: 1;
@@ -81,26 +81,26 @@
 			flex-direction: column;
 			gap: 8px;
 		}
-		
+
 		/* Custom Scrollbar */
 		.chat-container::-webkit-scrollbar {
 			width: 8px;
 		}
-		
+
 		.chat-container::-webkit-scrollbar-track {
 			background: rgba(42, 49, 66, 0.3);
 			border-radius: 4px;
 		}
-		
+
 		.chat-container::-webkit-scrollbar-thumb {
 			background: rgba(90, 101, 112, 0.4);
 			border-radius: 4px;
 		}
-		
+
 		.chat-container::-webkit-scrollbar-thumb:hover {
 			background: rgba(90, 101, 112, 0.6);
 		}
-		
+
 		/* Message Cards */
 		.chat-card {
 			background: linear-gradient(135deg, rgba(42, 49, 66, 0.5) 0%, rgba(37, 40, 48, 0.5) 100%);
@@ -113,7 +113,7 @@
 			opacity: 0;
 			animation-fill-mode: forwards;
 		}
-		
+
 		@keyframes slideIn {
 			from {
 				opacity: 0;
@@ -124,23 +124,23 @@
 				transform: translateY(0);
 			}
 		}
-		
+
 		.chat-card:hover {
 			transform: translateX(2px);
 			box-shadow: 0 3px 12px rgba(90, 101, 112, 0.2);
 			border-color: rgba(90, 101, 112, 0.4);
 		}
-		
+
 		/* OOC Card */
 		.chat-card.ooc {
 			border-left: 3px solid #7a8b9a;
 		}
-		
+
 		/* IC Card */
 		.chat-card.ic {
 			border-left: 3px solid #FFD700;
 		}
-		
+
 		/* IC Card - Emote variant (quote_style='emote') */
 		.chat-card.ic.is-emote {
 			border-left: 3px solid #ffa726;
@@ -148,14 +148,14 @@
 			margin-left: 0;
 			margin-right: 0;
 		}
-		
+
 		.chat-card.ic.is-emote .message-content {
 			font-style: italic;
 			color: #ffcc80;
 			line-height: 1.65;
 			padding: 8px 0;
 		}
-		
+
 		.chat-card.ic.is-emote::before {
 			content: '✨';
 			position: absolute;
@@ -164,34 +164,34 @@
 			font-size: 14px;
 			opacity: 0.6;
 		}
-		
+
 		/* Combat Card */
 		.chat-card.combat {
 			border-left: 3px solid #FF4444;
 		}
-		
+
 		/* Admin Card */
 		.chat-card.admin {
 			border-left: 3px solid #FF00FF;
 			background: rgba(255, 0, 255, 0.03);
 		}
-		
+
 		/* System Card */
 		.chat-card.system {
 			border-left: 3px solid #FFA500;
 		}
-		
+
 		/* Rank Card */
 		.chat-card.rank {
 			border-left: 3px solid #00CED1;
 		}
-		
+
 		/* Tab Notification Glow - Base */
 		.filter-tab.notify {
 			animation: tabGlow 1.5s ease-in-out infinite;
 			position: relative;
 		}
-		
+
 		.filter-tab.notify::after {
 			content: '';
 			position: absolute;
@@ -201,17 +201,17 @@
 			height: 8px;
 			border-radius: 50%;
 		}
-		
+
 		/* OOC Tab Notification - Gray/Blue */
 		.filter-tab\[data-filter="ooc"\].notify::after {
 			background: #7a8b9a;
 			box-shadow: 0 0 8px #7a8b9a;
 		}
-		
+
 		.filter-tab\[data-filter="ooc"\].notify {
 			animation: tabGlowOOC 1.5s ease-in-out infinite;
 		}
-		
+
 		@keyframes tabGlowOOC {
 			0%, 100% {
 				box-shadow: 0 0 5px rgba(122, 139, 154, 0.3);
@@ -222,17 +222,17 @@
 				border-color: rgba(122, 139, 154, 0.9);
 			}
 		}
-		
+
 		/* IC Tab Notification - Gold */
 		.filter-tab\[data-filter="ic"\].notify::after {
 			background: #FFD700;
 			box-shadow: 0 0 8px #FFD700;
 		}
-		
+
 		.filter-tab\[data-filter="ic"\].notify {
 			animation: tabGlowIC 1.5s ease-in-out infinite;
 		}
-		
+
 		@keyframes tabGlowIC {
 			0%, 100% {
 				box-shadow: 0 0 5px rgba(255, 215, 0, 0.3);
@@ -243,17 +243,17 @@
 				border-color: rgba(255, 215, 0, 0.9);
 			}
 		}
-		
+
 		/* Combat Tab Notification - Red */
 		.filter-tab\[data-filter="combat"\].notify::after {
 			background: #FF4444;
 			box-shadow: 0 0 8px #FF4444;
 		}
-		
+
 		.filter-tab\[data-filter="combat"\].notify {
 			animation: tabGlowCombat 1.5s ease-in-out infinite;
 		}
-		
+
 		@keyframes tabGlowCombat {
 			0%, 100% {
 				box-shadow: 0 0 5px rgba(255, 68, 68, 0.3);
@@ -264,17 +264,17 @@
 				border-color: rgba(255, 68, 68, 0.9);
 			}
 		}
-		
+
 		/* Admin Tab Notification - Magenta */
 		.filter-tab\[data-filter="admin"\].notify::after {
 			background: #FF00FF;
 			box-shadow: 0 0 8px #FF00FF;
 		}
-		
+
 		.filter-tab\[data-filter="admin"\].notify {
 			animation: tabGlowAdmin 1.5s ease-in-out infinite;
 		}
-		
+
 		@keyframes tabGlowAdmin {
 			0%, 100% {
 				box-shadow: 0 0 5px rgba(255, 0, 255, 0.3);
@@ -285,17 +285,17 @@
 				border-color: rgba(255, 0, 255, 0.9);
 			}
 		}
-		
+
 		/* System Tab Notification - Orange */
 		.filter-tab\[data-filter="system"\].notify::after {
 			background: #FFA500;
 			box-shadow: 0 0 8px #FFA500;
 		}
-		
+
 		.filter-tab\[data-filter="system"\].notify {
 			animation: tabGlowSystem 1.5s ease-in-out infinite;
 		}
-		
+
 		@keyframes tabGlowSystem {
 			0%, 100% {
 				box-shadow: 0 0 5px rgba(255, 165, 0, 0.3);
@@ -306,17 +306,17 @@
 				border-color: rgba(255, 165, 0, 0.9);
 			}
 		}
-		
+
 		/* Rank Tab Notification - Turquoise */
 		.filter-tab\[data-filter="rank"\].notify::after {
 			background: #00CED1;
 			box-shadow: 0 0 8px #00CED1;
 		}
-		
+
 		.filter-tab\[data-filter="rank"\].notify {
 			animation: tabGlowRank 1.5s ease-in-out infinite;
 		}
-		
+
 		@keyframes tabGlowRank {
 			0%, 100% {
 				box-shadow: 0 0 5px rgba(0, 206, 209, 0.3);
@@ -327,7 +327,7 @@
 				border-color: rgba(0, 206, 209, 0.9);
 			}
 		}
-		
+
 		/* Message Header */
 		.message-header {
 			display: flex;
@@ -337,7 +337,7 @@
 			padding-bottom: 6px;
 			border-bottom: 1px solid rgba(90, 101, 112, 0.2);
 		}
-		
+
 		.message-sender {
 			font-weight: 600;
 			font-size: 14px;
@@ -345,7 +345,7 @@
 			align-items: center;
 			gap: 6px;
 		}
-		
+
 		.message-meta {
 			display: flex;
 			gap: 8px;
@@ -353,7 +353,7 @@
 			font-size: 11px;
 			color: rgba(255, 255, 255, 0.5);
 		}
-		
+
 		.message-tag {
 			padding: 2px 6px;
 			border-radius: 3px;
@@ -362,21 +362,21 @@
 			font-weight: bold;
 			text-transform: uppercase;
 		}
-		
+
 		.message-timestamp {
 			font-family: 'Courier New', monospace;
 			font-size: 11px;
 			color: rgba(255, 255, 255, 0.4);
 			font-weight: 500;
 		}
-		
+
 		/* Message Content */
 		.message-content {
 			font-size: 13px;
 			line-height: 1.5;
 			color: rgba(255, 255, 255, 0.9);
 		}
-		
+
 		/* Admin Link */
 		.admin-link {
 			color: #8a92a0;
@@ -385,17 +385,17 @@
 			font-size: 13px;
 			transition: all 0.2s ease;
 		}
-		
+
 		.admin-link:hover {
 			color: #b0bec5;
 			text-shadow: 0 0 6px rgba(90, 101, 112, 0.5);
 		}
-		
+
 		/* Hidden Messages */
 		.chat-card.hidden {
 			display: none;
 		}
-		
+
 		/* No Messages */
 		.no-messages {
 			text-align: center;
@@ -404,18 +404,18 @@
 			padding: 30px;
 			font-size: 13px;
 		}
-		
+
 		/* Forum-style Features */
-		
+
 		/* Message Alignment (Left/Right alternating) */
 		.chat-card.align-left {
 			margin-right: 10%;
 		}
-		
+
 		.chat-card.align-right {
 			margin-left: 10%;
 		}
-		
+
 		/* Badges */
 		.chat-badges {
 			display: inline-flex;
@@ -424,7 +424,7 @@
 			align-items: center;
 			vertical-align: middle;
 		}
-		
+
 		.chat-badge {
 			display: inline-block;
 			padding: 3px 8px;
@@ -437,7 +437,7 @@
 			white-space: nowrap;
 			box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 		}
-		
+
 		/* Quote Preview */
 		.quote-preview {
 			background: rgba(90, 101, 112, 0.2);
@@ -448,19 +448,19 @@
 			font-size: 12px;
 			color: rgba(255, 255, 255, 0.7);
 		}
-		
+
 		.quote-preview .quote-author {
 			font-weight: bold;
 			color: rgba(176, 190, 197, 0.9);
 			font-size: 11px;
 			margin-bottom: 2px;
 		}
-		
+
 		.quote-preview .quote-text {
 			font-style: italic;
 			line-height: 1.4;
 		}
-		
+
 		/* Message Number (hover to show) */
 		.message-number {
 			opacity: 0;
@@ -470,12 +470,12 @@
 			font-weight: 600;
 			margin-right: 6px;
 		}
-		
+
 		.chat-card:hover .message-number {
 			opacity: 1;
 			color: rgba(176, 190, 197, 0.8);
 		}
-		
+
 		/* Message Actions */
 		.message-actions {
 			opacity: 0;
@@ -485,21 +485,156 @@
 			gap: 8px;
 			font-size: 11px;
 		}
-		
+
 		.chat-card:hover .message-actions {
 			opacity: 1;
 		}
-		
+
 		.action-button {
 			color: rgba(138, 146, 160, 0.8);
 			cursor: pointer;
 			transition: color 0.15s ease;
 			font-weight: 500;
 		}
-		
+
 		.action-button:hover {
 			color: rgba(176, 190, 197, 1);
 		}
+
+		/* ============================================= */
+		/* NPC Dialogue Panel - Persistent UI Element   */
+		/* ============================================= */
+
+		#npcDialoguePanel {
+			display: none;
+			position: sticky;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			background: linear-gradient(135deg, #1a2744 0%, #243552 100%);
+			border-top: 2px solid #4a6fa5;
+			padding: 12px 16px;
+			z-index: 100;
+			box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.4);
+		}
+
+		#npcDialoguePanel.active {
+			display: block;
+		}
+
+		.npc-dialogue-header {
+			display: flex;
+			align-items: center;
+			gap: 10px;
+			margin-bottom: 10px;
+		}
+
+		.npc-dialogue-speaker {
+			font-weight: 600;
+			font-size: 14px;
+			color: #90caf9;
+			text-shadow: 0 0 8px rgba(144, 202, 249, 0.4);
+		}
+
+		.npc-dialogue-speaker::after {
+			content: '';
+			display: inline-block;
+			width: 6px;
+			height: 6px;
+			background: #4caf50;
+			border-radius: 50%;
+			margin-left: 8px;
+			animation: speakerPulse 1.5s ease-in-out infinite;
+		}
+
+		@keyframes speakerPulse {
+			0%, 100% { opacity: 1; transform: scale(1); }
+			50% { opacity: 0.6; transform: scale(0.8); }
+		}
+
+		.npc-dialogue-text {
+			color: #e0e6ed;
+			font-size: 13px;
+			line-height: 1.5;
+			padding: 10px 14px;
+			background: rgba(0, 0, 0, 0.25);
+			border-radius: 8px;
+			border-left: 3px solid #4a6fa5;
+			margin-bottom: 12px;
+			min-height: 40px;
+		}
+
+		.npc-dialogue-divider {
+			height: 1px;
+			background: linear-gradient(90deg, transparent 0%, rgba(74, 111, 165, 0.5) 20%, rgba(74, 111, 165, 0.5) 80%, transparent 100%);
+			margin: 10px 0;
+		}
+
+		.npc-dialogue-choices {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 8px;
+		}
+
+		.npc-dialogue-choices.grid-layout {
+			display: grid;
+			grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+			gap: 6px;
+		}
+
+		.npc-choice-button {
+			display: inline-block;
+			background: linear-gradient(135deg, #3d5a80 0%, #4a6fa5 100%);
+			color: #e0e6ed;
+			padding: 10px 16px;
+			border-radius: 6px;
+			text-decoration: none;
+			border: 1px solid #5d7aa0;
+			font-size: 13px;
+			font-weight: 500;
+			transition: all 0.2s ease;
+			text-align: center;
+			cursor: pointer;
+		}
+
+		.npc-choice-button:hover {
+			background: linear-gradient(135deg, #4a6fa5 0%, #5d7aa0 100%);
+			border-color: #90caf9;
+			transform: translateY(-1px);
+			box-shadow: 0 4px 12px rgba(74, 111, 165, 0.3);
+		}
+
+		.npc-choice-button:active {
+			transform: translateY(0);
+		}
+
+		.npc-choice-button.compact {
+			padding: 6px 10px;
+			font-size: 12px;
+		}
+
+		.npc-dialogue-input {
+			margin-top: 8px;
+		}
+
+		.npc-dialogue-input a {
+			display: inline-block;
+			background: linear-gradient(135deg, #2e7d32 0%, #388e3c 100%);
+			color: #e0e6ed;
+			padding: 10px 20px;
+			border-radius: 6px;
+			text-decoration: none;
+			border: 1px solid #4caf50;
+			font-size: 13px;
+			font-weight: 500;
+			transition: all 0.2s ease;
+		}
+
+		.npc-dialogue-input a:hover {
+			background: linear-gradient(135deg, #388e3c 0%, #43a047 100%);
+			border-color: #66bb6a;
+		}
+
 	</style>
 </head>
 <body>
@@ -512,10 +647,10 @@
 		<div class="filter-tab" data-filter="rank" id="rankTab" style="display: none;">Rank</div>
 		<div class="filter-tab" data-filter="admin" id="adminTab" style="display: none;">Admin</div>
 	</div>
-	
+
 	<div class="chat-container" id="chatContainer">
 "}
-	
+
 	// Add messages if provided
 	if(messages && length(messages))
 		for(var/list/msg_data in messages)
@@ -528,16 +663,28 @@
 	else
 		html += {"		<div class="no-messages">No messages yet. Start chatting!</div>
 "}
-	
+
 	html += {"	</div>
+
+	<!-- NPC Dialogue Panel - Sticky at bottom -->
+	<div id="npcDialoguePanel">
+		<div class="npc-dialogue-header">
+			<span class="npc-dialogue-speaker" id="npcSpeaker">NPC</span>
+		</div>
+		<div class="npc-dialogue-text" id="npcDialogueText">
+			...
+		</div>
+		<div class="npc-dialogue-choices" id="npcDialogueChoices">
+		</div>
 	</div>
-	
+	</div>
+
 	<script type="text/javascript">
-		
+
 		var currentFilter = 'all';
 		var messageCount = 0;
 		var isAdmin = false;
-		
+
 		function addClass(element, className) {
 			if(!element || !className) return;
 			var classes = element.className ? element.className.split(/\\s+/) : Array();
@@ -553,7 +700,7 @@
 			classes.push(className);
 			element.className = classes.join(' ');
 		}
-		
+
 		function removeClass(element, className) {
 			if(!element || !className) return;
 			if(!element.className) return;
@@ -566,7 +713,7 @@
 			});
 			element.className = filtered.join(' ');
 		}
-		
+
 		function safeAddEventListener(target, type, handler, useCapture) {
 			if(target.addEventListener) {
 				target.addEventListener(type, handler, useCapture);
@@ -574,14 +721,14 @@
 				target.attachEvent('on' + type, handler);
 			}
 		}
-		
+
 		// Prevent focus from sticking to the browser control so movement keys keep working
 		safeAddEventListener(document, 'focus', function() {
 			if(document.activeElement && document.activeElement.blur) {
 				document.activeElement.blur();
 			}
 		}, true);
-		
+
 		// Message handler for ter13 pattern
 		// Incoming values may arrive as a single packed "a&b&c" string or as discrete args.
 		// We normalise them here so downstream logic always works with decoded strings.
@@ -626,7 +773,7 @@
 			}
 			return collection;
 		}
-		
+
 		// Relative timestamp helper
 		function getRelativeTime(timestamp) {
 			if(!timestamp) return '';
@@ -637,18 +784,18 @@
 			// Otherwise return as-is (fallback to absolute timestamp)
 			return timestamp;
 		}
-		
+
 		// Badge HTML builder
 		function buildBadgeHTML(badgesData) {
 			if(!badgesData || badgesData === '') return '';
 			return '<span class="chat-badges">' + badgesData + '</span>';
 		}
-		
+
 		// Convert Unix timestamp to relative time string
 		function formatRelativeTime(unixTimestamp) {
 			var now = Math.floor(Date.now() / 1000);
 			var diff = now - unixTimestamp;
-			
+
 			if(diff < 60) return 'just now';
 			if(diff < 3600) {
 				var mins = Math.floor(diff / 60);
@@ -664,12 +811,12 @@
 			}
 			return 'a while ago';
 		}
-		
+
 		// Update all visible timestamps
 		function updateTimestamps() {
 			var container = document.getElementById('chatContainer');
 			if(!container) return;
-			
+
 			var allTimestamps = container.getElementsByClassName('message-timestamp');
 			Array.prototype.forEach.call(allTimestamps, function(el) {
 				var created = el.getAttribute('data-created');
@@ -678,7 +825,7 @@
 				}
 			});
 		}
-		
+
 		// Update timestamps every 30 seconds
 		setInterval(updateTimestamps, 30000);
 
@@ -729,22 +876,22 @@
 
 			if(!channel) return;
 			if(!message && message !== '') return;
-			
+
 			// Use provided timestamp or generate one
 			if(!timestamp || timestamp === '') {
 				timestamp = new Date().toLocaleTimeString();
 			}
 			var displayTimestamp = getRelativeTime(timestamp);
-			
+
 			var html = '';
 			var isObserver = (flag1 === 'observer');
 			var isAdminMode = (flag1 === 'adminmode');
 			var admin_ref = (flag1 && flag1 !== 'observer' && flag1 !== 'adminmode') ? flag1 : null;
 			var sender_ref = flag2;
-			
+
 			// Check if this is an emote (via quote_style)
 			var isEmote = (quote_style === 'emote');
-			
+
 			// Handle system and admin messages first
 			if(channel === 'system' || channel === 'admin') {
 				const prefixColor = (channel === 'system') ? '#FFA500' : '#FF9800';
@@ -756,16 +903,16 @@
 					html += '<span style="font-weight: bold; color: ' + prefixColor + ';">\[' + prefix + '\]</span> ';
 				}
 				html += speakerText + message + '</div>';
-				
+
 				// Append metadata (action links) if provided
 				if(metadata && metadata !== '' && metadata !== 'null') {
 					html += metadata;
 				}
-				
+
 				addChatMessage(html, channel);
 				return;
 			}
-			
+
 			if(channel === 'all' && (speaker === 'System' || speaker === 'Admin' || !speaker || speaker === 'null')) {
 				const messageColor = (speaker === 'Admin') ? '#ff4444' : '#00d4ff';
 				html = '<div class="message-content" style="padding: 8px 0; color: ' + messageColor + '; font-weight: 400; line-height: 1.5;">' + message + '</div>';
@@ -773,34 +920,34 @@
 			}
 			else if(channel === 'ic' || channel === 'looc') {
 				const isLOOC = (channel === 'looc' || (quote_style && quote_style.indexOf('OOC') >= 0));
-				
+
 				// Build forum-style IC card
 				let headerHtml = '';
 				let contentHtml = '';
-				
+
 				// Build header for IC messages
 				if(speaker && speaker !== 'null' && speaker !== '') {
 					var messageNumHTML = message_id ? '<span class="message-number">#' + message_id + '</span>' : '';
 					var speakerColor = color || '#FFFFFF';
-					
+
 					headerHtml = '<div class="message-header">' +
 						'<span class="message-sender">' + messageNumHTML + '<span style="color: ' + speakerColor + ';">' + speaker + '</span></span>' +
 						'<span class="message-timestamp">' + displayTimestamp + '</span>' +
 						'</div>';
 				}
-				
+
 			// Build content - emotes get special treatment
 			if(isEmote) {
 				// Emote content: italic, warm color, better line height, no quotes
 				contentHtml = '<div class="message-content" style="padding: 8px 0; font-style: italic; color: #ffcc80; line-height: 1.65;">';
-				
+
 				if(isObserver) {
 					contentHtml += '<span style="opacity: 0.7;">(Observe)</span> ';
 				}
 				if(isAdminMode) {
 					contentHtml += '<span style="opacity: 0.7;">(Admin Mode)</span> ';
 				}
-				
+
 				// Emotes: just the message (no quote wrapping, players add their own)
 				contentHtml += message;
 				contentHtml += '</div>';
@@ -814,7 +961,7 @@
 			} else {
 				// Regular IC speech
 				contentHtml = '<div class="message-content" style="padding: 5px 0;">';
-				
+
 				if(isObserver) {
 					contentHtml += '<span style="font-style: italic; opacity: 0.7;">(Observe)</span> ';
 				}
@@ -824,11 +971,11 @@
 				if(language && !isLOOC) {
 					contentHtml += '<b>\[' + language + '\]</b> ';
 				}
-				
+
 				if(quote_style && quote_style !== 'emote') {
 					contentHtml += quote_style + ' ';
 				}
-				
+
 				if(heard === '1' || heard === 1 || heard === true) {
 					if(isLOOC || quote_style === 'thinks') {
 						contentHtml += message;
@@ -838,10 +985,10 @@
 				} else {
 					contentHtml += '<span style="font-style: italic; opacity: 0.6;">something.</span>';
 				}
-				
+
 				contentHtml += '</div>';
 			}
-			
+
 			// Quote preview if provided (check for actual content, not empty strings)
 			var quoteHTML = (quote_html && quote_html !== '' && quote_html !== 'null') ? quote_html : '';
 			var actionsHTML = '';
@@ -856,9 +1003,9 @@
 					'<a class="action-button" href="#" onclick="quoteMessage(&apos;' + speaker + '&apos;, ' + (quoteTargetId || 0) + ', &apos;' + message.replace(/'/g, '&apos;').replace(/"/g, '&quot;') + '&apos;); return false;">💬 Quote</a>' +
 					'</div>';
 			}
-			
+
 			html = headerHtml + quoteHTML + contentHtml + actionsHTML;
-				
+
 				// Apply alignment for IC messages
 				var alignmentClass = alignment ? 'align-' + alignment : '';
 				// Add emote class modifier if this is an emote
@@ -880,20 +1027,20 @@
 							speakerColor = '#00CED1'; // Dark Turquoise for rank chat
 						}
 					}
-					
+
 					// Build header with badges, message number, speaker, and timestamp
 					var badgeHTML = buildBadgeHTML(badges);
 					var messageNumHTML = message_id ? '<span class="message-number">#' + message_id + '</span>' : '';
-					
+
 					headerHtml = '<div class="message-header">' +
 						'<span class="message-sender">' + messageNumHTML + badgeHTML + '<span style="color: ' + speakerColor + ';">' + speaker + '</span></span>' +
 						'<span class="message-timestamp">' + displayTimestamp + '</span>' +
 						'</div>';
 				}
-				
+
 				// Quote preview if provided (check for actual content, not empty strings)
 				var quoteHTML = (quote_html && quote_html !== '' && quote_html !== 'null') ? quote_html : '';
-				
+
 				let contentStyle = 'padding: 5px 0;';
 				if(channel === 'combat') {
 					contentStyle += ' color: #FF6666; font-weight: 500;';
@@ -904,7 +1051,7 @@
 				} else if(channel === 'system') {
 					contentStyle += ' color: #FFB84D; font-weight: 500;';
 				}
-				
+
 				// Build action buttons if admin
 				var actionsHTML = '';
 				if(admin_ref && sender_ref) {
@@ -926,9 +1073,9 @@
 						'<a class="action-button" href="#" onclick="quoteMessage(&apos;' + speaker + '&apos;, ' + (quoteTargetId || 0) + ', &apos;' + message.replace(/'/g, '&apos;').replace(/"/g, '&quot;') + '&apos;); return false;">💬 Quote</a>' +
 						'</div>';
 				}
-				
+
 				html = headerHtml + quoteHTML + '<div class="message-content" style="' + contentStyle + '">' + message + '</div>' + actionsHTML;
-				
+
 				// Route LOOC to OOC tab for filtering
 				const displayChannel = (channel === 'looc') ? 'ooc' : channel;
 				// Apply alignment class if provided
@@ -936,7 +1083,7 @@
 				addChatMessage(html, displayChannel || 'all', alignmentClass);
 			}
 		}
-		
+
 		function addChatMessage(html, channel, alignmentClass) {
 			var container = document.getElementById('chatContainer');
 			if(!container) {
@@ -968,7 +1115,7 @@
 			}
 			messageDiv.className = classNames;
 			messageDiv.setAttribute('data-channel', channel);
-			messageDiv.innerHTML = html;		
+			messageDiv.innerHTML = html;
 		// Store creation timestamp on the message for live updates
 		var timestampEl = messageDiv.querySelector ? messageDiv.querySelector('.message-timestamp') : null;
 		if(timestampEl) {
@@ -980,7 +1127,7 @@
 				addClass(messageDiv, 'hidden');
 			}
 			container.scrollTop = container.scrollHeight;
-			
+
 			// Trigger notification logic:
 			// - If viewing 'all' tab: notify the specific channel tab
 			// - If viewing a specific tab: notify if message is from a different channel
@@ -993,7 +1140,7 @@
 				// Viewing a specific tab - notify if message is from different channel
 				notifyTab(channel);
 			}
-			
+
 			if(messageCount > 200) {
 				var firstMessage = container.querySelector ? container.querySelector('.chat-card') : null;
 				if(!firstMessage) {
@@ -1013,7 +1160,7 @@
 				}
 			}
 		}
-		
+
 		function filterMessages(filter) {
 			var container = document.getElementById('chatContainer');
 			var wasAtBottom = false;
@@ -1021,7 +1168,7 @@
 				var tolerance = 5;
 				wasAtBottom = (container.scrollHeight - container.scrollTop - container.clientHeight) <= tolerance;
 			}
-			
+
 			currentFilter = filter;
 			var tabs = document.querySelectorAll ? document.querySelectorAll('.filter-tab') : Array();
 			Array.prototype.forEach.call(tabs, function(tab) {
@@ -1044,14 +1191,14 @@
 					addClass(msg, 'hidden');
 				}
 			});
-			
+
 			if(container && wasAtBottom) {
 				container.scrollTop = container.scrollHeight;
 			}
 		}
-		
+
 		window.filterMessages = filterMessages;
-		
+
 		// Attach click handlers to filter tabs
 		function attachTabHandlers() {
 			var tabs = document.querySelectorAll ? document.querySelectorAll('.filter-tab') : document.getElementsByClassName('filter-tab');
@@ -1064,10 +1211,134 @@
 				});
 			}
 		}
-		
+
 		// Call attachTabHandlers after a short delay to ensure DOM is ready
 		setTimeout(attachTabHandlers, 100);
-		
+
+		// ============================================
+		// NPC Dialogue Panel Functions
+		// ============================================
+
+		/**
+		 * Show the NPC dialogue panel with speaker and text
+		 * Receives params as "speaker&text" from BYOND
+		 * Appends text to existing dialogue rather than replacing
+		 */
+		window.showNPCDialogue = function(speaker, text) {
+			// Handle BYOND's & separator format
+			var params = unpackParams(arguments);
+			speaker = params.shift() || 'NPC';
+			text = params.shift() || '';
+
+			var panel = document.getElementById('npcDialoguePanel');
+			var speakerEl = document.getElementById('npcSpeaker');
+			var textEl = document.getElementById('npcDialogueText');
+			var choicesEl = document.getElementById('npcDialogueChoices');
+
+			if(panel && speakerEl && textEl) {
+				speakerEl.innerHTML = speaker;
+
+				// Append new text with a separator if there's existing content
+				var existingText = textEl.innerHTML;
+				if(existingText && existingText !== '...' && existingText.trim() !== '') {
+					textEl.innerHTML = existingText + '<div class="npc-dialogue-divider"></div>' + text;
+				} else {
+					textEl.innerHTML = text;
+				}
+
+				if(choicesEl) choicesEl.innerHTML = '';
+				addClass(panel, 'active');
+
+				// Scroll the dialogue text to show the newest message
+				textEl.scrollTop = textEl.scrollHeight;
+
+				// Scroll chat container to show the panel
+				var container = document.getElementById('chatContainer');
+				if(container) {
+					container.scrollTop = container.scrollHeight;
+				}
+			}
+		};
+
+		/**
+		 * Clear the NPC dialogue text (for starting a new conversation)
+		 */
+		window.clearNPCDialogue = function() {
+			var textEl = document.getElementById('npcDialogueText');
+			if(textEl) {
+				textEl.innerHTML = '';
+			}
+		};
+
+		/**
+		 * Update just the dialogue text (keeps speaker the same)
+		 */
+		window.updateNPCDialogueText = function(text) {
+			var params = unpackParams(arguments);
+			text = params.shift() || '';
+
+			var textEl = document.getElementById('npcDialogueText');
+			if(textEl) {
+				textEl.innerHTML = text;
+			}
+		};
+
+		/**
+		 * Update the choice buttons in the NPC dialogue panel
+		 * Receives URL-encoded HTML from BYOND
+		 */
+		window.updateNPCChoices = function(choicesHtml) {
+			var params = unpackParams(arguments);
+			choicesHtml = params.shift() || '';
+
+			var choicesEl = document.getElementById('npcDialogueChoices');
+			if(choicesEl) {
+				choicesEl.innerHTML = choicesHtml;
+			}
+		};
+
+		/**
+		 * Set whether the choices should use grid layout (for many options)
+		 * Receives "1" or "0" from BYOND
+		 */
+		window.setNPCChoicesGrid = function(useGrid) {
+			var params = unpackParams(arguments);
+			useGrid = params.shift() === '1' || useGrid === 'true';
+
+			var choicesEl = document.getElementById('npcDialogueChoices');
+			if(choicesEl) {
+				if(useGrid) {
+					addClass(choicesEl, 'grid-layout');
+				} else {
+					removeClass(choicesEl, 'grid-layout');
+				}
+			}
+		};
+
+		/**
+		 * Hide the NPC dialogue panel
+		 */
+		window.hideNPCDialogue = function() {
+			var panel = document.getElementById('npcDialoguePanel');
+			if(panel) {
+				removeClass(panel, 'active');
+			}
+		};
+
+		/**
+		 * Show a text input prompt in the NPC dialogue panel
+		 * Receives URL-encoded HTML from BYOND
+		 */
+		window.showNPCInput = function(promptHtml) {
+			var params = unpackParams(arguments);
+			promptHtml = params.shift() || '';
+
+			var choicesEl = document.getElementById('npcDialogueChoices');
+			if(choicesEl) {
+				choicesEl.innerHTML = '<div class="npc-dialogue-input">' + promptHtml + '</div>';
+			}
+		};
+
 		window.clearChat = function() {
 			var container = document.getElementById('chatContainer');
 			if(container) {
@@ -1075,10 +1346,10 @@
 			}
 			messageCount = 0;
 		};
-		
+
 		// Make onMessage globally accessible for BYOND to call
 		window.onMessage = onMessage;
-		
+
 		// Function to show/hide admin tab based on admin status
 		window.setAdminMode = function(hasAdmin) {
 			isAdmin = hasAdmin;
@@ -1087,7 +1358,7 @@
 				adminTab.style.display = hasAdmin ? '' : 'none';
 			}
 		};
-		
+
 	// Function to show/hide rank tab based on rank holder status
 	window.setRankMode = function(hasRank) {
 		var rankTab = document.getElementById('rankTab');
@@ -1095,7 +1366,7 @@
 			rankTab.style.display = hasRank ? '' : 'none';
 		}
 	};
-	
+
 		// Function to notify any tab with glow animation
 		function notifyTab(channel) {
 			var tab = null;
@@ -1111,22 +1382,22 @@
 				addClass(tab, 'notify');
 			}
 		}
-		
+
 		// Legacy compatibility - still expose notifyAdminTab for existing code
 		function notifyAdminTab() {
 			notifyTab('admin');
 		}
-		
+
 		window.notifyTab = notifyTab;
 		window.notifyAdminTab = notifyAdminTab;
-		
+
 		// Function to quote a message - calls dedicated Quote verb
 		window.quoteMessage = function(playerName, messageId, messageText) {
 			// Call the Quote action via byond:// protocol
 			// The client/Topic handler will process this
 			window.location.href = 'byond://?action=quote&player=' + encodeURIComponent(playerName) + '&id=' + messageId;
 		};
-		
+
 	</script>
 </body>
 </html>

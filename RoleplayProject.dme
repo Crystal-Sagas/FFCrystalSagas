@@ -200,6 +200,7 @@
 #include "Code\__Game\_DM\Mob\Player\Player.Logout.dm"
 #include "Code\__Game\_DM\Mob\Player\Player.Session.dm"
 #include "Code\__Game\Character\Creation\CharacterCreation.Controller.dm"
+#include "Code\__Game\Character\Creation\CharacterCreation.Dialogue.dm"
 #include "Code\__Game\Character\Creation\CharacterData.Init.dm"
 #include "Code\__Game\Character\Creation\Equipment.Registry.dm"
 #include "Code\__Game\Character\Creation\Equipment.Schema.dm"
