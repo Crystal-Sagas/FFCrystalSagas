@@ -306,7 +306,7 @@
 		// When implemented, add: if(M.Observer) handleObserverMessage(M, Sender, SQ, display_msg)
 
 	// Add to quote history for future references (use original untranslated message)
-	addToQuoteHistory(usr, original_msg, "ic")
+	addToQuoteHistory(global_message_id, "[usr]", original_msg, "ic")
 
 /**
  * Handle observer mode separately

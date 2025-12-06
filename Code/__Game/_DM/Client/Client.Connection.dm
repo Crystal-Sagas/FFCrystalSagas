@@ -48,9 +48,18 @@
 	return P
 
 /**
- * Override Topic to track activity
+ * Override Topic to track activity and handle chat actions
  */
 /client/Topic(href, list/href_list)
 	. = ..()
 	if(playerMob && playerMob.session)
 		playerMob.session.lastActivityTime = world.time
+
+	// Handle quote action from chat
+	if(href_list["action"] == "quote")
+		var/quoted_player = href_list["player"]
+		var/quoted_id = text2num(href_list["id"])
+		var/quoted_text = href_list["text"]
+		if(quoted_player)
+			openQuoteReplyWindow(quoted_player, quoted_id, quoted_text)
+		return

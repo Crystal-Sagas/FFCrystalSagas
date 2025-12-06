@@ -502,20 +502,16 @@
 		}
 
 		/* ============================================= */
-		/* NPC Dialogue Panel - Persistent UI Element   */
+		/* NPC Dialogue Panel - Chat Card Style          */
 		/* ============================================= */
 
 		#npcDialoguePanel {
 			display: none;
-			position: sticky;
-			bottom: 0;
-			left: 0;
-			right: 0;
 			background: linear-gradient(135deg, #1a2744 0%, #243552 100%);
-			border-top: 2px solid #4a6fa5;
+			border: 1px solid #4a6fa5;
+			border-radius: 8px;
 			padding: 12px 16px;
-			z-index: 100;
-			box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.4);
+			margin: 8px 0;
 		}
 
 		#npcDialoguePanel.active {
@@ -664,9 +660,8 @@
 		html += {"		<div class="no-messages">No messages yet. Start chatting!</div>
 "}
 
-	html += {"	</div>
-
-	<!-- NPC Dialogue Panel - Sticky at bottom -->
+	html += {"
+	<!-- NPC Dialogue Panel - Inside chat container so it scrolls -->
 	<div id="npcDialoguePanel">
 		<div class="npc-dialogue-header">
 			<span class="npc-dialogue-speaker" id="npcSpeaker">NPC</span>
@@ -676,6 +671,7 @@
 		</div>
 		<div class="npc-dialogue-choices" id="npcDialogueChoices">
 		</div>
+	</div>
 	</div>
 	</div>
 
@@ -1395,7 +1391,7 @@
 		window.quoteMessage = function(playerName, messageId, messageText) {
 			// Call the Quote action via byond:// protocol
 			// The client/Topic handler will process this
-			window.location.href = 'byond://?action=quote&player=' + encodeURIComponent(playerName) + '&id=' + messageId;
+			window.location.href = 'byond://?action=quote&player=' + encodeURIComponent(playerName) + '&id=' + messageId + '&text=' + encodeURIComponent(messageText || '');
 		};
 
 	</script>
