@@ -1,64 +1,64 @@
 macro "macro"
-	elem 
+	elem
 		name = "Center+REP"
 		command = ".center"
-	elem 
+	elem
 		name = "Northeast+REP"
 		command = ".northeast"
-	elem 
+	elem
 		name = "Southeast+REP"
 		command = ".southeast"
-	elem 
+	elem
 		name = "Southwest+REP"
 		command = ".southwest"
-	elem 
+	elem
 		name = "Northwest+REP"
 		command = ".northwest"
-	elem 
+	elem
 		name = "SHIFT+West"
 		command = "turnleft"
-	elem 
+	elem
 		name = "West+REP"
 		command = ".west"
-	elem 
+	elem
 		name = "SHIFT+North"
 		command = "turnup"
-	elem 
+	elem
 		name = "North+REP"
 		command = ".north"
-	elem 
+	elem
 		name = "SHIFT+East"
 		command = "turnright"
-	elem 
+	elem
 		name = "East+REP"
 		command = ".east"
-	elem 
+	elem
 		name = "SHIFT+South"
 		command = "turndown"
-	elem 
+	elem
 		name = "South+REP"
 		command = ".south"
-	elem 
+	elem
 		name = "C+UP"
 		command = "Charsheet"
-	elem 
+	elem
 		name = "G"
-	elem 
+	elem
 		name = "I+UP"
 		command = "InventoryScreen"
-	elem 
+	elem
 		name = "R+UP"
 		command = "Reacting"
-	elem 
+	elem
 		name = "X"
 
 
 menu "menu"
-	elem 
+	elem
 		name = "&File"
 		command = ""
 		saved-params = "is-checked"
-	elem 
+	elem
 		name = "&Quit"
 		command = ".quit"
 		category = "&File"
@@ -67,36 +67,36 @@ menu "menu"
 		name = "Options"
 		command = ""
 		saved-params = "is-checked"
-	elem 
+	elem
 		name = "Admin Help"
 		command = "Adminhelp"
 		category = "Options"
 		saved-params = "is-checked"
-	elem 
+	elem
 		name = "NPC"
 		command = "Opennpc"
 		category = "Options"
 		saved-params = "is-checked"
-	elem 
+	elem
 		name = "RPFlag"
 		command = "SetRPFlag"
 		category = "Options"
 		saved-params = "is-checked"
-	elem 
+	elem
 		name = "Save"
 		command = "SaveSelf"
 		category = "Options"
 		saved-params = "is-checked"
-	elem 
+	elem
 		name = "Information"
 		command = ""
 		saved-params = "is-checked"
-	elem 
+	elem
 		name = "Who"
 		command = "Who"
 		category = "Information"
 		saved-params = "is-checked"
-	elem 
+	elem
 		name = "Races"
 		command = "Races"
 		category = "Information"
@@ -9200,67 +9200,22 @@ window "default"
 		icon = 'Sheet\\Chocobo.png'
 		macro = "macro"
 		menu = "menu"
-		outer-size = 1560x1017
-		outer-pos = 291,0
-		inner-size = 1544x939
-		inner-pos = 8,51
-		screen-size = 1920x1040
-	elem "browser1"
-		type = BROWSER
-		pos = 1008,0
-		size = 536x952
-		anchor1 = 65,0
-		anchor2 = 100,100
-		background-color = #b2b2b2
-		border = sunken
-		saved-params = ""
-	elem "label240"
-		type = LABEL
-		pos = 992,0
-		size = 16x952
-		anchor1 = 74,73
-		anchor2 = 75,100
-		background-color = #000080
-		saved-params = ""
-		text = ""
-		image = 'Sheet\\Gui Label 2.png'
-	elem "label239"
-		type = LABEL
-		pos = 1000,952
-		size = 544x8
-		anchor1 = 100,100
-		anchor2 = -1,-1
-		background-color = #000080
-		saved-params = ""
-		text = ""
-		image = 'Sheet\\Gui Label 2.png'
-	elem "label179"
-		type = LABEL
-		pos = 1000,0
-		size = 544x8
-		anchor1 = 50,72
-		anchor2 = 76,74
-		background-color = #000080
-		saved-params = ""
-		text = ""
-		image = 'Sheet\\Gui Label 2.png'
-	elem "label6"
-		type = LABEL
-		pos = -4,979
-		size = 756x11
-		anchor1 = 0,99
-		anchor2 = 48,100
-		background-color = #000080
-		saved-params = ""
-		text = ""
 	elem "game_map"
 		type = MAP
 		pos = 0,0
-		size = 1000x958
+		size = 1000x939
 		anchor1 = 0,0
-		anchor2 = 100,67
+		anchor2 = 65,100
 		saved-params = "zoom-mode"
 		on-size = ".on_viewport [[width]] [[height]]"
+	elem "browser1"
+		type = BROWSER
+		pos = 1000,0
+		size = 544x939
+		anchor1 = 65,0
+		anchor2 = 100,100
+		background-color = #1a1a2e
+		saved-params = ""
 
 window "faction"
 	elem "faction"
