@@ -12,6 +12,12 @@
 /client/New()
 	. = ..()
 
+	// Initialize HudLib UI manager
+	InitializeUI()
+
+	// Start HudLib tick loop
+	startHudTick()
+
 	// Initialize save system
 	initSaveSystem()
 
@@ -34,6 +40,17 @@
 	playerMob = null
 	return ..()
 
+/**
+ * HudLib tick loop - runs ui.Tick() and MouseUpdate() each frame
+ * This enables HUD widgets to receive periodic updates
+ */
+/client/proc/startHudTick()
+	set waitfor = FALSE
+	while(src) // Loop while client exists
+		if(ui)
+			ui.Tick()
+		MouseUpdate()
+		sleep(world.tick_lag)
 /**
  * Creates the player mob and sets up initial state
  */

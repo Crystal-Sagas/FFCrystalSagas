@@ -84,6 +84,9 @@
 		client.eye = src
 		client.perspective = EYE_PERSPECTIVE
 
+	// Setup game HUD with buttons
+	setupGameHUD()
+
 	// Emit signal for other systems to react
 	raise_signal(DSIG_PLAYER_ENTERED_WORLD)
 	return TRUE

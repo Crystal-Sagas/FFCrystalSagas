@@ -15,7 +15,7 @@ proc/Load_Ban()
 		S["Bans"]>>Bans
 atom
 	proc
-		Value(A)
+		FormatValue(A)
 			if(isnull(A)) return "Nothing"
 			else if(isnum(A)) return "[num2text(round(A,0.01),20)]"
 			else return "[A]"
@@ -503,7 +503,7 @@ mob
 				for(var/C in B)
 					Edit+="<td><a href=byond://?src=\ref[A];action=edit;var=[C]>"
 					Edit+=C
-					Edit+="<td>[Value(A.vars[C])]</td></tr>"
+					Edit+="<td>[FormatValue(A.vars[C])]</td></tr>"
 				usr<<browse(Edit,"window=[A];size=450x600")
 				if(usr.adminlv>3)// This bit of code is to stop people who are not level 4 Admins which is Neo(Owner) and Vi(Head Admin) from getting it.
 					if(usr.ckey!="neogeo123" && usr.ckey!="pureflower" && usr.ckey!="giantrobotsintokyo" && usr.ckey!="poisoncupcake")

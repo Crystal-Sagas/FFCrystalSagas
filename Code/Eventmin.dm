@@ -378,5 +378,5 @@ mob
 				for(var/C in B)
 					Edit+="<td><a href=byond://?src=\ref[A];action=edit;var=[C]>"
 					Edit+=C
-					Edit+="<td>[Value(A.vars[C])]</td></tr>"
+					Edit+="<td>[FormatValue(A.vars[C])]</td></tr>"
 				usr<<browse(Edit,"window=[A];size=450x600")

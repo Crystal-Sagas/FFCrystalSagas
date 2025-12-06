@@ -40,7 +40,7 @@ macro "macro"
 		command = ".south"
 	elem
 		name = "C+UP"
-		command = "Charsheet"
+		command = "CharacterPanel"
 	elem
 		name = "G"
 	elem
@@ -969,7 +969,7 @@ window "CharSheet"
 		saved-params = "is-checked"
 		text = ""
 		image = 'Sheet\\Statsabilities.png'
-		command = "Charsheet"
+		command = "CharacterPanel"
 	elem "button9"
 		type = BUTTON
 		pos = 600,61
