@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chat</title>
+    <style>
+        :root {
+            --bg-primary: #1a1a2e;
+            --bg-secondary: #16213e;
+            --bg-tertiary: #0f0f1a;
+            --text-primary: #e8e8e8;
+            --text-secondary: #b0b0b0;
+            --text-muted: #6c6c6c;
+            --accent-blue: #4a90d9;
+            --accent-gold: #d4af37;
+            --accent-green: #4caf50;
+            --accent-red: #e74c3c;
+            --accent-purple: #9b59b6;
+            --border-color: #2a2a4a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            font-size: 13px;
+            line-height: 1.4;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Chat Container */
+        #chat-container {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        /* Tab Bar */
+        #tab-bar {
+            display: flex;
+            background: var(--bg-tertiary);
+            border-bottom: 1px solid var(--border-color);
+            min-height: 28px;
+        }
+
+        .tab {
+            padding: 6px 16px;
+            cursor: pointer;
+            border-right: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .tab:hover {
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+        }
+
+        .tab.active {
+            background: var(--bg-secondary);
+            color: var(--accent-gold);
+        }
+
+        .tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--accent-gold);
+        }
+
+        .tab-unread {
+            display: none;
+            background: var(--accent-red);
+            color: white;
+            border-radius: 10px;
+            padding: 1px 6px;
+            font-size: 10px;
+            margin-left: 4px;
+        }
+
+        .tab.has-unread .tab-unread {
+            display: inline-block;
+        }
+
+        /* Chat Panels */
+        #chat-panels {
+            flex: 1;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .chat-panel {
+            display: none;
+            flex-direction: column;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+
+        .chat-panel.active {
+            display: flex;
+        }
+
+        /* Message Area */
+        .message-area {
+            flex: 1;
+            overflow-y: auto;
+            padding: 8px;
+            background: var(--bg-primary);
+        }
+
+        .message-area::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .message-area::-webkit-scrollbar-track {
+            background: var(--bg-tertiary);
+        }
+
+        .message-area::-webkit-scrollbar-thumb {
+            background: var(--border-color);
+            border-radius: 4px;
+        }
+
+        /* Message Styles */
+        .message {
+            padding: 4px 0;
+            border-bottom: 1px solid rgba(42, 42, 74, 0.3);
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .message-timestamp {
+            color: var(--text-muted);
+            font-size: 11px;
+            margin-right: 6px;
+        }
+
+        .message-sender {
+            font-weight: 600;
+            margin-right: 4px;
+        }
+
+        .message-content {
+            color: var(--text-primary);
+        }
+
+        /* Message Types */
+        .message.say .message-sender { color: var(--text-primary); }
+        .message.emote { font-style: italic; color: var(--accent-purple); }
+        .message.emote .message-sender { color: var(--accent-purple); }
+        .message.ooc .message-content { color: var(--text-secondary); }
+        .message.ooc .message-sender { color: var(--accent-blue); }
+        .message.system { color: var(--accent-gold); font-style: italic; }
+        .message.npc .message-sender { color: var(--accent-green); }
+        .message.npc .message-content { color: #a8d8a8; }
+        .message.whisper { color: #e8b4e8; }
+        .message.whisper .message-sender { color: #d88cd8; }
+        .message.announcement {
+            color: var(--accent-gold);
+            font-weight: 600;
+            text-align: center;
+            padding: 8px;
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 4px;
+            margin: 4px 0;
+        }
+
+        /* NPC Dialogue Styles */
+        .npc-dialogue {
+            background: rgba(76, 175, 80, 0.1);
+            border-left: 3px solid var(--accent-green);
+            padding: 8px 12px;
+            margin: 8px 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .npc-dialogue .npc-name {
+            color: var(--accent-green);
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+
+        .npc-dialogue .npc-portrait {
+            float: left;
+            width: 48px;
+            height: 48px;
+            margin-right: 10px;
+            border: 2px solid var(--accent-green);
+            border-radius: 4px;
+        }
+
+        .npc-dialogue .npc-text {
+            color: #c8e8c8;
+            line-height: 1.5;
+        }
+
+        .npc-dialogue::after {
+            content: '';
+            display: table;
+            clear: both;
+        }
+
+        /* Choice Buttons */
+        .choice-container {
+            padding: 8px;
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border-color);
+        }
+
+        .choice-button {
+            display: block;
+            width: 100%;
+            padding: 10px 16px;
+            margin: 4px 0;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            color: var(--text-primary);
+            font-size: 13px;
+            cursor: pointer;
+            text-align: left;
+            transition: all 0.2s ease;
+        }
+
+        .choice-button:hover {
+            background: var(--accent-blue);
+            border-color: var(--accent-blue);
+        }
+
+        .choice-button:active {
+            transform: scale(0.98);
+        }
+
+        .choice-button .choice-key {
+            color: var(--accent-gold);
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        /* Input Area */
+        .input-area {
+            display: flex;
+            padding: 8px;
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border-color);
+        }
+
+        .input-area input {
+            flex: 1;
+            padding: 8px 12px;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            color: var(--text-primary);
+            font-size: 13px;
+            outline: none;
+        }
+
+        .input-area input:focus {
+            border-color: var(--accent-blue);
+        }
+
+        .input-area button {
+            padding: 8px 16px;
+            margin-left: 8px;
+            background: var(--accent-blue);
+            border: none;
+            border-radius: 4px;
+            color: white;
+            cursor: pointer;
+            font-size: 13px;
+            transition: background 0.2s ease;
+        }
+
+        .input-area button:hover {
+            background: #3a7bc8;
+        }
+
+        /* Typing Indicator */
+        .typing-indicator {
+            padding: 4px 8px;
+            color: var(--text-muted);
+            font-style: italic;
+            font-size: 11px;
+        }
+
+        .typing-indicator span {
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0.3; }
+        }
+
+        /* Hide input when in dialogue mode */
+        .dialogue-mode .input-area {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="chat-container">
+        <!-- Tab Bar -->
+        <div id="tab-bar">
+            <div class="tab active" data-panel="ic" onclick="switchTab('ic')">
+                IC <span class="tab-unread">0</span>
+            </div>
+            <div class="tab" data-panel="ooc" onclick="switchTab('ooc')">
+                OOC <span class="tab-unread">0</span>
+            </div>
+            <div class="tab" data-panel="system" onclick="switchTab('system')">
+                System <span class="tab-unread">0</span>
+            </div>
+            <div class="tab" data-panel="combat" onclick="switchTab('combat')">
+                Combat <span class="tab-unread">0</span>
+            </div>
+        </div>
+
+        <!-- Chat Panels -->
+        <div id="chat-panels">
+            <!-- IC Panel -->
+            <div class="chat-panel active" id="panel-ic">
+                <div class="message-area" id="messages-ic"></div>
+                <div class="input-area">
+                    <input type="text" id="input-ic" placeholder="Say something..."
+                           onkeypress="handleInputKeypress(event, 'say')">
+                    <button onclick="sendMessage('say')">Send</button>
+                </div>
+            </div>
+
+            <!-- OOC Panel -->
+            <div class="chat-panel" id="panel-ooc">
+                <div class="message-area" id="messages-ooc"></div>
+                <div class="input-area">
+                    <input type="text" id="input-ooc" placeholder="Out of character..."
+                           onkeypress="handleInputKeypress(event, 'ooc')">
+                    <button onclick="sendMessage('ooc')">Send</button>
+                </div>
+            </div>
+
+            <!-- System Panel -->
+            <div class="chat-panel" id="panel-system">
+                <div class="message-area" id="messages-system"></div>
+            </div>
+
+            <!-- Combat Panel -->
+            <div class="chat-panel" id="panel-combat">
+                <div class="message-area" id="messages-combat"></div>
+            </div>
+        </div>
+
+        <!-- Choice Container (for NPC dialogues) -->
+        <div id="choice-container" class="choice-container" style="display: none;"></div>
+    </div>
+
+    <script>
+        // Current active tab
+        let activeTab = 'ic';
+
+        // Unread counts per tab
+        let unreadCounts = { ic: 0, ooc: 0, system: 0, combat: 0 };
+
+        // Message history limits
+        const MAX_MESSAGES = 200;
+
+        // Switch between tabs
+        function switchTab(tabId) {
+            // Update tab styling
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+                if (tab.dataset.panel === tabId) {
+                    tab.classList.add('active');
+                    // Clear unread count
+                    unreadCounts[tabId] = 0;
+                    tab.classList.remove('has-unread');
+                    tab.querySelector('.tab-unread').textContent = '0';
+                }
+            });
+
+            // Update panel visibility
+            document.querySelectorAll('.chat-panel').forEach(panel => {
+                panel.classList.remove('active');
+            });
+            document.getElementById('panel-' + tabId).classList.add('active');
+
+            activeTab = tabId;
+
+            // Focus input if available
+            const input = document.getElementById('input-' + tabId);
+            if (input) input.focus();
+        }
+
+        // Handle input keypress
+        function handleInputKeypress(event, messageType) {
+            if (event.key === 'Enter') {
+                sendMessage(messageType);
+            }
+        }
+
+        // Send message to game
+        function sendMessage(messageType) {
+            const inputId = messageType === 'ooc' ? 'input-ooc' : 'input-ic';
+            const input = document.getElementById(inputId);
+            const text = input.value.trim();
+
+            if (text === '') return;
+
+            // Send to BYOND
+            window.location.href = 'byond://?action=chat&type=' + messageType + '&text=' + encodeURIComponent(text);
+
+            // Clear input
+            input.value = '';
+        }
+
+        // Add a message to a specific panel
+        function addMessage(panel, type, sender, content, timestamp) {
+            const messageArea = document.getElementById('messages-' + panel);
+            if (!messageArea) return;
+
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'message ' + type;
+
+            let html = '';
+            if (timestamp) {
+                html += '<span class="message-timestamp">[' + timestamp + ']</span>';
+            }
+            if (sender) {
+                html += '<span class="message-sender">' + sender + ':</span>';
+            }
+            html += '<span class="message-content">' + content + '</span>';
+
+            messageDiv.innerHTML = html;
+            messageArea.appendChild(messageDiv);
+
+            // Limit messages
+            while (messageArea.children.length > MAX_MESSAGES) {
+                messageArea.removeChild(messageArea.firstChild);
+            }
+
+            // Scroll to bottom
+            messageArea.scrollTop = messageArea.scrollHeight;
+
+            // Update unread count if not active tab
+            if (activeTab !== panel) {
+                unreadCounts[panel]++;
+                const tab = document.querySelector('.tab[data-panel="' + panel + '"]');
+                if (tab) {
+                    tab.classList.add('has-unread');
+                    tab.querySelector('.tab-unread').textContent = unreadCounts[panel];
+                }
+            }
+        }
+
+        // Add NPC dialogue with portrait
+        function addNPCDialogue(npcName, text, portraitUrl) {
+            const messageArea = document.getElementById('messages-ic');
+
+            const dialogueDiv = document.createElement('div');
+            dialogueDiv.className = 'npc-dialogue';
+
+            let html = '';
+            if (portraitUrl) {
+                html += '<img class="npc-portrait" src="' + portraitUrl + '" alt="' + npcName + '">';
+            }
+            html += '<div class="npc-name">' + npcName + '</div>';
+            html += '<div class="npc-text">' + text + '</div>';
+
+            dialogueDiv.innerHTML = html;
+            messageArea.appendChild(dialogueDiv);
+            messageArea.scrollTop = messageArea.scrollHeight;
+        }
+
+        // Show choice buttons for NPC dialogue
+        function showChoices(choices) {
+            const container = document.getElementById('choice-container');
+            container.innerHTML = '';
+            container.style.display = 'block';
+            document.getElementById('chat-container').classList.add('dialogue-mode');
+
+            choices.forEach((choice, index) => {
+                const button = document.createElement('button');
+                button.className = 'choice-button';
+                button.innerHTML = '<span class="choice-key">[' + (index + 1) + ']</span>' + choice.text;
+                button.onclick = function() {
+                    selectChoice(choice.id);
+                };
+                container.appendChild(button);
+            });
+        }
+
+        // Hide choice buttons
+        function hideChoices() {
+            const container = document.getElementById('choice-container');
+            container.style.display = 'none';
+            container.innerHTML = '';
+            document.getElementById('chat-container').classList.remove('dialogue-mode');
+        }
+
+        // Send choice selection to game
+        function selectChoice(choiceId) {
+            window.location.href = 'byond://?action=choice&id=' + choiceId;
+            hideChoices();
+        }
+
+        // Clear all messages in a panel
+        function clearPanel(panel) {
+            const messageArea = document.getElementById('messages-' + panel);
+            if (messageArea) {
+                messageArea.innerHTML = '';
+            }
+        }
+
+        // Add system message
+        function systemMessage(content) {
+            addMessage('system', 'system', null, content, getTimestamp());
+        }
+
+        // Get current timestamp
+        function getTimestamp() {
+            const now = new Date();
+            return now.getHours().toString().padStart(2, '0') + ':' +
+                   now.getMinutes().toString().padStart(2, '0');
+        }
+
+        // Handle keyboard shortcuts
+        document.addEventListener('keydown', function(event) {
+            // Number keys for choices
+            if (document.getElementById('choice-container').style.display === 'block') {
+                const num = parseInt(event.key);
+                if (num >= 1 && num <= 9) {
+                    const buttons = document.querySelectorAll('.choice-button');
+                    if (buttons[num - 1]) {
+                        buttons[num - 1].click();
+                    }
+                }
+            }
+        });
+
+        // Initialize - show welcome message
+        systemMessage('Chat system initialized. Welcome!');
+    </script>
+</body>
+</html>

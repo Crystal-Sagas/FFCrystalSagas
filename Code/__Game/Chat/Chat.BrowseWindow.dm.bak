@@ -1,0 +1,962 @@
+/*
+	Chat.BrowseWindow.dm
+	
+	Main include file for the modularized browse-based chat system.
+	
+	Browse()-based chat system with modern card styling.
+	Creates a persistent popup window with full HTML/CSS/JS support.
+	
+	Features:
+	- Modern card-based message display
+	- Real-time message updates via JavaScript
+	- Multiple chat channels with filtering (All, OOC, IC, Combat, System)
+	- Timestamps and admin controls
+	- Smooth animations and transitions
+	- Persistent window across game sessions
+	- COMPLETE REPLACEMENT for legacy output controls
+	
+	This system replaces:
+	- output, output2, output3 (General)
+	- OOCoutput, OOCoutput2, OOCoutput3
+	- ICoutput, ICoutput2, ICoutput3
+	- Combatoutput, Combatoutput2, Combatoutput3
+	- helpoutput
+	
+	Module structure:
+	- Chat.Interface.dm: Window initialization and management
+	- Chat.Bridge.dm: DM<->JavaScript communication bridge
+	- Chat.Output.dm: Legacy output wrapper procs
+	- Chat.Template.dm: HTML template generation
+*/
+
+// Include all chat system modules
+#include "Chat.Interface.dm"
+#include "Chat.Bridge.dm"
+#include "Chat.Output.dm"
+#include "Chat.Template.dm"
+
+/mob/proc
+	/**
+	 * Initialize the chat window
+	 * Uses chatwindow.browser1 for styled HTML chat
+	 */
+	initBrowseChat()
+		SystemLog("CHAT", "DEBUG", "initBrowseChat START for [src.key]")
+		
+		if(!client)
+			SystemLog("CHAT", "ERROR", "initBrowseChat called with no client for [src]")
+			return
+		
+		// Enable devtools for JavaScript debugging (F12)
+		winset(client, null, "browser-options=devtools")
+		SystemLog("CHAT", "DEBUG", "Devtools enabled for browser debugging")
+
+		// Send empty HTML template (no messages)
+		var/html = getChatWindowHTML()
+		
+		SystemLog("CHAT", "DEBUG", "initBrowseChat sending HTML ([length(html)] chars) to browser1")
+		
+		// For embedded BROWSER controls, we use output() to set the content
+		// The control path is "chatwindow.browser1" where chatwindow is the window and browser1 is the control
+		client << output(html, "chatwindow.browser1")
+		
+		// Show rpanewindow with both info and chat panels
+		winset(src, "rpanewindow", "is-visible=true")
+		winset(src, "rpanewindow", "left=infowindow")
+		winset(src, "rpanewindow", "right=chatwindow")
+		
+		SystemLog("CHAT", "DEBUG", "initBrowseChat winset calls completed")
+
+		chat_window_open = TRUE
+		chat_window_initialized = TRUE
+		
+		SystemLog("CHAT", "DEBUG", "initBrowseChat flags set - window_open=TRUE, initialized=TRUE")
+		
+		// Longer delay to ensure JavaScript is fully loaded and ready
+		spawn(15) // Increased from 5 to 15 to give JavaScript more time
+			if(!client)
+				SystemLog("CHAT", "ERROR", "initBrowseChat spawn: client lost")
+				return
+			
+			world.log << "DEBUG initBrowseChat SPAWN: Starting message replay"
+			world.log << "DEBUG initBrowseChat: early_message_buffer length = [client.early_message_buffer ? length(client.early_message_buffer) : 0]"
+			world.log << "DEBUG initBrowseChat: chat_message_buffer length = [chat_message_buffer ? length(chat_message_buffer) : 0]"
+			
+			SystemLog("CHAT", "DEBUG", "initBrowseChat spawn: buffers - early=[client.early_message_buffer ? length(client.early_message_buffer) : 0], chat=[chat_message_buffer ? length(chat_message_buffer) : 0]")
+		
+			// First, send any early messages from client/New() before mob existed
+			if(client.early_message_buffer && length(client.early_message_buffer))
+				world.log << "DEBUG initBrowseChat: Processing [length(client.early_message_buffer)] early messages"
+				SystemLog("CHAT", "DEBUG", "initBrowseChat replaying [length(client.early_message_buffer)] early messages")
+				
+				for(var/list/msg_data in client.early_message_buffer)
+					var/channel = msg_data["channel"]
+					var/speaker = msg_data["speaker"]
+					var/message = msg_data["message"]
+					
+					world.log << "DEBUG initBrowseChat: Attempting to send - channel=[channel], speaker=[speaker]"
+					sendChatMessage(channel, speaker, message)
+					world.log << "DEBUG initBrowseChat: Message sent"
+				client.early_message_buffer = null
+				SystemLog("CHAT", "DEBUG", "initBrowseChat early messages sent and cleared")
+			else
+				world.log << "DEBUG initBrowseChat: No early_message_buffer or empty"
+			
+			// Then, replay any buffered messages from mob
+			if(chat_message_buffer && length(chat_message_buffer))
+				world.log << "DEBUG initBrowseChat: Replaying [length(chat_message_buffer)] buffered messages"
+				SystemLog("CHAT", "DEBUG", "initBrowseChat replaying [length(chat_message_buffer)] chat buffer messages")
+				
+				for(var/list/msg_data in chat_message_buffer)
+					var/channel = msg_data["channel"]
+					var/text = msg_data["text"]
+					
+					// Handle new format with "message" key
+					if(!text && msg_data["message"])
+						text = msg_data["message"]
+					
+					if(!channel || !text)
+						world.log << "WARNING: Skipping malformed buffered message - channel=[channel], text=[text ? "exists" : "null"]"
+						SystemLog("CHAT", "WARNING", "initBrowseChat skipping malformed buffer message")
+						continue
+					
+					world.log << "DEBUG initBrowseChat: Sending buffered - channel=[channel], text=[copytext(text, 1, 50)]..."
+					sendChatMessage(channel, "", text)
+				chat_message_buffer = null
+				SystemLog("CHAT", "DEBUG", "initBrowseChat buffered messages sent and cleared")
+	
+		/**
+	 * Close the chat window (hide the browser)
+	 */
+	closeBrowseChat()
+		if(!client) return
+
+		client << output(null, "chatwindow.browser1")
+		winset(src, "rpanewindow", "is-visible=false")
+		chat_window_open = FALSE
+	
+	/**
+	 * Toggle the browse() chat window
+	 */
+	toggleBrowseChat()
+		if(chat_window_open)
+			closeBrowseChat()
+		else
+			initBrowseChat()
+	
+	/**
+	 * Refresh the browser chat window with all current messages
+	 * Note: No longer regenerates HTML, messages are added via JavaScript
+	 */
+	refreshBrowseChat()
+		// This is now a no-op since we use JavaScript to add messages dynamically
+		// Kept for backward compatibility
+		return
+	
+	/**
+	 * COMPLETE REPLACEMENT PROCS FOR LEGACY OUTPUT SYSTEM
+	 * These replace AllOut, ICOut, OOCOut, CombatOut, BuffOut, HelpOut
+	 */
+	
+	/**
+	 * Send a chat message using Hors pattern
+	 * Formats message data and calls client.sendToBrowseChat
+	 * 
+	 * @param channel Channel to send to ("ooc", "ic", "looc", "combat", "all")
+	 * @param speaker Speaker name (can be empty for system messages)
+	 * @param message The message content
+	 * @param language Language indicator (optional)
+	 * @param quote_style Quote style like "says", "exclaims" (optional)
+	 * @param color Text color (optional)
+	 * @param heard "1" if heard clearly, "0" if not (optional)
+	 * @param flag1 Special flag like "observer", "adminmode", or admin ref (optional)
+	 * @param flag2 Sender ref for admin links (optional)
+	 */
+	sendChatMessage(channel = "all", speaker = "", message = "", language = "", quote_style = "", color = "", heard = "1", flag1 = "", flag2 = "")
+		if(!client)
+			return FALSE
+		if(!chat_window_open)
+			return FALSE
+		
+		// Build parameter list
+		var/list/params = list(channel, speaker, message, language, quote_style, color, heard, flag1, flag2)
+		
+		// Send via client bridge
+		return client.sendToBrowseChat(params)
+	
+	/**
+	 * Send a chat message from list data (for complex messages like Say.dm)
+	 * Accepts a list in the format: list(channel, speaker, message, language, quote_style, color, heard, flag1, flag2)
+	 */
+	sendChatMessageFromList(list/msg_data)
+		if(!msg_data || !islist(msg_data)) return FALSE
+		
+		// Extract parameters from list (supports both indexed and associative lists)
+		var/channel = msg_data["channel"]
+		var/speaker = msg_data["speaker"]
+		var/message = msg_data["message"]
+		var/language = msg_data["language"]
+		var/quote_style = msg_data["quote_style"]
+		var/color = msg_data["color"]
+		var/heard = msg_data["heard"]
+		var/flag1 = msg_data["flag1"]
+		var/flag2 = msg_data["flag2"]
+	
+		if(!channel && length(msg_data) >= 1) channel = msg_data[1]
+		if(!speaker && length(msg_data) >= 2) speaker = msg_data[2]
+		if(!message && length(msg_data) >= 3) message = msg_data[3]
+		if(!language && length(msg_data) >= 4) language = msg_data[4]
+		if(!quote_style && length(msg_data) >= 5) quote_style = msg_data[5]
+		if(!color && length(msg_data) >= 6) color = msg_data[6]
+		if(!heard && length(msg_data) >= 7) heard = msg_data[7]
+		if(!flag1 && length(msg_data) >= 8) flag1 = msg_data[8]
+		if(!flag2 && length(msg_data) >= 9) flag2 = msg_data[9]
+	
+		if(!heard) heard = "1"
+		
+		// Call the main helper
+		return sendChatMessage(channel, speaker, message, language, quote_style, color, heard, flag1, flag2)
+	
+	/**
+	 * Send OOC message (replaces OOCOut)
+	 */
+	BrowseOOCOut(display_name, msg, admin_link = "", timestamp = "", color = "#00BFFF", tag = "")
+		SystemLog("CHAT", "DEBUG", "BrowseOOCOut called - window_open=[chat_window_open], speaker=[display_name]")
+		
+		if(!chat_window_open)
+			// Buffer until window opens - standardized format
+			if(!chat_message_buffer)
+				chat_message_buffer = list()
+			chat_message_buffer += list(list("channel" = "ooc", "speaker" = display_name, "message" = msg))
+			SystemLog("CHAT", "DEBUG", "BrowseOOCOut buffered message - buffer size now [length(chat_message_buffer)]")
+			return
+		
+		// Use sendChatMessage with proper parameters
+		sendChatMessage("ooc", display_name, msg, "", "", color)
+		SystemLog("CHAT", "DEBUG", "BrowseOOCOut message sent")
+
+	/**
+	 * Send IC message(replaces ICOut)
+	 */
+	BrowseICOut(speaker_name, msg, quote_style = "default", admin_link = "", timestamp = "")
+		if(!chat_window_open)
+			// Buffer until window opens - standardized format
+			if(!chat_message_buffer)
+				chat_message_buffer = list()
+			chat_message_buffer += list(list("channel" = "ic", "speaker" = speaker_name, "message" = msg))
+			return
+		
+		sendChatMessage("ic", speaker_name, msg)
+
+	/**
+	 * Send emote(part of IC channel)
+	 */
+	BrowseEmoteOut(emote_text, sender_name = "", admin_link = "", timestamp = "")
+		var/full_emote = emote_text
+		if(sender_name)
+			full_emote = "[sender_name] [emote_text]"
+		
+		if(!chat_window_open)
+			// Buffer until window opens - standardized format
+			if(!chat_message_buffer)
+				chat_message_buffer = list()
+			chat_message_buffer += list(list("channel" = "ic", "speaker" = sender_name, "message" = full_emote))
+			return
+		
+		sendChatMessage("ic", sender_name, full_emote)
+
+	/**
+	 * Send combat message(replaces CombatOut)
+	 */
+	BrowseCombatOut(msg, timestamp = "")
+		if(!chat_window_open)
+			// Buffer until window opens - standardized format
+			if(!chat_message_buffer)
+				chat_message_buffer = list()
+			chat_message_buffer += list(list("channel" = "combat", "speaker" = "", "message" = msg))
+			return
+		
+		sendChatMessage("combat", "", msg)
+	
+	/**
+	 * Send buff message (replaces BuffOut - goes to all channels)
+	 */
+	BrowseBuffOut(text)
+		if(!chat_window_open)
+			// Buffer until window opens - standardized format
+			if(!chat_message_buffer)
+				chat_message_buffer = list()
+			chat_message_buffer += list(list("channel" = "all", "speaker" = "", "message" = text))
+			return
+		
+		sendChatMessage("all", "", text)
+
+	/**
+	 * Send ALL channel message(replaces AllOut)
+	 */
+	BrowseHelpOut(text)
+		if(!chat_window_open)
+			// Buffer until window opens - standardized format
+			if(!chat_message_buffer)
+				chat_message_buffer = list()
+			chat_message_buffer += list(list("channel" = "all", "speaker" = "", "message" = text))
+			return
+		
+		sendChatMessage("all", "", text)
+
+	/**
+	 * Send admin broadcast(replaces AdminOut)
+	 */
+	BrowseAdminOut(text)
+		if(!chat_window_open)
+			// Buffer until window opens - standardized format
+			if(!chat_message_buffer)
+				chat_message_buffer = list()
+			chat_message_buffer += list(list("channel" = "all", "speaker" = "", "message" = text))
+			return
+		
+		sendChatMessage("all", "", text)
+
+	/**
+	 * Send help message
+	 */
+	BrowseLOOCOut(display_name, msg, admin_link = "", timestamp = "")
+		if(!chat_window_open)
+			// Buffer until window opens - standardized format
+			if(!chat_message_buffer)
+				chat_message_buffer = list()
+			chat_message_buffer += list(list("channel" = "ooc", "speaker" = display_name, "message" = msg))
+			return
+		
+		sendChatMessage("ooc", display_name, msg)	/**
+	 * Send whisper message
+	 */
+	BrowseWhisperOut(sender_name, msg, admin_link = "", timestamp = "")
+		if(!chat_window_open)
+			// Buffer until window opens - standardized format
+			if(!chat_message_buffer)
+				chat_message_buffer = list()
+			chat_message_buffer += list(list("channel" = "ic", "speaker" = sender_name, "message" = msg))
+			return
+		
+		sendChatMessage("ic", sender_name, msg)
+
+/**
+ * Generate the full HTML for the chat window
+ * @param messages Optional list of message data to render
+ */
+/proc/getChatWindowHTML(list/messages = null)
+	var/html = {"
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Chronicles Chat</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+		
+		body {
+			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+			background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+			color: #e0e0e0;
+			overflow: hidden;
+			height: 100vh;
+			display: flex;
+			flex-direction: column;
+			font-size: 16px;
+		}
+		
+		/* Header */
+		.chat-header {
+			background: linear-gradient(135deg, #0f3460 0%, #16213e 100%);
+			padding: 15px 20px;
+			border-bottom: 2px solid #00d4ff;
+			box-shadow: 0 2px 10px rgba(0, 212, 255, 0.3);
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			flex-shrink: 0;
+		}
+		
+		.chat-title {
+			font-size: 22px;
+			font-weight: bold;
+			color: #00d4ff;
+			text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+		}
+		
+		/* Filter Tabs */
+		.filter-tabs {
+			display: flex;
+			gap: 10px;
+			padding: 12px 20px;
+			background: rgba(15, 52, 96, 0.5);
+			border-bottom: 1px solid rgba(0, 212, 255, 0.2);
+			flex-shrink: 0;
+		}
+		
+		.filter-tab {
+			padding: 8px 18px;
+			border-radius: 6px;
+			background: rgba(0, 212, 255, 0.1);
+			border: 1px solid rgba(0, 212, 255, 0.3);
+			color: #00d4ff;
+			cursor: pointer;
+			transition: all 0.2s ease;
+			font-size: 15px;
+			font-weight: 500;
+		}
+		
+		.filter-tab:hover {
+			background: rgba(0, 212, 255, 0.2);
+			transform: translateY(-1px);
+		}
+		
+		.filter-tab.active {
+			background: #00d4ff;
+			color: #0f3460;
+			border-color: #00d4ff;
+			box-shadow: 0 0 15px rgba(0, 212, 255, 0.4);
+		}
+		
+		/* Chat Container */
+		.chat-container {
+			flex: 1;
+			overflow-y: auto;
+			padding: 20px;
+			display: flex;
+			flex-direction: column;
+			gap: 15px;
+		}
+		
+		/* Custom Scrollbar */
+		.chat-container::-webkit-scrollbar {
+			width: 12px;
+		}
+		
+		.chat-container::-webkit-scrollbar-track {
+			background: rgba(15, 52, 96, 0.3);
+			border-radius: 6px;
+		}
+		
+		.chat-container::-webkit-scrollbar-thumb {
+			background: rgba(0, 212, 255, 0.3);
+			border-radius: 6px;
+		}
+		
+		.chat-container::-webkit-scrollbar-thumb:hover {
+			background: rgba(0, 212, 255, 0.5);
+		}
+		
+		/* Message Cards */
+		.chat-card {
+			background: linear-gradient(135deg, rgba(15, 52, 96, 0.8) 0%, rgba(22, 33, 62, 0.8) 100%);
+			border: 1px solid rgba(0, 212, 255, 0.3);
+			border-radius: 10px;
+			padding: 15px 20px;
+			box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+			transition: all 0.3s ease;
+			animation: slideIn 0.3s ease;
+			opacity: 0;
+			animation-fill-mode: forwards;
+		}
+		
+		@keyframes slideIn {
+			from {
+				opacity: 0;
+				transform: translateY(10px);
+			}
+			to {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+		
+		.chat-card:hover {
+			transform: translateX(4px);
+			box-shadow: 0 6px 20px rgba(0, 212, 255, 0.2);
+			border-color: rgba(0, 212, 255, 0.5);
+		}
+		
+		/* OOC Card */
+		.chat-card.ooc {
+			border-left: 4px solid #00BFFF;
+		}
+		
+		/* IC Card */
+		.chat-card.ic {
+			border-left: 4px solid #FFD700;
+		}
+		
+		/* Combat Card */
+		.chat-card.combat {
+			border-left: 4px solid #FF4444;
+		}
+		
+		/* Message Header */
+		.message-header {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			margin-bottom: 10px;
+		}
+		
+		.message-sender {
+			font-weight: bold;
+			font-size: 16px;
+		}
+		
+		.message-meta {
+			display: flex;
+			gap: 10px;
+			align-items: center;
+			font-size: 13px;
+			color: rgba(255, 255, 255, 0.5);
+		}
+		
+		.message-tag {
+			padding: 3px 10px;
+			border-radius: 4px;
+			background: rgba(0, 212, 255, 0.2);
+			font-size: 11px;
+			font-weight: bold;
+			text-transform: uppercase;
+		}
+		
+		.message-timestamp {
+			font-family: 'Courier New', monospace;
+		}
+		
+		/* Message Content */
+		.message-content {
+			font-size: 15px;
+			line-height: 1.6;
+			color: rgba(255, 255, 255, 0.9);
+		}
+		
+		/* Admin Link */
+		.admin-link {
+			color: #00d4ff;
+			text-decoration: none;
+			margin-right: 8px;
+			font-size: 16px;
+			transition: all 0.2s ease;
+		}
+		
+		.admin-link:hover {
+			color: #00ffff;
+			text-shadow: 0 0 8px rgba(0, 212, 255, 0.6);
+		}
+		
+		/* Hidden Messages */
+		.chat-card.hidden {
+			display: none;
+		}
+		
+		/* No Messages */
+		.no-messages {
+			text-align: center;
+			color: rgba(255, 255, 255, 0.3);
+			font-style: italic;
+			padding: 50px;
+			font-size: 16px;
+		}
+	</style>
+</head>
+<body>
+	<div class="chat-header">
+		<div class="chat-title">📜 Chronicles Chat</div>
+	</div>
+	
+	<div class="filter-tabs">
+		<div class="filter-tab active" data-filter="all">All</div>
+		<div class="filter-tab" data-filter="ooc">OOC</div>
+		<div class="filter-tab" data-filter="ic">IC</div>
+		<div class="filter-tab" data-filter="combat">Combat</div>
+	</div>
+	
+	<div class="chat-container" id="chatContainer">
+"}
+	
+	// Add messages if provided
+	if(messages && length(messages))
+		for(var/list/msg_data in messages)
+			var/msg_html = msg_data["html"]
+			var/msg_channel = msg_data["channel"]
+			html += {"		<div class="chat-card [msg_channel]" data-channel="[msg_channel]">
+			[msg_html]
+		</div>
+"}
+	else
+		html += {"		<div class="no-messages">No messages yet. Start chatting!</div>
+"}
+	
+	html += {"	</div>
+	</div>
+	
+	<script>
+		var currentFilter = 'all';
+		var messageCount = \[length(messages) || 0];
+		
+		function safeLog(message) {
+			if(window.console && console.log) {
+				console.log(message);
+			}
+		}
+		
+		function safeLogWith(label, value) {
+			if(window.console && console.log) {
+				try {
+					console.log(label, value);
+				} catch(e) {
+					console.log(label + ' ' + value);
+				}
+			}
+		}
+		
+		function addClass(element, className) {
+			if(!element || !className) return;
+			var classes = element.className ? element.className.split(/\\\\s+/) : \[\];
+			for(var i = 0; i < classes.length; i++) {
+				if(classes\[i] === className) {
+					return;
+				}
+			}
+			classes.push(className);
+			element.className = classes.join(' ');
+		}
+		
+		function removeClass(element, className) {
+			if(!element || !className) return;
+			if(!element.className) return;
+			var classes = element.className.split(/\\\\s+/);
+			var newClasses = \[\];
+			for(var i = 0; i < classes.length; i++) {
+				if(classes\[i] !== className) {
+					newClasses.push(classes\[i]);
+				}
+			}
+			element.className = newClasses.join(' ');
+		}
+		
+		function safeAddEventListener(target, type, handler, useCapture) {
+			if(target.addEventListener) {
+				target.addEventListener(type, handler, useCapture);
+			} else if(target.attachEvent) {
+				target.attachEvent('on' + type, handler);
+			}
+		}
+		
+		// Prevent focus from sticking to the browser control so movement keys keep working
+		safeAddEventListener(document, 'focus', function() {
+			if(document.activeElement && document.activeElement.blur) {
+				document.activeElement.blur();
+			}
+		}, true);
+		
+		// Message handler for ter13 pattern
+		// Incoming values may arrive as a single packed "a&b&c" string or as discrete args.
+		// We normalise them here so downstream logic always works with decoded strings.
+		function decodeParam(value) {
+			if(value === null || value === undefined) {
+				return '';
+			}
+			var text = String(value);
+			text = text.split('+').join('%20');
+			try {
+				return decodeURIComponent(text);
+			} catch(e) {
+				return text.replace(/%20/g, ' ');
+			}
+		}
+
+		function unpackParams(args) {
+			if(args.length === 1 && typeof args\[0] === 'string') {
+				var packed = args\[0];
+				if(packed.indexOf('&') !== -1) {
+					var splitPieces = packed.split('&');
+					var mappedPieces = \[\];
+					for(var i = 0; i < splitPieces.length; i++) {
+						mappedPieces.push(decodeParam(splitPieces\[i]));
+					}
+					while(mappedPieces.length < 9) {
+						mappedPieces.push('');
+					}
+					return mappedPieces;
+				}
+			}
+			var collection = \[\];
+			for(var j = 0; j < args.length; j++) {
+				collection.push(decodeParam(args\[j]));
+			}
+			while(collection.length < 9) {
+				collection.push('');
+			}
+			return collection;
+		}
+
+		// BYOND callback using location.href for JavaScript communication
+		// This is the proper way to handle BYOND->JS callbacks
+		if(window.location && window.location.href) {
+			var originalHref = window.location.href;
+			// Monitor for BYOND messages via href changes
+			setInterval(function() {
+				if(window.location.href !== originalHref && window.location.href.indexOf('byond://') === 0) {
+					var url = window.location.href;
+					originalHref = url;
+					// Parse byond:// protocol messages here if needed
+					safeLog('BYOND message received via href: ' + url);
+				}
+			}, 100);
+		}
+
+		// Global function that processes messages
+		function onMessage(channel, speaker, message, language, quote_style, color, heard, flag1, flag2) {
+			safeLog('===== onMessage CALLED =====');
+			safeLogWith('arguments.length', arguments.length);
+			safeLogWith('Raw arguments', arguments);
+			
+			var params = unpackParams(arguments);
+			channel = params\[0];
+			speaker = params\[1];
+			message = params\[2];
+			language = params\[3];
+			quote_style = params\[4];
+			color = params\[5];
+			heard = params\[6];
+			flag1 = params\[7];
+			flag2 = params\[8];
+			
+			safeLogWith('Unpacked channel', channel);
+			safeLogWith('Unpacked speaker', speaker);
+			safeLogWith('Unpacked message', message);
+
+			if(!channel) {
+				safeLog('WARNING: onMessage called with no channel');
+				return;
+			}
+			if(!message && message !== '') {
+				safeLog('WARNING: onMessage called with no message');
+				return;
+			}
+			
+			var timestamp = new Date().toLocaleTimeString('en-US', {hour: '2-digit', minute: '2-digit'});
+			var html = '';
+			var isObserver = (flag1 === 'observer');
+			var isAdminMode = (flag1 === 'adminmode');
+			var admin_ref = (flag1 && flag1 !== 'observer' && flag1 !== 'adminmode') ? flag1 : null;
+			var sender_ref = flag2;
+			
+			if(channel === 'all' && (speaker === 'System' || speaker === 'Admin' || !speaker || speaker === 'null')) {
+				var messageColor = '#00d4ff';
+				if(speaker === 'Admin') {
+					messageColor = '#ff4444';
+				}
+				html = '<div class="message-content" style="padding: 8px 0; color: ' + messageColor + '; font-weight: 400; line-height: 1.5;">' + message + '</div>';
+				addChatMessage(html, 'all');
+			}
+			else if(channel === 'ic' || channel === 'looc') {
+				var isLOOC = (channel === 'looc' || (quote_style && quote_style.indexOf('OOC') >= 0));
+				html = '<font color="' + (color || '#FFFFFF') + '">';
+				if(isObserver) {
+					html += '(Observe)';
+				}
+				if(isAdminMode) {
+					html += '(Admin Mode)';
+				}
+				if(language && !isLOOC) {
+					html += '<b>' + String.fromCharCode(91) + language + String.fromCharCode(93) + '</b> ';
+				}
+				html += speaker;
+				if(admin_ref && sender_ref) {
+					html += ' (<A HREF=\'?src=' + admin_ref + ';adminplayeropts=' + sender_ref + '\'>X</A>)';
+				}
+				if(quote_style) {
+					html += ' ' + quote_style;
+				}
+				if(heard === '1' || heard === 1 || heard === true) {
+					if(isLOOC || quote_style === 'thinks') {
+						html += ', ' + message;
+					} else {
+						html += ', "' + message + '"';
+					}
+				} else {
+					html += ' something.';
+				}
+				html += '<br></font>';
+				addChatMessage(html, 'ic');
+			}
+			else {
+				var headerHtml = '';
+				if(speaker && speaker !== 'null' && speaker !== '') {
+					var speakerColor = '#e0e0e0';
+					if(channel === 'ooc') {
+						speakerColor = '#00BFFF';
+					} else if(channel === 'combat') {
+						speakerColor = '#FF4444';
+					}
+					headerHtml = '<div class="message-header"><span class="speaker-name" style="color: ' + speakerColor + '; font-weight: bold;">' + speaker + '</span>' +
+						'<span class="timestamp" style="color: #888; font-size: 0.85em; margin-left: 10px;">' + timestamp + '</span></div>';
+				}
+				var contentStyle = 'padding: 5px 0;';
+				if(channel === 'combat') {
+					contentStyle += ' color: #FF6666; font-weight: 500;';
+				} else if(channel === 'ooc') {
+					contentStyle += ' color: #99CCFF;';
+				}
+				html = headerHtml + '<div class="message-content" style="' + contentStyle + '">' + message + '</div>';
+				addChatMessage(html, channel || 'all');
+			}
+		}
+		
+		function addChatMessage(html, channel) {
+			var container = document.getElementById('chatContainer');
+			if(!container) {
+				return;
+			}
+			var noMessages = null;
+			if(container.querySelector) {
+				noMessages = container.querySelector('.no-messages');
+			} else {
+				var possible = container.getElementsByTagName('div');
+				for(var k = 0; k < possible.length; k++) {
+					if(possible\[k].className && possible\[k].className.indexOf('no-messages') !== -1) {
+						noMessages = possible\[k];
+						break;
+					}
+				}
+			}
+			if(noMessages && noMessages.parentNode) {
+				noMessages.parentNode.removeChild(noMessages);
+			}
+			var messageDiv = document.createElement('div');
+			messageDiv.className = 'chat-card ' + channel;
+			messageDiv.setAttribute('data-channel', channel);
+			messageDiv.innerHTML = html;
+			container.appendChild(messageDiv);
+			messageCount++;
+			if(currentFilter !== 'all' && channel !== currentFilter) {
+				addClass(messageDiv, 'hidden');
+			}
+			container.scrollTop = container.scrollHeight;
+			if(messageCount > 200) {
+				var firstMessage = container.querySelector ? container.querySelector('.chat-card') : null;
+				if(!firstMessage) {
+					var children = container.getElementsByTagName('div');
+					for(var c = 0; c < children.length; c++) {
+						if(children\[c].className && children\[c].className.indexOf('chat-card') !== -1) {
+							firstMessage = children\[c];
+							break;
+						}
+					}
+				}
+				if(firstMessage && firstMessage.parentNode) {
+					firstMessage.parentNode.removeChild(firstMessage);
+					messageCount--;
+				}
+			}
+		}
+		
+		function filterMessages(filter) {
+			currentFilter = filter;
+			var tabs = document.querySelectorAll ? document.querySelectorAll('.filter-tab') : \[\];
+			for(var i = 0; i < tabs.length; i++) {
+				var tab = tabs\[i];
+				var tabFilter = tab.getAttribute('data-filter');
+				if(tabFilter === filter) {
+					addClass(tab, 'active');
+				} else {
+					removeClass(tab, 'active');
+				}
+			}
+			var messages = document.querySelectorAll ? document.querySelectorAll('.chat-card') : \[\];
+			for(var j = 0; j < messages.length; j++) {
+				var msg = messages\[j];
+				var msgChannel = msg.getAttribute('data-channel');
+				if(filter === 'all' || msgChannel === filter) {
+					removeClass(msg, 'hidden');
+				} else {
+					addClass(msg, 'hidden');
+				}
+			}
+		}
+		
+		window.filterMessages = filterMessages;
+		
+		// Attach click handlers to filter tabs
+		function attachTabHandlers() {
+			var tabs = document.querySelectorAll ? document.querySelectorAll('.filter-tab') : document.getElementsByClassName('filter-tab');
+			if(tabs && tabs.length) {
+				for(var i = 0; i < tabs.length; i++) {
+					(function(tab) {
+						var filterType = tab.getAttribute('data-filter');
+						safeAddEventListener(tab, 'click', function() {
+							safeLog('Tab clicked: ' + filterType);
+							filterMessages(filterType);
+						}, false);
+					})(tabs\[i]);
+				}
+				safeLog('Attached click handlers to ' + tabs.length + ' filter tabs');
+			} else {
+				safeLog('WARNING: No filter tabs found');
+			}
+		}
+		
+		// Call attachTabHandlers after a short delay to ensure DOM is ready
+		setTimeout(attachTabHandlers, 100);
+		
+		window.clearChat = function() {
+			var container = document.getElementById('chatContainer');
+			if(container) {
+				container.innerHTML = '<div class="no-messages">Chat cleared.</div>';
+			}
+			messageCount = 0;
+		};
+		
+		function testMessage() {
+			safeLog('testMessage called by BYOND');
+			addChatMessage('<div class="message-content" style="color: #00ff00;">Test message from JavaScript!</div>', 'all');
+		}
+		
+		safeLog('Chat window JavaScript loaded successfully');
+		safeLogWith('messageCount initialised to', messageCount);
+		safeLog('onMessage function available: ' + (typeof onMessage === 'function'));
+		safeLog('window.onMessage available: ' + (typeof window.onMessage === 'function'));
+		
+		// Make onMessage globally accessible for BYOND to call
+		window.onMessage = onMessage;
+		
+		// ALSO try exposing it at the top level for BYOND
+		if(typeof exports !== 'undefined') {
+			exports.onMessage = onMessage;
+		}
+		
+		// Test if we can receive messages
+		safeLog('===== BYOND INTEGRATION TEST =====');
+		safeLog('If you see test messages appear, BYOND integration is working');
+		safeLog('window.onMessage is defined: ' + (typeof window.onMessage !== 'undefined'));
+		safeLog('Top-level onMessage is defined: ' + (typeof onMessage !== 'undefined'));
+		
+		// Try to expose onMessage at document level too
+		if(document) {
+			document.onMessage = onMessage;
+			safeLog('document.onMessage is defined: ' + (typeof document.onMessage !== 'undefined'));
+		}
+		
+		setTimeout(function() {
+			safeLog('Running immediate test...');
+			addChatMessage('<div class="message-content" style="color: #ffff00;">JavaScript test: If you see this, JS is working!</div>', 'all');
+			safeLog('Testing onMessage function directly...');
+			onMessage('all', 'System', 'Direct JS test message');
+			safeLog('If no yellow messages appeared above, there is a rendering issue');
+		}, 500);
+	</script>
+</body>
+</html>
+"}
+	return html
+

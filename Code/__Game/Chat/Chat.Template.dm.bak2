@@ -1,0 +1,661 @@
+/*
+	Chat.Template.dm
+	
+	HTML/CSS/JavaScript template generation for the browse-based chat system.
+	This file contains the getChatWindowHTML() proc that generates the full chat interface.
+*/
+
+/**
+ * Generate the full HTML for the chat window
+ * @param messages Optional list of message data to render
+ */
+/proc/getChatWindowHTML(list/messages = null)
+	var/html = {"
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Chronicles Chat</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+		
+		body {
+			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+			background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+			color: #e0e0e0;
+			overflow: hidden;
+			height: 100vh;
+			display: flex;
+			flex-direction: column;
+			font-size: 14px;
+		}
+		
+		/* Filter Tabs */
+		.filter-tabs {
+			display: flex;
+			gap: 4px;
+			padding: 4px 8px;
+			background: rgba(42, 49, 66, 0.4);
+			border-bottom: 1px solid rgba(90, 101, 112, 0.2);
+			flex-shrink: 0;
+		}
+		
+		.filter-tab {
+			padding: 4px 10px;
+			border-radius: 3px;
+			background: rgba(90, 101, 112, 0.15);
+			border: 1px solid rgba(90, 101, 112, 0.3);
+			color: #8a92a0;
+			cursor: pointer;
+			transition: all 0.15s ease;
+			font-size: 11px;
+			font-weight: 500;
+			text-transform: uppercase;
+			letter-spacing: 0.5px;
+		}
+		
+		.filter-tab:hover {
+			background: rgba(90, 101, 112, 0.25);
+			transform: translateY(-1px);
+			box-shadow: 0 1px 4px rgba(90, 101, 112, 0.3);
+		}
+		
+		.filter-tab.active {
+			background: rgba(90, 101, 112, 0.4);
+			color: #b0bec5;
+			border-color: rgba(90, 101, 112, 0.6);
+			box-shadow: 0 0 8px rgba(90, 101, 112, 0.4);
+		}
+		
+		/* Chat Container */
+		.chat-container {
+			flex: 1;
+			overflow-y: auto;
+			padding: 10px;
+			display: flex;
+			flex-direction: column;
+			gap: 8px;
+		}
+		
+		/* Custom Scrollbar */
+		.chat-container::-webkit-scrollbar {
+			width: 8px;
+		}
+		
+		.chat-container::-webkit-scrollbar-track {
+			background: rgba(42, 49, 66, 0.3);
+			border-radius: 4px;
+		}
+		
+		.chat-container::-webkit-scrollbar-thumb {
+			background: rgba(90, 101, 112, 0.4);
+			border-radius: 4px;
+		}
+		
+		.chat-container::-webkit-scrollbar-thumb:hover {
+			background: rgba(90, 101, 112, 0.6);
+		}
+		
+		/* Message Cards */
+		.chat-card {
+			background: linear-gradient(135deg, rgba(42, 49, 66, 0.5) 0%, rgba(37, 40, 48, 0.5) 100%);
+			border: 1px solid rgba(90, 101, 112, 0.25);
+			border-radius: 6px;
+			padding: 8px 12px;
+			box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+			transition: all 0.2s ease;
+			animation: slideIn 0.2s ease;
+			opacity: 0;
+			animation-fill-mode: forwards;
+		}
+		
+		@keyframes slideIn {
+			from {
+				opacity: 0;
+				transform: translateY(10px);
+			}
+			to {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+		
+		.chat-card:hover {
+			transform: translateX(2px);
+			box-shadow: 0 3px 12px rgba(90, 101, 112, 0.2);
+			border-color: rgba(90, 101, 112, 0.4);
+		}
+		
+		/* OOC Card */
+		.chat-card.ooc {
+			border-left: 3px solid #7a8b9a;
+		}
+		
+		/* IC Card */
+		.chat-card.ic {
+			border-left: 3px solid #FFD700;
+		}
+		
+		/* Combat Card */
+		.chat-card.combat {
+			border-left: 3px solid #FF4444;
+		}
+		
+		/* Admin Card */
+		.chat-card.admin {
+			border-left: 3px solid #FF00FF;
+			background: rgba(255, 0, 255, 0.03);
+		}
+		
+		/* System Card */
+		.chat-card.system {
+			border-left: 3px solid #FFA500;
+		}
+		
+		/* Admin Tab Notification Glow */
+		.filter-tab.notify {
+			animation: tabGlow 1.5s ease-in-out infinite;
+			position: relative;
+		}
+		
+		.filter-tab.notify::after {
+			content: '';
+			position: absolute;
+			top: -2px;
+			right: -2px;
+			width: 8px;
+			height: 8px;
+			background: #FF00FF;
+			border-radius: 50%;
+			box-shadow: 0 0 8px #FF00FF;
+		}
+		
+		@keyframes tabGlow {
+			0%, 100% {
+				box-shadow: 0 0 5px rgba(255, 0, 255, 0.3);
+				border-color: rgba(255, 0, 255, 0.5);
+			}
+			50% {
+				box-shadow: 0 0 15px rgba(255, 0, 255, 0.6), 0 0 25px rgba(255, 0, 255, 0.4);
+				border-color: rgba(255, 0, 255, 0.9);
+			}
+		}
+		
+		/* Message Header */
+		.message-header {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			margin-bottom: 6px;
+		}
+		
+		.message-sender {
+			font-weight: bold;
+			font-size: 13px;
+		}
+		
+		.message-meta {
+			display: flex;
+			gap: 8px;
+			align-items: center;
+			font-size: 11px;
+			color: rgba(255, 255, 255, 0.5);
+		}
+		
+		.message-tag {
+			padding: 2px 6px;
+			border-radius: 3px;
+			background: rgba(90, 101, 112, 0.3);
+			font-size: 9px;
+			font-weight: bold;
+			text-transform: uppercase;
+		}
+		
+		.message-timestamp {
+			font-family: 'Courier New', monospace;
+		}
+		
+		/* Message Content */
+		.message-content {
+			font-size: 13px;
+			line-height: 1.5;
+			color: rgba(255, 255, 255, 0.9);
+		}
+		
+		/* Admin Link */
+		.admin-link {
+			color: #8a92a0;
+			text-decoration: none;
+			margin-right: 6px;
+			font-size: 13px;
+			transition: all 0.2s ease;
+		}
+		
+		.admin-link:hover {
+			color: #b0bec5;
+			text-shadow: 0 0 6px rgba(90, 101, 112, 0.5);
+		}
+		
+		/* Hidden Messages */
+		.chat-card.hidden {
+			display: none;
+		}
+		
+		/* No Messages */
+		.no-messages {
+			text-align: center;
+			color: rgba(255, 255, 255, 0.3);
+			font-style: italic;
+			padding: 30px;
+			font-size: 13px;
+		}
+	</style>
+</head>
+<body>
+	<div class="filter-tabs">
+		<div class="filter-tab active" data-filter="all">All</div>
+		<div class="filter-tab" data-filter="ooc">OOC</div>
+		<div class="filter-tab" data-filter="ic">IC</div>
+		<div class="filter-tab" data-filter="narrative">Narrative</div>
+		<div class="filter-tab" data-filter="combat">Combat</div>
+		<div class="filter-tab" data-filter="system">System</div>
+		<div class="filter-tab" data-filter="admin" id="adminTab" style="display: none;">Admin</div>
+	</div>
+	
+	<div class="chat-container" id="chatContainer">
+"}
+	
+	// Add messages if provided
+	if(messages && length(messages))
+		for(var/list/msg_data in messages)
+			var/msg_html = msg_data["html"]
+			var/msg_channel = msg_data["channel"]
+			html += {"		<div class="chat-card [msg_channel]" data-channel="[msg_channel]">
+			[msg_html]
+		</div>
+"}
+	else
+		html += {"		<div class="no-messages">No messages yet. Start chatting!</div>
+"}
+	
+	html += {"	</div>
+	</div>
+	
+	<script type="text/javascript">
+		
+		var currentFilter = 'all';
+		var messageCount = 0;
+		var isAdmin = false;
+		
+		function addClass(element, className) {
+			if(!element || !className) return;
+			var classes = element.className ? element.className.split(/\\s+/) : Array();
+			var alreadyPresent = false;
+			classes.forEach(function(existing) {
+				if(existing === className) {
+					alreadyPresent = true;
+				}
+			});
+			if(alreadyPresent) {
+				return;
+			}
+			classes.push(className);
+			element.className = classes.join(' ');
+		}
+		
+		function removeClass(element, className) {
+			if(!element || !className) return;
+			if(!element.className) return;
+			var classes = element.className.split(/\\s+/);
+			var filtered = Array();
+			classes.forEach(function(existing) {
+				if(existing !== className) {
+					filtered.push(existing);
+				}
+			});
+			element.className = filtered.join(' ');
+		}
+		
+		function safeAddEventListener(target, type, handler, useCapture) {
+			if(target.addEventListener) {
+				target.addEventListener(type, handler, useCapture);
+			} else if(target.attachEvent) {
+				target.attachEvent('on' + type, handler);
+			}
+		}
+		
+		// Prevent focus from sticking to the browser control so movement keys keep working
+		safeAddEventListener(document, 'focus', function() {
+			if(document.activeElement && document.activeElement.blur) {
+				document.activeElement.blur();
+			}
+		}, true);
+		
+		// Message handler for ter13 pattern
+		// Incoming values may arrive as a single packed "a&b&c" string or as discrete args.
+		// We normalise them here so downstream logic always works with decoded strings.
+		function decodeParam(value) {
+			if(value === null || value === undefined) {
+				return '';
+			}
+			var text = String(value);
+			text = text.split('+').join('%20');
+			try {
+				return decodeURIComponent(text);
+			} catch(e) {
+				return text.replace(/%20/g, ' ');
+			}
+		}
+
+		function unpackParams(args) {
+			var argsArray = Array.prototype.slice.call(args);
+			if(argsArray.length === 1) {
+				var firstArg = argsArray.shift();
+				if(typeof firstArg === 'string' && firstArg.indexOf('&') !== -1) {
+					var splitPieces = firstArg.split('&');
+					var mappedPieces = Array();
+					splitPieces.forEach(function(piece) {
+						mappedPieces.push(decodeParam(piece));
+					});
+					while(mappedPieces.length < 9) {
+						mappedPieces.push('');
+					}
+					return mappedPieces;
+				}
+				if(typeof firstArg !== 'undefined') {
+					argsArray.unshift(firstArg);
+				}
+			}
+			var collection = Array();
+			Array.prototype.forEach.call(argsArray, function(value) {
+				collection.push(decodeParam(value));
+			});
+			while(collection.length < 9) {
+				collection.push('');
+			}
+			return collection;
+		}
+
+		// BYOND callback using location.href for JavaScript communication
+		// This is the proper way to handle BYOND->JS callbacks
+		if(window.location && window.location.href) {
+			var originalHref = window.location.href;
+			// Monitor for BYOND messages via href changes
+			setInterval(function() {
+				if(window.location.href !== originalHref && window.location.href.indexOf('byond://') === 0) {
+					var url = window.location.href;
+					originalHref = url;
+					// Parse byond:// protocol messages here if needed
+					safeLog('BYOND message received via href: ' + url);
+				}
+			}, 100);
+		}
+
+		// Global function that processes messages
+		function onMessage(channel, speaker, message, language, quote_style, color, heard, flag1, flag2) {
+			var params = unpackParams(arguments);
+			channel = params.shift();
+			speaker = params.shift();
+			message = params.shift();
+			language = params.shift();
+			quote_style = params.shift();
+			color = params.shift();
+			heard = params.shift();
+			flag1 = params.shift();
+			flag2 = params.shift();
+
+			if(!channel) return;
+			if(!message && message !== '') return;
+			
+			var timestamp = new Date().toLocaleTimeString();
+			var html = '';
+			var isObserver = (flag1 === 'observer');
+			var isAdminMode = (flag1 === 'adminmode');
+			var admin_ref = (flag1 && flag1 !== 'observer' && flag1 !== 'adminmode') ? flag1 : null;
+			var sender_ref = flag2;
+			
+			// Handle system and admin messages first
+			if(channel === 'system' || channel === 'admin') {
+				const messageColor = (channel === 'system') ? '#FFA500' : '#FF00FF';
+				const prefix = (channel === 'system') ? 'SYSTEM' : 'ADMIN';
+				const speakerText = speaker ? speaker + ': ' : '';
+				html = '<div class="message-content" style="padding: 8px 0; color: ' + messageColor + '; font-weight: 500; line-height: 1.5;">';
+				if(prefix) {
+					html += '<span style="font-weight: bold;">\[' + prefix + '\]</span> ';
+				}
+				html += speakerText + message + '</div>';
+				addChatMessage(html, channel);
+				return;
+			}
+			
+			if(channel === 'all' && (speaker === 'System' || speaker === 'Admin' || !speaker || speaker === 'null')) {
+				const messageColor = (speaker === 'Admin') ? '#ff4444' : '#00d4ff';
+				html = '<div class="message-content" style="padding: 8px 0; color: ' + messageColor + '; font-weight: 400; line-height: 1.5;">' + message + '</div>';
+				addChatMessage(html, 'all');
+			}
+			else if(channel === 'narrative') {
+				// Narrative messages have their own channel but appear in IC tab
+				// Used for immersive, first-person system messages ("You begin mining...")
+				html = '<div class="message-content" style="padding: 6px 0; color: #9DB4C0; font-style: italic; line-height: 1.5;">' + message + '</div>';
+				addChatMessage(html, 'narrative');
+			}
+			else if(channel === 'ic' || channel === 'looc') {
+				const isLOOC = (channel === 'looc' || (quote_style && quote_style.indexOf('OOC') >= 0));
+				html = '<font color="' + (color || '#FFFFFF') + '">';
+				if(isObserver) {
+					html += '(Observe)';
+				}
+				if(isAdminMode) {
+					html += '(Admin Mode)';
+				}
+				if(language && !isLOOC) {
+					html += '<b>' + String.fromCharCode(91) + language + String.fromCharCode(93) + '</b> ';
+				}
+				html += speaker;
+				if(admin_ref && sender_ref) {
+					html += " (<A HREF='?src=" + admin_ref + ";adminplayeropts=" + sender_ref + "'>X</A>)";
+				}
+				if(quote_style) {
+					html += ' ' + quote_style;
+				}
+				if(heard === '1' || heard === 1 || heard === true) {
+					if(isLOOC || quote_style === 'thinks') {
+						html += ', ' + message;
+					} else {
+						html += ', "' + message + '"';
+					}
+				} else {
+					html += ' something.';
+				}
+				html += '<br></font>';
+				addChatMessage(html, 'ic');
+			}
+			else {
+				let headerHtml = '';
+				if(speaker && speaker !== 'null' && speaker !== '') {
+				let speakerColor = '#e0e0e0';
+				if(channel === 'ooc' || channel === 'looc') {
+					speakerColor = '#8a92a0';
+					} else if(channel === 'combat') {
+						speakerColor = '#FF4444';
+					} else if(channel === 'admin') {
+						speakerColor = '#FF00FF';
+					} else if(channel === 'system') {
+						speakerColor = '#FFA500';
+					}
+					headerHtml = '<div class="message-header"><span class="speaker-name" style="color: ' + speakerColor + '; font-weight: bold;">' + speaker + '</span>' +
+						'<span class="timestamp" style="color: #888; font-size: 0.85em; margin-left: 10px;">' + timestamp + '</span></div>';
+				}
+				let contentStyle = 'padding: 5px 0;';
+				if(channel === 'combat') {
+					contentStyle += ' color: #FF6666; font-weight: 500;';
+				} else if(channel === 'ooc' || channel === 'looc') {
+					contentStyle += ' color: #b0bec5;';
+				} else if(channel === 'admin') {
+					contentStyle += ' color: #FF99FF; font-weight: 500;';
+				} else if(channel === 'system') {
+					contentStyle += ' color: #FFB84D; font-weight: 500;';
+				}
+				html = headerHtml + '<div class="message-content" style="' + contentStyle + '">' + message + '</div>';
+				
+				// Route LOOC to OOC tab for filtering
+				const displayChannel = (channel === 'looc') ? 'ooc' : channel;
+				addChatMessage(html, displayChannel || 'all');
+			}
+		}
+		
+		function addChatMessage(html, channel) {
+			var container = document.getElementById('chatContainer');
+			if(!container) {
+				return;
+			}
+			var noMessages = null;
+			if(container.querySelector) {
+				noMessages = container.querySelector('.no-messages');
+			} else {
+				var possible = container.getElementsByTagName('div');
+				if(possible && possible.item) {
+					var index = 0;
+					while(!noMessages && index < possible.length) {
+						var candidate = possible.item(index);
+						if(candidate && candidate.className && candidate.className.indexOf('no-messages') !== -1) {
+							noMessages = candidate;
+						}
+						index++;
+					}
+				}
+			}
+			if(noMessages && noMessages.parentNode) {
+				noMessages.parentNode.removeChild(noMessages);
+			}
+			var messageDiv = document.createElement('div');
+			messageDiv.className = 'chat-card ' + channel;
+			messageDiv.setAttribute('data-channel', channel);
+			messageDiv.innerHTML = html;
+			container.appendChild(messageDiv);
+			messageCount++;
+			if(currentFilter !== 'all' && channel !== currentFilter) {
+				addClass(messageDiv, 'hidden');
+			}
+			container.scrollTop = container.scrollHeight;
+			
+			// Trigger notification for admin tab if admin message and not currently viewing admin tab
+			if(channel === 'admin' && currentFilter !== 'admin' && isAdmin) {
+				notifyAdminTab();
+			}
+			
+			if(messageCount > 200) {
+				var firstMessage = container.querySelector ? container.querySelector('.chat-card') : null;
+				if(!firstMessage) {
+					var children = container.getElementsByTagName('div');
+					var childIndex = 0;
+					while(!firstMessage && children.item && childIndex < children.length) {
+						var childCandidate = children.item(childIndex);
+						if(childCandidate && childCandidate.className && childCandidate.className.indexOf('chat-card') !== -1) {
+							firstMessage = childCandidate;
+						}
+						childIndex++;
+					}
+				}
+				if(firstMessage && firstMessage.parentNode) {
+					firstMessage.parentNode.removeChild(firstMessage);
+					messageCount--;
+				}
+			}
+		}
+		
+		function filterMessages(filter) {
+			var container = document.getElementById('chatContainer');
+			var wasAtBottom = false;
+			if(container) {
+				var tolerance = 5;
+				wasAtBottom = (container.scrollHeight - container.scrollTop - container.clientHeight) <= tolerance;
+			}
+			
+			currentFilter = filter;
+			var tabs = document.querySelectorAll ? document.querySelectorAll('.filter-tab') : Array();
+			Array.prototype.forEach.call(tabs, function(tab) {
+				var tabFilter = tab.getAttribute('data-filter');
+				if(tabFilter === filter) {
+					addClass(tab, 'active');
+					// Clear notification when viewing admin tab
+					if(filter === 'admin') {
+						removeClass(tab, 'notify');
+					}
+				} else {
+					removeClass(tab, 'active');
+				}
+			});
+			var messages = document.querySelectorAll ? document.querySelectorAll('.chat-card') : Array();
+			Array.prototype.forEach.call(messages, function(msg) {
+				var msgChannel = msg.getAttribute('data-channel');
+				// Special handling: narrative messages appear in both IC and Narrative tabs
+				if(filter === 'all' || msgChannel === filter || (filter === 'ic' && msgChannel === 'narrative')) {
+					removeClass(msg, 'hidden');
+				} else {
+					addClass(msg, 'hidden');
+				}
+			});
+			
+			if(container && wasAtBottom) {
+				container.scrollTop = container.scrollHeight;
+			}
+		}
+		
+		window.filterMessages = filterMessages;
+		
+		// Attach click handlers to filter tabs
+		function attachTabHandlers() {
+			var tabs = document.querySelectorAll ? document.querySelectorAll('.filter-tab') : document.getElementsByClassName('filter-tab');
+			if(tabs && tabs.length) {
+				Array.prototype.forEach.call(tabs, function(tab) {
+					var filterType = tab.getAttribute('data-filter');
+					safeAddEventListener(tab, 'click', function() {
+						filterMessages(filterType);
+					}, false);
+				});
+			}
+		}
+		
+		// Call attachTabHandlers after a short delay to ensure DOM is ready
+		setTimeout(attachTabHandlers, 100);
+		
+		window.clearChat = function() {
+			var container = document.getElementById('chatContainer');
+			if(container) {
+				container.innerHTML = '<div class="no-messages">Chat cleared.</div>';
+			}
+			messageCount = 0;
+		};
+		
+		// Make onMessage globally accessible for BYOND to call
+		window.onMessage = onMessage;
+		
+		// Function to show/hide admin tab based on admin status
+		window.setAdminMode = function(hasAdmin) {
+			isAdmin = hasAdmin;
+			var adminTab = document.getElementById('adminTab');
+			if(adminTab) {
+				adminTab.style.display = hasAdmin ? '' : 'none';
+			}
+		};
+		
+		// Function to trigger admin tab notification
+		function notifyAdminTab() {
+			if(!isAdmin) return;
+			var adminTab = document.getElementById('adminTab');
+			if(adminTab && currentFilter !== 'admin') {
+				addClass(adminTab, 'notify');
+			}
+		}
+		
+		window.notifyAdminTab = notifyAdminTab;
+	</script>
+</body>
+</html>
+"}
+	return html

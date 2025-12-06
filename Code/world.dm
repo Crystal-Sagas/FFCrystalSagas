@@ -12,6 +12,9 @@
 	//? Init TGS
 	TgsNew()
 
+	//? Init game systems (character creation, registries, etc.)
+	initializeGameSystems()
+
 	Addcustoms()
 	Addbuildables()
 	Loadworld()
