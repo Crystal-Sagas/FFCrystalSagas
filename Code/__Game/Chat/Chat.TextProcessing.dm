@@ -2,6 +2,64 @@
 // Contains pure functions for processing and transforming chat text.
 // Part of the chat system refactor.
 
+/**
+ * Determine the quote style based on message content
+ * @param msg The message text
+ * @return Quote style string ("says", "exclaims", "asks", "thinks", etc.)
+ */
+/proc/say_quote(msg) as text
+	if(!istext(msg) || !length(msg))
+		return "says"
+
+	var/lastChar = copytext(msg, length(msg))
+
+	// Check punctuation at end
+	switch(lastChar)
+		if("?")
+			return "asks"
+		if("!")
+			return "exclaims"
+		if(".")
+			return "says"
+		else
+			return "says"
+
+/**
+ * Sanitize text - removes newlines and dangerous characters
+ * @param text The text to sanitize
+ * @return Sanitized text
+ */
+/proc/sanitize_n(text) as text
+	if(!istext(text))
+		return ""
+	// Remove newlines and carriage returns
+	text = replacetext(text, "\n", " ")
+	text = replacetext(text, "\\r", "")
+	// Remove null characters (using ascii2text for null char)
+	text = replacetext(text, ascii2text(0), "")
+	// Trim leading/trailing whitespace manually
+	// Remove leading spaces
+	while(length(text) && copytext(text, 1, 2) == " ")
+		text = copytext(text, 2)
+	// Remove trailing spaces
+	while(length(text) && copytext(text, length(text)) == " ")
+		text = copytext(text, 1, length(text))
+	return text
+
+/**
+ * Sanitize text for HTML display - escapes dangerous characters
+ * @param text The text to sanitize
+ * @return HTML-safe text
+ */
+/proc/sanitize_html(text) as text
+	if(!istext(text))
+		return ""
+	text = replacetext(text, "&", "&amp;")
+	text = replacetext(text, "<", "&lt;")
+	text = replacetext(text, ">", "&gt;")
+	text = replacetext(text, "\"", "&quot;")
+	return text
+
 /proc/stars(n, pr) //This proc was written by Lummox JR, I do not take credit for it at all.
 	if(!istext(n)) return
 	if(!isnum(pr)) pr = 25

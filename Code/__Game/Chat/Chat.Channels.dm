@@ -1,43 +1,51 @@
 // Chat.Channels.dm
 // Contains wrappers for routing messages to various chat channels.
-// Part of the chat system refactor.
+// Updated to use browse-based chat system.
 
 /proc/sendToAll(mob/target, message)
 	if(!istype(target)) return
 	if(!istext(message)) return
-	target.AllOut(message)
+	if(target.chat_window_open)
+		target.sendChatMessage("all", "", message)
 
 /proc/sendToIC(mob/target, message)
 	if(!istype(target)) return
 	if(!istext(message)) return
-	target.ICOut(message)
+	if(target.chat_window_open)
+		target.sendChatMessage("ic", "", message)
 
 /proc/sendToNarrative(mob/target, message)
 	if(!istype(target)) return
 	if(!istext(message)) return
-	target.NarrativeOut(message)
+	if(target.chat_window_open)
+		target.sendChatMessage("ic", "", message, "", "narrative")
 
 /proc/sendToOOC(mob/target, message)
 	if(!istype(target)) return
 	if(!istext(message)) return
-	target.OOCOut(message)
+	if(target.chat_window_open)
+		target.sendChatMessage("ooc", "", message)
 
 /proc/sendToCombat(mob/target, message)
 	if(!istype(target)) return
 	if(!istext(message)) return
-	target.CombatOut(message)
+	if(target.chat_window_open)
+		target.sendChatMessage("combat", "", message)
 
 /proc/sendToBuff(mob/target, message)
 	if(!istype(target)) return
 	if(!istext(message)) return
-	target.BuffOut(message)
+	if(target.chat_window_open)
+		target.sendChatMessage("all", "Buff", message)
 
 /proc/sendToHelp(mob/target, message)
 	if(!istype(target)) return
 	if(!istext(message)) return
-	target.HelpOut(message)
+	if(target.chat_window_open)
+		target.sendChatMessage("system", "Help", message)
 
 /proc/sendToAdmin(mob/target, message)
 	if(!istype(target)) return
 	if(!istext(message)) return
-	target.AdminOut(message)
+	if(target.chat_window_open)
+		target.sendChatMessage("admin", "", message)

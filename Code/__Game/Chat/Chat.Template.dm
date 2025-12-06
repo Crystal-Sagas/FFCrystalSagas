@@ -15,7 +15,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Chronicles Chat</title>
+	<title>Crystal Sagas Chat</title>
 	<style>
 		* {
 			margin: 0;
@@ -32,6 +32,7 @@
 			display: flex;
 			flex-direction: column;
 			font-size: 14px;
+			padding-top: 8px;
 		}
 		
 		/* Filter Tabs */
@@ -1121,9 +1122,9 @@
 		
 		// Function to quote a message - calls dedicated Quote verb
 		window.quoteMessage = function(playerName, messageId, messageText) {
-			// Call the Quote verb via byond:// protocol
-			// Format: byond://?src=ref;action=verb;params
-			window.location.href = 'byond://?src=\ref[usr];action=quote;player=' + encodeURIComponent(playerName) + ';id=' + messageId;
+			// Call the Quote action via byond:// protocol
+			// The client/Topic handler will process this
+			window.location.href = 'byond://?action=quote&player=' + encodeURIComponent(playerName) + '&id=' + messageId;
 		};
 		
 	</script>

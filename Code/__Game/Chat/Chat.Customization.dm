@@ -2,10 +2,21 @@
 // Handles player customization preferences for chat (fonts, colors, sizes, toggles).
 // Part of the chat system refactor.
 
-// Text color variables
+// Text color and size variables
 mob/var
 	TextColorOOC = "red"
 	TextColor = "red"
+	TextSize = 2  // Default text size (1-10)
+	Font = "name" // Default font
+	Toggled_Timestamps = 0  // Show OOC timestamps?
+
+// Client-side moderation vars
+client/var
+	/// Is this client muted from global OOC?
+	muted = FALSE
+
+	/// Is this client listening to global OOC?
+	listen_ooc = TRUE
 
 // Text size customization
 mob/verb/Text_Size()
@@ -29,14 +40,12 @@ mob/verb/OOC_Font_Style()
 		"New Century School Book", "Courier New", "Times New Roman", "Hepta Slab",
 		"Inconsolata", "Libre Baskerville", "Mansalva", "Maven Pro", "Montserrat",
 		"News Cycle", "Noto Sans JP", "Noto Sans KR", "Oswald", "Roboto",
-		"Source Code Pro", "Source Serif Pro", "Titillium Web", "Turret Road", "Vollkorn"
+		"Source Code Pro", "Source Serif Pro", "Titillium Web", "Turret Road", "Vollkorn",
+		"Comic Sans MS"
 	)
-	
-	if(NitroBooster)
-		Selection += "Comic Sans MS"
 
 	var/PP = input("Which font would you like to use?", "Font Selection") in Selection
-	
+
 	switch(PP)
 		if("Default") usr.Font = "name"
 		if("Abril Fatface") usr.Font = "abrilfatface"
@@ -68,7 +77,7 @@ mob/verb/OOC_Font_Style()
 		if("Turret Road") usr.Font = "turretroad"
 		if("Vollkorn") usr.Font = "vollkorn"
 		if("Snell Roundhand") usr.Font = "snellroundhand"
-	
+
 	usr << "Your font has been changed to <span class=\"[Font]\">[usr.Font]!</span>"
 
 // Timestamp toggle

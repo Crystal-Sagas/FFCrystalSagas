@@ -72,12 +72,12 @@
  * Start the dialogue from a specific node
  */
 /datum/npc_dialogue/proc/start(startNode = "start")
-	if(!listener?.client || !listener.chat)
+	if(!listener?.client)
 		return FALSE
 
 	state = DIALOGUE_STATE_ACTIVE
 	currentNode = startNode
-	listener.chat.activeDialogue = src
+	listener.activeNPCDialogue = src
 
 	return showCurrentNode()
 
@@ -98,13 +98,13 @@
 	// Process text for variable substitution
 	var/processedText = processText(node.text)
 
-	// Show the NPC dialogue
-	listener.chatNPC(speakerName, processedText)
+	// Show the NPC dialogue via browse chat
+	sendNPCDialogueToBrowse(listener, speakerName, processedText)
 
 	// If there are choices, show them
 	if(length(node.choices))
 		state = DIALOGUE_STATE_WAITING
-		listener.chatChoices(node.choices)
+		showNPCChoicesToBrowse(listener, node.choices)
 	else if(node.nextNode)
 		// Auto-advance after a delay
 		spawn(10)
@@ -189,10 +189,10 @@
 /datum/npc_dialogue/proc/endDialogue()
 	state = DIALOGUE_STATE_COMPLETE
 
-	// Hide any remaining choices
-	if(listener?.chat)
-		listener.chatHideChoices()
-		listener.chat.activeDialogue = null
+	// Clear the dialogue reference on the listener
+	if(listener)
+		listener.activeNPCDialogue = null
+		listener.pendingNPCChoices = null
 
 	// Invoke completion callback
 	if(completionCallback && completionDatum)
@@ -294,7 +294,118 @@
  * Start a simple NPC monologue
  */
 /proc/npcSay(obj/npc/npc, mob/player/P, text)
-	if(!P?.chat)
+	if(!P?.client)
 		return FALSE
-	P.chatNPC(npc?.name || "???", text)
+	sendNPCDialogueToBrowse(P, npc?.name || "???", text)
 	return TRUE
+
+// ============================================================================
+// Browse Chat Integration for NPC Dialogue
+// ============================================================================
+
+/mob/player
+	/// Currently active NPC dialogue, if any
+	var/datum/npc_dialogue/activeNPCDialogue
+
+	/// Pending NPC dialogue choices awaiting selection
+	var/list/pendingNPCChoices
+
+/**
+ * Send NPC dialogue to the browse chat
+ */
+/proc/sendNPCDialogueToBrowse(mob/player/P, npcName, text, portraitUrl = null)
+	if(!P?.client)
+		return FALSE
+
+	// Use the IC channel with "npc" quote_style for NPC dialogue styling
+	// The chat template will format this with special NPC styling
+	P.sendChatMessage(
+		"ic",           // channel - appears in IC tab
+		npcName,        // speaker - NPC name
+		text,           // message
+		"",             // language
+		"npc",          // quote_style - triggers NPC styling in template
+		"#9b59b6",      // color - purple for NPC
+		"1",            // heard
+		"",             // flag1
+		"",             // flag2
+		"",             // timestamp
+		"",             // message_id
+		"",             // alignment
+		"",             // badges
+		"#9b59b6",      // speaker_color
+		"",             // quote_html
+		"npc_dialogue"  // metadata
+	)
+	return TRUE
+
+/**
+ * Format an NPC dialogue card for browse chat display
+ * NOTE: This is now handled by the chat template based on quote_style="npc"
+ */
+/proc/formatNPCDialogueCard(npcName, text, portraitUrl = null)
+	// Legacy function - formatting now done in template
+	return ""
+
+/**
+ * Show interactive NPC choices in the browse chat
+ * Sends choices as a specially formatted message that the template renders as buttons
+ */
+/proc/showNPCChoicesToBrowse(mob/player/P, list/choices)
+	if(!P?.client || !length(choices))
+		return FALSE
+
+	// Store pending choices on the player
+	P.pendingNPCChoices = choices.Copy()
+
+	// Build choice text with embedded links for Topic handling
+	var/choiceText = ""
+	var/choiceNum = 1
+	for(var/choiceId in choices)
+		var/choiceLabel = choices[choiceId]
+		choiceText += "<a href='?src=\ref[P];npc_dialogue_choice=[choiceId]' class='npc-choice'>[choiceNum]. [choiceLabel]</a><br>"
+		choiceNum++
+
+	// Send as a system message with npc_choices quote_style
+	P.sendChatMessage(
+		"ic",              // channel
+		"",                // no speaker for choices
+		choiceText,        // message contains choice links
+		"",                // language
+		"npc_choices",     // quote_style - triggers choice styling
+		"#5d4a7d",         // color
+		"1",               // heard
+		"",                // flag1
+		"",                // flag2
+		"",                // timestamp
+		"",                // message_id
+		"",                // alignment
+		"",                // badges
+		"",                // speaker_color
+		"",                // quote_html
+		"npc_choices"      // metadata
+	)
+	return TRUE
+
+/**
+ * Handle NPC dialogue choice selection via Topic
+ */
+/mob/player/Topic(href, href_list, hsrc)
+	. = ..()
+
+	// Handle NPC dialogue choice selection
+	if(href_list["npc_dialogue_choice"])
+		handleNPCDialogueChoice(href_list["npc_dialogue_choice"])
+
+/**
+ * Process an NPC dialogue choice selection
+ */
+/mob/player/proc/handleNPCDialogueChoice(choiceId)
+	if(!activeNPCDialogue)
+		return FALSE
+
+	if(!pendingNPCChoices || !(choiceId in pendingNPCChoices))
+		return FALSE
+
+	pendingNPCChoices = null
+	return activeNPCDialogue.onChoice(src, choiceId)

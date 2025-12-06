@@ -564,46 +564,6 @@ window "Adminreports"
 		current-cell = 1,1
 		highlight-color = #000000
 
-window "Alertchat"
-	elem "Alertchat"
-		type = MAIN
-		pos = 281,0
-		size = 959x480
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		saved-params = "pos;size;is-minimized;is-maximized"
-		title = "Alert"
-		is-pane = true
-	elem "Alert"
-		type = OUTPUT
-		pos = 0,0
-		size = 960x480
-		anchor1 = 0,0
-		anchor2 = 100,100
-		text-color = #ffffff
-		background-color = #1c1c1c
-		saved-params = "max-lines"
-
-window "Allchat"
-	elem "Allchat"
-		type = MAIN
-		pos = 7,0
-		size = 1343x455
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		saved-params = "pos;size;is-minimized;is-maximized"
-		title = "All"
-		is-pane = true
-	elem "output1"
-		type = OUTPUT
-		pos = 0,0
-		size = 1343x456
-		anchor1 = 0,0
-		anchor2 = 100,100
-		text-color = #ffffff
-		background-color = #1c1c1c
-		saved-params = "max-lines"
-
 window "Build"
 	elem "Build"
 		type = MAIN
@@ -789,21 +749,17 @@ window "CharSheet"
 		size = 766x638
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		is-visible = false
 		saved-params = "pos;size;is-minimized;is-maximized"
 		statusbar = false
 		can-resize = false
 		on-close = "Closecharsheet"
-		outer-size = 782x677
-		inner-size = 766x638
 	elem "label58"
 		type = LABEL
 		pos = 0,0
 		size = 766x642
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		saved-params = ""
 		text = ""
 		image = 'Sheet\\Statistics.png'
@@ -824,7 +780,6 @@ window "CharSheet"
 		size = 76x29
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		saved-params = "is-checked"
 		text = ""
 		image = 'Sheet\\Summons.png'
@@ -835,7 +790,6 @@ window "CharSheet"
 		size = 76x29
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		saved-params = "is-checked"
 		text = ""
 		image = 'Sheet\\NPClist.png'
@@ -982,7 +936,6 @@ window "CharSheet"
 		size = 97x40
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		saved-params = "is-checked"
 		text = ""
 		image = 'Sheet\\stockbutt.png'
@@ -993,7 +946,6 @@ window "CharSheet"
 		size = 97x40
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		saved-params = "is-checked"
 		text = ""
 		image = 'Sheet\\Materiabutt.png'
@@ -1004,7 +956,6 @@ window "CharSheet"
 		size = 76x35
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		saved-params = "is-checked"
 		text = ""
 		image = 'Sheet\\persabilities.png'
@@ -1015,7 +966,6 @@ window "CharSheet"
 		size = 75x35
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		saved-params = "is-checked"
 		text = ""
 		image = 'Sheet\\Statsabilities.png'
@@ -1026,7 +976,6 @@ window "CharSheet"
 		size = 72x35
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		saved-params = "is-checked"
 		text = ""
 		image = 'Sheet\\Rollsskills.png'
@@ -1048,7 +997,6 @@ window "CharSheet"
 		anchor1 = -1,-1
 		anchor2 = -1,-1
 		text-color = #f8f8f8
-		background-color = none
 		saved-params = ""
 		text = ""
 		image = 'Sheet\\Infobox.png'
@@ -1059,7 +1007,6 @@ window "CharSheet"
 		anchor1 = -1,-1
 		anchor2 = -1,-1
 		text-color = #f8f8f8
-		background-color = none
 		saved-params = ""
 		text = ""
 		image = 'Sheet\\Infobox.png'
@@ -1070,7 +1017,6 @@ window "CharSheet"
 		anchor1 = -1,-1
 		anchor2 = -1,-1
 		text-color = #f8f8f8
-		background-color = none
 		saved-params = ""
 		text = ""
 		image = 'Sheet\\Infobox.png'
@@ -1182,7 +1128,6 @@ window "CharSheet"
 		size = 90x14
 		anchor1 = 76,92
 		anchor2 = 88,95
-		background-color = none
 		is-visible = false
 		saved-params = "is-checked"
 		text = ""
@@ -1194,7 +1139,6 @@ window "CharSheet"
 		size = 90x14
 		anchor1 = 63,92
 		anchor2 = 75,95
-		background-color = none
 		is-visible = false
 		saved-params = "is-checked"
 		text = ""
@@ -1206,7 +1150,6 @@ window "CharSheet"
 		size = 90x14
 		anchor1 = 51,92
 		anchor2 = 62,95
-		background-color = none
 		is-visible = false
 		saved-params = "is-checked"
 		text = ""
@@ -1218,7 +1161,6 @@ window "CharSheet"
 		size = 90x14
 		anchor1 = 23,93
 		anchor2 = 34,95
-		background-color = none
 		is-visible = false
 		saved-params = "is-checked"
 		text = ""
@@ -1230,7 +1172,6 @@ window "CharSheet"
 		size = 90x14
 		anchor1 = 37,93
 		anchor2 = 49,95
-		background-color = none
 		is-visible = false
 		saved-params = "is-checked"
 		text = ""
@@ -1353,7 +1294,6 @@ window "CharSheet"
 		size = 110x50
 		anchor1 = 75,77
 		anchor2 = 89,85
-		background-color = none
 		saved-params = "is-checked"
 		text = ""
 		image = 'Sheet\\CHA.png'
@@ -1374,7 +1314,6 @@ window "CharSheet"
 		size = 90x14
 		anchor1 = 10,93
 		anchor2 = 22,95
-		background-color = none
 		is-visible = false
 		saved-params = "is-checked"
 		text = ""
@@ -1386,7 +1325,6 @@ window "CharSheet"
 		size = 92x50
 		anchor1 = 63,77
 		anchor2 = 75,85
-		background-color = none
 		saved-params = "is-checked"
 		text = ""
 		image = 'Sheet\\WIS.png'
@@ -1407,7 +1345,6 @@ window "CharSheet"
 		size = 96x50
 		anchor1 = 50,77
 		anchor2 = 63,85
-		background-color = none
 		saved-params = "is-checked"
 		text = ""
 		image = 'Sheet\\INTEL.png'
@@ -1428,7 +1365,6 @@ window "CharSheet"
 		size = 105x50
 		anchor1 = 36,77
 		anchor2 = 50,85
-		background-color = none
 		saved-params = "is-checked"
 		text = ""
 		image = 'Sheet\\CONST.png'
@@ -1449,7 +1385,6 @@ window "CharSheet"
 		size = 111x50
 		anchor1 = 21,77
 		anchor2 = 36,85
-		background-color = none
 		saved-params = "is-checked"
 		text = ""
 		image = 'Sheet\\DEX.png'
@@ -1470,7 +1405,6 @@ window "CharSheet"
 		size = 86x50
 		anchor1 = 10,77
 		anchor2 = 21,85
-		background-color = none
 		saved-params = "is-checked"
 		text = ""
 		image = 'Sheet\\STR.png'
@@ -1538,7 +1472,6 @@ window "CharSheet"
 		size = 76x29
 		anchor1 = 49,9
 		anchor2 = 56,13
-		background-color = none
 		border = sunken
 		saved-params = ""
 		text = ""
@@ -1561,7 +1494,6 @@ window "CharSheet"
 		size = 76x29
 		anchor1 = 56,9
 		anchor2 = 64,13
-		background-color = none
 		border = line
 		saved-params = "is-checked"
 		text = ""
@@ -4936,26 +4868,6 @@ window "GMandperk"
 		current-cell = 1,1
 		highlight-color = #000000
 
-window "Icchat"
-	elem "Icchat"
-		type = MAIN
-		pos = 281,0
-		size = 982x418
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		saved-params = "pos;size;is-minimized;is-maximized"
-		title = "IC"
-		is-pane = true
-	elem "Ic"
-		type = OUTPUT
-		pos = 0,0
-		size = 982x427
-		anchor1 = 0,0
-		anchor2 = 100,100
-		text-color = #ffffff
-		background-color = #1c1c1c
-		saved-params = "max-lines"
-
 window "InventoryScreen"
 	elem "InventoryScreen"
 		type = MAIN
@@ -6637,28 +6549,6 @@ window "NPCarchive"
 		background-color = #919db5
 		saved-params = ""
 		highlight-color = #f8f8f8
-
-window "Oocchat"
-	elem "Oocchat"
-		type = MAIN
-		pos = 281,0
-		size = 344x112
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		is-visible = false
-		saved-params = "pos;size;is-minimized;is-maximized"
-		title = "LOOC"
-		can-resize = false
-		icon = 'Icons\\Moogle.dmi'
-	elem "looc"
-		type = OUTPUT
-		pos = 0,0
-		size = 344x120
-		anchor1 = 0,0
-		anchor2 = 100,100
-		text-color = #ffffff
-		background-color = #1c1c1c
-		saved-params = "max-lines"
 
 window "PerkWindow"
 	elem "PerkWindow"
@@ -9299,107 +9189,35 @@ window "customrolls"
 window "default"
 	elem "default"
 		type = MAIN
-		pos = 281,0
-		size = 1350x650
+		pos = 291,0
+		size = 1544x939
 		anchor1 = -1,-1
 		anchor2 = -1,-1
+		background-color = none
 		is-default = true
 		saved-params = "pos;size;is-minimized;is-maximized"
 		title = "Crystal Sagas"
 		icon = 'Sheet\\Chocobo.png'
 		macro = "macro"
 		menu = "menu"
-	elem "label62"
-		type = LABEL
-		pos = -341,630
-		size = 1202x46
-		anchor1 = 0,97
-		anchor2 = 64,100
-		background-color = #000080
-		saved-params = ""
-		text = ""
-		image = 'Sheet\\Gui Label 2.png'
-	elem "button39"
-		type = BUTTON
-		pos = 56,640
-		size = 32x16
-		anchor1 = 4,98
-		anchor2 = 7,100
-		text-color = #f8f8f8
-		background-color = #000080
-		border = line
-		saved-params = "is-checked"
-		text = "Say"
-		command = "Sayb"
-	elem "label4"
-		type = LABEL
-		pos = 1008,467
-		size = 365x181
-		anchor1 = 75,73
+		outer-size = 1560x1017
+		outer-pos = 291,0
+		inner-size = 1544x939
+		inner-pos = 8,51
+		screen-size = 1920x1040
+	elem "browser1"
+		type = BROWSER
+		pos = 1008,0
+		size = 536x952
+		anchor1 = 65,0
 		anchor2 = 100,100
+		background-color = #b2b2b2
+		border = sunken
 		saved-params = ""
-		text = ""
-		image = 'Sheet\\GUI Label.png'
-		image-mode = tile
-		keep-aspect = true
-	elem "button14"
-		type = BUTTON
-		pos = 1256,512
-		size = 88x24
-		anchor1 = 93,79
-		anchor2 = 100,82
-		background-color = #93acc5
-		saved-params = "is-checked"
-		text = "Compass"
-		command = "Compass"
-	elem "label193"
-		type = LABEL
-		pos = 536,432
-		size = 816x40
-		anchor1 = 40,66
-		anchor2 = 100,73
-		background-color = #000080
-		saved-params = ""
-		text = ""
-		image = 'Sheet\\Gui Label 2.png'
-		keep-aspect = true
-	elem "label180"
-		type = LABEL
-		pos = 0,432
-		size = 816x32
-		anchor1 = 0,68
-		anchor2 = 60,71
-		background-color = #000080
-		saved-params = ""
-		text = ""
-		image = 'Sheet\\Gui Label 2.png'
-		keep-aspect = true
-	elem "Eventmin"
-		type = BUTTON
-		pos = 1288,571
-		size = 60x21
-		anchor1 = 95,88
-		anchor2 = 100,91
-		background-color = #94d7d7
-		is-visible = false
-		saved-params = "is-checked"
-		text = "Eventmin"
-		command = "EventminMenu"
-	elem "button95"
-		type = BUTTON
-		pos = 1214,479
-		size = 74x24
-		anchor1 = 90,74
-		anchor2 = 95,77
-		background-color = #9fb8c9
-		saved-params = "is-checked"
-		text = ""
-		image = 'PNG\\Faction.png'
-		command = "Factionmenu"
 	elem "label240"
 		type = LABEL
-		pos = 993,467
-		size = 15x175
+		pos = 992,0
+		size = 16x952
 		anchor1 = 74,73
 		anchor2 = 75,100
 		background-color = #000080
@@ -9408,385 +9226,41 @@ window "default"
 		image = 'Sheet\\Gui Label 2.png'
 	elem "label239"
 		type = LABEL
-		pos = 856,634
-		size = 475x40
+		pos = 1000,952
+		size = 544x8
 		anchor1 = 100,100
 		anchor2 = -1,-1
-		background-color = #000080
-		saved-params = ""
-		text = ""
-		image = 'Sheet\\Gui Label 2.png'
-	elem "label3"
-		type = LABEL
-		pos = 852,378
-		size = 21x291
-		anchor1 = 100,100
-		anchor2 = -1,-1
-		background-color = #000080
-		saved-params = ""
-		text = ""
-		image = 'Sheet\\Gui Label 2.png'
-		keep-aspect = true
-	elem "label238"
-		type = LABEL
-		pos = 888,632
-		size = 459x48
-		anchor1 = 66,97
-		anchor2 = 100,100
-		background-color = #000080
-		saved-params = ""
-		text = ""
-		image = 'Sheet\\Gui Label 2.png'
-	elem "label1"
-		type = LABEL
-		pos = 720,466
-		size = 349x7
-		anchor1 = 54,72
-		anchor2 = 79,74
-		background-color = #000080
-		saved-params = ""
-		text = ""
-		image = 'Sheet\\Gui Label 2.png'
-	elem "label178"
-		type = LABEL
-		pos = 272,432
-		size = 816x40
-		anchor1 = 20,66
-		anchor2 = 81,73
-		background-color = #000080
-		saved-params = ""
-		text = ""
-		image = 'Sheet\\Gui Label 2.png'
-		keep-aspect = true
-	elem "label220"
-		type = LABEL
-		pos = 0,459
-		size = 670x11
-		anchor1 = 0,71
-		anchor2 = 50,73
 		background-color = #000080
 		saved-params = ""
 		text = ""
 		image = 'Sheet\\Gui Label 2.png'
 	elem "label179"
 		type = LABEL
-		pos = 670,466
-		size = 342x7
+		pos = 1000,0
+		size = 544x8
 		anchor1 = 50,72
 		anchor2 = 76,74
 		background-color = #000080
 		saved-params = ""
 		text = ""
 		image = 'Sheet\\Gui Label 2.png'
-	elem "button87"
-		type = BUTTON
-		pos = 1148,448
-		size = 60x21
-		anchor1 = 85,69
-		anchor2 = 90,72
-		background-color = #94d7d7
-		saved-params = "is-checked"
-		text = "Mute Music"
-		command = "DisableMusic"
-	elem "button79"
-		type = BUTTON
-		pos = 1176,507
-		size = 76x29
-		anchor1 = 87,78
-		anchor2 = 93,82
-		background-color = #53539b
-		saved-params = "is-checked"
-		text = ""
-		image = 'Sheet\\Party.png'
-		command = "ViewParty"
-	elem "button4"
-		type = BUTTON
-		pos = 1150,604
-		size = 64x60
-		anchor1 = 85,93
-		anchor2 = 90,100
-		background-color = #9fb8c9
-		saved-params = "is-checked"
-		text = ""
-		image = 'Sheet\\Crolls.png'
-		command = "CustomRolls"
-	elem "label233"
-		type = LABEL
-		pos = 386,638
-		size = 483x34
-		anchor1 = 100,100
-		anchor2 = -1,-1
-		background-color = #000080
-		saved-params = ""
-		text = ""
-		image = 'Sheet\\Gui Label 2.png'
-	elem "label231"
-		type = LABEL
-		pos = 367,630
-		size = 343x49
-		anchor1 = 1,100
-		anchor2 = 12,100
-		background-color = #000080
-		saved-params = ""
-		text = ""
-		image = 'Sheet\\Gui Label 2.png'
-		keep-aspect = true
-	elem "label222"
-		type = LABEL
-		pos = 325,646
-		size = 345x32
-		anchor1 = 24,98
-		anchor2 = 50,100
-		background-color = #000080
-		saved-params = ""
-		text = ""
-		image = 'Sheet\\Gui Label 2.png'
-		keep-aspect = true
-	elem "label223"
-		type = LABEL
-		pos = 381,638
-		size = 488x40
-		anchor1 = 100,100
-		anchor2 = -1,-1
-		background-color = #000080
-		saved-params = ""
-		text = ""
-		image = 'Sheet\\Gui Label 2.png'
-	elem "oocbutton"
-		type = BUTTON
-		pos = 1143,479
-		size = 74x24
-		anchor1 = 85,74
-		anchor2 = 90,77
-		background-color = #9fb8c9
-		saved-params = "is-checked"
-		text = ""
-		image = 'PNG\\Oocbutton.png'
-		command = "Localooc"
-	elem "label225"
-		type = LABEL
-		pos = 351,651
-		size = 335x28
-		anchor1 = 1,100
-		anchor2 = 12,100
-		background-color = #000080
-		saved-params = ""
-		text = ""
-		image = 'Sheet\\Gui Label 2.png'
-	elem "label224"
-		type = LABEL
-		pos = 207,651
-		size = 335x28
-		anchor1 = 1,100
-		anchor2 = 12,100
-		background-color = #000080
-		saved-params = ""
-		text = ""
-		image = 'Sheet\\Gui Label 2.png'
-	elem "label190"
-		type = LABEL
-		pos = 659,464
-		size = 14x190
-		anchor1 = 49,73
-		anchor2 = 50,100
-		background-color = #000080
-		saved-params = ""
-		text = ""
-		image = 'Sheet\\Gui Label 2.png'
-		keep-aspect = true
-	elem "oocout"
-		type = OUTPUT
-		pos = 673,473
-		size = 323x165
-		anchor1 = 50,74
-		anchor2 = 75,100
-		text-color = #ffffff
-		background-color = #000000
-		saved-params = "max-lines"
-	elem "icout"
-		type = OUTPUT
-		pos = 9,465
-		size = 652x170
-		anchor1 = 1,72
-		anchor2 = 49,98
-		text-color = #ffffff
-		background-color = #000000
-		saved-params = "max-lines"
-	elem "input2"
-		type = INPUT
-		pos = 96,640
-		size = 848x19
-		anchor1 = 7,98
-		anchor2 = 70,100
-		background-color = #8f8fe2
-		saved-params = ""
-		command = "!say"
-	elem "button49"
-		type = BUTTON
-		pos = 1280,441
-		size = 64x23
-		anchor1 = 95,68
-		anchor2 = 100,71
-		text-color = #080808
-		background-color = #93acc5
-		border = line
-		saved-params = "is-checked"
-		text = "Global Mods"
-		command = "OpenGMP"
-	elem "button121"
-		type = BUTTON
-		pos = 1216,441
-		size = 48x23
-		anchor1 = 91,68
-		anchor2 = 94,71
-		background-color = #93acc5
-		saved-params = "is-checked"
-		text = "Grid"
-		command = "Grid"
-	elem "button22"
-		type = BUTTON
-		pos = 1008,464
-		size = 64x64
-		anchor1 = 75,71
-		anchor2 = 79,81
-		text-color = #ffff31
-		background-color = #9fb8c9
-		saved-params = "is-checked"
-		text = ""
-		image = 'PNG\\RP.png'
-		command = "Emote"
 	elem "label6"
 		type = LABEL
-		pos = -4,693
-		size = 663x8
+		pos = -4,979
+		size = 756x11
 		anchor1 = 0,99
 		anchor2 = 48,100
 		background-color = #000080
 		saved-params = ""
 		text = ""
-	elem "label5"
-		type = LABEL
-		pos = 0,463
-		size = 9x238
-		anchor1 = 0,72
-		anchor2 = 1,100
-		background-color = #000080
-		saved-params = ""
-		text = ""
-		image = 'Sheet\\Gui Label 2.png'
-		keep-aspect = true
-	elem "Adminbut"
-		type = BUTTON
-		pos = 1223,601
-		size = 64x64
-		anchor1 = 91,92
-		anchor2 = 95,100
-		background-color = #9fb8c9
-		is-visible = false
-		saved-params = "is-checked"
-		text = ""
-		image = 'PNG\\Admin.png'
-		command = "OpenAdminPanel"
-	elem "button7"
-		type = BUTTON
-		pos = 1222,540
-		size = 63x59
-		anchor1 = 91,83
-		anchor2 = 95,92
-		background-color = #9fb8c9
-		saved-params = "is-checked"
-		text = ""
-		image = 'PNG\\Infobutton.png'
-		command = "ViewEcyclopedia"
-	elem "button6"
-		type = BUTTON
-		pos = 1078,604
-		size = 64x60
-		anchor1 = 80,93
-		anchor2 = 85,100
-		background-color = #9fb8c9
-		saved-params = "is-checked"
-		text = ""
-		image = 'Sheet\\Build.png'
-		command = "Openbuild"
-	elem "button5"
-		type = BUTTON
-		pos = 1149,539
-		size = 64x59
-		anchor1 = 85,83
-		anchor2 = 90,92
-		background-color = #9fb8c9
-		saved-params = "is-checked"
-		text = ""
-		image = 'PNG\\IconButton.png'
-		command = "Opencustomize"
-	elem "button3"
-		type = BUTTON
-		pos = 1077,536
-		size = 64x59
-		anchor1 = 80,82
-		anchor2 = 85,92
-		background-color = #9fb8c9
-		drop-zone = true
-		saved-params = "is-checked"
-		text = ""
-		image = 'PNG\\InvButton.png'
-		command = "InventoryScreen"
-	elem "Create"
-		type = BUTTON
-		pos = 1009,604
-		size = 63x60
-		anchor1 = 75,93
-		anchor2 = 79,100
-		background-color = #9fb8c9
-		saved-params = "is-checked"
-		text = ""
-		image = 'PNG\\Craft.png'
-		command = "OpenCraft"
-	elem "button1"
-		type = BUTTON
-		pos = 1008,536
-		size = 64x64
-		anchor1 = 75,82
-		anchor2 = 79,92
-		background-color = #9fb8c9
-		saved-params = "is-checked"
-		text = ""
-		image = 'PNG\\Sheetbutton.png'
-		command = "Switchtoprofile"
-	elem "Nar"
-		type = BUTTON
-		pos = 1,640
-		size = 47x16
-		anchor1 = 1,98
-		anchor2 = 6,100
-		text-color = #f8f8f8
-		background-color = #000080
-		is-visible = false
-		border = line
-		saved-params = "is-checked"
-		text = "Narrate"
-		command = "Announce"
 	elem "game_map"
 		type = MAP
-		pos = 0,-3
-		size = 1349x440
+		pos = 0,0
+		size = 1000x958
 		anchor1 = 0,0
 		anchor2 = 100,67
 		saved-params = "zoom-mode"
 		on-size = ".on_viewport [[width]] [[height]]"
-	elem "button2"
-		type = BUTTON
-		pos = 1073,464
-		size = 64x64
-		anchor1 = 79,71
-		anchor2 = 84,81
-		text-color = #f8f8f8
-		background-color = #9fb8c9
-		saved-params = "is-checked"
-		text = ""
-		image = 'PNG\\AoE.png'
-		command = "AOE"
 
 window "faction"
 	elem "faction"

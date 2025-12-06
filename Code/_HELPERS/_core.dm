@@ -37,3 +37,18 @@
 		ASSERT(D.tag)
 		return D.tag
 	return ref(D)
+
+/**
+ * Returns a formatted key/name string for a mob
+ * Used for logging and display purposes
+ * @param M The mob to get the key name for
+ * @return Formatted string like "Name (key)" or just "Name"
+ */
+/proc/key_name(mob/M) as text
+	if(!istype(M))
+		return "Unknown"
+	if(M.client)
+		return "[M.name] ([M.key])"
+	if(M.ckey)
+		return "[M.name] ([M.ckey])"
+	return "[M.name]"

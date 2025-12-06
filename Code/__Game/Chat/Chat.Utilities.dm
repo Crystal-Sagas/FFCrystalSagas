@@ -1,207 +1,221 @@
-// Chat.Utilities.dm
-// Contains utility verbs related to chat/communication (RNG, Countdown, Discord link, etc.)
-// Part of the chat system refactor.
+/*
+	Chat.Utilities.dm
 
-// Random number generator for RP purposes
+	Utility verbs for roleplay communication and mechanics.
+	- RNG: Random number generation for RP dice rolls
+	- Discord: Link to community Discord server
+	- Flee: Flee/Chase dice roll system
+	- Countdown: Timed countdown announcements for RP scenes
+*/
+
+// ============================================================================
+// CONSTANTS
+// ============================================================================
+
+#define COUNTDOWN_RANGE 20
+#define RNG_MIN 0
+#define RNG_MAX 1000
+
+// ============================================================================
+// RANDOM NUMBER GENERATOR
+// ============================================================================
+
+/**
+ * RNG Verb - Roll a random number for roleplay purposes
+ * Visible to all players in range
+ */
 mob/verb/RNG()
-	var/L = input(usr, "Lowest number. (0 minimum)") as num
-	var/H = input(usr, "Highest number. (1000 maximum)") as num
-	if(L < 0) L = 0
-	if(H > 1000) H = 1000
-	if(L && H)
-		var/N = rand(L, H)
-		view(10, usr) << "[usr] used RNG and rolled between [L] and [H] to get [N]."
+	set category = "RP"
+	set name = "Roll Dice"
 
-// Discord server link
+	var/lowNum = input(usr, "Enter minimum value (0-999):", "RNG - Low") as null|num
+	if(isnull(lowNum))
+		return
+
+	var/highNum = input(usr, "Enter maximum value (1-1000):", "RNG - High") as null|num
+	if(isnull(highNum))
+		return
+
+	// Clamp values
+	lowNum = clamp(lowNum, RNG_MIN, RNG_MAX - 1)
+	highNum = clamp(highNum, lowNum + 1, RNG_MAX)
+
+	var/result = rand(lowNum, highNum)
+
+	// Announce to nearby players via browse chat
+	var/message = "<b>[usr]</b> rolled <b>[result]</b> (range: [lowNum]-[highNum])"
+	broadcastToRange(usr, COUNTDOWN_RANGE, message, "system")
+
+// ============================================================================
+// DISCORD LINK
+// ============================================================================
+
+/**
+ * Discord Verb - Open Discord server invite
+ */
 mob/verb/Discord()
-	set category = null
+	set category = "OOC"
+	set name = "Discord Server"
+
 	usr << link("https://discord.gg/H5Qfzbq3jD")
 
-// Display race distribution
-mob/verb/Races()
-	var/list/Races = new
-	for(var/mob/player/A in Players)
-		if(!(A.Race in Races))
-			if(usr.client.holder)
-				var/Amount = 0
-				Races += A.Race
-				for(var/mob/player/B in Players)
-					if(B.Race == A.Race) Amount++
-				usr.AllOut("[A.Race]: [Amount]")
-			else if(A.Race != "Majin" && A.Race != "Bio-Android")
-				var/Amount = 0
-				Races += A.Race
-				for(var/mob/player/B in Players)
-					if(B.Race == A.Race) Amount++
-				usr.AllOut("[A.Race]: [Amount]")
+// ============================================================================
+// FLEE/CHASE SYSTEM
+// ============================================================================
 
-// Flee system (complex skill-based dice roll)
-mob/var/FleeAdd = 0
+mob/var/fleeModifier = 0  // Persistent flee bonus from items/abilities
+
+/**
+ * Flee Verb - Roll for fleeing or chasing in combat
+ * Simple d20 system with speed modifier
+ */
 mob/verb/Flee()
-	set category = "Other"
-	var/Which = input("Fleeing or Chasing?") in list("Flee", "Chase", "Cancel")
-	if(Which == "Cancel") return
-	
-	var/FromWho
-	if(Which == "Chase")
-		FromWho = input("Chase who?") as mob in oview(usr)
-	
-	var/FleeRoll = rand(1, 20)
-	var/RollAdd = 0
-	
-	// Calculate modifiers based on skills and equipment
-	if(locate(/Skill/Misc/Fly) in usr) RollAdd++
-	if(locate(/Skill/Zanzoken) in usr) RollAdd++
-	if(locate(/Skill/Buff/Godspeed) in usr) RollAdd++
-	if(locate(/Skill/Attacks/SolarFlare) in usr) RollAdd += 2
-	if(locate(/Skill/Support/Teleport) in usr) RollAdd += 4
-	else if(locate(/Skill/Support/DemonTeleport) in usr) RollAdd += 4
-	else if(locate(/Skill/Support/InstantTransmission) in usr) RollAdd += 3
-	else if(locate(/Skill/Spell/Create_Portal) in usr) RollAdd += 2
-	else if(locate(/obj/items/Transporter_Watch) in usr) RollAdd += 2
-	if(locate(/Skill/Support/Invisibility) in usr) RollAdd += 3
-	else if(locate(/obj/items/Cloak_Controls) in usr) RollAdd += 2
-	if(locate(/obj/items/Aspect_of_Flight) in usr) RollAdd += 3
-	if(Cyber_Right_Leg) RollAdd++
-	if(Cyber_Left_Leg) RollAdd++
-	if(Precognition) RollAdd += 3
-	RollAdd += round(SpdMod * 1.5)
-	
-	// Willpower penalties
-	if(Willpower / MaxWillpower < 0.7) RollAdd--
-	if(Willpower / MaxWillpower < 0.5) RollAdd--
-	if(Willpower / MaxWillpower < 0.3) FleeRoll = max(1, FleeRoll - 4)
-	if(Willpower / MaxWillpower < 0.2) RollAdd--
-	if(Willpower / MaxWillpower < 0.1) RollAdd--
-	
-	// Announce result
-	for(var/mob/M in range(20, usr))
-		if(Which == "Flee")
-			M.AllOut("<font color = red>[usr] attempted to [Which] and got [FleeRoll + RollAdd + usr.FleeAdd] ([FleeRoll] + <font color=yellow>[RollAdd + usr.FleeAdd]<font color = red>).")
-		else
-			M.AllOut("<font color = red>[usr] attempted to [Which] [FromWho] and got [FleeRoll + RollAdd + usr.FleeAdd] ([FleeRoll] + <font color=yellow>[RollAdd + usr.FleeAdd]<font color = red>).")
-		M.saveToLog("|| ([src.x], [src.y], [src.z]) | [key_name(usr)] attempted to Flee/Chase and got [FleeRoll + RollAdd + FleeAdd] ([FleeRoll] + [RollAdd + usr.FleeAdd])\n")
+	set category = "Combat"
+	set name = "Flee/Chase"
 
-// Countdown system (30 or 60 seconds)
+	var/action = input("Are you fleeing or chasing?", "Flee/Chase") in list("Flee", "Chase", "Cancel")
+	if(action == "Cancel")
+		return
+
+	var/mob/target = null
+	if(action == "Chase")
+		target = input("Who are you chasing?", "Select Target") as null|mob in oview(usr)
+		if(!target)
+			return
+
+	// Roll d20
+	var/roll = rand(1, 20)
+
+	// Speed modifier (Crystal Sagas uses speed stat)
+	var/speedBonus = 0
+	if(speed)
+		speedBonus = round(speed / 20)  // +1 per 20 speed
+
+	var/totalRoll = roll + speedBonus + fleeModifier
+
+	// Build result message
+	var/resultMsg
+	if(action == "Flee")
+		resultMsg = "<span style='color:#FF6B6B'><b>[usr]</b> attempts to <b>Flee</b>: <b>[totalRoll]</b> ([roll] + [speedBonus + fleeModifier] modifier)</span>"
+	else
+		resultMsg = "<span style='color:#FF6B6B'><b>[usr]</b> attempts to <b>Chase</b> [target]: <b>[totalRoll]</b> ([roll] + [speedBonus + fleeModifier] modifier)</span>"
+
+	// Announce to nearby players
+	broadcastToRange(usr, COUNTDOWN_RANGE, resultMsg, "combat")
+
+	// Log
+	usr.saveToLog("|| ([usr.x], [usr.y], [usr.z]) | [key_name(usr)] [action] roll: [totalRoll] ([roll] + [speedBonus + fleeModifier])\n")
+
+// ============================================================================
+// COUNTDOWN SYSTEM
+// ============================================================================
+
+mob/var/isCountingDown = FALSE  // Prevent multiple simultaneous countdowns
+
+/**
+ * Countdown Verb - Start a timed countdown for RP scenes
+ * Clean loop-based implementation
+ */
 mob/verb/Countdown()
-	set category = null
-	set hidden = 1
-	if(ActionCheck) return
-	ActionCheck = 1
-	spawn(15) ActionCheck = 0
-	
-	var/Cho = input("Choose a countdown type") in list("30 seconds", "60 seconds", "Cancel")
-	
-	switch(Cho)
+	set category = "RP"
+	set name = "Start Countdown"
+
+	if(isCountingDown)
+		usr << "<span style='color:#FF6B6B'>You already have a countdown in progress!</span>"
+		return
+
+	var/duration = input("Select countdown duration:", "Countdown") in list("10 seconds", "30 seconds", "60 seconds", "Cancel")
+	if(duration == "Cancel")
+		return
+
+	// Parse duration
+	var/seconds
+	switch(duration)
+		if("10 seconds")
+			seconds = 10
 		if("30 seconds")
-			for(var/mob/M in range(20, usr))
-				M.BuffOut("<font color = red>[src] is waiting 30 seconds.")
-			usr.saveToLog("|| ([src.x], [src.y], [src.z]) | [key_name(usr)] is waiting 30 seconds.\n")
-			
-			spawn(190)
-				if(usr)
-					for(var/mob/M in range(20, usr))
-						M.BuffOut("<font color = red>10")
-					spawn(10)
-						if(usr)
-							for(var/mob/M in range(20, usr))
-								M.BuffOut("<font color = red>9")
-							spawn(10)
-								if(usr)
-									for(var/mob/M in range(20, usr))
-										M.BuffOut("<font color = red>8")
-									spawn(10)
-										if(usr)
-											for(var/mob/M in range(20, usr))
-												M.BuffOut("<font color = red>7")
-											spawn(10)
-												if(usr)
-													for(var/mob/M in range(20, usr))
-														M.BuffOut("<font color = red>6")
-													spawn(10)
-														if(usr)
-															for(var/mob/M in range(20, usr))
-																M.BuffOut("<font color = red>5")
-															if(RPMode)
-																RPMode()
-															spawn(10)
-																if(usr)
-																	for(var/mob/M in range(20, usr))
-																		M.BuffOut("<font color = red>4")
-																	spawn(10)
-																		if(usr)
-																			for(var/mob/M in range(20, usr))
-																				M.BuffOut("<font color = red>3")
-																			spawn(10)
-																				if(usr)
-																					for(var/mob/M in range(20, usr))
-																						M.BuffOut("<font color = red>2")
-																					spawn(10)
-																						if(usr)
-																							for(var/mob/M in range(20, usr))
-																								M.BuffOut("<font color = red>1")
-																							spawn(10)
-																								if(usr)
-																									for(var/mob/M in range(20, usr))
-																										M.BuffOut("<font color = red>GO!")
-																										M.BuffOut("[usr] has finished their countdown.")
-																										usr.saveToLog("|| ([src.x], [src.y], [src.z]) | [key_name(usr)] has waited 30 seconds.\n")
-		
+			seconds = 30
 		if("60 seconds")
-			for(var/mob/M in range(20, usr))
-				M.BuffOut("<font color = red>[src] is waiting 60 seconds.")
-			usr.saveToLog("|| ([src.x], [src.y], [src.z]) | [key_name(usr)] is waiting 60 seconds.\n")
-			
-			spawn(300)
-				if(usr)
-					for(var/mob/M in range(20, usr))
-						M.BuffOut("<font color = red>[src] is waiting 60 seconds (30).")
-					spawn(150)
-						if(usr)
-							for(var/mob/M in range(20, usr))
-								M.BuffOut("<font color = red>[src] is waiting 60 seconds (15).")
-							spawn(150)
-								if(usr)
-									for(var/mob/M in range(20, usr))
-										M.BuffOut("<font color = red>[src]. 10")
-									spawn(10)
-										if(usr)
-											for(var/mob/M in range(20, usr))
-												M.BuffOut("<font color = red>[src]. 9")
-											spawn(10)
-												if(usr)
-													for(var/mob/M in range(20, usr))
-														M.BuffOut("<font color = red>[src]. 8")
-													spawn(10)
-														if(usr)
-															for(var/mob/M in range(20, usr))
-																M.BuffOut("<font color = red>[src]. 7")
-															spawn(10)
-																if(usr)
-																	for(var/mob/M in range(20, usr))
-																		M.BuffOut("<font color = red>[src]. 6")
-																	spawn(10)
-																		if(usr)
-																			for(var/mob/M in range(20, usr))
-																				M.BuffOut("<font color = red>[src]. 5")
-																			spawn(10)
-																				if(usr)
-																					for(var/mob/M in range(20, usr))
-																						M.BuffOut("<font color = red>[src]. 4")
-																					spawn(10)
-																						if(usr)
-																							for(var/mob/M in range(20, usr))
-																								M.BuffOut("<font color = red>[src]. 3")
-																							spawn(10)
-																								if(usr)
-																									for(var/mob/M in range(20, usr))
-																										M.BuffOut("<font color = red>[src]. 2")
-																									spawn(10)
-																										if(usr)
-																											for(var/mob/M in range(20, usr))
-																												M.BuffOut("<font color = red>[src]. 1")
-																											spawn(10)
-																												if(usr)
-																													for(var/mob/M in range(20, usr))
-																														M.BuffOut("<font color = red>[src] has successfully waited 60 seconds.")
-																													usr.saveToLog("|| ([src.x], [src.y], [src.z]) | [key_name(usr)] has successfully waited 60 seconds..\n")
+			seconds = 60
+
+	isCountingDown = TRUE
+	spawn()
+		runCountdown(seconds)
+
+/**
+ * Run the countdown timer
+ * @param totalSeconds Total countdown duration
+ */
+mob/proc/runCountdown(totalSeconds)
+	// Announce start
+	var/startMsg = "<span style='color:#FFD700'><b>[src]</b> started a <b>[totalSeconds] second</b> countdown!</span>"
+	broadcastToRange(src, COUNTDOWN_RANGE, startMsg, "system")
+	saveToLog("|| ([x], [y], [z]) | [key_name(src)] started [totalSeconds]s countdown\n")
+
+	// Wait until final 10 seconds
+	var/waitTime = max(0, totalSeconds - 10)
+	if(waitTime > 0)
+		sleep(waitTime * 10)  // Convert to deciseconds
+
+		// Check if player still exists
+		if(!src || !src.client)
+			isCountingDown = FALSE
+			return
+
+		// Announce approaching end
+		if(totalSeconds > 10)
+			var/approachMsg = "<span style='color:#FFA500'><b>[totalSeconds - 10]</b> seconds elapsed - Final countdown!</span>"
+			broadcastToRange(src, COUNTDOWN_RANGE, approachMsg, "system")
+
+	// Final 10 second countdown
+	for(var/i = 10; i >= 1; i--)
+		if(!src || !src.client)
+			isCountingDown = FALSE
+			return
+
+		var/countMsg = "<span style='color:#FF4444; font-size:1.2em'><b>[i]</b></span>"
+		broadcastToRange(src, COUNTDOWN_RANGE, countMsg, "system")
+		sleep(10)  // 1 second
+
+	// Check one more time
+	if(!src || !src.client)
+		isCountingDown = FALSE
+		return
+
+	// Announce completion
+	var/endMsg = "<span style='color:#00FF00; font-size:1.4em'><b>GO!</b></span>"
+	broadcastToRange(src, COUNTDOWN_RANGE, endMsg, "system")
+
+	var/completeMsg = "<span style='color:#00FF00'><b>[src]</b> completed their [totalSeconds] second countdown!</span>"
+	broadcastToRange(src, COUNTDOWN_RANGE, completeMsg, "system")
+	saveToLog("|| ([x], [y], [z]) | [key_name(src)] completed [totalSeconds]s countdown\n")
+
+	isCountingDown = FALSE
+
+// ============================================================================
+// BROADCAST HELPER
+// ============================================================================
+
+/**
+ * Broadcast a message to all mobs within range
+ * Uses the browse-based chat system
+ * @param origin The source mob
+ * @param dist Range in tiles
+ * @param message The HTML message to send
+ * @param channel Channel to send to (system, combat, ic, etc.)
+ */
+proc/broadcastToRange(mob/origin, dist, message, channel = "system")
+	if(!origin)
+		return
+
+	for(var/mob/M in range(dist, origin))
+		if(!M.client)
+			continue
+
+		switch(channel)
+			if("system")
+				M.BrowseSystemOut(message)
+			if("combat")
+				M.BrowseCombatOut(message)
+			else
+				M.BrowseBuffOut(message)

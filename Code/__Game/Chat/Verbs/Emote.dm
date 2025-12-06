@@ -3,7 +3,7 @@
 
   Modernized Emote verb suite following DM best practices.
   Provides roleplay emote functionality with typing indicators and window management.
-  
+
   Dependencies:
   - EmoteW window in skin file
   - ICText() for embedded speech parsing
@@ -18,7 +18,7 @@
 
 /**
  * Main Emote verb - toggles the emote input window
- * 
+ *
  * Opens or closes the emote window, manages typing indicator overlay,
  * and restores saved emote text if present.
  */
@@ -27,14 +27,14 @@
 	set name = "Emote"
 	set instant = 1
 	set hidden = 1
-	
+
 	// Validate client connection
 	if(!client)
 		return
-	
+
 	// Check if window is currently visible
 	var/isVisible = (winget(client, EMOTE_WINDOW_ID, "is-visible") == "true")
-	
+
 	if(!isVisible)
 		openEmoteWindow()
 	else
@@ -46,18 +46,18 @@
 /mob/proc/openEmoteWindow()
 	if(!client)
 		return
-	
+
 	// Show window and focus input
 	winshow(client, EMOTE_WINDOW_ID, TRUE)
 	winset(client, EMOTE_INPUT_ID, "focus=true")
-	
+
 	// Add typing indicator overlay
 	addTypingIndicator()
-	
+
 	// Restore saved emote text if available
 	if(istext(SavedEmote) && length(SavedEmote))
 		winset(client, EMOTE_INPUT_ID, "text=\"[SavedEmote]\"")
-	
+
 	// Log typing start
 	saveToLog("<font color=#6600FF>\n<br> |  | ([x], [y], [z]) | [key_name(src)] ::<br> <span class=\"emote\">starts typing</span>\n")
 
@@ -67,39 +67,39 @@
 /mob/proc/closeEmoteWindow()
 	if(!client)
 		return
-	
+
 	winshow(client, EMOTE_WINDOW_ID, FALSE)
 	removeTypingIndicator()
 
 /**
  * EmoteS - Submit/Send the emote message
- * 
+ *
  * Called when user presses "Post" button in emote window.
  * Processes and broadcasts the emote to nearby players.
  */
 /mob/verb/EmoteS()
 	set hidden = 1
-	
+
 	// Cooldown check with spawn delay
 	spawn(EMOTE_COOLDOWN_TIME)
 		if(EmoteCD)
 			return
-		
+
 		// Retrieve and sanitize message
 		var/msg = getEmoteMessage()
 		if(!msg)
 			handleEmptyEmote()
 			return
-		
+
 		// Determine sender (handle fusion)
 		var/mob/Sender = determineSender()
-		
+
 		// Check if name should be included
 		var/includeNameInEmote = shouldIncludeName()
-		
+
 		// Broadcast to recipients
 		broadcastEmote(msg, Sender, includeNameInEmote)
-		
+
 		// Finalize emote
 		finalizeEmote(msg)
 
@@ -109,11 +109,11 @@
 /mob/proc/getEmoteMessage() as text
 	if(!client)
 		return null
-	
+
 	var/msg = winget(client, EMOTE_INPUT_ID, "text")
 	if(!istext(msg))
 		return null
-	
+
 	msg = sanitize_n(copytext(msg, 1, MAX_MESSAGE_LEN))
 	return length(msg) ? msg : null
 
@@ -125,17 +125,13 @@
 	removeTypingIndicator()
 
 /**
- * Determines the actual sender (handles fusion mechanics)
+ * Determines the actual sender
+ * Note: Chronicles fusion mechanics removed - Crystal Sagas doesn't have DBZ fusion
+ * This can be extended for Crystal Sagas-specific sender transformations if needed
  */
 /mob/proc/determineSender() as /mob
-	if(!InFusion)
-		return src
-	
-	// Find fusion partner
-	for(var/mob/m in world)
-		if(m.FusionKey2 == FusionKey2)
-			return m
-	
+	// For now, always return self
+	// Add Crystal Sagas-specific logic here if needed (e.g., possession, transformation)
 	return src
 
 /**
@@ -144,7 +140,7 @@
 /mob/proc/shouldIncludeName() as num
 	if(!client)
 		return FALSE
-	
+
 	return (winget(client, EMOTE_CHECKBOX_ID, "is-checked") == "true")
 
 /**
@@ -153,92 +149,9 @@
 /mob/proc/broadcastEmote(msg as text, mob/Sender, includeNameInEmote as num)
 	if(!istext(msg) || !istype(Sender))
 		return
-	
-	// Use the browse integration method for modern chat
+
+	// Use the browse integration method for modern chat (defined in Chat.BrowseIntegration.dm)
 	broadcastEmoteToBrowse(msg, Sender, includeNameInEmote)
-
-/**
- * Broadcasts to Admin Mode spectators
- */
-/mob/proc/broadcastToAdminMode(msg as text, mob/Sender, includeNameInEmote as num)
-	for(var/mob/Admin_Mode/M in view(src))
-		if(!M)
-			continue
-		
-		for(var/mob/player/P in world)
-			if(P.ckey != M.controllerKey)
-				continue
-			if(!P.client || !P.client.holder)
-				continue
-			
-			var/formattedMsg = formatEmoteForAdmin(msg, Sender, P, includeNameInEmote)
-			P.ICOut(formattedMsg)
-			P.OOCOut(formattedMsg)
-
-/**
- * Formats emote message for admin viewers
- */
-/mob/proc/formatEmoteForAdmin(msg as text, mob/Sender, mob/player/recipient, includeNameInEmote as num) as text
-	var/adminLink = "(<A HREF='?src=\ref[recipient.client.holder];adminplayeropts=\ref[src]'>X</A>)"
-	var/processedMsg = recipient.ICText(msg, src)
-	
-	if(includeNameInEmote)
-		return "<font color=[TextColor]><font size=[recipient.TextSize]>(Admin Mode) *[Sender] [processedMsg]*<br> [adminLink]</span>"
-	else
-		return "<font size=[recipient.TextSize]>(Admin Mode) *[processedMsg]*<br>([Sender]) [adminLink]</span>"
-
-/**
- * Broadcasts to regular players in hearing range
- */
-/mob/proc/broadcastToPlayers(msg as text, mob/Sender, includeNameInEmote as num)
-	for(var/mob/player/M in hearers(ViewX, Sender))
-		if(!M.client || M.afk)
-			continue
-		
-		// Handle observer mode
-		if(M.Observer)
-			broadcastToObserver(M, msg, Sender, includeNameInEmote)
-		
-		// Format and send message
-		var/formattedMsg = formatEmoteForPlayer(msg, Sender, M, includeNameInEmote)
-		M.ICOut(formattedMsg)
-
-/**
- * Broadcasts to observer mode players
- */
-/mob/proc/broadcastToObserver(mob/player/observer, msg as text, mob/Sender, includeNameInEmote as num)
-	if(!observer.Observer)
-		return
-	
-	for(var/mob/player/S in Players)
-		if(S.key != observer.Observer)
-			continue
-		
-		var/processedMsg = S.ICText(msg, src)
-		if(includeNameInEmote)
-			S.ICOut("<font color=[TextColor]><font size=[S.TextSize]>(Observe)*[Sender] [processedMsg]*<br></span>")
-		else
-			S.ICOut("<font color=[TextColor]><font size=[S.TextSize]>(Observe)*[processedMsg]*<br>([Sender])</span>")
-
-/**
- * Formats emote message for regular players
- */
-/mob/proc/formatEmoteForPlayer(msg as text, mob/Sender, mob/player/recipient, includeNameInEmote as num) as text
-	var/processedMsg = recipient.ICText(msg, src)
-	
-	// Admin link for admin viewers
-	if(recipient.client.holder)
-		var/adminLink = "(<A HREF='?src=\ref[recipient.client.holder];adminplayeropts=\ref[src]'>X</A>)"
-		if(includeNameInEmote)
-			return "<font color=[TextColor]><font size=[recipient.TextSize]>*[Sender] [processedMsg]*<br>[adminLink]</span>"
-		else
-			return "<font color=[TextColor]><font size=[recipient.TextSize]>*[processedMsg]*<br>([Sender] [adminLink])</span>"
-	
-	// Regular player view
-	if(includeNameInEmote)
-		return "<font color=[TextColor]><font size=[recipient.TextSize]>*[Sender] [processedMsg]*<br></span>"
-	else
-		return "<font color=[TextColor]><font size=[recipient.TextSize]>*[processedMsg]*<br>([Sender])</span>"
 
 /**
  * Finalizes the emote process - logging, cleanup, effects
@@ -247,13 +160,13 @@
 	// Log the emote
 	saveToLog("<font color=#6600FF>\n<br> |  | ([x], [y], [z]) | [key_name(src)] ::<br> <span class=\"emote\">*[src] [msg]*</span>\n")
 	SaveToEmoteLog("[msg]")
-	
+
 	// Increment RP counter
 	RPs += 1
-	
+
 	// Visual feedback
 	Say_Spark()
-	
+
 	// Cleanup
 	removeTypingIndicator()
 	closeEmoteWindow()
@@ -261,28 +174,28 @@
 
 /**
  * EmoteClose - Called when emote window is closed
- * 
+ *
  * Cleanup verb triggered by window close event.
  * Removes typing indicator and resets cooldown.
  */
 /mob/verb/EmoteClose()
 	set hidden = 1
-	
+
 	removeTypingIndicator()
 	EmoteCD = 0
-	
+
 	if(client)
 		winshow(client, EMOTE_WINDOW_ID, FALSE)
 
 /**
  * EmoteC - Clear emote input
- * 
+ *
  * Called by "Clear" button in emote window.
  * Clears the text input field.
  */
 /mob/verb/EmoteC()
 	set hidden = 1
-	
+
 	clearEmoteInput()
 
 // =============================================================================
@@ -293,7 +206,7 @@
  * Adds typing indicator overlay above mob
  */
 /mob/proc/addTypingIndicator()
-	var/image/overlay = image(icon = 'Typing.dmi')
+	var/image/overlay = image(icon = 'Icons/UI/Chat/Typing.dmi')
 	overlay.pixel_y = 12
 	overlay.layer = MOB_LAYER + EFFECTS_LAYER + 50
 	addOverlay(overlay)
@@ -302,7 +215,7 @@
  * Removes typing indicator overlay from mob
  */
 /mob/proc/removeTypingIndicator()
-	var/image/overlay = image(icon = 'Typing.dmi')
+	var/image/overlay = image(icon = 'Icons/UI/Chat/Typing.dmi')
 	overlay.pixel_y = 12
 	overlay.layer = MOB_LAYER + EFFECTS_LAYER + 50
 	removeOverlay(overlay)
@@ -313,7 +226,7 @@
 /mob/proc/clearEmoteInput()
 	if(!client)
 		return
-	
+
 	winset(client, EMOTE_INPUT_ID, "text=")
 
 // Cleanup defines

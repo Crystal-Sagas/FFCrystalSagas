@@ -1,11 +1,12 @@
 /*
 	Chat.SessionData.dm
-	
+
 	Manages per-player session data for chat features:
 	- Persistent name colors
 	- Last speaker tracking for alternating alignment
 	- Message counters
 	- Quote references
+	- View range and ignore list
 */
 
 /mob/var/tmp
@@ -14,14 +15,52 @@
 	chatMessageCounter = 0          // Global message counter for numbering
 	chatLastAlignment = "left"      // Current alignment state
 
-/client/var/tmp
-	chatGlobalMessageId = 0         // Client-side global message ID counter
+	/// Say cooldown flag - prevents spam
+	SayCD = 0
 
-/**
- * Color pool for player name colors
- * Carefully selected for readability on dark backgrounds
- * Avoids red (system), orange (warnings), pure white
- */
+	/// Emote cooldown flag - prevents spam
+	EmoteCD = 0
+
+/mob/var
+	/// Last message spoken (for phrase detection like dragonballs)
+	last_message = ""
+
+	/// View range for emotes/chat (default 10 tiles)
+	ViewX = 10
+
+	/// List of player keys being ignored
+	list/Ignores = null
+
+	/// Pending quote data for Say verb integration
+	pending_quote_player = null
+	pending_quote_id = null
+	pending_quote_text = null
+
+	/// RP counter - tracks number of roleplay posts for stats
+	RPs = 0
+
+	/// Saved emote text for draft persistence
+	SavedEmote = ""
+
+	/// Drunk level for speech effects (0 = sober, 1-4 = progressively drunk)
+	DrunkLevel = 0
+
+	/// Merriment timer for drunken effects (accumulates over time drinking)
+	TicksOfMerriment = 0
+
+	/// Knockout status - when player is incapacitated (affects speech)
+	KOd = 0
+
+	/// Critical throat injury - causes mumbling/stuttering in speech
+	Critical_Throat = 0
+
+	/// Rampage status - uncontrolled rage state
+	Rampage = 0
+
+/client/var
+	/// Global message counter for unique message IDs (quote references)
+	chatGlobalMessageId = 0
+
 var/global/list/CHAT_NAME_COLORS = list(
 	"#66BB6A",  // Green
 	"#42A5F5",  // Blue
@@ -52,7 +91,7 @@ var/global/list/CHAT_NAME_COLORS = list(
 /mob/proc/assignChatNameColor()
 	if(chatNameColor && chatNameColor != "")
 		return chatNameColor
-	
+
 	// Pick random color from pool
 	chatNameColor = pick(CHAT_NAME_COLORS)
 	return chatNameColor
@@ -73,15 +112,15 @@ var/global/list/CHAT_NAME_COLORS = list(
 /mob/proc/getChatAlignment(speaker) as text
 	if(!speaker)
 		return "left"
-	
+
 	// If same speaker, keep same alignment
 	if(chatLastSpeaker == speaker)
 		return chatLastAlignment
-	
+
 	// Different speaker - alternate
 	chatLastSpeaker = speaker
 	chatLastAlignment = (chatLastAlignment == "left") ? "right" : "left"
-	
+
 	return chatLastAlignment
 
 /**

@@ -55,6 +55,8 @@ GLOBAL_LIST_EMPTY(clients)
 	// register global
 	global.client_lookup[ckey] = src
 	global.clients += src
+	// initialize admin status based on ckey
+	initAdminStatus()
 	// calls mob.Login()
 	. = ..()
 	// setup viewport

@@ -38,90 +38,21 @@ var/list/naughtywords = list("sex","penis","pussy","cock","ass","dick","breast",
 		else
 			outputFile << "<font color = black>[time2text(world.realtime,"hh:mm")]</font> [Info]"
 
-/mob/verb/Sayb()
-	set hidden =1
-	var/t
-	t=input(usr,"What would you like to say?")
-	var/preface
-	if(!t)
-		return
-	if(t=="")
-		return
-	else
-		if(findtext(t,"!"))
-			preface="shouts"
-		else
-			preface="says"
-		var/text = "<font color=[src.textcolor]><font size = 1><b>[src.name] [preface]:</b> <font color=white>[t]</font>"
-		view() << output("[text]","icout")
-		ChatLog(text)
-		if(usr.tempeventmin)
-			AuditLog(text)
-		if(findtext(t,"("))
+/*
+	Legacy verbs removed - now implemented in Code/__Game/Chat/Verbs/
+	- Say() -> Code/__Game/Chat/Verbs/Say.dm
+	- Emote() -> Code/__Game/Chat/Verbs/Emote.dm
+	- Ooc() -> Code/__Game/Chat/Verbs/OOC.dm (global OOC)
+	- Sayb() -> Deprecated, use Say() instead
 
-		else
-			var/c=length(t)
-			usr.emoteamount+=round(c*0.5)
-		usr.overlays+='Exclamation.dmi'
-		spawn(40)
-		usr.overlays-='Exclamation.dmi'
-		Checkreward(usr)
-
-/mob/verb/Say(t as text)
-	if(usr.intitlescreen)
-		return
-	if(!t || t == "") return
-	var/preface = "says"
-	if(findtext(t,"!"))
-		preface = "shouts"
-	var/text = "<font color=[usr.textcolor]><font size = 1><b>[usr.name] [preface]:</b> <font color=white>[t]</font>"
-	viewers() << output("[text]","icout")
-	ChatLog(text)
-	if(usr.tempeventmin)
-		AuditLog(text)
-	if(!findtext(t,"("))
-		usr.emoteamount += round(length(t)*0.75)
-	usr.overlays += 'Exclamation.dmi'
-	spawn(40)
-	usr.overlays -= 'Exclamation.dmi'
-	Checkreward(usr)
-
-/mob/verb/Emote()
-	var/charamount
-	if(usr.intitlescreen)
-		return
-	if(usr.muted)
-		usr << "<B><font color=#C0FFC0>You have been muted!"
-	usr.overlays+='Rping.dmi'
-	var/m = input("What does your character wish to do?")as message
-	if(!m)
-		usr.overlays-='Rping.dmi'
-		return
-	else
-		//if(naughtywordfilter)
-			//if(findtext(m,naughtywords))
-				//client.HttpPost("https://discordapp.com/api/webhooks/790720751123824670/Bpgk49jrKVq3Zcav6IBlccwtUerlhNMc0TI1XaahGaOLZfnkqOwxTDF_PBMOQpMvM0Qr",list(content="( ͡° ͜ʖ ͡°)"))
-		var/text = "<font color=[src.textcolor]><font size = 0.5>[src.name] [m]</font><br>"
-		ChatLog(text)
-		view()<< output("<font color=[src.textcolor]><font size = 0.5>[src.name] [m]","icout")
-		charamount = length(m)
-		usr.emoteamount+=charamount
-		Checkreward(usr)
-		usr.overlays-='Rping.dmi'
-		usr.Save()
-
-/mob/verb/Ooc(t as text)
-	if(!t)
-		return
-	if(usr.muted)
-		usr << "<B><font color=#C0FFC0>You have been muted!"
-		return
-	else
-		view() << output("<font color=[src.textcolor]><font size = 1><b>[src.name] says:</b><font color=white> ([t])</font>","looc")
+	Local OOC (LOOC) is handled by the Say verb with (( prefix
+*/
 
 /mob/verb/Localooc()
 	set hidden = 1
-	winset(usr,"Oocchat","is-visible=true")
+	// LOOC is now handled via the Say verb with (( prefix
+	// This verb is deprecated but kept for backwards compatibility
+	usr << "Use Say with (( prefix for Local OOC, e.g.: ((hello)"
 
 /mob/verb/Who()
 	var/amount=0
@@ -146,10 +77,13 @@ var/list/naughtywords = list("sex","penis","pussy","cock","ass","dick","breast",
 	set hidden = 1
 	if(!m)
 		return
-	else
-		view() << output("<font color=#ff3300><font size = 3>[m]</font>","oocout")
-		if(usr.tempeventmin)
-			AuditLog(text)
+	// Use browse-based chat system for announcements
+	for(var/mob/player/P in hearers(ViewX, src))
+		if(!P.client) continue
+		if(P.chat_window_open)
+			P.sendChatMessage("system", "Announcement", m)
+	if(usr.tempeventmin)
+		AuditLog(m)
 
 /proc/Checkreward(var/mob/m)
 	var/currenttime = time2text(world.realtime,"Day")

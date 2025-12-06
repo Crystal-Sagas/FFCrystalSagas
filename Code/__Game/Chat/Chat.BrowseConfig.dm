@@ -1,8 +1,8 @@
 /*
 	Chat.BrowseConfig.dm
-	
+
 	Configuration settings for the browse()-based chat system.
-	
+
 	This file centralizes all configuration options for easy tuning
 	and allows server admins to customize the chat experience.
 */
@@ -69,7 +69,7 @@
  * Dual-send mode (send to BOTH browse and legacy)
  * TRUE = messages appear in both browse window AND output controls
  * FALSE = messages only appear in whichever system is active
- * 
+ *
  * Use TRUE during transition period for testing
  * Use FALSE for production to avoid duplicate messages
  */
@@ -206,7 +206,7 @@
  * Legacy output control fallback
  * TRUE = always send to legacy controls as backup
  * FALSE = only use legacy when browse is disabled
- * 
+ *
  * Use TRUE if experiencing issues with browse()
  */
 #define BROWSE_CHAT_FORCE_FALLBACK FALSE
@@ -236,9 +236,10 @@
 	Toggled_Timestamps = BROWSE_CHAT_TIMESTAMPS_DEFAULT
 	// NOTE: Do NOT reset chat_window_open here - it's controlled by initBrowseChat/closeBrowseChat
 	// chat_window_open starts as FALSE from var declaration and is set TRUE when browser initializes
-	
-	if(BROWSE_CHAT_DEBUG)
-		world.log << "[key] initialized with timestamps=[Toggled_Timestamps]"
+
+	#if BROWSE_CHAT_DEBUG
+	world.log << "[key] initialized with timestamps=[Toggled_Timestamps]"
+	#endif
 
 /**
  * Called when mob is created

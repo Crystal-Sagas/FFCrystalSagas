@@ -39,7 +39,7 @@ GLOBAL_DATUM_INIT(logger, /datum/logger_system, new)
  */
 /datum/logger_system
 	/// Path to the log directory
-	var/logDirectory = "logs"
+	var/logDirectory = "Data/Logs"
 
 	/// Name of the unified log file
 	var/logFileName = "game.log"
@@ -47,8 +47,9 @@ GLOBAL_DATUM_INIT(logger, /datum/logger_system, new)
 	/// Minimum log level to record (DEBUG = 1, INFO = 2, WARN = 3, ERROR = 4, FATAL = 5)
 	var/minLogLevel = LOG_LEVEL_DEBUG
 
-	/// Whether to also output to world.log
-	var/echoToWorldLog = TRUE
+	/// Whether to also output to world.log (Dream Daemon console)
+	/// Set to FALSE to prevent console spam - logs go to files only
+	var/echoToWorldLog = FALSE
 
 	/// Whether to include timestamps
 	var/includeTimestamp = TRUE
