@@ -23,7 +23,8 @@ mob
 				count++
 			world<<output("[count]","output1")
 		SaveSelf()
-			usr.Save()
+			if(usr.client)
+				usr.client.savePlayer()
 		Roll()
 			var/num1
 			var/num2
@@ -65,16 +66,7 @@ mob
 			if(racs)
 				for(var/x in racs)
 					usr<<output("[x] - [racs[x]]","oocout")
-		Turntracker()
-			if(usr.turntracker==0)
-				usr.turntracker=1
-				var/obj/Turntracker/turn=new
-				turn.x=usr.x
-				turn.y=usr.y
-				turn.z=usr.z
-				turn.owner=usr.key
-			else
-				alert(usr,"You already have a turn tracker deployed!")
+
 
 	proc
 		statroll(var/mod,var/rolltype,var/n,var/bonus)

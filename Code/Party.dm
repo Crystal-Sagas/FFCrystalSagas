@@ -4,12 +4,9 @@ obj
 obj
 	Party
 		var/list/members=list()
-		var/obj/FATEs/currentFATE=null
 		var/leader
 		var/totalmembers
 		var/partyID
-		var/FATEID
-		var/FATEcooldown=0
 		totalmembers=0
 		icon='Icons/Items/Linkshell.png'
 		DblClick()
@@ -94,11 +91,9 @@ mob
 		ViewParty()
 			var/row
 			var/row2
-			var/row3
 			winset(usr,"party","is-visible=true")
 			winset(usr,"party.party","cells=0x0")
 			winset(usr,"party.members","cells=0x0")
-			winset(usr,"party.fate","cells=0x0")
 			for(var/obj/Party/a in world)
 				if(a.partyID==usr.partyID)
 					row++
@@ -107,14 +102,6 @@ mob
 				if(b.partyID==usr.partyID && usr.inparty==1 && b != usr)
 					row2++
 					usr<<output(b,"party.members:1,[row2]")
-			for(var/obj/Party/c in world)
-				if(c.partyID==usr.partyID)
-					for(var/obj/FATEs/q in c.contents)
-						row3++
-						usr<<output(q,"party.fate:1,[row3]")
-						q.suffix="Coordinates: [q.CoordX],[q.CoordY],[q.locationarea]"
-						winset(usr, "party.fate", "current-cell=2,[row3]")
-						usr << output(q.suffix,"party.fate")
 
 
 
@@ -139,10 +126,8 @@ atom
 		RefreshParty(var/mob/usr)
 			var/row
 			var/row2
-			var/row3
 			winset(usr,"party.party","cells=0x0")
 			winset(usr,"party.members","cells=0x0")
-			winset(usr,"party.fate","cells=0x0")
 			for(var/obj/Party/a in world)
 				if(a.partyID==usr.partyID)
 					row++
@@ -151,11 +136,3 @@ atom
 				if(b.partyID==usr.partyID && usr.inparty==1)
 					row2++
 					usr<<output(b,"party.members:1,[row2]")
-			for(var/obj/Party/c in world)
-				if(c.partyID==usr.partyID)
-					for(var/obj/FATEs/q in c.contents)
-						row3++
-						usr<<output(q,"party.fate:1,[row3]")
-						q.suffix="Coordinates: [q.CoordX],[q.CoordY],[q.CoordZ]"
-						winset(usr, "party.fate", "current-cell=2,[row3]")
-						usr << output(q.suffix,"party.fate")

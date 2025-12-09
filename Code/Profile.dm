@@ -53,7 +53,9 @@
 		usr<<browse(M.profile,"window=Profile.profile")
 		winset(usr,"Profile.ProfilePic","image=[M.profilepic]")
 		winset(usr,"Profile.Metadata1","text=\"Date Joined: [M.datejoined]\"")
-		winset(usr,"Profile.Metadata2","text=\"Event Points: [M.ep]/[M.tep]\"")
+		var/epVal = M.experience ? M.experience.value : 0
+		var/tepVal = M.totalExperience ? M.totalExperience.value : 0
+		winset(usr,"Profile.Metadata2","text=\"Event Points: [epVal]/[tepVal]\"")
 	else
 		usr<<browse(usr.profile,"window=Profile.profile")
 		if(usr.patron)
@@ -62,7 +64,9 @@
 			winset(usr,"Profile.patron","is-visible=false")
 		winset(usr,"Profile.ProfilePic","image=[usr.profilepic]")
 		winset(usr,"Profile.Metadata1","text=\"Date Joined: [usr.datejoined]\"")
-		winset(usr,"Profile.Metadata2","text=\"Event Points: [usr.ep]/[usr.tep]\"")
+		var/usrEp = usr.experience ? usr.experience.value : 0
+		var/usrTep = usr.totalExperience ? usr.totalExperience.value : 0
+		winset(usr,"Profile.Metadata2","text=\"Event Points: [usrEp]/[usrTep]\"")
 		if(usr.rank=="Fledgling")
 			winset(usr,"Profile.t1s","text=\"T1s: [usr.t1s]/Unlimited\"")
 			winset(usr,"Profile.t2s","text=\"T2s: [usr.t2s]/2\"")

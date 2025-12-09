@@ -152,7 +152,7 @@ obj
 							src.vis_contents=null
 							src.overlays+=choice.icon
 						if("Remove Money")
-							usr.money+=src.storedmon
+							usr.addMoney(src.storedmon)
 							view() << output("[usr.name] collects [storedmon] from the shoptable","icout")
 							src.storedmon=0
 						if("Cancel")
@@ -189,7 +189,7 @@ obj
 							switch(choices2)
 								if("Yes")
 									if(choice.amount>0)
-										if(usr.money<choice.cusprice)
+										if(!usr.canAfford(choice.cusprice))
 											alert(usr,"You don't even have enough to afford a single unit!")
 											return
 										var/numba=input("How many do you wish to purchase?") as num
@@ -199,10 +199,10 @@ obj
 										if(numba>choice.amount)
 											alert("There isn't that much for sale")
 											return
-										if(adjprice>usr.money)
+										if(!usr.canAfford(adjprice))
 											alert("You don't have enough money to buy that.")
 											return
-										usr.money-=adjprice
+										usr.spendMoney(adjprice)
 										src.storedmon+=adjprice*moogleadjust
 										if(numba<choice.amount)
 											if(choice.craftingmaterialtrue==1)
@@ -223,10 +223,10 @@ obj
 											else
 												choice.Move(usr)
 									else
-										if(usr.money<choice.cusprice)
+										if(!usr.canAfford(choice.cusprice))
 											alert("You don't have enough to purchase this item.")
 											return
-										usr.money-=choice.cusprice
+										usr.spendMoney(choice.cusprice)
 										src.storedmon+=choice.cusprice*moogleadjust
 										choice.Move(usr)
 									RefreshShop()
@@ -337,7 +337,7 @@ GLOBAL_LIST_BOILERPLATE(resource_nodes, /obj/node)
 		f.amount-=1
 
 	view() << output("[usr.name] has gathered 1 of each Synthesis Material type from their Gathering Moogle!","icout")
-	usr.money+=200
+	usr.addMoney(200)
 	view() << output("[usr.name] has gathered 200 Gil from their Gathering Moogle!","icout")
 	src.used=1
 

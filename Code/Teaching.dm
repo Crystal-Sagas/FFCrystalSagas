@@ -3,11 +3,10 @@ obj
 		Click()
 			var/list/teachperks=new
 			var/tperk
-			var/intcheck
 			var/obj/pname
 			var/row
-			intcheck+=usr.int
-			intcheck+=usr.addint
+			// Use new stat system for intelligence check
+			var/intcheck = usr.intelligence ? usr.intelligence.currentValue.value : 0
 			if(usr.teachslot==usr.maxteachslot)
 				alert("You can't teach right now.")
 			if(intcheck<12)

@@ -306,16 +306,17 @@ proc
 	Shopprocces(var/mob/m,var/obj/Shopitems/o,var/i,var/c)
 		var/amount
 		var/adjustprice=o.sprice
+		var/currentMoney = m.currency ? m.currency.value : 0
 		if(o.buy)
 			if(m.check_perk("Born for Buisness"))
 				adjustprice=round(adjustprice / 2)
 			amount=input("How many do you wish to buy?") as num
 			adjustprice=adjustprice*amount
-			if(adjustprice>m.money)
+			if(adjustprice>currentMoney)
 				alert("You do not have enough money to buy that much.")
 				return
 			else
-				m.money-=adjustprice
+				m.currency.addValue(-adjustprice)
 				i += amount
 		else if(o.sell)
 			if(m.check_perk("Salesman"))
@@ -330,7 +331,7 @@ proc
 			switch(alert("Do you wish to sell [o.name]x[amount] for [adjustprice]?",,"Yes","No"))
 				if("Yes")
 					i-=amount
-					m.money+=adjustprice
+					m.currency.addValue(adjustprice)
 				if("No")
 					return
 		Adjustcraft(c,i,m)

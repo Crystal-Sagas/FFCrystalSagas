@@ -34,8 +34,8 @@
 			winset(client, null, "browser-options=")
 			SystemLog("CHAT", "DEBUG", "Devtools disabled for non-admin [src.key]")
 
-		// Send HTML template (no messages)
-		var/html = getChatWindowHTML()
+		// Send HTML template (with theme) - no messages
+		var/html = getChatWindowHTML(client)
 
 		SystemLog("CHAT", "DEBUG", "initBrowseChat sending HTML ([length(html)] chars) to browser1")
 

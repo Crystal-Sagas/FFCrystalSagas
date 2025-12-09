@@ -170,9 +170,10 @@ client
 			if(fileSaveLogs)
 				fileSaveLogs << "Loaded main or backup save file for [key]\n"
 
-			spawn()
-				switchMob(src, newMob)
+			// Switch mob synchronously - it handles post-load init
+			switchMob(src, newMob)
 
+			// Notify listeners AFTER switch is complete
 			if(onPlayerLoaded)
 				onPlayerLoaded.notify()
 			return TRUE
@@ -186,9 +187,10 @@ client
 			if(fileSaveLogs)
 				fileSaveLogs << "Loaded emergency backup save file for [key]\n"
 
-			spawn()
-				switchMob(src, newMob)
+			// Switch mob synchronously - it handles post-load init
+			switchMob(src, newMob)
 
+			// Notify listeners AFTER switch is complete
 			if(onPlayerLoaded)
 				onPlayerLoaded.notify()
 			return TRUE
@@ -206,9 +208,10 @@ client
 					if(fileSaveLogs)
 						fileSaveLogs << "Loaded manual backup save file for [key]\n"
 
-					spawn()
-						switchMob(src, newMob)
+					// Switch mob synchronously - it handles post-load init
+					switchMob(src, newMob)
 
+					// Notify listeners AFTER switch is complete
 					if(onPlayerLoaded)
 						onPlayerLoaded.notify()
 					return TRUE
@@ -224,13 +227,20 @@ client
 		var/mainPath = "[path].sav"
 		var/backupPath = "[path]_backup.sav"
 
+		// Try new save location first
 		var/loadedObject = loadFromFile(mainPath)
 		if(loadedObject)
 			return loadedObject
+
 		if(fileSaveLogs)
 			fileSaveLogs << "Main save file not found: [mainPath]\n"
 			fileSaveLogs << "Attempting to load backup save file: [backupPath]\n"
-		return loadFromFile(backupPath)
+
+		loadedObject = loadFromFile(backupPath)
+		if(loadedObject)
+			return loadedObject
+
+		return null
 
 	// Load from emergency backup
 	proc/loadEmergencyBackup()
@@ -243,8 +253,11 @@ client
 		var/tmpPath = "[path]_tmp.sav"
 		var/backupPath = "[path]_backup.sav"
 		var/manualBackupPath = getManualBackupPath()
+
+		// Check new save locations
 		if(fexists(mainPath) || fexists(tmpPath) || fexists(backupPath) || fexists(manualBackupPath))
 			return TRUE
+
 		return FALSE
 
 	proc/deleteSave()

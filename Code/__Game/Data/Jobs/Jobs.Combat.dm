@@ -108,7 +108,7 @@
 	skillProficiencies = list("acrobatics", "athletics", "deception", "dungeoneering", "magic", "persuasion", "stealth", "survival", "thievery")
 	startingPerks = list(
 		/obj/perk/Jobperks/ChocoboKnight/ChocoboKnight,
-		/obj/npc/Summons/CRank/ChocoSteed
+		/mob/npc/Summons/CRank/ChocoSteed
 	)
 
 /datum/job_data/pirate

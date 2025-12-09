@@ -23,6 +23,7 @@ area
 	var/locid
 	var/obj/loccard/card
 	var/theme
+	var/buildable=0
 	mouse_opacity=0
 	Entered(mob/a)
 		if(a.areain!=src.locid)

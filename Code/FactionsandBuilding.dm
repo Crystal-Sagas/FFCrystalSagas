@@ -8,7 +8,7 @@ obj
 		faction=null
 	Builds
 		var/isdoor=0
-		buildable=1
+		var/buildable=1
 		var/root
 		owner=null
 		faction=null

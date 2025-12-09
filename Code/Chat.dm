@@ -100,109 +100,53 @@ var/list/naughtywords = list("sex","penis","pussy","cock","ass","dick","breast",
 			m.emoteamount=0*/
 
 	//Every RPP bracket should total up to 6000 to hit their daily cap.
-	if(m.emoteamount>=12000 && m.rppchecks<1 && m.trpp>=200)
-		m.rpp+=1
-		m.trpp+=1
+	if(m.emoteamount>=12000 && m.rppchecks<1 && m.totalRoleplayPoints.value>=200)
+		m.roleplayPoints.addValue(1)
+		m.totalRoleplayPoints.addValue(1)
 		m.rppchecks+=1
 		m.emoteamount-=12000
 		m << output("You have reached an RPP milestone for the day. You have gained 1 RPP for a total of [m.rppchecks].","oocout")
 		Updaterank(m)
-	if(m.emoteamount>=9000 && m.rppchecks<1 && m.trpp>=150 && m.trpp<200)
-		m.rpp+=1
-		m.trpp+=1
+	if(m.emoteamount>=9000 && m.rppchecks<1 && m.totalRoleplayPoints.value>=150 && m.totalRoleplayPoints.value<200)
+		m.roleplayPoints.addValue(1)
+		m.totalRoleplayPoints.addValue(1)
 		m.rppchecks+=1
 		m.emoteamount-=9000
 		m << output("You have reached an RPP milestone for the day. You have gained 1 RPP for a total of [m.rppchecks].","oocout")
 		Updaterank(m)
-	if(m.emoteamount>=6000 && m.rppchecks<1 && m.trpp>=100 && m.trpp<150)
-		m.rpp+=1
-		m.trpp+=1
+	if(m.emoteamount>=6000 && m.rppchecks<1 && m.totalRoleplayPoints.value>=100 && m.totalRoleplayPoints.value<150)
+		m.roleplayPoints.addValue(1)
+		m.totalRoleplayPoints.addValue(1)
 		m.rppchecks+=1
 		m.emoteamount-=6000
 		m << output("You have reached an RPP milestone for the day. You have gained 1 RPP for a total of [m.rppchecks].","oocout")
 		Updaterank(m)
-	if(m.emoteamount>=3000 && m.rppchecks<2 && m.trpp>=80 && m.trpp<100)
-		m.rpp+=1
-		m.trpp+=1
+	if(m.emoteamount>=3000 && m.rppchecks<2 && m.totalRoleplayPoints.value>=80 && m.totalRoleplayPoints.value<100)
+		m.roleplayPoints.addValue(1)
+		m.totalRoleplayPoints.addValue(1)
 		m.rppchecks+=1
 		m.emoteamount-=3000
 		m << output("You have reached an RPP milestone for the day. You have gained 1 RPP for a total of [m.rppchecks].","oocout")
 		Updaterank(m)
-	if(m.emoteamount>=2000 && m.rppchecks<3 && m.trpp>=50 && m.trpp<80)
-		m.rpp+=1
-		m.trpp+=1
+	if(m.emoteamount>=2000 && m.rppchecks<3 && m.totalRoleplayPoints.value>=50 && m.totalRoleplayPoints.value<80)
+		m.roleplayPoints.addValue(1)
+		m.totalRoleplayPoints.addValue(1)
 		m.rppchecks+=1
 		m.emoteamount-=2000
 		m << output("You have reached an RPP milestone for the day. You have gained 1 RPP for a total of [m.rppchecks].","oocout")
 		Updaterank(m)
-	if(m.emoteamount>=1200 && m.rppchecks<5 && m.trpp<50)
-		m.rpp+=1
-		m.trpp+=1
+	if(m.emoteamount>=1200 && m.rppchecks<5 && m.totalRoleplayPoints.value<50)
+		m.roleplayPoints.addValue(1)
+		m.totalRoleplayPoints.addValue(1)
 		m.rppchecks+=1
 		m.emoteamount-=1200
 		m << output("You have reached an RPP milestone for the day. You have gained 1 RPP for a total of [m.rppchecks].","oocout")
 		Updaterank(m)
 
-	/*if(m.trpp<catchuprate)
-		if(m.emoteamount>=750&&m.rppchecks==0)
-			m.rpp+=1
-			m.trpp+=1
-			m.rppchecks+=1
-			m << output("You have reached the first milestone for the day. You have gained 1 RPP for a total of 1.","oocout")
-			Updaterank(m)
-		if(m.emoteamount>=1500&&m.rppchecks==1)
-			m.rpp+=1
-			m.trpp+=1
-			m.rppchecks+=1
-			m << output("You have reached the second milestone for the day. You have gained 1 RPP for a total of 2.","oocout")
-			Updaterank(m)
-		if(m.emoteamount>=3000&&m.rppchecks==2)
-			m.rpp+=1
-			m.trpp+=1
-			m.rppchecks+=1
-			m << output("You have reached the third milestone for the day. Since you are below the catchup rate you can continue to earn RPP at an accelerated rate. You have gained 1 RPP for a total of 3.","oocout")
-			Updaterank(m)
-		if(m.emoteamount>=3500&&m.rppchecks==3)
-			m.rpp+=1
-			m.trpp+=1
-			m.rppchecks+=1
-			m << output("You have reached the second milestone for the day. You have gained 1 RPP for a total of 4.","oocout")
-			Updaterank(m)
-		if(m.emoteamount>=4000&&m.rppchecks==4)
-			m.rpp+=1
-			m.trpp+=1
-			m.rppchecks+=1
-			m << output("You have reached the second milestone for the day. You have gained 1 RPP for a total of 5.","oocout")
-			Updaterank(m)
-	else
-		if(m.emoteamount>=1500&&m.rppchecks==0)
-			m.rpp+=1
-			m.trpp+=1
-			m.rppchecks+=1
-			m << output("You have reached the first milestone for the day. You have gained 1 RPP for a total of 1.","oocout")
-			Updaterank(m)
-		if(m.emoteamount>=3000&&m.rppchecks==1)
-			if(m.trpp>100)
-				return
-			m.rpp+=1
-			m.trpp+=1
-			m.rppchecks+=1
-			m << output("You have reached the second milestone for the day. You have gained 1 RPP for a total of 2.","oocout")
-			Updaterank(m)
-		if(m.emoteamount>=7500&&m.rppchecks==2)
-			if(m.trpp>80)
-				return
-			if(m.trpp>100)
-				return
-			m.rpp+=1
-			m.trpp+=1
-			m.rppchecks+=1
-			m << output("You have reached the final milestone for the day. You have gained 1 RPP for a total of 3.","oocout")
-			Updaterank(m)
-			*/
+	// Legacy catchup rate system removed - replaced with new milestone system above
 
 /proc/Updaterank(var/mob/m)
-	if(m.trpp<80&&m.trpp>=45)
+	if(m.totalRoleplayPoints.value<80&&m.totalRoleplayPoints.value>=45)
 		if(m.rank=="Rookie")
 
 			return
@@ -211,14 +155,15 @@ var/list/naughtywords = list("sex","penis","pussy","cock","ass","dick","breast",
 			m.rankbonus=2
 			m.maxsummonsC=2
 			m.maxsummonsB=1
-			m.mhp+=40
-			m.hp+=40
-			m.msp+=40
-			m.sp+=40
-			m.mmp+=40
-			m.mp+=40
+			// Use new stat system for resource pool bonuses
+			m.health.addMaxValue(40)
+			m.health.addValue(40)
+			m.stamina.addMaxValue(40)
+			m.stamina.addValue(40)
+			m.mana.addMaxValue(40)
+			m.mana.addValue(40)
 			m.APcap=14
-	if(m.trpp>=80&&m.trpp<100)
+	if(m.totalRoleplayPoints.value>=80&&m.totalRoleplayPoints.value<100)
 		if(m.rank=="Adept")
 			return
 		else
@@ -226,14 +171,14 @@ var/list/naughtywords = list("sex","penis","pussy","cock","ass","dick","breast",
 			m.rankbonus=3
 			m.maxsummonsC=3
 			m.maxsummonsB=2
-			m.mhp+=30
-			m.hp+=30
-			m.msp+=30
-			m.sp+=30
-			m.mmp+=30
-			m.mp+=30
+			m.health.addMaxValue(30)
+			m.health.addValue(30)
+			m.stamina.addMaxValue(30)
+			m.stamina.addValue(30)
+			m.mana.addMaxValue(30)
+			m.mana.addValue(30)
 			m.APcap=18
-	if(m.trpp>=150&&m.trpp<200)
+	if(m.totalRoleplayPoints.value>=150&&m.totalRoleplayPoints.value<200)
 		if(m.rank=="Hero")
 			return
 		if(m.rank!="Veteran")
@@ -244,12 +189,12 @@ var/list/naughtywords = list("sex","penis","pussy","cock","ass","dick","breast",
 			m.maxsummonsC=5
 			m.maxsummonsB=3
 			m.maxsummonsA=2
-			m.mhp+=35
-			m.hp+=35
-			m.msp+=35
-			m.sp+=35
-			m.mmp+=35
-			m.mp+=35
+			m.health.addMaxValue(35)
+			m.health.addValue(35)
+			m.stamina.addMaxValue(35)
+			m.stamina.addValue(35)
+			m.mana.addMaxValue(35)
+			m.mana.addValue(35)
 			m.APcap=26
 			m.strcap=24
 			m.dexcap=24
@@ -257,19 +202,19 @@ var/list/naughtywords = list("sex","penis","pussy","cock","ass","dick","breast",
 			m.intcap=24
 			m.wiscap=24
 			m.chacap=24
-	if(m.trpp>=200)
+	if(m.totalRoleplayPoints.value>=200)
 		if(m.rank=="Master")
 			return
 		else
 			m.rank="Master"
 			m.rankbonus=6
 			m.maxsummonsA=3
-			m.mhp+=45
-			m.hp+=45
-			m.msp+=45
-			m.sp+=45
-			m.mmp+=45
-			m.mp+=45
+			m.health.addMaxValue(45)
+			m.health.addValue(45)
+			m.stamina.addMaxValue(45)
+			m.stamina.addValue(45)
+			m.mana.addMaxValue(45)
+			m.mana.addValue(45)
 			m.APcap=30
 			m.strcap=26
 			m.dexcap=26

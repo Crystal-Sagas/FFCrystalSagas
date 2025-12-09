@@ -1,210 +1,151 @@
+/*
+ * Mob Variables
+ *
+ * NOTE: Core stats (STR, DEX, etc.), resource pools (HP, MP, SP),
+ * combat stats, skills, and saves are now in the new Stat system.
+ * See: Code/__Game/Stats/
+ */
+
 mob/var
-	editing=0
+	editing = 0
 
-	maxfates=10
+	//? Crafting Skills
+	smithing = 0  // Smithing skill level for crafting
 
-	money=100
-	housemade=0
-	totalpasses=0
-	buildmode=0
-	perkbuying=0
-	stockcasting=0
-	infusion=""
+	//? Legacy - now use currency StatSingle
+	// money=100
 
-	list/nolearn = new
+	housemade = 0
+	totalpasses = 0
+	buildmode = 0
+	perkbuying = 0
+	infusion = ""
 
 	faction
 
 	ghosticon
 	ghostovers
-	rankchecked=0
+	rankchecked = 0
 
-	minednodes=0
-	maxnodes=5
+	minednodes = 0
+	maxnodes = 5
 
-	job="None"
-	subjob="None"
-	ajob="None"
+	//? Character Identity
+	job = "None"
+	subjob = "None"
+	ajob = "None"
 	race
 	role
-	dailyfates=0
-	rank="Fledgling"
-	rankbonus=1
-	stockdrawn=0
-	turntracker=0
+	rank = "Fledgling"
+	rankbonus = 1
+
 	monkbonus
 	bposition
-	usingfate=0
-	Lifestreamraincooldown=0
-	buysummons=0
-	maxsummonsC=1
-	maxsummonsB=0
-	maxsummonsA=0
-	Csummonslearned=0
-	Bsummonslearned=0
-	Asummonslearned=0
-	FATEcooldown=0
+	Lifestreamraincooldown = 0
+
+	//? Summons
+	maxsummonsC = 1
+	maxsummonsB = 0
+	maxsummonsA = 0
+	Csummonslearned = 0
+	Bsummonslearned = 0
+	Asummonslearned = 0
+
+	//? View
 	width
 	height
-	inparty=0
-	partyID=null
-	battler=0
-	GSP=20
-	Maxbuildings=4
-	Currentbuildings=0
 
-	rpp = 50
-	trpp = 50
+	//? Party
+	inparty = 0
+	partyID = null
+	battler = 0
 
-	acrobaticsproficient=0
-	athleticsproficient=0
-	archaeologyproficient=0
-	deceptionproficient=0
-	dungeoneeringproficient=0
-	enchantmentproficient=0
-	insightproficient=0
-	investigationproficient=0
-	magitekoperationproficient=0
-	medicineproficient=0
-	magicproficient=0
-	naturalistproficient=0
-	perceptionproficient=0
-	persuasionproficient=0
-	stealthproficient=0
-	survivalproficient=0
-	thieveryproficient=0
+	//? Legacy - now use guildPoints StatSingle
+	// GSP=20
 
+	//? Building
+	Maxbuildings = 4
+	Currentbuildings = 0
 
+	//? Legacy - now use roleplayPoints/totalRoleplayPoints StatSingle
+	// rpp = 50
+	// trpp = 50
 
-	ep=0
-	tep=0
+	//? Skill Proficiencies (booleans for proficiency bonus)
+	acrobaticsproficient = 0
+	athleticsproficient = 0
+	archaeologyproficient = 0
+	deceptionproficient = 0
+	dungeoneeringproficient = 0
+	enchantmentproficient = 0
+	insightproficient = 0
+	investigationproficient = 0
+	magitekoperationproficient = 0
+	medicineproficient = 0
+	magicproficient = 0
+	naturalistproficient = 0
+	perceptionproficient = 0
+	persuasionproficient = 0
+	stealthproficient = 0
+	survivalproficient = 0
+	thieveryproficient = 0
 
-	baseac=10
-	ac=0
-	acmod=0
-	basedr
-	dr=0
-	speed=3
+	//? Legacy - now use experience/totalExperience StatSingle
+	// ep=0
+	// tep=0
 
-	str = 10
-	strcap=20
-	addstr=0
-	strmod=0
-	dex = 10
-	dexcap=20
-	dexmod=0
-	adddex=0
-	con = 10
-	concap=20
-	conmod=0
-	addcon=0
-	int = 10
-	intcap=20
-	intmod=0
-	addint=0
-	wis = 10
-	wiscap=20
-	wismod=0
-	addwis=0
-	cha = 10
-	chacap=20
-	chamod=0
-	addcha=0
+	//? Movement speed (kept as simple var for now)
+	speed = 3
 
-	acrobatics=0
-	baseacro=0
-	athletics=0
-	baseath=0
-	archaeology=0
-	basearc=0
-	deception=0
-	basedec=0
-	dungeoneering=0
-	basedung=0
-	enchantment=0
-	baseenchant=0
-	insight=0
-	basein=0
-	investigation=0
-	baseinv=0
-	magic=0
-	basemagic=0
-	magitekOperation=0
-	basemagio=0
-	medicine=0
-	basemed=0
-	naturalist=0
-	basenat=0
-	perception=0
-	baseper=0
-	persuasion=0
-	basepers=0
-	stealth=0
-	basestl=0
-	thievery=0
-	basethv=0
-	survival=0
-	basesurv=0
+	//? Save Proficiencies
+	reflexproficient = 0
+	willproficient = 0
+	fortitudeproficient = 0
+	reflexexpert = 0
+	willexpert = 0
+	fortitudeexpert = 0
 
-	reflexproficient=0
-	willproficient=0
-	fortitudeproficient=0
-	reflexexpert=0
-	willexpert=0
-	fortitudeexpert=0
-	baserflx=0
-	rflx
-	basewill=0
-	will
-	basefort=0
-	fort
+	//? Subjob
+	subjobcap = 0
+	subtechlearned = 0
+	subcabs = 0
 
-	mab
-	mdb
-	pab
-	pdb
-	tmp/mabadd=0 // These are SPECIFICALLY for Global Mods
-	tmp/mdbadd=0
-	tmp/pabadd=0
-	tmp/pdbadd=0
-	tmp/speedadd=0
-
-
-	subjobcap=0
-	subtechlearned=0
-	subcabs=0
-
+	//? Targeting/Viewing
 	target
 	viewing
 	makingitem
-	teachslot=0
-	maxteachslot=1
-	list/history =new
-	list/craftables=new
-	list/shownperks=new
+	teachslot = 0
+	maxteachslot = 1
+
+	//? Lists
+	list/history = new
+	list/craftables = new
+	list/shownperks = new
+
+	//? Misc
 	age
 	emoteamount
 	rppchecks = 0
-	rppcheckdate="Monday"
+	rppcheckdate = "Monday"
 	aoetiles
 	aoeclick
 	encountclick
 	aoeicon
-	intitlescreen=1
+	intitlescreen = 1
 	building
 	stealthing
 	initiative = 0
-	carryweight=0
-	carrylimit=0
-	weeklycheck=0
-	battletheme='Audio/03_Battle_to_the_Max.ogg'
+	carryweight = 0
+	carrylimit = 0
+	weeklycheck = 0
+	battletheme = 'Audio/03_Battle_to_the_Max.ogg'
 	muted
 	ghosting
 	datejoined
 	deploynpc
-	npcsheet
-	npclimit=0
-	npcamount=0
+	var/mob/npc/npcsheet
+	npclimit = 0
+	npcamount = 0
 	npcachoice
 	eventmin
 	tempeventmin
@@ -214,9 +155,20 @@ mob/var
 	maxcraftingroles
 	gatheringroles
 	maxgatheringroles
-	abilitypoints=10
-	APspent=9000 //Hehefunny number for rework.
-	APcap=10
+
+	//? Legacy - now use abilityPointsPool StatSingle
+	// abilitypoints=10
+	APspent = 9000  // Hehe funny number for rework
+	APcap = 10
+
+	//? Stat Caps (character progression limits)
+	strcap = 20
+	dexcap = 20
+	concap = 20
+	intcap = 20
+	wiscap = 20
+	chacap = 20
+
 	intutorial
 	created
 	advantage
@@ -224,79 +176,88 @@ mob/var
 	grid
 	obj/storage/storagelook
 	tmp/craftingactive
-	gyshal=0
-	sharug=0
-	azouph=0
-	sandorian=0
-	vomp=0
-	zegham=0
-	gausebit=0
-	garidav=0
-	tokopekko=0
-	bronze=0
-	iron=0
-	steel=0
-	mythril=0
-	adamantine=0
-	platinum=0
-	gold=0
-	silver=0
-	rawmako=0
-	etherpowder=0
-	aetherpowder=0
-	leather=0
-	wool=0
-	whitegem=0
-	blackgem=0
-	espersoul=0
-	thundergem=0
-	firegem=0
-	watergem=0
-	biogem=0
-	icegem=0
-	windgem=0
-	holygem=0
-	darkgem=0
-	bombcore=0
-	dragonscale=0
-	flyingeye=0
-	flyingwing=0
-	tonknife=0
-	gigantoadslime=0
-	zuufeather=0
-	pixiesand=0
-	coeurlwhisker=0
-	sahauginscale=0
-	diamond=0
-	critmod=0
 
+	//? Gathering Materials
+	gyshal = 0
+	sharug = 0
+	azouph = 0
+	sandorian = 0
+	vomp = 0
+	zegham = 0
+	gausebit = 0
+	garidav = 0
+	tokopekko = 0
+	bronze = 0
+	iron = 0
+	steel = 0
+	mythril = 0
+	adamantine = 0
+	platinum = 0
+	gold = 0
+	silver = 0
+	rawmako = 0
+	etherpowder = 0
+	aetherpowder = 0
+	leather = 0
+	wool = 0
+	whitegem = 0
+	blackgem = 0
+	espersoul = 0
+	thundergem = 0
+	firegem = 0
+	watergem = 0
+	biogem = 0
+	icegem = 0
+	windgem = 0
+	holygem = 0
+	darkgem = 0
+	bombcore = 0
+	dragonscale = 0
+	flyingeye = 0
+	flyingwing = 0
+	tonknife = 0
+	gigantoadslime = 0
+	zuufeather = 0
+	pixiesand = 0
+	coeurlwhisker = 0
+	sahauginscale = 0
+	diamond = 0
+	critmod = 0
+
+	//? Equipment
 	obj/item/righthand
 	obj/item/lefthand
 	obj/item/armor
-	obj/item/Materia/materia1=null
-	obj/item/Materia/materia2=null
-	obj/item/Materia/materia3=null
+	obj/item/Materia/materia1 = null
+	obj/item/Materia/materia2 = null
+	obj/item/Materia/materia3 = null
 	obj/item/accessory1
 	obj/item/accessory2
-	list/weapontypes=new
+	list/weapontypes = new
 	wpntypeamount
-	wpntypemax=3
+	wpntypemax = 3
+
+	//? Magic Types
 	whitemagicable
 	blackmagicable
 	greenmagicable
 	arcanemagicable
-	t1s=0
-	t2s=0
-	t3s=0
-	t4s=0
-	t5s=0
-	t6s=0
-	eabs=0
-	dabs=0
-	cabs=0
-	babs=0
-	aabs=0
-	sabs=0
+
+	//? Ability Slots by Tier
+	t1s = 0
+	t2s = 0
+	t3s = 0
+	t4s = 0
+	t5s = 0
+	t6s = 0
+
+	//? Ability Slots by Rank
+	eabs = 0
+	dabs = 0
+	cabs = 0
+	babs = 0
+	aabs = 0
+	sabs = 0
 
 
 mob
@@ -347,8 +308,9 @@ mob
 				usr.stealthing = 1
 				while(usr.stealthing)
 					sleep(100)
-					for(var/mob/m in view())
-						usr.Stealthcheck(usr,m)
+					// STUB: Stealthcheck removed as part of combat system overhaul
+					// for(var/mob/m in view())
+					// 	usr.Stealthcheck(usr,m)
 					sleep(450)
 		Opencontents()
 			winset(usr,"Contentcheck","is-visible=true")

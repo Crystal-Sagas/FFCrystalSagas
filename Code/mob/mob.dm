@@ -9,6 +9,9 @@
 	/// realtime used as a mutator for GUID-like behavior amongst mobs
 	var/static/mob_guid_mutator = "[num2text(world.realtime, 999)]"
 
+	// Note: Resource pools (hp, mp, sp, etc.) are defined in Mobstats.dm
+	// Note: waterwalking is defined in Mobstats.dm
+
 	//? Movement
 	/// Who we are following
 	var/tmp/mob/pulledby
@@ -31,6 +34,8 @@
 /mob/New(loc)
 	// generate tag
 	generate_tag()
+	// Initialize bounding boxes for collision
+	initializeMobBounds()
 	return ..()
 
 /mob/Destruct()

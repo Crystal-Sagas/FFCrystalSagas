@@ -1,3 +1,11 @@
+/**
+ * AOE Indicator - Visual indicator for area of effect targeting
+ */
+obj/Aoeind
+	icon = 'AOEind.dmi'
+	layer = 4
+	owner = null  // ckey of the player who created this indicator
+
 obj
 	proc
 		CheckKey(var/mob/m,var/obj/Builds/Buildobjects/Door/a)

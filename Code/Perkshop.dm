@@ -4,7 +4,9 @@ mob
 			set hidden = 1
 			winset(usr,"PerkWindow","is-visible=true")
 			winset(usr,"Perksheet","is-visible=false")
-			winset(usr,"PerkWindow.rpp","text=\"[usr.rpp]/[usr.trpp]\"")
+			var/rppVal = usr.roleplayPoints ? usr.roleplayPoints.value : 0
+			var/trppVal = usr.totalRoleplayPoints ? usr.totalRoleplayPoints.value : 0
+			winset(usr,"PerkWindow.rpp","text=\"[rppVal]/[trppVal]\"")
 		ShowGeneralPerks()
 			set hidden = 1
 			var/row

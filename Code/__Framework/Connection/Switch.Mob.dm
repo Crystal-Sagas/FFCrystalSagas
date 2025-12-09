@@ -21,9 +21,11 @@ proc/switchMob(client/client, mob/newMob)
 		P.isCharacterInitialized = TRUE
 		P.hasEnteredWorld = TRUE
 
-		// Create session if needed
-		if(!P.session)
-			P.session = new(P)
+		// Create fresh session (old one from save is invalid)
+		P.session = new(P)
+
+		// Run post-load initialization
+		P.onLoadComplete()
 	else
 		// Legacy mob loaded - still mark client's flags
 		client.isCharacterInitialized = TRUE

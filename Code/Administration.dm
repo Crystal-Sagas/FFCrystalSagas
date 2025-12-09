@@ -170,7 +170,7 @@ mob
 				var/row
 				winset(usr,"NPCarchive","is-visible=true")
 				winset(usr,"NPCarchive.anpc","cells=0x0")
-				for(var/obj/npc/o in global.npc_archive.npcs)
+				for(var/mob/npc/o in global.npc_archive.npcs)
 					row++
 					src<<output(o,"anpc:1,[row]")
 			CreateFastTravel()
@@ -373,12 +373,12 @@ mob
 				choice.maxsummonsC=4
 				choice.maxsummonsB=2
 				choice.maxsummonsA=1
-				choice.mhp+=30
-				choice.hp+=30
-				choice.msp+=30
-				choice.sp+=30
-				choice.mmp+=30
-				choice.mp+=30
+				choice.health.addMaxValue(30)
+				choice.health.addValue(30)
+				choice.stamina.addMaxValue(30)
+				choice.stamina.addValue(30)
+				choice.mana.addMaxValue(30)
+				choice.mana.addValue(30)
 				choice.APcap=22
 				choice.strcap=22
 				choice.dexcap=22
@@ -583,8 +583,8 @@ mob
 				if(choice==null)
 					return
 				var/amount=input("How much do you wish to reward them?") as num
-				choice.rpp+=amount
-				choice.trpp+=amount
+				choice.roleplayPoints.addValue(amount)
+				choice.totalRoleplayPoints.addValue(amount)
 				choice<<output("You have been rewarded [amount] RPP!","oocout")
 				var/text = "[usr.key] rewarded ([choice.key] [choice.name] [amount]RPP)"
 				Adminlog(text)
@@ -596,8 +596,9 @@ mob
 				year+=yearskip
 				var/globalreward=input("How many RPP do you wish to reward every player with?") as num
 				for(var/mob/m in world)
-					m.rpp+=globalreward
-					m.trpp+=globalreward
+					if(m.roleplayPoints && m.totalRoleplayPoints)
+						m.roleplayPoints.addValue(globalreward)
+						m.totalRoleplayPoints.addValue(globalreward)
 				world<<output("It is now Year [year]AS, every player has received [globalreward]RPP over the timeskip.","oocout")
 				var/text = "[usr.key] performed a timeskip"
 				Adminlog(text)
@@ -622,7 +623,7 @@ mob
 				Checkspec(perk2,a)
 				var/text = "[usr.key] gave [a.name] the perk [perk2]"
 				Adminlog(text)
-			GivePerktoNPC(obj/npc/a in world)
+			GivePerktoNPC(mob/npc/a in world)
 				set category="Admin"
 				if(adminlv<2)
 					return
@@ -735,7 +736,7 @@ mob
 					alert("Sorry that perk was not found.")
 				else
 					a.contents+=pickperk
-			GiveNPCWeapon(var/obj/npc/n)
+			GiveNPCWeapon(var/mob/npc/n)
 				var/obj/item/i =input("What do you want to make?","Create obj") in typesof(/obj/item/Weapon) + list("Cancel")
 				if(i=="Cancel")
 					return
@@ -1105,7 +1106,7 @@ proc
 		world<<output("<small>Server: Saving Objects...","icout")
 		var/Amount=0
 		var/E=1
-		var/savefile/F=new("Save/World/File[E]")
+		var/savefile/F=new("Data/World/File[E]")
 		var/list/Types=new
 		for(var/obj/A in world) if(A.Savable==1)
 			A.savedx=A.x
@@ -1116,13 +1117,13 @@ proc
 			if(Amount % 250 == 0)
 				F["Types"]<<Types
 				E++
-				F=new("Save/World/File[E]")
+				F=new("Data/World/File[E]")
 				Types=new
 		if(Amount % 250 != 0)
 			F["Types"]<<Types
 		hacklol:
-			if(fexists("Save/World/File[E++]"))
-				fdel("Save/World/File[E++]")
+			if(fexists("Data/World/File[E++]"))
+				fdel("Data/World/File[E++]")
 				world<<"<small>Server: Objects DEBUG system check: extra objects file deleted!"
 				E++
 				goto hacklol
@@ -1135,8 +1136,8 @@ proc
 		var/filenum=0
 		wowza:
 			filenum++
-			if(fexists("Save/World/File[filenum]"))
-				var/savefile/F=new("Save/World/File[filenum]")
+			if(fexists("Data/World/File[filenum]"))
+				var/savefile/F=new("Data/World/File[filenum]")
 				var/list/L=new
 				F["Types"]>>L
 				for(var/obj/A in L)

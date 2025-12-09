@@ -3,20 +3,31 @@
 
 	HTML/CSS/JavaScript template generation for the browse-based chat system.
 	This file contains the getChatWindowHTML() proc that generates the full chat interface.
+	
+	THEMING:
+	The chat window now supports the game's theme system via CSS variables.
+	Pass a client to getChatWindowHTML() to apply their selected theme.
+	CSS variables are defined in Code/__Framework/UI/themes/theme_manager.dm
 */
 
 /**
  * Generate the full HTML for the chat window
+ * @param client/C Optional client for theme support (uses default theme if null)
  * @param messages Optional list of message data to render
  */
-/proc/getChatWindowHTML(list/messages = null)
+/proc/getChatWindowHTML(client/C = null, list/messages = null)
+	// Get theme CSS - uses client's preference or default
+	var/theme_css = CSS.get_theme_css(C)
+	
 	var/html = {"
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Crystal Sagas Chat</title>
+	<title>Fantasy United Chat</title>
 	<style>
+		[theme_css]
+		
 		* {
 			margin: 0;
 			padding: 0;
@@ -25,8 +36,8 @@
 
 		body {
 			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-			background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-			color: #e0e0e0;
+			background: var(--chat-background);
+			color: var(--color-text, #e0e0e0);
 			overflow: hidden;
 			height: 100vh;
 			display: flex;
@@ -40,17 +51,17 @@
 			display: flex;
 			gap: 4px;
 			padding: 4px 8px;
-			background: rgba(42, 49, 66, 0.4);
-			border-bottom: 1px solid rgba(90, 101, 112, 0.2);
+			background: var(--chat-tab-bg);
+			border-bottom: 1px solid var(--chat-card-border);
 			flex-shrink: 0;
 		}
 
 		.filter-tab {
 			padding: 4px 10px;
-			border-radius: 3px;
-			background: rgba(90, 101, 112, 0.15);
-			border: 1px solid rgba(90, 101, 112, 0.3);
-			color: #8a92a0;
+			border-radius: var(--radius-sm, 3px);
+			background: var(--chat-tab-bg);
+			border: 1px solid var(--chat-tab-border);
+			color: var(--color-text-muted, #8a92a0);
 			cursor: pointer;
 			transition: all 0.15s ease;
 			font-size: 11px;
@@ -60,16 +71,16 @@
 		}
 
 		.filter-tab:hover {
-			background: rgba(90, 101, 112, 0.25);
+			background: var(--chat-tab-active-bg);
 			transform: translateY(-1px);
-			box-shadow: 0 1px 4px rgba(90, 101, 112, 0.3);
+			box-shadow: 0 1px 4px var(--color-shadow);
 		}
 
 		.filter-tab.active {
-			background: rgba(90, 101, 112, 0.4);
-			color: #b0bec5;
-			border-color: rgba(90, 101, 112, 0.6);
-			box-shadow: 0 0 8px rgba(90, 101, 112, 0.4);
+			background: var(--chat-tab-active-bg);
+			color: var(--color-text, #b0bec5);
+			border-color: var(--chat-card-hover-border);
+			box-shadow: 0 0 8px var(--color-glow);
 		}
 
 		/* Chat Container */
@@ -88,26 +99,26 @@
 		}
 
 		.chat-container::-webkit-scrollbar-track {
-			background: rgba(42, 49, 66, 0.3);
+			background: var(--chat-scrollbar-track);
 			border-radius: 4px;
 		}
 
 		.chat-container::-webkit-scrollbar-thumb {
-			background: rgba(90, 101, 112, 0.4);
+			background: var(--chat-scrollbar-thumb);
 			border-radius: 4px;
 		}
 
 		.chat-container::-webkit-scrollbar-thumb:hover {
-			background: rgba(90, 101, 112, 0.6);
+			background: var(--chat-card-hover-border);
 		}
 
 		/* Message Cards */
 		.chat-card {
-			background: linear-gradient(135deg, rgba(42, 49, 66, 0.5) 0%, rgba(37, 40, 48, 0.5) 100%);
-			border: 1px solid rgba(90, 101, 112, 0.25);
-			border-radius: 6px;
+			background: var(--chat-card-bg);
+			border: 1px solid var(--chat-card-border);
+			border-radius: var(--radius-md, 6px);
 			padding: 8px 12px;
-			box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+			box-shadow: 0 2px 8px var(--color-shadow);
 			transition: all 0.2s ease;
 			animation: slideIn 0.2s ease;
 			opacity: 0;
@@ -127,31 +138,31 @@
 
 		.chat-card:hover {
 			transform: translateX(2px);
-			box-shadow: 0 3px 12px rgba(90, 101, 112, 0.2);
-			border-color: rgba(90, 101, 112, 0.4);
+			box-shadow: 0 3px 12px var(--color-glow);
+			border-color: var(--chat-card-hover-border);
 		}
 
 		/* OOC Card */
 		.chat-card.ooc {
-			border-left: 3px solid #7a8b9a;
+			border-left: 3px solid var(--chat-channel-ooc);
 		}
 
 		/* IC Card */
 		.chat-card.ic {
-			border-left: 3px solid #FFD700;
+			border-left: 3px solid var(--chat-channel-ic);
 		}
 
 		/* IC Card - Emote variant (quote_style='emote') */
 		.chat-card.ic.is-emote {
-			border-left: 3px solid #ffa726;
-			background: linear-gradient(135deg, rgba(42, 45, 53, 0.6) 0%, rgba(48, 38, 30, 0.4) 100%);
+			border-left: 3px solid var(--chat-channel-emote);
+			background: var(--chat-card-bg);
 			margin-left: 0;
 			margin-right: 0;
 		}
 
 		.chat-card.ic.is-emote .message-content {
 			font-style: italic;
-			color: #ffcc80;
+			color: var(--chat-channel-emote);
 			line-height: 1.65;
 			padding: 8px 0;
 		}
@@ -167,23 +178,23 @@
 
 		/* Combat Card */
 		.chat-card.combat {
-			border-left: 3px solid #FF4444;
+			border-left: 3px solid var(--chat-channel-combat);
 		}
 
 		/* Admin Card */
 		.chat-card.admin {
-			border-left: 3px solid #FF00FF;
-			background: rgba(255, 0, 255, 0.03);
+			border-left: 3px solid var(--chat-channel-admin);
+			background: var(--chat-card-bg);
 		}
 
 		/* System Card */
 		.chat-card.system {
-			border-left: 3px solid #FFA500;
+			border-left: 3px solid var(--chat-channel-system);
 		}
 
 		/* Rank Card */
 		.chat-card.rank {
-			border-left: 3px solid #00CED1;
+			border-left: 3px solid var(--chat-channel-rank);
 		}
 
 		/* Tab Notification Glow - Base */
@@ -335,7 +346,7 @@
 			align-items: center;
 			margin-bottom: 8px;
 			padding-bottom: 6px;
-			border-bottom: 1px solid rgba(90, 101, 112, 0.2);
+			border-bottom: 1px solid var(--chat-card-border);
 		}
 
 		.message-sender {
@@ -351,13 +362,13 @@
 			gap: 8px;
 			align-items: center;
 			font-size: 11px;
-			color: rgba(255, 255, 255, 0.5);
+			color: var(--color-text-muted);
 		}
 
 		.message-tag {
 			padding: 2px 6px;
-			border-radius: 3px;
-			background: rgba(90, 101, 112, 0.3);
+			border-radius: var(--radius-sm, 3px);
+			background: var(--chat-tab-bg);
 			font-size: 9px;
 			font-weight: bold;
 			text-transform: uppercase;
@@ -366,7 +377,7 @@
 		.message-timestamp {
 			font-family: 'Courier New', monospace;
 			font-size: 11px;
-			color: rgba(255, 255, 255, 0.4);
+			color: var(--color-text-muted);
 			font-weight: 500;
 		}
 
@@ -374,12 +385,12 @@
 		.message-content {
 			font-size: 13px;
 			line-height: 1.5;
-			color: rgba(255, 255, 255, 0.9);
+			color: var(--color-text);
 		}
 
 		/* Admin Link */
 		.admin-link {
-			color: #8a92a0;
+			color: var(--color-text-muted);
 			text-decoration: none;
 			margin-right: 6px;
 			font-size: 13px;
@@ -387,8 +398,8 @@
 		}
 
 		.admin-link:hover {
-			color: #b0bec5;
-			text-shadow: 0 0 6px rgba(90, 101, 112, 0.5);
+			color: var(--color-text);
+			text-shadow: 0 0 6px var(--color-glow);
 		}
 
 		/* Hidden Messages */
@@ -399,7 +410,7 @@
 		/* No Messages */
 		.no-messages {
 			text-align: center;
-			color: rgba(255, 255, 255, 0.3);
+			color: var(--color-text-muted);
 			font-style: italic;
 			padding: 30px;
 			font-size: 13px;
@@ -428,30 +439,30 @@
 		.chat-badge {
 			display: inline-block;
 			padding: 3px 8px;
-			border-radius: 4px;
+			border-radius: var(--radius-sm, 4px);
 			font-size: 10px;
 			font-weight: 700;
 			text-transform: uppercase;
 			letter-spacing: 0.5px;
-			text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+			text-shadow: 0 1px 3px var(--color-shadow);
 			white-space: nowrap;
-			box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+			box-shadow: 0 1px 3px var(--color-shadow);
 		}
 
 		/* Quote Preview */
 		.quote-preview {
-			background: rgba(90, 101, 112, 0.2);
-			border-left: 3px solid rgba(176, 190, 197, 0.4);
+			background: var(--chat-tab-bg);
+			border-left: 3px solid var(--chat-card-border);
 			padding: 6px 8px;
 			margin: 6px 0;
-			border-radius: 3px;
+			border-radius: var(--radius-sm, 3px);
 			font-size: 12px;
-			color: rgba(255, 255, 255, 0.7);
+			color: var(--color-text-muted);
 		}
 
 		.quote-preview .quote-author {
 			font-weight: bold;
-			color: rgba(176, 190, 197, 0.9);
+			color: var(--color-text);
 			font-size: 11px;
 			margin-bottom: 2px;
 		}
@@ -466,14 +477,14 @@
 			opacity: 0;
 			transition: opacity 0.2s ease;
 			font-size: 11px;
-			color: rgba(138, 146, 160, 0.6);
+			color: var(--color-text-muted);
 			font-weight: 600;
 			margin-right: 6px;
 		}
 
 		.chat-card:hover .message-number {
 			opacity: 1;
-			color: rgba(176, 190, 197, 0.8);
+			color: var(--color-text);
 		}
 
 		/* Message Actions */
@@ -491,14 +502,14 @@
 		}
 
 		.action-button {
-			color: rgba(138, 146, 160, 0.8);
+			color: var(--color-text-muted);
 			cursor: pointer;
 			transition: color 0.15s ease;
 			font-weight: 500;
 		}
 
 		.action-button:hover {
-			color: rgba(176, 190, 197, 1);
+			color: var(--color-text);
 		}
 
 		/* ============================================= */
@@ -507,9 +518,9 @@
 
 		#npcDialoguePanel {
 			display: none;
-			background: linear-gradient(135deg, #1a2744 0%, #243552 100%);
-			border: 1px solid #4a6fa5;
-			border-radius: 8px;
+			background: var(--npc-bg);
+			border: 1px solid var(--npc-border);
+			border-radius: var(--radius-lg, 8px);
 			padding: 12px 16px;
 			margin: 8px 0;
 		}
@@ -528,8 +539,8 @@
 		.npc-dialogue-speaker {
 			font-weight: 600;
 			font-size: 14px;
-			color: #90caf9;
-			text-shadow: 0 0 8px rgba(144, 202, 249, 0.4);
+			color: var(--npc-speaker);
+			text-shadow: 0 0 8px var(--color-glow);
 		}
 
 		.npc-dialogue-speaker::after {
@@ -537,7 +548,7 @@
 			display: inline-block;
 			width: 6px;
 			height: 6px;
-			background: #4caf50;
+			background: var(--color-success, #4caf50);
 			border-radius: 50%;
 			margin-left: 8px;
 			animation: speakerPulse 1.5s ease-in-out infinite;
@@ -549,20 +560,20 @@
 		}
 
 		.npc-dialogue-text {
-			color: #e0e6ed;
+			color: var(--color-text);
 			font-size: 13px;
 			line-height: 1.5;
 			padding: 10px 14px;
-			background: rgba(0, 0, 0, 0.25);
-			border-radius: 8px;
-			border-left: 3px solid #4a6fa5;
+			background: var(--color-shadow);
+			border-radius: var(--radius-lg, 8px);
+			border-left: 3px solid var(--npc-border);
 			margin-bottom: 12px;
 			min-height: 40px;
 		}
 
 		.npc-dialogue-divider {
 			height: 1px;
-			background: linear-gradient(90deg, transparent 0%, rgba(74, 111, 165, 0.5) 20%, rgba(74, 111, 165, 0.5) 80%, transparent 100%);
+			background: linear-gradient(90deg, transparent 0%, var(--npc-border) 20%, var(--npc-border) 80%, transparent 100%);
 			margin: 10px 0;
 		}
 
@@ -580,12 +591,12 @@
 
 		.npc-choice-button {
 			display: inline-block;
-			background: linear-gradient(135deg, #3d5a80 0%, #4a6fa5 100%);
-			color: #e0e6ed;
+			background: var(--npc-button-bg);
+			color: var(--color-text);
 			padding: 10px 16px;
-			border-radius: 6px;
+			border-radius: var(--radius-md, 6px);
 			text-decoration: none;
-			border: 1px solid #5d7aa0;
+			border: 1px solid var(--npc-border);
 			font-size: 13px;
 			font-weight: 500;
 			transition: all 0.2s ease;
@@ -594,10 +605,10 @@
 		}
 
 		.npc-choice-button:hover {
-			background: linear-gradient(135deg, #4a6fa5 0%, #5d7aa0 100%);
-			border-color: #90caf9;
+			background: var(--npc-button-hover);
+			border-color: var(--npc-speaker);
 			transform: translateY(-1px);
-			box-shadow: 0 4px 12px rgba(74, 111, 165, 0.3);
+			box-shadow: 0 4px 12px var(--color-glow);
 		}
 
 		.npc-choice-button:active {
@@ -615,12 +626,12 @@
 
 		.npc-dialogue-input a {
 			display: inline-block;
-			background: linear-gradient(135deg, #2e7d32 0%, #388e3c 100%);
-			color: #e0e6ed;
+			background: linear-gradient(135deg, var(--color-success) 0%, var(--color-success) 100%);
+			color: var(--color-text);
 			padding: 10px 20px;
-			border-radius: 6px;
+			border-radius: var(--radius-md, 6px);
 			text-decoration: none;
-			border: 1px solid #4caf50;
+			border: 1px solid var(--color-success);
 			font-size: 13px;
 			font-weight: 500;
 			transition: all 0.2s ease;

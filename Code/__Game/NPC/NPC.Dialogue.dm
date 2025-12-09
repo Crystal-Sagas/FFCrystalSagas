@@ -19,7 +19,7 @@
  */
 /datum/npc_dialogue
 	/// The NPC conducting this dialogue
-	var/obj/npc/speaker
+	var/mob/npc/speaker
 
 	/// The player in the conversation
 	var/mob/player/listener
@@ -42,7 +42,7 @@
 	/// Callback datum for completion
 	var/datum/completionDatum
 
-/datum/npc_dialogue/New(obj/npc/npc, mob/player/P)
+/datum/npc_dialogue/New(mob/npc/npc, mob/player/P)
 	. = ..()
 	speaker = npc
 	listener = P
@@ -272,7 +272,7 @@
 /**
  * Create a simple linear dialogue
  */
-/proc/createSimpleDialogue(obj/npc/npc, mob/player/P, list/lines)
+/proc/createSimpleDialogue(mob/npc/npc, mob/player/P, list/lines)
 	var/datum/npc_dialogue/dialogue = new(npc, P)
 
 	var/prevNodeId = null
@@ -293,7 +293,7 @@
 /**
  * Start a simple NPC monologue
  */
-/proc/npcSay(obj/npc/npc, mob/player/P, text)
+/proc/npcSay(mob/npc/npc, mob/player/P, text)
 	if(!P?.client)
 		return FALSE
 	sendNPCDialogueToBrowse(P, npc?.name || "???", text)

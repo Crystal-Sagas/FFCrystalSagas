@@ -53,16 +53,16 @@
 		if(stat in P.vars)
 			P.vars[stat] += statBonuses[stat]
 
-	// Apply resource bonuses
+	// Apply resource bonuses using new stat system
 	if(resourceBonuses["hp"])
-		P.hp += resourceBonuses["hp"]
-		P.mhp += resourceBonuses["hp"]
+		P.health?.addMaxValue(resourceBonuses["hp"])
+		P.health += resourceBonuses["hp"]
 	if(resourceBonuses["mp"])
-		P.mp += resourceBonuses["mp"]
-		P.mmp += resourceBonuses["mp"]
+		P.mana?.addMaxValue(resourceBonuses["mp"])
+		P.mana += resourceBonuses["mp"]
 	if(resourceBonuses["sp"])
-		P.sp += resourceBonuses["sp"]
-		P.msp += resourceBonuses["sp"]
+		P.stamina?.addMaxValue(resourceBonuses["sp"])
+		P.stamina += resourceBonuses["sp"]
 
 	// Grant starting perks
 	for(var/perkType in startingPerks)

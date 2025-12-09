@@ -300,7 +300,7 @@ mob/verb
 			row++
 			winset(usr, "statusscreen.grid", "current-cell=1,[row]")
 			usr << output(g,"statusscreen.grid")
-	ViewMobStatus(obj/npc/m)
+	ViewMobStatus(mob/npc/m)
 		set name="View NPC Status"
 		var/row
 		winset(usr,"statusscreen","is-visible=true")
@@ -318,15 +318,15 @@ mob/verb
 		set name="Remove Status"
 		RemoveMarker(a, usr)
 		RefreshStatus(a, usr)
-	Applymobmarker(obj/npc/a)
+	Applymobmarker(mob/npc/a)
 		set name="Apply Status Marker"
 		Applystatmark(a, usr)
 		RefreshStatus(a, usr)
-	Removemobmarker(obj/npc/a)
+	Removemobmarker(mob/npc/a)
 		set name="Remove Status Marker"
 		RemoveMarker(a, usr)
 		RefreshStatus(a, usr)
-	Lettermarker(obj/npc/m)
+	Lettermarker(mob/npc/m)
 		set name="Apply Letter Marker"
 		if(usr.adminlv<1)
 			return
@@ -335,9 +335,6 @@ mob/verb
 
 ////////////////////////////////////////////////////////////////////Letter Markers
 
-
-obj/npc/var
-	let
 
 obj/lettermarkers
 	icon='Icons/lettermarkers.dmi'
@@ -358,7 +355,7 @@ obj/lettermarkers
 		icon_state="f"
 
 proc
-	Designateletter(var/obj/npc/n)
+	Designateletter(var/mob/npc/n)
 		for(var/obj/lettermarkers/l in n.vis_contents)
 			l.relocateToNull()
 		n.let=null

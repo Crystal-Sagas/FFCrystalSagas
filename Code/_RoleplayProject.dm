@@ -24,8 +24,11 @@ mob
 	dummy
 		icon='Icons/WhiteMaleBase.dmi'
 		profile = "A dummy"
-		rpp = 9001
 		initiative=9
+		New()
+			..()
+			initializeStats()
+			roleplayPoints.setValue(9001)
 	dummy2
 		icon = 'Icons/WhiteFemaleBase.dmi'
 	dummy3
@@ -125,7 +128,10 @@ obj
 		Click()
 			if(usr.intitlescreen!=1)
 				return
-			usr.Load()
+			// Use new load system
+			var/mob/player/P = usr
+			if(isPlayer(P))
+				P.loadGame()
 		MouseEntered()
 			usr<<'Audio/Cursor Move.ogg'
 			var/obj/Cursor/C = new /obj/Cursor
@@ -172,8 +178,9 @@ mob
 				o.relocateToNull()
 			for(var/image/i in usr.client.screen)
 				usr.client.screen -= i
-			src.rpp=startingrpp
-			src.trpp=startingrpp
+			src.initializeStats()
+			src.roleplayPoints.setValue(startingrpp)
+			src.totalRoleplayPoints.setValue(startingrpp)
 			Checkreward(usr)
 			src.see_invisible=1
 			src.intutorial=0
@@ -192,163 +199,11 @@ mob
 			for(var/obj/item/b in materiallist)
 				var/obj/item/a=copyatom(b)
 				usr.contents+=a
-		Load()
-			client.images -= __lobby_image
-			if(fexists("Save/[src.ckey]"))
-				src<<sound(null)
-				sleep()
-				src<< 'Audio/Cursor Ready.ogg'
-				var/savefile/F=new("Save/[src.ckey]")
-				Read(F)
-				F["x"]>>src.x
-				F["y"]>>src.y
-				F["z"]>>src.z
-				src.loc = locate(src.x,src.y,src.z)
-				src.density=1
-				addLightPlane()
-				setLightOverlay(outside_light)
-				src.client.eye = src
-				src.client.perspective = EYE_PERSPECTIVE
-				src.intitlescreen=0
-				for(var/obj/Eye/e in world)
-					if(e.owner==usr.ckey)
-						e.relocateToNull()
-				if(usr.adminlv >0)
-					winset(src,"default.Adminbut","is-visible=true")
-					winset(usr,"default.Nar","is-visible=true")
-					usr.verbs+=typesof(/mob/Admin/verb/)
-				if(usr.eventmin)
-					usr.verbs+=typesof(/mob/eventmin/verb/)
-				for(var/obj/o in usr.client.screen)
-					o.relocateToNull()
-				for(var/image/i in usr.client.screen)
-					usr.client.screen -= i
-				src.aoetiles=0
-				src.aoeclick=0
-				src.building=0
-				for(var/obj/Builds/b in usr.contents)
-					b.relocateToNull()
-				usr.bposition=null
-				usr.battler=0
-				for(var/obj/cooldownchecker/chk in world)
-					if(usr.totalpasses<chk.totalpasses)
-						usr.stockdrawn=0
-						usr.Lifestreamraincooldown=0
-						usr.FATEcooldown=0
-						usr.dailyfates=0
-						usr.limitbreakused=0
-						usr.tempeventmin=0
-						usr.totalpasses=chk.totalpasses
-						usr.minednodes=0
-						for(var/obj/item/Mooglebox/a in usr.contents)
-							a.cooldown=0
-						//alert(usr,"You were logged out during a cooldown reset, so your cooldowns are now reset.")
-				if(usr.eventmin || usr.tempeventmin)
-					winset(usr,"default.Eventmin","is-visible=true")
-				if(usr.rankchecked==0)
-					if(usr.rank=="Fledgling")
-						usr.rankchecked=1
-					else
-						if(usr.rank=="Rookie")
-							usr.rankchecked=1
-							usr.mhp+=40
-							usr.hp+=40
-							usr.msp+=40
-							usr.sp+=40
-							usr.mmp+=40
-							usr.mp+=40
-							usr.APcap=14
-						if(usr.rank=="Adept")
-							usr.mhp+=70
-							usr.hp+=70
-							usr.msp+=70
-							usr.sp+=70
-							usr.mmp+=70
-							usr.mp+=70
-							usr.APcap=18
-						if(usr.rank=="Veteran")
-							usr.mhp+=100
-							usr.hp+=100
-							usr.msp+=100
-							usr.sp+=100
-							usr.mmp+=100
-							usr.mp+=100
-							usr.APcap=22
-							usr.strcap=22
-							usr.dexcap=22
-							usr.concap=22
-							usr.intcap=22
-							usr.wiscap=22
-							usr.chacap=22
-						if(usr.rank=="Hero")
-							usr.mhp+=135
-							usr.hp+=135
-							usr.msp+=135
-							usr.sp+=135
-							usr.mmp+=135
-							usr.mp+=135
-							usr.APcap=26
-							usr.strcap=24
-							usr.dexcap=24
-							usr.concap=24
-							usr.intcap=24
-							usr.wiscap=24
-							usr.chacap=24
-						if(usr.rank=="Master")
-							usr.mhp+=180
-							usr.hp+=180
-							usr.msp+=180
-							usr.sp+=180
-							usr.mmp+=180
-							usr.mp+=180
-							usr.APcap=30
-							usr.strcap=26
-							usr.dexcap=26
-							usr.concap=26
-							usr.intcap=26
-							usr.wiscap=26
-							usr.chacap=26
-						usr.rankchecked=1
-						alert(usr,"You have been granted your HP, MP, and SP bonus for your current rank.")
-				if(usr.patron)
-					if(!usr.firsttimerewards)
-						var/obj/item/Mooglebox/MoogleShopBox/a=new
-						var/obj/item/Mooglebox/MoogleGathererBox/b=new
-						usr.contents+=a
-						usr.contents+=b
-						usr.firsttimerewards=1
-					usr.Checkmonth()
-				RefreshCharsheet(usr)
-				Refreshinventoryscreen(usr)
-				RefreshAll(usr)
-				UpdateArea(usr)
-			else
-				alert("You do not have a save file.")
-				return
-		Save()
-			//? DO NOT REMOVE THIS CHECK UNDER ANY CIRCUMSTANCES.
-			//  Explanation:
-			//  If someone's in lobby and this triggers, due to the horrific
-			//  lack of abstraction between player mobs and new players and
-			//  the saving system, it will overwrite their save with their
-			//  uninitialized mob.
-			if(intitlescreen)
-				return
-			//? END
-			if(key)
-				if(!src.loc)
-					return
-				if(src.loc==locate(37,239,28))
-					return
-				var/savefile/F=new("Save/[src.ckey]")
-				F["x"]<<src.x
-				F["y"]<<src.y
-				F["z"]<<src.z
-				Write(F)
-		AutoSave()
-			Save()
-			spawn(6000)
-				AutoSave()
+
+		//? Legacy verbs removed - now handled by new save system in:
+		//  - Code/__Framework/Save/Savefile.System.dm
+		//  - Code/__Game/_DM/Mob/Player/Player.dm (onLoadComplete)
+		//  - Code/__Game/Lobby/Lobby.dm (loadGame/startNewGame)
 
 // todo: refactor
 /mob/var/tmp/image/__lobby_image
@@ -369,7 +224,7 @@ proc
 		world<<output("<small>Server: Saving Objects...","icout")
 		var/Amount=0
 		var/E=1
-		var/savefile/F=new("Save/World/File[E]")
+		var/savefile/F=new("Data/World/File[E]")
 		var/list/Types=new
 		for(var/obj/A in world) if(A.Savable==1)
 			A.savedx=A.x
@@ -380,15 +235,15 @@ proc
 			if(Amount % 250 == 0)
 				F["Types"]<<Types
 				E++
-				F=new("Save/World/File[E]")
+				F=new("Data/World/File[E]")
 				Types=new
 				sleep(1)  // Yield periodically to avoid infinite loop detection
 		if(Amount % 250 != 0)
 			F["Types"]<<Types
 		// Clean up any extra old save files beyond what we just wrote
 		E++
-		while(fexists("Save/World/File[E]"))
-			fdel("Save/World/File[E]")
+		while(fexists("Data/World/File[E]"))
+			fdel("Data/World/File[E]")
 			world<<"<small>Server: Objects DEBUG system check: extra objects file deleted!"
 			E++
 		world<<output("<small>Server: Objects Saved([Amount]).","icout")
@@ -403,9 +258,9 @@ proc
 		var/filenum=0
 		while(TRUE)
 			filenum++
-			if(!fexists("Save/World/File[filenum]"))
+			if(!fexists("Data/World/File[filenum]"))
 				break
-			var/savefile/F=new("Save/World/File[filenum]")
+			var/savefile/F=new("Data/World/File[filenum]")
 			var/list/L=new
 			F["Types"]>>L
 			for(var/obj/A in L)
@@ -420,7 +275,7 @@ proc
 		var/loop=1
 		var/a
 		while(loop)
-			if(m.rpp==0)
+			if(m.roleplayPoints.value==0)
 				alert("Hmm it appears you don't have any points to spend. Oh well.")
 				return
 			else
@@ -435,70 +290,70 @@ proc
 						if("Photosynthetic Wave")
 							var/obj/perk/MonsterAbilities/BLU/PhotosyntheticWave/p1=new
 							m.contents+=p1
-							m.rpp--
+							m.roleplayPoints.removeValue(1)
 							a++
 							if(a==3)
 								loop=0
 						if("Shrapnel Seed")
 							var/obj/perk/MonsterAbilities/BLU/ShrapnelSeed/p1=new
 							m.contents+=p1
-							m.rpp--
+							m.roleplayPoints.removeValue(1)
 							a++
 							if(a==3)
 								loop=0
 						if("Geezard Claw")
 							var/obj/perk/MonsterAbilities/BLU/GeezardClaw/p1=new
 							m.contents+=p1
-							m.rpp--
+							m.roleplayPoints.removeValue(1)
 							a++
 							if(a==3)
 								loop=0
 						if("Goblin Strike")
 							var/obj/perk/MonsterAbilities/BLU/GoblinStrike/p1=new
 							m.contents+=p1
-							m.rpp--
+							m.roleplayPoints.removeValue(1)
 							a++
 							if(a==3)
 								loop=0
 						if("Poison Powder")
 							var/obj/perk/MonsterAbilities/BLU/PoisonPowder/p1=new
 							m.contents+=p1
-							m.rpp--
+							m.roleplayPoints.removeValue(1)
 							a++
 							if(a==3)
 								loop=0
 						if("Silver Fang")
 							var/obj/perk/MonsterAbilities/BLU/SilverFang/p1=new
 							m.contents+=p1
-							m.rpp--
+							m.roleplayPoints.removeValue(1)
 							a++
 							if(a==3)
 								loop=0
 						if("Mu Claw")
 							var/obj/perk/MonsterAbilities/BLU/MuClaw/p1=new
 							m.contents+=p1
-							m.rpp--
+							m.roleplayPoints.removeValue(1)
 							a++
 							if(a==3)
 								loop=0
 						if("Gelantinous Lake")
 							var/obj/perk/MonsterAbilities/BLU/GelatinousLake/p1=new
 							m.contents+=p1
-							m.rpp--
+							m.roleplayPoints.removeValue(1)
 							a++
 							if(a==3)
 								loop=0
 						if("Water Gun")
 							var/obj/perk/MonsterAbilities/BLU/WaterGun/p1=new
 							m.contents+=p1
-							m.rpp--
+							m.roleplayPoints.removeValue(1)
 							a++
 							if(a==3)
 								loop=0
 						if("Mesma Blade")
 							var/obj/perk/MonsterAbilities/BLU/MesmaBlade/p1=new
 							m.contents+=p1
-							m.rpp--
+							m.roleplayPoints.removeValue(1)
 							a++
 							if(a==3)
 								loop=0
@@ -521,7 +376,7 @@ proc
 			if("Chocobo Knight")
 				m.subjob="Chocobo Knight"
 				var/obj/perk/Jobperks/ChocoboKnight/ChocoboKnight/p1=new
-				var/obj/npc/Summons/CRank/ChocoSteed/p2=new
+				var/mob/npc/Summons/CRank/ChocoSteed/p2=new
 				m.contents+=p1
 				m.contents+=p2
 			if("Pirate")

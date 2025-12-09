@@ -1,35 +1,41 @@
 /**
  * Chronicles CSS Library
- * 
+ *
  * A centralized system for managing UI styling across the Chronicles codebase.
  * This library provides consistent styling for admin and player interfaces.
- * 
+ *
  * Usage:
  * - Call CSS.get_admin_css() to get standard admin tool styling
  * - Call CSS.get_player_css() to get standard player UI styling
+ * - Call CSS.get_hors_css() to get Hors pattern specific styles (messages, states)
  * - Call specific component methods like CSS.buttons() to get individual styles
- * 
+ *
  * All styling uses the Color singleton for consistent theming
+ *
+ * Hors Pattern Integration:
+ * - Use CSS.get_hors_css() for message feedback and loading states
+ * - Pair with CSS.hors_js() for JavaScript helpers
+ * - See UI_BROWSE_REFACTOR.md and UI_FRAMEWORK_GUIDE.md for full documentation
  */
 
-// CSS singleton for managing styling
-var/CSS = new/StyleManager()
+// CSS singleton for managing styling (typed for static proc calls)
+var/StyleManager/CSS = new/StyleManager()
 
 /**
  * StyleManager
- * 
+ *
  * Singleton that handles generating CSS for various UI components
  */
 /StyleManager
 	/**
 	 * Get a complete admin tool CSS package
-	 * 
+	 *
 	 * @param list/components List of component styles to include
 	 * @return Complete CSS string for admin tools
 	 */
-	proc/get_admin_css(list/components = list("base", "header", "section", "table", "tabs", "buttons", "panels", "forms"))
+	proc/get_admin_css(list/components = list("base", "header", "section", "table", "tabs", "buttons", "panels", "forms", "messages", "states"))
 		var/css = ""
-		
+
 		if("base" in components) css += base()
 		if("header" in components) css += header()
 		if("section" in components) css += section()
@@ -38,30 +44,43 @@ var/CSS = new/StyleManager()
 		if("buttons" in components) css += buttons()
 		if("panels" in components) css += panels()
 		if("forms" in components) css += forms()
+		if("messages" in components) css += messages()
+		if("states" in components) css += states()
 		if("utils" in components) css += utils()
-		
+
 		return css
-	
+
 	/**
 	 * Get a complete player UI CSS package
-	 * 
+	 *
 	 * @param list/components List of component styles to include
 	 * @return Complete CSS string for player UI
 	 */
-	proc/get_player_css(list/components = list("base", "header", "buttons", "panels", "tooltips"))
+	proc/get_player_css(list/components = list("base", "header", "buttons", "panels", "tooltips", "messages", "states"))
 		var/css = ""
-		
+
 		if("base" in components) css += base()
 		if("header" in components) css += header()
 		if("buttons" in components) css += buttons()
 		if("panels" in components) css += panels()
 		if("tooltips" in components) css += tooltips()
-		
+		if("messages" in components) css += messages()
+		if("states" in components) css += states()
+
 		return css
-	
+
+	/**
+	 * Get Hors Pattern specific CSS (messages + states)
+	 * Use this for windows that need feedback messages and loading states
+	 *
+	 * @return CSS for messages and states
+	 */
+	proc/get_hors_css()
+		return messages() + states()
+
 	/**
 	 * Base styles for all interfaces
-	 * 
+	 *
 	 * @return Base CSS styles
 	 */
 	proc/base()
@@ -74,53 +93,53 @@ var/CSS = new/StyleManager()
 			margin: 8px;
 			padding: 0;
 		}
-		
+
 		a {
 			color: [Color.UI_Accent];
 			text-decoration: none;
 		}
-		
+
 		a:hover {
 			text-decoration: underline;
 		}
-		
+
 		h1, h2, h3, h4 {
 			color: [Color.UI_SecondAccent];
 			margin-top: 0;
 			margin-bottom: 10px;
 		}
-		
+
 		.highlight {
 			color: [Color.UI_Accent];
 			font-weight: bold;
 		}
-		
+
 		.text-success {
 			color: [Color.UI_Success];
 		}
-		
+
 		.text-warning {
 			color: [Color.UI_Warning];
 		}
-		
+
 		.text-error {
 			color: [Color.UI_Error];
 		}
-		
+
 		.hidden {
 			display: none;
 		}
-		
+
 		.clearfix::after {
 			content: "";
 			clear: both;
 			display: table;
 		}
 		"}
-	
+
 	/**
 	 * Header styles
-	 * 
+	 *
 	 * @return Header CSS
 	 */
 	proc/header()
@@ -131,12 +150,12 @@ var/CSS = new/StyleManager()
 			margin-bottom: 10px;
 			border-radius: 4px;
 		}
-		
+
 		.header h1, .header h2, .header h3 {
 			margin: 0;
 			color: [Color.UI_Accent];
 		}
-		
+
 		.subheader {
 			background-color: rgba(0,0,0,0.2);
 			padding: 5px 8px;
@@ -145,10 +164,10 @@ var/CSS = new/StyleManager()
 			border-left: 3px solid [Color.UI_SecondAccent];
 		}
 		"}
-	
+
 	/**
 	 * Section styles
-	 * 
+	 *
 	 * @return Section CSS
 	 */
 	proc/section()
@@ -159,7 +178,7 @@ var/CSS = new/StyleManager()
 			padding: 8px;
 			border-radius: 4px;
 		}
-		
+
 		.section-title {
 			color: [Color.UI_Accent];
 			font-weight: bold;
@@ -167,11 +186,11 @@ var/CSS = new/StyleManager()
 			margin-bottom: 5px;
 			padding-bottom: 3px;
 		}
-		
+
 		.section-content {
 			padding: 5px 0;
 		}
-		
+
 		.section-footer {
 			border-top: 1px solid rgba(255,255,255,0.1);
 			margin-top: 8px;
@@ -179,7 +198,7 @@ var/CSS = new/StyleManager()
 			text-align: right;
 			font-size: 11px;
 		}
-		
+
 		.collapsible {
 			max-height: 150px;
 			overflow-y: auto;
@@ -189,10 +208,10 @@ var/CSS = new/StyleManager()
 			background-color: rgba(0,0,0,0.2);
 		}
 		"}
-	
+
 	/**
 	 * Table styles
-	 * 
+	 *
 	 * @return Table CSS
 	 */
 	proc/table()
@@ -201,47 +220,47 @@ var/CSS = new/StyleManager()
 			width: 100%;
 			border-collapse: collapse;
 		}
-		
+
 		td, th {
 			padding: 3px 5px;
 		}
-		
+
 		th {
 			text-align: left;
 			color: [Color.UI_SecondAccent];
 			border-bottom: 1px solid [Color.UI_SecondAccent];
 		}
-		
+
 		tr:nth-child(even) {
 			background-color: rgba(255,255,255,0.05);
 		}
-		
+
 		td:first-child {
 			width: 40%;
 			color: [Color.UI_SecondAccent];
 		}
-		
+
 		.table-compact td, .table-compact th {
 			padding: 2px 4px;
 			font-size: 11px;
 		}
-		
+
 		.table-bordered {
 			border: 1px solid #333;
 		}
-		
+
 		.table-bordered td, .table-bordered th {
 			border: 1px solid #333;
 		}
-		
+
 		.table-hover tr:hover {
 			background-color: rgba(255,255,255,0.1);
 		}
 		"}
-	
+
 	/**
 	 * Tab styles
-	 * 
+	 *
 	 * @return Tab CSS
 	 */
 	proc/tabs()
@@ -252,7 +271,7 @@ var/CSS = new/StyleManager()
 			flex-wrap: wrap;
 			margin-bottom: 10px;
 		}
-		
+
 		.tab-button {
 			background-color: [Color.UI_Header];
 			color: [Color.UI_Text];
@@ -263,13 +282,13 @@ var/CSS = new/StyleManager()
 			cursor: pointer;
 			margin-bottom: -1px;
 		}
-		
+
 		.tab-button.active {
 			background-color: [Color.UI_Accent];
 			color: #1a1a1a;
 			font-weight: bold;
 		}
-		
+
 		.tab-content {
 			display: none;
 			border: 1px solid [Color.UI_Accent];
@@ -277,15 +296,15 @@ var/CSS = new/StyleManager()
 			padding: 10px;
 			background-color: [Color.UI_Panel];
 		}
-		
+
 		.tab-content.active {
 			display: block;
 		}
 		"}
-	
+
 	/**
 	 * Button styles
-	 * 
+	 *
 	 * @return Button CSS
 	 */
 	proc/buttons()
@@ -302,57 +321,57 @@ var/CSS = new/StyleManager()
 			display: inline-block;
 			margin: 2px;
 		}
-		
+
 		.button:hover {
 			background-color: [Color.UI_ButtonHover];
 			text-decoration: none;
 		}
-		
+
 		.button-small {
 			font-size: 11px;
 			padding: 3px 8px;
 		}
-		
+
 		.button-large {
 			font-size: 14px;
 			padding: 8px 15px;
 		}
-		
+
 		.button-primary {
 			background-color: [Color.UI_Accent];
 			color: #1a1a1a;
 			font-weight: bold;
 		}
-		
+
 		.button-success {
 			background-color: [Color.UI_Success];
 			color: #1a1a1a;
 		}
-		
+
 		.button-warning {
 			background-color: [Color.UI_Warning];
 			color: #1a1a1a;
 		}
-		
+
 		.button-danger {
 			background-color: [Color.UI_Error];
 			color: #fff;
 		}
-		
+
 		.button-group {
 			display: flex;
 			gap: 5px;
 		}
-		
+
 		.button:disabled {
 			opacity: 0.5;
 			cursor: not-allowed;
 		}
 		"}
-	
+
 	/**
 	 * Panel styles
-	 * 
+	 *
 	 * @return Panel CSS
 	 */
 	proc/panels()
@@ -362,24 +381,24 @@ var/CSS = new/StyleManager()
 			border-radius: 4px;
 			margin-bottom: 10px;
 		}
-		
+
 		.panel-header {
 			background-color: [Color.UI_Header];
 			padding: 5px 10px;
 			border-bottom: 1px solid [Color.UI_SecondAccent];
 			border-radius: 4px 4px 0 0;
 		}
-		
+
 		.panel-title {
 			margin: 0;
 			color: [Color.UI_Accent];
 			font-weight: bold;
 		}
-		
+
 		.panel-body {
 			padding: 10px;
 		}
-		
+
 		.panel-footer {
 			background-color: rgba(0,0,0,0.2);
 			padding: 5px 10px;
@@ -387,11 +406,11 @@ var/CSS = new/StyleManager()
 			border-radius: 0 0 4px 4px;
 			font-size: 11px;
 		}
-		
+
 		.panel-dark {
 			background-color: rgba(0,0,0,0.3);
 		}
-		
+
 		.panel-light {
 			background-color: rgba(255,255,255,0.05);
 		}
@@ -399,7 +418,7 @@ var/CSS = new/StyleManager()
 
 	/**
 	 * Form styles
-	 * 
+	 *
 	 * @return Form CSS
 	 */	proc/forms()
 		return {"
@@ -411,36 +430,36 @@ var/CSS = new/StyleManager()
 			color: [Color.UI_Text];
 			border-radius: 3px;
 		}
-		
+
 		.form-control:focus {
 			outline: none;
 			border-color: [Color.UI_Accent];
 		}
-		
+
 		.form-help {
 			font-size: 11px;
 			color: #999;
 			margin-top: 3px;
 		}
-		
+
 		.form-row {
 			display: flex;
 			gap: 10px;
 			margin-bottom: 10px;
 		}
-		
+
 		.form-col {
 			flex: 1;
 		}
-		
+
 
 		}
 
 		"}
-	
+
 	/**
 	 * Tooltip styles
-	 * 
+	 *
 	 * @return Tooltip CSS
 	 */
 	proc/tooltips()
@@ -455,7 +474,7 @@ var/CSS = new/StyleManager()
 			max-width: 300px;
 			box-shadow: 0 2px 8px rgba(0,0,0,0.5);
 		}
-		
+
 		.tooltip-title {
 			font-weight: bold;
 			color: [Color.UI_Accent];
@@ -463,25 +482,101 @@ var/CSS = new/StyleManager()
 			padding-bottom: 3px;
 			border-bottom: 1px solid [Color.UI_SecondAccent];
 		}
-		
+
 		.tooltip-content {
 			font-size: 11px;
 		}
-		
+
 		.tooltip-stat {
 			display: flex;
 			justify-content: space-between;
 			margin-bottom: 2px;
 		}
-		
+
 		.tooltip-stat-label {
 			color: [Color.UI_SecondAccent];
 		}
 		"}
-	
+
+	/**
+	 * Message/feedback styles for Hors Pattern
+	 * Use with showMessage() JS function
+	 *
+	 * @return Message CSS
+	 */
+	proc/messages()
+		return {"
+		.message {
+			padding: 8px 12px;
+			border-radius: 4px;
+			margin: 5px 0;
+			transition: opacity 0.3s ease;
+		}
+		.message.hidden {
+			display: none;
+		}
+		.message.success {
+			background: rgba(76, 175, 80, 0.3);
+			color: #81c784;
+			border: 1px solid #4caf50;
+		}
+		.message.error {
+			background: rgba(244, 67, 54, 0.3);
+			color: #e57373;
+			border: 1px solid #f44336;
+		}
+		.message.warning {
+			background: rgba(255, 193, 7, 0.3);
+			color: #ffd54f;
+			border: 1px solid #ffc107;
+		}
+		.message.info {
+			background: rgba(33, 150, 243, 0.3);
+			color: #64b5f6;
+			border: 1px solid #2196f3;
+		}
+		"}
+
+	/**
+	 * Loading and disabled state styles
+	 *
+	 * @return State CSS
+	 */
+	proc/states()
+		return {"
+		.loading {
+			opacity: 0.6;
+			pointer-events: none;
+			position: relative;
+		}
+		.loading::after {
+			content: 'Loading...';
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			color: [Color.UI_SecondAccent];
+			font-style: italic;
+		}
+		.disabled {
+			opacity: 0.5;
+			pointer-events: none;
+			cursor: not-allowed;
+		}
+		.skeleton {
+			background: linear-gradient(90deg, rgba(255,255,255,0.05) 25%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.05) 75%);
+			background-size: 200% 100%;
+			animation: skeleton-loading 1.5s infinite;
+		}
+		@keyframes skeleton-loading {
+			0% { background-position: 200% 0; }
+			100% { background-position: -200% 0; }
+		}
+		"}
+
 	/**
 	 * Utility styles
-	 * 
+	 *
 	 * @return Utility CSS
 	 */
 	proc/utils()
@@ -494,7 +589,7 @@ var/CSS = new/StyleManager()
 		.p-0 { padding: 0; }
 		.p-1 { padding: 5px; }
 		.p-2 { padding: 10px; }
-		
+
 		.flex { display: flex; }
 		.flex-column { flex-direction: column; }
 		.flex-wrap { flex-wrap: wrap; }
@@ -503,45 +598,45 @@ var/CSS = new/StyleManager()
 		.align-center { align-items: center; }
 		.gap-1 { gap: 5px; }
 		.gap-2 { gap: 10px; }
-		
+
 		.text-left { text-align: left; }
 		.text-center { text-align: center; }
 		.text-right { text-align: right; }
-		
+
 		.w-100 { width: 100%; }
 		.w-50 { width: 50%; }
 		.w-33 { width: 33.3%; }
 		.w-25 { width: 25%; }
-		
+
 		.d-block { display: block; }
 		.d-inline { display: inline; }
 		.d-inline-block { display: inline-block; }
 		.d-flex { display: flex; }
 		.d-none { display: none; }
-		
+
 		.overflow-auto { overflow: auto; }
 		.overflow-hidden { overflow: hidden; }
 		.overflow-scroll { overflow: scroll; }
-		
+
 		.font-sm { font-size: 10px; }
 		.font-md { font-size: 12px; }
 		.font-lg { font-size: 14px; }
 		.font-xl { font-size: 16px; }
-		
+
 		.font-bold { font-weight: bold; }
 		.font-normal { font-weight: normal; }
 		.font-italic { font-style: italic; }
-		
+
 		.border { border: 1px solid #333; }
 		.border-top { border-top: 1px solid #333; }
 		.border-bottom { border-bottom: 1px solid #333; }
 		.border-accent { border-color: [Color.UI_Accent]; }
-		
+
 		.rounded { border-radius: 4px; }
 		.rounded-sm { border-radius: 2px; }
 		.rounded-lg { border-radius: 8px; }
 		.rounded-pill { border-radius: 50px; }
-		
+
 		.bg-dark { background-color: rgba(0,0,0,0.3); }
 		.bg-light { background-color: rgba(255,255,255,0.05); }
 		.bg-accent { background-color: [Color.UI_Accent]; }

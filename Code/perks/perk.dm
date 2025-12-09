@@ -1,19 +1,6 @@
 // todo: /datum/prototype/perk
 
-/obj/perk
-	//? basic roll-to-hit for active abilities with an attack button
-	/// uniform random, or dice roll?
-	var/attack_roll_damage_dice = FALSE
-	/// lower range for uniform random
-	var/attack_roll_damage_lower
-	/// upper range for uniform random
-	var/attack_roll_damage_upper
-	/// set this to bypass random and force fixed
-	var/attack_roll_damage_exact
-	/// number of dice to roll for dice roll damage calculations
-	var/attack_roll_dice_count
-	/// sides of dice to roll for dice roll damage calculations
-	var/attack_roll_dice_sides
+// Note: Base /obj/perk vars are defined in Code/__Game/Perks/Database/PerkBase.dm
 
 /**
  * we have a valid standard attack or healing roll

@@ -61,7 +61,7 @@ obj
 				switch(choose)
 					if("Yes")
 						alert(usr,"This will cost 5,000 Gil to establish.")
-						if(usr.money<5000)
+						if(!usr.canAfford(5000))
 							alert(usr,"You do not have enough Gil to start a Faction!")
 							return
 						var/obj/Faction/faction=new
@@ -72,14 +72,13 @@ obj
 							faction.Factionid=fname
 							faction.Factionleader=usr.key
 							usr.faction=fname
-						var/obj/recipes/Buildings/Faction/Global/Fategiver/fe=new
+						// NOTE: Fategiver recipe removed - FATE system removed
 						var/obj/recipes/Buildings/Faction/Global/Recruiter/rec=new
 						var/obj/recipes/Buildings/Faction/Global/Mine/mi=new
 						var/obj/recipes/Buildings/Faction/Global/Loghouse/log=new
 						var/obj/recipes/Buildings/Faction/Global/HuntingLodge/lodge=new
 						var/obj/recipes/Buildings/Faction/Global/Commercecenter/com=new
 						var/obj/recipes/Buildings/Faction/Global/Farm/far=new
-						usr.contents+=fe
 						usr.contents+=rec
 						usr.contents+=mi
 						usr.contents+=log
@@ -124,7 +123,7 @@ obj
 							usr.contents+=ys
 							usr.contents+=fys
 							faction.Nation="Yevon"
-						usr.money-=5000
+						usr.spendMoney(5000)
 						return //this should stop the game from cosntantly prompting someone from a faction name. may require break instead. IDK why it loops. So weird.
 					if("No")
 						return
@@ -143,516 +142,9 @@ obj
 		IndependantFactionFounder
 			name="Independant Faction Founder"
 			Nation="Independant"
-obj
-	npc
-		FactionNPCs
-			Shinra
-				ShinraGrunt
-					icon='Icons/Monsters/Grunt.png'
-					name="Shinra Grunt"
-					mhp=65
-					hp=65
-					mmp=100
-					mp=100
-					sp=70
-					msp=70
-					str=14
-					strmod=2
-					baseac=25
-					dex=10
-					dexmod=0
-					con=10
-					conmod=0
-					int=10
-					intmod=0
-					wis=12
-					wismod=1
-					cha=10
-					chamod=0
-					mab=5
-					pab=5
-					mdb=5
-					pdb=6
-					basedr=1
-					New()
-						var/obj/perk/Abilities/BlackMagic/Lightning/Thundara/a=new
-						var/obj/perk/Abilities/GeneralWeaponAbilities/Melee/Braver/b=new
-						var/obj/item/Weapon/Special/Gunblade/Steel/c=new
-						src.contents+=a
-						src.contents+=b
-						src.contents+=c
-						src.eweapon=c
-						var/obj/status/HPBar/hpb = new
-						src.contents+=hpb
-						var/obj/status/SPBar/spb = new
-						src.contents+=spb
-						var/obj/status/MPBar/mpb = new
-						src.contents+=mpb
-				SOLDIERthirdclass
-					icon='Icons/Monsters/Soldier3.png'
-					name="SOLDIER 3rd Class"
-					mhp=115
-					hp=115
-					mmp=100
-					mp=100
-					sp=90
-					msp=90
-					str=18
-					strmod=4
-					baseac=28
-					dex=18
-					dexmod=4
-					con=10
-					conmod=0
-					int=10
-					intmod=0
-					wis=16
-					wismod=3
-					cha=10
-					chamod=0
-					mab=9
-					pab=9
-					mdb=8
-					pdb=8
-					basedr=4
-					New()
-						var/obj/perk/Abilities/BlackMagic/Flame/Firaja/a=new
-						var/obj/perk/Abilities/GeneralWeaponAbilities/Melee/CrossSlash/b=new
-						var/obj/item/Weapon/Special/BoltRapier/Mythril/c=new
-						src.contents+=a
-						src.contents+=b
-						src.contents+=c
-						src.eweapon=c
-						var/obj/status/HPBar/hpb = new
-						src.contents+=hpb
-						var/obj/status/SPBar/spb = new
-						src.contents+=spb
-						var/obj/status/MPBar/mpb = new
-						src.contents+=mpb
-				ShinraSweeper
-					icon='Icons/Monsters/Sweeper.png'
-					name="Shinra Sweeper"
-					mhp=180
-					hp=180
-					mmp=100
-					mp=100
-					sp=50
-					msp=50
-					str=14
-					strmod=2
-					baseac=25
-					dex=20
-					dexmod=5
-					con=10
-					conmod=0
-					int=10
-					intmod=0
-					wis=12
-					wismod=1
-					cha=10
-					chamod=0
-					mab=5
-					pab=9
-					mdb=5
-					pdb=10
-					basedr=3
-					New()
-						var/obj/perk/Abilities/GeneralMagicAbilities/Laser/a=new
-						var/obj/perk/Abilities/GeneralMagicAbilities/Pierce/p=new
-						var/obj/perk/Abilities/GeneralWeaponAbilities/Melee/Braver/b=new
-						var/obj/item/Weapon/Special/GunArm/Mythril/c=new
-						src.contents+=a
-						src.contents+=b
-						src.contents+=p
-						src.contents+=c
-						src.eweapon=c
-						var/obj/status/HPBar/hpb = new
-						src.contents+=hpb
-						var/obj/status/SPBar/spb = new
-						src.contents+=spb
-						var/obj/status/MPBar/mpb = new
-						src.contents+=mpb
-			Insomnia
-				SomnanCaptain
-					icon='Icons/Monsters/SomnanCaptain.png'
-					name="Somnan Captain"
-					mhp=100
-					hp=100
-					mmp=100
-					mp=100
-					sp=70
-					msp=70
-					str=20
-					strmod=5
-					baseac=26
-					dex=18
-					dexmod=4
-					con=10
-					conmod=0
-					int=10
-					intmod=0
-					wis=16
-					wismod=3
-					cha=10
-					chamod=0
-					mab=9
-					pab=9
-					mdb=8
-					pdb=8
-					basedr=4
-					New()
-						var/obj/perk/Abilities/BlackMagic/Hydro/Waterja/a=new
-						var/obj/perk/Abilities/GeneralWeaponAbilities/Melee/Launch/b=new
-						var/obj/item/Weapon/Special/Bowsword/Mythril/c=new
-						src.contents+=a
-						src.contents+=b
-						src.contents+=c
-						src.eweapon=c
-						var/obj/status/HPBar/hpb = new
-						src.contents+=hpb
-						var/obj/status/SPBar/spb = new
-						src.contents+=spb
-						var/obj/status/MPBar/mpb = new
-						src.contents+=mpb
-				SomnanMage
-					icon='Icons/Monsters/SomnanMage.png'
-					name="Somnan Mage"
-					mhp=115
-					hp=115
-					mmp=100
-					mp=100
-					sp=50
-					msp=50
-					str=18
-					strmod=4
-					baseac=28
-					dex=18
-					dexmod=4
-					con=10
-					conmod=0
-					int=10
-					intmod=0
-					wis=18
-					wismod=4
-					cha=10
-					chamod=0
-					mab=9
-					pab=9
-					mdb=8
-					pdb=8
-					basedr=3
-					New()
-						var/obj/perk/Abilities/BlackMagic/Flame/Firaja/a=new
-						var/obj/perk/Abilities/BlackMagic/Hydro/Waterja/b=new
-						var/obj/perk/Abilities/BlackMagic/Lightning/Thundaja/c=new
-						var/obj/perk/Abilities/BlackMagic/Lightning/Thundara/d=new
-						var/obj/perk/Abilities/WhiteMagic/Healing/Curaga/cur=new
-						src.contents+=a
-						src.contents+=b
-						src.contents+=c
-						src.contents+=d
-						src.contents+=cur
-						src.eweapon=c
-						var/obj/status/HPBar/hpb = new
-						src.contents+=hpb
-						var/obj/status/SPBar/spb = new
-						src.contents+=spb
-						var/obj/status/MPBar/mpb = new
-						src.contents+=mpb
-			Yevon
-				YevonSoldier
-					name="Yevon Soldier"
-					icon='Icons/Monsters/YevonGuardian.png'
-					mhp=100
-					hp=100
-					mmp=100
-					mp=100
-					sp=30
-					msp=30
-					str=16
-					strmod=3
-					baseac=19
-					dex=14
-					dexmod=2
-					con=10
-					conmod=0
-					int=10
-					intmod=0
-					wis=12
-					wismod=1
-					cha=10
-					chamod=0
-					mab=5
-					pab=5
-					mdb=5
-					pdb=8
-					basedr=5
-					New()
-						var/obj/perk/Jobperks/Samurai/Samurai/a=new
-						var/obj/perk/Abilities/Samurai/Yukikaze/b=new
-						var/obj/item/Weapon/Melee/Greatsword/Steel/c=new
-						var/obj/perk/Abilities/WhiteMagic/Healing/Curaga/cure=new
-						src.contents+=a
-						src.contents+=b
-						src.contents+=c
-						src.contents+=cure
-						src.eweapon=c
-						var/obj/status/HPBar/hpb = new
-						src.contents+=hpb
-						var/obj/status/SPBar/spb = new
-						src.contents+=spb
-						var/obj/status/MPBar/mpb = new
-						src.contents+=mpb
-				YevonGuardian
-					name="Yevon Guardian"
-					icon='Icons/Monsters/YervonGuardian.png'
-					mhp=155
-					hp=155
-					mmp=100
-					mp=100
-					sp=30
-					msp=30
-					str=18
-					strmod=4
-					baseac=25
-					dex=14
-					dexmod=2
-					con=10
-					conmod=0
-					int=10
-					intmod=0
-					wis=12
-					wismod=1
-					cha=10
-					chamod=0
-					mab=8
-					pab=8
-					mdb=8
-					pdb=18
-					basedr=5
-					New()
-						var/obj/perk/Jobperks/Paladin/Paladin/a=new
-						var/obj/perk/Abilities/Paladin/Cover/b=new
-						var/obj/item/Weapon/Melee/Greatsword/Mythril/c=new
-						src.contents+=a
-						src.contents+=b
-						src.contents+=c
-						src.eweapon=c
-						var/obj/status/HPBar/hpb = new
-						src.contents+=hpb
-						var/obj/status/SPBar/spb = new
-						src.contents+=spb
-						var/obj/status/MPBar/mpb = new
-						src.contents+=mpb
-			Akademia
-				AkademianSpy
-					name="Akademian Spy"
-					icon='Icons/Monsters/AkademianSpy.png'
-					mhp=100
-					hp=100
-					mmp=100
-					mp=100
-					sp=30
-					msp=30
-					str=14
-					strmod=1
-					baseac=26
-					dex=20
-					dexmod=2
-					con=10
-					conmod=0
-					int=10
-					intmod=0
-					wis=12
-					wismod=1
-					cha=10
-					chamod=0
-					mab=5
-					pab=10
-					mdb=4
-					pdb=15
-					New()
-						var/obj/perk/Jobperks/Rogue/SneakAttack/a=new
-						var/obj/perk/Abilities/GeneralMagicAbilities/Fog/b=new
-						var/obj/item/Weapon/Melee/Dagger/Mythril/c=new
-						src.contents+=a
-						src.contents+=b
-						src.contents+=c
-						src.eweapon=c
-						var/obj/status/HPBar/hpb = new
-						src.contents+=hpb
-						var/obj/status/SPBar/spb = new
-						src.contents+=spb
-						var/obj/status/MPBar/mpb = new
-						src.contents+=mpb
-			Global
-				Blitzer
-					name="Blitzer"
-					companiontype="Blitzer"
-					icon='Icons/Monsters/Blitzer.png'
-					mhp=80
-					hp=80
-					mmp=100
-					mp=100
-					sp=30
-					msp=30
-					str=16
-					strmod=3
-					baseac=16
-					dex=10
-					dexmod=0
-					con=10
-					conmod=0
-					int=10
-					intmod=0
-					wis=12
-					wismod=1
-					cha=10
-					chamod=0
-					mab=8
-					pab=8
-					mdb=4
-					pdb=4
-					New()
-						var/obj/perk/Abilities/GeneralWeaponAbilities/Melee/Braver/a=new
-						var/obj/perk/Abilities/GeneralWeaponAbilities/Melee/Riposte/b=new
-						var/obj/item/Weapon/Melee/Longsword/Steel/c=new
-						src.contents+=a
-						src.contents+=b
-						src.contents+=c
-						src.eweapon=c
-						var/obj/status/HPBar/hpb = new
-						src.contents+=hpb
-						var/obj/status/SPBar/spb = new
-						src.contents+=spb
-						var/obj/status/MPBar/mpb = new
-						src.contents+=mpb
-				Knight
-					name="Knight"
-					companiontype="Knight"
-					icon='Icons/Monsters/Knight.png'
-					mhp=125
-					hp=125
-					mmp=100
-					mp=100
-					sp=30
-					msp=30
-					str=14
-					strmod=1
-					baseac=16
-					dex=10
-					dexmod=0
-					con=18
-					conmod=4
-					int=10
-					intmod=0
-					wis=12
-					wismod=1
-					cha=10
-					chamod=0
-					mab=3
-					pab=3
-					mdb=2
-					pdb=2
-					New()
-						var/obj/perk/Abilities/Knight/HonorableDuel/a=new
-						var/obj/perk/Abilities/Knight/Holmgang/b=new
-						var/obj/item/Weapon/Melee/Greatsword/Steel/c=new
-						src.contents+=a
-						src.contents+=b
-						src.contents+=c
-						src.eweapon=c
-						var/obj/status/HPBar/hpb = new
-						src.contents+=hpb
-						var/obj/status/SPBar/spb = new
-						src.contents+=spb
-						var/obj/status/MPBar/mpb = new
-						src.contents+=mpb
-				Mage
-					icon='Icons/Monsters/BlackMage.png'
-					name="Mage"
-					companiontype="Mage"
-					name="Knight"
-					companiontype="Knight"
-					mhp=65
-					hp=65
-					mmp=100
-					mp=100
-					sp=30
-					msp=30
-					str=14
-					strmod=1
-					baseac=16
-					dex=10
-					dexmod=0
-					con=18
-					conmod=4
-					int=10
-					intmod=0
-					wis=18
-					wismod=4
-					cha=10
-					chamod=0
-					mab=3
-					pab=9
-					mdb=8
-					pdb=2
-					New()
-						var/obj/perk/Abilities/BlackMagic/Flame/Fira/a=new
-						var/obj/perk/Abilities/BlackMagic/Ice/Blizzara/b=new
-						var/obj/item/Weapon/Magical/Tome/Steel/c=new
-						src.contents+=a
-						src.contents+=b
-						src.contents+=c
-						src.eweapon=c
-						var/obj/status/HPBar/hpb = new
-						src.contents+=hpb
-						var/obj/status/SPBar/spb = new
-						src.contents+=spb
-						var/obj/status/MPBar/mpb = new
-						src.contents+=mpb
-				Healer
-					name="Healer"
-					companiontype="Healer"
-					icon='Icons/Monsters/Healer.png'
-					mhp=65
-					hp=65
-					mmp=100
-					mp=100
-					sp=30
-					msp=30
-					str=14
-					strmod=1
-					baseac=16
-					dex=10
-					dexmod=0
-					con=18
-					conmod=4
-					int=10
-					intmod=0
-					wis=18
-					wismod=4
-					cha=10
-					chamod=0
-					mab=3
-					pab=9
-					mdb=8
-					pdb=2
-					New()
-						var/obj/perk/Abilities/WhiteMagic/Healing/Cura/a=new
-						var/obj/perk/Abilities/WhiteMagic/Status/Esuna/b=new
-						var/obj/item/Weapon/Magical/Staff/Steel/c=new
-						src.contents+=a
-						src.contents+=b
-						src.contents+=c
-						src.eweapon=c
-						var/obj/status/HPBar/hpb = new
-						src.contents+=hpb
-						var/obj/status/SPBar/spb = new
-						src.contents+=spb
-						var/obj/status/MPBar/mpb = new
-						src.contents+=mpb
 
+// NOTE: obj/npc/FactionNPCs removed - legacy dead code
+// All NPCs have been converted to mob/npc types
 
 obj
 	Factionholder
@@ -754,17 +246,17 @@ obj
 				if(src.Factionlevel>=3)
 					alert(usr,"Your Faction is already upgraded to its maximum level of 4!")
 					return
-				if(usr.money<=0)
+				if(!usr.canAfford(1))
 					alert(usr,"You don't have any Gil to upgrade with!")
 					return
-				if(usr.money<10000)
+				if(!usr.canAfford(10000))
 					alert(usr,"It costs 10,000 Gil to upgrade your faction! You don't have enough!")
 					return
 				var/list/upgradechoice=list("Yes","No")
 				var/choice=input(usr,"Are you sure you wish to spend 10,000 Gil to upgrade your Faction's level by 1?") as anything in upgradechoice
 				switch(choice)
 					if("Yes")
-						usr.money-=10000
+						usr.spendMoney(10000)
 						UpgradeFaction(src,src.Factionlevel)
 					if("No")
 						return
@@ -775,7 +267,7 @@ obj
 				var/choice=input(usr,"Would you like to spend Gil to repair your Faction's infrastructure?") as anything in choose
 				switch(choice)
 					if("Yes")
-						if(usr.money<=0)
+						if(!usr.canAfford(1))
 							alert(usr,"You don't have any Gil to do so!")
 							return
 						var/gain=input(usr,"How much Gil would you like to spend for Faction health? Current HP: [src.FactionHealth] | Max HP: [src.MaxFactionHealth] | It costs 20 Gil per 1 HP point.") as num
@@ -798,7 +290,7 @@ obj
 				if(src.Collectcooldown==1)
 					alert(usr,"You have already collected for this cooldown period!")
 					return
-				usr.money+=src.Gilgeneration
+				usr.addMoney(src.Gilgeneration)
 				src.Collectcooldown=1
 				alert(usr,"You have collected [src.Gilgeneration] from your Faction!")
 				return
@@ -928,10 +420,10 @@ obj
 								a.amount+=15
 								usr << output("You have gained 15 [a]!","oocout")
 						if(src.Commerce==1)
-							usr.money+=200
+							usr.addMoney(200)
 							usr << output("You have gained 200 Gil!","oocout")
 						if(src.Treasury==1)
-							usr.money+=500
+							usr.addMoney(500)
 							usr << output("You have gained 500 Gil!","oocout")
 						if(src.Farm==1)
 							var/herb=rand(1,10)
@@ -979,138 +471,8 @@ obj
 				if(src.Defensive==1)
 					view(usr) << output("<b><font color=[usr.textcolor]>[usr.name]</font><b> has flashed a Defensive Structure's effect:</b> [src.desc] | Multiple copies of this structure do not stack effects.","icout")
 				if(src.Recruiter==1)
-					if(usr.faction==null)
-						alert(usr,"You must be in a faction to recruit a Faction ally!")
-					var/list/choose=list("Yes","No")
-					var/choice=input("Would you like to recruit a new ally?") as anything in choose
-					if(choice=="Yes")
-						for(var/obj/Faction/a in world)
-							if(a.Factionid==usr.faction)
-								if(a.Totalgrunts>=a.Maxgrunts)
-									alert(usr,"This Faction has already recruited the maximum amount of NPC allies!")
-								else
-									var/list/gruntchoice=list("Blitzer","Knight","Mage","Healer")
-									choicereturn:
-										if(a.Nation=="Midgar")
-											gruntchoice+="Shinra Grunt"
-											if(a.Factionlevel>=2)
-												gruntchoice+="Soldier 3rd Class"
-											if(a.Factionlevel>=3)
-												gruntchoice+="Shinra Sweeper"
-										if(a.Nation=="Insomnia")
-											if(a.Factionlevel>=2)
-												gruntchoice+="Somnan Captain"
-											if(a.Factionlevel>=3)
-												gruntchoice+="Somnan Mage"
-										if(a.Nation=="Yevon")
-											gruntchoice+="Yevon Soldier"
-											if(a.Factionlevel>=2)
-												gruntchoice+="Yevon Guardian"
-										if(a.Nation=="Akademia")
-											if(a.Factionlevel>=2)
-												gruntchoice+="Akademian Spy"
-										gruntchoice+="Cancel"
-										var/gruntpick=input(usr,"Which ally would you like to recruit?") as anything in gruntchoice
-										if(gruntpick=="Cancel")
-											return
-										var/list/sure=list("Yes","No","Cancel")
-										var/remaining=a.Maxgrunts-a.Totalgrunts
-										var/confirm=input(usr,"Are you sure you'd like to recruit that ally? Your faction only has [remaining] recruit slots left.") as anything in sure
-										switch(confirm)
-											if("Yes")
-												if(gruntpick=="Blitzer")
-													var/obj/npc/FactionNPCs/Global/Blitzer/b=new
-													usr.contents+=b
-													b.owner=usr.key
-													var/newname=input(usr,"What would you like to name this new ally?") as text
-													b.name=newname
-													b.archived=0
-												if(gruntpick=="Knight")
-													var/obj/npc/FactionNPCs/Global/Knight/b=new
-													usr.contents+=b
-													b.owner=usr.key
-													var/newname=input(usr,"What would you like to name this new ally?") as text
-													b.name=newname
-													b.archived=0
-												if(gruntpick=="Mage")
-													var/obj/npc/FactionNPCs/Global/Mage/b=new
-													usr.contents+=b
-													b.owner=usr.key
-													var/newname=input(usr,"What would you like to name this new ally?") as text
-													b.name=newname
-													b.archived=0
-												if(gruntpick=="Healer")
-													var/obj/npc/FactionNPCs/Global/Healer/b=new
-													usr.contents+=b
-													b.owner=usr.key
-													var/newname=input(usr,"What would you like to name this new ally?") as text
-													b.name=newname
-													b.archived=0
-												if(gruntpick=="Shinra Grunt")
-													var/obj/npc/FactionNPCs/Shinra/ShinraGrunt/b=new
-													usr.contents+=b
-													b.owner=usr.key
-													var/newname=input(usr,"What would you like to name this new ally?") as text
-													b.name=newname
-													b.archived=0
-												if(gruntpick=="Shinra Sweeper")
-													var/obj/npc/FactionNPCs/Shinra/ShinraSweeper/b=new
-													usr.contents+=b
-													b.owner=usr.key
-													var/newname=input(usr,"What would you like to name this new ally?") as text
-													b.name=newname
-													b.archived=0
-												if(gruntpick=="Soldier 3rd Class")
-													var/obj/npc/FactionNPCs/Shinra/SOLDIERthirdclass/b=new
-													usr.contents+=b
-													b.owner=usr.key
-													var/newname=input(usr,"What would you like to name this new ally?") as text
-													b.name=newname
-													b.archived=0
-												if(gruntpick=="Somnan Captain")
-													var/obj/npc/FactionNPCs/Insomnia/SomnanCaptain/b=new
-													usr.contents+=b
-													b.owner=usr.key
-													var/newname=input(usr,"What would you like to name this new ally?") as text
-													b.name=newname
-													b.archived=0
-												if(gruntpick=="Somnan Mage")
-													var/obj/npc/FactionNPCs/Insomnia/SomnanMage/b=new
-													usr.contents+=b
-													b.owner=usr.key
-													var/newname=input(usr,"What would you like to name this new ally?") as text
-													b.name=newname
-													b.archived=0
-												if(gruntpick=="Yevon Soldier")
-													var/obj/npc/FactionNPCs/Yevon/YevonSoldier/b=new
-													usr.contents+=b
-													b.owner=usr.key
-													var/newname=input(usr,"What would you like to name this new ally?") as text
-													b.name=newname
-													b.archived=0
-												if(gruntpick=="Yevon Guardian")
-													var/obj/npc/FactionNPCs/Yevon/YevonGuardian/b=new
-													usr.contents+=b
-													b.owner=usr.key
-													var/newname=input(usr,"What would you like to name this new ally?") as text
-													b.name=newname
-													b.archived=0
-												if(gruntpick=="Akademian Spy")
-													var/obj/npc/FactionNPCs/Akademia/AkademianSpy/b=new
-													usr.contents+=b
-													b.owner=usr.key
-													var/newname=input(usr,"What would you like to name this new ally?") as text
-													b.name=newname
-													b.archived=0
-												a.Totalgrunts+=1
-											if("No")
-												goto choicereturn
-											if("Cancel")
-												return
-							else
-								alert(usr,"You cannot recruit for this faction!")
-					if(choice=="No")
-						return
+					// TODO: Faction NPC recruitment system needs to be rebuilt with mob/npc types
+					alert(usr, "Faction ally recruitment is currently being reworked.")
 			else
 				alert(usr,"This does not belong to your faction!")
 		Global

@@ -27,7 +27,7 @@ mob
 				Adminlog(text)
 				if(usr.tempeventmin)
 					AuditLog(text)
-			GiveWeapontoNPC(obj/npc/a in world)
+			GiveWeapontoNPC(mob/npc/a in world)
 				var/obj/item/Weapon/n
 				set category="Admin"
 				if(adminlv<2)
@@ -94,7 +94,7 @@ mob
 			Banimation()
 				var/list/target=new
 				var/atom/movable/targ
-				for(var/obj/npc/n in view())
+				for(var/mob/npc/n in view())
 					if(n in usr.contents)
 
 					else
@@ -196,7 +196,7 @@ mob
 				var/row
 				winset(usr,"NPCarchive","is-visible=true")
 				winset(usr,"NPCarchive.anpc","cells=0x0")
-				for(var/obj/npc/o in global.npc_archive.npcs)
+				for(var/mob/npc/o in global.npc_archive.npcs)
 					row++
 					src<<output(o,"anpc:1,[row]")
 
@@ -277,7 +277,7 @@ mob
 							if("Nechrol of Arcadia")
 								usr.loc=locate(9,92,4)
 
-			EGivePerktoNPC(obj/npc/a in world)
+			EGivePerktoNPC(mob/npc/a in world)
 				set category="Admin"
 				if(adminlv<2)
 					return
@@ -302,7 +302,7 @@ mob
 				var/atom/movable/AM = A
 				AM.relocateToNull()
 
-			EGiveCustomPerk(var/obj/npc/a)
+			EGiveCustomPerk(var/mob/npc/a)
 				switch(alert("Do you wish to create a perk or an ability?",,"Perk","Ability"))
 					if("Perk")
 						var/obj/perk/p=new
@@ -360,14 +360,14 @@ mob
 								p2=copyatom(p)
 								perklist+=p2
 
-			EGiveNPCWeapon(var/obj/npc/n)
+			EGiveNPCWeapon(var/mob/npc/n)
 				var/obj/item/i =input("What do you want to make?","Create obj") in typesof(/obj/item/Weapon) + list("Cancel")
 				if(i=="Cancel")
 					return
 				n.contents+= new i
 				n.eweapon=i
 
-			NPCEdit(obj/npc/A in world)
+			NPCEdit(mob/npc/A in world)
 				set category="Admin"
 				var/Edit="<Edit><body bgcolor=#000000 text=#339999 link=#99FFFF>"
 				var/list/B=new

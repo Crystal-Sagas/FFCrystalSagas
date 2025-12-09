@@ -2,6 +2,7 @@
 
 /obj/recipes/Weapons/New()
 	. = ..()
+	weptier = material  // Ensure weptier matches material for Crafting.dm compatibility
 	AssignCraftinginfo(src)
 
 /obj/recipes/Weapons/Longsword

@@ -4,9 +4,13 @@
 /world
 	fps = 40		// 40 frames per second
 	icon_size = 32	// 32x32 icon size by default
-	view = "35x20"
+	view = "25x23"	// Nearly square viewport (800x736 pixels)
 	hub="LazyBunnyStudios.TheCrystalSagas"
 	hub_password = "12453j!A@olmi!"
+
+	//? Vector Movement Configuration (BYOND 516+)
+	/// Enable pixel movement mode for smooth sub-tile movement
+	movement_mode = PIXEL_MOVEMENT_MODE
 
 /world/New()
 	//? Init TGS
@@ -50,34 +54,34 @@
 	// init global recipe shop
 	global.recipe_shop.recipes += recipelist
 	// init global stablemaster obj
-	for(var/obj/npc/Monsters/q in bestiary)
-		var/obj/npc/Monsters/newmonster=copyatom(q)
+	for(var/mob/npc/Monsters/q in bestiary)
+		var/mob/npc/Monsters/newmonster = copyatom(q)
 		global.stablemaster_obj.contents += newmonster
-	for(var/obj/npc/Monsters/f in global.stablemaster_obj.contents)
+	for(var/mob/npc/Monsters/f in global.stablemaster_obj.contents)
 		InitializeEnemy(f)
-		f.archived=0
+		f.archived = 0
 	// init global npc archive
 	// todo: save/load
 	global.npc_archive.npcs += summonlist
-	for(var/obj/npc/Monsters/q in bestiary)
-		var/obj/npc/Monsters/newmonster = copyatom(q)
+	for(var/mob/npc/Monsters/q in bestiary)
+		var/mob/npc/Monsters/newmonster = copyatom(q)
 		global.npc_archive.npcs += newmonster
-	for(var/obj/npc/Monsters/f in global.npc_archive.npcs)
+	for(var/mob/npc/Monsters/f in global.npc_archive.npcs)
 		InitializeEnemy(f)
-	for(var/obj/npc/b in global.npc_archive.npcs)
+	for(var/mob/npc/b in global.npc_archive.npcs)
 		b.archived = 1
-	for(var/obj/npc/Monsters/c in global.npc_archive.npcs)
+	for(var/mob/npc/Monsters/c in global.npc_archive.npcs)
 		InitializeEnemy(c)
-	for(var/obj/npc/b in global.npc_archive.npcs)
+	for(var/mob/npc/b in global.npc_archive.npcs)
 		b.archived = 1
 	// initialize stable holder
-	for(var/obj/npc/Monsters/q in bestiary)
-		var/obj/npc/Monsters/newmonster = copyatom(q)
+	for(var/mob/npc/Monsters/q in bestiary)
+		var/mob/npc/Monsters/newmonster = copyatom(q)
 		global.stable_holder.monsters += newmonster
-	for(var/obj/npc/Monsters/f in global.stable_holder.monsters)
+	for(var/mob/npc/Monsters/f in global.stable_holder.monsters)
 		InitializeEnemy(f)
-	for(var/obj/npc/b in global.stable_holder.monsters)
-		b.archived=1
+	for(var/mob/npc/b in global.stable_holder.monsters)
+		b.archived = 1
 
 	//? Init ticker
 	ticker.Construct(5 SECONDS)

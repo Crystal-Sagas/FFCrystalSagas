@@ -102,6 +102,201 @@
 	return TRUE
 
 /**
+ * Called after player mob is loaded from save and assigned to client
+ * Handles all post-load initialization - migrated from legacy Load() verb
+ */
+/mob/player/proc/onLoadComplete()
+	set waitfor = FALSE  // Don't block caller
+	set background = 1   // Prevent infinite loop warning for long proc
+
+	// Mark as in game (not lobby)
+	isInLobby = FALSE
+	hasEnteredWorld = TRUE
+	isCharacterInitialized = TRUE
+	intitlescreen = 0
+	density = 1
+
+	// Create fresh session
+	if(!session)
+		session = new(src)
+
+	// Stop lobby music, play ready sound
+	src << sound(null)
+	sleep(1)
+	src << 'Audio/Cursor Ready.ogg'
+
+	// Setup viewport
+	if(client)
+		client.eye = src
+		client.perspective = EYE_PERSPECTIVE
+
+	// Setup lighting
+	addLightPlane()
+	setLightOverlay(outside_light)
+
+	// Cleanup old lobby eye objects
+	for(var/obj/Eye/e in world)
+		if(e.owner == ckey)
+			e.relocateToNull()
+
+	// Setup admin UI if applicable
+	if(adminlv > 0)
+		winset(src, "default.Adminbut", "is-visible=true")
+		winset(src, "default.Nar", "is-visible=true")
+		verbs += typesof(/mob/Admin/verb/)
+
+	// Setup eventmin UI if applicable
+	if(eventmin || tempeventmin)
+		verbs += typesof(/mob/eventmin/verb/)
+		winset(src, "default.Eventmin", "is-visible=true")
+
+	// Clear any old screen objects that shouldn't persist
+	if(client)
+		for(var/obj/O in client.screen)
+			client.screen -= O
+
+	// Reset session-specific state
+	aoetiles = 0
+	aoeclick = 0
+	building = 0
+	bposition = null
+	battler = 0
+
+	// Cleanup build objects in inventory
+	for(var/obj/Builds/b in contents)
+		b.relocateToNull()
+
+	// Check for cooldown resets while offline
+	for(var/obj/cooldownchecker/chk in world)
+		if(totalpasses < chk.totalpasses)
+			Lifestreamraincooldown = 0
+			limitbreakused = 0
+			tempeventmin = 0
+			totalpasses = chk.totalpasses
+			minednodes = 0
+			for(var/obj/item/Mooglebox/a in contents)
+				a.cooldown = 0
+
+	// Handle rank bonuses if not already checked
+	applyRankBonuses()
+
+	// Handle patron rewards
+	if(patron)
+		if(!firsttimerewards)
+			var/obj/item/Mooglebox/MoogleShopBox/a = new()
+			var/obj/item/Mooglebox/MoogleGathererBox/b = new()
+			contents += a
+			contents += b
+			firsttimerewards = 1
+		Checkmonth()
+
+	// Setup game HUD
+	setupGameHUD()
+
+	// Refresh all UI elements
+	RefreshCharsheet(src)
+	Refreshinventoryscreen(src)
+	RefreshAll(src)
+	UpdateArea(src)
+
+	// Restore visual overlays
+	updateOverlays()
+	updateUnderlays()
+
+	// Emit signal for other systems to react
+	raise_signal(DSIG_PLAYER_LOADED)
+	raise_signal(DSIG_PLAYER_ENTERED_WORLD)
+
+	src << "<font color='green'>Character loaded successfully!</font>"
+
+/**
+ * Apply rank-based stat bonuses (called on load if not already applied)
+ */
+/mob/player/proc/applyRankBonuses()
+	if(rankchecked == 1)
+		return  // Already applied
+
+	if(rank == "Fledgling")
+		rankchecked = 1
+		return
+
+	var/showAlert = FALSE
+
+	switch(rank)
+		if("Rookie")
+			health.addMaxValue(40)
+			health.addValue(40)
+			stamina.addMaxValue(40)
+			stamina.addValue(40)
+			mana.addMaxValue(40)
+			mana.addValue(40)
+			APcap = 14
+			showAlert = TRUE
+
+		if("Adept")
+			health.addMaxValue(70)
+			health.addValue(70)
+			stamina.addMaxValue(70)
+			stamina.addValue(70)
+			mana.addMaxValue(70)
+			mana.addValue(70)
+			APcap = 18
+			showAlert = TRUE
+
+		if("Veteran")
+			health.addMaxValue(100)
+			health.addValue(100)
+			stamina.addMaxValue(100)
+			stamina.addValue(100)
+			mana.addMaxValue(100)
+			mana.addValue(100)
+			APcap = 22
+			strcap = 22
+			dexcap = 22
+			concap = 22
+			intcap = 22
+			wiscap = 22
+			chacap = 22
+			showAlert = TRUE
+
+		if("Hero")
+			health.addMaxValue(135)
+			health.addValue(135)
+			stamina.addMaxValue(135)
+			stamina.addValue(135)
+			mana.addMaxValue(135)
+			mana.addValue(135)
+			APcap = 26
+			strcap = 24
+			dexcap = 24
+			concap = 24
+			intcap = 24
+			wiscap = 24
+			chacap = 24
+			showAlert = TRUE
+
+		if("Master")
+			health.addMaxValue(180)
+			health.addValue(180)
+			stamina.addMaxValue(180)
+			stamina.addValue(180)
+			mana.addMaxValue(180)
+			mana.addValue(180)
+			APcap = 30
+			strcap = 26
+			dexcap = 26
+			concap = 26
+			intcap = 26
+			wiscap = 26
+			chacap = 26
+			showAlert = TRUE
+
+	rankchecked = 1
+
+	if(showAlert)
+		alert(src, "You have been granted your HP, MP, and SP bonus for your current rank.")
+
+/**
  * Checks if this player can be saved
  */
 /mob/player/proc/canSave() as num

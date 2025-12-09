@@ -19,7 +19,7 @@ obj
 						winset(usr,"playershop.lore","text=\"[src.lore]\"")
 						winset(usr,"playershop.enchant","text=\"[src.enchantment]\"")
 						return
-				for(var/obj/npc/z in world)
+				for(var/mob/npc/z in world)
 					if(src in z.contents)
 						var/aoresult
 						var/aresult
@@ -31,15 +31,15 @@ obj
 						aoresult=rand(1,20)
 						amod=Checkdamtype(src.damsource,z)
 						if(src.typing=="magical")
-							aresult=aoresult+src.addhit+amod+usr.rankbonus+z.mab
+							aresult=aoresult+src.addhit+amod+usr.rankbonus+(z.magicalAttack ? z.magicalAttack.currentValue.value : 0)
 						else
-							aresult=aoresult+src.addhit+amod+usr.rankbonus+z.pab
+							aresult=aoresult+src.addhit+amod+usr.rankbonus+(z.physicalAttack ? z.physicalAttack.currentValue.value : 0)
 						doresult=rand(src.range1,src.range2)
 						dmod=Checkdamtype(src.damsource,usr)
 						if(src.typing=="magical")
-							dresult=doresult+dmod+src.adddam+z.mdb
+							dresult=doresult+dmod+src.adddam+(z.magicalDefense ? z.magicalDefense.currentValue.value : 0)
 						else
-							dresult=doresult+dmod+src.adddam+z.pdb
+							dresult=doresult+dmod+src.adddam+(z.physicalDefense ? z.physicalDefense.currentValue.value : 0)
 						critdam=dresult+doresult
 						if(aoresult==20)
 							view()<<output("<font size=1><font color=[usr.textcolor]>[z] <font color=white>rolled a <b><font color=#3CF82C>CRITICAL</b> <font color=white>attack roll, using their <font color=[usr.textcolor]>[src.name]<font color=white>! Result: <font color=#3CF82C><b>[aresult] to hit</b><font color=white>, dealing <b><font color=#FFA852>[critdam] damage</b><font color=white>, as an automatic hit!","icout")
@@ -55,8 +55,8 @@ obj
 								if(amocho<0)
 									alert(usr,"You need a positive number here.")
 								var/adjprice=(src.price*=src.shopprice)
-								if(usr.money>=adjprice)
-									usr.money-=adjprice
+								if(usr.canAfford(adjprice))
+									usr.spendMoney(adjprice)
 									for(var/obj/item/i in usr.contents)
 										if(i.name==src.name)
 											i.amount+=amocho
@@ -71,8 +71,8 @@ obj
 									alert(usr,"You don't enough for that many.")
 									return
 							else
-								if(usr.money>=src.shopprice)
-									usr.money-=src.shopprice
+								if(usr.canAfford(src.shopprice))
+									usr.spendMoney(src.shopprice)
 									var/obj/item/i=copyatom(src)
 									i.instore=0
 									usr.contents+=i
@@ -84,7 +84,7 @@ obj
 						if("Cancel")
 							return
 				if(src in world)
-					for(var/obj/npc/c in world)
+					for(var/mob/npc/c in world)
 						if(src in c.contents)
 							return
 					if(src in usr.contents)

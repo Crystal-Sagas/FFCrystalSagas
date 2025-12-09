@@ -43,8 +43,9 @@ obj
 							if(result==1)
 								usr << output("<font color=#ff3333>Curses...a nat 1</font>","output1")
 							var/oresult=result
-							result+=usr.strmod
-							usr << output("<font color=#ffff99>([usr])Strength Roll:[oresult]+[usr.strmod]=[result]</font>","output1")
+							var/strMod = usr.get_statmod_strength()
+							result+=strMod
+							usr << output("<font color=#ffff99>([usr])Strength Roll:[oresult]+[strMod]=[result]</font>","output1")
 							if(result>R.goal||oresult==20)
 								usr<<output("You muster up the strength to push the rock.","output1")
 								R.loc=locate(R.x-1,R.y,R.z)

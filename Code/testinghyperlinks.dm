@@ -6,14 +6,15 @@
 	if(usr.job=="Blue Mage")
 		switch(alert("[b.desc] (Rank: [b.rank]) (Cost: [b.rpcost])","[b.name]","Learn","Cancel"))
 			if("Learn")
-				if(usr.rpp>=b.rpcost)
+				var/rppVal = usr.roleplayPoints ? usr.roleplayPoints.value : 0
+				if(rppVal>=b.rpcost)
 					if(Checkmag(b,usr))
 						alert(usr,"You are not capable of learning perks of this type or rank.")
 						return
 					if(Checkrank(b,usr))
 						alert(usr,"You cannot learn abilities of that rank right now.")
 						return
-					usr.rpp-=b.rpcost
+					usr.roleplayPoints.removeValue(b.rpcost)
 					var/obj/perk/p = copyatom(b)
 					b.ontree=0
 					usr.contents+=p
@@ -28,14 +29,15 @@
 		if(usr.subjob=="Blue Mage"||usr.race=="Ronso")
 			switch(alert("[b.desc] (Rank: [b.rank]) (Cost: [b.rpcost])","[b.name]","Learn","Cancel"))
 				if("Learn")
-					if(usr.rpp>=b.rpcost)
+					var/rppVal = usr.roleplayPoints ? usr.roleplayPoints.value : 0
+					if(rppVal>=b.rpcost)
 						if(Checkmag(b,usr))
 							alert(usr,"You are not capable of learning perks of this type or rank.")
 							return
 						if(Checkrank(b,usr))
 							alert(usr,"You cannot learn abilities of that rank right now.")
 							return
-						usr.rpp-=b.rpcost
+						usr.roleplayPoints.removeValue(b.rpcost)
 						var/obj/perk/p = copyatom(b)
 						p.ontree=0
 						usr.contents+=p

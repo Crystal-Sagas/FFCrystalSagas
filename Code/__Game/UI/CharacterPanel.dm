@@ -27,11 +27,8 @@
 	if(intitlescreen)
 		return
 
-	// Refresh all calculated values
-	Skillcheck(src)
+	// Refresh carry limit - stats are auto-calculated now
 	Carrycheck(src)
-	Savecheck(src)
-	ACcheck(src)
 
 	OpenCharacterPanel(characterPanelActiveTab)
 
@@ -170,12 +167,12 @@
  */
 /mob/proc/SendCharacterPanelResources(mob/M)
 	var/list/params = list()
-	params["hp"] = M.hp
-	params["mhp"] = M.mhp
-	params["mp"] = M.mp
-	params["mmp"] = M.mmp
-	params["sp"] = M.sp
-	params["msp"] = M.msp
+	params["hp"] = M.health ? M.health.value : 0
+	params["mhp"] = M.health ? M.health.maxValue : 1
+	params["mp"] = M.mana ? M.mana.value : 0
+	params["mmp"] = M.mana ? M.mana.maxValue : 1
+	params["sp"] = M.stamina ? M.stamina.value : 0
+	params["msp"] = M.stamina ? M.stamina.maxValue : 1
 
 	var/param_string = list2params(params)
 	src << output(param_string, "CharacterPanel:updateResources")
@@ -185,9 +182,9 @@
  */
 /mob/proc/SendCharacterPanelFooter(mob/M)
 	var/list/params = list()
-	params["rpp"] = M.rpp
-	params["trpp"] = M.trpp
-	params["ap"] = M.abilitypoints
+	params["rpp"] = M.roleplayPoints ? M.roleplayPoints.value : 0
+	params["trpp"] = M.totalRoleplayPoints ? M.totalRoleplayPoints.value : 0
+	params["ap"] = M.abilityPointsPool ? M.abilityPointsPool.value : 0
 
 	var/param_string = list2params(params)
 	src << output(param_string, "CharacterPanel:updateFooter")
@@ -197,46 +194,47 @@
  */
 /mob/proc/SendCharacterPanelStats(mob/M)
 	var/list/params = list()
-	// Core stats
-	params["str"] = M.str
-	params["addstr"] = M.addstr
-	params["strmod"] = M.strmod
-	params["dex"] = M.dex
-	params["adddex"] = M.adddex
-	params["dexmod"] = M.dexmod
-	params["con"] = M.con
-	params["addcon"] = M.addcon
-	params["conmod"] = M.conmod
-	params["int"] = M.int
-	params["addint"] = M.addint
-	params["intmod"] = M.intmod
-	params["wis"] = M.wis
-	params["addwis"] = M.addwis
-	params["wismod"] = M.wismod
-	params["cha"] = M.cha
-	params["addcha"] = M.addcha
-	params["chamod"] = M.chamod
+	// Core stats - use new stat system
+	params["str"] = M.strength ? M.strength.baseValue.value : 10
+	params["addstr"] = M.strength ? M.strength.addition.value : 0
+	params["strmod"] = M.get_statmod_strength()
+	params["dex"] = M.dexterity ? M.dexterity.baseValue.value : 10
+	params["adddex"] = M.dexterity ? M.dexterity.addition.value : 0
+	params["dexmod"] = M.get_statmod_dexterity()
+	params["con"] = M.constitution ? M.constitution.baseValue.value : 10
+	params["addcon"] = M.constitution ? M.constitution.addition.value : 0
+	params["conmod"] = M.get_statmod_constitution()
+	params["int"] = M.intelligence ? M.intelligence.baseValue.value : 10
+	params["addint"] = M.intelligence ? M.intelligence.addition.value : 0
+	params["intmod"] = M.get_statmod_intelligence()
+	params["wis"] = M.wisdom ? M.wisdom.baseValue.value : 10
+	params["addwis"] = M.wisdom ? M.wisdom.addition.value : 0
+	params["wismod"] = M.get_statmod_wisdom()
+	params["cha"] = M.charisma ? M.charisma.baseValue.value : 10
+	params["addcha"] = M.charisma ? M.charisma.addition.value : 0
+	params["chamod"] = M.get_statmod_charisma()
 	// Combat stats
-	params["ac"] = M.ac
-	params["basedr"] = M.basedr
-	params["speed"] = M.speed
-	params["speedadd"] = M.speedadd
+	params["ac"] = M.armorClass ? M.armorClass.currentValue.value : 10
+	params["basedr"] = M.damageReduction ? M.damageReduction.baseValue.value : 0
+	// Speed is a simple numeric var, not a StatGroup
+	params["speed"] = M.speed ? M.speed : 3
+	params["speedadd"] = 0
 	// Bonuses
-	params["pab"] = M.pab
-	params["pabadd"] = M.pabadd
-	params["pdb"] = M.pdb
-	params["pdbadd"] = M.pdbadd
-	params["mab"] = M.mab
-	params["mabadd"] = M.mabadd
-	params["mdb"] = M.mdb
-	params["mdbadd"] = M.mdbadd
+	params["pab"] = M.physicalAttack ? M.physicalAttack.baseValue.value : 0
+	params["pabadd"] = M.physicalAttack ? M.physicalAttack.addition.value : 0
+	params["pdb"] = M.physicalDefense ? M.physicalDefense.baseValue.value : 0
+	params["pdbadd"] = M.physicalDefense ? M.physicalDefense.addition.value : 0
+	params["mab"] = M.magicalAttack ? M.magicalAttack.baseValue.value : 0
+	params["mabadd"] = M.magicalAttack ? M.magicalAttack.addition.value : 0
+	params["mdb"] = M.magicalDefense ? M.magicalDefense.baseValue.value : 0
+	params["mdbadd"] = M.magicalDefense ? M.magicalDefense.addition.value : 0
 	// Character info
 	params["job"] = M.job
 	params["subjob"] = M.subjob
 	params["role"] = M.role
 	params["rank"] = M.rank
 	params["rankbonus"] = M.rankbonus
-	params["abilitypoints"] = M.abilitypoints
+	params["abilitypoints"] = M.abilityPointsPool ? M.abilityPointsPool.value : 0
 	// Reference for hrefs
 	params["ref"] = "\ref[src]"
 
@@ -248,45 +246,45 @@
  */
 /mob/proc/SendCharacterPanelSkills(mob/M)
 	var/list/params = list()
-	// Skills
-	params["acrobatics"] = M.acrobatics
+	// Skills - use new stat system
+	params["acrobatics"] = M.skillAcrobatics ? M.skillAcrobatics.currentValue.value : 0
 	params["acrobaticsprof"] = M.acrobaticsproficient
-	params["athletics"] = M.athletics
+	params["athletics"] = M.skillAthletics ? M.skillAthletics.currentValue.value : 0
 	params["athleticsprof"] = M.athleticsproficient
-	params["archaeology"] = M.archaeology
+	params["archaeology"] = M.skillArchaeology ? M.skillArchaeology.currentValue.value : 0
 	params["archaeologyprof"] = M.archaeologyproficient
-	params["deception"] = M.deception
+	params["deception"] = M.skillDeception ? M.skillDeception.currentValue.value : 0
 	params["deceptionprof"] = M.deceptionproficient
-	params["dungeoneering"] = M.dungeoneering
+	params["dungeoneering"] = M.skillDungeoneering ? M.skillDungeoneering.currentValue.value : 0
 	params["dungeoneeringprof"] = M.dungeoneeringproficient
-	params["enchantment"] = M.enchantment
+	params["enchantment"] = M.skillEnchantment ? M.skillEnchantment.currentValue.value : 0
 	params["enchantmentprof"] = M.enchantmentproficient
-	params["insight"] = M.insight
+	params["insight"] = M.skillInsight ? M.skillInsight.currentValue.value : 0
 	params["insightprof"] = M.insightproficient
-	params["investigation"] = M.investigation
+	params["investigation"] = M.skillInvestigation ? M.skillInvestigation.currentValue.value : 0
 	params["investigationprof"] = M.investigationproficient
-	params["magic"] = M.magic
+	params["magic"] = M.skillMagic ? M.skillMagic.currentValue.value : 0
 	params["magicprof"] = M.magicproficient
-	params["magitekoperation"] = M.magitekOperation
+	params["magitekoperation"] = M.skillMagitekOperation ? M.skillMagitekOperation.currentValue.value : 0
 	params["magitekoperationprof"] = M.magitekoperationproficient
-	params["medicine"] = M.medicine
+	params["medicine"] = M.skillMedicine ? M.skillMedicine.currentValue.value : 0
 	params["medicineprof"] = M.medicineproficient
-	params["naturalist"] = M.naturalist
+	params["naturalist"] = M.skillNaturalist ? M.skillNaturalist.currentValue.value : 0
 	params["naturalistprof"] = M.naturalistproficient
-	params["perception"] = M.perception
+	params["perception"] = M.skillPerception ? M.skillPerception.currentValue.value : 0
 	params["perceptionprof"] = M.perceptionproficient
-	params["persuasion"] = M.persuasion
+	params["persuasion"] = M.skillPersuasion ? M.skillPersuasion.currentValue.value : 0
 	params["persuasionprof"] = M.persuasionproficient
-	params["stealth"] = M.stealth
+	params["stealth"] = M.skillStealth ? M.skillStealth.currentValue.value : 0
 	params["stealthprof"] = M.stealthproficient
-	params["survival"] = M.survival
+	params["survival"] = M.skillSurvival ? M.skillSurvival.currentValue.value : 0
 	params["survivalprof"] = M.survivalproficient
-	params["thievery"] = M.thievery
+	params["thievery"] = M.skillThievery ? M.skillThievery.currentValue.value : 0
 	params["thieveryprof"] = M.thieveryproficient
-	// Saves
-	params["rflx"] = M.rflx
-	params["fort"] = M.fort
-	params["will"] = M.will
+	// Saves - use new stat system
+	params["rflx"] = M.reflexSave ? M.reflexSave.currentValue.value : 0
+	params["fort"] = M.fortitudeSave ? M.fortitudeSave.currentValue.value : 0
+	params["will"] = M.willSave ? M.willSave.currentValue.value : 0
 	// Options
 	params["advantage"] = M.advantage
 	params["disadvantage"] = M.disadvantage

@@ -149,7 +149,7 @@ turf
 					return 0
 				if(Enterer.vehicletype=="airship")
 					return 1
-				if(istype(Enterer, /obj/npc/))
+				if(istype(Enterer, /mob/npc/))
 					return 1
 			Ftile
 				icon_state = "1"

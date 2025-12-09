@@ -1,7 +1,10 @@
+// Type check macros - only define if not already defined by __DEFINES\istype.dm
 #define isAlist(value) istype(value, /alist)
 #define isAppearance(value) istype(value, /mutable_appearance)
 #define isArea(value) isarea(value)
+#ifndef isAtom
 #define isAtom(value) istype(value, /atom)
+#endif
 #define isClient(value) istype(value, /client)
 #define isDatabase(value) istype(value, /database)
 #define isDatum(value) istype(value, /datum)
@@ -9,8 +12,12 @@
 #define isImage(value) istype(value, /image)
 #define isList(value) islist(value)
 #define isMatrix(value) istype(value, /matrix)
+#ifndef isMob
 #define isMob(value) ismob(value)
+#endif
+#ifndef isMovable
 #define isMovable(value) istype(value, /atom/movable)
+#endif
 #define isObj(value) isobj(value)
 #define isPath(value) ispath(value)
 #define isPixloc(value) istype(value, /pixloc)

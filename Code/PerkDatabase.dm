@@ -1,95 +1,27 @@
-// todo: /datum/prototype/perk
-
-/obj/perk
-	var/element="Physical"
-	var/heal=0
-	var/cleanse=0
-	var/monkability=0
-	var/incompatible=null
-	var/statuseffect
-	var/infusiontype
-	var/dispel=0
-	var/revive=0
-	var/greenmagic=0
-	var/multi=0
-	var/regen=0
-	var/refresh=0
-
-/obj/perk/New(loc)
-	. = ..()
-	if(src.rank=="T1")
-		src.rpcost=1
-	if(src.rank=="T2")
-		src.rpcost=2
-	if(src.rank=="T3")
-		src.rpcost=3
-	if(src.rank=="T4")
-		src.rpcost=4
-	if(src.rank=="T5")
-		src.rpcost=5
-	if(src.rank=="T6")
-		src.rpcost=6
-	if(src.rank=="E")
-		src.rpcost=1
-	if(src.rank=="D")
-		src.rpcost=2
-	if(src.rank=="C")
-		src.rpcost=3
-	if(src.rank=="B")
-		src.addhit+=2
-		src.basecheck+=1
-		src.adddam+=15
-		src.rpcost=4
-	if(src.rank=="A")
-		src.addhit+=3
-		src.basecheck+=2
-		src.adddam+=25
-		src.rpcost=8
-	if(src.rank=="S")
-		src.addhit+=4
-		src.basecheck+=3
-		src.adddam+=40
-		src.rpcost=16
+/**
+ * Perk Database
+ *
+ * Contains all perk definitions organized by category.
+ * Base /obj/perk type is defined in Code/__Game/Perks/Database/PerkBase.dm
+ * ElementalPerks defined in Code/__Game/Perks/Database/Passives/ElementalPerks.dm
+ *
+ * Categories:
+ * - MonsterPassives: NPC monster passive abilities
+ * - SummonPassives: Eidolon/Aeon/Scion passive abilities
+ * - Boss: Boss-specific perks
+ * - Roleperks: Player role perks (Adventurer, etc.)
+ * - GeneralPerks: General passive perks
+ * - Crafting: Crafting-related perks
+ * - Gathering: Gathering-related perks
+ * - Uniques: Unique/special perks
+ * - Raceperks: Race-specific perks
+ * - Jobperks: Job-specific perks and abilities
+ * - Abilities: Active abilities (weapon, magic, etc.)
+ * - MonsterAbilities: NPC-only abilities
+ */
 
 obj
 	perk
-		ElementalPerks
-			Fire
-				icon='Icons/Perk/Fire.png'
-				name="Fire Attuned"
-				desc="This creature is attuned to the element of Fire. It is immune to the 'Burn' status effect, and takes half damage from fire and ice, but 2x damage from water and earth."
-			Water
-				icon='Icons/Perk/Water.png'
-				name="Water Attuned"
-				desc="This creature is attuned to the element of Water. It is immune to the 'Wet' and 'Whorl' status effects, and takes half damage from fire and water, but 2x damage from ice and wind."
-			Ice
-				icon='Icons/Perk/Ice.png'
-				name="Ice Attuned"
-				desc="This creature is attuned to the element of Ice. It is immune to the 'Frostbite' status effect, and takes half damage from ice, water, and earth, but 2x damage from fire."
-			Earth
-				icon='Icons/Perk/Stone.png'
-				name="Earth Attuned"
-				desc="This creature is attuned to the element of Earth. It is immune to the 'Heavy', 'Bleed', and 'Weakness' status effects, and takes half damage from earth, thunder and fire, but 2x damage from ice and bio."
-			Thunder
-				icon='Icons/Perk/Thunder.png'
-				name="Thunder Attuned"
-				desc="This creature is attuned to the element of Thunder. It is immune to the 'Paralyze', 'Stun', and 'Wet' status effects, and takes half damage from thunder and bio attacks, but 2x damage from earth and wind."
-			Bio
-				icon='Icons/Perk/Bio.png'
-				name="Bio Attuned"
-				desc="This creature is attuned to the element of Bio. It is immune to the 'Poison' and 'Bleed' status effects, and takes half damage from bio, earth, and wind, but 2x damage from thunder."
-			Aero
-				icon='Icons/Perk/Wind.png'
-				name="Wind Attuned"
-				desc="This creature is attuned to the element of Wind. It is immune to the 'Squall' and 'Bleed' status effects, and takes half damage from wind, thunder, and water, but 2x damage from bio."
-			Holy
-				icon='Icons/Perk/Dia.png'
-				name="Holy Attuned"
-				desc="This creature is attuned to the element of Holy. It is immune to the 'Weakness', 'Doom', 'Break', 'Heavy', 'Blind', and 'Silence' status effects, and takes half damage from holy damage, but 2x from dark damage."
-			Dark
-				icon='Icons/Perk/Apocalypse.png'
-				name="Dark Attuned"
-				desc="This creature is attuned to the element of Holy. It is immune to the 'Weakness', 'Doom', 'Break', 'Heavy', 'Blind', and 'Silence' status effects, and takes half damage from dark damage, but 2x from holy damage."
 		MonsterPassives
 			icon='Icons/Perk/MonsterAbility.png'
 			Mecha

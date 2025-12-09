@@ -2,7 +2,8 @@ mob
 	verb
 		Dropmoney()
 			var/amount= input(usr,"How much do you wish to drop?")as num
-			if(amount>usr.money)
+			var/currentMoney = usr.currency ? usr.currency.value : 0
+			if(amount>currentMoney)
 				alert("You don't have that much to drop.")
 				return
 			if(amount<=0)
@@ -10,23 +11,28 @@ mob
 				return
 			else
 				var/obj/Money/m =new /obj/Money
-				usr.money-=amount
+				if(usr.currency)
+					usr.currency.addValue(-amount)
 				m.value = amount
 				m.loc=usr.loc
-				winset(usr,"InventoryScreen.Money","text=\"[usr.money]\"")
+				var/newMoney = usr.currency ? usr.currency.value : 0
+				winset(usr,"InventoryScreen.Money","text=\"[newMoney]\"")
 		DropGSP()
 			var/amount= input(usr,"How much do you wish to drop?")as num
-			if(amount>usr.GSP)
+			var/currentGSP = usr.guildPoints ? usr.guildPoints.value : 0
+			if(amount>currentGSP)
 				alert("You don't have that much to drop.")
 			if(amount<=0)
 				alert("You cannot drop less than 0, or 0 GSP!")
 				return
 			else
 				var/obj/GSP/m =new /obj/GSP
-				usr.GSP-=amount
+				if(usr.guildPoints)
+					usr.guildPoints.addValue(-amount)
 				m.value = amount
 				m.loc=usr.loc
-				winset(usr,"InventoryScreen.gsp","text=\"[usr.GSP]\"")
+				var/newGSP = usr.guildPoints ? usr.guildPoints.value : 0
+				winset(usr,"InventoryScreen.gsp","text=\"[newGSP]\"")
 		SeeEquipment()
 			if(usr.intitlescreen)
 				return
@@ -100,7 +106,7 @@ obj
 		icon = 'Icons/Gil.png'
 		Click()
 			if(usr in view(1,src))
-				usr.money += value
+				usr.addMoney(value)
 				Refreshinventoryscreen(usr)
 				src.relocateToNull()
 	GSP
@@ -108,6 +114,6 @@ obj
 		icon='Icons/GSP.png'
 		Click()
 			if(usr in view(1,src))
-				usr.GSP += value
+				usr.guildPoints.value += value
 				Refreshinventoryscreen(usr)
 				src.relocateToNull()

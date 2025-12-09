@@ -1,3 +1,137 @@
+/**
+ * Global Modifier System - Legacy equipment stat modifier system
+ * TODO: This should be converted to use the new StatGroup system
+ */
+
+/obj/globalmod
+	var/acbonus = 0
+	var/drbonus = 0
+	var/pabbonus = 0
+	var/mabbonus = 0
+	var/pdbbonus = 0
+	var/mdbbonus = 0
+	var/strbonus = 0
+	var/dexbonus = 0
+	var/conbonus = 0
+	var/intbonus = 0
+	var/wisbonus = 0
+	var/chabonus = 0
+	var/applied = 0  // Whether this modifier is currently equipped/applied
+
+// Shield globalmod subtypes
+/obj/globalmod/BronzeShield
+	acbonus = 2
+	drbonus = 0
+/obj/globalmod/IronShield
+	acbonus = 2
+	drbonus = 1
+/obj/globalmod/SteelShield
+	acbonus = 2
+	drbonus = 2
+/obj/globalmod/MythrilShield
+	acbonus = 2
+	drbonus = 3
+/obj/globalmod/AdamantineShield
+	acbonus = 2
+	drbonus = 4
+
+// Tower Shield globalmod subtypes
+/obj/globalmod/BronzeTowerShield
+	acbonus = 2
+	drbonus = 2
+/obj/globalmod/IronTowerShield
+	acbonus = 2
+	drbonus = 4
+/obj/globalmod/SteelTowerShield
+	acbonus = 2
+	drbonus = 6
+/obj/globalmod/MythrilTowerShield
+	acbonus = 2
+	drbonus = 8
+/obj/globalmod/AdamantineTowerShield
+	acbonus = 2
+	drbonus = 10
+
+// Light Armor globalmod subtypes
+/obj/globalmod/BronzeLightArmor
+	acbonus = 1
+/obj/globalmod/IronLightArmor
+	acbonus = 2
+/obj/globalmod/SteelLightArmor
+	acbonus = 3
+/obj/globalmod/MythrilLightArmor
+	acbonus = 4
+/obj/globalmod/AdamantineLightArmor
+	acbonus = 5
+/obj/globalmod/OrichalcumLightArmor
+	acbonus = 6
+
+// Medium Armor globalmod subtypes
+/obj/globalmod/BronzeMediumArmor
+	acbonus = 3
+/obj/globalmod/IronMediumArmor
+	acbonus = 4
+/obj/globalmod/SteelMediumArmor
+	acbonus = 5
+/obj/globalmod/MythrilMediumArmor
+	acbonus = 6
+/obj/globalmod/AdamantineMediumArmor
+	acbonus = 7
+/obj/globalmod/OrichalcumMediumArmor
+	acbonus = 8
+
+// Heavy Armor globalmod subtypes
+/obj/globalmod/BronzeHeavyArmor
+	acbonus = 4
+/obj/globalmod/IronHeavyArmor
+	acbonus = 5
+/obj/globalmod/SteelHeavyArmor
+	acbonus = 6
+/obj/globalmod/MythrilHeavyArmor
+	acbonus = 7
+/obj/globalmod/AdamantineHeavyArmor
+	acbonus = 8
+/obj/globalmod/OrichalcumHeavyArmor
+	acbonus = 9
+
+/**
+ * Apply globalmod bonuses to a mob
+ * TODO: Convert to use new stat system (StatGroup.addAddition)
+ */
+/proc/Applyglobalmod(var/mob/m, var/obj/item/Weapon/w)
+	for(var/obj/globalmod/g in w.contents)
+		if(m.armorClass)
+			m.armorClass.addAddition(g.acbonus)
+		if(m.damageReduction)
+			m.damageReduction.addAddition(g.drbonus)
+		if(m.physicalAttack)
+			m.physicalAttack.addAddition(g.pabbonus)
+		if(m.magicalAttack)
+			m.magicalAttack.addAddition(g.mabbonus)
+		if(m.physicalDefense)
+			m.physicalDefense.addAddition(g.pdbbonus)
+		if(m.magicalDefense)
+			m.magicalDefense.addAddition(g.mdbbonus)
+
+/**
+ * Remove globalmod bonuses from a mob
+ * TODO: Convert to use new stat system (StatGroup.addAddition with negative)
+ */
+/proc/Removeglobalmod(var/mob/m, var/obj/item/Weapon/w)
+	for(var/obj/globalmod/g in w.contents)
+		if(m.armorClass)
+			m.armorClass.addAddition(-g.acbonus)
+		if(m.damageReduction)
+			m.damageReduction.addAddition(-g.drbonus)
+		if(m.physicalAttack)
+			m.physicalAttack.addAddition(-g.pabbonus)
+		if(m.magicalAttack)
+			m.magicalAttack.addAddition(-g.mabbonus)
+		if(m.physicalDefense)
+			m.physicalDefense.addAddition(-g.pdbbonus)
+		if(m.magicalDefense)
+			m.magicalDefense.addAddition(-g.mdbbonus)
+
 obj
 	item
 		Weapon

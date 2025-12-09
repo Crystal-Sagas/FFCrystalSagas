@@ -75,9 +75,9 @@ GLOBAL_DATUM_INIT(connections, /datum/connection_manager, new)
 		if(P.session)
 			P.session.cleanup()
 
-		// Save if appropriate
+		// Save using the save system's disconnect handler (has retry + emergency backup)
 		if(P.canSave())
-			handlePlayerSave(P)
+			C.onDisconnectSave()
 
 	// Emit disconnect event for other systems
 	onClientDisconnecting.notify(C)

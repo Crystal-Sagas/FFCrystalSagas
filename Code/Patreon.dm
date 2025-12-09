@@ -11,7 +11,7 @@ obj/item
 			icon_state="15"
 			verb
 				Claim()
-					usr.money+=5000
+					usr.addMoney(5000)
 					alert(usr,"Thank you for supporting us! You're gil has increased by 5000.")
 					src.relocateToNull()
 					Refreshinventoryscreen(usr)

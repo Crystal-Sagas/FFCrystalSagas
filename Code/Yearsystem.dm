@@ -50,15 +50,12 @@ var/daytime = "Night"
 	for(var/obj/node/N in global.resource_nodes)
 		N.refresh()
 	for(var/mob/a in world)
-		a.stockdrawn=0
 		a.Lifestreamraincooldown=0
-		a.FATEcooldown=0
-		a.dailyfates=0
 		a.limitbreakused=0
 		a.totalpasses+=1
-		a.FATEcooldown=0
 		a.minednodes=0
-		a.Save()
+		if(a.client)
+			a.client.savePlayer()
 	for(var/obj/cooldownchecker/a in world)
 		a.totalpasses+=1
 	for(var/obj/Faction/a in world)

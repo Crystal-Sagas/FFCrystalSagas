@@ -75,12 +75,22 @@ StatPool
 				var/difference = oldMaxValue / newMaxValue
 				value *= difference
 				valueEmitter.notify()
-		
+
+		addMaxValue(addition)
+			if(!isnum(addition))
+				return
+			setMaxValue(maxValue + addition)
+
+		subtractMaxValue(subtraction)
+			if(!isnum(subtraction))
+				return
+			setMaxValue(max(0, maxValue - subtraction))
+
 		listenValue(Callback/callback)
 			if(!isCallback(callback))
 				return
 			valueEmitter.listen(callback)
-		
+
 		listenMaxValue(Callback/callback)
 			if(!isCallback(callback))
 				return
@@ -90,12 +100,12 @@ StatPool
 			if(!isCallback(callback))
 				return
 			valueEmitter.cancel(callback)
-		
+
 		cancelMaxValue(Callback/callback)
 			if(!isCallback(callback))
 				return
 			maxValueEmitter.cancel(callback)
-		
+
 		clearListeners()
 			valueEmitter.clear()
 			maxValueEmitter.clear()
@@ -166,6 +176,6 @@ StatPool
 proc
 	StatPool(value, maxValue, hasLimit = FALSE)
 		return new /StatPool(value, maxValue, hasLimit)
-	
+
 	isStatPool(StatPool/statPool)
 		return istype(statPool, /StatPool)

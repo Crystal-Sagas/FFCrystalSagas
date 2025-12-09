@@ -85,14 +85,6 @@
  * Cleans up visual overlays
  */
 /mob/player/proc/cleanupOverlays()
-	// Status bars
-	for(var/obj/status/HPBar/hp in contents)
-		overlays -= hp
-	for(var/obj/status/MPBar/mp in contents)
-		overlays -= mp
-	for(var/obj/status/SPBar/sp in contents)
-		overlays -= sp
-
 	// State indicators
 	overlays -= 'Exclamation.dmi'
 	overlays -= 'Rping.dmi'

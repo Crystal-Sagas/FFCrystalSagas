@@ -8,7 +8,7 @@ obj
 			for(var/obj/Destinationflag/D in world)
 				destinations+=D
 			var/obj/Destinationflag/place = input("Aye, where you wishing to go?") as null|anything in destinations
-			if(place.travelprice>usr.money)
+			if(!usr.canAfford(place.travelprice))
 				alert(usr,"You don't have enough Gil!")
 				return
 			if(place==null)
@@ -18,7 +18,7 @@ obj
 				alert(usr, "no destination turf found; THIS IS A BUG. Please report this: [place.name]")
 				CRASH("couldn't find dest turf for fast travel")
 			usr.force_move(dest_turf)
-			usr.money-=place.travelprice
+			usr.spendMoney(place.travelprice)
 
 	Destinationflag
 		var/travelprice

@@ -115,7 +115,6 @@ obj/Tech/var
 
 obj
 	item
-		var/stockgem=0
 		Click()
 			for(var/obj/playershops/shoptable/a in world)
 				if(src in a.contents)
@@ -199,13 +198,8 @@ obj
 							if(amocho<0)
 								alert(usr,"You need a positive number here.")
 							var/adjprice=(amocho*src.shopprice)
-							if(usr.money>=adjprice)
-								usr.money-=adjprice
-								for(var/obj/item/stock/Stockgem/i in usr.contents)
-									if(i.name==src.name)
-										i.stock+=amocho
-										usr<<output("You purchased [amocho] [src.name]/s","oocout")
-										return
+							if(usr.canAfford(adjprice))
+								usr.spendMoney(adjprice)
 								for(var/obj/item/i in usr.contents)
 									if(i.name==src.name)
 										i.amount+=amocho
@@ -220,8 +214,8 @@ obj
 								alert(usr,"You don't enough for that many.")
 								return
 						else
-							if(usr.money>=src.shopprice)
-								usr.money-=src.shopprice
+							if(usr.canAfford(src.shopprice))
+								usr.spendMoney(src.shopprice)
 								var/obj/item/i=copyatom(src)
 								i.instore=0
 								usr.contents+=i
@@ -278,27 +272,7 @@ mob
 
 
 
-
-
-
-
-proc
-	Checkdamtype(t as text,var/mob/m)
-		var/result
-		if(t=="str")
-			result=m.strmod
-		if(t=="dex")
-			result=m.dexmod
-		if(t=="con")
-			result=m.conmod
-		if(t=="int")
-			result=m.intmod
-		if(t=="wis")
-			result=m.wismod
-		if(t=="cha")
-			result=m.chamod
-		return result
-
+// NOTE: Combat system Checkdamtype proc removed - being replaced
 
 obj/item
 	Weapon
@@ -316,99 +290,7 @@ obj/item
 							view() << output("[players]","icout")
 						if("Cancel")
 							return
-
-			Attack()
-				var/aoresult
-				var/aresult
-				var/amod
-				var/doresult
-				var/dmod
-				var/dresult
-				var/critdam
-				var/truecrit=src.critrange-usr.critmod
-				if(src.equipped!=1)
-					alert(usr,"You cannot attack with a weapon that isn't equipped!")
-					return
-				if(src.jewelery==1)
-					return
-				if(src.armor==1)
-					return
-				aoresult=rand(1,20)
-				amod=Checkdamtype(src.damsource,usr)
-				if(src.typing=="magical")
-					aresult=aoresult+src.addhit+usr.rankbonus+usr.mab+amod
-					if(usr.mabadd<10)// Global cap for magical attack bonus add is 15.
-						aresult+=usr.mabadd
-					else
-						aresult+=10
-				else
-					aresult=aoresult+src.addhit+usr.rankbonus+usr.pab+amod
-					if(usr.pabadd<10)// Global cap for physical attack bonus add is 15.
-						aresult+=usr.pabadd
-					else
-						aresult+=10
-				doresult=rand(src.range1,src.range2)
-				dmod=Checkdamtype(src.damsource,usr)
-				if(src.typing=="magical")
-					dresult=doresult+src.adddam+usr.mdb+dmod
-					if(usr.role=="Tank Caster"||usr.role=="Physical DPS"||usr.role=="Physical Support") //These roles all cap at 15 MDB Add.
-						if(usr.mdbadd<15)
-							dresult+=usr.mdbadd
-						else
-							dresult+=15
-					else if(usr.role=="Melee Tank")
-						if(usr.mdbadd<10)
-							dresult+=usr.mdbadd
-						else
-							dresult+=10
-					else if(usr.role=="Magical DPS")
-						if(usr.mdbadd<35)
-							dresult+=usr.mdbadd
-						else
-							dresult+=35
-					else if(usr.role=="Magical Support")
-						if(usr.mdbadd<20)
-							dresult+=usr.mdbadd
-						else
-							dresult+=20
-					else if(usr.role=="Generalist")
-						if(usr.mdbadd<25)
-							dresult+=usr.mdbadd
-						else
-							dresult+=25
-				else
-					dresult=doresult+src.adddam+usr.pdb+dmod
-					if(usr.role=="Melee Tank"||usr.role=="Magical DPS"||usr.role=="Magical Support") //These roles all cap at 15 PDB Add.
-						if(usr.pdbadd<15)
-							dresult+=usr.pdbadd
-						else
-							dresult+=15
-					else if(usr.role=="Tank Caster")
-						if(usr.pdbadd<10)
-							dresult+=usr.pdbadd
-						else
-							dresult+=10
-					else if(usr.role=="Physical DPS")
-						if(usr.pdbadd<35)
-							dresult+=usr.pdbadd
-						else
-							dresult+=35
-					else if(usr.role=="Physical Support")
-						if(usr.pdbadd<20)
-							dresult+=usr.pdbadd
-						else
-							dresult+=20
-					else if(usr.role=="Generalist")
-						if(usr.pdbadd<25)
-							dresult+=usr.pdbadd
-						else
-							dresult+=25
-				critdam=dresult+doresult
-				if(aoresult>=truecrit)
-					view()<<output("<font size=1><font color=[usr.textcolor]>[usr] <font color=white>rolled a <b><font color=#3CF82C>CRITICAL</b> <font color=white>attack roll, using their <font color=[usr.textcolor]>[src.name]<font color=white>! Result: <font color=#3CF82C><b>[aresult] to hit</b><font color=white>, dealing <b><font color=#FFA852>[critdam] damage</b><font color=white>, as an automatic hit!","icout")
-				else
-					view()<<output("<font size=1><font color=[usr.textcolor]>[usr] <font color=white>rolled an attack roll, using their <font color=[usr.textcolor]>[src.name]<font color=white>!  Result: <font color=#8EF5DE><b>[aresult] to hit</b><font color=white>, dealing <b><font color=#FFA852>[dresult] damage</b><font color=white> if successful!<br>Tile Range:[src.range]","output1")
-					view()<<output("<font size=1><font color=[usr.textcolor]>[usr] <font color=white>rolled an attack roll, using their <font color=[usr.textcolor]>[src.name]<font color=white>! Result: <font color=#8EF5DE><b>[aresult] to hit</b><font color=white>, dealing <b><font color=#FFA852>[dresult] damage</b><font color=white> if successful!<br>Tile Range:[src.range]","icout")
+			// NOTE: Attack() verb removed - combat system being replaced
 
 	antinquecoin
 		icon = 'Coin.dmi'
@@ -776,7 +658,7 @@ obj
 			var/list/itemlist=new
 			if(!itemon && owner==usr.name)
 				if(storedmon>0)
-					usr.money+=storedmon
+					usr.addMoney(storedmon)
 					usr<<output("You collected [storedmon]","output1")
 					storedmon=0
 				for(var/obj/item/i in usr.contents)
@@ -818,13 +700,13 @@ obj
 						usr.contents+=itemon
 						itemon=null
 						if(storedmon>0)
-							usr.money+=storedmon
+							usr.addMoney(storedmon)
 							storedmon=0
 					if("Adjust Price")
 						itemon.price=input("Current price [itemon.price]") as num
 					if("Collect Money")
 						if(storedmon)
-							usr.money+=storedmon
+							usr.addMoney(storedmon)
 							usr<<output("You collected [storedmon].","output1")
 							storedmon=0
 						else
@@ -844,13 +726,13 @@ obj
 								return
 							else
 								tprice=itemon.price*purchamount
-								if(usr.money<tprice)
+								if(!usr.canAfford(tprice))
 									alert("You cannot afford this much.")
 								else
 									if(purchamount==itemon.amount)
 										usr.contents+=itemon
 										itemon=null
-										usr.money-=tprice
+										usr.spendMoney(tprice)
 										storedmon+=tprice
 										return
 									else
@@ -864,12 +746,12 @@ obj
 										N.amount=purchamount
 										itemon.amount-=purchamount
 										usr.contents+=N
-										usr.money-=tprice
+										usr.spendMoney(tprice)
 										storedmon+=tprice
 										return
 						else
-							if(usr.money>=itemon.price)
-								usr.money-=itemon.price
+							if(usr.canAfford(itemon.price))
+								usr.spendMoney(itemon.price)
 								storedmon+=itemon.price
 								usr.contents+=itemon
 								itemon=null

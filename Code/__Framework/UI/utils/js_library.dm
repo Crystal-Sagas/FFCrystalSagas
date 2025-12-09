@@ -2,16 +2,195 @@
  * Chronicles CSS Library - JavaScript Utilities
  * 
  * Common JavaScript functions for enhancing UI components.
+ * 
+ * INCLUDES:
+ * - Hors Pattern helpers (unpackParams, DOM updates)
+ * - ChroniclesUI object (tabs, panels, tables, forms)
+ * - Search/filter utilities
+ * 
+ * USAGE:
+ *   var/js = CSS.core_js()      // Get all core utilities
+ *   var/js = CSS.hors_js()      // Get only Hors pattern helpers
+ *   var/js = CSS.search_js()    // Get search utilities
  */
 
 /StyleManager
 	/**
+	 * Get Hors Pattern JavaScript helpers
+	 * These are essential for any browse() window using the Hors Pattern
+	 * 
+	 * Includes:
+	 * - unpackParams() - Parse list2params encoded data from BYOND
+	 * - showMessage() - Display feedback messages with auto-hide
+	 * - updateElement() - Update element innerHTML by ID
+	 * - updateText() - Update element textContent by ID
+	 * - updateAttribute() - Update element attribute by ID
+	 * - toggleClass() - Add/remove CSS class by ID
+	 * - removeElement() - Remove element by ID
+	 * 
+	 * @return Hors Pattern JavaScript helpers
+	 */
+	proc/hors_js()
+		return {"
+		// =================================================================
+		// HORS PATTERN HELPERS
+		// Based on ter13/Hors advice for efficient browser control updates
+		// =================================================================
+		
+		/**
+		 * Unpack BYOND's list2params format
+		 * BYOND sends params as a single '&' delimited string when using
+		 * output(list2params(...), "window:function")
+		 * 
+		 * @param args The arguments object from the function
+		 * @return Array of decoded parameter values
+		 */
+		function unpackParams(args) {
+			var result = [];
+			if(args.length === 1 && typeof args\[0] === 'string') {
+				// BYOND sends as single string with & delimiters
+				var parts = args\[0].split('&');
+				for(var i = 0; i < parts.length; i++) {
+					result.push(decodeURIComponent(parts\[i]));
+				}
+			} else {
+				// Already split arguments (fallback)
+				for(var i = 0; i < args.length; i++) {
+					result.push(decodeURIComponent(args\[i] || ''));
+				}
+			}
+			return result;
+		}
+		
+		/**
+		 * Show a feedback message with auto-hide
+		 * Requires an element with id="message" and class="message"
+		 * 
+		 * @param type Message type: 'success', 'error', 'warning', 'info'
+		 * @param text Message text to display
+		 * @param duration How long to show (ms), default 3000
+		 */
+		function showMessage(type, text, duration) {
+			duration = duration || 3000;
+			var el = document.getElementById('message');
+			if(!el) return;
+			
+			el.className = 'message ' + type;
+			el.textContent = text;
+			el.classList.remove('hidden');
+			el.style.display = 'block';
+			
+			if(duration > 0) {
+				setTimeout(function() {
+					el.classList.add('hidden');
+					el.style.display = 'none';
+				}, duration);
+			}
+		}
+		
+		/**
+		 * Update element innerHTML by ID
+		 * Use for content with HTML tags
+		 */
+		function updateElement(id, content) {
+			var el = document.getElementById(id);
+			if(el) el.innerHTML = content;
+		}
+		
+		/**
+		 * Update element textContent by ID
+		 * Use for plain text (safer, no HTML injection)
+		 */
+		function updateText(id, text) {
+			var el = document.getElementById(id);
+			if(el) el.textContent = text;
+		}
+		
+		/**
+		 * Update element attribute by ID
+		 */
+		function updateAttribute(id, attr, value) {
+			var el = document.getElementById(id);
+			if(el) el.setAttribute(attr, value);
+		}
+		
+		/**
+		 * Add or remove a CSS class from an element
+		 */
+		function toggleClass(id, className, add) {
+			var el = document.getElementById(id);
+			if(!el) return;
+			if(add) {
+				el.classList.add(className);
+			} else {
+				el.classList.remove(className);
+			}
+		}
+		
+		/**
+		 * Remove an element from the DOM by ID
+		 */
+		function removeElement(id) {
+			var el = document.getElementById(id);
+			if(el) el.remove();
+		}
+		
+		/**
+		 * Create and append an element to a container
+		 * 
+		 * @param containerId ID of the parent container
+		 * @param tagName HTML tag to create (div, span, etc)
+		 * @param id ID for the new element
+		 * @param className CSS classes for the new element
+		 * @param innerHTML Content for the new element
+		 */
+		function appendElement(containerId, tagName, id, className, innerHTML) {
+			var container = document.getElementById(containerId);
+			if(!container) return null;
+			
+			var el = document.createElement(tagName);
+			if(id) el.id = id;
+			if(className) el.className = className;
+			if(innerHTML) el.innerHTML = innerHTML;
+			
+			container.appendChild(el);
+			return el;
+		}
+		
+		/**
+		 * Clear all children from a container
+		 */
+		function clearContainer(containerId) {
+			var el = document.getElementById(containerId);
+			if(el) el.innerHTML = '';
+		}
+		
+		// Make helpers globally available for BYOND to call
+		window.unpackParams = unpackParams;
+		window.showMessage = showMessage;
+		window.updateElement = updateElement;
+		window.updateText = updateText;
+		window.updateAttribute = updateAttribute;
+		window.toggleClass = toggleClass;
+		window.removeElement = removeElement;
+		window.appendElement = appendElement;
+		window.clearContainer = clearContainer;
+		"}
+
+	/**
 	 * Get core JavaScript utilities for UI components
+	 * Includes Hors Pattern helpers + ChroniclesUI object
 	 * 
 	 * @return Core JavaScript utilities
 	 */		
 	proc/core_js()
-		var/js = {"			// Utility functions for Chronicles UI
+		var/js = hors_js()
+		js += {"
+			// =================================================================
+			// CHRONICLES UI UTILITIES
+			// Tab management, collapsible panels, sortable tables, etc.
+			// =================================================================
+			
 			var ChroniclesUI = {
 				// Initialize all UI components
 				init: function() {

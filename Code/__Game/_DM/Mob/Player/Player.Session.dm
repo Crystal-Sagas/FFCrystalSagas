@@ -20,12 +20,6 @@
 	/// Current battle position (if in battle)
 	var/battlePosition
 
-	/// Is player's turn in turn tracker?
-	var/isInTurnTracker = FALSE
-
-	/// Is player using a FATE encounter?
-	var/isUsingFATE = FALSE
-
 	/// Is player in building mode?
 	var/isBuilding = FALSE
 
@@ -59,7 +53,6 @@
 /datum/player_session/proc/resetBattleState()
 	isInBattle = FALSE
 	battlePosition = null
-	isInTurnTracker = FALSE
 
 /**
  * Resets AOE targeting state
@@ -78,6 +71,5 @@
 /datum/player_session/proc/cleanup()
 	resetBattleState()
 	resetAOEState()
-	isUsingFATE = FALSE
 	isBuilding = FALSE
 	hasTempEventMinStatus = FALSE

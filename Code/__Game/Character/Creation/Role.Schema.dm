@@ -36,16 +36,16 @@
 
 	P.role = name
 
-	// Apply resource bonuses
+	// Apply resource bonuses using new stat system
 	if(resourceBonuses["hp"])
-		P.hp += resourceBonuses["hp"]
-		P.mhp += resourceBonuses["hp"]
+		P.health?.addMaxValue(resourceBonuses["hp"])
+		P.health += resourceBonuses["hp"]
 	if(resourceBonuses["mp"])
-		P.mp += resourceBonuses["mp"]
-		P.mmp += resourceBonuses["mp"]
+		P.mana?.addMaxValue(resourceBonuses["mp"])
+		P.mana += resourceBonuses["mp"]
 	if(resourceBonuses["sp"])
-		P.sp += resourceBonuses["sp"]
-		P.msp += resourceBonuses["sp"]
+		P.stamina?.addMaxValue(resourceBonuses["sp"])
+		P.stamina += resourceBonuses["sp"]
 
 	// Apply combat bonuses
 	for(var/bonus in combatBonuses)

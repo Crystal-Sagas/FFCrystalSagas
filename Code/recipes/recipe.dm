@@ -9,6 +9,7 @@
 	var/Machine
 	var/Potion
 	var/material
+	var/weptier  // Alias for material tier (Bronze, Iron, Steel, etc.)
 	var/mat1
 	var/amount1
 	var/mat2
@@ -1477,7 +1478,7 @@
 					mat4="Bronze"
 					amount4=1
 					New()
-						var/obj/npc/Robots/T2/Defender/a=new
+						var/mob/npc/Summons/Robots/T2/Defender/a=new
 						src.creates=a
 				Striker
 					mat1="Iron"
@@ -1489,7 +1490,7 @@
 					mat4="Bronze"
 					amount4=1
 					New()
-						var/obj/npc/Robots/T2/Striker/a=new
+						var/mob/npc/Summons/Robots/T2/Striker/a=new
 						src.creates=a
 			T3
 				Blitzer
@@ -1502,7 +1503,7 @@
 					mat4="Bronze"
 					amount4=5
 					New()
-						var/obj/npc/Robots/T3/Blitzer/a=new
+						var/mob/npc/Summons/Robots/T3/Blitzer/a=new
 						src.creates=a
 				Guardian
 					mat1="Iron"
@@ -1514,7 +1515,7 @@
 					mat4="Bronze"
 					amount4=5
 					New()
-						var/obj/npc/Robots/T3/Guardian/a=new
+						var/mob/npc/Summons/Robots/T3/Guardian/a=new
 						src.creates=a
 		Magitek
 			T4
@@ -1532,7 +1533,7 @@
 					mat6="Adamantine"
 					amount6=10
 					New()
-						var/obj/npc/Robots/T4/MagitekArmor/a=new
+						var/mob/npc/Summons/Robots/T4/MagitekArmor/a=new
 						src.creates=a
 						src.name=a.name
 			T5
@@ -1550,7 +1551,7 @@
 					mat6="Adamantine"
 					amount6=20
 					New()
-						var/obj/npc/Robots/T5/MagitekMecha/a=new
+						var/mob/npc/Summons/Robots/T5/MagitekMecha/a=new
 						src.creates=a
 						src.name=a.name
 		Vehicles
@@ -1655,17 +1656,7 @@
 				src.creates=a
 		Faction
 			Global
-				Fategiver
-					name="FATE Giver"
-					mat1="Wool"
-					mat2="Leather"
-					mat3="Stone"
-					amount1=5
-					amount2=5
-					amount3=5
-					New()
-						var/obj/FATEGiver/a=new
-						src.creates=a
+				// NOTE: Fategiver recipe removed - FATE system removed
 				Recruiter
 					name="Military Recruiter"
 					mat1="Mythril"

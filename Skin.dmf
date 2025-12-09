@@ -1,5 +1,29 @@
 macro "macro"
 	elem
+		name = "W"
+		command = "onBind \"UP\" 1"
+	elem
+		name = "W+UP"
+		command = "onBind \"UP\" 0"
+	elem
+		name = "S"
+		command = "onBind \"DOWN\" 1"
+	elem
+		name = "S+UP"
+		command = "onBind \"DOWN\" 0"
+	elem
+		name = "A"
+		command = "onBind \"LEFT\" 1"
+	elem
+		name = "A+UP"
+		command = "onBind \"LEFT\" 0"
+	elem
+		name = "D"
+		command = "onBind \"RIGHT\" 1"
+	elem
+		name = "D+UP"
+		command = "onBind \"RIGHT\" 0"
+	elem
 		name = "Center+REP"
 		command = ".center"
 	elem
@@ -15,29 +39,53 @@ macro "macro"
 		name = "Northwest+REP"
 		command = ".northwest"
 	elem
+		name = "West"
+		command = "onBind \"LEFT\" 1"
+	elem
+		name = "West+UP"
+		command = "onBind \"LEFT\" 0"
+	elem
 		name = "SHIFT+West"
 		command = "turnleft"
 	elem
 		name = "West+REP"
-		command = ".west"
+		command = ""
+	elem
+		name = "North"
+		command = "onBind \"UP\" 1"
+	elem
+		name = "North+UP"
+		command = "onBind \"UP\" 0"
 	elem
 		name = "SHIFT+North"
 		command = "turnup"
 	elem
 		name = "North+REP"
-		command = ".north"
+		command = ""
+	elem
+		name = "East"
+		command = "onBind \"RIGHT\" 1"
+	elem
+		name = "East+UP"
+		command = "onBind \"RIGHT\" 0"
 	elem
 		name = "SHIFT+East"
 		command = "turnright"
 	elem
 		name = "East+REP"
-		command = ".east"
+		command = ""
+	elem
+		name = "South"
+		command = "onBind \"DOWN\" 1"
+	elem
+		name = "South+UP"
+		command = "onBind \"DOWN\" 0"
 	elem
 		name = "SHIFT+South"
 		command = "turndown"
 	elem
 		name = "South+REP"
-		command = ".south"
+		command = ""
 	elem
 		name = "C+UP"
 		command = "CharacterPanel"
@@ -51,6 +99,48 @@ macro "macro"
 		command = "Reacting"
 	elem
 		name = "X"
+	elem
+		name = "Z"
+		command = "onBind \"ATTACK_LIGHT\" 1"
+	elem
+		name = "Z+UP"
+		command = "onBind \"ATTACK_LIGHT\" 0"
+	elem
+		name = "X"
+		command = "onBind \"ATTACK_HEAVY\" 1"
+	elem
+		name = "X+UP"
+		command = "onBind \"ATTACK_HEAVY\" 0"
+	elem
+		name = "SHIFT"
+		command = "onBind \"BLOCK\" 1"
+	elem
+		name = "SHIFT+UP"
+		command = "onBind \"BLOCK\" 0"
+	elem
+		name = "SPACE"
+		command = "onBind \"DODGE\" 1"
+	elem
+		name = "SPACE+UP"
+		command = "onBind \"DODGE\" 0"
+	elem
+		name = "TAB"
+		command = "onBind \"LOCK_TARGET\" 1"
+	elem
+		name = "TAB+UP"
+		command = "onBind \"LOCK_TARGET\" 0"
+	elem
+		name = "Q"
+		command = "onBind \"SWITCH_TARGET_LEFT\" 1"
+	elem
+		name = "Q+UP"
+		command = "onBind \"SWITCH_TARGET_LEFT\" 0"
+	elem
+		name = "E"
+		command = "onBind \"SWITCH_TARGET_RIGHT\" 1"
+	elem
+		name = "E+UP"
+		command = "onBind \"SWITCH_TARGET_RIGHT\" 0"
 
 
 menu "menu"
@@ -66,6 +156,11 @@ menu "menu"
 	elem "Op"
 		name = "Options"
 		command = ""
+		saved-params = "is-checked"
+	elem
+		name = "Command Panel"
+		command = "Command-Panel"
+		category = "Options"
 		saved-params = "is-checked"
 	elem
 		name = "Admin Help"
@@ -85,6 +180,11 @@ menu "menu"
 	elem
 		name = "Save"
 		command = "SaveSelf"
+		category = "Options"
+		saved-params = "is-checked"
+	elem
+		name = "UI Theme"
+		command = "UI-Theme"
 		category = "Options"
 		saved-params = "is-checked"
 	elem
@@ -9206,6 +9306,7 @@ window "default"
 		size = 1000x939
 		anchor1 = 0,0
 		anchor2 = 65,100
+		zoom-mode = letterbox
 		saved-params = "zoom-mode"
 		on-size = ".on_viewport [[width]] [[height]]"
 	elem "browser1"

@@ -55,17 +55,6 @@ atom
 			m.SeeArmor()
 			m.SeeBuild()
 			m.SeeJewel()
-		UpdateStock(var/mob/m)
-			var/row
-			winset(m,"Stockwindow.Stockgrid","text=\"[usr.money]\"")
-			for(var/obj/item/stock/Stockgem/A in usr.contents)
-				row++
-				winset(m, "Stockgrid", "current-cell=1,[row]")
-				m << output(A,"Stockgrid")
-				if(A.stock>0)
-					A.suffix="[A.stock]"
-				winset(m, "Stockgrid", "current-cell=2,[row]")
-				m << output(A.suffix,"Stockgrid")
 
 obj
 	proc
@@ -226,8 +215,9 @@ obj
 						if("Buy")
 							var/amocho=input("How many?") as num
 							var/adjprice=(amocho*src.shopprice)
-							if(usr.money>=adjprice)
-								usr.money-=adjprice
+							var/currentMoney = usr.currency ? usr.currency.value : 0
+							if(currentMoney>=adjprice)
+								usr.currency.addValue(-adjprice)
 								for(var/obj/item/i in usr.contents)
 									if(i.name==src.name)
 										i.amount+=amocho

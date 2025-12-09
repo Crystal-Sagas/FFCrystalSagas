@@ -35,8 +35,8 @@ obj/playershops
 			if(src.shopowner==null||src.forsale)
 				switch(alert(usr,"This shop is currently forsale. Do you wish to purchase this shop? It will cost [shopcost]",,"Yes","No"))
 					if("Yes")
-						if(usr.money>=shopcost)
-							usr.money-=shopcost
+						if(usr.canAfford(shopcost))
+							usr.spendMoney(shopcost)
 							for(var/obj/playershops/s in world)
 								if(s.shopid==src.shopid)
 									s.shopowner=usr.ckey
@@ -162,7 +162,7 @@ obj/playershops
 						src.vis_contents=null
 						src.overlays+=choice.icon
 					if("Remove Money")
-						usr.money+=src.storedmon
+						usr.addMoney(src.storedmon)
 						view() << output("[usr.name] collects [storedmon] from the shoptable","icout")
 						src.storedmon=0
 					if("Cancel")
@@ -196,7 +196,7 @@ obj/playershops
 						switch(choices2)
 							if("Yes")
 								if(choice.amount>0)
-									if(usr.money<choice.cusprice)
+									if(!usr.canAfford(choice.cusprice))
 										alert(usr,"You don't even have enough to afford a single unit!")
 										return
 									var/numba = input("How many do you wish to purchase?") as num|null
@@ -206,10 +206,10 @@ obj/playershops
 									if(numba>choice.amount)
 										alert("There isn't that much for sale")
 										return
-									if(adjprice>usr.money)
+									if(!usr.canAfford(adjprice))
 										alert("You don't have enough money to buy that.")
 										return
-									usr.money-=adjprice
+									usr.spendMoney(adjprice)
 									src.storedmon+=adjprice
 									if(numba<choice.amount)
 										if(choice.craftingmaterialtrue==1)
@@ -230,10 +230,10 @@ obj/playershops
 										else
 											choice.Move(usr)
 								else
-									if(usr.money<choice.cusprice)
+									if(!usr.canAfford(choice.cusprice))
 										alert("You don't have enough to purchase this item.")
 										return
-									usr.money-=choice.cusprice
+									usr.spendMoney(choice.cusprice)
 									src.storedmon+=choice.cusprice
 									choice.Move(usr)
 								RefreshShop()

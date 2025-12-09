@@ -105,9 +105,9 @@ GLOBAL_DATUM_INIT(character_creation, /datum/character_creation_controller, new)
 	M.icon = 'Icons/Ghostflame.dmi'
 
 	// Initialize world state (from legacy Play())
-	M:Giveperk()
-	M:addLightPlane()
-	M:setLightOverlay(outside_light)
+	M.Giveperk()
+	M.addLightPlane()
+	M.setLightOverlay(outside_light)
 
 	// Set client view to follow player
 	if(M.client)
@@ -121,7 +121,7 @@ GLOBAL_DATUM_INIT(character_creation, /datum/character_creation_controller, new)
 
 	// Admin check
 	if(Admin4.Find(M.ckey) || M.client?.is_localhost())
-		M:adminlv = 4
+		M.adminlv = 4
 		winset(M, "default.Adminbut", "is-visible=true")
 		M.verbs += typesof(/mob/Admin/verb/)
 
@@ -133,12 +133,16 @@ GLOBAL_DATUM_INIT(character_creation, /datum/character_creation_controller, new)
 			M.client.screen -= i
 
 	// Initialize player state
-	M:intitlescreen = 0
-	M:see_invisible = 1
-	M:intutorial = 0
-	M:rpp = startingrpp
-	M:trpp = startingrpp
-	M:datejoined = time2text(world.realtime, "MM-DD-YYYY")
+	M.intitlescreen = 0
+	M.see_invisible = 1
+	M.intutorial = 0
+
+	// Initialize the stat system BEFORE any stat modifications
+	M.initializeStats()
+
+	M.roleplayPoints.setValue(startingRPP)
+	M.totalRoleplayPoints.setValue(startingRPP)
+	M.datejoined = time2text(world.realtime, "MM-DD-YYYY")
 	Checkreward(M)
 
 	// Welcome message - tell them to click the Moogle
@@ -158,7 +162,7 @@ GLOBAL_DATUM_INIT(character_creation, /datum/character_creation_controller, new)
 		return FALSE
 
 	// Prevent double creation
-	if(M:created)
+	if(M.created)
 		return FALSE
 
 	// Use browse chat dialogue system (async, non-blocking)
@@ -174,7 +178,7 @@ GLOBAL_DATUM_INIT(character_creation, /datum/character_creation_controller, new)
  * Preserved for fallback if browse chat is disabled
  */
 /datum/character_creation_controller/proc/beginCreationLegacy(mob/M)
-	M:created = 1
+	M.created = 1
 
 	// Welcome from Moogle
 	say(M, "Hello kupo! Let's create your character, kupo!")
@@ -190,7 +194,7 @@ GLOBAL_DATUM_INIT(character_creation, /datum/character_creation_controller, new)
 		return FALSE
 
 	// Step 3: Appearance Customization
-	M:ChangeBase()
+	M.ChangeBase()
 
 	// Step 4: Job Selection
 	if(!selectJob(M))
@@ -273,165 +277,117 @@ GLOBAL_DATUM_INIT(character_creation, /datum/character_creation_controller, new)
 	return TRUE
 
 /**
- * Apply race stats and perks using the legacy switch-case pattern
- * This preserves exact parity with the original Charcreate
+ * Apply race stats and perks using the new stat system
+ * Converted from legacy switch-case pattern to use StatGroup/StatPool
  */
 /datum/character_creation_controller/proc/applyRaceLegacy(mob/M, racechoice)
 	switch(racechoice)
 		if("Human")
-			M:race = "Human"
+			M.race = "Human"
 			var/obj/perk/Raceperks/Human/Willtoovercome/p1 = new
 			var/obj/perk/Raceperks/Human/Humandetermination/p2 = new
 			M.contents += p1
 			M.contents += p2
 		if("Genome")
-			M:race = "Genome"
+			M.race = "Genome"
 			var/obj/perk/Raceperks/Genome/Lifestreamconnection/p1 = new
 			M.contents += p1
-			M:str += 2
-			M:dex += 2
-			M:con += 2
-			M:Checkmod(1, M:str, M:addstr, M)
-			M:Checkmod(2, M:dex, M:adddex, M)
-			M:Checkmod(3, M:con, M:addcon, M)
-			M:Checkmod(4, M:int, M:addint, M)
-			M:Checkmod(5, M:wis, M:addwis, M)
-			M:Checkmod(6, M:cha, M:addcha, M)
+			M.strength.addBase(2)
+			M.dexterity.addBase(2)
+			M.constitution.addBase(2)
 		if("Golem")
-			M:race = "Golem"
+			M.race = "Golem"
 			var/obj/perk/Raceperks/Golem/Aetherconnection/p1 = new
 			M.contents += p1
-			M:wis += 2
-			M:int += 2
-			M:cha += 2
-			M:Checkmod(1, M:str, M:addstr, M)
-			M:Checkmod(2, M:dex, M:adddex, M)
-			M:Checkmod(3, M:con, M:addcon, M)
-			M:Checkmod(4, M:int, M:addint, M)
-			M:Checkmod(5, M:wis, M:addwis, M)
-			M:Checkmod(6, M:cha, M:addcha, M)
+			M.wisdom.addBase(2)
+			M.intelligence.addBase(2)
+			M.charisma.addBase(2)
 		if("Guado")
-			M:race = "Guado"
+			M.race = "Guado"
 			var/obj/perk/Raceperks/Guado/Guadophysiology/p1 = new
 			var/obj/perk/Raceperks/Guado/Connectiontodeath/p2 = new
 			var/obj/perk/Raceperks/Guado/GuadoRend/p3 = new
 			M.contents += p1
 			M.contents += p2
 			M.contents += p3
-			M:wis += 2
-			M:Checkmod(1, M:str, M:addstr, M)
-			M:Checkmod(2, M:dex, M:adddex, M)
-			M:Checkmod(3, M:con, M:addcon, M)
-			M:Checkmod(4, M:int, M:addint, M)
-			M:Checkmod(5, M:wis, M:addwis, M)
-			M:Checkmod(6, M:cha, M:addcha, M)
+			M.wisdom.addBase(2)
 		if("Ronso")
-			M:race = "Ronso"
+			M.race = "Ronso"
 			var/obj/perk/Raceperks/Ronso/NatureLore/p1 = new
 			var/obj/perk/Raceperks/Ronso/RonsoResilience/p2 = new
 			M.contents += p1
 			M.contents += p2
 			Bluemageint(M)
 		if("Cyborg")
-			M:race = "Cyborg"
+			M.race = "Cyborg"
 			var/obj/perk/Raceperks/Cyborg/Manacore/p1 = new
 			var/obj/perk/Raceperks/Cyborg/Cyberneticresilience/p2 = new
 			M.contents += p1
 			M.contents += p2
-			M:mp += 50
-			M:mmp += 50
-			M:dr += 3
-			M:baseac += 3
+			M.mana.addMaxValue(50)
+			M.mana.addValue(50)
+			M.damageReduction.addBase(3)
+			M.armorClass.addBase(3)
 		if("Miqo'te")
-			M:race = "Miqo'te"
+			M.race = "Miqo'te"
 			var/obj/perk/Raceperks/Miqote/Felinegrace/p1 = new
 			var/obj/perk/Raceperks/Miqote/Miqoteagility/p2 = new
 			M.contents += p1
 			M.contents += p2
 		if("Gnath")
-			M:race = "Gnath"
+			M.race = "Gnath"
 			var/obj/perk/Raceperks/Gnath/Layeredmuscle/p1 = new
 			var/obj/perk/Raceperks/Gnath/Exoskeleton/p2 = new
 			var/obj/perk/Raceperks/Gnath/Carapaceofravana/p3 = new
 			M.contents += p1
 			M.contents += p2
 			M.contents += p3
-			M:hp += 20
-			M:mhp += 20
-			M:str += 2
-			M:Checkmod(1, M:str, M:addstr, M)
-			M:Checkmod(2, M:dex, M:adddex, M)
-			M:Checkmod(3, M:con, M:addcon, M)
-			M:Checkmod(4, M:int, M:addint, M)
-			M:Checkmod(5, M:wis, M:addwis, M)
-			M:Checkmod(6, M:cha, M:addcha, M)
+			M.health.addMaxValue(20)
+			M.health.addValue(20)
+			M.strength.addBase(2)
 		if("Namazu")
-			M:race = "Namazu"
+			M.race = "Namazu"
 			var/obj/perk/Raceperks/Namazu/Thebigoneswisdom/p1 = new
 			var/obj/perk/Raceperks/Namazu/Craftergatherer/p2 = new
 			M.contents += p1
 			M.contents += p2
-			M:wis += 2
-			M:mp += 20
-			M:mmp += 20
-			M:maxcraftingroles += 1
-			M:maxgatheringroles += 1
-			M:maxnodes += 5
-			M:Checkmod(1, M:str, M:addstr, M)
-			M:Checkmod(2, M:dex, M:adddex, M)
-			M:Checkmod(3, M:con, M:addcon, M)
-			M:Checkmod(4, M:int, M:addint, M)
-			M:Checkmod(5, M:wis, M:addwis, M)
-			M:Checkmod(6, M:cha, M:addcha, M)
+			M.wisdom.addBase(2)
+			M.mana.addMaxValue(20)
+			M.mana.addValue(20)
+			M.maxcraftingroles += 1
+			M.maxgatheringroles += 1
+			M.maxnodes += 5
 		if("Viera")
-			M:race = "Viera"
+			M.race = "Viera"
 			var/obj/perk/Raceperks/Viera/Bunnyears/p1 = new
 			var/obj/perk/Raceperks/Viera/Rabbitlegs/p2 = new
 			M.contents += p1
 			M.contents += p2
 		if("Lalafell")
-			M:race = "Lalafell"
+			M.race = "Lalafell"
 			var/obj/perk/Raceperks/Lalafell/Naturalenchanters/p1 = new
 			var/obj/perk/Raceperks/Lalafell/Pintsize/p2 = new
 			var/obj/perk/Crafting/Enchanter/p3 = new
 			M.contents += p1
 			M.contents += p2
 			M.contents += p3
-			M:wis += 2
-			M:Checkmod(1, M:str, M:addstr, M)
-			M:Checkmod(2, M:dex, M:adddex, M)
-			M:Checkmod(3, M:con, M:addcon, M)
-			M:Checkmod(4, M:int, M:addint, M)
-			M:Checkmod(5, M:wis, M:addwis, M)
-			M:Checkmod(6, M:cha, M:addcha, M)
+			M.wisdom.addBase(2)
 		if("Elezen")
-			M:race = "Elezen"
+			M.race = "Elezen"
 			var/obj/perk/Raceperks/Elezen/ElezenPhysiology/p1 = new
 			var/obj/perk/Raceperks/Elezen/LifestreamsGift/p2 = new
 			var/obj/perk/Crafting/MateriaMelder/p3 = new
 			M.contents += p1
 			M.contents += p2
 			M.contents += p3
-			M:dex += 2
-			M:Checkmod(1, M:str, M:addstr, M)
-			M:Checkmod(2, M:dex, M:adddex, M)
-			M:Checkmod(3, M:con, M:addcon, M)
-			M:Checkmod(4, M:int, M:addint, M)
-			M:Checkmod(5, M:wis, M:addwis, M)
-			M:Checkmod(6, M:cha, M:addcha, M)
+			M.dexterity.addBase(2)
 		if("Roegadyn")
-			M:race = "Roegadyn"
+			M.race = "Roegadyn"
 			var/obj/perk/Raceperks/Roegadyn/Naturalsmithy/p1 = new
 			var/obj/perk/Raceperks/Roegadyn/Roegadynstrength/p2 = new
 			M.contents += p1
 			M.contents += p2
-			M:str += 2
-			M:Checkmod(1, M:str, M:addstr, M)
-			M:Checkmod(2, M:dex, M:adddex, M)
-			M:Checkmod(3, M:con, M:addcon, M)
-			M:Checkmod(4, M:int, M:addint, M)
-			M:Checkmod(5, M:wis, M:addwis, M)
-			M:Checkmod(6, M:cha, M:addcha, M)
+			M.strength.addBase(2)
 			switch(alert("Do you wish to start with weaponsmithing or armorsmithing?",,"Weapon","Armor"))
 				if("Weapon")
 					var/obj/perk/Crafting/Weapons/Weapons2/p4 = new
@@ -442,66 +398,60 @@ GLOBAL_DATUM_INIT(character_creation, /datum/character_creation_controller, new)
 					M.contents += p4
 					Checkspec(p4, M)
 		if("Au Ra")
-			M:race = "Au Ra"
+			M.race = "Au Ra"
 			var/obj/perk/Raceperks/AuRa/CranialProjections/p1 = new
 			var/obj/perk/Raceperks/AuRa/PreemptiveInstincts/p2 = new
 			M.contents += p1
 			M.contents += p2
 		if("Al-Bhed")
-			M:race = "Al-Bhed"
+			M.race = "Al-Bhed"
 			var/obj/perk/Raceperks/Albhed/MasterMachinist/p1 = new
 			var/obj/perk/Raceperks/Albhed/CriticalThinker/p2 = new
 			var/obj/perk/Raceperks/Albhed/Pilot/p3 = new
 			M.contents += p1
 			M.contents += p2
 			M.contents += p3
-			M:weapontypes += "Machinist"
+			M.weapontypes += "Machinist"
 			var/obj/perk/Jobperks/Machinist/InitiateRobiticist/p4 = new
 			var/obj/perk/Jobperks/Machinist/BasicMachinaWeaponsmith/p5 = new
 			M.contents += p4
 			M.contents += p5
-			M:int += 2
-			M:hp += 30
-			M:mhp += 30
-			M:mp += 30
-			M:mmp += 30
-			M:Checkmod(1, M:str, M:addstr, M)
-			M:Checkmod(2, M:dex, M:adddex, M)
-			M:Checkmod(3, M:con, M:addcon, M)
-			M:Checkmod(4, M:int, M:addint, M)
-			M:Checkmod(5, M:wis, M:addwis, M)
-			M:Checkmod(6, M:cha, M:addcha, M)
+			M.intelligence.addBase(2)
+			M.health.addMaxValue(30)
+			M.health.addValue(30)
+			M.mana.addMaxValue(30)
+			M.mana.addValue(30)
 		if("Moogle")
-			M:race = "Moogle"
+			M.race = "Moogle"
 			var/obj/perk/Raceperks/Moogle/Mooglepower/p1 = new
 			var/obj/perk/Raceperks/Moogle/Cutething/p2 = new
 			M.contents += p1
 			M.contents += p2
-			M:mp += 50
-			M:mmp += 50
-			M:maxnodes += 5
+			M.mana.addMaxValue(50)
+			M.mana.addValue(50)
+			M.maxnodes += 5
 		if("Gria")
-			M:race = "Gria"
+			M.race = "Gria"
 			var/obj/perk/Raceperks/Gria/Innerstrength/p1 = new
 			var/obj/perk/Raceperks/Gria/Griastamina/p2 = new
 			M.contents += p1
 			M.contents += p2
-			M:dr += 1
-			M:hp += 10
-			M:mhp += 10
+			M.damageReduction.addBase(1)
+			M.health.addMaxValue(10)
+			M.health.addValue(10)
 		if("Cetra")
-			M:race = "Cetra"
+			M.race = "Cetra"
 			var/obj/perk/Raceperks/Cetra/AncientPower/p1 = new
 			var/obj/perk/Raceperks/Cetra/VoiceofAncients/p2 = new
 			var/obj/perk/Raceperks/Cetra/PrayerofPower/p3 = new
 			M.contents += p1
 			M.contents += p2
 			M.contents += p3
-			M:mab += 2
-			M:hp += 20
-			M:mhp += 20
-			M:mp += 20
-			M:mmp += 20
+			M.magicalAttack.addBase(2)
+			M.health.addMaxValue(20)
+			M.health.addValue(20)
+			M.mana.addMaxValue(20)
+			M.mana.addValue(20)
 
 // ============================================================================
 // Job Selection
@@ -511,11 +461,11 @@ GLOBAL_DATUM_INIT(character_creation, /datum/character_creation_controller, new)
  * Handle job selection step
  */
 /datum/character_creation_controller/proc/selectJob(mob/M)
-	say(M, "A [M:race] kupo? I should have figured you for one. What job are you kupo?")
+	say(M, "A [M.race] kupo? I should have figured you for one. What job are you kupo?")
 
 	// Skip job selection for Al-Bhed (they have special handling)
-	if(M:race == "Al-Bhed")
-		M:job = "Machinist"
+	if(M.race == "Al-Bhed")
+		M.job = "Machinist"
 		return TRUE
 
 	// Get available jobs from registry
@@ -568,7 +518,7 @@ GLOBAL_DATUM_INIT(character_creation, /datum/character_creation_controller, new)
  * This preserves exact parity with the original Charcreate
  */
 /datum/character_creation_controller/proc/applyJobLegacy(mob/M, jobchoice)
-	M:job = jobchoice
+	M.job = jobchoice
 
 	switch(jobchoice)
 		if("Mystic Knight")
@@ -576,266 +526,266 @@ GLOBAL_DATUM_INIT(character_creation, /datum/character_creation_controller, new)
 			M.contents += p1
 			Magicuseincrease(M, 2, 3)
 			Magicuseincrease(M, 4, 2)
-			M:mhp += 55
-			M:hp += 55
-			M:mmp += 55
-			M:mp += 55
-			M:msp += 55
-			M:sp += 55
+			M.health.addMaxValue(55)
+			M.health.addValue(55)
+			M.mana.addMaxValue(55)
+			M.mana.addValue(55)
+			M.stamina.addMaxValue(55)
+			M.stamina.addValue(55)
 		if("Chocobo Knight")
 			var/obj/perk/Jobperks/ChocoboKnight/ChocoboKnight/p1 = new
-			var/obj/npc/Summons/CRank/ChocoSteed/p2 = new
+			var/mob/npc/Summons/CRank/ChocoSteed/p2 = new
 			M.contents += p1
 			M.contents += p2
-			M:mhp += 80
-			M:hp += 80
-			M:mmp += 40
-			M:mp += 40
-			M:msp += 70
-			M:sp += 70
+			M.health.addMaxValue(80)
+			M.health.addValue(80)
+			M.mana.addMaxValue(40)
+			M.mana.addValue(40)
+			M.stamina.addMaxValue(70)
+			M.stamina.addValue(70)
 		if("Pirate")
 			var/obj/perk/Jobperks/Pirate/Pirate/p1 = new
 			M.contents += p1
-			M:mhp += 40
-			M:hp += 40
-			M:mmp += 70
-			M:mp += 70
-			M:msp += 70
-			M:sp += 70
+			M.health.addMaxValue(40)
+			M.health.addValue(40)
+			M.mana.addMaxValue(70)
+			M.mana.addValue(70)
+			M.stamina.addMaxValue(70)
+			M.stamina.addValue(70)
 		if("Gladiator")
 			var/obj/perk/Jobperks/Gladiator/Gladiator/p1 = new
 			M.contents += p1
-			M:mhp += 50
-			M:hp += 50
-			M:mmp += 40
-			M:mp += 40
-			M:msp += 80
-			M:sp += 80
+			M.health.addMaxValue(50)
+			M.health.addValue(50)
+			M.mana.addMaxValue(40)
+			M.mana.addValue(40)
+			M.stamina.addMaxValue(80)
+			M.stamina.addValue(80)
 		if("Astrologian")
 			var/obj/perk/Jobperks/Astrologian/Astrologian/p1 = new
 			M.contents += p1
-			M:hp += 30
-			M:mhp += 30
-			M:mp += 60
-			M:mmp += 60
-			M:sp += 30
-			M:msp += 30
+			M.health.addMaxValue(30)
+			M.health.addValue(30)
+			M.mana.addMaxValue(60)
+			M.mana.addValue(60)
+			M.stamina.addMaxValue(30)
+			M.stamina.addValue(30)
 		if("Viking")
 			var/obj/perk/Jobperks/Viking/Viking/p1 = new
 			M.contents += p1
-			M:mhp += 60
-			M:hp += 60
-			M:mmp += 30
-			M:mp += 30
-			M:msp += 80
-			M:sp += 80
+			M.health.addMaxValue(60)
+			M.health.addValue(60)
+			M.mana.addMaxValue(30)
+			M.mana.addValue(30)
+			M.stamina.addMaxValue(80)
+			M.stamina.addValue(80)
 		if("Bard")
 			var/obj/perk/Jobperks/Bard/Bard/p1 = new
 			M.contents += p1
-			M:mhp += 40
-			M:hp += 40
-			M:mmp += 50
-			M:mp += 50
-			M:msp += 60
-			M:sp += 60
+			M.health.addMaxValue(40)
+			M.health.addValue(40)
+			M.mana.addMaxValue(50)
+			M.mana.addValue(50)
+			M.stamina.addMaxValue(60)
+			M.stamina.addValue(60)
 		if("Dancer")
 			var/obj/perk/Jobperks/Dancer/Dancer/p1 = new
 			M.contents += p1
-			M:mhp += 40
-			M:hp += 40
-			M:mmp += 50
-			M:mp += 50
-			M:msp += 60
-			M:sp += 60
+			M.health.addMaxValue(40)
+			M.health.addValue(40)
+			M.mana.addMaxValue(50)
+			M.mana.addValue(50)
+			M.stamina.addMaxValue(60)
+			M.stamina.addValue(60)
 		if("Black Mage")
 			var/obj/perk/Jobperks/BlackMage/BlackMage/p1 = new
 			M.contents += p1
-			M:mhp += 20
-			M:hp += 20
-			M:mmp += 80
-			M:mp += 80
-			M:msp += 30
-			M:sp += 30
+			M.health.addMaxValue(20)
+			M.health.addValue(20)
+			M.mana.addMaxValue(80)
+			M.mana.addValue(80)
+			M.stamina.addMaxValue(30)
+			M.stamina.addValue(30)
 		if("White Mage")
 			var/obj/perk/Jobperks/WhiteMage/WhiteMage/p1 = new
 			M.contents += p1
-			M:mhp += 30
-			M:hp += 30
-			M:mmp += 80
-			M:mp += 80
-			M:msp += 30
-			M:sp += 30
+			M.health.addMaxValue(30)
+			M.health.addValue(30)
+			M.mana.addMaxValue(80)
+			M.mana.addValue(80)
+			M.stamina.addMaxValue(30)
+			M.stamina.addValue(30)
 		if("Red Mage")
 			var/obj/perk/Jobperks/RedMage/RedMage/p1 = new
 			M.contents += p1
-			M:mhp += 40
-			M:hp += 40
-			M:mmp += 60
-			M:mp += 60
-			M:msp += 40
-			M:sp += 40
+			M.health.addMaxValue(40)
+			M.health.addValue(40)
+			M.mana.addMaxValue(60)
+			M.mana.addValue(60)
+			M.stamina.addMaxValue(40)
+			M.stamina.addValue(40)
 		if("Blue Mage")
 			var/obj/perk/Jobperks/BlueMage/BlueMage/p1 = new
 			M.contents += p1
 			Bluemageint(M)
-			M:mhp += 40
-			M:hp += 40
-			M:mmp += 60
-			M:mp += 60
-			M:msp += 40
-			M:sp += 40
+			M.health.addMaxValue(40)
+			M.health.addValue(40)
+			M.mana.addMaxValue(60)
+			M.mana.addValue(60)
+			M.stamina.addMaxValue(40)
+			M.stamina.addValue(40)
 		if("Ranger")
 			var/obj/perk/Jobperks/Ranger/Ranger/p1 = new
 			M.contents += p1
-			M:mhp += 50
-			M:hp += 50
-			M:mmp += 50
-			M:mp += 50
-			M:msp += 50
-			M:sp += 50
+			M.health.addMaxValue(50)
+			M.health.addValue(50)
+			M.mana.addMaxValue(50)
+			M.mana.addValue(50)
+			M.stamina.addMaxValue(50)
+			M.stamina.addValue(50)
 		if("Monk")
 			var/obj/perk/Jobperks/Monk/Monk/p1 = new
 			M.contents += p1
-			M:mhp += 60
-			M:hp += 60
-			M:mmp += 40
-			M:mp += 40
-			M:msp += 70
-			M:sp += 70
+			M.health.addMaxValue(60)
+			M.health.addValue(60)
+			M.mana.addMaxValue(40)
+			M.mana.addValue(40)
+			M.stamina.addMaxValue(70)
+			M.stamina.addValue(70)
 		if("Beast Master")
 			var/obj/perk/Jobperks/BeastMaster/BeastMaster/p1 = new
 			M.contents += p1
-			M:mhp += 50
-			M:hp += 50
-			M:mmp += 40
-			M:mp += 40
-			M:msp += 50
-			M:sp += 50
+			M.health.addMaxValue(50)
+			M.health.addValue(50)
+			M.mana.addMaxValue(40)
+			M.mana.addValue(40)
+			M.stamina.addMaxValue(50)
+			M.stamina.addValue(50)
 		if("Samurai")
 			var/obj/perk/Jobperks/Samurai/Samurai/p1 = new
 			M.contents += p1
-			M:mhp += 60
-			M:hp += 60
-			M:mmp += 30
-			M:mp += 30
-			M:msp += 70
-			M:sp += 70
+			M.health.addMaxValue(60)
+			M.health.addValue(60)
+			M.mana.addMaxValue(30)
+			M.mana.addValue(30)
+			M.stamina.addMaxValue(70)
+			M.stamina.addValue(70)
 		if("Spellblade")
 			var/obj/perk/Jobperks/Spellblade/Spellblade/p1 = new
 			M.contents += p1
-			M:mhp += 50
-			M:hp += 50
-			M:mmp += 50
-			M:mp += 50
-			M:msp += 50
-			M:sp += 50
+			M.health.addMaxValue(50)
+			M.health.addValue(50)
+			M.mana.addMaxValue(50)
+			M.mana.addValue(50)
+			M.stamina.addMaxValue(50)
+			M.stamina.addValue(50)
 		if("Rogue")
 			var/obj/perk/Jobperks/Rogue/Rogue/p1 = new
 			M.contents += p1
-			M:mhp += 40
-			M:hp += 40
-			M:mmp += 40
-			M:mp += 40
-			M:msp += 80
-			M:sp += 80
+			M.health.addMaxValue(40)
+			M.health.addValue(40)
+			M.mana.addMaxValue(40)
+			M.mana.addValue(40)
+			M.stamina.addMaxValue(80)
+			M.stamina.addValue(80)
 		if("Paladin")
 			var/obj/perk/Jobperks/Paladin/Paladin/p1 = new
 			M.contents += p1
-			M:mhp += 70
-			M:hp += 70
-			M:mmp += 50
-			M:mp += 50
-			M:msp += 50
-			M:sp += 50
+			M.health.addMaxValue(70)
+			M.health.addValue(70)
+			M.mana.addMaxValue(50)
+			M.mana.addValue(50)
+			M.stamina.addMaxValue(50)
+			M.stamina.addValue(50)
 		if("Knight")
 			var/obj/perk/Jobperks/Knight/Knight/p1 = new
 			M.contents += p1
-			M:mhp += 80
-			M:hp += 80
-			M:mmp += 30
-			M:mp += 30
-			M:msp += 60
-			M:sp += 60
+			M.health.addMaxValue(80)
+			M.health.addValue(80)
+			M.mana.addMaxValue(30)
+			M.mana.addValue(30)
+			M.stamina.addMaxValue(60)
+			M.stamina.addValue(60)
 		if("Dark Knight")
 			var/obj/perk/Jobperks/DarkKnight/DarkKnight/p1 = new
 			M.contents += p1
-			M:mhp += 60
-			M:hp += 60
-			M:mmp += 60
-			M:mp += 60
-			M:msp += 50
-			M:sp += 50
+			M.health.addMaxValue(60)
+			M.health.addValue(60)
+			M.mana.addMaxValue(60)
+			M.mana.addValue(60)
+			M.stamina.addMaxValue(50)
+			M.stamina.addValue(50)
 		if("Dragoon")
 			var/obj/perk/Jobperks/Dragoon/Dragoon/p1 = new
 			M.contents += p1
-			M:mhp += 60
-			M:hp += 60
-			M:mmp += 40
-			M:mp += 40
-			M:msp += 60
-			M:sp += 60
+			M.health.addMaxValue(60)
+			M.health.addValue(60)
+			M.mana.addMaxValue(40)
+			M.mana.addValue(40)
+			M.stamina.addMaxValue(60)
+			M.stamina.addValue(60)
 		if("Machinist")
 			var/obj/perk/Jobperks/Machinist/Machinist/p1 = new
 			M.contents += p1
-			M:weapontypes += "Machinist"
-			M:mhp += 50
-			M:hp += 50
-			M:mmp += 50
-			M:mp += 50
-			M:msp += 50
-			M:sp += 50
+			M.weapontypes += "Machinist"
+			M.health.addMaxValue(50)
+			M.health.addValue(50)
+			M.mana.addMaxValue(50)
+			M.mana.addValue(50)
+			M.stamina.addMaxValue(50)
+			M.stamina.addValue(50)
 		if("Summoner")
 			var/obj/perk/Jobperks/Summoner/Summoner/p1 = new
 			M.contents += p1
-			M:mhp += 30
-			M:hp += 30
-			M:mmp += 80
-			M:mp += 80
-			M:msp += 30
-			M:sp += 30
+			M.health.addMaxValue(30)
+			M.health.addValue(30)
+			M.mana.addMaxValue(80)
+			M.mana.addValue(80)
+			M.stamina.addMaxValue(30)
+			M.stamina.addValue(30)
 		if("Chemist")
 			var/obj/perk/Jobperks/Chemist/Chemist/p1 = new
 			M.contents += p1
-			M:weapontypes += "Chemist"
-			M:hp += 30
-			M:mhp += 30
-			M:mp += 30
-			M:mmp += 30
-			M:sp += 30
-			M:msp += 30
-			M:maxnodes += 10
+			M.weapontypes += "Chemist"
+			M.health.addMaxValue(30)
+			M.health.addValue(30)
+			M.mana.addMaxValue(30)
+			M.mana.addValue(30)
+			M.stamina.addMaxValue(30)
+			M.stamina.addValue(30)
+			M.maxnodes += 10
 		if("Geomancer")
 			var/obj/perk/Jobperks/Geomancer/Geomancer/p1 = new
 			M.contents += p1
-			M:hp += 40
-			M:mhp += 40
-			M:mp += 60
-			M:mmp += 60
-			M:sp += 30
-			M:msp += 30
+			M.health.addMaxValue(40)
+			M.health.addValue(40)
+			M.mana.addMaxValue(60)
+			M.mana.addValue(60)
+			M.stamina.addMaxValue(30)
+			M.stamina.addValue(30)
 		if("Time Mage")
 			var/obj/perk/Jobperks/TimeMage/TimeMage/p1 = new
 			M.contents += p1
-			M:hp += 10
-			M:mhp += 10
-			M:mp += 100
-			M:mmp += 100
-			M:sp += 10
-			M:msp += 10
-			M:whitemagicable = 2
-			M:blackmagicable = 2
-			M:arcanemagicable = 2
-			M:greenmagicable = 2
+			M.health.addMaxValue(10)
+			M.health.addValue(10)
+			M.mana.addMaxValue(100)
+			M.mana.addValue(100)
+			M.stamina.addMaxValue(10)
+			M.stamina.addValue(10)
+			M.whitemagicable = 2
+			M.blackmagicable = 2
+			M.arcanemagicable = 2
+			M.greenmagicable = 2
 		if("Oracle")
 			var/obj/perk/Jobperks/Oracle/p1 = new
 			M.contents += p1
-			M:hp += 20
-			M:mhp += 20
-			M:mp += 60
-			M:mmp += 60
-			M:sp += 60
-			M:msp += 60
-			M:whitemagicable = 4
+			M.health.addMaxValue(20)
+			M.health.addValue(20)
+			M.mana.addMaxValue(60)
+			M.mana.addValue(60)
+			M.stamina.addMaxValue(60)
+			M.stamina.addValue(60)
+			M.whitemagicable = 4
 		if("L'cie")
 			var/obj/perk/Jobperks/Lcies/Lcie/p1 = new
 			M.contents += p1
@@ -849,7 +799,7 @@ GLOBAL_DATUM_INIT(character_creation, /datum/character_creation_controller, new)
  * Handle role selection step
  */
 /datum/character_creation_controller/proc/selectRole(mob/M)
-	say(M, "A [M:job] kupo? Ok ok next, pick your role.")
+	say(M, "A [M.job] kupo? Ok ok next, pick your role.")
 
 	// Get available roles from registry
 	var/list/available = getAvailableRoles()
@@ -898,111 +848,111 @@ GLOBAL_DATUM_INIT(character_creation, /datum/character_creation_controller, new)
 
 	switch(rolechoice)
 		if("Melee Tank")
-			M:role = "Melee Tank"
+			M.role = "Melee Tank"
 			hproll = 130
 			mproll = 60
 			sproll = 100
-			M:mhp += hproll
-			M:hp += hproll
-			M:mmp += mproll
-			M:mp += mproll
-			M:msp += sproll
-			M:sp += sproll
-			M:baseac += 2
-			M:basedr += 4
+			M.health.addMaxValue(hproll)
+			M.health.addValue(hproll)
+			M.mana.addMaxValue(mproll)
+			M.mana.addValue(mproll)
+			M.stamina.addMaxValue(sproll)
+			M.stamina.addValue(sproll)
+			M.armorClass.addBase(2)
+			M.damageReduction.addBase(4)
 			var/obj/perk/Roleperks/MeleeTank/k = new
 			M.contents += k
 		if("Tank Caster")
-			M:role = "Tank Caster"
+			M.role = "Tank Caster"
 			hproll = 120
 			mproll = 100
 			sproll = 50
-			M:mhp += hproll
-			M:hp += hproll
-			M:mmp += mproll
-			M:mp += mproll
-			M:msp += sproll
-			M:sp += sproll
-			M:baseac += 2
-			M:basedr += 4
+			M.health.addMaxValue(hproll)
+			M.health.addValue(hproll)
+			M.mana.addMaxValue(mproll)
+			M.mana.addValue(mproll)
+			M.stamina.addMaxValue(sproll)
+			M.stamina.addValue(sproll)
+			M.armorClass.addBase(2)
+			M.damageReduction.addBase(4)
 			var/obj/perk/Roleperks/CasterTank/k = new
 			M.contents += k
 		if("Physical DPS")
-			M:role = "Physical DPS"
+			M.role = "Physical DPS"
 			hproll = 90
 			mproll = 80
 			sproll = 120
-			M:mhp += hproll
-			M:hp += hproll
-			M:mmp += mproll
-			M:mp += mproll
-			M:msp += sproll
-			M:sp += sproll
-			M:pab += 3
-			M:pdb += 8
+			M.health.addMaxValue(hproll)
+			M.health.addValue(hproll)
+			M.mana.addMaxValue(mproll)
+			M.mana.addValue(mproll)
+			M.stamina.addMaxValue(sproll)
+			M.stamina.addValue(sproll)
+			M.physicalAttack.addBase(3)
+			M.physicalDefense.addBase(8)
 			var/obj/perk/Roleperks/PhysicalDPS/k = new
 			M.contents += k
 		if("Magical DPS")
-			M:role = "Magical DPS"
+			M.role = "Magical DPS"
 			hproll = 90
 			mproll = 120
 			sproll = 60
-			M:mhp += hproll
-			M:hp += hproll
-			M:mmp += mproll
-			M:mp += mproll
-			M:msp += sproll
-			M:sp += sproll
-			M:mab += 3
-			M:mdb += 8
+			M.health.addMaxValue(hproll)
+			M.health.addValue(hproll)
+			M.mana.addMaxValue(mproll)
+			M.mana.addValue(mproll)
+			M.stamina.addMaxValue(sproll)
+			M.stamina.addValue(sproll)
+			M.magicalAttack.addBase(3)
+			M.magicalDefense.addBase(8)
 			var/obj/perk/Roleperks/MagicalDPS/k = new
 			M.contents += k
 		if("Magical Support")
-			M:role = "Magical Support"
+			M.role = "Magical Support"
 			hproll = 60
 			mproll = 130
 			sproll = 60
-			M:mhp += hproll
-			M:hp += hproll
-			M:mmp += mproll
-			M:mp += mproll
-			M:msp += sproll
-			M:sp += sproll
-			M:mab += 1
+			M.health.addMaxValue(hproll)
+			M.health.addValue(hproll)
+			M.mana.addMaxValue(mproll)
+			M.mana.addValue(mproll)
+			M.stamina.addMaxValue(sproll)
+			M.stamina.addValue(sproll)
+			M.magicalAttack.addBase(1)
 			var/obj/perk/Roleperks/MagicalSupport/k = new
 			M.contents += k
 		if("Physical Support")
-			M:role = "Physical Support"
+			M.role = "Physical Support"
 			hproll = 70
 			mproll = 70
 			sproll = 120
-			M:mhp += hproll
-			M:hp += hproll
-			M:mmp += mproll
-			M:mp += mproll
-			M:msp += sproll
-			M:sp += sproll
-			M:pab += 1
+			M.health.addMaxValue(hproll)
+			M.health.addValue(hproll)
+			M.mana.addMaxValue(mproll)
+			M.mana.addValue(mproll)
+			M.stamina.addMaxValue(sproll)
+			M.stamina.addValue(sproll)
+			M.physicalAttack.addBase(1)
 			var/obj/perk/Roleperks/PhysicalSupport/k = new
 			M.contents += k
 		if("Generalist")
-			M:role = "Generalist"
+			M.role = "Generalist"
 			hproll = 60
 			mproll = 60
 			sproll = 60
-			M:mhp += hproll
-			M:hp += hproll
-			M:mmp += mproll
-			M:mp += mproll
-			M:msp += sproll
-			M:sp += sproll
-			M:baseac += 2
-			M:basedr += 2
-			M:mab += 2
-			M:pab += 2
-			M:mdb += 5
-			M:pdb += 5
-			M:rpp += 5
+			M.health.addMaxValue(hproll)
+			M.health.addValue(hproll)
+			M.mana.addMaxValue(mproll)
+			M.mana.addValue(mproll)
+			M.stamina.addMaxValue(sproll)
+			M.stamina.addValue(sproll)
+			M.armorClass.addBase(2)
+			M.damageReduction.addBase(2)
+			M.magicalAttack.addBase(2)
+			M.physicalAttack.addBase(2)
+			M.magicalDefense.addBase(5)
+			M.physicalDefense.addBase(5)
+			M.roleplayPoints.addValue(5)
 			var/obj/perk/Roleperks/Generalist/k = new
 			M.contents += k
 
@@ -1019,7 +969,7 @@ GLOBAL_DATUM_INIT(character_creation, /datum/character_creation_controller, new)
 	say(M, "Hmm finally what equipment do you wish to use? You only get three slots for now.")
 
 	// Always grant accessory type
-	M:weapontypes += "accessory"
+	M.weapontypes += "accessory"
 
 	// Use legacy equipment selection for now
 	selectEquipmentLegacy(M)
@@ -1030,11 +980,11 @@ GLOBAL_DATUM_INIT(character_creation, /datum/character_creation_controller, new)
 /datum/character_creation_controller/proc/selectEquipmentLegacy(mob/M)
 	var/list/equip = list("Light Armor","Medium Armor","Heavy Armor","Shield","Tower Shield","Shuriken","Rod","Throwing Knives","Longsword","Scimitar","Hammer","Axe","Dagger","Claw","Gauntlet","Whip","Greatsword","Katana","Spear","Scythe","Bow","Bow Sword","Focus Sword","Staff","Tome","Sword Spear","Thief Sword","Bolt Rapier","Whipblade","Akademia Card","Buster Sword","Blitzball","Gun Blade","Ba'gangsaw","Gun Arm","Magitek Pistol","Magitek Rifle")
 
-	M:wpntypeamount = 0
+	M.wpntypeamount = 0
 
-	while(M:wpntypeamount < maxEquipmentSlots)
+	while(M.wpntypeamount < maxEquipmentSlots)
 		// Remove 2-slot items if only 1 slot remaining
-		if(M:wpntypeamount == 2)
+		if(M.wpntypeamount == 2)
 			equip -= "Sword Spear"
 			equip -= "Thief Sword"
 			equip -= "Bolt Rapier"
@@ -1047,7 +997,7 @@ GLOBAL_DATUM_INIT(character_creation, /datum/character_creation_controller, new)
 			equip -= "Morphing Blade"
 			equip -= "Gun Arm"
 
-		var/equipchoice = askChoice(M, "Make your choices. ([M:wpntypeamount]/[maxEquipmentSlots] slots used)", equip)
+		var/equipchoice = askChoice(M, "Make your choices. ([M.wpntypeamount]/[maxEquipmentSlots] slots used)", equip)
 		if(!equipchoice)
 			break
 
@@ -1060,191 +1010,191 @@ GLOBAL_DATUM_INIT(character_creation, /datum/character_creation_controller, new)
 /datum/character_creation_controller/proc/applyEquipmentLegacy(mob/M, equipchoice)
 	switch(equipchoice)
 		if("Light Armor")
-			M:weapontypes += "Light Armor"
-			M:wpntypeamount += 1
+			M.weapontypes += "Light Armor"
+			M.wpntypeamount += 1
 			var/obj/item/Weapon/Armor/LightArmor/Bronze/i = new
 			M.contents += i
 		if("Medium Armor")
-			M:weapontypes += "Medium Armor"
-			M:wpntypeamount += 1
+			M.weapontypes += "Medium Armor"
+			M.wpntypeamount += 1
 			var/obj/item/Weapon/Armor/MediumArmor/Bronze/i = new
 			M.contents += i
 		if("Heavy Armor")
-			M:weapontypes += "Heavy Armor"
-			M:wpntypeamount += 1
+			M.weapontypes += "Heavy Armor"
+			M.wpntypeamount += 1
 			var/obj/item/Weapon/Armor/HeavyArmor/Bronze/i = new
 			M.contents += i
 		if("Shield")
-			M:weapontypes += "Shield"
-			M:wpntypeamount += 1
+			M.weapontypes += "Shield"
+			M.wpntypeamount += 1
 			var/obj/item/Weapon/Armor/Shield/Bronze/i = new
 			M.contents += i
 		if("Tower Shield")
-			M:weapontypes += "Tower Shield"
-			M:wpntypeamount += 1
+			M.weapontypes += "Tower Shield"
+			M.wpntypeamount += 1
 			var/obj/item/Weapon/Armor/TowerShield/Bronze/i = new
 			M.contents += i
 		if("Throwing Knives")
-			M:weapontypes += "Throwing Knives"
-			M:wpntypeamount += 1
+			M.weapontypes += "Throwing Knives"
+			M.wpntypeamount += 1
 			var/obj/item/Weapon/Ranged/ThrowingWeapons/ThrowingKnives/Bronze/i = new
 			M.contents += i
 		if("Shuriken")
-			M:weapontypes += "Shuriken"
-			M:wpntypeamount += 1
+			M.weapontypes += "Shuriken"
+			M.wpntypeamount += 1
 			var/obj/item/Weapon/Ranged/ThrowingWeapons/Shuriken/Bronze/i = new
 			M.contents += i
 		if("Scimitar")
-			M:weapontypes += "Scimitar"
-			M:wpntypeamount += 1
+			M.weapontypes += "Scimitar"
+			M.wpntypeamount += 1
 			var/obj/item/Weapon/Melee/Scimitar/Bronze/i = new
 			M.contents += i
 		if("Rod")
-			M:weapontypes += "Rod"
-			M:wpntypeamount += 1
+			M.weapontypes += "Rod"
+			M.wpntypeamount += 1
 			var/obj/item/Weapon/Magical/Rod/Bronze/i = new
 			M.contents += i
 		if("Longsword")
-			M:weapontypes += "Longsword"
-			M:wpntypeamount += 1
+			M.weapontypes += "Longsword"
+			M.wpntypeamount += 1
 			var/obj/item/Weapon/Melee/Longsword/Bronze/i = new
 			M.contents += i
 		if("Hammer")
-			M:weapontypes += "Hammer"
-			M:wpntypeamount += 1
+			M.weapontypes += "Hammer"
+			M.wpntypeamount += 1
 			var/obj/item/Weapon/Melee/Hammer/Bronze/i = new
 			M.contents += i
 		if("Axe")
-			M:weapontypes += "Axe"
-			M:wpntypeamount += 1
+			M.weapontypes += "Axe"
+			M.wpntypeamount += 1
 			var/obj/item/Weapon/Melee/Axe/Bronze/i = new
 			M.contents += i
 		if("Dagger")
-			M:weapontypes += "Dagger"
-			M:wpntypeamount += 1
+			M.weapontypes += "Dagger"
+			M.wpntypeamount += 1
 			var/obj/item/Weapon/Melee/Dagger/Bronze/i = new
 			M.contents += i
 		if("Claw")
-			M:weapontypes += "Claw"
-			M:wpntypeamount += 1
+			M.weapontypes += "Claw"
+			M.wpntypeamount += 1
 			var/obj/item/Weapon/Melee/Claw/Bronze/i = new
 			M.contents += i
 		if("Gauntlet")
-			M:weapontypes += "Gauntlet"
-			M:wpntypeamount += 1
+			M.weapontypes += "Gauntlet"
+			M.wpntypeamount += 1
 			var/obj/item/Weapon/Melee/Gauntlet/Bronze/i = new
 			M.contents += i
 		if("Whip")
-			M:weapontypes += "Whip"
-			M:wpntypeamount += 1
+			M.weapontypes += "Whip"
+			M.wpntypeamount += 1
 			var/obj/item/Weapon/Melee/Whip/Bronze/i = new
 			M.contents += i
 		if("Greatsword")
-			M:weapontypes += "Greatsword"
-			M:wpntypeamount += 1
+			M.weapontypes += "Greatsword"
+			M.wpntypeamount += 1
 			var/obj/item/Weapon/Melee/Greatsword/Bronze/i = new
 			M.contents += i
 		if("Katana")
-			M:weapontypes += "Katana"
-			M:wpntypeamount += 1
+			M.weapontypes += "Katana"
+			M.wpntypeamount += 1
 			var/obj/item/Weapon/Melee/Katana/Bronze/i = new
 			M.contents += i
 		if("Spear")
-			M:weapontypes += "Spear"
-			M:wpntypeamount += 1
+			M.weapontypes += "Spear"
+			M.wpntypeamount += 1
 			var/obj/item/Weapon/Melee/Spear/Bronze/i = new
 			M.contents += i
 		if("Scythe")
-			M:weapontypes += "Scythe"
-			M:wpntypeamount += 1
+			M.weapontypes += "Scythe"
+			M.wpntypeamount += 1
 			var/obj/item/Weapon/Melee/Scythe/Bronze/i = new
 			M.contents += i
 		if("Bow")
-			M:weapontypes += "Bow"
-			M:wpntypeamount += 1
+			M.weapontypes += "Bow"
+			M.wpntypeamount += 1
 			var/obj/item/Weapon/Ranged/Bow/Bronze/i = new
 			M.contents += i
 		if("Focus Sword")
-			M:weapontypes += "Focus Sword"
-			M:weapontypes += "Focus Crystal"
-			M:wpntypeamount += 1
+			M.weapontypes += "Focus Sword"
+			M.weapontypes += "Focus Crystal"
+			M.wpntypeamount += 1
 			var/obj/item/Weapon/Special/FocusSword/Bronze/i = new
 			var/obj/item/Weapon/Magical/FocusCrystal/Bronze/t = new
 			M.contents += i
 			M.contents += t
 		if("Staff")
-			M:weapontypes += "Staff"
-			M:wpntypeamount += 1
+			M.weapontypes += "Staff"
+			M.wpntypeamount += 1
 			var/obj/item/Weapon/Magical/Staff/Bronze/i = new
 			M.contents += i
 		if("Tome")
-			M:weapontypes += "Tome"
-			M:wpntypeamount += 1
+			M.weapontypes += "Tome"
+			M.wpntypeamount += 1
 			var/obj/item/Weapon/Magical/Tome/Bronze/i = new
 			M.contents += i
 		if("Bow Sword")
-			M:weapontypes += "Bowsword"
-			M:wpntypeamount += 1
+			M.weapontypes += "Bowsword"
+			M.wpntypeamount += 1
 			var/obj/item/Weapon/Special/Bowsword/Bronze/i = new
 			M.contents += i
 		if("Sword Spear")
-			M:weapontypes += "Sword Spear"
-			M:wpntypeamount += 2
+			M.weapontypes += "Sword Spear"
+			M.wpntypeamount += 2
 			var/obj/item/Weapon/Special/SwordSpear/Bronze/i = new
 			M.contents += i
 		if("Thief Sword")
-			M:weapontypes += "Thief Sword"
-			M:wpntypeamount += 2
+			M.weapontypes += "Thief Sword"
+			M.wpntypeamount += 2
 			var/obj/item/Weapon/Special/ThiefSword/Bronze/i = new
 			M.contents += i
 		if("Bolt Rapier")
-			M:weapontypes += "Bolt Rapier"
-			M:wpntypeamount += 2
+			M.weapontypes += "Bolt Rapier"
+			M.wpntypeamount += 2
 			var/obj/item/Weapon/Special/BoltRapier/Bronze/i = new
 			M.contents += i
 		if("Whipblade")
-			M:weapontypes += "Whip Blade"
-			M:wpntypeamount += 2
+			M.weapontypes += "Whip Blade"
+			M.wpntypeamount += 2
 			var/obj/item/Weapon/Special/WhipBlade/Bronze/i = new
 			M.contents += i
 		if("Akademia Card")
-			M:weapontypes += "Akademia Cards"
-			M:wpntypeamount += 2
+			M.weapontypes += "Akademia Cards"
+			M.wpntypeamount += 2
 			var/obj/item/Weapon/Ranged/ThrowingWeapons/AkademiaCards/Bronze/i = new
 			M.contents += i
 		if("Blitzball")
-			M:weapontypes += "Blitz Ball"
-			M:wpntypeamount += 2
+			M.weapontypes += "Blitz Ball"
+			M.wpntypeamount += 2
 			var/obj/item/Weapon/Special/BlitzBall/Bronze/i = new
 			M.contents += i
 		if("Gun Blade")
-			M:weapontypes += "Gun Blade"
-			M:wpntypeamount += 2
+			M.weapontypes += "Gun Blade"
+			M.wpntypeamount += 2
 			var/obj/item/Weapon/Special/Gunblade/Bronze/i = new
 			M.contents += i
 		if("Ba'gangsaw")
-			M:weapontypes += "Bagangsaw"
-			M:wpntypeamount += 2
+			M.weapontypes += "Bagangsaw"
+			M.wpntypeamount += 2
 			var/obj/item/Weapon/Special/Bagangsaw/Bronze/i = new
 			M.contents += i
 		if("Buster Sword")
-			M:weapontypes += "Buster Sword"
-			M:wpntypeamount += 2
+			M.weapontypes += "Buster Sword"
+			M.wpntypeamount += 2
 			var/obj/item/Weapon/Special/BusterSword/Bronze/i = new
 			M.contents += i
 		if("Gun Arm")
-			M:weapontypes += "Gun Arm"
-			M:wpntypeamount += 2
+			M.weapontypes += "Gun Arm"
+			M.wpntypeamount += 2
 			var/obj/item/Weapon/Special/GunArm/Bronze/i = new
 			M.contents += i
 		if("Magitek Pistol")
-			M:weapontypes += "Magitek Pistol"
-			M:wpntypeamount += 1
+			M.weapontypes += "Magitek Pistol"
+			M.wpntypeamount += 1
 			var/obj/item/Weapon/Special/MagitekPistol/Bronze/i = new
 			M.contents += i
 		if("Magitek Rifle")
-			M:weapontypes += "Magitek Rifle"
-			M:wpntypeamount += 1
+			M.weapontypes += "Magitek Rifle"
+			M.wpntypeamount += 1
 			var/obj/item/Weapon/Special/MagitekRifle/Bronze/i = new
 			M.contents += i
 
@@ -1281,7 +1231,7 @@ GLOBAL_DATUM_INIT(character_creation, /datum/character_creation_controller, new)
  */
 /datum/character_creation_controller/proc/initializeCharacter(mob/M)
 	// Mark character as initialized
-	M:rankchecked = 1
+	M.rankchecked = 1
 
 	// Grant starting recipes
 	var/obj/recipes/Buildings/House/house = new()
@@ -1299,4 +1249,12 @@ GLOBAL_DATUM_INIT(character_creation, /datum/character_creation_controller, new)
 	M.RefreshAll(M)
 
 	// Log creation
-	LogCharacter("Character created: [M.name], Race: [M:race], Job: [M:job], Role: [M:role]", M:ckey)
+	LogCharacter("Character created: [M.name], Race: [M.race], Job: [M.job], Role: [M.role]", M.ckey)
+
+	// Notify the save system that character creation is complete
+	// This triggers: initial save, sets isCharacterInitialized, starts periodic save loop
+	if(M.client?.onCharacterCreated)
+		M.client.onCharacterCreated.notify()
+
+	// Also notify the connection manager for other systems
+	global.connections.handlePlayerCreated(M)
