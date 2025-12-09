@@ -19,6 +19,7 @@ client
 		fileSaveLogs = file("[SAVE_PATH]/[key]/save_logs.txt")
 		// Event emitters for save system hooks
 		onPlayerLoaded = EventEmitter()
+		onPlayerLoaded.listen(Callback("restoreView", src))
 		onPlayerLoaded.listen(Callback("setCharacterIsInitialized", src))
 		onPlayerLoaded.listen(Callback("periodicSaveLoop", src))
 
@@ -48,6 +49,19 @@ client
 
 	getSavePath()
 		return "[SAVE_PATH]/[key]/[ckey]"
+
+	/// Restores the client view to center on the loaded mob's location
+	proc/restoreView()
+		if(!mob)
+			CoordinateLog("ERROR", "RESTORE_VIEW: [key] - No mob attached to client!")
+			return
+		// Debug: Log current mob location
+		CoordinateLog("DEBUG", "RESTORE_VIEW: [key] - Mob [mob] at ([mob.x],[mob.y],[mob.z]), mob.loc=[mob.loc]")
+		// Set eye to the mob and use EYE_PERSPECTIVE for proper centering
+		eye = mob
+		perspective = EYE_PERSPECTIVE
+		if(fileSaveLogs)
+			fileSaveLogs << "[key] - View restored to mob at ([mob.x],[mob.y],[mob.z])\n"
 
 	proc/getManualBackupPath()
 		return "[SAVE_PATH]/[key]/BackUp/[ckey].sav"
@@ -327,19 +341,23 @@ proc/saveToFile(filePath, object, useSaveVersion = FALSE)
 			sav["savefile_version"] << SAVEFILE_SEMVER
 		return TRUE
 	catch(var/exception/e)
-		world.log << "Error saving to [filePath]: [e] on [e.file]:[e.line]"
+		CoordinateLog("ERROR", "Error saving to [filePath]: [e] on [e.file]:[e.line]")
 		return FALSE
 
 // Reusable proc to load from a specific file
 proc/loadFromFile(filePath)
 	if(fexists(filePath))
 		try
+			CoordinateLog("DEBUG", "LOAD_FROM_FILE: Loading from [filePath]")
 			var/savefile/sav = new /savefile(filePath)
 			var/datum/object
 			sav >> object
+			if(ismovable(object))
+				var/atom/movable/M = object
+				CoordinateLog("DEBUG", "LOAD_FROM_FILE: Loaded movable [M.name] at ([M.x],[M.y],[M.z]), loc=[M.loc]")
 			return object
 		catch(var/exception/e)
-			world.log << "Error loading from [filePath]: [e] on [e.file]:[e.line]"
+			CoordinateLog("ERROR", "Error loading from [filePath]: [e] on [e.file]:[e.line]")
 	return null
 
 datum
@@ -390,14 +408,19 @@ atom/movable
 		sav["y"] >> _y
 		sav["z"] >> _z
 
+		// Debug log what we read from savefile
+		CoordinateLog("DEBUG", "READ: [name] - Read coordinates from save: ([_x],[_y],[_z])")
+
 		// Flag for fallback
 		var/coordinateRestored = FALSE
 
 		if(!saveShouldRestoreCoordinates)
+			CoordinateLog("DEBUG", "READ: [name] - saveShouldRestoreCoordinates is FALSE, skipping coordinate restore")
 			return
 
 		if(isNumber(_x) && isNumber(_y) && isNumber(_z))
 			coordinateRestored = relocate(_x, _y, _z)
+			CoordinateLog("DEBUG", "READ: [name] - relocate([_x],[_y],[_z]) returned [coordinateRestored], now at ([x],[y],[z])")
 			if(coordinateRestored)
 				CoordinateLog("INFO", "[name] restored to saved location ([_x],[_y],[_z])")
 

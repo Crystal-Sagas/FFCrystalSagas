@@ -285,6 +285,8 @@
 #include "Code\__Game\UI\CharacterPanel.dm"
 #include "Code\__Game\UI\CharSheetEssentials.dm"
 #include "Code\__Game\UI\CommandPanel.dm"
+#include "Code\__Game\UI\Shop.Controller.dm"
+#include "Code\__Game\UI\Shop.Template.dm"
 #include "Code\__Game\UI\HUD\GameHUD.dm"
 #include "Code\_HELPERS\_core.dm"
 #include "Code\_HELPERS\logging.dm"

@@ -210,25 +210,10 @@ obj
 			craftingmaterialtrue=1
 			price=1
 			Click()
+				// NPC shop items are handled via browse() Shop UI - see Shop.Controller.dm
 				if(src.instore)
-					switch(alert(usr,"[src.desc] Cost:[src.shopprice]",,"Buy","Cancel"))
-						if("Buy")
-							var/amocho=input("How many?") as num
-							var/adjprice=(amocho*src.shopprice)
-							var/currentMoney = usr.currency ? usr.currency.value : 0
-							if(currentMoney>=adjprice)
-								usr.currency.addValue(-adjprice)
-								for(var/obj/item/i in usr.contents)
-									if(i.name==src.name)
-										i.amount+=amocho
-										usr<<output("You purchased [amocho] [src.name]/s","oocout")
-										return
-								usr<<output("You purchased [amocho] [src.name]/s","oocout")
-							else
-								alert(usr,"You don't enough for that many.")
-								return
-						if("Cancel")
-							return
+					return
+				// Player shops - will be migrated to browse() later
 				for(var/obj/playershops/shoptable/a in world)
 					if(src in a.contents)
 						winset(usr,"playershop.selected","text=\"Selected: [src.name]\"")

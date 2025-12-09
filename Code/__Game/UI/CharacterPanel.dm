@@ -56,12 +56,16 @@
  * This should only need to be sent once per window open
  */
 /mob/proc/SendCharacterPanelTemplate()
+	// Get theme CSS based on client preference
+	var/theme_css = CSS.get_theme_css(client)
+
 	var/html = {"
 		<!DOCTYPE html>
 		<html>
 		<head>
 			<meta charset="UTF-8">
 			<style type="text/css">
+				[theme_css]
 				[CharacterPanelCSS()]
 			</style>
 		</head>
@@ -443,31 +447,41 @@
 
 /**
  * Character Panel specific CSS
+ * Uses CSS variables from theme system for consistent styling
  */
 /proc/CharacterPanelCSS()
 	return {"
+		* {
+			box-sizing: border-box;
+			margin: 0;
+			padding: 0;
+		}
+
 		body {
-			background-color: #1a1a2e;
+			font-family: 'Segoe UI', Tahoma, sans-serif;
+			background: var(--color-background, #1a1a2e);
+			color: var(--color-text, #F5F5F0);
+			padding: 10px;
 		}
 
 		.character-header {
 			text-align: center;
 			padding: 10px;
-			background: linear-gradient(135deg, #16213e 0%, #1a1a2e 100%);
-			border-radius: 8px;
+			background: var(--color-header, #2A3142);
+			border-radius: var(--radius-lg, 8px);
 			margin-bottom: 10px;
-			border: 1px solid #0f3460;
+			border: 1px solid var(--color-border, #3A4A5C);
 		}
 
 		.character-name {
 			font-size: 18px;
 			font-weight: bold;
-			color: #e94560;
+			color: var(--color-accent, #FF8C00);
 		}
 
 		.character-title {
 			font-size: 12px;
-			color: #0fbfd7;
+			color: var(--color-second-accent, #4A90E2);
 		}
 
 		.resource-bars {
@@ -480,10 +494,10 @@
 		.resource-bar {
 			position: relative;
 			height: 20px;
-			background-color: #16213e;
-			border-radius: 4px;
+			background-color: var(--color-panel, #1E2A3A);
+			border-radius: var(--radius-md, 4px);
 			overflow: hidden;
-			border: 1px solid #333;
+			border: 1px solid var(--color-border, #3A4A5C);
 		}
 
 		.bar-fill {
@@ -494,9 +508,9 @@
 			transition: width 0.3s ease;
 		}
 
-		.hp-bar .bar-fill { background: linear-gradient(90deg, #60F570, #3d9942); }
-		.mp-bar .bar-fill { background: linear-gradient(90deg, #2AF0DB, #1a8f8f); }
-		.sp-bar .bar-fill { background: linear-gradient(90deg, #F8F475, #b5b254); }
+		.hp-bar .bar-fill { background: linear-gradient(90deg, var(--color-success, #60F570), #3d9942); }
+		.mp-bar .bar-fill { background: linear-gradient(90deg, var(--color-info, #2AF0DB), #1a8f8f); }
+		.sp-bar .bar-fill { background: linear-gradient(90deg, var(--color-warning, #F8F475), #b5b254); }
 
 		.bar-text {
 			position: absolute;
@@ -505,21 +519,22 @@
 			line-height: 20px;
 			font-size: 11px;
 			font-weight: bold;
-			color: white;
-			text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+			color: var(--color-text, white);
+			text-shadow: 1px 1px 2px var(--color-shadow, rgba(0,0,0,0.8));
 		}
 
 		/* Tabs */
 		.tabs-container {
-			background-color: #16213e;
-			border-radius: 6px;
+			background-color: var(--color-panel, #1E2A3A);
+			border-radius: var(--radius-md, 6px);
 			padding: 10px;
 			margin-bottom: 10px;
+			border: 1px solid var(--color-border, #3A4A5C);
 		}
 
 		.tabs-header {
 			display: flex;
-			border-bottom: 2px solid #0f3460;
+			border-bottom: 2px solid var(--color-border, #3A4A5C);
 			margin-bottom: 10px;
 		}
 
@@ -528,19 +543,19 @@
 			padding: 8px;
 			background: none;
 			border: none;
-			color: #888;
+			color: var(--color-text-muted, #888);
 			cursor: pointer;
 			font-size: 12px;
 			transition: all 0.2s;
 		}
 
 		.tab-button:hover {
-			color: #0fbfd7;
+			color: var(--color-second-accent, #4A90E2);
 		}
 
 		.tab-button.active {
-			color: #e94560;
-			border-bottom: 2px solid #e94560;
+			color: var(--color-accent, #FF8C00);
+			border-bottom: 2px solid var(--color-accent, #FF8C00);
 			margin-bottom: -2px;
 		}
 
@@ -568,9 +583,9 @@
 		}
 
 		.stat-box {
-			background-color: #1a1a2e;
-			border: 1px solid #0f3460;
-			border-radius: 6px;
+			background-color: var(--color-surface, #243447);
+			border: 1px solid var(--color-border, #3A4A5C);
+			border-radius: var(--radius-md, 6px);
 			padding: 8px;
 			text-align: center;
 			flex: 1;
@@ -578,18 +593,18 @@
 
 		.stat-label {
 			font-weight: bold;
-			color: #e94560;
+			color: var(--color-accent, #FF8C00);
 			font-size: 11px;
 		}
 
 		.stat-value {
 			font-size: 16px;
-			color: white;
+			color: var(--color-text, white);
 		}
 
 		.stat-mod {
 			font-size: 12px;
-			color: #0fbfd7;
+			color: var(--color-second-accent, #4A90E2);
 			margin-bottom: 5px;
 		}
 
@@ -598,8 +613,9 @@
 			justify-content: space-around;
 			margin-bottom: 15px;
 			padding: 10px;
-			background-color: #1a1a2e;
-			border-radius: 6px;
+			background-color: var(--color-surface, #243447);
+			border-radius: var(--radius-md, 6px);
+			border: 1px solid var(--color-border, #3A4A5C);
 		}
 
 		.combat-stat {
@@ -609,14 +625,14 @@
 		.combat-label {
 			display: block;
 			font-size: 10px;
-			color: #888;
+			color: var(--color-text-muted, #888);
 		}
 
 		.combat-value {
 			display: block;
 			font-size: 18px;
 			font-weight: bold;
-			color: #e94560;
+			color: var(--color-accent, #FF8C00);
 			margin-bottom: 5px;
 		}
 
@@ -628,14 +644,15 @@
 
 		.bonus-group {
 			flex: 1;
-			background-color: #1a1a2e;
-			border-radius: 6px;
+			background-color: var(--color-surface, #243447);
+			border-radius: var(--radius-md, 6px);
 			padding: 8px;
+			border: 1px solid var(--color-border, #3A4A5C);
 		}
 
 		.bonus-title {
 			font-weight: bold;
-			color: #0fbfd7;
+			color: var(--color-second-accent, #4A90E2);
 			margin-bottom: 5px;
 			font-size: 11px;
 		}
@@ -647,13 +664,14 @@
 		}
 
 		.bonus-value {
-			color: #e94560;
+			color: var(--color-accent, #FF8C00);
 		}
 
 		.character-info {
-			background-color: #1a1a2e;
-			border-radius: 6px;
+			background-color: var(--color-surface, #243447);
+			border-radius: var(--radius-md, 6px);
 			padding: 10px;
+			border: 1px solid var(--color-border, #3A4A5C);
 		}
 
 		.info-row {
@@ -662,14 +680,14 @@
 		}
 
 		.info-label {
-			color: #0fbfd7;
+			color: var(--color-second-accent, #4A90E2);
 		}
 
 		/* Skills Tab */
 		.section-title {
-			color: #0fbfd7;
+			color: var(--color-second-accent, #4A90E2);
 			font-weight: bold;
-			border-bottom: 1px solid #0fbfd7;
+			border-bottom: 1px solid var(--color-second-accent, #4A90E2);
 			margin-bottom: 8px;
 			padding-bottom: 3px;
 		}
@@ -685,26 +703,26 @@
 			display: flex;
 			justify-content: space-between;
 			padding: 6px 10px;
-			background-color: #1a1a2e;
-			border: 1px solid #333;
-			border-radius: 4px;
+			background-color: var(--color-surface, #243447);
+			border: 1px solid var(--color-border, #3A4A5C);
+			border-radius: var(--radius-md, 4px);
 			text-decoration: none;
-			color: white;
+			color: var(--color-text, white);
 			font-size: 11px;
 			cursor: pointer;
 		}
 
 		.skill-button:hover {
-			background-color: #1f2b4d;
-			border-color: #0fbfd7;
+			background-color: var(--color-button-hover, #4A5A6A);
+			border-color: var(--color-second-accent, #4A90E2);
 		}
 
 		.skill-button.proficient {
-			border-left: 3px solid #e94560;
+			border-left: 3px solid var(--color-accent, #FF8C00);
 		}
 
 		.skill-value {
-			color: #0fbfd7;
+			color: var(--color-second-accent, #4A90E2);
 			font-weight: bold;
 		}
 
@@ -720,27 +738,27 @@
 			flex-direction: column;
 			align-items: center;
 			padding: 10px;
-			background-color: #1a1a2e;
-			border: 1px solid #0f3460;
-			border-radius: 6px;
+			background-color: var(--color-surface, #243447);
+			border: 1px solid var(--color-border, #3A4A5C);
+			border-radius: var(--radius-md, 6px);
 			text-decoration: none;
-			color: white;
+			color: var(--color-text, white);
 			cursor: pointer;
 		}
 
 		.save-button:hover {
-			border-color: #e94560;
+			border-color: var(--color-accent, #FF8C00);
 		}
 
 		.save-name {
 			font-size: 11px;
-			color: #888;
+			color: var(--color-text-muted, #888);
 		}
 
 		.save-value {
 			font-size: 18px;
 			font-weight: bold;
-			color: #e94560;
+			color: var(--color-accent, #FF8C00);
 		}
 
 		.roll-options {
@@ -748,8 +766,9 @@
 			justify-content: center;
 			gap: 20px;
 			padding: 10px;
-			background-color: #1a1a2e;
-			border-radius: 6px;
+			background-color: var(--color-surface, #243447);
+			border-radius: var(--radius-md, 6px);
+			border: 1px solid var(--color-border, #3A4A5C);
 		}
 
 		.checkbox-label {
@@ -771,31 +790,31 @@
 
 		.ability-item, .perk-item, .weapon-item {
 			padding: 5px 10px;
-			background-color: #1a1a2e;
-			border: 1px solid #333;
-			border-radius: 4px;
+			background-color: var(--color-surface, #243447);
+			border: 1px solid var(--color-border, #3A4A5C);
+			border-radius: var(--radius-md, 4px);
 			text-decoration: none;
-			color: white;
+			color: var(--color-text, white);
 			font-size: 11px;
 			cursor: pointer;
 		}
 
 		.ability-item:hover, .perk-item:hover, .weapon-item:hover {
-			border-color: #0fbfd7;
+			border-color: var(--color-second-accent, #4A90E2);
 		}
 
 		.weapon-item.equipped {
-			border-color: #e94560;
-			background-color: #2a1a2e;
+			border-color: var(--color-accent, #FF8C00);
+			background-color: var(--color-button, #3C4858);
 		}
 
 		.weapon-status {
 			font-size: 9px;
-			color: #e94560;
+			color: var(--color-accent, #FF8C00);
 		}
 
 		.empty-notice {
-			color: #666;
+			color: var(--color-text-muted, #666);
 			font-style: italic;
 			padding: 10px;
 			width: 100%;
@@ -803,13 +822,14 @@
 
 		/* Profile Tab */
 		.profile-text {
-			background-color: #1a1a2e;
+			background-color: var(--color-surface, #243447);
 			padding: 10px;
-			border-radius: 6px;
+			border-radius: var(--radius-md, 6px);
 			min-height: 150px;
 			max-height: 300px;
 			overflow-y: auto;
 			white-space: pre-wrap;
+			border: 1px solid var(--color-border, #3A4A5C);
 		}
 
 		.profile-actions {
@@ -822,31 +842,34 @@
 			display: flex;
 			justify-content: space-between;
 			padding: 10px;
-			background-color: #16213e;
-			border-radius: 6px;
+			background-color: var(--color-panel, #1E2A3A);
+			border-radius: var(--radius-md, 6px);
 			margin-top: 10px;
+			border: 1px solid var(--color-border, #3A4A5C);
 		}
 
 		.rpp-display, .ap-display {
 			font-weight: bold;
-			color: #e94560;
+			color: var(--color-accent, #FF8C00);
 		}
 
 		/* Buttons */
 		.button {
 			display: inline-block;
 			padding: 4px 8px;
-			background-color: #0f3460;
-			border: 1px solid #0fbfd7;
-			border-radius: 4px;
-			color: white;
+			background-color: var(--color-button, #3C4858);
+			border: 1px solid var(--color-border, #3A4A5C);
+			border-radius: var(--radius-md, 4px);
+			color: var(--color-text, white);
 			text-decoration: none;
 			font-size: 10px;
 			cursor: pointer;
+			transition: all 0.2s;
 		}
 
 		.button:hover {
-			background-color: #1a4a7a;
+			background-color: var(--color-button-hover, #4A5A6A);
+			border-color: var(--color-second-accent, #4A90E2);
 		}
 
 		.button-small {
@@ -855,12 +878,31 @@
 		}
 
 		.button-primary {
-			background-color: #e94560;
-			border-color: #e94560;
+			background-color: var(--color-accent, #FF8C00);
+			border-color: var(--color-accent, #FF8C00);
 		}
 
 		.button-primary:hover {
-			background-color: #ff5a75;
+			background-color: var(--color-accent-hover, #FFA500);
+		}
+
+		/* Scrollbar styling */
+		::-webkit-scrollbar {
+			width: 8px;
+		}
+
+		::-webkit-scrollbar-track {
+			background: var(--color-panel, #1E2A3A);
+			border-radius: var(--radius-md, 4px);
+		}
+
+		::-webkit-scrollbar-thumb {
+			background: var(--color-button, #3C4858);
+			border-radius: var(--radius-md, 4px);
+		}
+
+		::-webkit-scrollbar-thumb:hover {
+			background: var(--color-button-hover, #4A5A6A);
 		}
 
 		.text-center { text-align: center; }
@@ -910,9 +952,11 @@
 			if (!paramString) return params;
 			var pairs = paramString.split('&');
 			pairs.forEach(function(pairStr) {
-				var pair = pairStr.split('=');
-				if (pair.length === 2) {
-					params\[decodeURIComponent(pair\[0])] = decodeURIComponent(pair\[1]);
+				var eqIdx = pairStr.indexOf('=');
+				if (eqIdx > 0) {
+					var key = decodeURIComponent(pairStr.substring(0, eqIdx));
+					var val = decodeURIComponent(pairStr.substring(eqIdx + 1));
+					Object.defineProperty(params, key, {value: val, enumerable: true, writable: true});
 				}
 			});
 			return params;

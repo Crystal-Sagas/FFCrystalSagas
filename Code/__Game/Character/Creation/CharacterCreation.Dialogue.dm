@@ -198,12 +198,10 @@
  * Name input step
  */
 /datum/character_creation_dialogue/proc/showNameInput()
-	sayMoogle("What is your character's name, kupo?")
 	pendingInputType = "text"
 
-	// Show a text input prompt in the chat
-	// For now, we'll use a Topic link that opens an input dialog
-	showTextInputPrompt("Enter your character's name:")
+	// Show the prompt and input button in the persistent panel
+	showTextInputPrompt("What is your character's name, kupo?")
 
 /datum/character_creation_dialogue/proc/handleNameInput(charName)
 	if(!charName || !length(charName))
@@ -467,6 +465,10 @@
 /datum/character_creation_dialogue/proc/showComplete()
 	sayMoogle("Almost done, kupo. There is nothing more I can help you with here, but make sure to spend your starting AP on raising your ability scores, and talk to my friends to learn more about the game. Enjoy, kupo!")
 
+	// Clear the choices since we're done
+	if(participant?.client)
+		participant.client << output("", "default.browser1:updateNPCChoices")
+
 	// Initialize the character
 	global.character_creation.initializeCharacter(participant)
 
@@ -479,56 +481,109 @@
 // ============================================================================
 
 /**
- * Send a Moogle dialogue message to the NPC dialogue panel
- * Updates the panel in-place rather than creating new chat cards
+ * Send a Moogle dialogue message to the persistent NPC dialogue panel
+ * Appends text to the existing dialogue rather than creating new chat cards
  */
 /datum/character_creation_dialogue/proc/sayMoogle(text)
 	if(!participant?.client)
 		return
 
-	// Use the new NPC dialogue panel instead of chat messages
-	showNPCDialoguePanel(participant, "Moogle", text)
+	// Use the persistent NPC dialogue panel - appends text
+	participant.client << output(list2params(list("Moogle", text)), "default.browser1:showNPCDialogue")
 
 /**
- * Show choice buttons in the NPC dialogue panel
- * Updates the choices in-place
+ * Say a message AND show choices in the persistent panel
+ */
+/datum/character_creation_dialogue/proc/sayMoogleWithChoices(text, list/choices)
+	if(!participant?.client)
+		return
+
+	// First show the dialogue text
+	sayMoogle(text)
+
+	// Then update the choices
+	showChoices(choices)
+
+/**
+ * Show choice buttons in the persistent NPC dialogue panel
+ * Updates the choices in-place (replaces previous choices)
  */
 /datum/character_creation_dialogue/proc/showChoices(list/choices)
 	if(!participant?.client || !length(choices))
 		return
 
-	showCreationChoicesInPanel(participant, choices)
+	// Store pending choices for validation
+	participant.pendingCreationChoices = choices.Copy()
+	pendingChoices = choices.Copy()
+
+	// Set grid mode for many options
+	var/numChoices = length(choices)
+	var/useGrid = numChoices > 6
+	participant.client << output("[useGrid ? "1" : "0"]", "default.browser1:setNPCChoicesGrid")
+
+	// Build choices HTML
+	var/choicesHtml = ""
+	for(var/choiceId in choices)
+		var/choiceText = choices[choiceId]
+		var/compactClass = useGrid ? " compact" : ""
+		choicesHtml += {"<a href='?src=\ref[participant];creation_choice=[url_encode(choiceId)]' class='npc-choice-button[compactClass]'>[choiceText]</a>"}
+
+	// Update choices in the persistent panel
+	participant.client << output(url_encode(choicesHtml), "default.browser1:updateNPCChoices")
 
 /**
- * Show a text input prompt in the NPC dialogue panel
+ * Show a text input prompt in the persistent NPC dialogue panel
  */
 /datum/character_creation_dialogue/proc/showTextInputPrompt(prompt)
 	if(!participant?.client)
 		return
 
-	// Show the input prompt in the NPC dialogue panel
-	var/inputHtml = {"<a href='?src=\ref[participant];creation_name_input=1'>Click here to enter your name</a>"}
+	// First show the prompt text
+	sayMoogle(prompt)
 
-	// Update the dialogue text to include the prompt
-	showNPCDialoguePanel(participant, "Moogle", prompt)
-	showNPCInputPrompt(participant, inputHtml)
+	// Then show the input button as a choice
+	var/inputHtml = {"<a href='?src=\ref[participant];creation_name_input=1' class='npc-choice-button'>Click here to enter your name</a>"}
+	participant.client << output(url_encode(inputHtml), "default.browser1:updateNPCChoices")
 
 // ============================================================================
 // NPC Dialogue Panel Integration for Character Creation
 // ============================================================================
 
 /**
- * Show the NPC dialogue panel with speaker and text
- * This updates in-place rather than creating new chat cards
+ * Show NPC dialogue as a chat card that flows with other messages
+ * Uses the "npc" channel type for proper message ordering
+ *
+ * @param P The player to show the dialogue to
+ * @param speaker The NPC name
+ * @param text The dialogue text
+ * @param choicesHtml Optional HTML for choice buttons
  */
-/proc/showNPCDialoguePanel(mob/player/P, speaker, text)
+/proc/showNPCDialoguePanel(mob/player/P, speaker, text, choicesHtml = "")
 	if(!P?.client)
 		return FALSE
 
-	// URL-encode both parameters and join with &
-	var/params = "[url_encode(speaker)]&[url_encode(text)]"
-	P.client << output(params, "default.browser1:showNPCDialogue")
-	return TRUE
+	// Send as an NPC channel message via the chat bridge
+	// Channel: npc, Speaker: NPC name, Message: dialogue text, Metadata: choice buttons
+	var/list/params = list(
+		"npc",           // channel
+		speaker,         // speaker
+		text,            // message
+		"",              // language
+		"",              // quote_style
+		"",              // color
+		"1",             // heard
+		"",              // flag1
+		"",              // flag2
+		"",              // timestamp (auto-generated)
+		"",              // message_id
+		"",              // alignment
+		"",              // badges
+		"",              // speaker_color
+		"",              // quote_html
+		choicesHtml      // metadata (choice buttons HTML)
+	)
+
+	return P.client.sendToBrowseChat(params)
 
 /**
  * Show character creation choices in the NPC dialogue panel

@@ -11,5 +11,8 @@
 	// Initialize the chat window for this player
 	initBrowseChat()
 
-	// Enter the lobby
-	global.lobby.enterLobby(src)
+	// Only enter lobby if this is a fresh login (not a loaded character)
+	// When loading from save, hasEnteredWorld will be set TRUE by switchMob() 
+	// BEFORE Login() is called, so we can check it here
+	if(!hasEnteredWorld)
+		global.lobby.enterLobby(src)

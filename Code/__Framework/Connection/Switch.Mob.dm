@@ -8,18 +8,24 @@ proc/switchMob(client/client, mob/newMob)
 
 	var/mob/oldMob = client.mob
 
-	// Transfer client to new mob
-	client.mob = newMob
-	client.eye = newMob
-	client.perspective = MOB_PERSPECTIVE
-
-	// Update client's playerMob reference if applicable
+	// Set flags BEFORE assigning client.mob because that triggers Login()
+	// This prevents Login() from sending the loaded mob to the lobby
 	if(isPlayer(newMob))
 		var/mob/player/P = newMob
-		client.playerMob = P
 		P.isInLobby = FALSE
 		P.isCharacterInitialized = TRUE
 		P.hasEnteredWorld = TRUE
+
+	// Transfer client to new mob (this triggers Login() on newMob)
+	client.mob = newMob
+	// NOTE: Don't set client.eye here - let restoreView() handle it after load is complete
+	// The mob has already been relocated to saved coordinates by Read()
+	client.perspective = MOB_PERSPECTIVE
+
+	// Update client's playerMob reference and complete initialization
+	if(isPlayer(newMob))
+		var/mob/player/P = newMob
+		client.playerMob = P
 
 		// Create fresh session (old one from save is invalid)
 		P.session = new(P)

@@ -127,7 +127,11 @@ GLOBAL_DATUM_INIT(character_creation, /datum/character_creation_controller, new)
 
 	// Clean up any lingering screen objects
 	if(M.client)
+		var/list/toRemove = list()
 		for(var/obj/o in M.client.screen)
+			toRemove += o
+		for(var/obj/o in toRemove)
+			M.client.screen -= o
 			o.relocateToNull()
 		for(var/image/i in M.client.screen)
 			M.client.screen -= i

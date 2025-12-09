@@ -191,41 +191,8 @@ obj
 				UpdateCraft(usr)
 				view(usr) << output("[usr.name] has picked up [src]!","icout")
 			if(src.instore)
-				switch(alert(usr,"[src.desc] Cost:[src.shopprice]",,"Buy","Cancel"))
-					if("Buy")
-						if(src.amount>=1)
-							var/amocho=input("How many?") as num
-							if(amocho<0)
-								alert(usr,"You need a positive number here.")
-							var/adjprice=(amocho*src.shopprice)
-							if(usr.canAfford(adjprice))
-								usr.spendMoney(adjprice)
-								for(var/obj/item/i in usr.contents)
-									if(i.name==src.name)
-										i.amount+=amocho
-										usr<<output("You purchased [amocho] [src.name]/s","oocout")
-										return
-								var/obj/item/i=copyatom(src)
-								i.amount=amocho
-								i.instore=0
-								usr.contents+=i
-								usr<<output("You purchased [amocho] [src.name]/s","oocout")
-							else
-								alert(usr,"You don't enough for that many.")
-								return
-						else
-							if(usr.canAfford(src.shopprice))
-								usr.spendMoney(src.shopprice)
-								var/obj/item/i=copyatom(src)
-								i.instore=0
-								usr.contents+=i
-								usr<<output("You purchased [src.name]","oocout")
-
-							else
-								alert(usr,"You don't have enough for that")
-								return
-					if("Cancel")
-						return
+				// NPC shop items are handled via browse() Shop UI - see Shop.Controller.dm
+				return
 			else
 				if(src.bolted==1)
 					return

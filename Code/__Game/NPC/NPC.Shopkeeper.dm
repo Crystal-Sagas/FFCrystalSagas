@@ -3,6 +3,17 @@
  *
  * NPCs that sell items to players. Shopkeepers are non-hostile
  * and cannot be targeted for combat.
+ *
+ * Interaction Flow:
+ *   1. Single click → NPC greets player in chat panel with "Browse Shop" button
+ *   2. Player clicks button → Opens shop window with shop-specific name
+ *
+ * Uses the Hors pattern for UI:
+ *   - browse() sends HTML/CSS/JS template once
+ *   - output() calls JS functions to update data
+ *   - Topic() handles purchase requests from browser
+ *
+ * See: Shop.Template.dm, Shop.Controller.dm
  */
 /mob/npc/Shopkeeper
 	icon = 'Icons/NPCs.dmi'
@@ -13,6 +24,12 @@
 	/// Is this NPC a shopkeeper (always TRUE for this type)
 	var/isShopkeeper = TRUE
 
+	/// Greeting message when player clicks the shopkeeper
+	var/greeting = "Welcome, traveler! Care to see my wares?"
+
+	/// Short description shown in chat (optional override of desc)
+	var/shopDescription = ""
+
 	/// List of items this shop sells (populated in New())
 	/// Items stored in contents with instore=1 and shopprice set
 
@@ -20,32 +37,69 @@
 	. = ..()
 	// Shopkeepers don't need combat initialization
 	// They stock their inventory in subtypes
+	// Set default shop description if not set
+	if(!shopDescription)
+		shopDescription = desc ? desc : "Browse our selection of goods."
 
 /mob/npc/Shopkeeper/Click()
 	if(!usr || !usr.client)
 		return
 
-	// Open shop interface
-	openShopFor(usr)
+	// Greet player and show shop button in chat panel
+	greetCustomer(usr)
+
+/**
+ * Greet a customer via NPC dialogue chat card
+ * Shows a greeting message with a button to open the shop
+ */
+/mob/npc/Shopkeeper/proc/greetCustomer(mob/customer)
+	if(!isMob(customer) || !customer.client)
+		return
+
+	// Build the "Browse Shop" button HTML
+	var/shopButton = {"<a href='?src=\ref[src];action=open_shop;customer=\ref[customer]' class='npc-choice-btn'>Browse [name]</a>"}
+
+	// Show the NPC dialogue with embedded shop button
+	showNPCDialoguePanel(customer, name, greeting, shopButton)
 
 /**
  * Open shop interface for a customer
+ * Uses the new Hors pattern shop window with shop-specific name
  */
 /mob/npc/Shopkeeper/proc/openShopFor(mob/customer)
 	if(!isMob(customer))
 		return
 
-	var/row = 0
-	winset(customer, "Shop", "is-visible=true")
-	winset(customer, "Shop.buy", "cells=0x0")
-
-	for(var/obj/item/i in src.contents)
-		if(i.instore)
-			row++
-			customer << output(i, "Shop.buy:1,[row]")
-
 	// Track what shop the customer is browsing
 	customer.browsing = src
+
+	// Note: Don't hide the NPC dialogue - it will naturally scroll off and be pruned
+
+	// Open the new shop window with shop-specific window name
+	customer.OpenShopWindow(src)
+
+/**
+ * Topic handler for shop interactions
+ */
+/mob/npc/Shopkeeper/Topic(href, href_list)
+	. = ..()
+
+	var/action = href_list["action"]
+
+	// Handle "Browse Shop" button click from chat panel
+	if(action == "open_shop")
+		var/mob/customer = locate(href_list["customer"])
+		if(customer && customer.client)
+			openShopFor(customer)
+		return
+
+	// Handle purchase from shop window
+	if(action == "buy")
+		var/itemRef = href_list["ref"]
+		var/qty = text2num(href_list["qty"])
+		if(!qty || qty < 1)
+			qty = 1
+		processPurchase(usr, itemRef, qty)
 
 // =============================================================================
 // GENERAL SHOP - Potions, Materials, Basics
@@ -53,6 +107,8 @@
 /mob/npc/Shopkeeper/GeneralShop
 	name = "General Shop"
 	icon_state = "Ramen"
+	greeting = "Welcome, adventurer! I've got potions, materials, and all the essentials you'll need for your journey."
+	shopDescription = "Stock up on healing items, crafting materials, and basic supplies."
 
 /mob/npc/Shopkeeper/GeneralShop/New(loc)
 	. = ..()
@@ -113,6 +169,8 @@
 /mob/npc/Shopkeeper/WeaponShop
 	name = "General Weaponsmith"
 	icon_state = "Shop"
+	greeting = "Looking for a new blade? I forge only the finest iron weapons. Strong and reliable!"
+	shopDescription = "Quality iron weapons for warriors of all disciplines."
 
 /mob/npc/Shopkeeper/WeaponShop/New(loc)
 	. = ..()
@@ -178,6 +236,8 @@
 /mob/npc/Shopkeeper/GemShop
 	name = "Gem Shop"
 	icon_state = "Flower"
+	greeting = "Ah, a seeker of magical power! These gems contain the very essence of the elements."
+	shopDescription = "Rare elemental gems for enchanting and synthesis."
 
 /mob/npc/Shopkeeper/GemShop/New(loc)
 	. = ..()
@@ -243,6 +303,8 @@
 /mob/npc/Shopkeeper/MakoVendor
 	name = "Mako Vendor"
 	icon_state = "Shinra"
+	greeting = "Raw Mako, fresh from the reactors. Handle with care - this stuff is pure energy."
+	shopDescription = "Raw Mako for materia crafting and synthesis."
 
 /mob/npc/Shopkeeper/MakoVendor/New(loc)
 	. = ..()
@@ -257,6 +319,8 @@
 /mob/npc/Shopkeeper/MysidiaShop
 	name = "Mysidia Shop"
 	icon_state = "Shop"
+	greeting = "Monster parts, rare specimens, exotic materials... If it came from a beast, I've got it."
+	shopDescription = "Monster drops and rare creature materials for advanced crafting."
 
 /mob/npc/Shopkeeper/MysidiaShop/New(loc)
 	. = ..()

@@ -125,10 +125,8 @@
 	sleep(1)
 	src << 'Audio/Cursor Ready.ogg'
 
-	// Setup viewport
-	if(client)
-		client.eye = src
-		client.perspective = EYE_PERSPECTIVE
+	// NOTE: View restoration is handled by client.restoreView() via onPlayerLoaded event
+	// This ensures the view is set AFTER the mob is fully loaded at its saved location
 
 	// Setup lighting
 	addLightPlane()

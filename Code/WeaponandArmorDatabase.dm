@@ -48,41 +48,8 @@ obj
 							view()<<output("<font size=1><font color=[usr.textcolor]>[z] <font color=white>rolled an attack roll, using their <font color=[usr.textcolor]>[src.name]<font color=white>! Result: <font color=#8EF5DE><b>[aresult] to hit</b><font color=white>, dealing <b><font color=#FFA852>[dresult] damage</b><font color=white> if successful!<br>Tile Range:[src.range]","icout")
 
 				if(src.instore)
-					switch(alert(usr,"[src.desc] Cost:[src.shopprice]",,"Buy","Cancel"))
-						if("Buy")
-							if(src.amount>=1)
-								var/amocho=input("How many?") as num
-								if(amocho<0)
-									alert(usr,"You need a positive number here.")
-								var/adjprice=(src.price*=src.shopprice)
-								if(usr.canAfford(adjprice))
-									usr.spendMoney(adjprice)
-									for(var/obj/item/i in usr.contents)
-										if(i.name==src.name)
-											i.amount+=amocho
-											usr<<output("You purchased [amocho] [src.name]/s","oocout")
-											return
-									var/obj/item/i=copyatom(src)
-									i.amount=amocho
-									i.instore=0
-									usr.contents+=i
-									usr<<output("You purchased [amocho] [src.name]/s","oocout")
-								else
-									alert(usr,"You don't enough for that many.")
-									return
-							else
-								if(usr.canAfford(src.shopprice))
-									usr.spendMoney(src.shopprice)
-									var/obj/item/i=copyatom(src)
-									i.instore=0
-									usr.contents+=i
-									usr<<output("You purchased [src.name]","oocout")
-
-								else
-									alert(usr,"You don't have enough for that")
-									return
-						if("Cancel")
-							return
+					// NPC shop items are handled via browse() Shop UI - see Shop.Controller.dm
+					return
 				if(src in world)
 					for(var/mob/npc/c in world)
 						if(src in c.contents)

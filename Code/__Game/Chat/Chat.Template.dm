@@ -3,7 +3,7 @@
 
 	HTML/CSS/JavaScript template generation for the browse-based chat system.
 	This file contains the getChatWindowHTML() proc that generates the full chat interface.
-	
+
 	THEMING:
 	The chat window now supports the game's theme system via CSS variables.
 	Pass a client to getChatWindowHTML() to apply their selected theme.
@@ -18,7 +18,7 @@
 /proc/getChatWindowHTML(client/C = null, list/messages = null)
 	// Get theme CSS - uses client's preference or default
 	var/theme_css = CSS.get_theme_css(C)
-	
+
 	var/html = {"
 <!DOCTYPE html>
 <html>
@@ -27,7 +27,7 @@
 	<title>Fantasy United Chat</title>
 	<style>
 		[theme_css]
-		
+
 		* {
 			margin: 0;
 			padding: 0;
@@ -195,6 +195,90 @@
 		/* Rank Card */
 		.chat-card.rank {
 			border-left: 3px solid var(--chat-channel-rank);
+		}
+
+		/* NPC Dialogue Card */
+		.chat-card.npc {
+			background: var(--npc-bg, linear-gradient(135deg, #1a2744 0%, #243552 100%));
+			border: 2px solid var(--npc-border, #4a6fa5);
+			border-radius: var(--radius-lg, 8px);
+			padding: 0;
+			margin: 8px 0;
+		}
+
+		.chat-card.npc .npc-card-header {
+			display: flex;
+			align-items: center;
+			gap: 8px;
+			padding: 10px 12px;
+			border-bottom: 1px solid rgba(74, 111, 165, 0.3);
+		}
+
+		.chat-card.npc .npc-speaker-name {
+			color: var(--npc-speaker, #90caf9);
+			font-weight: 600;
+			font-size: 14px;
+		}
+
+		.chat-card.npc .npc-indicator {
+			width: 8px;
+			height: 8px;
+			background: #4CAF50;
+			border-radius: 50%;
+			box-shadow: 0 0 6px rgba(76, 175, 80, 0.6);
+		}
+
+		.chat-card.npc .npc-card-body {
+			padding: 12px;
+		}
+
+		.chat-card.npc .npc-dialogue-text {
+			color: var(--color-text, #E0E0E0);
+			line-height: 1.6;
+			margin-bottom: 12px;
+		}
+
+		.chat-card.npc .npc-choices {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 8px;
+		}
+
+		.chat-card.npc .npc-choice-btn {
+			display: inline-block;
+			padding: 8px 16px;
+			background: var(--npc-button-bg, linear-gradient(135deg, #3d5a80 0%, #4a6fa5 100%));
+			border: 1px solid var(--npc-border, #4a6fa5);
+			border-radius: var(--radius-md, 4px);
+			color: var(--color-text, white);
+			text-decoration: none;
+			font-size: 12px;
+			cursor: pointer;
+			transition: all 0.2s ease;
+		}
+
+		.chat-card.npc .npc-choice-btn:hover {
+			background: var(--npc-button-hover, linear-gradient(135deg, #4a6fa5 0%, #5d7aa0 100%));
+			transform: translateY(-1px);
+			box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+		}
+
+		/* Compact buttons for grids with many options */
+		.chat-card.npc .npc-choice-btn.compact {
+			padding: 6px 10px;
+			font-size: 11px;
+		}
+
+		/* Grid layout for many choices */
+		.chat-card.npc .npc-choices-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+			gap: 6px;
+		}
+
+		/* Choices-only card (no header/dialogue) */
+		.chat-card.npc .npc-choices-only {
+			padding: 8px 12px;
 		}
 
 		/* Tab Notification Glow - Base */
@@ -529,17 +613,10 @@
 			display: block;
 		}
 
-		.npc-dialogue-header {
-			display: flex;
-			align-items: center;
-			gap: 10px;
-			margin-bottom: 10px;
-		}
-
-		.npc-dialogue-speaker {
-			font-weight: 600;
-			font-size: 14px;
-			color: var(--npc-speaker);
+	/* Hidden takes precedence over active */
+	#npcDialoguePanel.hidden {
+		display: none !important;
+	}
 			text-shadow: 0 0 8px var(--color-glow);
 		}
 
@@ -651,6 +728,7 @@
 		<div class="filter-tab" data-filter="ic">IC</div>
 		<div class="filter-tab" data-filter="combat">Combat</div>
 		<div class="filter-tab" data-filter="system">System</div>
+		<div class="filter-tab" data-filter="npc">NPC</div>
 		<div class="filter-tab" data-filter="rank" id="rankTab" style="display: none;">Rank</div>
 		<div class="filter-tab" data-filter="admin" id="adminTab" style="display: none;">Admin</div>
 	</div>
@@ -673,7 +751,7 @@
 
 	html += {"
 	<!-- NPC Dialogue Panel - Inside chat container so it scrolls -->
-	<div id="npcDialoguePanel">
+	<div id="npcDialoguePanel" class="chat-card npc" data-channel="npc">
 		<div class="npc-dialogue-header">
 			<span class="npc-dialogue-speaker" id="npcSpeaker">NPC</span>
 		</div>
@@ -917,6 +995,38 @@
 				}
 
 				addChatMessage(html, channel);
+				return;
+			}
+
+			// Handle NPC dialogue messages
+			// speaker = NPC name, message = dialogue text, metadata = choice buttons HTML
+			if(channel === 'npc') {
+				// If there's a speaker and message, show the full dialogue card
+				if(speaker && speaker !== '' && message && message !== '') {
+					html = '<div class="npc-card-header">' +
+						'<span class="npc-indicator"></span>' +
+						'<span class="npc-speaker-name">' + speaker + '</span>' +
+						'</div>' +
+						'<div class="npc-card-body">' +
+						'<div class="npc-dialogue-text">' + message + '</div>';
+
+					// Add choice buttons if provided in metadata
+					if(metadata && metadata !== '' && metadata !== 'null') {
+						html += metadata;
+					}
+
+					html += '</div>';
+				}
+				// If there's just metadata (choices), show only that
+				else if(metadata && metadata !== '' && metadata !== 'null') {
+					html = '<div class="npc-card-body npc-choices-only">' + metadata + '</div>';
+				}
+				else {
+					// Nothing to show
+					return;
+				}
+
+				addChatMessage(html, 'npc');
 				return;
 			}
 
