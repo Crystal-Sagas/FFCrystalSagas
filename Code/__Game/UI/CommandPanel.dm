@@ -240,7 +240,7 @@
 
 		// Character actions
 		if("char_panel")
-			CharacterPanel()
+			OpenMainMenu()
 		if("profile")
 			Switchtoprofile()
 

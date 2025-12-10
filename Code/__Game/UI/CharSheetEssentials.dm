@@ -989,7 +989,7 @@
 	var/atom/invoker = m
 	invoker.RefreshCharsheet(m)
 	invoker.Refreshinventoryscreen(m)
-	m.RefreshCharacterPanel()
+	m.RefreshMainMenu()
 
 /**
  * RefreshAll on mob - Alternative calling convention
@@ -1000,7 +1000,7 @@
 	var/atom/invoker = src
 	invoker.RefreshCharsheet(m)
 	invoker.Refreshinventoryscreen(m)
-	RefreshCharacterPanel()
+	RefreshMainMenu()
 
 // ============================================================================
 // HP/MP/SP BAR DISPLAY STUBS

@@ -1,5 +1,5 @@
 // Chat.Language.dm
-// Final Fantasy X-style Language System for Crystal Sagas
+// Final Fantasy X-style Language System for Tactics Unlimited
 //
 // Inspired by the Al Bhed language system from FFX, this implements
 // cipher-based languages where players can learn to understand foreign

@@ -27,8 +27,8 @@
 	vis_id = "character"
 	vis_parent = null  // Direct child of game_hud root
 
-	name = "Character Panel"
-	desc = "Open your character sheet (C)"
+	name = "Main Menu"
+	desc = "Open the main menu (C)"
 
 	icon = 'Icons/UI/HUD/Buttons/BasicPlaceHolder.dmi'
 	screen_loc = "EAST-2,NORTH-1"
@@ -43,7 +43,7 @@
 	..()
 	var/mob/M = usr
 	if(M)
-		M.CharacterPanel()
+		M.OpenMainMenu()
 
 /**
  * Called when mouse enters the button

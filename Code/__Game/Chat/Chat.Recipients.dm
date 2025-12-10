@@ -11,7 +11,7 @@
 	return FALSE
 
 /mob/player/hasEnhancedHearing()
-	// TODO: Add Crystal Sagas specific checks here
+	// TODO: Add Tactics Unlimited specific checks here
 	// Examples: certain races, perks, equipment, or status effects
 	// if(src.race == "Viera") return TRUE  // Bunny ears
 	// if(src.hasPerk("Keen Hearing")) return TRUE

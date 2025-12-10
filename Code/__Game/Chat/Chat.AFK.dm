@@ -57,7 +57,7 @@ mob/proc/AFKRemove()
 // Toggle AFK state
 mob/proc/TRIGGER_AFK(var/A = 0)
 	// Note: Tank/Phylactery checks removed - those are Chronicles-specific mechanics
-	// Add Crystal Sagas-specific AFK restrictions here if needed
+	// Add Tactics Unlimited-specific AFK restrictions here if needed
 
 	if(src.afk)
 		// Returning from AFK

@@ -1,154 +1,150 @@
 macro "macro"
-	elem
+	elem 
 		name = "W"
 		command = "onBind \"UP\" 1"
-	elem
+	elem 
 		name = "W+UP"
 		command = "onBind \"UP\" 0"
-	elem
+	elem 
 		name = "S"
 		command = "onBind \"DOWN\" 1"
-	elem
+	elem 
 		name = "S+UP"
 		command = "onBind \"DOWN\" 0"
-	elem
+	elem 
 		name = "A"
 		command = "onBind \"LEFT\" 1"
-	elem
+	elem 
 		name = "A+UP"
 		command = "onBind \"LEFT\" 0"
-	elem
+	elem 
 		name = "D"
 		command = "onBind \"RIGHT\" 1"
-	elem
+	elem 
 		name = "D+UP"
 		command = "onBind \"RIGHT\" 0"
-	elem
+	elem 
 		name = "Center+REP"
 		command = ".center"
-	elem
+	elem 
 		name = "Northeast+REP"
 		command = ".northeast"
-	elem
+	elem 
 		name = "Southeast+REP"
 		command = ".southeast"
-	elem
+	elem 
 		name = "Southwest+REP"
 		command = ".southwest"
-	elem
+	elem 
 		name = "Northwest+REP"
 		command = ".northwest"
-	elem
+	elem 
 		name = "West"
 		command = "onBind \"LEFT\" 1"
-	elem
+	elem 
 		name = "West+UP"
 		command = "onBind \"LEFT\" 0"
-	elem
+	elem 
 		name = "SHIFT+West"
 		command = "turnleft"
-	elem
+	elem 
 		name = "West+REP"
-		command = ""
-	elem
+	elem 
 		name = "North"
 		command = "onBind \"UP\" 1"
-	elem
+	elem 
 		name = "North+UP"
 		command = "onBind \"UP\" 0"
-	elem
+	elem 
 		name = "SHIFT+North"
 		command = "turnup"
-	elem
+	elem 
 		name = "North+REP"
-		command = ""
-	elem
+	elem 
 		name = "East"
 		command = "onBind \"RIGHT\" 1"
-	elem
+	elem 
 		name = "East+UP"
 		command = "onBind \"RIGHT\" 0"
-	elem
+	elem 
 		name = "SHIFT+East"
 		command = "turnright"
-	elem
+	elem 
 		name = "East+REP"
-		command = ""
-	elem
+	elem 
 		name = "South"
 		command = "onBind \"DOWN\" 1"
-	elem
+	elem 
 		name = "South+UP"
 		command = "onBind \"DOWN\" 0"
-	elem
+	elem 
 		name = "SHIFT+South"
 		command = "turndown"
-	elem
+	elem 
 		name = "South+REP"
-		command = ""
-	elem
+	elem 
 		name = "C+UP"
 		command = "CharacterPanel"
-	elem
+	elem 
 		name = "G"
-	elem
+	elem 
 		name = "I+UP"
 		command = "InventoryScreen"
-	elem
+	elem 
 		name = "R+UP"
 		command = "Reacting"
-	elem
+	elem 
 		name = "X"
-	elem
+	elem 
 		name = "Z"
 		command = "onBind \"ATTACK_LIGHT\" 1"
-	elem
+	elem 
 		name = "Z+UP"
 		command = "onBind \"ATTACK_LIGHT\" 0"
-	elem
+	elem 
 		name = "X"
 		command = "onBind \"ATTACK_HEAVY\" 1"
-	elem
+	elem 
 		name = "X+UP"
 		command = "onBind \"ATTACK_HEAVY\" 0"
-	elem
+	elem 
 		name = "SHIFT"
 		command = "onBind \"BLOCK\" 1"
-	elem
+	elem 
 		name = "SHIFT+UP"
 		command = "onBind \"BLOCK\" 0"
-	elem
+	elem 
 		name = "SPACE"
 		command = "onBind \"DODGE\" 1"
-	elem
+	elem 
 		name = "SPACE+UP"
 		command = "onBind \"DODGE\" 0"
-	elem
+	elem 
 		name = "TAB"
 		command = "onBind \"LOCK_TARGET\" 1"
-	elem
+	elem 
 		name = "TAB+UP"
 		command = "onBind \"LOCK_TARGET\" 0"
-	elem
+	elem 
 		name = "Q"
 		command = "onBind \"SWITCH_TARGET_LEFT\" 1"
-	elem
+	elem 
 		name = "Q+UP"
 		command = "onBind \"SWITCH_TARGET_LEFT\" 0"
-	elem
+	elem 
 		name = "E"
 		command = "onBind \"SWITCH_TARGET_RIGHT\" 1"
-	elem
+	elem 
 		name = "E+UP"
 		command = "onBind \"SWITCH_TARGET_RIGHT\" 0"
 
 
 menu "menu"
-	elem
+	elem 
 		name = "&File"
 		command = ""
 		saved-params = "is-checked"
-	elem
+	elem 
 		name = "&Quit"
 		command = ".quit"
 		category = "&File"
@@ -157,46 +153,46 @@ menu "menu"
 		name = "Options"
 		command = ""
 		saved-params = "is-checked"
-	elem
+	elem 
 		name = "Command Panel"
 		command = "Command-Panel"
 		category = "Options"
 		saved-params = "is-checked"
-	elem
+	elem 
 		name = "Admin Help"
 		command = "Adminhelp"
 		category = "Options"
 		saved-params = "is-checked"
-	elem
+	elem 
 		name = "NPC"
 		command = "Opennpc"
 		category = "Options"
 		saved-params = "is-checked"
-	elem
+	elem 
 		name = "RPFlag"
 		command = "SetRPFlag"
 		category = "Options"
 		saved-params = "is-checked"
-	elem
+	elem 
 		name = "Save"
 		command = "SaveSelf"
 		category = "Options"
 		saved-params = "is-checked"
-	elem
+	elem 
 		name = "UI Theme"
 		command = "UI-Theme"
 		category = "Options"
 		saved-params = "is-checked"
-	elem
+	elem 
 		name = "Information"
 		command = ""
 		saved-params = "is-checked"
-	elem
+	elem 
 		name = "Who"
 		command = "Who"
 		category = "Information"
 		saved-params = "is-checked"
-	elem
+	elem 
 		name = "Races"
 		command = "Races"
 		category = "Information"
@@ -841,777 +837,6 @@ window "Build"
 		text = "Outside"
 		image = 'Sheet\\Gui Label 2.png'
 		command = "Openoutside"
-
-window "CharSheet"
-	elem "CharSheet"
-		type = MAIN
-		pos = 205,0
-		size = 766x638
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		is-visible = false
-		saved-params = "pos;size;is-minimized;is-maximized"
-		statusbar = false
-		can-resize = false
-		on-close = "Closecharsheet"
-	elem "label58"
-		type = LABEL
-		pos = 0,0
-		size = 766x642
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		saved-params = ""
-		text = ""
-		image = 'Sheet\\Statistics.png'
-	elem "button96"
-		type = BUTTON
-		pos = 656,400
-		size = 64x40
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		text-color = #f8f8f8
-		background-color = #506e8b
-		saved-params = "is-checked"
-		text = "Turn Tracker"
-		command = "Turntracker"
-	elem "button78"
-		type = BUTTON
-		pos = 575,424
-		size = 76x29
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		saved-params = "is-checked"
-		text = ""
-		image = 'Sheet\\Summons.png'
-		command = "Summons"
-	elem "button77"
-		type = BUTTON
-		pos = 575,384
-		size = 76x29
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		saved-params = "is-checked"
-		text = ""
-		image = 'Sheet\\NPClist.png'
-		command = "Opennpc"
-	elem "ajob"
-		type = LABEL
-		pos = 568,336
-		size = 128x16
-		anchor1 = 33,69
-		anchor2 = 51,71
-		text-color = #ffffff
-		background-color = #71779e
-		saved-params = ""
-		text = ""
-		align = top-left
-		text-wrap = true
-		allow-html = true
-	elem "button166"
-		type = BUTTON
-		pos = 488,424
-		size = 72x24
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		background-color = #a6cdc3
-		saved-params = "is-checked"
-		text = "Hide SP Bar"
-		command = "LoseSPBar"
-	elem "button165"
-		type = BUTTON
-		pos = 408,424
-		size = 72x24
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		background-color = #a6cdc3
-		saved-params = "is-checked"
-		text = "Hide MP Bar"
-		command = "LoseMPBar"
-	elem "button164"
-		type = BUTTON
-		pos = 328,424
-		size = 72x24
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		background-color = #a6cdc3
-		saved-params = "is-checked"
-		text = "Hide HP Bar"
-		command = "LoseHPBar"
-	elem "button163"
-		type = BUTTON
-		pos = 488,392
-		size = 72x24
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		background-color = #a6cdc3
-		saved-params = "is-checked"
-		text = "Show SP Bar"
-		command = "AddSPBar"
-	elem "button162"
-		type = BUTTON
-		pos = 408,392
-		size = 72x24
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		background-color = #a6cdc3
-		saved-params = "is-checked"
-		text = "Show MP Bar"
-		command = "AddMPBar"
-	elem "button161"
-		type = BUTTON
-		pos = 328,392
-		size = 72x24
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		background-color = #a6cdc3
-		saved-params = "is-checked"
-		text = "Show HP Bar"
-		command = "AddHPBar"
-	elem "button160"
-		type = BUTTON
-		pos = 458,177
-		size = 60x20
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		background-color = #a6cdc3
-		saved-params = "is-checked"
-		text = "Reduce"
-		command = "ReduceSP"
-	elem "button159"
-		type = BUTTON
-		pos = 288,176
-		size = 60x20
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		background-color = #a6cdc3
-		saved-params = "is-checked"
-		text = "Reduce"
-		command = "ReduceMP"
-	elem "button149"
-		type = BUTTON
-		pos = 122,176
-		size = 60x20
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		background-color = #a6cdc3
-		saved-params = "is-checked"
-		text = "Reduce"
-		command = "ReduceHP"
-	elem "button158"
-		type = BUTTON
-		pos = 363,176
-		size = 60x20
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		text-color = #080808
-		background-color = #a6cdc3
-		saved-params = "is-checked"
-		text = "Add"
-		command = "IncreaseSP"
-	elem "button157"
-		type = BUTTON
-		pos = 196,176
-		size = 60x20
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		text-color = #080808
-		background-color = #a6cdc3
-		saved-params = "is-checked"
-		text = "Add"
-		command = "IncreaseMP"
-	elem "button148"
-		type = BUTTON
-		pos = 28,176
-		size = 60x20
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		text-color = #080808
-		background-color = #a6cdc3
-		saved-params = "is-checked"
-		text = "Add"
-		command = "IncreaseHP"
-	elem "button156"
-		type = BUTTON
-		pos = 216,392
-		size = 97x40
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		saved-params = "is-checked"
-		text = ""
-		image = 'Sheet\\stockbutt.png'
-		command = "Stockwindow"
-	elem "button155"
-		type = BUTTON
-		pos = 432,256
-		size = 97x40
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		saved-params = "is-checked"
-		text = ""
-		image = 'Sheet\\Materiabutt.png'
-		command = "Materiawindow"
-	elem "button34"
-		type = BUTTON
-		pos = 672,61
-		size = 76x35
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		saved-params = "is-checked"
-		text = ""
-		image = 'Sheet\\persabilities.png'
-		command = "Perksheet"
-	elem "button10"
-		type = BUTTON
-		pos = 525,61
-		size = 75x35
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		saved-params = "is-checked"
-		text = ""
-		image = 'Sheet\\Statsabilities.png'
-		command = "CharacterPanel"
-	elem "button9"
-		type = BUTTON
-		pos = 600,61
-		size = 72x35
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		saved-params = "is-checked"
-		text = ""
-		image = 'Sheet\\Rollsskills.png'
-		command = "Rollsheet"
-	elem "Nameplate"
-		type = LABEL
-		pos = 88,72
-		size = 80x12
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		text-color = #f8f8f8
-		background-color = #71779e
-		saved-params = ""
-		text = ""
-	elem "SPD"
-		type = LABEL
-		pos = 376,204
-		size = 30x33
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		text-color = #f8f8f8
-		saved-params = ""
-		text = ""
-		image = 'Sheet\\Infobox.png'
-	elem "DR"
-		type = LABEL
-		pos = 291,204
-		size = 30x33
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		text-color = #f8f8f8
-		saved-params = ""
-		text = ""
-		image = 'Sheet\\Infobox.png'
-	elem "AC"
-		type = LABEL
-		pos = 207,204
-		size = 30x33
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		text-color = #f8f8f8
-		saved-params = ""
-		text = ""
-		image = 'Sheet\\Infobox.png'
-	elem "SP"
-		type = LABEL
-		pos = 408,152
-		size = 72x16
-		anchor1 = 49,25
-		anchor2 = 67,28
-		text-color = #ffffff
-		background-color = #71779e
-		saved-params = ""
-		text = ""
-		text-wrap = true
-		allow-html = true
-	elem "rankbonus"
-		type = LABEL
-		pos = 576,264
-		size = 128x16
-		anchor1 = 75,41
-		anchor2 = 92,44
-		text-color = #ffffff
-		background-color = #71779e
-		saved-params = ""
-		text = ""
-		align = top-left
-		text-wrap = true
-		allow-html = true
-	elem "ap"
-		type = LABEL
-		pos = 146,480
-		size = 46x12
-		anchor1 = 19,75
-		anchor2 = 24,77
-		text-color = #ffffff
-		background-color = #71779e
-		saved-params = ""
-		text = ""
-		align = top-left
-		text-wrap = true
-		allow-html = true
-	elem "mdb"
-		type = LABEL
-		pos = 371,272
-		size = 29x16
-		anchor1 = 48,43
-		anchor2 = 52,45
-		text-color = #ffffff
-		background-color = #71779e
-		saved-params = ""
-		text = ""
-		align = top-left
-		text-wrap = true
-		allow-html = true
-	elem "mab"
-		type = LABEL
-		pos = 240,272
-		size = 32x16
-		anchor1 = 32,43
-		anchor2 = 35,45
-		text-color = #ffffff
-		background-color = #71779e
-		saved-params = ""
-		text = ""
-		align = top-left
-		text-wrap = true
-		allow-html = true
-	elem "pdb"
-		type = LABEL
-		pos = 304,272
-		size = 32x16
-		anchor1 = 40,43
-		anchor2 = 43,45
-		text-color = #ffffff
-		background-color = #71779e
-		saved-params = ""
-		text = ""
-		align = top-left
-		text-wrap = true
-		allow-html = true
-	elem "pab"
-		type = LABEL
-		pos = 176,272
-		size = 32x16
-		anchor1 = 23,43
-		anchor2 = 26,45
-		text-color = #ffffff
-		background-color = #71779e
-		saved-params = ""
-		text = ""
-		align = top-left
-		text-wrap = true
-		allow-html = true
-	elem "spendAP"
-		type = BUTTON
-		pos = 192,482
-		size = 90x14
-		anchor1 = 25,75
-		anchor2 = 37,77
-		text-color = #ffffff
-		background-color = #000080
-		saved-params = "is-checked"
-		text = ""
-		image = 'Sheet\\Spend.png'
-		command = "Spendpoints"
-	elem "addcha"
-		type = BUTTON
-		pos = 581,590
-		size = 90x14
-		anchor1 = 76,92
-		anchor2 = 88,95
-		is-visible = false
-		saved-params = "is-checked"
-		text = ""
-		image = 'Sheet\\distribute.png'
-		command = "Addchac"
-	elem "addwis"
-		type = BUTTON
-		pos = 482,590
-		size = 90x14
-		anchor1 = 63,92
-		anchor2 = 75,95
-		is-visible = false
-		saved-params = "is-checked"
-		text = ""
-		image = 'Sheet\\distribute.png'
-		command = "Addwisc"
-	elem "addint"
-		type = BUTTON
-		pos = 387,590
-		size = 90x14
-		anchor1 = 51,92
-		anchor2 = 62,95
-		is-visible = false
-		saved-params = "is-checked"
-		text = ""
-		image = 'Sheet\\distribute.png'
-		command = "Addintc"
-	elem "adddex"
-		type = BUTTON
-		pos = 174,593
-		size = 90x14
-		anchor1 = 23,93
-		anchor2 = 34,95
-		is-visible = false
-		saved-params = "is-checked"
-		text = ""
-		image = 'Sheet\\distribute.png'
-		command = "Adddexc"
-	elem "addcon"
-		type = BUTTON
-		pos = 286,591
-		size = 90x14
-		anchor1 = 37,93
-		anchor2 = 49,95
-		is-visible = false
-		saved-params = "is-checked"
-		text = ""
-		image = 'Sheet\\distribute.png'
-		command = "Addconc"
-	elem "rank"
-		type = LABEL
-		pos = 576,192
-		size = 128x16
-		anchor1 = 75,30
-		anchor2 = 92,33
-		text-color = #ffffff
-		background-color = #71779e
-		saved-params = ""
-		text = ""
-		align = top-left
-		text-wrap = true
-		allow-html = true
-	elem "role"
-		type = LABEL
-		pos = 56,400
-		size = 128x16
-		anchor1 = 33,69
-		anchor2 = 51,71
-		text-color = #ffffff
-		background-color = #71779e
-		saved-params = ""
-		text = ""
-		align = top-left
-		text-wrap = true
-		allow-html = true
-	elem "Subjob"
-		type = LABEL
-		pos = 400,336
-		size = 136x16
-		anchor1 = 55,58
-		anchor2 = 73,60
-		text-color = #ffffff
-		background-color = #71779e
-		saved-params = ""
-		text = ""
-		align = top-left
-		text-wrap = true
-		allow-html = true
-	elem "Job"
-		type = LABEL
-		pos = 224,336
-		size = 136x16
-		anchor1 = 33,58
-		anchor2 = 51,60
-		text-color = #ffffff
-		background-color = #71779e
-		saved-params = ""
-		text = ""
-		align = top-left
-		text-wrap = true
-		allow-html = true
-	elem "Race"
-		type = LABEL
-		pos = 56,336
-		size = 136x16
-		anchor1 = 11,58
-		anchor2 = 29,60
-		text-color = #ffffff
-		background-color = #71779e
-		saved-params = ""
-		text = ""
-		align = top-left
-		text-wrap = true
-		allow-html = true
-	elem "distog"
-		type = BUTTON
-		pos = 152,256
-		size = 16x16
-		anchor1 = 20,40
-		anchor2 = 22,43
-		background-color = #000080
-		saved-params = "is-checked"
-		text = ""
-		command = "Disadvantagetoggle"
-		button-type = checkbox
-	elem "advtog"
-		type = BUTTON
-		pos = 152,224
-		size = 16x16
-		anchor1 = 20,35
-		anchor2 = 22,38
-		background-color = #000080
-		saved-params = "is-checked"
-		text = ""
-		command = "AdvantageToggle"
-		button-type = checkbox
-	elem "MP"
-		type = LABEL
-		pos = 240,152
-		size = 64x16
-		anchor1 = 27,25
-		anchor2 = 45,28
-		text-color = #ffffff
-		background-color = #71779e
-		saved-params = ""
-		text = ""
-		text-wrap = true
-		allow-html = true
-	elem "HP"
-		type = LABEL
-		pos = 72,152
-		size = 56x16
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		text-color = #ffffff
-		background-color = #71779e
-		saved-params = ""
-		text = ""
-		text-wrap = true
-		allow-html = true
-	elem "charoll"
-		type = BUTTON
-		pos = 573,493
-		size = 110x50
-		anchor1 = 75,77
-		anchor2 = 89,85
-		saved-params = "is-checked"
-		text = ""
-		image = 'Sheet\\CHA.png'
-		command = "Rollcha"
-	elem "cha"
-		type = LABEL
-		pos = 600,562
-		size = 48x20
-		anchor1 = 78,88
-		anchor2 = 85,91
-		text-color = #f8f8f8
-		background-color = #71779e
-		saved-params = ""
-		text = ""
-	elem "addstr"
-		type = BUTTON
-		pos = 78,593
-		size = 90x14
-		anchor1 = 10,93
-		anchor2 = 22,95
-		is-visible = false
-		saved-params = "is-checked"
-		text = ""
-		image = 'Sheet\\distribute.png'
-		command = "Addstrc"
-	elem "wisroll"
-		type = BUTTON
-		pos = 480,494
-		size = 92x50
-		anchor1 = 63,77
-		anchor2 = 75,85
-		saved-params = "is-checked"
-		text = ""
-		image = 'Sheet\\WIS.png'
-		command = "Rollwis"
-	elem "wis"
-		type = LABEL
-		pos = 503,561
-		size = 48x20
-		anchor1 = 66,88
-		anchor2 = 72,91
-		text-color = #f8f8f8
-		background-color = #71779e
-		saved-params = ""
-		text = ""
-	elem "introll"
-		type = BUTTON
-		pos = 384,494
-		size = 96x50
-		anchor1 = 50,77
-		anchor2 = 63,85
-		saved-params = "is-checked"
-		text = ""
-		image = 'Sheet\\INTEL.png'
-		command = "Rollint"
-	elem "int"
-		type = LABEL
-		pos = 408,561
-		size = 48x20
-		anchor1 = 53,88
-		anchor2 = 60,91
-		text-color = #f8f8f8
-		background-color = #71779e
-		saved-params = ""
-		text = ""
-	elem "rollcon"
-		type = BUTTON
-		pos = 277,494
-		size = 105x50
-		anchor1 = 36,77
-		anchor2 = 50,85
-		saved-params = "is-checked"
-		text = ""
-		image = 'Sheet\\CONST.png'
-		command = "Rollcon"
-	elem "con"
-		type = LABEL
-		pos = 304,559
-		size = 48x20
-		anchor1 = 40,88
-		anchor2 = 46,91
-		text-color = #f8f8f8
-		background-color = #71779e
-		saved-params = ""
-		text = ""
-	elem "dexroll"
-		type = BUTTON
-		pos = 164,494
-		size = 111x50
-		anchor1 = 21,77
-		anchor2 = 36,85
-		saved-params = "is-checked"
-		text = ""
-		image = 'Sheet\\DEX.png'
-		command = "Rolldex"
-	elem "dex"
-		type = LABEL
-		pos = 194,560
-		size = 48x20
-		anchor1 = 25,88
-		anchor2 = 32,91
-		text-color = #f8f8f8
-		background-color = #71779e
-		saved-params = ""
-		text = ""
-	elem "strroll"
-		type = BUTTON
-		pos = 78,493
-		size = 86x50
-		anchor1 = 10,77
-		anchor2 = 21,85
-		saved-params = "is-checked"
-		text = ""
-		image = 'Sheet\\STR.png'
-		command = "Rollstr"
-	elem "str"
-		type = LABEL
-		pos = 96,560
-		size = 48x20
-		anchor1 = 13,88
-		anchor2 = 19,91
-		text-color = #f8f8f8
-		background-color = #71779e
-		saved-params = ""
-		text = ""
-	elem "SPDButt"
-		type = BUTTON
-		pos = 336,201
-		size = 40x40
-		anchor1 = 44,32
-		anchor2 = 49,38
-		text-color = #f8f8f8
-		background-color = #000080
-		saved-params = "is-checked"
-		text = ""
-		image = 'Sheet\\Speed.png'
-		command = "ShowSpeed"
-	elem "lb"
-		type = BUTTON
-		pos = 414,201
-		size = 40x40
-		anchor1 = 54,32
-		anchor2 = 59,38
-		text-color = #ffffff
-		background-color = #000080
-		saved-params = "is-checked"
-		text = ""
-		image = 'Sheet\\Limitbreak.png'
-		command = "Limitbreak"
-	elem "DRButt"
-		type = BUTTON
-		pos = 251,201
-		size = 40x40
-		anchor1 = 33,32
-		anchor2 = 38,38
-		text-color = #f8f8f8
-		background-color = #000080
-		saved-params = "is-checked"
-		text = ""
-		image = 'Sheet\\DR.png'
-		command = "ShowDR"
-	elem "label159"
-		type = LABEL
-		pos = 456,220
-		size = 61x15
-		anchor1 = 60,34
-		anchor2 = 70,38
-		text-color = #ffffff
-		background-color = #000080
-		saved-params = ""
-		text = ""
-		image = 'Sheet\\Limitbreak2.png'
-	elem "label16"
-		type = LABEL
-		pos = 368,65
-		size = 76x29
-		anchor1 = 49,9
-		anchor2 = 56,13
-		border = sunken
-		saved-params = ""
-		text = ""
-		image = 'Sheet\\Sheet.png'
-	elem "ACbutt"
-		type = BUTTON
-		pos = 169,201
-		size = 40x40
-		anchor1 = 22,32
-		anchor2 = 27,38
-		text-color = #f8f8f8
-		background-color = #000080
-		saved-params = "is-checked"
-		text = ""
-		image = 'Sheet\\AC.png'
-		command = "ShowAC"
-	elem "button11"
-		type = BUTTON
-		pos = 444,64
-		size = 76x29
-		anchor1 = 56,9
-		anchor2 = 64,13
-		border = line
-		saved-params = "is-checked"
-		text = ""
-		image = 'Sheet\\Profile.png'
-		command = "Switchtoprofile"
-	elem "RPP"
-		type = LABEL
-		pos = 572,124
-		size = 136x16
-		anchor1 = 75,19
-		anchor2 = 92,22
-		text-color = #ffffff
-		background-color = #71779e
-		saved-params = ""
-		text = ""
-		align = top-left
-		text-wrap = true
-		allow-html = true
 
 window "Contentcheck"
 	elem "Contentcheck"
@@ -3248,209 +2473,6 @@ window "Encyclopedia"
 		image = 'Sheet\\Gui Label 2.png'
 		command = "ShowRulesCat"
 
-window "Equipment"
-	elem "Equipment"
-		type = MAIN
-		pos = 281,0
-		size = 280x311
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		is-visible = false
-		saved-params = "pos;size;is-minimized;is-maximized"
-		statusbar = false
-		can-resize = false
-	elem "label250"
-		type = LABEL
-		pos = 0,0
-		size = 280x312
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		saved-params = ""
-		text = ""
-		image = 'PNG\\Equipman.png'
-	elem "player"
-		type = GRID
-		pos = 112,96
-		size = 56x48
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		background-color = #000080
-		border = sunken
-		right-click = true
-		saved-params = ""
-		show-names = false
-		highlight-color = #000000
-	elem "name"
-		type = LABEL
-		pos = 112,76
-		size = 56x20
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		background-color = #97bbc4
-		border = line
-		saved-params = ""
-		text = "Name"
-	elem "label249"
-		type = LABEL
-		pos = 112,252
-		size = 60x20
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		background-color = #97bbc4
-		border = line
-		saved-params = ""
-		text = "Materia: 2"
-	elem "label248"
-		type = LABEL
-		pos = 196,252
-		size = 60x20
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		background-color = #97bbc4
-		border = line
-		saved-params = ""
-		text = "Materia: 3"
-	elem "label247"
-		type = LABEL
-		pos = 18,252
-		size = 60x20
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		background-color = #97bbc4
-		border = line
-		saved-params = ""
-		text = "Materia: 1"
-	elem "label246"
-		type = LABEL
-		pos = 184,216
-		size = 60x20
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		background-color = #97bbc4
-		border = line
-		saved-params = ""
-		text = "Left Hand"
-	elem "label245"
-		type = LABEL
-		pos = 109,209
-		size = 60x20
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		background-color = #97bbc4
-		border = line
-		saved-params = ""
-		text = "Armor"
-	elem "label244"
-		type = LABEL
-		pos = 32,216
-		size = 60x20
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		background-color = #97bbc4
-		border = line
-		saved-params = ""
-		text = "Right Hand"
-	elem "label243"
-		type = LABEL
-		pos = 212,52
-		size = 60x20
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		background-color = #97bbc4
-		border = line
-		saved-params = ""
-		text = "Acc: 2"
-	elem "label189"
-		type = LABEL
-		pos = 12,52
-		size = 60x20
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		background-color = #97bbc4
-		border = line
-		saved-params = ""
-		text = "Acc: 1"
-	elem "Accessory2"
-		type = LABEL
-		pos = 224,72
-		size = 32x32
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		background-color = #000080
-		border = sunken
-		saved-params = ""
-		text = ""
-	elem "Accesory1"
-		type = LABEL
-		pos = 24,72
-		size = 32x32
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		background-color = #000080
-		border = sunken
-		saved-params = ""
-		text = ""
-	elem "Materia3"
-		type = LABEL
-		pos = 208,272
-		size = 32x32
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		background-color = #000080
-		border = sunken
-		saved-params = ""
-		text = ""
-	elem "Materia2"
-		type = LABEL
-		pos = 126,272
-		size = 32x32
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		background-color = #000080
-		border = sunken
-		saved-params = ""
-		text = ""
-	elem "Materia1"
-		type = LABEL
-		pos = 33,272
-		size = 32x32
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		background-color = #000080
-		border = sunken
-		saved-params = ""
-		text = ""
-	elem "LeftHand"
-		type = LABEL
-		pos = 200,184
-		size = 32x32
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		background-color = #000080
-		border = sunken
-		saved-params = ""
-		text = ""
-	elem "RightHand"
-		type = LABEL
-		pos = 45,184
-		size = 32x32
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		background-color = #000080
-		border = sunken
-		saved-params = ""
-		text = ""
-	elem "Armor"
-		type = LABEL
-		pos = 124,178
-		size = 32x32
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		background-color = #000080
-		border = sunken
-		saved-params = ""
-		text = ""
-
 window "EventminPanel"
 	elem "EventminPanel"
 		type = MAIN
@@ -4968,163 +3990,29 @@ window "GMandperk"
 		current-cell = 1,1
 		highlight-color = #000000
 
-window "InventoryScreen"
-	elem "InventoryScreen"
+window "MainMenu"
+	elem "MainMenu"
 		type = MAIN
-		pos = 281,0
-		size = 496x626
+		pos = 291,0
+		size = 672x544
 		anchor1 = -1,-1
 		anchor2 = -1,-1
+		background-color = none
 		is-visible = false
 		saved-params = "pos;size;is-minimized;is-maximized"
-		statusbar = false
-		can-resize = false
-		on-close = "CloseEquip"
-	elem "label11"
-		type = LABEL
+		outer-size = 688x602
+		outer-pos = 291,0
+		inner-size = 672x544
+		inner-pos = 8,31
+		screen-size = 1920x1040
+	elem "browser2"
+		type = BROWSER
 		pos = 0,0
-		size = 496x48
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		text-color = #ffffff
-		background-color = #1c1c1c
+		size = 672x544
+		anchor1 = 0,0
+		anchor2 = 100,100
+		background-color = none
 		saved-params = ""
-		text = ""
-		image = 'Sheet\\GUI Label.png'
-		image-mode = stretch
-	elem "gsp"
-		type = LABEL
-		pos = 128,14
-		size = 136x20
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		text-color = #080808
-		background-color = #dcdcf8
-		saved-params = ""
-		text = ""
-	elem "button83"
-		type = BUTTON
-		pos = 267,9
-		size = 32x32
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		background-color = #8eacb6
-		border = line
-		saved-params = "is-checked"
-		text = ""
-		image = 'Icons\\GSP.png'
-		command = "DropGSP"
-	elem "machi"
-		type = GRID
-		pos = 0,272
-		size = 496x96
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		text-color = #ffffff
-		background-color = #576670
-		saved-params = ""
-		cells = 2x1
-		current-cell = 1,1
-		highlight-color = #000000
-	elem "label87"
-		type = LABEL
-		pos = 0,368
-		size = 496x24
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		text-color = #f8f8f8
-		background-color = #000080
-		saved-params = ""
-		text = "Chemist"
-		image = 'Sheet\\Gui Label 2.png'
-	elem "label7"
-		type = LABEL
-		pos = 0,248
-		size = 496x24
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		text-color = #f8f8f8
-		background-color = #000080
-		saved-params = ""
-		text = "Machinist"
-		image = 'Sheet\\Gui Label 2.png'
-	elem "chemi"
-		type = GRID
-		pos = 0,392
-		size = 496x168
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		text-color = #ffffff
-		background-color = #576670
-		saved-params = ""
-		cells = 2x1
-		current-cell = 1,1
-		highlight-color = #000000
-	elem "label86"
-		type = LABEL
-		pos = 0,560
-		size = 600x312
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		saved-params = ""
-		text = ""
-		image = 'Sheet\\GUI Label.png'
-	elem "Money"
-		type = LABEL
-		pos = 312,12
-		size = 136x20
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		text-color = #080808
-		background-color = #dcdcf8
-		saved-params = ""
-		text = ""
-	elem "button16"
-		type = BUTTON
-		pos = 456,8
-		size = 32x32
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		background-color = #8eacb6
-		border = line
-		saved-params = "is-checked"
-		text = ""
-		image = 'Icons\\Gil.png'
-		command = "Dropmoney"
-	elem "button120"
-		type = BUTTON
-		pos = 32,16
-		size = 60x20
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		text-color = #ffffff
-		background-color = #000080
-		saved-params = "is-checked"
-		text = "Equipment"
-		command = "SeeEquipment"
-	elem "label10"
-		type = LABEL
-		pos = 0,40
-		size = 496x24
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		text-color = #f8f8f8
-		background-color = #000080
-		saved-params = ""
-		text = "Gear"
-		image = 'Sheet\\Gui Label 2.png'
-	elem "gear"
-		type = GRID
-		pos = 0,64
-		size = 496x184
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		text-color = #ffffff
-		background-color = #576670
-		saved-params = ""
-		cells = 2x1
-		current-cell = 1,1
-		highlight-color = #000000
 
 window "Materiainv"
 	elem "Materiainv"
@@ -6649,907 +5537,6 @@ window "NPCarchive"
 		background-color = #919db5
 		saved-params = ""
 		highlight-color = #f8f8f8
-
-window "PerkWindow"
-	elem "PerkWindow"
-		type = MAIN
-		pos = 281,0
-		size = 766x499
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		is-visible = false
-		saved-params = "pos;size;is-minimized;is-maximized"
-		can-resize = false
-	elem "label174"
-		type = LABEL
-		pos = 0,0
-		size = 765x512
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		saved-params = ""
-		text = ""
-		image = 'Sheet\\Perkshop.png'
-	elem "rpp"
-		type = LABEL
-		pos = 64,100
-		size = 104x20
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		text-color = #f8f8f8
-		background-color = #688097
-		border = sunken
-		saved-params = ""
-		text = ""
-	elem "button154"
-		type = BUTTON
-		pos = 292,296
-		size = 156x29
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		saved-params = "is-checked"
-		text = ""
-		image = 'Sheet\\Advanced Job.png'
-		command = "ShowAdvanced"
-	elem "button132"
-		type = BUTTON
-		pos = 297,231
-		size = 153x28
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		saved-params = "is-checked"
-		text = ""
-		image = 'Sheet\\GAbilities.png'
-		command = "ShowGeneralAbilities"
-	elem "button131"
-		type = BUTTON
-		pos = 402,201
-		size = 153x27
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		saved-params = "is-checked"
-		text = ""
-		image = 'Sheet\\GMagic.png'
-		command = "ShowGreenMagic"
-	elem "button130"
-		type = BUTTON
-		pos = 564,201
-		size = 153x27
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		saved-params = "is-checked"
-		text = ""
-		image = 'Sheet\\AMagic.png'
-		command = "ShowArcaneMagic"
-	elem "button129"
-		type = BUTTON
-		pos = 458,231
-		size = 153x27
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		saved-params = "is-checked"
-		text = ""
-		image = 'Sheet\\SJAbilities.png'
-		command = "ShowSubjobAbilities"
-	elem "button128"
-		type = BUTTON
-		pos = 192,201
-		size = 153x27
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		saved-params = "is-checked"
-		text = ""
-		image = 'Sheet\\WMagic.png'
-		command = "ShowWhiteMagic"
-	elem "button127"
-		type = BUTTON
-		pos = 138,230
-		size = 153x27
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		saved-params = "is-checked"
-		text = ""
-		image = 'Sheet\\JAbilities.png'
-		command = "ShowJobAbilities"
-	elem "button126"
-		type = BUTTON
-		pos = 32,200
-		size = 155x26
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		saved-params = "is-checked"
-		text = ""
-		image = 'Sheet\\BMagic.png'
-		command = "ShowBlackMagic"
-	elem "button125"
-		type = BUTTON
-		pos = 212,131
-		size = 156x29
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		saved-params = "is-checked"
-		text = ""
-		image = 'Sheet\\Subjobperks.png'
-		command = "ShowSubjobPerks"
-	elem "button124"
-		type = BUTTON
-		pos = 375,131
-		size = 155x28
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		saved-params = "is-checked"
-		text = ""
-		image = 'Sheet\\Generalperks.png'
-		command = "ShowGeneralPerks"
-	elem "button123"
-		type = BUTTON
-		pos = 547,129
-		size = 156x30
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		saved-params = "is-checked"
-		text = ""
-		image = 'Sheet\\Craftingperks.png'
-		command = "ShowCraftingPerks"
-	elem "button122"
-		type = BUTTON
-		pos = 48,131
-		size = 155x28
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		saved-params = "is-checked"
-		text = ""
-		image = 'Sheet\\Jobperks.png'
-		command = "ShowJobPerks"
-	elem "techshop"
-		type = GRID
-		pos = 394,328
-		size = 264x168
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		text-color = #f8f8f8
-		background-color = #71779e
-		saved-params = ""
-		highlight-color = #000000
-	elem "perkshop"
-		type = GRID
-		pos = 88,328
-		size = 264x168
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		text-color = #f8f8f8
-		background-color = #71779e
-		saved-params = ""
-		highlight-color = #000000
-
-window "Perklook"
-	elem "Perklook"
-		type = MAIN
-		pos = 281,0
-		size = 347x457
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		is-visible = false
-		saved-params = "pos;size;is-minimized;is-maximized"
-		statusbar = false
-		can-resize = false
-	elem "rank"
-		type = LABEL
-		pos = 11,412
-		size = 325x35
-		anchor1 = 3,90
-		anchor2 = 97,98
-		background-color = #b2c6d3
-		saved-params = ""
-		text = ""
-	elem "label191"
-		type = LABEL
-		pos = 11,12
-		size = 325x92
-		anchor1 = 3,3
-		anchor2 = 97,23
-		background-color = #336699
-		saved-params = ""
-		text = ""
-		image = 'Sheet\\GUI 3.png'
-	elem "label199"
-		type = LABEL
-		pos = 138,81
-		size = 64x11
-		anchor1 = 40,18
-		anchor2 = 58,20
-		background-color = #546d87
-		saved-params = ""
-		text = ""
-		image = 'Sheet\\Gui Label 2.png'
-	elem "label198"
-		type = LABEL
-		pos = 138,23
-		size = 64x12
-		anchor1 = 40,5
-		anchor2 = 58,8
-		background-color = #546d87
-		saved-params = ""
-		text = ""
-		image = 'Sheet\\Gui Label 2.png'
-	elem "label186"
-		type = LABEL
-		pos = 188,35
-		size = 14x46
-		anchor1 = 54,8
-		anchor2 = 58,18
-		background-color = #546d87
-		saved-params = ""
-		text = ""
-		image = 'Sheet\\Gui Label 2.png'
-	elem "label165"
-		type = LABEL
-		pos = 138,35
-		size = 14x46
-		anchor1 = 40,8
-		anchor2 = 44,18
-		background-color = #546d87
-		saved-params = ""
-		text = ""
-		image = 'Sheet\\Gui Label 2.png'
-	elem "label63"
-		type = LABEL
-		pos = 11,389
-		size = 325x23
-		anchor1 = 3,85
-		anchor2 = 97,90
-		text-color = #f8f8f8
-		background-color = #3f7c8c
-		saved-params = ""
-		text = "Rank"
-		image = 'Sheet\\Gui Label 2.png'
-	elem "desc"
-		type = LABEL
-		pos = 11,149
-		size = 325x240
-		anchor1 = 3,33
-		anchor2 = 97,85
-		text-color = #f8f8f8
-		background-color = #2b2b43
-		saved-params = ""
-		text = ""
-		align = left
-		text-wrap = true
-		allow-html = true
-	elem "name"
-		type = LABEL
-		pos = 11,92
-		size = 325x23
-		anchor1 = 3,20
-		anchor2 = 97,25
-		text-color = #f8f8f8
-		background-color = #3f7c8c
-		saved-params = ""
-		text = ""
-		image = 'Sheet\\Gui Label 2.png'
-	elem "desc"
-		type = LABEL
-		pos = 11,126
-		size = 325x23
-		anchor1 = 3,28
-		anchor2 = 97,33
-		text-color = #f8f8f8
-		background-color = #3f7c8c
-		saved-params = ""
-		text = "Description"
-		image = 'Sheet\\Gui Label 2.png'
-	elem "perkicon"
-		type = LABEL
-		pos = 149,35
-		size = 43x46
-		anchor1 = 43,8
-		anchor2 = 55,18
-		background-color = #080808
-		saved-params = ""
-		text = ""
-		text-wrap = true
-		allow-html = true
-	elem "label76"
-		type = LABEL
-		pos = 11,115
-		size = 344x11
-		anchor1 = 3,25
-		anchor2 = 100,28
-		background-color = #000080
-		saved-params = ""
-		text = ""
-		image = 'Sheet\\GUI Label.png'
-	elem "label75"
-		type = LABEL
-		pos = 336,12
-		size = 11x435
-		anchor1 = 97,3
-		anchor2 = 100,98
-		background-color = #000080
-		saved-params = ""
-		text = ""
-		image = 'Sheet\\Gui Label 2.png'
-	elem "label74"
-		type = LABEL
-		pos = 0,12
-		size = 11x435
-		anchor1 = 0,3
-		anchor2 = 3,98
-		background-color = #000080
-		saved-params = ""
-		text = ""
-		image = 'Sheet\\Gui Label 2.png'
-	elem "label73"
-		type = LABEL
-		pos = 0,447
-		size = 347x11
-		anchor1 = 0,98
-		anchor2 = 100,100
-		background-color = #000080
-		saved-params = ""
-		text = ""
-		image = 'Sheet\\Gui Label 2.png'
-	elem "label71"
-		type = LABEL
-		pos = 0,0
-		size = 347x12
-		anchor1 = 0,0
-		anchor2 = 100,3
-		background-color = #000080
-		saved-params = ""
-		text = ""
-		image = 'Sheet\\Gui Label 2.png'
-
-window "Perksheet"
-	elem "Perksheet"
-		type = MAIN
-		pos = 281,0
-		size = 767x689
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		is-visible = false
-		saved-params = "pos;size;is-minimized;is-maximized"
-		statusbar = false
-		can-resize = false
-		on-close = "Closecharsheet"
-	elem "label59"
-		type = LABEL
-		pos = -20,-9
-		size = 804x721
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		saved-params = ""
-		text = ""
-		image = 'Sheet\\perksabilitiessheet.png'
-	elem "button42"
-		type = BUTTON
-		pos = 376,120
-		size = 145x67
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		saved-params = "is-checked"
-		text = ""
-		image = 'Sheet\\shopbutton.png'
-		command = "OpenPerkShop"
-	elem "statsbutton"
-		type = BUTTON
-		pos = 520,45
-		size = 75x35
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		saved-params = "is-checked"
-		text = ""
-		image = 'Sheet\\Statsabilities.png'
-		command = "Charsheet"
-	elem "rollsbutton"
-		type = BUTTON
-		pos = 592,45
-		size = 72x35
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		saved-params = "is-checked"
-		text = ""
-		image = 'Sheet\\Rollsskills.png'
-		command = "Rollsheet"
-	elem "perksbutton"
-		type = BUTTON
-		pos = 664,45
-		size = 76x35
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		saved-params = "is-checked"
-		text = ""
-		image = 'Sheet\\persabilities.png'
-		command = "Perksheet"
-	elem "spellgrid"
-		type = GRID
-		pos = 520,256
-		size = 208x416
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		text-color = #f8f8f8
-		background-color = #515572
-		saved-params = ""
-		link-color = #f8f8f8
-		line-color = #080808
-		highlight-color = #000000
-	elem "generalgrid"
-		type = GRID
-		pos = 264,266
-		size = 224x406
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		text-color = #f8f8f8
-		background-color = #515572
-		saved-params = ""
-		link-color = #f8f8f8
-		line-color = #080808
-		highlight-color = #000000
-	elem "jobgrid"
-		type = GRID
-		pos = 29,264
-		size = 203x408
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		text-color = #f8f8f8
-		background-color = #515572
-		saved-params = ""
-		link-color = #f8f8f8
-		line-color = #080808
-		highlight-color = #000000
-	elem "weapongrid"
-		type = GRID
-		pos = 30,96
-		size = 195x118
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		text-color = #f8f8f8
-		background-color = #515572
-		saved-params = ""
-		link-color = #f8f8f8
-		line-color = #080808
-		highlight-color = #000000
-	elem "label16"
-		type = LABEL
-		pos = 364,51
-		size = 76x29
-		anchor1 = 49,9
-		anchor2 = 56,13
-		border = sunken
-		saved-params = ""
-		text = ""
-		image = 'Sheet\\Sheet.png'
-	elem "button11"
-		type = BUTTON
-		pos = 440,51
-		size = 76x29
-		anchor1 = 56,9
-		anchor2 = 64,13
-		border = line
-		saved-params = "is-checked"
-		text = ""
-		image = 'Sheet\\Profile.png'
-		command = "Switchtoprofile"
-
-window "Profile"
-	elem "Profile"
-		type = MAIN
-		pos = 281,0
-		size = 640x480
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		is-visible = false
-		saved-params = "pos;size;is-minimized;is-maximized"
-		statusbar = false
-		can-resize = false
-		on-close = "Closecharsheet"
-	elem "label214"
-		type = LABEL
-		pos = 8,240
-		size = 8x232
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		saved-params = ""
-		text = ""
-		image = 'Sheet\\GUI 3.png'
-	elem "as"
-		type = LABEL
-		pos = 16,432
-		size = 208x16
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		text-color = #ffffff
-		background-color = #000000
-		saved-params = ""
-		text = ""
-		image-mode = stretch
-	elem "label203"
-		type = LABEL
-		pos = 16,448
-		size = 216x24
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		background-color = #080808
-		saved-params = ""
-		text = ""
-	elem "label213"
-		type = LABEL
-		pos = 8,464
-		size = 224x8
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		saved-params = ""
-		text = ""
-		image = 'Sheet\\GUI 3.png'
-	elem "label212"
-		type = LABEL
-		pos = 224,240
-		size = 8x232
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		saved-params = ""
-		text = ""
-		image = 'Sheet\\GUI 3.png'
-	elem "label14"
-		type = LABEL
-		pos = 0,224
-		size = 232x16
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		background-color = #000080
-		saved-params = ""
-		text = ""
-		image = 'Sheet\\Gui Label 2.png'
-	elem "label211"
-		type = LABEL
-		pos = 8,232
-		size = 224x8
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		saved-params = ""
-		text = ""
-		image = 'Sheet\\GUI 3.png'
-	elem "ProfilePic"
-		type = LABEL
-		pos = 8,32
-		size = 224x192
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		text-color = #ffffff
-		background-color = #000000
-		saved-params = ""
-		text = ""
-		image-mode = stretch
-	elem "label210"
-		type = LABEL
-		pos = 8,24
-		size = 8x200
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		saved-params = ""
-		text = ""
-		image = 'Sheet\\GUI 3.png'
-	elem "label209"
-		type = LABEL
-		pos = 224,24
-		size = 8x200
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		saved-params = ""
-		text = ""
-		image = 'Sheet\\GUI 3.png'
-	elem "label208"
-		type = LABEL
-		pos = 8,216
-		size = 224x8
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		saved-params = ""
-		text = ""
-		image = 'Sheet\\GUI 3.png'
-	elem "label207"
-		type = LABEL
-		pos = 8,24
-		size = 224x8
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		saved-params = ""
-		text = ""
-		image = 'Sheet\\GUI 3.png'
-	elem "label206"
-		type = LABEL
-		pos = 0,0
-		size = 640x24
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		background-color = #000080
-		saved-params = ""
-		text = ""
-		image = 'Sheet\\Gui Label 2.png'
-	elem "label9"
-		type = LABEL
-		pos = 232,0
-		size = 408x32
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		background-color = #000080
-		saved-params = ""
-		text = ""
-		image = 'Sheet\\Gui Label 2.png'
-	elem "patron"
-		type = LABEL
-		pos = 400,8
-		size = 24x20
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		is-visible = false
-		saved-params = ""
-		text = ""
-		image = 'PNG\\Patreon.png'
-	elem "label205"
-		type = LABEL
-		pos = 248,104
-		size = 600x374
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		saved-params = ""
-		text = ""
-		image = 'Sheet\\GUI Label.png'
-	elem "label204"
-		type = LABEL
-		pos = 240,32
-		size = 600x374
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		saved-params = ""
-		text = ""
-		image = 'Sheet\\GUI Label.png'
-	elem "ss"
-		type = LABEL
-		pos = 16,448
-		size = 200x16
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		text-color = #ffffff
-		background-color = #000000
-		saved-params = ""
-		text = ""
-		image-mode = stretch
-	elem "bs"
-		type = LABEL
-		pos = 16,416
-		size = 208x16
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		text-color = #ffffff
-		background-color = #000000
-		saved-params = ""
-		text = ""
-		image-mode = stretch
-	elem "cs"
-		type = LABEL
-		pos = 16,400
-		size = 208x16
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		text-color = #ffffff
-		background-color = #000000
-		saved-params = ""
-		text = ""
-		image-mode = stretch
-	elem "ds"
-		type = LABEL
-		pos = 16,384
-		size = 208x16
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		text-color = #ffffff
-		background-color = #000000
-		saved-params = ""
-		text = ""
-		image-mode = stretch
-	elem "es"
-		type = LABEL
-		pos = 16,368
-		size = 208x16
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		text-color = #ffffff
-		background-color = #000000
-		saved-params = ""
-		text = ""
-		image-mode = stretch
-	elem "t6s"
-		type = LABEL
-		pos = 16,352
-		size = 208x16
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		text-color = #ffffff
-		background-color = #000000
-		saved-params = ""
-		text = ""
-		image-mode = stretch
-	elem "t5s"
-		type = LABEL
-		pos = 16,336
-		size = 208x16
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		text-color = #ffffff
-		background-color = #000000
-		saved-params = ""
-		text = ""
-		image-mode = stretch
-	elem "t4s"
-		type = LABEL
-		pos = 16,320
-		size = 208x16
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		text-color = #ffffff
-		background-color = #000000
-		saved-params = ""
-		text = ""
-		image-mode = stretch
-	elem "t3s"
-		type = LABEL
-		pos = 16,304
-		size = 208x16
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		text-color = #ffffff
-		background-color = #000000
-		saved-params = ""
-		text = ""
-		image-mode = stretch
-	elem "t2s"
-		type = LABEL
-		pos = 16,288
-		size = 208x16
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		text-color = #ffffff
-		background-color = #000000
-		saved-params = ""
-		text = ""
-		image-mode = stretch
-	elem "t1s"
-		type = LABEL
-		pos = 16,272
-		size = 208x16
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		text-color = #ffffff
-		background-color = #000000
-		saved-params = ""
-		text = ""
-		image-mode = stretch
-	elem "Metadata2"
-		type = LABEL
-		pos = 16,256
-		size = 208x16
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		text-color = #ffffff
-		background-color = #000000
-		saved-params = ""
-		text = ""
-		image-mode = stretch
-	elem "label48"
-		type = LABEL
-		pos = 632,32
-		size = 8x440
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		background-color = #000080
-		saved-params = ""
-		text = ""
-		image = 'Sheet\\Gui Label 2.png'
-	elem "label17"
-		type = LABEL
-		pos = 8,472
-		size = 632x12
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		background-color = #000080
-		saved-params = ""
-		text = ""
-		image = 'Sheet\\Gui Label 2.png'
-	elem "label8"
-		type = LABEL
-		pos = 0,24
-		size = 8x464
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		background-color = #000080
-		saved-params = ""
-		text = ""
-		image = 'Sheet\\Gui Label 2.png'
-	elem "profile"
-		type = BROWSER
-		pos = 256,40
-		size = 368x424
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		saved-params = ""
-	elem "Edit2"
-		type = BUTTON
-		pos = 248,12
-		size = 24x20
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		text-color = #f8f8f8
-		background-color = #517a88
-		is-visible = false
-		saved-params = "is-checked"
-		text = "E"
-		command = "EditProfile"
-	elem "profile"
-		type = LABEL
-		pos = 432,8
-		size = 60x20
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		border = sunken
-		saved-params = ""
-		text = ""
-		image = 'Sheet\\Profile.png'
-	elem "Sheet"
-		type = BUTTON
-		pos = 500,8
-		size = 60x20
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		border = line
-		saved-params = "is-checked"
-		text = ""
-		image = 'Sheet\\Sheet.png'
-		command = "Charsheet"
-	elem "Edit"
-		type = BUTTON
-		pos = 568,8
-		size = 60x20
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		border = line
-		saved-params = "is-checked"
-		text = ""
-		image = 'Sheet\\Edit.png'
-		command = "Editprofilebuttons"
-	elem "Metadata1"
-		type = LABEL
-		pos = 16,240
-		size = 208x16
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		text-color = #ffffff
-		background-color = #000000
-		saved-params = ""
-		text = ""
-		image-mode = stretch
-		align = left
-	elem "label13"
-		type = LABEL
-		pos = 232,32
-		size = 16x448
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		background-color = #000080
-		saved-params = ""
-		text = ""
-		image = 'Sheet\\Gui Label 2.png'
-	elem "Edit1"
-		type = BUTTON
-		pos = 8,2
-		size = 24x20
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		text-color = #f8f8f8
-		background-color = #517a88
-		is-visible = false
-		saved-params = "is-checked"
-		text = "E"
-		command = "EditProfilePic"
 
 window "Rollproof"
 	elem "Rollproof"
@@ -9293,10 +7280,9 @@ window "default"
 		size = 1544x939
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		is-default = true
 		saved-params = "pos;size;is-minimized;is-maximized"
-		title = "Crystal Sagas"
+		title = "Tactics Unlimited"
 		icon = 'Sheet\\Chocobo.png'
 		macro = "macro"
 		menu = "menu"
@@ -9306,7 +7292,6 @@ window "default"
 		size = 1000x939
 		anchor1 = 0,0
 		anchor2 = 65,100
-		zoom-mode = letterbox
 		saved-params = "zoom-mode"
 		on-size = ".on_viewport [[width]] [[height]]"
 	elem "browser1"
@@ -9458,229 +7443,6 @@ window "ingredients"
 		saved-params = ""
 		text = ""
 		image = 'Sheet\\Gui Label 2.png'
-
-window "party"
-	elem "party"
-		type = MAIN
-		pos = 281,0
-		size = 408x326
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		is-visible = false
-		saved-params = "pos;size;is-minimized;is-maximized"
-		can-resize = false
-		icon = 'Sheet\\Chocobo.png'
-	elem "label130"
-		type = LABEL
-		pos = 0,272
-		size = 408x56
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		saved-params = ""
-		text = ""
-		image = 'Sheet\\GUI 3.png'
-	elem "button82"
-		type = BUTTON
-		pos = 264,288
-		size = 74x24
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		saved-params = "is-checked"
-		text = ""
-		image = 'PNG\\Leave.png'
-		command = "LeaveParty"
-	elem "button81"
-		type = BUTTON
-		pos = 120,288
-		size = 74x24
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		saved-params = "is-checked"
-		text = ""
-		image = 'PNG\\Invite.png'
-		command = "PartyInvite"
-	elem "button80"
-		type = BUTTON
-		pos = 30,288
-		size = 74x24
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		saved-params = "is-checked"
-		text = ""
-		image = 'PNG\\Create.png'
-		command = "CreateParty"
-	elem "label170"
-		type = LABEL
-		pos = 0,0
-		size = 408x24
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		text-color = #f8f8f8
-		saved-params = ""
-		text = "Party"
-		image = 'Sheet\\GUI 3.png'
-		allow-html = true
-	elem "party"
-		type = GRID
-		pos = 0,24
-		size = 408x32
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		text-color = #f8f8f8
-		background-color = #83b9b9
-		saved-params = ""
-		highlight-color = #000000
-	elem "label126"
-		type = LABEL
-		pos = 0,56
-		size = 408x24
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		text-color = #f8f8f8
-		saved-params = ""
-		text = "Members"
-		image = 'Sheet\\GUI 3.png'
-		allow-html = true
-	elem "label125"
-		type = LABEL
-		pos = 0,200
-		size = 408x24
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		text-color = #f8f8f8
-		saved-params = ""
-		text = "Active FATE"
-		image = 'Sheet\\GUI 3.png'
-	elem "fate"
-		type = GRID
-		pos = 0,224
-		size = 408x48
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		text-color = #f8f8f8
-		background-color = #83b9b9
-		saved-params = ""
-		highlight-color = #000000
-	elem "members"
-		type = GRID
-		pos = 0,80
-		size = 408x120
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		text-color = #f8f8f8
-		background-color = #83b9b9
-		saved-params = ""
-		highlight-color = #000000
-
-window "playershop"
-	elem "playershop"
-		type = MAIN
-		pos = 281,0
-		size = 280x486
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		is-visible = false
-		saved-params = "pos;size;is-minimized;is-maximized"
-		can-resize = false
-	elem "selected"
-		type = LABEL
-		pos = 0,168
-		size = 280x24
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		text-color = #f8f8f8
-		saved-params = ""
-		text = "Selected:"
-		image = 'Sheet\\GUI Label.png'
-	elem "lore"
-		type = LABEL
-		pos = 0,416
-		size = 280x72
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		text-color = #f8f8f8
-		background-color = #080808
-		saved-params = ""
-		text = ""
-		align = left
-		text-wrap = true
-		allow-html = true
-	elem "label78"
-		type = LABEL
-		pos = 0,392
-		size = 280x24
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		text-color = #f8f8f8
-		saved-params = ""
-		text = "Lore"
-		image = 'Sheet\\GUI Label.png'
-	elem "enchant"
-		type = LABEL
-		pos = 0,328
-		size = 280x64
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		text-color = #f8f8f8
-		background-color = #080808
-		saved-params = ""
-		text = ""
-		align = left
-		text-wrap = true
-		allow-html = true
-	elem "label121"
-		type = LABEL
-		pos = 0,304
-		size = 280x24
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		text-color = #f8f8f8
-		saved-params = ""
-		text = "Enchantment"
-		image = 'Sheet\\GUI Label.png'
-	elem "desc"
-		type = LABEL
-		pos = 0,216
-		size = 280x88
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		text-color = #f8f8f8
-		background-color = #080808
-		saved-params = ""
-		text = ""
-		align = left
-		text-wrap = true
-		allow-html = true
-	elem "label122"
-		type = LABEL
-		pos = 0,192
-		size = 280x24
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		text-color = #f8f8f8
-		saved-params = ""
-		text = "Description"
-		image = 'Sheet\\GUI Label.png'
-	elem "item"
-		type = GRID
-		pos = 0,32
-		size = 280x136
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		text-color = #f8f8f8
-		background-color = #79b1b1
-		saved-params = ""
-		highlight-color = #000000
-	elem "label119"
-		type = LABEL
-		pos = 0,0
-		size = 280x32
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		text-color = #f8f8f8
-		saved-params = ""
-		text = "Stock"
-		image = 'Sheet\\GUI Label.png'
 
 window "recipeout"
 	elem "recipeout"
@@ -9890,39 +7652,4 @@ window "stablemaster"
 		saved-params = ""
 		text = "Stock"
 		image = 'Sheet\\GUI Label.png'
-
-window "statusscreen"
-	elem "statusscreen"
-		type = MAIN
-		pos = 281,0
-		size = 432x311
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		is-visible = false
-		saved-params = "pos;size;is-minimized;is-maximized"
-		can-resize = false
-		icon = 'Potion.dmi'
-	elem "grid"
-		type = GRID
-		pos = 0,40
-		size = 432x272
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		text-color = #f8f8f8
-		background-color = #9cb5b5
-		is-disabled = true
-		border = sunken
-		saved-params = ""
-		highlight-color = #000000
-	elem "owner"
-		type = LABEL
-		pos = 0,0
-		size = 432x40
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		text-color = #f8f8f8
-		background-color = #96adad
-		saved-params = ""
-		text = ""
-		allow-html = true
 

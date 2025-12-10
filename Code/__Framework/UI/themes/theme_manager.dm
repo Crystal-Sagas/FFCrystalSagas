@@ -1,11 +1,11 @@
 /**
- * Fantasy United Theme Manager
+ * Tactics Unlimited Theme Manager
  *
  * Manages UI themes for the game. All windows using the CSS library
  * will automatically respect the player's chosen theme.
  *
  * AVAILABLE THEMES:
- * - "fantasy_united" (default) - The game's signature dark theme with orange accents
+ * - "tactics_unlimited" (default) - The game's signature dark theme with orange accents
  * - "ff_classic_blue" - Final Fantasy classic blue theme
  * - "ff_classic_grey" - Final Fantasy classic grey theme
  * - "dark" - Pure dark theme
@@ -22,14 +22,14 @@
  */
 
 /// Available theme identifiers
-#define THEME_FANTASY_UNITED  "fantasy_united"
+#define THEME_TACTICS_UNLIMITED  "tactics_unlimited"
 #define THEME_FF_CLASSIC_BLUE "ff_classic_blue"
 #define THEME_FF_CLASSIC_GREY "ff_classic_grey"
 #define THEME_DARK            "dark"
 #define THEME_LIGHT           "light"
 
 /// Default theme for new players
-#define THEME_DEFAULT THEME_FANTASY_UNITED
+#define THEME_DEFAULT THEME_TACTICS_UNLIMITED
 
 /**
  * Theme preferences stored per-client
@@ -46,7 +46,7 @@
  * @return Theme CSS with :root variables
  */
 /StyleManager/proc/get_theme_css(client/C)
-	if(!C) return theme_fantasy_united()
+	if(!C) return theme_tactics_unlimited()
 
 	switch(C.ui_theme)
 		if(THEME_FF_CLASSIC_BLUE)
@@ -58,7 +58,7 @@
 		if(THEME_LIGHT)
 			return theme_light()
 		else
-			return theme_fantasy_united()
+			return theme_tactics_unlimited()
 
 /**
  * Get a list of available themes for UI selection
@@ -67,7 +67,7 @@
  */
 /StyleManager/proc/get_available_themes()
 	return list(
-		THEME_FANTASY_UNITED  = "Fantasy United (Default)",
+		THEME_TACTICS_UNLIMITED  = "Tactics Unlimited (Default)",
 		THEME_FF_CLASSIC_BLUE = "FF Classic Blue",
 		THEME_FF_CLASSIC_GREY = "FF Classic Grey",
 		THEME_DARK            = "Dark",
@@ -79,17 +79,17 @@
 // =============================================================================
 
 /**
- * Fantasy United Theme (Default)
+ * Tactics Unlimited Theme (Default)
  *
- * The signature theme for Fantasy United.
+ * The signature theme for Tactics Unlimited.
  * Dark blue-grey background with warm orange accents.
  * This represents the game's visual identity.
  *
- * @return Fantasy United theme CSS
+ * @return Tactics Unlimited theme CSS
  */
-/StyleManager/proc/theme_fantasy_united()
+/StyleManager/proc/theme_tactics_unlimited()
 	return {"
-	/* Fantasy United - Default Theme */
+	/* Tactics Unlimited - Default Theme */
 	:root {
 		/* Core Colors - Dark blue-grey with orange accents */
 		--color-background: #171b2e;
@@ -522,7 +522,7 @@
 // =============================================================================
 
 /StyleManager/proc/default_theme()
-	return theme_fantasy_united()
+	return theme_tactics_unlimited()
 
 /StyleManager/proc/dark_theme()
 	return theme_dark()

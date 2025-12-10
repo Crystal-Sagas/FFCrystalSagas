@@ -54,20 +54,28 @@
 
 /**
  * Refreshes just the player's currency display
- * Note: For popup windows, this may require re-sending the whole template
+ * Re-opens the shop window to refresh the display
  */
 /mob/proc/RefreshShopCurrency()
-	// For popup windows, currency updates need different handling
-	// The shop window will refresh when reopened
-	return
+	if(!client)
+		return
+	// Re-open the shop window to refresh currency and inventory
+	if(src.browsing && istype(src.browsing, /mob/npc/Shopkeeper))
+		var/mob/npc/Shopkeeper/shop = src.browsing
+		src.OpenShopWindow(shop)
 
 /**
  * Shows a message in the shop window
- * Note: For popup windows, messages are shown inline
+ * For popup windows, sends message to chat output instead
  */
 /mob/proc/ShopMessage(msgType, text)
-	// For popup windows, messages are handled via Topic returns
-	return
+	if(!client)
+		return
+	// Show message in chat panel since popup JS messaging is unreliable
+	if(msgType == "error")
+		src << output("<span class='error'>[text]</span>", "oocout")
+	else if(msgType == "success")
+		src << output("<span class='success'>[text]</span>", "oocout")
 
 // ============================================================================
 // ITEM SERIALIZATION

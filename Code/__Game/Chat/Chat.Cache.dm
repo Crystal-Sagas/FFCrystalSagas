@@ -5,7 +5,7 @@
 // ============================================================================
 // Contact System Stubs
 // ============================================================================
-// Crystal Sagas doesn't use the Chronicles contact/signature system.
+// Tactics Unlimited doesn't use the Chronicles contact/signature system.
 // These stubs exist for future client-based contact list implementation.
 // TODO: Implement proper contact system with client preferences
 

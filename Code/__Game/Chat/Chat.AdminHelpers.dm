@@ -1,6 +1,6 @@
 // Chat.AdminHelpers.dm
 // Provides helper procs for admin-related chat functionality.
-// Client-based admin system for Crystal Sagas.
+// Client-based admin system for Tactics Unlimited.
 //
 // This system stores admin level on the CLIENT, not the mob.
 // Admin status is determined by ckey lookup at login time.
@@ -32,7 +32,7 @@
 /client/proc/initAdminStatus()
 	adminLevel = ADMIN_LEVEL_NONE
 
-	// Check against admin lists (uses existing Crystal Sagas Admin4 list)
+	// Check against admin lists (uses existing Tactics Unlimited Admin4 list)
 	if(Admin4.Find(ckey) || is_localhost())
 		adminLevel = ADMIN_LEVEL_FULL
 	// Add more admin tiers here as needed:

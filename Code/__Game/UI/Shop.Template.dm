@@ -701,8 +701,28 @@
 			var qty = parseInt(document.getElementById('quantity-input').value) || 1;
 			if(qty < 1) return;
 
-			// Send purchase request to server
-			window.location = 'byond://?src=' + selectedItem.shopRef + '&action=buy&ref=' + encodeURIComponent(selectedItem.ref) + '&qty=' + qty;
+			// Send purchase request to server via hidden iframe to avoid blanking the window
+			var url = 'byond://?src=' + selectedItem.shopRef + '&action=buy&ref=' + encodeURIComponent(selectedItem.ref) + '&qty=' + qty;
+			sendByondRequest(url);
+
+			// Show pending feedback while purchase processes
+			showMessage('info', 'Processing purchase...');
+		}
+
+		// Send a BYOND Topic request without navigating the main window
+		// Uses a hidden iframe to avoid blanking the browser content
+		function sendByondRequest(url) {
+			var iframe = document.getElementById('byond-iframe');
+			if(!iframe) {
+				iframe = document.createElement('iframe');
+				iframe.id = 'byond-iframe';
+				iframe.style.display = 'none';
+				iframe.style.width = '0';
+				iframe.style.height = '0';
+				iframe.style.border = 'none';
+				document.body.appendChild(iframe);
+			}
+			iframe.src = url;
 		}
 
 		// Show feedback message

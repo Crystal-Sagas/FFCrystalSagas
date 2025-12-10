@@ -244,7 +244,7 @@ proc/get_admin_examine_link(mob/M)
 	if(!M || !M.client)
 		return ""
 
-	// Check if viewer is admin using Crystal Sagas system
+	// Check if viewer is admin using Tactics Unlimited system
 	if(!shouldShowAdminLink(usr, M))
 		return ""
 

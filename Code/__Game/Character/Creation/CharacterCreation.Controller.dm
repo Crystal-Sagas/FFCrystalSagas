@@ -1243,10 +1243,9 @@ GLOBAL_DATUM_INIT(character_creation, /datum/character_creation_controller, new)
 	M.contents += house
 	M.contents += fortress
 
-	// Grant starting materials
-	for(var/obj/item/mat in materiallist)
-		var/obj/item/copy = copyatom(mat)
-		M.contents += copy
+	// NOTE: Materials are NO LONGER pre-granted at character creation
+	// Players receive materials through gathering, crafting, and trading
+	// This follows the Chronicles pattern where materials are earned, not given
 
 	// Refresh UI
 	M.RefreshCharsheet(M)

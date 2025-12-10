@@ -165,7 +165,7 @@ proc/ChatBuilder(sender_name, content, quote_style) as /datum/ChatMessageBuilder
 		if(isKnownContact(recipient, sender))
 			return "[sender]"
 
-		// Unknown contact - show name (Crystal Sagas doesn't use signature system)
+		// Unknown contact - show name (Tactics Unlimited doesn't use signature system)
 		return "[sender]"
 
 	/**

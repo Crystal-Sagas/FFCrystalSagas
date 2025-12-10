@@ -12,7 +12,7 @@
 // CONFIGURATION & UTILITIES
 // ============================================================================
 #include "Chat.Config.dm"          // Constants and configuration
-#include "Chat.AdminHelpers.dm"    // Admin level helpers for Crystal Sagas
+#include "Chat.AdminHelpers.dm"    // Admin level helpers for Tactics Unlimited
 #include "Chat.Cache.dm"           // Performance caching layer
 #include "Chat.Utilities.dm"       // Helper procs and utilities
 #include "Chat.Validation.dm"      // Validation and diagnostic tools
