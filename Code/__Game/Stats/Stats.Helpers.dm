@@ -228,7 +228,7 @@
 /mob/proc/addMoney(amount)
 	if(!currency || amount <= 0)
 		return
-	currency += amount
+	currency.addValue(amount)
 
 /**
  * Spend money
@@ -239,7 +239,7 @@
 		return FALSE
 	if(currency.value < amount)
 		return FALSE
-	currency -= amount
+	currency.removeValue(amount)
 	return TRUE
 
 /**
