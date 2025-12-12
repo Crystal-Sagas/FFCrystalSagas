@@ -10,7 +10,7 @@
 	damageType = "magical"
 	scalingStat = "INT"
 	skillType = "Magic"
-	icon = 'Icons/Perk/Magic.png'
+	icon = 'Icons/Perk/GeneralMagic.png'
 
 	/// Magic school requirement: "Black Magic", "White Magic", "Green Magic", etc.
 	var/magicSchool = ""
@@ -32,7 +32,7 @@
 
 /obj/Ability/Magic/Black/Lightning
 	element = "Lightning"
-	icon = 'Icons/Perk/Lightning.png'
+	icon = 'Icons/Perk/Thunder.png'
 
 /obj/Ability/Magic/Black/Water
 	element = "Water"
@@ -40,11 +40,11 @@
 
 /obj/Ability/Magic/Black/Aero
 	element = "Aero"
-	icon = 'Icons/Perk/Aero.png'
+	icon = 'Icons/Perk/Wind.png'
 
 /obj/Ability/Magic/Black/Earth
 	element = "Earth"
-	icon = 'Icons/Perk/Earth.png'
+	icon = 'Icons/Perk/Stone.png'
 
 /**
  * White Magic - Healing and holy magic
@@ -56,7 +56,7 @@
 
 /obj/Ability/Magic/White/Holy
 	element = "Holy"
-	icon = 'Icons/Perk/Holy.png'
+	icon = 'Icons/Perk/Cure.png'
 
 /**
  * Green Magic - Support magic (buffs/debuffs)
@@ -87,7 +87,7 @@
 	magicSchool = "Dark Magic"
 	scalingStat = "INT"
 	element = "Dark"
-	icon = 'Icons/Perk/Dark.png'
+	icon = 'Icons/Perk/DarkKnight.png'
 
 /**
  * Blue Magic - Monster-learned abilities

@@ -8,7 +8,7 @@
 /obj/Ability/Monster
 	category = "Monster"
 	teachable = FALSE
-	icon = 'Icons/Perk/Monster.png'
+	icon = 'Icons/Perk/MonsterAbility.png'
 
 	/// Monster type that uses this ability
 	var/monsterType = ""

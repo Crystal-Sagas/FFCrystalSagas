@@ -46,10 +46,10 @@
 			initializeMonsterStats(stats)
 			. = ..()
 
-			var/obj/perk/Abilities/BlackMagic/Energy/Ultima/a = new
-			var/obj/perk/Abilities/WhiteMagic/Healing/Curaga/b = new
-			var/obj/perk/Abilities/Geomancer/Earth/Stonaja/c = new
-			var/obj/perk/Abilities/WhiteMagic/Healing/Regen/d = new
+			var/obj/Ability/Magic/Black/Energy/Ultima/a = new
+			var/obj/Ability/Magic/White/Healing/Curaga/b = new
+			var/obj/Ability/Job/Geomancer/Earth/Stonaja/c = new
+			var/obj/Ability/Magic/White/Healing/Regen/d = new
 			var/obj/item/Weapon/NPCWeapons/Punch/wep = new
 			src.contents += a
 			src.contents += b
@@ -86,10 +86,10 @@
 			initializeMonsterStats(stats)
 			. = ..()
 
-			var/obj/perk/Abilities/BlackMagic/Energy/Scathe/a = new
-			var/obj/perk/Abilities/BlackMagic/Lightning/Thundaja/b = new
-			var/obj/perk/MonsterAbilities/BLU/SilverWheel/c = new
-			var/obj/perk/Abilities/GreenMagic/Refresh/d = new
+			var/obj/Ability/Magic/Black/Energy/Scathe/a = new
+			var/obj/Ability/Magic/Black/Lightning/Thundaja/b = new
+			var/obj/Ability/Magic/Blue/SilverWheel/c = new
+			var/obj/Ability/Magic/Green/Refresh/d = new
 			var/obj/item/Weapon/NPCWeapons/Punch/wep = new
 			src.contents += a
 			src.contents += b
@@ -126,12 +126,12 @@
 			initializeMonsterStats(stats)
 			. = ..()
 
-			var/obj/perk/Abilities/GeneralWeaponAbilities/Melee/BladeBeam/a = new
-			var/obj/perk/Abilities/BlackMagic/Lightning/Thundaja/b = new
-			var/obj/perk/MonsterAbilities/BLU/Heave/c = new
-			var/obj/perk/Abilities/GreenMagic/Refresh/d = new
+			var/obj/Ability/Weapon/Melee/BladeBeam/a = new
+			var/obj/Ability/Magic/Black/Lightning/Thundaja/b = new
+			var/obj/Ability/Magic/Blue/Heave/c = new
+			var/obj/Ability/Magic/Green/Refresh/d = new
 			var/obj/item/Weapon/Special/BusterSword/Orichalcum/wep = new
-			var/obj/perk/Abilities/WhiteMagic/Healing/Regen/e = new
+			var/obj/Ability/Magic/White/Healing/Regen/e = new
 			src.contents += a
 			src.contents += b
 			src.contents += c
@@ -168,10 +168,10 @@
 			initializeMonsterStats(stats)
 			. = ..()
 
-			var/obj/perk/MonsterAbilities/BLU/DeathBreath/a = new
-			var/obj/perk/MonsterAbilities/BLU/OilBullet/b = new
-			var/obj/perk/MonsterAbilities/BLU/BioSphere/c = new
-			var/obj/perk/Abilities/WhiteMagic/Healing/Regen/d = new
+			var/obj/Ability/Magic/Blue/DeathBreath/a = new
+			var/obj/Ability/Magic/Blue/OilBullet/b = new
+			var/obj/Ability/Magic/Blue/BioSphere/c = new
+			var/obj/Ability/Magic/White/Healing/Regen/d = new
 			src.contents += a
 			src.contents += b
 			src.contents += c
@@ -205,12 +205,12 @@
 			initializeMonsterStats(stats)
 			. = ..()
 
-			var/obj/perk/Abilities/ArcaneMagic/Darkness/Darkja/a = new
-			var/obj/perk/Abilities/BlackMagic/Energy/Scathe/b = new
-			var/obj/perk/Abilities/GreenMagic/Protects/Protect/c = new
-			var/obj/perk/Abilities/GreenMagic/Shells/Shell/d = new
-			var/obj/perk/Abilities/BlackMagic/Flame/Firaja/e = new
-			var/obj/perk/Abilities/BlackMagic/Energy/Ultima/f = new
+			var/obj/Ability/Magic/Arcane/Darkja/a = new
+			var/obj/Ability/Magic/Black/Energy/Scathe/b = new
+			var/obj/Ability/Magic/Green/Protect/c = new
+			var/obj/Ability/Magic/Green/Shell/d = new
+			var/obj/Ability/Magic/Black/Fire/Firaja/e = new
+			var/obj/Ability/Magic/Black/Energy/Ultima/f = new
 			src.contents += a
 			src.contents += b
 			src.contents += c
@@ -246,13 +246,13 @@
 			initializeMonsterStats(stats)
 			. = ..()
 
-			var/obj/perk/Abilities/Geomancer/Quake/a = new
-			var/obj/perk/MonsterAbilities/BLU/AdamantDrum/b = new
-			var/obj/perk/Abilities/GreenMagic/Protects/Protect/c = new
-			var/obj/perk/Abilities/GreenMagic/Shells/Shell/d = new
-			var/obj/perk/Abilities/WhiteMagic/Healing/Regen/e = new
-			var/obj/perk/Abilities/BlackMagic/Hydro/Tsunami/f = new
-			var/obj/perk/MonsterAbilities/BLU/ClawStrike/g = new
+			var/obj/Ability/Job/Geomancer/Quake/a = new
+			var/obj/Ability/Magic/Blue/AdamantDrum/b = new
+			var/obj/Ability/Magic/Green/Protect/c = new
+			var/obj/Ability/Magic/Green/Shell/d = new
+			var/obj/Ability/Magic/White/Healing/Regen/e = new
+			var/obj/Ability/Magic/Black/Water/Tsunami/f = new
+			var/obj/Ability/Magic/Blue/ClawStrike/g = new
 			src.contents += a
 			src.contents += b
 			src.contents += c
@@ -289,13 +289,13 @@
 			initializeMonsterStats(stats)
 			. = ..()
 
-			var/obj/perk/Abilities/ArcaneMagic/Darkness/Darkja/a = new
-			var/obj/perk/Abilities/BlackMagic/Energy/Scathe/b = new
-			var/obj/perk/Abilities/GreenMagic/Protects/Protect/c = new
-			var/obj/perk/Abilities/GreenMagic/Shells/Shell/d = new
-			var/obj/perk/Abilities/BlackMagic/Flame/Firaja/e = new
-			var/obj/perk/Abilities/ArcaneMagic/Drains/Drainga/f = new
-			var/obj/perk/Abilities/ArcaneMagic/Osmoses/Osmosega/g = new
+			var/obj/Ability/Magic/Arcane/Darkja/a = new
+			var/obj/Ability/Magic/Black/Energy/Scathe/b = new
+			var/obj/Ability/Magic/Green/Protect/c = new
+			var/obj/Ability/Magic/Green/Shell/d = new
+			var/obj/Ability/Magic/Black/Fire/Firaja/e = new
+			var/obj/Ability/Magic/Arcane/Drainga/f = new
+			var/obj/Ability/Magic/Arcane/Osmosega/g = new
 			src.contents += a
 			src.contents += b
 			src.contents += c
@@ -332,11 +332,11 @@
 			initializeMonsterStats(stats)
 			. = ..()
 
-			var/obj/perk/Abilities/ArcaneMagic/Darkness/Darkja/a = new
-			var/obj/perk/Abilities/WhiteMagic/Healing/Curada/b = new
-			var/obj/perk/Abilities/GreenMagic/Protects/Protect/c = new
-			var/obj/perk/Abilities/GreenMagic/Shells/Shell/d = new
-			var/obj/perk/MonsterAbilities/Monster/CursedClaws/e = new
+			var/obj/Ability/Magic/Arcane/Darkja/a = new
+			var/obj/Ability/Magic/White/Healing/Curada/b = new
+			var/obj/Ability/Magic/Green/Protect/c = new
+			var/obj/Ability/Magic/Green/Shell/d = new
+			var/obj/Ability/Monster/CursedClaws/e = new
 			src.contents += a
 			src.contents += b
 			src.contents += c

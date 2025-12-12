@@ -288,70 +288,70 @@ proc
 						choices-=choice
 					switch(choice)
 						if("Photosynthetic Wave")
-							var/obj/perk/MonsterAbilities/BLU/PhotosyntheticWave/p1=new
+							var/obj/Ability/Magic/Blue/PhotosyntheticWave/p1=new
 							m.contents+=p1
 							m.roleplayPoints.removeValue(1)
 							a++
 							if(a==3)
 								loop=0
 						if("Shrapnel Seed")
-							var/obj/perk/MonsterAbilities/BLU/ShrapnelSeed/p1=new
+							var/obj/Ability/Magic/Blue/ShrapnelSeed/p1=new
 							m.contents+=p1
 							m.roleplayPoints.removeValue(1)
 							a++
 							if(a==3)
 								loop=0
 						if("Geezard Claw")
-							var/obj/perk/MonsterAbilities/BLU/GeezardClaw/p1=new
+							var/obj/Ability/Magic/Blue/GeezardClaw/p1=new
 							m.contents+=p1
 							m.roleplayPoints.removeValue(1)
 							a++
 							if(a==3)
 								loop=0
 						if("Goblin Strike")
-							var/obj/perk/MonsterAbilities/BLU/GoblinStrike/p1=new
+							var/obj/Ability/Magic/Blue/GoblinStrike/p1=new
 							m.contents+=p1
 							m.roleplayPoints.removeValue(1)
 							a++
 							if(a==3)
 								loop=0
 						if("Poison Powder")
-							var/obj/perk/MonsterAbilities/BLU/PoisonPowder/p1=new
+							var/obj/Ability/Magic/Blue/PoisonPowder/p1=new
 							m.contents+=p1
 							m.roleplayPoints.removeValue(1)
 							a++
 							if(a==3)
 								loop=0
 						if("Silver Fang")
-							var/obj/perk/MonsterAbilities/BLU/SilverFang/p1=new
+							var/obj/Ability/Magic/Blue/SilverFang/p1=new
 							m.contents+=p1
 							m.roleplayPoints.removeValue(1)
 							a++
 							if(a==3)
 								loop=0
 						if("Mu Claw")
-							var/obj/perk/MonsterAbilities/BLU/MuClaw/p1=new
+							var/obj/Ability/Magic/Blue/MuClaw/p1=new
 							m.contents+=p1
 							m.roleplayPoints.removeValue(1)
 							a++
 							if(a==3)
 								loop=0
 						if("Gelantinous Lake")
-							var/obj/perk/MonsterAbilities/BLU/GelatinousLake/p1=new
+							var/obj/Ability/Magic/Blue/GelatinousLake/p1=new
 							m.contents+=p1
 							m.roleplayPoints.removeValue(1)
 							a++
 							if(a==3)
 								loop=0
 						if("Water Gun")
-							var/obj/perk/MonsterAbilities/BLU/WaterGun/p1=new
+							var/obj/Ability/Magic/Blue/WaterGun/p1=new
 							m.contents+=p1
 							m.roleplayPoints.removeValue(1)
 							a++
 							if(a==3)
 								loop=0
 						if("Mesma Blade")
-							var/obj/perk/MonsterAbilities/BLU/MesmaBlade/p1=new
+							var/obj/Ability/Magic/Blue/MesmaBlade/p1=new
 							m.contents+=p1
 							m.roleplayPoints.removeValue(1)
 							a++

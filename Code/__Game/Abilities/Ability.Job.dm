@@ -7,7 +7,7 @@
 
 /obj/Ability/Job
 	category = "Job"
-	icon = 'Icons/Perk/Job.png'
+	icon = 'Icons/Perk/Subjob.png'
 
 	/// Job that grants this ability
 	var/grantingJob = ""

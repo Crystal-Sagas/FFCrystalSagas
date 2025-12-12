@@ -364,25 +364,25 @@ obj
 	var/obj/item/Weapon/Machinist/BioBlaster/biob=new
 	var/obj/item/Weapon/Machinist/Flamethrower/flamer=new
 	var/obj/item/Weapon/Machinist/LaserDefenseOrb/lorb=new
-	var/obj/perk/Abilities/Paladin/Cover/tank=new
-	var/obj/perk/Abilities/GeneralWeaponAbilities/Melee/Launch/striker=new
-	var/obj/perk/Abilities/GeneralWeaponAbilities/Melee/StellarCircle/stellar=new
-	var/obj/perk/Abilities/GeneralWeaponAbilities/Melee/Braver/braver=new
-	var/obj/perk/Abilities/GeneralWeaponAbilities/Melee/RoughDivide/rough=new
-	var/obj/perk/Abilities/GeneralWeaponAbilities/Melee/BlastingZone/blast=new
+	var/obj/Ability/Job/Paladin/Cover/tank=new
+	var/obj/Ability/Weapon/Melee/Launch/striker=new
+	var/obj/Ability/Weapon/Melee/StellarCircle/stellar=new
+	var/obj/Ability/Weapon/Melee/Braver/braver=new
+	var/obj/Ability/Weapon/Melee/RoughDivide/rough=new
+	var/obj/Ability/Weapon/Melee/BlastingZone/blast=new
 	var/obj/perk/MonsterPassives/Pilotable/pilot=new
 	var/obj/perk/MonsterPassives/Metallic/metallic=new
 	var/obj/perk/MonsterPassives/Mecha/mech=new
 	var/obj/perk/MonsterPassives/AntiGravity/antigrav=new
 	var/obj/perk/MonsterPassives/Dense/dense=new
 	var/obj/perk/MonsterPassives/Destructive/destructive=new
-	var/obj/perk/Abilities/GeneralMagicAbilities/Laser/laser1=new
-	var/obj/perk/Abilities/GeneralMagicAbilities/Laserga/laser2=new
-	var/obj/perk/Abilities/BlackMagic/Energy/Flare/laser3=new
-	var/obj/perk/Abilities/BlackMagic/Energy/Scathe/laser4=new
-	var/obj/perk/Abilities/BlackMagic/Energy/Megaflare/laser5=new
-	var/obj/perk/Abilities/GeneralMagicAbilities/Pierce/pierce1=new
-	var/obj/perk/Abilities/GeneralMagicAbilities/Piercega/pierce2=new
+	var/obj/Ability/Magic/General/Laser/laser1=new
+	var/obj/Ability/Magic/General/Laserga/laser2=new
+	var/obj/Ability/Magic/Black/Energy/Flare/laser3=new
+	var/obj/Ability/Magic/Black/Energy/Scathe/laser4=new
+	var/obj/Ability/Magic/Black/Energy/Megaflare/laser5=new
+	var/obj/Ability/Magic/General/Pierce/pierce1=new
+	var/obj/Ability/Magic/General/Piercega/pierce2=new
 	if(src.name=="Defender")
 		src.contents+=b
 		src.contents+=metallic
@@ -574,7 +574,7 @@ obj
 								var/elementchoice=input(usr,"Which Element will you grant your Robot access to? Warning: This is permanent. A Robot can only have 3 upgrades.") as anything in elements
 								switch(elementchoice)
 									if("Fire")
-										var/obj/perk/Abilities/BlackMagic/Flame/Firaja/fi=new
+										var/obj/Ability/Magic/Black/Fire/Firaja/fi=new
 										src.contents+=fi
 										src.wisdom.addBase(4)
 										src.cores+=1
@@ -582,7 +582,7 @@ obj
 											src.mana.addMaxValue(250)
 											src.mana.addValue(250)
 									if("Thunder")
-										var/obj/perk/Abilities/BlackMagic/Lightning/Thundaja/b=new
+										var/obj/Ability/Magic/Black/Lightning/Thundaja/b=new
 										src.contents+=b
 										src.wisdom.addBase(4)
 										src.cores+=1
@@ -590,7 +590,7 @@ obj
 											src.mana.addMaxValue(250)
 											src.mana.addValue(250)
 									if("Water")
-										var/obj/perk/Abilities/BlackMagic/Hydro/Waterja/c=new
+										var/obj/Ability/Magic/Black/Water/Waterja/c=new
 										src.contents+=c
 										src.wisdom.addBase(4)
 										src.cores+=1
@@ -598,7 +598,7 @@ obj
 											src.mana.addMaxValue(250)
 											src.mana.addValue(250)
 									if("Earth")
-										var/obj/perk/Abilities/Geomancer/Earth/Stonaja/d=new
+										var/obj/Ability/Job/Geomancer/Earth/Stonaja/d=new
 										src.contents+=d
 										src.wisdom.addBase(4)
 										src.cores+=1
@@ -606,7 +606,7 @@ obj
 											src.mana.addMaxValue(250)
 											src.mana.addValue(250)
 									if("Wind")
-										var/obj/perk/Abilities/WhiteMagic/Wind/Aeroja/e=new
+										var/obj/Ability/Magic/White/Wind/Aeroja/e=new
 										src.contents+=e
 										src.wisdom.addBase(4)
 										src.cores+=1
@@ -614,7 +614,7 @@ obj
 											src.mana.addMaxValue(250)
 											src.mana.addValue(250)
 									if("Bio")
-										var/obj/perk/Abilities/ArcaneMagic/Bios/Scourge/f=new
+										var/obj/Ability/Magic/Arcane/Scourge/f=new
 										src.contents+=f
 										src.wisdom.addBase(4)
 										src.cores+=1
@@ -622,7 +622,7 @@ obj
 											src.mana.addMaxValue(250)
 											src.mana.addValue(250)
 									if("Flare")
-										var/obj/perk/Abilities/BlackMagic/Energy/Flare/g=new
+										var/obj/Ability/Magic/Black/Energy/Flare/g=new
 										src.contents+=g
 										src.wisdom.addBase(4)
 										src.cores+=1

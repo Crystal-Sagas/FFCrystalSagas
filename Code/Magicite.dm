@@ -75,9 +75,9 @@ mob/npc/Summons/ARank
 			)
 			initializeSummonStats(stats)
 			. = ..()
-			var/obj/perk/Abilities/BlackMagic/Flame/Fira/a=new
-			var/obj/perk/Abilities/BlackMagic/Flame/Firaga/b=new
-			var/obj/perk/Abilities/BlackMagic/Flame/Firaja/c=new
+			var/obj/Ability/Magic/Black/Fire/Fira/a=new
+			var/obj/Ability/Magic/Black/Fire/Firaga/b=new
+			var/obj/Ability/Magic/Black/Fire/Firaja/c=new
 			var/obj/item/Weapon/Melee/Axe/Orichalcum/wep=new
 			var/obj/perk/SummonPassives/Belias/summpass=new
 			src.contents+=summpass
@@ -101,9 +101,9 @@ mob/npc/Summons/ARank
 			)
 			initializeSummonStats(stats)
 			. = ..()
-			var/obj/perk/Abilities/BlackMagic/Ice/Blizzara/a=new
-			var/obj/perk/Abilities/BlackMagic/Ice/Blizzaga/b=new
-			var/obj/perk/Abilities/BlackMagic/Ice/Blizzaja/c=new
+			var/obj/Ability/Magic/Black/Ice/Blizzara/a=new
+			var/obj/Ability/Magic/Black/Ice/Blizzaga/b=new
+			var/obj/Ability/Magic/Black/Ice/Blizzaja/c=new
 			var/obj/item/Weapon/Melee/Spear/Orichalcum/wep=new
 			var/obj/perk/SummonPassives/Mateus/summpass=new
 			src.contents+=summpass
@@ -126,9 +126,9 @@ mob/npc/Summons/ARank
 			)
 			initializeSummonStats(stats)
 			. = ..()
-			var/obj/perk/Abilities/BlackMagic/Lightning/Thunder/a=new
-			var/obj/perk/Abilities/BlackMagic/Lightning/Thundara/b=new
-			var/obj/perk/Abilities/BlackMagic/Lightning/Thundaja/c=new
+			var/obj/Ability/Magic/Black/Lightning/Thunder/a=new
+			var/obj/Ability/Magic/Black/Lightning/Thundara/b=new
+			var/obj/Ability/Magic/Black/Lightning/Thundaja/c=new
 			var/obj/item/Weapon/NPCWeapons/Claw/wep=new
 			var/obj/perk/SummonPassives/Adramalech/summpass=new
 			src.contents+=summpass
@@ -151,9 +151,9 @@ mob/npc/Summons/ARank
 			)
 			initializeSummonStats(stats)
 			. = ..()
-			var/obj/perk/Abilities/Geomancer/Earth/Stonra/a=new
-			var/obj/perk/Abilities/Geomancer/Earth/Stoneaga/b=new
-			var/obj/perk/Abilities/Geomancer/Earth/Stonaja/c=new
+			var/obj/Ability/Job/Geomancer/Earth/Stonra/a=new
+			var/obj/Ability/Job/Geomancer/Earth/Stoneaga/b=new
+			var/obj/Ability/Job/Geomancer/Earth/Stonaja/c=new
 			var/obj/item/Weapon/Melee/Dagger/Orichalcum/wep=new
 			var/obj/perk/SummonPassives/Hashmal/summpass=new
 			src.contents+=summpass
@@ -176,9 +176,9 @@ mob/npc/Summons/ARank
 			)
 			initializeSummonStats(stats)
 			. = ..()
-			var/obj/perk/Abilities/ArcaneMagic/Darkness/Darkra/a=new
-			var/obj/perk/Abilities/ArcaneMagic/Statusinfliction/Blindga/b=new
-			var/obj/perk/Abilities/ArcaneMagic/Statusinfliction/Sleepga/c=new
+			var/obj/Ability/Magic/Arcane/Darkra/a=new
+			var/obj/Ability/Magic/Arcane/Blindga/b=new
+			var/obj/Ability/Magic/Arcane/Sleepga/c=new
 			var/obj/item/Weapon/NPCWeapons/Claw/wep=new
 			var/obj/perk/SummonPassives/Zalera/summpass=new
 			src.contents+=summpass
@@ -201,9 +201,9 @@ mob/npc/Summons/ARank
 			)
 			initializeSummonStats(stats)
 			. = ..()
-			var/obj/perk/Abilities/GeneralMagicAbilities/Fogga/a=new
-			var/obj/perk/Abilities/GeneralMagicAbilities/Jolt/b=new
-			var/obj/perk/Abilities/GeneralMagicAbilities/Laserga/c=new
+			var/obj/Ability/Magic/General/Fogga/a=new
+			var/obj/Ability/Magic/General/Jolt/b=new
+			var/obj/Ability/Magic/General/Laserga/c=new
 			var/obj/item/Weapon/Ranged/Bow/Orichalcum/wep=new
 			var/obj/perk/SummonPassives/Shemhazai/summpass=new
 			src.contents+=summpass
@@ -226,9 +226,9 @@ mob/npc/Summons/ARank
 			)
 			initializeSummonStats(stats)
 			. = ..()
-			var/obj/perk/Abilities/ArcaneMagic/Bios/Bioara/a=new
-			var/obj/perk/Abilities/ArcaneMagic/Bios/Bioaga/b=new
-			var/obj/perk/Abilities/ArcaneMagic/Bios/Scourge/c=new
+			var/obj/Ability/Magic/Arcane/Bioara/a=new
+			var/obj/Ability/Magic/Arcane/Bioaga/b=new
+			var/obj/Ability/Magic/Arcane/Scourge/c=new
 			var/obj/item/Weapon/NPCWeapons/Punch/wep=new
 			var/obj/perk/SummonPassives/Cuchulainn/summpass=new
 			src.contents+=summpass
@@ -251,9 +251,9 @@ mob/npc/Summons/ARank
 			)
 			initializeSummonStats(stats)
 			. = ..()
-			var/obj/perk/Abilities/TimeMage/Times/Slowga/a=new
-			var/obj/perk/Abilities/TimeMage/Times/Warp/b=new
-			var/obj/perk/Abilities/TimeMage/Gravitys/Graviga/c=new
+			var/obj/Ability/Job/TimeMage/Time/Slowga/a=new
+			var/obj/Ability/Job/TimeMage/Time/Warp/b=new
+			var/obj/Ability/Job/TimeMage/Gravity/Graviga/c=new
 			var/obj/item/Weapon/NPCWeapons/Claw/wep=new
 			var/obj/perk/SummonPassives/Zeromus/summpass=new
 			src.contents+=summpass
@@ -276,9 +276,9 @@ mob/npc/Summons/ARank
 			)
 			initializeSummonStats(stats)
 			. = ..()
-			var/obj/perk/Abilities/TimeMage/Comets/Comet/a=new
-			var/obj/perk/Abilities/TimeMage/Comets/Meteor/b=new
-			var/obj/perk/Abilities/TimeMage/Gravitys/Graviga/c=new
+			var/obj/Ability/Job/TimeMage/Comet/Comet/a=new
+			var/obj/Ability/Job/TimeMage/Comet/Meteor/b=new
+			var/obj/Ability/Job/TimeMage/Gravity/Graviga/c=new
 			var/obj/perk/SummonPassives/Exodus/summpass=new
 			src.contents+=summpass
 			src.contents+=a
@@ -298,10 +298,10 @@ mob/npc/Summons/ARank
 			)
 			initializeSummonStats(stats)
 			. = ..()
-			var/obj/perk/Abilities/BlackMagic/Hydro/Water/a=new
-			var/obj/perk/Abilities/BlackMagic/Hydro/Watera/b=new
-			var/obj/perk/Abilities/BlackMagic/Hydro/Waterga/c=new
-			var/obj/perk/Abilities/BlackMagic/Hydro/Tsunami/d=new
+			var/obj/Ability/Magic/Black/Water/Water/a=new
+			var/obj/Ability/Magic/Black/Water/Watera/b=new
+			var/obj/Ability/Magic/Black/Water/Waterga/c=new
+			var/obj/Ability/Magic/Black/Water/Tsunami/d=new
 			var/obj/item/Weapon/NPCWeapons/Ewer/wep=new
 			var/obj/perk/SummonPassives/Famfrit/summpass=new
 			src.contents+=summpass
@@ -325,11 +325,11 @@ mob/npc/Summons/ARank
 			)
 			initializeSummonStats(stats)
 			. = ..()
-			var/obj/perk/Abilities/WhiteMagic/Wind/Aerora/a=new
-			var/obj/perk/Abilities/WhiteMagic/Wind/Aeroga/b=new
-			var/obj/perk/Abilities/WhiteMagic/Wind/Aeroja/c=new
-			var/obj/perk/Abilities/WhiteMagic/Wind/Tornado/d=new
-			var/obj/perk/Abilities/GeneralMagicAbilities/Fleche/f=new
+			var/obj/Ability/Magic/White/Wind/Aerora/a=new
+			var/obj/Ability/Magic/White/Wind/Aeroga/b=new
+			var/obj/Ability/Magic/White/Wind/Aeroja/c=new
+			var/obj/Ability/Magic/White/Wind/Tornado/d=new
+			var/obj/Ability/Magic/General/Fleche/f=new
 			var/obj/perk/SummonPassives/Chaos/summpass=new
 			src.contents+=summpass
 			src.contents+=a

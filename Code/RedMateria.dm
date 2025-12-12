@@ -33,7 +33,7 @@ obj
 					glyphico= new /obj/prop/Target/Earth
 					desc="Summons the Eidolon 'Cyclops' and grants access to some of its magic. Cyclops is a B Rank summon."
 					New()
-						var/obj/perk/Abilities/GeneralMagicAbilities/Laserga/a=new
+						var/obj/Ability/Magic/General/Laserga/a=new
 						src.contents+=a
 				TsukuyomiMateria
 					name="Tsukuyomi Materia"
@@ -41,9 +41,9 @@ obj
 					glyphico= new /obj/prop/Target/Ice
 					desc="Summons the Eidolon 'Tsukuyomi' and grants access to some of its magic. Tsukuyomi is a B Rank summon."
 					New()
-						var/obj/perk/Abilities/BlackMagic/Ice/Blizzara/a=new
-						var/obj/perk/Abilities/BlackMagic/Ice/Blizzaga/b=new
-						var/obj/perk/Abilities/BlackMagic/Ice/Blizzaja/c=new
+						var/obj/Ability/Magic/Black/Ice/Blizzara/a=new
+						var/obj/Ability/Magic/Black/Ice/Blizzaga/b=new
+						var/obj/Ability/Magic/Black/Ice/Blizzaja/c=new
 						src.contents+=a
 						src.contents+=b
 						src.contents+=c
@@ -53,9 +53,9 @@ obj
 					glyphico= new /obj/prop/Target/Water
 					desc="Summons the Eidolon 'Mist Dragon' and grants access to some of its magic. Mist Dragon is a B Rank summon."
 					New()
-						var/obj/perk/Abilities/BlackMagic/Hydro/Watera/a=new
-						var/obj/perk/Abilities/BlackMagic/Hydro/Waterga/b=new
-						var/obj/perk/Abilities/BlackMagic/Hydro/Waterja/c=new
+						var/obj/Ability/Magic/Black/Water/Watera/a=new
+						var/obj/Ability/Magic/Black/Water/Waterga/b=new
+						var/obj/Ability/Magic/Black/Water/Waterja/c=new
 						src.contents+=a
 						src.contents+=b
 						src.contents+=c
@@ -65,11 +65,11 @@ obj
 					glyphico= new /obj/prop/Target/Physical
 					desc="Summons the Eidolon 'Crusader' and grants access to some of its magic. Crusader is a B Rank summon."
 					New()
-						var/obj/perk/Abilities/WhiteMagic/Holy/Diara/a=new
+						var/obj/Ability/Magic/White/Holy/Diara/a=new
 						src.contents+=a
-						var/obj/perk/Abilities/WhiteMagic/Holy/Diaga/b=new
+						var/obj/Ability/Magic/White/Holy/Diaga/b=new
 						src.contents+=b
-						var/obj/perk/Abilities/WhiteMagic/Holy/Holy/c=new
+						var/obj/Ability/Magic/White/Holy/HolySpell/c=new
 						src.contents+=c
 				UnicornMateria
 					name="Unicorn Materia"
@@ -77,11 +77,11 @@ obj
 					glyphico= new /obj/prop/Target/Heal
 					desc="Summons the Eidolon 'Unicorn' and grants access to some of its magic. Unicorn is a B Rank summon."
 					New()
-						var/obj/perk/Abilities/WhiteMagic/Healing/Cura/a=new
+						var/obj/Ability/Magic/White/Healing/Cura/a=new
 						src.contents+=a
-						var/obj/perk/Abilities/WhiteMagic/Healing/Curaga/b=new
+						var/obj/Ability/Magic/White/Healing/Curaga/b=new
 						src.contents+=b
-						var/obj/perk/Abilities/WhiteMagic/Healing/Curaja/c=new
+						var/obj/Ability/Magic/White/Healing/Curaja/c=new
 						src.contents+=c
 				CactuarCarlosMateria
 					name="Cactuar Carlos Materia"
@@ -89,7 +89,7 @@ obj
 					glyphico= new /obj/prop/Target/Bio
 					desc="Summons the Eidolon 'Cactuar Carlos' and grants access to some of its magic. Cactuar Carlos is a B Rank summon."
 					New()
-						var/obj/perk/MonsterAbilities/BLU/HundredNeedles/a=new
+						var/obj/Ability/Magic/Blue/HundredNeedles/a=new
 						src.contents+=a
 				TyphonMateria
 					name="Typhon Materia"
@@ -97,9 +97,9 @@ obj
 					glyphico= new /obj/prop/Target/Dark
 					desc="Summons the Eidolon 'Typhon' and grants access to some of its magic. Typhon is a B Rank summon."
 					New()
-						var/obj/perk/Abilities/BlackMagic/Lightning/Thundara/a=new
-						var/obj/perk/Abilities/BlackMagic/Lightning/Thundaga/b=new
-						var/obj/perk/Abilities/BlackMagic/Lightning/Thundaja/c=new
+						var/obj/Ability/Magic/Black/Lightning/Thundara/a=new
+						var/obj/Ability/Magic/Black/Lightning/Thundaga/b=new
+						var/obj/Ability/Magic/Black/Lightning/Thundaja/c=new
 						src.contents+=a
 						src.contents+=b
 						src.contents+=c
@@ -109,7 +109,7 @@ obj
 					glyphico= new /obj/prop/Target/Nature
 					desc="Summons the Eidolon 'King Mog' and grants access to some of its magic. King Mog is a B Rank summon."
 					New()
-						var/obj/perk/Abilities/ArcaneMagic/Osmoses/Osmosega/a=new
+						var/obj/Ability/Magic/Arcane/Osmosega/a=new
 						src.contents+=a
 				DjinnMateria
 					name="Djinn Materia"
@@ -117,9 +117,9 @@ obj
 					glyphico= new /obj/prop/Target/Fire
 					desc="Summons the Eidolon 'Djinn' and grants access to some of its magic. Djinn is a B Rank summon."
 					New()
-						var/obj/perk/Abilities/BlackMagic/Flame/Fira/a=new
-						var/obj/perk/Abilities/BlackMagic/Flame/Firaga/b=new
-						var/obj/perk/Abilities/BlackMagic/Flame/Firaja/c=new
+						var/obj/Ability/Magic/Black/Fire/Fira/a=new
+						var/obj/Ability/Magic/Black/Fire/Firaga/b=new
+						var/obj/Ability/Magic/Black/Fire/Firaja/c=new
 						src.contents+=a
 						src.contents+=b
 						src.contents+=c
@@ -129,9 +129,9 @@ obj
 					glyphico= new /obj/prop/Target/Fire
 					desc="Summons the Eidolon 'Rubicante' and grants access to some of its magic. Rubicante is a B Rank summon."
 					New()
-						var/obj/perk/Abilities/BlackMagic/Flame/Fira/a=new
-						var/obj/perk/Abilities/BlackMagic/Flame/Firaga/b=new
-						var/obj/perk/Abilities/BlackMagic/Flame/Firaja/c=new
+						var/obj/Ability/Magic/Black/Fire/Fira/a=new
+						var/obj/Ability/Magic/Black/Fire/Firaga/b=new
+						var/obj/Ability/Magic/Black/Fire/Firaja/c=new
 						src.contents+=a
 						src.contents+=b
 						src.contents+=c
@@ -152,10 +152,10 @@ mob/npc/Summons/BRank
 			)
 			initializeSummonStats(stats)
 			. = ..()
-			var/obj/perk/Abilities/GeneralMagicAbilities/Laser/cr=new
-			var/obj/perk/Abilities/Geomancer/Quake/qk=new
-			var/obj/perk/Abilities/GeneralMagicAbilities/Laserga/crj=new
-			var/obj/perk/Abilities/BlackMagic/Energy/Scathe/dg=new
+			var/obj/Ability/Magic/General/Laser/cr=new
+			var/obj/Ability/Job/Geomancer/Quake/qk=new
+			var/obj/Ability/Magic/General/Laserga/crj=new
+			var/obj/Ability/Magic/Black/Energy/Scathe/dg=new
 			var/obj/item/Weapon/NPCWeapons/Punch/hr=new
 			var/obj/perk/SummonPassives/Cyclops/summ=new
 			src.contents+=summ
@@ -180,9 +180,9 @@ mob/npc/Summons/BRank
 			)
 			initializeSummonStats(stats)
 			. = ..()
-			var/obj/perk/Abilities/ArcaneMagic/Darkness/Darkaga/cr=new
-			var/obj/perk/Abilities/ArcaneMagic/Darkness/Darkja/crj=new
-			var/obj/perk/Abilities/GeneralMagicAbilities/Fleche/dg=new
+			var/obj/Ability/Magic/Arcane/Darkaga/cr=new
+			var/obj/Ability/Magic/Arcane/Darkja/crj=new
+			var/obj/Ability/Magic/General/Fleche/dg=new
 			var/obj/item/Weapon/Melee/Katana/Adamantine/hr=new
 			var/obj/perk/SummonPassives/Tsukuyomi/summ=new
 			src.contents+=summ
@@ -206,11 +206,11 @@ mob/npc/Summons/BRank
 			)
 			initializeSummonStats(stats)
 			. = ..()
-			var/obj/perk/Abilities/BlackMagic/Ice/Blizzara/a=new
-			var/obj/perk/Abilities/BlackMagic/Ice/Blizzaga/b=new
-			var/obj/perk/Abilities/BlackMagic/Ice/Blizzaja/c=new
-			var/obj/perk/Abilities/GeneralMagicAbilities/Fogga/fg=new
-			var/obj/perk/Abilities/GeneralMagicAbilities/MythrilBubbles/mb=new
+			var/obj/Ability/Magic/Black/Ice/Blizzara/a=new
+			var/obj/Ability/Magic/Black/Ice/Blizzaga/b=new
+			var/obj/Ability/Magic/Black/Ice/Blizzaja/c=new
+			var/obj/Ability/Magic/General/Fogga/fg=new
+			var/obj/Ability/Magic/General/MythrilBubbles/mb=new
 			var/obj/perk/SummonPassives/MistDragon/summ=new
 			src.contents+=summ
 			src.contents+=a
@@ -233,9 +233,9 @@ mob/npc/Summons/BRank
 			)
 			initializeSummonStats(stats)
 			. = ..()
-			var/obj/perk/Abilities/BlackMagic/Energy/Flare/cr=new
-			var/obj/perk/Abilities/BlackMagic/Energy/Scathe/crj=new
-			var/obj/perk/Abilities/WhiteMagic/Holy/Diaga/dg=new
+			var/obj/Ability/Magic/Black/Energy/Flare/cr=new
+			var/obj/Ability/Magic/Black/Energy/Scathe/crj=new
+			var/obj/Ability/Magic/White/Holy/Diaga/dg=new
 			var/obj/item/Weapon/Melee/Spear/Adamantine/hr=new
 			var/obj/perk/SummonPassives/Crusader/summ=new
 			src.contents+=summ
@@ -259,9 +259,9 @@ mob/npc/Summons/BRank
 			)
 			initializeSummonStats(stats)
 			. = ..()
-			var/obj/perk/Abilities/WhiteMagic/Healing/Curaga/cr=new
-			var/obj/perk/Abilities/WhiteMagic/Healing/Curaja/crj=new
-			var/obj/perk/Abilities/WhiteMagic/Holy/Diaga/dg=new
+			var/obj/Ability/Magic/White/Healing/Curaga/cr=new
+			var/obj/Ability/Magic/White/Healing/Curaja/crj=new
+			var/obj/Ability/Magic/White/Holy/Diaga/dg=new
 			var/obj/item/Weapon/NPCWeapons/Horn/hr=new
 			var/obj/perk/SummonPassives/Unicorn/summ=new
 			src.contents+=summ
@@ -285,8 +285,8 @@ mob/npc/Summons/BRank
 			)
 			initializeSummonStats(stats)
 			. = ..()
-			var/obj/perk/MonsterAbilities/BLU/HundredNeedles/a=new
-			var/obj/perk/Abilities/GeneralWeaponAbilities/Melee/Renzokuken/b=new
+			var/obj/Ability/Magic/Blue/HundredNeedles/a=new
+			var/obj/Ability/Weapon/Melee/Renzokuken/b=new
 			var/obj/item/Weapon/Melee/Hammer/Orichalcum/ham=new
 			var/obj/perk/SummonPassives/CactuarCarlos/summ=new
 			src.contents+=summ
@@ -312,9 +312,9 @@ mob/npc/Summons/BRank
 			)
 			initializeSummonStats(stats)
 			. = ..()
-			var/obj/perk/Abilities/ArcaneMagic/Bios/Bioaga/a=new
-			var/obj/perk/Abilities/ArcaneMagic/Bios/Scourge/b=new
-			var/obj/perk/Abilities/TimeMage/Gravitys/Graviga/c=new
+			var/obj/Ability/Magic/Arcane/Bioaga/a=new
+			var/obj/Ability/Magic/Arcane/Scourge/b=new
+			var/obj/Ability/Job/TimeMage/Gravity/Graviga/c=new
 			var/obj/perk/SummonPassives/Typhon/summ=new
 			src.contents+=summ
 			src.contents+=a
@@ -335,11 +335,11 @@ mob/npc/Summons/BRank
 			)
 			initializeSummonStats(stats)
 			. = ..()
-			var/obj/perk/Abilities/BlackMagic/Flame/Firaja/a=new
-			var/obj/perk/Abilities/BlackMagic/Hydro/Waterja/b=new
-			var/obj/perk/Abilities/BlackMagic/Ice/Blizzaja/c=new
-			var/obj/perk/Abilities/WhiteMagic/Holy/Diaga/ar=new
-			var/obj/perk/Abilities/WhiteMagic/Healing/Curaga/cr=new
+			var/obj/Ability/Magic/Black/Fire/Firaja/a=new
+			var/obj/Ability/Magic/Black/Water/Waterja/b=new
+			var/obj/Ability/Magic/Black/Ice/Blizzaja/c=new
+			var/obj/Ability/Magic/White/Holy/Diaga/ar=new
+			var/obj/Ability/Magic/White/Healing/Curaga/cr=new
 			var/obj/perk/SummonPassives/KingMog/summ=new
 			src.contents+=summ
 			src.contents+=a
@@ -362,12 +362,12 @@ mob/npc/Summons/BRank
 			)
 			initializeSummonStats(stats)
 			. = ..()
-			var/obj/perk/Abilities/BlackMagic/Flame/Fira/a=new
-			var/obj/perk/Abilities/BlackMagic/Flame/Firaga/b=new
-			var/obj/perk/Abilities/BlackMagic/Flame/Firaja/c=new
-			var/obj/perk/Abilities/GeneralMagicAbilities/Fogga/fg=new
-			var/obj/perk/Abilities/GeneralMagicAbilities/Impactga/imga=new
-			var/obj/perk/Abilities/GeneralWeaponAbilities/Melee/StellarCircle/sc=new
+			var/obj/Ability/Magic/Black/Fire/Fira/a=new
+			var/obj/Ability/Magic/Black/Fire/Firaga/b=new
+			var/obj/Ability/Magic/Black/Fire/Firaja/c=new
+			var/obj/Ability/Magic/General/Fogga/fg=new
+			var/obj/Ability/Magic/General/Impactga/imga=new
+			var/obj/Ability/Weapon/Melee/StellarCircle/sc=new
 			var/obj/item/Weapon/Melee/Greatsword/Adamantine/ad=new
 			var/obj/perk/SummonPassives/Djinn/summ=new
 			src.contents+=summ
@@ -394,12 +394,12 @@ mob/npc/Summons/BRank
 			)
 			initializeSummonStats(stats)
 			. = ..()
-			var/obj/perk/Abilities/BlackMagic/Flame/Fira/a=new
-			var/obj/perk/Abilities/BlackMagic/Flame/Firaga/b=new
-			var/obj/perk/Abilities/BlackMagic/Flame/Firaja/c=new
-			var/obj/perk/Abilities/BlackMagic/Flame/Ardor/ar=new
+			var/obj/Ability/Magic/Black/Fire/Fira/a=new
+			var/obj/Ability/Magic/Black/Fire/Firaga/b=new
+			var/obj/Ability/Magic/Black/Fire/Firaja/c=new
+			var/obj/Ability/Magic/Black/Fire/Ardor/ar=new
 			var/obj/perk/Jobperks/Monk/TemperedFists4/Tempered4/fists=new
-			var/obj/perk/Abilities/Monk/BurningRave/burnrave=new
+			var/obj/Ability/Job/Monk/BurningRave/burnrave=new
 			var/obj/perk/Jobperks/Monk/Chi/chie=new
 			var/obj/perk/SummonPassives/Rubicante/summ=new
 			src.contents+=summ

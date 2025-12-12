@@ -123,18 +123,18 @@
 			initializeMonsterStats(stats)
 			. = ..()
 
-			var/obj/perk/Abilities/ArcaneMagic/Drains/Drain/a = new
-			var/obj/perk/Abilities/ArcaneMagic/Osmoses/Osmose/b = new
-			var/obj/perk/Abilities/ArcaneMagic/Bios/Bio/c = new
-			var/obj/perk/Abilities/ArcaneMagic/Bios/Bioara/d = new
-			var/obj/perk/Abilities/ArcaneMagic/Bios/Bioaga/e = new
-			var/obj/perk/Abilities/ArcaneMagic/Bios/Scourge/f = new
-			var/obj/perk/Abilities/ArcaneMagic/Statusinfliction/Silence/g = new
+			var/obj/Ability/Magic/Arcane/Drain/a = new
+			var/obj/Ability/Magic/Arcane/Osmose/b = new
+			var/obj/Ability/Magic/Arcane/Bio/c = new
+			var/obj/Ability/Magic/Arcane/Bioara/d = new
+			var/obj/Ability/Magic/Arcane/Bioaga/e = new
+			var/obj/Ability/Magic/Arcane/Scourge/f = new
+			var/obj/Ability/Magic/Arcane/Silence/g = new
 			var/obj/perk/Boss/Jenova/BossJenova/jen1 = new
 			var/obj/perk/Boss/Jenova/Geostigma/jen2 = new
 			var/obj/perk/Boss/Jenova/ParasiteSpores/jen3 = new
 			var/obj/perk/Boss/Jenova/BiologicalParasite/jen4 = new
-			var/obj/perk/MonsterAbilities/Monster/Tentacle/wepy = new
+			var/obj/Ability/Monster/Tentacle/wepy = new
 			src.contents += a
 			src.contents += b
 			src.contents += c
@@ -179,7 +179,7 @@
 
 			var/obj/perk/Boss/Jenova/Gas/jen1 = new
 			src.contents += jen1
-			var/obj/perk/MonsterAbilities/Monster/Tentacle/wepy = new
+			var/obj/Ability/Monster/Tentacle/wepy = new
 			src.contents += wepy
 			src.eweapon = wepy
 

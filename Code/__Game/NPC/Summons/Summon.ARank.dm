@@ -34,11 +34,11 @@
 		initializeSummonStats(stats)
 		. = ..()
 
-		var/obj/perk/Abilities/GeneralWeaponAbilities/Melee/CrossSlash/a = new
-		var/obj/perk/Abilities/GeneralWeaponAbilities/Melee/BladeBeam/b = new
-		var/obj/perk/Abilities/GeneralWeaponAbilities/Melee/Halone/c = new
-		var/obj/perk/Abilities/Samurai/IaidoStance/d = new
-		var/obj/perk/Abilities/Samurai/Tsubamagaeshi/e = new
+		var/obj/Ability/Weapon/Melee/CrossSlash/a = new
+		var/obj/Ability/Weapon/Melee/BladeBeam/b = new
+		var/obj/Ability/Weapon/Melee/Halone/c = new
+		var/obj/Ability/Job/Samurai/IaidoStance/d = new
+		var/obj/Ability/Job/Samurai/Tsubamagaeshi/e = new
 		var/obj/item/Weapon/Melee/Katana/Adamantine/sf = new
 		src.contents += a
 		src.contents += b
@@ -79,12 +79,12 @@
 		initializeSummonStats(stats)
 		. = ..()
 
-		var/obj/perk/Abilities/BlackMagic/Hydro/Waterja/a = new
-		var/obj/perk/Abilities/BlackMagic/Hydro/Flood/b = new
-		var/obj/perk/Abilities/BlackMagic/Hydro/Tsunami/c = new
-		var/obj/perk/Abilities/GeneralMagicAbilities/Laserga/d = new
-		var/obj/perk/Abilities/GreenMagic/Bubble/e = new
-		var/obj/perk/Abilities/GreenMagic/Barelement/Barwater/f = new
+		var/obj/Ability/Magic/Black/Water/Waterja/a = new
+		var/obj/Ability/Magic/Black/Water/Flood/b = new
+		var/obj/Ability/Magic/Black/Water/Tsunami/c = new
+		var/obj/Ability/Magic/General/Laserga/d = new
+		var/obj/Ability/Magic/Green/Bubble/e = new
+		var/obj/Ability/Magic/Green/Barwater/f = new
 		var/obj/item/Weapon/NPCWeapons/Bite/sf = new
 		src.contents += a
 		src.contents += b
@@ -126,10 +126,10 @@
 		initializeSummonStats(stats)
 		. = ..()
 
-		var/obj/perk/Abilities/BlackMagic/Energy/Flare/a = new
-		var/obj/perk/MonsterAbilities/BLU/DragoFlare/b = new
-		var/obj/perk/Abilities/BlackMagic/Energy/Scathe/c = new
-		var/obj/perk/Abilities/GeneralMagicAbilities/Laserga/d = new
+		var/obj/Ability/Magic/Black/Energy/Flare/a = new
+		var/obj/Ability/Magic/Blue/DragoFlare/b = new
+		var/obj/Ability/Magic/Black/Energy/Scathe/c = new
+		var/obj/Ability/Magic/General/Laserga/d = new
 		var/obj/item/Weapon/NPCWeapons/Bite/sf = new
 		src.contents += a
 		src.contents += b
@@ -170,17 +170,17 @@
 		initializeSummonStats(stats)
 		. = ..()
 
-		var/obj/perk/Abilities/GreenMagic/Protects/Protectga/a = new
-		var/obj/perk/Abilities/GreenMagic/Shells/Shellga/b = new
-		var/obj/perk/Abilities/GreenMagic/Bravery/c = new
-		var/obj/perk/Abilities/GreenMagic/Haste/d = new
-		var/obj/perk/Abilities/GreenMagic/Safes/Safega/e = new
-		var/obj/perk/Abilities/GreenMagic/Dualprotection/Stoneskin/f = new
-		var/obj/perk/Abilities/WhiteMagic/Holy/Diaga/g = new
-		var/obj/perk/Abilities/GeneralMagicAbilities/Laserga/h = new
-		var/obj/perk/Abilities/GeneralMagicAbilities/Fleche/i = new
-		var/obj/perk/Abilities/GeneralMagicAbilities/Jolt/j = new
-		var/obj/perk/Abilities/Paladin/Cover/k = new
+		var/obj/Ability/Magic/Green/Protectga/a = new
+		var/obj/Ability/Magic/Green/Shellga/b = new
+		var/obj/Ability/Magic/Green/Bravery/c = new
+		var/obj/Ability/Magic/Green/Haste/d = new
+		var/obj/Ability/Magic/Green/Safega/e = new
+		var/obj/Ability/Magic/Green/Stoneskin/f = new
+		var/obj/Ability/Magic/White/Holy/Diaga/g = new
+		var/obj/Ability/Magic/General/Laserga/h = new
+		var/obj/Ability/Magic/General/Fleche/i = new
+		var/obj/Ability/Magic/General/Jolt/j = new
+		var/obj/Ability/Job/Paladin/Cover/k = new
 		var/obj/item/Weapon/NPCWeapons/Ram/sf = new
 		src.contents += a
 		src.contents += b
@@ -227,12 +227,12 @@
 		initializeSummonStats(stats)
 		. = ..()
 
-		var/obj/perk/Abilities/ArcaneMagic/Darkness/Darkaga/a = new
-		var/obj/perk/Abilities/ArcaneMagic/Bios/Bioaga/b = new
-		var/obj/perk/Abilities/ArcaneMagic/Drains/Drainga/c = new
-		var/obj/perk/Abilities/ArcaneMagic/Toads/Toadga/d = new
-		var/obj/perk/Abilities/ArcaneMagic/Statusinfliction/Blindga/e = new
-		var/obj/perk/Abilities/ArcaneMagic/Death/Corpse/f = new
+		var/obj/Ability/Magic/Arcane/Darkaga/a = new
+		var/obj/Ability/Magic/Arcane/Bioaga/b = new
+		var/obj/Ability/Magic/Arcane/Drainga/c = new
+		var/obj/Ability/Magic/Arcane/Toadga/d = new
+		var/obj/Ability/Magic/Arcane/Blindga/e = new
+		var/obj/Ability/Magic/Arcane/Corpse/f = new
 		var/obj/item/Weapon/NPCWeapons/Staff/sf = new
 		src.contents += a
 		src.contents += b
@@ -274,11 +274,11 @@
 		initializeSummonStats(stats)
 		. = ..()
 
-		var/obj/perk/Abilities/BlackMagic/Flame/Firaja/a = new
-		var/obj/perk/Abilities/BlackMagic/Ice/Blizzaja/b = new
-		var/obj/perk/Abilities/BlackMagic/Lightning/Thundaja/c = new
-		var/obj/perk/Abilities/ArcaneMagic/Drains/Drainga/d = new
-		var/obj/perk/Abilities/ArcaneMagic/Osmoses/Osmosega/e = new
+		var/obj/Ability/Magic/Black/Fire/Firaja/a = new
+		var/obj/Ability/Magic/Black/Ice/Blizzaja/b = new
+		var/obj/Ability/Magic/Black/Lightning/Thundaja/c = new
+		var/obj/Ability/Magic/Arcane/Drainga/d = new
+		var/obj/Ability/Magic/Arcane/Osmosega/e = new
 		var/obj/item/Weapon/NPCWeapons/Bite/sf = new
 		src.contents += a
 		src.contents += b
@@ -319,11 +319,11 @@
 		initializeSummonStats(stats)
 		. = ..()
 
-		var/obj/perk/Abilities/BlackMagic/Flame/Firaja/a = new
-		var/obj/perk/Abilities/BlackMagic/Ice/Blizzaja/b = new
-		var/obj/perk/Abilities/BlackMagic/Lightning/Thundaja/c = new
-		var/obj/perk/Abilities/BlackMagic/Hydro/Waterja/d = new
-		var/obj/perk/Abilities/BlackMagic/Other/Apocalypse/e = new
+		var/obj/Ability/Magic/Black/Fire/Firaja/a = new
+		var/obj/Ability/Magic/Black/Ice/Blizzaja/b = new
+		var/obj/Ability/Magic/Black/Lightning/Thundaja/c = new
+		var/obj/Ability/Magic/Black/Water/Waterja/d = new
+		var/obj/Ability/Magic/Black/Other/Apocalypse/e = new
 		var/obj/item/Weapon/NPCWeapons/Punch/sf = new
 		src.contents += a
 		src.contents += b
@@ -364,11 +364,11 @@
 		initializeSummonStats(stats)
 		. = ..()
 
-		var/obj/perk/MonsterAbilities/BLU/MatraMagic/a = new
-		var/obj/perk/Abilities/BlackMagic/Energy/Scathe/b = new
-		var/obj/perk/Abilities/GeneralMagicAbilities/Laserga/c = new
-		var/obj/perk/Abilities/GeneralMagicAbilities/Fleche/d = new
-		var/obj/perk/Abilities/Geomancer/Quake/e = new
+		var/obj/Ability/Magic/Blue/MatraMagic/a = new
+		var/obj/Ability/Magic/Black/Energy/Scathe/b = new
+		var/obj/Ability/Magic/General/Laserga/c = new
+		var/obj/Ability/Magic/General/Fleche/d = new
+		var/obj/Ability/Job/Geomancer/Quake/e = new
 		var/obj/item/Weapon/NPCWeapons/Punch/sf = new
 		src.contents += a
 		src.contents += b
@@ -409,14 +409,14 @@
 		initializeSummonStats(stats)
 		. = ..()
 
-		var/obj/perk/Abilities/WhiteMagic/Holy/a = new
-		var/obj/perk/Abilities/ArcaneMagic/Statusinfliction/Sleep/b = new
-		var/obj/perk/Abilities/ArcaneMagic/Statusinfliction/Sleepga/c = new
-		var/obj/perk/Abilities/GeneralMagicAbilities/Ruin/d = new
-		var/obj/perk/Abilities/WhiteMagic/Healing/Cure/e = new
-		var/obj/perk/Abilities/WhiteMagic/Healing/Cura/f = new
-		var/obj/perk/Abilities/WhiteMagic/Healing/Curaga/g = new
-		var/obj/perk/Abilities/WhiteMagic/Status/Esunaga/h = new
+		var/obj/Ability/Magic/White/Holy/a = new
+		var/obj/Ability/Magic/Arcane/Sleep/b = new
+		var/obj/Ability/Magic/Arcane/Sleepga/c = new
+		var/obj/Ability/Magic/General/Ruin/d = new
+		var/obj/Ability/Magic/White/Healing/Cure/e = new
+		var/obj/Ability/Magic/White/Healing/Cura/f = new
+		var/obj/Ability/Magic/White/Healing/Curaga/g = new
+		var/obj/Ability/Magic/White/Status/Esunaga/h = new
 		var/obj/item/Weapon/NPCWeapons/Punch/sf = new
 		src.contents += a
 		src.contents += b

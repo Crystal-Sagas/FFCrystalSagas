@@ -10,7 +10,7 @@
  *   template.hp = 500
  *   template.str = 24
  *   // ... set other stats
- *   template.abilities = list(/obj/perk/Abilities/BlackMagic/Flame/Firaga)
+ *   template.abilities = list(/obj/Ability/Magic/Black/Fire/Firaga)
  *   var/mob/npc/spawned = template.spawnNpc(loc)
  */
 

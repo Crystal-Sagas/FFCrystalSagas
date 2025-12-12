@@ -34,11 +34,11 @@
 		initializeSummonStats(stats)
 		. = ..()
 
-		var/obj/perk/Abilities/GreenMagic/Protects/Protect/a = new
-		var/obj/perk/Abilities/GreenMagic/Shells/Shell/b = new
-		var/obj/perk/Abilities/TimeMage/Greens/Reflect/c = new
-		var/obj/perk/Abilities/WhiteMagic/Wind/Aero/d = new
-		var/obj/perk/Abilities/WhiteMagic/Wind/Aerora/e = new
+		var/obj/Ability/Magic/Green/Protect/a = new
+		var/obj/Ability/Magic/Green/Shell/b = new
+		var/obj/Ability/Job/TimeMage/Green/Reflect/c = new
+		var/obj/Ability/Magic/White/Wind/Aero/d = new
+		var/obj/Ability/Magic/White/Wind/Aerora/e = new
 		var/obj/perk/MonsterAttacks/Claw/wep = new
 		var/obj/perk/SummonPassives/Carbuncle/summ = new
 		src.contents += summ
@@ -78,11 +78,11 @@
 		initializeSummonStats(stats)
 		. = ..()
 
-		var/obj/perk/Abilities/WhiteMagic/Healing/Cure/a = new
-		var/obj/perk/Abilities/WhiteMagic/Healing/Cura/b = new
-		var/obj/perk/Abilities/WhiteMagic/Status/Blindna/c = new
-		var/obj/perk/Abilities/WhiteMagic/Status/Vox/d = new
-		var/obj/perk/Abilities/WhiteMagic/Status/Poisona/e = new
+		var/obj/Ability/Magic/White/Healing/Cure/a = new
+		var/obj/Ability/Magic/White/Healing/Cura/b = new
+		var/obj/Ability/Magic/White/Status/Blindna/c = new
+		var/obj/Ability/Magic/White/Status/Vox/d = new
+		var/obj/Ability/Magic/White/Status/Poisona/e = new
 		var/obj/perk/MonsterAttacks/Claw/wep = new
 		var/obj/perk/SummonPassives/Sylph/summ = new
 		src.contents += summ
@@ -158,7 +158,7 @@
 
 		var/obj/item/Weapon/NPCWeapons/Bite/a = new
 		src.contents += a
-		var/obj/perk/Abilities/BlackMagic/Hydro/Water/b = new
+		var/obj/Ability/Magic/Black/Water/Water/b = new
 		src.contents += b
 		var/obj/perk/SummonPassives/Remora/summ = new
 		src.contents += summ
@@ -194,8 +194,8 @@
 
 		var/obj/item/Weapon/NPCWeapons/Claw/a = new
 		src.contents += a
-		var/obj/perk/Abilities/GreenMagic/Bravery/b = new
-		var/obj/perk/Abilities/GreenMagic/Faith/c = new
+		var/obj/Ability/Magic/Green/Bravery/b = new
+		var/obj/Ability/Magic/Green/Faith/c = new
 		src.contents += b
 		src.contents += c
 		var/obj/perk/SummonPassives/CaitSith/summ = new

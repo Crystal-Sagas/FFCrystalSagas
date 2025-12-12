@@ -48,8 +48,8 @@
 			initializeMonsterStats(stats)
 			. = ..()
 
-			var/obj/perk/MonsterAbilities/BLU/GoblinStrike/a = new
-			var/obj/perk/MonsterAbilities/BLU/MagicHammer/b = new
+			var/obj/Ability/Magic/Blue/GoblinStrike/a = new
+			var/obj/Ability/Magic/Blue/MagicHammer/b = new
 			var/obj/item/Weapon/NPCWeapons/Punch/c = new
 			src.contents += a
 			src.contents += b
@@ -85,8 +85,8 @@
 			initializeMonsterStats(stats)
 			. = ..()
 
-			var/obj/perk/MonsterAbilities/BLU/ShrapnelSeed/a = new
-			var/obj/perk/MonsterAbilities/BLU/PhotosyntheticWave/b = new
+			var/obj/Ability/Magic/Blue/ShrapnelSeed/a = new
+			var/obj/Ability/Magic/Blue/PhotosyntheticWave/b = new
 			var/obj/item/Weapon/NPCWeapons/Punch/c = new
 			src.contents += a
 			src.contents += b
@@ -122,7 +122,7 @@
 			initializeMonsterStats(stats)
 			. = ..()
 
-			var/obj/perk/MonsterAbilities/BLU/GeezardClaw/a = new
+			var/obj/Ability/Magic/Blue/GeezardClaw/a = new
 			var/obj/item/Weapon/NPCWeapons/Punch/c = new
 			src.contents += a
 			src.contents += c
@@ -157,8 +157,8 @@
 			initializeMonsterStats(stats)
 			. = ..()
 
-			var/obj/perk/Abilities/WhiteMagic/Wind/Aero/a = new
-			var/obj/perk/MonsterAbilities/BLU/PoisonPowder/b = new
+			var/obj/Ability/Magic/White/Wind/Aero/a = new
+			var/obj/Ability/Magic/Blue/PoisonPowder/b = new
 			src.contents += a
 			src.contents += b
 

@@ -11,7 +11,7 @@
  *   // Create a custom boss template
  *   var/datum/npc_template/template = NpcFactory.createBossTemplate("Ancient Dragon", "S")
  *   template.hp = 2000
- *   template.abilities = list(/obj/perk/Abilities/BlackMagic/Flame/Firaja)
+ *   template.abilities = list(/obj/Ability/Magic/Black/Fire/Firaja)
  *   var/mob/npc/dragon = template.spawnNpc(loc)
  *
  *   // Clone and modify existing template

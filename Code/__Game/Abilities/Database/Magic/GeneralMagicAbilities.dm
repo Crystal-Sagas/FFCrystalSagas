@@ -15,7 +15,7 @@
  */
 
 /obj/Ability/Magic/General
-	icon = 'Icons/Perk/GeneralMagic.dmi'
+	icon = 'Icons/Perk/GeneralMagic.png'
 	scalingStat = "INT"
 	damageType = "magical"
 	costType = "Mana"

@@ -9,7 +9,7 @@
 	category = "Weapon"
 	damageType = "physical"
 	scalingStat = "STR"
-	icon = 'Icons/Perk/Weapon.png'
+	icon = 'Icons/Perk/GeneralWeapon.png'
 
 	/// Weapon type required: "sword", "axe", "spear", "bow", "unarmed", etc.
 	var/weaponRequired = ""

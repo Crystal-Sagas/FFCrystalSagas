@@ -35,9 +35,9 @@
 		initializeSummonStats(stats)
 		. = ..()
 
-		var/obj/perk/MonsterAbilities/Monster/DragonClaws/a = new
-		var/obj/perk/MonsterAbilities/BLU/MonsterFlame/flame = new
-		var/obj/perk/MonsterAbilities/BLU/Flamethrower/flame2 = new
+		var/obj/Ability/Monster/DragonClaws/a = new
+		var/obj/Ability/Magic/Blue/MonsterFlame/flame = new
+		var/obj/Ability/Magic/Blue/Flamethrower/flame2 = new
 		var/obj/perk/MonsterPassives/Rideable/b = new
 		var/obj/perk/MonsterPassives/Flight/c = new
 		src.contents += a
@@ -76,7 +76,7 @@
 		initializeSummonStats(stats)
 		. = ..()
 
-		var/obj/perk/MonsterAbilities/Monster/ChocoKick/a = new
+		var/obj/Ability/Monster/ChocoKick/a = new
 		var/obj/perk/MonsterPassives/Rideable/b = new
 		var/obj/perk/Jobperks/Paladin/BathedinLight/bathed = new
 		var/obj/perk/Jobperks/Paladin/DivineRetribution/thorns = new
@@ -115,12 +115,12 @@
 		initializeSummonStats(stats)
 		. = ..()
 
-		var/obj/perk/MonsterAbilities/Monster/ChocoKick/a = new
+		var/obj/Ability/Monster/ChocoKick/a = new
 		var/obj/perk/MonsterPassives/Rideable/b = new
-		var/obj/perk/Abilities/Monk/DragonDash/ddash = new
-		var/obj/perk/Abilities/Monk/Combo/combo = new
-		var/obj/perk/Abilities/Monk/BurningArrow/barrow = new
-		var/obj/perk/Abilities/Monk/TornadoKick/tkick = new
+		var/obj/Ability/Job/Monk/DragonDash/ddash = new
+		var/obj/Ability/Job/Monk/Combo/combo = new
+		var/obj/Ability/Job/Monk/BurningArrow/barrow = new
+		var/obj/Ability/Job/Monk/TornadoKick/tkick = new
 		src.contents += a
 		src.contents += b
 		src.contents += ddash
@@ -158,10 +158,10 @@
 		initializeSummonStats(stats)
 		. = ..()
 
-		var/obj/perk/MonsterAbilities/Monster/ChocoKick/a = new
-		var/obj/perk/Abilities/ArcaneMagic/Darkness/Dark/dark1 = new
-		var/obj/perk/Abilities/ArcaneMagic/Darkness/Darkja/dark2 = new
-		var/obj/perk/Abilities/WhiteMagic/Wind/Aeroja/aero = new
+		var/obj/Ability/Monster/ChocoKick/a = new
+		var/obj/Ability/Magic/Arcane/Dark/dark1 = new
+		var/obj/Ability/Magic/Arcane/Darkja/dark2 = new
+		var/obj/Ability/Magic/White/Wind/Aeroja/aero = new
 		var/obj/perk/MonsterPassives/Rideable/b = new
 		var/obj/perk/MonsterPassives/Flight/c = new
 		src.contents += a
@@ -200,10 +200,10 @@
 		initializeSummonStats(stats)
 		. = ..()
 
-		var/obj/perk/Abilities/Geomancer/Earth/Stone/a = new
-		var/obj/perk/Abilities/Geomancer/Earth/Stonra/b = new
-		var/obj/perk/Abilities/Geomancer/Earth/Stoneaga/c = new
-		var/obj/perk/Abilities/Geomancer/Earth/Stonaja/d = new
+		var/obj/Ability/Job/Geomancer/Earth/Stone/a = new
+		var/obj/Ability/Job/Geomancer/Earth/Stonra/b = new
+		var/obj/Ability/Job/Geomancer/Earth/Stoneaga/c = new
+		var/obj/Ability/Job/Geomancer/Earth/Stonaja/d = new
 		var/obj/item/Weapon/NPCWeapons/Punch/sf = new
 		src.contents += a
 		src.contents += b
@@ -242,10 +242,10 @@
 		initializeSummonStats(stats)
 		. = ..()
 
-		var/obj/perk/Abilities/WhiteMagic/Wind/Aero/a = new
-		var/obj/perk/Abilities/WhiteMagic/Wind/Aerora/b = new
-		var/obj/perk/Abilities/WhiteMagic/Wind/Aeroga/c = new
-		var/obj/perk/Abilities/WhiteMagic/Wind/Aeroja/d = new
+		var/obj/Ability/Magic/White/Wind/Aero/a = new
+		var/obj/Ability/Magic/White/Wind/Aerora/b = new
+		var/obj/Ability/Magic/White/Wind/Aeroga/c = new
+		var/obj/Ability/Magic/White/Wind/Aeroja/d = new
 		var/obj/item/Weapon/NPCWeapons/RazorFeather/sf = new
 		src.contents += a
 		src.contents += b
@@ -284,10 +284,10 @@
 		initializeSummonStats(stats)
 		. = ..()
 
-		var/obj/perk/Abilities/BlackMagic/Hydro/Water/a = new
-		var/obj/perk/Abilities/BlackMagic/Hydro/Watera/b = new
-		var/obj/perk/Abilities/BlackMagic/Hydro/Waterga/c = new
-		var/obj/perk/Abilities/BlackMagic/Hydro/Waterja/d = new
+		var/obj/Ability/Magic/Black/Water/Water/a = new
+		var/obj/Ability/Magic/Black/Water/Watera/b = new
+		var/obj/Ability/Magic/Black/Water/Waterga/c = new
+		var/obj/Ability/Magic/Black/Water/Waterja/d = new
 		var/obj/item/Weapon/NPCWeapons/Ram/sf = new
 		src.contents += a
 		src.contents += b
@@ -326,10 +326,10 @@
 		initializeSummonStats(stats)
 		. = ..()
 
-		var/obj/perk/Abilities/GeneralWeaponAbilities/Melee/QuickHit/a = new
-		var/obj/perk/Abilities/GeneralWeaponAbilities/Melee/Shout/b = new
-		var/obj/perk/Abilities/GeneralWeaponAbilities/Melee/TriumphantGrasp/c = new
-		var/obj/perk/Abilities/GeneralMagicAbilities/Ruin/d = new
+		var/obj/Ability/Weapon/Melee/QuickHit/a = new
+		var/obj/Ability/Weapon/Melee/Shout/b = new
+		var/obj/Ability/Weapon/Melee/TriumphantGrasp/c = new
+		var/obj/Ability/Magic/General/Ruin/d = new
 		var/obj/item/Weapon/NPCWeapons/Claw/sf = new
 		src.contents += a
 		src.contents += b
@@ -369,12 +369,12 @@
 		initializeSummonStats(stats)
 		. = ..()
 
-		var/obj/perk/Abilities/BlackMagic/Lightning/Thunder/a = new
-		var/obj/perk/Abilities/BlackMagic/Lightning/Thundara/b = new
-		var/obj/perk/Abilities/BlackMagic/Lightning/Thundaga/c = new
-		var/obj/perk/Abilities/BlackMagic/Lightning/Thundaja/d = new
-		var/obj/perk/Abilities/GeneralWeaponAbilities/Melee/Braver/e = new
-		var/obj/perk/Abilities/GeneralWeaponAbilities/Melee/CrossSlash/f = new
+		var/obj/Ability/Magic/Black/Lightning/Thunder/a = new
+		var/obj/Ability/Magic/Black/Lightning/Thundara/b = new
+		var/obj/Ability/Magic/Black/Lightning/Thundaga/c = new
+		var/obj/Ability/Magic/Black/Lightning/Thundaja/d = new
+		var/obj/Ability/Weapon/Melee/Braver/e = new
+		var/obj/Ability/Weapon/Melee/CrossSlash/f = new
 		var/obj/item/Weapon/NPCWeapons/Horn/sf = new
 		src.contents += a
 		src.contents += b
@@ -416,10 +416,10 @@
 		initializeSummonStats(stats)
 		. = ..()
 
-		var/obj/perk/Abilities/ArcaneMagic/Darkness/Dark/a = new
-		var/obj/perk/Abilities/ArcaneMagic/Darkness/Darkra/b = new
-		var/obj/perk/Abilities/ArcaneMagic/Darkness/Darkaga/c = new
-		var/obj/perk/Abilities/ArcaneMagic/Darkness/Darkja/d = new
+		var/obj/Ability/Magic/Arcane/Dark/a = new
+		var/obj/Ability/Magic/Arcane/Darkra/b = new
+		var/obj/Ability/Magic/Arcane/Darkaga/c = new
+		var/obj/Ability/Magic/Arcane/Darkja/d = new
 		var/obj/item/Weapon/NPCWeapons/Claw/sf = new
 		src.contents += a
 		src.contents += b
@@ -458,13 +458,13 @@
 		initializeSummonStats(stats)
 		. = ..()
 
-		var/obj/perk/Abilities/GeneralMagicAbilities/Laser/a = new
-		var/obj/perk/Abilities/GeneralMagicAbilities/Laserga/b = new
-		var/obj/perk/Abilities/GeneralMagicAbilities/Impact/c = new
-		var/obj/perk/Abilities/BlackMagic/Flame/Fire/d = new
-		var/obj/perk/Abilities/BlackMagic/Ice/Blizzard/e = new
-		var/obj/perk/Abilities/BlackMagic/Lightning/Thunder/f = new
-		var/obj/perk/Abilities/WhiteMagic/Wind/Aerora/g = new
+		var/obj/Ability/Magic/General/Laser/a = new
+		var/obj/Ability/Magic/General/Laserga/b = new
+		var/obj/Ability/Magic/General/Impact/c = new
+		var/obj/Ability/Magic/Black/Fire/Fire/d = new
+		var/obj/Ability/Magic/Black/Ice/Blizzard/e = new
+		var/obj/Ability/Magic/Black/Lightning/Thunder/f = new
+		var/obj/Ability/Magic/White/Wind/Aerora/g = new
 		var/obj/item/Weapon/NPCWeapons/Claw/sf = new
 		src.contents += a
 		src.contents += b
@@ -507,14 +507,14 @@
 		initializeSummonStats(stats)
 		. = ..()
 
-		var/obj/perk/Abilities/GeneralWeaponAbilities/Melee/CrossSlash/a = new
-		var/obj/perk/Abilities/GeneralWeaponAbilities/Melee/BladeBeam/b = new
-		var/obj/perk/Abilities/GeneralWeaponAbilities/Melee/Halone/c = new
-		var/obj/perk/Abilities/GeneralWeaponAbilities/Melee/Riposte/d = new
-		var/obj/perk/Abilities/GeneralWeaponAbilities/Melee/FatedCircle/e = new
-		var/obj/perk/Abilities/GeneralWeaponAbilities/Melee/FinishingTouch/f = new
-		var/obj/perk/Abilities/GeneralWeaponAbilities/Melee/Shout/g = new
-		var/obj/perk/Abilities/ArcaneMagic/Darkness/Darkja/dar = new
+		var/obj/Ability/Weapon/Melee/CrossSlash/a = new
+		var/obj/Ability/Weapon/Melee/BladeBeam/b = new
+		var/obj/Ability/Weapon/Melee/Halone/c = new
+		var/obj/Ability/Weapon/Melee/Riposte/d = new
+		var/obj/Ability/Weapon/Melee/FatedCircle/e = new
+		var/obj/Ability/Weapon/Melee/FinishingTouch/f = new
+		var/obj/Ability/Weapon/Melee/Shout/g = new
+		var/obj/Ability/Magic/Arcane/Darkja/dar = new
 		var/obj/item/Weapon/Melee/Longsword/Mythril/sf = new
 		src.contents += a
 		src.contents += b
@@ -558,15 +558,15 @@
 		initializeSummonStats(stats)
 		. = ..()
 
-		var/obj/perk/Abilities/GeneralWeaponAbilities/Melee/CrossSlash/a = new
-		var/obj/perk/Abilities/GeneralWeaponAbilities/Melee/BladeBeam/b = new
-		var/obj/perk/Abilities/GeneralWeaponAbilities/Melee/Halone/c = new
-		var/obj/perk/Abilities/WhiteMagic/Healing/Cura/cur = new
-		var/obj/perk/Abilities/WhiteMagic/Holy/Diara/da = new
-		var/obj/perk/Abilities/GeneralWeaponAbilities/Melee/Riposte/d = new
-		var/obj/perk/Abilities/GeneralWeaponAbilities/Melee/FatedCircle/e = new
-		var/obj/perk/Abilities/GeneralWeaponAbilities/Melee/FinishingTouch/f = new
-		var/obj/perk/Abilities/GeneralWeaponAbilities/Melee/Shout/g = new
+		var/obj/Ability/Weapon/Melee/CrossSlash/a = new
+		var/obj/Ability/Weapon/Melee/BladeBeam/b = new
+		var/obj/Ability/Weapon/Melee/Halone/c = new
+		var/obj/Ability/Magic/White/Healing/Cura/cur = new
+		var/obj/Ability/Magic/White/Holy/Diara/da = new
+		var/obj/Ability/Weapon/Melee/Riposte/d = new
+		var/obj/Ability/Weapon/Melee/FatedCircle/e = new
+		var/obj/Ability/Weapon/Melee/FinishingTouch/f = new
+		var/obj/Ability/Weapon/Melee/Shout/g = new
 		var/obj/item/Weapon/Melee/Longsword/Mythril/sf = new
 		src.contents += a
 		src.contents += b

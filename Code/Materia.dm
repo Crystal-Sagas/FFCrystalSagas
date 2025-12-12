@@ -227,62 +227,62 @@ obj
 				TendrilMateria
 					name="Tendril Materia"
 					New()
-						var/obj/perk/Abilities/GeneralMagicAbilities/Tendril/a=new
+						var/obj/Ability/Magic/General/Tendril/a=new
 						src.contents+=a
 				FogMateria
 					name="Fog Materia"
 					New()
-						var/obj/perk/Abilities/GeneralMagicAbilities/Fog/a=new
+						var/obj/Ability/Magic/General/Fog/a=new
 						src.contents+=a
 				JoltMateria
 					name="Jolt Materia"
 					New()
-						var/obj/perk/Abilities/GeneralMagicAbilities/Jolt/a=new
+						var/obj/Ability/Magic/General/Jolt/a=new
 						src.contents+=a
 				ImpactMateria
 					name="Impact Materia"
 					New()
-						var/obj/perk/Abilities/GeneralMagicAbilities/Impact/a=new
+						var/obj/Ability/Magic/General/Impact/a=new
 						src.contents+=a
 				LaserMateria
 					name="Laser Materia"
 					New()
-						var/obj/perk/Abilities/GeneralMagicAbilities/Laser/a=new
+						var/obj/Ability/Magic/General/Laser/a=new
 						src.contents+=a
 				FlecheMateria
 					name="Fleche Materia"
 					New()
-						var/obj/perk/Abilities/GeneralMagicAbilities/Fleche/a=new
+						var/obj/Ability/Magic/General/Fleche/a=new
 						src.contents+=a
 				RiposteMateria
 					name="Riposte Materia"
 					New()
-						var/obj/perk/Abilities/GeneralWeaponAbilities/Melee/Riposte/a=new
+						var/obj/Ability/Weapon/Melee/Riposte/a=new
 						src.contents+=a
 				HaloneMateria
 					name="Halone Materia"
 					New()
-						var/obj/perk/Abilities/GeneralWeaponAbilities/Melee/Halone/a=new
+						var/obj/Ability/Weapon/Melee/Halone/a=new
 						src.contents+=a
 				StellarCircleMateria
 					name="Stellar Circle Materia"
 					New()
-						var/obj/perk/Abilities/GeneralWeaponAbilities/Melee/StellarCircle/a=new
+						var/obj/Ability/Weapon/Melee/StellarCircle/a=new
 						src.contents+=a
 				ShoutMateria
 					name="Shout Materia"
 					New()
-						var/obj/perk/Abilities/GeneralWeaponAbilities/Melee/Shout/a=new
+						var/obj/Ability/Weapon/Melee/Shout/a=new
 						src.contents+=a
 				JechtShotMateria
 					name="Jecht Shot"
 					New()
-						var/obj/perk/Abilities/GeneralWeaponAbilities/Ranged/JechtShot/a=new
+						var/obj/Ability/Weapon/Ranged/JechtShot/a=new
 						src.contents+=a
 				JechtBeamMateria
 					name="Jecht Beam"
 					New()
-						var/obj/perk/Abilities/GeneralWeaponAbilities/Ranged/JechtBeam/a=new
+						var/obj/Ability/Weapon/Ranged/JechtBeam/a=new
 						src.contents+=a
 
 
@@ -291,122 +291,122 @@ obj
 				FireMateriaI
 					name="Fire I"
 					New()
-						var/obj/perk/Abilities/BlackMagic/Flame/Fira/a=new
+						var/obj/Ability/Magic/Black/Fire/Fira/a=new
 						src.contents+=a
 				FireMateriaII
 					name="Fire II"
 					New()
-						var/obj/perk/Abilities/BlackMagic/Flame/Fira/a=new
-						var/obj/perk/Abilities/BlackMagic/Flame/Firaga/b=new
+						var/obj/Ability/Magic/Black/Fire/Fira/a=new
+						var/obj/Ability/Magic/Black/Fire/Firaga/b=new
 						src.contents+=a
 						src.contents+=b
 				FireMateriaIII
 					name="Fire III"
 					New()
-						var/obj/perk/Abilities/BlackMagic/Flame/Fira/a=new
-						var/obj/perk/Abilities/BlackMagic/Flame/Firaga/b=new
-						var/obj/perk/Abilities/BlackMagic/Flame/Firaja/c=new
+						var/obj/Ability/Magic/Black/Fire/Fira/a=new
+						var/obj/Ability/Magic/Black/Fire/Firaga/b=new
+						var/obj/Ability/Magic/Black/Fire/Firaja/c=new
 						src.contents+=a
 						src.contents+=b
 						src.contents+=c
 				WaterMateriaI
 					name="Water I"
 					New()
-						var/obj/perk/Abilities/BlackMagic/Hydro/Watera/a=new
+						var/obj/Ability/Magic/Black/Water/Watera/a=new
 						src.contents+=a
 				WaterMateriaII
 					name="Water II"
 					New()
-						var/obj/perk/Abilities/BlackMagic/Hydro/Watera/a=new
-						var/obj/perk/Abilities/BlackMagic/Hydro/Waterga/b=new
+						var/obj/Ability/Magic/Black/Water/Watera/a=new
+						var/obj/Ability/Magic/Black/Water/Waterga/b=new
 						src.contents+=a
 						src.contents+=b
 				WaterMateriaIII
 					name="Water III"
 					New()
-						var/obj/perk/Abilities/BlackMagic/Hydro/Watera/a=new
-						var/obj/perk/Abilities/BlackMagic/Hydro/Waterga/b=new
-						var/obj/perk/Abilities/BlackMagic/Hydro/Waterja/c=new
+						var/obj/Ability/Magic/Black/Water/Watera/a=new
+						var/obj/Ability/Magic/Black/Water/Waterga/b=new
+						var/obj/Ability/Magic/Black/Water/Waterja/c=new
 						src.contents+=a
 						src.contents+=b
 						src.contents+=c
 				ThunderMateriaI
 					name="Thunder I"
 					New()
-						var/obj/perk/Abilities/BlackMagic/Lightning/Thundara/a=new
+						var/obj/Ability/Magic/Black/Lightning/Thundara/a=new
 						src.contents+=a
 				ThunderMateriaII
 					name="Thunder II"
 					New()
-						var/obj/perk/Abilities/BlackMagic/Lightning/Thundara/a=new
-						var/obj/perk/Abilities/BlackMagic/Lightning/Thundaga/b=new
+						var/obj/Ability/Magic/Black/Lightning/Thundara/a=new
+						var/obj/Ability/Magic/Black/Lightning/Thundaga/b=new
 						src.contents+=a
 						src.contents+=b
 				ThunderMateriaIII
 					name="Thunder III"
 					New()
-						var/obj/perk/Abilities/BlackMagic/Lightning/Thundara/a=new
-						var/obj/perk/Abilities/BlackMagic/Lightning/Thundaga/b=new
-						var/obj/perk/Abilities/BlackMagic/Lightning/Thundaja/c=new
+						var/obj/Ability/Magic/Black/Lightning/Thundara/a=new
+						var/obj/Ability/Magic/Black/Lightning/Thundaga/b=new
+						var/obj/Ability/Magic/Black/Lightning/Thundaja/c=new
 						src.contents+=a
 						src.contents+=b
 						src.contents+=c
 				IceMateriaI
 					name="Ice I"
 					New()
-						var/obj/perk/Abilities/BlackMagic/Ice/Blizzara/a=new
+						var/obj/Ability/Magic/Black/Ice/Blizzara/a=new
 						src.contents+=a
 				IceMateriaII
 					name="Ice II"
 					New()
-						var/obj/perk/Abilities/BlackMagic/Ice/Blizzara/a=new
-						var/obj/perk/Abilities/BlackMagic/Ice/Blizzaga/b=new
+						var/obj/Ability/Magic/Black/Ice/Blizzara/a=new
+						var/obj/Ability/Magic/Black/Ice/Blizzaga/b=new
 						src.contents+=a
 						src.contents+=b
 				IceMateriaIII
 					name="Ice III"
 					New()
-						var/obj/perk/Abilities/BlackMagic/Ice/Blizzara/a=new
-						var/obj/perk/Abilities/BlackMagic/Ice/Blizzaga/b=new
-						var/obj/perk/Abilities/BlackMagic/Ice/Blizzaja/c=new
+						var/obj/Ability/Magic/Black/Ice/Blizzara/a=new
+						var/obj/Ability/Magic/Black/Ice/Blizzaga/b=new
+						var/obj/Ability/Magic/Black/Ice/Blizzaja/c=new
 						src.contents+=a
 						src.contents+=b
 						src.contents+=c
 				EarthMateriaI
 					name="Earth I"
 					New()
-						var/obj/perk/Abilities/Geomancer/Earth/Stonra/a=new
+						var/obj/Ability/Job/Geomancer/Earth/Stonra/a=new
 						src.contents+=a
 				EarthMateriaII
 					name="Earth II"
 					New()
-						var/obj/perk/Abilities/Geomancer/Earth/Stonra/a=new
-						var/obj/perk/Abilities/Geomancer/Earth/Stoneaga/b=new
+						var/obj/Ability/Job/Geomancer/Earth/Stonra/a=new
+						var/obj/Ability/Job/Geomancer/Earth/Stoneaga/b=new
 						src.contents+=a
 						src.contents+=b
 				EarthMateriaIII
 					name="Earth III"
 					New()
-						var/obj/perk/Abilities/Geomancer/Earth/Stonra/a=new
-						var/obj/perk/Abilities/Geomancer/Earth/Stoneaga/b=new
-						var/obj/perk/Abilities/Geomancer/Earth/Stonaja/c=new
+						var/obj/Ability/Job/Geomancer/Earth/Stonra/a=new
+						var/obj/Ability/Job/Geomancer/Earth/Stoneaga/b=new
+						var/obj/Ability/Job/Geomancer/Earth/Stonaja/c=new
 						src.contents+=a
 						src.contents+=b
 						src.contents+=c
 				FlareMateria
 					name="Flare III"
 					New()
-						var/obj/perk/Abilities/BlackMagic/Energy/Flare/a=new
+						var/obj/Ability/Magic/Black/Energy/Flare/a=new
 						src.contents+=a
 				DrainMateria
 					name="Drain"
 					New()
-						var/obj/perk/Abilities/ArcaneMagic/Drains/Drain/a=new
+						var/obj/Ability/Magic/Arcane/Drain/a=new
 						src.contents+=a
 				OsmoseMateria
 					name="Osmose"
 					New()
-						var/obj/perk/Abilities/ArcaneMagic/Osmoses/Osmose/a=new
+						var/obj/Ability/Magic/Arcane/Osmose/a=new
 						src.contents+=a
 
 			GreenMateria
@@ -414,59 +414,59 @@ obj
 				CureMateriaI
 					name="Cure I"
 					New()
-						var/obj/perk/Abilities/WhiteMagic/Healing/Cura/a=new
+						var/obj/Ability/Magic/White/Healing/Cura/a=new
 						src.contents+=a
 				CureMateriaII
 					name="Cure II"
 					New()
-						var/obj/perk/Abilities/WhiteMagic/Healing/Cura/a=new
+						var/obj/Ability/Magic/White/Healing/Cura/a=new
 						src.contents+=a
-						var/obj/perk/Abilities/WhiteMagic/Healing/Curaga/b=new
+						var/obj/Ability/Magic/White/Healing/Curaga/b=new
 						src.contents+=b
 				CureMateriaIII
 					name="Cure III"
 					New()
-						var/obj/perk/Abilities/WhiteMagic/Healing/Cura/a=new
+						var/obj/Ability/Magic/White/Healing/Cura/a=new
 						src.contents+=a
-						var/obj/perk/Abilities/WhiteMagic/Healing/Curaga/b=new
+						var/obj/Ability/Magic/White/Healing/Curaga/b=new
 						src.contents+=b
-						var/obj/perk/Abilities/WhiteMagic/Healing/Curaja/c=new
+						var/obj/Ability/Magic/White/Healing/Curaja/c=new
 						src.contents+=c
 				ProtectMateriaI
 					name="Protect I"
 					New()
-						var/obj/perk/Abilities/GreenMagic/Protects/Protect/a=new
+						var/obj/Ability/Magic/Green/Protect/a=new
 						src.contents+=a
 				RegenMateria
 					name="Regen"
 					New()
-						var/obj/perk/Abilities/WhiteMagic/Healing/Regen/a=new
+						var/obj/Ability/Magic/White/Healing/Regen/a=new
 						src.contents+=a
 				RefreshMateria
 					name="Refresh"
 					New()
-						var/obj/perk/Abilities/GreenMagic/Refresh/a=new
+						var/obj/Ability/Magic/Green/Refresh/a=new
 						src.contents+=a
 				DiaMateriaI
 					name="Dia I"
 					New()
-						var/obj/perk/Abilities/WhiteMagic/Holy/Diara/a=new
+						var/obj/Ability/Magic/White/Holy/Diara/a=new
 						src.contents+=a
 				DiaMateriaII
 					name="Dia II"
 					New()
-						var/obj/perk/Abilities/WhiteMagic/Holy/Diara/a=new
+						var/obj/Ability/Magic/White/Holy/Diara/a=new
 						src.contents+=a
-						var/obj/perk/Abilities/WhiteMagic/Holy/Diaga/b=new
+						var/obj/Ability/Magic/White/Holy/Diaga/b=new
 						src.contents+=b
 				DiaMateriaIII
 					name="Dia III"
 					New()
-						var/obj/perk/Abilities/WhiteMagic/Holy/Diara/a=new
+						var/obj/Ability/Magic/White/Holy/Diara/a=new
 						src.contents+=a
-						var/obj/perk/Abilities/WhiteMagic/Holy/Diaga/b=new
+						var/obj/Ability/Magic/White/Holy/Diaga/b=new
 						src.contents+=b
-						var/obj/perk/Abilities/WhiteMagic/Holy/Holy/c=new
+						var/obj/Ability/Magic/White/Holy/HolySpell/c=new
 						src.contents+=c
 
 			PassiveMateria

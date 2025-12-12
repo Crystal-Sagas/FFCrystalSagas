@@ -35,8 +35,8 @@
 		initializeSummonStats(stats)
 		. = ..()
 
-		var/obj/perk/MonsterAbilities/Monster/DragonClaws/a = new
-		var/obj/perk/MonsterAbilities/BLU/MonsterFlame/flame = new
+		var/obj/Ability/Monster/DragonClaws/a = new
+		var/obj/Ability/Magic/Blue/MonsterFlame/flame = new
 		var/obj/perk/MonsterPassives/Rideable/b = new
 		var/obj/perk/MonsterPassives/Flight/c = new
 		src.contents += a
@@ -74,7 +74,7 @@
 		initializeSummonStats(stats)
 		. = ..()
 
-		var/obj/perk/MonsterAbilities/Monster/ChocoKick/a = new
+		var/obj/Ability/Monster/ChocoKick/a = new
 		var/obj/perk/MonsterPassives/Rideable/b = new
 		src.contents += a
 		src.contents += b
@@ -108,8 +108,8 @@
 		initializeSummonStats(stats)
 		. = ..()
 
-		var/obj/perk/Abilities/BlackMagic/Flame/Fire/a = new
-		var/obj/perk/Abilities/BlackMagic/Flame/Fira/b = new
+		var/obj/Ability/Magic/Black/Fire/Fire/a = new
+		var/obj/Ability/Magic/Black/Fire/Fira/b = new
 		var/obj/perk/MonsterAttacks/Claw/c = new
 		src.contents += a
 		src.contents += b
@@ -146,8 +146,8 @@
 		initializeSummonStats(stats)
 		. = ..()
 
-		var/obj/perk/Abilities/BlackMagic/Ice/Blizzard/a = new
-		var/obj/perk/Abilities/BlackMagic/Ice/Blizzara/b = new
+		var/obj/Ability/Magic/Black/Ice/Blizzard/a = new
+		var/obj/Ability/Magic/Black/Ice/Blizzara/b = new
 		var/obj/item/Weapon/NPCWeapons/Punch/c = new
 		src.contents += a
 		src.contents += b
@@ -185,9 +185,9 @@
 		initializeSummonStats(stats)
 		. = ..()
 
-		var/obj/perk/Abilities/BlackMagic/Lightning/Thunder/a = new
-		var/obj/perk/Abilities/BlackMagic/Lightning/Thundara/b = new
-		var/obj/perk/MonsterAbilities/BLU/MindBlastRamuh/d = new
+		var/obj/Ability/Magic/Black/Lightning/Thunder/a = new
+		var/obj/Ability/Magic/Black/Lightning/Thundara/b = new
+		var/obj/Ability/Magic/Blue/MindBlast/d = new
 		var/obj/item/Weapon/NPCWeapons/Staff/c = new
 		src.contents += a
 		src.contents += b
@@ -225,13 +225,13 @@
 		initializeSummonStats(stats)
 		. = ..()
 
-		var/obj/perk/Abilities/ArcaneMagic/Statusinfliction/Silence/a = new
-		var/obj/perk/Abilities/ArcaneMagic/Statusinfliction/Sleep/b = new
-		var/obj/perk/Abilities/WhiteMagic/Wind/Aero/ab = new
-		var/obj/perk/Abilities/WhiteMagic/Wind/Aerora/bb = new
-		var/obj/perk/Abilities/Bard/NaturesMinne/d = new
-		var/obj/perk/Abilities/Bard/SinewyEtude/d1 = new
-		var/obj/perk/Abilities/Bard/LearnedEtude/d3 = new
+		var/obj/Ability/Magic/Arcane/Silence/a = new
+		var/obj/Ability/Magic/Arcane/Sleep/b = new
+		var/obj/Ability/Magic/White/Wind/Aero/ab = new
+		var/obj/Ability/Magic/White/Wind/Aerora/bb = new
+		var/obj/Ability/Job/Bard/NaturesMinne/d = new
+		var/obj/Ability/Job/Bard/SinewyEtude/d1 = new
+		var/obj/Ability/Job/Bard/LearnedEtude/d3 = new
 		var/obj/item/Weapon/NPCWeapons/Harp/c = new
 		src.contents += a
 		src.contents += b
@@ -273,8 +273,8 @@
 		initializeSummonStats(stats)
 		. = ..()
 
-		var/obj/perk/Abilities/Geomancer/Earth/Stone/a = new
-		var/obj/perk/Abilities/Geomancer/Earth/Stonra/b = new
+		var/obj/Ability/Job/Geomancer/Earth/Stone/a = new
+		var/obj/Ability/Job/Geomancer/Earth/Stonra/b = new
 		var/obj/item/Weapon/NPCWeapons/Punch/sf = new
 		src.contents += a
 		src.contents += b
@@ -311,11 +311,11 @@
 		initializeSummonStats(stats)
 		. = ..()
 
-		var/obj/perk/Abilities/WhiteMagic/Healing/Regen/a = new
-		var/obj/perk/Abilities/WhiteMagic/Healing/Cure/b = new
-		var/obj/perk/Abilities/WhiteMagic/Healing/Curaga/c = new
-		var/obj/perk/Abilities/WhiteMagic/Status/Esuna/d = new
-		var/obj/perk/Abilities/WhiteMagic/Holy/Diara/e = new
+		var/obj/Ability/Magic/White/Healing/Regen/a = new
+		var/obj/Ability/Magic/White/Healing/Cure/b = new
+		var/obj/Ability/Magic/White/Healing/Curaga/c = new
+		var/obj/Ability/Magic/White/Status/Esuna/d = new
+		var/obj/Ability/Magic/White/Holy/Diara/e = new
 		var/obj/item/Weapon/NPCWeapons/Horn/sf = new
 		src.contents += a
 		src.contents += b
