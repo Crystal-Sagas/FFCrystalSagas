@@ -183,3 +183,29 @@
 	damageType = "magical"
 	scalingStat = "INT"
 	skillType = "Melee"
+
+/**
+ * Sword Saint abilities - master swordsmanship
+ */
+/obj/Ability/Job/SwordSaint
+	grantingJob = "Sword Saint"
+	damageType = "physical"
+	scalingStat = "STR"
+	skillType = "Melee"
+
+/**
+ * Astrologian abilities - card-based fortune magic
+ */
+/obj/Ability/Job/Astrologian
+	grantingJob = "Astrologian"
+	damageType = "magical"
+	scalingStat = "WIS"
+
+/**
+ * Viking abilities - Nordic berserker combat
+ */
+/obj/Ability/Job/Viking
+	grantingJob = "Viking"
+	damageType = "physical"
+	scalingStat = "STR"
+	skillType = "Melee"

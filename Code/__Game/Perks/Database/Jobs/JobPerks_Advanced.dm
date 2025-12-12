@@ -12,9 +12,17 @@
  * - Necromancer (Summoner who embraced death)
  * - Holy Dragoon (Dragoon who ascended with dragon blessing)
  * - Onion Knight (Martial Red Mage with Bladespells)
+ * - Ninja (Ninjutsu specialists)
+ * - Gambler (Luck manipulators)
+ * - Sage (Magical prodigies)
+ * - Berserker (Rage masters)
  */
 
-/datum/perk/SwordSaint
+// ============================================================================
+// SWORD SAINT - Light/Dark Balance Warriors
+// ============================================================================
+
+/obj/perk/Jobperks/SwordSaint
 	name = "Sword Saint"
 	cat = "Unique"
 	rank = "T5"
