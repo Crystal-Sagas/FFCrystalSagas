@@ -1,4 +1,4 @@
-/**
+/*
  * Perk Database
  *
  * Contains all perk definitions organized by category.
@@ -20,6 +20,2272 @@
  * - MonsterAbilities: NPC-only abilities
  */
 
+obj
+	perk
+		Jobperks
+			ptype="job"
+			BeastMaster
+				jobneed="Beast Master"
+				icon='Icons/Perk/Beastmaster.png'
+				BeastMaster
+					name="Beast Master"
+					cat="Unique"
+					desc="The Beastmaster is in tune with nature, they have somewhat heightened senses - and are able to track a given target through the wilderness or even a city as long as they have their scent or know their mannerisms. They are expert trackers. They gain advantage on Animal Handling, and Survival Rolls. In addition they pick a beast type they know best, gaining +2 AC and to Hit against creatures of that type. A Beast Tamer can only tame monsters from their chosen classification. (Chosen Type: ) +40 HP, +30 MP, +30 SP."
+				WildSense
+					rank="T1"
+					name="Wild Sense"
+					desc="A Beast Master has a natural understanding of monsters and their behaviors through study of body language and their environments, capable of deducing the attitude and behaviors of monsters through careful study of their target. A Beast Master may use Insight Checks to determine the attitude, behaviors, and any abnormalities related to such. If the Beast Master specializes in the beast type they gain advantage on this roll."
+				WildEmpathy
+					rank="T1"
+					name="Wild Empathy"
+					desc="A Beast Master has a natural ability to connect with monsters, displaying a unique connection with nature as to mimic the necessary behaviors to seemingly communicate with beasts on a mundane level. A Beast Master may use Charisma Skill Checks on beasts to limited effect. If a Beast Master specializes in the beast type they gain advantage on this roll. If they do not they must succeed a DC 15 + Monster Rank Wild Sense check or roll at disadvantage. (Monster Rank D = 1, C = 2, etcetera)"
+				VeterinaryTraining
+					rank="T2"
+					name="Veterinary Training"
+					desc="This Beast Master has studied not only the behaviors of Monsters but their anatomy as well. A Beast Master may use this knowledge both to aid their monsters and to harm others. As a standard action the Beast Master may perform triage on an adjacent monster once per 3 rounds, healing it for Rank Bonus d10 HP or removing 1 status effect. They may alternatively use their action to perform a Perception Roll against a monster to determine if it has a weakness. Gain Advantage against monsters they specialize in."
+				ExpandedSpecialty
+					rank="T3"
+					name="Expanded Specialty"
+					desc="This Beast Master has expanded their knowledge base, and have mastered their art to the point of being able to tame an additional monster classification."
+				PackLeader
+					rank="T2"
+					name="PackLeader"
+					desc="This Beastmaster has opted to learn the ways of bringing a larger variety of beasts under their control, taming a pack of monsters to hound their foes from all sides for both quantity and versatility in their form. Pack Master can summon 2 monsters at a time and can tame D rank or lower monsters. They can also learn Command abilities. Incompatible with Lone Wolf."
+				ExpandedStudy
+					rank="T2"
+					name="Expanded Study"
+					pre="PackLeader"
+					desc="The Pack Master understands the value in variety and flexibility a more diverse group of monsters brings, as well as how to cover their weaknesses in combat. The Pack Leader gains an additional classification of monsters to specialize in."
+				ExpandedPack
+					rank="T3"
+					name="Expanded Pack"
+					pre="PackLeader"
+					desc="The Pack Master has grown in power, and as such carries a more imposing presence among monsters. Able to exert their dominance over a larger pack as a result of their ability, the Beast Master can now summon a third monster at a time, but it must be 1 rank lower than their highest tameable rank. They can now tame up to C rank monsters."
+				PackTactics
+					rank="T3"
+					name="Pack Tactics"
+					pre="PackLeader"
+					desc="The Pack Master is an expert of directing his beasts from a horde of monsters into an organized pack of hounding beasts, capable of overwhelming their opponents with ease. They and their monsters gain the Pack Tactics ability, applying a -1 to hit and -1 to AC against opponents they have attacked in the last round for each monster they have summoned."
+				WildCaller
+					rank="T4"
+					name="Wild Caller"
+					pre="PackLeader"
+					desc="The Pack Master has reached the pinnacle of their ability, a true master of the wild and over his pack. They can now tame up to B rank monsters."
+				LoneWolf
+					rank="T2"
+					desc="This Beastmaster has opted to prioritize their skills in raising a smaller number of monsters, spending their time specializing their beasts to make their talents shine. Their companions are true threats, rivaling the power and potency of summoners of equal level. This Beastmaster can summon 1 Monster at a time, and can tame C rank or lower Monsters and their monsters have an additional training slot. Incompatible with Pack Leader."
+				Unified
+					rank="T3"
+					name="Unified"
+					pre="LoneWolf"
+					desc="The Lone Wolf has furthered their bond with their small group of monsters, prioritizing their power and bond over variety and flexibility. This Beast Master can now Tame up to B rank monsters. The Lone Wolf can also learn C rank and lower Blue Magic from their monsters, but can only use spells learned from their currently summoned partner."
+				FightAsOne
+					name="Fight As One"
+					rank="T3"
+					pre="LoneWolf"
+					desc="The Lone Wolf is an expert at fighting alongside their monsters, capable of keeping up in melee with even the most ferocious of their beasts. The Lone Wolf gains flanking bonuses so long as they and their monster are adjacent to the same enemy, regardless of position. Can not proc the same time as Tag Team."
+				TagTeam
+					rank="T3"
+					name="Tag Team"
+					pre="LoneWolf"
+					desc="The Lone Wolf is an expert at working together to synchronize their attacks with their beasts, hounding their foes to ensure attacks land. When the Lone Wolfor Monster attacks a target with a single target attack they apply a mark of â€˜vulnerableâ€™, giving the other +4 to hit the vulnerable target and +8 Damage. Only 1 target can be marked at a time and only 1 mark can be had at a time. A Mark can not be applied the same round it is activated. Can not be used at the same time as Fight as One."
+				TrueMonster
+					rank="T4"
+					name="True Monster"
+					pre="LoneWolf"
+					desc="The Lone Wolf has ascended to the status of being a true monster, one with their beasts and capable of fighting with a true ferocity and style identical to that of their partner. This Beast Master may now learn and use Blue Mage skills from their Monsters up to B rank. They can only be used so long as the monster who knows the skill is their summoned partner."
+				MightOfTheWild
+					rank="T4"
+					name="Might Of The Wild"
+					pre="LoneWolf"
+					desc="The Lone Wolf has attained a mastery in beast taming few have achieved and are now capable of commanding all but the strongest of monsters. This Beast Master can tame up to A Rank Monsters. A Rank Monsters may have additional requirements to tame them beyond the normal."
+				BeastUnchained
+					rank="T4"
+					name="Beast Unchained"
+					pre="LoneWolf"
+					desc="The Lone Wolf and their partner have ascended above the role of master and pet. The Lone Wolfâ€™s partner monster can continue to fight for a number of  rounds equal to the Beast Masterâ€™s Charisma Modifier before being recalled."
+
+				//Pre-Rework stuff. To be removed once we are sure we have no beast masters with any of these perks.
+				CatchandControl1
+					name="Catch and Control I"
+					rank="T1"
+					cat="Unique"
+					desc="This individual is able to catch, and train D rank monsters. This individual can actively control one monster at a time."
+				CatchandControl2
+					name="Catch and Control II"
+					rank="T2"
+					cat="Unique"
+					desc="This individual is able to catch, and train C rank monsters This individual can actively control two monsters at once."
+				CatchandControl3
+					name="Catch and Control III"
+					rank="T3"
+					cat="Unique"
+					desc="This individual is able to catch, and train B rank monsters"
+				CatchandControl4
+					name="Catch and Control IV"
+					rank="T4"
+					cat="Unique"
+					desc="This individual is able to catch, and train A rank monsters. This individual can actively control three monsters at once."
+				CatchandControl5
+					name="Catch and Control V"
+					rank="T5"
+					cat="Unique"
+					desc="This individual is able to catch and train S rank monsters."
+				LegendaryControl
+					name="Legendary Control"
+					rank="T6"
+					cat="Unique"
+					desc="This individual is able to catch and train a single legendary boss monster in their life-time, and maintain full control over it if they have the skills to catch it."
+				MasteredScent
+					name="Mastered Scent"
+					rank="T1"
+					cat="Unique"
+					desc="This individual has a heightened sense of scent. Through spending time with the natural world and its creatures they have taken on this adaptation. They are capable of memorizing a number of scents equal to their Intelligence stat. They are capable of tracking and recognizing these scents as long as there is some undisturbed trail."
+				NaturalStudy
+					name="Natural Study"
+					rank="T2"
+					cat="Unique"
+					desc="This individual is capable of diving deep into study of a specific creature. They spend a day gathering knowledge on that creature in specific and roll a naturalist skill check. On a successful roll the individual has â€œknowledgeâ€ on that creature letting them know everything about it including stats and abilities. They also gain advantage on rolls trying to catch the creature."
+				BestialLink
+					name="Bestial Link"
+					rank="T4"
+					cat="Unique"
+					desc="The user has an energetic link to a monster under their control. They are able to determine the emotional state of the monster and determine its basic thoughts. Any positive status effect applied to either the user or the monster is shared between the two. They are also able to give commands mentally and do not need to use their bonus action to do so anymore. This link is active for up to a mile between the user and their creature."
+
+			Samurai
+				jobneed="Samurai"
+				icon='Icons/Perk/Samurai.png'
+				Samurai
+					cat="Unique"
+					name="Samurai"
+					desc="The Samurai is a master of not only attacking with, but defending with the blade - able to use their weapon to defend themselves. When using some type of Sword, a Samurai gains +1 AC, and +1 PAB and MAB. +65 HP, +30 MP, +70 SP."
+				Quickdraw
+					rank="T1"
+					name="Quickdraw"
+					desc="The Samurai is able to switch their weapon from one type, to Katana type by spending only a Bonus Action. The Samurai's first attack in an encounter gains Advantage. Additionally, the first attack made after switching from a non Katana weapon type to a Katana gains advantage. (+1 to hit when using a Katana, and switching to or from a Katana is a bonus action.) "
+				Hasso
+					rank="T2"
+					name="Hasso"
+					desc="The samurai has trained in many different duelist styles for katanas. Whenever a Katana, Dagger, Longsword, Greatsword, Buster Sword, Gunblade, or Whipblade is being wielded, this individual can add a bonus 3 to PDB."
+				Katsuryu
+					rank="T3"
+					name="Katsuryu"
+					desc="The Samurai has trained to use their blade in a defensive manner, just as much as an offensive one. While wielding a Katana, this Samurai gains +1 AC, and +3 Damage Reduction. In addition, they may use their Reaction in order to make an attack roll with their weapon, and reduce the damage of a -single- instance of damage rolled towards them on the round it is used. This reduction is capped at 40 points before the following modifications: If used against a Melee ability, the reduction is increased by another 10 ; and the Samurai has effective resistance against the attack, if used against a Magic or Ranged ability, it is decreased by 10. Doing so costs 25 SP."
+				Zanshin
+					rank="T3"
+					name="Zanshin"
+					desc="Once per turn if the samurai misses with a weapon based attack they are able to immediately follow up with the same attack as a free action, ignoring that attack's cooldown - but placing it on cooldown after the second attempt, if it has one."
+				ThirdEye
+					rank="T4"
+					name="Third Eye"
+					desc="This individual has activated their third eye and is capable of seeing moments into the future allowing super human precognition. While third eye is active, it grants the user +4 to AC. Third Eye deactivates after an attack has been made against this individual. Third eye recharges at the end of the user's turn."
+				Yaegasumi
+					rank="T5"
+					name="Yaegasumi"
+					desc="Everytime an attack aimed at this individual misses or a reaction is used. (This accounts for single target or AoE) they gain an instance of Yaegasumi. On their next turn they can use Yaegasumi to reduce the cost of their physical abilities making them cost 10 less for each point spent. They can also spend 3 points to gain another bonus or reaction action, or 5 to gain another standard action. At the end of the individual's turn they lose all yaegasumi points."
+				Bushido
+					rank="T3"
+					name="Bushido"
+					cat="Unique"
+					desc="This individual has learned a fighting style based on holding their actions and waiting for the perfect moment. They store all the energy not used during a round capable of releasing this energy as powerful attacks. A number of Ken points are added to a character each round depending on what they hold back. Bonus Action = 1 point, Reaction = 1 point, Standard action = 2 points, Movement action = 2 points. The maximum amount of points stored is equal to the users dexterity stat, and all points are lost upon exiting combat. Ken points can be spent on powerful bushido abilities. Utilizing the Retaliate or Iaido Stance abilities generates 1 Ken point."
+
+			Spellblade
+				jobneed="Spellblade"
+				icon='Icons/Perk/Spellblade.png'
+				Spellblade
+					cat="Unique"
+					name="Spellblade"
+					desc="The spellblade is in tune with the mana surrounding and inside of them. They have resistance to Force, Dark, and Holy damage. A Spellblade may have up to 2 Infusions active simultaneously(1 Elemental, and 1 Status based). Spellblade infusions may not be stacked with the infusions of other Jobs. +30 HP, +70 MP, +30 SP."
+				Memento
+					rank="T1"
+					name="Memento"
+					desc="This individual has learned to expend their energy in times of stress. When this individual suffers a KO, their remaining mana will be sent into the air being distributed equally between their allies."
+				EmergencyShell
+					rank="T2"
+					name="Emergency Shell"
+					desc="The user has an enchantment on their sword that automatically raises a magical shell when the user is in a weakened condition protecting them from magic based attacks. (When HP < 40% grants shell status, lasts for 2 rounds if you go above 40% HP.)"
+				AdvancedInfusion
+					rank="T2"
+					name="Advanced Infusion"
+					desc="This individual has learned to infuse magic of the second tier. Elemental infusions grant an extra 5 PDB, DCâ€™s for status effects increase by 1 and last for 1 more turn."
+				PermanentInfusion
+					rank="T2"
+					name="Permanent Infusion"
+					desc="This user is capable of permanently infusing an object with magical energy. If the Spellblade's weapon is enchanted with an Elemental enchantment, they may passively apply that element's infusion to its attacks at no cost, if they know that infusion."
+				ManaWeapon
+					rank="T2"
+					name="Mana Weapon"
+					desc="This Spellblade is capable of pumping their blade with Mana, in order to redirect it admist movement. Upon doing so, as a free action, they may spend 15 MP in order to proc an additional standard attack, or Weapon Attack (At half cost+10) - if used for an ability, it may only be used for an ability of rank C or lower. Doing so places this perk on 1 turn cooldown."
+				AutoShell
+					rank="T3"
+					name="Auto Shell"
+					desc="After rolling initiative grants the user shell, lasting for 4 turns."
+				MagicArmor
+					rank="T3"
+					name="Magic Armor"
+					desc="This user has learned how to channel an element into their armor as well as their weapon. Meaning that if a user uses thunder infusion, their armor will be infused with the element as well granting a full resistance to any attacks received by that element."
+				PhantomBlade
+					rank="T3"
+					name="Phantom Blade"
+					desc="This individual has learned to meld their weapon with magic until there is almost no distinction between the two. When wielding a Melee weapon, they may add their BASE PAB and PDB to their MAB and MDB as a global modifier respectively."
+				ExpertElementalInfusion
+					rank="T4"
+					name="Expert Elemental Infusion"
+					desc="This individual has learned to infuse tier 3 elemental magic. They can gain a further +5 PDB from infusions at the cost of +5 additional MP drain per turn."
+				AntiMagic
+					rank="T4"
+					name="Anti-Magic"
+					desc="This individual has learned to take some of the energy taken from a magical attack, and form it into a temporary barrier that prevents further harm from magic. When this user is hit by a magic attack they will have a temporary barrier that lessens damage taken by half if the next attack is magic based."
+				DualInfusion
+					rank="T4"
+					name="Dual Infusion"
+					desc="While the Spellblade has two Infusions active at the same time, they gain +5 PAB and MAB, as well as deal +15 additional true damage on hit."
+				TreInfusion
+					rank="T5"
+					name="Tre Infusion"
+					cat="Unique"
+					desc="This Spellblade is a master of Infusion, and can activate up to 3 infusions at the same time. One damage dealing, one status, and either drain or osmose."
+
+
+			Rogue
+				jobneed="Rogue"
+				icon='Icons/Perk/Thief.png'
+				Rogue
+					name="Rogue"
+					cat="Unique"
+					desc="The Rogue is a quick and nimble individual, capable of striking faster than most can see. Their sleight of hand training as well as Lock-picking has honed their hand-eye-coordination and striking speed to an elevated level. Rogues have 30 feet of Obscuration ignorance, allowing them to see within 30 feet of Darkness or Obscuration. (+2 to hit with 1H Melee Weapons) +20 HP, +30 MP, +50 SP."
+				ThrowingWeaponProficiency
+					name="Throwing Weapon Proficiency"
+					rank="T1"
+					desc="This individual has spent a copious amount of times practicing with throwing weapons. They can take on throwing weapons proficiency without taking a weapon slot, and gain +2 to hit while using them."
+				SneakAttack
+					rank="T1"
+					name="Sneak Attack"
+					desc="This individual has the ability to strike from the shadows with deft precision. If a Rogue is obscured or in darkness, they also cannot be heard. If the Rogue is under the effects of Stealth, they gain extra sneak attack damage. Sneak damage procs when attacking with any form of advantage towards a target. On a sneak attack deal an extra 1d6 damage per rank. Capping at master rank at 6d6."
+				Vigilance
+					rank="T1"
+					name="Vigilance"
+					desc="This individual has learned to watch their back. Attackers do not receive any bonus when flanking this user."
+				Trapmaster
+					rank="T1"
+					name="Trapmaster"
+					desc="This individual has a sense for traps. They have learned how to set traps skillfully and can do so as a bonus action. This also allows them to notice any traps in their vision passively."
+				Flee
+					rank="T2"
+					name="Flee"
+					desc="This individual knows how to choose their battles. When they are escaping from a battle they may add their current Rank bonus to their flee result, and also have advantage on the Dexterity check for fleeing."
+				FlurryofPetals
+					rank="T2"
+					name="Flurry of Petals"
+					desc="On any instance of using a throwing weapon such as Shuriken or otherwise, either via an Ability or weapon attack - if it successfully deals damage, deal an additional 15 damage. This manifests as a multiplication of that specific weapon type, adding an additional flurry of that weapon to the attack. This costs 10 Mana or Stamina to incur, and is a bonus action. This may only apply to -one- individual instance of damage per turn."
+				EmergencyHaste
+					rank="T2"
+					name="Emergency Haste"
+					desc="The user keeps a steady supply of emergency pills that can be used to hasten their movement in dire situations. . (When HP <40% grants haste status, lasts for 2 rounds if you go above 40% HP.)"
+				FirstStrike
+					name="First Strike"
+					rank="T3"
+					desc="Strike fast and strike hard. These are words that the Rogue lives by. Rogues who make the first move gain a significant advantage in battle. If a Rogue takes the first turn in a battle, they gain a permanent +4 to PAB and MAB for the rest of the battle. Gives a permanent +5 to initiative rolls. The first basic attack on each of the Rogue's turn deals 10 additional damage, and said attack ignores damage reduction."
+				DeepPockets
+					rank="T3"
+					name="Deep Pockets"
+					desc="Doubles the amount of times Rogue/Ninja based techniques can be used in a day. Example: Katon or Smoke increase from 3 uses a day to 6 uses a day."
+				Assassin
+					rank="T5"
+					name="Assassin"
+					desc="This individual has trained to kill efficiently and ruthlessly. Attacks made while Obscured from a target deal 20 additional damage. When using daggers or thieves swords their sneak attack calculation is 1d8 instead of 1d6. They also receive a +2 proficiency bonus to hit with those weapons."
+				NinjaArts
+					rank="T3"
+					cat="Unique"
+					name="Ninja Arts"
+					desc="This individual has learned the ways of the ninja. Their job title is changed to Ninja, and they are granted access to the deep well of information about ninja arts known as Ninjutsu. In addition, they gain +20 permanent extra HP, as well as +20 permanent MP and SP, and an extra +1 to hit with 1H weapons."
+
+			Paladin
+				jobneed="Paladin"
+				icon='Icons/Perk/Paladin.png'
+				Paladin
+					name="Paladin"
+					cat="Unique"
+					desc="As champions of he light, and holy aspects of the world - a Paladin gains great power and resolve from their courage. Paladins take half damage from Light attacks, and negative status ailments last 1 turn less than usual. Paladins may learn up to C Rank White Magic, and D rank Green Magic inherently. Paladin's infusion spells may not be stacked with other Jobs' infusion spells. +90 HP, +40 MP, +30 SP, Sword Saint, White Magic and Green Magic all count as Paladin Abilities for the sake of effects referencing Paladin Abilities."
+				BathedinLight
+					rank="T1"
+					name="Bathed in Light"
+					desc="The Paladin is blessed by Holy Light. They gain more health when healed. | The Paladin is able to gain an extra +20 HP from all spells and abilities which grant healing. (This includes Life-Steal Effects.) This does NOT however include passive healing effects OR items. (Such as the Regen Status, Potions, etc) |"
+				HolyMight
+					rank="T2"
+					name="Holy Might"
+					desc="The user becomes the embodiment of Holy Light and is able to transfer said light into their weapon. | The Paladin is able to add the Holy Element to any attack for free. In addition to this, they may spend 10 MP to gain a temporary +2 PAB or MAB to an attack roll after itâ€™s already been rolled, once per round. |"
+				DivineRetribution
+					rank="T2"
+					name="Divine Retribution"
+					desc="The Paladin is able to apply Divine Judgement upon their foes. Using Holy Magic to summon a Blade of Light down on those who would harm their allies. | Free Action AFTER using the Cover Ability (12d6 Damage (Holy) | Fortitude Save ( DC17) | Full damage on a Failed save, Half on a Successful one. | (Cost: 15 MP | 2 Round Cooldown.)"
+				IndomitableSpirit
+					rank="T3"
+					name="Indomitable Spirit"
+					desc="The individual has been gifted by the light, which protects them in times of danger. | The Paladin upon dropping below 50% of their maximum HP gains the â€œProtectâ€ status effect immediately as well as granting resistance to Physical, Dark, and Force Damage.|"
+				BlessingofAltruism
+					rank="T3"
+					name="Blessing of Altruism"
+					desc="The Paladin is blessed by the Lifestream when they protect others. | As a Free Action after using the Cover Ability, the Paladin is able to spend MP to immediately heal themselves 50 HP while also applying the â€œRegenâ€ status to themselves. | (Cost: 10 MP | 3 Round Cooldown.)"
+				Templar
+					rank="T3"
+					name="Templar"
+					desc="This individual is a Templar, a Holy warrior. They are able to learn up to B rank White magic, and C rank Green magic."
+				EngulfedinLight
+					rank="T3"
+					pre="Bathed in Light"
+					name="Engulfed in Light"
+					desc="This individual is blessed by a holy light. They gain more health than others when being healed by magic, increasing the bonus from healing spells to 25, and are granted a 10 HP temporary shield whenever they are healed."
+				Altruism
+					rank="T4"
+					name="Altruism"
+					desc="When in a highly injured state the paladin musters what strength they have left to defend those around them granting +10 damage reduction when under 30% HP."
+				SecondChance
+					rank="T5"
+					name="Second Chance"
+					desc="Once per life-time, if a Paladin has been deemed truly blessed by the light - if they die, they will resurrect at the nearest crystal to the location of their death. This perk is removed once it has been used."
+
+			DarkKnight
+				jobneed="Dark Knight"
+				icon='Icons/Perk/DarkKnight.png'
+				DarkKnight
+					name="Dark Knight"
+					cat="Unique"
+					desc="Dark Knights are inherently connected to their inner darkness, harnessing it for either good or evil. A Dark Knight wields the power of both self and external destruction for their goals. Dark Knight infusion spells may not be stacked with the infusion spells of other Jobs. +80 HP, +35 MP, +40 SP. Dark Knights take half damage from Darkness attacks."
+				DarkResistance
+					rank="T1"
+					name="Dark Resistance"
+					desc="The Dark Knight has trained to push themselves against crippling ailments that come with their dark arts. If the Dark Knight possesses this perk and any of the following abilities, Immolate Self, Frozen Heart, Weight of the World and Exhaust Soul; they gain Resistance to Burn, Frostbite, Heavy and Bleed respectively. If these self-inflicted ailments are active, their associated status resistance becomes Immunity."
+				Masochist
+					rank="T2"
+					name="Masochist"
+					desc="For every self-inflicted Dark Knight negative status that they suffer from; the Dark Knight gains an increase of +1 of Tile Movement, +1 to their MAB, and PAB, and +2 to their MDB and PDB. This applies to Immolate Self, Frozen Heart, Weight of the World and Exhaust Soul."
+				Bloodthirst
+					rank="T2"
+					name="Bloodthirst"
+					desc="After 3 successful melee attacks, the Dark Knightâ€™s 4th attack restores HP equal to the damage dealt to the target. This is considered as its own Lifesteal proc."
+				DarkArts
+					rank="T2"
+					name="Dark Arts"
+					desc="The Dark Knight is trained not only in drawing out the power of their inner darkness for physical combat, but also the magical purposes of it as well. The Dark Knight with this perk gains access to the â€œDark Artsâ€ ability, granting them access to D Rank spells in both Black and Arcane Magic. Dark Arts allows the user to substitute any amount of MP from a General, Black or Arcane spell with HP, draining only what is left from their MP afterwards. If at least 5 HP is spent, the spellâ€™s damage type is changed to â€œDarkâ€ - and the damage the spell deals is increased by 8."
+				BlackerthanBlack
+					rank="T3"
+					name="Blacker than Black"
+					desc="The individual has been steeped in darkness for so long that they have become one with darkness itself. This allows the owner of this perk to absorb any Dark damage they take, healing half of the damage that would have been dealt to them."
+				UnendingHunger
+					rank="T3"
+					name="Never Ending Hunger"
+					desc="The Dark Knight has become accustomed to absorbing the life force from others. Whenever a Dark Knight procs a Lifesteal effect from the Dark Knight perk or ability list; they restore an additional +20 HP to any HP they drained."
+				OnewiththeDarkness
+					rank="T3"
+					name="One With the Darkness"
+					desc="The individual truly embodies the title of Dark Knight. When engulfed in the shadows, darkness or at nighttime; the individual becomes one with the night itself, gaining advantage on Stealth Checks, and a +2 AC"
+				Moxie
+					rank="T4"
+					name="Moxie"
+					desc="When an enemy is defeated, the Dark Knight is able to absorb the downed foeâ€™s hatred into themselves, increasing their power. This grants the Dark Knight a stack of Moxie which grants a +5 to all Damage Calculations. The Dark Knight gains +1 Moxie from every player KO, and +1 Moxie from every 2 NPC/Monster KOs. This bonus continues as long as the Dark Knight continues to fight, and fades once combat ends."
+				DarkMagus
+					rank="T4"
+					name="Dark Magus"
+					cat="Unique"
+					desc="This individual has taken a different path. They have studied the dark arts, but have learned to wield it with magic instead of martial strength. They gain access to A rank black magic, and can expend HP instead of MP for casting spells (Or any mix of the 2). Characters who also have the 'Dark Arts' perk halve the cost of spells cast using HP as a resource.."
+
+
+			Dragoon
+				jobneed="Dragoon"
+				icon='Icons/Perk/Dragoon.png'
+				Dragoon
+					name="Dragoon (Job)"
+					cat="Unique"
+					desc="Dragoons gain +1 to PAB, MAB and +2 PDB as a Global Modifier per Metal Tier of their equipped Spear, and may apply the 'Draconic' enchantment to weapons, which changes their weapon type to 'Dragoon' for the sake of equipment (barring non Dragoons from using it) and also changes its active scaling stat to Dexterity. They gain an additional +3 to hit with any weapon while air-borne, this buff lasts for 1 round after landing. Dragoons have a base tile jump height of half their movement speed, and are immune to fall damage entirely. +40 HP, +30 MP, +70 SP."
+				EnhancedJump
+					rank="T1"
+					name="Enhanced Jump"
+					desc="This individual has spent a long time perfecting their jump and strengthening their legs. When they jump, their speed is nigh unmatched. Gain +1 to your base Jump tiles."
+				DragonSight
+					rank="T2"
+					name="Dragon Sight"
+					desc="Upon pouncing a target with a Jump ability, the Dragoon's infused dragon blood forces their predator's instincts to activate. Their eyes become slit like a dragon on the hunt for it's next meal. For 3 rounds after using any 'Jump' ability, the user gains +1 PAB, MAB and AC. They also gain dark-vision and a max sight range of 15 tiles. This does not stack with itself but can have it's duration refreshed."
+				BloodoftheWyvern
+					rank="T2"
+					name="Blood of the Wyvern"
+					desc="A dragon's dragon blood enhanced body grants them supernatural aerodynamics. They can cut through the air like an arrow. By calling on their dragon blood while grounded, the Dragoon is able to greatly enhance their maximum jump height. The Dragoon can double their base Jump Height whenever they leave the ground. This has a 3 round cooldown, starting when the Dragoon next lands. With this perk, the dragon may choose to freely and immediately land on the ground."
+				Glide
+					rank="T3"
+					name="Glide"
+					desc="The Dragoon is controlled enough to be able to glide through the air at a semi-sustained Altitude. They can double-jump whilst gliding to go higher up, or dip when necessary. They have supreme control of the air. A Dragoon falls 1 tile per turn, and may freely move at half their movement speed through the air in any direction besides upward. They my double-jump once per instance in which they are already airborne. Double-jumping counts as a movement action, but can be done at an angle."
+				WyvernTrainer
+					rank="T3"
+					name="Wyvern Trainer"
+					cat="Unique"
+					desc="This individual has learned how to train wyverns forming a bond with one that becomes their permanent partner. They gain the ability to speak to dragons and form a psychic connection with their partner capable of communicating and feeling everything their partner feels. Their partner grows with the dragoon growing stronger over time."
+				Wyvern
+					name="Wyvern"
+					cat="Unique"
+					desc="A Wyvern is a very rare occuerence. It is a Dragon that has taken to more civilized creatures, and become friends with them. A Wyvern is able to fly, passively ; and is mountable. It is resistant to Fire, Doom, Break, and Poison."
+				DeepDraconicConnection
+					rank="T4"
+					name="Deep Draconic Connection"
+					pre="Wyvern Trainer"
+					cat="Unique"
+					desc="The Dragoon has gained a deep connection with their Wyvern. Upon attaining this perk, the Dragoon's Wyvern is automatically considered a Mature Wyvern, and increases in rank from B to A. Furthermore, its HP increases by 120, its MP increases by 120, and its SP increases by 120. It gains +4 to all physical ability scores, and +2 to Wisdom, as well as +3 PAB, +3 MAB, +5 PDB, +5 MDB,  +5 AC, and +5 global damage reduction."
+				NidhoggsFury
+					rank="T4"
+					name="Nidhogg's Fury"
+					desc="This individual is able to merge mid-air momentum with magical power, and augment it. Whenever they use a Jump ability from 5 tiles airborne or higher, they may expel a 5x5 tile burst of energy as an incidental action, which deals damage equal to half of the fall damage the Dragoon would have taken from the fall were they not a dragoon as an automatic hit, and prompt a Fortitude saving throw (DC 18) which if failed, inflicts Heavy."
+
+
+			Machinist
+				jobneed="Machinist"
+				icon='Icons/Perk/Machinist.png'
+				Machinist
+					name="Machinist"
+					cat="Unique"
+					desc="Machinists are masters of machinery, and technology. They are able to dismantle any piece of technology depending on its size (1 turn for inventory sized objects, 2 for person sized, 4 for 10 foot+, 5 for 20 foot+, 10 for 30 foot+, 12 for 50 foot+.) They must be uninterrupted when doing so. Upon doing so, they salvage every ingredient that was required to build said piece of tech. In addition, Machinists gain +2 INT. +30 HP, +30 MP, +30 SP."
+				Documentation
+					rank="T1"
+					name="Documentation"
+					desc="This individual is capable of creating Manuals which allow the reader to gain the Machinist weapon proficiency, and are then consumed."
+				Quickswap
+					rank="T1"
+					name="Quick Swap"
+					desc="This Machinist is able to utilize their Bonus Action to switch between one Machinist weapon and another, at the cost of 5 SP."
+				BasicMachinaWeaponsmith
+					rank="T1"
+					name="Basic Machina Weaponsmith"
+					desc="This individual is capable of creating the basics of what every self respecting machina gunsmith can make. (Rudimentery guns like pistols/rifles, small bio blaster, chainsaw)"
+				BasicAmmosmith
+					rank="T2"
+					name="Basic Ammosmith"
+					desc="This individual is capable of infusing bullets with the basic elements of fire, water, earth, thunder as well as basic scattershot shells and low quality AP rounds."
+				AdvancedMachinaWeaponsmith
+					rank="T3"
+					name="Advanced Machina Weaponsmith"
+					desc="This individual has progressed in the creation of the traditional weapons of machinists. (Advanced guns and upgraded variants of their basic inventions)"
+				Terraformer
+					rank="T3"
+					name="Terraformer"
+					desc="This Machinist has learned how to make 'Terraforming' machines; i.e, Node Refreshers. When used, these Node Refreshers will reinvigorate used up Gathering nodes within a 3x3 radius of the user."
+				AdvancedMachinaAmmosmith
+					rank="T4"
+					name="Advanced Machina Ammosmith"
+					desc="This individual has become capable of creating all the elements as well as upgraded scattershot shells and high quality AP rounds."
+				NethiciteAmmosmith
+					cat="Unique"
+					rank="T5"
+					name="Nethicite Ammosmith"
+					desc="This individual has discovered and become able to refine nethicite into bullets to be used within guns to deal 2x damage and force it to make a DC15 fortitude save or be stunned for the next round."
+				InitiateRobiticist
+					rank="T2"
+					name="Initiate Roboticist"
+					desc="This individual is capable of creating basic magitek troopers and small robots to a limit of two total."
+				ExperiencedRoboticist
+					rank="T3"
+					name="Experienced Roboticist"
+					desc="This individual has become capable of creating advanced magitek troopers and large robots with the same limit. (Must already have Initiate Roboticist)"
+				ArmorEngineer
+					rank="T4"
+					name="Armor Engineer"
+					desc="This individual has learned how to create and support the weight of a bipedal weapons platform in various models for combat."
+				MechaEngineer
+					rank="T5"
+					name="Mecha Engineer"
+					desc="This individual has learned how to utilize Magitek technology to a superb degree. They are able to create hundred foot tall Mecha Magitek Armor, that have immense power. These Mechas require an immense amount of resources to build, but are unrivaled in horse-power."
+				VehicleMechanic
+					rank="T2"
+					name="Vehicle Mechanic"
+					desc="This individual is able to make basic land vehicles, such as Land Rovers - and they can potentially augment their Rovers with custom parts."
+				Shipwright
+					rank="T2"
+					name="Shipwright"
+					desc="This individual is able to make naval vehicles, such as Ships - and they can potentially augment their Ships with custom parts."
+				BehemothMechanic
+					cat="Unique"
+					rank="T3"
+					name="Behemoth Mechanic"
+					desc="Pushing their knowledge to the limits this individual can create massive wheeled vehicles."
+				AirshipEngineer
+					rank="T4"
+					name="Airship Engineer"
+					desc="This individual has learned the art of aerodynamics. They are able to design ships that can traverse the skies, and add onto them in time."
+
+			Summoner
+				jobneed="Summoner"
+				icon='Icons/Perk/Summoner.png'
+				Summoner
+					name="Summoner"
+					cat="Unique"
+					desc="Summoners are masters of sharing and utilizing their Mana in order to empower others, and their Summons. As a result, a Summoner becomes a 'Mana Bank' - able to freely transfer points of their MP to party members, and monsters. Doing so is a bonus action. +10 HP, + 90 MP, +10 SP."
+				PartialSummon
+					rank="T2"
+					name="Partial Summon"
+					desc="Summon one of your lasting type summons as an attack type letting them use a single ability before disappearing. The cost for this is the cost of the attack used plus an extra 5 MP needed to summon the creature. Uses a Standard action."
+				NoRest
+					rank="T2"
+					name="No Rest"
+					desc="The summoner has learned to call their eidolon early. They are able to halve the time it takes for a summon to cool down."
+				GrandSummon
+					rank="T3"
+					name="Grand Summon"
+					desc="When summoning a Summon, the Summoner may use their bonus action in order to spend 50 SP in order to infuse their own life-force into the summoning process. That energy is then amplified, and released from the summoner as a 3x3 AoE around the summon's point of summoning, dealing 40 true damage to enemy target creatures."
+				DimensionalRegeneration
+					rank="T3"
+					name="Dimensional Regeneration"
+					desc="When in their native dimension, Summons are able to heal much quicker than in our plane. When not on the field, Summons are treated as having the 'Regen' Status effect, restoring HP so long as their either neither KOed or on the field of battle."
+				DimensionalRefreshment
+					rank="T3"
+					name="Dimensional Refreshment"
+					desc="When in their native dimension, Summons are able to rest much quicker than in our plane. When not on the field, Summons are treated as having the 'Refresh' Status effect, restoring SP and MP so long as their either neither KOed or on the field of battle."
+
+				DualSummon
+					rank="T4"
+					name="Dual Summon"
+					desc="This individual has trained long and hard. They have learned to summon and sustain two Espers at once with a significant mana drain leaving anyone without enormous pools of mana exhausted. This grants permanent +100 to MP pool. (Pre-requisite: May not Sub/Dual Job.)"
+
+			Chemist
+				jobneed="Chemist"
+				icon='Icons/Perk/Chemist.png'
+				Chemist
+					name="Chemist"
+					cat="Unique"
+					desc="A Chemist has worked with noxious fumes and different gasses and liquids all their life, giving them a very high tolerance towards poisons. They start with immunity to poison. +30 HP, +30 MP, +30 SP."
+				CombatSynthesis
+					rank="T1"
+					name="Combat Synthesis"
+					desc="This Chemist is able to use their support based potions combatively. Rather than having to consume them, they are able to magically change the Potion item in question into a spray, and apply it to party members within a 5x5 radius of their current position when used. If used for a Chemist item that restores HP, MP, or SP - the restoration is reduced by 15 points when used in this way."
+				MassPoison
+					rank="T2"
+					name="Mass Poison"
+					desc="This individual has learned how to transform their poisons into a gaseous form. Rather than applying them to a weapon, they may now release them as a 5 tile cone saving throw attack, inflicting the given status effect on a failed saving throw, with a flat DC of 20. Doing so is a Standard action."
+				BombCraft
+					rank="T1"
+					name="Bomb Craft"
+					desc="This Chemist is able to create Elemental Bomb Bags, which store small gems of a particular elemental affinity that explode when introduced to extensive physical force."
+				PotionLore
+					rank="T1"
+					name="Potion Lore"
+					desc="The individual has studied the creation of health restoring potions, and are able to make a basic Potion."
+				EtherLore
+					rank="T1"
+					name="Ether Lore"
+					desc="This individual has studied the creation of mana restoring mixtures. They are able to make a basic ether that can restore a fair amount of mana to whoever drinks it."
+				SilenceLore
+					rank="T1"
+					name="Silence Lore"
+					desc="The individual has studied the effects of Silence. They have learned to create a mixture of herbs that will cure the ailment. The herbs must be ingested by someone suffering from the ailment. They have also learned to create a poison that can be applied to a weapon to induce the effect."
+				BlindLore
+					rank="T1"
+					name="Blind Lore"
+					desc="The individual has studied the effects of Blind. They have learned to make a mixture that can be used as eye drops curing the ailment. They have also learned to create a poison that can be applied to a weapon to induce the effect."
+				PotionLore2
+					rank="T2"
+					name="Potion Lore II"
+					desc="This individual has learned how to make higher grade potions. They are able to make Hi-Potions."
+					pre="Potion Lore"
+				StoneLore
+					rank="T2"
+					name="Stone Lore"
+					desc=" The individual has studied the effects of the status effect break, and has learned to make an item to fix it. A golden needle must prick someone who is suffering the effects of break, however if the person has already died from the status effect nothing can be done."
+				Demolitionist
+					rank="T2"
+					name="Demolitionist"
+					desc=" This Chemist is a master of explosions and chaos. When a Chemist uses a Bomb attack, they may perform an additional Bomb attack, utilize a Chemist consumable, or utilize a Chemist ability at the cost of 15 additional SP, once per round."
+				FrogLore
+					rank="T2"
+					name="Frog Lore"
+					desc="The individual has studied the effects of the frog status. They have learned to culminate a mixture that when drunk by someone as a frog will revert them to normal. They have also learned to create a poison that can be applied to a weapon to induce the effect. This individual is also able to easily tell between a real frog, and someone under the effects."
+				BerserkLore
+					rank="T2"
+					name="Berserk Lore"
+					desc="This individual has studied the effects of chemically induced berserk. They are able to make items related to the status."
+				PoisonLore
+					rank="T2"
+					name="Poison Lore"
+					desc="This individual has studied magical poison and has learned to apply it in different ways."
+				RemedyLore
+					rank="T3"
+					name="Remedy Lore"
+					desc="The individual has a deep understanding of status ailments, and through rigorous study has learned of a panacea that can counter every status ailment."
+				Alchemist
+					rank="T3"
+					name="Alchemist"
+					desc="This Chemist has learned the art of Alchemy. They now have access to Alchemy Chemist abilities, which can be utilized at the cost of SP ; by transmuting one's physical lifeforce into the environment, to induce chemical reactions for various effects."
+				CurativeExpert
+					rank="T3"
+					name="Curative Expert"
+					desc="This Chemist is a master of enzymes, regenerative process, and antibodies. They have immunity to any status effect they have Lore for. In addition, they restore an additional +25 points for any resource one of their Chemist items restores, either to themselves or allies. With Remedy Lore, the Chemist has immunity to all status effects."
+				EtherLore2
+					rank="T3"
+					name="Ether Lore II"
+					desc="This individual has learned to create a mixture that revitalizes someone's mana pool."
+				PotionLore3
+					rank="T4"
+					name="Potion Lore III"
+					desc="This individual is able to make the legendary X-potion. A potion that is able to quickly restore someone to their maximum health."
+				PhoenixLore
+					rank="T4"
+					name="Phoenix Lore"
+					desc="This individual has learned the lost art of making phoenix downs. This is not a simple task as the ingredients are extremely rare, and make very little. But a phoenix down is able to bring someone back from the dead."
+				FountainofYouth
+					rank="T5"
+					name="Fountain of Youth"
+					cat="Unique"
+					desc="his individual has learned how to create the Elixir of Youth, which when consumed - makes one unable to physically age beyond the point they have reached, effectively making one immortal outside of mortal afflictions. Elixir of Youth grants +80 HP, +80 MP, +80 SP, and +2 to all Ability Scores to a creature who drinks it, also placing their body into the prime of its youth ; and halting aging. . Costs 50,000 Gil to craft.)"
+
+			Geomancer
+				jobneed="Geomancer"
+				icon='Icons/Perk/Geomancer.png'
+				Geomancer
+					name="Geomancer"
+					cat="Unique"
+					desc="Geomancers are one with nature. They are able to sense and immediately recognize any elemental attack coming at them even if it is not in their line of sight - but only if it is a natural element. Natural elements include Fire, Ice, Earth, Wind, Water, and Lightning. In addition, they take half damage from elemental spells, and are entirely immune to the status effects: Burn, Paralyze, Wet, Weakness, Heavy, Squall, Frostbite, and Whorl. +40 HP, +60 MP, +30 SP."
+				GuidedSteps
+					rank="T1"
+					name="Guided Steps"
+					desc="This individual has each of their steps guided as terra speaks to them. They can ignore all difficult terrain due to the natural environment."
+				WaterWalking
+					rank="T2"
+					name="Water Walking"
+					desc="This individual can walk on water as if it is solid ground. This can be done by choice and at any moment they can switch between swimming and standing on the water."
+				NaturalAdaptation
+					rank="T2"
+					name="Natural Adaptation"
+					desc="This individual is adapted to all natural environments. They do ignore any negative effects of being in extreme weather. They also gain 30ft of darkvision while in caves."
+				NaturesWrath
+					rank="T3"
+					name="Nature's Wrath"
+					desc="This individual is protected by the forces of nature. When the target of an attack this individual can use their reaction to counterattack with a Geomancer ability of C tier or less."
+				Geosense
+					rank="T3"
+					name="Geosense"
+					desc="This individual has an innate sense of the earth around them. They are able to detect any terrestrial creature within 50ft regardless of stealth or visibility. They are able to determine the elemental makeup of a patch of earth and gain double damage when attack objects or walls made of earth. They receive advantage when making attacks towards earthen constructs. They are able to sense pockets in the earth within their sensing range, and can find hidden passages or pockets."
+				NaturalAtunement
+					rank="T4"
+					name="Natural Atunement"
+					desc="This individual attunes to the environment around them. Depending on the type of terrain they are standing on they gain different bonuses. Cave - Gain advantage on stealth checks, gain darkvision 60ft. Grass - Whenever this individual receives healing gain an extra +20 to the healing effect. And cure one status ailment. Sand - Nullifies critical damage. Snow - Gains an aura that passively deals 1d12 ice damage to creatures 5ft around them. Stone(Outside) - Halves the effects of knockback effects. Water - Gain resistance to water and fire damage."
+				WhisperoftheLifestream
+					rank="T5"
+					name="Whisper of the Lifestream"
+					desc="This individual has become intune with the earth to the point they can hear the whispers of the very lifestream that fuels every living thing. They can make a nature check in order to try and communicate with the lifestream itself. Through this they are capable of communicating with any soul who has died and asking for advice or assistance from the planet itself."
+
+
+			TimeMage
+				jobneed="Time Mage"
+				icon='Icons/Perk/TimeMage.png'
+				TimeMage
+					name="Time Mage"
+					cat="Unique"
+					desc="Time Mages are able to passively cast the 'Levitate' spell upon themselves, which makes it so that ground-based attacks can not hit them, and they hover across the ground about four feet off of the ground. This also allows them to cross things such as lava, and water freely. Time Mages also have access to D rank White, Arcane, Green, and Black Magic. +10 HP, +100 MP, +10 SP."
+				TimeBalance
+					rank="T1"
+					name="Time Balance"
+					desc="This individual has learned to solidify their place in time. They are immune to the effects of slow and stop."
+				FlowofTime
+					rank="T2"
+					name="Flow of Time"
+					desc="This individual is capable of constantly distorting the flow of time around them slowing down the aging process so that they may live double their species' normal lifespan, and are always in their prime in terms of appearance."
+				CounterMeteor
+					rank="T3"
+					name="Counter Meteor"
+					desc="This individual has their magic protecting them at all times. Anytime they take a direct hit from a non magical attack, a single medium sized meteor will be summoned from space to strike at where their opponent was when they made the attack, though this slightly drains their mana pool. This deals 15-20 damage + INT. | Autohit, Ignores Damage Reduction. -5 Mana for every proc. This procs once per round, per creature."
+					CMeteor
+						ability=1
+						name="Counter Comet"
+						mcost=5
+						basecheck=10
+						attack_roll_damage_dice = FALSE
+						attack_roll_damage_lower = 15
+						attack_roll_damage_upper = 20
+						adddam=0
+						addhit=100
+						range="Autohit"
+						ability=1
+						costtype="Stamina"
+						atype="standard"
+						damsource="str"
+						typing="magical"
+						ptype="spell"
+				ExtensionField
+					rank="T3"
+					name="Extension Field"
+					desc="This individual has a constant aura around them that extends 5 tiles away from them. Any creature that receives a status effect while in the aura has its duration doubled. Even if they leave the aura."
+				Quickened
+					rank="T5"
+					name="Quickened"
+					desc="This individual flows through time with grace and is able to move twice as quick. They permanently have the 'Quick' status effect, allowing them to make 2 standard actions per turn."
+
+			SwordSaint
+				name="Sword Saint"
+				cat="Unique"
+				rank="T5"
+				desc="A Sword Saint is a Paladin or Dark Knight who has fully embraced the duality of light and darkness - good, and evil. They live between these principles, and adhere to the blade - and the raw principle of justice above all else. A Sword Saint is able to mix Holy and Dark magic, and infuse their weapon with this combined and potent energy source, granting them access to Sword Saint perks and abilities. Note: This changes your primary job to 'Sword Saint'. Grants +65 HP, +65 MP, +65 SP, and +2 WIS, CHA, and STR. Requires Paladin or Dark Knight as main job, and Paladin or Dark Knight as sub job in combination."
+				icon='Icons/Perk/Sword Saint.png'
+				ajob="Sword Saint"
+				DuskKnight
+					cat="Swordsaint"
+					rank="T3"
+					name="Dusk Knight"
+					desc="This Sword Saint is attuned to the darkness. A Sword Saint trained as a Dusk Knight is empowered by the darkness. Whenever damaging a creature with 'Dark' damage - the Dusk Knight restores 5 MP and Stamina to themselves."
+				DawnKnight
+					cat="Swordsaint"
+					rank="T3"
+					name="Dawn Knight"
+					desc="This Sword Saint is attuned to the light. A Sword Saint trained as a Dawn Knight is empowered by the light. Whenever damaging a creature with 'Holy' damage - the Dawn Knight restores 10 HP to themselves."
+				TwilightKnight
+					cat="Swordsaint"
+					rank="T3"
+					name="Twilight Knight"
+					desc="This Sword Saint is attuned to true karmic justice. A Sword Saint trained as a Twilight Knight is empowered by balance. Whenever damaging a creature with 'Psychic' damage - the Dawn Knight gains a 'Karma' stack. While Karma stacks are active, they may choose to expel them when taking damage. If they do so, the creature who damaged them takes 2d6 damage which may not be reduced as retribution."
+
+			Reaper
+				cat="Unique"
+				rank="T4"
+				icon='Icons/Perk/Reaper.png'
+				ajob="Reaper"
+				desc="A Reaper is a Dark Knight who has given in entirely to the darkness, and has become a servant of death. This changes the character's primary job to 'Reaper' - and grants access to unique Reaper perks and abilities. The Reaper has mastered the art of death. They can wield the power of darkness reaped from their slain foes in order to deal devastating blows and manifest beings of pure death. Every individual instance of Melee or Magical damage they inflict on a creature gets transferred into them as 'Soul' as 5 Soul stacks per. +80 MP, +80 HP."
+
+
+			Necromancer
+				cat="Unique"
+				icon='Icons/Perk/Necromancer.png'
+				ajob="Necromancer"
+				desc="This Summoner has abandoned conventional connections to the aether, and embraced the very aspects of death itself. This changes the Summoner's job to Necromancer, and removes access to any summons they have learned as a Summoner. They are instead then replaced with unique 'Necromancer' summons. Necromancers and their summons are immune to the following status effects: Doom, Break, Poison, Bleed. Necromancers may still attain a single S Rank summon via approval on Unique application. Necromancers immediately attain all summons listed in the Necromancer Summons list. Unlike a Summoner, Necromancers may summon as many undead Summons at a time as they wish."
+
+			HolyDragoon
+				name="Holy Dragoon"
+				cat="Unique"
+				rank="T4"
+				icon='Icons/Perk/HolyDragoon.png'
+				ajob="Holy Dragoon"
+				desc="This Dragoon has ascended beyond the level of a normal Dragoon. Their synergy with Dragons has gained them favor and recognition from the father of Dragons, the sacred Midgardsormr. Resultantly, they gain access to the power of the Midgardsormr's holy light, as well as ancient dragon magicks. A Holy Dragoon gains access to C Rank White magic, as well as Dragon Abilities. A Holy Dragoon who has a Wyvern companion also grants their Holy power to that Wyvern. It gains a Dragon Breath Ability of the Dragoon's choice upon attaining this perk, or upon a Wyvern being attained if the Dragoon attains Holy Dragoon first.+80 SP, +80 MP."
+			OnionKnight
+				name="--Onion Knight Directory--"
+				icon='Icons/Perk/OnionKnight.png'
+				ajob="Onion Knight"
+				rank="T3"
+				ptype="job"
+				OnionKnight
+					name="Onion Knight"
+					cat="Unique"
+					ajob="Onion Knight"
+					desc="This individual has learned to be a more particularly 'Martial' Red Mage. As a result, they have learned to learn 'Red Bladespells' - which allow them to manifest blade-like constructs, cast from their weapon. Bladespells are unique in that they do not use dice, but flat and more consistent damage ranges for their damage. Bladespells count as spells, and use MDB/MAB rather than PDB/PAB. Onion Knight is incompatible with 'Pure Red Mage' +60 HP, +60 MP."
+				Enhancer
+					name="Enhancer"
+					rank="T2"
+					ajob="Onion Knight"
+					desc="An Onion Knight is at home with a magical blade. They are trained to latently pour their soul's power into their weapon. When using a weapon with any sort of Enchantment, they gain +2 MAB and PAB."
+				RunicStrike
+					rank="T2"
+					name="Runic Strike"
+					ajob="Onion Knight"
+					desc="An Onion Knight is known for their ability to weave magic into their swings. When using a Melee weapon, an Onion Knight may add their BASE unmodified MDB to their PDB, and grants the option to change it to Force damage."
+				SpiritualBlade
+					rank="T3"
+					name="Spiritual Blade"
+					ajob="Onion Knight"
+					desc="An Onion Knight who has learned the Spiritual Blade technique has learned to merge their magic and blade into one. They may now cast a Bladespell as a free action whenever utilizing a Melee weapon to attack."
+				Yggdrasil
+					rank="T3"
+					name="Yggdrasil"
+					ajob="Onion Knight"
+					desc="An Onion Knight who has learned the Yggdrasil technique is able to generate spiritual blades passively, by recycling the energy used to cast bladespells. Whenever a Bladespell is cast, a 'Magic Sword' projectile begins to hover around them, up to 8. When the Onion Knight takes damage from a target enemy creature, they may choose to expend the Magic Sword, firing it at the target as an automatic hit which deals 20 flat (unboostable) Force damage, ignoring up to 15 points of damage reduction. Magical"
+				Bladespells
+					ptype="spell"
+					ability=1
+					damsource="wis"
+					costtype=" Mana"
+					CrescentWave
+						name="Crescent Wave"
+						rank="D"
+						atype="standard"
+						typing="magical"
+						range=" 3 tiles."
+						attack_roll_damage_dice = FALSE
+						attack_roll_damage_lower=10
+						attack_roll_damage_upper=16
+						desc="The user of this technique swings their blade, and releases a crescent shaped burst of magic, for which to slash at their target. This deals 10 to 16+WIS Force damage on a successful hit, and travels as a 3 tile wide projectile. Magical. Costs 10 Mana."
+					AeroBlade
+						name="Aero Blade"
+						rank="D"
+						atype="standard"
+						typing="magical"
+						attack_roll_damage_dice = FALSE
+						attack_roll_damage_lower=8
+						attack_roll_damage_upper=12
+						desc="The user of this technique manifests a sword-shape construct of wind from the tip of their blade, which seperates and moves to independantly slash at the target, dealing 8 to 12+WIS Wind damage and inflicting 'Squall' on a successful hit. Magical. Costs 10 Mana."
+						mcost=10
+					AquaBlade
+						name="Aqua Blade"
+						range=" 3 tiles."
+						rank="D"
+						atype="standard"
+						typing="magical"
+						attack_roll_damage_dice = FALSE
+						attack_roll_damage_lower=8
+						attack_roll_damage_upper=12
+						desc="The user of this technique manifests a sword-shaped construct of water from the tip of their blade, which seperates and moves to independantly slash at the target, dealing 8 to 12+WIS Water damage and inflicting 'Whorl' on a successful hit. Magical. Costs 10 Mana."
+						mcost=10
+					BrightBlade
+						name="Bright Blade"
+						range=" 5 tiles."
+						rank="C"
+						atype="standard"
+						typing="magical"
+						attack_roll_damage_dice = FALSE
+						attack_roll_damage_lower=8
+						attack_roll_damage_upper=12
+						desc="The user of this technique manifests a sword-shape construct of light from the tip of their blade, which seperates and moves to independantly slash at the target, dealing 8 to 12+WIS Holy damage, and inflicting 'Silence' on a successful hit. Magical. Costs 25 Mana."
+						mcost=25
+					SpiritBlade
+						name="Spirit Blade"
+						rank="C"
+						atype="standard"
+						typing="magical"
+						range=" 5 tiles."
+						attack_roll_damage_dice = FALSE
+						attack_roll_damage_lower=20
+						attack_roll_damage_upper=35
+						desc="The user of this technique manifests a sword-shaped construct of pure magical energy from the tip of their blade, which seperates and moves to independantly stab the target, dealing 20 to 35+WIS Force damage, and inflicting 'Weakness' on a successful hit. Magical. Costs 30 Mana."
+						mcost=30
+					Zanbatou
+						name="Zanbatou"
+						rank="B"
+						atype="standard"
+						typing="magical"
+						range=" 5 tiles."
+						attack_roll_damage_dice = FALSE
+						attack_roll_damage_lower=40
+						attack_roll_damage_upper=55
+						mcost=50
+						desc="The user of this technique swings their blade, and from it - another blade, in the shape of a greatsword or a buster sword forms, made entirely of magical energy. It flings forward, spinning like a Shuriken to cut its target down. This deals 40 to 55+WIS Force damage on a successful hit. Magical. Costs 50 Mana."
+					IfritFalchion
+						name="Ifrit's Falchion"
+						rank="A"
+						atype="standard"
+						typing="magical"
+						range=" 9 tiles."
+						attack_roll_damage_dice = FALSE
+						attack_roll_damage_lower=55
+						attack_roll_damage_upper=70
+						mcost=70
+						desc="The user of this technique holds their blade above their head, and begins to gather magical energy approximately 20 feet above them. This energy forms into a sword made of Fire, and then slashes down at a target in range, dealing 55 to 70+WIS Fire damage, and inflicting 'Burn' on a successful hit. Magical. Costs 70 Mana."
+					ShivaSaber
+						name="Shiva's Saber"
+						rank="A"
+						atype="standard"
+						typing="magical"
+						range=" 9 tiles."
+						attack_roll_damage_dice = FALSE
+						attack_roll_damage_lower=55
+						attack_roll_damage_upper=70
+						mcost=70
+						desc="The user of this technique holds their blade above their head, and begins to gather magical energy approximately 20 feet above them. This energy forms into a sword made of Fire, and then slashes down at a target in range, dealing 55 to 70+WIS Ice damage, and inflicting 'Frostbite' on a successful hit. Magical. Costs 70 Mana."
+					RamuhRapier
+						name="Ramuh's Rapier"
+						range=" 9 tiles."
+						desc="The user of this technique holds their blade above their head, and begins to gather magical energy approximately 20 feet above them. This energy forms into a sword made of Fire, and then slashes down at a target in range, dealing 55 to 70+WIS Thunder damage, and inflicting 'Paralyze' on a successful hit. Magical. Costs 70 Mana."
+						rank="A"
+						atype="standard"
+						attack_roll_damage_dice = FALSE
+						attack_roll_damage_lower=55
+						attack_roll_damage_upper=70
+						mcost=70
+						typing="magical"
+					BahamutBlade
+						name="Bahamut's Blade"
+						range=" 9 tiles."
+						desc="The user of this technique holds their blade above their head, and begins to gather magical energy approximately 20 feet above them. This energy forms into a sword made of Fire, and then slashes down at a target in range, dealing 70 to 85+WIS Force damage, and inflicting 'Slow', and 'Heavy' on a successful hit. Magical. Costs 100 Mana."
+						rank="S"
+						atype="standard"
+						attack_roll_damage_dice = FALSE
+						attack_roll_damage_lower = 70
+						attack_roll_damage_upper = 85
+						mcost=100
+						typing="magical"
+			Oracle
+				ptype="job"
+				name="Oracle"
+				icon='Icons/Perk/Oracle.png'
+				jobneed="Oracle"
+				ability=0
+				desc="This individual has learned how to utilize a very specific kind of White Magic. Their studies in the Holy spell line have led them to a more offensive aspect of casting. Permanently, all Healing spells heal for 10 less damage - however, any Holy damage dealt by the Oracle is increased by a flat 15. Oracle Spells count as White Magic in terms of perks and technique references. An Oracle gains +20 HP, +60 MP, and +60 SP. Oracles have access to B Rank White Magic."
+				TemperedSoul
+					name="Tempered Soul"
+					rank="T1"
+					jobneed="Oracle"
+					desc="An Oracle has undergone training to temper their soul. As a result, they have gained great resistance against divine intervention, as well as the degradation of depravity. An Oracle with this perk has resistance to Holy and Dark damage alike."
+				OracleBlade
+					name="Oracle Blade"
+					rank="T2"
+					jobneed="Oracle"
+					desc="An Oracle is able to infuse their weapon with the guiding light of justice. Upon doing so, their acting weapon gains a projected blade of light. This allows them to use the weapon as a Melee weapon. When used as a Melee weapon - this grants it optional Holy damage, and grants the wielder +6 PDB and +3 MDB, also causing the weapon to apply 'Heavy' on hit."
+				HolyJudgement
+					name="Holy Judgement"
+					jobneed="Oracle"
+					rank="T2"
+					desc="An Oracle is guided by the light of justice. As a result, their Holy magic is particularly potent - able to cling to the souls of those it affects. When dealing damage to a creature using Holy damage, that creature gains 1 stack of 'Judgement'. If the creature gains a total of 5 Judgement stacks, an explosion of Holy energy radiates from the creature, dealing an automatic 50 Holy damage to all enemy creatures in a 3x3 area of effect, ignoring damage reduction."
+				VanquisherofEvil
+					name="Vanquisher of Evil"
+					jobneed="Oracle"
+					rank="T2"
+					desc="An Oracle is trained to banish and vanquish all forms of evil, moreso than any other Job. When an Oracle deals Holy damage to a creature that is weak to it, that creature takes an additional 15 Holy damage, and suffers disadvantage on its next attack roll."
+				DivineVoice
+					name="Divine Voice"
+					rank="T3"
+					jobneed="Oracle"
+					desc="An Oracle of this calibre has a Divine Voice. As a result of this, they are immune to the 'Silence' status effect."
+				Battleseer
+					name="Battle Seer"
+					jobneed="Oracle"
+					rank="T3"
+					desc="An Oracle is able to use divination to look forward and see possible futures. This combined with their trained battle sense allows them to pick the proper course in battle. By spending their Standard action, an Oracle may issue an order to their party, and grant all party members an expendable 'Seer' stack. A Seer stack may be expended as a free action, and grants a roll Advantage. The Oracle is also able to see through illusions, and thus immune to the Blind status effect."
+				DivineOrdinance
+					name="Divine Ordinance"
+					jobneed="Oracle"
+					rank="T4"
+					desc="An Oracle is ordained by the light to guide others in combat, by leading the charge. They gain a +5 Initiative bonus, and if an Oracle is the first on the turn order in their party - they gain +3 PAB, and MAB for the duration of the encounter."
+				OracleMagic
+					ability=1
+					damsource="cha"
+					jobneed="Oracle"
+					typing="magical"
+					costtype=" Mana"
+					ptype="spell"
+					element="Holy"
+					DiskofLight
+						name="Disk of Light"
+						rank="C"
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 2
+						attack_roll_dice_sides = 8
+						addhit=8
+						mcost=20
+						range=" 5 tiles."
+						atype="standard"
+						desc="The user of this ability spins on the tip of their foot, tossing their arms out to the side. The rotation generates a sharp disk of light, which is then fired at a target as a homing projectile. This attack has +8 to hit, deals 2d8+CHA Holy damage and inflicts 'Bleed' on hit. Costs 20 Mana."
+					DivineStorm
+						name="Divine Storm"
+						rank="C"
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 3
+						attack_roll_dice_sides = 10
+						mcost=30
+						basecheck=12
+						atype="save"
+						savetype="Fortitude"
+						range=" 3x3 AoE within 5 tiles."
+						desc="The user of this ability generates a divine cloud overhead, at a point within range. It then generates an area of holy lightning, which deals 3d10+CHA Thunder damage and inflicts 'Silence' on a failed Fortitude saving throw, or half as much and no 'Silence' on a success. Costs 30 Mana."
+					SealingBlade
+						name="Sealing Blade"
+						rank="C"
+						basecheck=13
+						atype="save"
+						range=" 8 tiles."
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 3
+						attack_roll_dice_sides = 12
+						savetype="Reflex"
+						desc="The user of this ability opens a crackling portal over the head of a target within 8 tiles. From it, a massive blade made of divine energy launches forth like a meteor, to carve them up - before exploding. This prompts a Reflex saving throw, dealing 3d12+CHA Holy damage and inflicting 'Stun' on a failure, or half as much and no 'Stun' on a success. Costs 40 Mana."
+					CircleofSealing
+						name="Circle of Sealing"
+						rank="B"
+						mcost=50
+						range=" 3x3 AoE within 8 tiles."
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 4
+						attack_roll_dice_sides = 10
+						basecheck=13
+						atype="save"
+						savetype="Fortitude"
+						desc="The user of this ability holds their palm forward, and generates a ring of light on the ground, at a point within 8 tiles. This expands outward to cover a large area, before bursting outward in a powerful explosion of light. This prompts a Fortitude saving throw, inflicting 4d10+CHA Holy damage and dispelling all positive status effects on a failure, or half damage and no dispellation on a success. Costs 50 Mana."
+					Sparkstrike
+						name="Spark Strike"
+						rank="B"
+						mcost=45
+						range=" 5 tiles."
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 2
+						attack_roll_dice_sides = 6
+						atype="weapon"
+						typing="magical"
+						desc="The user of this ability points their blade at a designated target within 5 tiles of their own location. They then teleport instantly to that location in a flash of light, releasing a spark from their weapon as they swing it towards the target, dealing Weapon Damage+2d6+CHA additional damage on the attack, on a successful hit. This counts as a Spell, despite being a Weapon attack, and uses Magic bonuses as opposed to Physical. Costs 45 Mana."
+					SoulConvergence
+						name="Soul Convergence"
+						rank="A"
+						mcost=70
+						range=" 5x5 AoE within 8 tiles."
+						desc="The user of this ability raises their hands over their head. Spears of light are generated overhead, and then launched forward, into the ground. They create a ring around a 5x5 radius, within 8 tiles of the caster.. This area continually pulses with divine energy, dealing 20 Holy damage to all creatures within its radius at the start of their turns. This area effect lasts for 5 rounds. Costs 50 Mana."
+					SoulofRebirth
+						name="Soul of Rebirth"
+						rank="A"
+						mcost=70
+						desc="The user of this ability brings their hands together, forming a Mantra sign as they close their eyes. Divine mists begin to seep out from their form, before lashing out at a single target. This mist then obscures the target's form, eating away at them slowly. For 4 rounds, they are afflicted with 'Soul of Rebirth'. This effect causes them to take 15 Holy damage at the end of their turn, ignoring damage reduction. Costs 70 Mana."
+					BanishingOrb
+						name="Banishing Orb"
+						rank="A"
+						mcost=70
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 7
+						attack_roll_dice_sides = 12
+						mcost=80
+						range=" 8 tiles."
+						addhit=5
+						atype="standard"
+						desc="The caster of this ability holds their palm overhead, and generates a sphere of light. It slowly gathers light particles, growing in volume until it is roughly the size of a massive boulder. They then toss it forth at a target, as an attack roll with +5 to hit. On hit, it explodes ; dealing 7d12+CHA Holy damage, and inflicts 'Weakness'. If used against a Summon, a Primal, or any entity from the Void, this deals 50 additional flat Holy damage. Costs 80 Mana."
+					HolyXIV
+						name="Holy XIV"
+						rank="A"
+						mcost=90
+						atype="save"
+						savetype="Will"
+						basecheck=16
+						attack_roll_damage_dice = FALSE
+						attack_roll_damage_lower = 80
+						attack_roll_damage_upper = 90
+						desc="The caster of this ability throws either arm to the side, and flattens their palms. Divine light begins to seep out in strands, moving to whirl around a target in a calm 'whirlwind' of light. It then bursts into millions of sparkling light particles, which begin to individually fire forth, directly attacking the target's soul. This attack deals 80 to 90+CHA Holy damage on a failed save, or half as much on a success. Costs 90 Mana."
+					LakshmiDance
+						name="Lakshmi's Dance"
+						rank="A"
+						mcost=80
+						atype="weapon"
+						range=" 3x3 AoE centered around user."
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 4
+						attack_roll_dice_sides = 10
+						desc="The user of this ability brandishes their weapon in a white, divine mist. They then spin a full 360 degrees in place, releasing the mist as a sharp blade towards all creatures in range. On a successful hit, a target takes Weapon Damage+4d10+CHA damage, and is inflicted with 'Sleep'. Costs 80 Mana."
+					OdinGallop
+						name="Odin's Gallop"
+						rank="A"
+						mcost=70
+						attack_roll_damage_dice = FALSE
+						attack_roll_damage_lower = 40
+						attack_roll_damage_upper = 60
+						atype="standard"
+						range=" 3 tile wide, 5 tile line."
+						desc="The user of this ability launches off of the ground from their current position. They summon two curved, ornate silver and gold blades used by Odin himself, into each hand. As the user travels 5 tiles forward, all creatures within 3 tiles that they pass are prompted with an attack roll, taking 40-60+CHA Holy damage on hit. This does not use the caster's movement action, and is a Standard action."
+					TeleportXIV
+						name="Teleport XIV"
+						rank="A"
+						mcost=70
+						savetype="Will"
+						range=" 8 tiles."
+						atype="save"
+						basecheck=15
+						attack_roll_damage_dice = FALSE
+						attack_roll_damage_lower = 60
+						attack_roll_damage_upper = 70
+						desc="The user of this ability raises their hands to the sky, and releases a pillar of light from the heavens upon a target within 8 tiles, targeting their soul. It is blasted with Holy Light, prompting a Will saving throw - and takes 60 to 70+CHA damage, and is then teleported to a tile of the caster's choice in view on a failed save, or takes half damage and is not teleported on a success."
+					LifeConnect
+						name="Life Connect"
+						rank="A"
+						mcost=100
+						desc="The user of this ability tethers their soul to that of a target creature within view. This connection causes the target to take Holy Damage equal to any damage that the caster takes so long as it is established. It lasts for 5 rounds. This costs 100 Mana to cast."
+					MightiestofSanctities
+						name="Mightiest of Sanctities"
+						rank="S"
+						mcost=150
+						desc="The user of this ability performs the ultimate Holy magic. Condensing the might of their own spirit, they release an astral projection of themselves with angelic wings, and a sacred blade upon a target creature within 6 tiles of their current position. The projection then carves away at the creature's very soul, before dissipating with an explosion of Divine Energy Upon utilizing this spell, they deal Holy damage equal to half of the oracle's maximum HP to a target creature, as an automatic hit. Costs 150 Mana."
+			Ninja
+				cat="Unique"
+				icon='Icons/Perk/Ninja.png'
+				ajob="Ninja"
+				Suimen
+					cat="Ninja"
+					rank="T1"
+					name="Suimen"
+					desc="This individual has learned the art of channeling energy into their feet in order to walk on water."
+				Ninpo
+					cat="Ninja"
+					rank="T3"
+					name="Ninpo"
+					desc="This individual has learned to convert their vital energies into a particular type called 'Ninpo' - which is essentially lifeforce that is stored passively through meditation during times of rest. A Ninja with this perk has a 'Ninpo' pool of 200 which regenerates at the end of each encounter, and may use a Bonus action to restore their HP, SP, or MP of up to 50 by spending that much Ninpo once per turn."
+				NinpoEmpowerment
+					cat="Ninja"
+					rank="T3"
+					name="Ninpo Empowerment"
+					desc="This individual has learned to utilize their Ninpo in order to transform a non Ninja technique into Ninjutsu. If this Ninja knows a General Magic, Black Magic, or Arcane Magic ability - they may spend that technique's cost using Ninpo points instead of its initial cost resource. If they do so, the technique is then considered a 'Ninjutsu' technique and is cast by using Mantra seals instead. It also gains 10 additional damage if it is a damaging technique, and any associated saving throw DCs are increased by 1. This bonus applies per attack roll, for multi-hits."
+				HugeReserves
+					cat="Ninja"
+					rank="T4"
+					name="Huge Reserves"
+					desc="This individual has increased their Ninpo reserves by an additional 150 Ninpo points."
+
+			Gambler
+				cat="Unique"
+				icon='Icons/Perk/Gambler.png'
+				ajob="Gambler"
+				rank="T4"
+				desc="The Gambler is an Astrologian who rather than manipulating luck to their advantage, gives themselves up to it entirely - and thus, luck favors them. This gives access to unique 'Gambler' abilities."
+				Dealer
+					cat="Gambler"
+					name="Dealer"
+					rank="T2"
+					desc="A Gambler is latently trained in the art of card reading, but has also weaponized their cards. They gain a +2 bonus to hit for Akademia cards, as well as 5 flat damage to attacks utilizing them. In addition, they gain proficiency with them if they do not have it already."
+				GamblersLuck
+					cat="Gambler"
+					name="Gambler's Luck"
+					rank="T3"
+					desc="A Gambler's luck is favored by the planet, and thusly they are able to - once per long rest, reroll any roll at advantage after having rolled it."
+				LucksShield
+					cat="Gambler"
+					name="Luck's Shield"
+					rank="T3"
+					desc="A Gambler is protected by their luck - and thusly they are able to enforce disadvantage upon up to 3 attack rolls targeted at them per long rest."
+			Sage
+				cat="Unique"
+				icon='Icons/Perk/Sage.png'
+				ajob="Sage"
+				name="Sage"
+				desc="This individual is a true magical prodigy. They are capable of learning up to S rank white, black, green, arcane magic, and summons."
+
+			Berserker
+				cat="Unique"
+				icon='Icons/Perk/Berserker.png'
+				ajob="Berserker"
+				rank="T5"
+				desc="This person has become a master of the art of 'Berserking' -- this allows them to, as a bonus action, inflict themselves with the 'Berserk' status effect at any time. This perk removes all negative effects from the Berserk status effect, whenever this person is inflicted with Berserk, only maintaining the +6 to Strength score. In addition, if this character is inflicted with the Berserk status effect, they are also inflicted with the 'Bravery', 'Protect' and 'Shell' status effects, making them an absolutely terrifying adversary to combat when they are enraged, as they have learned to harness that rage into a pure, focused, razor sharp edge. Berserk's new negative infliction is that it locks this person to being less refined in terms of raw skill, and they rely on pure instinct. Whilst they are inflicted with Berserk, they are only capable of utilizing up to B rank General Weapon / Job abilities, and if they know Magic - they may not use any Spells at all. A person with this perk may expend their bonus action to immediately remove the Berserk status effect, thus also removing any positive benefits which came with it. This advanced job grants +20 HP, MP, and SP, as well as +2 STR, DEX, and CON. (Bravery, Protect, Shell.)"
+
+
+
+
+
+obj
+	perk
+		Abilities
+			New()
+				if(src.level==1)
+					src.rank="E"
+				if(src.level==2)
+					src.rank="D"
+				if(src.level==3)
+					src.rank="C"
+				if(src.level==4)
+					src.rank="B"
+				if(src.level==5)
+					src.rank="A"
+				if(src.level==6)
+					src.rank="S"
+				if(src.rank=="E")
+					src.rpcost=1
+				if(src.rank=="D")
+					src.rpcost=2
+				if(src.rank=="C")
+					src.rpcost=3
+				if(src.rank=="B")
+					src.rpcost=4
+				if(src.rank=="A")
+					src.rpcost=8
+				if(src.rank=="S")
+					src.rpcost=16
+			ability=1
+			GeneralWeaponAbilities
+				cat="Genability"
+				icon='Icons/Perk/GeneralWeapon.png'
+				costtype="Stamina"
+				atype="weapon"
+				range=" Melee"
+				typing="physical"
+				element="Physical"
+				Melee
+					Braver
+						rank="D"
+						name="Braver"
+						desc="The user leaps in a particular direction, gathering momentum in their weapon before striking at a target. Can move an extra 1 tile of movement towards a target of this technique while performing the attack.  (Damage: Weapon damage + 1d10 | Melee attack roll, +3 to hit. -10 stamina.)"
+						mcost=10
+						basecheck=10
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 1
+						attack_roll_dice_sides = 10
+						adddam=0
+						addhit=3
+						range="Melee"
+						costtype="Stamina"
+						atype="weapon"
+						damsource="str"
+						typing="physical"
+						ptype="spell"
+					QuickHit
+						rank="D"
+						name="Quick Hit"
+						mcost=10
+						desc="As a bonus action make a quick weapon attack dealing half the damage of a normal attack. (- 10 stamina.)"
+					Riposte
+						rank="C"
+						name="Riposte"
+						mcost=10
+						basecheck=10
+						attack_roll_damage_dice = FALSE
+						attack_roll_damage_lower = 0
+						attack_roll_damage_upper = 0
+						adddam=10
+						addhit=0
+						range="Melee"
+						costtype="Stamina"
+						atype="weapon"
+						damsource="str"
+						typing="physical"
+						ptype="spell"
+						desc="The user of this ability must first dodge a melee ability. They then carry their momentum over for an augmented blow upon their target. Reaction. This attack is made with advantage. (Damage: Weapon Damage + 10 | Weapon Attack Roll at Advantage | Must first dodge a Melee ability or attack roll via AC. -30 Stamina.)"
+					Renzokuken
+						rank="C"
+						name="Renzokuken"
+						mcost=45
+						basecheck=10
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 2
+						attack_roll_dice_sides = 2
+						range="Melee"
+						costtype="Stamina"
+						atype="weapon"
+						damsource="str"
+						typing="physical"
+						ptype="spell"
+						desc="The user of this ability launches forward, moving up to 2 tiles as part of this action. They then release a combination of 3 'Renzokuken' attacks, which deal Weapon Damage+2d2 additional damage on hit. Must be used with a Melee weapon. This ability can not deal more than 80 cumulative damage, regardless of damage rolled across all attacks. Costs 45 Stamina."
+					JechtCombo
+						rank="C"
+						name="Jecht Combination"
+						mcost=45
+						basecheck=10
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 1
+						attack_roll_dice_sides = 2
+						costtype="Stamina"
+						atype="weapon"
+						damsource="str"
+						typing="physical"
+						ptype="Spell"
+						desc="The user of this ability performs an acrobatic, multi-hit attack after infusing their blade with raging 'flames' of passion. This attack deals normal physical damage, as a 3 hit combo. Each attack deals 1d2 additional damage on hit. If at least one hit lands, the 'flames of passion' remain active on the weapon for 3 rounds, granting the the user +5 PDB for 3 rounds. Must be used with a Melee weapon. This ability cannot exceed 45 cumulative damage, regardless of damage rolled. Costs 45 Stamina."
+					Halone
+						rank="C"
+						name="Halone"
+						mcost=30
+						basecheck=10
+						attack_roll_damage_dice = FALSE
+						attack_roll_damage_exact = 0
+						adddam=5
+						addhit=0
+						range="Melee"
+						costtype="Stamina"
+						atype="weapon"
+						damsource="str"
+						typing="physical"
+						ptype="spell"
+						desc="The user of this ability swings their weapon after imbuing it with a burst of Mana. The first strike carries through, and if the target dodges, a second strike made of mana and in the shape of the weapon with the same speed follows after (Damage: Weapon Damage + 5 | Bonus action after a standard attack misses. -30 Stamina)"
+					StellarCircle
+						element="Force"
+						rank="C"
+						name="Stellar Circle"
+						mcost=30
+						basecheck=10
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 1
+						attack_roll_dice_sides = 12
+						adddam=0
+						addhit=0
+						range=" 5x5 AoE around user."
+						costtype="Stamina"
+						atype="weaponsave"
+						damsource="str"
+						typing="physical"
+						ptype="spell"
+						savetype="Fortitude"
+						desc="The user spins their weapon above their head forming a cyclone of magic runes around them. The runes begin to sparkle with star-light, and gravitational draw is induced from them, in a radius around the user. Those with a weak body are drawn towards the target by gravitational waves. (Damage: Weapon damage + 1d12 force | 5x5 AoE, prompts a fortitude saving throw (DC 10+STR+Rank bonus), on a failure creatures take full damage and are drawn 1 tile towards the caster. If a creature is drawn onto the same tile as the caster, it takes an additional 2d10 damage. On a success, take no damage.- 30 stamina.)"
+					Launch
+						rank="C"
+						name="Launch"
+						mcost=30
+						basecheck=10
+						attack_roll_damage_dice = FALSE
+						attack_roll_damage_exact = 0
+						adddam=4
+						addhit=0
+						range="Melee"
+						costtype="Stamina"
+						atype="weapon"
+						damsource="str"
+						typing="physical"
+						ptype="spell"
+						desc="The user approaches the target, and using their weapon prepares for a uppercut attack. Instead of actually attacking the user surprises their target by using their weapon to kick up a powerful gale that sends the target upwards leaving them open. This can be used on targets much larger than the user even without a lot of strength. (Damage: Weapon Damage + 4 | Weapon Attack Roll, sends target skyward by 1 tile per STR Modifier point, -30 stamina.)"
+					CrossSlash
+						rank="C"
+						name="Cross Slash"
+						mcost=30
+						basecheck=10
+						attack_roll_damage_dice = FALSE
+						attack_roll_damage_exact = 0
+						adddam=0
+						addhit=0
+						range="Melee"
+						costtype="Stamina"
+						atype="weapon"
+						damsource="str"
+						typing="physical"
+						ptype="spell"
+						desc="The user launches an initial attack with their weapon, and if it hits will lock the target in place as a line is drawn in the air. The user follows up with two more attacks that complete the symbol before releasing the target. The second two attacks are only made if the initial attack hits. This ability can not deal more than 45 damage cumulatively, regardless of damage rolled across all attacks.| Three Melee Attack rolls, prompts a Fortitude saving throw with a DC of 15 - applies stun for one round on failure. -30 stamina.)"
+					RoughDivide
+						rank="B"
+						name="Rough Divide"
+						mcost=50
+						basecheck=13
+						attack_roll_damage_dice = FALSE
+						attack_roll_damage_lower = 30
+						attack_roll_damage_upper = 70
+						atype="weaponsave"
+						range=" 3 tile line."
+						savetype="Reflex"
+						ptype="spell"
+						desc="Coating one's weapon in energy, they then dash forward and swing it upward, to blast a target away. This attacks a 3 tile line in front of the caster, and deals full damage on a failed save ; or half on a successful save."
+						costtype="Stamina"
+					AssaultTrigger
+						rank="B"
+						name="Assault Trigger"
+						mcost=45
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 5
+						attack_roll_dice_sides = 2
+						atype="weapon"
+						range="Melee"
+						costtype="Stamina"
+						desc="Dash forward, coating one's weapon in volatile magical energy. With each swing, this energy explodes - sending the weapon forward with increase momentum. Each attack deals 5d2 additional damage. In addition, with each attack that misses - grant successive attacks +2 to hit. Make 4 attack rolls. (Capts at 120 cumulative damage.) Costs 45 Stamina."
+					FatedCircle
+						element="Fire"
+						rank="B"
+						name="Fated Circle"
+						mcost=40
+						basecheck=10
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 2
+						attack_roll_dice_sides = 6
+						adddam=0
+						addhit=0
+						range=" 3x3 AoE around user."
+						costtype="Stamina"
+						atype="weaponsave"
+						damsource="str"
+						typing="physical"
+						ptype="spell"
+						savetype="Reflex"
+						desc="The user makes a sweeping attack with their weapon around them. Explosive energy stored up in the weapon then radiates outward in a sharp, blade-like full circle. The edge of the circle then explodes in a fiery burst, threatening to burn anyone caught in its radius. (Damage: Weapon damage + 2d6+STR fire damage | 3x3 AoE, prompts a relex saving throw (DC 10+STR+Rank bonus), dealing full damage and inflicting burn on a failure, or half damage on a success. -40 stamina.)"
+					CrushingBlow
+						element="Holy"
+						rank="B"
+						name="Crushing Blow"
+						mcost=50
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 5
+						attack_roll_dice_sides = 12
+						adddam=5
+						addhit=5
+						atype="weapon"
+						range=" 5 tiles."
+						desc="The user of this technique infuses their feet with magic, and launches 3 tiles into the air. They gain the effects of Airborne, without the effects of Knock-up. They then swing their weapon to the side, releasing a disk of light that deals Holy damage, and inflicts 'Heavy' on hit. Attack: Weapon Damage + 5d12. Costs 50 Stamina."
+					RoundEdge
+						element="Dark"
+						rank="B"
+						name="Round Edge"
+						mcost=50
+						attack_roll_damage_dice = FALSE
+						attack_roll_damage_lower = 4
+						attack_roll_damage_upper = 55
+						adddam=3
+						addhit=4
+						atype="weapon"
+						range=" 5x5 AoE"
+						costtype="Stamina"
+						desc="A massive AoE attack, made by swinging one's weapon in a circular motion, releasing flames of dark energy.. The user makes a melee attack at +4 to hit, hitting all targets around  them in a  5x5 centered on the user. On hit they deal Weapon Damage + 4-55 + 3 Dark Damage. Costs 50 Stamina."
+					BladeBeam
+						element="Force"
+						rank="B"
+						name="Blade Beam"
+						mcost=40
+						basecheck=13
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 2
+						attack_roll_dice_sides = 12
+						adddam=10
+						addhit=0
+						range=" 6 tile line, 3 tile cone at the end of line."
+						costtype="Stamina"
+						atype="weaponsave"
+						damsource="str"
+						typing="physical"
+						ptype="spell"
+						savetype="Reflex"
+						desc="The user draws their sword behind their head before slamming it downward releasing a rather large vertical beam of Mana that carries the same cutting power as the weapon. (Damage: Weapon damage + 2d12 bonus | Reflex Saving throw (DC:10+STR+RB), vs everything in a 3 tile line from the user, then splits into a triad of blade beams, prompting the same to anything in a 3 tile cone at the end of the line. -40 Stamina.)"
+					Shout
+						name="Shout"
+						rank="B"
+						mcost=40
+						desc="The user turns to their comrades projecting their voice in a powerful boom that instills encouragement in them. Targets all friendly creatures in a 6 tile cone in front of the user. Targets gain haste and a +2 bonus to strength that lasts until the haste effect wears off. Can only be used once per encounter. (-40 Stamina.)"
+					BanishingBlade
+						name="Banishing Blade"
+						rank="B"
+						atype="weapon"
+						mcost=40
+						desc="Runes solidify around the user of this ability's weapon, granting it potent sealing power. They then swing the weapon as a standard attack. On hit, the target is inflicted with Silence. Costs 40 Stamina."
+					SlicenDice
+						name="Slice n Dice"
+						rank="B"
+						mcost=60
+						atype="weapon"
+						desc="A ferocious, and powerful combination attack. This ability allows you to perform 5 Standard attacks, however - only ONE of these five attacks may hit, and deal damage. If any of the five attack rolls would hit, the attack hits - and the user of this ability may choose the highest damage number rolled of the five, to apply.. Costs 60 Stamina."
+					GodAmongMen
+						element="Force"
+						rank="B"
+						name="God Among Men"
+						mcost=50
+						basecheck=10
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 2
+						attack_roll_dice_sides = 12
+						adddam=0
+						addhit=3
+						range=" 3 tile cone in front of user."
+						costtype="Stamina"
+						atype="weapon"
+						damsource="str"
+						typing="physical"
+						ptype="spell"
+						desc="The user infuses their weapon with magic to make a wide mana based slash, attacking everything in a wide area in front of them. (Damage: Weapon Damage + 2d12+WIS Force damage | Weapon Attack Roll, +3 to hit. | 3 tile cone in front of the user | -50 Mana.)"
+					BlastingZone
+						rank="A"
+						name="Blasting Zone"
+						attack_roll_damage_dice = FALSE
+						attack_roll_damage_lower = 60
+						attack_roll_damage_upper = 110
+						basecheck=14
+						adddam=5
+						mcost=60
+						atype="weaponsave"
+						savetype="reflex"
+						range="3 tile wide, 5 tile line."
+						typing="physical"
+						damsource="str"
+						desc="The user infuses their weapon with obscene amounts of energy, and raises it into the sky. They then swing down, bringing the energy down as a blade, and prompting a reflexing saving throw DC 14 + STR + Rank Bonus. On Failure the take takes 60-110 +5 Physical damage; on success, they take half. Cost -60 Stamina."
+					GestaltDrive
+						rank="A"
+						name="Gestalt Drive"
+						atype="weapon"
+						mcost=15
+						attack_roll_dice_count = 1
+						attack_roll_dice_sides = 10
+						desc="Calling upon the name of the Valkyries, the user of this ability infuses their weapon with magic that transforms it into a pair of linked together duplicates. They then seperate the blades. This weapon takes the place of their own, and uses its attributes but gains 1d10 additional damage on hit. In addition, while this state is active - you may make an extra attack as a bonus action. Cannot be used with Thief Swords. Costs 15 SP per turn to sustain."
+					TriumphantGrasp
+						element="Fire"
+						rank="A"
+						name="Triumphant Grasp"
+						mcost=90
+						basecheck=15
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 8
+						attack_roll_dice_sides = 10
+						adddam=0
+						addhit=0
+						range="Melee"
+						costtype="Stamina"
+						atype="save"
+						damsource="str"
+						typing="physical"
+						ptype="spell"
+						savetype="Strength"
+						desc="The user reaches out with a free hand grasping at their opponent. Upon grabbing the target, they drag the target across the ground - and then clench their fist. An explosion erupts from their grasp, and the target is then sent flying at high speeds in a direction of the user's choice. (Damage: 8d10+STR fire damage | STR saving throw (DC 15+STR+Rankbonus) - on a failure, creature is thrown 6 tiles in any direction. Upon hitting a wall, target takes 5d10 additional damage. On a success, attack is negated. -90 Stamina.)"
+					ChaosDisaster
+						name="Chaotic Disaster"
+						element="Dark"
+						rank="A"
+						mcost=75
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 7
+						attack_roll_dice_sides = 10
+						adddam=5
+						addhit=3
+						range=" 5 tile line."
+						typing="physical"
+						ptype="spell"
+						costtype="Stamina"
+						desc="The user of this attack swings their weapon in an arc, releasing a beam of energy as a 'Chaotic Disaster' attack roll with +3 to hit, which travels in a 5 tile line, dealing 10d7 + 5 Darkness damage on hit. They then shift to the end of the line, and may make 1 Standard attack roll immediately after.  Costs 75 Stamina."
+					LordofArms
+						name="Lord of Arms"
+						rank="A"
+						cat="Unique"
+						desc="The user sends out an array of weapons around them controlling them telepathically . They can choose one weapon of each type that they have proficiency in. They make a standard weapon attack roll for each weapon brought out this way. (- 90 stamina.)"
+					ArmyofOne
+						name="Army of One"
+						rank="A"
+						cat="Unique"
+						desc="The user ignites with a glowing blue aura, and begins flashing around from target to target. They move at tremendous speeds attacking everything hostile around them. They can attack any targets within 15ft around them. There is no limit to the number of targets, but each can only be attacked once. These attacks are made at advantage due to the high speeds. (-10 stamina for each attack made.)"
+					FinishingTouch
+						rank="A"
+						name="Finishing Touch"
+						mcost=55
+						basecheck=10
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 2
+						attack_roll_dice_sides = 20
+						adddam=10
+						addhit=3
+						range="3 tile wide, Melee"
+						costtype="Stamina"
+						atype="weapon"
+						damsource="str"
+						typing="physical"
+						ptype="spell"
+						desc="The user makes a horizontal slice with their weapon causing the air in front of the user to become disturbed before kicking up a powerful gale that pulls anything caught in it high into the air. Anything that is kicked upwards will most likely take heavy damage from the fall. (Damage: Weapon Damage + 2d20+STR+10 | Melee Weapon Attack (+3 to hit) | 3 tile wide attack, launches target 2 tiles per STR Modifier point. - 55 Stamina)"
+					BladeHoning
+						rank="A"
+						name="Blade Honing"
+						desc="Hold your blade in-front of yourself, and channel your spirit into it, becoming one with the weapon itself. At the cost of MP and SP alike ; grant yourself the 'Bravery' status effect, and the chosen weapon gains +1 to hit for the duration of Bravery. (-40 MP, -40 SP.)"
+					RedCard
+						rank="A"
+						cat="Unique"
+						name="Red Card"
+						mcost=60
+						basecheck=10
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 1
+						attack_roll_dice_sides = 20
+						adddam=0
+						addhit=3
+						range="Melee"
+						costtype="Stamina, pay once per 5 card attacks."
+						atype="standard"
+						damsource="str"
+						typing="physical"
+						ptype="spell"
+						desc="he user takes out a pack of normal playing cards. They scatter the cards over an area. The cards then hover around the area. The user is able to control several all red cards that were placed into the deck causing them to fly around and tear the confused enemy to pieces. (Card Damage: 2d10+DEX| Card Attack Roll: 1d20+DEX+3| The cards cover a 5x5 area in front of the user, the user has 5 red cards inside this area which they can target at anyone inside the AoE twice per turn | 3 round duration, Requires Akademia Cards or Gambler job to be used. -60 Stamina)"
+					ThunderGod
+						element="Thunder"
+						rank="A"
+						name="Thunder God"
+						mcost=60
+						basecheck=10
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 3
+						attack_roll_dice_sides = 12
+						adddam=0
+						addhit=0
+						range="3 tile cone in front of user."
+						costtype="Stamina"
+						atype="weapon"
+						damsource="dex"
+						typing="physical"
+						ptype="spell"
+						desc="The user takes a deep breath, igniting a spark inside them that soon travels through their entire body before reaching their weapon charging it with a fierce amount of electricity. The weapon hums with the built up electrical Mana giving off strands of electricity that latch onto anything it can find. The user then makes a slash towards an opponent releasing the built up Mana expanding the height of the sword for a single moment before the Mana leaves and the blade returns to normal. (Damage: Weapon Damage + 3d12+STR  Thunder damage| Weapon Attack Roll, attacks in 3 tile cone in front of user, -60 Stamina)"
+					Innocence
+						element="Wind"
+						rank="A"
+						cat="Unique"
+						name="Innocence"
+						mcost=70
+						basecheck=10
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 3
+						attack_roll_dice_sides = 20
+						adddam=0
+						addhit=4
+						range=" 3 tile wide, 6 tile range."
+						costtype="Stamina, per 3 attack rolls."
+						atype="weapon"
+						damsource="dex"
+						typing="physical"
+						ptype="spell"
+						desc="The user charges energy into their weapon before making two wide slices through the air, creating two blade-beam like projectiles that carry the same power put into the initial slash. (Damage: Weapon Damage + 3d20+DEX each | Ranged Attack Roll (1d20+DEX+4) Creates two separate 3 tile wide projectiles, - 70 Stamina)"
+					FulLCharge
+						rank="A"
+						name="Full Charge"
+						mcost=75
+						basecheck=10
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 3
+						attack_roll_dice_sides = 12
+						adddam=0
+						addhit=0
+						range="Melee"
+						costtype="Stamina, per 4 attack rolls."
+						atype="weapon"
+						damsource="str"
+						typing="physical"
+						ptype="spell"
+						desc="The user takes a few moments to gather the energy around them building up a frozen inertia. Once a turn has passed the user launches forward propelling their body with tremendous power and speed. The user spins their body during the assault turning their body into a piercing drill, allowing them to attack several times. (Damage: 3d12+STR | 4 Attack Rolls, takes a turn to charge up, - 75 Stamina | +3 Cooldown.)"
+					Octaslash
+						rank="S"
+						cat="Unique"
+						name="Octaslash"
+						mcost=120
+						basecheck=10
+						attack_roll_damage_dice = FALSE
+						attack_roll_damage_exact = 0
+						adddam=10
+						addhit=0
+						range="Melee"
+						costtype="Stamina, per 8 attack rolls."
+						atype="weapon"
+						damsource="str"
+						typing="physical"
+						ptype="spell"
+						desc="The user teleports behind a target who is within 5 tiles of them, and delivers 8 powerful slashes in a single debilitating combo. (Damage: Weapon Damage + 10 | 8 Weapon Attack Rolls at advantage (+3 to hit), inflicts Bleed if at least one attack hits. -120 Stamina | 2 Turn Cooldown)"
+					OmegaDrive
+						rank="S"
+						cat="Unique"
+						name="Omega Drive"
+						mcost=120
+						basecheck=18
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 2
+						attack_roll_dice_sides = 12
+						adddam=10
+						addhit=0
+						range="7x7 AoE"
+						costtype="Mana, per 4 attacks."
+						atype="save"
+						damsource="str"
+						typing="physical"
+						ptype="spell"
+						desc="The user jumps into the air crashing down into an area, and releases a torrential wave of explosive, and chaotic destruction energy. (Damage: 2d12+STR | 4 Seperate 7x7 AoE Attacks, each prompting a Fortitude saving throw, DC 20 - dealing half on a successful save. - 120 Mana | 2 Turn Cooldown)"
+					UltimateIllusion
+						rank="S"
+						cat="Unique"
+						name="Ultimate Illusion"
+						mcost=120
+						basecheck=18
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 4
+						attack_roll_dice_sides = 20
+						adddam=0
+						addhit=0
+						range="5 tile cone, up to 4 targets."
+						costtype="Mana"
+						atype="weaponsave"
+						damsource="str"
+						typing="physical"
+						ptype="spell"
+						desc="The user leaps into the air before striking the ground with their weapon, thus sending several waves of energy bursting underground, only to rise from beneath the the target's feet. (Damage: 4d20+STR | Reflex Save, DC 20 (half damage on success). Can strike four different targets in a 5 tile cone in front of the user, - 120 Mana)"
+				Ranged
+					icon='Icons/Perk/RangedWep.png'
+					StoneToss
+						element="Earth"
+						rank="E"
+						name="Stone Toss"
+						mcost=5
+						basecheck=10
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 1
+						attack_roll_dice_sides = 12
+						adddam=0
+						addhit=0
+						range=" 1 tile per STR mod."
+						costtype="Stamina"
+						atype="standard"
+						damsource="str"
+						typing="physical"
+						ptype="spell"
+						desc="Pick up a stone tossing it with all your strength. Make an attack roll 1d20 + strength and rank bonus. On a successful hit deal 1d12 bludgeoning damage. Gain +10 to range per STR mod. (Damage: 1d12+STR | Ranged attack roll, STR based. +1 tile per STR mod tile range.)"
+					JechtShot
+						element="Flare"
+						rank="D"
+						mcost=10
+						basecheck=10
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 1
+						attack_roll_dice_sides = 20
+						adddam=0
+						addhit=2
+						range="Melee"
+						costtype="Stamina"
+						atype="standard"
+						damsource="str"
+						typing="physical"
+						ptype="spell"
+						name="Jecht Shot"
+						desc="The user digs a foot into the ground kicking their foot up and sending a soccer sized boulder upwards. The user then jumps upwards and lets their body fall upside down. They then kick the boulder towards their opponent launching it at high speeds. (Damage: 1d20+STR | 6 tile Range, Ranged Attack Roll (1d20+STR+2), -10 stamina)"
+					Ricochet
+						rank="C"
+						name="Ricochet"
+						desc="A technique which can be applied to a ranged weapon attack. This gives the attack advantage, and in addition - if the attack misses with advantage applied, it may be re-rolled without advantage immediately after. (Ranged weapon attack, -15 Stamina.)"
+					Cripple
+						rank="C"
+						name="Cripple"
+						desc="A technique which can be applied to a ranged weapon attack. If the attack hits, and deals over 15 damage - the target creature is inflicted with Weakness. (Ranged weapon attack, -25 Stamina.)"
+					Flameshot
+						rank="C"
+						name="Flame Shot"
+						desc="A technique which can be applied to a ranged weapon attack by lighting it on fire. If the attack hits, the target creature is inflicted with Burn. (Ranged weapon attack, -25 Stamina.)"
+					MeteorShot
+						rank="C"
+						name="Meteor Shot"
+						desc="A technique which can be applied to a ranged weapon attack. The weapon is imbued with a powerful shroud of energy at its offending tip, which grants it immense impact force. On hit, the target creature is knocked back 20 feet, and must make a Fortitude saving throw (DC 15) ; or be knocked prone on a failure. (Ranged weapon attack, -20 Stamina.)"
+					BloodyShot
+						rank="B"
+						name="Bloody Shot"
+						mcost=45
+						basecheck=10
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 2
+						attack_roll_dice_sides = 12
+						adddam=0
+						addhit=0
+						range=" 8 tile range."
+						costtype="Stamina"
+						atype="weaponsave"
+						basecheck=13
+						damsource="dex"
+						typing="physical"
+						ptype="spell"
+						savetype="Fortitude"
+						desc="A technique which can be applied to a ranged weapon attack. The weapon is imbued with an extra sharp shroud of energy around its offending tip, which grants it additional damage. If the attack roll hits, the target must make a saving throw. (Damage: 2d12+DEX | Prompts a Fortitude saving throw (DC 13+DEX+Rankbonus), dealing full damage and inflict bleed on a failure, and half damage and no bleed on a success. -45 Stamina.)"
+					JechtBeam
+						element="Flare"
+						rank="A"
+						cat="Unique"
+						name="Jecht Beam"
+						mcost=90
+						basecheck=18
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 5
+						attack_roll_dice_sides = 12
+						adddam=0
+						addhit=0
+						range=" 6 tile wide, 6 tile range."
+						costtype="Mana"
+						atype="save"
+						damsource="str"
+						typing="physical"
+						savetype="Fortitude"
+						ptype="spell"
+						desc="The user charges a large orb of magic in their hand. They then release it into a crackling beam that is capable of piercing most defenses. (Damage: 5d12+STR | 6 Tile Wide AoE projectile, 6 tile range, prompts a Fortitude saving throw - taking half damage on a success. Beam ignores 25 points of damage reduction, -90 Mana | 2 Turn Cooldown)"
+					UltimateJechtShot
+						element="Earth"
+						rank="A"
+						cat="Unique"
+						name="Ultimate Jecht Shot"
+						mcost=90
+						basecheck=10
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 5
+						attack_roll_dice_sides = 12
+						adddam=10
+						addhit=6
+						range=" 6 tile range, 3x3 projectile."
+						costtype="Stamina"
+						atype="standard"
+						damsource="str"
+						typing="physical"
+						ptype="spell"
+						desc="The user digs their hands into the ground pulling up a gigantic boulder. They then throw it upwards letting it soar in the air. The user jumps after it landing on a spot, and then kicking it with their feet launching it towards a target. (Damage: 5d12+STR | Ranged Attack Roll (1d20+STR+6) | 6 tile range, Fires a 2x3 projectile, -90 Stamina | 2 Turn Cooldown)"
+					StardustShot
+						element="Laser"
+						rank="S"
+						cat="Unique"
+						name="Stardust Shot"
+						mcost=120
+						basecheck=15
+						attack_roll_damage_dice = TRUE
+						attack_roll_dice_count = 10
+						attack_roll_dice_sides = 12
+						adddam=0
+						addhit=0
+						range=" 7x7 AoE within 10 tiles of user."
+						costtype="Stamina"
+						atype="weapon"
+						damsource="dex"
+						typing="physical"
+						ptype="spell"
+						desc="The user of this technique prepares their ranged weapon, before pumping massive amounts of energy into their prepared shot. They then fire it into the air at an arc, targeting a particular radius within range. The projectile then splits into thousands of glimmering copies, peppering the chosen location with countless piercing rounds. (Damage: 10d12+DEX | Targets a 7x7 AoE, centered on a tile within 10 tiles of the caster. Prompts a Reflex saving throw (15+DEX+Rankbonus), dealing full damage and inflicting Bleed and Slow on a failure, and dealing half damage and inflicting nothing on a success. -120 Stamina.)"
+
+
+			GeneralMagicAbilities
+				damsource="int"
+				costtype="Mana"
+				cat="Genability"
+				icon='Icons/Perk/GeneralMagic.png'
+				typing="magical"
+				atype="standard"
+				element="Force"
+				Landmine
+					element="Fire"
+					level=2
+					rank="D"
+					name="Land Mine"
+					mcost=6
+					basecheck=8
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_damage_upper = 20
+					adddam=0
+					addhit=0
+					range=" 3 tile range, placeable anywhere a creature is not already positioned."
+					costtype="Mana"
+					atype="save"
+					damsource="int"
+					typing="magical"
+					ptype="spell"
+					savetype="Reflex"
+					desc="The user scatters landmines that float in the air, and explode on contact or when a creature passes through the same tile with their movement. (Creates a landmine on a single tile within three tiles from the user, landmines prompt a Reflex saving throw (10+INT+Rank bonus). On a failed save, creatures take 2d20+INT damage, or half as much on a successful save. Landmine can not be created on the same tile that a creature is already occupying.  -6 Mana)"
+
+				Burst
+					level=2
+					rank="D"
+					name="Burst"
+					mcost=8
+					basecheck=10
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_damage_upper = 4
+					adddam=0
+					addhit=0
+					range=" 3 tile range, placeable anywhere a creature is not already positioned."
+					costtype="Mana"
+					atype="standard"
+					damsource="int"
+					typing="magical"
+					ptype="spell"
+					savetype="Reflex"
+					desc="A low level, but essential magical technique for those studying the raw magic arts. The user draws from their reserves, and condenses potent raw mana, before firing it from their palm. For every 5 Mana spent in addition to the initial cost, this deals 3 additional damage (capping at +36) on hit. This can also be used as a reaction to the Burst spell in order to interrupt and equalize it if the opposing Burst's damage is within 10 points of damage, otherwise reducing the Beam's damage by the damage rolled by the reactor. 2d4+INT | Ranged attack roll, 5 tile line, -8 Mana)"
+
+				Ruin
+					level=2
+					rank="D"
+					name="Ruin"
+					mcost=4
+					basecheck=10
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 2
+					adddam=0
+					addhit=0
+					range="6 tile range."
+					costtype="Mana"
+					atype="standard"
+					damsource="int"
+					typing="magical"
+					ptype="spell"
+					savetype="Reflex"
+					desc="A low level, but essential magical technique for those studying the raw magic arts. The user draws from their reserves, and condenses potent raw mana, before releasing it in a single globule from their palm. Three Ruin attack rolls are made, each dealing seperate damage: 2d2+ INT | Ranged attack roll, 6 tile range, -4 Mana.) (Deals a maximum of 60 damage.)"
+				Tendril
+					level=2
+					rank="C"
+					name="Tendril"
+					mcost=12
+					basecheck=10
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 12
+					adddam=0
+					addhit=0
+					range="2 Tile"
+					costtype="Mana"
+					atype="save"
+					damsource="int"
+					typing="magical"
+					ptype="spell"
+					savetype="Fortitude"
+					desc=" A low level but useful technique for those studying the raw magic arts. The user manifests their raw mana as a 'tendril' which lashes out at a target within range, threatening to entangle them. This tendril, after binding a target - can be made to detonate at any time of the user's choice. The damage only applies on detonation. (Damage: 2d12+INT on detonation. | Prompts a Fortitude saving throw, binding the target on failure. The tendril is destroyed on a success. A bound target may spend their standard action each turn in order to roll STR against the bind DC in order to break free, and destroy the tendril. 5 tile range.) Costs 12 MP."
+				Fog
+					element="Bio"
+					level=3
+					rank="C"
+					name="Fog"
+					mcost=12
+					basecheck=12
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 3
+					attack_roll_dice_sides = 6
+					adddam=0
+					addhit=0
+					range=" 3 tile cone."
+					costtype="Mana"
+					atype="save"
+					damsource="int"
+					typing="magical"
+					ptype="spell"
+					savetype="Fortitude"
+					desc="A low level, but essential magical technique for those studying the raw magic arts. The user draws from their reserves, and releases their Magic in a 'mist' like stream, which burns away at whatever it touches. (Damage: 3d6+INT | Prompts a Fortitude saving throw (12+INT+Rank Bonus) dealing full damage on a failure, or half as much on a success. 3 tile cone. -12 Mana.)"
+				Fogga
+					element="Bio"
+					level=4
+					rank="B"
+					name="Fogga"
+					mcost=30
+					basecheck=14
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 3
+					attack_roll_dice_sides = 10
+					adddam=0
+					addhit=0
+					range=" 5x5 AoE, 5 tile casting radius.."
+					costtype="Mana"
+					atype="save"
+					damsource="int"
+					typing="magical"
+					ptype="spell"
+					savetype="Fortitude"
+					pre="Fog"
+					desc="A more advanced version of Fog. After drawing form one's reserves, they release their Magic in a 'mist' like stream, which burns away whatever it touches. After having been cast, Fogga's 'mist' remains in place in a 5x5 AoE centered a location of the caster's choice within the initial casting radius, for 3 rounds. Any creature who starts their turn within the Mist must repeat the attack's saving throw, and take full damage on a failure, or half on a success. (Damage: 3d10+INT | Prompts a Fortitude saving throw (14+INT+Rank Bonus) dealing full damage on a failure, or half as much on a success. 3 tile cone. -30 Mana.)"
+				Pyramid
+					level=2
+					rank="C"
+					name="Pyramid"
+					mcost=10
+					basecheck=13
+					attack_roll_damage_dice = FALSE
+					attack_roll_damage_exact = 0
+					adddam=0
+					addhit=0
+					range=" Single Tile barrier.."
+					costtype="Mana"
+					atype="save"
+					damsource="int"
+					typing="magical"
+					ptype="spell"
+					savetype="Reflex"
+					cat="Unique"
+					desc="The user fires a ball of light that when making contact with a target will expand into a pyramid shaped prison. The pyramid is unbreakable from the inside, but a strong attack from the outside can shatter it freeing whoever is inside. (Creates a 20 HP barrier around the target that is only breakable from the outside, Pyramid's AC = 13+INT+Rank Bonus | -10 Mana)"
+				Trine
+					element="Thunder"
+					level=2
+					rank="B"
+					name="Trine"
+					mcost=20
+					basecheck=14
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 20
+					adddam=0
+					addhit=0
+					range=" 3x3 AoE. Can be Cast within Pyramid Spell. Destroys Pyramid."
+					costtype="Mana"
+					atype="save"
+					damsource="int"
+					typing="magical"
+					ptype="spell"
+					savetype="Fortitude"
+					cat="Unique"
+					pre="Pyramid"
+					desc="A pyramid is made, and cast as the spell before, but instead of stopping its size to contain the enemy it will expand greatly covering a large area, and possibly trapping others. With the pyramid expanded so greatly the magic creating the walls has thinned to the point where it can be broken from the inside. The walls of the pyramid then begin to crackle with electricity as arcs of lightning fire latching onto anything it can inside the pyramid. (Expands to 3x3 AoE upon hitting a target, prompts a Fortitude saving throw (14+INT+Rank Bonus) - deals 2d20+INT damage on a failed saving throw, or half as much on a success. -20 Mana) (Requires Pyramid)"
+				MythrilBubbles
+					element="Water"
+					name="Mythril Bubbles"
+					level=3
+					rank="C"
+					damsource="int"
+					atype="standard"
+					typing="magical"
+					ptype="spell"
+					costtype="Mana"
+					mcost=18
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 10
+					range="3 tile cone"
+					desc="The user expels several blue bubbles through their mouth. The bubbles will float airborne, and if touched by something they will explode dealing damage to whatever made contact with them. (Damage: 2d10+INT |  ranged attack roll, 3 tile cone, inflicts Wet on hit, (1d20+INT to hit), Water Element, - 18 Mana)"
+				Jolt
+					element="Thunder"
+					level=3
+					rank="C"
+					damsource="int"
+					atype="standard"
+					costtype="Mana"
+					range="6 tiles."
+					mcost=20
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 8
+					addhit=2
+					ptype="spell"
+					desc="The user releases a jolt of magical energy at an opponent, which inflicts Paralyze onto the opponent if it does over 20 damage to the target. (Damage: 2d8+INT | ranged attack roll (1d20+INT+2 to hit) vs. Armor, -20 Mana.)"
+				Scatter
+					level=3
+					rank="C"
+					damsource="int"
+					atype="standard"
+					costtype="Mana"
+					range="6 tiles."
+					mcost=25
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 3
+					attack_roll_dice_sides = 2
+					ptype="spell"
+					desc="The user releases a burst of arcane projectiles. Four in total are created, aimed at targets in whatever order the user wishes. Each bolt does individual damage. (Damage: 3d2+INT | Four ranged attack rolls (1d20+INT to hit) vs. Armor, -25 Mana.)"
+
+				Tether
+					level=3
+					rank="C"
+					damsource="int"
+					atype="save"
+					ptype="spell"
+					costtype="Mana"
+					range="3 Tiles."
+					basecheck=11
+					savetype="Strength"
+					mcost=25
+					desc="The user releases a whip of energy that does not damage an opponent, but if it lands - roots them in place, rendering them unable to move until the spell is released or they break free. (Prompts a STR check versus a saving throw (11+INT+Rankbonus) - on a failure, target is rooted and may not move from their position until succeeding a DC 22 STR check or the spell ends, -25 Mana.)"
+				Impact
+					element="Physical"
+					level=3
+					rank="C"
+					damsource="int"
+					atype="weapon"
+					ptype="spell"
+					costtype="Mana"
+					range="Melee"
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 6
+					mcost=30
+					desc="The user coats their fist or weapon in a compact and dense construct of arcane energy. They then release a melee attack which combines magical and physical damage, also knocking an opponent back as it explodes. (Make a Melee attack roll, dealing an additional 2d6+INT magical damage, and applying a 6 tile knockback on hit. -30 Mana.)"
+				Laser
+					level=3
+					rank="C"
+					damsource="int"
+					atype="standard"
+					ptype="spell"
+					costtype="Mana"
+					range="5 tile line."
+					mcost=15
+					addhit=3
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 4
+					desc="Mana is concentrated at the tip of a finger, and channeled to become extremely thin. It's then released in the form of a miniscule laser directed at vital points, meant to penetrate defenses. (Damage: 2d4+INT | +3 to hit, 15 Damage Reduction piercing.  5 tile line.-15 Mana.)"
+				Laserga
+					level=4
+					rank="B"
+					pre="Laser"
+					damsource="int"
+					atype="standard"
+					ptype="spell"
+					costtype="Mana"
+					range="7 tile line."
+					mcost=35
+					addhit=4
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 10
+					desc="Mana is concentrated at the tip of a finger, and channeled into a thin but very condensed mass. It's then released in the form of a sizable laser directed at vital points, meant to penetrate defenses. (Damage: 2d10+INT | +4 to hit, 20 Damage Reduction piercing. 7 tile line. -35 Mana.)"
+				Pierce
+					level=3
+					rank="C"
+					damsource="int"
+					atype="weapon"
+					ptype="spell"
+					costtype="Mana"
+					range="6 tile range."
+					mcost=30
+					addhit=2
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 6
+					desc="The user coats their projectile in a screeching shroud of magical energy, which causes it to drill and burrow into a target at high speeds after being launched from their weapon. (Make a Ranged weapon attack roll, dealing an additional 2d6+INT magical damage, with +2 to hit and ignoring 5 physical damage reduction. -30 Mana.)"
+				Fleche
+					level=4
+					rank="B"
+					damsource="int"
+					atype="standard"
+					ptype="spell"
+					costtype="Mana"
+					range="6 tile range."
+					mcost=35
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 4
+					attack_roll_dice_sides = 2
+					desc="The caster creates a mass of five spears made of magical energy. They then release these spears at chosen targets in any order all in one burst. (Damage: 4d2+INT | Five ranged attack rolls (1d20+INT), -35 Mana.) (Deals a maximum of 120 damage.)"
+				Addle
+					element="Thunder"
+					level=4
+					rank="B"
+					damsource="int"
+					atype="save"
+					ptype="spell"
+					costtype="Mana"
+					range=" 6 tile range."
+					savetype="Fortitude"
+					mcost=35
+					basecheck=13
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 8
+					desc="The caster creates a storm-cloud of arcane energy above a target. It then releases gravity waves upon them, crushing and slowing them if the waves hit. Fortitude saving throw (13+INT+Rankbonus), on a failed save the target takes 2d8+INT damage - and their magic attacks deal 2 less damage for 3 rounds. Takes half damage on a successful save. , -35 Mana.)"
+				Combust
+					element="Fire"
+					level=4
+					rank="B"
+					damsource="int"
+					atype="save"
+					ptype="spell"
+					costtype="Mana"
+					range=" 6 tile range."
+					savetype="Fortitude"
+					mcost=40
+					basecheck=13
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 5
+					attack_roll_dice_sides = 10
+					desc="The caster stands still and focuses for two turns, drawing on the Mana inside of a target individual and grabbing hold of it. They then clench their hands down, causing the mana to combust inside of the foe and dealing damage in a guaranteed hit. (Prompts a Fortitude saving throw (13+INT+Rankbonus), on a failed save the target takes 5d10+INT fire damage, or half as much on a successful save. -40 Mana.)"
+				Impactga
+					element="Physical"
+					level=4
+					rank="B"
+					pre="Impact"
+					damsource="int"
+					atype="weapon"
+					costtype="Mana"
+					mcost=55
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 12
+					range="Melee"
+					desc="The user coats their fist or weapon in a compact and dense construct of arcane energy, crackling with energy. They then release a melee attack which combines maigcal and physical damage, also knocking an opponent back as it explodes. (Make a Melee attack roll, dealing an additional 2d12+INT magical damage, and applying 12 tile knockback on hit. -55 Mana.)"
+				Piercega
+					level=4
+					rank="B"
+					pre="Pierce"
+					damsource="int"
+					atype="weapon"
+					costtype="Mana"
+					mcost=55
+					addhit=3
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 12
+					desc="The user coats their projectile in a silent, but ominous shroud of magical energy, which causes it to drill and burrow into a target at high speeds after being launched from their weapon. (Make a Ranged weapon attack roll, dealing an additional 2d12+INT magical damage, with +3 to hit and ignoring 8 physical damage reduction. -55 Mana.)"
+				Joltga
+					level=4
+					rank="B"
+					pre="Jolt"
+					damsource="int"
+					atype="standard"
+					costtype="Mana"
+					mcost=35
+					addhit=2
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 3
+					attack_roll_dice_sides = 12
+					desc="The user releases a burst of magical energy upon an opponent, which inflicts Paralyze onto the opponent if it does over 20 damage to the target. Damage: 3d12+INT | Ranged attack roll (1d20+int+2) -35 Mana.)"
+				JudgementGrimoire
+					element="Holy"
+					name="Judgement Grimoire"
+					level=4
+					rank="B"
+					cat="Unique"
+					costtype="Mana"
+					damsource="int"
+					atype="save"
+					savetype="Reflex"
+					costtype="Mana"
+					mcost=50
+					basecheck=13
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 6
+					attack_roll_dice_sides = 12
+					desc="The user leaps into the air, and calls forth a giant sword from a portal in the sky, to strike the ground. (Prompts a Reflex saving throw to all targets in range (13+INT+Rankbonus) - targets take 6d12+INT slashing damage, or half as much on a successful save. Sword is 5 tiles wide in each direction, - 50 Mana)"
+				StormLanceGrimoire
+					element="Thunder"
+					name="Storm Lance Grimoire"
+					level=4
+					rank="B"
+					cat="Unique"
+					damsource="int"
+					atype="save"
+					savetype="Reflex"
+					mcost=45
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 16
+					basecheck=13
+					desc="After casting, a glyph is created under the user. Four lances of lightning rise from the cardinal directions, and can be thrown able to be aimed and moved through the air by the users will. (Four separate lances, each prompting a Reflex saving throw (14+INT+Rankbonus) - targets take 2d16+WIS damage on a failed save, and are paralyzed, Thunder Element, -45 Mana)"
+				SentinelsGrimoire
+					name="Sentinel's Grimoire"
+					level=4
+					rank="B"
+					cat="Unique"
+					mcost=40
+					desc="An enormous shield is called springing down and slamming into the ground from the sky, it can absorb a heavy amount of damage without a crack. However, it also cannot move after being placed down, and can be dispelled by the user at any time as a bonus action. (Creates an 100 HP 3x3 barrier, -40 Mana)"
+				GenesisRock
+					element="Earth"
+					name="Genesis Rock"
+					level=4
+					rank="B"
+					damsource="int"
+					atype="save"
+					savetype="Reflex"
+					mcost=45
+					costtype="Mana"
+					basecheck=16
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 3
+					attack_roll_dice_sides = 12
+					desc="Magical Mana is sent into the ground beneath the user causing parts of the earth to split away carrying them upwards on a large rock while several other large boulders spin around them. Four projectiles are then fired off at any target within 7 tiles of the point of origin. (Prompts a Reflex saving throw, dealing 3d12+INT piercing damage on a failed save, or half as much on a success - then fires off 4 magical ranged attack rolls, utilizing tome, staff, or focus in your inventory for their accuracy and damage - dealing earth damage on hit. - 45 Mana)"
+				AntiAirParticleBeam
+					name="Anti Air Particle Beam"
+					level=4
+					rank="B"
+					atype="standard"
+					range=" 3x3 AoE around user, 8 tiles upward."
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 4
+					attack_roll_dice_sides = 12
+					adddam=5
+					addhit=2
+					mcost=30
+					desc="Four orbs of darkness are created around the user. The orbs then fire slim beams that fire straight upward striking down anything above them. (Damage: 4d12+INT+5 | Ranged attack roll (1d20+INT+2), has advantage against airborne targets, - 30 Mana)"
+				MachWave
+					name="Mach Wave"
+					level=4
+					rank="B"
+					atype="standard"
+					range="5 Tile range."
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 2
+					attack_roll_dice_sides = 12
+					mcost=35
+					desc="Strike at the ground sending a surge of mana into the ground turning it in a powerful wave that is sent forward. The wave travels for a short distance picking up speed. After it has traveled for four tiles it quickly changes become more volatile, and picking up speed. Five tile maximum range. Deals 5 additional damage per tile travelled. (Damage: 2d12+INT | Ranged attack roll (1d20+INT+1), 5 Tile range. - 35 Mana)"
+				RedSpiral
+					name="Red Spiral"
+					level=4
+					rank="B"
+					cat="Unique"
+					atype="standard"
+					range="2 tile radius from user."
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 3
+					attack_roll_dice_sides = 20
+					adddam=5
+					addhit=2
+					mcost=40
+					desc="Conjure four streams of magic with a red core, and a blue outline. The streams travel towards an enemy snaking around them as they travel into the air above them conjoining, and then unleashing their stored power in a beam of Mana that can wipe away enemies. (Damage: 3d20+INT+5 | Ranged attack roll at advantage (1d20+INT+2), Target must be in a 2 tile radius of the user to take effect, - 40 Mana)"
+				ManaOverdrive
+					name="Mana Overdrive"
+					level=5
+					rank="A"
+					mcost=20
+					costtype="MP, and HP."
+					desc="Allow your Mana to overflow throughout your body, reinforcing your magical presence with your physical energy, by draining yourself of some life-force. This grants you the 'Faith' status effect, and your Spell attack rolls gain +1 to hit, and +1 to Save DCs for the duration of Faith. (-20 MP, -20 HP.)"
+				LunaticHigh
+					name="Lunatic High"
+					level=5
+					rank="A"
+					cat="Unique"
+					mcost=30
+					desc="The user takes a deep breath channeling their energies around them as they make a loud howl. Their breath will turn yellow, and wash the area around them with its glow. The aura grants haste to everything it touches, and links the gifted to the user. For each person that is granted haste the user will gain + 1 to AC, and +1 to all attack rolls until the effect wears off. (-30 Mana | 6 round duration.)"
+				BloodRedSpiral
+					name="Blood Red Spiral"
+					level=5
+					rank="A"
+					cat="Unique"
+					atype="standard"
+					range=" 7 tile."
+					addhit=4
+					adddam=5
+					mcost=55
+					attack_roll_damage_dice = TRUE
+					attack_roll_dice_count = 3
+					attack_roll_dice_sides = 12
+					desc="Conjure a whole storm of red streams that can travel to several targets or be split apart to target multiple targets. The streams will try to surround the target making a circle before unleashing their stored Mana into a powerful beam roasting whatever is trapped inside. (Damage: 3d12+INT+5 | 3 Ranged Attack Rolls (1d20+INT+4), - 55 Mana)"
+				Combustga
+					level=5
+					rank="A"
+					pre="Combust"
+					atype="save"
 					range=" 6 tile."
 					basecheck=15
 					attack_roll_damage_dice = TRUE
@@ -414,7 +2680,7 @@
 						attack_roll_damage_dice = TRUE
 						attack_roll_dice_count = 3
 						attack_roll_dice_sides = 12
-						desc="The user has learned how to heal major wounds through the use of magic. Heals  20 + 3d12 + CHA Mod x 2 HP. 6 tile range. Out of Battle Effects: The user is able to reattach limbs that have been severed, cure major wounds that even stitches wouldnÃ¢â‚¬â„¢t fix, heals all types of burns. They can also rejuvenate large plants including young trees, and patches of foliage up to 20ft. (-30 Mana.)"
+						desc="The user has learned how to heal major wounds through the use of magic. Heals  20 + 3d12 + CHA Mod x 2 HP. 6 tile range. Out of Battle Effects: The user is able to reattach limbs that have been severed, cure major wounds that even stitches wouldnâ€™t fix, heals all types of burns. They can also rejuvenate large plants including young trees, and patches of foliage up to 20ft. (-30 Mana.)"
 					Curaja
 						regen=1
 						level=4
@@ -499,7 +2765,7 @@
 						attack_roll_dice_sides = 10
 						range="6 tile line, 3 tiles wide."
 						mcost=35
-						desc="The user summons a whirlwind to travel forward sweeping away everything in itÃ¢â‚¬â„¢s path until it makes contact with itÃ¢â‚¬â„¢s target, sweeping them in a torrent of wind. This attack takes up a large area, with a straight line - threatening to indiscriminately rip and tear at anyone caught within its line of movement. As a reaction, this spell can be used to send the caster safely to the ground after being knocked into the air, reducing any fall damage from that elevation by 50 points. Out of Battle Effects: The user is capable of controlling wind to a small degree. They can cause air to vacate a 15ft area. They can also reduce the effects of fall damage by a degree of 40ft. They can cause the wind to make sounds that can be heard by individuals or cast a booming sound that can be heard 30ft away (Damage: 3d10+CHA wind damage | 6 tile line, 3 tile wide. Magic attack roll. Inflicts 'Bleed' on hit. -35 Mana.)."
+						desc="The user summons a whirlwind to travel forward sweeping away everything in itâ€™s path until it makes contact with itâ€™s target, sweeping them in a torrent of wind. This attack takes up a large area, with a straight line - threatening to indiscriminately rip and tear at anyone caught within its line of movement. As a reaction, this spell can be used to send the caster safely to the ground after being knocked into the air, reducing any fall damage from that elevation by 50 points. Out of Battle Effects: The user is capable of controlling wind to a small degree. They can cause air to vacate a 15ft area. They can also reduce the effects of fall damage by a degree of 40ft. They can cause the wind to make sounds that can be heard by individuals or cast a booming sound that can be heard 30ft away (Damage: 3d10+CHA wind damage | 6 tile line, 3 tile wide. Magic attack roll. Inflicts 'Bleed' on hit. -35 Mana.)."
 					Aeroja
 						level=4
 						pre="Aeroga"
@@ -534,7 +2800,7 @@
 						attack_roll_dice_sides = 10
 						range=" 6 tile range."
 						mcost=15
-						desc="The user creates a ball of holy light thats cast forth as a projectile burning away any darkness in itÃ¢â‚¬â„¢s path. The ball illuminates everything in itÃ¢â‚¬â„¢s path up to 2 tiles away, and leaves a 1 tile area of light for 3 turns upon striking. Out of Battle Effects: The user is capable of creating lights through magic. They can cast light from themselves up to 10ft around them. Alternatively they can cast these lights up to 30ft sustaining up to 2 at a time. (Damage: 2d10+CHA holy damage | 6 tile range, -15 Mana.)"
+						desc="The user creates a ball of holy light thats cast forth as a projectile burning away any darkness in itâ€™s path. The ball illuminates everything in itâ€™s path up to 2 tiles away, and leaves a 1 tile area of light for 3 turns upon striking. Out of Battle Effects: The user is capable of creating lights through magic. They can cast light from themselves up to 10ft around them. Alternatively they can cast these lights up to 30ft sustaining up to 2 at a time. (Damage: 2d10+CHA holy damage | 6 tile range, -15 Mana.)"
 					Diara
 						level=3
 						pre="Dia"
@@ -543,7 +2809,7 @@
 						attack_roll_dice_sides = 12
 						range=" 6 tile range."
 						mcost=30
-						desc="The user casts forward a bright ball of light. The ball lights up everything in itÃ¢â‚¬â„¢s path revealing objects in the darkness up to 2 tiles around everywhere it travels, and leaves a 3x3 area of light for 3 turns upon striking. Out of Battle Effects: The user is capable of creating lights through magic. They can cast light from themselves up to 20ft around them. Alternatively they can cast these lights up to 30ft sustaining up to 3 at a time. (Damage: 3d12+CHA holy damage | 6 tile range, Magic attack roll. -30 Mana.)"
+						desc="The user casts forward a bright ball of light. The ball lights up everything in itâ€™s path revealing objects in the darkness up to 2 tiles around everywhere it travels, and leaves a 3x3 area of light for 3 turns upon striking. Out of Battle Effects: The user is capable of creating lights through magic. They can cast light from themselves up to 20ft around them. Alternatively they can cast these lights up to 30ft sustaining up to 3 at a time. (Damage: 3d12+CHA holy damage | 6 tile range, Magic attack roll. -30 Mana.)"
 					Diaga
 						level=4
 						pre="Diara"
@@ -552,7 +2818,7 @@
 						attack_roll_dice_sides = 10
 						range=" 6 tile range."
 						mcost=45
-						desc="The user casts forward a bright ball of light. The ball lights up everything in itÃ¢â‚¬â„¢s path revealing objects in the darkness up to 3 tiles from its center everywhere it travels, and leaves a 3x3 area of light for 3 turns upon striking. Out of Battle Effects: The user is capable of creating lights through magic. They can cast light from themselves up to 30ft around them. Alternatively they can cast these lights up to 30ft sustaining up to 4 at a time. (Damage: 4d10+CHA holy damage | 6 tile range, Magical attack roll, -45 Mana.)"
+						desc="The user casts forward a bright ball of light. The ball lights up everything in itâ€™s path revealing objects in the darkness up to 3 tiles from its center everywhere it travels, and leaves a 3x3 area of light for 3 turns upon striking. Out of Battle Effects: The user is capable of creating lights through magic. They can cast light from themselves up to 30ft around them. Alternatively they can cast these lights up to 30ft sustaining up to 4 at a time. (Damage: 4d10+CHA holy damage | 6 tile range, Magical attack roll, -45 Mana.)"
 					SealEvil
 						name="Seal Evil"
 						level=4
@@ -1130,10 +3396,10 @@
 					mcost=15
 				Unchained
 					rank="B"
-					desc="The Knight is able to use the adverse of Thrill of BattleÃ¢â‚¬â„¢s power by removing themselves of their anger and burdens, as well as calming themselves thus deactivating their Adrenaline Rush and causing Thrill of Battle to be unable to be used whilst active. Gain +1 to hit, +5 damage to all attacks, and disables all Damage Reduction - even from equipment. (4 turns, deactivates Thrill of Battle during use.)  (-40 Mana.) "
+					desc="The Knight is able to use the adverse of Thrill of Battleâ€™s power by removing themselves of their anger and burdens, as well as calming themselves thus deactivating their Adrenaline Rush and causing Thrill of Battle to be unable to be used whilst active. Gain +1 to hit, +5 damage to all attacks, and disables all Damage Reduction - even from equipment. (4 turns, deactivates Thrill of Battle during use.)  (-40 Mana.) "
 				Defiance
 					rank="B"
-					desc="The KnightÃ¢â‚¬â„¢s Mana-Adrenal rush is extremely powerful. When activated, the KnightÃ¢â‚¬â„¢s mana and adrenaline work together to restore his body, which allows him to perform at a level far greater than that of normal (+3 turns Regen, Haste.) (-25 Mana, -25 Stamina, absorbs all Adrenaline stacks.)"
+					desc="The Knightâ€™s Mana-Adrenal rush is extremely powerful. When activated, the Knightâ€™s mana and adrenaline work together to restore his body, which allows him to perform at a level far greater than that of normal (+3 turns Regen, Haste.) (-25 Mana, -25 Stamina, absorbs all Adrenaline stacks.)"
 				OathofOrder
 					name="Oath of Order"
 					rank="A"
@@ -1875,7 +4141,7 @@
 				atype="standard"
 				typing="physical"
 				TamingStrikes
-					desc="A Technique which is used by Beast Masters both to capture monsters and to punish insubordinate monsters. As a bonus action the Beast Master may convert their attacks for the round into Ã¢â‚¬Ëœnon lethalÃ¢â‚¬â„¢ attacks. They can only deal up to half of their damage rolls, but defenses and mitigations are applied to the full damage to determine damage dealt. These Non-Lethal attacks can not reduce a target below 1 HP. Cost 20 SP."
+					desc="A Technique which is used by Beast Masters both to capture monsters and to punish insubordinate monsters. As a bonus action the Beast Master may convert their attacks for the round into â€˜non lethalâ€™ attacks. They can only deal up to half of their damage rolls, but defenses and mitigations are applied to the full damage to determine damage dealt. These Non-Lethal attacks can not reduce a target below 1 HP. Cost 20 SP."
 					mcost=20
 					rank="D"
 					name="Taming Strikes"
@@ -1890,7 +4156,7 @@
 					rank="C"
 					name="CommandSwitch"
 				CommandMush
-					desc="The Pack MasterÃ¢â‚¬â„¢s call encourages their monsters to hustle and speed up, by spending their standard action they gain 4 tile movement they can distribute among their monsters.Costs 30 SP."
+					desc="The Pack Masterâ€™s call encourages their monsters to hustle and speed up, by spending their standard action they gain 4 tile movement they can distribute among their monsters.Costs 30 SP."
 					mcost=30
 					rank="C"
 					name="CommandMush"
@@ -1905,17 +4171,17 @@
 					rank="B"
 					name="CommandHeckle"
 				CommandGuard
-					desc="The Pack Master gives direct commands for his monsters to group up and guard one another, denying opponents the option to attack them freely. When this is in effect the Pack Master and Monsters under their control gain the Ã¢â‚¬ËœGuardÃ¢â‚¬â„¢ status, gaining +1 AC for every adjacent ally with the Guard status. 50 SP."
+					desc="The Pack Master gives direct commands for his monsters to group up and guard one another, denying opponents the option to attack them freely. When this is in effect the Pack Master and Monsters under their control gain the â€˜Guardâ€™ status, gaining +1 AC for every adjacent ally with the Guard status. 50 SP."
 					mcost=50
 					rank="B"
 					name="CommandGuard"
 				CommandSwarm
-					desc="The Pack Master gives an order for his monsters to descend upon a single target as a full round action afflicting their target with the Ã¢â‚¬ËœTargetÃ¢â‚¬â„¢ status. Each successive monster to attack a Ã¢â‚¬ËœTargetÃ¢â‚¬â„¢ gains +3 to hit and deals +5 damage on all attacks they make. If all of their monsters attack the same target in 1 turn the final monster gains an additional standard attack. This status lasts for 3 rounds, requiring a standard action to sustain each turn, and caps at 3 stacks. 50 SP,  15 to upkeep."
+					desc="The Pack Master gives an order for his monsters to descend upon a single target as a full round action afflicting their target with the â€˜Targetâ€™ status. Each successive monster to attack a â€˜Targetâ€™ gains +3 to hit and deals +5 damage on all attacks they make. If all of their monsters attack the same target in 1 turn the final monster gains an additional standard attack. This status lasts for 3 rounds, requiring a standard action to sustain each turn, and caps at 3 stacks. 50 SP,  15 to upkeep."
 					mcost=50
 					rank="A"
 					name="CommandSwarm"
 				CommandStampede
-					desc="The Pack Master has instilled a command into his pack for whenever they see him critically wounded. When the Pack Master is knocked unconscious they may use this as a free action, causing their monsters to go completely berserk and stampede through the battlefield. The Pack Master rolls to pick a target for each of their summoned monsters. Each target must make a Reflex Save, DC 10+Rank Bonus+Charisma + The MonsterÃ¢â‚¬â„¢s Rank. If they fail they suffer 10d10 + The MonsterÃ¢â‚¬â„¢s PDB or MDB damage, ignoring DR or half as much on a save. The Pack Master must roll death saving throws for every monster involved in this ability in accordance to the lethality of the encounter. "
+					desc="The Pack Master has instilled a command into his pack for whenever they see him critically wounded. When the Pack Master is knocked unconscious they may use this as a free action, causing their monsters to go completely berserk and stampede through the battlefield. The Pack Master rolls to pick a target for each of their summoned monsters. Each target must make a Reflex Save, DC 10+Rank Bonus+Charisma + The Monsterâ€™s Rank. If they fail they suffer 10d10 + The Monsterâ€™s PDB or MDB damage, ignoring DR or half as much on a save. The Pack Master must roll death saving throws for every monster involved in this ability in accordance to the lethality of the encounter. "
 					mcost=50
 					rank="A"
 					name="CommandStampede"
@@ -2181,7 +4447,7 @@
 				DoomInfusion
 					name="Doom Infusion"
 					rank="S"
-					desc="This individual adds an eerie dark magic onto their weapon. This infuses the weapon with the doom status. Each attack has a chance of inflicting the doom status effect. Due to the nature of the energy it only works on beings with a weak soul, and will not work on humans or powerful boss creatures. (Upon a successful hit the target will make a Fortitude save of 15, or be inflicted with the Ã¢â‚¬ËœdoomÃ¢â‚¬â„¢ status effect, -40 mana per turn active.)"
+					desc="This individual adds an eerie dark magic onto their weapon. This infuses the weapon with the doom status. Each attack has a chance of inflicting the doom status effect. Due to the nature of the energy it only works on beings with a weak soul, and will not work on humans or powerful boss creatures. (Upon a successful hit the target will make a Fortitude save of 15, or be inflicted with the â€˜doomâ€™ status effect, -40 mana per turn active.)"
 				UltimaInfusion
 					name="Ultima Infusion"
 					rank="S"
@@ -2322,7 +4588,7 @@
 				HolyEnchant
 					name="Holy Enchant"
 					rank="D"
-					desc="The Paladin is able to imbue their weapon or an allyÃ¢â‚¬â„¢s weapon with Holy Light, granting it a Holy Infusion. | As a Bonus Action, this Infusion grants a bonus +2 PAB while also changing the element of the weapon attacks to Holy. Attacks made while this is active deal 10 additional True Damage on hit. | Infusion | ( Cost 10 MP | Last 3 Rounds )|"
+					desc="The Paladin is able to imbue their weapon or an allyâ€™s weapon with Holy Light, granting it a Holy Infusion. | As a Bonus Action, this Infusion grants a bonus +2 PAB while also changing the element of the weapon attacks to Holy. Attacks made while this is active deal 10 additional True Damage on hit. | Infusion | ( Cost 10 MP | Last 3 Rounds )|"
 				BracingBash
 					element="Physical"
 					name="Bracing Bash"
@@ -2399,7 +4665,7 @@
 					range=" Melee"
 					mcost=70
 					costtype="Stamina"
-					desc="The individual summons a massive blade of Holy Light and uses it to deal a damaging blow to an enemy, dealing more damage the more injured the user is. | As a Standard Action, the Paladin makes a standard Weapon Attack (Damage: Weapon Damage ) that upon hitting, deals additional damage equal to half of the difference between the PaladinÃ¢â‚¬â„¢s current HP and Maximum HP. (Cost: 70 SP | Weapon Attack Roll |+2 Cooldown)"
+					desc="The individual summons a massive blade of Holy Light and uses it to deal a damaging blow to an enemy, dealing more damage the more injured the user is. | As a Standard Action, the Paladin makes a standard Weapon Attack (Damage: Weapon Damage ) that upon hitting, deals additional damage equal to half of the difference between the Paladinâ€™s current HP and Maximum HP. (Cost: 70 SP | Weapon Attack Roll |+2 Cooldown)"
 				Oversoul
 					rank="S"
 					attack_roll_damage_dice = TRUE
@@ -2407,7 +4673,7 @@
 					attack_roll_dice_sides = 20
 					damsource="cha"
 					atype="weapon"
-					desc="The individual imbues their weapon with Holy Light, then proceeds to charge down an enemy, making a well aimed blow directly at the target's very soul. Upon landing the blow, the target is infused with Holy Magic, causing swords of light to explode from their soul in a blast of bright light. | Standard Action (Damage: Weapon Damage + 2d10 + CHA (Holy) | Melee Weapon Attack Roll | Deals 30% of targetÃ¢â‚¬â„¢s CURRENT HP on hit. | (Cost: None | Once per day. ) |"
+					desc="The individual imbues their weapon with Holy Light, then proceeds to charge down an enemy, making a well aimed blow directly at the target's very soul. Upon landing the blow, the target is infused with Holy Magic, causing swords of light to explode from their soul in a blast of bright light. | Standard Action (Damage: Weapon Damage + 2d10 + CHA (Holy) | Melee Weapon Attack Roll | Deals 30% of targetâ€™s CURRENT HP on hit. | (Cost: None | Once per day. ) |"
 
 
 			DarkKnight
@@ -2421,11 +4687,11 @@
 				BloodWeapon
 					name="Blood Weapon"
 					rank="E"
-					desc="This individual can cut themselves with their own blade allowing the blood to form a spiritual connection with the user. The more blood they spend, the more pleased their weapon becomes - and the more fierce in turn. | As a Standard Action the Dark Knight grants themselves 'Darkness' stacks that grant a +4 to PDB for every 10 HP spent; up to a maximum equal to the Dark KnightÃ¢â‚¬â„¢s CON Modifier. (Lasts 5 turns.)|"
+					desc="This individual can cut themselves with their own blade allowing the blood to form a spiritual connection with the user. The more blood they spend, the more pleased their weapon becomes - and the more fierce in turn. | As a Standard Action the Dark Knight grants themselves 'Darkness' stacks that grant a +4 to PDB for every 10 HP spent; up to a maximum equal to the Dark Knightâ€™s CON Modifier. (Lasts 5 turns.)|"
 				Intimidate
 					name="Intimidate"
 					rank="D"
-					desc="The Dark Knight slams their blade into the ground, beginning to beat at their chest with glowing eyes, forcing a nearby foe to temporarily avoid them. | As a Bonus Action, choose a single target. This target may not attack the Dark Knight until the start of the Dark KnightÃ¢â‚¬â„¢s next turn. (Cost: 20 SP ) |"
+					desc="The Dark Knight slams their blade into the ground, beginning to beat at their chest with glowing eyes, forcing a nearby foe to temporarily avoid them. | As a Bonus Action, choose a single target. This target may not attack the Dark Knight until the start of the Dark Knightâ€™s next turn. (Cost: 20 SP ) |"
 				Taunt
 					name="Taunt"
 					rank="D"
@@ -2466,23 +4732,23 @@
 					range=" 6 tiles."
 					mcost=30
 					costtype="Mana"
-					desc="While the Dark Knight has infused itÃ¢â‚¬â„¢s weapon with the effects of Blood Weapon, they may stab the ground, causing a chain eruption of black flames that rapidly travels towards their target. These explosions can travel airborne.| Standard Action ( Weapon Damage + 4d4 (Dark) | Weapon Attack Roll | 6 Tile Range | Deals an additional 1d6 (Fire) per 'Darkness' stack, consuming them in the process | Cost: 30 MP )|"
+					desc="While the Dark Knight has infused itâ€™s weapon with the effects of Blood Weapon, they may stab the ground, causing a chain eruption of black flames that rapidly travels towards their target. These explosions can travel airborne.| Standard Action ( Weapon Damage + 4d4 (Dark) | Weapon Attack Roll | 6 Tile Range | Deals an additional 1d6 (Fire) per 'Darkness' stack, consuming them in the process | Cost: 30 MP )|"
 				ImmolateSelf
 					name="Immolate Self"
 					rank="C"
-					desc="The Dark Knight shrouds themselves in hellish flames, immolating themselves, in return for enhanced strength. | As a Bonus Action, the Dark Knight applies the Ã¢â‚¬ËœShadow BurnÃ¢â‚¬â„¢ negative status effect to themselves, dealing 3% MAX HP of damage to them per turn, while also granting them a +3 to their PDB. This also allows the Dark Knight to change their weapon attackÃ¢â‚¬â„¢s element to Fire. Lasts until ended as a Bonus action or until combat ends. (Cost: 20 MP to activate, 3% MAX HP per turn to maintain.)|"
+					desc="The Dark Knight shrouds themselves in hellish flames, immolating themselves, in return for enhanced strength. | As a Bonus Action, the Dark Knight applies the â€˜Shadow Burnâ€™ negative status effect to themselves, dealing 3% MAX HP of damage to them per turn, while also granting them a +3 to their PDB. This also allows the Dark Knight to change their weapon attackâ€™s element to Fire. Lasts until ended as a Bonus action or until combat ends. (Cost: 20 MP to activate, 3% MAX HP per turn to maintain.)|"
 				WeightoftheWorld
 					name="Weight of the World"
 					rank="C"
-					desc="The Dark Knight shrouds themselves in a gravitational force, making it harder for them to move, in return for enhanced strength. | As a Bonus Action, the Dark Knight applies the Ã¢â‚¬ËœShadow BurdenÃ¢â‚¬â„¢ negative status effect to themselves, causing them to suffer a -2 to their Tile Movement, disadvantages on all STR checks and a +3 to their PDB while active. (Cost: 20 MP to activate, Free to maintain) |"
+					desc="The Dark Knight shrouds themselves in a gravitational force, making it harder for them to move, in return for enhanced strength. | As a Bonus Action, the Dark Knight applies the â€˜Shadow Burdenâ€™ negative status effect to themselves, causing them to suffer a -2 to their Tile Movement, disadvantages on all STR checks and a +3 to their PDB while active. (Cost: 20 MP to activate, Free to maintain) |"
 				FrozenSoul
 					name="Frozen Heart"
 					rank="C"
-					desc="The Dark Knight turns their focus inwards, shutting themselves out to all around them, turning their heart an icy cold, granting them extra strength. | As a Bonus Action, the Dark Knight applies the Ã¢â‚¬ËœShrouded FrostbiteÃ¢â‚¬â„¢ negative status effect to themselves, dealing 3% MAX HP of damage to them per turn, while also granting them a +3 to their PDB. This also allows the Dark Knight to change their weapon attackÃ¢â‚¬â„¢s element to Ice. Lasts until ended as a Bonus action or until combat ends. (Cost: 20 MP to activate, 3% MAX HP per turn to maintain.)|"
+					desc="The Dark Knight turns their focus inwards, shutting themselves out to all around them, turning their heart an icy cold, granting them extra strength. | As a Bonus Action, the Dark Knight applies the â€˜Shrouded Frostbiteâ€™ negative status effect to themselves, dealing 3% MAX HP of damage to them per turn, while also granting them a +3 to their PDB. This also allows the Dark Knight to change their weapon attackâ€™s element to Ice. Lasts until ended as a Bonus action or until combat ends. (Cost: 20 MP to activate, 3% MAX HP per turn to maintain.)|"
 				ExhaustedSoul
 					name="Exhausted Soul"
 					rank="C"
-					desc="The Dark Knight begins to exhaust the energy and stamina from their very soul, empowering their strength. | As a Bonus Action the Dark Knight applies the Ã¢â‚¬ËœExhausted SoulÃ¢â‚¬â„¢ negative status effect to themselves, causing them to drain 10Mp and 10SP per turn in return for +3 PDB, +2 PAB and +2 MAB. Lasts until ended as a Bonus action or until combat ends. (Cost: 10 MP and SP to activate/ and per turn.)"
+					desc="The Dark Knight begins to exhaust the energy and stamina from their very soul, empowering their strength. | As a Bonus Action the Dark Knight applies the â€˜Exhausted Soulâ€™ negative status effect to themselves, causing them to drain 10Mp and 10SP per turn in return for +3 PDB, +2 PAB and +2 MAB. Lasts until ended as a Bonus action or until combat ends. (Cost: 10 MP and SP to activate/ and per turn.)"
 				SalttheEarth
 					name="Salt the Earth"
 					rank="C"
@@ -2530,7 +4796,7 @@
 					basecheck=15
 					mcost=80
 					costtype="Mana"
-					desc="The Dark Knight draws upon their immense power, channeling it into their weapon, to which they slam it into the ground, sending eruptions of darkness in a cross pattern, tearing the ground asunder in its path. | Standard Action (Weapon Damage + 3d12 + STR) | 5 Tile Line in a cross, centered on the caster | Reflex Save (DC:15 + Rank Bonus + STR ) | Deals Full Damage + 1d12 damage (Dark) per Ã¢â‚¬Å“DarknessÃ¢â‚¬Â stack, consuming them in the process on a failed save. Deals half damage on a successful save.| (Cost: 80MP)"
+					desc="The Dark Knight draws upon their immense power, channeling it into their weapon, to which they slam it into the ground, sending eruptions of darkness in a cross pattern, tearing the ground asunder in its path. | Standard Action (Weapon Damage + 3d12 + STR) | 5 Tile Line in a cross, centered on the caster | Reflex Save (DC:15 + Rank Bonus + STR ) | Deals Full Damage + 1d12 damage (Dark) per â€œDarknessâ€ stack, consuming them in the process on a failed save. Deals half damage on a successful save.| (Cost: 80MP)"
 				MarkofDarkness
 					name="Mark of Darkness"
 					rank="S"
@@ -2566,7 +4832,7 @@
 					desc="The user is able to throw their weapon, and have it teleport back to them from wherever position it was due to mana infusion. The Mana infused in the weapon is attuned to the user, and can be magnetized to a target the weapon hits, creating a temporary connection between them. If this attack hits, it deals half normal weapon damage, and causes the next attack from the Dragoon that hits the marked target to take 1d10 additional damage, and be inflicted with 'Weakness'. If the creature is healed before this occurs, this effect is dissipated. Esuna and other cleansing abilities will also cleanse this effect. Bonus Action. 6 Tile range."
 				Lancet
 					rank="D"
-					desc="The Dragoon's Bloodlust is displayed in how deep their spear sinks into their target. Invigorating their draconic bloodlust on a successful 'Jump' attack and successfully dealing damage, the user my use an Free action to drain their Target of 4 SP and 4 MP per tile traveled using their Ã¢â‚¬ËœJumpÃ¢â‚¬â„¢ attack. This is an automatic hit, but requires the initial Jump to have hit it's target. (-10 SP)"
+					desc="The Dragoon's Bloodlust is displayed in how deep their spear sinks into their target. Invigorating their draconic bloodlust on a successful 'Jump' attack and successfully dealing damage, the user my use an Free action to drain their Target of 4 SP and 4 MP per tile traveled using their â€˜Jumpâ€™ attack. This is an automatic hit, but requires the initial Jump to have hit it's target. (-10 SP)"
 				BarrelRoll
 					name="Barrel Roll"
 					rank="C"
@@ -2578,7 +4844,7 @@
 					atype="weapon"
 					mcost=15
 					costtype="Stamina"
-					desc="A lesser version of the DragoonÃ¢â‚¬â„¢s signature Jump ability. They are able to quickly flip directly above their target and swing their weapon, or use this swing when coming downward to strike their target. The swinging action transfers the kinetic energy that would otherwise deal serious damage to their target back at them, sending them upward. Inflict half the damage onto the target and sends the user into the air at half their base Ã¢â‚¬ËœJumpÃ¢â‚¬â„¢ movement action height. If used while already Airborne, deals half of a standard JumpÃ¢â‚¬â„¢s bonus damage, before knocking the dragoon back up at half the height they descended from. Counts as a Movement Action, Action of Opportunity cannot be activated against it. (-15 SP)"
+					desc="A lesser version of the Dragoonâ€™s signature Jump ability. They are able to quickly flip directly above their target and swing their weapon, or use this swing when coming downward to strike their target. The swinging action transfers the kinetic energy that would otherwise deal serious damage to their target back at them, sending them upward. Inflict half the damage onto the target and sends the user into the air at half their base â€˜Jumpâ€™ movement action height. If used while already Airborne, deals half of a standard Jumpâ€™s bonus damage, before knocking the dragoon back up at half the height they descended from. Counts as a Movement Action, Action of Opportunity cannot be activated against it. (-15 SP)"
 				VorpalThrust
 					element="Physical"
 					name="Vorpal Thrust"
@@ -3644,7 +5910,7 @@ obj
 					element="Bio"
 					attack_roll_damage_dice = FALSE
 					attack_roll_damage_exact = 0
-					desc="The creature creates an area of goop-like substance, slowing anything within it that isnÃ¢â‚¬â„¢t a Flan. While in the substance, creatures and playersÃ¢â‚¬â„¢ tile movement is reduced by two tiers. This Ã¢â‚¬ËœlakeÃ¢â‚¬â„¢ has a duration of five turns. (-20 Mana. 5x5 AoE.) (BLU)"
+					desc="The creature creates an area of goop-like substance, slowing anything within it that isnâ€™t a Flan. While in the substance, creatures and playersâ€™ tile movement is reduced by two tiers. This â€˜lakeâ€™ has a duration of five turns. (-20 Mana. 5x5 AoE.) (BLU)"
 				WaterGun
 					element="Water"
 					name="Water Gun"
@@ -3655,7 +5921,7 @@ obj
 					range=" 6 tiles."
 					damsource="wis"
 					mcost=15
-					desc="The creature fires a bolt of water from itÃ¢â‚¬â„¢s mouth, which explodes on contact and inflicts 'Wet'. (Damage: 2d12+WIS Water | Magical Attack Roll, Inflicts Wet on hit. -15 Mana.) (BLU)"
+					desc="The creature fires a bolt of water from itâ€™s mouth, which explodes on contact and inflicts 'Wet'. (Damage: 2d12+WIS Water | Magical Attack Roll, Inflicts Wet on hit. -15 Mana.) (BLU)"
 				MesmaBlade
 					element="General"
 					name="Mesma Blade"
@@ -3671,7 +5937,7 @@ obj
 				ShellDefense
 					name="Shell Defense"
 					rank="C"
-					desc="The creature coats its own or an allyÃ¢â‚¬â„¢s body in a coat of magic giving it a similar effect to protect, granting 10 Physical Damage Reduction, which lasts for 3 turns. (8 tile range, -25 Mana.) (BLU)"
+					desc="The creature coats its own or an allyâ€™s body in a coat of magic giving it a similar effect to protect, granting 10 Physical Damage Reduction, which lasts for 3 turns. (8 tile range, -25 Mana.) (BLU)"
 				Reflect
 					rank="C"
 					desc="The creature erects a barrier around itself and one ally that is capable of reflecting one attack, melee or magic back at the attacker, then dissipating. Counts as a positive status effect. (-30 Mana) (BLU)"
@@ -4323,8 +6589,8 @@ obj
 				PoisonCloud
 					name="Poison Cloud"
 					rank="A"
-					desc="Scarmiglione generates a cloud of poison. The cloud eats away and degrades anything within it like an acid. Creatures who start their turn within the cloud take 5d10 poison damage, and are inflicted with Poison. As a bonus action, Scarmiglione is capable of moving the cloudÃ¢â‚¬â„¢s epicenter up to 3 tiles, at the cost of 5 MP - the cloud lasts for 5 rounds. (-70 Mana.)"
+					desc="Scarmiglione generates a cloud of poison. The cloud eats away and degrades anything within it like an acid. Creatures who start their turn within the cloud take 5d10 poison damage, and are inflicted with Poison. As a bonus action, Scarmiglione is capable of moving the cloudâ€™s epicenter up to 3 tiles, at the cost of 5 MP - the cloud lasts for 5 rounds. (-70 Mana.)"
 				CorruptEarth
 					name="Corrupt Earth"
 					rank="B"
-					desc="Lich generates foul corruption, with the epicenter being a tile within 8 tiles of LichÃ¢â‚¬â„¢s location. The ground in a 7x7 area becomes extremely dangerous, dealing 4d12 damage to any creature standing within the area - and inflicting poison to those who are currently in contact with it. Corrupted Earth lasts for 4 rounds. (-70 Mana.)"
+					desc="Lich generates foul corruption, with the epicenter being a tile within 8 tiles of Lichâ€™s location. The ground in a 7x7 area becomes extremely dangerous, dealing 4d12 damage to any creature standing within the area - and inflicting poison to those who are currently in contact with it. Corrupted Earth lasts for 4 rounds. (-70 Mana.)"
