@@ -3,11 +3,10 @@
  *
  * All herb and plant materials for alchemy, cooking, and chocobo care.
  * Herbs are gathered from farming nodes and wild plants.
+ *
+ * Tag macros defined in __DEFINES/materials.dm:
+ *   HERB_TAGS, GREENS_TAGS, CARROT_TAGS, GRASS_TAGS
  */
-
-#define HERB_TAGS list("herb", "alchemy", "cooking")
-#define GREENS_TAGS list("herb", "chocobo", "feed")
-#define CARROT_TAGS list("herb", "chocobo", "cooking")
 
 obj/item/material/herb
 	materialCategory = MATERIAL_CATEGORY_HERB

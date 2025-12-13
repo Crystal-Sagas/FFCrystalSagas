@@ -8,3 +8,6 @@ obj
 // Base item variables for crafting
 obj/item
 	var/weptier   // Tier of weapon/armor (Bronze, Iron, Steel, Mythril, Adamantine, etc.)
+	/// Material tags for crafting/synthesis systems - list of strings
+	/// Use helper procs in _HELPERS/materials.dm to query and manipulate
+	var/list/materialTags

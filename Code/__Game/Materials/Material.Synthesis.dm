@@ -3,13 +3,11 @@
  *
  * All synthesis materials including gems, monster drops, and crafting components.
  * These are used in advanced crafting, enchanting, and alchemy.
+ *
+ * Tag macros defined in __DEFINES/materials.dm:
+ *   SYNTHESIS_TAGS, GEM_TAGS, COMPONENT_TAGS, MONSTER_DROP_TAGS, MAGIC_TAGS
+ *   Elemental gem tags: FIRE_GEM_TAGS, ICE_GEM_TAGS, etc.
  */
-
-#define SYNTHESIS_TAGS list("synthesis", "crafting")
-#define GEM_TAGS list("gem", "enchanting", "synthesis")
-#define COMPONENT_TAGS list("component", "crafting", "tailoring")
-#define MONSTER_DROP_TAGS list("monster_drop", "synthesis", "alchemy")
-#define MAGIC_TAGS list("magic", "alchemy", "enchanting")
 
 obj/item/material/synthesis
 	materialCategory = MATERIAL_CATEGORY_SYNTHESIS

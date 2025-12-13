@@ -353,6 +353,7 @@
 #include "Code\__Game\UI\MainMenu\MainMenu.Topic.dm"
 #include "Code\_HELPERS\_core.dm"
 #include "Code\_HELPERS\logging.dm"
+#include "Code\_HELPERS\materials.dm"
 #include "Code\_HELPERS\time.dm"
 #include "Code\_HELPERS\types.dm"
 #include "Code\_HELPERS\view.dm"

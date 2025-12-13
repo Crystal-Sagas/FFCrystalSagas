@@ -3,9 +3,10 @@
  *
  * All ore materials for smithing and crafting.
  * Ores can be refined into ingots for equipment crafting.
+ *
+ * Tag macros defined in __DEFINES/materials.dm:
+ *   ORE_TAGS, PRECIOUS_ORE_TAGS, ADVANCED_ORE_TAGS
  */
-
-#define ORE_TAGS list("ore", "smithing", "smelting")
 
 obj/item/material/ore
 	materialCategory = MATERIAL_CATEGORY_ORE
