@@ -216,59 +216,10 @@ mob
 	return I
 
 
+//? Saveworld() and Loadworld() are now defined in Code/__Framework/Save/WorldSave.System.dm
+//  They save to Data/World/ directory with proper organization and automatic migration from legacy saves
+
 proc
-	Saveworld()
-		set background = TRUE
-		Save_Ban()
-		SavePerk()
-		world<<output("<small>Server: Saving Objects...","icout")
-		var/Amount=0
-		var/E=1
-		var/savefile/F=new("Data/World/File[E]")
-		var/list/Types=new
-		for(var/obj/A in world) if(A.Savable==1)
-			A.savedx=A.x
-			A.savedy=A.y
-			A.savedz=A.z
-			Types+=A
-			Amount+=1
-			if(Amount % 250 == 0)
-				F["Types"]<<Types
-				E++
-				F=new("Data/World/File[E]")
-				Types=new
-				sleep(1)  // Yield periodically to avoid infinite loop detection
-		if(Amount % 250 != 0)
-			F["Types"]<<Types
-		// Clean up any extra old save files beyond what we just wrote
-		E++
-		while(fexists("Data/World/File[E]"))
-			fdel("Data/World/File[E]")
-			world<<"<small>Server: Objects DEBUG system check: extra objects file deleted!"
-			E++
-		world<<output("<small>Server: Objects Saved([Amount]).","icout")
-		world<<output("World has been succesfully saved :)","oocout")
-
-
-
-	Loadworld()
-		set background = TRUE
-		world<<output("<small>Server: Loading Items...","icout")
-		var/amount=0
-		var/filenum=0
-		while(TRUE)
-			filenum++
-			if(!fexists("Data/World/File[filenum]"))
-				break
-			var/savefile/F=new("Data/World/File[filenum]")
-			var/list/L=new
-			F["Types"]>>L
-			for(var/obj/A in L)
-				amount+=1
-				A.loc=locate(A.savedx,A.savedy,A.savedz)
-			sleep(1)  // Yield between files to avoid infinite loop detection
-		world<<output("<small>Server: Items Loaded ([amount]).","icout")
-
 	Bluemageint(var/mob/m)
 		alert("As a blue mage you get a choice of up to three blue mages abilities from the start.")
 		var/list/choices=list("Photosynthetic Wave","Seed","Geezard Claw","Goblin Strike","Poison Powder","Silver Fang","Mu Claw","Gelantinous Lake","Water Gun","Mesma Blade")

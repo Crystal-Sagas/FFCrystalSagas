@@ -6,13 +6,9 @@ var
 
 var/list/Bans=new
 
-proc/Save_Ban()
-	var/savefile/S=new("Ban Save")
-	S["Bans"]<<Bans
-proc/Load_Ban()
-	if(fexists("Ban Save"))
-		var/savefile/S=new("Ban Save")
-		S["Bans"]>>Bans
+// NOTE: Save_Ban() and Load_Ban() are now defined in Code/__Framework/Save/WorldSave.System.dm
+// They save to Data/World/Bans.sav and automatically migrate from the legacy "Ban Save" file
+
 atom
 	proc
 		FormatValue(A)

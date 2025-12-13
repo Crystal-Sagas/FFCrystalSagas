@@ -92,110 +92,98 @@ var/global/list/bestiary = list()
 	initBestiary()
 
 // ===== SAVE PROCS =====
+// NOTE: These are legacy save procs that save to root directory
+// The new save system in Code/__Framework/Save/WorldSave.System.dm
+// handles saving to Data/World/Archives/ with automatic migration
 
 /**
  * Saves the perk archive to file
+ * @deprecated Use savePerksArchive() for proper Data folder saving
  */
 /proc/savePerks()
-	var/savefile/saveFile = new("Perks")
-	saveFile["Perks"] << perklist
+	savePerksArchive()
 
 /**
  * Saves the weapon archive to file
+ * @deprecated Use saveWeaponsArchive() for proper Data folder saving
  */
 /proc/saveWeapons()
-	var/savefile/saveFile = new("Weapons")
-	saveFile["Weapons"] << weplist
+	saveWeaponsArchive()
 
 /**
  * Saves the material archive to file
+ * @deprecated Use saveMaterialsArchive() for proper Data folder saving
  */
 /proc/saveMaterials()
-	var/savefile/saveFile = new("Materials")
-	saveFile["Items"] << materiallist
+	saveMaterialsArchive()
 
 /**
  * Saves the recipe archive to file
+ * @deprecated Use saveRecipesArchive() for proper Data folder saving
  */
 /proc/saveRecipes()
-	var/savefile/saveFile = new("Recipes")
-	saveFile["Recipes"] << recipelist
+	saveRecipesArchive()
 
 /**
  * Saves the summon archive to file
+ * @deprecated Use saveSummonsArchive() for proper Data folder saving
  */
 /proc/saveSummons()
-	var/savefile/saveFile = new("Summons")
-	saveFile["Summons"] << summonlist
+	saveSummonsArchive()
 
 /**
  * Saves the bestiary archive to file
+ * @deprecated Use saveBestiaryArchive() for proper Data folder saving
  */
 /proc/saveBestiary()
-	var/savefile/saveFile = new("Bestiary")
-	saveFile["Bestiary"] << bestiary
+	saveBestiaryArchive()
 
 // ===== LOAD PROCS =====
+// NOTE: These are legacy load procs that load from root directory
+// The new save system in Code/__Framework/Save/WorldSave.System.dm
+// handles loading from Data/World/Archives/ with automatic fallback to legacy locations
 
 /**
  * Loads the perk archive from file
+ * @deprecated Use loadPerksArchive() for proper Data folder loading with fallback
  */
 /proc/loadPerks()
-	if(!fexists("Perks"))
-		return FALSE
-	var/savefile/saveFile = new("Perks")
-	saveFile["Perks"] >> perklist
-	return TRUE
+	return loadPerksArchive()
 
 /**
  * Loads the weapon archive from file
+ * @deprecated Use loadWeaponsArchive() for proper Data folder loading with fallback
  */
 /proc/loadWeapons()
-	if(!fexists("Weapons"))
-		return FALSE
-	var/savefile/saveFile = new("Weapons")
-	saveFile["Weapons"] >> weplist
-	return TRUE
+	return loadWeaponsArchive()
 
 /**
  * Loads the material archive from file
+ * @deprecated Use loadMaterialsArchive() for proper Data folder loading with fallback
  */
 /proc/loadMaterials()
-	if(!fexists("Materials"))
-		return FALSE
-	var/savefile/saveFile = new("Materials")
-	saveFile["Materials"] >> materiallist
-	return TRUE
+	return loadMaterialsArchive()
 
 /**
  * Loads the recipe archive from file
+ * @deprecated Use loadRecipesArchive() for proper Data folder loading with fallback
  */
 /proc/loadRecipes()
-	if(!fexists("Recipes"))
-		return FALSE
-	var/savefile/saveFile = new("Recipes")
-	saveFile["Recipes"] >> recipelist
-	return TRUE
+	return loadRecipesArchive()
 
 /**
  * Loads the summon archive from file
+ * @deprecated Use loadSummonsArchive() for proper Data folder loading with fallback
  */
 /proc/loadSummons()
-	if(!fexists("Summons"))
-		return FALSE
-	var/savefile/saveFile = new("Summons")
-	saveFile["Summons"] >> summonlist
-	return TRUE
+	return loadSummonsArchive()
 
 /**
  * Loads the bestiary archive from file
+ * @deprecated Use loadBestiaryArchive() for proper Data folder loading with fallback
  */
 /proc/loadBestiary()
-	if(!fexists("Bestiary"))
-		return FALSE
-	var/savefile/saveFile = new("Bestiary")
-	saveFile["Bestiary"] >> bestiary
-	return TRUE
+	return loadBestiaryArchive()
 
 /**
  * Loads all game data archives from files

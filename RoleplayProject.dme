@@ -184,6 +184,7 @@
 #include "Code\__Framework\Save\Players.dm"
 #include "Code\__Framework\Save\Savefile.Defines.dm"
 #include "Code\__Framework\Save\Savefile.System.dm"
+#include "Code\__Framework\Save\WorldSave.System.dm"
 #include "Code\__Framework\Service\Service.dm"
 #include "Code\__Framework\Service\Service.Registry.dm"
 #include "Code\__Framework\Stat\Stat.Group.dm"

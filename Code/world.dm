@@ -21,32 +21,14 @@
 
 	Addcustoms()
 	Addbuildables()
-	Loadworld()
-	Load_Ban()
-	if(fexists("Materials"))
-		Loadmaterials()
-	else
-		Initcraft()
-	if(fexists("Perks"))
-		LoadPerk()
-	else
-		Initperk()
-	if(fexists("Weapons"))
-		LoadWeps()
-	else
-		Initwep()
-	if(fexists("Recipes"))
-		Loadrecipes()
-	else
-		Initrecipes()
-	if(fexists("Summons"))
-		Loadsummons()
-	else
-		Initsummons()
-	if(fexists("Bestiary"))
-		Loadbestiary()
-	else
-		Initbestiary()
+
+	//? Load world data using new save system
+	//  This loads bans, archives (perks, weapons, materials, recipes, summons, bestiary),
+	//  and world objects. Falls back to legacy save locations and initializes from code if needed.
+	loadBans()
+	loadAllArchives()
+	loadWorldObjects()
+
 	spawn Time()
 	spawn DayLooper()
 	// init global perk shop
