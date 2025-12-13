@@ -11,7 +11,6 @@
 	jobRequired = "Machinist"
 	scalingStat = "DEX"
 	damageType = "physical"
-	costType = "stamina"
 	actionType = "standard"
 
 /obj/Ability/Job/Machinist/RunCommand
@@ -44,8 +43,7 @@
 	desc = "The Machinist overloads their current weapon, and then attacks a target creature. This attack deals 2d10+20 additional damage, and ignores damage reduction. After utilizing this ability, that weapon malfunctions and cannot be used for 5 rounds. Costs 50 SP."
 	rank = "C"
 	staminaCost = 50
-	diceCount = 2
-	diceSides = 10
+	baseDamage = 11
 	scalingStat = "INT"
 	actionType = "weapon"
 
@@ -62,14 +60,12 @@
 	desc = "The Machinist points at a target, releasing a tracking laser on their location. The target is then assailed, and barraged by a flux of missiles, as a Reflex saving throw. On a failure, the creature is dealt full damage and knocked back 5 tiles in a direction of the Machinist's choosing, or half damage and no KB on a success. Costs 60 SP."
 	rank = "B"
 	staminaCost = 60
-	damageMin = 40
-	damageMax = 50
 	scalingStat = "INT"
 	element = "Metal"
 	range = 8
 	aoeSize = "3x3"
 	saveType = "Reflex"
-	saveDC = 14
+	baseDC = 14
 	actionType = "save"
 
 /obj/Ability/Job/Machinist/SelfDestruct
@@ -77,7 +73,6 @@
 	desc = "The Machinist activates the Self Destruct protocol for a Robot, permanently destroying it - and dealing 150 damage to any creatures within range, or half as much on a successful save. Costs 100 SP."
 	rank = "B"
 	staminaCost = 100
-	damageExact = 150
 	element = "Fire"
 	aoeSize = "3x3"
 	actionType = "save"
@@ -87,15 +82,12 @@
 	desc = "The Machinist pulls out a laser pointer, and designates a specific location, sending a signal to an orbital laser. This laser then bares down at a tile in view, prompting a Reflex saving throw, and dealing full damage on a failure, or half on a success. This orbital laser can then be moved for the cost of 20 additional SP, and the Machinist's bonus action on their turn, for a maximum of 3 rounds. Force Damage. Costs 50 initial SP."
 	rank = "A"
 	staminaCost = 50
-	damageMin = 40
-	damageMax = 50
 	scalingStat = "INT"
 	element = "Laser"
 	aoeSize = "3x3"
 	saveType = "Reflex"
-	saveDC = 15
+	baseDC = 15
 	actionType = "save"
-	sustainable = TRUE
 
 // ============================================================================
 // PALADIN ABILITIES
@@ -114,8 +106,7 @@
 	desc = "As a bonus action, the individual creates an aura that reflects and mitigates 1d12 damage (Holy) back at targets that strikes it with a Melee Attack. (Cost: 10 MP | Lasts 3 Rounds.)"
 	rank = "E"
 	manaCost = 10
-	diceCount = 1
-	diceSides = 12
+	baseDamage = 7
 	duration = 3
 	actionType = "bonus"
 
@@ -126,20 +117,17 @@
 	manaCost = 10
 	duration = 3
 	actionType = "bonus"
-	isInfusion = TRUE
 
 /obj/Ability/Job/Paladin/BracingBash
 	name = "Bracing Bash"
 	desc = "The Paladin stands their ground, raising their shield or weapon, then delivers a swift powerful blow with it. | Bonus Action (Damage: Weapon Damage + 1d8 + CON ) | Melee Weapon Attack Roll | (Cost: 15 SP)"
 	rank = "D"
 	staminaCost = 15
-	diceCount = 1
-	diceSides = 8
+	baseDamage = 5
 	scalingStat = "CON"
 	element = "Physical"
 	range = 1
 	actionType = "bonus"
-	costType = "stamina"
 
 /obj/Ability/Job/Paladin/Flash
 	name = "Flash"
@@ -150,30 +138,25 @@
 	range = 2
 	aoeSize = "2 tile radius"
 	saveType = "Fortitude"
-	saveDC = 12
+	baseDC = 12
 	actionType = "save"
-	statusEffect = "Blind"
-	statusDuration = 4
 
 /obj/Ability/Job/Paladin/ShieldOfLight
 	name = "Shield of Light"
 	desc = "The Paladin holds up their weapon in front of them, spinning it quickly while infusing it with Holy magic; creating a magical disk to protect the Paladin from harm. This disk may then be potentially used to launch a counter attack. | As a Reaction upon being attacked, the Paladin is granted 50 Temp HP in the form of shield. If the Shield is not broken, the Paladin launches it as a Ranged Attack Roll (Damage: 1d12 + CHA ) with a +2 to PAB as a Free Action. The Shield then dissipates. (Cost: 20 MP) | This can be used with Cover | )"
 	rank = "C"
 	manaCost = 20
-	diceCount = 1
-	diceSides = 12
+	baseDamage = 7
 	scalingStat = "CHA"
 	range = 6
 	hitBonus = 2
 	actionType = "reaction"
-	tempHP = 50
 
 /obj/Ability/Job/Paladin/Cover
 	name = "Cover"
 	desc = "The user, while in the heat of battle, valiantly jumps in front of their allies, taking an attack that was otherwise meant for them. | Once per round as a Free Action, and then as a Reaction for any subsequent usages that round; the Paladin may take an attack for an ally. Teleporting in front of them, then returning back to their position afterwards. The Paladin reduces the damage of the attack by a flat 15 points. (To a minimum of 1). If the Paladin attempts to block a Multi-Hit Attack or an AOE, the Paladin takes ALL instances of damage from every party member and is assumed to have failed their save against the attack. The total is added together BEFORE any forms of DR are applied. (IE. The 15 given by Cover itself.) (Cost: 10 MP | No Cooldown. Stacks with all other Damage Mitigation Reactions.)"
 	rank = "C"
 	manaCost = 10
-	damageReduction = 15
 	actionType = "reaction"
 
 /obj/Ability/Job/Paladin/HolyBarrier
@@ -181,43 +164,33 @@
 	desc = "The individual creates a barrier of Magic around themselves using their Holy Magic. | As a Standard Action, the Paladin applies the 'Bubble' status to themselves with an additional 15 HP applied to it. The user is considered Immobilized whilst this ability is active. (Cost: 40 MP)"
 	rank = "C"
 	manaCost = 40
-	statusEffect = "Bubble"
-	statusBonusHP = 15
 
 /obj/Ability/Job/Paladin/Supercharge
 	name = "Supercharge"
 	desc = "The Paladin charges forward, shield or weapon raised; ready to knock down anything that stands within their path. | As a Movement Action, the Paladin is able to rush forward and make an attack; however must be AT LEAST 6 tiles away to use this ability. (Damage: Weapon Damage + 2d12 + CON + Additional damage to the users Physical DR) | Weapon Attack Roll | (Cost: 40 SP ) |"
 	rank = "B"
 	staminaCost = 40
-	diceCount = 2
-	diceSides = 12
+	baseDamage = 13
 	scalingStat = "CON"
 	actionType = "movement"
-	costType = "stamina"
-	minRange = 6
 
 /obj/Ability/Job/Paladin/PassageOfArms
 	name = "Passage of Arms"
 	desc = "The individual kneels down, concentrating Holy Magic around them; causing them to sprout magical wings of Holy energy to protect themselves and their allies. | As a Standard Action, the Paladin creates a 3 Tile Cone behind them, granting the Paladin and any target behind them a bonus of +10 DR. The Paladin sacrifices their Standard, Bonus and Movement actions while sustaining this Stance, however are able to use two Paladin Abilities (Except Cover) per turn as Free Actions and may still use Reactions. (Cost: 25 MP to activate | 25 MP per turn to sustain. )"
 	rank = "B"
 	manaCost = 25
-	sustainCost = 25
 	aoeSize = "3 tile cone"
-	damageReduction = 10
-	isStance = TRUE
 
 /obj/Ability/Job/Paladin/Crossover
 	name = "Crossover"
 	desc = "The individual infuses their weapon temporarily with Holy Magic and strikes three times at their target, releasing that energy with each strike into the target upon hit. | As a Standard action, the Paladin makes 3 Melee Weapon Attacks; for each successful hit, the enemy gains a stack of 'Holy Energy' (Roll 1d10 (Holy) for each stack). If after 3 rounds, the Paladin is still above 0 HP, these stacks explode for the total amount rolled. ( Damage: Weapon Damage + 1d8 + CHA (Holy) ) | Melee Weapon Attack Roll | (Cost: 65 SP)"
 	rank = "A"
 	staminaCost = 65
-	diceCount = 1
-	diceSides = 8
+	baseDamage = 5
 	scalingStat = "CHA"
 	range = 1
 	attackCount = 3
 	actionType = "weapon"
-	costType = "stamina"
 
 /obj/Ability/Job/Paladin/MinusStrike
 	name = "Minus Strike"
@@ -227,20 +200,15 @@
 	range = 1
 	cooldown = 2
 	actionType = "weapon"
-	costType = "stamina"
-	scaleDamageMissingHP = TRUE
 
 /obj/Ability/Job/Paladin/Oversoul
 	name = "Oversoul"
 	desc = "The individual imbues their weapon with Holy Light, then proceeds to charge down an enemy, making a well aimed blow directly at the target's very soul. Upon landing the blow, the target is infused with Holy Magic, causing swords of light to explode from their soul in a blast of bright light. | Standard Action (Damage: Weapon Damage + 2d10 + CHA (Holy) | Melee Weapon Attack Roll | Deals 30% of target's CURRENT HP on hit. | (Cost: None | Once per day. ) |"
 	rank = "S"
-	diceCount = 2
-	diceSides = 20
+	baseDamage = 21
 	scalingStat = "CHA"
 	range = 1
 	actionType = "weapon"
-	percentCurrentHP = 30
-	usesPerDay = 1
 
 // ============================================================================
 // DARK KNIGHT ABILITIES
@@ -252,7 +220,6 @@
 	scalingStat = "STR"
 	damageType = "physical"
 	element = "Dark"
-	costType = "mana"
 	actionType = "standard"
 
 /obj/Ability/Job/DarkKnight/BloodWeapon
@@ -260,15 +227,12 @@
 	desc = "This individual can cut themselves with their own blade allowing the blood to form a spiritual connection with the user. The more blood they spend, the more pleased their weapon becomes - and the more fierce in turn. | As a Standard Action the Dark Knight grants themselves 'Darkness' stacks that grant a +4 to PDB for every 10 HP spent; up to a maximum equal to the Dark Knight's CON Modifier. (Lasts 5 turns.)|"
 	rank = "E"
 	duration = 5
-	hpCostPer10 = TRUE
-	stackType = "Darkness"
 
 /obj/Ability/Job/DarkKnight/Intimidate
 	name = "Intimidate"
 	desc = "The Dark Knight slams their blade into the ground, beginning to beat at their chest with glowing eyes, forcing a nearby foe to temporarily avoid them. | As a Bonus Action, choose a single target. This target may not attack the Dark Knight until the start of the Dark Knight's next turn. (Cost: 20 SP ) |"
 	rank = "D"
 	staminaCost = 20
-	costType = "stamina"
 	actionType = "bonus"
 
 /obj/Ability/Job/DarkKnight/Taunt
@@ -276,20 +240,17 @@
 	desc = "As a master of negative emotions, the Dark Knight channels said energy combined with Dark Magic to force a single target into combat with them and them alone. | As a Standard Action, the Dark Knight selects a single target. This target may only attack the Dark Knight. This effect ends if the Dark Knight attacks another creature, uses an ability on another creature, or chooses to no longer sustain the Taunt. (Cost: 20 SP to activate, 10 SP and a Free Action to maintain) |"
 	rank = "D"
 	staminaCost = 20
-	sustainCost = 10
-	costType = "stamina"
 
 /obj/Ability/Job/DarkKnight/DarkCannon
 	name = "Dark Cannon"
 	desc = "Fire orbs of darkness that swirl forward and back to the user, which grab at a target's soul in order to drag them closer with a dark, magnetic force when successfully landed. (Damage: 1d6+STR dark | 5 Tile range, prompts a fortitude save of (12+Rank Bonus+STR), dealing full damage and pulling the target towards the caster by 2 tiles on a failure, or half damage on a success. - 10 Mana)"
 	rank = "D"
 	manaCost = 10
-	diceCount = 1
-	diceSides = 6
+	baseDamage = 4
 	scalingStat = "STR"
 	range = 6
 	saveType = "Fortitude"
-	saveDC = 12
+	baseDC = 12
 	actionType = "save"
 	pullDistance = 2
 
@@ -297,7 +258,6 @@
 	name = "Blazing Blood"
 	desc = "As a bonus action the user heats their blood with dark energy to the point it is boiling. When this ability is active and they receive damage through physical attacks they receive an additional 1d8 damage. Upon taking damage, targets within a 3 tile radius around the user also take 2d6 dark damage from the boiling blood. Lasts until deactivated. (Costs 10 Mana per turn to sustain.)"
 	rank = "D"
-	sustainCost = 10
 	actionType = "bonus"
 	aoeSize = "3 tile radius"
 	isToggle = TRUE
@@ -309,9 +269,7 @@
 	manaCost = 20
 	duration = 3
 	actionType = "bonus"
-	isInfusion = TRUE
 	lifestealPercent = 50
-	lifestealCap = 40
 
 /obj/Ability/Job/DarkKnight/SoulEater
 	name = "Soul Eater"
@@ -319,22 +277,15 @@
 	rank = "C"
 	duration = 5
 	actionType = "bonus"
-	hpCostPerTurn = 10
-	stackType = "SoulEater"
-	stackCap = 4
 
 /obj/Ability/Job/DarkKnight/DarkFlame
 	name = "Dark Flame"
 	desc = "While the Dark Knight has infused it's weapon with the effects of Blood Weapon, they may stab the ground, causing a chain eruption of black flames that rapidly travels towards their target. These explosions can travel airborne.| Standard Action ( Weapon Damage + 4d4 (Dark) | Weapon Attack Roll | 6 Tile Range | Deals an additional 1d6 (Fire) per 'Darkness' stack, consuming them in the process | Cost: 30 MP )|"
 	rank = "C"
 	manaCost = 30
-	diceCount = 4
-	diceSides = 4
+	baseDamage = 10
 	range = 6
 	actionType = "weapon"
-	consumesStacks = "Darkness"
-	bonusDicePerStack = 1
-	bonusDiceSidesPerStack = 6
 
 /obj/Ability/Job/DarkKnight/ImmolateSelf
 	name = "Immolate Self"
@@ -342,10 +293,6 @@
 	rank = "C"
 	manaCost = 20
 	actionType = "bonus"
-	statusEffect = "Shadow Burn"
-	hpPercentCostPerTurn = 3
-	pdbBonus = 3
-	elementOverride = "Fire"
 	isToggle = TRUE
 
 /obj/Ability/Job/DarkKnight/WeightOfTheWorld
@@ -354,9 +301,6 @@
 	rank = "C"
 	manaCost = 20
 	actionType = "bonus"
-	statusEffect = "Shadow Burden"
-	movementPenalty = 2
-	pdbBonus = 3
 	isToggle = TRUE
 
 /obj/Ability/Job/DarkKnight/FrozenHeart
@@ -365,10 +309,6 @@
 	rank = "C"
 	manaCost = 20
 	actionType = "bonus"
-	statusEffect = "Shrouded Frostbite"
-	hpPercentCostPerTurn = 3
-	pdbBonus = 3
-	elementOverride = "Ice"
 	isToggle = TRUE
 
 /obj/Ability/Job/DarkKnight/ExhaustedSoul
@@ -378,55 +318,39 @@
 	manaCost = 10
 	staminaCost = 10
 	actionType = "bonus"
-	statusEffect = "Exhausted Soul"
-	manaCostPerTurn = 10
-	staminaCostPerTurn = 10
-	pdbBonus = 3
-	pabBonus = 2
-	mabBonus = 2
 	isToggle = TRUE
 
 /obj/Ability/Job/DarkKnight/SaltTheEarth
 	name = "Salt the Earth"
 	desc = "The Dark Knight wounds themselves with their weapon, causing darkness infused blood to spew into the immediate area, coating it in a sickly black miasma. | As a Standard Action, the Dark Knight spends 10 to 50 HP to place a 5x5 tile AOE centered on themselves, which deals 1d6 per 10 HP spent to a maximum of 5d6 damage (Dark) to any enemies who start their turns within the AOE. (Lasts 5 turns.)"
 	rank = "C"
-	hpCostMin = 10
-	hpCostMax = 50
-	diceCount = 1
-	diceSides = 6
-	dicePerHP = 10
-	maxDice = 5
+	baseDamage = 4
 	aoeSize = "5x5"
 	duration = 5
-	isAoEZone = TRUE
 
 /obj/Ability/Job/DarkKnight/DarkNebula
 	name = "Dark Nebula"
 	desc = "The Dark Knight holds out their hand,to fire a ball of dark magic, which upon contact with the ground, expands outwards into a globe like shape, drawing in their enemies before exploding in a powerful shockwave of darkness. | Standard Action ( 5d10 + WIS Damage (Dark) + 1d10 additional damage per Moxie Stack ) | 3x3 tile Radius within 7 tiles of the Caster | Fortitude Save ( DC13 + Rank Bonus + WIS) | Targets are pulled to the center of the AOE and take full damage on a Failed Save, and half damage on a Successful one.| (Cost: 40 MP)"
 	rank = "B"
 	manaCost = 40
-	diceCount = 5
-	diceSides = 10
+	baseDamage = 28
 	scalingStat = "WIS"
 	range = 7
 	aoeSize = "3x3"
 	saveType = "Fortitude"
-	saveDC = 13
+	baseDC = 13
 	actionType = "save"
-	pullToCenter = TRUE
 
 /obj/Ability/Job/DarkKnight/SoulRender
 	name = "Soul Render"
 	desc = "The Dark Knight surrounds their weapon in dark mana, causing it to extend along it into a long blade. Which upon striking their target, drains a substantial amount of their life force. | Standard Action ( Weapon Damage + 4d10 + STR Damage ) | 3 Tile Range |  Restores half of damage dealt. This is an On-Hit Lifesteal Proc. Stacks with Life Eater. | (Cap: 50HP | Cost: 60 MP ) |"
 	rank = "B"
 	manaCost = 60
-	diceCount = 4
-	diceSides = 10
+	baseDamage = 22
 	scalingStat = "STR"
 	range = 3
 	actionType = "weapon"
 	lifestealPercent = 50
-	lifestealCap = 50
 
 /obj/Ability/Job/DarkKnight/SeeYouInHell
 	name = "See you in Hell"
@@ -435,37 +359,27 @@
 	manaCost = 120
 	range = 2
 	actionType = "free"
-	triggerOnKillingBlow = TRUE
-	executeThreshold = 40
 
 /obj/Ability/Job/DarkKnight/SanguineCross
 	name = "Sanguine Cross"
 	desc = "The Dark Knight draws upon their immense power, channeling it into their weapon, to which they slam it into the ground, sending eruptions of darkness in a cross pattern, tearing the ground asunder in its path. | Standard Action (Weapon Damage + 3d12 + STR) | 5 Tile Line in a cross, centered on the caster | Reflex Save (DC:15 + Rank Bonus + STR ) | Deals Full Damage + 1d12 damage (Dark) per 'Darkness' stack, consuming them in the process on a failed save. Deals half damage on a successful save.| (Cost: 80MP)"
 	rank = "A"
 	manaCost = 80
-	diceCount = 3
-	diceSides = 12
+	baseDamage = 20
 	scalingStat = "STR"
 	aoeSize = "5 tile cross"
 	saveType = "Reflex"
-	saveDC = 15
+	baseDC = 15
 	actionType = "weaponsave"
-	consumesStacks = "Darkness"
-	bonusDicePerStack = 1
-	bonusDiceSidesPerStack = 12
 
 /obj/Ability/Job/DarkKnight/MarkOfDarkness
 	name = "Mark of Darkness"
 	desc = "The Dark Knight surrounds their weapon with a pitch black aura that completely obscures the blade and attempts to pierce the target's heart. | As a Standard action, the user attacks their target. On a successful hit, the target takes 10d8 damage (Dark), and is rendered weak to the Dark Element and takes an additional 1d10 damage (Dark) per turn. (Cost: 100MP | Lasts 5 turns )"
 	rank = "S"
 	manaCost = 100
-	diceCount = 10
-	diceSides = 8
+	baseDamage = 45
 	duration = 5
 	actionType = "weapon"
-	appliesWeakness = "Dark"
-	dotDice = 1
-	dotSides = 10
 
 /obj/Ability/Job/DarkKnight/Zeal
 	name = "Zeal"
@@ -473,5 +387,3 @@
 	rank = "S"
 	manaCost = 100
 	actionType = "reaction"
-	grantsIntangible = TRUE
-	physicalImmunity = TRUE

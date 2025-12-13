@@ -6,12 +6,12 @@
  */
 
 /obj/perk/Jobperks/Geomancer
-	jobneed = "Geomancer"
+	jobRequired = "Geomancer"
 	icon = 'Icons/Perk/Geomancer.png'
 
 /obj/perk/Jobperks/Geomancer/Geomancer
 	name = "Geomancer"
-	cat = "Unique"
+	category = "Unique"
 	desc = "Geomancers are one with nature. They are able to sense and immediately recognize any elemental attack coming at them even if it is not in their line of sight - but only if it is a natural element. Natural elements include Fire, Ice, Earth, Wind, Water, and Lightning. In addition, they take half damage from elemental spells, and are entirely immune to the status effects: Burn, Paralyze, Wet, Weakness, Heavy, Squall, Frostbite, and Whorl. +40 HP, +60 MP, +30 SP."
 
 /obj/perk/Jobperks/Geomancer/GuidedSteps

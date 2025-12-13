@@ -3,73 +3,115 @@
  *
  * Base type for all perks, abilities, and techniques.
  * Defines common properties shared by all perks.
+ * Integrates with the combat system through getCombatAction().
  */
 
 /obj/perk
 	//? Perk Identity
-	var/rank        // Perk rank (E, D, C, B, A, S, T1-T6)
-	var/rpcost = 0  // RP cost to acquire
-	var/level = 0   // Perk level
-	var/cat         // Category
-	var/pre         // Prerequisite perk name
-	var/jobneed     // Required job
-	var/ajob        // Advanced job requirement
-	var/magicneed   // Required magic type ("White Magic", "Black Magic", etc.)
-	var/ontree = 0  // Whether this perk is on a skill tree
+	/// Perk rank (E, D, C, B, A, S, T1-T6)
+	var/rank
+	/// RP cost to acquire
+	var/rpcost = 0
+	/// Category for organization
+	var/category
+	/// Prerequisite perk name
+	var/prerequisite
+	/// Required job
+	var/jobRequired
+	/// Advanced job requirement
+	var/advancedJob
+	/// Required magic type ("White Magic", "Black Magic", etc.)
+	var/magicRequired
+	/// Whether this perk is on a skill tree
+	var/onTree = FALSE
 
 	//? Ability Properties
-	var/ability = 0     // Is this an ability?
-	var/technique = 0   // Is this a technique?
-	var/mcost = 0       // Mana/resource cost
-	var/costtype        // Resource type ("Mana", "Stamina")
-	var/atype           // Ability type ("weapon", "standard", "save", "weaponsave")
-	var/ptype           // Power type ("spell")
-	// typing is inherited from /obj (defined in ItemBase.dm)
-	var/npcweapon = 0   // Is this an NPC weapon ability?
-	var/savetype        // Save type for saving throw abilities ("Fortitude", "Reflex", "Will")
+	/// Is this an active ability (vs passive)?
+	var/isAbility = FALSE
+	/// Is this a technique?
+	var/isTechnique = FALSE
+	/// Is this an NPC weapon ability?
+	var/isNpcWeapon = FALSE
+	/// Magic level required (for magic shops)
+	var/magicLevelRequired = 0
 
-	//? Combat Bonuses
-	var/adddam = 0    // Bonus damage
-	var/addhit = 0    // Bonus to hit
-	var/basecheck = 0 // Base check modifier / Save DC
-	var/damsource     // Damage source stat ("str", "INT", "dex", "wis", "con", "cha")
-	var/range         // Range of ability
+	//? Resource Costs
+	/// Mana cost
+	var/manaCost = 0
+	/// Stamina cost
+	var/staminaCost = 0
+	/// HP cost
+	var/hpCost = 0
 
-	//? Dice Roll Properties
-	var/attack_roll_damage_dice = FALSE     // Uses dice for damage
-	var/attack_roll_dice_count = 0          // Number of dice to roll
-	var/attack_roll_dice_sides = 0          // Sides per die
-	var/attack_roll_damage_lower = 0        // Lower bound for damage
-	var/attack_roll_damage_upper = 0        // Upper bound for damage
-	var/attack_roll_damage_exact = 0        // Exact damage (no dice)
-	var/critrange = 20                      // Minimum roll for critical hit
+	//? Combat Properties
+	/// Action type (uses ATYPE_* constants)
+	var/actionType = ATYPE_STANDARD
+	/// Damage type (uses DAMAGE_TYPE_* constants)
+	var/damageType = DAMAGE_TYPE_PHYSICAL
+	/// Scaling stat (uses STAT_* constants)
+	var/scalingStat = STAT_STRENGTH
+	/// Save type for saving throw abilities (uses SAVE_* constants)
+	var/saveType
+	/// Range in tiles
+	var/range = 1
+	/// Element for damage ("Fire", "Ice", "Lightning", etc.)
+	var/element = "Physical"
+
+	//? Damage Properties
+	/// Base damage value
+	var/baseDamage = 0
+
+	//? Attack Roll Properties
+	/// Bonus to hit modifier
+	var/hitBonus = 0
+	/// Base DC for saving throws
+	var/baseDC = 10
+	/// Critical hit range (20 = nat 20 only)
+	var/critRange = 20
+
+	//? Rank-Based Bonuses (applied by initializeByRank)
+	/// Bonus damage from rank
+	var/rankDamageBonus = 0
+	/// Bonus hit from rank
+	var/rankHitBonus = 0
+	/// Bonus DC from rank
+	var/rankDCBonus = 0
+
+	//? Status Effect Properties
+	/// Status effect to apply on hit
+	var/inflicts
+	/// Cleanses a specific status
+	var/cleansesStatus
+	/// Is this a healing ability?
+	var/isHealing = FALSE
+	/// Can revive targets?
+	var/canRevive = FALSE
+	/// Is this green magic?
+	var/isGreenMagic = FALSE
+	/// Is multi-target?
+	var/isMultiTarget = FALSE
 
 	//? Stat Requirements
-	var/stattype = 0        // Has stat requirement?
-	var/stattypedisplay     // Display name of required stat
-	var/statrequirement = 0 // Stat requirement type
-	var/conreq = 0          // Constitution requirement
-	var/strreq = 0          // Strength requirement
-	var/wisreq = 0          // Wisdom requirement
-	var/dexreq = 0          // Dexterity requirement
-	var/chareq = 0          // Charisma requirement
+	/// Strength requirement
+	var/strRequired = 0
+	/// Dexterity requirement
+	var/dexRequired = 0
+	/// Constitution requirement
+	var/conRequired = 0
+	/// Intelligence requirement
+	var/intRequired = 0
+	/// Wisdom requirement
+	var/wisRequired = 0
+	/// Charisma requirement
+	var/chaRequired = 0
 
-	//? Effect Properties
-	var/element = "Physical"
-	var/heal = 0
-	var/cleanse = 0
-	var/monkability = 0
-	var/incompatible = null
-	var/statuseffect
-	var/infusiontype
-	var/dispel = 0
-	var/revive = 0
-	var/greenmagic = 0
-	var/multi = 0
-	var/regen = 0
-	var/refresh = 0
-	var/blu = 0           // Is this a Blue Magic ability?
-	var/list/statBoosts   // Associative list of stat boosts for this perk
+	//? Stat Boosts (for passive perks)
+	/// Associative list of stat boosts this perk grants
+	var/list/statBoosts
+
+	//? Combat Action Cache
+	/// Cached CombatAction for this perk
+	var/datum/CombatAction/cachedAction
 
 /**
  * Perk initialization
@@ -105,17 +147,17 @@
 		if("C")
 			rpcost = 3
 		if("B")
-			addhit += 2
-			basecheck += 1
-			adddam += 15
+			rankHitBonus = 2
+			rankDCBonus = 1
+			rankDamageBonus = 15
 			rpcost = 4
 		if("A")
-			addhit += 3
-			basecheck += 2
-			adddam += 25
+			rankHitBonus = 3
+			rankDCBonus = 2
+			rankDamageBonus = 25
 			rpcost = 8
 		if("S")
-			addhit += 4
-			basecheck += 3
-			adddam += 40
+			rankHitBonus = 4
+			rankDCBonus = 3
+			rankDamageBonus = 40
 			rpcost = 16

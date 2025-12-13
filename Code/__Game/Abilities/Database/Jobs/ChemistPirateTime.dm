@@ -11,7 +11,6 @@
 	jobRequired = "Chemist"
 	icon = 'Icons/Perk/Chemist.png'
 	actionType = "physical"
-	costType = "Stamina"
 	scalingStat = "CON"
 
 /obj/Ability/Job/Chemist/MultiChemical
@@ -34,15 +33,12 @@
 	rank = "B"
 	jobRequired = "Chemist"
 	prerequisite = "Alchemist"
-	addDamage = 15
 	actionType = "save"
 	saveType = "Fortitude"
 	baseDC = 14
 	manaCost = 50
 	range = "5x5 AoE at a tile in view."
-	attackRollDamageDice = TRUE
-	attackRollDiceCount = 4
-	attackRollDiceSides = 12
+	baseDamage = 26
 
 /obj/Ability/Job/Chemist/Transmutation/TransmuteSoil
 	name = "Transmute Soil"
@@ -73,8 +69,7 @@
 	name = "Transmute Flesh"
 	desc = "By transmuting one's life essence into a target's flesh, they may manipulate their bio-mass in order to restore 50+CHA HP, and apply the Regenerate status effect to any creature within range."
 	actionType = "heal"
-	attackRollDiceCount = 50
-	attackRollDiceSides = 1
+	baseDamage = 50
 
 /obj/Ability/Job/Chemist/Transmutation/TransmuteSteel
 	name = "Transmute Steel"
@@ -85,13 +80,11 @@
 	name = "Transmute Energy"
 	desc = "By transmuting one's life essence into a creature's soul, reinvigorating them - and granting them 50 MP and SP in exchange for 50 SP from the caster."
 	actionType = "support"
-	attackRollDamageDice = FALSE
 
 /obj/Ability/Job/Chemist/Transmutation/TransmuteSoul
 	name = "Transmute Soul"
 	desc = "By transmuting one's life essence into a downed creautre, they are able to bring them back from being unconscious, at 50% HP. The Chemist is reduced to 10 HP upon doing so, as they sacrifice an immense amount of their own vitality to do so."
 	actionType = "support"
-	attackRollDamageDice = FALSE
 
 // =============================================================================
 // PIRATE ABILITIES
@@ -102,7 +95,6 @@
 	jobRequired = "Pirate"
 	icon = 'Icons/Perk/Pirate.png'
 	actionType = "physical"
-	costType = "Stamina"
 	element = "Water"
 	scalingStat = "STR"
 
@@ -114,9 +106,6 @@
 	manaCost = 10
 	range = "8 tile range."
 	actionType = "standard"
-	attackRollDamageDice = FALSE
-	attackRollDamageLower = 10
-	attackRollDamageUpper = 15
 
 /obj/Ability/Job/Pirate/BubbleBlade
 	name = "Bubble Blade"
@@ -126,9 +115,6 @@
 	manaCost = 15
 	range = "Melee."
 	actionType = "weapon"
-	attackRollDamageDice = FALSE
-	attackRollDamageLower = 12
-	attackRollDamageUpper = 18
 
 /obj/Ability/Job/Pirate/BubbleBeam
 	name = "Bubble Beam"
@@ -140,9 +126,6 @@
 	actionType = "save"
 	saveType = "Fortitude"
 	baseDC = 12
-	attackRollDamageDice = FALSE
-	attackRollDamageLower = 20
-	attackRollDamageUpper = 35
 
 /obj/Ability/Job/Pirate/TyphoonCutter
 	name = "Typhoon Cutter"
@@ -152,9 +135,6 @@
 	manaCost = 35
 	range = "7 tiles, 3 tile wide. Generates 5x5 persisting AoE."
 	actionType = "weapon"
-	attackRollDamageDice = FALSE
-	attackRollDamageLower = 25
-	attackRollDamageUpper = 38
 
 /obj/Ability/Job/Pirate/LakeBlade
 	name = "Lake Blade"
@@ -164,9 +144,6 @@
 	manaCost = 45
 	range = "Melee"
 	actionType = "weapon"
-	attackRollDamageDice = FALSE
-	attackRollDamageLower = 30
-	attackRollDamageUpper = 40
 
 /obj/Ability/Job/Pirate/NautilusAnchor
 	name = "Nautilus Anchor"
@@ -176,9 +153,6 @@
 	manaCost = 40
 	range = "8 tiles"
 	actionType = "standard"
-	attackRollDamageDice = FALSE
-	attackRollDamageLower = 25
-	attackRollDamageUpper = 30
 
 /obj/Ability/Job/Pirate/WildWave
 	name = "Wild Wave"
@@ -189,9 +163,6 @@
 	actionType = "save"
 	saveType = "Reflex"
 	baseDC = 14
-	attackRollDamageDice = FALSE
-	attackRollDamageLower = 35
-	attackRollDamageUpper = 45
 
 /obj/Ability/Job/Pirate/BubbleField
 	name = "Bubble Field"
@@ -211,9 +182,6 @@
 	actionType = "save"
 	saveType = "Fortitude"
 	baseDC = 14
-	attackRollDamageDice = FALSE
-	attackRollDamageLower = 50
-	attackRollDamageUpper = 60
 
 /obj/Ability/Job/Pirate/TyphoonVortex
 	name = "Typhoon Vortex"
@@ -224,9 +192,6 @@
 	range = "3 tile wide, 7 tile line."
 	actionType = "save"
 	saveType = "Fortitude"
-	attackRollDamageDice = FALSE
-	attackRollDamageLower = 55
-	attackRollDamageUpper = 65
 
 /obj/Ability/Job/Pirate/WaterWhip
 	name = "Water Whip"
@@ -235,8 +200,6 @@
 	jobRequired = "Pirate"
 	manaCost = 70
 	actionType = "standard"
-	attackRollDamageDice = FALSE
-	attackRollDamageExact = 70
 
 /obj/Ability/Job/Pirate/GreatLake
 	name = "Great Lake"
@@ -261,10 +224,6 @@
 	jobRequired = "Pirate"
 	manaCost = 70
 	actionType = "standard"
-	addHit = 5
-	attackRollDamageDice = FALSE
-	attackRollDamageLower = 80
-	attackRollDamageUpper = 85
 
 // =============================================================================
 // TIME MAGE ABILITIES
@@ -274,7 +233,6 @@
 /obj/Ability/Job/TimeMage
 	jobRequired = "Time Mage"
 	icon = 'Icons/Perk/TimeMage.png'
-	costType = "Mana"
 	scalingStat = "INT"
 	actionType = "standard"
 	element = "Time"
@@ -296,9 +254,6 @@
 	actionType = "save"
 	saveType = "Reflex"
 	baseDC = 10
-	attackRollDamageDice = FALSE
-	attackRollDamageLower = 8
-	attackRollDamageUpper = 12
 
 /obj/Ability/Job/TimeMage/Time/Haste
 	name = "Haste"
@@ -368,8 +323,6 @@
 	actionType = "save"
 	saveType = "Fortitude"
 	baseDC = 13
-	attackRollDamageDice = FALSE
-	attackRollDamageExact = 0
 
 /obj/Ability/Job/TimeMage/Time/Old
 	name = "Old"
@@ -381,9 +334,7 @@
 	actionType = "save"
 	saveType = "Will"
 	baseDC = 15
-	attackRollDamageDice = TRUE
-	attackRollDiceCount = 12
-	attackRollDiceSides = 10
+	baseDamage = 66
 
 // -----------------------------------------------------------------------------
 // Green Magic (Barrier/Support)
@@ -440,8 +391,6 @@
 	jobRequired = "Time Mage"
 	manaCost = 100
 	actionType = "support"
-	statusEffect = "Reraise"
-	isGreenMagic = TRUE
 
 /obj/Ability/Job/TimeMage/White/Return
 	name = "Return"
@@ -469,9 +418,7 @@
 	actionType = "save"
 	saveType = "Reflex"
 	baseDC = 10
-	attackRollDamageDice = TRUE
-	attackRollDiceCount = 6
-	attackRollDiceSides = 6
+	baseDamage = 21
 
 /obj/Ability/Job/TimeMage/Comet/Meteor
 	name = "Meteor"
@@ -482,9 +429,7 @@
 	manaCost = 20
 	range = "7 tile range."
 	actionType = "standard"
-	attackRollDamageDice = TRUE
-	attackRollDiceCount = 2
-	attackRollDiceSides = 12
+	baseDamage = 13
 
 // -----------------------------------------------------------------------------
 // Gravity Magic

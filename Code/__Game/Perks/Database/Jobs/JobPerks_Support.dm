@@ -17,13 +17,12 @@
 // =============================================================================
 
 /obj/perk/Jobperks/Astrologian
-	jobneed = "Astrologian"
+	jobRequired = "Astrologian"
 	icon = 'Icons/Perk/Astrologian.png'
-	ptype = "job"
 
 /obj/perk/Jobperks/Astrologian/Astrologian
 	name = "Astrologian"
-	cat = "Unique"
+	category = "Unique"
 	desc = "At the start of an encounter, or battle; the astrologian is capable of entering into a stance as a free action: Diurnal - granting a five hp shield along with any green magic they cast.(Cannot stack this) Nocturnal - Lowers the cost of green magic by a flat 5 mana. 30 HP, 70 MP, 20 SP."
 
 /obj/perk/Jobperks/Astrologian/Redraw
@@ -76,13 +75,12 @@
 // =============================================================================
 
 /obj/perk/Jobperks/Scholar
-	jobneed = "Scholar"
+	jobRequired = "Scholar"
 	icon = 'Icons/Perk/Scholar.png'
-	ptype = "job"
 
 /obj/perk/Jobperks/Scholar/Scholar
 	name = "Scholar"
-	cat = "Unique"
+	category = "Unique"
 	desc = "A Scholar is able to choose a single C/B rank Summon of their choice, and make a contract with it. They gain this Summon at no cost, and it becomes their permanent, personalized Summon. This summon costs 5 MP less to summon than normal, as well. Scholars have access to B Rank White Magic, and B rank Arcane Magic. Scholar can not be combined with Summoner in any way. Scholar is incompatible with the Subjob perk, and cannot be taken as a Subjob. +10 HP, +70 MP, +20 SP. Note: The chosen Eidolon does not have access to its Overdrive ability."
 
 /obj/perk/Jobperks/Scholar/PhysicalEidolonEmpowerment
@@ -113,7 +111,7 @@
 /obj/perk/Jobperks/Scholar/TrueElementalEmpowerment
 	name = "True Elemental Empowerment"
 	rank = "T5"
-	cat = "Unique"
+	category = "Unique"
 	desc = "A Scholar with this feature now has 'Absorption' for its Eidolon's primary elemental affinity, healing for half of the total elemental damage dealt instead of halving it - whilst reducing the remaining damage dealt to them to 0."
 
 /obj/perk/Jobperks/Scholar/SharedPrecision
@@ -159,7 +157,7 @@
 /obj/perk/Jobperks/Scholar/UltimateConnection
 	name = "Ultimate Connection"
 	rank = "T4"
-	cat = "Unique"
+	category = "Unique"
 	desc = "A Scholar with this feature increases its Eidolon's base HP by 100, and its MP by 100. It also gains +2 to both Physical and Magical attack bonus, 5 flat damage reduction, and +2 to AC. (Requires Refined Fortitude, Refined Mana Pool, and Deepened Connection.)"
 
 // =============================================================================
@@ -167,13 +165,12 @@
 // =============================================================================
 
 /obj/perk/Jobperks/Merchant
-	jobneed = "Merchant"
+	jobRequired = "Merchant"
 	icon = 'Icons/Perk/Merchant.png'
-	ptype = "job"
 
 /obj/perk/Jobperks/Merchant/Merchant
 	name = "Merchant"
-	cat = "Unique"
+	category = "Unique"
 	desc = "Merchants start with 6,000 Gil for which to grow their business. You only gain this bonus if you start with your main job as Merchant. +25 HP, +60 MP, +60 SP."
 
 /obj/perk/Jobperks/Merchant/Craftsmanship
@@ -204,13 +201,13 @@
 /obj/perk/Jobperks/Merchant/Duplicator
 	name = "Duplicator"
 	rank = "T5"
-	cat = "Unique"
+	category = "Unique"
 	desc = "This Merchant is somehow able to duplicate any item they have seemingly through their connections to the rest of the Merchant world. For 5000 Gil, they can duplicate any crafting material in their inventory - once per day."
 
 /obj/perk/Jobperks/Merchant/MoogleMerchant
 	name = "Moogle Merchant"
 	rank = "T5"
-	cat = "Unique"
+	category = "Unique"
 	desc = "This Merchant has learned the ways of Moogle culture, and is able to utilize the creatures for various purposes. They gain access to the Moogle Shop verb, which allows them to establish a player run shop that generates 20% extra Gil for each sale. In addition, they gain 'Gatherer' moogles for each gathering type, which they may place in a location of their choosing. Every 24 hours, the Gatherer moogles come off cooldown, and a free gather roll may be made from them."
 
 // =============================================================================
@@ -218,13 +215,12 @@
 // =============================================================================
 
 /obj/perk/Jobperks/Viking
-	jobneed = "Viking"
+	jobRequired = "Viking"
 	icon = 'Icons/Perk/Viking.png'
-	ptype = "job"
 
 /obj/perk/Jobperks/Viking/Viking
 	name = "Viking"
-	cat = "Unique"
+	category = "Unique"
 	desc = "Vikings are inherently powerful warriors, and they know how to wield most weapons effectively - but when using a Hammer or an Axe, Vikings gain a certain bonus. Hammers gain 1d4 Bludgeoning damage and +2 to Hit, while Axes gain 2d6+STR Slashing damage. +70 HP, +10 MP, +60 SP,"
 
 /obj/perk/Jobperks/Viking/WarriorofGlory
@@ -285,7 +281,7 @@
 /obj/perk/Jobperks/Viking/TrueWarrior
 	name = "True Warrior"
 	rank = "T5"
-	cat = "Unique"
+	category = "Unique"
 	desc = "This individual is a Viking unmatched. When they drop below 30 HP, they immediately gain 10 Battle Momentum stacks, and gain 5 additional stacks whenever they take or deal damage. Additionally, use a Bonus Action for Stay in It while True Warrior is active."
 
 // =============================================================================
@@ -293,13 +289,12 @@
 // =============================================================================
 
 /obj/perk/Jobperks/Bard
-	jobneed = "Bard"
+	jobRequired = "Bard"
 	icon = 'Icons/Perk/Bard.png'
-	ptype = "job"
 
 /obj/perk/Jobperks/Bard/Bard
 	name = "Bard"
-	cat = "Unique"
+	category = "Unique"
 	desc = "Bards are completely immune to the 'Silence' status effect, as their voices and instruments can not be stifled. Utilizing an instrument requires both hands, disabling weapon and shields from being equipped or used. +25 HP, +60 MP, +20 SP."
 
 /obj/perk/Jobperks/Bard/ProjectionTraining1
@@ -352,13 +347,12 @@
 // =============================================================================
 
 /obj/perk/Jobperks/Dancer
-	jobneed = "Dancer"
+	jobRequired = "Dancer"
 	icon = 'Icons/Perk/Dancer.png'
-	ptype = "job"
 
 /obj/perk/Jobperks/Dancer/Dancer
 	name = "Dancer"
-	cat = "Unique"
+	category = "Unique"
 	desc = "The Dancer is able to switch between the 'Waltz' and the 'Tango' stance in order to change the bonus that they gain whilst sustaining a dance. When in 'Waltz' stance, they gain +1 AC. When in Tango stance, they gain +1 PAB. It takes one full turn to change stances, and you may select one stance on your first turn of a battle, as a free action. All Dances count as a Bonus Action to activate and a Free Action to sustain, unless otherwise stated. +20 HP, +80 MP, +20 SP."
 
 /obj/perk/Jobperks/Dancer/EvasiveSteps
@@ -395,3 +389,4 @@
 	name = "Improv Master"
 	rank = "T5"
 	desc = "This individual has learned to improvise thier movements essentially mixing two types of dances at once. When dancing they can use 2 dances at the same time. This does not interrupt or refresh the build-up for Finishing Flourish."
+

@@ -6,12 +6,12 @@
  */
 
 /obj/perk/Jobperks/Machinist
-	jobneed = "Machinist"
+	jobRequired = "Machinist"
 	icon = 'Icons/Perk/Machinist.png'
 
 /obj/perk/Jobperks/Machinist/Machinist
 	name = "Machinist"
-	cat = "Unique"
+	category = "Unique"
 	desc = "Machinists are masters of machinery, and technology. They are able to dismantle any piece of technology depending on its size (1 turn for inventory sized objects, 2 for person sized, 4 for 10 foot+, 5 for 20 foot+, 10 for 30 foot+, 12 for 50 foot+.) They must be uninterrupted when doing so. Upon doing so, they salvage every ingredient that was required to build said piece of tech. In addition, Machinists gain +2 INT. +30 HP, +30 MP, +30 SP."
 
 /obj/perk/Jobperks/Machinist/Documentation
@@ -50,7 +50,7 @@
 	desc = "This individual has become capable of creating all the elements as well as upgraded scattershot shells and high quality AP rounds."
 
 /obj/perk/Jobperks/Machinist/NethiciteAmmosmith
-	cat = "Unique"
+	category = "Unique"
 	rank = "T5"
 	name = "Nethicite Ammosmith"
 	desc = "This individual has discovered and become able to refine nethicite into bullets to be used within guns to deal 2x damage and force it to make a DC15 fortitude save or be stunned for the next round."
@@ -86,7 +86,7 @@
 	desc = "This individual is able to make naval vehicles, such as Ships - and they can potentially augment their Ships with custom parts."
 
 /obj/perk/Jobperks/Machinist/BehemothMechanic
-	cat = "Unique"
+	category = "Unique"
 	rank = "T3"
 	name = "Behemoth Mechanic"
 	desc = "Pushing their knowledge to the limits this individual can create massive wheeled vehicles."

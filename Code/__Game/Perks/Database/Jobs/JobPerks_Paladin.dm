@@ -6,12 +6,12 @@
  */
 
 /obj/perk/Jobperks/Paladin
-	jobneed = "Paladin"
+	jobRequired = "Paladin"
 	icon = 'Icons/Perk/Paladin.png'
 
 /obj/perk/Jobperks/Paladin/Paladin
 	name = "Paladin"
-	cat = "Unique"
+	category = "Unique"
 	desc = "As champions of he light, and holy aspects of the world - a Paladin gains great power and resolve from their courage. Paladins take half damage from Light attacks, and negative status ailments last 1 turn less than usual. Paladins may learn up to C Rank White Magic, and D rank Green Magic inherently. Paladin's infusion spells may not be stacked with other Jobs' infusion spells. +90 HP, +40 MP, +30 SP, Sword Saint, White Magic and Green Magic all count as Paladin Abilities for the sake of effects referencing Paladin Abilities."
 
 /obj/perk/Jobperks/Paladin/BathedinLight
@@ -47,7 +47,7 @@
 /obj/perk/Jobperks/Paladin/EngulfedinLight
 	name = "Engulfed in Light"
 	rank = "T3"
-	pre = "Bathed in Light"
+	prerequisite = "Bathed in Light"
 	desc = "This individual is blessed by a holy light. They gain more health than others when being healed by magic, increasing the bonus from healing spells to 25, and are granted a 10 HP temporary shield whenever they are healed."
 
 /obj/perk/Jobperks/Paladin/Altruism

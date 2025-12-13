@@ -1,47 +1,52 @@
-// todo: /datum/prototype/perk
-
 // Note: Base /obj/perk vars are defined in Code/__Game/Perks/Database/PerkBase.dm
+// Note: Combat procs are defined in Code/__Game/Perks/CombatSystem.dm
 
 /**
- * we have a valid standard attack or healing roll
+ * Check if this perk has valid damage configuration
  */
-/obj/perk/proc/valid_standard_attack()
-	return !!valid_raw_attack_damage_roll()
+/obj/perk/proc/validDamageRoll() as num
+	return baseDamage > 0
 
 /**
- * we have a valid raw attack damage or healing roll
+ * Renders attack damage as text description
  */
-/obj/perk/proc/valid_raw_attack_damage_roll()
-	if(attack_roll_damage_dice)
-		return !isnull(attack_roll_dice_count) && !isnull(attack_roll_dice_sides)
-	return !isnull(attack_roll_damage_exact) || (!isnull(attack_roll_damage_lower) && !isnull(attack_roll_damage_upper))
+/obj/perk/proc/describeRawDamage() as text
+	if(baseDamage > 0)
+		return "[baseDamage]"
+	return "0"
 
 /**
- * renders raw attack roll damage portion as text desc, ignoring damage type / buffs / weapon / etc
+ * Gets the base damage value
  */
-/obj/perk/proc/describe_raw_attack_damage_roll()
-	return attack_roll_damage_dice? "[attack_roll_dice_count]d[attack_roll_dice_sides]" : "[attack_roll_damage_lower]-[attack_roll_damage_upper]"
+/obj/perk/proc/rawDamageRoll() as num
+	return baseDamage
 
 /**
- * performs raw attack roll, ignoring damage type / buffs / weapon / etc
+ * Renders perk description in one line
  */
-/obj/perk/proc/raw_attack_damage_roll()
-	ASSERT(valid_raw_attack_damage_roll())
-	if(attack_roll_damage_dice)
-		return dice_roll(attack_roll_dice_count, attack_roll_dice_sides)
-	if(!isnull(attack_roll_damage_exact))
-		return attack_roll_damage_exact
-	return rand(attack_roll_damage_lower, attack_roll_damage_upper)
-
-/**
- * renders perk description in one line, useful for alert()
- */
-/obj/perk/proc/describe_string()
+/obj/perk/proc/describeString() as text
 	return desc
 
-// todo: auto damage render, more describe()'s
+/**
+ * Renders full perk info for UI display
+ */
+/obj/perk/proc/describeInfo() as text
+	var/list/info = list()
 
-// todo: describe_markdown()
-// todo: describe_html()
-// todo: describe_data() for ui render
+	info += "<b>[name]</b>"
+	if(rank)
+		info += "Rank: [rank]"
+	if(desc)
+		info += desc
+
+	if(isAbility || isTechnique)
+		if(validDamageRoll())
+			info += "Damage: [getDamageString()]"
+		var/costStr = getCostString()
+		if(costStr != "None")
+			info += "Cost: [costStr]"
+		if(range > 0)
+			info += "Range: [getRangeCategory(range)]"
+
+	return jointext(info, "\n")
 

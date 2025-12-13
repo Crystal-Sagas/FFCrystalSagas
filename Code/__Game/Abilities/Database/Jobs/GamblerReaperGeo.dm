@@ -36,14 +36,12 @@
 	actionType = "weapon"
 	icon = 'Icons/Perk/Reaper.png'
 	damageType = "physical"
-	costType = "Soul"
 
 /obj/Ability/Job/Reaper/ShadowOfDeath
 	name = "Shadow of Death"
 	desc = "As a bonus action, after making a successful melee attack, you may mark the target of the attack with the mark of death. While the mark of death is active, attacks made to that target by the user gain a bonus 1d8 dark damage, and generate an additional 5 soul per instance of damage dealt to that target. Only one individual can be marked at a time. (-10 mana per turn to sustain.)"
 	rank = "D"
 	manaCost = 10
-	costType = "Mana"
 	actionType = "bonus"
 
 /obj/Ability/Job/Reaper/RendingSlice
@@ -52,12 +50,10 @@
 	rank = "C"
 	element = "Physical"
 	manaCost = 30
-	costType = "Mana"
 	actionType = "weapon"
-	range = "5 tile range"
-	attackRollDamageDice = TRUE
-	attackRollDiceCount = 1
-	attackRollDiceSides = 12
+	range = 5
+	usesAttackRoll = TRUE
+	baseDamage = 7
 
 /obj/Ability/Job/Reaper/InfernalSlice
 	name = "Infernal Slice"
@@ -65,16 +61,13 @@
 	rank = "C"
 	element = "Fire"
 	manaCost = 30
-	costType = "Mana"
-	attackRollDamageDice = TRUE
-	attackRollDiceCount = 1
-	attackRollDiceSides = 8
+	usesAttackRoll = TRUE
+	baseDamage = 5
 
 /obj/Ability/Job/Reaper/BloodStalk
 	name = "Blood Stalk"
 	desc = "As a bonus action, after making a successful melee attack expend Soul to summon an avatar of darkness to slice at the target with blood soaked claws. (Deals an automatic 2d10 slashing damage if target is suffering from Bleed, does 0 damage otherwise - drain 1d20 HP from the target if damage is dealt ; transferring it into soul instead of health. -20 soul.)"
 	rank = "C"
-	soulCost = 20
 	actionType = "bonus"
 
 /obj/Ability/Job/Reaper/NightmareSlice
@@ -83,48 +76,41 @@
 	rank = "B"
 	element = "Physical"
 	manaCost = 40
-	costType = "Mana"
 	actionType = "weaponsave"
 	saveType = "Fortitude"
 	baseDC = 15
-	attackRollDamageDice = TRUE
-	attackRollDiceCount = 1
-	attackRollDiceSides = 12
+	usesAttackRoll = TRUE
+	baseDamage = 7
 
 /obj/Ability/Job/Reaper/GrimSwath
 	name = "Grim Swath"
 	desc = "The user summons their avatar of darkness, and it begins summoning forth bio-corruptive energy. The avatar then coughs out a plume of degrading energy, spreading the vile miasma in a cone in front of it. (Damage: 4d8+WIS | 3 tile cone, prompts a Fortitude saving throw DC (12+Rankbonus+WIS) deals full damage and inflicts 'Poison' on a failure, deals half damage on a success.- 50 soul.)"
 	rank = "B"
 	element = "Physical"
-	soulCost = 50
 	actionType = "weaponsave"
 	saveType = "Fortitude"
 	baseDC = 12
-	range = "3 tile cone"
-	attackRollDamageDice = TRUE
-	attackRollDiceCount = 4
-	attackRollDiceSides = 8
+	aoeType = "cone"
+	aoeSize = 3
+	baseDamage = 18
 
 /obj/Ability/Job/Reaper/Gluttony
 	name = "Gluttony"
 	desc = "The user summons their avatar of death, using it to create a glyph of malicious magic on the ground in range. The glyph activates shortly after, firing black beams of energy upwards which drain those who are unable to resist of their strength. Targets in the AoE must make a fortitude saving throw or take immense darkness damage and possibly suffer 'Weakness'. This ability is particularly effective on creatures who are already weakened, as it saps them of their strength more effectively. (Damage: 5d12+WIS Darkness | 3x3 AoE, 6 tile range, Fortitude saving throw, DC (14+Rankbonus+WIS) Full Damage + Weakness on failure | Half damage on save. Additional 1d12 damage on creatures with 'Weakness' status effect. -80 soul.)"
 	rank = "B"
 	element = "Dark"
-	soulCost = 80
 	actionType = "weaponsave"
 	saveType = "Fortitude"
 	baseDC = 14
-	range = "3x3 AoE within a 6 tile range"
-	attackRollDamageDice = TRUE
-	attackRollDiceCount = 5
-	attackRollDiceSides = 12
+	range = 6
+	aoeType = "circle"
+	aoeSize = 3
+	baseDamage = 33
 
 /obj/Ability/Job/Reaper/Enshroud
 	name = "Enshroud"
 	desc = "The reaper offers their body as a vessel for the avatar of darkness letting it completely take control. While under the effects of enshroud the user has red eyes and takes on a sinister red aura. Dark damage heals them rather than damages them, they gain immunity to drain effects, and gain 1d12 bonus dark damage to every melee attack they make. While Enshroud is active, you may double the 'dark' type damage of an attack up to 3 times per encounter. While enshrouded the user can expend soul in place of HP when suffering an attack. While Enshroud is active, instead of gaining 5 Soul per instance of damage dealt ; they gain 10. (-20 soul per turn of duration, must spend a minimum of 60 on activation.)"
 	rank = "A"
-	soulCost = 60
-	sustainCost = 20
 
 // ============================================================
 // Geomancer Job Abilities
@@ -137,7 +123,6 @@
 	actionType = "standard"
 	icon = 'Icons/Perk/Geospells.png'
 	damageType = "magical"
-	costType = "Mana"
 
 // --- Earth Spells ---
 /obj/Ability/Job/Geomancer/Earth
@@ -149,10 +134,9 @@
 	desc = "The user calls to the ground, causing it to spit sharp rocks towards a target. Out of Battle Effects: This individual is capable of controlling earth. They can move and shape a 5ft block of earth. They are capable of making one 5ft area of earth into non difficult terrain. (Damage: 1d12+CHA earth| 6 tile range, magic attack roll, -10 Mana.)"
 	rank = "E"
 	manaCost = 10
-	range = "6 tile range"
-	attackRollDamageDice = TRUE
-	attackRollDiceCount = 1
-	attackRollDiceSides = 12
+	range = 6
+	usesAttackRoll = TRUE
+	baseDamage = 7
 
 /obj/Ability/Job/Geomancer/Earth/Stonra
 	name = "Stonra"
@@ -160,10 +144,9 @@
 	rank = "D"
 	prerequisite = "Stone"
 	manaCost = 15
-	range = "6 tile range"
-	attackRollDamageDice = TRUE
-	attackRollDiceCount = 2
-	attackRollDiceSides = 12
+	range = 6
+	usesAttackRoll = TRUE
+	baseDamage = 13
 
 /obj/Ability/Job/Geomancer/Earth/Stoneaga
 	name = "Stoneaga"
@@ -171,13 +154,13 @@
 	rank = "C"
 	prerequisite = "Stonra"
 	manaCost = 30
-	range = "3x3 AoE within a 10 tile range"
+	range = 10
+	aoeType = "circle"
+	aoeSize = 3
 	actionType = "save"
 	saveType = "Reflex"
 	baseDC = 12
-	attackRollDamageDice = TRUE
-	attackRollDiceCount = 4
-	attackRollDiceSides = 10
+	baseDamage = 22
 
 /obj/Ability/Job/Geomancer/Earth/Stonaja
 	name = "Stonaja"
@@ -185,13 +168,13 @@
 	rank = "B"
 	prerequisite = "Stoneaga"
 	manaCost = 40
-	range = "5x5 AoE within a 10 tile range"
+	range = 10
+	aoeType = "circle"
+	aoeSize = 5
 	actionType = "save"
 	saveType = "Reflex"
 	baseDC = 15
-	attackRollDamageDice = TRUE
-	attackRollDiceCount = 5
-	attackRollDiceSides = 12
+	baseDamage = 33
 
 // --- Nature/Tree Spells ---
 /obj/Ability/Job/Geomancer/SpiritedTree
@@ -200,7 +183,6 @@
 	rank = "D"
 	element = "Nature"
 	manaCost = 10
-	sustainCost = 10
 
 /obj/Ability/Job/Geomancer/BranchArrow
 	name = "Branch Arrow"
@@ -209,10 +191,9 @@
 	element = "Nature"
 	prerequisite = "Spirited Tree"
 	manaCost = 10
-	range = "8 tile range"
-	attackRollDamageDice = TRUE
-	attackRollDiceCount = 2
-	attackRollDiceSides = 12
+	range = 8
+	usesAttackRoll = TRUE
+	baseDamage = 13
 
 /obj/Ability/Job/Geomancer/BranchSpear
 	name = "Branch Spear"
@@ -221,10 +202,9 @@
 	element = "Nature"
 	prerequisite = "Branch Arrow"
 	manaCost = 25
-	range = "8 tile range"
-	attackRollDamageDice = TRUE
-	attackRollDiceCount = 3
-	attackRollDiceSides = 12
+	range = 8
+	usesAttackRoll = TRUE
+	baseDamage = 20
 
 /obj/Ability/Job/Geomancer/InfuseElemental
 	name = "Infuse Elemental"
@@ -252,11 +232,8 @@
 	rank = "C"
 	element = "Heal"
 	actionType = "heal"
-	isHeal = TRUE
 	manaCost = 40
-	attackRollDamageDice = TRUE
-	attackRollDiceCount = 3
-	attackRollDiceSides = 20
+	baseDamage = 32
 
 /obj/Ability/Job/Geomancer/Sandstorm
 	name = "Sandstorm"
@@ -264,7 +241,6 @@
 	rank = "C"
 	element = "Earth"
 	manaCost = 30
-	sustainCost = 10
 
 /obj/Ability/Job/Geomancer/ShiningFlare
 	name = "Shining Flare"
@@ -272,13 +248,13 @@
 	rank = "B"
 	element = "Laser"
 	manaCost = 40
-	range = "1 tile within 8 tiles of the caster, beam can move in a 5 tile line"
+	range = 8
+	aoeType = "line"
+	aoeSize = 5
 	actionType = "save"
 	saveType = "Reflex"
 	baseDC = 16
-	attackRollDamageDice = TRUE
-	attackRollDiceCount = 5
-	attackRollDiceSides = 10
+	baseDamage = 28
 
 /obj/Ability/Job/Geomancer/Quake
 	name = "Quake"
@@ -286,13 +262,13 @@
 	rank = "A"
 	element = "Earth"
 	manaCost = 65
-	range = "6x6 AoE within 20 tiles of the caster"
+	range = 20
+	aoeType = "circle"
+	aoeSize = 6
 	actionType = "save"
 	saveType = "Fortitude"
 	baseDC = 12
-	attackRollDamageDice = TRUE
-	attackRollDiceCount = 7
-	attackRollDiceSides = 10
+	baseDamage = 39
 
 /obj/Ability/Job/Geomancer/Whirlpool
 	name = "Whirlpool"
@@ -300,14 +276,12 @@
 	rank = "A"
 	element = "Water"
 	manaCost = 65
-	sustainCost = 15
-	range = "5x5 AoE on any water in view"
+	aoeType = "circle"
+	aoeSize = 5
 	actionType = "save"
 	saveType = "Athletics Check"
 	baseDC = 14
-	attackRollDamageDice = TRUE
-	attackRollDiceCount = 4
-	attackRollDiceSides = 10
+	baseDamage = 22
 
 /obj/Ability/Job/Geomancer/MagmaSpout
 	name = "Magma Spout"
@@ -322,10 +296,9 @@
 	rank = "S"
 	element = "Dark"
 	manaCost = 100
-	range = "3x3 AoE at a tile in view"
+	aoeType = "circle"
+	aoeSize = 3
 	actionType = "save"
 	saveType = "Fortitude"
 	baseDC = 15
-	attackRollDamageDice = TRUE
-	attackRollDiceCount = 6
-	attackRollDiceSides = 12
+	baseDamage = 39

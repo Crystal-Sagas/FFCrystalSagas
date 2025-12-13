@@ -39,8 +39,7 @@
 	rank = "C"
 	desc = "The Knight slams their weapon into the ground, and activates Gravity Magic within it. The center of gravity of the area becomes wherever the blade is stuck in the ground as long as the blade is in the ground, and pulls people and things towards it. This wears off when the weapon is removed from the ground. Inflicts 'Slow' to pulled targets."
 	manaCost = 15
-	diceCount = 1
-	diceSides = 12
+	baseDamage = 7
 	usesAttackRoll = TRUE
 	aoeType = "circle"
 	aoeSize = 3
@@ -60,8 +59,7 @@
 	rank = "C"
 	desc = "The Knight focuses Mana and Adrenaline into their muscles, and slams their fists together in-front of them to send a shockwave of wind and mana forward with a radius of eight yards, and in the shape of a cone. (Damage: 2d8+STR | Ranged attack roll (1d20+STR+1) 3 Tile Wide Cone, -15 Stamina.)"
 	staminaCost = 15
-	diceCount = 2
-	diceSides = 8
+	baseDamage = 9
 	usesAttackRoll = TRUE
 	aoeType = "cone"
 	aoeSize = 3
@@ -85,8 +83,7 @@
 	rank = "B"
 	desc = "The Knight prepares their weapon in a backwards grip at their side, and begins to focus their Mana into the weapon whilst preparing their muscles. They then swing horizontally, and a blade-like beam of horizontal magic lashes outward in front of them, covering a large area. Opponents hit by this beam will suffer a temporary decrease to their durability for a turn after. (Damage: 2d12+STR | 3 Tile Wide projectile, 6 tile range. STR Attack roll (DC 14+STR+Rank Bonus), inflicting -2 AC to creatures who are hit ; lasting 2 rounds. -30 Stamina.)"
 	staminaCost = 30
-	diceCount = 2
-	diceSides = 12
+	baseDamage = 13
 	usesAttackRoll = TRUE
 	range = 6
 	aoeType = "line"
@@ -108,8 +105,7 @@
 	desc = "The Knight charges their weapon with Mana, and spins around in a circle, kicking up a whirlwind around their body as they dig their feet into the ground. This releases sharp and powerful winds in a circle around them. (Damage: 2d12+STR | Prompts a Reflex save in order to take full or half damage, 5x5 AoE, 4 Tile Knockback on hit. -15 Stamina, -15 Mana.)"
 	staminaCost = 15
 	manaCost = 15
-	diceCount = 2
-	diceSides = 12
+	baseDamage = 13
 	usesAttackRoll = TRUE
 	actionType = "save"
 	saveType = "Reflex"
@@ -154,12 +150,10 @@
 	rank = "S"
 	desc = "The user holds their shield or weapon forward grounding their feet as they shift all their energy into their shield or weapon. They then dash forward shield or weapon raised brimming with energy. They then crash their shield into the target, thus hitting them with a solid wall that sends shockwaves throughout their body. (Damage: 5d10 + Current Damage Reduction | Attack Roll (1d20+STR+4), -45 Mana.)"
 	manaCost = 45
-	diceCount = 5
-	diceSides = 10
+	baseDamage = 28
 	usesAttackRoll = TRUE
 	hitBonus = 4
 	range = 1
-	skillType = "Melee"
 
 // ============================================================================
 // SWORD SAINT ABILITIES
@@ -171,7 +165,6 @@
 	damageType = "physical"
 	scalingStat = "STR"
 	actionType = "standard"
-	skillType = "Melee"
 	range = 1
 	icon = 'Icons/Perk/Sword Saint.png'
 
@@ -193,8 +186,7 @@
 	element = "Dark"
 	desc = "A Melee weapon attack, which is imbued with dark magic. It's capable of drawing the magical energy out of a target, restoring MP equal to half of the damage dealt. This also changes the damage from physical to Dark. (Damage: Weapon Damage + 1d12, -30 Stamina.)"
 	staminaCost = 30
-	diceCount = 1
-	diceSides = 12
+	baseDamage = 7
 	usesAttackRoll = TRUE
 
 /obj/Ability/Job/SwordSaint/Shadowblade
@@ -203,8 +195,7 @@
 	element = "Dark"
 	desc = "A Melee weapon attack, which is imbued with dark magic. It's capable of drawing the magical energy out of a target, restoring HP equal to half of the damage dealt. This also changes the damage from physical to Dark. (Damage: Weapon Damage + 1d12, -30 Stamina.)"
 	staminaCost = 30
-	diceCount = 1
-	diceSides = 12
+	baseDamage = 7
 	usesAttackRoll = TRUE
 
 /obj/Ability/Job/SwordSaint/JudgementBlade
@@ -213,8 +204,7 @@
 	element = "Holy"
 	desc = "A Melee weapon attack, which is imbued with holy magic. It's capable of dealing tremendous holy damage. Changes the weapon's base damage to holy. The blade is extended by a holy beam of light, granting 2 extra tiles of range. (Damage: Weapon Damage + 2d12, -30 Stamina.)"
 	staminaCost = 30
-	diceCount = 2
-	diceSides = 12
+	baseDamage = 13
 	usesAttackRoll = TRUE
 	range = 3
 	aoeType = "line"
@@ -226,8 +216,7 @@
 	element = "Holy"
 	desc = "A Melee weapon attack, which is imbued with cleansing holy magic. It's capable of dispelling positive status effects, applying 'Dispel' on hit. Changes damage to holy damage. (Damage: Weapon Damage + 1d10, -30 Stamina.)"
 	staminaCost = 30
-	diceCount = 1
-	diceSides = 10
+	baseDamage = 6
 	usesAttackRoll = TRUE
 
 /obj/Ability/Job/SwordSaint/NorthwainStrike
@@ -236,8 +225,7 @@
 	element = "Holy"
 	desc = "A Melee weapon attack, which is imbued with penetrative holy magic. This extends a holy blade in the shape of the wielded weapon, to stab a target creature, ignoring defenses and gaining extra range. Changes damage to holy damage. (Damage: Weapon Damage + 1d10 | Ignores 20 damage reduction. 3 tile range, -30 Stamina.)"
 	staminaCost = 30
-	diceCount = 1
-	diceSides = 10
+	baseDamage = 6
 	usesAttackRoll = TRUE
 	range = 3
 	aoeType = "line"
@@ -249,8 +237,7 @@
 	element = "Lightning"
 	desc = "A Melee weapon attack, which is imbued with holy thunder. Make a normal weapon attack roll, then a Hallowed Bolt roll immediately after. Hallowed Bolt's damage is lightning damage - the initial weapon attack roll's damage is holy damage. If the Hallowed Bolt roll hits the target, it inflicts 'Paralyze'. (Damage: Weapon Damage + 1d10, -50 Stamina.)"
 	staminaCost = 50
-	diceCount = 1
-	diceSides = 10
+	baseDamage = 6
 	usesAttackRoll = TRUE
 
 /obj/Ability/Job/SwordSaint/ShadowflameBlade
@@ -259,8 +246,7 @@
 	element = "Fire"
 	desc = "A Melee weapon attack, which is imbued with cursed flames. Make a normal weapon attack roll, then a Shadowflame Blade roll immediately after. Shadowflame Blade's damage is fire damage - the initial weapon attack roll's damage is dark damage. If the Shadowflame Blade roll hits the target, it inflicts 'Burn'. (Damage: Weapon Damage + 1d10, -50 Stamina.)"
 	staminaCost = 50
-	diceCount = 1
-	diceSides = 10
+	baseDamage = 6
 	usesAttackRoll = TRUE
 
 /obj/Ability/Job/SwordSaint/TwilightBlade
@@ -269,8 +255,7 @@
 	element = "Dark"
 	desc = "A Melee weapon attack, which is imbued with karmic power - attacking the very soul. A target hit by this attack has their essence sapped, restoring SP equal to half the damage dealt to the user. The attack's damage is Psychic damage. (Damage: Weapon Damage + 1d20, -50 Mana.)"
 	manaCost = 50
-	diceCount = 1
-	diceSides = 20
+	baseDamage = 11
 	usesAttackRoll = TRUE
 	damageType = "magical"
 
@@ -280,8 +265,7 @@
 	element = "Ice"
 	desc = "A Melee weapon attack, which is imbued with a karmic chill. Make a normal weapon attack roll, then a Sunset Severance roll immediately after. Sunset Severance's damage is ice damage - the initial weapon attack roll's damage is Psychic damage. If the Sunset Severance roll hits the target, they are inflicted with 'Heavy'. (Damage: Weapon Damage + 1d10, -50 Mana.)"
 	manaCost = 50
-	diceCount = 1
-	diceSides = 10
+	baseDamage = 6
 	usesAttackRoll = TRUE
 	damageType = "magical"
 
@@ -291,8 +275,7 @@
 	element = "Holy"
 	desc = "A Melee weapon attack, which is imbued with immense holy power. Upon striking the target with Divine Ruination, the target is inflicted with 'Silence' and 'Slow'. (Damage: Weapon Damage + 2d20, -80 Stamina.)"
 	staminaCost = 80
-	diceCount = 2
-	diceSides = 20
+	baseDamage = 21
 	usesAttackRoll = TRUE
 
 /obj/Ability/Job/SwordSaint/ApocalypseStrike
@@ -301,8 +284,7 @@
 	element = "Dark"
 	desc = "A Melee weapon attack, which is imbued with immense corruptive power. Upon striking a target with Apocalypse Strike, the target is inflicted with 'Blind' and 'Weakness'. (Damage: Weapon Damage + 2d20, -80 Stamina.)"
 	staminaCost = 80
-	diceCount = 2
-	diceSides = 20
+	baseDamage = 21
 	usesAttackRoll = TRUE
 
 /obj/Ability/Job/SwordSaint/EclipseBlade
@@ -311,8 +293,7 @@
 	element = "Dark"
 	desc = "The penultimate Sword Saint ability. It acts as a Melee weapon attack, which is imbued with immense karmic power. The blade is extended in a massive stream of karmic mana. The range is increased due to the massive size of the blade. When a target is struck by this blade, they are inflicted with Burn, Poison, and Bleed. (Damage: Weapon Damage + 3d12, -120 Stamina.)"
 	staminaCost = 120
-	diceCount = 3
-	diceSides = 12
+	baseDamage = 20
 	usesAttackRoll = TRUE
 	range = 8
 	aoeType = "line"
@@ -335,8 +316,7 @@
 	rank = "E"
 	desc = "As a bonus action, randomly draw a card from your deck. Roll a 1d6 depending on the result, grant the following buff to an ally within view. Only one effect may be active at a time. Drawing a new card swaps effects to the new result. 1. The Spear: increases PDB for one attack by +2 2. The Wand: Increases MDB for one attack by +2 3. The Bole: Adds +10 to the next instance of healing. 4. The Ewer: Reduces the cost of the next spell by 10. 5. The Aegis: Reduce the next instance of damage by 5 6. The Arrow: Increases MAB and PAB by +2 for one attack Out of Battle Effects: The user is capable of divining the future. They can consult the cards to pass a knowledge check regarding a person, place or thing."
 	actionType = "buff"
-	diceCount = 1
-	diceSides = 6
+	baseDamage = 4
 
 /obj/Ability/Job/Astrologian/Horoscope
 	name = "Horoscope"
@@ -356,7 +336,6 @@
 	damageType = "physical"
 	scalingStat = "STR"
 	actionType = "standard"
-	skillType = "Melee"
 	range = 1
 	icon = 'Icons/Perk/Viking.png'
 
@@ -396,8 +375,7 @@
 	element = "Earth"
 	desc = "Slam your weapon into the ground, and create a 3 tile wide crevice either horizontally or vertically. Those caught in the AoE of the quake are damaged. (Damage: 2d8+STR | Prompts a STR saving throw, dealing half damage on a success. 5x5 AoE, -20 Stamina.)"
 	staminaCost = 20
-	diceCount = 2
-	diceSides = 8
+	baseDamage = 9
 	usesAttackRoll = TRUE
 	actionType = "save"
 	saveType = "Fortitude"
@@ -417,8 +395,7 @@
 	rank = "C"
 	desc = "Spin in a mighty circle, swinging your weapon with you. As you spin, you move forward in a straight line up to 4 tiles forward. (Damage: 2d8+STR | Weapon Attack Roll +2 to hit, 5x5 AoE, -40 Stamina.)"
 	staminaCost = 40
-	diceCount = 2
-	diceSides = 8
+	baseDamage = 9
 	hitBonus = 2
 	usesAttackRoll = TRUE
 	aoeType = "circle"
@@ -429,8 +406,7 @@
 	rank = "B"
 	desc = "Leap about ten feet into the air, and bring your weapon down on an opponent with the weight of your body, to shatter them. (Damage: 1d8 per tile moved | Weapon Attack Roll +2 to hit, -45 Stamina.)"
 	staminaCost = 45
-	diceCount = 1
-	diceSides = 8
+	baseDamage = 5
 	hitBonus = 2
 	usesAttackRoll = TRUE
 
@@ -441,8 +417,7 @@
 	desc = "Channel all of your battle momentum into your weapon, and strike at your opponent. A bolt of lightning will explode from your weapon on contact, dealing immense damage. This removes all Battle Momentum. (Damage: 1d6 per Battle Momentum stack lightning damage (caps at 8 stacks of B.M.) | Weapon Attack Roll +4 to hit, -25 Mana, 25 Stamina.)"
 	manaCost = 25
 	staminaCost = 25
-	diceCount = 1
-	diceSides = 6
+	baseDamage = 4
 	hitBonus = 4
 	usesAttackRoll = TRUE
 
@@ -453,8 +428,7 @@
 	desc = "Strike your opponent, and if your strike hits - they will be engulfed in a frosty ice, that lowers their tile movement by 2 for 5 turns, and inflicts 'Slow'. This removes all Battle Momentum stacks. (Damage: Weapon Damage + 2d8+STR ice | Weapon Attack Roll +3 to hit, -20 Stamina, 20 Mana.)"
 	manaCost = 20
 	staminaCost = 20
-	diceCount = 2
-	diceSides = 8
+	baseDamage = 9
 	hitBonus = 3
 	usesAttackRoll = TRUE
 
@@ -464,8 +438,7 @@
 	element = "Dark"
 	desc = "Leap into the air, and then begin spinning towards your opponent as you fall - swinging your weapon along with you. All of your Battle Momentum is infused into one, crushing strike. (Damage: 3d8 + 6 per Battle Momentum stack (caps at 10 stacks) | Weapon Attack Roll +4 to hit, -60 Mana.)"
 	manaCost = 60
-	diceCount = 3
-	diceSides = 8
+	baseDamage = 14
 	hitBonus = 4
 	usesAttackRoll = TRUE
 
@@ -475,7 +448,6 @@
 	element = "Holy"
 	desc = "Channel your passion and invigoration into your weapon, and throw it into the air. A massive construct of mana engulfs your weapon in the form of a giant spear. All of your Battle Momentum is used up, for a spectacular finishing blow. (Damage: 5d12 + 8 extra per Battle Momentum Stack (Caps at 10 stacks) | Weapon Attack Roll +5 to hit, -90 Mana.)"
 	manaCost = 90
-	diceCount = 5
-	diceSides = 12
+	baseDamage = 33
 	hitBonus = 5
 	usesAttackRoll = TRUE

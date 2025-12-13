@@ -15,14 +15,13 @@
 // ============================================================================
 
 /obj/perk/Jobperks/Lcies
-	ptype = "job"
 	icon = 'Icons/Perk/Lcie.png'
-	jobneed = "L'cie"
+	jobRequired = "L'cie"
 	name = "L'Cie"
 
 /obj/perk/Jobperks/Lcies/Lcie
-	ability = 0
-	jobneed = null
+	isAbility = FALSE
+	jobRequired = null
 	name = "L'cie (Job)"
 	icon = 'Icons/Perk/Lcie.png'
 	desc = "A L'cie is unable to take any subjobs, making the subjob and dual job perks incompatible with a L'cie. A L'cie has been granted immense power, for which to pursue the goal of their given focus. As a L'Cie grows, they are able to adopt more and more 'Paradigms' - which grant them specific, permanent benefits to aid in the pursuit of their goal. A L'cie has access to up to A rank magic in all four magic trees (Black, White, Arcane, Green.) +80 HP, +80 MP, +80 SP. +2 to all Ability Scores."
@@ -52,14 +51,14 @@
 
 /obj/perk/Jobperks/Lcies/Hope/BurningHumanity
 	name = "Burning Humanity"
-	pre = "Defying Fate"
+	prerequisite = "Defying Fate"
 	rpcost = 3
 	rank = "T3"
 	desc = "This L'cie has realized the truth of their power, and what it implies. They understand that the crystal which has given them their power is using them, and as a result, their will to live is bolstered. They will do anything they can to either complete their focus, or resist their L'Cie degradation. Once per OOC Week, they may roll a CHA saving throw (DC 24) to break the crystal's control over them, and render their Focus inactive, taking the power for themselves. In addition, when reaching 0 HP in battle, they may return to consciousness at 20% HP. Incompatible with Fear of Failure. Requires Defying Fate."
 
 /obj/perk/Jobperks/Lcies/Hope/ForgeANewPath
 	name = "Forge A New Path"
-	pre = "Burning Humanity"
+	prerequisite = "Burning Humanity"
 	rpcost = 4
 	rank = "T4"
 	desc = "This L'cie has destroyed the Crystal's hold over them, and lives in utter defiance of its will. Their humanity burns so bright, that they have the power and ability to forge a new destiny for themselves, and even others. Having taken the power given to them for themselves, and incorporated it permanently into their body, they are granted great power - and they no longer have a Focus, having broken the chains of the Crystal entirely. They now gain +2 to all ability scores, and an additional +10 maximum HP, MP, and SP. (Attained via admin permission, after a successful Burning Humanity check.)"
@@ -78,14 +77,14 @@
 	name = "Crystal Puppet"
 	rank = "T3"
 	rpcost = 3
-	pre = "Fear of Failure"
+	prerequisite = "Fear of Failure"
 	desc = "This L'cie has accepted their role as a puppet of the Crystal, and as such have earned its trust. They are now granted a greater well of power for which to accomplish their task. They gain another +2 to all ability scores."
 
 /obj/perk/Jobperks/Lcies/Despair/FavoredPuppet
 	name = "Favored Puppet"
 	rank = "T4"
 	rpcost = 4
-	pre = "Crystal Puppet"
+	prerequisite = "Crystal Puppet"
 	desc = "This L'cie has become truly favored by the Crystal, having become a closely guarded puppet. The chains around their soul are so strong that the Crystal can turn them into a crystallized mass at any given time, or rearrange their Focus to a new objective. This means the Crystal is able to crystallize them at any time, but it also means they have gained the utmost level of power possible from the crystal, making them a weapon of its will. They gain another +10 maximum HP, SP, and MP ; as well as a permanent +2 to PAB, PDB, MAB, and MDB. Requires Crystal Puppet."
 
 // L'Cie Paradigms
@@ -122,13 +121,12 @@
 // ============================================================================
 
 /obj/perk/Jobperks/Pirate
-	ptype = "job"
-	jobneed = "Pirate"
+	jobRequired = "Pirate"
 	icon = 'Icons/Perk/Pirate.png'
 
 /obj/perk/Jobperks/Pirate/Pirate
 	name = "Pirate"
-	cat = "Unique"
+	category = "Unique"
 	desc = "Pirates are great wariors of the Sea, and are at home when along the tides. When a Pirate is near an active Water AoE tile, or a Water Tile on the map (within 2 tiles) - they gain 5 HP, SP, and MP regeneration per turn. Pirates also gain +1 PAB when wielding either a Scimitar or a Magitek Pistol. Pirates are immune to the 'Wet' and 'Whorl' status effects, and have resistance to Water damage. Mainjob Pirates gain +40 HP, +70 SP, and +70 MP."
 
 /obj/perk/Jobperks/Pirate/WaveWalker
@@ -170,19 +168,19 @@
 /obj/perk/Jobperks/Pirate/SkyPirate
 	name = "Sky Pirate"
 	rank = "T3"
-	cat = "Unique"
+	category = "Unique"
 	desc = "This Pirate has trained in the ways of the Sky Pirate. They now have the ability to cast their Pirate abilities as Wind tiles, and with Wind damage instead of Water tiles with Water damage. They also gain any Pirate effects from active Wind AoEs and Sky Tiles in addition to Water AoEs and Water Tiles."
 	icon = 'Icons/Perk/SkyPirate.png'
 
 /obj/perk/Jobperks/Pirate/SkyWalker
-	ajob = "Sky Pirate"
+	advancedJob = "Sky Pirate"
 	name = "Sky Walker"
 	rank = "T3"
 	desc = "This Pirate has gained the ability to walk on air. They are immune to fall damage, and passively have the 'Float' status effect, able to toggle and disable it at will."
 	icon = 'Icons/Perk/SkyPirate.png'
 
 /obj/perk/Jobperks/Pirate/SkyBlade
-	ajob = "Sky Pirate"
+	advancedJob = "Sky Pirate"
 	name = "Sky Blade"
 	rank = "T4"
 	desc = "This Pirate has gained the ability to release blades of wind from their Melee Weapon. When performing a Weapon Ability, or a Standard Attack with a Melee Weapon, they may spend a bonus action in order to release a blade of wind, which automatically hits a target for 30 true damage."
@@ -193,13 +191,12 @@
 // ============================================================================
 
 /obj/perk/Jobperks/ChocoboKnight
-	ptype = "job"
-	jobneed = "Chocobo Knight"
+	jobRequired = "Chocobo Knight"
 	icon = 'Icons/Perk/Chocobo Knight.png'
 
 /obj/perk/Jobperks/ChocoboKnight/ChocoboKnight
 	name = "Chocobo Knight"
-	cat = "Unique"
+	category = "Unique"
 	desc = "Chocobo Knights are masters of riding, and fighting alongside mounted companions. A Chocobo Knight starts with a Chocobo Steed upon learning the job. They gain a bonus of +2 to AC and +8 DR while they are mounted on any creature, as a primary benefit. Chocobo Knights may have 1 Companion/Familiar summoned at a time. +80 HP, +70 SP, +40 MP."
 
 /obj/perk/Jobperks/ChocoboKnight/GearShift
@@ -254,7 +251,7 @@
 
 /obj/perk/Jobperks/ChocoboKnight/AdeptRider
 	name = "Adept Rider"
-	pre = "Rookie Rider"
+	prerequisite = "Rookie Rider"
 	rank = "T3"
 	desc = "This Chocobo Knight has reached the rank of an Adept Rider. They may now choose their final mountable companion, from the following list: Alpha Drake, Gigantoad, Woolly Croc, Shoopuff, Black Chocobo, Red Chocobo, Fat Chocobo."
 
@@ -288,13 +285,12 @@
 // ============================================================================
 
 /obj/perk/Jobperks/Gladiator
-	ptype = "job"
-	jobneed = "Gladiator"
+	jobRequired = "Gladiator"
 	icon = 'Icons/Perk/Gladiator.png'
 
 /obj/perk/Jobperks/Gladiator/Gladiator
 	name = "Gladiator"
-	cat = "Unique"
+	category = "Unique"
 	desc = "Gladiators are masters of many different weapon types. A Gladiator may change their weapon type as a bonus action, instead of a standard action, or instead as a free action (once per round) at the cost of 20 SP. A Gladiator gains +50 HP, +80 SP, and +40 MP."
 
 /obj/perk/Jobperks/Gladiator/CombatIntelligence
@@ -365,7 +361,7 @@
 // Gladiator - Gunbreaker Specialization
 /obj/perk/Jobperks/Gladiator/Gunbreaker
 	icon = 'Icons/Perk/Gunbreaker.png'
-	cat = "Unique"
+	category = "Unique"
 	name = "Gunbreaker"
 	rank = "T3"
 	desc = "This Gladiator has trained in the art of the Gunbreaker. They have learned how to use a Gunblade if they have not already, and in addition - they gain a bonus of +8 PAB while wielding a Gunblade. Also, any attacks made with a Gunblade deal 15 additional true damage."
@@ -373,7 +369,7 @@
 /obj/perk/Jobperks/Gladiator/Gunplay
 	icon = 'Icons/Perk/Gunbreaker.png'
 	name = "Gunplay"
-	ajob = "Gunbreaker"
+	advancedJob = "Gunbreaker"
 	rank = "T2"
 	desc = "This Gunbreaker has trained in the art of Gunplay. So long as they are wielding a Gunblade, they gain the maximum bonuses from all T1, and T2 Gladiator passives, passively and regardless of stacks."
 
@@ -381,14 +377,14 @@
 	icon = 'Icons/Perk/Gunbreaker.png'
 	name = "Trigger Burst"
 	rank = "T2"
-	ajob = "Gunbreaker"
+	advancedJob = "Gunbreaker"
 	desc = "This Gunbreaker has mastered the art of the Trigger Burst. Whenever utilizing a General Weapon Ability, as a bonus action, they may spend 25 SP in order to release a Trigger Burst, thus allowing them to perform another General Weapon Ability of rank C or lower, without paying its SP cost - and dealing 15 additional true damage.."
 
 /obj/perk/Jobperks/Gladiator/LionHeart
 	icon = 'Icons/Perk/Gunbreaker.png'
 	name = "Lion Heart"
 	rank = "T3"
-	ajob = "Gunbreaker"
+	advancedJob = "Gunbreaker"
 	desc = "This Gunbreaker has mastered the art of the Gunblade, and due to the ingenuity and courage required to utilize such a difficult to handle weapon, has gained more combat prowess than most individuals. They gain +1 PAB and MAB, as well as +1 AC for each enemy opponent in battle (capping at 5.)"
 
 // ============================================================================
@@ -396,13 +392,12 @@
 // ============================================================================
 
 /obj/perk/Jobperks/Knight
-	ptype = "job"
-	jobneed = "Knight"
+	jobRequired = "Knight"
 	icon = 'Icons/Perk/Knight.png'
 
 /obj/perk/Jobperks/Knight/Knight
 	name = "Knight"
-	cat = "Unique"
+	category = "Unique"
 	desc = "The Knight is a warrior that focuses on mitigating incoming damage, and converting it into offensive power through Adrenaline and Heroics. Knights gain 'Adrenaline Stacks' every time they reduce damage, up to 10 stacks of Adrenaline. You may spend 1 Adrenaline stack per turn in order to regain 1d8+CON HP, or in order to add 1d6+STR damage to a single attack, spell, or ability of your choice. Knight's infusion spells may not be stacked with other Jobs' infusion spells. +100 HP, + 20 MP, +50 SP,"
 
 /obj/perk/Jobperks/Knight/Resilience
@@ -443,9 +438,9 @@
 /obj/perk/Jobperks/Knight/UnmatchedResilience
 	name = "Unmatched Resilience"
 	rank = "T4"
-	pre = "Resilience"
+	prerequisite = "Resilience"
 	desc = "This Knight is more resilient than most, they are now able to gain up to 20 extra damage reduction from 'Resilience', and gain Resilience stacks from any amount of damage."
-	cat = "Unique"
+	category = "Unique"
 
 /obj/perk/Jobperks/Knight/KnightofTheParty
 	name = "Knight of The Party"
@@ -455,13 +450,13 @@
 /obj/perk/Jobperks/Knight/UnmatchedVigor
 	name = "Unmatched Vigor"
 	rank = "T5"
-	cat = "Unique"
+	category = "Unique"
 	desc = "If the Knight's HP reaches zero, they are able to release latent, stored Mana in order to raise their HP back to 40%. Their Mana is also restored up to 50%. This has a 3 OOC day cool-down. Incompatible with 'Hero'."
 
 /obj/perk/Jobperks/Knight/Hero
 	name = "Hero"
 	rank = "T5"
-	cat = "Unique"
+	category = "Unique"
 	desc = "This Knight has proven to be incomparably reckless compared to other Knights. Rather than having nigh unstoppable defenses, like their more vigorous counterparts - this Knight has chosen to pursue the path of flashy recklessness, and throws caution to the wind. This, however, grants them the benefit of growing stronger throughout the duration of combat. A Knight with this perk gains +2 STR per round of combat, capping at +6 after 3 rounds, which lasts until the end of battle. Incompatible with 'Unmatched Vigor'."
 
 // ============================================================================
@@ -469,13 +464,12 @@
 // ============================================================================
 
 /obj/perk/Jobperks/MysticKnight
-	ptype = "job"
-	jobneed = "Mystic Knight"
+	jobRequired = "Mystic Knight"
 	icon = 'Icons/Perk/MysticKnight.png'
 
 /obj/perk/Jobperks/MysticKnight/MysticKnight
 	name = "Mystic Knight"
-	cat = "Unique"
+	category = "Unique"
 	desc = "The Mystic Knight is the inverse of a Spellblade. Rather than infusing one's blade with specially crafted imbuement spells, they utilize the energy generated by using their weapons combined with mixing their own Mana, to cast spells in the midst of Melee combat. Mystic Knights have latent access to C Rank Black magic, and D Rank Arcane magic. A Mystic Knight gains 1 Kinetic Stack per round, as long as they have used at least 1 tile movement. Mystic Knights get 4 DR and +1 Additional Tile Movement as a Global Modifier. +55 HP, +55 MP, +55 SP."
 
 /obj/perk/Jobperks/MysticKnight/BladeDancer
@@ -531,5 +525,6 @@
 /obj/perk/Jobperks/MysticKnight/BastionofMagic
 	name = "Bastion of Magic"
 	rank = "T5"
-	cat = "Unique"
+	category = "Unique"
 	desc = "The Mystic Knight has learned to truly master their abilities as a blade-caster. Due to arduous combination of physical and magical might, their body has now been reinforced to be far more durable, and their magical reserves are also reinforced by their physical strength. A Mystic Knight who is a Bastion of Magic may now access B Rank Black/Arcane magics. In addition, they gain an additional +15 HP, and MP, and 4 global damage reduction."
+

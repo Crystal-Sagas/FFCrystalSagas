@@ -20,14 +20,12 @@
  * Melee weapon abilities
  */
 /obj/Ability/Weapon/Melee
-	skillType = "Melee"
 	range = 1
 
 /**
  * Ranged weapon abilities
  */
 /obj/Ability/Weapon/Ranged
-	skillType = "Ranged"
 	scalingStat = "DEX"
 	range = 6
 
@@ -35,6 +33,5 @@
  * Unarmed combat abilities
  */
 /obj/Ability/Weapon/Unarmed
-	skillType = "Melee"
 	weaponRequired = "unarmed"
 	range = 1

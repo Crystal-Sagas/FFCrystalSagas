@@ -17,9 +17,7 @@
 	desc = "The user leaps in a particular direction, gathering momentum in their weapon before striking at a target. Can move an extra 1 tile of movement towards a target of this technique while performing the attack. (Damage: Weapon damage + 1d10 | Melee attack roll, +3 to hit. -10 stamina.)"
 	rank = "D"
 	staminaCost = 10
-	diceCount = 1
-	diceSides = 10
-	flatDamage = 0
+	baseDamage = 6
 	hitBonus = 3
 	scalingStat = "STR"
 	range = 1
@@ -42,9 +40,6 @@
 	desc = "The user of this ability must first dodge a melee ability. They then carry their momentum over for an augmented blow upon their target. Reaction. This attack is made with advantage. (Damage: Weapon Damage + 10 | Weapon Attack Roll at Advantage | Must first dodge a Melee ability or attack roll via AC. -30 Stamina.)"
 	rank = "C"
 	staminaCost = 30
-	diceCount = 0
-	diceSides = 0
-	flatDamage = 10
 	hitBonus = 0
 	scalingStat = "STR"
 	range = 1
@@ -57,9 +52,7 @@
 	desc = "The user of this ability launches forward, moving up to 2 tiles as part of this action. They then release a combination of 3 'Renzokuken' attacks, which deal Weapon Damage+2d2 additional damage on hit. Must be used with a Melee weapon. This ability can not deal more than 80 cumulative damage, regardless of damage rolled across all attacks. Costs 45 Stamina."
 	rank = "C"
 	staminaCost = 45
-	diceCount = 2
-	diceSides = 2
-	flatDamage = 0
+	baseDamage = 3
 	scalingStat = "STR"
 	range = 1
 	damageType = "physical"
@@ -71,9 +64,7 @@
 	desc = "The user of this ability performs an acrobatic, multi-hit attack after infusing their blade with raging 'flames' of passion. This attack deals normal physical damage, as a 3 hit combo. Each attack deals 1d2 additional damage on hit. If at least one hit lands, the 'flames of passion' remain active on the weapon for 3 rounds, granting the the user +5 PDB for 3 rounds. Must be used with a Melee weapon. This ability cannot exceed 45 cumulative damage, regardless of damage rolled. Costs 45 Stamina."
 	rank = "C"
 	staminaCost = 45
-	diceCount = 1
-	diceSides = 2
-	flatDamage = 0
+	baseDamage = 2
 	scalingStat = "STR"
 	range = 1
 	damageType = "physical"
@@ -85,9 +76,6 @@
 	desc = "The user of this ability swings their weapon after imbuing it with a burst of Mana. The first strike carries through, and if the target dodges, a second strike made of mana and in the shape of the weapon with the same speed follows after (Damage: Weapon Damage + 5 | Bonus action after a standard attack misses. -30 Stamina)"
 	rank = "C"
 	staminaCost = 30
-	diceCount = 0
-	diceSides = 0
-	flatDamage = 5
 	hitBonus = 0
 	scalingStat = "STR"
 	range = 1
@@ -101,9 +89,7 @@
 	rank = "C"
 	staminaCost = 30
 	element = "Force"
-	diceCount = 1
-	diceSides = 12
-	flatDamage = 0
+	baseDamage = 7
 	scalingStat = "STR"
 	range = 1
 	aoeType = "circle"
@@ -118,9 +104,6 @@
 	desc = "The user approaches the target, and using their weapon prepares for a uppercut attack. Instead of actually attacking the user surprises their target by using their weapon to kick up a powerful gale that sends the target upwards leaving them open. This can be used on targets much larger than the user even without a lot of strength. (Damage: Weapon Damage + 4 | Weapon Attack Roll, sends target skyward by 1 tile per STR Modifier point, -30 stamina.)"
 	rank = "C"
 	staminaCost = 30
-	diceCount = 0
-	diceSides = 0
-	flatDamage = 4
 	hitBonus = 0
 	scalingStat = "STR"
 	range = 1
@@ -133,9 +116,6 @@
 	desc = "The user launches an initial attack with their weapon, and if it hits will lock the target in place as a line is drawn in the air. The user follows up with two more attacks that complete the symbol before releasing the target. The second two attacks are only made if the initial attack hits. This ability can not deal more than 45 damage cumulatively, regardless of damage rolled across all attacks. | Three Melee Attack rolls, prompts a Fortitude saving throw with a DC of 15 - applies stun for one round on failure. -30 stamina.)"
 	rank = "C"
 	staminaCost = 30
-	diceCount = 0
-	diceSides = 0
-	flatDamage = 0
 	scalingStat = "STR"
 	range = 1
 	damageType = "physical"
@@ -148,9 +128,6 @@
 	desc = "Coating one's weapon in energy, they then dash forward and swing it upward, to blast a target away. This attacks a 3 tile line in front of the caster, and deals full damage on a failed save ; or half on a successful save."
 	rank = "B"
 	staminaCost = 50
-	diceCount = 0
-	diceSides = 0
-	flatDamage = 50  // Average of 30-70
 	scalingStat = "STR"
 	range = 3
 	aoeType = "line"
@@ -165,9 +142,7 @@
 	desc = "Dash forward, coating one's weapon in volatile magical energy. With each swing, this energy explodes - sending the weapon forward with increase momentum. Each attack deals 5d2 additional damage. In addition, with each attack that misses - grant successive attacks +2 to hit. Make 4 attack rolls. (Caps at 120 cumulative damage.) Costs 45 Stamina."
 	rank = "B"
 	staminaCost = 45
-	diceCount = 5
-	diceSides = 2
-	flatDamage = 0
+	baseDamage = 8
 	scalingStat = "STR"
 	range = 1
 	damageType = "physical"
@@ -179,9 +154,7 @@
 	rank = "B"
 	staminaCost = 40
 	element = "Fire"
-	diceCount = 2
-	diceSides = 6
-	flatDamage = 0
+	baseDamage = 7
 	scalingStat = "STR"
 	range = 1
 	aoeType = "circle"
@@ -197,9 +170,7 @@
 	rank = "B"
 	staminaCost = 50
 	element = "Holy"
-	diceCount = 5
-	diceSides = 12
-	flatDamage = 5
+	baseDamage = 33
 	hitBonus = 5
 	scalingStat = "STR"
 	range = 5
@@ -212,9 +183,6 @@
 	rank = "B"
 	staminaCost = 50
 	element = "Dark"
-	diceCount = 0
-	diceSides = 0
-	flatDamage = 32  // Average of 4-55 + 3
 	hitBonus = 4
 	scalingStat = "STR"
 	range = 1
@@ -229,9 +197,7 @@
 	rank = "B"
 	staminaCost = 40
 	element = "Force"
-	diceCount = 2
-	diceSides = 12
-	flatDamage = 10
+	baseDamage = 13
 	scalingStat = "STR"
 	range = 6
 	aoeType = "line"
@@ -246,9 +212,6 @@
 	desc = "The user turns to their comrades projecting their voice in a powerful boom that instills encouragement in them. Targets all friendly creatures in a 6 tile cone in front of the user. Targets gain haste and a +2 bonus to strength that lasts until the haste effect wears off. Can only be used once per encounter. (-40 Stamina.)"
 	rank = "B"
 	staminaCost = 40
-	diceCount = 0
-	diceSides = 0
-	flatDamage = 0
 	scalingStat = "STR"
 	range = 6
 	aoeType = "cone"
@@ -261,9 +224,6 @@
 	desc = "Runes solidify around the user of this ability's weapon, granting it potent sealing power. They then swing the weapon as a standard attack. On hit, the target is inflicted with Silence. Costs 40 Stamina."
 	rank = "B"
 	staminaCost = 40
-	diceCount = 0
-	diceSides = 0
-	flatDamage = 0
 	scalingStat = "STR"
 	range = 1
 	damageType = "physical"
@@ -274,9 +234,6 @@
 	desc = "A ferocious, and powerful combination attack. This ability allows you to perform 5 Standard attacks, however - only ONE of these five attacks may hit, and deal damage. If any of the five attack rolls would hit, the attack hits - and the user of this ability may choose the highest damage number rolled of the five, to apply. Costs 60 Stamina."
 	rank = "B"
 	staminaCost = 60
-	diceCount = 0
-	diceSides = 0
-	flatDamage = 0
 	scalingStat = "STR"
 	range = 1
 	damageType = "physical"
@@ -288,9 +245,7 @@
 	rank = "B"
 	staminaCost = 50
 	element = "Force"
-	diceCount = 2
-	diceSides = 12
-	flatDamage = 0
+	baseDamage = 13
 	hitBonus = 3
 	scalingStat = "STR"
 	range = 3
@@ -304,9 +259,6 @@
 	desc = "The user infuses their weapon with obscene amounts of energy, and raises it into the sky. They then swing down, bringing the energy down as a blade, and prompting a reflex saving throw DC 14 + STR + Rank Bonus. On Failure they take 60-110 +5 Physical damage; on success, they take half. Cost -60 Stamina."
 	rank = "A"
 	staminaCost = 60
-	diceCount = 0
-	diceSides = 0
-	flatDamage = 90  // Average of 60-110 + 5
 	scalingStat = "STR"
 	range = 5
 	aoeType = "line"
@@ -321,9 +273,7 @@
 	desc = "Calling upon the name of the Valkyries, the user of this ability infuses their weapon with magic that transforms it into a pair of linked together duplicates. They then separate the blades. This weapon takes the place of their own, and uses its attributes but gains 1d10 additional damage on hit. In addition, while this state is active - you may make an extra attack as a bonus action. Cannot be used with Thief Swords. Costs 15 SP per turn to sustain."
 	rank = "A"
 	staminaCost = 15
-	diceCount = 1
-	diceSides = 10
-	flatDamage = 0
+	baseDamage = 6
 	scalingStat = "STR"
 	range = 1
 	damageType = "physical"
@@ -335,9 +285,7 @@
 	rank = "A"
 	staminaCost = 90
 	element = "Fire"
-	diceCount = 8
-	diceSides = 10
-	flatDamage = 0
+	baseDamage = 44
 	scalingStat = "STR"
 	range = 1
 	damageType = "physical"
@@ -351,9 +299,7 @@
 	rank = "A"
 	staminaCost = 75
 	element = "Dark"
-	diceCount = 7
-	diceSides = 10
-	flatDamage = 5
+	baseDamage = 39
 	hitBonus = 3
 	scalingStat = "STR"
 	range = 5
@@ -389,9 +335,7 @@
 	desc = "The user makes a horizontal slice with their weapon causing the air in front of the user to become disturbed before kicking up a powerful gale that pulls anything caught in it high into the air. Anything that is kicked upwards will most likely take heavy damage from the fall. (Damage: Weapon Damage + 2d20+STR+10 | Melee Weapon Attack (+3 to hit) | 3 tile wide attack, launches target 2 tiles per STR Modifier point. -55 Stamina)"
 	rank = "A"
 	staminaCost = 55
-	diceCount = 2
-	diceSides = 20
-	flatDamage = 10
+	baseDamage = 21
 	hitBonus = 3
 	scalingStat = "STR"
 	range = 1
@@ -407,9 +351,6 @@
 	rank = "A"
 	staminaCost = 40
 	manaCost = 40
-	diceCount = 0
-	diceSides = 0
-	flatDamage = 0
 	scalingStat = "STR"
 	range = 0
 	damageType = "physical"
@@ -421,9 +362,7 @@
 	rank = "A"
 	category = "Unique"
 	staminaCost = 60
-	diceCount = 1
-	diceSides = 20
-	flatDamage = 0
+	baseDamage = 11
 	hitBonus = 3
 	scalingStat = "STR"
 	range = 1
@@ -439,9 +378,7 @@
 	rank = "A"
 	staminaCost = 60
 	element = "Thunder"
-	diceCount = 3
-	diceSides = 12
-	flatDamage = 0
+	baseDamage = 20
 	scalingStat = "DEX"
 	range = 3
 	aoeType = "cone"
@@ -457,9 +394,7 @@
 	category = "Unique"
 	staminaCost = 70
 	element = "Wind"
-	diceCount = 3
-	diceSides = 20
-	flatDamage = 0
+	baseDamage = 32
 	hitBonus = 4
 	scalingStat = "DEX"
 	range = 6
@@ -474,14 +409,11 @@
 	desc = "The user takes a few moments to gather the energy around them building up a frozen inertia. Once a turn has passed the user launches forward propelling their body with tremendous power and speed. The user spins their body during the assault turning their body into a piercing drill, allowing them to attack several times. (Damage: 3d12+STR | 4 Attack Rolls, takes a turn to charge up, -75 Stamina | +3 Cooldown.)"
 	rank = "A"
 	staminaCost = 75
-	diceCount = 3
-	diceSides = 12
-	flatDamage = 0
+	baseDamage = 20
 	scalingStat = "STR"
 	range = 1
 	damageType = "physical"
 	actionType = "standard"
-	chargeTime = 1
 	baseDC = 10
 
 /obj/Ability/Weapon/Melee/Octaslash
@@ -490,9 +422,6 @@
 	rank = "S"
 	category = "Unique"
 	staminaCost = 120
-	diceCount = 0
-	diceSides = 0
-	flatDamage = 10
 	hitBonus = 0
 	scalingStat = "STR"
 	range = 5
@@ -507,9 +436,7 @@
 	rank = "S"
 	category = "Unique"
 	manaCost = 120
-	diceCount = 2
-	diceSides = 12
-	flatDamage = 10
+	baseDamage = 13
 	scalingStat = "STR"
 	range = 7
 	aoeType = "circle"
@@ -526,9 +453,7 @@
 	rank = "S"
 	category = "Unique"
 	manaCost = 120
-	diceCount = 4
-	diceSides = 20
-	flatDamage = 0
+	baseDamage = 42
 	scalingStat = "STR"
 	range = 5
 	aoeType = "cone"
@@ -548,9 +473,7 @@
 	rank = "E"
 	staminaCost = 5
 	element = "Earth"
-	diceCount = 1
-	diceSides = 12
-	flatDamage = 0
+	baseDamage = 7
 	scalingStat = "STR"
 	range = 4  // Base range, increases with STR
 	damageType = "physical"
@@ -563,9 +486,7 @@
 	rank = "D"
 	staminaCost = 10
 	element = "Flare"
-	diceCount = 1
-	diceSides = 20
-	flatDamage = 0
+	baseDamage = 11
 	hitBonus = 2
 	scalingStat = "STR"
 	range = 6
@@ -621,9 +542,7 @@
 	desc = "A technique which can be applied to a ranged weapon attack. The weapon is imbued with an extra sharp shroud of energy around its offending tip, which grants it additional damage. If the attack roll hits, the target must make a saving throw. (Damage: 2d12+DEX | Prompts a Fortitude saving throw (DC 13+DEX+Rankbonus), dealing full damage and inflict bleed on a failure, and half damage and no bleed on a success. -45 Stamina.)"
 	rank = "B"
 	staminaCost = 45
-	diceCount = 2
-	diceSides = 12
-	flatDamage = 0
+	baseDamage = 13
 	scalingStat = "DEX"
 	range = 8
 	damageType = "physical"
@@ -638,9 +557,7 @@
 	category = "Unique"
 	manaCost = 90
 	element = "Flare"
-	diceCount = 5
-	diceSides = 12
-	flatDamage = 0
+	baseDamage = 33
 	scalingStat = "STR"
 	range = 6
 	aoeType = "line"
@@ -658,9 +575,7 @@
 	category = "Unique"
 	staminaCost = 90
 	element = "Earth"
-	diceCount = 5
-	diceSides = 12
-	flatDamage = 10
+	baseDamage = 33
 	hitBonus = 6
 	scalingStat = "STR"
 	range = 6
@@ -678,9 +593,7 @@
 	category = "Unique"
 	staminaCost = 120
 	element = "Laser"
-	diceCount = 10
-	diceSides = 12
-	flatDamage = 0
+	baseDamage = 65
 	scalingStat = "DEX"
 	range = 10
 	aoeType = "circle"
@@ -689,3 +602,4 @@
 	actionType = "save"
 	saveType = "Reflex"
 	baseDC = 15
+

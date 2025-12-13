@@ -53,5 +53,5 @@
 
 /obj/perk/Boss/Jenova/Gas
 	name = "Gas"
-	ability = 1
+	isAbility = TRUE
 	desc = "Jenova.ZYGOTE spews a toxic gas in a 3 tile cone in front of it. Targets caught in the AoE must make a fortitude saving throw or suffer poison and blind. If the target is standing on a tile infected by Geostigma they roll at disadvantage."

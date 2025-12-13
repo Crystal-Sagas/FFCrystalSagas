@@ -17,38 +17,43 @@
 	switch(statType)
 		if(1) // Constitution
 			var/conVal = target.constitution ? target.constitution.currentValue.value : 10
-			if(conVal >= perk.conreq)
+			var/reqVal = perk.conRequired
+			if(conVal >= reqVal)
 				return FALSE
 			else
-				alert(target, "You require at least [perk.conreq] Constitution to buy this perk.")
+				alert(target, "You require at least [reqVal] Constitution to buy this perk.")
 				return TRUE
 		if(2) // Strength
 			var/strVal = target.strength ? target.strength.currentValue.value : 10
-			if(strVal >= perk.strreq)
+			var/reqVal = perk.strRequired
+			if(strVal >= reqVal)
 				return FALSE
 			else
-				alert(target, "You require at least [perk.strreq] Strength to buy this perk.")
+				alert(target, "You require at least [reqVal] Strength to buy this perk.")
 				return TRUE
 		if(3) // Wisdom
 			var/wisVal = target.wisdom ? target.wisdom.currentValue.value : 10
-			if(wisVal >= perk.wisreq)
+			var/reqVal = perk.wisRequired
+			if(wisVal >= reqVal)
 				return FALSE
 			else
-				alert(target, "You require at least [perk.wisreq] Wisdom to buy this perk.")
+				alert(target, "You require at least [reqVal] Wisdom to buy this perk.")
 				return TRUE
 		if(4) // Dexterity
 			var/dexVal = target.dexterity ? target.dexterity.currentValue.value : 10
-			if(dexVal >= perk.dexreq)
+			var/reqVal = perk.dexRequired
+			if(dexVal >= reqVal)
 				return FALSE
 			else
-				alert(target, "You require at least [perk.dexreq] Dexterity to buy this perk.")
+				alert(target, "You require at least [reqVal] Dexterity to buy this perk.")
 				return TRUE
 		if(5) // Charisma
 			var/chaVal = target.charisma ? target.charisma.currentValue.value : 10
-			if(chaVal >= perk.chareq)
+			var/reqVal = perk.chaRequired
+			if(chaVal >= reqVal)
 				return FALSE
 			else
-				alert(target, "You require at least [perk.chareq] Charisma to buy this perk.")
+				alert(target, "You require at least [reqVal] Charisma to buy this perk.")
 				return TRUE
 
 	return FALSE
@@ -82,12 +87,12 @@
 	if(!istype(perk) || !ismob(target))
 		return TRUE
 
-	if(!perk.magicneed)
+	if(!perk.magicRequired)
 		return FALSE
 
 	var/rankNumber = rankToNumber(perk.rank)
 
-	switch(perk.magicneed)
+	switch(perk.magicRequired)
 		if("White Magic")
 			return target.whitemagicable < rankNumber
 		if("Black Magic")
@@ -109,12 +114,12 @@
 	if(!istype(perk) || !ismob(target))
 		return TRUE
 
-	if(!perk.jobneed)
+	if(!perk.jobRequired)
 		return FALSE
 
-	if(target.job == perk.jobneed)
+	if(target.job == perk.jobRequired)
 		return FALSE
-	if(target.subjob == perk.jobneed)
+	if(target.subjob == perk.jobRequired)
 		return FALSE
 
 	return TRUE
@@ -257,7 +262,7 @@
 
 	// Check job requirement
 	if(checkPerkJobRequirement(perk, target))
-		alert(target, "You do not have the required job: [perk.jobneed]")
+		alert(target, "You do not have the required job: [perk.jobRequired]")
 		return TRUE
 
 	// Check magic requirement

@@ -8,7 +8,7 @@
  */
 
 /obj/perk/Uniques
-	cat = "Unique"
+	category = "Unique"
 
 /obj/perk/Uniques/Telekinesis
 	icon = 'Icons/Perk/Telekinesis.png'
@@ -41,15 +41,14 @@
 
 /obj/perk/Uniques/Warroroflight/Lightsblessing
 	name = "Light's Blessing"
-	ability = 1
+	isAbility = TRUE
 	desc = "The Holy Light of the Aether has given the user a direct link to the mana of the universe, making them a conduit of mana just like the crystals each nation harbors. They are infused with great power and can call upon a golden, glowing aura of power. | +2 to hit, +3 AC, and +20 flat damage to all damage calculations."
-	mcost = "10 per turn"
-	costtype = "Mana"
+	manaCost = "10 per turn"
 
 /obj/perk/Uniques/Harbinger_of_Chaos
 	name = "Harbinger of Chaos"
 	rank = "T4"
-	cat = "Unique"
+	category = "Unique"
 	icon = 'Icons/Perk/EmbodimentofSin.png'
 	desc = "The user has awakened the true power of chaos inside them. At any time they are able to access this form, but can only control it if they possess the protomateria. The user becomes a demonic creature sprouting a pair of wings capable of agile flight. They also gain access to the death penalty. A massive gun that fires a powerful beam of Mana, and increases its power the more souls it absorbs. { Ex. Vincent }. This grants +50 HP, +30 MP, and +30 SP, as well as +2 to all Ability Scores. Allows the creation and application for 'Chaos Forms'."
 
@@ -67,33 +66,33 @@
 
 /obj/perk/Uniques/Lucisheir/Heiroflucis/Warp
 	name = "Warp"
-	ability = 1
+	isAbility = TRUE
 	rank = "C"
 	desc = "As a Bonus Action, the Heir of Lucis may materialize a weapon from their Armiger and throw it to a specific tile or surface within 6 tiles for 10 SP. This does not do damage and instead plants the weapon on this tile. They can recall it back to their Armiger as a Bonus Action and 10 MP. Lastly, as a Free Action once a turn they may either warp to that planted weapon or as a Reaction in response to an incoming attack giving resistance to that attack's damage and warping themselves to the weapon. This last effect has a two Round cooldown and costs 15 MP, otherwise this technique does not have a cooldown. The Heir may 'hang' by the weapon on the tile they warped to, preventing falling."
 
 /obj/perk/Uniques/Lucisheir/Heiroflucis/Warpstrike
 	name = "Warp Strike"
-	ability = 1
+	isAbility = TRUE
 	rank = "D"
 	desc = "As a standard action and for 10 SP and 20 MP the Heir of Lucis or a Kingsglaive member may launch their weapon at a target at blazing speeds, with a maximum range of up to 8 tiles. They roll a standard attack at Advantage. The Heir of Lucis or Kingsglaive then warps in a flash of azure - leaving a tracer of energy connecting them to their starting position - to an adjacent tile to the target."
 
 /obj/perk/Uniques/Lucisheir/Heiroflucis/Phase
 	name = "Phase"
-	ability = 1
+	isAbility = TRUE
 	rank = "C"
 	desc = "The user focuses on a target watching their every move. Just before their opponent is about to land a blow the user expends a large amount of energy to teleport a short distance from the attack leaving only an afterimage of light in their place. They may appear on any tile within three tiles of their original position. (As a reaction, dodge a single ability / spell. -50 Mana.)"
 
 /obj/perk/Uniques/Lucisheir/Heiroflucis/Arminger
 	name = "Arminger"
-	ability = 0
+	isAbility = FALSE
 	rank = "T4"
 	desc = "The Heir of Lucis need not bear a weapon within their hands, as such can be evoked from the Aether around them in a flash of azure light at exactly the time where it is needed. As a Bonus Action, the Heir of Lucis may swap between any weapon or shield in their inventory using the 'Armiger' ability for 10 MP. Upon switching to a new weapon, the weapon gains the 'Armiger' buff for 1 Round, boosting its respective damage bonus (PDB or MDB) by 5. One Round cooldown on use. OOC Effects: The Heir of Lucis' weapons when equipped are not visibly equipped, though they still gain the weapon's bonuses - as they materialize when they're specifically being used or at the choice of the Heir. The Heir of Lucis' Weapons and shields cannot be subject to Mug rolls as they are intangible, though anything else on their person can be.."
 
 /obj/perk/Uniques/Lucisheir/Heiroflucis/ArmingerUnleashed
 	name = "Arminger Unleashed"
-	ability = 1
+	isAbility = TRUE
 	rank = "A"
-	mcost = 80
+	manaCost = 80
 	desc = "The Heir of Lucis may attack a singular time with each weapon in their arsenal, up to a maximum of 5 attacks. This ability has no cooldown. In addition, when the Heir of Lucis knows this ability, all weapons in their arsenal are considered equipped and may be utilized for Weapon Abilities, with no action cost. The Heir of Lucis gains a permanent +10 PDB and MDB due to this effect, which can stack with Arminger's +5 on switch. Using Arminger Unleashed costs 80 MP."
 
 /obj/perk/Uniques/Lucisheir/Kingsglaive
@@ -221,17 +220,17 @@
 /obj/perk/Uniques/HalfEsper/AetherialBody
 	name = "Aetherial Body"
 	rank = "D"
-	ability = 1
+	isAbility = TRUE
 	desc = "The Half-Esper can choose to expend 10 Mana to cleanse their body of one status effect and heal themselves 5 health points. This can only be activated once per turn."
 
 /obj/perk/Uniques/HalfEsper/PsuedoTransformation
 	name = "Psuedo Transformation"
-	ability = 1
+	isAbility = TRUE
 	rank = "C"
 	desc = "The Half-Esper activates their latent Bloodline, which will affect their physical form in different ways. They take on form akin to the Eidolon they've been tied to, increasing their physical power and skill. 15 energy to enter in a scene. This cost goes up by 10 each time they re-enter the form in the same instance, dungeon, or encounter. (Choose Eidolon in application, this is supposed to not be something you can build around. More so you just get this form when you create your character.)"
 
 /obj/perk/Uniques/HalfEsper/StageTwoTransformation
-	ability = 1
+	isAbility = TRUE
 	rank = "A"
 	name = "Stage Two Transformation"
 	desc = "This Half-Esper has gone through an extremely taxing event in their life, pushing them past their limits and drawing every drop of aetherial power from their bloodline, further changing their form to match their Eidolon Link, and boosting their power and skill once more. (Once unlocked the user must spend their entire turn transforming into this form, costs 30 energy to enter and 15 more each time they re-enter it in the same instance, dungeon, or encounter. Must be in Pseudo form before entering this state.)"

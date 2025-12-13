@@ -6,12 +6,12 @@
  */
 
 /obj/perk/Jobperks/Summoner
-	jobneed = "Summoner"
+	jobRequired = "Summoner"
 	icon = 'Icons/Perk/Summoner.png'
 
 /obj/perk/Jobperks/Summoner/Summoner
 	name = "Summoner"
-	cat = "Unique"
+	category = "Unique"
 	desc = "Summoners are masters of sharing and utilizing their Mana in order to empower others, and their Summons. As a result, a Summoner becomes a 'Mana Bank' - able to freely transfer points of their MP to party members, and monsters. Doing so is a bonus action. +10 HP, + 90 MP, +10 SP."
 
 /obj/perk/Jobperks/Summoner/PartialSummon

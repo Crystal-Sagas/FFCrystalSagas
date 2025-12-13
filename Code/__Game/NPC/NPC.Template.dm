@@ -322,7 +322,7 @@
 	// Copy ability types (not instances)
 	abilities = list()
 	for(var/obj/perk/p in source.contents)
-		if(p.ability)
+		if(p.isAbility)
 			abilities += p.type
 
 	return src

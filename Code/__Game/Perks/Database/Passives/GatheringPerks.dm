@@ -9,8 +9,7 @@
  */
 
 /obj/perk/Gathering
-	cat = "Gathering"
-	ptype = "general"
+	category = "Gathering"
 
 /obj/perk/Gathering/Miner
 	icon = 'Icons/Perk/Miner.png'
@@ -23,13 +22,13 @@
 /obj/perk/Gathering/Miner/Miner2
 	rank = "T2"
 	name = "Seasoned Miner"
-	pre = "Miner"
+	prerequisite = "Miner"
 	desc = "This individual is a seasoned Miner. They're able to get the resources they require without wasting as much of the precious metal in the process. A Seasoned Miner gains a +10 to all Ore node rolls for normal metal (not towards Silver/Gold)."
 
 /obj/perk/Gathering/Miner/Miner3
 	rank = "T3"
 	name = "Expert Miner"
-	pre = "Seasoned Miner"
+	prerequisite = "Seasoned Miner"
 	desc = "This individual is an expert Miner. They gain x2 whatever they reap from their mining roll."
 
 /obj/perk/Gathering/Gatherer
@@ -43,13 +42,13 @@
 /obj/perk/Gathering/Gatherer/Gatherer2
 	rank = "T2"
 	name = "Seasoned Gatherer"
-	pre = "Gatherer"
+	prerequisite = "Gatherer"
 	desc = "This individual is a seasoned Gatherer. They're able to more reliably find the resources that they want when searching. Adds +10 to gathering rolls."
 
 /obj/perk/Gathering/Gatherer/Gatherer3
 	rank = "T3"
 	name = "Expert Gatherer"
-	pre = "Seasoned Gatherer"
+	prerequisite = "Seasoned Gatherer"
 	desc = "This individual is an expert Gatherer. They have an eye for hot-spots, and can more reliably find what they're looking for. Doubles the amount of resources attained from gathering from a Nature Node."
 
 /obj/perk/Gathering/Hunter
@@ -63,13 +62,13 @@
 /obj/perk/Gathering/Hunter/Hunter2
 	rank = "T2"
 	name = "Seasoned Hunter"
-	pre = "Hunter"
+	prerequisite = "Hunter"
 	desc = "This individual is a seasoned Hunter. They're able to more reliably find the prey that they want when searching. Adds +10 to hunting rolls."
 
 /obj/perk/Gathering/Hunter/Hunter3
 	rank = "T3"
 	name = "Expert Hunter"
-	pre = "Seasoned Hunter"
+	prerequisite = "Seasoned Hunter"
 	desc = "This individual is an expert Hunter. They're able to track the patterns of certain beasts, and this allows them to find what they want far more reliably than others. Doubles the amount of resources gathered from a Hunting Spot."
 
 /obj/perk/Gathering/Sifter
@@ -83,11 +82,12 @@
 /obj/perk/Gathering/Sifter/Sifter2
 	rank = "T2"
 	name = "Seasoned Sifter"
-	pre = "Sifter"
+	prerequisite = "Sifter"
 	desc = "This individual is able to pick out spots in the dirt that have a higher yield for natural gemstones, and this allows them to more reliably find valuable stones. You roll twice when interacting with a Soil Mound."
 
 /obj/perk/Gathering/Sifter/Sifter3
 	rank = "T3"
 	name = "Expert Sifter"
-	pre = "Seasoned Sifter"
+	prerequisite = "Seasoned Sifter"
 	desc = "This individual is an expert Sifter. They have an innate sense for the location of even specific gemstones, highly increasing the likelihood that they'll find what they want to. Grants twice the amount of gems attained from a Soil Mound."
+

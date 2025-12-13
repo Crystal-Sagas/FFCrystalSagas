@@ -16,7 +16,7 @@
 						return
 					usr.roleplayPoints.removeValue(b.rpcost)
 					var/obj/perk/p = copyatom(b)
-					b.ontree=0
+					p.onTree=FALSE
 					usr.contents+=p
 					alert(usr,"You have learned [b.name]!")
 					Checkspec(b,usr)
@@ -39,7 +39,7 @@
 							return
 						usr.roleplayPoints.removeValue(b.rpcost)
 						var/obj/perk/p = copyatom(b)
-						p.ontree=0
+						p.onTree=FALSE
 						usr.contents+=p
 						alert(usr,"You have learned [b.name]!")
 						Checkspec(b,usr)

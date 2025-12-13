@@ -321,34 +321,28 @@ mob
 								perklist+=p2
 					if("Ability")
 						var/obj/perk/p=new
-						p.ability=1
+						p.isAbility=TRUE
 						p.name=input("Choose a name for the perk.") as text
 						var/list/ranklist=list("E","D","C","B","A","S")
 						p.rank=input("Choose a rank for the perk") as anything in ranklist
 						p.desc=input("Set the description of the perk") as text
-						p.mcost=input("How much will it cost to use this ability?") as num
-						var/list/rescost=list("Mana","Stamina")
-						p.costtype=input("Mana or Stamina drain?") as anything in rescost
-						var/list/atktype=list("standard","magical","save","weapon","weaponsave","heal")
-						p.atype=input("Choose an attack type. This affects calculation during rolls") as anything in atktype
-						p.attack_roll_damage_dice = FALSE
-						var/list/sourcetypes=list("str","dex","con","int","wis","cha")
-						switch(p.atype)
-							if("standard", "weapon", "magical", "heal")
-								p.attack_roll_damage_lower=input("Choose a starting range for an attack roll") as num
-								p.attack_roll_damage_upper=input("Choose an ending range for an attack roll") as num
-								p.addhit=input("Does this attack add to hitrate?") as num
-								p.adddam=input("Does this attack add to damage?") as num
-								p.damsource=input("What stat is being taken into calc.") as anything in sourcetypes
-							if("save", "weaponsave")
-								p.attack_roll_damage_lower=input("Choose a starting range for an attack roll") as num
-								p.attack_roll_damage_upper=input("Choose an ending range for an attack roll") as num
-								p.addhit=input("Does this attack add to hitrate?") as num
-								p.adddam=input("Does this attack add to damage?") as num
-								p.damsource=input("What stat is being taken into calc.") as anything in sourcetypes
-								p.basecheck=input("Choose the base DC is calculated by.")as num
-								var/list/svetypes=list("Fortitude","Reflex","Will")
-								p.savetype=input("Choose what stat is required in the save.")as anything in svetypes
+						p.manaCost=input("How much mana will it cost?") as num
+						p.staminaCost=input("How much stamina will it cost?") as num
+						var/list/atktype=list(ATYPE_STANDARD,ATYPE_WEAPON,ATYPE_SAVE,ATYPE_WEAPONSAVE,ATYPE_HEAL,ATYPE_BUFF)
+						p.actionType=input("Choose an action type. This affects calculation during rolls") as anything in atktype
+						var/list/sourcetypes=list(STAT_STRENGTH,STAT_DEXTERITY,STAT_CONSTITUTION,STAT_INTELLIGENCE,STAT_WISDOM,STAT_CHARISMA)
+						switch(p.actionType)
+							if(ATYPE_STANDARD, ATYPE_WEAPON, ATYPE_HEAL)
+								p.baseDamage=input("Choose base damage value") as num
+								p.hitBonus=input("Does this attack add to hitrate?") as num
+								p.scalingStat=input("What stat is being taken into calc.") as anything in sourcetypes
+							if(ATYPE_SAVE, ATYPE_WEAPONSAVE)
+								p.baseDamage=input("Choose base damage value") as num
+								p.hitBonus=input("Does this attack add to hitrate?") as num
+								p.scalingStat=input("What stat is being taken into calc.") as anything in sourcetypes
+								p.baseDC=input("Choose the base DC.")as num
+								var/list/svetypes=list(SAVE_FORTITUDE,SAVE_REFLEX,SAVE_WILL)
+								p.saveType=input("Choose what stat is required in the save.")as anything in svetypes
 
 						switch(alert("Set an icon?",,"Yes","No"))
 							if("Yes")

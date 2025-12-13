@@ -120,9 +120,9 @@
 		perkData["ref"] = "\ref[P]"
 		perkData["name"] = P.name
 		perkData["desc"] = P.desc ? P.desc : ""
-		perkData["cost"] = P.mcost ? P.mcost : 0
+		perkData["cost"] = P.manaCost ? P.manaCost : 0
 
-		if(P.ability)
+		if(P.isAbility)
 			abilities += list(perkData)
 		else
 			perks += list(perkData)

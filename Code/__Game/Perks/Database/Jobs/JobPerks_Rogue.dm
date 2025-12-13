@@ -6,12 +6,12 @@
  */
 
 /obj/perk/Jobperks/Rogue
-	jobneed = "Rogue"
+	jobRequired = "Rogue"
 	icon = 'Icons/Perk/Thief.png'
 
 /obj/perk/Jobperks/Rogue/Rogue
 	name = "Rogue"
-	cat = "Unique"
+	category = "Unique"
 	desc = "The Rogue is a quick and nimble individual, capable of striking faster than most can see. Their sleight of hand training as well as Lock-picking has honed their hand-eye-coordination and striking speed to an elevated level. Rogues have 30 feet of Obscuration ignorance, allowing them to see within 30 feet of Darkness or Obscuration. (+2 to hit with 1H Melee Weapons) +20 HP, +30 MP, +50 SP."
 
 /obj/perk/Jobperks/Rogue/ThrowingWeaponProficiency
@@ -67,5 +67,5 @@
 /obj/perk/Jobperks/Rogue/NinjaArts
 	name = "Ninja Arts"
 	rank = "T3"
-	cat = "Unique"
+	category = "Unique"
 	desc = "This individual has learned the ways of the ninja. Their job title is changed to Ninja, and they are granted access to the deep well of information about ninja arts known as Ninjutsu. In addition, they gain +20 permanent extra HP, as well as +20 permanent MP and SP, and an extra +1 to hit with 1H weapons."

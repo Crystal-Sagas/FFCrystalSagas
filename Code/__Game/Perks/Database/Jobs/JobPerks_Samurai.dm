@@ -4,11 +4,11 @@
  */
 
 /obj/perk/Jobperks/Samurai
-	jobneed = "Samurai"
+	jobRequired = "Samurai"
 	icon = 'Icons/Perk/Samurai.png'
 
 /obj/perk/Jobperks/Samurai/Samurai
-	cat = "Unique"
+	category = "Unique"
 	name = "Samurai"
 	desc = "The Samurai is a master of not only attacking with, but defending with the blade - able to use their weapon to defend themselves. When using some type of Sword, a Samurai gains +1 AC, and +1 PAB and MAB. +65 HP, +30 MP, +70 SP."
 
@@ -45,5 +45,5 @@
 /obj/perk/Jobperks/Samurai/Bushido
 	rank = "T3"
 	name = "Bushido"
-	cat = "Unique"
+	category = "Unique"
 	desc = "This individual has learned a fighting style based on holding their actions and waiting for the perfect moment. They store all the energy not used during a round capable of releasing this energy as powerful attacks. A number of Ken points are added to a character each round depending on what they hold back. Bonus Action = 1 point, Reaction = 1 point, Standard action = 2 points, Movement action = 2 points. The maximum amount of points stored is equal to the users dexterity stat, and all points are lost upon exiting combat. Ken points can be spent on powerful bushido abilities. Utilizing the Retaliate or Iaido Stance abilities generates 1 Ken point."

@@ -4,11 +4,11 @@
  */
 
 /obj/perk/Jobperks/Spellblade
-	jobneed = "Spellblade"
+	jobRequired = "Spellblade"
 	icon = 'Icons/Perk/Spellblade.png'
 
 /obj/perk/Jobperks/Spellblade/Spellblade
-	cat = "Unique"
+	category = "Unique"
 	name = "Spellblade"
 	desc = "The spellblade is in tune with the mana surrounding and inside of them. They have resistance to Force, Dark, and Holy damage. A Spellblade may have up to 2 Infusions active simultaneously(1 Elemental, and 1 Status based). Spellblade infusions may not be stacked with the infusions of other Jobs. +30 HP, +70 MP, +30 SP."
 
@@ -70,5 +70,5 @@
 /obj/perk/Jobperks/Spellblade/TreInfusion
 	rank = "T5"
 	name = "Tre Infusion"
-	cat = "Unique"
+	category = "Unique"
 	desc = "This Spellblade is a master of Infusion, and can activate up to 3 infusions at the same time. One damage dealing, one status, and either drain or osmose."

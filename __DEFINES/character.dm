@@ -59,30 +59,6 @@
 #define SLOT_WAIST "Waist"
 #define SLOT_ACCESSORY "Accessory"
 
-//? Healing Types
-#define HEAL_NORMAL 0
-#define HEAL_REGEN 1
-#define HEAL_MAGIC 2
-
-//? Damage Types
-#define DAMAGE_TYPE_PHYSICAL 0
-#define DAMAGE_TYPE_MAGICAL 1
-#define DAMAGE_TYPE_TRUE 2
-#define DAMAGE_TYPE_FIRE 3
-#define DAMAGE_TYPE_ICE 4
-#define DAMAGE_TYPE_LIGHTNING 5
-#define DAMAGE_TYPE_WATER 6
-#define DAMAGE_TYPE_WIND 7
-#define DAMAGE_TYPE_EARTH 8
-#define DAMAGE_TYPE_HOLY 9
-#define DAMAGE_TYPE_DARK 10
-
-//? Injury Levels
-#define INJURY_NONE 0
-#define INJURY_MINOR 1
-#define INJURY_MODERATE 2
-#define INJURY_SEVERE 3
-
 //? Theme Colors (for consistent UI styling)
 #define THEME_BG_COLOR "#1a1a2e"
 #define THEME_HEADER_COLOR "#16213e"

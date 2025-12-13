@@ -6,12 +6,12 @@
  */
 
 /obj/perk/Jobperks/DarkKnight
-	jobneed = "Dark Knight"
+	jobRequired = "Dark Knight"
 	icon = 'Icons/Perk/DarkKnight.png'
 
 /obj/perk/Jobperks/DarkKnight/DarkKnight
 	name = "Dark Knight"
-	cat = "Unique"
+	category = "Unique"
 	desc = "Dark Knights are inherently connected to their inner darkness, harnessing it for either good or evil. A Dark Knight wields the power of both self and external destruction for their goals. Dark Knight infusion spells may not be stacked with the infusion spells of other Jobs. +80 HP, +35 MP, +40 SP. Dark Knights take half damage from Darkness attacks."
 
 /obj/perk/Jobperks/DarkKnight/DarkResistance
@@ -57,5 +57,5 @@
 /obj/perk/Jobperks/DarkKnight/DarkMagus
 	rank = "T4"
 	name = "Dark Magus"
-	cat = "Unique"
+	category = "Unique"
 	desc = "This individual has taken a different path. They have studied the dark arts, but have learned to wield it with magic instead of martial strength. They gain access to A rank black magic, and can expend HP instead of MP for casting spells (Or any mix of the 2). Characters who also have the 'Dark Arts' perk halve the cost of spells cast using HP as a resource.."

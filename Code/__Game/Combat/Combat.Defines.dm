@@ -21,17 +21,7 @@
 /// Dead
 #define COMBAT_STATE_DEAD "dead"
 
-//? Action Types
-/// Light/quick attacks
-#define ACTION_TYPE_LIGHT "light"
-/// Heavy/power attacks
-#define ACTION_TYPE_HEAVY "heavy"
-/// Special/ability attacks
-#define ACTION_TYPE_ABILITY "ability"
-/// Defensive actions
-#define ACTION_TYPE_DEFENSE "defense"
-/// Movement-based actions (dodge, dash)
-#define ACTION_TYPE_MOVEMENT "movement"
+//? Action Types - See __DEFINES/combat.dm for ACTION_TYPE_* constants
 
 //? Damage Types - See __DEFINES/character.dm for DAMAGE_TYPE_* constants
 

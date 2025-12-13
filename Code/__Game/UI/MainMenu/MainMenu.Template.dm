@@ -418,7 +418,7 @@
 		abilityCount++
 		var/perkName = html_encode(P.name)
 		var/perkDesc = P.desc ? html_encode(P.desc) : ""
-		var/costText = P.mcost ? "Cost: [P.mcost] MP" : ""
+		var/costText = P.manaCost ? "Cost: [P.manaCost] MP" : ""
 
 		html += {"<div class="skill-card">
 			<div class="skill-name">[perkName]</div>

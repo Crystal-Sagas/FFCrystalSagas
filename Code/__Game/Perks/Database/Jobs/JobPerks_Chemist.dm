@@ -6,12 +6,12 @@
  */
 
 /obj/perk/Jobperks/Chemist
-	jobneed = "Chemist"
+	jobRequired = "Chemist"
 	icon = 'Icons/Perk/Chemist.png'
 
 /obj/perk/Jobperks/Chemist/Chemist
 	name = "Chemist"
-	cat = "Unique"
+	category = "Unique"
 	desc = "A Chemist has worked with noxious fumes and different gasses and liquids all their life, giving them a very high tolerance towards poisons. They start with immunity to poison. +30 HP, +30 MP, +30 SP."
 
 /obj/perk/Jobperks/Chemist/CombatSynthesis
@@ -53,7 +53,7 @@
 	rank = "T2"
 	name = "Potion Lore II"
 	desc = "This individual has learned how to make higher grade potions. They are able to make Hi-Potions."
-	pre = "Potion Lore"
+	prerequisite = "Potion Lore"
 
 /obj/perk/Jobperks/Chemist/StoneLore
 	rank = "T2"
@@ -113,5 +113,5 @@
 /obj/perk/Jobperks/Chemist/FountainofYouth
 	rank = "T5"
 	name = "Fountain of Youth"
-	cat = "Unique"
+	category = "Unique"
 	desc = "This individual has learned how to create the Elixir of Youth, which when consumed - makes one unable to physically age beyond the point they have reached, effectively making one immortal outside of mortal afflictions. Elixir of Youth grants +80 HP, +80 MP, +80 SP, and +2 to all Ability Scores to a creature who drinks it, also placing their body into the prime of its youth ; and halting aging. Costs 50,000 Gil to craft."

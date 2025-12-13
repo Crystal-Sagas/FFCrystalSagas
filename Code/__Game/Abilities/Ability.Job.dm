@@ -53,7 +53,6 @@
 	grantingJob = "Monk"
 	damageType = "physical"
 	scalingStat = "STR"
-	skillType = "Melee"
 
 /**
  * Samurai abilities - katana techniques
@@ -158,7 +157,6 @@
 	grantingJob = "Machinist"
 	damageType = "physical"
 	scalingStat = "DEX"
-	skillType = "Ranged"
 
 /**
  * Beast Master abilities - creature control
@@ -182,7 +180,6 @@
 	grantingJob = "Spellblade"
 	damageType = "magical"
 	scalingStat = "INT"
-	skillType = "Melee"
 
 /**
  * Sword Saint abilities - master swordsmanship
@@ -191,7 +188,6 @@
 	grantingJob = "Sword Saint"
 	damageType = "physical"
 	scalingStat = "STR"
-	skillType = "Melee"
 
 /**
  * Astrologian abilities - card-based fortune magic
@@ -208,4 +204,3 @@
 	grantingJob = "Viking"
 	damageType = "physical"
 	scalingStat = "STR"
-	skillType = "Melee"

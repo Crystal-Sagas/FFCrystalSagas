@@ -5,9 +5,7 @@
 /obj/Ability/Job/Dragoon
 	jobRequired = "Dragoon"
 	icon = 'Icons/Perk/Dragoon.png'
-	costType = "Stamina"
 	scalingStat = "DEX"
-	attackType = "weapon"
 	range = 1
 	damageType = "physical"
 
@@ -17,7 +15,6 @@
 	rank = "E"
 	staminaCost = 10
 	element = "Physical"
-	attackType = "weapon"
 
 /obj/Ability/Job/Dragoon/Gungnir
 	name = "Gungnir"
@@ -25,8 +22,7 @@
 	rank = "E"
 	staminaCost = 5
 	element = "Physical"
-	diceCount = 1
-	diceSides = 8
+	baseDamage = 5
 	range = 6
 	actionType = "bonus"
 
@@ -50,7 +46,6 @@
 	rank = "C"
 	staminaCost = 15
 	element = "Physical"
-	attackType = "weapon"
 
 /obj/Ability/Job/Dragoon/VorpalThrust
 	name = "Vorpal Thrust"
@@ -58,8 +53,7 @@
 	rank = "C"
 	staminaCost = 20
 	element = "Physical"
-	diceCount = 1
-	diceSides = 12
+	baseDamage = 7
 	range = 3
 	aoeType = "line"
 
@@ -77,7 +71,6 @@
 	rank = "B"
 	staminaCost = 30
 	element = "Physical"
-	flatDamage = 0
 
 /obj/Ability/Job/Dragoon/SkyGrinder
 	name = "Sky Grinder"
@@ -85,7 +78,6 @@
 	rank = "B"
 	staminaCost = 45
 	element = "Physical"
-	flatDamage = 0
 	range = 1
 
 /obj/Ability/Job/Dragoon/FallingMeteor
@@ -94,9 +86,7 @@
 	rank = "A"
 	staminaCost = 65
 	element = "Comet"
-	diceCount = 3
-	diceSides = 10
-	attackType = "weaponsave"
+	baseDamage = 17
 	saveType = "Reflex"
 	baseDC = 16
 	aoeType = "square"
@@ -107,7 +97,6 @@
 	desc = "Unleash a torrent of attacks against an airborne enemy. Make three standard weapon attacks against the creature with advantage on each attack roll before sending them downwards a maximum of 5 tiles; forcing them to take the fall damage. If all three attacks hit, make a final attack is an automatic critical hit (Sky Rave attack roll) and the opponent takes double the fall damage upon hitting the ground. This can be used as a reaction to Celestial Shooter for an additional cost of 30 Stamina. This puts the 'Jump' movement action on cooldown for 1 round after use. (-90 Stamina.)"
 	rank = "A"
 	staminaCost = 90
-	attackType = "weapon"
 	scalingStat = "DEX"
 
 /obj/Ability/Job/Dragoon/SkyHigh
@@ -125,14 +114,11 @@
 /obj/Ability/Job/HolyDragoon
 	jobRequired = "Holy Dragoon"
 	icon = 'Icons/Perk/HolyDragoon.png'
-	costType = "Mana"
 	scalingStat = "WIS"
 	damageType = "magical"
-	attackType = "save"
 	saveType = "Fortitude"
 	baseDC = 17
-	diceCount = 6
-	diceSides = 12
+	baseDamage = 39
 	manaCost = 50
 	range = 5
 	aoeType = "cone"
@@ -142,35 +128,30 @@
 	desc = "The Dragoon releases a powerful breath, as if a dragon themselves. This breath is imbued with the power of Holy, and prompts a saving throw against targets in its radius. (Damage: 6d12+WIS holy | Prompts a Fortitude saving throw, dealing full damage and inflicting Silence on failure ; and half on success. 5 tile cone. -50 Mana.)"
 	rank = "B"
 	element = "Holy"
-	statusEffect = "Silence"
 
 /obj/Ability/Job/HolyDragoon/FireBreath
 	name = "Fire Breath"
 	desc = "The Dragoon releases a powerful breath, as if a dragon themselves. This breath is imbued with the power of Flame and prompts a saving throw against targets in its radius. (Damage: 6d12+WIS fire | Prompts a Fortitude saving throw, dealing full damage and inflicting Burn on failure ; and half on success. 5 tile cone. -50 Mana.)"
 	rank = "B"
 	element = "Fire"
-	statusEffect = "Burn"
 
 /obj/Ability/Job/HolyDragoon/FrostBreath
 	name = "Frost Breath"
 	desc = "The Dragoon releases a powerful breath, as if a dragon themselves. This breath is imbued with the power of Ice and prompts a saving throw against targets in its radius. (Damage: 6d12+WIS ice | Prompts a Fortitude saving throw, dealing full damage and inflicting Frostbite on failure ; and half on success. 5 tile cone. -50 Mana.)"
 	rank = "B"
 	element = "Ice"
-	statusEffect = "Frostbite"
 
 /obj/Ability/Job/HolyDragoon/LightningBreath
 	name = "Lightning Breath"
 	desc = "The Dragoon releases a powerful breath, as if a dragon themselves. This breath is imbued with the power of Thunder and prompts a saving throw against targets in its radius. (Damage: 6d12+WIS lightning | Prompts a Fortitude saving throw, dealing full damage and inflicting Paralyze on failure ; and half on success. 5 tile cone. -50 Mana.)"
 	rank = "B"
 	element = "Thunder"
-	statusEffect = "Paralyze"
 
 /obj/Ability/Job/HolyDragoon/WindBreath
 	name = "Wind Breath"
 	desc = "The Dragoon releases a powerful breath, as if a dragon themselves. This breath is imbued with the power of Wind and prompts a saving throw against targets in its radius. (Damage: 6d12+WIS wind | Prompts a Fortitude saving throw, dealing full damage and inflicting a 5 tile knockback and Bleed on failure ; and half on success. 5 tile cone. -50 Mana.)"
 	rank = "B"
 	element = "Wind"
-	statusEffect = "Bleed"
 	knockback = 5
 
 /obj/Ability/Job/HolyDragoon/OceanBreath
@@ -178,14 +159,12 @@
 	desc = "The Dragoon releases a powerful breath, as if a dragon themselves. This breath is imbued with the power of Water and prompts a saving throw against targets in its radius. (Damage: 6d12+WIS water | Prompts a Fortitude saving throw, dealing full damage and Wet on failure ; and half on success. 5 tile cone. -50 Mana.)"
 	rank = "B"
 	element = "Water"
-	statusEffect = "Wet"
 
 /obj/Ability/Job/HolyDragoon/PoisonBreath
 	name = "Poison Breath"
 	desc = "The Dragoon releases a powerful breath, as if a dragon themselves. This breath is imbued with the power of Bio and prompts a saving throw against targets in its radius. (Damage: 6d12+WIS bio | Prompts a Fortitude saving throw, dealing full damage as well as Weakness, and Poison on failure ; and half on success. 5 tile cone. -50 Mana.)"
 	rank = "B"
 	element = "Bio"
-	statusEffect = "Poison"
 
 /obj/Ability/Job/HolyDragoon/SacredSpear
 	name = "Sacred Spear"
@@ -213,7 +192,6 @@
 	jobRequired = "Ninja"
 	icon = 'Icons/Perk/Ninja.png'
 	damageType = "physical"
-	attackType = "standard"
 	scalingStat = "DEX"
 
 /obj/Ability/Job/Ninja/Fuuinjutsu
@@ -221,147 +199,114 @@
 	desc = "The user of this technique performs a Mudra that summons forth a set of adamantine chains to bind the target, and sap them of their energy to immobilize them. This prompts a Reflex saving throw, which if failed constricts the user, immobilizing them until they break out. In addition, they are drained of 30 Stamina and Mana per turn that they are bound in this way - which is then restored to the Ninja. After being bound, a Strength check with a DC equal to the Reflex save's DC must be made in order to break out, using a standard action to do so. The Ninja must use their Standard action each turn to sustain this effect. Out of battle effect: The Ninja may now seal objects and weapons into scrolls. An object sealed into a scroll this way becomes immune to any 'Steal' effects."
 	rank = "B"
 	staminaCost = 60
-	costType = "Stamina/Ninpo"
-	attackType = "save"
 	saveType = "Reflex"
 	baseDC = 15
 	range = 8
-	flatDamage = 0
 
 /obj/Ability/Job/Ninja/Mikage
 	name = "Mikage"
 	desc = "The user performs a mudra that solidifies images around them. For each stack of blink form a clone of the user. The clone retains all basic stats, but has 10% of the HP as the user, and can only perform up to C rank abilities. Consumes all instances of blink upon use. (-40 stamina or Ninpo.)"
 	rank = "B"
 	staminaCost = 40
-	costType = "Stamina/Ninpo"
 
 /obj/Ability/Job/Ninja/ShurikenStorm
 	name = "Shuriken Storm"
 	desc = "The user of this technique releases a flurry of Shuriken unsealed from a scroll, that attack separately as their own attack rolls. Up to three attack rolls are made, to targets of the caster's choice. 3/day."
 	rank = "B"
 	element = "Physical"
-	diceCount = 2
-	diceSides = 12
+	baseDamage = 13
 	range = 10
 	hitBonus = 2
-	usesPerDay = 3
 
 /obj/Ability/Job/Ninja/Dokumoya
 	name = "Dokumoya"
 	desc = "The user of this technique performs a series of Mantra seals, condensing poisonous fog in their stomach, then releasing it in a corrosive mist. Creatures who start their turn in the cloud formed take Bio damage and are inflicted with 'Poison' each time they do so."
 	rank = "B"
 	staminaCost = 60
-	costType = "Stamina/Ninpo"
 	element = "Bio"
-	diceCount = 5
-	diceSides = 10
+	baseDamage = 28
 	range = 10
 	aoeType = "square"
 	aoeSize = 7
-	statusEffect = "Poison"
 
 /obj/Ability/Job/Ninja/Shunshin
 	name = "Shunshin"
 	desc = "The user of this technique throws down a smoke-bomb, while also focusing their energy internally with a formed Mantra. They then flicker out of the smoke bomb to a position within 10 tiles to hide in the shadows with a supernatural camouflage, and are automatically stealthed without having to make a stealth check. It requires a DC 15 Perception check to notice them during this stealth. 3/day. Out of battle effects: A Ninja who uses this technique may escape a scene completely unseen, with no discernable knowledge of which direction they might have gone, without sensory techniques being utilized. (-20 Stamina or Ninpo.)"
 	rank = "B"
 	staminaCost = 20
-	costType = "Stamina/Ninpo"
 	range = 10
-	usesPerDay = 3
 
 /obj/Ability/Job/Ninja/Katon
 	name = "Katon"
 	desc = "The user opens a scroll containing a powerful fire spell. The fire bursts out from the scroll in a 4 tile cone. Targets in the AoE must make a DC 22 Reflex saving throw or suffer 7d10 fire damage and be inflicted with 'Burn' and 'Weak'. 3/day."
 	rank = "B"
 	element = "Fire"
-	diceCount = 7
-	diceSides = 10
-	attackType = "save"
+	baseDamage = 39
 	saveType = "Reflex"
 	baseDC = 22
 	aoeType = "cone"
 	aoeSize = 4
-	statusEffect = "Burn"
-	usesPerDay = 3
 
 /obj/Ability/Job/Ninja/Suiton
 	name = "Suiton"
 	desc = "The user opens a scroll containing a powerful water spell. A wave of water bursts out from the scroll sweeping away a 5x5 area infront of the user. Targets in the AoE must make a DC: 22 fortitude saving throw or suffer 7d10 water damage and be inflicted with wet. 3/day"
 	rank = "B"
 	element = "Water"
-	diceCount = 7
-	diceSides = 10
-	attackType = "save"
+	baseDamage = 39
 	saveType = "Fortitude"
 	baseDC = 22
 	aoeType = "square"
 	aoeSize = 5
-	statusEffect = "Wet"
-	usesPerDay = 3
 
 /obj/Ability/Job/Ninja/Doton
 	name = "Doton"
 	desc = "The user opens a scroll throwing it onto the ground where the magic stored is released creating a patch of cursed earth 7x7 tiles in size. Targets starting their turn in the affected area suffer 4d10 earth damage. 12 tile range. This cursed earth remains for 4 rounds. 3/day"
 	rank = "B"
 	element = "Earth"
-	diceCount = 4
-	diceSides = 10
+	baseDamage = 22
 	range = 12
 	aoeType = "square"
 	aoeSize = 7
 	duration = 4
-	usesPerDay = 3
 
 /obj/Ability/Job/Ninja/Fuuton
 	name = "Fuuton"
 	desc = "The user opens a scroll summoning a cutting whirlwind that travels to an area before releasing a torrent of cutting wind. Targets a 3x3 area. Targets in the AoE must make a fortitude saving throw DC: 22 or suffer 8d12 wind damage, and be inflicted with 'Bleed' until healed. 12 tile range. 3/day."
 	rank = "B"
 	element = "Wind"
-	diceCount = 8
-	diceSides = 12
-	attackType = "save"
+	baseDamage = 52
 	saveType = "Fortitude"
 	baseDC = 22
 	range = 12
 	aoeType = "square"
 	aoeSize = 3
-	statusEffect = "Bleed"
-	usesPerDay = 3
 
 /obj/Ability/Job/Ninja/Hyoton
 	name = "Hyoton"
 	desc = "The user opens a scroll releasing a frozen wind on a 5x5 tile area in front of them. The wind freezes all sources of water. Targets in the AoE must make a DC: 22 fortitude save or take 7d10 ice damage, and be afflicted with 'Slow' and 'Frostbite'. 3/day."
 	rank = "B"
 	element = "Ice"
-	diceCount = 7
-	diceSides = 10
-	attackType = "save"
+	baseDamage = 39
 	saveType = "Fortitude"
 	baseDC = 22
 	aoeType = "square"
 	aoeSize = 5
-	statusEffect = "Frostbite"
-	usesPerDay = 3
 
 /obj/Ability/Job/Ninja/Kirigakure
 	name = "Kirigakure"
 	desc = "The user performs a series of Mantra which generates magical energy around them. This energy is then transformed into a mist, which manifests in a 7x7 AoE. Any party members or creatures who are friendly to the Ninja that start their turn within this Mist gain the 'Veil' status effect. In addition, any character with the Ninja perk who is within this mist gains a bonus of +5 to AC so long as they are within it. Out of battle effects: This Ninja may manipulate naturally occuring Mist and Fog, and clear or dispel non magical Mist/Fog based effects. (-50 Mana or Ninpo.)"
 	rank = "B"
 	manaCost = 50
-	costType = "Mana/Ninpo"
 	aoeType = "square"
 	aoeSize = 7
-	statusEffect = "Veil"
 
 /obj/Ability/Job/Ninja/Ryudan
 	name = "Ryudan"
 	desc = "The user performs a series of Mantra with their hands, before ending in a 'prayer' like configuration. After doing so, vital energy surges forth in the form of a golden dragon that soars at a target creature, threatening to slam into and shred them with its glowing maw, dealing Holy damage. Out of battle effects: This Ninja is now capable of communing with Dragons, Wyverns, and Drakes - and is well liked by them, having the blessing of the Dragon. Magical attack roll. Inflicts 'Bleed', 'Slow', and 'Silence' on hit. -100 Mana or Ninpo.)"
 	rank = "A"
 	manaCost = 100
-	costType = "Mana/Ninpo"
 	element = "Holy"
-	diceCount = 9
-	diceSides = 12
+	baseDamage = 59
 	range = 10
 	aoeType = "line"
 	hitBonus = 2
@@ -372,24 +317,18 @@
 	desc = "The user of this technique summons forth a large Ninja Toad to fight at their side using a summoning scroll, with a sheet of its own. Attaining this ability grants +50 HP, and +2 STR, also granting the 'Toad Kata', 'Magic Tongue', and 'Oil Bullet' Blue Mage abilities at no cost. Grants permanent Immunity to the 'Toad' status. Incompatible with Hebi and Namekuji. The Toad summoned is counted as a 'Large' creature. Out of battle effects: This person is able to commune with Toads. Their personal Toad summon is sentient and has the ability to speak. (-60 Mana or Ninpo.)"
 	rank = "A"
 	manaCost = 60
-	costType = "Mana/Ninpo"
-	abilityType = "summon"
 
 /obj/Ability/Job/Ninja/Hebi
 	name = "Hebi"
 	desc = "The user of this technique summons forth a large Ninja Snake to fight at their side using a summoning scroll, with a sheet of its own. Attaining this ability grants +2 DEX, and a permanent +1 PAB. Grants permanent Immunity to the 'Break' status. Incompatible with Hikigaeru and Namekuji. A Hebi type Ninja also gains access to up to C Rank Arcane Magic. The Snake summoned is counted as a 'Large' creature. Out of battle effects: This person is able to commune with Snakes. Their personal Snake summon is sentient and has the ability to speak. (-60 Mana or Ninpo.)"
 	rank = "A"
 	manaCost = 60
-	costType = "Mana/Ninpo"
-	abilityType = "summon"
 
 /obj/Ability/Job/Ninja/Namekuji
 	name = "Namekuji"
 	desc = "The user of this technique summons forth a large Ninja Snake to fight at their side using a summoning scroll, with a sheet of its own. Attaining this ability grants +50 MP, and SP ; as well as access to up to C Rank Green Magic. Grants the 'Regnerate' status permanently, which is unable to be dispelled. Grants permanent Immunity to the 'Silence' status. Incompatible with Hikigaeru and Hebi. The Slug summoned is counted as a 'Large' creature. Out of battle effects: This person is able to commune with Slugs. Their personal Slug summon is sentient and has the ability to speak. (-60 Mana or Ninpo.)"
 	rank = "A"
 	manaCost = 60
-	costType = "Mana/Ninpo"
-	abilityType = "summon"
 
 /obj/Ability/Job/Ninja/Juuinjutsu
 	name = "Juuinjutsu"
@@ -397,7 +336,6 @@
 	rank = "A"
 	category = "Unique"
 	hpCost = 50
-	abilityType = "toggle"
 
 /obj/Ability/Job/Ninja/Senjutsu
 	name = "Senjutsu"
@@ -405,19 +343,15 @@
 	rank = "A"
 	category = "Unique"
 	duration = 5
-	chargeTime = 2
-	abilityType = "toggle"
 
 /obj/Ability/Job/Ninja/KogekiShinryaku
 	name = "Kogeki Shinryaku"
 	desc = "The user of this technique performs a special Mantra, which materializes a Kunai made of magical energy that is then fired off at a target. Four of these Kunai are made, and are performed with separate attack rolls each. If a creature is hit by one of these Kunai, their soul is then 'marked' by a 'Kogeki' seal. A creature who has a Kogeki seal upon them can be teleported to by the Ninja irregardless of distance by spending either 40 Mana or 40 Stamina. When choosing to do so, the Ninja may utilize a basic attack or a Rogue, Ninja, General Magic, or General Weapon Ability as an incidental action upon appearing. This incidental action can also be used on a technique that has been turned into a Ninjutsu technique via the Ninpo Empowerment perk. Teleporting is a bonus action. The Kogeki seal lasts until the end of battle, and can not be cleared by Esuna or other cleansing effects."
 	rank = "A"
 	manaCost = 80
-	costType = "Mana/Ninpo"
 	category = "Unique"
 	element = "Thunder"
-	diceCount = 1
-	diceSides = 10
+	baseDamage = 6
 	range = 10
 	hitBonus = 1
 
@@ -426,7 +360,6 @@
 	desc = "The user of this technique performs a special Mantra, which places a Kogeki seal on an object or party member within 1 tile of their current location. A Ninja who knows the Kogeki Ukemi technique may spend either 50 Mana or 50 Stamina as a reaction in order to instantly teleport to a placed Kogeki seal. This can teleport a maximum distance of 2 maps from the current position (if proof of a Kogeki seal is provided). If used to flee battle, the Ninja may not return to the scene until it has concluded. When using this teleportation reaction, negate any attack roll or prompted saving throw so long as you are teleporting out of the given attack or effect's area of effect. Seals that are placed outside of battle last for a maximum of 48 OOC hours. This only applies to seals placed by Kogeki Ukemi. Seals placed by Kogeki Shinryaku dissipate after battle ends. (-80 Mana or Ninpo.)"
 	rank = "A"
 	manaCost = 80
-	costType = "Mana/Ninpo"
 	category = "Unique"
 	range = 1
 	actionType = "reaction"

@@ -6,8 +6,6 @@
  */
 
 /obj/perk/Roleperks
-	ptype = "job"
-	jobneed = "nada"
 
 /obj/perk/Roleperks/MeleeTank
 	icon = 'Icons/Perk/Meleetank.png'
@@ -43,3 +41,4 @@
 	icon = 'Icons/Perk/Specialist.png'
 	name = "Specialist"
 	desc = "Generalist gains +2 Damage Reduction from all sources, +2 AC, +2 to hit, and deals 5 extra damage on all attacks and abilities. In addition, they gain +5 extra RPP on creation. (All bonuses added to sheet automatically.)"
+

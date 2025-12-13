@@ -10,8 +10,7 @@
  */
 
 /obj/perk/Crafting
-	cat = "Crafting"
-	ptype = "general"
+	category = "Crafting"
 
 /obj/perk/Crafting/Armor
 	icon = 'Icons/Perk/Weaponsmith.png'
@@ -23,13 +22,13 @@
 
 /obj/perk/Crafting/Armor/Armor3
 	rank = "T3"
-	pre = "Armorsmith II"
+	prerequisite = "Armorsmith II"
 	name = "Armorsmith III"
 	desc = "This individual is capable of smithing Armor up to Mithril tier given they have enough ore to do so, as well as have the tools and time."
 
 /obj/perk/Crafting/Armor/Armor4
 	rank = "T4"
-	pre = "Armorsmith III"
+	prerequisite = "Armorsmith III"
 	name = "Armorsmith IV"
 	desc = "This individual is a master smith. They're able to craft armor of up to Adamantine tier given they have enough ore to do so, as well as have the tools and time."
 
@@ -43,13 +42,13 @@
 
 /obj/perk/Crafting/Weapons/Weapons3
 	rank = "T3"
-	pre = "Weaponsmith II"
+	prerequisite = "Weaponsmith II"
 	name = "Weaponsmith III"
 	desc = "This individual is capable of smithing Weapons up to Mithril tier, assuming they have the materials to do so."
 
 /obj/perk/Crafting/Weapons/Weapons4
 	rank = "T4"
-	pre = "Weaponsmith III"
+	prerequisite = "Weaponsmith III"
 	name = "Weaponsmith IV"
 	desc = "This individual is  a master smith, and are capable of smithing Weapons up to Adamantine tier, assuming they have the materials to do so."
 
@@ -97,3 +96,4 @@
 			return
 	// todo: actual inventory system
 	our_stack.amount -= 5
+

@@ -12,7 +12,7 @@ mob
 			var/row
 			winset(usr,"PerkWindow.perkshop","cells=0x0")
 			for(var/obj/perk/o in global.perk_shop.perks)
-				if(o.cat=="General"  && o.desc != null)
+				if(o.category=="General"  && o.desc != null)
 					row++
 					src<<output(o,"perkshop:1,[row]")
 		ShowJobPerks()
@@ -20,7 +20,7 @@ mob
 			var/row
 			winset(usr,"PerkWindow.perkshop","cells=0x0")
 			for(var/obj/perk/o in global.perk_shop.perks)
-				if(o.jobneed=="[usr.job]" && o.ability==0  && o.desc != null && o.cat!="Unique")
+				if(o.jobRequired=="[usr.job]" && !o.isAbility  && o.desc != null && o.category!="Unique")
 					row++
 					src<<output(o,"perkshop:1,[row]")
 		ShowSubJobPerks()
@@ -28,7 +28,7 @@ mob
 			var/row
 			winset(usr,"PerkWindow.perkshop","cells=0x0")
 			for(var/obj/perk/o in global.perk_shop.perks)
-				if(o.jobneed=="[usr.subjob]" && o.ability==0  && o.desc != null && o.cat!="Unique")
+				if(o.jobRequired=="[usr.subjob]" && !o.isAbility  && o.desc != null && o.category!="Unique")
 					row++
 					src<<output(o,"perkshop:1,[row]")
 		ShowCraftingPerks()
@@ -36,7 +36,7 @@ mob
 			var/row
 			winset(usr,"PerkWindow.perkshop","cells=0x0")
 			for(var/obj/perk/o in global.perk_shop.perks)
-				if(o.cat=="Crafting"  && o.desc != null)
+				if(o.category=="Crafting"  && o.desc != null)
 					row++
 					src<<output(o,"perkshop:1,[row]")
 		ShowGeneralAbilities()
@@ -44,7 +44,7 @@ mob
 			var/row
 			winset(usr,"PerkWindow.techshop","cells=0x0")
 			for(var/obj/perk/o in global.perk_shop.perks)
-				if(o.cat=="Genability" && o.desc != null)
+				if(o.category=="Genability" && o.desc != null)
 					row++
 					src<<output(o,"techshop:1,[row]")
 		ShowBlackMagic()
@@ -52,7 +52,7 @@ mob
 			var/row
 			winset(usr,"PerkWindow.techshop","cells=0x0")
 			for(var/obj/perk/o in global.perk_shop.perks)
-				if(o.magicneed=="Black Magic" && o.level <= usr.blackmagicable  && o.desc != null)
+				if(o.magicRequired=="Black Magic" && o.magicLevelRequired <= usr.blackmagicable  && o.desc != null)
 					row++
 					src<<output(o,"techshop:1,[row]")
 		ShowWhiteMagic()
@@ -60,7 +60,7 @@ mob
 			var/row
 			winset(usr,"PerkWindow.techshop","cells=0x0")
 			for(var/obj/perk/o in global.perk_shop.perks)
-				if(o.magicneed=="White Magic" && o.level <= usr.whitemagicable  && o.desc != null)
+				if(o.magicRequired=="White Magic" && o.magicLevelRequired <= usr.whitemagicable  && o.desc != null)
 					row++
 					src<<output(o,"techshop:1,[row]")
 		ShowGreenMagic()
@@ -68,7 +68,7 @@ mob
 			var/row
 			winset(usr,"PerkWindow.techshop","cells=0x0")
 			for(var/obj/perk/o in global.perk_shop.perks)
-				if(o.magicneed=="Green Magic" && o.level <= usr.greenmagicable  && o.desc != null)
+				if(o.magicRequired=="Green Magic" && o.magicLevelRequired <= usr.greenmagicable  && o.desc != null)
 					row++
 					src<<output(o,"techshop:1,[row]")
 		ShowArcaneMagic()
@@ -76,7 +76,7 @@ mob
 			var/row
 			winset(usr,"PerkWindow.techshop","cells=0x0")
 			for(var/obj/perk/o in global.perk_shop.perks)
-				if(o.magicneed=="Arcane Magic" && o.level <= usr.arcanemagicable  && o.desc != null)
+				if(o.magicRequired=="Arcane Magic" && o.magicLevelRequired <= usr.arcanemagicable  && o.desc != null)
 					row++
 					src<<output(o,"techshop:1,[row]")
 		ShowJobAbilities()
@@ -84,7 +84,7 @@ mob
 			var/row
 			winset(usr,"PerkWindow.techshop","cells=0x0")
 			for(var/obj/perk/o in global.perk_shop.perks)
-				if(o.jobneed=="[usr.job]" && o.ability==1  && o.desc != null)
+				if(o.jobRequired=="[usr.job]" && o.isAbility  && o.desc != null)
 					row++
 					src<<output(o,"techshop:1,[row]")
 		ShowSubjobAbilities()
@@ -92,7 +92,7 @@ mob
 			var/row
 			winset(usr,"PerkWindow.techshop","cells=0x0")
 			for(var/obj/perk/o in global.perk_shop.perks)
-				if(o.jobneed=="[usr.subjob]" && o.ability==1  && o.desc != null)
+				if(o.jobRequired=="[usr.subjob]" && o.isAbility  && o.desc != null)
 					row++
 					src<<output(o,"techshop:1,[row]")
 		ShowAdvanced()
@@ -102,10 +102,10 @@ mob
 			winset(usr,"PerkWindow.perkshop","cells=0x0")
 			winset(usr,"PerkWindow.techshop","cells=0x0")
 			for(var/obj/perk/o in global.perk_shop.perks)
-				if(o.ajob=="[usr.ajob]" && o.ability==0  && o.desc != null && o.cat!="Unique")
+				if(o.advancedJob=="[usr.ajob]" && !o.isAbility  && o.desc != null && o.category!="Unique")
 					row++
 					src<<output(o,"perkshop:1,[row]")
 			for(var/obj/perk/o in global.perk_shop.perks)
-				if(o.ajob=="[usr.ajob]" && o.ability==1  && o.desc != null && o.cat!="Unique")
+				if(o.advancedJob=="[usr.ajob]" && o.isAbility  && o.desc != null && o.category!="Unique")
 					row2++
 					src<<output(o,"techshop:1,[row2]")

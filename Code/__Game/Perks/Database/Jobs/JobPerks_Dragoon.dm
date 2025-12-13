@@ -6,12 +6,12 @@
  */
 
 /obj/perk/Jobperks/Dragoon
-	jobneed = "Dragoon"
+	jobRequired = "Dragoon"
 	icon = 'Icons/Perk/Dragoon.png'
 
 /obj/perk/Jobperks/Dragoon/Dragoon
 	name = "Dragoon (Job)"
-	cat = "Unique"
+	category = "Unique"
 	desc = "Dragoons gain +1 to PAB, MAB and +2 PDB as a Global Modifier per Metal Tier of their equipped Spear, and may apply the 'Draconic' enchantment to weapons, which changes their weapon type to 'Dragoon' for the sake of equipment (barring non Dragoons from using it) and also changes its active scaling stat to Dexterity. They gain an additional +3 to hit with any weapon while air-borne, this buff lasts for 1 round after landing. Dragoons have a base tile jump height of half their movement speed, and are immune to fall damage entirely. +40 HP, +30 MP, +70 SP."
 
 /obj/perk/Jobperks/Dragoon/EnhancedJump
@@ -37,19 +37,19 @@
 /obj/perk/Jobperks/Dragoon/WyvernTrainer
 	rank = "T3"
 	name = "Wyvern Trainer"
-	cat = "Unique"
+	category = "Unique"
 	desc = "This individual has learned how to train wyverns forming a bond with one that becomes their permanent partner. They gain the ability to speak to dragons and form a psychic connection with their partner capable of communicating and feeling everything their partner feels. Their partner grows with the dragoon growing stronger over time."
 
 /obj/perk/Jobperks/Dragoon/Wyvern
 	name = "Wyvern"
-	cat = "Unique"
+	category = "Unique"
 	desc = "A Wyvern is a very rare occuerence. It is a Dragon that has taken to more civilized creatures, and become friends with them. A Wyvern is able to fly, passively ; and is mountable. It is resistant to Fire, Doom, Break, and Poison."
 
 /obj/perk/Jobperks/Dragoon/DeepDraconicConnection
 	rank = "T4"
 	name = "Deep Draconic Connection"
-	pre = "Wyvern Trainer"
-	cat = "Unique"
+	prerequisite = "Wyvern Trainer"
+	category = "Unique"
 	desc = "The Dragoon has gained a deep connection with their Wyvern. Upon attaining this perk, the Dragoon's Wyvern is automatically considered a Mature Wyvern, and increases in rank from B to A. Furthermore, its HP increases by 120, its MP increases by 120, and its SP increases by 120. It gains +4 to all physical ability scores, and +2 to Wisdom, as well as +3 PAB, +3 MAB, +5 PDB, +5 MDB,  +5 AC, and +5 global damage reduction."
 
 /obj/perk/Jobperks/Dragoon/NidhoggsFury

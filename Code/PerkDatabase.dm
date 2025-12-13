@@ -23,7 +23,6 @@
 obj
 	perk
 		Jobperks
-			ptype="job"
 			BeastMaster
 				jobneed="Beast Master"
 				icon='Icons/Perk/Beastmaster.png'
@@ -704,7 +703,6 @@ obj
 						atype="standard"
 						damsource="str"
 						typing="magical"
-						ptype="spell"
 				ExtensionField
 					rank="T3"
 					name="Extension Field"
@@ -763,7 +761,6 @@ obj
 				icon='Icons/Perk/OnionKnight.png'
 				ajob="Onion Knight"
 				rank="T3"
-				ptype="job"
 				OnionKnight
 					name="Onion Knight"
 					cat="Unique"
@@ -790,7 +787,6 @@ obj
 					ajob="Onion Knight"
 					desc="An Onion Knight who has learned the Yggdrasil technique is able to generate spiritual blades passively, by recycling the energy used to cast bladespells. Whenever a Bladespell is cast, a 'Magic Sword' projectile begins to hover around them, up to 8. When the Onion Knight takes damage from a target enemy creature, they may choose to expend the Magic Sword, firing it at the target as an automatic hit which deals 20 flat (unboostable) Force damage, ignoring up to 15 points of damage reduction. Magical"
 				Bladespells
-					ptype="spell"
 					ability=1
 					damsource="wis"
 					costtype=" Mana"
@@ -903,7 +899,6 @@ obj
 						mcost=100
 						typing="magical"
 			Oracle
-				ptype="job"
 				name="Oracle"
 				icon='Icons/Perk/Oracle.png'
 				jobneed="Oracle"
@@ -950,7 +945,6 @@ obj
 					jobneed="Oracle"
 					typing="magical"
 					costtype=" Mana"
-					ptype="spell"
 					element="Holy"
 					DiskofLight
 						name="Disk of Light"
@@ -1203,7 +1197,6 @@ obj
 						atype="weapon"
 						damsource="str"
 						typing="physical"
-						ptype="spell"
 					QuickHit
 						rank="D"
 						name="Quick Hit"
@@ -1224,7 +1217,6 @@ obj
 						atype="weapon"
 						damsource="str"
 						typing="physical"
-						ptype="spell"
 						desc="The user of this ability must first dodge a melee ability. They then carry their momentum over for an augmented blow upon their target. Reaction. This attack is made with advantage. (Damage: Weapon Damage + 10 | Weapon Attack Roll at Advantage | Must first dodge a Melee ability or attack roll via AC. -30 Stamina.)"
 					Renzokuken
 						rank="C"
@@ -1239,7 +1231,6 @@ obj
 						atype="weapon"
 						damsource="str"
 						typing="physical"
-						ptype="spell"
 						desc="The user of this ability launches forward, moving up to 2 tiles as part of this action. They then release a combination of 3 'Renzokuken' attacks, which deal Weapon Damage+2d2 additional damage on hit. Must be used with a Melee weapon. This ability can not deal more than 80 cumulative damage, regardless of damage rolled across all attacks. Costs 45 Stamina."
 					JechtCombo
 						rank="C"
@@ -1253,7 +1244,6 @@ obj
 						atype="weapon"
 						damsource="str"
 						typing="physical"
-						ptype="Spell"
 						desc="The user of this ability performs an acrobatic, multi-hit attack after infusing their blade with raging 'flames' of passion. This attack deals normal physical damage, as a 3 hit combo. Each attack deals 1d2 additional damage on hit. If at least one hit lands, the 'flames of passion' remain active on the weapon for 3 rounds, granting the the user +5 PDB for 3 rounds. Must be used with a Melee weapon. This ability cannot exceed 45 cumulative damage, regardless of damage rolled. Costs 45 Stamina."
 					Halone
 						rank="C"
@@ -1269,7 +1259,6 @@ obj
 						atype="weapon"
 						damsource="str"
 						typing="physical"
-						ptype="spell"
 						desc="The user of this ability swings their weapon after imbuing it with a burst of Mana. The first strike carries through, and if the target dodges, a second strike made of mana and in the shape of the weapon with the same speed follows after (Damage: Weapon Damage + 5 | Bonus action after a standard attack misses. -30 Stamina)"
 					StellarCircle
 						element="Force"
@@ -1287,7 +1276,6 @@ obj
 						atype="weaponsave"
 						damsource="str"
 						typing="physical"
-						ptype="spell"
 						savetype="Fortitude"
 						desc="The user spins their weapon above their head forming a cyclone of magic runes around them. The runes begin to sparkle with star-light, and gravitational draw is induced from them, in a radius around the user. Those with a weak body are drawn towards the target by gravitational waves. (Damage: Weapon damage + 1d12 force | 5x5 AoE, prompts a fortitude saving throw (DC 10+STR+Rank bonus), on a failure creatures take full damage and are drawn 1 tile towards the caster. If a creature is drawn onto the same tile as the caster, it takes an additional 2d10 damage. On a success, take no damage.- 30 stamina.)"
 					Launch
@@ -1304,7 +1292,6 @@ obj
 						atype="weapon"
 						damsource="str"
 						typing="physical"
-						ptype="spell"
 						desc="The user approaches the target, and using their weapon prepares for a uppercut attack. Instead of actually attacking the user surprises their target by using their weapon to kick up a powerful gale that sends the target upwards leaving them open. This can be used on targets much larger than the user even without a lot of strength. (Damage: Weapon Damage + 4 | Weapon Attack Roll, sends target skyward by 1 tile per STR Modifier point, -30 stamina.)"
 					CrossSlash
 						rank="C"
@@ -1320,7 +1307,6 @@ obj
 						atype="weapon"
 						damsource="str"
 						typing="physical"
-						ptype="spell"
 						desc="The user launches an initial attack with their weapon, and if it hits will lock the target in place as a line is drawn in the air. The user follows up with two more attacks that complete the symbol before releasing the target. The second two attacks are only made if the initial attack hits. This ability can not deal more than 45 damage cumulatively, regardless of damage rolled across all attacks.| Three Melee Attack rolls, prompts a Fortitude saving throw with a DC of 15 - applies stun for one round on failure. -30 stamina.)"
 					RoughDivide
 						rank="B"
@@ -1333,7 +1319,6 @@ obj
 						atype="weaponsave"
 						range=" 3 tile line."
 						savetype="Reflex"
-						ptype="spell"
 						desc="Coating one's weapon in energy, they then dash forward and swing it upward, to blast a target away. This attacks a 3 tile line in front of the caster, and deals full damage on a failed save ; or half on a successful save."
 						costtype="Stamina"
 					AssaultTrigger
@@ -1363,7 +1348,6 @@ obj
 						atype="weaponsave"
 						damsource="str"
 						typing="physical"
-						ptype="spell"
 						savetype="Reflex"
 						desc="The user makes a sweeping attack with their weapon around them. Explosive energy stored up in the weapon then radiates outward in a sharp, blade-like full circle. The edge of the circle then explodes in a fiery burst, threatening to burn anyone caught in its radius. (Damage: Weapon damage + 2d6+STR fire damage | 3x3 AoE, prompts a relex saving throw (DC 10+STR+Rank bonus), dealing full damage and inflicting burn on a failure, or half damage on a success. -40 stamina.)"
 					CrushingBlow
@@ -1409,7 +1393,6 @@ obj
 						atype="weaponsave"
 						damsource="str"
 						typing="physical"
-						ptype="spell"
 						savetype="Reflex"
 						desc="The user draws their sword behind their head before slamming it downward releasing a rather large vertical beam of Mana that carries the same cutting power as the weapon. (Damage: Weapon damage + 2d12 bonus | Reflex Saving throw (DC:10+STR+RB), vs everything in a 3 tile line from the user, then splits into a triad of blade beams, prompting the same to anything in a 3 tile cone at the end of the line. -40 Stamina.)"
 					Shout
@@ -1445,7 +1428,6 @@ obj
 						atype="weapon"
 						damsource="str"
 						typing="physical"
-						ptype="spell"
 						desc="The user infuses their weapon with magic to make a wide mana based slash, attacking everything in a wide area in front of them. (Damage: Weapon Damage + 2d12+WIS Force damage | Weapon Attack Roll, +3 to hit. | 3 tile cone in front of the user | -50 Mana.)"
 					BlastingZone
 						rank="A"
@@ -1486,7 +1468,6 @@ obj
 						atype="save"
 						damsource="str"
 						typing="physical"
-						ptype="spell"
 						savetype="Strength"
 						desc="The user reaches out with a free hand grasping at their opponent. Upon grabbing the target, they drag the target across the ground - and then clench their fist. An explosion erupts from their grasp, and the target is then sent flying at high speeds in a direction of the user's choice. (Damage: 8d10+STR fire damage | STR saving throw (DC 15+STR+Rankbonus) - on a failure, creature is thrown 6 tiles in any direction. Upon hitting a wall, target takes 5d10 additional damage. On a success, attack is negated. -90 Stamina.)"
 					ChaosDisaster
@@ -1501,7 +1482,6 @@ obj
 						addhit=3
 						range=" 5 tile line."
 						typing="physical"
-						ptype="spell"
 						costtype="Stamina"
 						desc="The user of this attack swings their weapon in an arc, releasing a beam of energy as a 'Chaotic Disaster' attack roll with +3 to hit, which travels in a 5 tile line, dealing 10d7 + 5 Darkness damage on hit. They then shift to the end of the line, and may make 1 Standard attack roll immediately after.  Costs 75 Stamina."
 					LordofArms
@@ -1529,7 +1509,6 @@ obj
 						atype="weapon"
 						damsource="str"
 						typing="physical"
-						ptype="spell"
 						desc="The user makes a horizontal slice with their weapon causing the air in front of the user to become disturbed before kicking up a powerful gale that pulls anything caught in it high into the air. Anything that is kicked upwards will most likely take heavy damage from the fall. (Damage: Weapon Damage + 2d20+STR+10 | Melee Weapon Attack (+3 to hit) | 3 tile wide attack, launches target 2 tiles per STR Modifier point. - 55 Stamina)"
 					BladeHoning
 						rank="A"
@@ -1551,7 +1530,6 @@ obj
 						atype="standard"
 						damsource="str"
 						typing="physical"
-						ptype="spell"
 						desc="he user takes out a pack of normal playing cards. They scatter the cards over an area. The cards then hover around the area. The user is able to control several all red cards that were placed into the deck causing them to fly around and tear the confused enemy to pieces. (Card Damage: 2d10+DEX| Card Attack Roll: 1d20+DEX+3| The cards cover a 5x5 area in front of the user, the user has 5 red cards inside this area which they can target at anyone inside the AoE twice per turn | 3 round duration, Requires Akademia Cards or Gambler job to be used. -60 Stamina)"
 					ThunderGod
 						element="Thunder"
@@ -1569,7 +1547,6 @@ obj
 						atype="weapon"
 						damsource="dex"
 						typing="physical"
-						ptype="spell"
 						desc="The user takes a deep breath, igniting a spark inside them that soon travels through their entire body before reaching their weapon charging it with a fierce amount of electricity. The weapon hums with the built up electrical Mana giving off strands of electricity that latch onto anything it can find. The user then makes a slash towards an opponent releasing the built up Mana expanding the height of the sword for a single moment before the Mana leaves and the blade returns to normal. (Damage: Weapon Damage + 3d12+STR  Thunder damage| Weapon Attack Roll, attacks in 3 tile cone in front of user, -60 Stamina)"
 					Innocence
 						element="Wind"
@@ -1588,7 +1565,6 @@ obj
 						atype="weapon"
 						damsource="dex"
 						typing="physical"
-						ptype="spell"
 						desc="The user charges energy into their weapon before making two wide slices through the air, creating two blade-beam like projectiles that carry the same power put into the initial slash. (Damage: Weapon Damage + 3d20+DEX each | Ranged Attack Roll (1d20+DEX+4) Creates two separate 3 tile wide projectiles, - 70 Stamina)"
 					FulLCharge
 						rank="A"
@@ -1605,7 +1581,6 @@ obj
 						atype="weapon"
 						damsource="str"
 						typing="physical"
-						ptype="spell"
 						desc="The user takes a few moments to gather the energy around them building up a frozen inertia. Once a turn has passed the user launches forward propelling their body with tremendous power and speed. The user spins their body during the assault turning their body into a piercing drill, allowing them to attack several times. (Damage: 3d12+STR | 4 Attack Rolls, takes a turn to charge up, - 75 Stamina | +3 Cooldown.)"
 					Octaslash
 						rank="S"
@@ -1622,7 +1597,6 @@ obj
 						atype="weapon"
 						damsource="str"
 						typing="physical"
-						ptype="spell"
 						desc="The user teleports behind a target who is within 5 tiles of them, and delivers 8 powerful slashes in a single debilitating combo. (Damage: Weapon Damage + 10 | 8 Weapon Attack Rolls at advantage (+3 to hit), inflicts Bleed if at least one attack hits. -120 Stamina | 2 Turn Cooldown)"
 					OmegaDrive
 						rank="S"
@@ -1640,7 +1614,6 @@ obj
 						atype="save"
 						damsource="str"
 						typing="physical"
-						ptype="spell"
 						desc="The user jumps into the air crashing down into an area, and releases a torrential wave of explosive, and chaotic destruction energy. (Damage: 2d12+STR | 4 Seperate 7x7 AoE Attacks, each prompting a Fortitude saving throw, DC 20 - dealing half on a successful save. - 120 Mana | 2 Turn Cooldown)"
 					UltimateIllusion
 						rank="S"
@@ -1658,7 +1631,6 @@ obj
 						atype="weaponsave"
 						damsource="str"
 						typing="physical"
-						ptype="spell"
 						desc="The user leaps into the air before striking the ground with their weapon, thus sending several waves of energy bursting underground, only to rise from beneath the the target's feet. (Damage: 4d20+STR | Reflex Save, DC 20 (half damage on success). Can strike four different targets in a 5 tile cone in front of the user, - 120 Mana)"
 				Ranged
 					icon='Icons/Perk/RangedWep.png'
@@ -1678,7 +1650,6 @@ obj
 						atype="standard"
 						damsource="str"
 						typing="physical"
-						ptype="spell"
 						desc="Pick up a stone tossing it with all your strength. Make an attack roll 1d20 + strength and rank bonus. On a successful hit deal 1d12 bludgeoning damage. Gain +10 to range per STR mod. (Damage: 1d12+STR | Ranged attack roll, STR based. +1 tile per STR mod tile range.)"
 					JechtShot
 						element="Flare"
@@ -1695,7 +1666,6 @@ obj
 						atype="standard"
 						damsource="str"
 						typing="physical"
-						ptype="spell"
 						name="Jecht Shot"
 						desc="The user digs a foot into the ground kicking their foot up and sending a soccer sized boulder upwards. The user then jumps upwards and lets their body fall upside down. They then kick the boulder towards their opponent launching it at high speeds. (Damage: 1d20+STR | 6 tile Range, Ranged Attack Roll (1d20+STR+2), -10 stamina)"
 					Ricochet
@@ -1730,7 +1700,6 @@ obj
 						basecheck=13
 						damsource="dex"
 						typing="physical"
-						ptype="spell"
 						savetype="Fortitude"
 						desc="A technique which can be applied to a ranged weapon attack. The weapon is imbued with an extra sharp shroud of energy around its offending tip, which grants it additional damage. If the attack roll hits, the target must make a saving throw. (Damage: 2d12+DEX | Prompts a Fortitude saving throw (DC 13+DEX+Rankbonus), dealing full damage and inflict bleed on a failure, and half damage and no bleed on a success. -45 Stamina.)"
 					JechtBeam
@@ -1751,7 +1720,6 @@ obj
 						damsource="str"
 						typing="physical"
 						savetype="Fortitude"
-						ptype="spell"
 						desc="The user charges a large orb of magic in their hand. They then release it into a crackling beam that is capable of piercing most defenses. (Damage: 5d12+STR | 6 Tile Wide AoE projectile, 6 tile range, prompts a Fortitude saving throw - taking half damage on a success. Beam ignores 25 points of damage reduction, -90 Mana | 2 Turn Cooldown)"
 					UltimateJechtShot
 						element="Earth"
@@ -1770,7 +1738,6 @@ obj
 						atype="standard"
 						damsource="str"
 						typing="physical"
-						ptype="spell"
 						desc="The user digs their hands into the ground pulling up a gigantic boulder. They then throw it upwards letting it soar in the air. The user jumps after it landing on a spot, and then kicking it with their feet launching it towards a target. (Damage: 5d12+STR | Ranged Attack Roll (1d20+STR+6) | 6 tile range, Fires a 2x3 projectile, -90 Stamina | 2 Turn Cooldown)"
 					StardustShot
 						element="Laser"
@@ -1789,7 +1756,6 @@ obj
 						atype="weapon"
 						damsource="dex"
 						typing="physical"
-						ptype="spell"
 						desc="The user of this technique prepares their ranged weapon, before pumping massive amounts of energy into their prepared shot. They then fire it into the air at an arc, targeting a particular radius within range. The projectile then splits into thousands of glimmering copies, peppering the chosen location with countless piercing rounds. (Damage: 10d12+DEX | Targets a 7x7 AoE, centered on a tile within 10 tiles of the caster. Prompts a Reflex saving throw (15+DEX+Rankbonus), dealing full damage and inflicting Bleed and Slow on a failure, and dealing half damage and inflicting nothing on a success. -120 Stamina.)"
 
 
@@ -1818,7 +1784,6 @@ obj
 					atype="save"
 					damsource="int"
 					typing="magical"
-					ptype="spell"
 					savetype="Reflex"
 					desc="The user scatters landmines that float in the air, and explode on contact or when a creature passes through the same tile with their movement. (Creates a landmine on a single tile within three tiles from the user, landmines prompt a Reflex saving throw (10+INT+Rank bonus). On a failed save, creatures take 2d20+INT damage, or half as much on a successful save. Landmine can not be created on the same tile that a creature is already occupying.  -6 Mana)"
 
@@ -1838,7 +1803,6 @@ obj
 					atype="standard"
 					damsource="int"
 					typing="magical"
-					ptype="spell"
 					savetype="Reflex"
 					desc="A low level, but essential magical technique for those studying the raw magic arts. The user draws from their reserves, and condenses potent raw mana, before firing it from their palm. For every 5 Mana spent in addition to the initial cost, this deals 3 additional damage (capping at +36) on hit. This can also be used as a reaction to the Burst spell in order to interrupt and equalize it if the opposing Burst's damage is within 10 points of damage, otherwise reducing the Beam's damage by the damage rolled by the reactor. 2d4+INT | Ranged attack roll, 5 tile line, -8 Mana)"
 
@@ -1858,7 +1822,6 @@ obj
 					atype="standard"
 					damsource="int"
 					typing="magical"
-					ptype="spell"
 					savetype="Reflex"
 					desc="A low level, but essential magical technique for those studying the raw magic arts. The user draws from their reserves, and condenses potent raw mana, before releasing it in a single globule from their palm. Three Ruin attack rolls are made, each dealing seperate damage: 2d2+ INT | Ranged attack roll, 6 tile range, -4 Mana.) (Deals a maximum of 60 damage.)"
 				Tendril
@@ -1877,7 +1840,6 @@ obj
 					atype="save"
 					damsource="int"
 					typing="magical"
-					ptype="spell"
 					savetype="Fortitude"
 					desc=" A low level but useful technique for those studying the raw magic arts. The user manifests their raw mana as a 'tendril' which lashes out at a target within range, threatening to entangle them. This tendril, after binding a target - can be made to detonate at any time of the user's choice. The damage only applies on detonation. (Damage: 2d12+INT on detonation. | Prompts a Fortitude saving throw, binding the target on failure. The tendril is destroyed on a success. A bound target may spend their standard action each turn in order to roll STR against the bind DC in order to break free, and destroy the tendril. 5 tile range.) Costs 12 MP."
 				Fog
@@ -1897,7 +1859,6 @@ obj
 					atype="save"
 					damsource="int"
 					typing="magical"
-					ptype="spell"
 					savetype="Fortitude"
 					desc="A low level, but essential magical technique for those studying the raw magic arts. The user draws from their reserves, and releases their Magic in a 'mist' like stream, which burns away at whatever it touches. (Damage: 3d6+INT | Prompts a Fortitude saving throw (12+INT+Rank Bonus) dealing full damage on a failure, or half as much on a success. 3 tile cone. -12 Mana.)"
 				Fogga
@@ -1917,7 +1878,6 @@ obj
 					atype="save"
 					damsource="int"
 					typing="magical"
-					ptype="spell"
 					savetype="Fortitude"
 					pre="Fog"
 					desc="A more advanced version of Fog. After drawing form one's reserves, they release their Magic in a 'mist' like stream, which burns away whatever it touches. After having been cast, Fogga's 'mist' remains in place in a 5x5 AoE centered a location of the caster's choice within the initial casting radius, for 3 rounds. Any creature who starts their turn within the Mist must repeat the attack's saving throw, and take full damage on a failure, or half on a success. (Damage: 3d10+INT | Prompts a Fortitude saving throw (14+INT+Rank Bonus) dealing full damage on a failure, or half as much on a success. 3 tile cone. -30 Mana.)"
@@ -1936,7 +1896,6 @@ obj
 					atype="save"
 					damsource="int"
 					typing="magical"
-					ptype="spell"
 					savetype="Reflex"
 					cat="Unique"
 					desc="The user fires a ball of light that when making contact with a target will expand into a pyramid shaped prison. The pyramid is unbreakable from the inside, but a strong attack from the outside can shatter it freeing whoever is inside. (Creates a 20 HP barrier around the target that is only breakable from the outside, Pyramid's AC = 13+INT+Rank Bonus | -10 Mana)"
@@ -1957,7 +1916,6 @@ obj
 					atype="save"
 					damsource="int"
 					typing="magical"
-					ptype="spell"
 					savetype="Fortitude"
 					cat="Unique"
 					pre="Pyramid"
@@ -1970,7 +1928,6 @@ obj
 					damsource="int"
 					atype="standard"
 					typing="magical"
-					ptype="spell"
 					costtype="Mana"
 					mcost=18
 					attack_roll_damage_dice = TRUE
@@ -1991,7 +1948,6 @@ obj
 					attack_roll_dice_count = 2
 					attack_roll_dice_sides = 8
 					addhit=2
-					ptype="spell"
 					desc="The user releases a jolt of magical energy at an opponent, which inflicts Paralyze onto the opponent if it does over 20 damage to the target. (Damage: 2d8+INT | ranged attack roll (1d20+INT+2 to hit) vs. Armor, -20 Mana.)"
 				Scatter
 					level=3
@@ -2004,7 +1960,6 @@ obj
 					attack_roll_damage_dice = TRUE
 					attack_roll_dice_count = 3
 					attack_roll_dice_sides = 2
-					ptype="spell"
 					desc="The user releases a burst of arcane projectiles. Four in total are created, aimed at targets in whatever order the user wishes. Each bolt does individual damage. (Damage: 3d2+INT | Four ranged attack rolls (1d20+INT to hit) vs. Armor, -25 Mana.)"
 
 				Tether
@@ -2012,7 +1967,6 @@ obj
 					rank="C"
 					damsource="int"
 					atype="save"
-					ptype="spell"
 					costtype="Mana"
 					range="3 Tiles."
 					basecheck=11
@@ -2025,7 +1979,6 @@ obj
 					rank="C"
 					damsource="int"
 					atype="weapon"
-					ptype="spell"
 					costtype="Mana"
 					range="Melee"
 					attack_roll_damage_dice = TRUE
@@ -2038,7 +1991,6 @@ obj
 					rank="C"
 					damsource="int"
 					atype="standard"
-					ptype="spell"
 					costtype="Mana"
 					range="5 tile line."
 					mcost=15
@@ -2053,7 +2005,6 @@ obj
 					pre="Laser"
 					damsource="int"
 					atype="standard"
-					ptype="spell"
 					costtype="Mana"
 					range="7 tile line."
 					mcost=35
@@ -2067,7 +2018,6 @@ obj
 					rank="C"
 					damsource="int"
 					atype="weapon"
-					ptype="spell"
 					costtype="Mana"
 					range="6 tile range."
 					mcost=30
@@ -2081,7 +2031,6 @@ obj
 					rank="B"
 					damsource="int"
 					atype="standard"
-					ptype="spell"
 					costtype="Mana"
 					range="6 tile range."
 					mcost=35
@@ -2095,7 +2044,6 @@ obj
 					rank="B"
 					damsource="int"
 					atype="save"
-					ptype="spell"
 					costtype="Mana"
 					range=" 6 tile range."
 					savetype="Fortitude"
@@ -2111,7 +2059,6 @@ obj
 					rank="B"
 					damsource="int"
 					atype="save"
-					ptype="spell"
 					costtype="Mana"
 					range=" 6 tile range."
 					savetype="Fortitude"
@@ -6594,3 +6541,4 @@ obj
 					name="Corrupt Earth"
 					rank="B"
 					desc="Lich generates foul corruption, with the epicenter being a tile within 8 tiles of Lichâ€™s location. The ground in a 7x7 area becomes extremely dangerous, dealing 4d12 damage to any creature standing within the area - and inflicting poison to those who are currently in contact with it. Corrupted Earth lasts for 4 rounds. (-70 Mana.)"
+

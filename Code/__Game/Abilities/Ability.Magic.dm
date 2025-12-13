@@ -9,7 +9,6 @@
 	category = "Magic"
 	damageType = "magical"
 	scalingStat = "INT"
-	skillType = "Magic"
 	icon = 'Icons/Perk/GeneralMagic.png'
 
 	/// Magic school requirement: "Black Magic", "White Magic", "Green Magic", etc.

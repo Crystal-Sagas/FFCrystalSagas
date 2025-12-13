@@ -8,7 +8,6 @@
  */
 
 /obj/perk/Raceperks
-	ptype = "general"
 
 // ============================================================================
 // Human
@@ -41,20 +40,8 @@
 /obj/perk/Raceperks/Guado/GuadoRend
 	name = "Guado Rend"
 	desc = "A Guado attacks with their sharp fingers. This ability is a Bonus Action. Scales to Strength."
-	ability = 1
-	mcost = 5
-	basecheck = 10
-	attack_roll_damage_dice = FALSE
-	attack_roll_damage_lower = 1
-	attack_roll_damage_upper = 8
-	adddam = 2
-	addhit = 1
 	range = "Melee"
-	costtype = "Stamina"
-	atype = "standard"
-	damsource = "str"
 	typing = "physical"
-	ptype = "spell"
 
 // ============================================================================
 // Cyborg
@@ -283,3 +270,4 @@
 /obj/perk/Raceperks/Golem/Aetherconnection
 	name = "Aether Connection"
 	desc = "Adverse to Genome, Golem too are usually lacking of a sense of urgency as they understand their souls will one day be filtered through the Aether crystal. Their connection grants them higher magical potency, as opposed to physical ; granting them +2 to all mental ability scores (INT, WIS, CHA.)"
+
