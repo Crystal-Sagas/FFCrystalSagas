@@ -147,10 +147,10 @@
 	<div class="section">
 		<h2>⚔️ Combat</h2>
 		<div class="button-grid">
-			<a href="byond://?src=\ref[mob];action=quick_attack" class="btn combat">Quick Attack</a>
-			<a href="byond://?src=\ref[mob];action=heavy_attack" class="btn combat">Heavy Attack</a>
+			<a href="byond://?src=\ref[mob];action=basic_attack" class="btn combat">Basic Attack</a>
 			<a href="byond://?src=\ref[mob];action=block" class="btn defense">Block</a>
 			<a href="byond://?src=\ref[mob];action=dodge" class="btn defense">Dodge</a>
+			<a href="byond://?src=\ref[mob];action=trance" class="btn combat">Trance</a>
 		</div>
 		<div class="button-grid single" style="margin-top: 8px;">
 			<a href="byond://?src=\ref[mob];action=lock_target" class="btn utility">Lock/Unlock Target</a>
@@ -210,10 +210,10 @@
 
 	switch(action)
 		// Combat actions
-		if("quick_attack")
-			Quick_Attack()
-		if("heavy_attack")
-			Heavy_Attack()
+		if("basic_attack")
+			Attack()
+		if("trance")
+			Trance()
 		if("block")
 			if(!combatController)
 				initializeCombat()

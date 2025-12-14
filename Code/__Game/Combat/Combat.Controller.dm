@@ -444,6 +444,9 @@
 	if(target.health)
 		target.health -= finalDamage
 
+		//? Trance Integration: Gauge gain from taking damage
+		target.onDamageTakenForTrance(finalDamage, owner)
+
 		// Check for death
 		if(target.health.value <= 0)
 			outputCombatMessage("<b>[target.name] has been defeated!</b>")
@@ -504,6 +507,10 @@
 
 	if(action.manaCost > 0 && owner.mana)
 		owner.mana -= action.manaCost
+
+	//? Trance Integration: Consume gauge for action while in trance
+	var/tranceActionType = actionToTranceType(action)
+	owner.consumeTranceForAction(tranceActionType)
 
 /**
  * Apply stagger damage to this combatant
@@ -621,6 +628,10 @@
 	currentAction = null
 	queuedAction = null
 	actionPhase = ""
+
+	//? Trance Integration: End trance on death
+	if(owner?.tranceController?.isActive())
+		owner.tranceController.deactivate(TRANCE_END_DEATH)
 
 /**
  * Set combat state with event dispatch
@@ -800,3 +811,16 @@
 		if(DAMAGE_TYPE_DARK)
 			return "dark"
 	return "unknown"
+
+/**
+ * Convert a CombatAction to its trance action type
+ * Used for determining trance gauge consumption cost
+ *
+ * @param datum/CombatAction/action - The combat action
+ * @return The corresponding ACTION_TYPE_* constant for trance consumption
+ */
+/datum/CombatController/proc/actionToTranceType(datum/CombatAction/action)
+	if(!action)
+		return ACTION_TYPE_LIGHT
+
+	return action.actionType

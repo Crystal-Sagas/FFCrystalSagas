@@ -1,0 +1,87 @@
+Mechanical Concepts for Azu
+
+Gathering items is a simple task for players. They go to locations and find random items to collect. Nodes that have Materials on them.
+
+Every gathering material has some tag or multiple tags associated with them. Once gathered they can then be used for the crafting process.
+
+Items can also be made on the fly by Trusted Players running events and DMs these are custom named and iconed items with self determined tags on creation. They can have lore significance or just be basic items
+
+Example A
+Someone does a mission to save some kids from some Flan. As a reward the kids give them a set of wooden figures. The set of wooden figures would be a custom item that is given to the players. The DM decides that the figures as a crafting material have the Willsave Tag associated with it.
+
+This makes it so every item in the game can be used as crafting materials for any project they want.
+
+Example B
+Someone defeats an Adamantoise Turtle. They get the shell as a reward. That shell could be worth the equivalent of Physical protection 3 Tag. So when using it in a crafting state they could add 3 tags of Physical defense to the crafted materials tag total. Making for a really good E rank Shield or heavy armor.
+
+
+Logger
+
+Miner 
+Gem
+Metal
+Stone
+Hunter
+
+Farmer
+Herbs
+Veggietables
+
+
+Herbalist Materials
+
+
+
+
+
+Logger Materials
+Leaves
+Nuts
+Sap
+Wood
+
+Miner Materials
+Gems
+Metals
+Iron-  
+
+Silver- 
+
+Gold- 
+
+Obsidian-
+
+Mithril- 
+
+Adamantite-
+
+Wind Ore-
+
+Fire Ore-
+
+Lightning Ore- 
+
+Water Ore- 
+
+Earth Ore- 
+
+Materia
+Red
+Blue
+Yellow
+Orange
+Green
+Black
+Light Blue
+Light Green
+Purple
+Light Red
+Stone
+Hunter Materials
+
+Hides/Leather
+Monster Parts
+Farmer Materials
+
+
+

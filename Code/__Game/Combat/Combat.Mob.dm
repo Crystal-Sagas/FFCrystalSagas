@@ -149,7 +149,7 @@
 
 		if("ATTACK_HEAVY")
 			if(isPress)
-				Heavy_Attack()  // Use the Heavy Attack verb
+				Attack()  // Use unified Attack verb (weapon determines heavy/light)
 			return TRUE
 
 		if("BLOCK")

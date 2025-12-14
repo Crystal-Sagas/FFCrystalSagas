@@ -5,12 +5,17 @@
  * Integrates with the existing VectorMovement input system.
  *
  * Default Combat Keybinds:
- * - Left Click / Z: Light Attack
- * - Right Click / X: Heavy Attack
+ * - Left Click / Z: Basic Attack (weapon-based)
  * - Shift: Block (hold)
  * - Space: Dodge
  * - Tab: Lock Target
  * - Q/E: Switch Target Left/Right
+ *
+ * The basic attack uses equipped weapon stats:
+ * - Damage scales from weapon's range1/range2 dice
+ * - Accuracy uses weapon's addhit bonus
+ * - Damage type from weapon's typing (physical/magical)
+ * - Scaling stat from weapon's damsource (str/dex/etc)
  */
 
 //? Combat Input Verbs
@@ -267,7 +272,8 @@
 	flick("attack", src)
 
 /**
- * Perform a melee attack on target - Chronicles style
+ * Perform a basic attack on target - Weapon-based system
+ * Uses equipped weapon stats for damage, accuracy, and type
  */
 /mob/proc/performMeleeAttack(mob/target)
 	if(!isMob(target))
@@ -277,13 +283,15 @@
 	if(stamina)
 		stamina -= COMBAT_LIGHT_STAMINA_COST
 
-	// Get or create light attack action
-	var/datum/CombatAction/action = getCombatAction("light_attack")
-	if(!action)
-		action = CombatAction_LightAttack()
+	// Get weapon-based combat action
+	var/datum/CombatAction/action = getWeaponBasedAction()
 
-	// Calculate accuracy
-	var/accuracy = AccuracyFormula(src, target, COMBAT_DEFAULT_ACCURACY, DAMAGE_TYPE_PHYSICAL)
+	// Consume trance gauge if in trance
+	consumeTranceForAction(ACTION_TYPE_LIGHT)
+
+	// Calculate accuracy with weapon bonus
+	var/weaponHitBonus = getWeaponHitBonus()
+	var/accuracy = AccuracyFormula(src, target, COMBAT_DEFAULT_ACCURACY + weaponHitBonus, action.damageType)
 
 	// Roll for hit
 	if(!prob(accuracy))
@@ -308,12 +316,13 @@
 			return
 
 		if(DEFENSE_RESULT_BLOCKED)
-			var/blockedDamage = DamageFormula(src, target, action.baseDamage, action.damageType) * (1 - COMBAT_BLOCK_REDUCTION)
+			var/list/blockWeights = getStatWeightsForScaling(action.scalingStat, action.scalingMultiplier)
+			var/blockedDamage = DamageFormula(src, target, action.baseDamage, action.damageType, blockWeights["str"], blockWeights["dex"], blockWeights["int"]) * (1 - COMBAT_BLOCK_REDUCTION)
 			if(client)
-				client << combat_chat("[target.name] blocks! [blockedDamage] damage.")
+				client << combat_chat("[target.name] blocks! [round(blockedDamage)] damage.")
 			if(target.client)
-				target.client << combat_chat("You block [src.name]'s attack! [blockedDamage] damage taken.")
-			applyDamageToMob(target, blockedDamage, DAMAGE_TYPE_PHYSICAL)
+				target.client << combat_chat("You block [src.name]'s attack! [round(blockedDamage)] damage taken.")
+			applyDamageToMob(target, blockedDamage, action.damageType)
 			return
 
 		if(DEFENSE_RESULT_PARRIED)
@@ -326,12 +335,15 @@
 				combatController.applyStagger(action.staggerDamage * 2)
 			return
 
-	// Calculate damage
-	var/list/critResult = CriticalFormula(src)
+	// Calculate damage with weapon crit range
+	var/weaponCritRange = getWeaponCritRange()
+	var/list/critResult = CriticalFormulaWithRange(src, weaponCritRange)
 	var/isCrit = critResult["isCrit"]
 	var/critMult = critResult["multiplier"]
 
-	var/damage = DamageFormula(src, target, action.baseDamage, DAMAGE_TYPE_PHYSICAL)
+	// Get stat weights based on weapon scaling stat
+	var/list/statWeights = getStatWeightsForScaling(action.scalingStat, action.scalingMultiplier)
+	var/damage = DamageFormula(src, target, action.baseDamage, action.damageType, statWeights["str"], statWeights["dex"], statWeights["int"])
 
 	if(isCrit)
 		damage *= critMult
@@ -341,13 +353,16 @@
 				M.client << combat_chat("<b>[src.name] lands a critical hit on [target.name]!</b>")
 
 	// Apply damage
-	applyDamageToMob(target, damage, DAMAGE_TYPE_PHYSICAL)
+	applyDamageToMob(target, damage, action.damageType)
+
+	// Get weapon name for output
+	var/weaponName = getWeaponName()
 
 	// Output damage messages
 	if(client)
-		client << combat_chat("You hit [target.name] for [round(damage)] damage!")
+		client << combat_chat("You hit [target.name] with your [weaponName] for [round(damage)] damage!")
 	if(target.client)
-		target.client << combat_chat("[src.name] hits you for [round(damage)] damage!")
+		target.client << combat_chat("[src.name] hits you with their [weaponName] for [round(damage)] damage!")
 
 	// Apply stagger to target
 	if(target.combatController)
@@ -364,6 +379,9 @@
 	if(target.health)
 		target.health -= amount
 
+		//? Trance Integration: Gauge gain from taking damage
+		target.onDamageTakenForTrance(amount, src)
+
 		// Check for KO/death
 		if(target.health.value <= 0)
 			target.onKO(src)
@@ -377,30 +395,27 @@
 		if(M.client)
 			M.client << combat_chat("<b>[src.name] has been knocked out!</b>")
 
+	//? Trance Integration: End trance on KO
+	if(tranceController?.isActive())
+		tranceController.deactivate(TRANCE_END_KNOCKOUT)
+
 	// Set combat state to dead
 	if(combatController)
 		combatController.setState(COMBAT_STATE_DEAD)
 
 	// TODO: Handle KO state, respawn, etc.
 
-/mob/verb/Quick_Attack()
-	set name = "Quick Attack"
+/**
+ * Basic Attack verb - Unified weapon-based attack
+ * This is an alias for the main Attack verb for UI consistency
+ */
+/mob/verb/Basic_Attack()
+	set name = "Basic Attack"
 	set category = "Combat"
+	set desc = "Perform a basic attack with your equipped weapon."
 
-	// Just call the main Attack verb
+	// Use the main Attack verb
 	Attack()
-
-/mob/verb/Heavy_Attack()
-	set name = "Heavy Attack"
-	set category = "Combat"
-
-	if(!combatController)
-		initializeCombat()
-
-	if(performCombatAction("heavy_attack"))
-		return
-
-	src << "<span class='notice'>No valid target in range.</span>"
 
 /mob/verb/Lock_Target()
 	set name = "Lock Target"
@@ -450,3 +465,183 @@
 
 	// Use the new Attack verb which respects range
 	Attack()
+
+//? ==================== WEAPON-BASED ATTACK HELPERS ====================
+
+/**
+ * Get a CombatAction based on the equipped weapon
+ * Pulls damage, scaling, and type from the weapon
+ *
+ * Weapon Stats Used:
+ * - range1/range2: Base damage range (averaged for baseDamage)
+ * - adddam: Flat damage bonus added to base
+ * - scaling: Damage scaling multiplier
+ * - damsource: Stat used for scaling (str/dex/int/etc)
+ * - typing: Damage type (physical/magical)
+ * - equiptype: 1h or 2h (affects action type)
+ * - weight: Affects stagger damage
+ *
+ * @return datum/CombatAction configured for the equipped weapon
+ */
+/mob/proc/getWeaponBasedAction() as /datum/CombatAction
+	var/datum/CombatAction/action = new()
+
+	// Get equipped weapon (righthand slot)
+	var/obj/item/Weapon/weapon = righthand
+
+	if(!weapon || !isWeapon(weapon))
+		// No weapon - use unarmed defaults
+		action.actionId = "unarmed_attack"
+		action.name = "Unarmed Attack"
+		action.baseDamage = 4  // Base unarmed damage
+		action.damageType = DAMAGE_TYPE_PHYSICAL
+		action.scalingStat = "strength"
+		action.scalingMultiplier = 0.5
+		action.staggerDamage = 2
+		return action
+
+	// Configure action from weapon stats
+	action.actionId = "weapon_attack"
+	action.name = "[weapon.weapontype] Attack"
+
+	// Calculate base damage from weapon's damage range
+	// Use the average of range1 and range2 as the base damage
+	var/minDamage = weapon.range1 || 1
+	var/maxDamage = weapon.range2 || 6
+	action.baseDamage = round((minDamage + maxDamage) / 2)
+
+	// Add weapon's flat damage bonus
+	action.baseDamage += weapon.adddam || 0
+
+	// Set damage type from weapon typing
+	if(weapon.typing == "magical")
+		action.damageType = DAMAGE_TYPE_MAGICAL
+	else
+		action.damageType = DAMAGE_TYPE_PHYSICAL
+
+	// Set scaling stat from weapon's damsource
+	action.scalingStat = getScalingStatFromSource(weapon.damsource)
+
+	// Use weapon's scaling multiplier, default to 1.0
+	action.scalingMultiplier = weapon.scaling || 1.0
+
+	// Stagger based on weapon weight
+	action.staggerDamage = round((weapon.weight || 5) / 2)
+
+	// Heavy weapons (2h) have super armor and are heavy action type
+	if(weapon.equiptype == "2h")
+		action.hasSuperArmor = TRUE
+		action.actionType = ACTION_TYPE_HEAVY
+	else
+		action.hasSuperArmor = FALSE
+		action.actionType = ACTION_TYPE_LIGHT
+
+	return action
+
+/**
+ * Convert weapon damsource to scaling stat name
+ */
+/mob/proc/getScalingStatFromSource(damsource) as text
+	switch(damsource)
+		if("str")
+			return "strength"
+		if("dex")
+			return "dexterity"
+		if("con")
+			return "constitution"
+		if("int")
+			return "intelligence"
+		if("wis")
+			return "wisdom"
+		if("cha")
+			return "charisma"
+	return "strength"  // Default
+
+/**
+ * Get stat weights for the DamageFormula based on weapon scaling stat
+ * Converts the scaling stat name to strWeight/dexWeight/intWeight
+ *
+ * @param scalingStat - The stat name (strength, dexterity, etc.)
+ * @param multiplier - The weapon's scaling multiplier
+ * @return list with str, dex, int weights
+ */
+/mob/proc/getStatWeightsForScaling(scalingStat, multiplier = 1.0) as /list
+	var/list/weights = list("str" = 0, "dex" = 0, "int" = 0)
+
+	switch(scalingStat)
+		if("strength")
+			weights["str"] = multiplier
+		if("dexterity")
+			weights["dex"] = multiplier
+		if("constitution")
+			// CON scaling uses STR formula at reduced rate
+			weights["str"] = multiplier * 0.7
+		if("intelligence")
+			weights["int"] = multiplier
+		if("wisdom")
+			// WIS uses INT formula for magical attacks
+			weights["int"] = multiplier
+		if("charisma")
+			// CHA uses a mix for hybrid damage
+			weights["str"] = multiplier * 0.3
+			weights["int"] = multiplier * 0.7
+
+	return weights
+
+/**
+ * Get weapon hit bonus for accuracy calculation
+ */
+/mob/proc/getWeaponHitBonus() as num
+	var/obj/item/Weapon/weapon = righthand
+	if(!weapon || !istype(weapon, /obj/item/Weapon))
+		return 0
+	return weapon.addhit || 0
+
+/**
+ * Get weapon crit range (default 20, lower = easier to crit)
+ */
+/mob/proc/getWeaponCritRange() as num
+	var/obj/item/Weapon/weapon = righthand
+	if(!weapon || !istype(weapon, /obj/item/Weapon))
+		return 20  // Default: only crit on 20
+	return weapon.critrange || 20
+
+/**
+ * Get weapon name for display
+ */
+/mob/proc/getWeaponName() as text
+	var/obj/item/Weapon/weapon = righthand
+	if(!weapon || !istype(weapon, /obj/item/Weapon))
+		return "fists"
+	return weapon.name || weapon.weapontype || "weapon"
+
+/**
+ * Get equipped weapon's damage type
+ */
+/mob/proc/getWeaponDamageType() as num
+	var/obj/item/Weapon/weapon = righthand
+	if(!weapon || !istype(weapon, /obj/item/Weapon))
+		return DAMAGE_TYPE_PHYSICAL
+	if(weapon.typing == "magical")
+		return DAMAGE_TYPE_MAGICAL
+	return DAMAGE_TYPE_PHYSICAL
+
+/**
+ * Critical hit formula with custom crit range (for weapons)
+ * @param mob/attacker - The attacking mob
+ * @param critRange - The minimum roll to crit (default 20)
+ * @return list with isCrit and multiplier
+ */
+/proc/CriticalFormulaWithRange(mob/attacker, critRange = 20)
+	// Roll d20 for crit check
+	var/roll = rand(1, 20)
+
+	var/isCrit = (roll >= critRange)
+	var/multiplier = 1.5  // Base crit multiplier
+
+	// Dexterity can boost crit damage slightly
+	if(isCrit && attacker?.dexterity)
+		var/dexBonus = (attacker.dexterity.currentValue?.value || 0) * 0.01
+		multiplier += dexBonus
+
+	return list("isCrit" = isCrit, "multiplier" = multiplier)
