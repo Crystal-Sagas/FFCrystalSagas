@@ -39,14 +39,14 @@
 		var/obj/Ability/Weapon/Melee/Halone/c = new
 		var/obj/Ability/Job/Samurai/IaidoStance/d = new
 		var/obj/Ability/Job/Samurai/Tsubamagaeshi/e = new
-		var/obj/item/Weapon/Melee/Katana/Adamantine/sf = new
+		var/obj/item/sf = createWeaponFromArchetype("katana", MATERIAL_TIER_ADAMANTINE, src)
 		src.contents += a
 		src.contents += b
 		src.contents += c
 		src.contents += d
 		src.contents += e
-		src.contents += sf
-		src.eweapon = sf
+		if(sf)
+			src.eweapon = sf
 		var/obj/perk/SummonPassives/Odin/summ = new
 		src.contents += summ
 

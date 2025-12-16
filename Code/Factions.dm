@@ -73,6 +73,9 @@ obj
 							faction.Factionleader=usr.key
 							usr.faction=fname
 						// NOTE: Fategiver recipe removed - FATE system removed
+						// NOTE: Faction building recipes removed - legacy recipe system
+						// TODO: Implement faction building via new crafting system
+						/*
 						var/obj/recipes/Buildings/Faction/Global/Recruiter/rec=new
 						var/obj/recipes/Buildings/Faction/Global/Mine/mi=new
 						var/obj/recipes/Buildings/Faction/Global/Loghouse/log=new
@@ -85,19 +88,25 @@ obj
 						usr.contents+=lodge
 						usr.contents+=com
 						usr.contents+=far
+						*/
 						if(src.Nation=="Midgar")
+							/*
 							var/obj/recipes/Buildings/Faction/Midgar/MakoReactor/reac=new
 							var/obj/recipes/Buildings/Faction/Midgar/ShellGenerator/shell=new
 							usr.contents+=reac
 							usr.contents+=shell
+							*/
 							faction.Nation="Midgar"
 						if(src.Nation=="Insomnia")
+							/*
 							var/obj/recipes/Buildings/Faction/Insomnia/ManaPylon/mp=new
 							var/obj/recipes/Buildings/Faction/Insomnia/SomnusStatue/st=new
 							usr.contents+=mp
 							usr.contents+=st
+							*/
 							faction.Nation="Insomnia"
 						if(src.Nation=="Independant")
+							/*
 							var/obj/recipes/Buildings/Faction/Independant/Treasury/tr=new
 							var/obj/recipes/Buildings/Faction/Independant/InspiringBanner/ib=new
 							var/obj/recipes/Buildings/Faction/Independant/WarriorStatue/ws=new
@@ -112,16 +121,21 @@ obj
 							usr.contents+=bms
 							usr.contents+=wms
 							usr.contents+=rms
+							*/
 							faction.Nation="Independant"
 						if(src.Nation=="Akademia")
+							/*
 							var/obj/recipes/Buildings/Faction/Akademia/StatueofFalcie/sof=new
 							usr.contents+=sof
+							*/
 							faction.Nation="Akademia"
 						if(src.Nation=="Yevon")
+							/*
 							var/obj/recipes/Buildings/Faction/Yevon/YevonShrine/ys=new
 							var/obj/recipes/Buildings/Faction/Yevon/FaythStatue/fys=new
 							usr.contents+=ys
 							usr.contents+=fys
+							*/
 							faction.Nation="Yevon"
 						usr.spendMoney(5000)
 						return //this should stop the game from cosntantly prompting someone from a faction name. may require break instead. IDK why it loops. So weird.
@@ -332,91 +346,91 @@ obj
 							var/random2=rand(1,10)
 							var/random3=rand(1,10)
 							var/gem1=rand(1,20)
-							for(var/obj/item/materials/Synthesis/Stone/a in usr.contents)
+							for(var/obj/item/material/synthesis/Stone/a in usr.contents)
 								a.amount+=20
 								usr << output("You have gained 20 [a]!","oocout")
 							if(random1>=1 && random1<4)
-								for(var/obj/item/materials/Ore/Bronze/a in usr.contents)
+								for(var/obj/item/material/ore/Bronze/a in usr.contents)
 									a.amount+=1
 									usr << output("You have gained 1 [a]!","oocout")
 							if(random1>=4 && random1<6)
-								for(var/obj/item/materials/Ore/Iron/a in usr.contents)
+								for(var/obj/item/material/ore/Iron/a in usr.contents)
 									a.amount+=1
 									usr << output("You have gained 1 [a]!","oocout")
 							if(random1>=6 && random1<8)
-								for(var/obj/item/materials/Ore/Steel/a in usr.contents)
+								for(var/obj/item/material/ore/Steel/a in usr.contents)
 									a.amount+=1
 									usr << output("You have gained 1 [a]!","oocout")
 							if(random1>=8 && random1<11)
-								for(var/obj/item/materials/Ore/Mythril/a in usr.contents)
+								for(var/obj/item/material/ore/Mythril/a in usr.contents)
 									a.amount+=1
 									usr << output("You have gained 1 [a]!","oocout")
 							if(random2>=1 && random2<4)
-								for(var/obj/item/materials/Ore/Bronze/a in usr.contents)
+								for(var/obj/item/material/ore/Bronze/a in usr.contents)
 									a.amount+=1
 									usr << output("You have gained 1 [a]!","oocout")
 							if(random2>=4 && random2<6)
-								for(var/obj/item/materials/Ore/Iron/a in usr.contents)
+								for(var/obj/item/material/ore/Iron/a in usr.contents)
 									a.amount+=1
 									usr << output("You have gained 1 [a]!","oocout")
 							if(random2>=6 && random2<8)
-								for(var/obj/item/materials/Ore/Steel/a in usr.contents)
+								for(var/obj/item/material/ore/Steel/a in usr.contents)
 									a.amount+=1
 									usr << output("You have gained 1 [a]!","oocout")
 							if(random2>=8 && random2<11)
-								for(var/obj/item/materials/Ore/Mythril/a in usr.contents)
+								for(var/obj/item/material/ore/Mythril/a in usr.contents)
 									a.amount+=1
 									usr << output("You have gained 1 [a]!","oocout")
 							if(random3>=1 && random3<4)
-								for(var/obj/item/materials/Ore/Bronze/a in usr.contents)
+								for(var/obj/item/material/ore/Bronze/a in usr.contents)
 									a.amount+=1
 									usr << output("You have gained 1 [a]!","oocout")
 							if(random3>=4 && random3<6)
-								for(var/obj/item/materials/Ore/Iron/a in usr.contents)
+								for(var/obj/item/material/ore/Iron/a in usr.contents)
 									a.amount+=1
 									usr << output("You have gained 1 [a]!","oocout")
 							if(random3>=6 && random3<8)
-								for(var/obj/item/materials/Ore/Steel/a in usr.contents)
+								for(var/obj/item/material/ore/Steel/a in usr.contents)
 									a.amount+=1
 									usr << output("You have gained 1 [a]!","oocout")
 							if(random3>=8 && random3<11)
-								for(var/obj/item/materials/Ore/Mythril/a in usr.contents)
+								for(var/obj/item/material/ore/Mythril/a in usr.contents)
 									a.amount+=1
 									usr << output("You have gained 1 [a]!","oocout")
 							if(gem1>=1 && gem1<4)
-								for(var/obj/item/materials/Synthesis/ThunderGem/a in usr.contents)
+								for(var/obj/item/material/synthesis/ThunderGem/a in usr.contents)
 									a.amount+=1
 									usr << output("You have gained 1 [a]!","oocout")
 							if(gem1>=4 && gem1<6)
-								for(var/obj/item/materials/Synthesis/FireGem/a in usr.contents)
+								for(var/obj/item/material/synthesis/FireGem/a in usr.contents)
 									a.amount+=1
 									usr << output("You have gained 1 [a]!","oocout")
 							if(gem1>=6 && gem1<6)
-								for(var/obj/item/materials/Synthesis/WaterGem/a in usr.contents)
+								for(var/obj/item/material/synthesis/WaterGem/a in usr.contents)
 									a.amount+=1
 									usr << output("You have gained 1 [a]!","oocout")
 							if(gem1>=8 && gem1<12)
-								for(var/obj/item/materials/Synthesis/EarthGem/a in usr.contents)
+								for(var/obj/item/material/synthesis/EarthGem/a in usr.contents)
 									a.amount+=1
 									usr << output("You have gained 1 [a]!","oocout")
 							if(gem1>=12 && gem1<15)
-								for(var/obj/item/materials/Synthesis/IceGem/a in usr.contents)
+								for(var/obj/item/material/synthesis/IceGem/a in usr.contents)
 									a.amount+=1
 									usr << output("You have gained 1 [a]!","oocout")
 							if(gem1>=15 && gem1<18)
-								for(var/obj/item/materials/Synthesis/WindGem/a in usr.contents)
+								for(var/obj/item/material/synthesis/WindGem/a in usr.contents)
 									a.amount+=1
 									usr << output("You have gained 1 [a]!","oocout")
 							if(gem1>=18 && gem1<=20)
-								for(var/obj/item/materials/Synthesis/BioGem/a in usr.contents)
+								for(var/obj/item/material/synthesis/BioGem/a in usr.contents)
 									a.amount+=1
 									usr << output("You have gained 1 [a]!","oocout")
 						if(src.Loghouse==1)
-							for(var/obj/item/materials/Synthesis/Wood/a in usr.contents)
+							for(var/obj/item/material/synthesis/Wood/a in usr.contents)
 								a.amount+=20
 								usr << output("You have gained 20 [a]!","oocout")
 						if(src.Lodge==1)
-							for(var/obj/item/materials/Synthesis/Leather/a in usr.contents)
+							for(var/obj/item/material/synthesis/Leather/a in usr.contents)
 								a.amount+=15
 								usr << output("You have gained 15 [a]!","oocout")
 						if(src.Commerce==1)
@@ -428,42 +442,42 @@ obj
 						if(src.Farm==1)
 							var/herb=rand(1,10)
 							if(herb>=1 && herb < 2)
-								for(var/obj/item/materials/Herbs/GysahlGreens/a in usr.contents)
+								for(var/obj/item/material/herb/GysahlGreens/a in usr.contents)
 									a.amount+=4
 									usr << output("You have gained 4 [a]!","oocout")
 							if(herb>=2 && herb < 3)
-								for(var/obj/item/materials/Herbs/SharugGreens/a in usr.contents)
+								for(var/obj/item/material/herb/SharugGreens/a in usr.contents)
 									a.amount+=4
 									usr << output("You have gained 4 [a]!","oocout")
 							if(herb>=3 && herb < 4)
-								for(var/obj/item/materials/Herbs/AzouphGreens/a in usr.contents)
+								for(var/obj/item/material/herb/AzouphGreens/a in usr.contents)
 									a.amount+=4
 									usr << output("You have gained 4 [a]!","oocout")
 							if(herb>=5 && herb < 6)
-								for(var/obj/item/materials/Herbs/SandorianCarrots/a in usr.contents)
+								for(var/obj/item/material/herb/SandorianCarrots/a in usr.contents)
 									a.amount+=4
 									usr << output("You have gained 4 [a]!","oocout")
 							if(herb>=6 && herb < 7)
-								for(var/obj/item/materials/Herbs/VompCarrots/a in usr.contents)
+								for(var/obj/item/material/herb/VompCarrots/a in usr.contents)
 									a.amount+=4
 									usr << output("You have gained 4 [a]!","oocout")
 							if(herb>=7 && herb < 8)
-								for(var/obj/item/materials/Herbs/ZeghamCarrots/a in usr.contents)
+								for(var/obj/item/material/herb/ZeghamCarrots/a in usr.contents)
 									a.amount+=4
 									usr << output("You have gained 4 [a]!","oocout")
 							if(herb>=8 && herb < 9)
-								for(var/obj/item/materials/Herbs/GausebitGrass/a in usr.contents)
+								for(var/obj/item/material/herb/GausebitGrass/a in usr.contents)
 									a.amount+=4
 									usr << output("You have gained 4 [a]!","oocout")
 							if(herb>=9 && herb < 11)
-								for(var/obj/item/materials/Herbs/GaridavWildgrass/a in usr.contents)
+								for(var/obj/item/material/herb/GaridavWildgrass/a in usr.contents)
 									a.amount+=4
 									usr << output("You have gained 4 [a]!","oocout")
-							for(var/obj/item/materials/Synthesis/Wool/a in usr.contents)
+							for(var/obj/item/material/synthesis/Wool/a in usr.contents)
 								a.amount+=10
 								usr << output("You have gained 10 [a]!","oocout")
 						if(src.Reactor==1)
-							for(var/obj/item/materials/Synthesis/RawMako/a in usr.contents)
+							for(var/obj/item/material/synthesis/RawMako/a in usr.contents)
 								a.amount+=1
 								usr << output("You have gained 1 [a]!","oocout")
 						src.Collectcooldown=1

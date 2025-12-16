@@ -1,0 +1,90 @@
+Mechanical Concepts for Azu
+
+Crafting items require materials that can be gathered from nodes or received from DMs from missions.
+All Gathering materials have tags associated with them. Some resources have multiple tags associated with them. Once collected these materials can then be combined to make specific items. Similar to Synth items instead of combining gear together you instead take a base item type and then add tags to it until you reach your limit based on the tier of crafter you are.
+
+E rank equipment will have
+1 Ability max
+Up to 3 tags
+0 Materia Slots
+
+D rank equipment will have
+2 Abilities max
+Up to 6 tags
+1 Materia Slot
+
+C rank equipment will have
+2 Abilities
+Up to 9 tags
+1 Materia Slot
+
+B rank equipment will have
+3 Abilities max
+Up to 12 tags
+2 materia Slots
+
+A rank equipment will have
+3 Abilities max
+Up to 15 tags
+2 materia Slots
+
+S rank equipment will have
+4 Abilities max
+Up to 18 tags
+3 Materia Slots
+
+SS rank equipment will have
+5 Abilities max
+Up to 21 tags
+4 Materia slots
+When making an item take the materials and add them to the crafting menu. The tags associated will auto fill in the stats the gear has. 
+
+
+Example A
+I want to Make an E rank Dagger so I collect Materials that have the tags
+Poison 1 and Harming 1
+I can only have 3 tags on my first dagger so I decide to use 2 poison tag 1 items and 1 harming tag 1 item to make this dagger.
+So now my dagger does an extra 2 points of damage and has a 10% chance to poison someone on hit.
+
+
+Example B
+Say I want to make that same E rank dagger but I only have 1 material but its a Poison Tag 5 Item. Its a really valuable gathered material.
+If I used that to make my dagger it would only take 3 of those 5 tags and the other 2 would go to waste. Because the E rank dagger can only hold 3 tags at a time.
+
+
+Example C
+Say I make that E rank dagger and use two materials both are 4 tag items one is harm 4 and one is poison 4.
+It would then begin calculating which ones randomly get placed in the dagger. Since they are equal it would give them the same amount of chances to appear on the dagger but only 3 of the 8 total tags would be added to the dagger thus wasting two very good materials.
+
+
+Once that is determined then depending on the gear it would gain random tier 1 abilities.
+
+
+Example A
+The E rank Dagger gets 1 Tier 1 ability that revolves around melee or daggers.
+
+
+The rank of the gear determines the amount of random abilities the gear gets. Described above.
+Tailored (Herbalist)
+
+
+Leatherworker (Hunter)
+
+Weaponsmith (Miner)
+
+Armorsmith (miner)
+
+Carpenter (Logger, Miner)
+
+Alchemist (Farming, Herbalist, Hunter)
+
+Bartender (Farming, Herbalist)
+
+Cook (Hunting, Herbalist, Farming)
+
+Materia Crafter (Mining)
+
+Engineer (Mining, Logging)
+
+
+

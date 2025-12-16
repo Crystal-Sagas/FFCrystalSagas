@@ -358,8 +358,8 @@ obj
 	initializeRobotEquipment()
 
 /mob/npc/Summons/Robots/proc/initializeRobotEquipment()
-	var/obj/item/Weapon/Special/MagitekRifle/Steel/a=new
-	var/obj/item/Weapon/Melee/Longsword/Steel/b=new
+	var/obj/item/a = createWeaponFromArchetype("magitek_rifle", MATERIAL_TIER_STEEL, src)
+	var/obj/item/b = createWeaponFromArchetype("longsword", MATERIAL_TIER_STEEL, src)
 	var/obj/item/Weapon/Machinist/EnergySword/esword=new
 	var/obj/item/Weapon/Machinist/BioBlaster/biob=new
 	var/obj/item/Weapon/Machinist/Flamethrower/flamer=new
@@ -384,33 +384,35 @@ obj
 	var/obj/Ability/Magic/General/Pierce/pierce1=new
 	var/obj/Ability/Magic/General/Piercega/pierce2=new
 	if(src.name=="Defender")
-		src.contents+=b
+		if(b)
+			src.contents+=b
+			src.eweapon=b
 		src.contents+=metallic
 		src.contents+=dense
 		src.contents+=tank
 		src.contents+=laser1
 		src.contents+=laser2
-		src.eweapon=b
 	if(src.name=="Striker")
-		src.contents+=b
+		if(b)
+			src.contents+=b
+			src.eweapon=b
 		src.contents+=metallic
 		src.contents+=striker
 		src.contents+=destructive
 		src.contents+=laser1
 		src.contents+=laser2
-		src.eweapon=b
 	if(src.name=="Blitzer")
-		src.contents+=b
-		src.contents+=metallic
-		src.contents+=destructive
+		if(b)
+			src.contents+=b
+			src.eweapon=b
 		src.contents+=laser1
 		src.contents+=laser2
 		src.contents+=laser3
 		src.contents+=striker
 		src.contents+=pierce1
-		src.eweapon=b
 	if(src.name=="Guardian")
-		src.contents+=b
+		if(b)
+			src.contents+=b
 		src.contents+=metallic
 		src.contents+=dense
 		src.contents+=tank
@@ -418,7 +420,8 @@ obj
 		src.contents+=laser2
 		src.contents+=laser3
 		src.contents+=braver
-		src.eweapon=a
+		if(a)
+			src.eweapon=a
 	if(src.name=="Magitek Armor")
 		src.contents+=biob
 		src.contents+=flamer

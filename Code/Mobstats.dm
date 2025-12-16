@@ -9,6 +9,9 @@
 mob/var
 	editing = 0
 
+	/// Owner reference - for summons, this is the player who summoned them
+	owner = null
+
 	//? Crafting Skills
 	smithing = 0  // Smithing skill level for crafting
 
@@ -463,23 +466,9 @@ mob
 			if(m.client)
 				winset(m,"default", "flash=-1")
 				m<<output("<b>You've been pinged by [usr]!</b>","oocout")
-		CheckMods(mob/m in view(usr))
-			set name="Mods"
-			var/row
-			winset(usr,"GMandperk","is-visible=true")
-			winset(usr,"GMandperk.c","is-visible=true")
-			winset(usr,"GMandperk.gm","cells=0x0")
-			for(var/obj/globalmod/g in m.contents)
-				row++
-				winset(usr, "Gmandperk.gm", "current-cell=1,[row]")
-				usr << output(g,"GMandperk.gm")
-				winset(usr, "GMandperk.gm", "current-cell=2,[row]")
-				usr<<output(g.desc,"GMandperk.gm")
-				winset(usr,"GMandperk.gm","current-cell=3,[row]")
-				if(g.applied==1)
-					usr<<output("Equipped","GMandperk.gm")
-				else
-					usr<<output("Unequipped","GMandperk.gm")
+		// TODO: CheckMods verb removed - globalmod system deprecated
+		// This was used to view global mods on players
+		// New equipment system in Code/__Game/Equipment handles this differently
 		SeeEquipmentOther(mob/m in view(usr))
 			var/row
 			set name="View Equipment"

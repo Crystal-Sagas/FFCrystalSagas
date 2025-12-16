@@ -42,14 +42,16 @@
 	// Add admin badge if admin (we don't use BoosterTag/OOCTag in Crystal Sagas)
 	// Badges are handled client-side via admin_level parameter in chat message
 
-	SystemLog("CHAT", "DEBUG", "OOC broadcasting to [length(Players)] players")
+	SystemLog("CHAT", "DEBUG", "OOC broadcasting to all clients")
 
 	// Send to all players who are listening
 	var/sent_count = 0
 	var/buffered_count = 0
-	for(var/mob/player/P in Players)
-		if(!P.client) continue
-		if(!P.client.listen_ooc) continue
+	for(var/client/C)
+		var/mob/player/P = C.mob
+		if(!P) continue
+		if(!istype(P)) continue
+		if(!C.listen_ooc) continue
 		if(P.Ignores && (key in P.Ignores)) continue
 
 		// Build admin refs if recipient is admin (for admin links in JavaScript)

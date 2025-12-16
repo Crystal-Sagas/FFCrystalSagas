@@ -4,7 +4,7 @@
 obj/Aoeind
 	icon = 'AOEind.dmi'
 	layer = 4
-	owner = null  // ckey of the player who created this indicator
+	// owner is inherited from base obj type
 
 obj
 	proc

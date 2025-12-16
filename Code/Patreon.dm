@@ -25,8 +25,8 @@ obj/item
 				Claim()
 					var/rando
 					var/rando2
-					for(var/obj/item/materials/m in usr.contents)
-						if(istype(m,/obj/item/materials/Ore/Platinum)||istype(m,/obj/item/materials/Ore/Orichalcum))
+					for(var/obj/item/material/m in usr.contents)
+						if(istype(m,/obj/item/material/ore/Platinum)||istype(m,/obj/item/material/ore/Orichalcum))
 
 						else
 							rando=rand(1,4)

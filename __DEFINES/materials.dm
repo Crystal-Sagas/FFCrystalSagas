@@ -31,6 +31,21 @@
 /// Category for crafting components (leather, wool, etc.)
 #define MATERIAL_CATEGORY_COMPONENT "component"
 
+/// Category for wood materials (lumber, logs, etc.)
+#define MATERIAL_CATEGORY_WOOD "wood"
+
+/// Category for leather materials (hides, pelts, etc.)
+#define MATERIAL_CATEGORY_LEATHER "leather"
+
+/// Category for cloth materials (cotton, silk, etc.)
+#define MATERIAL_CATEGORY_CLOTH "cloth"
+
+/// Category for gem materials (gemstones, crystals, etc.)
+#define MATERIAL_CATEGORY_GEM "gem"
+
+/// Category for monster drop materials
+#define MATERIAL_CATEGORY_MONSTER "monster"
+
 // ===== MATERIAL FLAGS =====
 /// Flag indicating this item is a crafting material
 #define ITEM_FLAG_CRAFTABLE (1<<0)

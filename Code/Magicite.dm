@@ -78,7 +78,7 @@ mob/npc/Summons/ARank
 			var/obj/Ability/Magic/Black/Fire/Fira/a=new
 			var/obj/Ability/Magic/Black/Fire/Firaga/b=new
 			var/obj/Ability/Magic/Black/Fire/Firaja/c=new
-			var/obj/item/Weapon/Melee/Axe/Orichalcum/wep=new
+			var/obj/item/crafted_weapon/wep = createWeaponFromArchetype("axe", MATERIAL_TIER_ORICHALCUM)
 			var/obj/perk/SummonPassives/Belias/summpass=new
 			src.contents+=summpass
 			src.contents+=wep
@@ -104,7 +104,7 @@ mob/npc/Summons/ARank
 			var/obj/Ability/Magic/Black/Ice/Blizzara/a=new
 			var/obj/Ability/Magic/Black/Ice/Blizzaga/b=new
 			var/obj/Ability/Magic/Black/Ice/Blizzaja/c=new
-			var/obj/item/Weapon/Melee/Spear/Orichalcum/wep=new
+			var/obj/item/crafted_weapon/wep = createWeaponFromArchetype("spear", MATERIAL_TIER_ORICHALCUM)
 			var/obj/perk/SummonPassives/Mateus/summpass=new
 			src.contents+=summpass
 			src.contents+=wep
@@ -154,7 +154,7 @@ mob/npc/Summons/ARank
 			var/obj/Ability/Job/Geomancer/Earth/Stonra/a=new
 			var/obj/Ability/Job/Geomancer/Earth/Stoneaga/b=new
 			var/obj/Ability/Job/Geomancer/Earth/Stonaja/c=new
-			var/obj/item/Weapon/Melee/Dagger/Orichalcum/wep=new
+			var/obj/item/crafted_weapon/wep = createWeaponFromArchetype("dagger", MATERIAL_TIER_ORICHALCUM)
 			var/obj/perk/SummonPassives/Hashmal/summpass=new
 			src.contents+=summpass
 			src.contents+=wep
@@ -204,7 +204,7 @@ mob/npc/Summons/ARank
 			var/obj/Ability/Magic/General/Fogga/a=new
 			var/obj/Ability/Magic/General/Jolt/b=new
 			var/obj/Ability/Magic/General/Laserga/c=new
-			var/obj/item/Weapon/Ranged/Bow/Orichalcum/wep=new
+			var/obj/item/crafted_weapon/wep = createWeaponFromArchetype("bow", MATERIAL_TIER_ORICHALCUM)
 			var/obj/perk/SummonPassives/Shemhazai/summpass=new
 			src.contents+=summpass
 			src.contents+=wep

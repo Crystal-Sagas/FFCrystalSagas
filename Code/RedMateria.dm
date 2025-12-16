@@ -183,11 +183,11 @@ mob/npc/Summons/BRank
 			var/obj/Ability/Magic/Arcane/Darkaga/cr=new
 			var/obj/Ability/Magic/Arcane/Darkja/crj=new
 			var/obj/Ability/Magic/General/Fleche/dg=new
-			var/obj/item/Weapon/Melee/Katana/Adamantine/hr=new
+			var/obj/item/hr = createWeaponFromArchetype("katana", MATERIAL_TIER_ADAMANTINE, src)
 			var/obj/perk/SummonPassives/Tsukuyomi/summ=new
 			src.contents+=summ
-			src.contents+=hr
-			src.eweapon=hr
+			if(hr)
+				src.eweapon=hr
 			src.contents+=cr
 			src.contents+=crj
 			src.contents+=dg
@@ -236,11 +236,11 @@ mob/npc/Summons/BRank
 			var/obj/Ability/Magic/Black/Energy/Flare/cr=new
 			var/obj/Ability/Magic/Black/Energy/Scathe/crj=new
 			var/obj/Ability/Magic/White/Holy/Diaga/dg=new
-			var/obj/item/Weapon/Melee/Spear/Adamantine/hr=new
+			var/obj/item/hr = createWeaponFromArchetype("spear", MATERIAL_TIER_ADAMANTINE, src)
 			var/obj/perk/SummonPassives/Crusader/summ=new
 			src.contents+=summ
-			src.contents+=hr
-			src.eweapon=hr
+			if(hr)
+				src.eweapon=hr
 			src.contents+=cr
 			src.contents+=crj
 			src.contents+=dg
@@ -287,16 +287,16 @@ mob/npc/Summons/BRank
 			. = ..()
 			var/obj/Ability/Magic/Blue/HundredNeedles/a=new
 			var/obj/Ability/Weapon/Melee/Renzokuken/b=new
-			var/obj/item/Weapon/Melee/Hammer/Orichalcum/ham=new
+			var/obj/item/ham = createWeaponFromArchetype("hammer", MATERIAL_TIER_ORICHALCUM, src)
 			var/obj/perk/SummonPassives/CactuarCarlos/summ=new
 			src.contents+=summ
-			ham.name="Cactuar Maracas"
-			ham.critrange=19
-			ham.icon='Icons/Maracas.png'
+			if(ham)
+				ham.name="Cactuar Maracas"
+				ham.critrange=19
+				ham.icon='Icons/Maracas.png'
+				src.eweapon=ham
 			src.contents+=a
 			src.contents+=b
-			src.contents+=ham
-			src.eweapon=ham
 	Typhon
 		icon='Icons/Summon/Typhon.png'
 		name="Typhon"
@@ -368,7 +368,7 @@ mob/npc/Summons/BRank
 			var/obj/Ability/Magic/General/Fogga/fg=new
 			var/obj/Ability/Magic/General/Impactga/imga=new
 			var/obj/Ability/Weapon/Melee/StellarCircle/sc=new
-			var/obj/item/Weapon/Melee/Greatsword/Adamantine/ad=new
+			var/obj/item/ad = createWeaponFromArchetype("greatsword", MATERIAL_TIER_ADAMANTINE, src)
 			var/obj/perk/SummonPassives/Djinn/summ=new
 			src.contents+=summ
 			src.contents+=a
@@ -377,8 +377,8 @@ mob/npc/Summons/BRank
 			src.contents+=fg
 			src.contents+=imga
 			src.contents+=sc
-			src.contents+=ad
-			src.eweapon=ad
+			if(ad)
+				src.eweapon=ad
 	Rubicante
 		icon='Icons/Summon/Rubicante.png'
 		name="Rubicante"

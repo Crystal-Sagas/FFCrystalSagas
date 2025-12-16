@@ -32,6 +32,8 @@ obj/item/material
 	// ===== UNIFIED MATERIAL METADATA =====
 	/// Material category for crafting/filtering (e.g., "ore", "herb", "synthesis")
 	var/materialCategory = ""
+	/// Material tier for equipment crafting (1=Bronze through 6=Orichalcum)
+	var/materialTier = MATERIAL_TIER_BRONZE
 	/// Key used by smithing/crafting systems for recipe lookup
 	var/craftingMaterialKey = ""
 	/// Upstream ingredients - what this material is refined FROM (type paths)

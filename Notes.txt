@@ -15,34 +15,87 @@ Example B
 Someone defeats an Adamantoise Turtle. They get the shell as a reward. That shell could be worth the equivalent of Physical protection 3 Tag. So when using it in a crafting state they could add 3 tags of Physical defense to the crafted materials tag total. Making for a really good E rank Shield or heavy armor.
 
 
-Logger
-
-Miner 
-Gem
-Metal
-Stone
-Hunter
-
-Farmer
+Farmer Materials
 Herbs
+
 Veggietables
+
+
 
 
 Herbalist Materials
 
+Herbs
+
+Roots
+
+Flowers
+
+
+
+
+Healing Herbs
+
+Harming Herbs
+
+Poison Root
+
+Antidote Root
+
+Paralysis Flower
+
+Stimulant Flower
 
 
 
 
 Logger Materials
-Leaves
-Nuts
-Sap
+
 Wood
 
+Food
+
+
+
+
+Name- Gross Wooden Doll
+Type- Wood
+Tag- Poison 1
+
+Name- maple Log x2
+Type- Wood
+Tag- Physical Defense 1
+
+Name- Iron Ore x 1
+Type metal
+Sub Type Iron
+Tag- Physical defense x1
+
+Craft a Staff requires 3 Wood + 1 Metal/Iron E rank Staff
+3 Tags it can have
+
+Maple and the doll and the Iron
+That fulfills the 3 wood requirement and 1 iron
+And it gives the staff
+Poison 1 and Physical defense 3
+
+It can only have 3 tags.
+Guarantee 2 physical defense
+Last tag is a coin flip between Poison and physical defense
+
+
+
+
+
+
 Miner Materials
-Gems
-Metals
+Gems-
+
+Metals-
+
+Crystal-
+
+
 Iron-  
 
 Silver- 
@@ -65,23 +118,23 @@ Water Ore-
 
 Earth Ore- 
 
-Materia
-Red
-Blue
-Yellow
-Orange
-Green
-Black
-Light Blue
-Light Green
-Purple
-Light Red
-Stone
+
+
+
+
+Materia Materials
+
+Red //summons
+
+Blue // Spell Enhancements  (MP reduction, Cooldown Reduction)
+
+Yellow // Job Abilities
+
+Green // Magic Spells
+
+Purple // Independent (MP Up, HP Up)
+
 Hunter Materials
 
-Hides/Leather
 Monster Parts
-Farmer Materials
-
-
 

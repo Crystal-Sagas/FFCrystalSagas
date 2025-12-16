@@ -189,10 +189,8 @@ mob
 			src.name = input("What is your character's name?") as text
 			if(src.name==null)
 				src.name="Nobody"
-			var/obj/recipes/Buildings/House/build1=new
-			var/obj/recipes/Buildings/Fortress/build2=new
-			usr.contents+=build1
-			usr.contents+=build2
+			// TODO: Building system - legacy recipes removed, implement new building system
+			// Previously gave House and Fortress recipes here
 			RefreshCharsheet(usr)
 			RefreshAll(usr)
 			usr.rankchecked=1

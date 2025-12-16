@@ -772,14 +772,9 @@ mob
 					new n(locate(usr.x,usr.y,usr.z))
 					var/text = "[usr.key] created a [n]"
 					Adminlog(text)
-			Createrecipe()
-				var/n =input("What do you want to make?","Create obj") in typesof(/obj/recipes) + list("Cancel")
-				if(n=="Cancel")
-					return
-				else
-					new n(locate(usr.x,usr.y,usr.z))
-					var/text = "[usr.key] created a [n]"
-					Adminlog(text)
+			// TODO: Createrecipe verb - legacy recipe system removed
+			// Old system used /obj/recipes which is deprecated
+			// New crafting uses datum/craft_recipe in Code/__Game/Crafting/
 			Createcustomitem()
 				var/obj/item/i=new
 				var/iname=input("What is the items name?") as text

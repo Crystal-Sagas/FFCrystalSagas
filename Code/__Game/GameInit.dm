@@ -19,6 +19,12 @@
 	// Initialize character creation controller
 	global.character_creation?.initialize()
 
+	// Initialize gathering/resource systems
+	initializeGatheringLootTables()
+
+	// Initialize crafting recipes
+	initializeCraftRecipes()
+
 	// Log initialization
 	LogSystem("Character data initialized:")
 	LogInfo(LOG_CAT_SYSTEM, "  - Races: [length(global.race_registry)]")
@@ -26,4 +32,5 @@
 	LogInfo(LOG_CAT_SYSTEM, "  - Roles: [length(global.role_registry)]")
 	LogInfo(LOG_CAT_SYSTEM, "  - Equipment: [length(global.equipment_registry.equipment)]")
 	LogInfo(LOG_CAT_SYSTEM, "  - Starting Towns: [length(global.starting_towns)]")
+	LogInfo(LOG_CAT_SYSTEM, "  - Gathering Tables: [length(global.gathering_loot_tables)]")
 	LogSystem("Game systems ready.")

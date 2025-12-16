@@ -162,6 +162,7 @@
 		<div class="button-grid">
 			<a href="byond://?src=\ref[mob];action=char_panel" class="btn">Character Panel</a>
 			<a href="byond://?src=\ref[mob];action=profile" class="btn">View Profile</a>
+			<a href="byond://?src=\ref[mob];action=rest" class="btn defense">Rest</a>
 		</div>
 	</div>
 
@@ -243,6 +244,8 @@
 			OpenMainMenu()
 		if("profile")
 			Switchtoprofile()
+		if("rest")
+			Rest()
 
 		// Social actions
 		if("say")
@@ -250,10 +253,8 @@
 			if(msg)
 				Say(msg)
 		if("emote")
-			var/msg = input(src, "What do you want to emote?", "Emote") as null|text
-			if(msg)
-				// Use the Emote verb with input
-				Emote(msg)
+			// Emote verb opens the emote input window
+			Emote()
 		if("ooc")
 			var/msg = input(src, "OOC Message:", "OOC") as null|text
 			if(msg)
@@ -272,6 +273,29 @@
 		// Panel actions
 		if("refresh_panel")
 			client?.refreshCommandPanel()
+
+		// Crafting actions
+		if("opencraft")
+			Open_Crafting_Menu()
+		if("previewtags")
+			Preview_Craft()
+		if("viewprofessions")
+			View_Professions()
+		if("spawnstation")
+			new/obj/crafting_station/universal(loc)
+			src << output("<font color='#00FF00'>Spawned a Universal Crafting Station at your location!</font>", "oocout")
+			src << output("Click the station and use 'Use Station' to start crafting.", "oocout")
+		if("craftrecipe")
+			// Craft a specific recipe from the main menu
+			var/datum/craft_recipe/recipe = locate(href_list["recipe"])
+			if(recipe)
+				craftRecipeFromMenu(recipe)
+		if("spawntestmaterials")
+			// Spawn test materials for testing
+			spawnTestMaterials()
+		if("learnallprofessions")
+			// Learn all professions for testing
+			learnAllProfessions()
 
 /**
  * Show combat status info

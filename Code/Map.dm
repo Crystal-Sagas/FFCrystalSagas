@@ -1,4 +1,6 @@
 turf
+	/// Owner key (ckey) of the player who owns this turf
+	var/owner = null
 	verb
 		DeleteBuiltObjects()
 			set name="Delete Buildables"

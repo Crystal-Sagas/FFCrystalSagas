@@ -132,33 +132,33 @@
 	s4.instore = 1
 	s4.shopprice = 450
 	src.contents += s4
-	// Stock 5
-	var/obj/item/materials/Ore/Bronze/s5 = new
+	// Stock 5 - Bronze Ore
+	var/obj/item/material/ore/Bronze/s5 = new
 	s5.instore = 1
 	s5.shopprice = 80
 	src.contents += s5
-	// Stock 6
-	var/obj/item/materials/Ore/Iron/s6 = new
+	// Stock 6 - Iron Ore
+	var/obj/item/material/ore/Iron/s6 = new
 	s6.instore = 1
 	s6.shopprice = 140
 	src.contents += s6
-	// Stock 7
-	var/obj/item/materials/Synthesis/Leather/s7 = new
+	// Stock 7 - Leather
+	var/obj/item/material/synthesis/Leather/s7 = new
 	s7.instore = 1
 	s7.shopprice = 50
 	src.contents += s7
-	// Stock 8
-	var/obj/item/materials/Synthesis/Wool/s8 = new
+	// Stock 8 - Wool
+	var/obj/item/material/synthesis/Wool/s8 = new
 	s8.instore = 1
 	s8.shopprice = 70
 	src.contents += s8
-	// Stock 9
-	var/obj/item/materials/Synthesis/Wood/s9 = new
+	// Stock 9 - Wood
+	var/obj/item/material/synthesis/Wood/s9 = new
 	s9.instore = 1
 	s9.shopprice = 70
 	src.contents += s9
-	// Stock 10
-	var/obj/item/materials/Synthesis/Stone/s10 = new
+	// Stock 10 - Stone
+	var/obj/item/material/synthesis/Stone/s10 = new
 	s10.instore = 1
 	s10.shopprice = 70
 	src.contents += s10
@@ -174,61 +174,27 @@
 
 /mob/npc/Shopkeeper/WeaponShop/New(loc)
 	. = ..()
-	// Stock 1
-	var/obj/item/Weapon/Melee/Longsword/Iron/s1 = new
-	s1.instore = 1
-	s1.shopprice = 1000
-	src.contents += s1
-	// Stock 2
-	var/obj/item/Weapon/Melee/Hammer/Iron/s2 = new
-	s2.instore = 1
-	s2.shopprice = 1000
-	src.contents += s2
-	// Stock 3
-	var/obj/item/Weapon/Melee/Axe/Iron/s3 = new
-	s3.instore = 1
-	s3.shopprice = 1000
-	src.contents += s3
-	// Stock 4
-	var/obj/item/Weapon/Melee/Spear/Iron/s4 = new
-	s4.instore = 1
-	s4.shopprice = 1000
-	src.contents += s4
-	// Stock 5
-	var/obj/item/Weapon/Ranged/Bow/Iron/s5 = new
-	s5.instore = 1
-	s5.shopprice = 1000
-	src.contents += s5
-	// Stock 6
-	var/obj/item/Weapon/Magical/Tome/Iron/s6 = new
-	s6.instore = 1
-	s6.shopprice = 1000
-	src.contents += s6
-	// Stock 7
-	var/obj/item/Weapon/Magical/Staff/Iron/s7 = new
-	s7.instore = 1
-	s7.shopprice = 1000
-	src.contents += s7
-	// Stock 8
-	var/obj/item/Weapon/Magical/FocusCrystal/Iron/s8 = new
-	s8.instore = 1
-	s8.shopprice = 1000
-	src.contents += s8
-	// Stock 9
-	var/obj/item/Weapon/Ranged/ThrowingWeapons/ThrowingKnives/Iron/s9 = new
-	s9.instore = 1
-	s9.shopprice = 1000
-	src.contents += s9
-	// Stock 10
-	var/obj/item/Weapon/Melee/Scimitar/Iron/s10 = new
-	s10.instore = 1
-	s10.shopprice = 1000
-	src.contents += s10
-	// Stock 11
-	var/obj/item/Weapon/Melee/Whip/Iron/s11 = new
-	s11.instore = 1
-	s11.shopprice = 1000
-	src.contents += s11
+	// Stock weapons using the archetype factory system
+	var/list/shopWeapons = list(
+		"longsword",
+		"hammer",
+		"axe",
+		"spear",
+		"bow",
+		"tome",
+		"staff",
+		"focus_crystal",
+		"throwing_knives",
+		"scimitar",
+		"whip"
+	)
+
+	for(var/archetypeId in shopWeapons)
+		var/obj/item/crafted_weapon/weapon = createWeaponFromArchetype(archetypeId, MATERIAL_TIER_IRON, src)
+		if(weapon)
+			weapon.instore = 1
+			weapon.shopprice = 1000
+			// weapon is already in src.contents from factory loc parameter
 
 // =============================================================================
 // GEM SHOP - Elemental Gems
@@ -241,58 +207,58 @@
 
 /mob/npc/Shopkeeper/GemShop/New(loc)
 	. = ..()
-	// Stock 1
-	var/obj/item/materials/Synthesis/HolyGem/s1 = new
+	// Stock 1 - Holy Gem
+	var/obj/item/material/synthesis/HolyGem/s1 = new
 	s1.instore = 1
 	s1.shopprice = 2000
 	src.contents += s1
-	// Stock 2
-	var/obj/item/materials/Synthesis/DarkGem/s2 = new
+	// Stock 2 - Dark Gem
+	var/obj/item/material/synthesis/DarkGem/s2 = new
 	s2.instore = 1
 	s2.shopprice = 2000
 	src.contents += s2
-	// Stock 3
-	var/obj/item/materials/Synthesis/FireGem/s3 = new
+	// Stock 3 - Fire Gem
+	var/obj/item/material/synthesis/FireGem/s3 = new
 	s3.instore = 1
 	s3.shopprice = 2000
 	src.contents += s3
-	// Stock 4
-	var/obj/item/materials/Synthesis/IceGem/s4 = new
+	// Stock 4 - Ice Gem
+	var/obj/item/material/synthesis/IceGem/s4 = new
 	s4.instore = 1
 	s4.shopprice = 2000
 	src.contents += s4
-	// Stock 5
-	var/obj/item/materials/Synthesis/ThunderGem/s5 = new
+	// Stock 5 - Thunder Gem
+	var/obj/item/material/synthesis/ThunderGem/s5 = new
 	s5.instore = 1
 	s5.shopprice = 2000
 	src.contents += s5
-	// Stock 6
-	var/obj/item/materials/Synthesis/WindGem/s6 = new
+	// Stock 6 - Wind Gem
+	var/obj/item/material/synthesis/WindGem/s6 = new
 	s6.instore = 1
 	s6.shopprice = 2000
 	src.contents += s6
-	// Stock 7
-	var/obj/item/materials/Synthesis/EarthGem/s7 = new
+	// Stock 7 - Earth Gem
+	var/obj/item/material/synthesis/EarthGem/s7 = new
 	s7.instore = 1
 	s7.shopprice = 2000
 	src.contents += s7
-	// Stock 8
-	var/obj/item/materials/Synthesis/WhiteGem/s8 = new
+	// Stock 8 - White Gem
+	var/obj/item/material/synthesis/WhiteGem/s8 = new
 	s8.instore = 1
 	s8.shopprice = 2000
 	src.contents += s8
-	// Stock 9
-	var/obj/item/materials/Synthesis/BlackGem/s9 = new
+	// Stock 9 - Black Gem
+	var/obj/item/material/synthesis/BlackGem/s9 = new
 	s9.instore = 1
 	s9.shopprice = 2000
 	src.contents += s9
-	// Stock 10
-	var/obj/item/materials/Synthesis/BombCore/s10 = new
+	// Stock 10 - Bomb Core
+	var/obj/item/material/synthesis/BombCore/s10 = new
 	s10.instore = 1
 	s10.shopprice = 2000
 	src.contents += s10
-	// Stock 11
-	var/obj/item/materials/Synthesis/Diamond/s11 = new
+	// Stock 11 - Diamond
+	var/obj/item/material/synthesis/Diamond/s11 = new
 	s11.instore = 1
 	s11.shopprice = 2000
 	src.contents += s11
@@ -308,7 +274,8 @@
 
 /mob/npc/Shopkeeper/MakoVendor/New(loc)
 	. = ..()
-	var/obj/item/materials/Synthesis/RawMako/s1 = new
+	// Raw Mako
+	var/obj/item/material/synthesis/RawMako/s1 = new
 	s1.instore = 1
 	s1.shopprice = 700
 	src.contents += s1
@@ -324,48 +291,48 @@
 
 /mob/npc/Shopkeeper/MysidiaShop/New(loc)
 	. = ..()
-	// Stock 1
-	var/obj/item/materials/Synthesis/FlyingEyesEye/s1 = new
+	// Stock 1 - Flying Eye's Eye
+	var/obj/item/material/synthesis/FlyingEyesEye/s1 = new
 	s1.instore = 1
 	s1.shopprice = 4000
 	src.contents += s1
-	// Stock 2
-	var/obj/item/materials/Synthesis/FlyingEyesWing/s2 = new
+	// Stock 2 - Flying Eye's Wing
+	var/obj/item/material/synthesis/FlyingEyesWing/s2 = new
 	s2.instore = 1
 	s2.shopprice = 4000
 	src.contents += s2
-	// Stock 3
-	var/obj/item/materials/Synthesis/TonberryKnife/s3 = new
+	// Stock 3 - Tonberry Knife
+	var/obj/item/material/synthesis/TonberryKnife/s3 = new
 	s3.instore = 1
 	s3.shopprice = 9000
 	src.contents += s3
-	// Stock 4
-	var/obj/item/materials/Synthesis/GigantoadSlime/s4 = new
+	// Stock 4 - Gigantoad Slime
+	var/obj/item/material/synthesis/GigantoadSlime/s4 = new
 	s4.instore = 1
 	s4.shopprice = 4000
 	src.contents += s4
-	// Stock 5
-	var/obj/item/materials/Synthesis/ZuuFeather/s5 = new
+	// Stock 5 - Zuu Feather
+	var/obj/item/material/synthesis/ZuuFeather/s5 = new
 	s5.instore = 1
 	s5.shopprice = 4000
 	src.contents += s5
-	// Stock 6
-	var/obj/item/materials/Synthesis/PixieSand/s6 = new
+	// Stock 6 - Pixie Sand
+	var/obj/item/material/synthesis/PixieSand/s6 = new
 	s6.instore = 1
 	s6.shopprice = 4000
 	src.contents += s6
-	// Stock 7
-	var/obj/item/materials/Synthesis/CoeurlWhisker/s7 = new
+	// Stock 7 - Coeurl Whisker
+	var/obj/item/material/synthesis/CoeurlWhisker/s7 = new
 	s7.instore = 1
 	s7.shopprice = 4000
 	src.contents += s7
-	// Stock 8
-	var/obj/item/materials/Synthesis/SahauginScale/s8 = new
+	// Stock 8 - Sahaugin Scale
+	var/obj/item/material/synthesis/SahauginScale/s8 = new
 	s8.instore = 1
 	s8.shopprice = 4000
 	src.contents += s8
-	// Stock 9
-	var/obj/item/materials/Synthesis/DragonScale/s9 = new
+	// Stock 9 - Dragon Scale
+	var/obj/item/material/synthesis/DragonScale/s9 = new
 	s9.instore = 1
 	s9.shopprice = 4000
 	src.contents += s9

@@ -112,22 +112,21 @@
 	client << output(html, "MainMenu.browser2")
 	mainMenuInitialized = TRUE
 
+	// Setup reactive updates so bars update automatically when resources change
+	SetupMainMenuReactivity()
+
 /**
  * Refreshes all main menu data
- * Sends updated data to all sections via output() -> JS
+ * Uses reactive updates for bars - no full page rebuild needed
  */
 /mob/proc/RefreshMainMenu()
 	if(!mainMenuOpen)
 		return
 
-	// Update header (party list or current view)
-	SendMainMenuPartyList()
-
-	// Update footer
-	SendMainMenuFooter(src)
-
-	// Update the active tab content
-	RefreshMainMenuTab(mainMenuActiveTab)
+	// Send a full bar update (reactive system handles incremental updates,
+	// but this handles cases where we need to sync all bars at once)
+	UpdateSelfBars()
+	UpdateMainMenuFooter()
 
 /**
  * Refreshes only the currently active tab
@@ -152,6 +151,8 @@
 			SendMainMenuCards(src)
 		if("config")
 			SendMainMenuConfig(src)
+		if("craft")
+			SendMainMenuCraft()
 
 /**
  * Switches to a different tab
@@ -225,8 +226,13 @@
 		data["maxMp"] = M.mana ? M.mana.maxValue : 1
 		data["sp"] = M.stamina ? M.stamina.value : 0
 		data["maxSp"] = M.stamina ? M.stamina.maxValue : 1
-		data["trance"] = M.limitbreak ? 100 : 0
-		data["maxTrance"] = 100
+		// Trance gauge - use new system if available
+		if(M.tranceController && M.tranceController.gauge)
+			data["trance"] = M.tranceController.gauge.value
+			data["maxTrance"] = M.tranceController.gauge.maxValue
+		else
+			data["trance"] = M.limitbreak ? 100 : 0
+			data["maxTrance"] = 100
 		data["showNumbers"] = TRUE
 	else
 		// Limited info for other players - bars only, no numbers
@@ -239,8 +245,13 @@
 		data["hpPercent"] = hpPercent
 		data["mpPercent"] = mpPercent
 		data["spPercent"] = spPercent
-		data["trance"] = M.limitbreak ? 100 : 0
-		data["maxTrance"] = 100
+		// Trance gauge - use new system if available
+		if(M.tranceController && M.tranceController.gauge)
+			data["trance"] = M.tranceController.gauge.value
+			data["maxTrance"] = M.tranceController.gauge.maxValue
+		else
+			data["trance"] = M.limitbreak ? 100 : 0
+			data["maxTrance"] = 100
 		data["showNumbers"] = FALSE
 
 	return data

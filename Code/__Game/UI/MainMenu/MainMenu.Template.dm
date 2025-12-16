@@ -99,6 +99,11 @@
 			<div id="tab-config" class="tab-pane">
 				[configContent]
 			</div>
+
+			<!-- Craft Tab -->
+			<div id="tab-craft" class="tab-pane">
+				[GenerateCraftTabContent()]
+			</div>
 		</section>
 
 		<!-- Right Panel: Tab Navigation -->
@@ -126,6 +131,10 @@
 			<button type="button" class="tab-btn" data-tab="tab-config" onclick="showTab('tab-config')">
 				<span class="tab-icon">⚙️</span>
 				<span class="tab-label">Config</span>
+			</button>
+			<button type="button" class="tab-btn" data-tab="tab-craft" onclick="showTab('tab-craft')">
+				<span class="tab-icon">🔨</span>
+				<span class="tab-label">Craft</span>
 			</button>
 		</nav>
 	</main>
@@ -164,6 +173,7 @@
 
 	<script>
 		[MainMenuJS()]
+		[MainMenuReactiveJS()]
 	</script>
 </body>
 </html>
@@ -238,8 +248,12 @@
 		barsHtml += GenerateResourceBarPercent("mp", mpPercent)
 		barsHtml += GenerateResourceBarPercent("sp", spPercent)
 
-	// Trance bar
-	var/trancePercent = M.limitbreak ? 100 : 0
+	// Trance bar - use new trance gauge system if available
+	var/trancePercent = 0
+	if(M.tranceController && M.tranceController.gauge)
+		trancePercent = M.tranceController.gauge.getPercent()
+	else if(M.limitbreak)
+		trancePercent = 100  // Legacy fallback
 	var/tranceReady = trancePercent >= 100 ? " trance-ready" : ""
 	barsHtml += {"<div class="resource-bar bar-trance[tranceReady]"><div class="bar-fill" style="width: [trancePercent]%"></div></div>"}
 
@@ -282,6 +296,19 @@
 	var/exp = src.experience ? src.experience.value : 0
 	var/expNext = src.totalExperience ? src.totalExperience.value : 1000
 
+	// Trance gauge - use new system if available
+	var/trancePercent = 0
+	var/tranceValue = 0
+	var/tranceMax = TRANCE_GAUGE_MAX
+	if(src.tranceController && src.tranceController.gauge)
+		trancePercent = src.tranceController.gauge.getPercent()
+		tranceValue = src.tranceController.gauge.value
+		tranceMax = src.tranceController.gauge.maxValue
+	else if(src.limitbreak)
+		trancePercent = 100
+		tranceValue = 100
+	var/tranceReady = trancePercent >= 100 ? " trance-ready" : ""
+
 	var/strVal = src.strength ? src.strength.currentValue.value : 10
 	var/dexVal = src.dexterity ? src.dexterity.currentValue.value : 10
 	var/conVal = src.constitution ? src.constitution.currentValue.value : 10
@@ -307,6 +334,7 @@
 				[GenerateResourceBar("hp", hp, maxHp, "HP")]
 				[GenerateResourceBar("mp", mp, maxMp, "MP")]
 				[GenerateResourceBar("sp", sp, maxSp, "SP")]
+				<div class="resource-bar bar-trance[tranceReady]"><div class="bar-fill" style="width: [trancePercent]%"></div><div class="bar-text">Trance: [tranceValue] / [tranceMax]</div></div>
 			</div>
 			<div style="padding: 10px; text-align: center;">
 				<div style="color: var(--color-text-muted); font-size: 11px;">EXP: [exp]</div>
@@ -435,27 +463,105 @@
 
 /**
  * Generate Equip tab content
+ * Shows current equipment with unequip buttons and available items to equip
  */
 /mob/proc/GenerateEquipTabContent()
-	var/weaponName = src.righthand ? html_encode(src.righthand.name) : "Empty"
-	var/armorName = src.armor ? html_encode(src.armor.name) : "Empty"
-	var/acc1Name = src.accessory1 ? html_encode(src.accessory1.name) : "Empty"
-	var/acc2Name = src.accessory2 ? html_encode(src.accessory2.name) : "Empty"
+	var/playerRef = "\ref[src]"
 
-	return {"
-<div class="section-box">
+	// Current equipment info
+	var/weaponName = src.righthand ? html_encode(src.righthand.name) : "Empty"
+	var/weaponRef = src.righthand ? "\ref[src.righthand]" : ""
+	var/lefthandName = (src.lefthand && src.lefthand != src.righthand) ? html_encode(src.lefthand.name) : ""
+	var/lefthandRef = (src.lefthand && src.lefthand != src.righthand) ? "\ref[src.lefthand]" : ""
+	var/armorName = src.armor ? html_encode(src.armor.name) : "Empty"
+	var/armorRef = src.armor ? "\ref[src.armor]" : ""
+	var/acc1Name = src.accessory1 ? html_encode(src.accessory1.name) : "Empty"
+	var/acc1Ref = src.accessory1 ? "\ref[src.accessory1]" : ""
+	var/acc2Name = src.accessory2 ? html_encode(src.accessory2.name) : "Empty"
+	var/acc2Ref = src.accessory2 ? "\ref[src.accessory2]" : ""
+
+	// Build current equipment section
+	var/list/html = list()
+	html += {"<div class="section-box">
 	<div class="section-title">─ CURRENT EQUIPMENT ─</div>
-	<div class="equipment-list" style="margin-bottom: 20px;">
-		<div class="equipment-slot"><span class="slot-icon">⚔️</span> <span class="slot-label">Weapon:</span> <span class="slot-name">[weaponName]</span></div>
-		<div class="equipment-slot"><span class="slot-icon">👘</span> <span class="slot-label">Armor:</span> <span class="slot-name">[armorName]</span></div>
-		<div class="equipment-slot"><span class="slot-icon">🛡</span> <span class="slot-label">Accessory 1:</span> <span class="slot-name">[acc1Name]</span></div>
-		<div class="equipment-slot"><span class="slot-icon">💎</span> <span class="slot-label">Accessory 2:</span> <span class="slot-name">[acc2Name]</span></div>
-	</div>
-</div>
-<div class="panel-note" style="margin-top: 15px;">
-	Use the inventory to equip and unequip items.
-</div>
-"}
+	<div class="equipment-list" style="margin-bottom: 20px;">"}
+
+	// Right Hand / Main Weapon
+	html += {"<div class="equipment-slot">
+		<span class="slot-icon">⚔️</span>
+		<span class="slot-label">Right Hand:</span>
+		<span class="slot-name">[weaponName]</span>"}
+	if(src.righthand)
+		html += {" <a href="byond://?src=[playerRef];action=unequip;ref=[weaponRef]" class="unequip-btn">✕</a>"}
+	html += "</div>"
+
+	// Left Hand (if different from right)
+	if(lefthandName)
+		html += {"<div class="equipment-slot">
+			<span class="slot-icon">🛡</span>
+			<span class="slot-label">Left Hand:</span>
+			<span class="slot-name">[lefthandName]</span>
+			<a href="byond://?src=[playerRef];action=unequip;ref=[lefthandRef]" class="unequip-btn">✕</a>
+		</div>"}
+
+	// Armor
+	html += {"<div class="equipment-slot">
+		<span class="slot-icon">👘</span>
+		<span class="slot-label">Armor:</span>
+		<span class="slot-name">[armorName]</span>"}
+	if(src.armor)
+		html += {" <a href="byond://?src=[playerRef];action=unequip;ref=[armorRef]" class="unequip-btn">✕</a>"}
+	html += "</div>"
+
+	// Accessory 1
+	html += {"<div class="equipment-slot">
+		<span class="slot-icon">💍</span>
+		<span class="slot-label">Accessory 1:</span>
+		<span class="slot-name">[acc1Name]</span>"}
+	if(src.accessory1)
+		html += {" <a href="byond://?src=[playerRef];action=unequip;ref=[acc1Ref]" class="unequip-btn">✕</a>"}
+	html += "</div>"
+
+	// Accessory 2
+	html += {"<div class="equipment-slot">
+		<span class="slot-icon">💎</span>
+		<span class="slot-label">Accessory 2:</span>
+		<span class="slot-name">[acc2Name]</span>"}
+	if(src.accessory2)
+		html += {" <a href="byond://?src=[playerRef];action=unequip;ref=[acc2Ref]" class="unequip-btn">✕</a>"}
+	html += "</div>"
+
+	html += "</div></div>"
+
+	// Build equippable items section
+	html += {"<div class="section-box" style="margin-top: 15px;">
+	<div class="section-title">─ EQUIPPABLE ITEMS ─</div>
+	<div class="item-grid" style="padding: 10px;">"}
+
+	var/equipCount = 0
+	for(var/obj/item/I in src.contents)
+		if(I.equipped)
+			continue
+		if(!I.equipable && !I.equiptype)
+			continue
+
+		equipCount++
+		var/itemName = html_encode(I.name)
+		var/itemRef = "\ref[I]"
+		var/itemIcon = GetItemEmoji(I)
+
+		html += {"<a class="item-card" href="byond://?src=[playerRef];action=equip;ref=[itemRef]">
+			<div class="item-icon">[itemIcon]</div>
+			<div class="item-name">[itemName]</div>
+			<div class="item-qty">[I.equiptype ? I.equiptype : "equip"]</div>
+		</a>"}
+
+	if(equipCount == 0)
+		html += {"<div style="text-align: center; color: #888; padding: 20px;">No equippable items in inventory</div>"}
+
+	html += "</div></div>"
+
+	return html.Join("")
 
 /**
  * Generate Config tab content
@@ -480,6 +586,180 @@
 	</div>
 </div>
 "}
+
+/**
+ * Generate the Crafting tab content
+ * Full integrated crafting interface showing recipes, materials, and professions
+ */
+/mob/proc/GenerateCraftTabContent()
+	var/playerRef = "\ref[src]"
+
+	// Collect materials from inventory
+	var/list/materials = list()
+	var/list/materialsByCategory = list()
+	for(var/obj/item/material/mat in src.contents)
+		materials += mat
+		var/cat = mat.materialCategory || "Unknown"
+		if(!materialsByCategory[cat])
+			materialsByCategory[cat] = list()
+		materialsByCategory[cat] += mat
+
+	// Get profession info
+	var/professionHtml = ""
+	if(src.craftingProfessions && length(src.craftingProfessions))
+		for(var/prof in src.craftingProfessions)
+			var/lvl = src.craftingProfessions[prof]
+			var/isActive = (src.activeCraftProfession == prof)
+			var/activeClass = isActive ? "active-profession" : ""
+			professionHtml += {"<div class='profession-row [activeClass]'>
+				<span class='profession-name'>[prof]</span>
+				<span class='profession-level'>Lv.[lvl]</span>
+				[isActive ? "<span class='active-badge'>ACTIVE</span>" : ""]
+			</div>"}
+	else
+		professionHtml = "<div style='color: #888; font-style: italic; padding: 5px;'>No professions learned yet</div>"
+
+	// Build materials HTML
+	var/materialsHtml = ""
+	if(length(materialsByCategory))
+		for(var/cat in materialsByCategory)
+			materialsHtml += "<div class='material-category'>[cat]</div>"
+			for(var/obj/item/material/mat in materialsByCategory[cat])
+				var/tagInfo = ""
+				if(length(mat.craftTags))
+					tagInfo = " <span class='tag-count'>([length(mat.craftTags)] tags)</span>"
+				materialsHtml += {"<div class='material-row'>
+					<span class='material-name'>[mat.name]</span>
+					<span class='material-amount'>x[mat.amount]</span>
+					[tagInfo]
+				</div>"}
+	else
+		materialsHtml = "<div style='color: #888; font-style: italic; padding: 5px;'>No crafting materials</div>"
+
+	// Build recipes HTML grouped by profession
+	var/recipesHtml = ""
+	var/list/recipesByProfession = list()
+
+	for(var/datum/craft_recipe/recipe in global.craft_recipes)
+		var/prof = recipe.profession || "General"
+		if(!recipesByProfession[prof])
+			recipesByProfession[prof] = list()
+		recipesByProfession[prof] += recipe
+
+	if(length(recipesByProfession))
+		for(var/prof in recipesByProfession)
+			recipesHtml += "<div class='recipe-profession-header'>[prof]</div>"
+			for(var/datum/craft_recipe/recipe in recipesByProfession[prof])
+				var/recipeRef = "\ref[recipe]"
+				var/rankName = getRankName(recipe.outputRank)
+				var/reqs = recipe.getRequirementsText()
+				var/canCraft = checkCanCraftRecipe(recipe, materials)
+				var/craftableClass = canCraft ? "craftable" : "not-craftable"
+				recipesHtml += {"<div class='recipe-row [craftableClass]'>
+					<a href='byond://?src=[playerRef];action=craftrecipe;recipe=[recipeRef]' class='recipe-link'>
+						<span class='recipe-name'>[recipe.name]</span>
+						<span class='recipe-rank'>[rankName]</span>
+					</a>
+					<div class='recipe-reqs'>[reqs]</div>
+				</div>"}
+	else
+		recipesHtml = "<div style='color: #888; font-style: italic; padding: 5px;'>No recipes available</div>"
+
+	return {"
+<style>
+	.craft-container { display: flex; flex-direction: column; gap: 10px; }
+	.craft-panel { background: rgba(0,0,0,0.3); border-radius: 4px; padding: 8px; }
+	.craft-header { color: #f0a030; font-weight: bold; margin-bottom: 8px; border-bottom: 1px solid #f0a03050; padding-bottom: 4px; }
+
+	.profession-row { display: flex; justify-content: space-between; align-items: center; padding: 4px 8px; margin: 2px 0; background: rgba(255,255,255,0.05); border-radius: 3px; }
+	.profession-row.active-profession { background: rgba(240,160,48,0.2); border-left: 3px solid #f0a030; }
+	.profession-name { color: #ddd; }
+	.profession-level { color: #8cf; }
+	.active-badge { font-size: 10px; color: #0f0; background: rgba(0,255,0,0.2); padding: 2px 6px; border-radius: 3px; }
+
+	.material-category { color: #f0a030; font-size: 11px; margin-top: 8px; margin-bottom: 4px; text-transform: uppercase; }
+	.material-row { display: flex; justify-content: space-between; padding: 3px 8px; background: rgba(255,255,255,0.03); margin: 1px 0; border-radius: 2px; }
+	.material-name { color: #ccc; }
+	.material-amount { color: #8f8; }
+	.tag-count { color: #88f; font-size: 10px; }
+
+	.recipe-profession-header { color: #f0a030; font-size: 12px; margin-top: 10px; margin-bottom: 4px; padding-bottom: 2px; border-bottom: 1px solid #f0a03030; }
+	.recipe-row { padding: 6px 8px; margin: 2px 0; background: rgba(255,255,255,0.05); border-radius: 3px; }
+	.recipe-row.craftable { border-left: 3px solid #0f0; }
+	.recipe-row.not-craftable { border-left: 3px solid #f00; opacity: 0.6; }
+	.recipe-link { display: flex; justify-content: space-between; text-decoration: none; color: #fff; }
+	.recipe-link:hover { color: #f0a030; }
+	.recipe-name { font-weight: bold; }
+	.recipe-rank { color: #8cf; font-size: 11px; }
+	.recipe-reqs { color: #888; font-size: 10px; margin-top: 2px; }
+
+	.craft-actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+	.craft-action-btn { background: linear-gradient(to bottom, #f0a030, #c08020); color: #000; padding: 8px 16px; border-radius: 4px; text-decoration: none; font-weight: bold; font-size: 12px; }
+	.craft-action-btn:hover { background: linear-gradient(to bottom, #ffc050, #e0a030); }
+	.craft-action-btn.secondary { background: linear-gradient(to bottom, #555, #333); color: #ccc; }
+	.craft-action-btn.secondary:hover { background: linear-gradient(to bottom, #666, #444); }
+
+	.scrollable-panel { max-height: 150px; overflow-y: auto; }
+</style>
+
+<div class="craft-container">
+	<!-- Professions Panel -->
+	<div class="craft-panel">
+		<div class="craft-header">🎓 Professions</div>
+		[professionHtml]
+	</div>
+
+	<!-- Materials Panel -->
+	<div class="craft-panel">
+		<div class="craft-header">🎒 Materials</div>
+		<div class="scrollable-panel">
+			[materialsHtml]
+		</div>
+	</div>
+
+	<!-- Recipes Panel -->
+	<div class="craft-panel">
+		<div class="craft-header">📜 Recipes <span style='color:#888;font-size:10px;'>(Green = can craft)</span></div>
+		<div class="scrollable-panel">
+			[recipesHtml]
+		</div>
+	</div>
+
+	<!-- Quick Actions -->
+	<div class="craft-actions">
+		<a href="byond://?src=[playerRef];action=spawnstation" class="craft-action-btn">🏭 Spawn Station</a>
+		<a href="byond://?src=[playerRef];action=spawntestmaterials" class="craft-action-btn secondary">📦 Test Materials</a>
+		<a href="byond://?src=[playerRef];action=learnallprofessions" class="craft-action-btn secondary">📚 Learn All</a>
+	</div>
+</div>
+"}
+
+/**
+ * Check if player can craft a recipe with their current materials
+ */
+/mob/proc/checkCanCraftRecipe(datum/craft_recipe/recipe, list/materials)
+	if(!recipe || !length(recipe.requirements))
+		return TRUE
+
+	// Build category counts
+	var/list/categoryCount = list()
+	for(var/obj/item/material/mat in materials)
+		var/cat = mat.materialCategory
+		if(!cat)
+			continue
+		if(!categoryCount[cat])
+			categoryCount[cat] = 0
+		categoryCount[cat] += mat.amount
+
+	// Check requirements
+	for(var/list/req in recipe.requirements)
+		var/reqCategory = req[1]
+		var/reqAmount = req[2]
+		var/have = categoryCount[reqCategory] || 0
+		if(have < reqAmount)
+			return FALSE
+
+	return TRUE
 
 /**
  * Returns an emoji representation for an item type
@@ -783,17 +1063,56 @@ body {
 .bar-trance .bar-fill { background: linear-gradient(90deg, #FF6B9D, #C84B8A); }
 
 .bar-trance {
-	height: 8px;
-	margin-top: 2px;
+	height: 10px;
+	margin-top: 4px;
+	border: 1px solid rgba(255, 107, 157, 0.4);
+}
+
+.bar-trance::before {
+	content: 'TRANCE';
+	position: absolute;
+	left: 4px;
+	top: 50%;
+	transform: translateY(-50%);
+	font-size: 7px;
+	font-weight: bold;
+	color: rgba(255, 255, 255, 0.6);
+	letter-spacing: 1px;
+	z-index: 1;
 }
 
 .trance-ready {
 	animation: tranceGlow 1s ease-in-out infinite;
+	border-color: #FF6B9D;
+}
+
+.trance-ready::before {
+	color: #fff;
+	text-shadow: 0 0 4px rgba(255, 107, 157, 0.8);
 }
 
 @keyframes tranceGlow {
 	0%, 100% { box-shadow: 0 0 5px rgba(255, 107, 157, 0.5); }
 	50% { box-shadow: 0 0 15px rgba(255, 107, 157, 0.8); }
+}
+
+/* Bar flash animations for reactive updates */
+.bar-flash-damage {
+	animation: flashDamage 0.3s ease-out;
+}
+
+.bar-flash-heal {
+	animation: flashHeal 0.3s ease-out;
+}
+
+@keyframes flashDamage {
+	0% { background-color: rgba(255, 0, 0, 0.5); }
+	100% { background-color: transparent; }
+}
+
+@keyframes flashHeal {
+	0% { background-color: rgba(0, 255, 0, 0.5); }
+	100% { background-color: transparent; }
 }
 
 /* Tab Content View */

@@ -1,13 +1,14 @@
 /**
  * Legacy NPC and combat code
  * NOTE: Combat system (FATE, battle logic, etc.) has been removed - being replaced
+ * NOTE: Equipment globalmod system has been removed - replaced by Equipment.System.dm
  */
 
 // COMBAT_SYSTEM_REMOVED_START - This marker and all content until COMBAT_SYSTEM_REMOVED_END has been deleted
 // The following types/procs were removed:
 // - /obj/battlestorage
 // - /atom/proc/DesignateSpots
-// - /atom/proc/Unequipglobalmods
+// - /atom/proc/Unequipglobalmods (now in Equipment.System.dm as removeAllEquipmentBonuses)
 // - /atom/proc/Heal
 // - /atom/proc/Enemyheal
 // - /atom/proc/Enemyability
@@ -24,15 +25,6 @@
 /proc/Checkdamtype(t as text, mob/m)
 	// Stub - returns 0 to disable combat damage modifiers
 	return 0
-
-/**
- * STUB: Unequipglobalmods - removes global modifiers from a mob
- * This is a stub proc to prevent compile errors.
- * The combat system is being replaced - this will be removed.
- */
-/atom/proc/Unequipglobalmods(mob/a)
-	// Stub - does nothing
-	return
 
 /**
  * STUB: Heal - heals a target

@@ -137,7 +137,7 @@ obj/playershops
 						var/list/choicelist=new
 						for(var/obj/item/o in src.contents)
 							choicelist+=o
-						var/obj/choice=input("Choose an ian item to reacquire.") as null|anything in choicelist
+						var/obj/item/choice=input("Choose an ian item to reacquire.") as null|anything in choicelist
 						if(choice.craftingmaterialtrue==1)
 							for(var/obj/item/p in usr.contents)
 								if(choice.name==p.name)

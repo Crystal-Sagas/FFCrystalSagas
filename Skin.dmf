@@ -1,150 +1,150 @@
 macro "macro"
-	elem 
+	elem
 		name = "W"
 		command = "onBind \"UP\" 1"
-	elem 
+	elem
 		name = "W+UP"
 		command = "onBind \"UP\" 0"
-	elem 
+	elem
 		name = "S"
 		command = "onBind \"DOWN\" 1"
-	elem 
+	elem
 		name = "S+UP"
 		command = "onBind \"DOWN\" 0"
-	elem 
+	elem
 		name = "A"
 		command = "onBind \"LEFT\" 1"
-	elem 
+	elem
 		name = "A+UP"
 		command = "onBind \"LEFT\" 0"
-	elem 
+	elem
 		name = "D"
 		command = "onBind \"RIGHT\" 1"
-	elem 
+	elem
 		name = "D+UP"
 		command = "onBind \"RIGHT\" 0"
-	elem 
+	elem
 		name = "Center+REP"
 		command = ".center"
-	elem 
+	elem
 		name = "Northeast+REP"
 		command = ".northeast"
-	elem 
+	elem
 		name = "Southeast+REP"
 		command = ".southeast"
-	elem 
+	elem
 		name = "Southwest+REP"
 		command = ".southwest"
-	elem 
+	elem
 		name = "Northwest+REP"
 		command = ".northwest"
-	elem 
+	elem
 		name = "West"
 		command = "onBind \"LEFT\" 1"
-	elem 
+	elem
 		name = "West+UP"
 		command = "onBind \"LEFT\" 0"
-	elem 
+	elem
 		name = "SHIFT+West"
 		command = "turnleft"
-	elem 
+	elem
 		name = "West+REP"
-	elem 
+	elem
 		name = "North"
 		command = "onBind \"UP\" 1"
-	elem 
+	elem
 		name = "North+UP"
 		command = "onBind \"UP\" 0"
-	elem 
+	elem
 		name = "SHIFT+North"
 		command = "turnup"
-	elem 
+	elem
 		name = "North+REP"
-	elem 
+	elem
 		name = "East"
 		command = "onBind \"RIGHT\" 1"
-	elem 
+	elem
 		name = "East+UP"
 		command = "onBind \"RIGHT\" 0"
-	elem 
+	elem
 		name = "SHIFT+East"
 		command = "turnright"
-	elem 
+	elem
 		name = "East+REP"
-	elem 
+	elem
 		name = "South"
 		command = "onBind \"DOWN\" 1"
-	elem 
+	elem
 		name = "South+UP"
 		command = "onBind \"DOWN\" 0"
-	elem 
+	elem
 		name = "SHIFT+South"
 		command = "turndown"
-	elem 
+	elem
 		name = "South+REP"
-	elem 
+	elem
 		name = "C+UP"
 		command = "CharacterPanel"
-	elem 
+	elem
 		name = "G"
-	elem 
+	elem
 		name = "I+UP"
 		command = "InventoryScreen"
-	elem 
+	elem
 		name = "R+UP"
 		command = "Reacting"
-	elem 
+	elem
 		name = "X"
-	elem 
+	elem
 		name = "Z"
 		command = "onBind \"ATTACK_LIGHT\" 1"
-	elem 
+	elem
 		name = "Z+UP"
 		command = "onBind \"ATTACK_LIGHT\" 0"
-	elem 
+	elem
 		name = "X"
 		command = "onBind \"ATTACK_HEAVY\" 1"
-	elem 
+	elem
 		name = "X+UP"
 		command = "onBind \"ATTACK_HEAVY\" 0"
-	elem 
+	elem
 		name = "SHIFT"
 		command = "onBind \"BLOCK\" 1"
-	elem 
+	elem
 		name = "SHIFT+UP"
 		command = "onBind \"BLOCK\" 0"
-	elem 
+	elem
 		name = "SPACE"
 		command = "onBind \"DODGE\" 1"
-	elem 
+	elem
 		name = "SPACE+UP"
 		command = "onBind \"DODGE\" 0"
-	elem 
+	elem
 		name = "TAB"
 		command = "onBind \"LOCK_TARGET\" 1"
-	elem 
+	elem
 		name = "TAB+UP"
 		command = "onBind \"LOCK_TARGET\" 0"
-	elem 
+	elem
 		name = "Q"
 		command = "onBind \"SWITCH_TARGET_LEFT\" 1"
-	elem 
+	elem
 		name = "Q+UP"
 		command = "onBind \"SWITCH_TARGET_LEFT\" 0"
-	elem 
+	elem
 		name = "E"
 		command = "onBind \"SWITCH_TARGET_RIGHT\" 1"
-	elem 
+	elem
 		name = "E+UP"
 		command = "onBind \"SWITCH_TARGET_RIGHT\" 0"
 
 
 menu "menu"
-	elem 
+	elem
 		name = "&File"
 		command = ""
 		saved-params = "is-checked"
-	elem 
+	elem
 		name = "&Quit"
 		command = ".quit"
 		category = "&File"
@@ -153,46 +153,46 @@ menu "menu"
 		name = "Options"
 		command = ""
 		saved-params = "is-checked"
-	elem 
+	elem
 		name = "Command Panel"
 		command = "Command-Panel"
 		category = "Options"
 		saved-params = "is-checked"
-	elem 
+	elem
 		name = "Admin Help"
 		command = "Adminhelp"
 		category = "Options"
 		saved-params = "is-checked"
-	elem 
+	elem
 		name = "NPC"
 		command = "Opennpc"
 		category = "Options"
 		saved-params = "is-checked"
-	elem 
+	elem
 		name = "RPFlag"
 		command = "SetRPFlag"
 		category = "Options"
 		saved-params = "is-checked"
-	elem 
+	elem
 		name = "Save"
 		command = "SaveSelf"
 		category = "Options"
 		saved-params = "is-checked"
-	elem 
+	elem
 		name = "UI Theme"
 		command = "UI-Theme"
 		category = "Options"
 		saved-params = "is-checked"
-	elem 
+	elem
 		name = "Information"
 		command = ""
 		saved-params = "is-checked"
-	elem 
+	elem
 		name = "Who"
 		command = "Who"
 		category = "Information"
 		saved-params = "is-checked"
-	elem 
+	elem
 		name = "Races"
 		command = "Races"
 		category = "Information"
@@ -7653,3 +7653,78 @@ window "stablemaster"
 		text = "Stock"
 		image = 'Sheet\\GUI Label.png'
 
+window "EmoteW"
+	elem "EmoteW"
+		type = MAIN
+		pos = 300,200
+		size = 400x180
+		anchor1 = -1,-1
+		anchor2 = -1,-1
+		is-visible = false
+		saved-params = "pos;size"
+		titlebar = true
+		statusbar = false
+		can-resize = false
+		can-minimize = false
+		on-close = "EmoteClose"
+	elem "label_bg"
+		type = LABEL
+		pos = 0,0
+		size = 400x180
+		anchor1 = 0,0
+		anchor2 = 100,100
+		background-color = #2f5d68
+		saved-params = ""
+		text = ""
+	elem "emoteinput"
+		type = INPUT
+		pos = 10,10
+		size = 380x100
+		anchor1 = 2,5
+		anchor2 = 97,60
+		text-color = #ffffff
+		background-color = #1c1c1c
+		saved-params = ""
+		multi-line = true
+	elem "nameinclude"
+		type = BUTTON
+		pos = 10,120
+		size = 150x24
+		anchor1 = 2,68
+		anchor2 = 40,82
+		text-color = #ffffff
+		background-color = #3f7c8c
+		saved-params = "is-checked"
+		text = "Include Name"
+		button-type = checkbox
+	elem "button_post"
+		type = BUTTON
+		pos = 220,120
+		size = 80x24
+		anchor1 = 55,68
+		anchor2 = 75,82
+		text-color = #ffffff
+		background-color = #00aa00
+		saved-params = "is-checked"
+		text = "Post"
+		command = "EmoteS"
+	elem "button_clear"
+		type = BUTTON
+		pos = 310,120
+		size = 80x24
+		anchor1 = 77,68
+		anchor2 = 97,82
+		text-color = #ffffff
+		background-color = #666666
+		saved-params = "is-checked"
+		text = "Clear"
+		command = "EmoteC"
+	elem "label_title"
+		type = LABEL
+		pos = 10,150
+		size = 380x20
+		anchor1 = 2,84
+		anchor2 = 97,96
+		text-color = #aaaaaa
+		saved-params = ""
+		text = "Type your emote action. Check 'Include Name' to prepend your name."

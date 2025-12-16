@@ -15,6 +15,9 @@
 	/// Has entered the game world at least once this session?
 	var/hasEnteredWorld = FALSE
 
+	/// Players have trance capability
+	hasTranceCapability = TRUE
+
 	//? Session
 	/// Player session datum - tracks session-specific state
 	var/datum/player_session/session
@@ -86,6 +89,9 @@
 
 	// Setup game HUD with buttons
 	setupGameHUD()
+
+	// Initialize trance system
+	initializeTrance()
 
 	// Emit signal for other systems to react
 	raise_signal(DSIG_PLAYER_ENTERED_WORLD)
@@ -190,6 +196,9 @@
 
 	// Setup game HUD
 	setupGameHUD()
+
+	// Initialize trance system
+	initializeTrance()
 
 	// Refresh all UI elements
 	RefreshCharsheet(src)

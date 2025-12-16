@@ -89,5 +89,5 @@
 	overlays -= 'Exclamation.dmi'
 	overlays -= 'Rping.dmi'
 
-	// Global mods
-	Unequipglobalmods(src)
+	// Remove equipment bonuses before logout
+	removeAllEquipmentBonuses(src)

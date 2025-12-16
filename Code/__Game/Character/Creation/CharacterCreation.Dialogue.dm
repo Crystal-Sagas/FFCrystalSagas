@@ -122,8 +122,7 @@
 			showAppearanceStep()
 		if(CREATION_STEP_JOB)
 			showJobSelection()
-		if(CREATION_STEP_ROLE)
-			showRoleSelection()
+		// Role step removed - players no longer select roles
 		if(CREATION_STEP_EQUIPMENT)
 			showEquipmentSelection()
 		if(CREATION_STEP_TOWN)
@@ -155,8 +154,7 @@
 			handleAppearanceChoice(choiceId)
 		if(CREATION_STEP_JOB)
 			handleJobChoice(choiceId)
-		if(CREATION_STEP_ROLE)
-			handleRoleChoice(choiceId)
+		// Role step removed - players no longer select roles
 		if(CREATION_STEP_EQUIPMENT)
 			handleEquipmentChoice(choiceId)
 		if(CREATION_STEP_TOWN)
@@ -341,9 +339,10 @@
 	// Apply job using the controller's legacy method
 	global.character_creation.applyJobLegacy(participant, jobChoice)
 
-	sayMoogle("A [jobChoice] kupo? Ok ok next, pick your role.")
+	sayMoogle("A [jobChoice] kupo? Excellent choice!")
 
-	currentStep = CREATION_STEP_ROLE
+	// Skip role selection - go directly to equipment
+	currentStep = CREATION_STEP_EQUIPMENT
 	spawn(5)
 		showStep()
 

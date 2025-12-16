@@ -31,7 +31,12 @@ var/global/list/mainMenuActions = list(
 	"toggleoption",
 	"showwho",
 	"help",
-	"closemenu"
+	"closemenu",
+	// Crafting actions
+	"opencraft",
+	"previewtags",
+	"viewprofessions",
+	"spawnstation"
 )
 
 /**
@@ -93,24 +98,40 @@ var/global/list/mainMenuActions = list(
 
 		// -------------------------------------------
 		// EQUIPMENT ACTIONS
-		// TODO: Implement proper equip/unequip when equipment system is refactored
+		// Uses the unified Equipment.System.dm
 		// -------------------------------------------
 		if("equip")
 			var/obj/item/I = locate(params["ref"])
 			if(I && (I in mob.contents))
-				// TODO: Proper equip logic
-				mob << "Equipment system not yet integrated with menu."
+				var/preferredSlot = params["slot"]  // Optional: for 1h weapons
+
+				// For 1h weapons with no slot specified, prompt the user
+				if(I.equiptype == "1h" && !preferredSlot)
+					// Send a prompt for hand selection
+					mob << output("<font color='#88CCFF'>Select a hand to equip [I.name] to:</font>", "oocout")
+					mob << output("<a href='byond://?src=\ref[mob];action=equip;ref=\ref[I];slot=righthand'>Right Hand</a> | <a href='byond://?src=\ref[mob];action=equip;ref=\ref[I];slot=lefthand'>Left Hand</a>", "oocout")
+					return TRUE
+
+				equipItem(mob, I, preferredSlot)
 				mob.RefreshMainMenuTab("equip")
 				mob.RefreshMainMenuTab("status")
+				mob.RefreshMainMenuTab("item")
 			return TRUE
 
 		if("unequip")
 			var/slot = params["slot"]
-			if(slot)
-				// TODO: Proper unequip logic
-				mob << "Equipment system not yet integrated with menu."
-				mob.RefreshMainMenuTab("equip")
-				mob.RefreshMainMenuTab("status")
+			var/obj/item/I = locate(params["ref"])
+
+			// Unequip by item reference
+			if(I)
+				unequipItem(mob, I)
+			// Unequip by slot name
+			else if(slot)
+				unequipSlot(mob, slot)
+
+			mob.RefreshMainMenuTab("equip")
+			mob.RefreshMainMenuTab("status")
+			mob.RefreshMainMenuTab("item")
 			return TRUE
 
 		// -------------------------------------------
@@ -200,6 +221,31 @@ var/global/list/mainMenuActions = list(
 			// Show help commands
 			mob << "<b>Help - Available Commands:</b>"
 			mob << "Type 'commands' to see all available commands."
+			return TRUE
+
+		// -------------------------------------------
+		// CRAFTING ACTIONS
+		// -------------------------------------------
+		if("opencraft")
+			// Open the crafting menu verb
+			mob.Open_Crafting_Menu()
+			return TRUE
+
+		if("previewtags")
+			// Preview material tags
+			mob.Preview_Craft()
+			return TRUE
+
+		if("viewprofessions")
+			// View crafting professions
+			mob.View_Professions()
+			return TRUE
+
+		if("spawnstation")
+			// Spawn a universal test station at mob location
+			new/obj/crafting_station/universal(mob.loc)
+			mob << output("<font color='#00FF00'>Spawned a Universal Crafting Station at your location!</font>", "oocout")
+			mob << output("Click the station and use 'Use Station' to start crafting.", "oocout")
 			return TRUE
 
 		// -------------------------------------------

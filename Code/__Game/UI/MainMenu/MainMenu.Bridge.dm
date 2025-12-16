@@ -301,3 +301,24 @@
 
 	var/param_string = list2params(params)
 	src << output(param_string, "MainMenu.browser2:updateConfig")
+
+// =============================================================================
+// CRAFTING TAB
+// =============================================================================
+
+/**
+ * Sends crafting data to the main menu
+ * Uses refreshTab to update just the craft tab content (partial refresh)
+ * This avoids full page re-render overhead
+ */
+/mob/proc/SendMainMenuCraft()
+	if(!client)
+		return
+
+	// Generate fresh craft tab content
+	var/craftHtml = GenerateCraftTabContent()
+
+	// Use the refreshTab JS function to update just the craft pane
+	// Format: tabId&html (URL encoded)
+	var/param_string = "tab-craft&[url_encode(craftHtml)]"
+	src << output(param_string, "MainMenu.browser2:refreshTab")

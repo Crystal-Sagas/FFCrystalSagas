@@ -217,14 +217,14 @@
 		var/obj/Ability/Magic/Black/Lightning/Thundaja/c = new
 		var/obj/Ability/Magic/Black/Water/Waterja/d = new
 		var/obj/Ability/Magic/Arcane/Darkja/e = new
-		var/obj/item/Weapon/Melee/Scythe/Mythril/sf = new
+		var/obj/item/sf = createWeaponFromArchetype("scythe", MATERIAL_TIER_MYTHRIL, src)
 		src.contents += a
 		src.contents += b
 		src.contents += c
 		src.contents += d
-		src.contents += sf
+		if(sf)
+			src.eweapon = sf
 		src.contents += e
-		src.eweapon = sf
 		var/obj/perk/SummonPassives/MagusSisters/summ = new
 		src.contents += summ
 
@@ -315,7 +315,7 @@
 		var/obj/Ability/Weapon/Melee/ThunderGod/g = new
 		var/obj/Ability/Job/Samurai/IaidoStance/d = new
 		var/obj/Ability/Job/Samurai/Tsubamagaeshi/e = new
-		var/obj/item/Weapon/Melee/Katana/Orichalcum/sf = new
+		var/obj/item/sf = createWeaponFromArchetype("katana", MATERIAL_TIER_ORICHALCUM, src)
 		src.contents += a
 		src.contents += b
 		src.contents += c
@@ -323,7 +323,7 @@
 		src.contents += e
 		src.contents += f
 		src.contents += g
-		src.contents += sf
-		src.eweapon = sf
+		if(sf)
+			src.eweapon = sf
 		var/obj/perk/SummonPassives/Raiden/summ = new
 		src.contents += summ

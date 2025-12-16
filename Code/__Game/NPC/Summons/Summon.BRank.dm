@@ -515,7 +515,7 @@
 		var/obj/Ability/Weapon/Melee/FinishingTouch/f = new
 		var/obj/Ability/Weapon/Melee/Shout/g = new
 		var/obj/Ability/Magic/Arcane/Darkja/dar = new
-		var/obj/item/Weapon/Melee/Longsword/Mythril/sf = new
+		var/obj/item/sf = createWeaponFromArchetype("longsword", MATERIAL_TIER_MYTHRIL, src)
 		src.contents += a
 		src.contents += b
 		src.contents += c
@@ -524,8 +524,8 @@
 		src.contents += f
 		src.contents += g
 		src.contents += dar
-		src.contents += sf
-		src.eweapon = sf
+		if(sf)
+			src.eweapon = sf
 		var/obj/perk/SummonPassives/Ravana/summ = new
 		src.contents += summ
 
@@ -567,7 +567,7 @@
 		var/obj/Ability/Weapon/Melee/FatedCircle/e = new
 		var/obj/Ability/Weapon/Melee/FinishingTouch/f = new
 		var/obj/Ability/Weapon/Melee/Shout/g = new
-		var/obj/item/Weapon/Melee/Longsword/Mythril/sf = new
+		var/obj/item/sf = createWeaponFromArchetype("longsword", MATERIAL_TIER_MYTHRIL, src)
 		src.contents += a
 		src.contents += b
 		src.contents += c
@@ -575,9 +575,9 @@
 		src.contents += e
 		src.contents += f
 		src.contents += g
-		src.contents += sf
 		src.contents += cur
 		src.contents += da
-		src.eweapon = sf
+		if(sf)
+			src.eweapon = sf
 		var/obj/perk/SummonPassives/Ashura/summ = new
 		src.contents += summ

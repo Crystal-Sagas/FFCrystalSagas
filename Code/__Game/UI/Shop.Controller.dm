@@ -124,31 +124,35 @@
  * Determines the category for an item based on its type path
  */
 /proc/GetItemCategory(obj/item/item)
-	// Materials
-	if(istype(item, /obj/item/materials/Ore))
+	// Materials - New material system (/obj/item/material)
+	if(istype(item, /obj/item/material/ore))
 		return "ore"
-	if(istype(item, /obj/item/materials/Herbs))
+	if(istype(item, /obj/item/material/herb))
 		return "herbs"
-	if(istype(item, /obj/item/materials/Synthesis))
+	if(istype(item, /obj/item/material/synthesis))
 		return "synthesis"
-	if(istype(item, /obj/item/materials))
+	if(istype(item, /obj/item/material))
 		return "materials"
 
 	// Consumables
 	if(istype(item, /obj/item/Chemist))
 		return "consumables"
 
-	// Weapons
+	// Weapons - New crafted weapons and legacy
+	if(istype(item, /obj/item/crafted_weapon))
+		return "weapons"
 	if(istype(item, /obj/item/Weapon/Melee))
 		return "melee"
 	if(istype(item, /obj/item/Weapon/Ranged))
 		return "ranged"
 	if(istype(item, /obj/item/Weapon/Magical))
 		return "magical"
-	if(istype(item, /obj/item/Weapon/Jeweler))
-		return "accessories"
 	if(istype(item, /obj/item/Weapon))
 		return "weapons"
+
+	// Armor - New crafted armor
+	if(istype(item, /obj/item/crafted_armor))
+		return "armor"
 
 	// Materia
 	if(istype(item, /obj/item/Materia))
@@ -246,12 +250,12 @@
  */
 /mob/npc/Shopkeeper/proc/GiveItemsToCustomer(mob/customer, obj/item/shopItem, quantity)
 	// Check if item is stackable (materials, consumables with amount)
-	if(istype(shopItem, /obj/item/materials) || shopItem.amount > 0)
+	if(istype(shopItem, /obj/item/material) || shopItem.amount > 0)
 		// Try to stack with existing items
 		for(var/obj/item/existing in customer.contents)
 			if(existing.name == shopItem.name && existing != shopItem)
 				existing.amount += quantity
-				if(istype(existing, /obj/item/materials))
+				if(istype(existing, /obj/item/material))
 					UpdateCraft(customer)
 				return
 
@@ -260,7 +264,7 @@
 		newItem.instore = 0
 		newItem.amount = quantity
 		customer.contents += newItem
-		if(istype(newItem, /obj/item/materials))
+		if(istype(newItem, /obj/item/material))
 			UpdateCraft(customer)
 	else
 		// Non-stackable items (weapons, etc.) - create copies

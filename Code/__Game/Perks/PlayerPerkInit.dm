@@ -25,15 +25,10 @@
 	var/obj/overlaydummy3/overlay3 = new()
 	player.contents += overlay3
 
-	// Add default recipes
-	var/obj/recipes/Machinist/Linkshell/linkshell = new()
-	player.contents += linkshell
-
-	var/obj/recipes/Machinist/Speaker/speaker = new()
-	player.contents += speaker
-
-	var/obj/recipes/Buildings/PersonalShop/personalShop = new()
-	player.contents += personalShop
+	// TODO: Machinist recipes - legacy system removed
+	// Linkshell and Speaker recipes were here, need new implementation
+	// PersonalShop recipe was also granted here
+	// New crafting system in Code/__Game/Crafting/ handles recipes differently
 
 /mob/proc/Giveperk()
 	initializePlayerPerks(src)

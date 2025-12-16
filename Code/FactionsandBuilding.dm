@@ -10,8 +10,8 @@ obj
 		var/isdoor=0
 		var/buildable=1
 		var/root
-		owner=null
-		faction=null
+		// owner inherited from base obj type in ItemBase.dm
+		var/buildfaction=null
 		Eventwall
 			density=1
 			layer=99

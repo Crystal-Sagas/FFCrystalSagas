@@ -1,0 +1,150 @@
+/**
+ * Gathering UI and Interaction
+ *
+ * UI feedback for gathering actions including:
+ * - Progress bars during harvesting
+ * - Result notifications
+ * - Gathering log/history
+ */
+
+// =============================================================================
+// GATHERING FEEDBACK
+// =============================================================================
+
+/**
+ * Show gathering progress to the player
+ * Uses a simple text-based progress indicator
+ */
+/mob/proc/showGatheringProgress(nodeName, duration)
+	// Simple text feedback for now
+	// Could be enhanced with actual progress bar later
+	src << output("<span style='color: #88cc88;'>⛏️ Gathering from [nodeName]...</span>", "oocout")
+
+/**
+ * Show gathering result to the player
+ */
+/mob/proc/showGatheringResult(list/drops, nodeName)
+	if(!length(drops))
+		src << output("<span style='color: #cc8888;'>❌ Failed to gather anything from [nodeName].</span>", "oocout")
+		return
+
+	var/msg = "<span style='color: #88cc88;'>✓ Gathered from [nodeName]:</span><br>"
+	for(var/list/drop in drops)
+		var/materialType = drop[1]
+		var/quantity = drop[2]
+		var/obj/item/material/temp = new materialType()
+		msg += "  • [quantity]x [temp.name]<br>"
+		relocateToNull(temp)
+
+	src << output(msg, "oocout")
+
+// =============================================================================
+// GATHERING COMMANDS
+// =============================================================================
+
+/**
+ * Verb to check nearby gathering nodes
+ */
+/mob/verb/Survey_Area()
+	set category = "Gathering"
+	set name = "Survey Area"
+	set desc = "Look for nearby gathering nodes."
+
+	var/list/nearbyNodes = list()
+
+	for(var/obj/resource_marker/node in view(7, src))
+		nearbyNodes += node
+
+	// Also check legacy nodes
+	for(var/obj/node/legacyNode in view(7, src))
+		nearbyNodes += legacyNode
+
+	if(!length(nearbyNodes))
+		src << output("You don't see any gathering nodes nearby.", "oocout")
+		return
+
+	var/msg = "<b>Nearby Gathering Nodes:</b><br>"
+	for(var/obj/node in nearbyNodes)
+		var/status = "Available"
+		var/statusColor = "#88cc88"
+
+		if(istype(node, /obj/resource_marker))
+			var/obj/resource_marker/rm = node
+			if(rm.nodeState != NODE_STATE_AVAILABLE)
+				status = "Depleted"
+				statusColor = "#cc8888"
+		else if(istype(node, /obj/node))
+			var/obj/node/legacy = node
+			if(legacy.used)
+				status = "Depleted"
+				statusColor = "#cc8888"
+
+		msg += "  • [node.name] - <span style='color: [statusColor];'>[status]</span><br>"
+
+	src << output(msg, "oocout")
+
+/**
+ * Verb to check gathering skill progress
+ */
+/mob/verb/Gathering_Status()
+	set category = "Gathering"
+	set name = "Gathering Status"
+	set desc = "Check your gathering progress for today."
+
+	var/msg = "<b>Gathering Status:</b><br>"
+	msg += "Nodes harvested today: [minednodes] / [maxnodes]<br>"
+
+	// Check for gathering perks
+	msg += "<br><b>Gathering Skills:</b><br>"
+	if(check_perk("Miner"))
+		msg += "  ⛏️ Mining: Learned"
+		if(check_perk("Expert Miner"))
+			msg += " (Expert)"
+		msg += "<br>"
+
+	if(check_perk("Gatherer"))
+		msg += "  🌿 Botany: Learned"
+		if(check_perk("Expert Gatherer"))
+			msg += " (Expert)"
+		msg += "<br>"
+
+	if(check_perk("Logger"))
+		msg += "  🪵 Logging: Learned"
+		if(check_perk("Expert Logger"))
+			msg += " (Expert)"
+		msg += "<br>"
+
+	if(check_perk("Hunter"))
+		msg += "  🎯 Hunting: Learned"
+		if(check_perk("Expert Hunter"))
+			msg += " (Expert)"
+		msg += "<br>"
+
+	if(check_perk("Sifter"))
+		msg += "  💎 Sifting: Learned"
+		if(check_perk("Expert Sifter"))
+			msg += " (Expert)"
+		msg += "<br>"
+
+	if(check_perk("Materia Melder"))
+		msg += "  ✨ Materia: Learned<br>"
+
+	src << output(msg, "oocout")
+
+// =============================================================================
+// DAILY RESET INTEGRATION
+// =============================================================================
+
+/**
+ * Reset all resource markers at midnight
+ * Called by the daily reset system
+ */
+/proc/resetAllResourceMarkers()
+	for(var/obj/resource_marker/node in global.resource_nodes)
+		node.forceRefresh()
+
+	// Also reset legacy nodes
+	for(var/obj/node/legacyNode in global.resource_nodes)
+		legacyNode.refresh()
+
+	world.log << "Resource markers reset for new day."

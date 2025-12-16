@@ -204,11 +204,9 @@ GLOBAL_DATUM_INIT(character_creation, /datum/character_creation_controller, new)
 	if(!selectJob(M))
 		return FALSE
 
-	// Step 5: Role Selection
-	if(!selectRole(M))
-		return FALSE
+	// Role selection removed - players no longer select roles
 
-	// Step 6: Equipment Selection
+	// Step 5: Equipment Selection
 	selectEquipment(M)
 
 	// Step 7: Starting Town Selection
@@ -1009,198 +1007,84 @@ GLOBAL_DATUM_INIT(character_creation, /datum/character_creation_controller, new)
 		applyEquipmentLegacy(M, equipchoice)
 
 /**
- * Apply equipment choice using legacy pattern
+ * Apply equipment choice using archetype factory
+ * Creates starting equipment at BRONZE tier
  */
 /datum/character_creation_controller/proc/applyEquipmentLegacy(mob/M, equipchoice)
-	switch(equipchoice)
-		if("Light Armor")
-			M.weapontypes += "Light Armor"
-			M.wpntypeamount += 1
-			var/obj/item/Weapon/Armor/LightArmor/Bronze/i = new
-			M.contents += i
-		if("Medium Armor")
-			M.weapontypes += "Medium Armor"
-			M.wpntypeamount += 1
-			var/obj/item/Weapon/Armor/MediumArmor/Bronze/i = new
-			M.contents += i
-		if("Heavy Armor")
-			M.weapontypes += "Heavy Armor"
-			M.wpntypeamount += 1
-			var/obj/item/Weapon/Armor/HeavyArmor/Bronze/i = new
-			M.contents += i
-		if("Shield")
-			M.weapontypes += "Shield"
-			M.wpntypeamount += 1
-			var/obj/item/Weapon/Armor/Shield/Bronze/i = new
-			M.contents += i
-		if("Tower Shield")
-			M.weapontypes += "Tower Shield"
-			M.wpntypeamount += 1
-			var/obj/item/Weapon/Armor/TowerShield/Bronze/i = new
-			M.contents += i
-		if("Throwing Knives")
-			M.weapontypes += "Throwing Knives"
-			M.wpntypeamount += 1
-			var/obj/item/Weapon/Ranged/ThrowingWeapons/ThrowingKnives/Bronze/i = new
-			M.contents += i
-		if("Shuriken")
-			M.weapontypes += "Shuriken"
-			M.wpntypeamount += 1
-			var/obj/item/Weapon/Ranged/ThrowingWeapons/Shuriken/Bronze/i = new
-			M.contents += i
-		if("Scimitar")
-			M.weapontypes += "Scimitar"
-			M.wpntypeamount += 1
-			var/obj/item/Weapon/Melee/Scimitar/Bronze/i = new
-			M.contents += i
-		if("Rod")
-			M.weapontypes += "Rod"
-			M.wpntypeamount += 1
-			var/obj/item/Weapon/Magical/Rod/Bronze/i = new
-			M.contents += i
-		if("Longsword")
-			M.weapontypes += "Longsword"
-			M.wpntypeamount += 1
-			var/obj/item/Weapon/Melee/Longsword/Bronze/i = new
-			M.contents += i
-		if("Hammer")
-			M.weapontypes += "Hammer"
-			M.wpntypeamount += 1
-			var/obj/item/Weapon/Melee/Hammer/Bronze/i = new
-			M.contents += i
-		if("Axe")
-			M.weapontypes += "Axe"
-			M.wpntypeamount += 1
-			var/obj/item/Weapon/Melee/Axe/Bronze/i = new
-			M.contents += i
-		if("Dagger")
-			M.weapontypes += "Dagger"
-			M.wpntypeamount += 1
-			var/obj/item/Weapon/Melee/Dagger/Bronze/i = new
-			M.contents += i
-		if("Claw")
-			M.weapontypes += "Claw"
-			M.wpntypeamount += 1
-			var/obj/item/Weapon/Melee/Claw/Bronze/i = new
-			M.contents += i
-		if("Gauntlet")
-			M.weapontypes += "Gauntlet"
-			M.wpntypeamount += 1
-			var/obj/item/Weapon/Melee/Gauntlet/Bronze/i = new
-			M.contents += i
-		if("Whip")
-			M.weapontypes += "Whip"
-			M.wpntypeamount += 1
-			var/obj/item/Weapon/Melee/Whip/Bronze/i = new
-			M.contents += i
-		if("Greatsword")
-			M.weapontypes += "Greatsword"
-			M.wpntypeamount += 1
-			var/obj/item/Weapon/Melee/Greatsword/Bronze/i = new
-			M.contents += i
-		if("Katana")
-			M.weapontypes += "Katana"
-			M.wpntypeamount += 1
-			var/obj/item/Weapon/Melee/Katana/Bronze/i = new
-			M.contents += i
-		if("Spear")
-			M.weapontypes += "Spear"
-			M.wpntypeamount += 1
-			var/obj/item/Weapon/Melee/Spear/Bronze/i = new
-			M.contents += i
-		if("Scythe")
-			M.weapontypes += "Scythe"
-			M.wpntypeamount += 1
-			var/obj/item/Weapon/Melee/Scythe/Bronze/i = new
-			M.contents += i
-		if("Bow")
-			M.weapontypes += "Bow"
-			M.wpntypeamount += 1
-			var/obj/item/Weapon/Ranged/Bow/Bronze/i = new
-			M.contents += i
-		if("Focus Sword")
-			M.weapontypes += "Focus Sword"
-			M.weapontypes += "Focus Crystal"
-			M.wpntypeamount += 1
-			var/obj/item/Weapon/Special/FocusSword/Bronze/i = new
-			var/obj/item/Weapon/Magical/FocusCrystal/Bronze/t = new
-			M.contents += i
-			M.contents += t
-		if("Staff")
-			M.weapontypes += "Staff"
-			M.wpntypeamount += 1
-			var/obj/item/Weapon/Magical/Staff/Bronze/i = new
-			M.contents += i
-		if("Tome")
-			M.weapontypes += "Tome"
-			M.wpntypeamount += 1
-			var/obj/item/Weapon/Magical/Tome/Bronze/i = new
-			M.contents += i
-		if("Bow Sword")
-			M.weapontypes += "Bowsword"
-			M.wpntypeamount += 1
-			var/obj/item/Weapon/Special/Bowsword/Bronze/i = new
-			M.contents += i
-		if("Sword Spear")
-			M.weapontypes += "Sword Spear"
-			M.wpntypeamount += 2
-			var/obj/item/Weapon/Special/SwordSpear/Bronze/i = new
-			M.contents += i
-		if("Thief Sword")
-			M.weapontypes += "Thief Sword"
-			M.wpntypeamount += 2
-			var/obj/item/Weapon/Special/ThiefSword/Bronze/i = new
-			M.contents += i
-		if("Bolt Rapier")
-			M.weapontypes += "Bolt Rapier"
-			M.wpntypeamount += 2
-			var/obj/item/Weapon/Special/BoltRapier/Bronze/i = new
-			M.contents += i
-		if("Whipblade")
-			M.weapontypes += "Whip Blade"
-			M.wpntypeamount += 2
-			var/obj/item/Weapon/Special/WhipBlade/Bronze/i = new
-			M.contents += i
-		if("Akademia Card")
-			M.weapontypes += "Akademia Cards"
-			M.wpntypeamount += 2
-			var/obj/item/Weapon/Ranged/ThrowingWeapons/AkademiaCards/Bronze/i = new
-			M.contents += i
-		if("Blitzball")
-			M.weapontypes += "Blitz Ball"
-			M.wpntypeamount += 2
-			var/obj/item/Weapon/Special/BlitzBall/Bronze/i = new
-			M.contents += i
-		if("Gun Blade")
-			M.weapontypes += "Gun Blade"
-			M.wpntypeamount += 2
-			var/obj/item/Weapon/Special/Gunblade/Bronze/i = new
-			M.contents += i
-		if("Ba'gangsaw")
-			M.weapontypes += "Bagangsaw"
-			M.wpntypeamount += 2
-			var/obj/item/Weapon/Special/Bagangsaw/Bronze/i = new
-			M.contents += i
-		if("Buster Sword")
-			M.weapontypes += "Buster Sword"
-			M.wpntypeamount += 2
-			var/obj/item/Weapon/Special/BusterSword/Bronze/i = new
-			M.contents += i
-		if("Gun Arm")
-			M.weapontypes += "Gun Arm"
-			M.wpntypeamount += 2
-			var/obj/item/Weapon/Special/GunArm/Bronze/i = new
-			M.contents += i
-		if("Magitek Pistol")
-			M.weapontypes += "Magitek Pistol"
-			M.wpntypeamount += 1
-			var/obj/item/Weapon/Special/MagitekPistol/Bronze/i = new
-			M.contents += i
-		if("Magitek Rifle")
-			M.weapontypes += "Magitek Rifle"
-			M.wpntypeamount += 1
-			var/obj/item/Weapon/Special/MagitekRifle/Bronze/i = new
-			M.contents += i
+	// Map equipment choices to archetype IDs and whether they're armor
+	var/list/equipmentMap = list(
+		"Light Armor" = list("archetype" = "light_armor", "isArmor" = TRUE, "cost" = 1),
+		"Medium Armor" = list("archetype" = "medium_armor", "isArmor" = TRUE, "cost" = 1),
+		"Heavy Armor" = list("archetype" = "heavy_armor", "isArmor" = TRUE, "cost" = 1),
+		"Shield" = list("archetype" = "shield", "isArmor" = TRUE, "cost" = 1),
+		"Tower Shield" = list("archetype" = "tower_shield", "isArmor" = TRUE, "cost" = 1),
+		"Throwing Knives" = list("archetype" = "throwing_knives", "isArmor" = FALSE, "cost" = 1),
+		"Shuriken" = list("archetype" = "shuriken", "isArmor" = FALSE, "cost" = 1),
+		"Scimitar" = list("archetype" = "scimitar", "isArmor" = FALSE, "cost" = 1),
+		"Rod" = list("archetype" = "rod", "isArmor" = FALSE, "cost" = 1),
+		"Longsword" = list("archetype" = "longsword", "isArmor" = FALSE, "cost" = 1),
+		"Hammer" = list("archetype" = "hammer", "isArmor" = FALSE, "cost" = 1),
+		"Axe" = list("archetype" = "axe", "isArmor" = FALSE, "cost" = 1),
+		"Dagger" = list("archetype" = "dagger", "isArmor" = FALSE, "cost" = 1),
+		"Claw" = list("archetype" = "claw", "isArmor" = FALSE, "cost" = 1),
+		"Gauntlet" = list("archetype" = "gauntlet", "isArmor" = FALSE, "cost" = 1),
+		"Whip" = list("archetype" = "whip", "isArmor" = FALSE, "cost" = 1),
+		"Greatsword" = list("archetype" = "greatsword", "isArmor" = FALSE, "cost" = 1),
+		"Katana" = list("archetype" = "katana", "isArmor" = FALSE, "cost" = 1),
+		"Spear" = list("archetype" = "spear", "isArmor" = FALSE, "cost" = 1),
+		"Scythe" = list("archetype" = "scythe", "isArmor" = FALSE, "cost" = 1),
+		"Bow" = list("archetype" = "bow", "isArmor" = FALSE, "cost" = 1),
+		"Staff" = list("archetype" = "staff", "isArmor" = FALSE, "cost" = 1),
+		"Tome" = list("archetype" = "tome", "isArmor" = FALSE, "cost" = 1),
+		"Bow Sword" = list("archetype" = "bowsword", "isArmor" = FALSE, "cost" = 1, "weapontype" = "Bowsword"),
+		"Sword Spear" = list("archetype" = "sword_spear", "isArmor" = FALSE, "cost" = 2),
+		"Thief Sword" = list("archetype" = "thief_sword", "isArmor" = FALSE, "cost" = 2),
+		"Bolt Rapier" = list("archetype" = "bolt_rapier", "isArmor" = FALSE, "cost" = 2),
+		"Whipblade" = list("archetype" = "whip_blade", "isArmor" = FALSE, "cost" = 2, "weapontype" = "Whip Blade"),
+		"Akademia Card" = list("archetype" = "akademia_cards", "isArmor" = FALSE, "cost" = 2, "weapontype" = "Akademia Cards"),
+		"Blitzball" = list("archetype" = "blitz_ball", "isArmor" = FALSE, "cost" = 2, "weapontype" = "Blitz Ball"),
+		"Gun Blade" = list("archetype" = "gunblade", "isArmor" = FALSE, "cost" = 2),
+		"Ba'gangsaw" = list("archetype" = "bagangsaw", "isArmor" = FALSE, "cost" = 2, "weapontype" = "Bagangsaw"),
+		"Buster Sword" = list("archetype" = "buster_sword", "isArmor" = FALSE, "cost" = 2),
+		"Gun Arm" = list("archetype" = "gun_arm", "isArmor" = FALSE, "cost" = 2),
+		"Magitek Pistol" = list("archetype" = "magitek_pistol", "isArmor" = FALSE, "cost" = 1),
+		"Magitek Rifle" = list("archetype" = "magitek_rifle", "isArmor" = FALSE, "cost" = 1)
+	)
+
+	// Special case: Focus Sword gives both Focus Sword and Focus Crystal
+	if(equipchoice == "Focus Sword")
+		M.weapontypes += "Focus Sword"
+		M.weapontypes += "Focus Crystal"
+		M.wpntypeamount += 1
+		var/obj/item/focusSword = createWeaponFromArchetype("focus_sword", MATERIAL_TIER_BRONZE, M)
+		var/obj/item/focusCrystal = createWeaponFromArchetype("focus_crystal", MATERIAL_TIER_BRONZE, M)
+		if(focusSword)
+			M.contents += focusSword
+		if(focusCrystal)
+			M.contents += focusCrystal
+		return
+
+	// Handle standard equipment
+	var/list/equipData = equipmentMap[equipchoice]
+	if(!equipData)
+		return
+
+	var/archetypeId = equipData["archetype"]
+	var/isArmor = equipData["isArmor"]
+	var/cost = equipData["cost"]
+	var/weapontype = equipData["weapontype"] ? equipData["weapontype"] : equipchoice
+
+	M.weapontypes += weapontype
+	M.wpntypeamount += cost
+
+	var/obj/item/equipment
+	if(isArmor)
+		equipment = createArmorFromArchetype(archetypeId, MATERIAL_TIER_BRONZE, M)
+	else
+		equipment = createWeaponFromArchetype(archetypeId, MATERIAL_TIER_BRONZE, M)
+
+	if(equipment)
+		M.contents += equipment
 
 // ============================================================================
 // Starting Town Selection
@@ -1237,11 +1121,9 @@ GLOBAL_DATUM_INIT(character_creation, /datum/character_creation_controller, new)
 	// Mark character as initialized
 	M.rankchecked = 1
 
-	// Grant starting recipes
-	var/obj/recipes/Buildings/House/house = new()
-	var/obj/recipes/Buildings/Fortress/fortress = new()
-	M.contents += house
-	M.contents += fortress
+	// NOTE: Starting recipes are now part of the archetype-based crafting system
+	// Building recipes will be unlocked through gameplay or starting perks
+	// See Crafting.Recipe.dm for the new recipe system
 
 	// NOTE: Materials are NO LONGER pre-granted at character creation
 	// Players receive materials through gathering, crafting, and trading

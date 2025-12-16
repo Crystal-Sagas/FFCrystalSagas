@@ -138,7 +138,7 @@ obj
 				var/Materiallode=src.name
 				var/Transfer=src.amount
 				if(Materiallode in usr.contents)
-					for(var/obj/item/materials/a in usr.contents)
+					for(var/obj/item/material/a in usr.contents)
 						if(a.name==src.name)
 							a.amount+=Transfer
 							UpdateCraft(usr)
@@ -244,6 +244,8 @@ mob
 obj/item
 	Weapon
 		var/players
+		/// Flag for legendary/special weapon database initialization
+		var/initialized = 0
 		verb
 			Flash()
 				if(src.equiptype=="accessory")

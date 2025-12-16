@@ -2,6 +2,7 @@
  * Equipment Data Schema
  *
  * Defines the structure for starting equipment choices.
+ * Uses archetype IDs to create equipment via the factory system.
  */
 
 /// Equipment category constants
@@ -24,14 +25,18 @@
 	/// Weapon type to grant proficiency in
 	var/weaponType = ""
 
-	/// Starting item type path
-	var/startingItemType = null
+	/// Archetype ID for creating the item via factory
+	var/archetypeId = ""
 
-	/// Additional items to grant (for combo weapons)
-	var/list/additionalItems = list()
+	/// TRUE if this is armor, FALSE if weapon
+	var/isArmor = FALSE
+
+	/// Additional archetype IDs to grant (for combo weapons like Focus Sword)
+	var/list/additionalArchetypes = list()
 
 /**
  * Applies this equipment choice to a player
+ * Uses archetype factory to create equipment at BRONZE tier
  */
 /datum/equipment_data/proc/apply(mob/player/P)
 	if(!isPlayer(P))
@@ -41,15 +46,22 @@
 	if(weaponType)
 		P.weapontypes += weaponType
 
-	// Grant starting item
-	if(startingItemType)
-		var/obj/item = new startingItemType()
-		P.contents += item
+	// Create starting item using factory
+	if(archetypeId)
+		var/obj/item/equipment
+		if(isArmor)
+			equipment = createArmorFromArchetype(archetypeId, MATERIAL_TIER_BRONZE, P)
+		else
+			equipment = createWeaponFromArchetype(archetypeId, MATERIAL_TIER_BRONZE, P)
 
-	// Grant additional items
-	for(var/itemType in additionalItems)
-		var/obj/item = new itemType()
-		P.contents += item
+		if(equipment)
+			P.contents += equipment
+
+	// Create additional items
+	for(var/additionalId in additionalArchetypes)
+		var/obj/item/additional = createWeaponFromArchetype(additionalId, MATERIAL_TIER_BRONZE, P)
+		if(additional)
+			P.contents += additional
 
 	P.wpntypeamount += slotsRequired
 

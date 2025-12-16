@@ -40,23 +40,24 @@ var/global/list/bestiary = list()
 
 /**
  * Initializes the material archive from all material types
+ * Uses new material system: /obj/item/material
  */
 /proc/initMaterials()
 	materiallist.Cut()
-	for(var/materialType in typesof(/obj/item/materials))
-		if(materialType == /obj/item/materials)
+	for(var/materialType in typesof(/obj/item/material))
+		if(materialType == /obj/item/material)
 			continue
 		materiallist += new materialType
 
 /**
  * Initializes the recipe archive from all recipe types
+ * NOTE: Legacy recipe system removed. Recipe list is now empty.
+ * New crafting system uses datum/craft_recipe in Code/__Game/Crafting/
  */
 /proc/initRecipes()
 	recipelist.Cut()
-	for(var/recipeType in typesof(/obj/recipes))
-		if(recipeType == /obj/recipes)
-			continue
-		recipelist += new recipeType
+	// Legacy recipe types removed - new crafting uses datum/craft_recipe
+	// Recipes are registered in Crafting.Recipe.dm during world init
 
 /**
  * Initializes the summon archive from all summon types

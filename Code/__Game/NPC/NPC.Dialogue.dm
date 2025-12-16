@@ -279,7 +279,7 @@
 	var/index = 1
 	for(var/line in lines)
 		var/nodeId = "node_[index]"
-		var/datum/dialogue_node/node = dialogue.addNode(nodeId, line)
+		dialogue.addNode(nodeId, line)
 
 		if(prevNodeId)
 			var/datum/dialogue_node/prevNode = dialogue.nodes[prevNodeId]

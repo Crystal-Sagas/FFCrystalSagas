@@ -72,7 +72,7 @@
 	if(!usr.check_perk("Materia Melder"))
 		return
 	// todo: actual inventory system
-	var/obj/item/materials/Synthesis/RawMako/our_stack = locate() in usr.contents
+	var/obj/item/material/synthesis/RawMako/our_stack = locate() in usr.contents
 	if(!our_stack || (our_stack.amount < 5))
 		usr.alert_interaction_fail("You don't have at least 5 Raw Mako.")
 		return
