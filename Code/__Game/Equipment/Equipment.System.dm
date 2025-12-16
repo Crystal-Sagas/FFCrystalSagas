@@ -402,15 +402,22 @@
 	if(!user || !item)
 		return
 
+	// Validate and repair stats before applying bonuses
+	user.validateStats()
+
+	// Ensure user has stats initialized
+	if(!istype(user.armorClass, /StatGroup))
+		return
+
 	// Apply craft bonuses (for crafted items with tags)
 	applyCraftBonuses(user, item)
 
 	// Apply armor-specific bonuses for crafted armor
 	if(istype(item, /obj/item/crafted_armor))
 		var/obj/item/crafted_armor/armor = item
-		if(armor.acBonus && user.armorClass)
+		if(armor.acBonus && isStatGroupValid(user.armorClass))
 			user.armorClass.addAddition(armor.acBonus)
-		if(armor.drBonus && user.damageReduction)
+		if(armor.drBonus && isStatGroupValid(user.damageReduction))
 			user.damageReduction.addAddition(armor.drBonus)
 
 /**
@@ -420,15 +427,22 @@
 	if(!user || !item)
 		return
 
+	// Validate and repair stats before removing bonuses
+	user.validateStats()
+
+	// Ensure user has stats initialized
+	if(!istype(user.armorClass, /StatGroup))
+		return
+
 	// Remove craft bonuses
 	removeCraftBonuses(user, item)
 
 	// Remove armor-specific bonuses for crafted armor
 	if(istype(item, /obj/item/crafted_armor))
 		var/obj/item/crafted_armor/armor = item
-		if(armor.acBonus && user.armorClass)
+		if(armor.acBonus && isStatGroupValid(user.armorClass))
 			user.armorClass.addAddition(-armor.acBonus)
-		if(armor.drBonus && user.damageReduction)
+		if(armor.drBonus && isStatGroupValid(user.damageReduction))
 			user.damageReduction.addAddition(-armor.drBonus)
 
 /**
@@ -448,16 +462,30 @@
 // =============================================================================
 
 /**
- * Announce equipment change to view
+ * Announce equipment change to view and user
  */
 /proc/announceEquip(mob/user, obj/item/item)
-	view(user) << output("<font color='#88FF88'>[user.name] equips [item.name].</font>", "icout")
+	// Personal feedback to user via browse chat system
+	if(user.client)
+		user.client << system_chat("<span style='color:#88FF88'>You equipped <b>[item.name]</b>.</span>")
+
+	// Announcement to others in view (IC chat)
+	for(var/mob/M in view(user))
+		if(M != user && M.client)
+			M.client << system_chat("<span style='color:#88FF88'>[user.name] equips [item.name].</span>")
 
 /**
- * Announce unequip to view
+ * Announce unequip to view and user
  */
 /proc/announceUnequip(mob/user, obj/item/item)
-	view(user) << output("<font color='#FFFF88'>[user.name] unequips [item.name].</font>", "icout")
+	// Personal feedback to user via browse chat system
+	if(user.client)
+		user.client << system_chat("<span style='color:#FFFF88'>You unequipped <b>[item.name]</b>.</span>")
+
+	// Announcement to others in view (IC chat)
+	for(var/mob/M in view(user))
+		if(M != user && M.client)
+			M.client << system_chat("<span style='color:#FFFF88'>[user.name] unequips [item.name].</span>")
 
 /**
  * Refresh all equipment-related UI elements
@@ -466,16 +494,17 @@
 	if(!user)
 		return
 
-	// Refresh various UI elements
-	if(hascall(user, "RefreshEquipment"))
-		user.RefreshEquipment()
+	// NOTE: Legacy RefreshEquipment is deprecated - use Main Menu tabs instead
 
 	// These are /atom procs that take a mob parameter
-	user.RefreshCharsheet(user)
-	user.Refreshinventoryscreen(user)
-	user.RefreshAll(user)
+	if(hascall(user, "RefreshCharsheet"))
+		user.RefreshCharsheet(user)
+	if(hascall(user, "Refreshinventoryscreen"))
+		user.Refreshinventoryscreen(user)
+	if(hascall(user, "RefreshAll"))
+		user.RefreshAll(user)
 
-	// Refresh main menu if open
+	// Refresh main menu if open (primary UI now)
 	if(hascall(user, "RefreshMainMenuTab"))
 		user.RefreshMainMenuTab("equip")
 		user.RefreshMainMenuTab("status")

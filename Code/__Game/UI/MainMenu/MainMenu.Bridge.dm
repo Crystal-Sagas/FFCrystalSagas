@@ -72,33 +72,20 @@
 
 /**
  * Sends item inventory data to the main menu
- * Groups items by category, includes quantities
+ * Uses refreshTab to update the entire tab content with pre-rendered HTML
  */
 /mob/proc/SendMainMenuItems(mob/M)
 	if(!M) M = src
+	if(!client)
+		return
 
-	var/list/items = list()
+	// Generate fresh item tab content using the template generator
+	var/itemHtml = GenerateItemTabContent()
 
-	// Gather inventory items
-	for(var/obj/item/I in M.contents)
-		// Skip equipped items, they show in equip tab
-		if(I.equipped)
-			continue
-
-		var/list/itemData = list()
-		itemData["ref"] = "\ref[I]"
-		itemData["name"] = I.name
-		itemData["qty"] = 1  // Stack amount not defined on base item
-		itemData["icon"] = GetItemEmoji(I)
-		itemData["category"] = I.cat ? I.cat : "misc"
-
-		items += list(itemData)
-
-	var/list/params = list()
-	params["items"] = json_encode(items)
-
-	var/param_string = list2params(params)
-	src << output(param_string, "MainMenu.browser2:updateItems")
+	// Use the refreshTab JS function to update just the item pane
+	// Format: tabId&html (URL encoded)
+	var/param_string = "tab-item&[url_encode(itemHtml)]"
+	src << output(param_string, "MainMenu.browser2:refreshTab")
 
 // =============================================================================
 // ABILITIES TAB
@@ -151,51 +138,19 @@
 
 /**
  * Sends equipment data to the main menu
+ * Uses refreshTab to update the entire tab content with pre-rendered HTML
  */
 /mob/proc/SendMainMenuEquipment(mob/M)
 	if(!M) M = src
+	if(!client)
+		return
 
-	var/list/params = list()
+	// Generate fresh equip tab content using the template generator
+	var/equipHtml = GenerateEquipTabContent()
 
-	// Current equipment - using actual mob equipment vars
-	if(M.righthand)
-		params["weapon"] = M.righthand.name
-		params["weaponRef"] = "\ref[M.righthand]"
-	if(M.armor)
-		params["body"] = M.armor.name
-		params["bodyRef"] = "\ref[M.armor]"
-	if(M.accessory1)
-		params["acc1"] = M.accessory1.name
-		params["acc1Ref"] = "\ref[M.accessory1]"
-	if(M.accessory2)
-		params["acc2"] = M.accessory2.name
-		params["acc2Ref"] = "\ref[M.accessory2]"
-
-	// Available equipment in inventory
-	var/list/weapons = list()
-	var/list/armorList = list()
-	var/list/accessories = list()
-
-	for(var/obj/item/I in M.contents)
-		if(I.equipped)
-			continue
-
-		var/list/itemData = list()
-		itemData["ref"] = "\ref[I]"
-		itemData["name"] = I.name
-
-		if(I.weapon)
-			weapons += list(itemData)
-		// TODO: Add armor/accessory detection when equipment system is refactored
-
-	params["availWeapons"] = json_encode(weapons)
-	params["availArmor"] = json_encode(armorList)
-	params["availAccessories"] = json_encode(accessories)
-
-	params["ref"] = "\ref[M]"
-
-	var/param_string = list2params(params)
-	src << output(param_string, "MainMenu.browser2:updateEquipment")
+	// Use the refreshTab JS function to update just the equip pane
+	var/param_string = "tab-equip&[url_encode(equipHtml)]"
+	src << output(param_string, "MainMenu.browser2:refreshTab")
 
 // =============================================================================
 // PARTY TAB

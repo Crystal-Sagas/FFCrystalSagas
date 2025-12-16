@@ -405,8 +405,9 @@
 
 	src << system_chat("<font color='#00FF00'>Spawned: Iron x5, Steel x3, Wood x5, Leather x3</font>")
 
-	// Partial refresh - only update craft tab
+	// Refresh both craft and item tabs
 	RefreshMainMenuTab("craft")
+	RefreshMainMenuTab("item")
 
 /**
  * Learn all crafting professions for testing

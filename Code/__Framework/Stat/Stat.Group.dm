@@ -66,14 +66,14 @@ StatGroup
         addBase(value)
             if(!isTruthyNumber(value))
                 return FALSE
-            baseValue += value
+            baseValue.addValue(value)
             updateCurrent()
             return TRUE
         
         subtractBase(value)
             if(!isTruthyNumber(value))
                 return FALSE
-            baseValue -= value
+            baseValue.removeValue(value)
             updateCurrent()
             return TRUE
         
@@ -94,14 +94,14 @@ StatGroup
         addMultiplier(value)
             if(!isTruthyNumber(value))
                 return FALSE
-            multiplier += value
+            multiplier.addValue(value)
             updateCurrent()
             return TRUE
         
         subtractMultiplier(value)
             if(!isTruthyNumber(value))
                 return FALSE
-            multiplier -= value
+            multiplier.removeValue(value)
             updateCurrent()
             return TRUE
         
@@ -115,14 +115,14 @@ StatGroup
         addAddition(value)
             if(!isTruthyNumber(value))
                 return FALSE
-            addition += value
+            addition.addValue(value)
             updateCurrent()
             return TRUE
         
         subtractAddition(value)
             if(!isTruthyNumber(value))
                 return FALSE
-            addition -= value
+            addition.removeValue(value)
             updateCurrent()
             return TRUE
         

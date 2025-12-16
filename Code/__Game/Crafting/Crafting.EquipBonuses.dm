@@ -55,6 +55,7 @@
 /**
  * Apply a single craft tag bonus to a mob
  * Uses the StatGroup.addAddition() system
+ * Checks for proper stat types and valid internal state before calling methods
  */
 /proc/applyCraftTagBonus(mob/target, tagId, tagValue)
 	if(!target || !tagId)
@@ -64,28 +65,29 @@
 	switch(tagId)
 		// ===== DEFENSIVE TAGS =====
 		if(CRAFT_TAG_PHYS_PROTECT)
-			if(target.damageReduction)
+			if(isStatGroupValid(target.damageReduction))
 				target.damageReduction.addAddition(tagValue)
-			if(target.physicalDefense)
+			if(isStatGroupValid(target.physicalDefense))
 				target.physicalDefense.addAddition(tagValue)
 
 		if(CRAFT_TAG_MAGIC_PROTECT)
-			if(target.magicalDefense)
+			if(isStatGroupValid(target.magicalDefense))
 				target.magicalDefense.addAddition(tagValue)
 
 		if(CRAFT_TAG_EVASION)
-			if(target.armorClass)
+			if(isStatGroupValid(target.armorClass))
 				target.armorClass.addAddition(tagValue)
 
 		if(CRAFT_TAG_VITALITY)
-			if(target.health)
+			if(istype(target.health, /StatPool))
 				target.health.addMaxValue(tagValue * 5)
+
 		if(CRAFT_TAG_ATTACK)
-			if(target.physicalAttack)
+			if(isStatGroupValid(target.physicalAttack))
 				target.physicalAttack.addAddition(tagValue)
 
 		if(CRAFT_TAG_MAGIC_ATTACK)
-			if(target.magicalAttack)
+			if(isStatGroupValid(target.magicalAttack))
 				target.magicalAttack.addAddition(tagValue)
 
 		if(CRAFT_TAG_CRITICAL)
@@ -95,7 +97,7 @@
 
 		if(CRAFT_TAG_SPEED)
 			// Speed affects dexterity
-			if(target.dexterity)
+			if(isStatGroupValid(target.dexterity))
 				target.dexterity.addAddition(tagValue)
 
 		// ===== ELEMENTAL TAGS =====
@@ -131,7 +133,7 @@
 
 		// ===== SPECIAL TAGS =====
 		if(CRAFT_TAG_WILLSAVE)
-			if(target.willSave)
+			if(isStatGroupValid(target.willSave))
 				target.willSave.addAddition(tagValue)
 
 		if(CRAFT_TAG_STATUS_RESIST)
@@ -140,9 +142,9 @@
 
 		if(CRAFT_TAG_RARE_QUALITY)
 			// Rare quality provides small bonuses to multiple stats
-			if(target.physicalAttack)
+			if(isStatGroupValid(target.physicalAttack))
 				target.physicalAttack.addAddition(tagValue)
-			if(target.magicalAttack)
+			if(isStatGroupValid(target.magicalAttack))
 				target.magicalAttack.addAddition(tagValue)
 
 /**

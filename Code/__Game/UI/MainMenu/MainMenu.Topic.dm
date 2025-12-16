@@ -105,11 +105,9 @@ var/global/list/mainMenuActions = list(
 			if(I && (I in mob.contents))
 				var/preferredSlot = params["slot"]  // Optional: for 1h weapons
 
-				// For 1h weapons with no slot specified, prompt the user
+				// For 1h weapons with no slot specified, prompt the user via chat card
 				if(I.equiptype == "1h" && !preferredSlot)
-					// Send a prompt for hand selection
-					mob << output("<font color='#88CCFF'>Select a hand to equip [I.name] to:</font>", "oocout")
-					mob << output("<a href='byond://?src=\ref[mob];action=equip;ref=\ref[I];slot=righthand'>Right Hand</a> | <a href='byond://?src=\ref[mob];action=equip;ref=\ref[I];slot=lefthand'>Left Hand</a>", "oocout")
+					showHandSelectionPrompt(src, mob, I)
 					return TRUE
 
 				equipItem(mob, I, preferredSlot)
@@ -298,3 +296,53 @@ var/global/list/mainMenuActions = list(
 	if(action && isMainMenuAction(action))
 		HandleMainMenuTopic(href_list)
 		return
+
+// =============================================================================
+// HAND SELECTION PROMPT
+// =============================================================================
+
+/**
+ * Show a hand selection prompt in the browse chat for equipping 1h weapons
+ * Uses the chat card style similar to NPC dialogue choices
+ *
+ * @param C The client to show the prompt to
+ * @param M The mob equipping the weapon
+ * @param I The item being equipped
+ */
+/proc/showHandSelectionPrompt(client/C, mob/M, obj/item/I)
+	if(!C || !M || !I)
+		return FALSE
+
+	// Build choice HTML with styled buttons
+	var/itemRef = "\ref[I]"
+	var/mobRef = "\ref[M]"
+
+	var/choiceHtml = {"<div style='padding: 8px; background: rgba(100, 100, 150, 0.2); border-radius: 4px; margin: 4px 0;'>
+		<div style='color: #88CCFF; font-weight: bold; margin-bottom: 8px;'>Select a hand to equip [html_encode(I.name)]:</div>
+		<div style='display: flex; gap: 8px;'>
+			<a href='byond://?src=[mobRef];action=equip;ref=[itemRef];slot=righthand' style='display: inline-block; padding: 8px 16px; background: #3a5a3a; border: 1px solid #4a7a4a; border-radius: 4px; color: #aaffaa; text-decoration: none; cursor: pointer;'>⚔️ Right Hand</a>
+			<a href='byond://?src=[mobRef];action=equip;ref=[itemRef];slot=lefthand' style='display: inline-block; padding: 8px 16px; background: #3a3a5a; border: 1px solid #4a4a7a; border-radius: 4px; color: #aaaaff; text-decoration: none; cursor: pointer;'>🛡️ Left Hand</a>
+		</div>
+	</div>"}
+
+	// Send via the browse chat system - sendChatMessage is on /mob
+	M.sendChatMessage(
+		"system",           // channel
+		"Equipment",        // speaker
+		choiceHtml,         // message with HTML buttons
+		"",                 // language
+		"equipment_choice", // quote_style - for potential custom styling
+		"#88CCFF",          // color
+		"1",                // heard
+		"",                 // flag1
+		"",                 // flag2
+		"",                 // timestamp
+		"",                 // message_id
+		"",                 // alignment
+		"",                 // badges
+		"#88CCFF",          // speaker_color
+		"",                 // quote_html
+		"equipment"         // metadata
+	)
+
+	return TRUE

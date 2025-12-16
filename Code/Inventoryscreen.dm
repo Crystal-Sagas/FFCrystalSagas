@@ -33,72 +33,24 @@ mob
 				m.loc=usr.loc
 				var/newGSP = usr.guildPoints ? usr.guildPoints.value : 0
 				winset(usr,"InventoryScreen.gsp","text=\"[newGSP]\"")
+		// NOTE: SeeEquipment is deprecated - use Main Menu EQUIP tab instead
+		// The Equipment window is no longer used
 		SeeEquipment()
 			if(usr.intitlescreen)
 				return
-			var/row
-			winset(usr,"Equipment","is-visible=true")
-			winset(usr,"Equipment.name","text=\"[usr.name]\"")
-			winset(usr,"Equipment.player","is-visible=false")
-			row++
-			usr<<output(usr,"Equipment.player:1,[row]")
-			var/icon/I1 = icon(usr.righthand.icon,"Yee",SOUTH,1,0)
-			var/newPicture1 = fcopy_rsc(I1)
-			winset(usr,"Equipment.RightHand","image=\ref[newPicture1]")
-			var/icon/I2 = icon(usr.lefthand.icon,"Yee",SOUTH,1,0)
-			var/newPicture2 = fcopy_rsc(I2)
-			winset(usr,"Equipment.LeftHand","image=\ref[newPicture2]")
-			var/icon/I3 = icon(usr.armor.icon,"Yee",SOUTH,1,0)
-			var/newPicture3 = fcopy_rsc(I3)
-			winset(usr,"Equipment.Armor","image=\ref[newPicture3]")
-			var/icon/I4 = icon(usr.materia1.icon,"Yee",SOUTH,1,0)
-			var/newPicture4 = fcopy_rsc(I4)
-			winset(usr,"Equipment.Materia1","image=\ref[newPicture4]")
-			var/icon/I5 = icon(usr.materia2.icon,"Yee",SOUTH,1,0)
-			var/newPicture5 = fcopy_rsc(I5)
-			winset(usr,"Equipment.Materia2","image=\ref[newPicture5]")
-			var/icon/I6 = icon(usr.materia3.icon,"Yee",SOUTH,1,0)
-			var/newPicture6 = fcopy_rsc(I6)
-			winset(usr,"Equipment.Materia3","image=\ref[newPicture6]")
-			var/icon/I7 = icon(usr.accessory1.icon,"Yee",SOUTH,1,0)
-			var/newPicture7 = fcopy_rsc(I7)
-			winset(usr,"Equipment.Accessory1","image=\ref[newPicture7]")
-			var/icon/I8 = icon(usr.accessory2.icon,"Yee",SOUTH,1,0)
-			var/newPicture8 = fcopy_rsc(I8)
-			winset(usr,"Equipment.Accessory2","image=\ref[newPicture8]")
+			// Redirect to new Main Menu equip tab
+			usr << output("<font color='#AAAAAA'>Equipment is now shown in the Main Menu. Press TAB or use the menu button.</font>", "oocout")
+			if(hascall(usr, "OpenMainMenu"))
+				usr.OpenMainMenu()
 		CloseEquip()
-			winset(usr,"Equipment","is-visible=false")
+			// Legacy - no longer needed
+			return
 	proc
+		// NOTE: RefreshEquipment is deprecated - Main Menu handles this now
 		RefreshEquipment()
-			var/row
-			winset(usr,"Equipment.name","text=\"[usr.name]\"")
-			winset(usr,"Equipment.player","is-visible=false")
-			row++
-			usr<<output(usr,"Equipment.player:1,[row]")
-			var/icon/I1 = icon(usr.righthand.icon,"Yee",SOUTH,1,0)
-			var/newPicture1 = fcopy_rsc(I1)
-			winset(usr,"Equipment.RightHand","image=\ref[newPicture1]")
-			var/icon/I2 = icon(usr.lefthand.icon,"Yee",SOUTH,1,0)
-			var/newPicture2 = fcopy_rsc(I2)
-			winset(usr,"Equipment.LeftHand","image=\ref[newPicture2]")
-			var/icon/I3 = icon(usr.armor.icon,"Yee",SOUTH,1,0)
-			var/newPicture3 = fcopy_rsc(I3)
-			winset(usr,"Equipment.Armor","image=\ref[newPicture3]")
-			var/icon/I4 = icon(usr.materia1.icon,"Yee",SOUTH,1,0)
-			var/newPicture4 = fcopy_rsc(I4)
-			winset(usr,"Equipment.Materia1","image=\ref[newPicture4]")
-			var/icon/I5 = icon(usr.materia2.icon,"Yee",SOUTH,1,0)
-			var/newPicture5 = fcopy_rsc(I5)
-			winset(usr,"Equipment.Materia2","image=\ref[newPicture5]")
-			var/icon/I6 = icon(usr.materia3.icon,"Yee",SOUTH,1,0)
-			var/newPicture6 = fcopy_rsc(I6)
-			winset(usr,"Equipment.Materia3","image=\ref[newPicture6]")
-			var/icon/I7 = icon(usr.accessory1.icon,"Yee",SOUTH,1,0)
-			var/newPicture7 = fcopy_rsc(I7)
-			winset(usr,"Equipment.Accessory1","image=\ref[newPicture7]")
-			var/icon/I8 = icon(usr.accessory2.icon,"Yee",SOUTH,1,0)
-			var/newPicture8 = fcopy_rsc(I8)
-			winset(usr,"Equipment.Accessory2","image=\ref[newPicture8]")
+			// No-op - the new Main Menu system handles equipment display
+			// via RefreshMainMenuTab("equip")
+			return
 
 obj
 	Money
