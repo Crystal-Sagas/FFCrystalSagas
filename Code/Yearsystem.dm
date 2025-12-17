@@ -47,8 +47,8 @@ var/daytime = "Night"
 
 /proc/RefreshDay()
 	set background = TRUE
-	for(var/obj/node/N in global.resource_nodes)
-		N.refresh()
+	for(var/obj/resource_marker/node in global.resource_nodes)
+		node.refresh()
 	for(var/mob/a in world)
 		a.Lifestreamraincooldown=0
 		a.limitbreakused=0
@@ -62,9 +62,8 @@ var/daytime = "Night"
 		a.Collectcooldown=0
 	for(var/obj/Factionupgrades/a in world)
 		a.Collectcooldown=0
-	for(var/obj/node/GatheringMoogle/a in world)
-		a.used=0
-	for(var/obj/item/Mooglebox/a in world)
+	// Moogle gatherers are now resource markers and refresh via the loop above
+	for(var/obj/item/moogle_box/a in world)
 		a.cooldown=0
 	worldBroadcast("It's a new day! All 24 hour cooldowns have been reset.", "ic")
 	Saveworld()

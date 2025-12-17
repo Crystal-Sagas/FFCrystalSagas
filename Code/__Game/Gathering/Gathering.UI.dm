@@ -52,12 +52,9 @@
 
 	var/list/nearbyNodes = list()
 
+	// All nodes (including legacy /obj/node) are now resource_markers
 	for(var/obj/resource_marker/node in view(7, src))
 		nearbyNodes += node
-
-	// Also check legacy nodes
-	for(var/obj/node/legacyNode in view(7, src))
-		nearbyNodes += legacyNode
 
 	if(!length(nearbyNodes))
 		chatTo(src, "You don't see any gathering nodes nearby.", "ooc")
@@ -71,11 +68,6 @@
 		if(istype(node, /obj/resource_marker))
 			var/obj/resource_marker/rm = node
 			if(rm.nodeState != NODE_STATE_AVAILABLE)
-				status = "Depleted"
-				statusColor = "#cc8888"
-		else if(istype(node, /obj/node))
-			var/obj/node/legacy = node
-			if(legacy.used)
 				status = "Depleted"
 				statusColor = "#cc8888"
 
@@ -140,11 +132,8 @@
  * Called by the daily reset system
  */
 /proc/resetAllResourceMarkers()
+	// All nodes (including legacy) now use resource_marker system
 	for(var/obj/resource_marker/node in global.resource_nodes)
 		node.forceRefresh()
-
-	// Also reset legacy nodes
-	for(var/obj/node/legacyNode in global.resource_nodes)
-		legacyNode.refresh()
 
 	world.log << "Resource markers reset for new day."
