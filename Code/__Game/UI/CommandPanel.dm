@@ -290,12 +290,6 @@
 			var/datum/craft_recipe/recipe = locate(href_list["recipe"])
 			if(recipe)
 				craftRecipeFromMenu(recipe)
-		if("spawntestmaterials")
-			// Spawn test materials for testing
-			spawnTestMaterials()
-		if("learnallprofessions")
-			// Learn all professions for testing
-			learnAllProfessions()
 
 /**
  * Show combat status info

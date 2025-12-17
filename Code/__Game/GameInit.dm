@@ -22,6 +22,9 @@
 	// Initialize gathering/resource systems
 	initializeGatheringLootTables()
 
+	// Initialize resource node spawner
+	initializeResourceSpawner()
+
 	// Initialize crafting recipes
 	initializeCraftRecipes()
 

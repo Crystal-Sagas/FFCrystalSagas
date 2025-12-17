@@ -1121,6 +1121,12 @@ GLOBAL_DATUM_INIT(character_creation, /datum/character_creation_controller, new)
 	// Mark character as initialized
 	M.rankchecked = 1
 
+	// Initialize gathering professions at level 1
+	M.initializeGatheringProfessions()
+
+	// Initialize crafting professions at level 1
+	M.initializeCraftingProfessions()
+
 	// NOTE: Starting recipes are now part of the archetype-based crafting system
 	// Building recipes will be unlocked through gameplay or starting perks
 	// See Crafting.Recipe.dm for the new recipe system

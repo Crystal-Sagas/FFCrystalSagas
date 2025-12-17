@@ -86,6 +86,8 @@
 		if(3) // SIGUSR1
 			// proceed normally
 			pass()
+	//? Save resource nodes before shutdown
+	saveResourcesOnShutdown()
 	//? shutdown ticker
 	ticker?.Shutdown()
 	//? Inform TGS of reboot

@@ -36,6 +36,36 @@
 // =============================================================================
 
 /**
+ * Initialize all crafting professions at level 1
+ * Called during character creation/login to give players access to all crafts
+ */
+/mob/proc/initializeCraftingProfessions()
+	if(!craftingProfessions)
+		craftingProfessions = list()
+
+	// Initialize all crafting professions at level 1 if not already set
+	if(!craftingProfessions[CRAFT_PROF_WEAPONSMITH])
+		craftingProfessions[CRAFT_PROF_WEAPONSMITH] = 1
+	if(!craftingProfessions[CRAFT_PROF_ARMORSMITH])
+		craftingProfessions[CRAFT_PROF_ARMORSMITH] = 1
+	if(!craftingProfessions[CRAFT_PROF_CARPENTER])
+		craftingProfessions[CRAFT_PROF_CARPENTER] = 1
+	if(!craftingProfessions[CRAFT_PROF_TAILOR])
+		craftingProfessions[CRAFT_PROF_TAILOR] = 1
+	if(!craftingProfessions[CRAFT_PROF_LEATHERWORKER])
+		craftingProfessions[CRAFT_PROF_LEATHERWORKER] = 1
+	if(!craftingProfessions[CRAFT_PROF_ALCHEMIST])
+		craftingProfessions[CRAFT_PROF_ALCHEMIST] = 1
+	if(!craftingProfessions[CRAFT_PROF_COOK])
+		craftingProfessions[CRAFT_PROF_COOK] = 1
+	if(!craftingProfessions[CRAFT_PROF_BARTENDER])
+		craftingProfessions[CRAFT_PROF_BARTENDER] = 1
+	if(!craftingProfessions[CRAFT_PROF_MATERIA])
+		craftingProfessions[CRAFT_PROF_MATERIA] = 1
+	if(!craftingProfessions[CRAFT_PROF_ENGINEER])
+		craftingProfessions[CRAFT_PROF_ENGINEER] = 1
+
+/**
  * Learn a new crafting profession
  * Returns TRUE if successful
  */

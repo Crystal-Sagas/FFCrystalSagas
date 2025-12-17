@@ -118,8 +118,14 @@
 	if(!(user in view(1, src)))
 		return FALSE
 
-	// Check perk/skill requirement
-	if(requiredPerk && !user.check_perk(requiredPerk))
+	// Check gathering profession requirement (new system)
+	// First, ensure player has gathering professions initialized
+	if(!user.gatheringProfessions)
+		user.initializeGatheringProfessions()
+
+	// Map the gathering skill to a profession and check
+	var/profession = skillToGatheringProfession(gatheringSkill)
+	if(profession && !user.hasGatheringProfession(profession, 1))
 		if(!silent)
 			user << output(MSG_GATHER_NO_SKILL, "oocout")
 		return FALSE
@@ -139,11 +145,17 @@
 	if(!canHarvest(user, FALSE))
 		return FALSE
 
+	// Get the gathering profession for this node
+	var/profession = skillToGatheringProfession(gatheringSkill)
+
 	// Get equipped tool and calculate bonuses
 	var/obj/item/tool = getEquippedTool(user)
 	var/toolTier = tool ? tool:toolTier : TOOL_TIER_NONE
 	var/timeReduction = toolTier * TOOL_TIME_REDUCTION_PER_TIER
 	var/yieldBonus = toolTier * TOOL_YIELD_BONUS_PER_TIER
+
+	// Add gathering level speed bonus
+	timeReduction += user.getGatheringSpeedBonus(profession)
 
 	// Start gathering message
 	user << output(MSG_GATHER_START, "oocout")
@@ -172,9 +184,15 @@
 		user << output(MSG_GATHER_FAIL, "oocout")
 		return FALSE
 
-	// Calculate bonuses
+	// Calculate bonuses based on gathering profession level
 	var/bonusRolls = 0
-	if(expertPerk && user.check_perk(expertPerk))
+
+	// Expert level (50+) grants bonus rolls
+	if(user.isGatheringExpert(profession))
+		bonusRolls += 1
+
+	// Random bonus roll chance based on level
+	if(prob(user.getGatheringBonusRollChance(profession)))
 		bonusRolls += 1
 
 	// Richness affects base yield
@@ -182,6 +200,9 @@
 
 	// Tool tier adds to yield
 	yieldMultiplier += (yieldBonus / 100)
+
+	// Gathering profession level adds to yield
+	yieldMultiplier *= user.getGatheringYieldBonus(profession)
 
 	// Generate and give drops
 	var/list/drops = table.generateDrops(0, bonusRolls)
@@ -201,6 +222,9 @@
 
 	// Increment player's daily count
 	user.minednodes += 1
+
+	// Gain gathering experience
+	user.gainGatheringExp(profession, 1)
 
 	// Refresh crafting UI
 	UpdateCraft(user)

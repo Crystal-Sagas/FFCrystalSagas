@@ -728,8 +728,6 @@
 	<!-- Quick Actions -->
 	<div class="craft-actions">
 		<a href="byond://?src=[playerRef];action=spawnstation" class="craft-action-btn">🏭 Spawn Station</a>
-		<a href="byond://?src=[playerRef];action=spawntestmaterials" class="craft-action-btn secondary">📦 Test Materials</a>
-		<a href="byond://?src=[playerRef];action=learnallprofessions" class="craft-action-btn secondary">📚 Learn All</a>
 	</div>
 </div>
 "}
