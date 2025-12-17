@@ -425,7 +425,7 @@ obj/item/Weapon/verb
 								a.amount-=10
 								usr.craftingactive=0
 								src.desc+=" | Silver gilded."
-								view()<<output("[usr.name] applies a <b>Silver</b> gilding to [storename]","icout")
+								viewBroadcast(usr, "[usr.name] applies a <b>Silver</b> gilding to [storename]", "ic")
 								UpdateCraft(usr)
 							else
 								alert(usr,"Applying a Silver gilding requires at least 10 Silver ore.")
@@ -441,7 +441,7 @@ obj/item/Weapon/verb
 								a.amount-=10
 								usr.craftingactive=0
 								src.desc+=" | Gold gilded."
-								view()<<output("[usr.name] applies a <b>Gold</b> gilding to [storename]","icout")
+								viewBroadcast(usr, "[usr.name] applies a <b>Gold</b> gilding to [storename]", "ic")
 								UpdateCraft(usr)
 							else
 								alert(usr,"Applying a Gold gilding requires at least 10 Gold ore.")
@@ -457,7 +457,7 @@ obj/item/Weapon/verb
 								a.amount-=10
 								usr.craftingactive=0
 								src.desc+=" | Platinum gilded."
-								view()<<output("[usr.name] applies a <b>Platinum</b> gilding to [storename]","icout")
+								viewBroadcast(usr, "[usr.name] applies a <b>Platinum</b> gilding to [storename]", "ic")
 								UpdateCraft(usr)
 							else
 								alert(usr,"Applying a Platinum gilding requires at least 10 Platinum ore.")
@@ -650,7 +650,7 @@ obj/item/verb
 										fgem.amount-=4
 										src.enchantment=" Enchanted(Novice) Fire Element"
 										src.enchanted=1
-										view()<<output("[usr.name] enchants their [src.name]","icout")
+										viewBroadcast(usr, "[usr.name] enchants their [src.name]", "ic")
 									else
 										alert(usr,"You don't have enough. You need at least 3 Fire Gems")
 								if("Intermediate")
@@ -659,7 +659,7 @@ obj/item/verb
 										src.enchantment=" Enchanted(Intermediate) Fire +1 to hit, latently."
 										src.addhit+=1
 										src.enchanted=1
-										view()<<output("[usr.name] enchants their [src.name]","icout")
+										viewBroadcast(usr, "[usr.name] enchants their [src.name]", "ic")
 									else
 										alert(usr,"You don't have enough. You need at least 8 Fire Gems")
 								if("Expert")
@@ -669,11 +669,7 @@ obj/item/verb
 										src.addhit+=1
 										src.adddam+=3
 										src.enchanted=1
-										view()<<output("[usr.name] enchants their [src.name]","icout")
-									else
-										alert(usr,"You don't have enough. You need at least 12 Fire Gems")
-
-						if("Ice")
+												viewBroadcast(usr, "[usr.name] enchants their [src.name]", "ic")
 							var/obj/item/igem = usr.Determinecraftmat("Ice Gem")
 							if(igem==null)
 								alert(usr,"You don't seem to have any Ice Gems")
@@ -684,7 +680,7 @@ obj/item/verb
 										igem.amount-=4
 										src.enchantment=" Enchanted(Novice) Ice Element"
 										src.enchanted=1
-										view()<<output("[usr.name] enchants their [src.name]","icout")
+										viewBroadcast(usr, "[usr.name] enchants their [src.name]", "ic")
 									else
 										alert(usr,"You don't have enough. You need at least 3 Ice Gems")
 								if("Intermediate")
@@ -693,7 +689,7 @@ obj/item/verb
 										src.enchantment=" Enchanted(Intermediate) Ice +1 to hit, latently."
 										src.addhit+=1
 										src.enchanted=1
-										view()<<output("[usr.name] enchants their [src.name]","icout")
+										viewBroadcast(usr, "[usr.name] enchants their [src.name]", "ic")
 									else
 										alert(usr,"You don't have enough. You need at least 8 Ice Gems")
 								if("Expert")
@@ -703,11 +699,7 @@ obj/item/verb
 										src.addhit+=1
 										src.adddam+=3
 										src.enchanted=1
-										view()<<output("[usr.name] enchants their [src.name]","icout")
-									else
-										alert(usr,"You don't have enough. You need at least 12 Ice Gems")
-
-						if("Thunder")
+												viewBroadcast(usr, "[usr.name] enchants their [src.name]", "ic")
 							var/obj/item/tgem = usr.Determinecraftmat("Thunder Gem")
 							if(tgem==null)
 								alert(usr,"You don't seem to have any Thunder Gems")
@@ -718,7 +710,7 @@ obj/item/verb
 										tgem.amount-=4
 										src.enchantment=" Enchanted(Novice) Thunder Element"
 										src.enchanted=1
-										view()<<output("[usr.name] enchants their [src.name]","icout")
+										viewBroadcast(usr, "[usr.name] enchants their [src.name]", "ic")
 									else
 										alert(usr,"You don't have enough. You need at least 3 Thunder Gems")
 								if("Intermediate")
@@ -727,7 +719,7 @@ obj/item/verb
 										src.enchantment=" Enchanted(Intermediate) Thunder +1 to hit, latently."
 										src.addhit+=1
 										src.enchanted=1
-										view()<<output("[usr.name] enchants their [src.name]","icout")
+										viewBroadcast(usr, "[usr.name] enchants their [src.name]", "ic")
 									else
 										alert(usr,"You don't have enough. You need at least 8 Thunder Gems")
 								if("Expert")
@@ -737,11 +729,7 @@ obj/item/verb
 										src.addhit+=1
 										src.adddam+=3
 										src.enchanted=1
-										view()<<output("[usr.name] enchants their [src.name]","icout")
-									else
-										alert(usr,"You don't have enough. You need at least 12 Thunder Gems")
-
-						if("Water")
+												viewBroadcast(usr, "[usr.name] enchants their [src.name]", "ic")
 							var/obj/item/wgem = usr.Determinecraftmat("Water Gem")
 							if(wgem==null)
 								alert(usr,"You don't seem to have any Water Gems")
@@ -752,7 +740,7 @@ obj/item/verb
 										wgem.amount-=4
 										src.enchantment=" Enchanted(Novice) Water Element"
 										src.enchanted=1
-										view()<<output("[usr.name] enchants their [src.name]","icout")
+										viewBroadcast(usr, "[usr.name] enchants their [src.name]", "ic")
 									else
 										alert(usr,"You don't have enough. You need at least 3 Water Gems")
 								if("Intermediate")
@@ -761,7 +749,7 @@ obj/item/verb
 										src.enchantment=" Enchanted(Intermediate) Water +1 to hit, latently."
 										src.addhit+=1
 										src.enchanted=1
-										view()<<output("[usr.name] enchants their [src.name]","icout")
+										viewBroadcast(usr, "[usr.name] enchants their [src.name]", "ic")
 									else
 										alert(usr,"You don't have enough. You need at least 8 Water Gems")
 								if("Expert")
@@ -771,11 +759,7 @@ obj/item/verb
 										src.addhit+=1
 										src.adddam+=3
 										src.enchanted=1
-										view()<<output("[usr.name] enchants their [src.name]","icout")
-									else
-										alert(usr,"You don't have enough. You need at least 12 Water Gems")
-
-						if("Wind")
+												viewBroadcast(usr, "[usr.name] enchants their [src.name]", "ic")
 							var/obj/item/wigem = usr.Determinecraftmat("Wind Gem")
 							if(wigem==null)
 								alert(usr,"You don't seem to have any Wind Gems")
@@ -786,7 +770,7 @@ obj/item/verb
 										wigem.amount-=4
 										src.enchantment=" Enchanted(Novice) Wind Element"
 										src.enchanted=1
-										view()<<output("[usr.name] enchants their [src.name]","icout")
+										viewBroadcast(usr, "[usr.name] enchants their [src.name]", "ic")
 									else
 										alert(usr,"You don't have enough. You need at least 3 Wind Gems")
 								if("Intermediate")
@@ -795,7 +779,7 @@ obj/item/verb
 										src.enchantment=" Enchanted(Intermediate) Wind +1 to hit, latently."
 										src.addhit+=1
 										src.enchanted=1
-										view()<<output("[usr.name] enchants their [src.name]","icout")
+										viewBroadcast(usr, "[usr.name] enchants their [src.name]", "ic")
 									else
 										alert(usr,"You don't have enough. You need at least 8 Wind Gems")
 								if("Expert")
@@ -805,11 +789,7 @@ obj/item/verb
 										src.addhit+=1
 										src.adddam+=3
 										src.enchanted=1
-										view()<<output("[usr.name] enchants their [src.name]","icout")
-									else
-										alert(usr,"You don't have enough. You need at least 12 Wind Gems")
-
-						if("Earth")
+												viewBroadcast(usr, "[usr.name] enchants their [src.name]", "ic")
 							var/obj/item/egem = usr.Determinecraftmat("Earth Gem")
 							if(egem==null)
 								alert(usr,"You don't seem to have any Earth Gems")
@@ -820,7 +800,7 @@ obj/item/verb
 										egem.amount-=4
 										src.enchantment=" Enchanted(Novice) Earth Element"
 										src.enchanted=1
-										view()<<output("[usr.name] enchants their [src.name]","icout")
+										viewBroadcast(usr, "[usr.name] enchants their [src.name]", "ic")
 									else
 										alert(usr,"You don't have enough. You need at least 3 Earth Gems")
 								if("Intermediate")
@@ -829,7 +809,7 @@ obj/item/verb
 										src.enchantment=" Enchanted(Intermediate) Earth +1 to hit, latently."
 										src.addhit+=1
 										src.enchanted=1
-										view()<<output("[usr.name] enchants their [src.name]","icout")
+										viewBroadcast(usr, "[usr.name] enchants their [src.name]", "ic")
 									else
 										alert(usr,"You don't have enough. You need at least 8 Earth Gems")
 								if("Expert")
@@ -839,11 +819,7 @@ obj/item/verb
 										src.addhit+=1
 										src.adddam+=3
 										src.enchanted=1
-										view()<<output("[usr.name] enchants their [src.name]","icout")
-									else
-										alert(usr,"You don't have enough. You need at least 12 Earth Gems")
-
-						if("Bio")
+												viewBroadcast(usr, "[usr.name] enchants their [src.name]", "ic")
 							var/obj/item/bgem = usr.Determinecraftmat("Bio Gem")
 							if(bgem==null)
 								alert(usr,"You don't seem to have any Bio Gems")
@@ -854,7 +830,7 @@ obj/item/verb
 										bgem.amount-=4
 										src.enchantment=" Enchanted(Novice) Bio Element"
 										src.enchanted=1
-										view()<<output("[usr.name] enchants their [src.name]","icout")
+										viewBroadcast(usr, "[usr.name] enchants their [src.name]", "ic")
 									else
 										alert(usr,"You don't have enough. You need at least 3 Bio Gems")
 								if("Intermediate")
@@ -863,7 +839,7 @@ obj/item/verb
 										src.enchantment=" Enchanted(Intermediate) Bio +1 to hit, latently."
 										src.addhit+=1
 										src.enchanted=1
-										view()<<output("[usr.name] enchants their [src.name]","icout")
+										viewBroadcast(usr, "[usr.name] enchants their [src.name]", "ic")
 									else
 										alert(usr,"You don't have enough. You need at least 8 Bio Gems")
 								if("Expert")
@@ -873,11 +849,7 @@ obj/item/verb
 										src.addhit+=1
 										src.adddam+=3
 										src.enchanted=1
-										view()<<output("[usr.name] enchants their [src.name]","icout")
-									else
-										alert(usr,"You don't have enough. You need at least 12 Bio Gems")
-
-						if("Holy")
+												viewBroadcast(usr, "[usr.name] enchants their [src.name]", "ic")
 							var/obj/item/hgem = usr.Determinecraftmat("Holy Gem")
 							if(hgem==null)
 								alert(usr,"You don't seem to have any Holy Gems")
@@ -888,7 +860,7 @@ obj/item/verb
 										hgem.amount-=4
 										src.enchantment=" Enchanted(Novice) Holy Element"
 										src.enchanted=1
-										view()<<output("[usr.name] enchants their [src.name]","icout")
+										viewBroadcast(usr, "[usr.name] enchants their [src.name]", "ic")
 									else
 										alert(usr,"You don't have enough. You need at least 3 Holy Gems")
 								if("Intermediate")
@@ -897,7 +869,7 @@ obj/item/verb
 										src.enchantment=" Enchanted(Intermediate) Holy +1 to hit, latently."
 										src.addhit+=1
 										src.enchanted=1
-										view()<<output("[usr.name] enchants their [src.name]","icout")
+										viewBroadcast(usr, "[usr.name] enchants their [src.name]", "ic")
 									else
 										alert(usr,"You don't have enough. You need at least 8 Holy Gems")
 								if("Expert")
@@ -907,11 +879,7 @@ obj/item/verb
 										src.addhit+=1
 										src.adddam+=3
 										src.enchanted=1
-										view()<<output("[usr.name] enchants their [src.name]","icout")
-									else
-										alert(usr,"You don't have enough. You need at least 12 Holy Gems")
-
-						if("Dark")
+												viewBroadcast(usr, "[usr.name] enchants their [src.name]", "ic")
 							var/obj/item/dgem = usr.Determinecraftmat("Dark Gem")
 							if(dgem==null)
 								alert(usr,"You don't seem to have any Dark Gems")
@@ -922,7 +890,7 @@ obj/item/verb
 										dgem.amount-=4
 										src.enchantment=" Enchanted(Novice) Dark Element"
 										src.enchanted=1
-										view()<<output("[usr.name] enchants their [src.name]","icout")
+										viewBroadcast(usr, "[usr.name] enchants their [src.name]", "ic")
 									else
 										alert(usr,"You don't have enough. You need at least 3 Dark Gems")
 								if("Intermediate")
@@ -931,7 +899,7 @@ obj/item/verb
 										src.enchantment=" Enchanted(Intermediate) Dark +1 to hit, latently."
 										src.addhit+=1
 										src.enchanted=1
-										view()<<output("[usr.name] enchants their [src.name]","icout")
+										viewBroadcast(usr, "[usr.name] enchants their [src.name]", "ic")
 									else
 										alert(usr,"You don't have enough. You need at least 8 Dark Gems")
 								if("Expert")
@@ -941,11 +909,7 @@ obj/item/verb
 										src.addhit+=1
 										src.adddam+=3
 										src.enchanted=1
-										view()<<output("[usr.name] enchants their [src.name]","icout")
-									else
-										alert(usr,"You don't have enough. You need at least 12 Dark Gems")
-
-				if("Status")
+												viewBroadcast(usr, "[usr.name] enchants their [src.name]", "ic")
 					if(src.enchanted==1)
 						alert(usr,"This item already has a basic Enhantment applied.")
 						return

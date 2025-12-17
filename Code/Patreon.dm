@@ -33,7 +33,7 @@ obj/item
 							if(rando==1)
 								rando2=rand(1,3)
 								m.amount+=rando2
-								usr<<output("You gain [rando2] [m.name]/s","oocout")
+								chatTo(usr, "You gain [rando2] [m.name]/s", "ooc")
 					src.relocateToNull()
 
 

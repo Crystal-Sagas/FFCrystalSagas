@@ -77,7 +77,7 @@ var/global/list/mainMenuActions = list(
 			var/obj/item/I = locate(params["ref"])
 			if(I && (I in mob.contents))
 				// TODO: I.Use(mob) - implement when item system is ready
-				mob << "Item use not yet implemented for menu system."
+				chatTo(mob, "Item use not yet implemented for menu system.", "ooc")
 				mob.RefreshMainMenuTab("item")
 			return TRUE
 
@@ -91,9 +91,9 @@ var/global/list/mainMenuActions = list(
 		if("examineitem")
 			var/obj/item/I = locate(params["ref"])
 			if(I)
-				mob << "<b>[I.name]</b>"
+				chatTo(mob, "<b>[I.name]</b>", "ooc")
 				if(I.desc)
-					mob << I.desc
+					chatTo(mob, I.desc, "ooc")
 			return TRUE
 
 		// -------------------------------------------
@@ -139,17 +139,17 @@ var/global/list/mainMenuActions = list(
 			var/obj/perk/P = locate(params["ref"])
 			if(P)
 				// Use existing look_at if available
-				mob << "<b>[P.name]</b>"
+				chatTo(mob, "<b>[P.name]</b>", "ooc")
 				if(P.desc)
-					mob << P.desc
+					chatTo(mob, P.desc, "ooc")
 			return TRUE
 
 		if("viewmateria")
 			var/obj/item/Materia/Mat = locate(params["ref"])
 			if(Mat)
-				mob << "<b>[Mat.name]</b>"
+				chatTo(mob, "<b>[Mat.name]</b>", "ooc")
 				if(Mat.desc)
-					mob << Mat.desc
+					chatTo(mob, Mat.desc, "ooc")
 			return TRUE
 
 		// -------------------------------------------
@@ -181,7 +181,7 @@ var/global/list/mainMenuActions = list(
 
 		if("kickmember")
 			// TODO: Implement when party system is refactored
-			mob << "Party kick not yet implemented for menu system."
+			chatTo(mob, "Party kick not yet implemented for menu system.", "ooc")
 			return TRUE
 
 		// -------------------------------------------
@@ -217,8 +217,8 @@ var/global/list/mainMenuActions = list(
 
 		if("help")
 			// Show help commands
-			mob << "<b>Help - Available Commands:</b>"
-			mob << "Type 'commands' to see all available commands."
+			chatTo(mob, "<b>Help - Available Commands:</b>", "ooc")
+			chatTo(mob, "Type 'commands' to see all available commands.", "ooc")
 			return TRUE
 
 		// -------------------------------------------
@@ -242,8 +242,8 @@ var/global/list/mainMenuActions = list(
 		if("spawnstation")
 			// Spawn a universal test station at mob location
 			new/obj/crafting_station/universal(mob.loc)
-			mob << output("<font color='#00FF00'>Spawned a Universal Crafting Station at your location!</font>", "oocout")
-			mob << output("Click the station and use 'Use Station' to start crafting.", "oocout")
+			chatTo(mob, "<font color='#00FF00'>Spawned a Universal Crafting Station at your location!</font>", "ooc")
+			chatTo(mob, "Click the station and use 'Use Station' to start crafting.", "ooc")
 			return TRUE
 
 		// -------------------------------------------
@@ -276,7 +276,7 @@ var/global/list/mainMenuActions = list(
 /mob/proc/SetMainMenuTheme(theme)
 	// For now, just refresh the menu with the new theme
 	// Theme should be stored in client prefs when implemented
-	src << "Theme switching not yet fully implemented."
+	chatTo(src, "Theme switching not yet fully implemented.", "ooc")
 	// Refresh the menu to apply the theme
 	RefreshMainMenu()
 

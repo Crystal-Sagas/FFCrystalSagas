@@ -412,11 +412,11 @@
 			o.Savable=1
 		if(darecipe.robot==1)
 			o.owner=m.key
-			view() << output("<font color=[m.textcolor]><b>[m.name]<b></font> creates 1 <b><font color=#56ECC6>[o.name]</font></b>!","icout")
+			viewBroadcast(src, "<font color=[m.textcolor]><b>[m.name]<b></font> creates 1 <b><font color=#56ECC6>[o.name]</font></b>!", "ic")
 			UpdateCraft(m)
 			return
 		else
-			view() << output("<font color=[m.textcolor]><b>[m.name]<b></font> creates 1 <b><font color=#56ECC6>[o.name]</font></b>!","icout")
+			viewBroadcast(src, "<font color=[m.textcolor]><b>[m.name]<b></font> creates 1 <b><font color=#56ECC6>[o.name]</font></b>!", "ic")
 			UpdateCraft(m)
 			return
 	else

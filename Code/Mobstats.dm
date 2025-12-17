@@ -426,16 +426,16 @@ obj
 		DblClick()
 			if(src.rolltype=="Damage")
 				var/result=rand(src.range1,src.range2)+src.bonus
-				view()<<output("<font size=1><font color=[usr.textcolor]>[usr.name]</font> has rolled a <b>[src.d1]d[src.d2]</b> <font color=[usr.textcolor]><b>[src.name]</font> damage roll with a bonus of <b>[src.bonus]</b>! Result: <font color=#FB963C><b>[result]</font></b>","icout")
+				viewBroadcast(usr, "<font size=1><font color=[usr.textcolor]>[usr.name]</font> has rolled a <b>[src.d1]d[src.d2]</b> <font color=[usr.textcolor]><b>[src.name]</font> damage roll with a bonus of <b>[src.bonus]</b>! Result: <font color=#FB963C><b>[result]</font></b>", "ic")
 			if(src.rolltype=="Healing")
 				var/result=rand(src.range1,src.range2)+src.bonus
-				view()<<output("<font size=1><font color=[usr.textcolor]>[usr.name]</font> has rolled a <b>[src.d1]d[src.d2]</b> <font color=[usr.textcolor]><b>[src.name]</font> healing roll with a bonus of <b>[src.bonus]</b>! Result: <font color=#5FFB3C><b>[result]</font></b>","icout")
+				viewBroadcast(usr, "<font size=1><font color=[usr.textcolor]>[usr.name]</font> has rolled a <b>[src.d1]d[src.d2]</b> <font color=[usr.textcolor]><b>[src.name]</font> healing roll with a bonus of <b>[src.bonus]</b>! Result: <font color=#5FFB3C><b>[result]</font></b>", "ic")
 			if(src.rolltype=="Hit")
 				var/result=rand(src.range1,src.range2)+src.bonus
-				view()<<output("<font size=1><font color=[usr.textcolor]>[usr.name]</font> has rolled a <b>[src.d1]d[src.d2]</b> <font color=[usr.textcolor]><b>[src.name]</font> to hit roll with a bonus of <b>[src.bonus]</b>! Result: <font color=#53FAC3><b>[result]</font></b>","icout")
+				viewBroadcast(usr, "<font size=1><font color=[usr.textcolor]>[usr.name]</font> has rolled a <b>[src.d1]d[src.d2]</b> <font color=[usr.textcolor]><b>[src.name]</font> to hit roll with a bonus of <b>[src.bonus]</b>! Result: <font color=#53FAC3><b>[result]</font></b>", "ic")
 			if(src.rolltype=="Other")
 				var/result=rand(src.range1,src.range2)+src.bonus
-				view()<<output("<font size=1><font color=[usr.textcolor]>[usr.name]</font> has rolled a <b>[src.d1]d[src.d2]</b> <font color=[usr.textcolor]><b>[src.name]</font> roll with a bonus of <b>[src.bonus]</b>! Result: <font color=#A2D1F1><b>[result]</font></b>","icout")
+				viewBroadcast(usr, "<font size=1><font color=[usr.textcolor]>[usr.name]</font> has rolled a <b>[src.d1]d[src.d2]</b> <font color=[usr.textcolor]><b>[src.name]</font> roll with a bonus of <b>[src.bonus]</b>! Result: <font color=#A2D1F1><b>[result]</font></b>", "ic")
 				return
 obj
 	customroll
@@ -465,7 +465,7 @@ mob
 		Ping(mob/m in view(usr))
 			if(m.client)
 				winset(m,"default", "flash=-1")
-				m<<output("<b>You've been pinged by [usr]!</b>","oocout")
+				chatTo(m, "<b>You've been pinged by [usr]!</b>", "ooc")
 		// TODO: CheckMods verb removed - globalmod system deprecated
 		// This was used to view global mods on players
 		// New equipment system in Code/__Game/Equipment handles this differently

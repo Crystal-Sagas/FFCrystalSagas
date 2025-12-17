@@ -256,16 +256,16 @@ obj
 					FrequencySelector=src.Frequency
 					for(var/mob/E in hearers(12,usr))
 						for(var/obj/Communication/C in usr)
-							E<<output("<font color=[usr.textcolor]>[usr] speaks into a [src]: [html_encode(Z)],","icout")
+							chatTo(E, "<font color=[usr.textcolor]>[usr] speaks into a [src]: [html_encode(Z)],", "ic")
 					for(var/mob/M in world)
 						for(var/obj/item/Machinist/Linkshell/Q in M)
 							if(Q.Frequency==FrequencySelector)
-								M<<output("<font color=green><b>([src.name])</b> [usr.name]: [html_encode(Z)]","icout")
+								chatTo(M, "<font color=green><b>([src.name])</b> [usr.name]: [html_encode(Z)]", "ic")
 								Log(M.ChatLog(),"<font color=green>([src.name])[usr]([usr.key]) says: [html_encode(Z)]")
 					for(var/obj/item/Machinist/Speaker/X in world)
 						if(X.Frequency==FrequencySelector&&X.Active==1)
 							for(var/mob/Y in hearers(12,usr))
-								Y<<output("<font color=green><b>([X.name])</b> [usr.name]: [html_encode(Z)]","icout")
+								chatTo(Y, "<font color=green><b>([X.name])</b> [usr.name]: [html_encode(Z)]", "ic")
 				verb/LinkshellFrequency()
 					set src in usr
 					src.Frequency=input(usr,"Change your Communicator frequency to what?","Frequency",Frequency)as num
@@ -278,7 +278,7 @@ obj
 							return
 						usr.visible_message(
 							"<b>[usr]</b>reinvigorates a small patch of land with <b><font color='#A3F875'>Science</b></font> to refresh the Natural Resources in an immediate vicinity!",
-							stream = "icout",
+							stream = "ic",
 							color = TRUE
 						)
 						usr.Lifestreamraincooldown=1
@@ -462,7 +462,7 @@ obj
 	var/destroychoice=input(usr,"Are you sure you wish to destroy this Robot?") as anything in destroya
 	switch(destroychoice)
 		if("Yes")
-			view() << output("<font color=[usr.textcolor]><b>[src]</b></font> has been destroyed!","icout")
+			viewBroadcast(src, "<font color=[usr.textcolor]><b>[src]</b></font> has been destroyed!", "ic")
 			del src
 		if("No")
 			return

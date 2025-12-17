@@ -12,7 +12,7 @@ obj/markers
 					if(src in m.contents)
 						m.contents-=src
 						usr.ViewStatus(m)
-						view(m) << output("[usr.name] has removed [src.name] from [m.name]!","icout")
+						viewBroadcast(m, "[usr.name] has removed [src.name] from [m.name]!", "ic")
 						RefreshStatus(m, usr)
 						del src
 			if("Cancel")
@@ -104,119 +104,119 @@ atom
 						return
 					var/obj/markers/poison/p2=new
 					a.contents+=p2
-					view(a) << output("[b.name] has applied [p2.name] to [a.name]!","icout")
+					viewBroadcast(a, "[b.name] has applied [p2.name] to [a.name]!", "ic")
 				if("Silence")
 					for(var/obj/markers/silence/s in a.contents)
 						alert("Silence is already applied")
 						return
 					var/obj/markers/silence/p2=new
 					a.contents+=p2
-					view(a) << output("[b.name] has applied [p2.name] to [a.name]!","icout")
+					viewBroadcast(a, "[b.name] has applied [p2.name] to [a.name]!", "ic")
 				if("Wet")
 					for(var/obj/markers/wet/s in a.contents)
 						alert("Wet is already applied")
 						return
 					var/obj/markers/wet/p2=new
 					a.contents+=p2
-					view(a) << output("[b.name] has applied [p2.name] to [a.name]!","icout")
+					viewBroadcast(a, "[b.name] has applied [p2.name] to [a.name]!", "ic")
 				if("Paralyze")
 					for(var/obj/markers/paralysis/s in a.contents)
 						alert("Paralysis is already applied")
 						return
 					var/obj/markers/paralysis/p2=new
 					a.contents+=p2
-					view(a) << output("[b.name] has applied [p2.name] to [a.name]!","icout")
+					viewBroadcast(a, "[b.name] has applied [p2.name] to [a.name]!", "ic")
 				if("Berserk")
 					for(var/obj/markers/berserk/s in a.contents)
 						alert("Berserk is already applied")
 						return
 					var/obj/markers/berserk/p2=new
 					a.contents+=p2
-					view(a) << output("[b.name] has applied [p2.name] to [a.name]!","icout")
+					viewBroadcast(a, "[b.name] has applied [p2.name] to [a.name]!", "ic")
 				if("Burn")
 					for(var/obj/markers/burn/s in a.contents)
 						alert("Burn is already applied")
 						return
 					var/obj/markers/burn/p2=new
 					a.contents+=p2
-					view(a) << output("[b.name] has applied [p2.name] to [a.name]!","icout")
+					viewBroadcast(a, "[b.name] has applied [p2.name] to [a.name]!", "ic")
 				if("Stun")
 					for(var/obj/markers/stun/s in a.contents)
 						alert("Stun is already applied")
 						return
 					var/obj/markers/stun/p2=new
 					a.contents+=p2
-					view(a) << output("[b.name] has applied [p2.name] to [a.name]!","icout")
+					viewBroadcast(a, "[b.name] has applied [p2.name] to [a.name]!", "ic")
 				if("Break")
 					for(var/obj/markers/stone/s in a.contents)
 						alert("Break is already applied")
 						return
 					var/obj/markers/stone/p2=new
 					a.contents+=p2
-					view(a) << output("[b.name] has applied [p2.name] to [a.name]!","icout")
+					viewBroadcast(a, "[b.name] has applied [p2.name] to [a.name]!", "ic")
 				if("Doom")
 					for(var/obj/markers/doom/s in a.contents)
 						alert("Doom is already applied")
 						return
 					var/obj/markers/doom/p2=new
 					a.contents+=p2
-					view(a) << output("[b.name] has applied [p2.name] to [a.name]!","icout")
+					viewBroadcast(a, "[b.name] has applied [p2.name] to [a.name]!", "ic")
 				if("Bleed")
 					for(var/obj/markers/bleed/s in a.contents)
 						alert("Bleed is already applied")
 						return
 					var/obj/markers/bleed/p2=new
 					a.contents+=p2
-					view(a) << output("[b.name] has applied [p2.name] to [a.name]!","icout")
+					viewBroadcast(a, "[b.name] has applied [p2.name] to [a.name]!", "ic")
 				if("Whorl")
 					for(var/obj/markers/whorl/s in a.contents)
 						alert("Whorl is already applied")
 						return
 					var/obj/markers/whorl/p2=new
 					a.contents+=p2
-					view(a) << output("[b.name] has applied [p2.name] to [a.name]!","icout")
+					viewBroadcast(a, "[b.name] has applied [p2.name] to [a.name]!", "ic")
 				if("Squall")
 					for(var/obj/markers/squall/s in a.contents)
 						alert("Squall is already applied")
 						return
 					var/obj/markers/squall/p2=new
 					a.contents+=p2
-					view(a) << output("[b.name] has applied [p2.name] to [a.name]!","icout")
+					viewBroadcast(a, "[b.name] has applied [p2.name] to [a.name]!", "ic")
 				if("Frostbite")
 					for(var/obj/markers/frostbite/s in a.contents)
 						alert("Frostbite is already applied")
 						return
 					var/obj/markers/frostbite/p2=new
 					a.contents+=p2
-					view(a) << output("[b.name] has applied [p2.name] to [a.name]!","icout")
+					viewBroadcast(a, "[b.name] has applied [p2.name] to [a.name]!", "ic")
 				if("Weakness")
 					for(var/obj/markers/weakness/s in a.contents)
 						alert("Weakness is already applied")
 						return
 					var/obj/markers/weakness/p2=new
 					a.contents+=p2
-					view(a) << output("[b.name] has applied [p2.name] to [a.name]!","icout")
+					viewBroadcast(a, "[b.name] has applied [p2.name] to [a.name]!", "ic")
 				if("Blind")
 					for(var/obj/markers/blind/s in a.contents)
 						alert("Blind is already applied")
 						return
 					var/obj/markers/blind/p2=new
 					a.contents+=p2
-					view(a) << output("[b.name] has applied [p2.name] to [a.name]!","icout")
+					viewBroadcast(a, "[b.name] has applied [p2.name] to [a.name]!", "ic")
 				if("Slow")
 					for(var/obj/markers/slow/s in a.contents)
 						alert("Slow is already applied")
 						return
 					var/obj/markers/slow/p2=new
 					a.contents+=p2
-					view(a) << output("[b.name] has applied [p2.name] to [a.name]!","icout")
+					viewBroadcast(a, "[b.name] has applied [p2.name] to [a.name]!", "ic")
 				if("Stop")
 					for(var/obj/markers/stop/s in a.contents)
 						alert("Stop is already applied")
 						return
 					var/obj/markers/stop/p2=new
 					a.contents+=p2
-					view(a) << output("[b.name] has applied [p2.name] to [a.name]!","icout")
+					viewBroadcast(a, "[b.name] has applied [p2.name] to [a.name]!", "ic")
 			RefreshStatus(a)
 
 		Positionadj(var/atom/movable/a)
@@ -260,7 +260,7 @@ atom
 					choose.x=a.x
 					choose.y=a.y
 					choose.z=1
-					view(a) << output("[b.name] has removed [choose.name] from [a.name]!","icout")
+					viewBroadcast(a, "[b.name] has removed [choose.name] from [a.name]!", "ic")
 					sleep(1)
 					choose.relocateToNull()
 		RefreshStatus(var/atom/a, var/atom/b)

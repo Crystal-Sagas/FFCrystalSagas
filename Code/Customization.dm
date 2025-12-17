@@ -133,10 +133,10 @@ mob
 		SeeRPFlags()
 			if(usr.see_invisible==1)
 				usr.see_invisible=0
-				usr<<output("RP flags are now invisible","oocout")
+				chatTo(usr, "RP flags are now invisible", "ooc")
 			else if(usr.see_invisible==0)
 				usr.see_invisible=1
-				usr<<output("RP flags are now visible","oocout")
+				chatTo(usr, "RP flags are now visible", "ooc")
 		CustomBase()
 			var/newicon = input(usr,"What would you like to change your Base icon to?") as icon
 			usr.icon=newicon

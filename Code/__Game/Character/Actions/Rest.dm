@@ -32,17 +32,17 @@
 
 	// Prevent double resting
 	if(isResting)
-		src << output("You are already resting.", "oocout")
+		chatTo(src, "You are already resting.", "ooc")
 		return
 
 	// Check if in combat (if combat controller exists and is active)
 	if(combatController && combatController.isInCombat)
-		src << output("You cannot rest while in combat!", "oocout")
+		chatTo(src, "You cannot rest while in combat!", "ooc")
 		return
 
 	// Start resting
 	isResting = TRUE
-	src << output("You begin to rest...", "oocout")
+	chatTo(src, "You begin to rest...", "ooc")
 
 	// Wait for rest duration
 	sleep(REST_DURATION)
@@ -55,7 +55,7 @@
 	restoreResources()
 
 	isResting = FALSE
-	src << output("You feel refreshed and ready to continue!", "oocout")
+	chatTo(src, "You feel refreshed and ready to continue!", "ooc")
 
 /**
  * Cancel resting (called when taking damage or entering combat)
@@ -65,7 +65,7 @@
 		return
 
 	isResting = FALSE
-	src << output("Your rest was interrupted!", "oocout")
+	chatTo(src, "Your rest was interrupted!", "ooc")
 
 /**
  * Restore HP, MP, and SP to max values
@@ -75,19 +75,19 @@
 	if(health)
 		var/hpRestore = round(health.maxValue * (REST_HP_PERCENT / 100))
 		health.setValue(health.maxValue)
-		src << output("Restored [hpRestore] HP.", "oocout")
+		chatTo(src, "Restored [hpRestore] HP.", "ooc")
 
 	// Restore MP
 	if(mana)
 		var/mpRestore = round(mana.maxValue * (REST_MP_PERCENT / 100))
 		mana.setValue(mana.maxValue)
-		src << output("Restored [mpRestore] MP.", "oocout")
+		chatTo(src, "Restored [mpRestore] MP.", "ooc")
 
 	// Restore SP
 	if(stamina)
 		var/spRestore = round(stamina.maxValue * (REST_SP_PERCENT / 100))
 		stamina.setValue(stamina.maxValue)
-		src << output("Restored [spRestore] SP.", "oocout")
+		chatTo(src, "Restored [spRestore] SP.", "ooc")
 
 	// Refresh the main menu if it's open to show updated values
 	if(mainMenuOpen)

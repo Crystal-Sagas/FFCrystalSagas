@@ -248,7 +248,7 @@ obj
 						if(src.FactionHealth<0)
 							src.FactionHealth=0
 				if(src.FactionHealth==0)
-					world << output("<b>The faction [src.name] has been reduced to 0 Infrastructure HP, and will be razed!","icout")
+					worldBroadcast("<b>The faction [src.name] has been reduced to 0 Infrastructure HP, and will be razed!", "ic")
 			Upgradefaction()
 				set name="Upgrade Faction"
 				set src in world
@@ -348,142 +348,143 @@ obj
 							var/gem1=rand(1,20)
 							for(var/obj/item/material/synthesis/Stone/a in usr.contents)
 								a.amount+=20
-								usr << output("You have gained 20 [a]!","oocout")
+								chatTo(usr, "You have gained 20 [a]!", "ooc")
 							if(random1>=1 && random1<4)
 								for(var/obj/item/material/ore/Bronze/a in usr.contents)
 									a.amount+=1
-									usr << output("You have gained 1 [a]!","oocout")
+									chatTo(usr, "You have gained 1 [a]!", "ooc")
 							if(random1>=4 && random1<6)
 								for(var/obj/item/material/ore/Iron/a in usr.contents)
 									a.amount+=1
-									usr << output("You have gained 1 [a]!","oocout")
+									chatTo(usr, "You have gained 1 [a]!", "ooc")
 							if(random1>=6 && random1<8)
 								for(var/obj/item/material/ore/Steel/a in usr.contents)
 									a.amount+=1
-									usr << output("You have gained 1 [a]!","oocout")
+									chatTo(usr, "You have gained 1 [a]!", "ooc")
 							if(random1>=8 && random1<11)
 								for(var/obj/item/material/ore/Mythril/a in usr.contents)
 									a.amount+=1
-									usr << output("You have gained 1 [a]!","oocout")
+									chatTo(usr, "You have gained 1 [a]!", "ooc")
 							if(random2>=1 && random2<4)
 								for(var/obj/item/material/ore/Bronze/a in usr.contents)
 									a.amount+=1
-									usr << output("You have gained 1 [a]!","oocout")
+									chatTo(usr, "You have gained 1 [a]!", "ooc")
 							if(random2>=4 && random2<6)
 								for(var/obj/item/material/ore/Iron/a in usr.contents)
 									a.amount+=1
-									usr << output("You have gained 1 [a]!","oocout")
+									chatTo(usr, "You have gained 1 [a]!", "ooc")
 							if(random2>=6 && random2<8)
 								for(var/obj/item/material/ore/Steel/a in usr.contents)
 									a.amount+=1
-									usr << output("You have gained 1 [a]!","oocout")
+									chatTo(usr, "You have gained 1 [a]!", "ooc")
 							if(random2>=8 && random2<11)
 								for(var/obj/item/material/ore/Mythril/a in usr.contents)
 									a.amount+=1
-									usr << output("You have gained 1 [a]!","oocout")
+									chatTo(usr, "You have gained 1 [a]!", "ooc")
 							if(random3>=1 && random3<4)
 								for(var/obj/item/material/ore/Bronze/a in usr.contents)
 									a.amount+=1
-									usr << output("You have gained 1 [a]!","oocout")
+									chatTo(usr, "You have gained 1 [a]!", "ooc")
 							if(random3>=4 && random3<6)
 								for(var/obj/item/material/ore/Iron/a in usr.contents)
 									a.amount+=1
-									usr << output("You have gained 1 [a]!","oocout")
+									chatTo(usr, "You have gained 1 [a]!", "ooc")
 							if(random3>=6 && random3<8)
 								for(var/obj/item/material/ore/Steel/a in usr.contents)
 									a.amount+=1
-									usr << output("You have gained 1 [a]!","oocout")
+									chatTo(usr, "You have gained 1 [a]!", "ooc")
 							if(random3>=8 && random3<11)
 								for(var/obj/item/material/ore/Mythril/a in usr.contents)
 									a.amount+=1
-									usr << output("You have gained 1 [a]!","oocout")
+									chatTo(usr, "You have gained 1 [a]!", "ooc")
 							if(gem1>=1 && gem1<4)
 								for(var/obj/item/material/synthesis/ThunderGem/a in usr.contents)
 									a.amount+=1
-									usr << output("You have gained 1 [a]!","oocout")
+									chatTo(usr, "You have gained 1 [a]!", "ooc")
 							if(gem1>=4 && gem1<6)
 								for(var/obj/item/material/synthesis/FireGem/a in usr.contents)
 									a.amount+=1
-									usr << output("You have gained 1 [a]!","oocout")
+									chatTo(usr, "You have gained 1 [a]!", "ooc")
 							if(gem1>=6 && gem1<6)
 								for(var/obj/item/material/synthesis/WaterGem/a in usr.contents)
 									a.amount+=1
-									usr << output("You have gained 1 [a]!","oocout")
+									chatTo(usr, "You have gained 1 [a]!", "ooc")
 							if(gem1>=8 && gem1<12)
 								for(var/obj/item/material/synthesis/EarthGem/a in usr.contents)
 									a.amount+=1
-									usr << output("You have gained 1 [a]!","oocout")
+									chatTo(usr, "You have gained 1 [a]!", "ooc")
 							if(gem1>=12 && gem1<15)
 								for(var/obj/item/material/synthesis/IceGem/a in usr.contents)
 									a.amount+=1
-									usr << output("You have gained 1 [a]!","oocout")
+									chatTo(usr, "You have gained 1 [a]!", "ooc")
 							if(gem1>=15 && gem1<18)
 								for(var/obj/item/material/synthesis/WindGem/a in usr.contents)
 									a.amount+=1
-									usr << output("You have gained 1 [a]!","oocout")
+									chatTo(usr, "You have gained 1 [a]!", "ooc")
 							if(gem1>=18 && gem1<=20)
 								for(var/obj/item/material/synthesis/BioGem/a in usr.contents)
 									a.amount+=1
-									usr << output("You have gained 1 [a]!","oocout")
+									chatTo(usr, "You have gained 1 [a]!", "ooc")
 						if(src.Loghouse==1)
 							for(var/obj/item/material/synthesis/Wood/a in usr.contents)
 								a.amount+=20
-								usr << output("You have gained 20 [a]!","oocout")
+								chatTo(usr, "You have gained 20 [a]!", "ooc")
 						if(src.Lodge==1)
 							for(var/obj/item/material/synthesis/Leather/a in usr.contents)
 								a.amount+=15
-								usr << output("You have gained 15 [a]!","oocout")
+								chatTo(usr, "You have gained 15 [a]!", "ooc")
 						if(src.Commerce==1)
 							usr.addMoney(200)
-							usr << output("You have gained 200 Gil!","oocout")
+							chatTo(usr, "You have gained 200 Gil!", "ooc")
 						if(src.Treasury==1)
 							usr.addMoney(500)
-							usr << output("You have gained 500 Gil!","oocout")
+							chatTo(usr, "You have gained 500 Gil!", "ooc")
 						if(src.Farm==1)
 							var/herb=rand(1,10)
 							if(herb>=1 && herb < 2)
 								for(var/obj/item/material/herb/GysahlGreens/a in usr.contents)
 									a.amount+=4
-									usr << output("You have gained 4 [a]!","oocout")
+									chatTo(usr, "You have gained 4 [a]!", "ooc")
 							if(herb>=2 && herb < 3)
 								for(var/obj/item/material/herb/SharugGreens/a in usr.contents)
 									a.amount+=4
-									usr << output("You have gained 4 [a]!","oocout")
+									chatTo(usr, "You have gained 4 [a]!", "ooc")
 							if(herb>=3 && herb < 4)
 								for(var/obj/item/material/herb/AzouphGreens/a in usr.contents)
 									a.amount+=4
-									usr << output("You have gained 4 [a]!","oocout")
+									chatTo(usr, "You have gained 4 [a]!", "ooc")
 							if(herb>=5 && herb < 6)
 								for(var/obj/item/material/herb/SandorianCarrots/a in usr.contents)
 									a.amount+=4
-									usr << output("You have gained 4 [a]!","oocout")
+									chatTo(usr, "You have gained 4 [a]!", "ooc")
 							if(herb>=6 && herb < 7)
 								for(var/obj/item/material/herb/VompCarrots/a in usr.contents)
 									a.amount+=4
-									usr << output("You have gained 4 [a]!","oocout")
+									chatTo(usr, "You have gained 4 [a]!", "ooc")
 							if(herb>=7 && herb < 8)
 								for(var/obj/item/material/herb/ZeghamCarrots/a in usr.contents)
 									a.amount+=4
-									usr << output("You have gained 4 [a]!","oocout")
+									chatTo(usr, "You have gained 4 [a]!", "ooc")
 							if(herb>=8 && herb < 9)
 								for(var/obj/item/material/herb/GausebitGrass/a in usr.contents)
 									a.amount+=4
-									usr << output("You have gained 4 [a]!","oocout")
+									chatTo(usr, "You have gained 4 [a]!", "ooc")
 							if(herb>=9 && herb < 11)
 								for(var/obj/item/material/herb/GaridavWildgrass/a in usr.contents)
 									a.amount+=4
-									usr << output("You have gained 4 [a]!","oocout")
+									chatTo(usr, "You have gained 4 [a]!", "ooc")
 							for(var/obj/item/material/synthesis/Wool/a in usr.contents)
 								a.amount+=10
-								usr << output("You have gained 10 [a]!","oocout")
+								chatTo(usr, "You have gained 10 [a]!", "ooc")
 						if(src.Reactor==1)
 							for(var/obj/item/material/synthesis/RawMako/a in usr.contents)
 								a.amount+=1
-								usr << output("You have gained 1 [a]!","oocout")
+								chatTo(usr, "You have gained 1 [a]!", "ooc")
 						src.Collectcooldown=1
 						src.LastClicker=usr.name
 				if(src.Defensive==1)
-					view(usr) << output("<b><font color=[usr.textcolor]>[usr.name]</font><b> has flashed a Defensive Structure's effect:</b> [src.desc] | Multiple copies of this structure do not stack effects.","icout")
+					for(var/mob/m in view(usr))
+						chatTo(m, "<b><font color=[usr.textcolor]>[usr.name]</font><b> has flashed a Defensive Structure's effect:</b> [src.desc] | Multiple copies of this structure do not stack effects.", "ic")
 				if(src.Recruiter==1)
 					// TODO: Faction NPC recruitment system needs to be rebuilt with mob/npc types
 					alert(usr, "Faction ally recruitment is currently being reworked.")

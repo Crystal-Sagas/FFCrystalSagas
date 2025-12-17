@@ -177,12 +177,12 @@
 
 	// Verify requirements
 	if(!recipe.checkRequirements(materials))
-		crafter << output(MSG_CRAFT_NO_MATERIALS, "oocout")
+		chatTo(crafter, MSG_CRAFT_NO_MATERIALS, "ooc")
 		return null
 
 	// Validate recipe has archetype
 	if(!recipe.archetypeId)
-		crafter << output("Recipe has no archetype ID configured.", "oocout")
+		chatTo(crafter, "Recipe has no archetype ID configured.", "ooc")
 		return null
 
 	// Find best tier from primary materials
@@ -208,7 +208,7 @@
 
 	// Success message
 	var/msg = replacetext(MSG_CRAFT_SUCCESS, "%ITEM%", craftedItem.name)
-	crafter << output(msg, "oocout")
+	chatTo(crafter, msg, "ooc")
 
 	return craftedItem
 

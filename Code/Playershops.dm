@@ -163,7 +163,7 @@ obj/playershops
 						src.overlays+=choice.icon
 					if("Remove Money")
 						usr.addMoney(src.storedmon)
-						view() << output("[usr.name] collects [storedmon] from the shoptable","icout")
+						viewBroadcast(usr, "[usr.name] collects [storedmon] from the shoptable", "ic")
 						src.storedmon=0
 					if("Cancel")
 						return

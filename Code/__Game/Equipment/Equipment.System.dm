@@ -39,28 +39,28 @@
 		return FALSE
 
 	if(!(item in user.contents))
-		user << output("<font color='red'>You don't have that item.</font>", "oocout")
+		chatTo(user, "<font color='red'>You don't have that item.</font>", "ooc")
 		return FALSE
 
 	// Check if already equipped
 	if(item.equipped)
-		user << output("<font color='yellow'>That item is already equipped.</font>", "oocout")
+		chatTo(user, "<font color='yellow'>That item is already equipped.</font>", "ooc")
 		return FALSE
 
 	// Determine equipment type and slot
 	var/equipSlot = getEquipSlot(item)
 	if(!equipSlot)
-		user << output("<font color='red'>That item cannot be equipped.</font>", "oocout")
+		chatTo(user, "<font color='red'>That item cannot be equipped.</font>", "ooc")
 		return FALSE
 
 	// Check if user can equip this weapon type
 	if(!canEquipWeaponType(user, item))
-		user << output("<font color='red'>You cannot equip [item.weapontype]s.</font>", "oocout")
+		chatTo(user, "<font color='red'>You cannot equip [item.weapontype]s.</font>", "ooc")
 		return FALSE
 
 	// Check rank requirements
 	if(!checkEquipRankRequirement(user, item))
-		user << output("<font color='red'>You are too low of a rank to equip that.</font>", "oocout")
+		chatTo(user, "<font color='red'>You are too low of a rank to equip that.</font>", "ooc")
 		return FALSE
 
 	// Check class restrictions (e.g., Monk can't wear armor)
@@ -108,7 +108,7 @@
 		return FALSE
 
 	if(!item.equipped)
-		user << output("<font color='yellow'>That item is not equipped.</font>", "oocout")
+		chatTo(user, "<font color='yellow'>That item is not equipped.</font>", "ooc")
 		return FALSE
 
 	// Find and clear the slot
@@ -217,19 +217,19 @@
 		else if(!user.lefthand)
 			targetSlot = EQUIP_SLOT_LEFTHAND
 		else
-			user << output("<font color='yellow'>Both hands are full. Unequip something first.</font>", "oocout")
+			chatTo(user, "<font color='yellow'>Both hands are full. Unequip something first.</font>", "ooc")
 			return FALSE
 
 	switch(targetSlot)
 		if(EQUIP_SLOT_RIGHTHAND)
 			if(user.righthand)
-				user << output("<font color='yellow'>Your right hand is occupied.</font>", "oocout")
+				chatTo(user, "<font color='yellow'>Your right hand is occupied.</font>", "ooc")
 				return FALSE
 			user.righthand = item
 			return TRUE
 		if(EQUIP_SLOT_LEFTHAND)
 			if(user.lefthand)
-				user << output("<font color='yellow'>Your left hand is occupied.</font>", "oocout")
+				chatTo(user, "<font color='yellow'>Your left hand is occupied.</font>", "ooc")
 				return FALSE
 			user.lefthand = item
 			return TRUE
@@ -241,7 +241,7 @@
  */
 /proc/equipTwoHanded(mob/user, obj/item/item)
 	if(user.righthand || user.lefthand)
-		user << output("<font color='yellow'>You need both hands free to wield a two-handed weapon.</font>", "oocout")
+		chatTo(user, "<font color='yellow'>You need both hands free to wield a two-handed weapon.</font>", "ooc")
 		return FALSE
 
 	user.righthand = item
@@ -253,7 +253,7 @@
  */
 /proc/equipArmor(mob/user, obj/item/item)
 	if(user.armor)
-		user << output("<font color='yellow'>You already have armor equipped.</font>", "oocout")
+		chatTo(user, "<font color='yellow'>You already have armor equipped.</font>", "ooc")
 		return FALSE
 
 	user.armor = item
@@ -270,7 +270,7 @@
 		user.accessory2 = item
 		return TRUE
 	else
-		user << output("<font color='yellow'>Both accessory slots are full.</font>", "oocout")
+		chatTo(user, "<font color='yellow'>Both accessory slots are full.</font>", "ooc")
 		return FALSE
 
 /**
@@ -287,7 +287,7 @@
 		user.materia3 = item
 		return TRUE
 	else
-		user << output("<font color='yellow'>All materia slots are full.</font>", "oocout")
+		chatTo(user, "<font color='yellow'>All materia slots are full.</font>", "ooc")
 		return FALSE
 
 // =============================================================================
@@ -386,7 +386,7 @@
 /proc/checkClassRestrictions(mob/user, obj/item/item)
 	// Monks can't wear armor
 	if((user.job == "Monk" || user.subjob == "Monk") && item.equiptype == "armor")
-		user << output("<font color='red'>Monks cannot equip armor.</font>", "oocout")
+		chatTo(user, "<font color='red'>Monks cannot equip armor.</font>", "ooc")
 		return FALSE
 
 	return TRUE

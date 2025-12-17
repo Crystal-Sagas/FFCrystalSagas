@@ -52,7 +52,7 @@ var/list/naughtywords = list("sex","penis","pussy","cock","ass","dick","breast",
 	set hidden = 1
 	// LOOC is now handled via the Say verb with (( prefix
 	// This verb is deprecated but kept for backwards compatibility
-	usr << "Use Say with (( prefix for Local OOC, e.g.: ((hello)"
+	chatTo(usr, "Use Say with (( prefix for Local OOC, e.g.: ((hello)", "ooc")
 
 /mob/verb/Who()
 	var/amount=0
@@ -105,42 +105,42 @@ var/list/naughtywords = list("sex","penis","pussy","cock","ass","dick","breast",
 		m.totalRoleplayPoints.addValue(1)
 		m.rppchecks+=1
 		m.emoteamount-=12000
-		m << output("You have reached an RPP milestone for the day. You have gained 1 RPP for a total of [m.rppchecks].","oocout")
+		chatTo(m, "You have reached an RPP milestone for the day. You have gained 1 RPP for a total of [m.rppchecks].", "ooc")
 		Updaterank(m)
 	if(m.emoteamount>=9000 && m.rppchecks<1 && m.totalRoleplayPoints.value>=150 && m.totalRoleplayPoints.value<200)
 		m.roleplayPoints.addValue(1)
 		m.totalRoleplayPoints.addValue(1)
 		m.rppchecks+=1
 		m.emoteamount-=9000
-		m << output("You have reached an RPP milestone for the day. You have gained 1 RPP for a total of [m.rppchecks].","oocout")
+		chatTo(m, "You have reached an RPP milestone for the day. You have gained 1 RPP for a total of [m.rppchecks].", "ooc")
 		Updaterank(m)
 	if(m.emoteamount>=6000 && m.rppchecks<1 && m.totalRoleplayPoints.value>=100 && m.totalRoleplayPoints.value<150)
 		m.roleplayPoints.addValue(1)
 		m.totalRoleplayPoints.addValue(1)
 		m.rppchecks+=1
 		m.emoteamount-=6000
-		m << output("You have reached an RPP milestone for the day. You have gained 1 RPP for a total of [m.rppchecks].","oocout")
+		chatTo(m, "You have reached an RPP milestone for the day. You have gained 1 RPP for a total of [m.rppchecks].", "ooc")
 		Updaterank(m)
 	if(m.emoteamount>=3000 && m.rppchecks<2 && m.totalRoleplayPoints.value>=80 && m.totalRoleplayPoints.value<100)
 		m.roleplayPoints.addValue(1)
 		m.totalRoleplayPoints.addValue(1)
 		m.rppchecks+=1
 		m.emoteamount-=3000
-		m << output("You have reached an RPP milestone for the day. You have gained 1 RPP for a total of [m.rppchecks].","oocout")
+		chatTo(m, "You have reached an RPP milestone for the day. You have gained 1 RPP for a total of [m.rppchecks].", "ooc")
 		Updaterank(m)
 	if(m.emoteamount>=2000 && m.rppchecks<3 && m.totalRoleplayPoints.value>=50 && m.totalRoleplayPoints.value<80)
 		m.roleplayPoints.addValue(1)
 		m.totalRoleplayPoints.addValue(1)
 		m.rppchecks+=1
 		m.emoteamount-=2000
-		m << output("You have reached an RPP milestone for the day. You have gained 1 RPP for a total of [m.rppchecks].","oocout")
+		chatTo(m, "You have reached an RPP milestone for the day. You have gained 1 RPP for a total of [m.rppchecks].", "ooc")
 		Updaterank(m)
 	if(m.emoteamount>=1200 && m.rppchecks<5 && m.totalRoleplayPoints.value<50)
 		m.roleplayPoints.addValue(1)
 		m.totalRoleplayPoints.addValue(1)
 		m.rppchecks+=1
 		m.emoteamount-=1200
-		m << output("You have reached an RPP milestone for the day. You have gained 1 RPP for a total of [m.rppchecks].","oocout")
+		chatTo(m, "You have reached an RPP milestone for the day. You have gained 1 RPP for a total of [m.rppchecks].", "ooc")
 		Updaterank(m)
 
 	// Legacy catchup rate system removed - replaced with new milestone system above

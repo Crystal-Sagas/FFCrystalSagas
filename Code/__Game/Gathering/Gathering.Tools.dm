@@ -264,8 +264,8 @@
 	set category = "Gathering"
 	set src in usr
 
-	usr << output("<b>=== [name] ===</b>", "oocout")
-	usr << output("<b>Tool Tier:</b> [tierName]", "oocout")
-	usr << output("<b>Time Reduction:</b> [getTimeReduction()]%", "oocout")
-	usr << output("<b>Yield Bonus:</b> [getYieldBonus()]%", "oocout")
-	usr << output("<b>Rare Find Bonus:</b> [getRareBonus()]%", "oocout")
+	chatTo(usr, "<b>=== [name] ===</b>", "ooc")
+	chatTo(usr, "<b>Tool Tier:</b> [tierName]", "ooc")
+	chatTo(usr, "<b>Time Reduction:</b> [getTimeReduction()]%", "ooc")
+	chatTo(usr, "<b>Yield Bonus:</b> [getYieldBonus()]%", "ooc")
+	chatTo(usr, "<b>Rare Find Bonus:</b> [getRareBonus()]%", "ooc")

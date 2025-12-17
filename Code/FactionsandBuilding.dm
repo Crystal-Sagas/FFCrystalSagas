@@ -1486,7 +1486,7 @@ obj
 						continue
 					else
 						src.houseid=i
-						usr<<output("ID assigned! ID is [i].","icout")
+						chatTo(usr, "ID assigned! ID is [i].", "ic")
 						break
 			nopass:
 				if(src.houseid>=1)
@@ -1541,7 +1541,7 @@ obj
 						continue
 					else
 						src.fortressid=i
-						usr<<output("ID assigned! ID is [i].","icout")
+						chatTo(usr, "ID assigned! ID is [i].", "ic")
 						break
 			nopass:
 				if(src.fortressid>=1)

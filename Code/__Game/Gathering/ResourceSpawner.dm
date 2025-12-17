@@ -647,10 +647,10 @@ GLOBAL_DATUM(resource_spawner, /datum/resource_spawner)
 	if(alert("This will clear, delete saved data, and respawn ALL resource nodes. This may cause brief lag. Continue?", "Confirm", "Yes", "No") != "Yes")
 		return
 
-	mob << output("Respawning resources... this may take a moment.", "oocout")
+	chatTo(mob, "Respawning resources... this may take a moment.", "ooc")
 	spawn(1)
 		global.resource_spawner?.respawnAllResources()
-		mob << output("Resource nodes have been respawned and saved.", "oocout")
+		chatTo(mob, "Resource nodes have been respawned and saved.", "ooc")
 
 /**
  * Admin verb to clear all spawned resources
@@ -666,7 +666,7 @@ GLOBAL_DATUM(resource_spawner, /datum/resource_spawner)
 		return
 
 	global.resource_spawner?.clearAllSpawnedResources()
-	mob << output("All spawned resource nodes have been cleared.", "oocout")
+	chatTo(mob, "All spawned resource nodes have been cleared.", "ooc")
 
 /**
  * Admin verb to force save resources
@@ -679,9 +679,9 @@ GLOBAL_DATUM(resource_spawner, /datum/resource_spawner)
 		return
 
 	if(global.resource_spawner?.saveNodes())
-		mob << output("Resource nodes saved successfully.", "oocout")
+		chatTo(mob, "Resource nodes saved successfully.", "ooc")
 	else
-		mob << output("Failed to save resource nodes.", "oocout")
+		chatTo(mob, "Failed to save resource nodes.", "ooc")
 
 /**
  * Admin verb to check spawner status
@@ -718,7 +718,7 @@ GLOBAL_DATUM(resource_spawner, /datum/resource_spawner)
 		for(var/typeName in typeCounts)
 			msg += "  [typeName]: [typeCounts[typeName]]<br>"
 
-	mob << output(msg, "oocout")
+	chatTo(mob, msg, "ooc")
 
 /**
  * Admin verb to delete save file and regenerate
@@ -734,6 +734,6 @@ GLOBAL_DATUM(resource_spawner, /datum/resource_spawner)
 		return
 
 	if(global.resource_spawner?.deleteSaveFile())
-		mob << output("Resource save file deleted. Nodes will regenerate on next reboot.", "oocout")
+		chatTo(mob, "Resource save file deleted. Nodes will regenerate on next reboot.", "ooc")
 	else
-		mob << output("No save file to delete or deletion failed.", "oocout")
+		chatTo(mob, "No save file to delete or deletion failed.", "ooc")

@@ -46,7 +46,7 @@
 
 	// Check if station is in use
 	if(currentUser && currentUser != user)
-		user << output("[src.name] is currently in use.", "oocout")
+		chatTo(user, "[src.name] is currently in use.", "ooc")
 		return
 
 	// Check profession requirements
@@ -58,7 +58,7 @@
 				break
 
 		if(!hasProfession)
-			user << output("You need one of the following professions to use this station: [english_list(allowedProfessions)]", "oocout")
+			chatTo(user, "You need one of the following professions to use this station: [english_list(allowedProfessions)]", "ooc")
 			return
 
 	// Open crafting menu for this station
@@ -72,22 +72,22 @@
 		return
 
 	currentUser = user
-	user << output("You begin using the [src.name]...", "oocout")
+	chatTo(user, "You begin using the [src.name]...", "ooc")
 
 	// Get recipes available at this station
 	var/list/availableRecipes = getStationRecipes(user)
 
 	if(!length(availableRecipes))
-		user << output("No recipes available for this station.", "oocout")
+		chatTo(user, "No recipes available for this station.", "ooc")
 		currentUser = null
 		return
 
 	// Display recipes
-	user << output("<b>===== [stationType] Recipes =====</b>", "oocout")
+	chatTo(user, "<b>===== [stationType] Recipes =====</b>", "ooc")
 	for(var/datum/craft_recipe/recipe in availableRecipes)
 		var/canCraft = recipe.checkRequirements(user) ? "<font color='#90EE90'>YES</font>" : "<font color='#FF6666'>NO</font>"
-		user << output("  [recipe.name] - [canCraft]", "oocout")
-	user << output("<b>========================</b>", "oocout")
+		chatTo(user, "  [recipe.name] - [canCraft]", "ooc")
+	chatTo(user, "<b>========================</b>", "ooc")
 
 	// Let player choose a recipe
 	var/list/recipeNames = list()
@@ -139,12 +139,12 @@
 
 	// Verify requirements
 	if(!recipe.checkRequirements(user))
-		user << output("You don't have the required materials.", "oocout")
+		chatTo(user, "You don't have the required materials.", "ooc")
 		return
 
 	// Validate recipe has archetype
 	if(!recipe.archetypeId)
-		user << output("Recipe has no archetype ID configured.", "oocout")
+		chatTo(user, "Recipe has no archetype ID configured.", "ooc")
 		return
 
 	// Find and process materials
@@ -182,7 +182,7 @@
 	var/obj/item/newItem = createCraftedEquipment(recipe.archetypeId, bestTier, craftData, recipe.isWeapon, user)
 
 	if(!newItem)
-		user << output("Failed to create item. Archetype '[recipe.archetypeId]' not found.", "oocout")
+		chatTo(user, "Failed to create item. Archetype '[recipe.archetypeId]' not found.", "ooc")
 		return
 
 	// Consume materials
@@ -210,18 +210,18 @@
 		user.gainProfessionExp(recipe.profession, 1)
 
 	// Success message
-	user << output("<font color='#FFD700'>Successfully crafted [newItem.name]!</font>", "oocout")
+	chatTo(user, "<font color='#FFD700'>Successfully crafted [newItem.name]!</font>", "ooc")
 
 	// Show tags if any
 	if(newItem.materialTags && length(newItem.materialTags))
-		user << output("Material Tags: [getCraftBonusDisplay(newItem)]", "oocout")
+		chatTo(user, "Material Tags: [getCraftBonusDisplay(newItem)]", "ooc")
 
 	// Show abilities if any
 	if(newItem.craftedAbilities && length(newItem.craftedAbilities))
-		user << output("Abilities: [length(newItem.craftedAbilities)]", "oocout")
+		chatTo(user, "Abilities: [length(newItem.craftedAbilities)]", "ooc")
 		for(var/abilityType in newItem.craftedAbilities)
 			var/obj/Ability/tempAbility = abilityType
-			user << output("  - [initial(tempAbility.name)]", "oocout")
+			chatTo(user, "  - [initial(tempAbility.name)]", "ooc")
 
 // =============================================================================
 // SPECIFIC CRAFTING STATIONS
@@ -296,7 +296,7 @@
 	set desc = "Spawn a crafting station."
 
 	if(!adminlv)
-		src << output("DM access required.", "oocout")
+		chatTo(src, "DM access required.", "ooc")
 		return
 
 	var/list/stations = list(
@@ -316,4 +316,4 @@
 
 	var/stationType = stations[choice]
 	new stationType(src.loc)
-	src << output("Spawned [choice] at your location.", "oocout")
+	chatTo(src, "Spawned [choice] at your location.", "ooc")

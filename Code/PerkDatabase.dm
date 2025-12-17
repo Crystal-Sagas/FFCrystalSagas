@@ -5235,7 +5235,7 @@ obj
 							var/rolechoice=input(usr,"Use refresh?") as anything in roles
 							switch(rolechoice)
 								if("Yes")
-									view() << output("<font color=[usr.textcolor]><b>[usr]</b></font> has called upon the power of the <b></font color=#A3F875>Lifestream</b></font> to refresh the Natural Resources around them!","icout")
+									viewBroadcast(usr, "<font color=[usr.textcolor]><b>[usr]</b></font> has called upon the power of the <b></font color=#A3F875>Lifestream</b></font> to refresh the Natural Resources around them!", "ic")
 									usr.Lifestreamraincooldown=1
 									for(var/obj/node/Minenode/a in view(12))
 										if(a.name=="Mine Node")

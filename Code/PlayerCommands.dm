@@ -32,7 +32,7 @@ mob
 			num1=input("What is the starting the range of the roll?")as num
 			num2=input("What is the ending range of the roll?") as num
 			result=rand(num1,num2)
-			view()<<output("[num1]~[num2]=[result]","icout")
+			viewBroadcast(usr, "[num1]~[num2]=[result]", "ic")
 		Adminhelp()
 			var/obj/adminreport/r=new
 			r.name=input("What is the subject of this report?") as text
@@ -43,7 +43,7 @@ mob
 			r.submitdate=time2text(world.realtime,"MM/DD/YYYY")
 			for(var/obj/adminreportholder/a in world)
 				a.contents+=r
-			usr<<output("Your report has been submitted. Please be patient while an admin fixes your problem. If you don't receive a response in a timely manner, please submit a ticket on our discord channel.","oocout")
+			chatTo(usr, "Your report has been submitted. Please be patient while an admin fixes your problem. If you don't receive a response in a timely manner, please submit a ticket on our discord channel.", "ooc")
 			var/text="[usr.key] has submitted a report. @Administrator"
 			client.HttpPost("https://discord.com/api/webhooks/812746179644620840/TQZH7noDnk2L_SZhwe2NajRXPC2ciAegmR2f-fchql96-A1anIfZZ4rcW3NFqgKW2c9T",list(content=text))
 		OpenAdminPanel()
@@ -65,7 +65,7 @@ mob
 						racs["[Q.race]"]++
 			if(racs)
 				for(var/x in racs)
-					usr<<output("[x] - [racs[x]]","oocout")
+					chatTo(usr, "[x] - [racs[x]]", "ooc")
 
 
 	proc
@@ -87,34 +87,33 @@ mob
 					lower=adjustroll2
 					if(src.advantage)
 						if(crit==1)
-							view()<<output("<font size=1><font color=[src.textcolor]>([n]) <font color=#86FDCD>[rolltype] at <font color=#98F7A2><b>advantage</b><font color=white>: <font color=#E1F3E3>[lower]  | <font color=#98F7A2><b>~[higher]~ | Critical Success, Nat 20!</b>","icout")
+							viewBroadcast(src, "<font size=1><font color=[src.textcolor]>([n]) <font color=#86FDCD>[rolltype] at <font color=#98F7A2><b>advantage</b><font color=white>: <font color=#E1F3E3>[lower]  | <font color=#98F7A2><b>~[higher]~ | Critical Success, Nat 20!</b>", "ic")
 						else
-							view()<<output("<font size=1><font color=[src.textcolor]>([n]) <font color=#86FDCD>[rolltype] at <font color=#98F7A2><b>advantage</b><font color=white>: <font color=#E1F3E3>[lower]  | <font color=#98F7A2><b>~[higher]~</b>","icout")
+							viewBroadcast(src, "<font size=1><font color=[src.textcolor]>([n]) <font color=#86FDCD>[rolltype] at <font color=#98F7A2><b>advantage</b><font color=white>: <font color=#E1F3E3>[lower]  | <font color=#98F7A2><b>~[higher]~</b>", "ic")
 					else if(src.disadvantage)
-						view()<<output("<font size=1><font color=[src.textcolor]>([n]) <font color=#86FDCD>[rolltype] at <font color=#CB230F><b>disadvantage</b><font color=white>: <font color=#E1F3E3>[higher]  | <font color=#CB230F><b>~[lower]~</b>","icout")
+						viewBroadcast(src, "<font size=1><font color=[src.textcolor]>([n]) <font color=#86FDCD>[rolltype] at <font color=#CB230F><b>disadvantage</b><font color=white>: <font color=#E1F3E3>[higher]  | <font color=#CB230F><b>~[lower]~</b>", "ic")
 				else if(adjustroll1<adjustroll2)
 					higher=adjustroll2
 					lower=adjustroll1
 					if(src.advantage)
 						if(crit==1)
-							view()<<output("<font size=1><font color=[src.textcolor]>([n]) <font color=#86FDCD>[rolltype] at <font color=#98F7A2><b>advantage</b><font color=white>: <font color=#E1F3E3>[lower]  | <font color=#98F7A2><b>~[higher]~ | Critical Success, Nat 20!</b>","icout")
+							viewBroadcast(src, "<font size=1><font color=[src.textcolor]>([n]) <font color=#86FDCD>[rolltype] at <font color=#98F7A2><b>advantage</b><font color=white>: <font color=#E1F3E3>[lower]  | <font color=#98F7A2><b>~[higher]~ | Critical Success, Nat 20!</b>", "ic")
 						else
-							view()<<output("<font size=1><font color=[src.textcolor]>([n]) <font color=#86FDCD>[rolltype] at <font color=#98F7A2><b>advantage</b><font color=white>: <font color=#E1F3E3>[lower]  | <font color=#98F7A2><b>~[higher]~</b>","icout")
+							viewBroadcast(src, "<font size=1><font color=[src.textcolor]>([n]) <font color=#86FDCD>[rolltype] at <font color=#98F7A2><b>advantage</b><font color=white>: <font color=#E1F3E3>[lower]  | <font color=#98F7A2><b>~[higher]~</b>", "ic")
 					else if(src.disadvantage)
-						view()<<output("<font size=1><font color=[src.textcolor]>([n]) <font color=#86FDCD>[rolltype] at <font color=#CB230F><b>disadvantage</b><font color=white>: <font color=#E1F3E3>[higher]  | <font color=#CB230F><b>~[lower]~</b>","icout")
+						viewBroadcast(src, "<font size=1><font color=[src.textcolor]>([n]) <font color=#86FDCD>[rolltype] at <font color=#CB230F><b>disadvantage</b><font color=white>: <font color=#E1F3E3>[higher]  | <font color=#CB230F><b>~[lower]~</b>", "ic")
 				else
 					if(src.advantage)
 						if(crit==1)
-							view()<<output("<font size=1><font color=[src.textcolor]>([n]) <font color=#86FDCD>[rolltype] at <font color=#98F7A2><b>advantage</b><font color=white>: <font color=white>[adjustroll1]  | <font color=white><b>[adjustroll2] | Critical Success, Nat 20!</b>","icout")
+							viewBroadcast(src, "<font size=1><font color=[src.textcolor]>([n]) <font color=#86FDCD>[rolltype] at <font color=#98F7A2><b>advantage</b><font color=white>: <font color=white>[adjustroll1]  | <font color=white><b>[adjustroll2] | Critical Success, Nat 20!</b>", "ic")
 						else
-							view()<<output("<font size=1><font color=[src.textcolor]>([n]) <font color=#86FDCD>[rolltype] at <font color=#98F7A2><b>advantage</b><font color=white>: <font color=white>[adjustroll1]  | <font color=white><b>[adjustroll2]</b>","icout")
-
+							viewBroadcast(src, "<font size=1><font color=[src.textcolor]>([n]) <font color=#86FDCD>[rolltype] at <font color=#98F7A2><b>advantage</b><font color=white>: <font color=white>[adjustroll1]  | <font color=white><b>[adjustroll2]</b>", "ic")
 					else if(src.disadvantage)
-						view()<<output("<font size=1><font color=[src.textcolor]>([n]) <font color=#86FDCD>[rolltype] at <font color=#CB230F><b>disadvantage</b><font color=white>: <font color=white>[adjustroll1]  | <font color=#white><b>[adjustroll2]</b>","icout")
+						viewBroadcast(src, "<font size=1><font color=[src.textcolor]>([n]) <font color=#86FDCD>[rolltype] at <font color=#CB230F><b>disadvantage</b><font color=white>: <font color=white>[adjustroll1]  | <font color=#white><b>[adjustroll2]</b>", "ic")
 			else
 				if(roll1==20)
 					crit=1
-					view()<<output("<font size=1><font color=[src.textcolor]>([n]) <font color=#86FDCD>[rolltype]: <font color=#47D34C><b>[adjustroll1]</font> | Critical success, natural 20!","icout")
+					viewBroadcast(src, "<font size=1><font color=[src.textcolor]>([n]) <font color=#86FDCD>[rolltype]: <font color=#47D34C><b>[adjustroll1]</font> | Critical success, natural 20!", "ic")
 				else
-					view()<<output("<font size=1><font color=[src.textcolor]>([n]) <font color=#86FDCD>[rolltype]: <font color=white><b>[adjustroll1]</font>","icout")
+					viewBroadcast(src, "<font size=1><font color=[src.textcolor]>([n]) <font color=#86FDCD>[rolltype]: <font color=white><b>[adjustroll1]</font>", "ic")
 

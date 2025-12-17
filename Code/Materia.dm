@@ -84,7 +84,7 @@ obj
 							players={"<font color=#60F560>[usr.name] has flashed a Materia: <a href="byond://?src=\ref[usr]&action4=lookmat&value=\ref[src]"><font color=#FFFFFF>[src]</a>!!"}
 							switch(alert("[src.desc] (Rank:[src.rank])","[src.name]","Reveal","Cancel"))
 								if("Reveal")
-									view() << output("[players]","icout")
+									viewBroadcast(usr, "[players]", "ic")
 								if("Cancel")
 									return
 					else
@@ -103,7 +103,7 @@ obj
 								alert("You have equipped [src] to Materia slot 1!")
 								usr.materia1=src
 								src.equipped=1
-								view() << output("<font color=[usr.textcolor]><font size = 1>[usr.name] has equipped [src.name] to Materia Slot 1! ","icout")
+								viewBroadcast(usr, "<font color=[usr.textcolor]><font size = 1>[usr.name] has equipped [src.name] to Materia Slot 1! ", "ic")
 								RefreshMateria(usr)
 						if("Slot 2")
 							if(usr.materia2!=null)
@@ -111,7 +111,7 @@ obj
 							else
 								alert("You have equipped [src] to Materia slot 2!")
 								usr.materia2=src
-								view() << output("<font color=[usr.textcolor]><font size = 1>[usr.name] has equipped [src.name] to Materia Slot 2! ","icout")
+								viewBroadcast(usr, "<font color=[usr.textcolor]><font size = 1>[usr.name] has equipped [src.name] to Materia Slot 2! ", "ic")
 								src.equipped=1
 								RefreshMateria(usr)
 						if("Slot 3")
@@ -120,7 +120,7 @@ obj
 							else
 								alert("You have equipped [src] to Materia slot 3!")
 								usr.materia3=src
-								view() << output("<font color=[usr.textcolor]><font size = 1>[usr.name] has equipped [src.name] to Materia Slot 3! ","icout")
+								viewBroadcast(usr, "<font color=[usr.textcolor]><font size = 1>[usr.name] has equipped [src.name] to Materia Slot 3! ", "ic")
 								src.equipped=1
 								RefreshMateria(usr)
 			verb
@@ -129,19 +129,19 @@ obj
 						alert("You have unequipped [src] from slot 1!")
 						usr.materia1=null
 						src.equipped=0
-						view() << output("<font color=[usr.textcolor]><font size = 1>[usr.name] has unequipped [src.name] from Materia Slot 1! ","icout")
+						viewBroadcast(usr, "<font color=[usr.textcolor]><font size = 1>[usr.name] has unequipped [src.name] from Materia Slot 1! ", "ic")
 						RefreshMateria(usr)
 					if(usr.materia2==src)
 						alert("You have unequipped [src] from slot 2!")
 						usr.materia2=null
 						src.equipped=0
-						view() << output("<font color=[usr.textcolor]><font size = 1>[usr.name] has unequipped [src.name] from Materia Slot 2! ","icout")
+						viewBroadcast(usr, "<font color=[usr.textcolor]><font size = 1>[usr.name] has unequipped [src.name] from Materia Slot 2! ", "ic")
 						RefreshMateria(usr)
 					if(usr.materia3==src)
 						alert("You have unequipped [src] fromt slot 3!")
 						usr.materia3=null
 						src.equipped=0
-						view() << output("<font color=[usr.textcolor]><font size = 1>[usr.name] has unequipped [src.name] from Materia Slot 3! ","icout")
+						viewBroadcast(usr, "<font color=[usr.textcolor]><font size = 1>[usr.name] has unequipped [src.name] from Materia Slot 3! ", "ic")
 						RefreshMateria(usr)
 			verb
 				Use()
@@ -465,27 +465,27 @@ obj
 			if(randomizemat>=1 && randomizemat < 4)
 				var/obj/item/Materia/StatMateria/StrengthMateria/c=new
 				b.contents+=c
-				usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "icout", color = TRUE)
+				usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "ic", color = TRUE)
 			if(randomizemat>=4 && randomizemat < 7)
 				var/obj/item/Materia/StatMateria/DexterityMateria/c=new
 				b.contents+=c
-				usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "icout", color = TRUE)
+				usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "ic", color = TRUE)
 			if(randomizemat>=7 && randomizemat < 10)
 				var/obj/item/Materia/StatMateria/ConstitutionMateria/c=new
 				b.contents+=c
-				usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "icout", color = TRUE)
+				usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "ic", color = TRUE)
 			if(randomizemat>=10 && randomizemat < 13)
 				var/obj/item/Materia/StatMateria/WisdomMateria/c=new
 				b.contents+=c
-				usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "icout", color = TRUE)
+				usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "ic", color = TRUE)
 			if(randomizemat>=13 && randomizemat < 16)
 				var/obj/item/Materia/StatMateria/IntelligenceMateria/c=new
 				b.contents+=c
-				usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "icout", color = TRUE)
+				usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "ic", color = TRUE)
 			if(randomizemat>=16 && randomizemat < 19)
 				var/obj/item/Materia/StatMateria/CharismaMateria/c=new
 				b.contents+=c
-				usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "icout", color = TRUE)
+				usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "ic", color = TRUE)
 
 obj
 	proc
@@ -496,52 +496,52 @@ obj
 				if(randomizemat>= 1 && randomizemat < 6)
 					var/obj/item/Materia/AbilityMateria/TendrilMateria/c=new
 					b.contents+=c
-					usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "icout", color = TRUE)
+					usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "ic", color = TRUE)
 				if(randomizemat>= 6 && randomizemat < 11)
 					var/obj/item/Materia/AbilityMateria/FogMateria/c=new
 					b.contents+=c
-					usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "icout", color = TRUE)
+					usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "ic", color = TRUE)
 				if(randomizemat>= 11 && randomizemat < 15)
 					var/obj/item/Materia/AbilityMateria/JoltMateria/c=new
 					b.contents+=c
-					usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "icout", color = TRUE)
+					usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "ic", color = TRUE)
 				if(randomizemat>= 15 && randomizemat < 17)
 					var/obj/item/Materia/AbilityMateria/ImpactMateria/c=new
 					b.contents+=c
-					usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "icout", color = TRUE)
+					usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "ic", color = TRUE)
 				if(randomizemat>= 17 && randomizemat < 19)
 					var/obj/item/Materia/AbilityMateria/LaserMateria/c=new
 					b.contents+=c
-					usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "icout", color = TRUE)
+					usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "ic", color = TRUE)
 				if(randomizemat>= 19 && randomizemat < 21)
 					var/obj/item/Materia/AbilityMateria/RiposteMateria/c=new
 					b.contents+=c
-					usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "icout", color = TRUE)
+					usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "ic", color = TRUE)
 			if(randomizetier>=51 && randomizetier < 101)
 				if(randomizemat>= 1 && randomizemat < 6)
 					var/obj/item/Materia/AbilityMateria/FlecheMateria/c=new
 					b.contents+=c
-					usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "icout", color = TRUE)
+					usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "ic", color = TRUE)
 				if(randomizemat>= 6 && randomizemat < 11)
 					var/obj/item/Materia/AbilityMateria/HaloneMateria/c=new
 					b.contents+=c
-					usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "icout", color = TRUE)
+					usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "ic", color = TRUE)
 				if(randomizemat>= 11 && randomizemat < 15)
 					var/obj/item/Materia/AbilityMateria/StellarCircleMateria/c=new
 					b.contents+=c
-					usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "icout", color = TRUE)
+					usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "ic", color = TRUE)
 				if(randomizemat>= 15 && randomizemat < 17)
 					var/obj/item/Materia/AbilityMateria/ShoutMateria/c=new
 					b.contents+=c
-					usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "icout", color = TRUE)
+					usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "ic", color = TRUE)
 				if(randomizemat>= 17 && randomizemat < 19)
 					var/obj/item/Materia/AbilityMateria/JechtShotMateria/c=new
 					b.contents+=c
-					usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "icout", color = TRUE)
+					usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "ic", color = TRUE)
 				if(randomizemat>= 19 && randomizemat < 21)
 					var/obj/item/Materia/AbilityMateria/JechtBeamMateria/c=new
 					b.contents+=c
-					usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "icout", color = TRUE)
+					usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "ic", color = TRUE)
 
 
 
@@ -554,77 +554,77 @@ obj
 				if(randomizemat>=1 && randomizemat < 6)
 					var/obj/item/Materia/BlueMateria/FireMateriaI/c=new
 					b.contents+=c
-					usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "icout", color = TRUE)
+					usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "ic", color = TRUE)
 				if(randomizemat>=6 && randomizemat < 10)
 					var/obj/item/Materia/BlueMateria/WaterMateriaI/c=new
 					b.contents+=c
-					usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "icout", color = TRUE)
+					usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "ic", color = TRUE)
 				if(randomizemat>=10 && randomizemat < 12)
 					var/obj/item/Materia/BlueMateria/ThunderMateriaI/c=new
 					b.contents+=c
-					usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "icout", color = TRUE)
+					usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "ic", color = TRUE)
 				if(randomizemat>=12 && randomizemat < 16)
 					var/obj/item/Materia/BlueMateria/IceMateriaI/c=new
 					b.contents+=c
-					usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "icout", color = TRUE)
+					usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "ic", color = TRUE)
 				if(randomizemat>=15 && randomizemat < 17)
 					var/obj/item/Materia/BlueMateria/EarthMateriaI/c=new
 					b.contents+=c
-					usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "icout", color = TRUE)
+					usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "ic", color = TRUE)
 				if(randomizemat>=16 && randomizemat < 21)
 					var/obj/item/Materia/BlueMateria/DrainMateria/c=new
 					b.contents+=c
-					usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "icout", color = TRUE)
+					usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "ic", color = TRUE)
 			if(randomizetier>=34 && randomizetier < 66)
 				if(randomizemat>=1 && randomizemat < 6)
 					var/obj/item/Materia/BlueMateria/FireMateriaII/c=new
 					b.contents+=c
-					usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "icout", color = TRUE)
+					usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "ic", color = TRUE)
 				if(randomizemat>=6 && randomizemat < 10)
 					var/obj/item/Materia/BlueMateria/WaterMateriaII/c=new
 					b.contents+=c
-					usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "icout", color = TRUE)
+					usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "ic", color = TRUE)
 				if(randomizemat>=10 && randomizemat < 12)
 					var/obj/item/Materia/BlueMateria/ThunderMateriaII/c=new
 					b.contents+=c
-					usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "icout", color = TRUE)
+					usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "ic", color = TRUE)
 				if(randomizemat>=12 && randomizemat < 16)
 					var/obj/item/Materia/BlueMateria/IceMateriaII/c=new
 					b.contents+=c
-					usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "icout", color = TRUE)
+					usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "ic", color = TRUE)
 				if(randomizemat>=15 && randomizemat < 17)
 					var/obj/item/Materia/BlueMateria/EarthMateriaII/c=new
 					b.contents+=c
-					usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "icout", color = TRUE)
+					usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "ic", color = TRUE)
 				if(randomizemat>=16 && randomizemat < 21)
 					var/obj/item/Materia/BlueMateria/OsmoseMateria/c=new
 					b.contents+=c
-					usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "icout", color = TRUE)
+					usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "ic", color = TRUE)
 			if(randomizetier>=67 && randomizetier < 101)
 				if(randomizemat>=1 && randomizemat < 6)
 					var/obj/item/Materia/BlueMateria/FireMateriaIII/c=new
 					b.contents+=c
-					usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "icout", color = TRUE)
+					usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "ic", color = TRUE)
 				if(randomizemat>=6 && randomizemat < 10)
 					var/obj/item/Materia/BlueMateria/WaterMateriaIII/c=new
 					b.contents+=c
-					usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "icout", color = TRUE)
+					usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "ic", color = TRUE)
 				if(randomizemat>=10 && randomizemat < 12)
 					var/obj/item/Materia/BlueMateria/ThunderMateriaIII/c=new
 					b.contents+=c
-					usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "icout", color = TRUE)
+					usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "ic", color = TRUE)
 				if(randomizemat>=12 && randomizemat < 16)
 					var/obj/item/Materia/BlueMateria/IceMateriaIII/c=new
 					b.contents+=c
-					usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "icout", color = TRUE)
+					usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "ic", color = TRUE)
 				if(randomizemat>=15 && randomizemat < 17)
 					var/obj/item/Materia/BlueMateria/EarthMateriaIII/c=new
 					b.contents+=c
-					usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "icout", color = TRUE)
+					usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "ic", color = TRUE)
 				if(randomizemat>=16 && randomizemat < 21)
 					var/obj/item/Materia/BlueMateria/FlareMateria/c=new
 					b.contents+=c
-					usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "icout", color = TRUE)
+					usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "ic", color = TRUE)
 
 obj
 	proc
@@ -635,63 +635,63 @@ obj
 				if(randomizemat>=1 && randomizemat < 6)
 					var/obj/item/Materia/GreenMateria/CureMateriaI/c=new
 					b.contents+=c
-					usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "icout", color = TRUE)
+					usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "ic", color = TRUE)
 				if(randomizemat>=6 && randomizemat < 10)
 					var/obj/item/Materia/GreenMateria/ProtectMateriaI/c=new
 					b.contents+=c
-					usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "icout", color = TRUE)
+					usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "ic", color = TRUE)
 				if(randomizemat>=10 && randomizemat < 12)
 					var/obj/item/Materia/GreenMateria/RegenMateria/c=new
 					b.contents+=c
-					usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "icout", color = TRUE)
+					usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "ic", color = TRUE)
 				if(randomizemat>=12 && randomizemat < 14)
 					var/obj/item/Materia/GreenMateria/RefreshMateria/c=new
 					b.contents+=c
-					usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "icout", color = TRUE)
+					usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "ic", color = TRUE)
 				if(randomizemat>=14 && randomizemat < 21)
 					var/obj/item/Materia/GreenMateria/DiaMateriaI/c=new
 					b.contents+=c
-					usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "icout", color = TRUE)
+					usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "ic", color = TRUE)
 			if(randomizetier>=34 && randomizetier < 66)
 				if(randomizemat>=1 && randomizemat < 6)
 					var/obj/item/Materia/GreenMateria/CureMateriaII/c=new
 					b.contents+=c
-					usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "icout", color = TRUE)
+					usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "ic", color = TRUE)
 				if(randomizemat>=6 && randomizemat < 10)
 					var/obj/item/Materia/GreenMateria/ProtectMateriaI/c=new
 					b.contents+=c
-					usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "icout", color = TRUE)
+					usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "ic", color = TRUE)
 				if(randomizemat>=10 && randomizemat < 12)
 					var/obj/item/Materia/GreenMateria/RegenMateria/c=new
 					b.contents+=c
-					usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "icout", color = TRUE)
+					usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "ic", color = TRUE)
 				if(randomizemat>=12 && randomizemat < 14)
 					var/obj/item/Materia/GreenMateria/RefreshMateria/c=new
 					b.contents+=c
-					usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "icout", color = TRUE)
+					usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "ic", color = TRUE)
 				if(randomizemat>=14 && randomizemat < 21)
 					var/obj/item/Materia/GreenMateria/DiaMateriaII/c=new
 					b.contents+=c
-					usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "icout", color = TRUE)
+					usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "ic", color = TRUE)
 			if(randomizetier>=67 && randomizetier < 101)
 				if(randomizemat>=1 && randomizemat < 6)
 					var/obj/item/Materia/GreenMateria/CureMateriaIII/c=new
 					b.contents+=c
-					usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "icout", color = TRUE)
+					usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "ic", color = TRUE)
 				if(randomizemat>=6 && randomizemat < 10)
 					var/obj/item/Materia/GreenMateria/ProtectMateriaI/c=new
 					b.contents+=c
-					usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "icout", color = TRUE)
+					usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "ic", color = TRUE)
 				if(randomizemat>=10 && randomizemat < 12)
 					var/obj/item/Materia/GreenMateria/RegenMateria/c=new
 					b.contents+=c
-					usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "icout", color = TRUE)
+					usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "ic", color = TRUE)
 				if(randomizemat>=12 && randomizemat < 14)
 					var/obj/item/Materia/GreenMateria/RefreshMateria/c=new
 					b.contents+=c
-					usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "icout", color = TRUE)
+					usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "ic", color = TRUE)
 				if(randomizemat>=14 && randomizemat < 21)
 					var/obj/item/Materia/GreenMateria/DiaMateriaIII/c=new
 					b.contents+=c
-					usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "icout", color = TRUE)
+					usr.visible_message("<b>[usr.name]</b> molded some Raw Mako into a <b>[c]</b>.", stream = "ic", color = TRUE)
 

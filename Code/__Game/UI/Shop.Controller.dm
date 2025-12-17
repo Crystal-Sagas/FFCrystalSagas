@@ -73,9 +73,9 @@
 		return
 	// Show message in chat panel since popup JS messaging is unreliable
 	if(msgType == "error")
-		src << output("<span class='error'>[text]</span>", "oocout")
+		chatTo(src, "<span class='error'>[text]</span>", "ooc")
 	else if(msgType == "success")
-		src << output("<span class='success'>[text]</span>", "oocout")
+		chatTo(src, "<span class='success'>[text]</span>", "ooc")
 
 // ============================================================================
 // ITEM SERIALIZATION
@@ -236,10 +236,10 @@
 	// Success message
 	if(quantity > 1)
 		customer.ShopMessage("success", "Purchased [quantity]x [shopItem.name]!")
-		customer << output("You purchased [quantity]x [shopItem.name] for [totalCost] Gil.", "oocout")
+		chatTo(customer, "You purchased [quantity]x [shopItem.name] for [totalCost] Gil.", "ooc")
 	else
 		customer.ShopMessage("success", "Purchased [shopItem.name]!")
-		customer << output("You purchased [shopItem.name] for [totalCost] Gil.", "oocout")
+		chatTo(customer, "You purchased [shopItem.name] for [totalCost] Gil.", "ooc")
 
 	// Refresh currency display
 	customer.RefreshShopCurrency()

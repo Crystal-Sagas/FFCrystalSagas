@@ -37,13 +37,13 @@ obj
 						if(src.locked)
 							if(src.CheckKey(usr,src))
 								src.locked=0
-								view()<<output("[usr.name] unlocks the door.","icout")
+								viewBroadcast(src, "[usr.name] unlocks the door.", "ic")
 							else
 								alert("You don't have the key to this door.")
 						else
 							if(src.CheckKey(usr))
 								src.locked=1
-								view()<<output("[usr.name] locks the door.","icout")
+								viewBroadcast(src, "[usr.name] locks the door.", "ic")
 							else
 								alert("You don't have the key to this door.")
 					Open()

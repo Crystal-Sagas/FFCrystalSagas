@@ -138,13 +138,13 @@
 	var/maxHp = usr.health ? usr.health.maxValue : 0
 	if(currentHp - decrease < 0)
 		usr.health.setValue(0)
-		view(usr) << output("<font color=[usr.textcolor]><b>[usr]</b><font color=white> has taken <b><font color=red>[decrease]</b></font> damage!", "oocout")
+		viewBroadcast(usr, "<font color=[usr.textcolor]><b>[usr]</b><font color=white> has taken <b><font color=red>[decrease]</b></font> damage!", "ooc")
 	else
 		usr.health.removeValue(decrease)
-		view(usr) << output("<font color=[usr.textcolor]><b>[usr]</b><font color=white> has taken <b><font color=red>[decrease]</b></font> damage!", "oocout")
-		view(usr) << output("<font color=[usr.textcolor]><b>[usr]</b><font color=white> is now at <font color=#60F570><b>[usr.health.value] / [maxHp]</font> HP!!", "oocout")
+		viewBroadcast(usr, "<font color=[usr.textcolor]><b>[usr]</b><font color=white> has taken <b><font color=red>[decrease]</b></font> damage!", "ooc")
+		viewBroadcast(usr, "<font color=[usr.textcolor]><b>[usr]</b><font color=white> is now at <font color=#60F570><b>[usr.health.value] / [maxHp]</font> HP!!", "ooc")
 	if(usr.health.value == 0)
-		view(usr) << output("<b><font color=[usr.textcolor]>[usr]</font> has been reduced to 0 HP, and is now considered <font color=red><b>KOed</b></font>!!", "oocout")
+		viewBroadcast(usr, "<b><font color=[usr.textcolor]>[usr]</font> has been reduced to 0 HP, and is now considered <font color=red><b>KOed</b></font>!!", "ooc")
 	ShowHPBar(usr)
 
 /mob/verb/ReduceMP()
@@ -157,13 +157,13 @@
 	var/maxMp = usr.mana ? usr.mana.maxValue : 0
 	if(currentMp - decrease < 0)
 		usr.mana.setValue(0)
-		view(usr) << output("<font color=[usr.textcolor]><b>[usr]</b><font color=white> has drained <b><font color=red>[decrease]</b></font> MP!", "oocout")
+		viewBroadcast(usr, "<font color=[usr.textcolor]><b>[usr]</b><font color=white> has drained <b><font color=red>[decrease]</b></font> MP!", "ooc")
 	else
 		usr.mana.removeValue(decrease)
-		view(usr) << output("<font color=[usr.textcolor]><b>[usr]</b><font color=white> has drained <b><font color=red>[decrease]</b></font> MP!", "oocout")
-		view(usr) << output("<font color=[usr.textcolor]><b>[usr]</b><font color=white> is now at <font color=#60F570><b>[usr.mana.value] / [maxMp]</font> MP!!", "oocout")
+		viewBroadcast(usr, "<font color=[usr.textcolor]><b>[usr]</b><font color=white> has drained <b><font color=red>[decrease]</b></font> MP!", "ooc")
+		viewBroadcast(usr, "<font color=[usr.textcolor]><b>[usr]</b><font color=white> is now at <font color=#60F570><b>[usr.mana.value] / [maxMp]</font> MP!!", "ooc")
 	if(usr.mana.value == 0)
-		view(usr) << output("<b><font color=[usr.textcolor]>[usr]</font> has been reduced to 0 MP, and now has <font color=red><b>1 additional static stack of exhaustion</b></font> until it raises above 0!!", "oocout")
+		viewBroadcast(usr, "<b><font color=[usr.textcolor]>[usr]</font> has been reduced to 0 MP, and now has <font color=red><b>1 additional static stack of exhaustion</b></font> until it raises above 0!!", "ooc")
 	ShowMPBar(usr)
 
 /mob/verb/ReduceSP()
@@ -176,13 +176,13 @@
 	var/maxSp = usr.stamina ? usr.stamina.maxValue : 0
 	if(currentSp - decrease < 0)
 		usr.stamina.setValue(0)
-		view(usr) << output("<font color=[usr.textcolor]><b>[usr]</b><font color=white> has drained <b><font color=red>[decrease]</b></font> SP!", "oocout")
+		viewBroadcast(usr, "<font color=[usr.textcolor]><b>[usr]</b><font color=white> has drained <b><font color=red>[decrease]</b></font> SP!", "ooc")
 	else
 		usr.stamina.removeValue(decrease)
-		view(usr) << output("<font color=[usr.textcolor]><b>[usr]</b><font color=white> has drained <b><font color=red>[decrease]</b></font> SP!", "oocout")
-		view(usr) << output("<font color=[usr.textcolor]><b>[usr]</b><font color=white> is now at <font color=#60F570><b>[usr.stamina.value] / [maxSp]</font> SP!!", "oocout")
+		viewBroadcast(usr, "<font color=[usr.textcolor]><b>[usr]</b><font color=white> has drained <b><font color=red>[decrease]</b></font> SP!", "ooc")
+		viewBroadcast(usr, "<font color=[usr.textcolor]><b>[usr]</b><font color=white> is now at <font color=#60F570><b>[usr.stamina.value] / [maxSp]</font> SP!!", "ooc")
 	if(usr.stamina.value == 0)
-		view(usr) << output("<b><font color=[usr.textcolor]>[usr]</font> has been reduced to 0 SP, and now has <font color=red><b>1 additional static stack of exhaustion</b></font> until it raises above 0!!", "oocout")
+		viewBroadcast(usr, "<b><font color=[usr.textcolor]>[usr]</font> has been reduced to 0 SP, and now has <font color=red><b>1 additional static stack of exhaustion</b></font> until it raises above 0!!", "ooc")
 	ShowSPBar(usr)
 
 /mob/verb/IncreaseHP()
@@ -197,12 +197,12 @@
 	if(currentHp + increase >= maxHp)
 		overflowed = maxHp - currentHp
 		usr.health.setValue(maxHp)
-		view(usr) << output("<font color=[usr.textcolor]>[usr]</b><font color=white> has been restored by <b><font color=#60F570>[overflowed] HP!", "oocout")
-		view(usr) << output("<b><font color=[usr.textcolor]>[usr]</font> has reached max HP!", "oocout")
+		viewBroadcast(usr, "<font color=[usr.textcolor]>[usr]</b><font color=white> has been restored by <b><font color=#60F570>[overflowed] HP!", "ooc")
+		viewBroadcast(usr, "<b><font color=[usr.textcolor]>[usr]</font> has reached max HP!", "ooc")
 	else
 		usr.health.addValue(increase)
-		view(usr) << output("<font color=[usr.textcolor]>[usr]</b><font color=white> has been restored by <b><font color=#60F570>[increase] HP!", "oocout")
-	view(usr) << output("<font color=[usr.textcolor]><b>[usr]</b><font color=white> is now at <font color=#60F570><b>[usr.health.value] / [maxHp]</font> HP!!", "oocout")
+		viewBroadcast(usr, "<font color=[usr.textcolor]>[usr]</b><font color=white> has been restored by <b><font color=#60F570>[increase] HP!", "ooc")
+	viewBroadcast(usr, "<font color=[usr.textcolor]><b>[usr]</b><font color=white> is now at <font color=#60F570><b>[usr.health.value] / [maxHp]</font> HP!!", "ooc")
 	ShowHPBar(usr)
 
 /mob/verb/IncreaseMP()
@@ -217,12 +217,12 @@
 	if(currentMp + increase >= maxMp)
 		overflowed = maxMp - currentMp
 		usr.mana.setValue(maxMp)
-		view(usr) << output("<font color=[usr.textcolor]>[usr]</b><font color=white> has been restored by <b><font color=#60F5E5>[overflowed] MP!", "oocout")
-		view(usr) << output("<b><font color=[usr.textcolor]>[usr]</font> has reached max MP!", "oocout")
+		viewBroadcast(usr, "<font color=[usr.textcolor]>[usr]</b><font color=white> has been restored by <b><font color=#60F5E5>[overflowed] MP!", "ooc")
+		viewBroadcast(usr, "<b><font color=[usr.textcolor]>[usr]</font> has reached max MP!", "ooc")
 	else
 		usr.mana.addValue(increase)
-		view(usr) << output("<font color=[usr.textcolor]>[usr]</b><font color=white> has been restored by <b><font color=#2AF0DB>[increase] MP!", "oocout")
-	view(usr) << output("<font color=[usr.textcolor]><b>[usr]</b><font color=white> is now at <font color=#2AF0DB><b>[usr.mana.value] / [maxMp]</font> MP!!", "oocout")
+		viewBroadcast(usr, "<font color=[usr.textcolor]>[usr]</b><font color=white> has been restored by <b><font color=#2AF0DB>[increase] MP!", "ooc")
+	viewBroadcast(usr, "<font color=[usr.textcolor]><b>[usr]</b><font color=white> is now at <font color=#2AF0DB><b>[usr.mana.value] / [maxMp]</font> MP!!", "ooc")
 	ShowMPBar(usr)
 
 /mob/verb/IncreaseSP()
@@ -237,12 +237,12 @@
 	if(currentSp + increase >= maxSp)
 		overflowed = maxSp - currentSp
 		usr.stamina.setValue(maxSp)
-		view(usr) << output("<font color=[usr.textcolor]>[usr]</b><font color=white> has been restored by <b><font color=#F8F475>[overflowed] SP!", "oocout")
-		view(usr) << output("<b><font color=[usr.textcolor]>[usr]</font> has reached max SP!", "oocout")
+		viewBroadcast(usr, "<font color=[usr.textcolor]>[usr]</b><font color=white> has been restored by <b><font color=#F8F475>[overflowed] SP!", "ooc")
+		viewBroadcast(usr, "<b><font color=[usr.textcolor]>[usr]</font> has reached max SP!", "ooc")
 	else
 		usr.stamina.addValue(increase)
-		view(usr) << output("<font color=[usr.textcolor]>[usr]</b><font color=white> has been restored by <b><font color=#F8F475>[increase] SP!", "oocout")
-	view(usr) << output("<font color=[usr.textcolor]><b>[usr]</b><font color=white> is now at <font color=#F8F475><b>[usr.stamina.value] / [maxSp]</font> SP!!", "oocout")
+		viewBroadcast(usr, "<font color=[usr.textcolor]>[usr]</b><font color=white> has been restored by <b><font color=#F8F475>[increase] SP!", "ooc")
+	viewBroadcast(usr, "<font color=[usr.textcolor]><b>[usr]</b><font color=white> is now at <font color=#F8F475><b>[usr.stamina.value] / [maxSp]</font> SP!!", "ooc")
 	ShowSPBar(usr)
 
 // ============================================================================
@@ -289,15 +289,15 @@
 	if(check < 0)
 		if(b.health)
 			b.health.setValue(0)
-		view(b) << output("<font color=[b.textcolor]><b>[b.name]</b><font color=white> has taken <b><font color=red>[decrease]</b></font> damage!", "oocout")
+		viewBroadcast(b, "<font color=[b.textcolor]><b>[b.name]</b><font color=white> has taken <b><font color=red>[decrease]</b></font> damage!", "ooc")
 	else
 		if(b.health)
 			b.health.addValue(-decrease)
-		view(b) << output("<font color=[b.textcolor]><b>[b.name]</b><font color=white> has taken <b><font color=red>[decrease]</b></font> damage!", "oocout")
+		viewBroadcast(b, "<font color=[b.textcolor]><b>[b.name]</b><font color=white> has taken <b><font color=red>[decrease]</b></font> damage!", "ooc")
 		var/newHp = b.health ? b.health.value : 0
-		view(b) << output("<font color=[b.textcolor]><b>[b.name]</b><font color=white> is now at <font color=#60F570><b>[newHp] / [maxHp]</font> HP!!", "oocout")
+		viewBroadcast(b, "<font color=[b.textcolor]><b>[b.name]</b><font color=white> is now at <font color=#60F570><b>[newHp] / [maxHp]</font> HP!!", "ooc")
 	if(b.health && b.health.value == 0)
-		view(b) << output("<b><font color=[b.textcolor]>[b.name]</font> has been reduced to 0 HP, and is now considered <font color=red><b>KOed</b></font>!!", "oocout")
+		viewBroadcast(b, "<b><font color=[b.textcolor]>[b.name]</font> has been reduced to 0 HP, and is now considered <font color=red><b>KOed</b></font>!!", "ooc")
 	refreshnpcsheet(m, b)
 	ShowHPBar(b)
 
@@ -311,15 +311,15 @@
 	if(check < 0)
 		if(b.mana)
 			b.mana.setValue(0)
-		view(b) << output("<font color=[b.textcolor]><b>[b.name]</b><font color=white> has drained <b><font color=red>[decrease]</b></font> MP!", "oocout")
+		viewBroadcast(b, "<font color=[b.textcolor]><b>[b.name]</b><font color=white> has drained <b><font color=red>[decrease]</b></font> MP!", "ooc")
 	else
 		if(b.mana)
 			b.mana.addValue(-decrease)
-		view(b) << output("<font color=[b.textcolor]><b>[b.name]</b><font color=white> has drained <b><font color=red>[decrease]</b></font> MP!", "oocout")
+		viewBroadcast(b, "<font color=[b.textcolor]><b>[b.name]</b><font color=white> has drained <b><font color=red>[decrease]</b></font> MP!", "ooc")
 		var/newMp = b.mana ? b.mana.value : 0
-		view(b) << output("<font color=[b.textcolor]><b>[b.name]</b><font color=white> is now at <font color=#60F570><b>[newMp] / [maxMp]</font> MP!!", "oocout")
+		viewBroadcast(b, "<font color=[b.textcolor]><b>[b.name]</b><font color=white> is now at <font color=#60F570><b>[newMp] / [maxMp]</font> MP!!", "ooc")
 	if(b.mana && b.mana.value == 0)
-		view(b) << output("<b><font color=[b.textcolor]><b>[b.name]</b></font> has been reduced to 0 MP, and now has <font color=red><b>1 additional static stack of exhaustion</b></font> until it raises above 0!!", "oocout")
+		viewBroadcast(b, "<b><font color=[b.textcolor]><b>[b.name]</b></font> has been reduced to 0 MP, and now has <font color=red><b>1 additional static stack of exhaustion</b></font> until it raises above 0!!", "ooc")
 	refreshnpcsheet(m, b)
 	ShowMPBar(b)
 
@@ -333,15 +333,15 @@
 	if(check < 0)
 		if(b.stamina)
 			b.stamina.setValue(0)
-		view(b) << output("<font color=[b.textcolor]><b>[b.name]</b><font color=white> has drained <b><font color=red>[decrease]</b></font> SP!", "oocout")
+		viewBroadcast(b, "<font color=[b.textcolor]><b>[b.name]</b><font color=white> has drained <b><font color=red>[decrease]</b></font> SP!", "ooc")
 	else
 		if(b.stamina)
 			b.stamina.addValue(-decrease)
-		view(b) << output("<font color=[b.textcolor]><b>[b.name]</b><font color=white> has drained <b><font color=red>[decrease]</b></font> SP!", "oocout")
+		viewBroadcast(b, "<font color=[b.textcolor]><b>[b.name]</b><font color=white> has drained <b><font color=red>[decrease]</b></font> SP!", "ooc")
 		var/newSp = b.stamina ? b.stamina.value : 0
-		view(b) << output("<font color=[b.textcolor]><b>[b.name]</b><font color=white> is now at <font color=#60F570><b>[newSp] / [maxSp]</font> SP!!", "oocout")
+		viewBroadcast(b, "<font color=[b.textcolor]><b>[b.name]</b><font color=white> is now at <font color=#60F570><b>[newSp] / [maxSp]</font> SP!!", "ooc")
 	if(b.stamina && b.stamina.value == 0)
-		view(b) << output("<b><font color=[b.textcolor]><b>[b.name]</font> has been reduced to 0 SP, and now has <font color=red><b>1 additional static stack of exhaustion</b></font> until it raises above 0!!", "oocout")
+		viewBroadcast(b, "<b><font color=[b.textcolor]><b>[b.name]</font> has been reduced to 0 SP, and now has <font color=red><b>1 additional static stack of exhaustion</b></font> until it raises above 0!!", "ooc")
 	refreshnpcsheet(m, b)
 	ShowSPBar(b)
 
@@ -356,15 +356,15 @@
 		overflowed = maxHp - currentHp
 		if(b.health)
 			b.health.setValue(maxHp)
-		view(b) << output("<font color=[b.textcolor]><b>[b.name]</b><font color=white> has been restored by <b><font color=#60F570>[overflowed] HP!", "oocout")
+		viewBroadcast(b, "<font color=[b.textcolor]><b>[b.name]</b><font color=white> has been restored by <b><font color=#60F570>[overflowed] HP!", "ooc")
 	else
 		if(b.health)
 			b.health.addValue(increase)
-		view(b) << output("<font color=[b.textcolor]><b>[b.name]</b><font color=white> has been restored by <b><font color=#60F570>[increase] HP!", "oocout")
+		viewBroadcast(b, "<font color=[b.textcolor]><b>[b.name]</b><font color=white> has been restored by <b><font color=#60F570>[increase] HP!", "ooc")
 	var/newHp = b.health ? b.health.value : 0
 	if(newHp >= maxHp)
-		view(b) << output("<b><font color=[b.textcolor]><b>[b.name]</font> has reached max HP!", "oocout")
-	view(b) << output("<font color=[b.textcolor]><b>[b.name]</b><font color=white> is now at <font color=#60F570><b>[newHp] / [maxHp]</font> HP!!", "oocout")
+		viewBroadcast(b, "<b><font color=[b.textcolor]><b>[b.name]</font> has reached max HP!", "ooc")
+	viewBroadcast(b, "<font color=[b.textcolor]><b>[b.name]</b><font color=white> is now at <font color=#60F570><b>[newHp] / [maxHp]</font> HP!!", "ooc")
 	refreshnpcsheet(m, b)
 	ShowHPBar(b)
 
@@ -379,15 +379,15 @@
 		overflowed = maxMp - currentMp
 		if(b.mana)
 			b.mana.setValue(maxMp)
-		view(b) << output("<font color=[b.textcolor]><b>[b.name]</b><font color=white> has been restored by <b><font color=#60F5E5>[overflowed] MP!", "oocout")
+		viewBroadcast(b, "<font color=[b.textcolor]><b>[b.name]</b><font color=white> has been restored by <b><font color=#60F5E5>[overflowed] MP!", "ooc")
 	else
 		if(b.mana)
 			b.mana.addValue(increase)
-		view(b) << output("<font color=[b.textcolor]><b>[b.name]</b><font color=white> has been restored by <b><font color=#2AF0DB>[increase] MP!", "oocout")
+		viewBroadcast(b, "<font color=[b.textcolor]><b>[b.name]</b><font color=white> has been restored by <b><font color=#2AF0DB>[increase] MP!", "ooc")
 	var/newMp = b.mana ? b.mana.value : 0
 	if(newMp >= maxMp)
-		view(b) << output("<b><font color=[b.textcolor]><b>[b.name]</font> has reached max MP!", "oocout")
-	view(b) << output("<font color=[b.textcolor]><b>[b.name]</b><font color=white> is now at <font color=#2AF0DB><b>[newMp] / [maxMp]</font> MP!!", "oocout")
+		viewBroadcast(b, "<b><font color=[b.textcolor]><b>[b.name]</font> has reached max MP!", "ooc")
+	viewBroadcast(b, "<font color=[b.textcolor]><b>[b.name]</b><font color=white> is now at <font color=#2AF0DB><b>[newMp] / [maxMp]</font> MP!!", "ooc")
 	refreshnpcsheet(m, b)
 	ShowMPBar(b)
 
@@ -402,15 +402,15 @@
 		overflowed = maxSp - currentSp
 		if(b.stamina)
 			b.stamina.setValue(maxSp)
-		view(b) << output("<font color=[b.textcolor]><b>[b.name]</b><font color=white> has been restored by <b><font color=#F8F475>[overflowed] SP!", "oocout")
+		viewBroadcast(b, "<font color=[b.textcolor]><b>[b.name]</b><font color=white> has been restored by <b><font color=#F8F475>[overflowed] SP!", "ooc")
 	else
 		if(b.stamina)
 			b.stamina.addValue(increase)
-		view(b) << output("<font color=[b.textcolor]><b>[b.name]</b><font color=white> has been restored by <b><font color=#F8F475>[increase] SP!", "oocout")
+		viewBroadcast(b, "<font color=[b.textcolor]><b>[b.name]</b><font color=white> has been restored by <b><font color=#F8F475>[increase] SP!", "ooc")
 	var/newSp = b.stamina ? b.stamina.value : 0
 	if(newSp >= maxSp)
-		view(b) << output("<b><font color=[b.textcolor]><b>[b.name]</font> has reached max SP!", "oocout")
-	view(b) << output("<font color=[b.textcolor]><b>[b.name]</b><font color=white> is now at <font color=#F8F475><b>[newSp] / [maxSp]</font> SP!!", "oocout")
+		viewBroadcast(b, "<b><font color=[b.textcolor]><b>[b.name]</font> has reached max SP!", "ooc")
+	viewBroadcast(b, "<font color=[b.textcolor]><b>[b.name]</b><font color=white> is now at <font color=#F8F475><b>[newSp] / [maxSp]</font> SP!!", "ooc")
 	refreshnpcsheet(m, b)
 	ShowSPBar(b)
 
@@ -793,7 +793,7 @@
 		return
 	var/acVal = usr.armorClass ? usr.armorClass.currentValue.value : 10
 	var/dexMod = usr.get_statmod_dexterity()
-	view(usr) << output("<font color=[usr.textcolor]><b>[usr]</b><font color=white>'s AC is <b><font color=#0FBFD7>[acVal]</b></font>! (Base: 10 + Dex: [dexMod] + Rank: [usr.rankbonus] + Equipment)", "oocout")
+	viewBroadcast(usr, "<font color=[usr.textcolor]><b>[usr]</b><font color=white>'s AC is <b><font color=#0FBFD7>[acVal]</b></font>! (Base: 10 + Dex: [dexMod] + Rank: [usr.rankbonus] + Equipment)", "ooc")
 
 /mob/verb/ShowDR()
 	set hidden = 1
@@ -801,7 +801,7 @@
 		return
 	var/drVal = usr.damageReduction ? usr.damageReduction.currentValue.value : 0
 	var/conMod = usr.get_statmod_constitution()
-	view(usr) << output("<font color=[usr.textcolor]><b>[usr]</b><font color=white>'s DR is <b><font color=#0FBFD7>[drVal]</b></font>! (Base DR + Con: [conMod])", "oocout")
+	viewBroadcast(usr, "<font color=[usr.textcolor]><b>[usr]</b><font color=white>'s DR is <b><font color=#0FBFD7>[drVal]</b></font>! (Base DR + Con: [conMod])", "ooc")
 
 /mob/verb/ShowSpeed()
 	set hidden = 1
@@ -809,7 +809,7 @@
 		return
 	// Speed is a simple numeric var, not a StatGroup
 	var/spdVal = usr.speed ? usr.speed : 3
-	view(usr) << output("<font color=[usr.textcolor]><b>[usr]</b><font color=white>'s Speed is <b><font color=#0FBFD7>[spdVal]</b></font>!", "oocout")
+	viewBroadcast(usr, "<font color=[usr.textcolor]><b>[usr]</b><font color=white>'s Speed is <b><font color=#0FBFD7>[spdVal]</b></font>!", "ooc")
 
 // ============================================================================
 // Note: statroll proc is defined in PlayerCommands.dm
@@ -952,9 +952,9 @@
 		return
 	usr.advantage = !usr.advantage
 	if(usr.advantage)
-		usr << output("<font color=#3CF82C>Advantage enabled!</font>", "oocout")
+		chatTo(usr, "<font color=#3CF82C>Advantage enabled!</font>", "ooc")
 	else
-		usr << output("<font color=white>Advantage disabled.</font>", "oocout")
+		chatTo(usr, "<font color=white>Advantage disabled.</font>", "ooc")
 
 /mob/verb/DisadvantageToggle()
 	set hidden = 1
@@ -962,9 +962,9 @@
 		return
 	usr.disadvantage = !usr.disadvantage
 	if(usr.disadvantage)
-		usr << output("<font color=#EC2323>Disadvantage enabled!</font>", "oocout")
+		chatTo(usr, "<font color=#EC2323>Disadvantage enabled!</font>", "ooc")
 	else
-		usr << output("<font color=white>Disadvantage disabled.</font>", "oocout")
+		chatTo(usr, "<font color=white>Disadvantage disabled.</font>", "ooc")
 
 // ============================================================================
 // LIMITBREAK AURA OBJ

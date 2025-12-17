@@ -237,7 +237,7 @@
 				if(target)
 					Test_Attack(target)
 			else
-				src << "<span class='warning'>No targets nearby.</span>"
+				chatTo(src, "<span class='warning'>No targets nearby.</span>", "ooc")
 
 		// Character actions
 		if("char_panel")
@@ -283,8 +283,8 @@
 			View_Professions()
 		if("spawnstation")
 			new/obj/crafting_station/universal(loc)
-			src << output("<font color='#00FF00'>Spawned a Universal Crafting Station at your location!</font>", "oocout")
-			src << output("Click the station and use 'Use Station' to start crafting.", "oocout")
+			chatTo(src, "<font color='#00FF00'>Spawned a Universal Crafting Station at your location!</font>", "ooc")
+			chatTo(src, "Click the station and use 'Use Station' to start crafting.", "ooc")
 		if("craftrecipe")
 			// Craft a specific recipe from the main menu
 			var/datum/craft_recipe/recipe = locate(href_list["recipe"])
@@ -313,4 +313,4 @@
 		if(stamina)
 			msg += "Stamina: [stamina.value]/[stamina.maxValue]<br>"
 
-	src << msg
+	chatTo(src, msg, "ooc")

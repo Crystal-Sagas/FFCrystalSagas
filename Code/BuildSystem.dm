@@ -1,3 +1,6 @@
+/// Global list of buildable objects for the build menu
+var/global/list/Buildables = list()
+
 mob
 	verb
 		Openbuild()
@@ -141,7 +144,7 @@ obj
 				usr.building=0
 				for(var/obj/Builds/o in usr.contents)
 					o.relocateToNull()
-				usr<<output("You are no longer building","oocout")
+					chatTo(usr, "You are no longer building", "ooc")
 				return
 			else
 				for(var/obj/Builds/o in usr.contents)
@@ -178,47 +181,45 @@ obj
 					B.owner=usr.key
 					B.faction=usr.faction
 					usr.contents+=B
-				usr<<output("Click in designated/owned building areas to set down the tile.","oocout")
-var/list/Buildables=new
+					chatTo(usr, "Click in designated/owned building areas to set down the tile.", "ooc")
 
-proc
-	Addbuildables()
+/proc/Addbuildables()
 	//	for(var/A in typesof(/obj/Builds/Buildturf/))
-		//	if(A!=/obj/Builds/Buildturf)
-			//	Buildables+=new A
-		//for(var/A in typesof(/obj/Builds/Buildobject/))
-		//	if(A!=/obj/Builds/Buildobject)
-			//	Buildables+=new A
-		for(var/A in typesof(/obj/Builds/Buildturf/Outside/))
-			if(A!=/obj/Builds/Buildturf/Outside)
-				Buildables+=new A
-		for(var/A in typesof(/obj/Builds/Event/))
-			if(A!=/obj/Builds/Event)
-				Buildables+=new A
-		for(var/A in typesof(/obj/Builds/Buildturf/Inside/))
-			if(A!=/obj/Builds/Buildturf/Inside)
-				Buildables+=new A
-		for(var/A in typesof(/obj/Builds/Buildturf/MidgarTiles/))
-			if(A!=/obj/Builds/Buildturf/MidgarTiles)
-				Buildables+=new A
-		for(var/A in typesof(/obj/Builds/Buildturf/InsomniaTiles/))
-			if(A!=/obj/Builds/Buildturf/InsomniaTiles)
-				Buildables+=new A
-		for(var/A in typesof(/obj/Builds/Buildturf/YevonTiles/))
-			if(A!=/obj/Builds/Buildturf/YevonTiles)
-				Buildables+=new A
-		for(var/A in typesof(/obj/Builds/Buildturf/Water/))
-			if(A!=/obj/Builds/Buildturf/Water)
-				Buildables+=new A
-		for(var/A in typesof(/obj/Builds/Buildobjects/Interior/))
-			if(A!=/obj/Builds/Buildobjects/Interior)
-				Buildables+=new A
-		for(var/A in typesof(/obj/Builds/Buildobjects/Exterior/))
-			if(A!=/obj/Builds/Buildobjects/Exterior)
-				Buildables+=new A
-		for(var/A in typesof(/obj/Builds/Buildobjects/Edges/))
-			if(A!=/obj/Builds/Buildobjects/Edges)
-				Buildables+=new A
-		for(var/A in typesof(/obj/Builds/Buildobjects/Door/))
-			if(A!=/obj/Builds/Buildobjects/Door)
-				Buildables+=new A
+	//		if(A!=/obj/Builds/Buildturf)
+	//			Buildables+=new A
+	//for(var/A in typesof(/obj/Builds/Buildobject/))
+	//	if(A!=/obj/Builds/Buildobject)
+	//		Buildables+=new A
+	for(var/A in typesof(/obj/Builds/Buildturf/Outside/))
+		if(A!=/obj/Builds/Buildturf/Outside)
+			global.Buildables+=new A
+	for(var/A in typesof(/obj/Builds/Event/))
+		if(A!=/obj/Builds/Event)
+			global.Buildables+=new A
+	for(var/A in typesof(/obj/Builds/Buildturf/Inside/))
+		if(A!=/obj/Builds/Buildturf/Inside)
+			global.Buildables+=new A
+	for(var/A in typesof(/obj/Builds/Buildturf/MidgarTiles/))
+		if(A!=/obj/Builds/Buildturf/MidgarTiles)
+			global.Buildables+=new A
+	for(var/A in typesof(/obj/Builds/Buildturf/InsomniaTiles/))
+		if(A!=/obj/Builds/Buildturf/InsomniaTiles)
+			global.Buildables+=new A
+	for(var/A in typesof(/obj/Builds/Buildturf/YevonTiles/))
+		if(A!=/obj/Builds/Buildturf/YevonTiles)
+			global.Buildables+=new A
+	for(var/A in typesof(/obj/Builds/Buildturf/Water/))
+		if(A!=/obj/Builds/Buildturf/Water)
+			global.Buildables+=new A
+	for(var/A in typesof(/obj/Builds/Buildobjects/Interior/))
+		if(A!=/obj/Builds/Buildobjects/Interior)
+			global.Buildables+=new A
+	for(var/A in typesof(/obj/Builds/Buildobjects/Exterior/))
+		if(A!=/obj/Builds/Buildobjects/Exterior)
+			global.Buildables+=new A
+	for(var/A in typesof(/obj/Builds/Buildobjects/Edges/))
+		if(A!=/obj/Builds/Buildobjects/Edges)
+			global.Buildables+=new A
+	for(var/A in typesof(/obj/Builds/Buildobjects/Door/))
+		if(A!=/obj/Builds/Buildobjects/Door)
+			global.Buildables+=new A

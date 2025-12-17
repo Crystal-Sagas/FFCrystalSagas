@@ -17,10 +17,10 @@ var/daytime = "Night"
 		if(daytime=="Day")
 			daytime="Night"
 			sd_OutsideLight(4)
-			world<<output("It is now night time.","oocout")
+			worldBroadcast("It is now night time.", "ooc")
 		else
 			daytime="Day"
-			world<<output("It is now day time.","oocout")
+			worldBroadcast("It is now day time.", "ooc")
 			sd_OutsideLight(6)
 		monthcount++
 		if(monthcount==28)
@@ -30,14 +30,14 @@ var/daytime = "Night"
 			yearcount++
 			for(var/mob/m in world)
 				m.teachslot = 0
-			world<<output("It is Month [monthname] of Year [year]AS","oocout")
+			worldBroadcast("It is Month [monthname] of Year [year]AS", "ooc")
 		if(yearcount==10)
 			year++
 			yearcount=0
 			month = 1
 			Monthname(month)
 			Agecheck()
-			world<<output("It is now Year [year]AS","oocout")
+			worldBroadcast("It is now Year [year]AS", "ooc")
 		sleep(432000)
 
 /proc/DayLooper()
@@ -66,7 +66,7 @@ var/daytime = "Night"
 		a.used=0
 	for(var/obj/item/Mooglebox/a in world)
 		a.cooldown=0
-	world.send_chat("It's a new day! All 24 hour cooldowns have been reset.", stream = "icout")
+	worldBroadcast("It's a new day! All 24 hour cooldowns have been reset.", "ic")
 	Saveworld()
 	//sleep(150)
 	//world.Reboot() //This will make the game auto-reboot

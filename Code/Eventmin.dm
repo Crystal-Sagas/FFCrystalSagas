@@ -21,8 +21,8 @@ mob
 				if(!G)
 					return 0
 				force_move(get_turf(G))
-				usr << output("<font color=#C0FFC0>You appear before [G]","oocout")
-				G << output("<font color=#FFC0C0>[usr.name] appears before you.","oocout")
+				chatTo(usr, "<font color=#C0FFC0>You appear before [G]", "ooc")
+				chatTo(G, "<font color=#FFC0C0>[usr.name] appears before you.", "ooc")
 				var/text = "[usr.name] teleported to [G.name]<br>"
 				Adminlog(text)
 				if(usr.tempeventmin)
@@ -46,7 +46,7 @@ mob
 				if(!G)
 					return 0
 				G.force_move(get_turf(src))
-				usr << output("<font color=#C0FFC0>You summon [G]","oocout")
+				chatTo(usr, "<font color=#C0FFC0>You summon [G]", "ooc")
 				G << "<font color=#C0FFC0>[usr.name] has summoned you"
 				var/text = "[usr.name] summoned [G.name]<br>"
 				Adminlog(text)
@@ -85,11 +85,11 @@ mob
 				usr.building=0
 				if(usr.encountclick==0)
 					usr.encountclick=1
-					usr<<output("Click anywhere on the map to put an encounter indicater","oocout")
+					chatTo(usr, "Click anywhere on the map to put an encounter indicater", "ooc")
 					usr<<output("Click anywhere on the map to put an encounter indicater","Alert")
 				else
 					usr.encountclick=0
-					usr<<output("You are no longer placing encounters.","oocout")
+					chatTo(usr, "You are no longer placing encounters.", "ooc")
 					usr<<output("You are no longer placing encounters","Alert")
 			Banimation()
 				var/list/target=new

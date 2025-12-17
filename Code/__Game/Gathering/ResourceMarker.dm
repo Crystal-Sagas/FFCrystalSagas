@@ -111,7 +111,7 @@
 	// Check node state
 	if(nodeState != NODE_STATE_AVAILABLE)
 		if(!silent)
-			user << output(MSG_GATHER_DEPLETED, "oocout")
+			chatTo(user, MSG_GATHER_DEPLETED, "ooc")
 		return FALSE
 
 	// Check if in range
@@ -127,13 +127,13 @@
 	var/profession = skillToGatheringProfession(gatheringSkill)
 	if(profession && !user.hasGatheringProfession(profession, 1))
 		if(!silent)
-			user << output(MSG_GATHER_NO_SKILL, "oocout")
+			chatTo(user, MSG_GATHER_NO_SKILL, "ooc")
 		return FALSE
 
 	// Check daily node limit
 	if(user.minednodes >= user.maxnodes)
 		if(!silent)
-			user << output(MSG_GATHER_NODE_LIMIT, "oocout")
+			chatTo(user, MSG_GATHER_NODE_LIMIT, "ooc")
 		return FALSE
 
 	return TRUE
@@ -158,12 +158,12 @@
 	timeReduction += user.getGatheringSpeedBonus(profession)
 
 	// Start gathering message
-	user << output(MSG_GATHER_START, "oocout")
+	chatTo(user, MSG_GATHER_START, "ooc")
 
 	// Tool bonus message
 	if(tool && toolTier > TOOL_TIER_NONE)
 		var/toolMsg = replacetext(MSG_GATHER_TOOL_BONUS, "%TOOL%", tool.name)
-		user << output(toolMsg, "oocout")
+		chatTo(user, toolMsg, "ooc")
 
 	// Calculate adjusted harvest time
 	var/adjustedTime = harvestTime
@@ -181,7 +181,7 @@
 	// Get loot table
 	var/datum/loot_table/table = getLootTable()
 	if(!table)
-		user << output(MSG_GATHER_FAIL, "oocout")
+		chatTo(user, MSG_GATHER_FAIL, "ooc")
 		return FALSE
 
 	// Calculate bonuses based on gathering profession level
@@ -207,7 +207,7 @@
 	// Generate and give drops
 	var/list/drops = table.generateDrops(0, bonusRolls)
 	if(!length(drops))
-		user << output(MSG_GATHER_FAIL, "oocout")
+		chatTo(user, MSG_GATHER_FAIL, "ooc")
 		return FALSE
 
 	// Give materials to player with yield multiplier
@@ -307,7 +307,7 @@
 
 	// Output message
 	var/msg = replacetext(MSG_GATHER_SUCCESS, "%ITEM%", "[quantity]x [itemName]")
-	user << output(msg, "oocout")
+	chatTo(user, msg, "ooc")
 
 /**
  * Get the loot table for this node

@@ -5,7 +5,7 @@ obj
 		Savable=1
 		layer=5
 		Click()
-			usr<<output("<font color=#00FFFF> <b> [src.desc]</font>","oocout")
+			chatTo(usr, "<font color=#00FFFF> <b> [src.desc]</font>", "ooc")
 			if(src.owner==usr.key)
 				switch(alert(usr,"Do you wish to edit or delete this flag?",,"Edit","Delete","Cancel"))
 					if("Edit")

@@ -39,7 +39,7 @@ mob
 			if(usr.intitlescreen)
 				return
 			// Redirect to new Main Menu equip tab
-			usr << output("<font color='#AAAAAA'>Equipment is now shown in the Main Menu. Press TAB or use the menu button.</font>", "oocout")
+			chatTo(usr, "<font color='#AAAAAA'>Equipment is now shown in the Main Menu. Press TAB or use the menu button.</font>", "ooc")
 			if(hascall(usr, "OpenMainMenu"))
 				usr.OpenMainMenu()
 		CloseEquip()

@@ -142,13 +142,13 @@ obj
 						if(a.name==src.name)
 							a.amount+=Transfer
 							UpdateCraft(usr)
-							view(usr) << output("[usr.name] has picked up [src]!","icout")
+							viewBroadcast(usr, "[usr.name] has picked up [src]!", "ic")
 							del src
 						UpdateCraft(usr)
 				else
 					usr.contents+=src
 					UpdateCraft(usr)
-				view(usr) << output("[usr.name] has picked up [src]!","icout")
+				viewBroadcast(usr, "[usr.name] has picked up [src]!", "ic")
 			if(src.instorage==1)
 				var/obj/storage/s=usr.storagelook
 				if(src.amount>0)
@@ -182,14 +182,14 @@ obj
 						o.instorage=0
 						usr.contents+=o
 						UpdateCraft(usr)
-						view(usr) << output("[usr.name] has picked up [src]!","icout")
+						viewBroadcast(usr, "[usr.name] has picked up [src]!", "ic")
 				else
 					src.instorage=0
 					s.slots--
 					src.Move(usr)
 				usr.RefreshStorage()
 				UpdateCraft(usr)
-				view(usr) << output("[usr.name] has picked up [src]!","icout")
+				viewBroadcast(usr, "[usr.name] has picked up [src]!", "ic")
 			if(src.instore)
 				// NPC shop items are handled via browse() Shop UI - see Shop.Controller.dm
 				return
@@ -198,7 +198,7 @@ obj
 					return
 				usr.contents+=src
 				Refreshinventoryscreen(usr)
-				view(usr) << output("[usr.name] has picked up [src.name]!","icout")
+				viewBroadcast(usr, "[usr.name] has picked up [src.name]!", "ic")
 
 
 mob
@@ -208,7 +208,7 @@ mob
 			if(a in m.contents)
 				switch(alert("[a.desc] (Rank:[a.rank])","[a.name]","Reveal","Cancel"))
 					if("Reveal")
-						view() << output("[description]","icout")
+						viewBroadcast(m, "[description]", "ic")
 					if("Cancel")
 						return
 mob
@@ -219,7 +219,7 @@ mob
 					var/players={"<font color=#60F560>[m.name] has flashed a Materia: <a href="byond://?src=\ref[usr]&action4=lookmat&value=\ref[a]"><font color=#FFFFFF>[a]</a>!!"}
 					switch(alert(m,"[a.desc] (Rank:[a.rank])","[a.name]","Reveal","Cancel"))
 						if("Reveal")
-							view() << output("[players]","icout")
+							viewBroadcast(m, "[players]", "ic")
 						if("Cancel")
 							return
 				else
@@ -256,10 +256,7 @@ obj/item
 				if(src in usr.contents)
 					switch(alert("[src.desc] (Rank:[src.rank])","[src.name]","Reveal","Cancel"))
 						if("Reveal")
-							view() << output("[players]","icout")
-						if("Cancel")
-							return
-			// NOTE: Attack() verb removed - combat system being replaced
+							viewBroadcast(usr, "[players]", "ic")
 
 	antinquecoin
 		icon = 'Coin.dmi'
@@ -277,7 +274,7 @@ obj
 					if(src in usr.contents)
 						switch(alert("[src.desc] (Rank:[src.rank])","[src.name] | Using this will consume it.","Reveal","Cancel"))
 							if("Reveal")
-								view() << output("[usr.name] used [src.name]:[src.desc]","icout")
+								viewBroadcast(usr, "[usr.name] used [src.name]:[src.desc]", "ic")
 								src.amount-=1
 								if(src.amount<=0)
 									src.relocateToNull()
@@ -1261,7 +1258,7 @@ obj
 		// if not, proceed with just dropping
 		force_move(get_turf(user))
 		user.carryweight -= weight
-		user.visible_message("[user] has dropped [src]!", stream = "icout")
+		user.visible_message("[user] has dropped [src]!", stream = "ic")
 		// just refresh inventory because SURELY THIS ISNT A CRAFTING MATERIAL IF IT ISNT A STACK, RIGHT?
 		Refreshinventoryscreen(user)
 		return
@@ -1281,6 +1278,6 @@ obj
 	amount -= amt
 	user.carryweight -= weight * amt
 	// feedback
-	user.visible_message("[user] has dropped [amt] of [src]!", stream ="icout")
+	user.visible_message("[user] has dropped [amt] of [src]!", stream = "ic")
 	// just refresh crafting screen because surely this is a crafting material and not a normal item right??
 	UpdateCraft(user)

@@ -52,9 +52,9 @@
 		if(customDesc)
 			eventNode.desc = customDesc
 
-		mob << output("Event node created! Use 'Configure Event Node' to add custom loot.", "oocout")
+		chatTo(mob, "Event node created! Use 'Configure Event Node' to add custom loot.", "ooc")
 	else
-		mob << output("Created [newNode.name] at your location.", "oocout")
+		chatTo(mob, "Created [newNode.name] at your location.", "ooc")
 
 /**
  * Configure an event node's custom loot
@@ -73,7 +73,7 @@
 		nearbyNodes += node
 
 	if(!length(nearbyNodes))
-		mob << output("No event nodes nearby. Create one first with 'Create Gathering Node'.", "oocout")
+		chatTo(mob, "No event nodes nearby. Create one first with 'Create Gathering Node'.", "ooc")
 		return
 
 	var/obj/resource_marker/event/targetNode
@@ -104,16 +104,16 @@
 			dmAddGuaranteedDrop(targetNode)
 		if("Clear All Drops")
 			targetNode.clearCustomLoot()
-			mob << output("Cleared all custom drops from [targetNode.name].", "oocout")
+			chatTo(mob, "Cleared all custom drops from [targetNode.name].", "ooc")
 		if("Set Respawn Time")
 			var/time = input(mob, "Respawn time in seconds:", "Respawn Time", 300) as null|num
 			if(time)
 				targetNode.respawnTime = time * 10  // Convert to deciseconds
-				mob << output("Set respawn time to [time] seconds.", "oocout")
+				chatTo(mob, "Set respawn time to [time] seconds.", "ooc")
 		if("Remove Node")
 			var/confirm = alert(mob, "Are you sure you want to delete this node?", "Confirm", "Yes", "No")
 			if(confirm == "Yes")
-				mob << output("Removed [targetNode.name].", "oocout")
+				chatTo(mob, "Removed [targetNode.name].", "ooc")
 				del targetNode
 
 /**
@@ -181,7 +181,7 @@
 				return
 			materialType = text2path(typePath)
 			if(!materialType)
-				mob << output("Invalid type path.", "oocout")
+				chatTo(mob, "Invalid type path.", "ooc")
 				return
 
 	// Get weight
@@ -200,7 +200,7 @@
 
 	// Add to node
 	node.addCustomDrop(materialType, weight, minQty, maxQty)
-	mob << output("Added drop to [node.name].", "oocout")
+	chatTo(mob, "Added drop to [node.name].", "ooc")
 
 /**
  * Helper: Add a guaranteed drop to an event node
@@ -212,7 +212,7 @@
 
 	var/materialType = text2path(typePath)
 	if(!materialType)
-		mob << output("Invalid type path.", "oocout")
+		chatTo(mob, "Invalid type path.", "ooc")
 		return
 
 	var/minQty = input(mob, "Minimum quantity:", "Min Qty", 1) as null|num
@@ -224,7 +224,7 @@
 		maxQty = 1
 
 	node.addGuaranteedDrop(materialType, minQty, maxQty)
-	mob << output("Added guaranteed drop to [node.name].", "oocout")
+	chatTo(mob, "Added guaranteed drop to [node.name].", "ooc")
 
 // =============================================================================
 // ADMIN: REFRESH ALL NODES
@@ -242,4 +242,4 @@
 		return
 
 	resetAllResourceMarkers()
-	mob << output("All resource nodes have been refreshed.", "oocout")
+	chatTo(mob, "All resource nodes have been refreshed.", "ooc")

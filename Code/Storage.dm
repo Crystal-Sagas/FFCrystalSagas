@@ -13,7 +13,7 @@
 				if("No")
 					return
 		else
-			usr<<output("This [src.name] is locked. You don't have the key to it.","oocout")
+			chatTo(usr, "This [src.name] is locked. You don't have the key to it.", "ooc")
 	else
 		var/row
 		winset(usr,"Storage","is-visible=true")

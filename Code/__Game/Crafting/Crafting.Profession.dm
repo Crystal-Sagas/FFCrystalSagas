@@ -82,7 +82,7 @@
 
 	// Add profession at level 1
 	craftingProfessions[profession] = 1
-	src << output("<font color='#90EE90'>You have learned the [profession] profession!</font>", "oocout")
+	chatTo(src, "<font color='#90EE90'>You have learned the [profession] profession!</font>", "ooc")
 	return TRUE
 
 /**
@@ -118,7 +118,7 @@
 	// For simplicity, amount directly translates to level gain chance
 	if(prob(amount * 100 / expNeeded))
 		craftingProfessions[profession] = min(currentLevel + 1, maxProfessionLevel)
-		src << output("<font color='#FFD700'>Your [profession] skill has increased to level [craftingProfessions[profession]]!</font>", "oocout")
+		chatTo(src, "<font color='#FFD700'>Your [profession] skill has increased to level [craftingProfessions[profession]]!</font>", "ooc")
 		return TRUE
 
 	return FALSE
@@ -131,7 +131,7 @@
 		return FALSE
 
 	activeCraftProfession = profession
-	src << output("Active profession set to: [profession]", "oocout")
+	chatTo(src, "Active profession set to: [profession]", "ooc")
 	return TRUE
 
 /**
@@ -184,15 +184,15 @@
 	set desc = "View your learned crafting professions."
 
 	if(!craftingProfessions || !length(craftingProfessions))
-		src << output("You haven't learned any crafting professions yet.", "oocout")
+		chatTo(src, "You haven't learned any crafting professions yet.", "ooc")
 		return
 
-	src << output("<b>===== Crafting Professions =====</b>", "oocout")
+	chatTo(src, "<b>===== Crafting Professions =====</b>", "ooc")
 	for(var/prof in craftingProfessions)
 		var/level = craftingProfessions[prof]
 		var/activeMarker = (prof == activeCraftProfession) ? " \[ACTIVE\]" : ""
-		src << output("  [prof]: Level [level][activeMarker]", "oocout")
-	src << output("<b>================================</b>", "oocout")
+		chatTo(src, "  [prof]: Level [level][activeMarker]", "ooc")
+	chatTo(src, "<b>================================</b>", "ooc")
 
 /mob/verb/Set_Active_Profession()
 	set name = "Set Active Profession"
@@ -200,7 +200,7 @@
 	set desc = "Set your active crafting profession."
 
 	if(!craftingProfessions || !length(craftingProfessions))
-		src << output("You haven't learned any crafting professions yet.", "oocout")
+		chatTo(src, "You haven't learned any crafting professions yet.", "ooc")
 		return
 
 	var/list/options = list()
@@ -221,7 +221,7 @@
 	set desc = "Grant a crafting profession to a player."
 
 	if(!adminlv)
-		src << output("DM access required.", "oocout")
+		chatTo(src, "DM access required.", "ooc")
 		return
 
 	var/list/professions = list(
@@ -246,9 +246,9 @@
 		return
 
 	if(target.learnProfession(profession))
-		src << output("Granted [profession] to [target.name].", "oocout")
+		chatTo(src, "Granted [profession] to [target.name].", "ooc")
 	else
-		src << output("[target.name] already knows [profession].", "oocout")
+		chatTo(src, "[target.name] already knows [profession].", "ooc")
 
 /mob/verb/DM_Set_Profession_Level()
 	set name = "DM Set Profession Level"
@@ -256,7 +256,7 @@
 	set desc = "Set a player's profession level."
 
 	if(!adminlv)
-		src << output("DM access required.", "oocout")
+		chatTo(src, "DM access required.", "ooc")
 		return
 
 	var/mob/target = input(src, "Select target:", "Set Level") as null|mob in view()
@@ -264,7 +264,7 @@
 		return
 
 	if(!target.craftingProfessions || !length(target.craftingProfessions))
-		src << output("[target.name] has no professions.", "oocout")
+		chatTo(src, "[target.name] has no professions.", "ooc")
 		return
 
 	var/list/profs = list()
@@ -280,5 +280,5 @@
 		return
 
 	target.craftingProfessions[profession] = newLevel
-	src << output("Set [target.name]'s [profession] to level [newLevel].", "oocout")
-	target << output("<font color='#FFD700'>Your [profession] level has been set to [newLevel].</font>", "oocout")
+	chatTo(src, "Set [target.name]'s [profession] to level [newLevel].", "ooc")
+	chatTo(target, "<font color='#FFD700'>Your [profession] level has been set to [newLevel].</font>", "ooc")

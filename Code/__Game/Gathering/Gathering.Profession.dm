@@ -117,7 +117,7 @@
 
 	if(prob(amount * 100 / expNeeded))
 		gatheringProfessions[profession] = min(currentLevel + 1, maxGatheringLevel)
-		src << output("<font color='#90EE90'>Your [profession] skill has increased to level [gatheringProfessions[profession]]!</font>", "oocout")
+		chatTo(src, "<font color='#90EE90'>Your [profession] skill has increased to level [gatheringProfessions[profession]]!</font>", "ooc")
 		return TRUE
 
 	return FALSE
@@ -268,12 +268,12 @@
 	if(!gatheringProfessions)
 		initializeGatheringProfessions()
 
-	src << output("<b>===== Gathering Professions =====</b>", "oocout")
+	chatTo(src, "<b>===== Gathering Professions =====</b>", "ooc")
 	for(var/prof in gatheringProfessions)
 		var/level = gatheringProfessions[prof]
 		var/tierName = getGatheringTierName(level)
-		src << output("  [prof]: Level [level] ([tierName])", "oocout")
-	src << output("<b>==================================</b>", "oocout")
+		chatTo(src, "  [prof]: Level [level] ([tierName])", "ooc")
+	chatTo(src, "<b>==================================</b>", "ooc")
 
 /**
  * Get tier name based on level
@@ -301,7 +301,7 @@
 	set desc = "Set a player's gathering profession level."
 
 	if(!adminlv)
-		src << output("DM access required.", "oocout")
+		chatTo(src, "DM access required.", "ooc")
 		return
 
 	var/list/professions = list(
@@ -326,8 +326,8 @@
 		return
 
 	target.setGatheringLevel(profession, newLevel)
-	src << output("Set [target.name]'s [profession] to level [newLevel].", "oocout")
-	target << output("<font color='#90EE90'>Your [profession] level has been set to [newLevel].</font>", "oocout")
+	chatTo(src, "Set [target.name]'s [profession] to level [newLevel].", "ooc")
+	chatTo(target, "<font color='#90EE90'>Your [profession] level has been set to [newLevel].</font>", "ooc")
 
 /mob/verb/DM_Grant_All_Gathering()
 	set name = "DM Grant All Gathering"
@@ -335,7 +335,7 @@
 	set desc = "Initialize all gathering professions for a player."
 
 	if(!adminlv)
-		src << output("DM access required.", "oocout")
+		chatTo(src, "DM access required.", "ooc")
 		return
 
 	var/mob/target = input(src, "Select target:", "Grant Gathering") as null|mob in view()
@@ -343,5 +343,5 @@
 		return
 
 	target.initializeGatheringProfessions()
-	src << output("Initialized all gathering professions for [target.name].", "oocout")
-	target << output("<font color='#90EE90'>Your gathering professions have been initialized!</font>", "oocout")
+	chatTo(src, "Initialized all gathering professions for [target.name].", "ooc")
+	chatTo(target, "<font color='#90EE90'>Your gathering professions have been initialized!</font>", "ooc")

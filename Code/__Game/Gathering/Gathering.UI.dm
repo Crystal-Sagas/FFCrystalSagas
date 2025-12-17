@@ -18,14 +18,14 @@
 /mob/proc/showGatheringProgress(nodeName, duration)
 	// Simple text feedback for now
 	// Could be enhanced with actual progress bar later
-	src << output("<span style='color: #88cc88;'>⛏️ Gathering from [nodeName]...</span>", "oocout")
+	chatTo(src, "<span style='color: #88cc88;'>⛏️ Gathering from [nodeName]...</span>", "ooc")
 
 /**
  * Show gathering result to the player
  */
 /mob/proc/showGatheringResult(list/drops, nodeName)
 	if(!length(drops))
-		src << output("<span style='color: #cc8888;'>❌ Failed to gather anything from [nodeName].</span>", "oocout")
+		chatTo(src, "<span style='color: #cc8888;'>❌ Failed to gather anything from [nodeName].</span>", "ooc")
 		return
 
 	var/msg = "<span style='color: #88cc88;'>✓ Gathered from [nodeName]:</span><br>"
@@ -36,7 +36,7 @@
 		msg += "  • [quantity]x [temp.name]<br>"
 		relocateToNull(temp)
 
-	src << output(msg, "oocout")
+	chatTo(src, msg, "ooc")
 
 // =============================================================================
 // GATHERING COMMANDS
@@ -60,7 +60,7 @@
 		nearbyNodes += legacyNode
 
 	if(!length(nearbyNodes))
-		src << output("You don't see any gathering nodes nearby.", "oocout")
+		chatTo(src, "You don't see any gathering nodes nearby.", "ooc")
 		return
 
 	var/msg = "<b>Nearby Gathering Nodes:</b><br>"
@@ -81,7 +81,7 @@
 
 		msg += "  • [node.name] - <span style='color: [statusColor];'>[status]</span><br>"
 
-	src << output(msg, "oocout")
+	chatTo(src, msg, "ooc")
 
 /**
  * Verb to check gathering skill progress
@@ -129,7 +129,7 @@
 	if(check_perk("Materia Melder"))
 		msg += "  ✨ Materia: Learned<br>"
 
-	src << output(msg, "oocout")
+	chatTo(src, msg, "ooc")
 
 // =============================================================================
 // DAILY RESET INTEGRATION

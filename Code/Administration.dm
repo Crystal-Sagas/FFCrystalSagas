@@ -153,12 +153,12 @@ mob
 				if(!m)
 					return
 				else
-					world<<output("<font color=#ff3300><font size=3>[m]</font>","icout")
+					worldBroadcast("<font color=#ff3300><font size=3>[m]</font>", "ic")
 					if(usr.tempeventmin)
 						AuditLog(text)
 			Reboot()
 				set category="Admin"
-				world << output("<font color=silver>Server Information: [usr.key] is rebooting the world in 15 seconds","icout")
+				worldBroadcast("<font color=silver>Server Information: [usr.key] is rebooting the world in 15 seconds", "ic")
 				Saveworld()
 				sleep(150)
 				world.Reboot()
@@ -291,7 +291,7 @@ mob
 
 			Teleport()
 				if(usr.adminlv < 1)
-					usr << output("<font color=[src.textcolor]><font size = 0.5>Nuh uh uh</font>","oocout")
+					chatTo(usr, "<font color=[src.textcolor]><font size = 0.5>Nuh uh uh</font>", "ooc")
 					return
 				var/list/people = list()
 				for(var/mob/M in world)
@@ -301,8 +301,8 @@ mob
 				if(!G)
 					return 0
 				force_move(get_turf(G))
-				usr << output("<font color=#C0FFC0>You appear before [G]","oocout")
-				G << output("<font color=#FFC0C0>[usr.name] appears before you.","oocout")
+				chatTo(usr, "<font color=#C0FFC0>You appear before [G]", "ooc")
+				chatTo(G, "<font color=#FFC0C0>[usr.name] appears before you.", "ooc")
 				var/text = "[usr.name] teleported to [G.name]"
 				Adminlog(text)
 				UpdateArea(usr)
@@ -321,7 +321,7 @@ mob
 						del a
 			Summon()
 				if(usr.adminlv < 1)
-					usr << output("<font color=[src.textcolor]><font size = 0.5>Nuh uh uh</font>","oocout")
+					chatTo(usr, "<font color=[src.textcolor]><font size = 0.5>Nuh uh uh</font>", "ooc")
 					return
 				var/list/people = list()
 				for(var/mob/M in world)
@@ -331,14 +331,14 @@ mob
 				if(!G)
 					return 0
 				G.force_move(get_turf(src))
-				usr << output("<font color=#C0FFC0>You summon [G]","oocout")
+				chatTo(usr, "<font color=#C0FFC0>You summon [G]", "ooc")
 				G << "<font color=#C0FFC0>[usr.name] has summoned you"
 				var/text = "[usr.name] summoned [G.name]"
 				Adminlog(text)
 				UpdateArea(G)
 			Observe()
 				if(usr.adminlv < 1)
-					usr << output("<font color=[src.textcolor]><font size = 0.5>Nuh uh uh</font>","oocout")
+					chatTo(usr, "<font color=[src.textcolor]><font size = 0.5>Nuh uh uh</font>", "ooc")
 					return
 				var/doo = list()
 				doo += ("Stop Watching")
@@ -385,7 +385,7 @@ mob
 				Updaterank(choice)
 			ManageAdmins()
 				if(usr.adminlv < 4)
-					usr << output("<font color=[src.textcolor]><font size = 0.5>Nuh uh uh</font>","oocout")
+					chatTo(usr, "<font color=[src.textcolor]><font size = 0.5>Nuh uh uh</font>", "ooc")
 					return
 				for(var/mob/M in world)
 					if(!M.client)
@@ -395,7 +395,7 @@ mob
 					Adminlog(text)
 			XYZTeleport()
 				if(usr.adminlv < 1)
-					usr << output("<font color=[src.textcolor]><font size = 0.5>Nuh uh uh</font>","oocout")
+					chatTo(usr, "<font color=[src.textcolor]><font size = 0.5>Nuh uh uh</font>", "ooc")
 					return
 				var/tx = input(src,"Input your X coordinate.","Change Coordinates",src.x) as null|num
 				var/ty = input(src,"Input your Y coordinate.","Change Coordinates",src.y) as null|num
@@ -415,11 +415,11 @@ mob
 				UpdateArea(usr)
 			ManualSave()
 				if(usr.adminlv < 3)
-					usr << output("<font color=[src.textcolor]><font size = 0.5>Nuh uh uh</font>","oocout")
+					chatTo(usr, "<font color=[src.textcolor]><font size = 0.5>Nuh uh uh</font>", "ooc")
 				Saveworld()
 			Mute()
 				if(usr.adminlv < 1)
-					usr << output("<font color=[src.textcolor]><font size = 0.5>Nuh uh uh</font>","oocout")
+					chatTo(usr, "<font color=[src.textcolor]><font size = 0.5>Nuh uh uh</font>", "ooc")
 					return
 				var/list/people = list()
 				switch(alert("Do you want to mute or unmute someone?",,"Mute","Unmute"))
@@ -444,7 +444,7 @@ mob
 							Adminlog(text2)
 			Boot()
 				if(usr.adminlv < 1)
-					usr << output("<font color=[src.textcolor]><font size = 0.5>Nuh uh uh</font>","oocout")
+					chatTo(usr, "<font color=[src.textcolor]><font size = 0.5>Nuh uh uh</font>", "ooc")
 					return
 				var/list/people = list()
 				for(var/mob/m in world)
@@ -547,7 +547,7 @@ mob
 						Bans+=Choice.key
 						Bans+=Choice.client.address
 						Bans+=Choice.client.computer_id
-						world<<output("[Choice:key] was BANNED for [Reason].","oocout")
+						worldBroadcast("[Choice:key] was BANNED for [Reason].", "ooc")
 						var/text1 = "[usr.key] banned ([Choice] for [Reason])"
 						Adminlog(text1)
 						Choice.loc = null
@@ -556,7 +556,7 @@ mob
 						var/Choice=input(src,"Remove which ban?") in Bans
 						if(Choice=="Cancel") return
 						Bans-=Choice
-						world<<output("[Choice] was unbanned","oocout")
+						worldBroadcast("[Choice] was unbanned", "ooc")
 						var/text2 = "[usr.key] unbanned [Choice]"
 						Adminlog(text2)
 					if("Mass UnBan")
@@ -581,7 +581,7 @@ mob
 				var/amount=input("How much do you wish to reward them?") as num
 				choice.roleplayPoints.addValue(amount)
 				choice.totalRoleplayPoints.addValue(amount)
-				choice<<output("You have been rewarded [amount] RPP!","oocout")
+				chatTo(choice, "You have been rewarded [amount] RPP!", "ooc")
 				var/text = "[usr.key] rewarded ([choice.key] [choice.name] [amount]RPP)"
 				Adminlog(text)
 				Updaterank(choice)
@@ -595,7 +595,7 @@ mob
 					if(m.roleplayPoints && m.totalRoleplayPoints)
 						m.roleplayPoints.addValue(globalreward)
 						m.totalRoleplayPoints.addValue(globalreward)
-				world<<output("It is now Year [year]AS, every player has received [globalreward]RPP over the timeskip.","oocout")
+				worldBroadcast("It is now Year [year]AS, every player has received [globalreward]RPP over the timeskip.", "ooc")
 				var/text = "[usr.key] performed a timeskip"
 				Adminlog(text)
 			CleanupAoE()
@@ -608,7 +608,7 @@ mob
 				for(var/mob/m in world)
 					if(m.client)
 						m.aoetiles=0
-				world<<output("The world has been cleaned of AoE tiles.","oocout")
+				worldBroadcast("The world has been cleaned of AoE tiles.", "ooc")
 			GivePerktoPlayer(mob/a in world)
 				set category="Admin"
 				if(adminlv<2)
@@ -871,11 +871,11 @@ mob
 			Naughtyfilter()
 				if(naughtywordfilter)
 					naughtywordfilter=0
-					usr<<output("the lenny filter is now off.","oocout")
+					chatTo(usr, "the lenny filter is now off.", "ooc")
 					return
 				else
 					naughtywordfilter=1
-					usr<<output("the lenny filter is now on.","oocout")
+					chatTo(usr, "the lenny filter is now on.", "ooc")
 			MakeEventmin()
 				var/list/peeps = new
 				for(var/mob/m in world)
@@ -1088,7 +1088,7 @@ obj
 
 proc
 	Save_Objects()
-		world<<output("<small>Server: Saving Objects...","icout")
+		worldBroadcast("<small>Server: Saving Objects...", "ic")
 		var/Amount=0
 		var/E=1
 		var/savefile/F=new("Data/World/File[E]")
@@ -1112,11 +1112,11 @@ proc
 				world<<"<small>Server: Objects DEBUG system check: extra objects file deleted!"
 				E++
 				goto hacklol
-		world<<output("<small>Server: Objects Saved([Amount]).","icout")
+		worldBroadcast("<small>Server: Objects Saved([Amount]).", "ic")
 
 proc
 	Load_Objects()
-		world<<output("<small>Server: Loading Items...","icout")
+		worldBroadcast("<small>Server: Loading Items...", "ic")
 		var/amount=0
 		var/filenum=0
 		wowza:
@@ -1129,4 +1129,4 @@ proc
 					amount+=1
 					A.loc=locate(A.savedx,A.savedy,A.savedz)
 				goto wowza
-		world<<output("<small>Server: Items Loaded ([amount]).","icout")
+		worldBroadcast("<small>Server: Items Loaded ([amount]).", "ic")

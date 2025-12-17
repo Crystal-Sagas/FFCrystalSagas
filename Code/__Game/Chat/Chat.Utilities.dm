@@ -219,3 +219,96 @@ proc/broadcastToRange(mob/origin, dist, message, channel = "system")
 				M.BrowseCombatOut(message)
 			else
 				M.BrowseBuffOut(message)
+
+// ============================================================================
+// LEGACY OUTPUT COMPATIBILITY HELPERS
+// ============================================================================
+
+/**
+ * Send a message to all mobs that can view the origin (legacy view() << output() replacement)
+ * This replaces patterns like: view() << output(msg, "icout")
+ * @param origin The source location/mob for view()
+ * @param message The message content
+ * @param channel The channel - "ic", "ooc", "combat", "all" (default "ic")
+ * @param speaker Optional speaker name
+ */
+/proc/viewBroadcast(atom/origin, message, channel = "ic", speaker = "")
+	if(!origin)
+		return
+
+	for(var/mob/M in view(origin))
+		if(!M.client)
+			continue
+
+		if(M.chat_window_open)
+			M.sendChatMessage(channel, speaker, message)
+		else
+			// Buffer until window opens
+			if(!M.chat_message_buffer)
+				M.chat_message_buffer = list()
+			M.chat_message_buffer += list(list("channel" = channel, "speaker" = speaker, "message" = message))
+
+/**
+ * Send a message to all mobs within a range (legacy view(range) << output() replacement)
+ * This replaces patterns like: view(range, origin) << output(msg, "icout")
+ * @param dist The view distance
+ * @param origin The source location/mob for view()
+ * @param message The message content
+ * @param channel The channel - "ic", "ooc", "combat", "all" (default "ic")
+ * @param speaker Optional speaker name
+ */
+/proc/viewRangeBroadcast(dist, atom/origin, message, channel = "ic", speaker = "")
+	if(!origin)
+		return
+
+	for(var/mob/M in view(dist, origin))
+		if(!M.client)
+			continue
+
+		if(M.chat_window_open)
+			M.sendChatMessage(channel, speaker, message)
+		else
+			// Buffer until window opens
+			if(!M.chat_message_buffer)
+				M.chat_message_buffer = list()
+			M.chat_message_buffer += list(list("channel" = channel, "speaker" = speaker, "message" = message))
+
+/**
+ * Send a message to all clients in the world (legacy world << output() replacement)
+ * This replaces patterns like: world << output(msg, "oocout")
+ * @param message The message content
+ * @param channel The channel - "ic", "ooc", "combat", "all" (default "all")
+ * @param speaker Optional speaker name
+ */
+/proc/worldBroadcast(message, channel = "all", speaker = "")
+	for(var/client/C in world)
+		if(!C.mob)
+			continue
+
+		if(C.mob.chat_window_open)
+			C.mob.sendChatMessage(channel, speaker, message)
+		else
+			// Buffer until window opens
+			if(!C.mob.chat_message_buffer)
+				C.mob.chat_message_buffer = list()
+			C.mob.chat_message_buffer += list(list("channel" = channel, "speaker" = speaker, "message" = message))
+
+/**
+ * Send a message to a single recipient (legacy usr << output() replacement)
+ * This replaces patterns like: usr << output(msg, "oocout")
+ * @param recipient The mob to receive the message
+ * @param message The message content
+ * @param channel The channel - "ic", "ooc", "combat", "all" (default "ooc")
+ * @param speaker Optional speaker name
+ */
+/proc/chatTo(mob/recipient, message, channel = "ooc", speaker = "")
+	if(!recipient || !recipient.client)
+		return
+
+	if(recipient.chat_window_open)
+		recipient.sendChatMessage(channel, speaker, message)
+	else
+		// Buffer until window opens
+		if(!recipient.chat_message_buffer)
+			recipient.chat_message_buffer = list()
+		recipient.chat_message_buffer += list(list("channel" = channel, "speaker" = speaker, "message" = message))

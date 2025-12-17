@@ -246,7 +246,7 @@
 /proc/saveWorldObjects()
 	set background = TRUE
 
-	world << output("<small>Server: Saving world objects...", "icout")
+	worldBroadcast("<small>Server: Saving world objects...", "ic")
 
 	var/filePath = "[WORLD_SAVE_PATH]/Objects"
 	var/objectCount = 0
@@ -286,7 +286,7 @@
 		fdel("[filePath][fileIndex].sav")
 		fileIndex++
 
-	world << output("<small>Server: World objects saved ([objectCount] objects).", "icout")
+	worldBroadcast("<small>Server: World objects saved ([objectCount] objects).", "ic")
 	world.log << "World objects saved: [objectCount] objects in [fileIndex - 1] files"
 	return objectCount
 
@@ -297,7 +297,7 @@
 /proc/loadWorldObjects()
 	set background = TRUE
 
-	world << output("<small>Server: Loading world objects...", "icout")
+	worldBroadcast("<small>Server: Loading world objects...", "ic")
 
 	var/newPath = "[WORLD_SAVE_PATH]/Objects"
 	var/legacyPath = "Data/World/File"
@@ -333,7 +333,7 @@
 			fileIndex++
 			sleep(1) // Yield between files
 
-	world << output("<small>Server: World objects loaded ([objectCount] objects).", "icout")
+	worldBroadcast("<small>Server: World objects loaded ([objectCount] objects).", "ic")
 	world.log << "World objects loaded: [objectCount] objects"
 	return objectCount
 
@@ -348,7 +348,7 @@
 /proc/saveWorld()
 	set background = TRUE
 
-	world << output("Server: Beginning world save...", "oocout")
+	worldBroadcast("Server: Beginning world save...", "ooc")
 	world.log << "=== WORLD SAVE STARTED ==="
 
 	// Save bans
@@ -360,7 +360,7 @@
 	// Save world objects
 	saveWorldObjects()
 
-	world << output("World has been successfully saved!", "oocout")
+	worldBroadcast("World has been successfully saved!", "ooc")
 	world.log << "=== WORLD SAVE COMPLETED ==="
 
 // Alias for backwards compatibility
