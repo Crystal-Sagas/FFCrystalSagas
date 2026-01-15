@@ -281,6 +281,8 @@ proc/broadcastToRange(mob/origin, dist, message, channel = "system")
  * @param speaker Optional speaker name
  */
 /proc/worldBroadcast(message, channel = "all", speaker = "")
+	set background = 1  // Prevent infinite loop warning when called during world startup
+
 	for(var/client/C in world)
 		if(!C.mob)
 			continue

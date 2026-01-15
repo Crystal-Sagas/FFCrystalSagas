@@ -1,140 +1,361 @@
-Mechanical Concepts for Azu
+Custom Card Maker Program
+https://ygopro.org/yugioh-card-maker/
+Card Testing Program
+https://ygopro.org/
+
+
+Beast
+Undead
+Spirit
+Lizard
+Bird
+Dragon
+Fiend
+Humanoid
+Machine
+Plant
+Flan
+Stone
+Water
+Insect
+Elemental
+
+
+Final Fantasy Variant
+Monster Types
+Beast
+Humanoid
+Undead
+Fiend
+Dragon
+Magitech
+Plant
+Flan
+Elemental
+Flying
+Aquatic
+Spellcaster
+Warrior
+Heavy
+Elemental Types
+Water
+Wind
+Earth
+Fire
+Lightning
+Light
+Dark
+
+
+Final Fantasy Set 1
+
+Normal Monsters
+
+(Normal Monster)(2) Dr. Unne 700/700
+(Normal Monster)(2) Skeleton 800/200
+(Normal Monster)(2) Big Eyes 800/900
+
+(Normal Monster)(3) Goblin 1000/400
+(Normal Monster)(3) Wolf 1100/500
+(Normal Monster)(3) Zombie 1200/600
+(Normal Monster)(3) Sahagin 1300/400
+(Normal Monster)(3) Scorpion 1200/800
+
+(Normal Monster)(4)  Prince of Elfheim 1500/1200
+(Normal Monster)(4)  Duergar Dwarf 1400/1600
+(Normal Monster)(4) Crazy Horse 1600/1200
+(Normal Monster)(4) Black Widow 1500/700
+(Normal Monster)(4) Cobra 1400/1600
+(Normal Monster)(4) Lizard 1400/1600
+(Normal Monster)(4) Pirate 1600/1200
+(Normal Monster)(4) Shadow 1500/1400
+(Normal Monster)(4) Crocodile 1600/1600
+(Normal Monster)(4) Ochu 1500/1600
+(Normal Monster)(4) Sage Sadda 1600/1400
+(Normal Monster)(4) Lesser Tiger 1700/1100
+(Normal Monster)(4) Fire Elemental 1800/1400
+(Normal Monster)(4) Black Knight 1700/1500
+
+(Normal Monster)(5) Gigas Worm 1900/1600 
+(Normal Monster)(5) Ogre 2100/1500
+(Normal Monster)(5) Gargoyle 1800/2200
+(Normal Monster)(5) Piscodemon 2000/2000
+(Normal Monster)(5) Mummy 1700/2300
+
+(Normal Monster)(6) Knight Garland 2200/2000
+(Normal Monster)(6) Shark 2200/1400
+(Normal Monster)(6) Hyenadon 2200/1500
+(Normal Monster)(6) Minotaur 2300/1400
+(Normal Monster)(6) Hill Gigas 2200/1800
+(Normal Monster)(6) Ankheg 2300/1900
+(Normal Monster)(6) Allosaurus 2100/2100
+
+(Normal Monster)(7) Troll 2400/2200
+(Normal Monster)(7) Sphinx 2400/2200
+(Normal Monster)(7) Red Dragon 2600/2200
+(Normal Monster)(7) White Dragon 2400/2300
+(Normal Monster)(7) Green Dragon 2500/2200
+(Normal Monster))7) Blue Dragon 2400/2300
 
-Gathering items is a simple task for players. They go to locations and find random items to collect. Nodes that have Materials on them.
+Effect Monsters
+(Effect Monster) Green Slime- If this card is destroyed by battle, you can Special Summon 1 "Green Slime" from your Deck.
 
-Every gathering material has some tag or multiple tags associated with them. Once gathered they can then be used for the crafting process.
+(Effect Monster) Dragon Zombie- When this card destroys a monster by battle, gain 200 life points.
 
-Items can also be made on the fly by Trusted Players running events and DMs these are custom named and iconed items with self determined tags on creation. They can have lore significance or just be basic items
+(Effect Monster) Mind Flayer- When this card deals damage, your opponent discards 1 card at random from their hand.
 
-Example A
-Someone does a mission to save some kids from some Flan. As a reward the kids give them a set of wooden figures. The set of wooden figures would be a custom item that is given to the players. The DM decides that the figures as a crafting material have the Willsave Tag associated with it.
+(Effect Monster) Dark Wizard- Increase this card’s ATK by 300 for each face up Spell Card on the field.
 
-This makes it so every item in the game can be used as crafting materials for any project they want.
+(Effect Monster) Hydra- This card can attack up to 2 monsters during the same Battle Phase but cannot attack your opponent directly.
 
-Example B
-Someone defeats an Adamantoise Turtle. They get the shell as a reward. That shell could be worth the equivalent of Physical protection 3 Tag. So when using it in a crafting state they could add 3 tags of Physical defense to the crafted materials tag total. Making for a really good E rank Shield or heavy armor.
+(Effect Monster) King of Cornelia- While this card remains face up alll Warrior-Type monsters you control gain 300 ATK.
 
+(Effect Monster) Princess Sarah- At the start of your turn while this card is in face up defense, gain 500 Life Points.
 
-Farmer Materials
-Herbs
+(Effect Monster) Warrior Setro- When this card destroys a monster by battle, place 1 counter on this card. This card gains 100 ATK for each counter on it.
 
-Veggietables
+(Effect Monster) Thief Zauver- Flip, Draw 2 Cards and Discard 1.
 
+(Effect Monster) White Mage Flora- Flip, Gain 500 Life.
 
+(Effect Monster) Black Mage Teol- Flip, Destroy one monster on the Field.
 
+(Effect Monster) Cockatrice- When this card battles a monster, change that monster to Defense Position at the end of the Damage Step.
 
-Herbalist Materials
+(Effect Monster) Piranha- If this card attacks a Defense Position monster, inflict piercing battle damage.
 
-Herbs
+(Effect Monster) Lufenian Cid- When this card is Normal Summoned, you can add 1 Airship card from your Deck to your hand.
 
-Roots
+(Effect Monster) Dark Elf Astos- When this card is Normal Summoned, take control of 1 face-up monster your opponent controls until the End Phase. That monster cannot attack this turn.
 
-Flowers
+(Effect Monster) Witch Matoya- Flip, Return 1 Spell Card from your Graveyard to your hand.
 
+(Effect Monster) Vampire- When this card destroys a monster by battle, add a token to this card. For every token on this card increase its attack and defense by 100.
 
+Fusion Monsters
+(Fusion Monster)(7) Fiend of Fire Marilith 2100/1600
+Black Knight + Fire Elemental
+Destroy 1 card on the field when summoned
 
+(Fusion Monster)(7) Fiend of Water Kraken 2000/2100
+Shark + Piscodemon
+Gain 200 Atk for every water monster on the field
 
-Healing Herbs
+(Fusion Monster)(7) Fiend of Earth Lich 1900/2400
+Mummy + Earth Elemental
+If this card defeats a monster opponent discards a card.
 
-Harming Herbs
+(Fusion Monster)(7) Fiend of Wind Tiamat 2300/2000
+Lesser Tiger + Cobra
+Can attack twice per battle
 
-Poison Root
+(Fusion Monster)(7) Demon Lord Garland 2500/2200
+Knight Garland + Hyenadon
+When Summoned Destroy one monster on the field
 
-Antidote Root
+(Fusion Monster)(8) Dragon King Bahumut 5000/5000
+Black Dragon + Blue Dragon + Red Dragon + White Dragon
+Search your deck for 1 Bahamut's Blessing Card and add it to hand.
 
-Paralysis Flower
+Ritual Monsters
+(Ritual Monster)(9) Chaos 3000/2500
+Chaos Shrine + 9 Stars
+When Summoned Destroy all monster on the opponents field
 
-Stimulant Flower
+(Ritual Monster) Knight Setro(8) 2400/2000
+This card requires Bahamut's Blessing to Special Advance Summon
+Gain 300 Atk for every warrior on the field
 
+(Ritual Monster)(8) Ninja Zauver 1800/1600
+This card requires Bahamut's Blessing to Special Advance Summon
+If there are 2 or more monsters on the opponent's side this card can attack directly.
 
+(Ritual Monster) White Wizard Flora 2400/1800
+This card requires Bahamut's Blessing to Special Advance Summon
+Once per turn increase a monsters attack by 300 until end of turn.
 
+(Ritual Monster) Black Wizard Teol 2500/1800
+This card requires Bahamut's Blessing to Special Advance Summon
+Destroy all spell and trap cards your opponent has on the field.
+Spell Cards
+(Spell Equip) Wind Crystal- A Wind Element monster equipped with this card increases its ATK and DEF by 300 points.
 
-Logger Materials
+(Spell Equip) Fire Crystal- A Fire Element monster equipped with this card increases its ATK and DEF by 300 points.
 
-Wood
+(Spell Equip) Earth Crystal- An Earth Element monster equipped with this card increases its ATK and DEF by 300 points.
 
-Food
 
+(Spell Equip) Water Crystal- A Water Element monster equipped with this card increases its ATK and DEF by 300 points.
 
+(Spell Field Card) Flying Fortress- Increase the ATK of all Fairy-Type and Flying-Type monsters by 200.
 
+(Spell Card) Mirage Tower- Draw 1 card. If you control no monsters, draw 1 additional card.
 
-Name- Gross Wooden Doll
-Type- Wood
-Tag- Poison 1
+(Spell Card) Melmond- Add 1 Warrior-Type monster with 1500 or less ATK from your Deck to your hand.
 
-Name- maple Log x2
-Type- Wood
-Tag- Physical Defense 1
+(Spell Card) Luhkan’s Prophecy- Reveal the top 3 cards of your Deck. Add 1 card with “Crystal” in its name to your hand. Shuffle the rest into your Deck.
 
-Name- Iron Ore x 1
-Type metal
-Sub Type Iron
-Tag- Physical defense x1
+(Spell Field Card) Cornelia- All Warrior-Type monsters gain 200 ATK and DEF.
 
-Craft a Staff requires 3 Wood + 1 Metal/Iron E rank Staff
-3 Tags it can have
+(Spell Card) Cornelia’s Bridge- Special Summon 1 Level 4 or lower monster from your hand. That monster cannot attack this turn.
 
-Maple and the doll and the Iron
-That fulfills the 3 wood requirement and 1 iron
-And it gives the staff
-Poison 1 and Physical defense 3
+(Spell Card) Sarah’s Lute- Select 1 face-up monster on the field. That monster cannot attack during your opponent’s next Battle Phase.
 
-It can only have 3 tags.
-Guarantee 2 physical defense
-Last tag is a coin flip between Poison and physical defense
+(Spell Field Card) Pravoka- Increase the ATK of all Aqua-Type monsters by 200.
 
+(Spell Card) Pirate Ship- Take control of 1 Aqua-Type monster your opponent controls until the End Phase.
 
+(Spell Field Card) Mount Duergar- Elemental-Type and Magitech-Type monsters gain 200 ATK and  DEF.
 
+(Spell Card) Crystal Eye- Look at your opponent’s hand.
 
+(Spell Card) Crown of Western Keep- Equip only to a Warrior-Type monster. Increase its ATK by 400.
 
+(Spell Card) Marsh Cave- All Effect monsters lose 200 ATK.
 
-Miner Materials
-Gems-
+(Spell Card) Awakening Potion- Flip 1 face-down monster face-up.
+If it is a Flip Effect Monster, its effect is activated.
 
-Metals-
+(Spell Card) Mystic Key- Destroy 1 face-down Spell or Trap Card on the field.
 
-Crystal-
+(Spell Card) Aldean Sea- Destroy all Monsters on the field.
 
+(Spell Field Card) Cavern of Earth- Rock and Zombie-Type monsters gain 200 ATK.
 
-Iron-  
+(Spell Card) Star Ruby- Add 1 Normal Spell Card from your Deck to your hand.
 
-Silver- 
+(Spell Card) Giant’s Cave- Level 5 or higher monsters gain 500 ATK until the end of this turn, but cannot attack directly.
 
-Gold- 
+(Spell Card) Canoe- Once this turn, you can Normal Summon 1 additional Level 4 or lower monster.
 
-Obsidian-
+(Spell Card) Circle of Sages- Draw 2 Cards.
 
-Mithril- 
+(Spell Field Card) Mount Gulg- Fire-Type monsters gain 200 ATK and DEF.
 
-Adamantite-
+(Spell Card) Levistone- Destroy the active Field Spell Card on the field. Neither player can activate a Field Spell this turn.
 
-Wind Ore-
+(Spell Field Card) Cavern of Ice- All face-up monsters switch to Defense Position during each player’s End Phase.
 
-Fire Ore-
+(Spell Card) Ryukahn Desert- All monsters lose 300 DEF until end of turn
 
-Lightning Ore- 
+(Spell Field Card) Cardigan Island- During each player’s Standby Phase, that player gains 300 Life Points.
 
-Water Ore- 
+(Spell Card) Citadel of Trials- Add 1 Ritual Spell Card from your Deck to your hand.
+You cannot conduct your Battle Phase the turn you activate this card.
 
-Earth Ore- 
+(Spell Card) Rat’s Tail- Tribute 1 monster you control. Draw 2 cards.
 
+(Spell Card) Bottled Fairy- Gain 1000 Life Points.
 
+(Spell Card) Oxyale- Destroy 1 Water-Type monster on the field.
 
+(Spell Field Card) Sunken Shrine- Equip only to a Water Element Monster Increase its ATK by 500.
 
+(Spell Card) Rosetta Stone- Return 1 Spell or Trap Card from your Graveyard to your hand.
 
-Materia Materials
+(Spell Field Card) Lufenia- Spellcaster-Type monsters gain 200 ATK and DEF.
 
-Red //summons
+(Spell Card) Waterfall Cavern- Destroy one Elemental type monster on the field.
 
-Blue // Spell Enhancements  (MP reduction, Cooldown Reduction)
+(Spell Card) Chime- Special Summon 1 monster from your Graveyard in face-down Defense Position. That monster cannot be Flip Summoned this turn.
 
-Yellow // Job Abilities
+(Spell Card) Airship- Return 1 monster you control to your hand. Then, Special Summon 1 Level 4 or lower monster from your hand in face down defense position.
+(Spell Ritual Card) Bahamut’s Blessing- This card is used to Advance Summon one of these Monsters. Warrior Setro, Ninja Zauver, White Wizard Flora, or Black Wizard Teol. You must also tribute 8 stars worth of monsters on your side of the field.
 
-Green // Magic Spells
+(Spell Ritual Card) Chaos Shrine- This card is used to Advance Summon Chaos. You must also tribute 8 stars worth of monsters on your side of the field.
 
-Purple // Independent (MP Up, HP Up)
+(Spell Fusion Card) Synthesis Hammer!- Use this card to synthesize a monster. 
 
-Hunter Materials
 
-Monster Parts
+Trap Cards
+(Trap Card) Time Warp- Activate when your opponent declares an attack. End the Battle Phase.
+
+(Trap Card) 2000 Year Reversal- Activate when a monster is Normal Summoned. Change that monster to face-down Defense Position.
+
+(Trap Card) Time Loop- Activate when a monster you control is destroyed. Special Summon that monster from the Graveyard in face-down Defense Position.
+
+(Trap Card) Astos Deception- Activate when your opponent activates a Spell Card. Negate its effect and destroy it.
+
+(Trap Card) Nitro Powder- Activate when an opponent’s monster attacks. Destroy that attacking monster.
+
+Warriors of light deck
+Knight Setro x1
+Warrior Sertro x1
+Thief Zauver x1
+White Mage Flora x1
+Black Mage Teol x1
+Princess Sarah x1
+Witch Matoya x1
+Sage Sadda x1
+Prince of Elfheim x1
+Duergar Dwarf x1
+Pirate x1
+Skeleton x1
+Shadow x1
+Scorpion x1
+Sahagin x1
+Zombie x1
+Lesser Tiger x1
+Wolf x 1
+Minotaur x1
+Mystic key x2
+Aldean Sea x1
+Sarah’s Lute x1
+Bahamuts Blessing x1
+Rats Tail x1
+Circle of Sages x1
+Ryukahn Desert x1
+Cornelia x1
+Mirage Tower x1
+Awakening Potion x1
+Canoe x1
+Bottled Fairy x1
+Crown of Western Keep x1
+Chime x1
+Star Ruby x1
+2000 Year Reversal x1
+Time Warp x1
+Time Loop x1
+Nitro Powder x1
+Asto’s Deception x1
+Total = 40
+Garland Deck
+Demon Lord Garland x1
+Knight Garland x1
+Ogre x1
+Gargoyle x1
+Fire Elemental x1
+Mind Flayer x1
+Shadow x2
+Goblin x2
+Black Knight x2
+Crazy Horse x1
+Sahagin x1
+Black Widow x1
+Skeleton x1
+Lizard x1
+Big Eye x1
+Crocodile x1
+Cockatrice x1
+Ochu x1
+Giga Worm x1
+Hyenadon x1
+Dragon Zombie x1
+Piscodemon x1
+Cobra x1
+Mystic key x2
+Circle of Sages x1
+Ryukahn Desert x1
+Crystal Eye x1
+Levistone x1
+Star Ruby x1
+Earth Crystal x1
+Marsh Caves x1
+Synthesis Hammer! X1
+2000 Year Reversal x1
+Time Warp x1
+Time Loop x1
+Nitro Powder x1
+Asto’s Deception x1
+Total 41
 

@@ -28,11 +28,11 @@
 /// Path to save resource node data
 #define RESOURCE_SAVE_PATH "Data/Resources/nodes.json"
 
-/// How many nodes to spawn per batch (to reduce lag)
-#define RESOURCE_SPAWN_BATCH_SIZE 10
+/// How many nodes to spawn per batch (keep small to reduce lag)
+#define RESOURCE_SPAWN_BATCH_SIZE 5
 
-/// Delay between spawn batches in deciseconds
-#define RESOURCE_SPAWN_BATCH_DELAY 1
+/// Delay between spawn batches in deciseconds (higher = less lag but slower spawning)
+#define RESOURCE_SPAWN_BATCH_DELAY 2
 
 // =============================================================================
 // DEBUG CONFIGURATION
@@ -47,17 +47,17 @@ GLOBAL_VAR_INIT(resource_spawn_debug, TRUE)
 // These define how many nodes of each type to spawn per 1000 valid turfs
 // Adjust these values to control resource scarcity/abundance
 
-/// Ore nodes per 1000 valid turfs
-#define SPAWN_DENSITY_ORE 8
+/// Ore nodes per 1000 valid turfs (keep LOW to prevent lag - 0.5 = 1 per 2000 turfs)
+#define SPAWN_DENSITY_ORE 0.5
 
 /// Tree nodes per 1000 valid turfs
-#define SPAWN_DENSITY_TREE 12
+#define SPAWN_DENSITY_TREE 0.8
 
 /// Herb nodes per 1000 valid turfs
-#define SPAWN_DENSITY_HERB 10
+#define SPAWN_DENSITY_HERB 0.6
 
 /// Dirt/sifting nodes per 1000 valid turfs
-#define SPAWN_DENSITY_DIRT 5
+#define SPAWN_DENSITY_DIRT 0.3
 
 // =============================================================================
 // TURF SPAWN RULES
@@ -331,6 +331,8 @@ GLOBAL_DATUM(resource_spawner, /datum/resource_spawner)
  * Uses batching to avoid lag
  */
 /datum/resource_spawner/proc/buildTurfCache()
+	set background = 1  // Prevent infinite loop warning for long-running operations
+
 	turfCache = list()
 
 	var/processed = 0
@@ -507,16 +509,28 @@ GLOBAL_DATUM(resource_spawner, /datum/resource_spawner)
 
 /**
  * Spawn resources for a specific configuration (batched)
+ * OPTIMIZED: Uses turf cache directly instead of re-validating every turf
  */
 /datum/resource_spawner/proc/spawnResourceType(datum/resource_spawn_config/config)
-	// Collect all valid turfs for this config
+	set background = 1  // Prevent infinite loop warning for long-running spawn operations
+
+	// Determine which turf cache category to use based on config
+	// This avoids expensive re-validation of millions of turfs
 	var/list/validTurfs = list()
+
+	// Map config validTurfs to cache categories
 	for(var/validType in config.validTurfs)
-		// Check each cached category
-		for(var/cat in turfCache)
-			for(var/turf/T in turfCache[cat])
-				if(isTurfValidForConfig(T, config))
-					validTurfs += T
+		if(ispath(validType, /turf/map/Grass1) || ispath(validType, /turf/map/Grass2) || ispath(validType, /turf/map/Grass3) || ispath(validType, /turf/map/Grass4) || ispath(validType, /turf/map/Grass5))
+			if(turfCache["grass"])
+				validTurfs += turfCache["grass"]
+			break  // Only add grass category once
+		if(ispath(validType, /turf/map/Dirt1) || ispath(validType, /turf/map/Dirt2) || ispath(validType, /turf/map/Dirt3) || ispath(validType, /turf/map/Dirt4) || ispath(validType, /turf/map/Dirt5))
+			if(turfCache["dirt"])
+				validTurfs += turfCache["dirt"]
+			break  // Only add dirt category once
+		if(ispath(validType, /turf/map/Golddust))
+			if(turfCache["golddust"])
+				validTurfs += turfCache["golddust"]
 
 	if(!length(validTurfs))
 		if(global.resource_spawn_debug)
@@ -541,10 +555,12 @@ GLOBAL_DATUM(resource_spawner, /datum/resource_spawner)
 		// Pick a random valid turf
 		var/turf/T = pick(validTurfs)
 
-		// Validate the location
-		if(!isTurfSuitable(T))
+		// Quick validation - skip dense turfs or those with dense objects
+		if(T.density)
 			continue
-		if(isTooCloseToNodes(T, config.nodeType))
+
+		// Skip distance check most of the time for performance (only check 20% of attempts)
+		if(prob(20) && isTooCloseToNodes(T, config.nodeType))
 			continue
 
 		// Determine which variant to spawn

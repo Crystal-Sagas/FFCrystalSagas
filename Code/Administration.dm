@@ -977,6 +977,8 @@ proc/DetermineVarValue(variable)
 	return "- [variable] -"
 
 mob/Topic(href,href_list[])
+	. = ..()  // Ensure parent Topic handlers are called first
+
 	switch(href_list["action"])
 		if("edit")
 			var/variable = href_list["var"]

@@ -90,15 +90,21 @@
  * Start the character creation dialogue
  */
 /datum/character_creation_dialogue/proc/start()
+	LogDebug(LOG_CAT_CHARACTER, "CharCreation start(): participant=[participant], client=[participant?.client]")
+
 	if(!participant?.client)
+		LogDebug(LOG_CAT_CHARACTER, "CharCreation start(): FAILED - no participant or client")
 		return FALSE
 
 	if(isActive)
+		LogDebug(LOG_CAT_CHARACTER, "CharCreation start(): FAILED - already active")
 		return FALSE
 
 	isActive = TRUE
 	currentStep = CREATION_STEP_WELCOME
 	participant.creationDialogue = src
+
+	LogDebug(LOG_CAT_CHARACTER, "CharCreation start(): Set participant.creationDialogue = [participant.creationDialogue]")
 
 	// Clear any previous dialogue content before starting
 	clearNPCDialoguePanel(participant)
@@ -509,11 +515,14 @@
  */
 /datum/character_creation_dialogue/proc/showChoices(list/choices)
 	if(!participant?.client || !length(choices))
+		LogDebug(LOG_CAT_CHARACTER, "showChoices: FAILED - no participant/client or empty choices")
 		return
 
 	// Store pending choices for validation
 	participant.pendingCreationChoices = choices.Copy()
 	pendingChoices = choices.Copy()
+
+	LogDebug(LOG_CAT_CHARACTER, "showChoices: Set pendingCreationChoices with [length(choices)] choices: [json_encode(choices)]")
 
 	// Set grid mode for many options
 	var/numChoices = length(choices)
@@ -526,6 +535,8 @@
 		var/choiceText = choices[choiceId]
 		var/compactClass = useGrid ? " compact" : ""
 		choicesHtml += {"<a href='?src=\ref[participant];creation_choice=[url_encode(choiceId)]' class='npc-choice-button[compactClass]'>[choiceText]</a>"}
+
+	LogDebug(LOG_CAT_CHARACTER, "showChoices: Generated HTML (first 200 chars): [copytext(choicesHtml, 1, 200)]")
 
 	// Update choices in the persistent panel
 	participant.client << output(url_encode(choicesHtml), "default.browser1:updateNPCChoices")
@@ -659,9 +670,14 @@
 /mob/player/Topic(href, href_list, hsrc)
 	. = ..()
 
+	// Debug: Log all topic calls for character creation
+	if(href_list["creation_choice"] || href_list["creation_name_input"])
+		LogDebug(LOG_CAT_CHARACTER, "CharCreation Topic: href=[href], creation_choice=[href_list["creation_choice"]], creationDialogue=[creationDialogue ? "exists" : "null"], pendingChoices=[pendingCreationChoices ? length(pendingCreationChoices) : "null"]")
+
 	// Handle creation choice selection
 	if(href_list["creation_choice"])
-		handleCreationChoice(url_decode(href_list["creation_choice"]))
+		var/result = handleCreationChoice(url_decode(href_list["creation_choice"]))
+		LogDebug(LOG_CAT_CHARACTER, "CharCreation handleCreationChoice result: [result]")
 
 	// Handle name input request
 	if(href_list["creation_name_input"])
@@ -671,12 +687,21 @@
  * Handle a creation choice selection
  */
 /mob/player/proc/handleCreationChoice(choiceId)
+	LogDebug(LOG_CAT_CHARACTER, "handleCreationChoice: choiceId=[choiceId], creationDialogue=[creationDialogue ? "exists" : "null"]")
+
 	if(!creationDialogue)
+		LogDebug(LOG_CAT_CHARACTER, "handleCreationChoice: FAILED - no creationDialogue")
 		return FALSE
 
-	if(!pendingCreationChoices || !(choiceId in pendingCreationChoices))
+	if(!pendingCreationChoices)
+		LogDebug(LOG_CAT_CHARACTER, "handleCreationChoice: FAILED - no pendingCreationChoices")
 		return FALSE
 
+	if(!(choiceId in pendingCreationChoices))
+		LogDebug(LOG_CAT_CHARACTER, "handleCreationChoice: FAILED - choiceId not in pending choices. Looking for '[choiceId]' in [json_encode(pendingCreationChoices)]")
+		return FALSE
+
+	LogDebug(LOG_CAT_CHARACTER, "handleCreationChoice: SUCCESS - calling onChoice")
 	pendingCreationChoices = null
 	return creationDialogue.onChoice(choiceId)
 
