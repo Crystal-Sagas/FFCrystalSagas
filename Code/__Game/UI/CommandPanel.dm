@@ -212,32 +212,9 @@
 	switch(action)
 		// Combat actions
 		if("basic_attack")
-			Attack()
+			chatTo(src, "<span class='warning'>Action combat has been removed. Turn-based combat coming soon!</span>", "ooc")
 		if("trance")
 			Trance()
-		if("block")
-			if(!combatController)
-				initializeCombat()
-			combatController.startBlock()
-			spawn(5)  // Release block after 0.5 seconds for toggle behavior
-				if(combatController?.combatState == COMBAT_STATE_BLOCKING)
-					combatController.stopBlock()
-		if("dodge")
-			Dodge_Roll()
-		if("lock_target")
-			Lock_Target()
-		if("test_attack")
-			// Find nearest mob to attack
-			var/list/targets = list()
-			for(var/mob/M in oview(7, src))
-				if(M.name)
-					targets += M
-			if(length(targets))
-				var/mob/target = input(src, "Select a target to attack:", "Test Attack") as null|anything in targets
-				if(target)
-					Test_Attack(target)
-			else
-				chatTo(src, "<span class='warning'>No targets nearby.</span>", "ooc")
 
 		// Character actions
 		if("char_panel")
@@ -297,20 +274,11 @@
 /mob/proc/showCombatStatus()
 	var/msg = "<b>Combat Status:</b><br>"
 
-	if(!combatController)
-		msg += "Combat controller: Not initialized<br>"
-		msg += "Use any combat action to initialize."
-	else
-		msg += "State: [getCombatStateText()]<br>"
-		msg += "In Combat: [combatController.isInCombat ? "Yes" : "No"]<br>"
-		msg += "Target Locked: [combatController.isTargetLocked ? combatController.lockedTarget?.name : "None"]<br>"
-		msg += "Stagger: [combatController.staggerCurrent]/[combatController.staggerMax]<br>"
-
-		if(health)
-			msg += "Health: [health.value]/[health.maxValue]<br>"
-		if(mana)
-			msg += "Mana: [mana.value]/[mana.maxValue]<br>"
-		if(stamina)
-			msg += "Stamina: [stamina.value]/[stamina.maxValue]<br>"
+	if(health)
+		msg += "Health: [health.value]/[health.maxValue]<br>"
+	if(mana)
+		msg += "Mana: [mana.value]/[mana.maxValue]<br>"
+	if(stamina)
+		msg += "Stamina: [stamina.value]/[stamina.maxValue]<br>"
 
 	chatTo(src, msg, "ooc")

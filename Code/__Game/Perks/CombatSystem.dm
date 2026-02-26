@@ -1,60 +1,10 @@
 /**
  * Perk Combat System
  *
- * Bridges the perk system with the combat action system.
- * Provides combat action generation, damage calculation,
- * and attack roll handling for perks.
+ * Bridges the perk system with the turn-based combat system.
+ * Provides damage calculation, attack roll handling,
+ * and resource cost validation for perks.
  */
-
-//? ============================================
-//? COMBAT ACTION GENERATION
-//? ============================================
-
-/**
- * Generate a CombatAction from this perk's properties
- * Bridges the obj-based perk to the action combat system
- */
-/obj/perk/proc/getCombatAction() as /datum/CombatAction
-	if(cachedAction)
-		return cachedAction
-
-	cachedAction = new /datum/CombatAction()
-	cachedAction.actionId = "[type]"
-	cachedAction.name = name
-	cachedAction.description = desc
-
-	// Set action type
-	cachedAction.actionType = normalizeActionType(actionType)
-
-	// Set costs
-	cachedAction.manaCost = manaCost
-	cachedAction.staminaCost = staminaCost
-
-	// Calculate base damage
-	cachedAction.baseDamage = calculateBaseDamage()
-
-	// Set scaling stat
-	cachedAction.scalingStat = normalizeStatName(scalingStat)
-
-	// Set damage type
-	cachedAction.damageType = normalizeDamageType(element)
-
-	// Set range
-	cachedAction.range = range
-
-	return cachedAction
-
-/**
- * Calculate base damage for combat action
- * Uses baseDamage plus rank bonuses
- */
-/obj/perk/proc/calculateBaseDamage() as num
-	var/damage = baseDamage
-
-	// Add rank-based bonus damage
-	damage += rankDamageBonus
-
-	return damage
 
 //? ============================================
 //? PERK USAGE
@@ -123,13 +73,7 @@
 	// Pay costs
 	payCosts(user, manaCost, staminaCost, hpCost)
 
-	// Get combat action and execute through combat system
-	var/datum/CombatAction/action = getCombatAction()
-	if(action && user.combatController)
-		user.combatController.performAction(action)
-		return TRUE
-
-	// Fallback for mobs without combat controller
+	// Execute perk effect
 	return executePerk(user)
 
 /**

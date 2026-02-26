@@ -1,11 +1,11 @@
 /**
- * Combat Utilities
+ * Turn Combat Utilities
  *
- * Shared conversion helpers and utilities for the combat system.
- * Provides consistent interfaces between abilities, perks, and combat actions.
+ * Shared conversion helpers and utilities for the turn-based combat system.
+ * Provides consistent interfaces between abilities, perks, and combat.
  *
  * Note: STAT_*, ATYPE_*, SAVE_*, RANGE_*, and DAMAGE_TYPE_* constants
- * are defined in __DEFINES/character.dm
+ * are defined in __DEFINES/combat.dm and __DEFINES/character.dm
  */
 
 //? ============================================

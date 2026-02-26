@@ -35,10 +35,11 @@
 		chatTo(src, "You are already resting.", "ooc")
 		return
 
-	// Check if in combat (if combat controller exists and is active)
-	if(combatController && combatController.isInCombat)
-		chatTo(src, "You cannot rest while in combat!", "ooc")
-		return
+	// Check if in turn-based combat (placeholder for future TurnBattle check)
+	// TODO: Hook into TurnBattle system when battle initiation is implemented
+	// if(activeBattle && activeBattle.battleState != BATTLE_STATE_ENDED)
+	//     chatTo(src, "You cannot rest while in combat!", "ooc")
+	//     return
 
 	// Start resting
 	isResting = TRUE

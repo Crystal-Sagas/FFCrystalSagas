@@ -5,7 +5,7 @@
  * This follows the Chronicles pattern where skills are objects that can be
  * learned, taught, equipped, and have experience/mastery tracking.
  *
- * Abilities integrate with the CombatAction system for execution.
+ * Abilities integrate with the turn-based combat system for execution.
  *
  * Hierarchy:
  * - /obj/Ability (base)
@@ -149,53 +149,11 @@
 	var/enabled = TRUE
 	// lastUsed is inherited from /atom/movable
 
-	//? Combat Action Cache
-	/// The generated CombatAction for this ability (cached)
-	var/datum/CombatAction/cachedAction
-
 /obj/Ability/New()
 	..()
 	// Initialize approval requirement based on tier
 	if(tier >= 3)
 		requiresApproval = TRUE
-
-/**
- * Generate a CombatAction from this ability's properties
- * This bridges the obj-based ability to the action combat system
- */
-/obj/Ability/proc/getCombatAction() as /datum/CombatAction
-	if(cachedAction)
-		return cachedAction
-
-	cachedAction = new /datum/CombatAction()
-	cachedAction.actionId = "[type]"
-	cachedAction.name = name
-	cachedAction.description = desc
-
-	// Set action type using utility
-	cachedAction.actionType = normalizeActionType(actionType)
-
-	// Set costs
-	cachedAction.manaCost = manaCost
-	cachedAction.staminaCost = staminaCost
-
-	// Set damage
-	cachedAction.baseDamage = baseDamage
-
-	// Set scaling - normalize stat name
-	cachedAction.scalingStat = normalizeStatName(scalingStat)
-
-	// Set damage type - already uses defines
-	cachedAction.damageType = damageType
-
-	// Set range
-	cachedAction.range = range
-	cachedAction.aoeRadius = aoeSize
-
-	// Set timing
-	cachedAction.cooldownTime = cooldown
-
-	return cachedAction
 
 /**
  * Check if this ability can be used
@@ -224,12 +182,6 @@
 	if(cooldown <= 0)
 		return FALSE
 
-	// Use the mob's cooldown dictionary if available
-	if(user.cooldowns)
-		var/remaining = user.getCooldown("[type]")
-		return remaining > 0
-
-	// Fallback to local tracking
 	return (world.time - lastUsed) < cooldown
 
 /**
@@ -246,13 +198,7 @@
 	// Start cooldown
 	startCooldown(user)
 
-	// Get combat action and execute through combat system
-	var/datum/CombatAction/action = getCombatAction()
-	if(action && user.combatController)
-		user.combatController.performAction(action)
-		return TRUE
-
-	// Fallback for mobs without combat controller
+	// Execute ability effect
 	return executeAbility(user)
 
 /**
@@ -263,10 +209,6 @@
 		return
 
 	lastUsed = world.time
-
-	// Use mob's cooldown dictionary if available
-	if(user.cooldowns)
-		user.setCooldown("[type]", cooldown)
 
 /**
  * Execute ability effect (override in subtypes)
